@@ -6,28 +6,32 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage{subfigure}
 
-%\includegraphics{{Drawings/}} % Uncomment this to use pictures in this document
+\usepackage{subfigure}
+\usepackage{nameref}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+%\includegraphics{{./Drawings/Math_374}} % Uncomment this to use pictures in this document
 
 \author{Karl Hallsby}
 \title{Equations}
 \begin{document}
 \section{Relative Frequency} \label{sec:Relative Frequency}
-\begin{itemize}
+\begin{itemize}[noitemsep, nolistsep]
 	\item $f_k (n) = \frac{N_k (n)}{n}$ $\leftarrow$ {\large \textbf{Relative Frequency}}
-	\begin{itemize}
+	\begin{itemize}[noitemsep, nolistsep]
 		\item $k$ is the outcome
 		\item $N_k (n)$ is the number of times outcome $k$
 	\end{itemize}
 	\item $\lim\limits_{n \rightarrow \infty} f_k (n) = p_k$ $\leftarrow$ {\large \textbf{Statistical Regularity}}
-	\begin{itemize}
+	\begin{itemize}[noitemsep, nolistsep]
 		\item $p_k$ is the probability of event $k$ occurring
 	\end{itemize}
 \end{itemize}
 
 	\subsection{Properties of Relative Frequencies} \label {subsec:Properties Relative Frequency}
-	\begin{enumerate}
+	\begin{enumerate}[noitemsep, nolistsep]
 		\item $f_k (n) = \frac{N_k (n)}{n}$
 		\item $0 \leq N_k (n) \leq n$
 		\item $0 \leq f_k (n) \leq 1 = \frac{0}{n} \leq \frac{N_k (n)}{n} \leq \frac{n}{n}$
