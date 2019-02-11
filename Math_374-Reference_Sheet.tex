@@ -1,0 +1,38 @@
+\documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
+\usepackage[margin=.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+%\includegraphics{{Drawings/}} % Uncomment this to use pictures in this document
+
+\author{Karl Hallsby}
+\title{Equations}
+\begin{document}
+\section{Relative Frequency} \label{sec:Relative Frequency}
+\begin{itemize}
+	\item $f_k (n) = \frac{N_k (n)}{n}$ $\leftarrow$ {\large \textbf{Relative Frequency}}
+	\begin{itemize}
+		\item $k$ is the outcome
+		\item $N_k (n)$ is the number of times outcome $k$
+	\end{itemize}
+	\item $\lim\limits_{n \rightarrow \infty} f_k (n) = p_k$ $\leftarrow$ {\large \textbf{Statistical Regularity}}
+	\begin{itemize}
+		\item $p_k$ is the probability of event $k$ occurring
+	\end{itemize}
+\end{itemize}
+
+	\subsection{Properties of Relative Frequencies} \label {subsec:Properties Relative Frequency}
+	\begin{enumerate}
+		\item $f_k (n) = \frac{N_k (n)}{n}$
+		\item $0 \leq N_k (n) \leq n$
+		\item $0 \leq f_k (n) \leq 1 = \frac{0}{n} \leq \frac{N_k (n)}{n} \leq \frac{n}{n}$
+		\item $\sum_{k=1}^{k} f_k (n) = \sum_{k=1}^{k} \frac{N_k (n)}{n} = \frac{\sum_{k=1}^{k} N_k (n)}{n} = \frac{n}{n} = 1$
+		\item $\sum_{k=1}^{k} f_k (n) = 1$
+		\item If events A and B are disjoint and event C is "A or B", then $F_C = F_A (n) + F_B (n)$
+	\end{enumerate}
+\end{document}
