@@ -59,14 +59,14 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 	\begin{table}[h!] % Complex Power Table
 		\centering
 		\renewcommand{\arraystretch}{1.4}
-		\begin{tabular}{|c|c|c|}
+		\begin{tabular}{|c|c|c|c|}
 			\hline
-			\textbf{Name} & \textbf{Symbol} & \textbf{Equation(s)} \\ \hline
-			Complex Power & $\mathbf{S}$ & $=P+\jmath Q=\mathbf{V}_{rms} \mathbf{I}_{rms}^{*} = \lvert \mathbf{V}_{rms}\rvert \lvert \mathbf{I}_{rms}\rvert \angle \left( \theta_v - \theta_i\right) $ \\ \hline
-			Apparent Power & $S$ & $\lVert \mathbf{S} \rVert = \lvert \mathbf{V}_{rms} \rvert \lvert \mathbf{I}_{rms} \rvert = \sqrt{P^2 + Q^2}$ \\ \hline
-			Real Power & $P$ & $\Re\lbrace \mathbf{S} \rbrace = S \cos\left( \theta_v - \theta_i \right)$ \\ \hline
-			Reactive (Imaginary) Power & $Q$ & $\Im\lbrace \mathbf{S} \rbrace = S \sin \left( \theta_v - \theta_i \right)$ \\ \hline
-			Power Factor &\textit{Pf} & $\frac{P}{S} = \cos(\theta_v - \theta_i)$ \\ \hline
+			\textbf{Name} & \textbf{Symbol} & \textbf{Equation(s)} & Units \\ \hline
+			Complex Power & $\mathbf{S}$ & $=P+\jmath Q=\mathbf{V}_{rms} \mathbf{I}_{rms}^{*} = \lvert \mathbf{V}_{rms}\rvert \lvert \mathbf{I}_{rms}\rvert \angle \left( \theta_v - \theta_i\right) $ & VA \\ \hline
+			Apparent Power & $S$ & $\lVert \mathbf{S} \rVert = \lvert \mathbf{V}_{rms} \rvert \lvert \mathbf{I}_{rms} \rvert = \sqrt{P^2 + Q^2}$ & VA \\ \hline
+			Real Power & $P$ & $\Re\lbrace \mathbf{S} \rbrace = S \cos\left( \theta_v - \theta_i \right)$ & W \\ \hline
+			Reactive (Imaginary) Power & $Q$ & $\Im\lbrace \mathbf{S} \rbrace = S \sin \left( \theta_v - \theta_i \right)$ & VAR\\ \hline
+			Power Factor &\textit{Pf} & $\frac{P}{S} = \cos(\theta_v - \theta_i)$ & Lead/Lag \\ \hline
 		\end{tabular}
 	\end{table}
 
