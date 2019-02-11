@@ -29,7 +29,7 @@
 	\end{itemize}
 
 \section*{Phasors} \label{sec:Phasors}
-Phasors will only show us the steady state response of the circuit, not the transient response. \newline \newline
+Phasors will only show us the steady state response of the circuit, not the transient response. \newline 
 \textbf{\large Eq: $v(t)=V_{M} \cos \left(\omega t + \theta \right)$ $\leftrightarrow$ $\bar{V}=V_{M} \angle \theta_{v} = V_{M}e^{\jmath \theta_{v}} = V_{M}\left(\cos \theta_{v} + \jmath \sin \theta_{v}\right)$} \newline
 Impedances add together, like resistors.
 You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh Analysis}, \nameref{subsec:Superposition}, and \nameref{sec:Thevenin/Norton}. \newline
@@ -39,7 +39,6 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 		$z_1=x_1+\jmath y_2=r_1\angle\phi_1$, $z_2=x_2+\jmath y_2=r_2\angle\phi_2$
 		\begin{tabular}{|c|c|} 
 			\hline
-			Operation & Formula \\ \hline
 			Addition & $z_1+z_2=\left( x_1+x_2 \right)+ \jmath \left( y_1+y_2 \right)$ \\ \hline
 			Subtraction & $z_1-z_2=\left( x_1-x_2 \right)+ \jmath \left( y_1-y_2 \right)$ \\ \hline
 			Multiplication & $z_{1}z_{2}=r_{1}r_{2}\angle \left( \phi_1 + \phi_2 \right)$ \\ \hline
@@ -53,6 +52,7 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 \section*{RMS/Complex Power/Max Power Transfer} \label{sec:Complex Power}
 	\begin{itemize}[noitemsep]
 		\item $X_{rms}=\sqrt{\frac{1}{T} \int_{0}^{T} x(t)^2 dt}$
+		\item $P_{avg}=\frac{1}{2} \Re\lbrace \mathbf{V} \mathbf{I}^* \rbrace=\frac{1}{2}V_{m}I_{m}\cos \left(\theta_v -\theta_i \right)$
 		\item $\sum_{k=1}^{n} S_{k}$
 	\end{itemize}
 	\begin{table}[h!] % Complex Power Table
