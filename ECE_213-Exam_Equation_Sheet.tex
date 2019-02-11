@@ -1,0 +1,173 @@
+\documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
+\usepackage[margin=.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{nameref}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\graphicspath{{./Drawings/ECE_213/}} % Uncomment this to use pictures in this document
+
+\renewcommand{\Re}{\operatorname{Re}} % Redefine to use the command, but not fraktur
+\renewcommand{\Im}{\operatorname{Im}} % Redefine to use the command, but not fraktur
+
+\author{Karl Hallsby}
+\title{Equations}
+
+\begin{document}
+\section*{General Equations}
+	\begin{itemize}[noitemsep] % Basic Equations
+		\item KCL: $\sum I_{in} = \sum I_{Out}$ $\rightarrow$ Node's Input Current = Node's Output Current
+		\item KVL: $\sum V = 0$ $\rightarrow$ Voltage across a loop totals to 0.
+		\item Ohm's Law: $V=IR$
+	\end{itemize}
+
+\section*{Phasors} \label{sec:Phasors}
+Phasors will only show us the steady state response of the circuit, not the transient response. \newline \newline
+\textbf{\large Eq: $v(t)=V_{M} \cos \left(\omega t + \theta \right)$ $\leftrightarrow$ $\bar{V}=V_{M} \angle \theta_{v} = V_{M}e^{\jmath \theta_{v}} = V_{M}\left(\cos \theta_{v} + \jmath \sin \theta_{v}\right)$} \newline
+Impedances add together, like resistors.
+You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh Analysis}, \nameref{subsec:Superposition}, and \nameref{sec:Thevenin/Norton}. \newline
+	\begin{table}[ht] % Phasor Operation Table
+		\centering
+		\renewcommand{\arraystretch}{1.4}
+		$z_1=x_1+\jmath y_2=r_1\angle\phi_1$, $z_2=x_2+\jmath y_2=r_2\angle\phi_2$
+		\begin{tabular}{|c|c|} 
+			\hline
+			Operation & Formula \\ \hline
+			Addition & $z_1+z_2=\left( x_1+x_2 \right)+ \jmath \left( y_1+y_2 \right)$ \\ \hline
+			Subtraction & $z_1-z_2=\left( x_1-x_2 \right)+ \jmath \left( y_1-y_2 \right)$ \\ \hline
+			Multiplication & $z_{1}z_{2}=r_{1}r_{2}\angle \left( \phi_1 + \phi_2 \right)$ \\ \hline
+			Division & $\frac{z_{1}}{z_{2}} = \frac{r_{1}}{r_{2}} \angle \left(\phi_1 - \phi_2 \right)$ \\ \hline
+			Reciprocal & $\frac{1}{z_1}=\frac{1}{z_1} \angle -\phi_1$ \\ \hline
+			Square Root & $\sqrt{z_1}=\sqrt{r_1} \angle \frac{\phi_1}{2}$ \\ \hline
+			Complex Conjugate & $ z_1^*=x- \jmath y=r \angle -\phi_1=re^{-\jmath \phi_1}$\\ \hline
+		\end{tabular}
+	\end{table}
+
+\section*{RMS/Complex Power/Max Power Transfer} \label{sec:Complex Power}
+	\begin{itemize}[noitemsep]
+		\item $X_{rms}=\sqrt{\frac{1}{T} \int_{0}^{T} x(t)^2 dt}$
+		\item $\sum_{k=1}^{n} S_{k}$
+	\end{itemize}
+	\begin{table}[h!] % Complex Power Table
+		\centering
+		\renewcommand{\arraystretch}{1.4}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Name} & \textbf{Symbol} & \textbf{Equation(s)} \\ \hline
+			Complex Power & $\mathbf{S}$ & $=P+\jmath Q=\mathbf{V}_{rms} \mathbf{I}_{rms}^{*} = \lvert \mathbf{V}_{rms}\rvert \lvert \mathbf{I}_{rms}\rvert \angle \left( \theta_v - \theta_i\right) $ \\ \hline
+			Apparent Power & $S$ & $\lVert \mathbf{S} \rVert = \lvert \mathbf{V}_{rms} \rvert \lvert \mathbf{I}_{rms} \rvert = \sqrt{P^2 + Q^2}$ \\ \hline
+			Real Power & $P$ & $\Re\lbrace \mathbf{S} \rbrace = S \cos\left( \theta_v - \theta_i \right)$ \\ \hline
+			Reactive (Imaginary) Power & $Q$ & $\Im\lbrace \mathbf{S} \rbrace = S \sin \left( \theta_v - \theta_i \right)$ \\ \hline
+			Power Factor &\textit{Pf} & $\frac{P}{S} = \cos(\theta_v - \theta_i)$ \\ \hline
+		\end{tabular}
+	\end{table}
+
+\section*{Elements} \label{sec:Circuit Elements}
+	\begin{table}[h!] % Element Equation Table
+		\centering
+		\renewcommand{\arraystretch}{1.4}
+		\begin{tabular}{|c|c|c|c|}
+		\hline
+		Relation & R & C & L \\
+		\hline
+		v-i & $V=IR$ & $v = \frac{1}{C} \int_{t_0}^t i(x)dx + v(t_0)$ & $v=L\frac{di}{dt}$  \\
+		i-v & $I=\frac{V}{R}$ & $i = C\frac{dv}{dt}$ & $i=\frac{1}{L}\int_{t_0}^t v(x)dx +i(t_0)$ \\
+		\hline
+		P or W & $P=I^2R=\frac{V^2}{R}$ & $P=\frac{1}{2}Cv_{c}^2$ & $W=\frac{1}{2}Li_{l}^2$ \\
+		\hline
+		Series & $R_{eq}=R_1+R_2+\ldots+R_n$ & $\frac{1}{C_{eq}}=\frac{1}{C_1}+\frac{1}{C_2}+\ldots+\frac{1}{C_n}$ & $L_{eq}=L_1+L_2+\ldots+L_n$ \\
+		Parallel & $\frac{1}{R_{eq}}=\frac{1}{R_1}+\frac{1}{R_2}+\ldots+\frac{1}{R_n}$ & $C_{eq}=C_1+C_2+\ldots+C_n$ & $\frac{1}{L_{eq}}=\frac{1}{L_1}+\frac{1}{L_2}+\ldots+\frac{1}{L_n}$ \\
+		\hline
+		@ Steady State & Same (Nothing Happens) & Open Circuit & Short Circuit \\
+		\hline
+		Phasors & $Z_R=R$ & $Z_C = \frac{1}{j \omega C}$ & $Z_L=j \omega L$ \\
+		\hline
+		\end{tabular}
+	\end{table}
+
+\section*{Methods to Solve Equations} \label{sec:Solve Circuits}
+	\subsection*{Nodal Analysis} \label{subsec:Nodal Analysis}
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item \# of Nodes? $\rightarrow n$
+			\item Make one node the reference node. Assign $n-1$ nodal voltages
+			\item For a \textbf{voltage} source, write a CONSTRAINT EQUATION (Con. Eq.). If there is a voltage source between 2 non-reference nodes, make that a \textbf{SUPERNODE}.
+			\item Write KCL at each node. ($n-1$) equations.
+			\item Solve Equations.
+		\end{enumerate}
+	\subsection*{Mesh/Loop Analysis} \label{subsec:Mesh Analysis}
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item \# of Nodes? $\rightarrow n$ \# of Branches? $\rightarrow b$ \# of meshes/loops? $\rightarrow b-n+1 = l$
+			\item Assign $l$ loop currents.
+			\item For \textbf{current} sources, write a CONSTRAINT EQUATION (Con. Eq.). If there is a current source between 2 meshes, that's a \textbf{SUPERMESH}.
+			\item Write KVL for each mesh.
+			\item Solve Equations.
+		\end{enumerate}
+	\subsection*{Superposition} \label{subsec:Superposition}
+		\begin{itemize}[noitemsep, nolistsep]
+			\item \# of sources, $n$, determines the number of equations you will have.
+			\item Shut off each source, one at a time, solving for the term that you want.
+			\begin{itemize}[noitemsep, nolistsep]
+				\item Voltage Source = S.C.
+				\item Current Source = O.C.
+			\end{itemize}
+			\item Sum each of the individual terms together. $\sum_{i=1}^{n} x_{i}$
+		\end{itemize}
+
+	\subsection*{Source Transformations} \label{sec:Source Transforms}
+		\textbf{ALL} source transformations obey Ohm's Law. $V=IR$.
+		This will \textbf{ONLY} work on resistors in series with \textbf{VOLTAGE} sources, or resistors in parallel with \textbf{CURRENT} sources.
+		\begin{figure*}[!htpb]
+			\hspace{15mm}
+			\begin{subfigure}
+				\centering
+				\includegraphics[scale=.3]{SeriesVoltageResistor.png}
+				%\caption{Voltage Source in Series with a Resistor}
+				\label{fig:SeriesVoltageSource}
+			\end{subfigure}
+			\hspace{65mm}
+			\begin{subfigure}
+				\centering
+				\includegraphics[scale=.4]{ParallelCurrentResistor.png}
+				%\caption{Current Source in Parallel with a Resistor}
+				\label{fig:ParallelCurrentSource}
+			\end{subfigure}
+			\caption{Left: Voltage Source in Series with a Resistor, Right: Current Source in Parallel with a Resistor}
+		\end{figure*}
+
+\section*{Thevenin and Norton Equivalencies} \label{sec:Thevenin/Norton}
+	\begin{itemize}[noitemsep, nolistsep]
+		\item ONLY independent sources - Zero all sources, find $\mathbf{Z}_{eq}$.
+		\begin{itemize}[noitemsep, nolistsep]
+			\item 0-ing Current Sources = O.C., 0-ing Voltage Sources = S.C.
+			\item Look at circuit from load's perspective for $\mathbf{Z}_{eq}$
+			\item $\mathbf{V}_{Th}=\mathbf{V}_{OC}$, $\mathbf{I}_{N} = \mathbf{I}_{SC}$
+		\end{itemize}
+		\item BOTH dependent and independent sources
+			\begin{itemize}[noitemsep, nolistsep]
+				\item Find $\mathbf{V}_{Th}=\mathbf{V}_{OC}$, $\mathbf{I}_{N}=\mathbf{I}_{SC}$
+				\item Solve $\mathbf{Z}_{Th}=\frac{\mathbf{V}_{OC}}{\mathbf{I}_{SC}}$
+			\end{itemize}
+		\item ONLY dependent sources
+			\begin{itemize}[noitemsep, nolistsep]
+				\item $\mathbf{V}_{Th}=0$, $\mathbf{I}_{N}=0$
+				\item $\mathbf{Z}_{Th}=\mathbf{Z}_{N} \rightarrow$ Attach test source @ load.
+				\begin{itemize}
+					\item If voltage test source, find current. If current test source, find voltage
+				\end{itemize}
+				\item $\mathbf{Z}_{Th}=\frac{\mathbf{V}_{Test}}{\mathbf{I}_{Test}}$
+			\end{itemize}
+		\item \textbf{Maximum Power Transfer - AC}
+			\begin{itemize}[noitemsep, nolistsep]
+				\item $\mathbf{Z}_{Load}=\mathbf{Z}_{Th}^*$, $R_{Th}=\Re\lbrace\mathbf{Z_{Th}}\rbrace$, $R_L= \lvert \mathbf{Z}_{Th} \rvert = \sqrt{R_{Th}^2+\left( X_{Th}+X_{L}\right)^2}$
+				\item $P_{max}=\frac{\lvert\mathbf{V}_{Th}\rvert^2}{8R_{Th}}$
+			\end{itemize}
+	\end{itemize}
+
+\end{document}
