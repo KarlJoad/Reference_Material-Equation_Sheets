@@ -31,7 +31,6 @@
 \section*{Phasors} \label{sec:Phasors}
 Phasors will only show us the steady state response of the circuit, not the transient response. \newline 
 \textbf{\large Eq: $v(t)=V_{M} \cos \left(\omega t + \theta \right)$ $\leftrightarrow$ $\bar{V}=V_{M} \angle \theta_{v} = V_{M}e^{\jmath \theta_{v}} = V_{M}\left(\cos \theta_{v} + \jmath \sin \theta_{v}\right)$} \newline
-Impedances add together, like resistors.
 You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh Analysis}, \nameref{subsec:Superposition}, and \nameref{sec:Thevenin/Norton}. \newline
 	\begin{table}[ht] % Phasor Operation Table
 		\centering
@@ -55,6 +54,8 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 		\item $P_{avg}=\frac{1}{2} \Re\lbrace \mathbf{V} \mathbf{I}^* \rbrace=\frac{1}{2}V_{m}I_{m}\cos \left(\theta_v -\theta_i \right)$
 		\item $\mathbf{S} = I_{rms}^2\mathbf{Z} = \frac{V_{rms}^2}{\mathbf{Z}^*} = \mathbf{V}_{rms}\mathbf{I}_{rms}^*$
 		\item $\sum_{k=1}^{n} S_{k}$
+		\item $C = \frac{Q_{C}}{\omega V_{rms}^2} = \frac{P\left( \tan \theta_1 - \tan \theta_2 \right)}{\omega V_{rms}^2}$
+		\item $L=\frac{V_{rms}^2}{\omega \left(Q_1 - Q_2 \right)}$
 	\end{itemize}
 	\begin{table}[h!] % Complex Power Table
 		\centering
@@ -62,8 +63,8 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 		\begin{tabular}{|c|c|c|c|}
 			\hline
 			\textbf{Name} & \textbf{Symbol} & \textbf{Equation(s)} & Units \\ \hline
-			Complex Power & $\mathbf{S}$ & $=P+\jmath Q=\mathbf{V}_{rms} \mathbf{I}_{rms}^{*} = \lvert \mathbf{V}_{rms}\rvert \lvert \mathbf{I}_{rms}\rvert \angle \left( \theta_v - \theta_i\right) $ & VA \\ \hline
-			Apparent Power & $S$ & $\lVert \mathbf{S} \rVert = \lvert \mathbf{V}_{rms} \rvert \lvert \mathbf{I}_{rms} \rvert = \sqrt{P^2 + Q^2}$ & VA \\ \hline
+			Complex Power & $\mathbf{S}$ & $P+\jmath Q=\mathbf{V}_{rms} \mathbf{I}_{rms}^{*} = \lvert \mathbf{V}_{rms}\rvert \lvert \mathbf{I}_{rms}\rvert \angle \left( \theta_v - \theta_i\right) $ & VA \\ \hline
+			Apparent Power & $S$ & $\frac{P}{Pf}=\lVert \mathbf{S} \rVert = \lvert \mathbf{V}_{rms} \rvert \lvert \mathbf{I}_{rms} \rvert = \sqrt{P^2 + Q^2}$ & VA \\ \hline
 			Real Power & $P$ & $\Re\lbrace \mathbf{S} \rbrace = S \cos\left( \theta_v - \theta_i \right)$ & W \\ \hline
 			Reactive (Imaginary) Power & $Q$ & $\Im\lbrace \mathbf{S} \rbrace = S \sin \left( \theta_v - \theta_i \right)$ & VAR\\ \hline
 			Power Factor &\textit{Pf} & $\frac{P}{S} = \cos(\theta_v - \theta_i)$ & Lead/Lag \\ \hline
@@ -123,24 +124,7 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 
 	\subsection*{Source Transformations} \label{sec:Source Transforms}
 		\textbf{ALL} source transformations obey Ohm's Law. $V=IR$.
-		This will \textbf{ONLY} work on resistors in series with \textbf{VOLTAGE} sources, or resistors in parallel with \textbf{CURRENT} sources.
-		\begin{figure*}[!htpb]
-			\hspace{15mm}
-			\begin{subfigure}
-				\centering
-				\includegraphics[scale=.3]{SeriesVoltageResistor.png}
-				%\caption{Voltage Source in Series with a Resistor}
-				\label{fig:SeriesVoltageSource}
-			\end{subfigure}
-			\hspace{65mm}
-			\begin{subfigure}
-				\centering
-				\includegraphics[scale=.4]{ParallelCurrentResistor.png}
-				%\caption{Current Source in Parallel with a Resistor}
-				\label{fig:ParallelCurrentSource}
-			\end{subfigure}
-			\caption{Left: Voltage Source in Series with a Resistor, Right: Current Source in Parallel with a Resistor}
-		\end{figure*}
+		This will \textbf{ONLY} work on impedances in series with \textbf{VOLTAGE} sources, or impedances in parallel with \textbf{CURRENT} sources.
 
 \section*{Thevenin and Norton Equivalencies} \label{sec:Thevenin/Norton}
 	\begin{itemize}[noitemsep, nolistsep]
