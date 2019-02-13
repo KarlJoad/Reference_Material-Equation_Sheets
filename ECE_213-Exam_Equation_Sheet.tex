@@ -11,6 +11,7 @@
 \usepackage{nameref} % \nameref{label} lets you reference things by name
 \usepackage{hyperref} % Hyperlinks between references
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
+\usepackage{multicol} % Allows me to split portion of a page into multiple columns
 
 \graphicspath{{./Drawings/ECE_213/}} % Uncomment this to use pictures in this document
 
@@ -47,16 +48,27 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 			Complex Conjugate & $ z_1^*=x- \jmath y=r \angle -\phi_1=re^{-\jmath \phi_1}$\\ \hline
 		\end{tabular}
 	\end{table}
+	\vspace{-8mm}
 
 \section*{RMS/Complex Power/Max Power Transfer} \label{sec:Complex Power}
-	\begin{itemize}[noitemsep]
-		\item $X_{rms}=\sqrt{\frac{1}{T} \int_{0}^{T} x(t)^2 dt}$
-		\item $P_{avg}=\frac{1}{2} \Re\lbrace \mathbf{V} \mathbf{I}^* \rbrace=\frac{1}{2}V_{m}I_{m}\cos \left(\theta_v -\theta_i \right)$
-		\item $\mathbf{S} = I_{rms}^2\mathbf{Z} = \frac{V_{rms}^2}{\mathbf{Z}^*} = \mathbf{V}_{rms}\mathbf{I}_{rms}^*$
-		\item $\sum_{k=1}^{n} S_{k}$
-		\item $C = \frac{Q_{C}}{\omega V_{rms}^2} = \frac{P\left( \tan \theta_1 - \tan \theta_2 \right)}{\omega V_{rms}^2}$
-		\item $L=\frac{V_{rms}^2}{\omega \left(Q_1 - Q_2 \right)}$
-	\end{itemize}
+	\vspace{-6mm}
+	\begin{multicols}{2}
+		\begin{itemize}[noitemsep]
+			\item $X_{rms}=\sqrt{\frac{1}{T} \int_{0}^{T} x(t)^2 dt}$
+			\item $P_{avg}=\frac{1}{2} \Re\lbrace \mathbf{V} \mathbf{I}^* \rbrace=\frac{1}{2}V_{m}I_{m}\cos \left(\theta_v -\theta_i \right)$
+			\item $\mathbf{S} = I_{rms}^2\mathbf{Z} = \frac{V_{rms}^2}{\mathbf{Z}^*} = \mathbf{V}_{rms}\mathbf{I}_{rms}^*$
+			\item $\sum_{k=1}^{n} S_{k}$
+			\item $C = \frac{Q_{C}}{\omega V_{rms}^2} = \frac{P\left( \tan \theta_1 - \tan \theta_2 \right)}{\omega V_{rms}^2}$
+			\item $L=\frac{V_{rms}^2}{\omega \left(Q_1 - Q_2 \right)}$
+		\end{itemize}
+
+		\columnbreak
+		
+		\includegraphics[scale=0.375]{Phasor_Power_Triangle.jpg} % Can't do figure because floats aren't allowed in multicol
+		\label{fig:Phasor/Power Triangle}
+	\end{multicols}
+	\vspace{-4mm}
+
 	\begin{table}[h!] % Complex Power Table
 		\centering
 		\renewcommand{\arraystretch}{1.4}
@@ -148,11 +160,11 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 				\end{itemize}
 				\item $\mathbf{Z}_{Th}=\frac{\mathbf{V}_{Test}}{\mathbf{I}_{Test}}$
 			\end{itemize}
-		\item \textbf{Maximum Power Transfer - AC}
+		\end{itemize}
+\section*{Maximum Power Transfer - AC}
 			\begin{itemize}[noitemsep, nolistsep]
 				\item $\mathbf{Z}_{Load}=\mathbf{Z}_{Th}^*$, $R_{Th}=\Re\lbrace\mathbf{Z_{Th}}\rbrace$, $R_L= \lvert \mathbf{Z}_{Th} \rvert = \sqrt{R_{Th}^2+\left( X_{Th}+X_{L}\right)^2}$
 				\item $P_{max}=\frac{\lvert\mathbf{V}_{Th}\rvert^2}{8R_{Th}}$
 			\end{itemize}
-	\end{itemize}
 
 \end{document}
