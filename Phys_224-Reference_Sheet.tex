@@ -13,6 +13,7 @@
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
 
 \graphicspath{{./Drawings/Phys_224}} % Uncomment this to use pictures in this document
+\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
 
 \author{Karl Hallsby}
 \title{Phys 224 Reference Sheet}
@@ -92,13 +93,13 @@ We must satisfy several parameters to make life easier, and to use most of these
 	\begin{align}
 		y_{1} \left( x, t \right) &= y \sin \left( kx - \omega t \right) \\
 		y_{2} \left( x, t \right) &= y \sin \left( kx + \omega t + \varphi \right) \\
-		Y \left( x, t \right) &= 2y \sin \left( kx - \omega t \right) + \sin \left( kx + \omega t + \varphi \right) \label{eq:Sum of 2 Waves}
+		Y \left( x, t \right) &= y\left[ \sin \left( kx - \omega t \right) + \sin \left( kx + \omega t + \varphi \right) \right] \label{eq:Sum of 2 Waves}
 	\end{align}
 	You can usually use \nameref{subsec:Trig Formulas} to simplify Equation~\ref{eq:Sum of 2 Waves}.
 \section*{Thermodynamics} \label{sec:Thermo}
 \section*{Quantum Mechanics} \label{sec:Quantum Mech}
-\section*{Reference Material} \label{sec:Reference Material}
-	\subsection*{Trigonometric Formulas} \label{subsec:Trig Formulas}
+\section{Reference Material} \label{sec:Reference Material}
+	\subsection{Trigonometric Formulas} \label{subsec:Trig Formulas}
 	\begin{align}
 		\sin \left( \alpha \right) + \sin \left( \beta \right) &= 2 \sin \left( \frac{\alpha + \beta}{2} \right) \cos\left( \frac{\alpha - \beta}{2} \right) 
 \end{align}
