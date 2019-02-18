@@ -19,7 +19,7 @@
 \title{Phys 224 Reference Sheet}
 
 \begin{document}
-\section*{General Stuff} \label{sec:General}
+\section{General Stuff} \label{sec:General}
 	\begin{itemize}[noitemsep]
 		\item Density - $\rho = \frac{\Delta m}{\Delta V}$
 			\begin{itemize}
@@ -31,9 +31,10 @@
 				\item Uniform Force on Flat Area - $\rho = \frac{F}{A}$
 				\item Conversions - $1 atm = 1.01 \times 10^5 Pa = 760 torr = 14.7 lb/in^2$
 			\end{itemize}
+		\item Trig Relations are in \nameref{subsec:Trig Formulas}, Section~\ref{subsec:Trig Formulas}.
 	\end{itemize}
 
-\section*{Fluids} \label{sec:Fluids}
+\section{Fluids} \label{sec:Fluids}
 We must satisfy several parameters to make life easier, and to use most of these formulae.
 	\begin{enumerate}[noitemsep]
 		\item Incompressible - Density of the fluid is constant
@@ -63,7 +64,7 @@ We must satisfy several parameters to make life easier, and to use most of these
 			\end{itemize}
 	\end{itemize}
 
-\section*{Waves} \label{sec:Waves}
+\section{Waves} \label{sec:Waves}
 {\Large Usually of form $y = y_{m} \sin \left( kx \pm \omega t \right)$}
 	\begin{itemize}[noitemsep]
 		\item $y_{m}$ - Amplitude, $m$
@@ -95,12 +96,39 @@ We must satisfy several parameters to make life easier, and to use most of these
 		y_{2} \left( x, t \right) &= y \sin \left( kx + \omega t + \varphi \right) \\
 		Y \left( x, t \right) &= y\left[ \sin \left( kx - \omega t \right) + \sin \left( kx + \omega t + \varphi \right) \right] \label{eq:Sum of 2 Waves}
 	\end{align}
-	You can usually use \nameref{subsec:Trig Formulas} to simplify Equation~\ref{eq:Sum of 2 Waves}.
-\section*{Thermodynamics} \label{sec:Thermo}
-\section*{Quantum Mechanics} \label{sec:Quantum Mech}
+	You can usually use Equation~\ref{eq:Sin plus Sin with diff Angles} to simplify Equation~\ref{eq:Sum of 2 Waves}.
+
+	\subsection*{Standing Waves} \label{subsec:Standing Waves}
+	This is actually the superposition of 2 waves, traveling in opposite directions, on a medium that is fixed at both ends, i.e. a taut string held by a wall.
+		\subsubsection*{Location of Nodes and Antinodes} \label{subsubsec:Node/Antinode Location}
+		\begin{itemize}[noitemsep]
+			\item Nodes - $x = n \frac{\lambda}{2}$ for $n = 0, 1, 2, \ldots$
+			\item Antinodes - $x = \left( n + \frac{1}{2} \right) \frac{\lambda}{2}$ for $n = 0, 1, 2, \ldots$
+		\end{itemize}
+
+		\subsubsection*{Resonant Frequencies/Harmonics} \label{subsubsec:Resonant Frequencies/Harmonics}
+		These can also be called harmonics. There is a resonant frequency for every number of nodes/antinodes on tthe standing wave. \newline
+		$f = \frac{v}{\lambda} = n \frac{v}{2L}$
+		\begin{itemize}[noitemsep]
+			\item $L$ is the length of the medium (The String).
+			\item $\lambda$ is the wavelength of the wave formed.
+		\end{itemize}
+		This can be extended to find the base resonant frequency, if you know how many node levels are between the two resonant frequencies given, i.e. they say that the \textbf{NEXT} frequency, means $n+1$. \newline
+		$f_{n+m}-f_{n} = \left( n+m \right) \frac{v}{2L} - n \frac{v}{2L} = m \frac{v}{2L}$
+		
+	\subsection*{Reflecting Sound} \label{subsec:Reflecting Sound}
+		\begin{itemize}[noitemsep]
+			\item $D = \left( n + 1 \right)d = vt$
+			\begin{itemize}[noitemsep,nolistsep]
+				\item $n$ is the number of reflections that occurred
+			\end{itemize}
+		\end{itemize}
+
+\section{Thermodynamics} \label{sec:Thermo}
+\section{Quantum Mechanics} \label{sec:Quantum Mech}
 \section{Reference Material} \label{sec:Reference Material}
 	\subsection{Trigonometric Formulas} \label{subsec:Trig Formulas}
 	\begin{align}
-		\sin \left( \alpha \right) + \sin \left( \beta \right) &= 2 \sin \left( \frac{\alpha + \beta}{2} \right) \cos\left( \frac{\alpha - \beta}{2} \right) 
+		\sin \left( \alpha \right) + \sin \left( \beta \right) &= 2 \sin \left( \frac{\alpha + \beta}{2} \right) \cos\left( \frac{\alpha - \beta}{2} \right)  \label{eq:Sin plus Sin with diff Angles}
 \end{align}
 \end{document}
