@@ -7,7 +7,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 
-\usepackage{subfigure} % Float environment to place multiple figures in one figure environment
+\usepackage{subcaption} % Float environment to place multiple figures in one figure environment
 \usepackage{nameref} % \nameref{label} lets you reference things by name
 \usepackage{hyperref} % Hyperlinks between references
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
@@ -170,4 +170,42 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 				\item $P_{max}=\frac{\lvert\mathbf{V}_{Th}\rvert^2}{8R_{Th}}$
 			\end{itemize}
 
+\section*{3-Phase Circuits} \label{sec:3-Phase}
+	\subsection*{$\Delta$-Y Conversion} \label{subsec:Delta-Y Convert}
+You want to get everything into Y formation, because the common neutral allows you to do single-phase analysis.
+
+\section*{Mutual Inductance} \label{sec:Mutual Inductance}
+	\subsection*{Equivalent Mutual Inductance}
+		\begin{table}[h!] % Mutual Inductance Equivalency Table
+			\centering
+			\renewcommand{\arraystretch}{2.75}
+			\begin{tabular}{|c|c|c|}
+			\hline
+			Series-\textbf{Aiding} Connection & $L=L_{1}+L_{2}+2M$ & \includegraphics[scale=0.5]{Mutual_Inductors_Series_Dots_Aiding.png} \\ \hline
+			Series-\textbf{Opposing} Connection & $L=L_{1}+L_{2}-2M$ & \includegraphics[scale=0.5]{Mutual_Inductors_Series_Dots_Opposing.png} \\ \hline
+			\end{tabular}
+		\end{table}
+
+	\subsection*{Solving Disjoint Coupled Circuits} \label{subsec:Solve Disjoint Coupled Circuits}
+		\begin{enumerate}[noitemsep] % Steps
+			\item Apply KVL
+			\item Don't forget about the Mutual Inductance Voltage Difference because of the first current
+			\item There is a second way to thing about these, shown in the Figure below.
+		\end{enumerate}
+		\begin{figure}[ht!] % Convert
+			\begin{subfigure}{0.5\textwidth}
+				\centering
+				\includegraphics[scale=0.2]{Disjoint_Coupled_Inductors-OG.png}
+				\subcaption{Original Circuit}
+				\label{subfig:Disjoint Coupled Inductors OG}
+			\end{subfigure}
+			\begin{subfigure}{0.5\textwidth}
+				\centering
+				\includegraphics[scale=0.2]{Disjoint_Coupled_Inductors-Simplified.png}
+				\subcaption{Circuit "Simplified" by Adding Dependent Sources}
+				\label{subfig:Disjoint Coupled Inductors Simplified}
+			\end{subfigure}
+		\end{figure}
+		\textbf{The sign on the dependent sources depends on which side of the inductor the current is going into.} \newline
+		\textbf{Use the Dot Convention to determine which direction the source's voltage should go.}
 \end{document}
