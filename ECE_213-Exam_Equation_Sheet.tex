@@ -186,26 +186,94 @@ You want to get everything into Y formation, because the common neutral allows y
 			\end{tabular}
 		\end{table}
 
+	\subsection*{Dot Convention} \label{subsec:Dot Convention}
+		There are 2 cases:
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item Current enters through dotted side on 1 inductor $\longrightarrow$ \textbf{POSITIVE VOLTAGE ON DOTTED SIDE OF OTHER INDUCTOR}
+				\begin{itemize}[noitemsep, nolistsep]
+					\item Current flows into the dotted side of one inductor
+					\item Current flows out of the un-dotted side of second inductor, just like the first
+				\end{itemize}
+			\item Current enters through \textbf{NON}-dotted side of 1 inductor $\longrightarrow$ \textbf{POSITIVE VOLTAGE ON UN-DOTTED SIDE OF OTHER INDUCTOR}
+				\begin{itemize}[noitemsep, nolistsep]
+					\item Current flows into the un-dotted side of one inductor
+					\item Current flows out of the dotted side of the second inductor, just like the first
+				\end{itemize}
+		\end{enumerate}
+	
 	\subsection*{Solving Disjoint Coupled Circuits} \label{subsec:Solve Disjoint Coupled Circuits}
 		\begin{enumerate}[noitemsep] % Steps
 			\item Apply KVL
 			\item Don't forget about the Mutual Inductance Voltage Difference because of the first current
-			\item There is a second way to thing about these, shown in the Figure below.
+			\item There is a second way to thing about these, shown in Figures~\ref{subfig:Disjoint Coupled Inductors OG}~and~\ref{subfig:Disjoint Coupled Inductors Simplified}, below.
 		\end{enumerate}
 		\begin{figure}[ht!] % Convert
 			\begin{subfigure}{0.5\textwidth}
 				\centering
-				\includegraphics[scale=0.2]{Disjoint_Coupled_Inductors-OG.png}
+				\includegraphics[scale=0.35]{Disjoint_Coupled_Inductors-OG.png}
 				\subcaption{Original Circuit}
 				\label{subfig:Disjoint Coupled Inductors OG}
 			\end{subfigure}
 			\begin{subfigure}{0.5\textwidth}
 				\centering
-				\includegraphics[scale=0.2]{Disjoint_Coupled_Inductors-Simplified.png}
+				\includegraphics[scale=0.30]{Disjoint_Coupled_Inductors-Simplified.png}
 				\subcaption{Circuit "Simplified" by Adding Dependent Sources}
 				\label{subfig:Disjoint Coupled Inductors Simplified}
 			\end{subfigure}
 		\end{figure}
 		\textbf{The sign on the dependent sources depends on which side of the inductor the current is going into.} \newline
-		\textbf{Use the Dot Convention to determine which direction the source's voltage should go.}
+		\textbf{Use the \nameref{subsec:Dot Convention} to determine which direction the source's voltage should go.}
+		
+\section*{Transformers} \label{sec:Transformers}
+These elements consume no power, and convert voltages and currents.
+\begin{itemize}[noitemsep, nolistsep]
+	\item $\frac{v_{1}}{v_{2}} = \frac{N_{1}}{N_{2}} \longleftarrow$ Voltage Change
+	\item $\frac{i_{1}}{i_{2}} = -\frac{N_{2}}{N_{1}} \longleftarrow$ Current Change
+\end{itemize}
+
+	\subsection*{Representations for Turns} \label{subsec:Turn Representations}
+		There are 3 common ways to represent the number of turns in a transformer:
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item $N_{1} : N_{2}$
+			\begin{itemize}[noitemsep, nolistsep]
+				\item Both $N_{1}$ and $N_{2}$ are integers
+			\end{itemize}
+			\item $1 : n$
+			\begin{itemize}[noitemsep, nolistsep]
+				\item The first term might not be $1$, if there isn't perfect division, i.e. $2 : 5$ will not be reduced to $1 : \frac{5}{2}$
+				\item $n = \frac{N_{2}}{N_{1}}$
+				\item This is the form generally used by our textbook
+			\end{itemize}
+			\item $a : 1$
+			\begin{itemize}[noitemsep, nolistsep]
+				\item The second term might not be $1$, if there isn't perfect division, i.e. $2 : 5$ will not be reduced to $\frac{2}{5} : 1$
+				\item $a = \frac{N_{1}}{N_{2}}$
+				\item This is the form generally used by utility companies
+			\end{itemize}
+		\end{enumerate}
+	
+	\subsection*{Reflecting Elements} \label{subsec:Element Reflection}
+		There are only 3 equations:
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item $\frac{v_{1}}{v_{2}} = \frac{N_{1}}{N_{2}} \longleftarrow$ Voltage Change
+			\item $\frac{i_{1}}{i_{2}} = -\frac{N_{2}}{N_{1}} \longleftarrow$ Current Change
+			\item $Z_{1} = \frac{Z_{2}}{n^{2}}$, as seen in Figure~\ref{fig:Transformer Reflecting}
+		\end{enumerate}
+		\begin{figure}[ht!]
+			\centering
+			\includegraphics[scale=0.5]{Transformer_Reflecting.png}
+			\caption{Transformer Reflecting Elements}
+			\label{fig:Transformer Reflecting}
+		\end{figure}
+	
+\section*{Transfer Functions/Bode Plots} \label{sec:Bode Plots}
+	\begin{itemize}[noitemsep, nolistsep]
+		\item Basic form of a Transfer function is $H \left( \omega \right) = \frac{X_{Out}}{X_{In}}$
+		\begin{itemize}[noitemsep, nolistsep]
+			\item $H \left( \omega \right) = \frac{V_{Out}}{V_{In}}$
+			\item $H \left( \omega \right) = \frac{I_{Out}}{I_{In}}$
+			\item $H \left( \omega \right) = \frac{V_{Out}}{I_{In}}$
+			\item $H \left( \omega \right) = \frac{I_{Out}}{V_{In}}$
+		\end{itemize}
+	\end{itemize}
 \end{document}
