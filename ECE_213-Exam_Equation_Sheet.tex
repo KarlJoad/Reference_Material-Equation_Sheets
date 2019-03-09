@@ -264,7 +264,7 @@ These elements consume no power, and convert voltages and currents.
 			\includegraphics[scale=0.5]{Transformer_Reflecting.png}
 			\caption{Transformer Reflecting Elements}
 			\label{fig:Transformer Reflecting}
-		\end{figure}
+		\end{figure} \vspace{-10mm}
 	
 \section*{Transfer Functions/Bode Plots} \label{sec:Bode Plots}
 	\begin{itemize}[noitemsep, nolistsep]
@@ -276,4 +276,25 @@ These elements consume no power, and convert voltages and currents.
 			\item $H \left( \omega \right) = \frac{I_{Out}}{V_{In}}$
 		\end{itemize}
 	\end{itemize}
+	We replace {\large $s = \omega j \rightarrow \omega = \frac{s}{j}$}. \newline
+	When we have the transfer function, and plug in the equivalency $s = \omega j$, we end up with something like:
+	\begin{equation*}
+		H\left( s \right) = \frac{k \left(s + z_{1} \right) \left(s + z_{2} \right) \left(s + z_{3} \right) \cdots}{\left(s + p_{1} \right) \left(s + p_{2} \right) \left(s + p_{3} \right) \cdots}
+	\end{equation*}
+	Now to make the bode plot:
+	\begin{align*} % Construct Bode Equations
+		\lVert H\left( s \right) \rVert &= \frac{k \lVert s + z_{1} \rVert \lVert s + z_{2} \rVert \lVert s + z_{3} \rVert \cdots}{\lVert s + p_{1} \rVert \lVert s + p_{2} \rVert \lVert s + p_{3} \rVert \cdots} \\
+		\lVert H\left( \omega \right) \rVert (dB) &= 20\log \left( k \right) + 20\log \left( j\omega + z_{1} \right) + 20\log \left( j\omega + z_{2} \right) + 20\log \left( j\omega + z_{3} \right) \\
+		&- 20\log \left( j\omega + p_{1} \right) - 20\log \left( j\omega + p_{2} \right) - 20\log \left( j\omega + p_{3} \right) \\
+		\angle \varphi &= \arctan \left( k \right) + \arctan \left( j\omega + z_{1} \right) + \arctan \left( j\omega + z_{2} \right) + \arctan \left( j\omega + z_{3} \right) \\
+		&-\arctan \left( j\omega + p_{1} \right) - \arctan \left( j\omega + p_{2} \right) - \arctan \left( j\omega + p_{3} \right) \\
+	\end{align*}
+	\begin{table}[h!] % Bode Plot Table
+		\centering
+		\renewcommand{\arraystretch}{1.4}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Factor} & \textbf{Magnitude} & \textbf{Phase}
+		\end{tabular}
+	\end{table}
 \end{document}
