@@ -157,6 +157,76 @@ We must satisfy several parameters to make life easier, and to use most of these
 		\end{itemize}
 
 \section{Thermodynamics} \label{sec:Thermo}
+Definition: Study of energy transfer between two macroscopic bodies driven by temperature differences.
+	\subsection*{Laws of Thermodynamics} \label{subsec:Thermo Laws}
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item[\textbf{0th Law:}] If 2 bodies, A and B are in thermal equilibrium with a third body ''T'', then they are in thermal equilibrium with each other
+			\item[\textbf{1st Law:}] $dE_{Internal} = dQ - dT \leftarrow dQ$ and $dT$ are inexact (path-dependent) differentials \\
+			\textbf{Special Cases for the 1st Law of Thermodynamics}:
+			\begin{enumerate}[noitemsep, nolistsep]
+				\item Adiabatic Processes - $dE_{Int} = -dW$
+				\begin{itemize}[noitemsep, nolistsep]
+					\item No heat exchange
+					\item Insulating
+					\item Something happens too quickly for system to keep up
+				\end{itemize}
+				\item Isothermal Processes - $dT = 0 \rightarrow dE_{Int} = 0 \rightarrow dQ = dW$
+				\item Isobaric Processes - $dW = pdV$, $p$(pressure) is constant
+				\item Cyclical Processes - $dE_{Int} = 0 \rightarrow dQ = dW$
+				\begin{itemize}[noitemsep, nolistsep]
+					\item You end a cycle with the same internal energy when the cycle started
+				\end{itemize}
+			\end{enumerate}
+		\end{enumerate}
+	\subsection*{Heat and Work} \label{subsec:Heat/Work}
+	\begin{itemize}[noitemsep, nolistsep]
+		\item $dW = \vec{F} \dot \vec{ds}$
+		\item $\vec{F} = p \left( V, T \right) dV$
+		\item $W = \int p \left( V, T \right) dV$
+		\item $W = \frac{dQ}{dt}$
+		\item $W = \frac{\Delta Q}{\Delta t}$
+	\end{itemize}
+
+	\subsection*{Thermal Expansion} \label{subsec:Thermal Expansion}
+	Occurs because the ''springs'' between each of the atoms in a lattice have energy applied by Heat (Temperature Change).
+		\begin{itemize}
+			\item $\frac{\Delta L}{L_{0}} = \alpha \Delta T$ (One-Dimensional Expansion)
+			\item $\frac{dL}{L_{0}} = \alpha dT$ (One-Dimensional Expansion)
+			\begin{itemize}[noitemsep, nolistsep]
+				\item $\alpha$ is a material-specific constant
+			\end{itemize}
+		\end{itemize}
+	
+	\subsection*{Specific Heat/Heat Capacity} \label{subsec:Specific Heat/Heat Capacity}
+		\begin{itemize}
+			\item $C = \frac{dQ}{dT} \leftarrow$ Specific Heat
+			\item $c = \frac{dQ}{mdT} \leftarrow$ Mass Specific Heat
+		\end{itemize}
+	
+	\subsection*{Heat of Phase Transitions} \label{subec:Heat Phase Transitions}
+	This is a constant unique to the material and the phase transition it is going through.
+	\begin{itemize}[noitemsep, nolistsep]
+		\item $Q = Lm$
+		\item $Q = \int_{m_{i}}^{m_{f}} L_{f} dm$
+		\item $l_{Fusion} = $ Heat required to turn things from \textbf{SOLID TO LIQUID}
+		\item $l_{Vapor} = $ Heat required to turn things from \textbf{LIQUID TO GAS}
+	\end{itemize}
+
+	\subsection*{Conduction Heat Transfer} \label{subsec:Conduction Heat Transfer}
+	\begin{itemize}[noitemsep, nolistsep]
+		\item $P_{Conduction} = \frac{\left( T_{H} - T_{C} \right)}{L} Ak$
+		\begin{itemize}[noitemsep, nolistsep]
+			\item $L$ = Length
+			\item $A$ = Cross-Sectional Area
+			\item $k$ = Material's Thermal Conductivity
+		\end{itemize}
+	\end{itemize}
+	For multiple materials between 2 thermal resevoirs:
+	\begin{itemize}[noitemsep, nolistsep]
+		\item $P_{1} = P_{2} = \ldots = P_{n}$
+		\item Heat will only flow as fast as the slowest thermal conductor
+	\end{itemize}
+
 \section{Quantum Mechanics} \label{sec:Quantum Mech}
 \section{Reference Material} \label{sec:Reference Material}
 	\subsection{Trigonometric Formulas} \label{subsec:Trig Formulas}
