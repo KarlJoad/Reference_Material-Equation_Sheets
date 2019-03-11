@@ -52,11 +52,20 @@ We must satisfy several parameters to make life easier, and to use most of these
 				\item $\vec{F_{o}} = \vec{F}_{i}\ \frac{A_{o}}{A_{i}}$
 				\item $d_{o} = d_{i} \frac{A_{i}}{A_{o}}$
 			\end{enumerate}
-		\item Archimede's Principle - $\vec{F}_{Up} = \vec{F}_{Down}$
+		\begin{itemize}[noitemsep, nolistsep]
+			\item When 2 pressures should be equal, their forces are inversely proportional
+			\item Set each pressure equal to each other, then solve for the missing variable.
+		\end{itemize}
+		\item Archimedes' Principle - $\vec{F}_{Up} = \vec{F}_{Down}$
 			\begin{itemize}[noitemsep]
-				\item $\vec{F}_{Bouyant} = m_{Floating}g$
+				\item Usually breaks down to $\vec{F}_{Bouyant} = \vec{F}_{g, Object}$
+				\item $\vec{F}_{Bouyant} = m_{Object}g$
+				\item $\vec{F}_{Bouyant} = \rho_{Object}V_{Object}g$
 			\end{itemize}
-		\item Continuity - $A_{1}v_{1} = A_{2}v_{2}$
+		\item Continuity of Fluids
+		\begin{itemize}[noitemsep]
+			\item $A_{1}v_{1} = A_{2}v_{2}$
+		\end{itemize}
 		\item Bernoulli's Equation - $p_{1} + \frac{1}{2} \rho v_{1}^{2} + \rho gy_{1} = p_{2} + 	\frac{1}{2} \rho v_{2}^{2} + \rho gy_{2}$
 			\begin{itemize}[noitemsep]
 				\item Fluids at Rest - $p_{2} = p_{1} + \rho g \left( y_{1}-y_{2} \right)$
@@ -66,6 +75,20 @@ We must satisfy several parameters to make life easier, and to use most of these
 
 \section{Waves} \label{sec:Waves}
 {\Large Usually of form $y = y_{m} \sin \left( kx \pm \omega t \right)$}
+There are two types of waves:
+	\begin{enumerate}[noitemsep, nolistsep]
+		\item Transverse Waves - Waves where displacement from equilibrium is orthogonal to direction of propagation
+		\begin{itemize}[noitemsep, nolistsep] % Examples of Transverse Waves
+			\item String Waves
+			\item Electromagnetic Waves
+		\end{itemize}
+		\item Longitudinal Waves - Waves where displacement from equilibrium is parallel to direction of propagation
+		\begin{itemize}[noitemsep, nolistsep] % Examples of Longitudinal Waves
+			\item Pressure Waves
+			\item Sound Waves (Which are a type of pressure wave)
+		\end{itemize}
+	\end{enumerate}
+
 	\begin{itemize}[noitemsep]
 		\item $y_{m}$ - Amplitude, $m$
 		\item $k$ - Angular Wave Number, $rad/m$
@@ -86,6 +109,16 @@ We must satisfy several parameters to make life easier, and to use most of these
 		\item $v = \lambda f$, Wave Velocity, $m/s$
 			\begin{itemize}[noitemsep]
 				\item $v = \frac{\omega}{2 \pi} * \frac{2 \pi}{k} = \frac{\omega}{k}$
+				\item This can be proven with the angular portion of any wave (inside the parentheses of trig function)
+				\begin{align*} % Prove why k = \lambda / 2 \pi
+					kx-\omega t &= \text{Constant} \\
+					\frac{d}{dt} \left[ kx-\omega t \right] &= \frac{d}{dt} \left[ \text{Constant} \right] \\
+					k \frac{dx}{dt} - \omega \frac{dt}{dt} &= 0 \\
+					kv - \omega &= 0 \\
+					kv &= \omega \\
+					v &= \frac{\omega}{k} \\
+				\end{align*}
+				Since $\omega = 2 \pi f$ , then $k = \frac{\lambda}{2 \pi}$ 
 			\end{itemize}
 	\end{itemize}
 
@@ -100,8 +133,8 @@ We must satisfy several parameters to make life easier, and to use most of these
 
 		\subsubsection*{Constructive/Destructive Interference} \label{subsubsec:Constructive/Destructive Interference}
 		\begin{align*}		
-			\phi &= 2 \pi \frac{Path Length Diff}{\lambda} = 2 \pi \frac{\Delta d}{\lambda} \\
-			n &= \frac{2}{\pi} \phi = 4 \frac{Path Length Diff}{\lambda}\\
+			\phi &= 2 \pi \frac{Path Length Diff}{\lambda} = 2 \pi \frac{\Delta \text{PLD}}{\lambda} \\
+			n &= \frac{\phi}{2\pi} = 4 \frac{Path Length Diff}{\lambda}\\
 		\end{align*}
 		\begin{itemize}[noitemsep]
 			\item $Path Length Diff$ - Is the Difference in path lengths that the waves must travel
@@ -132,9 +165,20 @@ We must satisfy several parameters to make life easier, and to use most of these
 			\item $D = \left( n + 1 \right)d = vt$
 			\begin{itemize}[noitemsep,nolistsep]
 				\item $n$ is the number of reflections that occurred
+				\item $n+1$ is used when we want the distance the wave covers
 			\end{itemize}
 		\end{itemize}
-
+	
+	\subsection*{Sound in Different Mediums} \label{subsec:Sound in Different Mediums}
+	Frequency is a property of a wave, and \textbf{CANNOT BE ALTERED.} This means that:
+	\begin{align*}
+		v &= \lambda f \\
+		v_{Sound, Material 1} &= \lambda_{Material 1}f_{Unique, Material 1} \\
+		v_{Sound, Material 2} &= \lambda_{Material 2}f_{Unique, Material 2} \\
+		f_{Unique, Material 1} &= f_{Unique, Material 2} \\
+		\frac{v_{Sound, Material 1}}{\lambda_{Material 1}} &= \frac{v_{Sound, Material 2}}{\lambda_{Material 2}} \\
+	\end{align*}
+	
 	\subsection*{Doppler Effect} \label{subsec:Doppler Effect}
 	{\Large $f' = f \frac{v \pm v_{D}}{v \pm v_{S}}$}
 	\begin{itemize}[noitemsep]
@@ -158,6 +202,7 @@ We must satisfy several parameters to make life easier, and to use most of these
 
 \section{Thermodynamics} \label{sec:Thermo}
 Definition: Study of energy transfer between two macroscopic bodies driven by temperature differences.
+
 	\subsection*{Laws of Thermodynamics} \label{subsec:Thermo Laws}
 		\begin{enumerate}[noitemsep, nolistsep]
 			\item[\textbf{0th Law:}] If 2 bodies, A and B are in thermal equilibrium with a third body ''T'', then they are in thermal equilibrium with each other
@@ -178,6 +223,7 @@ Definition: Study of energy transfer between two macroscopic bodies driven by te
 				\end{itemize}
 			\end{enumerate}
 		\end{enumerate}
+	
 	\subsection*{Heat and Work} \label{subsec:Heat/Work}
 	\begin{itemize}[noitemsep, nolistsep]
 		\item $dW = \vec{F} \dot \vec{ds}$
