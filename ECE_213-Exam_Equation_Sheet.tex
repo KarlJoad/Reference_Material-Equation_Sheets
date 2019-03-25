@@ -258,6 +258,7 @@ These elements consume no power, and convert voltages and currents.
 			\item $\frac{v_{1}}{v_{2}} = \frac{N_{1}}{N_{2}} \longleftarrow$ Voltage Change
 			\item $\frac{i_{1}}{i_{2}} = -\frac{N_{2}}{N_{1}} \longleftarrow$ Current Change
 			\item $Z_{1} = \frac{Z_{2}}{n^{2}}$, as seen in Figure~\ref{fig:Transformer Reflecting}
+			\item A negative can be in any one of these, depending on the dot orientation
 		\end{enumerate}
 		\begin{figure}[ht!]
 			\centering
@@ -289,12 +290,37 @@ These elements consume no power, and convert voltages and currents.
 		\angle \varphi &= \arctan \left( k \right) + \arctan \left( j\omega + z_{1} \right) + \arctan \left( j\omega + z_{2} \right) + \arctan \left( j\omega + z_{3} \right) \\
 		&-\arctan \left( j\omega + p_{1} \right) - \arctan \left( j\omega + p_{2} \right) - \arctan \left( j\omega + p_{3} \right) \\
 	\end{align*}
+	\vspace{-12mm}
 	\begin{table}[h!] % Bode Plot Table
 		\centering
 		\renewcommand{\arraystretch}{1.4}
 		\begin{tabular}{|c|c|c|}
 			\hline
-			\textbf{Factor} & \textbf{Magnitude} & \textbf{Phase}
+			\textbf{Factor} & \textbf{Magnitude} & \textbf{Phase} \\ \hline
 		\end{tabular}
 	\end{table}
+	\vspace{-10mm}
+
+\section*{Resonant Frequencies} \label{sec:Frequency Resonance}
+Remember, $\omega = 2 \pi f$.
+Also, $\Im \lbrace Z_{eq} \rbrace = 0$ and $\Im \lbrace Y_{eq} \rbrace = 0$.
+\begin{itemize}[nolistsep]
+	\item $\omega_{0} = \frac{1}{\sqrt{LC}}$ - Imaginary portion of Transfer function vanishes
+	\item Half-Power Frequencies - Frequencies where power dissipated is 1/2 of that dissipated at resonant frequency
+	\begin{itemize}[noitemsep]
+		\item $\omega_{1} = - \frac{R}{2L} + \sqrt{\left( \frac{R}{2L} \right)^{2} + \frac{1}{LC}}$
+		\item $\omega_{2} = \frac{R}{2L} + \sqrt{\left( \frac{R}{2L} \right)^{2} + \frac{1}{LC}}$
+		\item $\omega_{0} = \sqrt{\omega_{1}\omega_{2}}$
+	\end{itemize}
+	\item $B = \omega_{2} - \omega_{1} = \frac{R}{L}$ - Bandwidth is the frequency band between half-power frequencies
+	\begin{itemize}[noitemsep]
+		\item $B = \frac{R}{L}$ - Series Impedance Circuit
+		\item $B = \frac{1}{RC}$ - Parallel Impedance Circuit
+	\end{itemize}
+	\item $Q = \frac{\omega_{0}}{B}$ - Quality Factor: Sharpness of resonance peak
+	\begin{itemize}[noitemsep]
+		\item $Q =\frac{\omega_{0}L}{R} = \frac{1}{\omega_{0}RC}$ - Series Impedance Circuit
+		\item $Q = \omega_{0}RC = \frac{R}{\omega_{0}L}$ - Parallel Impedance Circuit
+	\end{itemize}
+\end{itemize}
 \end{document}
