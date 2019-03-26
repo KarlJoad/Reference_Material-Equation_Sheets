@@ -32,25 +32,25 @@
 	\end{itemize}
 
 \section*{Phasors} \label{sec:Phasors}
-Phasors will only show us the steady state response of the circuit, not the transient response. \newline 
-\textbf{\large Eq: $v(t)=V_{M} \cos \left(\omega t + \theta \right)$ $\leftrightarrow$ $\bar{V}=V_{M} \angle \theta_{v} = V_{M}e^{\jmath \theta_{v}} = V_{M}\left(\cos \theta_{v} + \jmath \sin \theta_{v}\right)$} \newline
-You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh Analysis}, \nameref{subsec:Superposition}, and \nameref{sec:Thevenin/Norton}. \newline
-	\begin{table}[ht] % Phasor Operation Table
-		\centering
-		\renewcommand{\arraystretch}{1.4}
-		$z_1=x_1+\jmath y_2=r_1\angle\phi_1$, $z_2=x_2+\jmath y_2=r_2\angle\phi_2$
-		\begin{tabular}{|c|c|} 
-			\hline
-			Addition & $z_1+z_2=\left( x_1+x_2 \right)+ \jmath \left( y_1+y_2 \right)$ \\ \hline
-			Subtraction & $z_1-z_2=\left( x_1-x_2 \right)+ \jmath \left( y_1-y_2 \right)$ \\ \hline
-			Multiplication & $z_{1}z_{2}=r_{1}r_{2}\angle \left( \phi_1 + \phi_2 \right)$ \\ \hline
-			Division & $\frac{z_{1}}{z_{2}} = \frac{r_{1}}{r_{2}} \angle \left(\phi_1 - \phi_2 \right)$ \\ \hline
-			Reciprocal & $\frac{1}{z_1}=\frac{1}{z_1} \angle -\phi_1$ \\ \hline
-			Square Root & $\sqrt{z_1}=\sqrt{r_1} \angle \frac{\phi_1}{2}$ \\ \hline
-			Complex Conjugate & $ z_1^*=x- \jmath y=r \angle -\phi_1=re^{-\jmath \phi_1}$\\ \hline
-		\end{tabular}
-	\end{table}
-	\vspace{-8mm}
+%Phasors will only show us the steady state response of the circuit, not the transient response. \newline 
+%\textbf{\large Eq: $v(t)=V_{M} \cos \left(\omega t + \theta \right)$ $\leftrightarrow$ $\bar{V}=V_{M} \angle \theta_{v} = V_{M}e^{\jmath \theta_{v}} = V_{M}\left(\cos \theta_{v} + \jmath \sin \theta_{v}\right)$} \newline
+%You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh Analysis}, \nameref{subsec:Superposition}, and \nameref{sec:Thevenin/Norton}. \newline
+%	\begin{table}[ht] % Phasor Operation Table
+%		\centering
+%		\renewcommand{\arraystretch}{1.4}
+%		$z_1=x_1+\jmath y_2=r_1\angle\phi_1$, $z_2=x_2+\jmath y_2=r_2\angle\phi_2$
+%		\begin{tabular}{|c|c|} 
+%			\hline
+%			Addition & $z_1+z_2=\left( x_1+x_2 \right)+ \jmath \left( y_1+y_2 \right)$ \\ \hline
+%			Subtraction & $z_1-z_2=\left( x_1-x_2 \right)+ \jmath \left( y_1-y_2 \right)$ \\ \hline
+%			Multiplication & $z_{1}z_{2}=r_{1}r_{2}\angle \left( \phi_1 + \phi_2 \right)$ \\ \hline
+%			Division & $\frac{z_{1}}{z_{2}} = \frac{r_{1}}{r_{2}} \angle \left(\phi_1 - \phi_2 \right)$ \\ \hline
+%			Reciprocal & $\frac{1}{z_1}=\frac{1}{z_1} \angle -\phi_1$ \\ \hline
+%			Square Root & $\sqrt{z_1}=\sqrt{r_1} \angle \frac{\phi_1}{2}$ \\ \hline
+%			Complex Conjugate & $ z_1^*=x- \jmath y=r \angle -\phi_1=re^{-\jmath \phi_1}$\\ \hline
+%		\end{tabular}
+%	\end{table}
+%	\vspace{-8mm}
 
 \section*{RMS/Complex Power/Max Power Transfer} \label{sec:Complex Power}
 	\vspace{-6mm}
@@ -87,27 +87,27 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 	\vspace{-4mm}
 
 \section*{Elements} \label{sec:Circuit Elements}
-	\begin{table}[h!] % Element Equation Table
-		\centering
-		\renewcommand{\arraystretch}{1.4}
-		\begin{tabular}{|c|c|c|c|}
-		\hline
-		Relation & R & C & L \\
-		\hline
-		v-i & $V=IR$ & $v = \frac{1}{C} \int_{t_0}^t i(x)dx + v(t_0)$ & $v=L\frac{di}{dt}$  \\
-		i-v & $I=\frac{V}{R}$ & $i = C\frac{dv}{dt}$ & $i=\frac{1}{L}\int_{t_0}^t v(x)dx +i(t_0)$ \\
-		\hline
-		P or W & $P=I^2R=\frac{V^2}{R}$ & $P=\frac{1}{2}Cv_{c}^2$ & $W=\frac{1}{2}Li_{l}^2$ \\
-		\hline
-		Series & $R_{eq}=R_1+R_2+\ldots+R_n$ & $\frac{1}{C_{eq}}=\frac{1}{C_1}+\frac{1}{C_2}+\ldots+\frac{1}{C_n}$ & $L_{eq}=L_1+L_2+\ldots+L_n$ \\
-		Parallel & $\frac{1}{R_{eq}}=\frac{1}{R_1}+\frac{1}{R_2}+\ldots+\frac{1}{R_n}$ & $C_{eq}=C_1+C_2+\ldots+C_n$ & $\frac{1}{L_{eq}}=\frac{1}{L_1}+\frac{1}{L_2}+\ldots+\frac{1}{L_n}$ \\
-		\hline
-		@ Steady State & Same (Nothing Happens) & Open Circuit & Short Circuit \\
-		\hline
-		Phasors & $Z_R=R$ & $Z_C = \frac{1}{j \omega C}$ & $Z_L=j \omega L$ \\
-		\hline
-		\end{tabular}
-	\end{table}
+%	\begin{table}[h!] % Element Equation Table
+%		\centering
+%		\renewcommand{\arraystretch}{1.4}
+%		\begin{tabular}{|c|c|c|c|}
+%		\hline
+%		Relation & R & C & L \\
+%		\hline
+%		v-i & $V=IR$ & $v = \frac{1}{C} \int_{t_0}^t i(x)dx + v(t_0)$ & $v=L\frac{di}{dt}$  \\
+%		i-v & $I=\frac{V}{R}$ & $i = C\frac{dv}{dt}$ & $i=\frac{1}{L}\int_{t_0}^t v(x)dx +i(t_0)$ \\
+%		\hline
+%		P or W & $P=I^2R=\frac{V^2}{R}$ & $P=\frac{1}{2}Cv_{c}^2$ & $W=\frac{1}{2}Li_{l}^2$ \\
+%		\hline
+%		Series & $R_{eq}=R_1+R_2+\ldots+R_n$ & $\frac{1}{C_{eq}}=\frac{1}{C_1}+\frac{1}{C_2}+\ldots+\frac{1}{C_n}$ & $L_{eq}=L_1+L_2+\ldots+L_n$ \\
+%		Parallel & $\frac{1}{R_{eq}}=\frac{1}{R_1}+\frac{1}{R_2}+\ldots+\frac{1}{R_n}$ & $C_{eq}=C_1+C_2+\ldots+C_n$ & $\frac{1}{L_{eq}}=\frac{1}{L_1}+\frac{1}{L_2}+\ldots+\frac{1}{L_n}$ \\
+%		\hline
+%		@ Steady State & Same (Nothing Happens) & Open Circuit & Short Circuit \\
+%		\hline
+%		Phasors & $Z_R=R$ & $Z_C = \frac{1}{j \omega C}$ & $Z_L=j \omega L$ \\
+%		\hline
+%		\end{tabular}
+%	\end{table}
 
 \section*{Methods to Solve Equations} \label{sec:Solve Circuits}
 	\subsection*{Nodal Analysis} \label{subsec:Nodal Analysis}
@@ -141,22 +141,23 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 	\subsection*{Source Transformations} \label{sec:Source Transforms}
 		\textbf{ALL} source transformations obey Ohm's Law. $V=IR$.
 		This will \textbf{ONLY} work on impedances in series with \textbf{VOLTAGE} sources, or impedances in parallel with \textbf{CURRENT} sources.
-
+		\vspace{-5mm}
+		
 \section*{Thevenin and Norton Equivalencies} \label{sec:Thevenin/Norton}
 	\begin{itemize}[noitemsep, nolistsep]
 		\item ONLY independent sources - Zero all sources, find $\mathbf{Z}_{eq}$.
-		\begin{itemize}[noitemsep, nolistsep]
+		\begin{itemize}[noitemsep, nolistsep] % Zero Sources
 			\item 0-ing Current Sources = O.C., 0-ing Voltage Sources = S.C.
 			\item Look at circuit from load's perspective for $\mathbf{Z}_{eq}$
 			\item $\mathbf{V}_{Th}=\mathbf{V}_{OC}$, $\mathbf{I}_{N} = \mathbf{I}_{SC}$
 		\end{itemize}
 		\item BOTH dependent and independent sources
-			\begin{itemize}[noitemsep, nolistsep]
+			\begin{itemize}[noitemsep, nolistsep] % Voc/Isc
 				\item Find $\mathbf{V}_{Th}=\mathbf{V}_{OC}$, $\mathbf{I}_{N}=\mathbf{I}_{SC}$
 				\item Solve $\mathbf{Z}_{Th}=\frac{\mathbf{V}_{OC}}{\mathbf{I}_{SC}}$
 			\end{itemize}
 		\item ONLY dependent sources
-			\begin{itemize}[noitemsep, nolistsep]
+			\begin{itemize}[noitemsep, nolistsep] % Test Source
 				\item $\mathbf{V}_{Th}=0$, $\mathbf{I}_{N}=0$
 				\item $\mathbf{Z}_{Th}=\mathbf{Z}_{N} \rightarrow$ Attach test source @ load.
 				\begin{itemize}
@@ -165,12 +166,14 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 				\item $\mathbf{Z}_{Th}=\frac{\mathbf{V}_{Test}}{\mathbf{I}_{Test}}$
 			\end{itemize}
 		\end{itemize}
+	\vspace{-5mm}
+	
 \section*{Maximum Power Transfer - AC}
 	\begin{itemize}[noitemsep, nolistsep]
 		\item $\mathbf{Z}_{Load}=\mathbf{Z}_{Th}^*$, $R_{Th}=\Re\lbrace\mathbf{Z_{Th}}\rbrace$, $R_L= \lvert \mathbf{Z}_{Th} \rvert = \sqrt{R_{Th}^2+\left( X_{Th}+X_{L}\right)^2}$
 		\item $P_{max}=\frac{\lvert\mathbf{V}_{Th}\rvert^2}{8R_{Th}}$
 	\end{itemize}
-
+	\vspace{-4.5mm}
 \section*{3-Phase Circuits} \label{sec:3-Phase}
 	\begin{figure} % 3 Phase Configurations
 		\begin{subfigure}{0.5\textwidth} % 3 Phase Y
@@ -208,19 +211,18 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 			\label{subfig:3 Phase-Delta}
 		\end{subfigure}
 	\end{figure}
-	
-	\subsection*{$\Delta$-Y Conversion} \label{subsec:Delta-Y Convert}
 You want to get everything into Y formation, because the common neutral allows you to do single-phase analysis.
+\vspace{-5mm}
 
 \section*{Mutual Inductance} \label{sec:Mutual Inductance}
 	\subsection*{Equivalent Mutual Inductance}
 		\begin{table}[h!] % Mutual Inductance Equivalency Table
 			\centering
-			\renewcommand{\arraystretch}{2.75}
+			\renewcommand{\arraystretch}{2.25}
 			\begin{tabular}{|c|c|c|}
 			\hline
-			Series-\textbf{Aiding} Connection & $L=L_{1}+L_{2}+2M$ & \includegraphics[scale=0.5]{Mutual_Inductors_Series_Dots_Aiding.png} \\ \hline
-			Series-\textbf{Opposing} Connection & $L=L_{1}+L_{2}-2M$ & \includegraphics[scale=0.5]{Mutual_Inductors_Series_Dots_Opposing.png} \\ \hline
+			Series-\textbf{Aiding} Connection & $L=L_{1}+L_{2}+2M$ & \includegraphics[scale=0.35]{Mutual_Inductors_Series_Dots_Aiding.png} \\ \hline
+			Series-\textbf{Opposing} Connection & $L=L_{1}+L_{2}-2M$ & \includegraphics[scale=0.35]{Mutual_Inductors_Series_Dots_Opposing.png} \\ \hline
 			\end{tabular}
 		\end{table}
 
@@ -261,6 +263,7 @@ You want to get everything into Y formation, because the common neutral allows y
 		\end{figure}
 		\textbf{The sign on the dependent sources depends on which side of the inductor the current is going into.} \newline
 		\textbf{Use the \nameref{subsec:Dot Convention} to determine which direction the source's voltage should go.}
+	\vspace{-6mm}
 		
 \section*{Transformers} \label{sec:Transformers}
 These elements consume no power, and convert voltages and currents.
@@ -268,6 +271,7 @@ These elements consume no power, and convert voltages and currents.
 	\item $\frac{v_{1}}{v_{2}} = \frac{N_{1}}{N_{2}} \longleftarrow$ Voltage Change
 	\item $\frac{i_{1}}{i_{2}} = -\frac{N_{2}}{N_{1}} \longleftarrow$ Current Change
 \end{itemize}
+\vspace{-4.75mm}
 
 	\subsection*{Representations for Turns} \label{subsec:Turn Representations}
 		There are 3 common ways to represent the number of turns in a transformer:
@@ -282,14 +286,15 @@ These elements consume no power, and convert voltages and currents.
 				\item $n = \frac{N_{2}}{N_{1}}$
 				\item This is the form generally used by our textbook
 			\end{itemize}
-			\item $a : 1$
-			\begin{itemize}[noitemsep, nolistsep]
-				\item The second term might not be $1$, if there isn't perfect division, i.e. $2 : 5$ will not be reduced to $\frac{2}{5} : 1$
-				\item $a = \frac{N_{1}}{N_{2}}$
-				\item This is the form generally used by utility companies
-			\end{itemize}
+			%\item $a : 1$
+			%\begin{itemize}[noitemsep, nolistsep]
+			%	\item The second term might not be $1$, if there isn't perfect division, i.e. $2 : 5$ will not be reduced to $\frac{2}{5} : 1$
+			%	\item $a = \frac{N_{1}}{N_{2}}$
+			%	\item This is the form generally used by utility companies
+			%\end{itemize}
 		\end{enumerate}
-	
+		\vspace{-5mm}
+		
 	\subsection*{Reflecting Elements} \label{subsec:Element Reflection}
 		There are only 3 equations:
 		\begin{enumerate}[noitemsep, nolistsep]
@@ -300,10 +305,11 @@ These elements consume no power, and convert voltages and currents.
 		\end{enumerate}
 		\begin{figure}[ht!]
 			\centering
-			\includegraphics[scale=0.5]{Transformer_Reflecting.png}
+			\includegraphics[scale=0.375]{Transformer_Reflecting.png}
 			\caption{Transformer Reflecting Elements}
 			\label{fig:Transformer Reflecting}
-		\end{figure} \vspace{-10mm}
+		\end{figure}
+		\vspace{-10mm}
 	
 \section*{Transfer Functions/Bode Plots} \label{sec:Bode Plots}
 	\begin{itemize}[noitemsep, nolistsep]
@@ -329,12 +335,13 @@ These elements consume no power, and convert voltages and currents.
 		&-\arctan \left( j\omega + p_{1} \right) - \arctan \left( j\omega + p_{2} \right) - \arctan \left( j\omega + p_{3} \right) \\
 	\end{align*}
 	\vspace{-12mm}
-	\begin{table}[!h]
+	\begin{table}[!h]% Bode Plot Table
 		\centering
 		\renewcommand{\arraystretch}{2.35}
 		\begin{tabular}{|c|c|c|} % Bode Plot Table
 			\hline
-			\textbf{Factor} & \textbf{Magnitude} & \textbf{Phase} \\ \hline
+			\textbf{Factor} & \textbf{Magnitude} $\lVert H\left( \omega \right) \rVert (dB)$ & \textbf{Phase} $ \angle \varphi$ \\ \hline
+			%---------------------------------------------------------------------------%
 			$K$ & $20 \log_{10} K$ & $0 \degree$ \\ \hline
 			$\left( j \omega \right)^{N}$ & $ 20N \text{dB/decade}$ (Passes through 1 and continues) & $90N \degree$ \\ \hline
 			$\frac{1}{\left( j \omega \right)^{N}}$ & $-20N \text{dB/decade}$ (Passes through 1 and continues) & $-90N \degree$ \\ \hline
@@ -343,41 +350,51 @@ These elements consume no power, and convert voltages and currents.
 				$\begin{cases}
 					0 & x \leq z \\
 					20N \text{dB/decade} \\
-				\end{cases}$ &
+				\end{cases}$ 
+				&
 				$\begin{cases}
 					0 & < \frac{z}{10} \\
 					\frac{1}{2} \left( 90N \right) \degree & =z \\
 					90N \degree & \geq 10z \\
-				\end{cases}$ \\ \hline
+				\end{cases}$ 
+				\\ \hline
 				
 				$\frac{1}{\left( 1 + j \omega / p \right)^{N}}$ & 
 					$\begin{cases}
 							0 & x \leq z \\
 							-20N \text{dB/decade} \\
-						\end{cases}$ & 
+						\end{cases}$ 
+					& 
 					$\begin{cases}
 						0 & < \frac{z}{10} \\
 						\frac{1}{2} \left( -90N \right) \degree & =z \\
 						-90N \degree & \geq 10z \\
-					\end{cases}$ \\ \hline
+					\end{cases}$ 
+					\\ \hline
 				
 				$\left[ 1 + \frac{2 j \omega \zeta}{\omega_{n}} + \left( \frac{j \omega}{\omega_{n}} \right)^{2} \right]^{N}$ & $\begin{cases}
 					0 & \leq \omega_{n} \\
 					40N \text{dB/decade} & > \omega_{n} \\
-				\end{cases} $ & $\begin{cases}
+				\end{cases}$
+				&
+				$\begin{cases}
 					0 & \leq \frac{\omega_{n}}{10} \\
 					\frac{1}{2} \left( 180 N \right) \degree & = \omega_{n} \\
 					180N \degree & \geq 10 \omega_{n} \\
-				\end{cases}$ \\ \hline
+				\end{cases}$
+				\\ \hline
 				
 				$\frac{1}{\left[ 1 + \frac{2 j \omega \zeta}{\omega_{k}} + \left( j \omega / \omega_{k} \right)^{2} \right]^{N}}$ & $\begin{cases}
 					0 & \leq \omega_{k} \\
 					-40N \text{dB/decade} & > \omega_{k} \\
-				\end{cases}$ & $\begin{cases}
+				\end{cases}$
+				&
+				$\begin{cases}
 					0 & \leq \frac{\omega_{n}}{10} \\
 					\frac{1}{2} \left( -180 N \right) \degree & = \omega_{k} \\
 					-180N \degree & \geq 10 \omega_{k} \\	
-				\end{cases}$ \\ \hline
+				\end{cases}$
+				\\ \hline
 		\end{tabular}
 	\end{table}
 
