@@ -10,6 +10,7 @@
 \usepackage{subcaption} % Float environment to place multiple figures in one figure environment
 \usepackage{nameref} % \nameref{label} lets you reference things by name
 \usepackage{hyperref} % Hyperlinks between references
+\usepackage{gensymb} % Gives access to some characters, for example, the degree symbol
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
 \usepackage{multicol} % Allows me to split portion of a page into multiple columns
 
@@ -165,12 +166,49 @@ You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh A
 			\end{itemize}
 		\end{itemize}
 \section*{Maximum Power Transfer - AC}
-			\begin{itemize}[noitemsep, nolistsep]
-				\item $\mathbf{Z}_{Load}=\mathbf{Z}_{Th}^*$, $R_{Th}=\Re\lbrace\mathbf{Z_{Th}}\rbrace$, $R_L= \lvert \mathbf{Z}_{Th} \rvert = \sqrt{R_{Th}^2+\left( X_{Th}+X_{L}\right)^2}$
-				\item $P_{max}=\frac{\lvert\mathbf{V}_{Th}\rvert^2}{8R_{Th}}$
-			\end{itemize}
+	\begin{itemize}[noitemsep, nolistsep]
+		\item $\mathbf{Z}_{Load}=\mathbf{Z}_{Th}^*$, $R_{Th}=\Re\lbrace\mathbf{Z_{Th}}\rbrace$, $R_L= \lvert \mathbf{Z}_{Th} \rvert = \sqrt{R_{Th}^2+\left( X_{Th}+X_{L}\right)^2}$
+		\item $P_{max}=\frac{\lvert\mathbf{V}_{Th}\rvert^2}{8R_{Th}}$
+	\end{itemize}
 
 \section*{3-Phase Circuits} \label{sec:3-Phase}
+	\begin{figure} % 3 Phase Configurations
+		\begin{subfigure}{0.5\textwidth} % 3 Phase Y
+			\centering
+			\includegraphics[scale=0.4]{3Phase-Y.png}
+			\subcaption{3 Phase Y}
+			\label{subfig:3 Phase-Y}
+			\begin{align*}
+				I_{L} &= I_{P} &
+				V_{L} &= \sqrt{3} V_{P} \angle 30 \degree &
+				Z_{Y} &= \frac{Z_{\Delta}}{3} \\
+				\lVert \mathbf{S} \rVert &= \sqrt{3} V_{L} I_{L} &
+				\lVert \mathbf{S} \rVert &= 3 V_{P} I_{P} &
+				\phi &= \theta_{V_{P}} - \theta_{I_{P}} \\
+				\mathbf{S} &= \lVert \mathbf{S} \rVert \angle \phi &
+				P &= \lVert \mathbf{S} \rVert \cos \left( \phi \right) &
+				Q &= \lVert \mathbf{S} \rVert \sin \left( \phi \right) \\
+			\end{align*}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth} % 3 Phase Delta
+			\centering
+			\includegraphics[scale=0.4]{3Phase-Delta.png}
+			\subcaption{3 Phase Delta}
+				\begin{align*}
+					I_{L} &= \sqrt{3} I_{P} \angle -30 \degree &
+					V_{L} &= V_{P} &
+					Z_{\Delta} &= 3 Z_{Y} \\
+					\lVert \mathbf{S} \rVert &= \sqrt{3} V_{L} I_{L} &
+					\lVert \mathbf{S} \rVert &= 3 V_{P} I_{P} &
+					\phi &= \theta_{V_{P}} - \theta_{I_{P}} \\
+					\mathbf{S} &= \lVert \mathbf{S} \rVert \angle \phi &
+					P &= \mathbf{S} \cos \left( \phi \right) &
+					Q &= \mathbf{S} \sin \left( \phi \right) \\
+				\end{align*}
+			\label{subfig:3 Phase-Delta}
+		\end{subfigure}
+	\end{figure}
+	
 	\subsection*{$\Delta$-Y Conversion} \label{subsec:Delta-Y Convert}
 You want to get everything into Y formation, because the common neutral allows you to do single-phase analysis.
 
@@ -291,15 +329,57 @@ These elements consume no power, and convert voltages and currents.
 		&-\arctan \left( j\omega + p_{1} \right) - \arctan \left( j\omega + p_{2} \right) - \arctan \left( j\omega + p_{3} \right) \\
 	\end{align*}
 	\vspace{-12mm}
-	\begin{table}[h!] % Bode Plot Table
+	\begin{table}[!h]
 		\centering
-		\renewcommand{\arraystretch}{1.4}
-		\begin{tabular}{|c|c|c|}
+		\renewcommand{\arraystretch}{2.35}
+		\begin{tabular}{|c|c|c|} % Bode Plot Table
 			\hline
 			\textbf{Factor} & \textbf{Magnitude} & \textbf{Phase} \\ \hline
+			$K$ & $20 \log_{10} K$ & $0 \degree$ \\ \hline
+			$\left( j \omega \right)^{N}$ & $ 20N \text{dB/decade}$ (Passes through 1 and continues) & $90N \degree$ \\ \hline
+			$\frac{1}{\left( j \omega \right)^{N}}$ & $-20N \text{dB/decade}$ (Passes through 1 and continues) & $-90N \degree$ \\ \hline
+			
+			$\left( 1 + \frac{j \omega}{z} \right)^{N}$ &
+				$\begin{cases}
+					0 & x \leq z \\
+					20N \text{dB/decade} \\
+				\end{cases}$ &
+				$\begin{cases}
+					0 & < \frac{z}{10} \\
+					\frac{1}{2} \left( 90N \right) \degree & =z \\
+					90N \degree & \geq 10z \\
+				\end{cases}$ \\ \hline
+				
+				$\frac{1}{\left( 1 + j \omega / p \right)^{N}}$ & 
+					$\begin{cases}
+							0 & x \leq z \\
+							-20N \text{dB/decade} \\
+						\end{cases}$ & 
+					$\begin{cases}
+						0 & < \frac{z}{10} \\
+						\frac{1}{2} \left( -90N \right) \degree & =z \\
+						-90N \degree & \geq 10z \\
+					\end{cases}$ \\ \hline
+				
+				$\left[ 1 + \frac{2 j \omega \zeta}{\omega_{n}} + \left( \frac{j \omega}{\omega_{n}} \right)^{2} \right]^{N}$ & $\begin{cases}
+					0 & \leq \omega_{n} \\
+					40N \text{dB/decade} & > \omega_{n} \\
+				\end{cases} $ & $\begin{cases}
+					0 & \leq \frac{\omega_{n}}{10} \\
+					\frac{1}{2} \left( 180 N \right) \degree & = \omega_{n} \\
+					180N \degree & \geq 10 \omega_{n} \\
+				\end{cases}$ \\ \hline
+				
+				$\frac{1}{\left[ 1 + \frac{2 j \omega \zeta}{\omega_{k}} + \left( j \omega / \omega_{k} \right)^{2} \right]^{N}}$ & $\begin{cases}
+					0 & \leq \omega_{k} \\
+					-40N \text{dB/decade} & > \omega_{k} \\
+				\end{cases}$ & $\begin{cases}
+					0 & \leq \frac{\omega_{n}}{10} \\
+					\frac{1}{2} \left( -180 N \right) \degree & = \omega_{k} \\
+					-180N \degree & \geq 10 \omega_{k} \\	
+				\end{cases}$ \\ \hline
 		\end{tabular}
 	\end{table}
-	\vspace{-10mm}
 
 \section*{Resonant Frequencies} \label{sec:Frequency Resonance}
 Remember, $\omega = 2 \pi f$.
