@@ -79,8 +79,8 @@
 			\textbf{Name} & \textbf{Symbol} & \textbf{Equation(s)} & \textbf{Units} \\ \hline
 			Complex Power & $\mathbf{S}$ & $\frac{P}{Pf} \angle\arccos\left( Pf\right)=P+\jmath Q=\mathbf{V}_{rms} \mathbf{I}_{rms}^{*} = \lvert \mathbf{V}_{rms}\rvert \lvert \mathbf{I}_{rms}\rvert \angle \left( \theta_v - \theta_i\right) $ & VA \\ \hline
 			Apparent Power & $S$ & $\lVert \mathbf{S} \rVert = \lvert \mathbf{V}_{rms} \rvert \lvert \mathbf{I}_{rms} \rvert = \sqrt{P^2 + Q^2}$ & VA \\ \hline
-			Real Power & $P$ & $\Re\lbrace \mathbf{S} \rbrace = S * Pf \cos \left[ \arccos \left( Pf \right) \right]= S \cos\left( \theta_v - \theta_i \right)$ & W \\ \hline
-			Reactive (Imaginary) Power & $Q$ & $\Im\lbrace \mathbf{S} \rbrace = S \sin \left( \theta_v - \theta_i \right)$ & VAR\\ \hline
+			Real Power & $P$ & $\Re\lbrace \mathbf{S} \rbrace = S * Pf \cos \left[ \arccos \left( Pf \right) \right] = S \cos\left( \theta_v - \theta_i \right)$ & W \\ \hline
+			Reactive (Imaginary) Power & $Q$ & $\Im\lbrace \mathbf{S} \rbrace = S * Pf \sin \left[ \arccos \left( Pf \right) \right] =  S \sin \left( \theta_v - \theta_i \right)$ & VAR\\ \hline
 			Power Factor &\textit{Pf} & $\frac{P}{S} = \cos(\theta_v - \theta_i)$ & Lead/Lag \\ \hline
 		\end{tabular}
 	\end{table}
@@ -185,8 +185,8 @@
 				I_{L} &= I_{P} &
 				V_{L} &= \sqrt{3} V_{P} \angle 30 \degree &
 				Z_{Y} &= \frac{Z_{\Delta}}{3} \\
-				\lVert \mathbf{S} \rVert &= \sqrt{3} V_{L} I_{L} &
-				\lVert \mathbf{S} \rVert &= 3 V_{P} I_{P} &
+				\mathbf{S} &= \sqrt{3} \mathbf{V}_{L} \mathbf{I}_{L} &
+				\mathbf{S}_{P} &= 3 \mathbf{V}_{P} \mathbf{I}_{P}^{*} &
 				\phi &= \theta_{V_{P}} - \theta_{I_{P}} \\
 				\mathbf{S} &= \lVert \mathbf{S} \rVert \angle \phi &
 				P &= \lVert \mathbf{S} \rVert \cos \left( \phi \right) &
