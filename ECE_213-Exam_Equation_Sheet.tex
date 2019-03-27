@@ -84,6 +84,7 @@
 			Power Factor &\textit{Pf} & $\frac{P}{S} = \cos(\theta_v - \theta_i)$ & Lead/Lag \\ \hline
 		\end{tabular}
 	\end{table}
+	\textbf{NOTE:} If you are looking for 3-Phase complex power, it is in \nameref{sec:3-Phase}.
 	\vspace{-4mm}
 
 \section*{Elements} \label{sec:Circuit Elements}
@@ -179,16 +180,16 @@
 		\begin{subfigure}{0.5\textwidth} % 3 Phase Y
 			\centering
 			\includegraphics[scale=0.4]{3Phase-Y.png}
-			\subcaption{3 Phase Y}
+			\subcaption{\textbf{3 Phase $Y$-Connection}}
 			\label{subfig:3 Phase-Y}
 			\begin{align*}
 				I_{L} &= I_{P} &
-				V_{L} &= \sqrt{3} V_{P} \angle 30 \degree &
+				V_{LL} &= \sqrt{3} V_{P} \angle 30 \degree &
 				Z_{Y} &= \frac{Z_{\Delta}}{3} \\
-				\mathbf{S} &= \sqrt{3} \mathbf{V}_{L} \mathbf{I}_{L} &
-				\mathbf{S}_{P} &= 3 \mathbf{V}_{P} \mathbf{I}_{P}^{*} &
+				\mathbf{S} &= \sqrt{3} \mathbf{V}_{L} \mathbf{I}_{L}^{*} &
+				\mathbf{S} &= 3 \mathbf{V}_{P} \mathbf{I}_{L}^{*} &
 				\phi &= \theta_{V_{P}} - \theta_{I_{P}} \\
-				\mathbf{S} &= \lVert \mathbf{S} \rVert \angle \phi &
+				\mathbf{S} &= S \angle \phi &
 				P &= \lVert \mathbf{S} \rVert \cos \left( \phi \right) &
 				Q &= \lVert \mathbf{S} \rVert \sin \left( \phi \right) \\
 			\end{align*}
@@ -197,17 +198,17 @@
 		\begin{subfigure}{0.5\textwidth} % 3 Phase Delta
 			\centering
 			\includegraphics[scale=0.4]{3Phase-Delta.png}
-			\subcaption{3 Phase Delta}
+			\subcaption{\textbf{3 Phase $\Delta$-Connection}}
 				\begin{align*}
 					I_{L} &= \sqrt{3} I_{P} \angle -30 \degree &
-					V_{L} &= V_{P} &
+					V_{LL} &= V_{P} &
 					Z_{\Delta} &= 3 Z_{Y} \\
-					\lVert \mathbf{S} \rVert &= \sqrt{3} V_{L} I_{L} &
-					\lVert \mathbf{S} \rVert &= 3 V_{P} I_{P} &
+					\mathbf{S} &= \sqrt{3} \mathbf{V}_{L} \mathbf{I}_{L}^{*} &
+					\mathbf{S} &= 3 \mathbf{V}_{P} \mathbf{I}_{P}^{*} &
 					\phi &= \theta_{V_{P}} - \theta_{I_{P}} \\
-					\mathbf{S} &= \lVert \mathbf{S} \rVert \angle \phi &
-					P &= \mathbf{S} \cos \left( \phi \right) &
-					Q &= \mathbf{S} \sin \left( \phi \right) \\
+					\mathbf{S} &= S \angle \phi &
+					P &= \lVert \mathbf{S} \rVert \cos \left( \phi \right) &
+					Q &= \lVert \mathbf{S} \rVert \sin \left( \phi \right) \\
 				\end{align*}
 			\label{subfig:3 Phase-Delta}
 		\end{subfigure}
