@@ -87,13 +87,53 @@
 \end{itemize}
 
 	\subsection{Properties of Set Operations} \label{subsec:Properties of Set Ops}
-	\begin{equation}
-		\begin{aligned}
-			A \cup B &= B \cup A \\
-			A \cap B &= B \cap A \\
-		\end{aligned}
-	\end{equation}
-
+	Set Operators are:
+	\begin{enumerate}
+		\item Commutative, Equation~\eqref{eq:Set Ops-Commutative}
+			\begin{equation} % Commutative
+				\begin{aligned}
+					A \cup B &= B \cup A \\
+					A \cap B &= B \cap A \\
+				\end{aligned}
+				\label{eq:Set Ops-Commutative}
+			\end{equation}
+			
+			\item Associative, Equation~\eqref{eq:Set Ops-Associative}
+				\begin{equation} % Associative
+					\begin{aligned}
+						A \cup \left( B \cup C \right) &= \left( A \cup B \right) \cup C \\
+						A \cap \left( B \cap C \right) &= \left( A \cap B \right) \cap C \\
+					\end{aligned}
+					\label{eq:Set Ops-Associative}
+				\end{equation}
+			
+			\item Distributive, Equation~\eqref{eq:Set Ops-Distributive}
+				\begin{equation} % Distributive
+					\begin{aligned}
+						A \cup \left( B \cap C \right) &= \left( A \cup B \right) \cap \left( A \cup C \right) \\
+						A \cap \left( B \cup C \right) &= \left( A \cap B \right) \cup \left( A \cap C \right) \\
+					\end{aligned}
+					\label{eq:Set Ops-Distributive}
+				\end{equation}
+			
+			\item Set Operations obey De Morgan's Laws, Equation~\eqref{eq:Set Ops-De Morgan's}
+				\begin{equation} % De Morgan's
+					\begin{aligned}
+						\left( A \cup B \right)^{C} &= A^{C} \cap B^{C} \\
+						\left( A \cap B \right)^{C} &= A^{C} \cup B^{C} \\
+					\end{aligned}
+					\label{eq:Set Ops-De Morgan's}
+				\end{equation}
+			
+	\end{enumerate}
+	Additionally, 
+	\begin{definition}[Union of $n$ Sets]
+		The \emph{union of $n$ sets} $\bigcup_{k=1}^{n} A_{k} = A_{1} \cup A_{2} \cup A_{3} \cup \ldots \cup A_{n}$ is the set consisting of all elements such that $x \in A_{k}$ for some $1 \leq k \leq n$.
+		\begin{itemize}[noitemsep, nolistsep]
+			\item All sets need to be empty to make $\bigcup_{k=1}^{n} A_{k} = \emptyset$
+		\end{itemize}
+	\end{definition}
+	
 \section{Probability Theory} \label{sec:Probability Theory}
 There are 3 main components to \nameref{sec:Probability Theory}.
 \begin{enumerate}[noitemsep, nolistsep]
@@ -114,6 +154,9 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 	\end{definition}
 	\begin{definition}[Event] \label{def:Event}
 		An \emph{event} corresponds to a subset of the sample space. We say an event occurs if and only if (iff) the outcome of the experiment is in the subset representing the event.
+	\end{definition}
+	\begin{definition}[Event Classes]
+		An event class $\mathcal{F}$.
 	\end{definition}
 
 
