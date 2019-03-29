@@ -5,18 +5,33 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{amsthm} % Gives us plain, definition, and remark to use in \theoremstyle{style}
 \usepackage{graphicx}
 
-\usepackage{subfigure} % Float environment to place multiple figures in one figure environment
-\usepackage{nameref} % \nameref{label} lets you reference things by name
-\usepackage{hyperref} % Hyperlinks between references
+\usepackage{hyperref} % Generate hyperlinks to referenced items
+\usepackage{nameref} % Can make references by name to places
+\usepackage{indentfirst} % Indents the first line of new paragraphs
+\usepackage{ctable} % Greater control over tables and how they look
+\usepackage{subcaption} % Allows for multiple figures in one Figure environment
+\usepackage{gensymb} % Gives access to some characters, for example, the degree symbol
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
+\usepackage{chngcntr} % Allows us to tamper with the counter a little more
+\usepackage{empheq} % Allow boxing of equations in special math environments
 
 %\graphicspath{{./Drawings/Math_374}} % Uncomment this to use pictures in this document
 %\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
 
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Defn}
+%\counterwithin{definition}{subsection} % Uncomment to have definitions use section/subsection numbering
+	
+
 \author{Karl Hallsby}
-\title{Equations}
+\title{Reference Material}
+
 \begin{document}
 \section{Relative Frequency} \label{sec:Relative Frequency}
 \begin{itemize}[noitemsep, nolistsep]
@@ -40,4 +55,66 @@
 		\item $\sum_{k=1}^{k} f_k (n) = 1$
 		\item If events A and B are disjoint and event C is "A or B", then $F_C = F_A (n) + F_B (n)$
 	\end{enumerate}
+
+\section{Set Theory} \label{sec:Set Theory}
+\begin{itemize}[noitemsep, nolistsep]
+	\item A \emph{set} is a collection of objects, denoted by capital letters
+	\item Denote the \emph{universal set, $U$}; consisting of all possible objects of interest in a given setting/application
+	\item For any set $A$, we say that \emph{``$x$ is an element of $A$''}, denoted $x \in A$ if object $x$ of the universal set $U$ is contained in $A$
+	\item We say that \emph{``$x$ is not an element of $A$''}, denoted $x \notin A$ if object $x$ of the universal set $U$ is not contained in $A$
+	\item We say that \emph{``$A$ is a subset of $B$''}, denoted $A \subset B$ if every element in $A$ also belongs to $B$, $x \in A \rightarrow x \in B$
+	\item The \emph{empty set, $\emptyset$} is defined as the set with no elements
+		\begin{itemize}[noitemsep, nolistsep]
+			\item The empty set is a subset of every set
+		\end{itemize}
+	\item Sets \emph{$A$ and $B$ are equal} if they contain the same elements. To show this:
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item Enumerate the elements of each set
+			\item Thm: $A=B \iff A \subset B$ AND $B \subset A$
+		\end{enumerate}
+	\item The \emph{union of 2 sets $A$, $B$}, denoted $A \cup B$ is defined as the set of outcomes that are either in $A$, or in $B$, or both
+	\item The \emph{intersection fo 2 sets, $A$, $B$}, denoted $A \cap B$ is defined as the set of outcomes in $A$ and $B$
+	\item The 2 sets $A$, $B$ are said to be \emph{disjoint or mutually exclusive} if $A \cap B = \emptyset$
+	\item The \emph{complement of a set $A$}, denoted $A^{C}$ is defined as the set of elements of $U$ not in $A$
+		\begin{itemize}[noitemsep, nolistsep]
+			\item $A^{C} = \lbrace x \in U \vert x \notin A \rbrace$
+		\end{itemize}
+	\item \emph{Relative complement} or \emph{difference}, denoted $A-B$, is the set of elements in $A$ that are not in $B$
+		\begin{itemize}[noitemsep, nolistsep]
+			\item $A-B = A \cap B^{C}$
+			\item $A^{C} = U - A$
+		\end{itemize}
+\end{itemize}
+
+	\subsection{Properties of Set Operations} \label{subsec:Properties of Set Ops}
+	\begin{equation}
+		\begin{aligned}
+			A \cup B &= B \cup A \\
+			A \cap B &= B \cap A \\
+		\end{aligned}
+	\end{equation}
+
+\section{Probability Theory} \label{sec:Probability Theory}
+There are 3 main components to \nameref{sec:Probability Theory}.
+\begin{enumerate}[noitemsep, nolistsep]
+	\item Set Theory
+	\item Axioms of Probability
+	\item Conditional Probability and Independence
+\end{enumerate}
+
+	\subsection{Random Experiments} \label{subsec:Random Experiments}
+	\begin{definition}[Random Experiment] \label{def:Random Experiment}
+		A \emph{random experiment} is an experiment whose outcome varies in an unpredictable fashion when performed under the same conditions.
+	\end{definition}
+	\begin{definition}[Sample Space] \label{def:Sample Space}
+		A \emph{sample space, $S$} of a random experiment is the set of all possible experiments.
+	\end{definition}
+	\begin{definition}[Outcome/Sample Point] \label{def:Outcome}
+		An \emph{outcome}, or \emph{sample point} of a random experiment is a result that cannot be decomposed into other results.
+	\end{definition}
+	\begin{definition}[Event] \label{def:Event}
+		An \emph{event} corresponds to a subset of the sample space. We say an event occurs if and only if (iff) the outcome of the experiment is in the subset representing the event.
+	\end{definition}
+
+
 \end{document}
