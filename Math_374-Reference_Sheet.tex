@@ -26,6 +26,7 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}{Defn}
+\newtheorem{corollary}{Corollary}[section]
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section/subsection numbering
 	
 
@@ -155,9 +156,61 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 	\begin{definition}[Event] \label{def:Event}
 		An \emph{event} corresponds to a subset of the sample space. We say an event occurs if and only if (iff) the outcome of the experiment is in the subset representing the event.
 	\end{definition}
-	\begin{definition}[Event Classes]
-		An event class $\mathcal{F}$.
+	\begin{definition}[Event Classes] \label{def:Event Classes}
+		An \emph{event class} $\mathcal{F}$ is the collection of the all the events' sets. $\mathcal{F}$ should be closed under unions, intersections, and complements.
+		\begin{itemize}[noitemsep, nolistsep]
+			\item For $S$ finite, or countably infinite, then we can let $\mathcal{F}$ be all subsets of $S$.
+			\item For $S$ uncountably infinite, instead we can let $\mathcal{F}$ consist of the subsets that can be obtained as countable unions and intersections of some sets of $\mathcal{F}$.
+		\end{itemize}
 	\end{definition}
-
-
+	\begin{definition}[Probability Law] \label{def:Probability Law}
+		A \emph{probability law} for a random experiment $E$, with sample space $S$, and an event class $\mathcal{F}$ is a rule that assigns to each event $A \in \mathcal{F}$ a number $P \left[A \right]$, called the probability of $A$ that satisfies the axioms:
+		\begin{itemize}[align=left, noitemsep, nolistsep] \label{subdef:Probability Law Axioms}
+			\item[Axiom I:] $0 \leq P\left[ A \right]$
+			\item[Axiom II:] $P \left[ S \right] = 1$
+			\item[Axiom III:] If $A \cap B = \emptyset$, then $P \left[ A \cup B \right] = P \left[ A \right] + P \left[ B \right]$
+			\item[Axiom III`:] If $A_{1}$, $A_{2}$, $\ldots$ is a sequence of events such that $A_{i} \cap A_{j} = \emptyset$ for all $i \neq j$, then $P \left[ \bigcup_{k=1}^{\infty} A_{k} \right] = \sum_{k=1}^{\infty} P \left[ A_{k} \right]$
+		\end{itemize}
+	\end{definition}
+	
+	\subsection{Probability Law Corollaries} \label{subsec:Probability Law Corollary}
+		\begin{itemize}[align=left, noitemsep, nolistsep] % Probability Law Axioms
+			\item[Axiom I:] $0 \leq P\left[ A \right]$
+			\item[Axiom II:] $P \left[ S \right] = 1$
+			\item[Axiom III:] If $A \cap B = \emptyset$, then $P \left[ A \cup B \right] = P \left[ A \right] + P \left[ B \right]$
+			\item[Axiom III`:] If $A_{1}$, $A_{2}$, $\ldots$ is a sequence of events such that $A_{i} \cap A_{j} = \emptyset$ for all $i \neq j$, then $P \left[ \bigcup_{k=1}^{\infty} A_{k} \right] = \sum_{k=1}^{\infty} P \left[ A_{k} \right]$
+		\end{itemize}
+		\begin{corollary} \label{cor:Probability Parts}
+			$P \left[ A^{C} \right] = 1 - P \left[ A \right]$
+		\end{corollary}
+		\begin{corollary} \label{cor:Probability of Event}
+			$P \left[ A \right] \leq 1$
+		\end{corollary}
+		\begin{corollary} \label{cor:Probability of Empty Set}
+			$P \left[ \emptyset \right] = 0$
+		\end{corollary}
+		\begin{corollary} \label{cor: Probability Addition of Disjoint Pairs}
+			If $A_{1}$, $A_{2}$, $\ldots$, $A_{n}$ are pairwise mutually exclusive ($A_{1} \cap A_{2} \cap \ldots \cap A_{n} = \emptyset$), then $P \left[ \bigcup_{k=1}^{n} \right] = \sum_{k=1}^{n} P \left[ A_{k} \right]$ for $n \geq 2$
+		\end{corollary}
+		\begin{corollary} \label{cor:Inclusion-Exclusion Principle to 2 Sets}
+			$P \left[ A \cup B \right] = P \left[ A \right] + P \left[ B \right] - P \left[ A \cap B \right]$
+		\end{corollary}
+		\begin{corollary} \label{cor:Inclusion-Exclusion Principle to n Sets}
+			$P \left[ A \cup B \right] = \sum_{j=1}^{n} P \left[ A_{j} \right] - \sum_{j<k} P \left[A_{j} \cap A_{k} \right] + \ldots + \left( -1 \right)^{n+1} P \left[ A_{1} \cap \ldots \cap A_{n} \right]$
+		\end{corollary}
+		\begin{corollary} \label{cor:Subset Probability to Superset}
+			If $A \subset B$, then $P \left[ A \right] \leq P \left[ B \right]$
+		\end{corollary}
+	
+	\subsection{Conditional Probability} \label{subsec:Conditional Probability}
+		\begin{definition}[Conditional Probability] \label{def:Conditional Probability}
+			The \emph{conditional probability} of event $A$ \textbf{GIVEN THAT} event $B$ occurred is denoted $P \left[ A \vert B \right]$ and is defined as $P \left[ A \vert B \right] = \frac{P \left[ A \cap B \right]}{P \left[ B \right]}$
+		\end{definition}
+		\begin{theorem}[Theorem of Total Probability]
+			Let $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ be mutually exclusive events whose union equals the sample space $S$, i.e. $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ is a \emph{partition of $S$}.
+		\end{theorem}
+		\begin{definition}[Baye's Rule]
+			Let $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ be a partition of sample space $S$.
+			$P \left[ B_{j} \vert A \right] = \frac{P \left[ A \cap B_{j} \right]}{P \left[ A \right]} = \frac{P \left[ A \vert B_{j} \right] * P \left[ B_{j} \right]}{\sum_{k=1}^{n} P \left[ A \vert B_{k} \right] * P \left[ B_{k} \right]}$
+		\end{definition}
 \end{document}
