@@ -165,21 +165,21 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 	\end{definition}
 	\begin{definition}[Probability Law] \label{def:Probability Law}
 		A \emph{probability law} for a random experiment $E$, with sample space $S$, and an event class $\mathcal{F}$ is a rule that assigns to each event $A \in \mathcal{F}$ a number $P \left[A \right]$, called the probability of $A$ that satisfies the axioms:
-		\begin{itemize}[align=left, noitemsep, nolistsep] \label{subdef:Probability Law Axioms}
-			\item[Axiom I:] $0 \leq P\left[ A \right]$
-			\item[Axiom II:] $P \left[ S \right] = 1$
-			\item[Axiom III:] If $A \cap B = \emptyset$, then $P \left[ A \cup B \right] = P \left[ A \right] + P \left[ B \right]$
-			\item[Axiom III`:] If $A_{1}$, $A_{2}$, $\ldots$ is a sequence of events such that $A_{i} \cap A_{j} = \emptyset$ for all $i \neq j$, then $P \left[ \bigcup_{k=1}^{\infty} A_{k} \right] = \sum_{k=1}^{\infty} P \left[ A_{k} \right]$
-		\end{itemize}
+		\begin{enumerate}[label=Axiom~\Roman*:, align=left, noitemsep, nolistsep] \label{subdef:Probability Law Axioms}
+			\item $0 \leq P\left[ A \right]$
+			\item $P \left[ S \right] = 1$
+			\item If $A \cap B = \emptyset$, then $P \left[ A \cup B \right] = P \left[ A \right] + P \left[ B \right]$
+			\item[Axiom III':] If $A_{1}$, $A_{2}$, $\ldots$ is a sequence of events such that $A_{i} \cap A_{j} = \emptyset$ for all $i \neq j$, then $P \left[ \bigcup_{k=1}^{\infty} A_{k} \right] = \sum_{k=1}^{\infty} P \left[ A_{k} \right]$
+		\end{enumerate}
 	\end{definition}
 	
 	\subsection{Probability Law Corollaries} \label{subsec:Probability Law Corollary}
-		\begin{itemize}[align=left, noitemsep, nolistsep] % Probability Law Axioms
-			\item[Axiom I:] $0 \leq P\left[ A \right]$
-			\item[Axiom II:] $P \left[ S \right] = 1$
-			\item[Axiom III:] If $A \cap B = \emptyset$, then $P \left[ A \cup B \right] = P \left[ A \right] + P \left[ B \right]$
-			\item[Axiom III`:] If $A_{1}$, $A_{2}$, $\ldots$ is a sequence of events such that $A_{i} \cap A_{j} = \emptyset$ for all $i \neq j$, then $P \left[ \bigcup_{k=1}^{\infty} A_{k} \right] = \sum_{k=1}^{\infty} P \left[ A_{k} \right]$
-		\end{itemize}
+		\begin{enumerate}[label=Axiom~\Roman*:, align=left, noitemsep, nolistsep] % Probability Law Axioms
+			\item $0 \leq P\left[ A \right]$
+			\item $P \left[ S \right] = 1$
+			\item If $A \cap B = \emptyset$, then $P \left[ A \cup B \right] = P \left[ A \right] + P \left[ B \right]$
+			\item[Axiom III':] If $A_{1}$, $A_{2}$, $\ldots$ is a sequence of events such that $A_{i} \cap A_{j} = \emptyset$ for all $i \neq j$, then $P \left[ \bigcup_{k=1}^{\infty} A_{k} \right] = \sum_{k=1}^{\infty} P \left[ A_{k} \right]$
+		\end{enumerate}
 		\begin{corollary} \label{cor:Probability Parts}
 			$P \left[ A^{C} \right] = 1 - P \left[ A \right]$
 		\end{corollary}
@@ -211,6 +211,69 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 		\end{theorem}
 		\begin{definition}[Baye's Rule]
 			Let $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ be a partition of sample space $S$.
-			$P \left[ B_{j} \vert A \right] = \frac{P \left[ A \cap B_{j} \right]}{P \left[ A \right]} = \frac{P \left[ A \vert B_{j} \right] * P \left[ B_{j} \right]}{\sum_{k=1}^{n} P \left[ A \vert B_{k} \right] * P \left[ B_{k} \right]}$
+			\begin{equation}
+				P \left[ B_{j} \vert A \right] = \frac{P \left[ A \cap B_{j} \right]}{P \left[ A \right]} = \frac{P \left[ A \vert B_{j} \right] * P \left[ B_{j} \right]}{\sum_{k=1}^{n} P \left[ A \vert B_{k} \right] * P \left[ B_{k} \right]}
+			\end{equation}
 		\end{definition}
+\section{Multiple Random Variables} \label{sec:Multiple Random Variables}
+	\subsection[Joint PMF]{Joint Probability Mass Function} \label{subsec:Joint PMF}
+		\begin{definition}[Joint Probability Mass Function] \label{def:Joint PMF}
+			The \emph{joint probability mass function (joint PMF)} of 2 discrete random variables $X$, $Y$ is defined as:
+			\begin{equation} \label{eq:Joint PMF}
+				p_{X,Y} = P \left[ \lbrace X=x \rbrace \cap \lbrace Y=y \rbrace \right] \text{ for all } x,y \in S_{X,Y}
+			\end{equation}
+			\begin{itemize}[noitemsep, nolistsep]
+				\item This satisfies ALL propoerties of single random variable PMFs
+			\end{itemize}
+		\end{definition}
+	
+		\subsubsection[Marginal PMF]{Marginal Probability Mass Function} \label{subsubsec:Marginal PMF}
+			\begin{definition}[Marginal Probability Mass Function] \label{def:Marginal PMF}
+				Given a joint PMF of discrete random variables $X$, $Y$, the \emph{Marginal Probability Mass Function (Marginal PMF)} of $X$ is defined as:
+				\begin{equation} \label{eq:Marginal PMF}
+					p_{X} \left( x_{i} \right) = P \left[ X = x_{i} \right] \text{ for } x_{i} \in S_{X}
+				\end{equation}
+				and is calculated as:
+				\begin{equation} \label{eq:Calculate Marginal PMF}
+					p \left( x_{i} \right) = \sum_{y \in S_{Y}} p_{X,Y} \left( x_{i}, y \right)
+				\end{equation}
+			\end{definition}
+		
+	\subsection[Joint CDF]{Joint Cumulative Distribution Function} \label{subsec:Joint CDF}
+		\begin{definition}[Joint Cumulative Distribution Function] \label{def:Joint CDF}
+			The \emph{Joint Cumulative Distribution Function (Joint CDF)} of $X$ and $Y$ is defined as the probability of the event $ \lbrace X \leq x \rbrace \cap \lbrace Y \leq y \rbrace $
+			\begin{equation} \label{eq:Joint CDF}
+				\begin{aligned}
+					F_{X,Y} \left( x, y \right) &= P \left[ \lbrace X \leq x \rbrace \cap \lbrace Y \leq y \rbrace \right] \text{ for all } \left( x,y \right) \in \mathbb{R}^2 \\
+					&= P \left[ \lbrace X \leq x \rbrace , \lbrace Y \leq y \rbrace \right]
+				\end{aligned}
+			\end{equation}
+		\end{definition}
+		\begin{enumerate}[label=(\roman*), noitemsep, nolistsep]
+			\item $F_{X,Y} \left( x,y \right)$ is non decreasing.
+				\begin{equation} \label{eq:Joint CDF Property 1}
+					F_{X,Y} \left( x_{1},y_{1} \right) \leq F_{X,Y} \left( x_{2},y_{2} \right) \text{ if } x_{1} \leq x_{2} \text{ and } y_{1} \leq y_{2}
+				\end{equation}
+			\item Should range from 0 to 1.
+				\begin{equation} \label{eq:Joint CDF Property 2}
+					\begin{aligned}
+						\lim\limits_{y \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
+						\lim\limits_{x \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
+						\lim\limits_{\left( x,y \right) \rightarrow \left( \infty, \infty \right)} F_{X,Y} \left( x,y \right) &= 1 \\
+					\end{aligned}
+				\end{equation}
+			\item The Marginal CDFs can be obtained from the Joint CDF by removing restrictions for all but one variable.
+				\begin{equation} \label{eq:Joint CDF Property 3}
+				\end{equation}
+			\item The Joint CDF is continuous from $\infty$ to $-\infty$.
+				\begin{equation} \label{eq:Joint CDF Property 4}
+				\end{equation}
+			\item The probability of the ``rectangle'' $\lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace$
+				\begin{equation} \label{eq:Joint CDF Property 5}
+				\end{equation}
+		\end{enumerate}
+	
+		\subsubsection[Marginal CDF]{Marginal Cumulative Distribution Function} \label{subsubsec:Marginal CDF}
+	\subsection[Joint PDF]{Joint Probability Density Function} \label{subsec:Joint PDF}
+	
 \end{document}
