@@ -28,7 +28,18 @@
 \newtheorem{definition}{Defn}
 \newtheorem{corollary}{Corollary}[section]
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section/subsection numbering
-	
+
+\newcounter{example}[section]	
+\newenvironment{example}[1]
+	{\begin{center}
+			#1 \\ [1ex]
+			\begin{tabular}{|p{1.0\textwidth}|}
+				 \hline \\
+			 
+		 	{
+			 \newline \newline \hline}
+		 \end{tabular}
+	 \end{center}}
 
 \author{Karl Hallsby}
 \title{Reference Material}
@@ -128,10 +139,16 @@
 			
 	\end{enumerate}
 	Additionally, 
-	\begin{definition}[Union of $n$ Sets]
+	\begin{definition}[Union of $n$ Sets] \label{def:Union of n Sets}
 		The \emph{union of $n$ sets} $\bigcup_{k=1}^{n} A_{k} = A_{1} \cup A_{2} \cup A_{3} \cup \ldots \cup A_{n}$ is the set consisting of all elements such that $x \in A_{k}$ for some $1 \leq k \leq n$.
 		\begin{itemize}[noitemsep, nolistsep]
 			\item All sets need to be empty to make $\bigcup_{k=1}^{n} A_{k} = \emptyset$
+		\end{itemize}
+	\end{definition}
+	\begin{definition}[Intersection of $n$ Sets] \label{def:Intersection of n Sets}
+		The \emph{intersection of $n$ sets} $\bigcap_{k=1}^{n} A_{k} = A_{1} \cap A_{2} \cap A_{3} \cap \ldots \cap A_{n}$ is the set consisting of all elements such that $x \in a_{k}$ for all $1 \leq k \leq n$
+		\begin{itemize}[noitemsep, nolistsep]
+			\item Just one set needs to be empty to make $\bigcap_{k=1}^{n} A_{k} = \emptyset$
 		\end{itemize}
 	\end{definition}
 	
@@ -204,7 +221,10 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 	
 	\subsection{Conditional Probability} \label{subsec:Conditional Probability}
 		\begin{definition}[Conditional Probability] \label{def:Conditional Probability}
-			The \emph{conditional probability} of event $A$ \textbf{GIVEN THAT} event $B$ occurred is denoted $P \left[ A \vert B \right]$ and is defined as $P \left[ A \vert B \right] = \frac{P \left[ A \cap B \right]}{P \left[ B \right]}$
+			The \emph{conditional probability} of event $A$ \textbf{GIVEN THAT} event $B$ occurred is denoted $P \left[ A \vert B \right]$ and is defined as
+			\begin{equation} 
+				P \left[ A \vert B \right] = \frac{P \left[ A \cap B \right]}{P \left[ B \right]}
+			\end{equation}
 		\end{definition}
 		\begin{theorem}[Theorem of Total Probability]
 			Let $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ be mutually exclusive events whose union equals the sample space $S$, i.e. $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ is a \emph{partition of $S$}.
@@ -215,6 +235,11 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 				P \left[ B_{j} \vert A \right] = \frac{P \left[ A \cap B_{j} \right]}{P \left[ A \right]} = \frac{P \left[ A \vert B_{j} \right] * P \left[ B_{j} \right]}{\sum_{k=1}^{n} P \left[ A \vert B_{k} \right] * P \left[ B_{k} \right]}
 			\end{equation}
 		\end{definition}
+	
+\section{Single Discrete Random Variables} \label{sec:Single Discrete Random Variables}
+
+\section{Single Continuous Random Variables} \label{sec:Single Continuous Random Variables}
+
 \section{Multiple Random Variables} \label{sec:Multiple Random Variables}
 	\subsection[Joint PMF]{Joint Probability Mass Function} \label{subsec:Joint PMF}
 		\begin{definition}[Joint Probability Mass Function] \label{def:Joint PMF}
@@ -249,13 +274,12 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 				\end{aligned}
 			\end{equation}
 		\end{definition}
-		\begin{enumerate}[label=(\roman*), noitemsep, nolistsep]
+		\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
 			\item $F_{X,Y} \left( x,y \right)$ is non decreasing.
 				\begin{equation} \label{eq:Joint CDF Property 1}
 					F_{X,Y} \left( x_{1},y_{1} \right) \leq F_{X,Y} \left( x_{2},y_{2} \right) \text{ if } x_{1} \leq x_{2} \text{ and } y_{1} \leq y_{2}
 				\end{equation}
-			\item Should range from 0 to 1.
-				\begin{equation} \label{eq:Joint CDF Property 2}
+			\item \begin{equation} \label{eq:Joint CDF Property 2}
 					\begin{aligned}
 						\lim\limits_{y \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
 						\lim\limits_{x \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
@@ -264,16 +288,42 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 				\end{equation}
 			\item The Marginal CDFs can be obtained from the Joint CDF by removing restrictions for all but one variable.
 				\begin{equation} \label{eq:Joint CDF Property 3}
+					\begin{aligned}
+						F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
+													   &= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
+													   &= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+						F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+					\end{aligned}
 				\end{equation}
 			\item The Joint CDF is continuous from $\infty$ to $-\infty$.
 				\begin{equation} \label{eq:Joint CDF Property 4}
+					\begin{aligned}
+						\lim\limits_{x \rightarrow a^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( a,y \right) \\
+						\lim\limits_{y \rightarrow b^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( x,b \right) \\
+					\end{aligned}
 				\end{equation}
 			\item The probability of the ``rectangle'' $\lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace$
 				\begin{equation} \label{eq:Joint CDF Property 5}
+					\begin{aligned}
+						P \left[ \lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace \right] &= P \left[ \lbrace X \leq x_{2}, Y \leq y_{2} \rbrace \right] - P \left[ \lbrace X \leq x_{1}, Y \leq y_{2} \rbrace \right] - \\
+						&P \left[ \lbrace X \leq x_{2}, Y \leq y_{1} \rbrace \right] + P \left[ \lbrace X \leq x_{1}, Y \leq y_{1} \rbrace \right] \\
+						&= F_{X,Y} \left( x_{2}, y_{2} \right) - F_{X,Y} \left( x_{1}, y_{2} \right) - F_{X,Y} \left( x_{2}, y_{1} \right) + F_{X,Y} \left( x_{1}, y_{1} \right)
+					\end{aligned}
 				\end{equation}
 		\end{enumerate}
 	
 		\subsubsection[Marginal CDF]{Marginal Cumulative Distribution Function} \label{subsubsec:Marginal CDF}
+			\begin{definition}[Marginal Cumulative Distribution Function] \label{def:Marginal CDF}
+				We obtain the \emph{Marginal Cumulative Distribution Functions (Marginal CDFs)} by removing the constraint on one of the variables. 
+				\begin{equation} \label{eq:Marginal CDF}
+					\begin{aligned}
+						F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
+						&= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
+						&= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+						F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+					\end{aligned}
+				\end{equation}
+			\end{definition}
 	\subsection[Joint PDF]{Joint Probability Density Function} \label{subsec:Joint PDF}
 	
 \end{document}
