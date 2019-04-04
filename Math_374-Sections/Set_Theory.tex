@@ -1,0 +1,83 @@
+\section{Set Theory} \label{sec:Set Theory}
+\begin{itemize}[noitemsep, nolistsep]
+	\item A \emph{set} is a collection of objects, denoted by capital letters
+	\item Denote the \emph{universal set, $U$}; consisting of all possible objects of interest in a given setting/application
+	\item For any set $A$, we say that \emph{``$x$ is an element of $A$''}, denoted $x \in A$ if object $x$ of the universal set $U$ is contained in $A$
+	\item We say that \emph{``$x$ is not an element of $A$''}, denoted $x \notin A$ if object $x$ of the universal set $U$ is not contained in $A$
+	\item We say that \emph{``$A$ is a subset of $B$''}, denoted $A \subset B$ if every element in $A$ also belongs to $B$, $x \in A \rightarrow x \in B$
+	\item The \emph{empty set, $\emptyset$} is defined as the set with no elements
+		\begin{itemize}[noitemsep, nolistsep]
+			\item The empty set is a subset of every set
+		\end{itemize}
+	\item Sets \emph{$A$ and $B$ are equal} if they contain the same elements. To show this:
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item Enumerate the elements of each set
+			\item Thm: $A=B \iff A \subset B$ AND $B \subset A$
+		\end{enumerate}
+	\item The \emph{union of 2 sets $A$, $B$}, denoted $A \cup B$ is defined as the set of outcomes that are either in $A$, or in $B$, or both
+	\item The \emph{intersection fo 2 sets, $A$, $B$}, denoted $A \cap B$ is defined as the set of outcomes in $A$ and $B$
+	\item The 2 sets $A$, $B$ are said to be \emph{disjoint or mutually exclusive} if $A \cap B = \emptyset$
+	\item The \emph{complement of a set $A$}, denoted $A^{C}$ is defined as the set of elements of $U$ not in $A$
+		\begin{itemize}[noitemsep, nolistsep]
+			\item $A^{C} = \lbrace x \in U \vert x \notin A \rbrace$
+		\end{itemize}
+	\item \emph{Relative complement} or \emph{difference}, denoted $A-B$, is the set of elements in $A$ that are not in $B$
+		\begin{itemize}[noitemsep, nolistsep]
+			\item $A-B = A \cap B^{C}$
+			\item $A^{C} = U - A$
+		\end{itemize}
+\end{itemize}
+
+	\subsection{Properties of Set Operations} \label{subsec:Properties of Set Ops}
+	Set Operators are:
+	\begin{enumerate}
+		\item Commutative, Equation~\eqref{eq:Set Ops-Commutative}
+			\begin{equation} % Commutative
+				\begin{aligned}
+					A \cup B &= B \cup A \\
+					A \cap B &= B \cap A \\
+				\end{aligned}
+				\label{eq:Set Ops-Commutative}
+			\end{equation}
+			
+			\item Associative, Equation~\eqref{eq:Set Ops-Associative}
+				\begin{equation} % Associative
+					\begin{aligned}
+						A \cup \left( B \cup C \right) &= \left( A \cup B \right) \cup C \\
+						A \cap \left( B \cap C \right) &= \left( A \cap B \right) \cap C \\
+					\end{aligned}
+					\label{eq:Set Ops-Associative}
+				\end{equation}
+			
+			\item Distributive, Equation~\eqref{eq:Set Ops-Distributive}
+				\begin{equation} % Distributive
+					\begin{aligned}
+						A \cup \left( B \cap C \right) &= \left( A \cup B \right) \cap \left( A \cup C \right) \\
+						A \cap \left( B \cup C \right) &= \left( A \cap B \right) \cup \left( A \cap C \right) \\
+					\end{aligned}
+					\label{eq:Set Ops-Distributive}
+				\end{equation}
+			
+			\item Set Operations obey De Morgan's Laws, Equation~\eqref{eq:Set Ops-De Morgan's}
+				\begin{equation} % De Morgan's
+					\begin{aligned}
+						\left( A \cup B \right)^{C} &= A^{C} \cap B^{C} \\
+						\left( A \cap B \right)^{C} &= A^{C} \cup B^{C} \\
+					\end{aligned}
+					\label{eq:Set Ops-De Morgan's}
+				\end{equation}
+			
+	\end{enumerate}
+	Additionally, 
+	\begin{definition}[Union of $n$ Sets] \label{def:Union of n Sets}
+		The \emph{union of $n$ sets} $\bigcup_{k=1}^{n} A_{k} = A_{1} \cup A_{2} \cup A_{3} \cup \ldots \cup A_{n}$ is the set consisting of all elements such that $x \in A_{k}$ for some $1 \leq k \leq n$.
+		\begin{itemize}[noitemsep, nolistsep]
+			\item All sets need to be empty to make $\bigcup_{k=1}^{n} A_{k} = \emptyset$
+		\end{itemize}
+	\end{definition}
+	\begin{definition}[Intersection of $n$ Sets] \label{def:Intersection of n Sets}
+		The \emph{intersection of $n$ sets} $\bigcap_{k=1}^{n} A_{k} = A_{1} \cap A_{2} \cap A_{3} \cap \ldots \cap A_{n}$ is the set consisting of all elements such that $x \in a_{k}$ for all $1 \leq k \leq n$
+		\begin{itemize}[noitemsep, nolistsep]
+			\item Just one set needs to be empty to make $\bigcap_{k=1}^{n} A_{k} = \emptyset$
+		\end{itemize}
+	\end{definition}

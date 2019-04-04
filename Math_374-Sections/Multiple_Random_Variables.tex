@@ -1,0 +1,123 @@
+\section{Multiple Random Variables} \label{sec:Multiple Random Variables}
+	\subsection[Joint PMF]{Joint Probability Mass Function} \label{subsec:Joint PMF}
+		\begin{definition}[Joint Probability Mass Function] \label{def:Joint PMF}
+			The \emph{joint probability mass function (joint PMF)} of 2 discrete random variables $X$, $Y$ is defined as:
+			\begin{equation} \label{eq:Joint PMF}
+				p_{X,Y} = P \left[ \lbrace X=x \rbrace \cap \lbrace Y=y \rbrace \right] \text{ for all } x,y \in S_{X,Y}
+			\end{equation}
+			\begin{itemize}[noitemsep, nolistsep]
+				\item This satisfies ALL propoerties of single random variable PMFs
+			\end{itemize}
+		\end{definition}
+	
+		\subsubsection[Marginal PMF]{Marginal Probability Mass Function} \label{subsubsec:Marginal PMF}
+			\begin{definition}[Marginal Probability Mass Function] \label{def:Marginal PMF}
+				Given a joint PMF of discrete random variables $X$, $Y$, the \emph{Marginal Probability Mass Function (Marginal PMF)} of $X$ is defined as:
+				\begin{equation} \label{eq:Marginal PMF}
+					p_{X} \left( x_{i} \right) = P \left[ X = x_{i} \right] \text{ for } x_{i} \in S_{X}
+				\end{equation}
+				and is calculated as:
+				\begin{equation} \label{eq:Calculate Marginal PMF}
+					p \left( x_{i} \right) = \sum_{y \in S_{Y}} p_{X,Y} \left( x_{i}, y \right)
+				\end{equation}
+			\end{definition}
+		
+	\subsection[Joint CDF]{Joint Cumulative Distribution Function} \label{subsec:Joint CDF}
+		\begin{definition}[Joint Cumulative Distribution Function] \label{def:Joint CDF}
+			The \emph{Joint Cumulative Distribution Function (Joint CDF)} of $X$ and $Y$ is defined as the probability of the event $ \lbrace X \leq x \rbrace \cap \lbrace Y \leq y \rbrace $
+			\begin{equation} \label{eq:Joint CDF}
+				\begin{aligned}
+					F_{X,Y} \left( x, y \right) &= P \left[ \lbrace X \leq x \rbrace \cap \lbrace Y \leq y \rbrace \right] \text{ for all } \left( x,y \right) \in \mathbb{R}^2 \\
+					&= P \left[ \lbrace X \leq x \rbrace , \lbrace Y \leq y \rbrace \right]
+				\end{aligned}
+			\end{equation}
+		\end{definition}
+		\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+			\item $F_{X,Y} \left( x,y \right)$ is non decreasing.
+				\begin{equation} \label{eq:Joint CDF Property 1}
+					F_{X,Y} \left( x_{1},y_{1} \right) \leq F_{X,Y} \left( x_{2},y_{2} \right) \text{ if } x_{1} \leq x_{2} \text{ and } y_{1} \leq y_{2}
+				\end{equation}
+			\item \begin{equation} \label{eq:Joint CDF Property 2}
+					\begin{aligned}
+						\lim\limits_{y \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
+						\lim\limits_{x \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
+						\lim\limits_{\left( x,y \right) \rightarrow \left( \infty, \infty \right)} F_{X,Y} \left( x,y \right) &= 1 \\
+					\end{aligned}
+				\end{equation}
+			\item The Marginal CDFs can be obtained from the Joint CDF by removing restrictions for all but one variable.
+				\begin{equation} \label{eq:Joint CDF Property 3}
+					\begin{aligned}
+						F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
+													   &= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
+													   &= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+						F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+					\end{aligned}
+				\end{equation}
+			\item The Joint CDF is continuous from $\infty$ to $-\infty$.
+				\begin{equation} \label{eq:Joint CDF Property 4}
+					\begin{aligned}
+						\lim\limits_{x \rightarrow a^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( a,y \right) \\
+						\lim\limits_{y \rightarrow b^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( x,b \right) \\
+					\end{aligned}
+				\end{equation}
+			\item The probability of the ``rectangle'' $\lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace$
+				\begin{equation} \label{eq:Joint CDF Property 5}
+					\begin{aligned}
+						P \left[ \lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace \right] &= P \left[ \lbrace X \leq x_{2}, Y \leq y_{2} \rbrace \right] - P \left[ \lbrace X \leq x_{1}, Y \leq y_{2} \rbrace \right] - \\
+						&P \left[ \lbrace X \leq x_{2}, Y \leq y_{1} \rbrace \right] + P \left[ \lbrace X \leq x_{1}, Y \leq y_{1} \rbrace \right] \\
+						&= F_{X,Y} \left( x_{2}, y_{2} \right) - F_{X,Y} \left( x_{1}, y_{2} \right) - F_{X,Y} \left( x_{2}, y_{1} \right) + F_{X,Y} \left( x_{1}, y_{1} \right)
+					\end{aligned}
+				\end{equation}
+		\end{enumerate}
+	
+		\subsubsection[Marginal CDF]{Marginal Cumulative Distribution Function} \label{subsubsec:Marginal CDF}
+			\begin{definition}[Marginal Cumulative Distribution Function] \label{def:Marginal CDF}
+				We obtain the \emph{Marginal Cumulative Distribution Functions (Marginal CDFs)} by removing the constraint on one of the variables. 
+				\begin{equation} \label{eq:Marginal CDF}
+					\begin{aligned}
+						F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
+						&= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
+						&= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+						F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+					\end{aligned}
+				\end{equation}
+			\end{definition}
+	\subsection[Joint PDF]{Joint Probability Density Function} \label{subsec:Joint PDF}
+		\begin{definition}[Joint Probability Density Function] \label{def:Joint PDF}
+			We say that $X$, $Y$ are jointly continuous if the probabilities of events involving $X$ and $Y$ can be expressed as an integral of a \emph{Joint Probability Density Function (Joint PDF)}. \newline
+			i.e. THere exists soem nonnegative function $f_{X,Y} \left( x,y \right)$, which we call the joint PDF, that is defined on the real plane such that tfor every event $B$ which is a subset of the xy plane
+			\begin{equation}\label{eq:Joint PDF}
+				P \left[ \left( X,Y \right) in B \right] = \iint_{B} f_{X,Y} \left( x,y \right) dx dy
+			\end{equation}
+			\begin{remark}
+				The probability mass of an event is found by integrating the PDF over the region in the xy plane corresponding to your event.
+			\end{remark}
+		\end{definition}
+	
+		\subsubsection{Properties} \label{subsubsec:Joint PDF Properties}
+			\begin{gather}
+				\iint_{B} f_{X,Y} \left( x,y \right) = 1 \\
+				x \geq 0, y \geq 0 \forall x \forall y \\
+			\end{gather}
+			
+		\subsubsection{Facts about Joint PDFs} \label{subsubsec:Joint PDF Facts}
+			\begin{align}
+				\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} &f_{X,Y} \left( x,y \right) = 1 \\
+				F_{X,Y} \left( x,y \right) &= \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y} \left( s,t \right) dt ds \\
+				f_{X,Y} &= \frac{\partial^{2} f_{X,Y} \left( x,y \right)}{\partial x \partial y} \\
+			\end{align}
+			
+		\subsubsection{Marginal PDF} \label{subsubsec:Marginal PDF}
+			\begin{definition}[Marginal Probability Density Function] \label{def:Marginal PDF}
+				The \emph{Marginal Probability Density Functions (Marginal PDFs)} $f_{X} \left( x \right)$ and $f_{Y} \left( y \right)$ are obtained by taking the derivative of the marginal CDFs.
+				\begin{equation}
+					\begin{aligned}
+						f_{X} \left( x \right) &= \frac{d}{dx} F_{X} \left( x \right) \\
+						&= \frac{d}{dx} \int_{-\infty}^{x} \left[ \int_{-\infty}^{\infty} f_{X,Y} \left( s,t \right) dt ds \right] \\
+						&= \frac{d}{dx} \int_{-\infty}^{x} \int_{-\infty}^{\infty} f_{X,Y} \left( s,t \right) dt ds \\
+						&\text{Simplified with \nameref{def:2nd Fundamental Theorem of Calculus}} \\
+						&= \int_{-\infty}^{\infty} f_{X,Y} \left( x,t \right) dt \\
+						f_{X} &= \int_{-\infty}^{\infty} f_{X,Y} \left( x,t \right) dt \\
+					\end{aligned}
+				\end{equation}
+			\end{definition}
