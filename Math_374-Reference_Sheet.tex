@@ -13,6 +13,7 @@
 \usepackage{indentfirst} % Indents the first line of new paragraphs
 \usepackage{ctable} % Greater control over tables and how they look
 \usepackage{subcaption} % Allows for multiple figures in one Figure environment
+\usepackage{textcomp}
 \usepackage{gensymb} % Gives access to some characters, for example, the degree symbol
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
 \usepackage{chngcntr} % Allows us to tamper with the counter a little more
@@ -27,9 +28,10 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Defn}
 \newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[definition]
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section/subsection numbering
 
-\newcounter{example}[section]	
+\newcounter{example}[section]
 \newenvironment{example}[1]
 	{\begin{center}
 			#1 \\ [1ex]
@@ -380,5 +382,52 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 				\end{equation}
 			\end{definition}
 	\subsection[Joint PDF]{Joint Probability Density Function} \label{subsec:Joint PDF}
+		\begin{definition}[Joint Probability Density Function] \label{def:Joint PDF}
+			We say that $X$, $Y$ are jointly continuous if the probabilities of events involving $X$ and $Y$ can be expressed as an integral of a \emph{Joint Probability Density Function (Joint PDF)}. \newline
+			i.e. THere exists soem nonnegative function $f_{X,Y} \left( x,y \right)$, which we call the joint PDF, that is defined on the real plane such that tfor every event $B$ which is a subset of the xy plane
+			\begin{equation}\label{eq:Joint PDF}
+				P \left[ \left( X,Y \right) in B \right] = \iint_{B} f_{X,Y} \left( x,y \right) dx dy
+			\end{equation}
+			\begin{remark}
+				The probability mass of an event is found by integrating the PDF over the region in the xy plane corresponding to your event.
+			\end{remark}
+		\end{definition}
 	
+		\subsubsection{Properties} \label{subsubsec:Joint PDF Properties}
+			\begin{gather}
+				\iint_{B} f_{X,Y} \left( x,y \right) = 1 \\
+				x \geq 0, y \geq 0 \forall x \forall y \\
+			\end{gather}
+			
+		\subsubsection{Facts about Joint PDFs} \label{subsubsec:Joint PDF Facts}
+			\begin{align}
+				\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} &f_{X,Y} \left( x,y \right) = 1 \\
+				F_{X,Y} \left( x,y \right) &= \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y} \left( s,t \right) dt ds \\
+				f_{X,Y} &= \frac{\partial^{2} f_{X,Y} \left( x,y \right)}{\partial x \partial y} \\
+			\end{align}
+			
+		\subsubsection{Marginal PDF} \label{subsubsec:Marginal PDF}
+			\begin{definition}[Marginal Probability Density Function] \label{def:Marginal PDF}
+				The \emph{Marginal Probability Density Functions (Marginal PDFs)} $f_{X} \left( x \right)$ and $f_{Y} \left( y \right)$ are obtained by taking the derivative of the marginal CDFs.
+				\begin{equation}
+					\begin{aligned}
+						f_{X} \left( x \right) &= \frac{d}{dx} F_{X} \left( x \right) \\
+						&= \frac{d}{dx} \int_{-\infty}^{x} \left[ \int_{-\infty}^{\infty} f_{X,Y} \left( s,t \right) dt ds \right] \\
+						&= \frac{d}{dx} \int_{-\infty}^{x} \int_{-\infty}^{\infty} f_{X,Y} \left( s,t \right) dt ds \\
+						&\text{Simplified with Fundametal Theorem of Calculus} \\
+						&= \int_{-\infty}^{\infty} f_{X,Y} \left( x,t \right) dt \\
+						f_{X} &= \int_{-\infty}^{\infty} f_{X,Y} \left( x,t \right) dt \\
+					\end{aligned}
+				\end{equation}
+			\end{definition}
+
+%====================================APPENDIX====================================
+\appendix
+\counterwithin{equation}{section}
+\section{Trigonometry} \label{app:Trig}
+	\subsection{Trigonometric Formulas} \label{subsec:Trig Formulas}
+		\begin{align}
+			\sin \left( \alpha \right) + \sin \left( \beta \right) &= 2 \sin \left( \frac{\alpha + \beta}{2} \right) \cos\left( \frac{\alpha - \beta}{2} \right)  \label{eq:Sin plus Sin with diff Angles}
+		\end{align}
+\section{Calculus} \label{app:Calculus}
 \end{document}
