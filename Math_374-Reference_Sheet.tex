@@ -32,21 +32,10 @@
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section/subsection numbering
 
 \newcounter{example}[section]
-\newenvironment{example}[1]
-	{\begin{center}
-			#1 \\ [1ex]
-			\begin{tabular}{|p{1.0\textwidth}|}
-				 \hline \\
-			 
-		 	{
-			 \newline \newline \hline}
-		 \end{tabular}
-	 \end{center}}
+
 
 \author{Karl Hallsby}
 \title{Reference Material}
-
-\let\clearpage\relax % When \including files, don't split them across pages
 
 \begin{document}
 \section{Relative Frequency} \label{sec:Relative Frequency}
@@ -72,9 +61,9 @@
 		\item If events A and B are disjoint and event C is "A or B", then $F_C = F_A (n) + F_B (n)$
 	\end{enumerate}
 
-\include{./Math_374-Sections/Set_Theory}
+\input{./Math_374-Sections/Set_Theory}
 
-\include{./Math_374-Sections/Probability_Theory}
+\input{./Math_374-Sections/Probability_Theory}
 
 \section{Counting} \label{sec:Counting}
 	\subsection[Permutations]{Ordered Sampling with Replacement} \label{subsec:Ordered Sampling with Replacement} \label{subsec:Permutations}
@@ -114,15 +103,15 @@
 	\end{definition}
 \section{Single Continuous Random Variables} \label{sec:Single Continuous Random Variables}
 
-\include{./Math_374-Sections/Multiple_Random_Variables}
+\input{./Math_374-Sections/Multiple_Random_Variables}
 
 %====================================APPENDIX====================================
 \appendix
 \counterwithin{equation}{section}
 
 \section{Reference Material} \label{sec:Reference Material}
-\include{./Appendix-Reference_Material/Trig}
-\include{./Appendix-Reference_Material/Calculus}
+\input{./Appendix-Reference_Material/Trig}
+\input{./Appendix-Reference_Material/Calculus}
 
 
 \end{document}
