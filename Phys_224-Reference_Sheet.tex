@@ -13,16 +13,17 @@
 \usepackage{hyperref} % Hyperlinks between references
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
 \usepackage{chngcntr} % Allows us to tamper with the counter a little more
+\usepackage{siunitx} % Gives us ways to typeset units for stuff
 
 \graphicspath{./Drawings/Phys_224/} % Uncomment this to use pictures in this document
 
 \numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
 
 \theoremstyle{definition}
-\newtheorem{definition}{Defn}
+\newtheorem{definition}{Defn} % Definition environment, for definition of terms
 
 \theoremstyle{remark}
-\newtheorem{note}{Note}
+\newtheorem{note}{Note}[definition] % Note environment, counted by definition
 
 \author{Karl Hallsby}
 \title{Phys 224 Reference Sheet}
@@ -199,10 +200,10 @@ There are two types of waves:
 	\begin{itemize}[noitemsep]
 		\item Moving \textit{\textbf{TOWARDS}} each other: Frequency Increase
 		\item Moving \textit{\textbf{AWAY}} from each other: Frequency Decrease
-		\item $f$ - Initial Frequency, $Hz$
-		\item $v$ - Sound Speed, $m/s$
-		\item $v_{D}$ - Detector Speed, $m/s$
-		\item $v_{S}$ - Source Speed, $m/s$
+		\item $f$ - Initial Frequency, \si{\hertz}
+		\item $v$ - Sound Speed, \si{\meter / \second}
+		\item $v_{D}$ - Detector Speed, \si{\meter / \second}
+		\item $v_{S}$ - Source Speed, \si{\meter / \second}
 		\item \textbf{For Numerator}:
 			\begin{itemize}[noitemsep,nolistsep]
 				\item If detector is moving towards the source, $+$
@@ -229,23 +230,29 @@ There are two types of waves:
 		\end{definition}
 		\begin{definition}[1st Law of Thermodynamics] \label{def:1st Law of Thermo}
 			\begin{equation} \label{eq:1st Law of Thermo}
-				dE_{Internal} = dQ - dT \text{, } dQ \text{ and } dT \text{ are inexact (path-dependent) differentials.}
+				\begin{aligned}
+					dE_{Internal} &= dQ - dT \text{, } dQ \text{ and } dT \text{ are inexact	(path-dependent) differentials.} \\
+					\Delta E_{Internal} &= Q-T \\
+				\end{aligned}
 			\end{equation}
-			\textbf{Special Cases for the 1st Law of Thermodynamics}:
-			\begin{enumerate}[noitemsep, nolistsep]
-				\item Adiabatic Processes - $dE_{Int} = -dW$
-				\begin{itemize}[noitemsep, nolistsep]
-					\item No heat exchange
-					\item Insulating
-					\item Something happens too quickly for system to keep up
-				\end{itemize}
-				\item Isothermal Processes - $dT = 0 \rightarrow dE_{Int} = 0 \rightarrow dQ = dW$
-				\item Isobaric Processes - $dW = pdV$, $p$(pressure) is constant
-				\item Cyclical Processes - $dE_{Int} = 0 \rightarrow dQ = dW$
-				\begin{itemize}[noitemsep, nolistsep]
-					\item You end a cycle with the same internal energy when the cycle started
-				\end{itemize}
-			\end{enumerate}
+			\begin{note} \label{note:1st Law of Thermo Special Cases}
+				\textbf{Special Cases for the 1st Law of Thermodynamics}:
+				\begin{enumerate}[noitemsep, nolistsep]
+					\item Adiabatic Processes - $dE_{Int} = -dW$
+					\begin{itemize}[noitemsep, nolistsep]
+						\item No heat exchange
+						\item Insulating
+						\item Something happens too quickly for system to keep up
+					\end{itemize}
+					\item Isothermal Processes - $dT = 0 \rightarrow dE_{Int} = 0 \rightarrow dQ = dW$
+					\item Isobaric Processes - $dW = pdV$, $p$(pressure) is constant
+					\item Constant Volume - $W = 0$
+					\item Cyclical Processes - $dE_{Int} = 0 \rightarrow dQ = dW$
+					\begin{itemize}[noitemsep, nolistsep]
+						\item You end a cycle with the same internal energy when the cycle started
+					\end{itemize}
+				\end{enumerate}
+			\end{note}
 		\end{definition}
 		\begin{definition}[2nd Law of Thermodynamics] \label{def:2nd Law of Thermo}
 			If a \emph{cyclical process occurs in a CLOSED system}, the entropy of the system increases for irreversible processes and remains constant for reversible processes. \textbf{IT NEVER DECREASES!!}
@@ -253,12 +260,14 @@ There are two types of waves:
 				\Delta S &\geq 0 \\
 				\Delta S &= \int_{a}^{b} \frac{dQ \left( T \right)}{T} 
 			\end{align}
-			\textbf{$\mathbf{\Delta S}$ is a state-function, meaning it is path-independent.}
+			\begin{note}
+				\textbf{$\mathbf{\Delta S}$ is a state-function, meaning it is path-independent.}
+			\end{note}
 		\end{definition}
 	
 	\subsection*{Heat and Work} \label{subsec:Heat/Work}
 		\begin{itemize}[noitemsep, nolistsep]
-			\item $dW = \vec{F} \dot \vec{ds}$
+			\item $dW = \vec{F} \cdot \vec{ds}$
 			\item $\vec{F} = p \left( V, T \right) dV$
 			\item $W = \int p \left( V, T \right) dV$
 			\item $W = \frac{dQ}{dt}$
@@ -312,9 +321,13 @@ There are two types of waves:
 	\begin{definition}[Ideal Gas] \label{def:Ideal Gas}
 		An \emph{ideal gas} is a gas that obeys the ideal gas law.
 		\begin{equation} \label{eq:Ideal Gas Law}
-			pV = nRT \text{, } R \approxeq 8.31 J/mol K
+			pV = nRT \text{, } R \approxeq 8.31 \si{\joule / \mole~\kelvin}
 		\end{equation}
 	\end{definition}
+	\begin{align} \label{eq:Total Internal Energy of Ideal Gas}
+		E_{Internal} &= K_{Translate} + K_{Rotate} \\
+		\Delta E_{Internal} &= \Delta K_{Translate} + \Delta K_{Rotate} 
+	\end{align}
 
 	\subsection*{Work Done by Ideal Gases} \label{subsec:Work Done By Ideal Gas}
 		\subsubsection*{Isothermally} \label{subsubsec:Work Done Isothermally}
@@ -339,7 +352,12 @@ There are two types of waves:
 				In an ideal gas, these are a means to store energy.
 			\end{note}
 		\end{definition}
-	
+		\begin{equation} \label{eq:Translational Kinetic Energy}
+			\begin{aligned}
+				K_{Translate} &= \frac{3}{2}nRT \\
+				\Delta K_{Translate} &= \frac{3}{2}nR \Delta T \\
+			\end{aligned}
+		\end{equation}
 		\begin{table}[h!]
 			\centering
 			\begin{tabular}{c|c|c|c}
@@ -369,11 +387,39 @@ There are two types of waves:
 					C_{V} &= \left( \frac{DoF}{2} \right) R \\
 				\end{aligned}
 			\end{equation}
+			\begin{equation} \label{eq:Heat with Molar Specific Heat @ Constant Volume}
+				Q = n C_{V} \Delta T
+			\end{equation}
 		\subsubsection*{Molar Specific Heat @ Constant Pressure} \label{Molar Specific Heat @ Constant Pressure}
 			\begin{equation} \label{eq:Molar Specific Heat @ Constant Pressure}
 				C_{P} = C_{V} + R
 			\end{equation}
-		
+			\begin{equation} \label{eq:Heat with Molar Specific Heat @ Constant Pressure}
+			Q = n C_{P} \Delta T
+			\end{equation}
+	
+	\subsection*{Adiabatic Processes in Ideal Gases} \label{subsec:Adiabatic Processes in Ideal Gases}
+		\begin{definition}[Adiabatic Process] \label{def:Adiabatic Processes in Ideal Gases}
+			An \emph{adiabatic process} is one in which no heat exchange occurs, namely:
+			\begin{equation} \label{eq:Adiabatic Processes in Ideal Gases}
+				\begin{aligned}
+					dE_{Internal} &= dQ - dW \\
+					dQ &= 0 \\
+					dE_{Internal} &= -dW \\
+				\end{aligned}
+			\end{equation}
+		\end{definition}
+		This leads to:
+		\begin{equation}
+			pV^{\gamma} = \text{Constant}, \gamma = \frac{C_{P}}{C_{V}}
+		\end{equation}
+		\begin{equation} \label{eq:Adiabatic Pressure Volume}
+			p_{1}V_{1}^{\gamma} = p_{2}V_{2}^{\gamma}
+		\end{equation}
+		\begin{equation} \label{eq:Adiabatic Temperature Volume}
+			T_{1}V_{1}^{\gamma -1} = T_{2}V_{2}^{\gamma -1} 
+		\end{equation}
+		You get Equation~\eqref{eq:Adiabatic Temperature Volume} by plugging $p = \frac{nRT}{V}$ into Equation~\eqref{eq:Adiabatic Pressure Volume}.
 		
 \section{Entropy} \label{sec:Entropy}
 There is a heavy relationship between this and the \nameref{def:2nd Law of Thermo}.
@@ -382,7 +428,9 @@ There is a heavy relationship between this and the \nameref{def:2nd Law of Therm
 		\begin{equation} \label{eq:Entropy}
 			S = k_{B} \ln \left( \Omega \right)
 		\end{equation}
-		\textbf{Entropy is NOT disorder.}
+		\begin{note}
+			\textbf{Entropy is NOT disorder.}
+		\end{note}
 	\end{definition}
 
 \section{Light} \label{sec:Light}
