@@ -13,7 +13,8 @@
 \usepackage{hyperref} % Hyperlinks between references
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
 
-\graphicspath{{./Drawings/Phys_224}} % Uncomment this to use pictures in this document
+\graphicspath{./Drawings/Phys_224/} % Uncomment this to use pictures in this document
+
 \numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
 
 \theoremstyle{definition}
@@ -35,7 +36,7 @@
 				\item Uniform Force on Flat Area - $\rho = \frac{F}{A}$
 				\item Conversions - $1 atm = 1.01 \times 10^5 Pa = 760 torr = 14.7 lb/in^2$
 			\end{itemize}
-		\item Trig Relations are in \nameref{subsec:Trig Formulas}, Section~\ref{subsec:Trig Formulas}.
+		\item Trig Relations are in \nameref{subsubsec:Trig Formulas}, Section~\ref{subsubsec:Trig Formulas}.
 	\end{itemize}
 
 \section{Fluids} \label{sec:Fluids}
@@ -211,12 +212,18 @@ There are two types of waves:
 		\end{itemize}
 
 \section{Thermodynamics} \label{sec:Thermo}
-Definition: Study of energy transfer between two macroscopic bodies driven by temperature differences.
+	\begin{definition}[Thermodynamics] \label{def:Thermo}
+		\emph{Thermodynamics} is the study of energy transfer between two macroscopic bodies driven by temperature differences.
+	\end{definition}
 
 	\subsection*{Laws of Thermodynamics} \label{subsec:Thermo Laws}
-		\begin{enumerate}[noitemsep, nolistsep]
-			\item[\textbf{0th Law:}] If 2 bodies, A and B are in thermal equilibrium with a third body ''T'', then they are in thermal equilibrium with each other
-			\item[\textbf{1st Law:}] $dE_{Internal} = dQ - dT \leftarrow dQ$ and $dT$ are inexact (path-dependent) differentials \\
+		\begin{definition}[0th Law of Thermodynamics] \label{def:0th Law of Thermo}
+			If 2 bodies, A and B are in thermal equilibrium with a third body ``T'', then they are in thermal equilibrium with each other.
+		\end{definition}
+		\begin{definition}[1st Law of Thermodynamics] \label{def:1st Law of Thermo}
+			\begin{equation} \label{eq:1st Law of Thermo}
+				dE_{Internal} = dQ - dT \text{, } dQ \text{ and } dT \text{ are inexact (path-dependent) differentials.}
+			\end{equation}
 			\textbf{Special Cases for the 1st Law of Thermodynamics}:
 			\begin{enumerate}[noitemsep, nolistsep]
 				\item Adiabatic Processes - $dE_{Int} = -dW$
@@ -232,7 +239,15 @@ Definition: Study of energy transfer between two macroscopic bodies driven by te
 					\item You end a cycle with the same internal energy when the cycle started
 				\end{itemize}
 			\end{enumerate}
-		\end{enumerate}
+		\end{definition}
+		\begin{definition}[2nd Law of Thermodynamics] \label{def:2nd Law of Thermo}
+			If a \emph{cyclical process occurs in a CLOSED system}, the entropy of the system increases for irreversible processes and remains constant for reversible processes. \textbf{IT NEVER DECREASES!!}
+			\begin{align} \label{eq:2nd Law of Thermo}
+				\Delta S &\geq 0 \\
+				\Delta S &= \int_{a}^{b} \frac{dQ \left( T \right)}{T} 
+			\end{align}
+			\textbf{$\mathbf{\Delta S}$ is a state-function, meaning it is path-independent.}
+		\end{definition}
 	
 	\subsection*{Heat and Work} \label{subsec:Heat/Work}
 	\begin{itemize}[noitemsep, nolistsep]
@@ -286,13 +301,51 @@ Definition: Study of energy transfer between two macroscopic bodies driven by te
 	\end{itemize}
 
 \section{Entropy} \label{sec:Entropy}
-
+There is a heavy relationship between this and the \nameref{def:2nd Law of Thermo}.
+	\begin{definition}[Entropy] \label{def:Entropy}
+		\emph{Entropy} is a measure of the number of available states.
+		\begin{equation} \label{eq:Entropy}
+			S = k_{B} \ln \left( \Omega \right)
+		\end{equation}
+		\textbf{Entropy is NOT disorder.}
+	\end{definition}
 \section{Light} \label{sec:Light}
+	\begin{definition}[Photon]
+		A \emph{photon} is a wave propagating through an electric field.
+	\end{definition}
+The various $\theta$ used in Equations~\eqref{eq:Reflected Light},~\eqref{eq:Refracted Light} are measured from the surface normal.
+
+\emph{Chromatic Dispersion} is the breaking up of polychromatic light by spectra.
+Think of Pink Floyd's \textit{Dark Side of the Moon} album cover.
+This happens because shorter wavelength, higher frequency light has a slightly higher index of refraction.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.5]{Polychromatic_Light_Indices_Refraction.png}
+		\caption{Indices of Refraction for Polychromatic Light}
+		\label{fig:Indices of Refraction for Polychromatic Light}
+	\end{figure}
+
 	\subsection{Reflection} \label{subsec:Reflection}
+		\begin{equation} \label{eq:Reflected Light}
+			\theta_{reflected} = \theta_{incident}
+		\end{equation}
 	\subsection{Refraction} \label{subsec:Refraction}
 		\begin{definition}[Snell's Law] \label{def:Snell's Law}
-			
+			\begin{equation} \label{eq:Refracted Light} 
+				n_{refract} \sin \left( \theta_{refract} \right) = n_{incident} \sin \left( \theta_{incident} \right)
+			\end{equation}
 		\end{definition}
+		\begin{definition}[Index of Refraction] \label{def:Index of Refraction}
+			\begin{equation} \label{eq:Index of Refraction}
+				n_{i} = \frac{c}{v_{i}}
+			\end{equation}
+		\end{definition}
+	\subsection{Total Internal Reflection} \label{subsec:Total Internal Reflection}
+		Total Internal Reflection occurs when the \emph{refracted light's angle is $\frac{\pi}{2}$}.
+		\begin{equation} \label{eq:Total Internal Reflection}
+			n_{refract} \sin \left( \theta_{refract} \right) = n_{incident} \sin \left( \theta_{incident} \right) \text{, where } \theta_{refract} = \frac{\pi}{2}
+		\end{equation}
+		
 
 \section{Quantum Mechanics} \label{sec:Quantum Mech}
 
