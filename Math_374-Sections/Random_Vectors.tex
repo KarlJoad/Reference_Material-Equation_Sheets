@@ -1,0 +1,29 @@
+\section{Random Vectors} \label{sec:Random Vectors}
+Random Vectors are usually denoted:
+	\begin{equation} \label{eq:Random Vector Notation}
+		\vec{X} = \langle X_{1}, X_{2} X_{3}, \ldots, X_{n} \rangle
+	\end{equation}
+	
+	\subsection{Joint CDF of a Random Vector} \label{subsec:Joint CDF of Random Vector}
+		\begin{equation} \label{eq:Joint CDF of Random Vector}
+			\begin{aligned}
+				F_{\vec{X}} \left( \vec{x} \right) 
+					&= F_{X_{1}, X_{2}, X_{3}, \ldots, X_{n}} \left( x_{1}, x_{2}, x_{3}, \ldots, x_{n} \right) \\
+					&= P \left[ X_{1} \leq x_{1}, X_{2} \leq x_{2}, X_{3} \leq x_{3}, \ldots, X_{n} \leq x_{n} \right] \\
+			\end{aligned}
+		\end{equation}
+		
+	\subsection{Joint PDF of a Random Vector} \label{subsec:Joint PDF of Random Vector}
+		\begin{equation} \label{eq:Joint PDF of Random Vector}
+			f_{\vec{X}} \left( \vec{x} \right) = \frac{\partial^{n} F_{\vec{X}} \left( \vec{x} \right)}{\partial x_{1} \partial x_{2} \partial x_{3} \cdots \partial x_{n}}
+		\end{equation}
+		
+		\subsubsection{Marginal PDF of a Random Vector} \label{subsubsec:Marginal PDF of Random Vector}
+		Integrate out the terms that you're not interested in.
+		\begin{equation} \label{eq:Marginal PDF of Random Vector}
+			f_{\vec{X}} = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f_{\vec{X}} \left( \vec{x} \right) \partial x_{2} \partial x_{3} \cdots \partial x_{n}
+		\end{equation}
+		For instance, say we want the marginal PDF of some function with respect to $X_{1}$, $X_{3}$, and $X_{4}$.
+		\begin{equation} \label{eq:Marginal PDF of Random Vector Multiple Variables}
+			f_{X_{1}, X_{3}, X_{4}} \left( x_{1}, x_{3}, x_{4} \right) = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f_{\vec{X}} \left( \vec{x} \right) \partial x_{2} \partial x_{5} \partial x_{6} \cdots \partial x_{n}
+		\end{equation}

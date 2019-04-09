@@ -10,7 +10,6 @@
 
 \usepackage{hyperref} % Generate hyperlinks to referenced items
 \usepackage{nameref} % Can make references by name to places
-\usepackage{indentfirst} % Indents the first line of new paragraphs
 \usepackage{ctable} % Greater control over tables and how they look
 \usepackage{subcaption} % Allows for multiple figures in one Figure environment
 \usepackage{textcomp}
@@ -20,7 +19,7 @@
 \usepackage{empheq} % Allow boxing of equations in special math environments
 
 %\graphicspath{{./Drawings/Math_374}} % Uncomment this to use pictures in this document
-%\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
+\counterwithin{equation}{section} % Uncomment to number eqns with sec nums too
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
@@ -104,6 +103,8 @@
 \section{Single Continuous Random Variables} \label{sec:Single Continuous Random Variables}
 
 \input{./Math_374-Sections/Multiple_Random_Variables}
+
+\input{./Math_374-Sections/Random_Vectors}
 
 %====================================APPENDIX====================================
 \appendix

@@ -121,3 +121,29 @@
 					\end{aligned}
 				\end{equation}
 			\end{definition}
+	\subsection{Independence of Multiple Random Variables} \label{subsec:Independence of Multiple Random Variables}
+		\begin{definition}[Independent Random Variables] \label{def:Independence of Multiple Random Variables}
+			\emph{$X$ and $Y$ are independent random variables} if \emph{\textbf{ANY}} event $A_{1}$ defined in terms of $S$ is independent of \emph{\textbf{ANY}} event $A_{2}$ defined in terms of $Y$.
+			\begin{equation} \label{eq:Independence of Multiple Random Variables}
+				P \left[ X \in A_{1}, Y \in A_{2} \right] = P \left[ X \in A_{1} \right] * P \left[ Y \in A_{2} \right]
+			\end{equation}
+		\end{definition}
+	There are 3 ways to phrase this:
+	\begin{enumerate}[noitemsep, nolistsep]
+		\item For discrete random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
+			\begin{equation} \label{eq:Independence of Multiple Discrete Random Variables Using PMF}
+				p_{X,Y} \left( x,y \right) = p_{X} \left( x \right) * p_{Y} \left( y \right)
+			\end{equation}
+		\item For discrete random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
+			\begin{equation} \label{eq:Independence of Multiple General Random Variables Using CDF}
+				F_{X,Y} \left( x,y \right) = F_{X} \left( x \right) * F_{Y} \left( y \right)
+			\end{equation}
+		\item For discrete random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
+			\begin{equation} \label{eq:Independence of Multiple Continuous Random Variables Using PDF}
+				f_{X,Y} \left( x,y \right) = f_{X} \left( x \right) * f_{Y} \left( y \right)
+			\end{equation}
+	\end{enumerate}
+	You can prove \nameref{eq:Independence of Multiple Discrete Random Variables Using PMF}, Equation~\eqref{eq:Independence of Multiple Discrete Random Variables Using PMF}.
+	\begin{proof}[Independence of Discrete Random Variables with PMF] \label{proof:Independence of Discrete Random Variables with PMF}
+		
+	\end{proof}
