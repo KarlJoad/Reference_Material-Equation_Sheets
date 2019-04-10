@@ -1,0 +1,100 @@
+\section{Thermodynamics} \label{sec:Thermo}
+	\begin{definition}[Thermodynamics] \label{def:Thermo}
+		\emph{Thermodynamics} is the study of energy transfer between two macroscopic bodies driven by temperature differences.
+	\end{definition}
+	\begin{definition}[Temperature] \label{def:Temperature}
+		\emph{Temperature} is a direct measurement of internal energy of a system
+	\end{definition}
+
+	\subsection*{Laws of Thermodynamics} \label{subsec:Thermo Laws}
+		\begin{definition}[0th Law of Thermodynamics] \label{def:0th Law of Thermo}
+			If 2 bodies, A and B are in thermal equilibrium with a third body ``T'', then they are in thermal equilibrium with each other.
+		\end{definition}
+		\begin{definition}[1st Law of Thermodynamics] \label{def:1st Law of Thermo}
+			\begin{equation} \label{eq:1st Law of Thermo}
+				\begin{aligned}
+					dE_{Internal} &= dQ - dT \text{, } dQ \text{ and } dT \text{ are inexact	(path-dependent) differentials.} \\
+					\Delta E_{Internal} &= Q-T \\
+				\end{aligned}
+			\end{equation}
+			\begin{note} \label{note:1st Law of Thermo Special Cases}
+				\textbf{Special Cases for the 1st Law of Thermodynamics}:
+				\begin{enumerate}[noitemsep, nolistsep]
+					\item Adiabatic Processes - $dE_{Int} = -dW$
+					\begin{itemize}[noitemsep, nolistsep]
+						\item No heat exchange
+						\item Insulating
+						\item Something happens too quickly for system to keep up
+					\end{itemize}
+					\item Isothermal Processes - $dT = 0 \rightarrow dE_{Int} = 0 \rightarrow dQ = dW$
+					\item Isobaric Processes - $dW = pdV$, $p$(pressure) is constant
+					\item Constant Volume - $W = 0$
+					\item Cyclical Processes - $dE_{Int} = 0 \rightarrow dQ = dW$
+					\begin{itemize}[noitemsep, nolistsep]
+						\item You end a cycle with the same internal energy when the cycle started
+					\end{itemize}
+				\end{enumerate}
+			\end{note}
+		\end{definition}
+		\begin{definition}[2nd Law of Thermodynamics] \label{def:2nd Law of Thermo}
+			If a \emph{cyclical process occurs in a CLOSED system}, the entropy of the system increases for irreversible processes and remains constant for reversible processes. \textbf{IT NEVER DECREASES!!}
+			\begin{align} \label{eq:2nd Law of Thermo}
+				\Delta S &\geq 0 \\
+				\Delta S &= \int_{a}^{b} \frac{dQ \left( T \right)}{T} 
+			\end{align}
+			\begin{note}
+				\textbf{$\mathbf{\Delta S}$ is a state-function, meaning it is path-independent.}
+			\end{note}
+		\end{definition}
+	
+	\subsection*{Heat and Work} \label{subsec:Heat/Work}
+		\begin{itemize}[noitemsep, nolistsep]
+			\item $dW = \vec{F} \cdot \vec{ds}$
+			\item $\vec{F} = p \left( V, T \right) dV$
+			\item $W = \int p \left( V, T \right) dV$
+			\item $W = \frac{dQ}{dt}$
+			\item $W = \frac{\Delta Q}{\Delta t}$
+		\end{itemize}
+	\emph{\textbf{Work done by thermal energy is path independent.}}
+
+	\subsection*{Thermal Expansion} \label{subsec:Thermal Expansion}
+	Occurs because the ``springs'' between each of the atoms in a lattice have energy applied by Heat (Temperature Change).
+		\begin{itemize}
+			\item $\frac{\Delta L}{L_{0}} = \alpha \Delta T$ (One-Dimensional Expansion)
+			\item $\frac{dL}{L_{0}} = \alpha dT$ (One-Dimensional Expansion)
+			\begin{itemize}[noitemsep, nolistsep]
+				\item $\alpha$ is a material-specific constant
+			\end{itemize}
+		\end{itemize}
+	
+	\subsection*{Specific Heat/Heat Capacity} \label{subsec:Specific Heat/Heat Capacity}
+		\begin{itemize}
+			\item $C = \frac{dQ}{dT} \leftarrow$ Specific Heat
+			\item $c = \frac{dQ}{mdT} \leftarrow$ Mass Specific Heat
+		\end{itemize}
+	
+	\subsection*{Heat of Phase Transitions} \label{subec:Heat Phase Transitions}
+	This is a constant unique to the material and the phase transition it is going through.
+	\begin{itemize}[nolistsep]
+		\item $Q = Lm$
+		\item $Q = \int_{m_{i}}^{m_{f}} L_{f} dm$
+		\begin{itemize}[noitemsep, nolistsep]
+			\item $l_{Fusion} = $ Heat required to turn things from \textbf{SOLID TO LIQUID}
+			\item $l_{Vapor} = $ Heat required to turn things from \textbf{LIQUID TO GAS}
+		\end{itemize}
+	\end{itemize}
+
+	\subsection*{Conduction Heat Transfer} \label{subsec:Conduction Heat Transfer}
+	\begin{equation} \label{eq:Conduction Heat Transfer}
+		P_{Conduction} = \frac{\left( T_{H} - T_{C} \right)}{L} Ak
+	\end{equation}
+		\begin{itemize}[noitemsep, nolistsep]
+			\item $L$ = Length
+			\item $A$ = Cross-Sectional Area
+			\item $k$ = Material's Thermal Conductivity
+		\end{itemize}
+	For multiple materials between 2 thermal reservoirs:
+	\begin{itemize}[noitemsep, nolistsep]
+		\item $P_{1} = P_{2} = \ldots = P_{n}$
+		\item Heat will only flow as fast as the slowest thermal conductor
+	\end{itemize}
