@@ -147,3 +147,81 @@
 	\begin{proof}[Independence of Discrete Random Variables with PMF] \label{proof:Independence of Discrete Random Variables with PMF}
 		
 	\end{proof}
+	\begin{theorem}[Independence of Random Functions] \label{thm:Independence of Random Functions}
+		If random variables $X$, $Y$ are independent, then $g\left( X \right)$ and $h \left( Y \right)$ are also independent.
+	\end{theorem}
+
+	\subsection{Expected Value of Functions with 2 Random Variables} \label{subsec:Expected Value of Functions with 2 Random Variables}
+		\begin{definition}[Expectation of a Function with 2 Random Variables] \label{def:Expectation of a Function with 2 Random Variables}
+			Let $Z$ be a random variable described by the function $Z = g \left( X,Y \right)$.
+			\begin{equation} \label{eq:Expected Value of a Function with 2 Random Variables}
+				\mathbb{E} = 
+				\begin{cases}
+					\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g \left( x,y \right) \cdot f_{X,Y} \left( x,y \right) dx dy &
+						\text{if $X$ and $Y$ are jointly continuous} \\
+					\sum_{i \in S_{X}} \sum_{j \in S_{Y}} g \left( x_{i}, y_{j} \right) \cdot p_{X,Y} \left( x,y \right) &
+						\text{if $X$ and $Y$ are both discrete} \\
+				\end{cases}
+			\end{equation}
+			\begin{remark}[Expected Value of Sum of Random Variables] \label{rmk:Expected Value of Sum of Random Variables}
+				You \emph{\textbf{do not}} need to assume independence to say:
+				\begin{equation} \label{eq:Expected Value of Sum of Random Variables}
+					\mathbb{E} \left[ X_{1}+X_{2}+\ldots+X_{n} \right] = \mathbb{E} \left[ X_{1} \right] + \mathbb{E} \left[ X_{2} \right] + \ldots + \mathbb{E} \left[ X_{n} \right]
+				\end{equation}
+			\end{remark}
+			\begin{remark}[Expected Value of Product of Random Variables] \label{rmk:Expected Value of Product of Random Variables}
+				If $X$ and $Y$ are independent, then
+				\begin{equation} \label{eq:Expected Value of Product of Random Variables}
+					\mathbb{E} \left[ g \left( X \right) h \left( Y \right) \right] = \mathbb{E} \left[ g \left( X \right) \right] \cdot \mathbb{E} \left[ h \left( Y \right) \right]
+				\end{equation}
+			\end{remark}
+		\end{definition}
+
+	\subsection{Joint Moments, Correlation, and Covariance} \label{subsec:Joint Moments, Correlation, and Covariance}
+		\subsubsection{Joint Moments} \label{subsubsec:Joint Moments}
+			\begin{definition}[The j,kth Moment] \label{def:jkth Moment}
+				The \emph{j,kth moment of $X$ and $Y$} is:
+				\begin{equation} \label{eq:jkth Moment}
+					\mathbb{E} \left[ X^{j} Y^{k} \right] =
+					\begin{cases}
+						\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x^{j} y^{k} \cdot f_{X,Y} \left( x,y \right) dx dy &
+							\text{if $X$, $Y$ are jointly continuous} \\
+						\sum_{i \in S_{X}} \sum_{l \in S_{Y}} x_{i}^{j} y_{l}^{k} \cdot p_{X,Y} \left( x,y \right) & 
+							\text{if $X$, $Y$ are discrete} \\
+					\end{cases}
+				\end{equation}
+			\end{definition}
+		
+		\subsubsection{Correlation} \label{subsubsec:Correlation}
+			\begin{definition}[Correlation] \label{def:Correlation}
+				The \emph{Correlation of $X$ and $Y$} is defined as the $1,1$ moment, i.e. $\mathbb{E} \left[ X^{1} Y^{1} \right]$.
+				\begin{remark}
+					If $X$, $Y$ are such that $\mathbb{E} \left[ X^{1} Y^{1} \right] = 0$, then we say that $X$, $Y$ are \emph{orthogonal}.
+				\end{remark}
+			\end{definition}
+			\begin{definition}[Correlation Coefficient] \label{def:Correlation Coefficient}
+				The \emph{correlation coefficient of $X$, $Y$} is defined as
+				\begin{equation} \label{eq:Correlation Coefficient}
+					\rho_{X,Y} = \frac{\text{Cov} \left[ X,Y \right]}{\sigma_{X} \sigma_{Y}}
+				\end{equation}
+				\begin{remark}
+					$\rho_{X,Y}$ only ranges $-1 \leq \rho_{X,Y} \leq 1$
+				\end{remark}
+				\begin{remark}
+					If $\rho_{X,Y} = 0$, the $\text{Cov}\left[ X,Y \right] = 0$, which means that $X$ and $Y$ are \emph{uncorrelated}
+				\end{remark}
+				\begin{remark}
+					If $X$, $Y$ are independent, then they are uncorrelated; but if $X$ and $Y$ are uncorrelated, \emph{\textbf{they are not always independent}}.
+				\end{remark}
+			\end{definition} 
+		
+		\subsubsection{Covariance} \label{subsubsec:Covariance}
+			\begin{definition}[Covariance] \label{def:Covariance}
+				The \emph{covariance of $X$ and $Y$} is denoted:
+				\begin{equation} \label{eq:Covariance, Form 1}
+					\text{Cov} \left[ X,Y \right] = \mathbb{E} \left[ \left( X - \mathbb{E} \left[ X \right] \right) \left( Y - \mathbb{E} \left[ Y \right] \right)\right]
+				\end{equation}
+				\begin{equation} \label{eq:Covariance, Form 2}
+					\text{Cov} \left[ X,Y \right] = \mathbb{E} \left[ X,Y \right] - \mathbb{E} \left[ X \right] \mathbb{E} \left[ Y \right]
+				\end{equation}
+			\end{definition}
