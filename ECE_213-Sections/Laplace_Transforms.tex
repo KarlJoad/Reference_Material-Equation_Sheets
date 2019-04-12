@@ -13,7 +13,7 @@
 				Multiplication by $\sin \left( \omega_{0} t \right)$ & $x(t) \sin \left( \omega_{0} t \right)$ & $\frac{j}{2} \left[  X(s+j\omega_{0}) - X(s-j\omega_{0}) \right]$ \\ \hline
 				Multiplication by $\cos \left( \omega_{0} t \right)$ & $x(t) \cos \left( \omega_{0} t \right)$ & $\frac{j}{2} \left[  X(s+j\omega_{0}) + X(s-j\omega_{0}) \right]$ \\ \hline
 				Multiply by t in Time, Derivative in Frequency & $t^{n} x(t)$ & $(-1)^{n} \frac{d^{n}}{ds^{n}} X(s)$ \\ \hline
-				Mutliply by s in Frequency, Derivative in Time & $\frac{d^{n}}{dt^{n}} x(t)$ & $s^{n}X(s) - \sum_{0}^{n-1} s^{n-1-i} \frac{d^{i}}{dt^{i}} x(t) \vert_{t=0^{-}}$ \\ \hline
+				Mutliply by s in Frequency, Derivative in Time & $\frac{d^{n}}{dt^{n}} x(t)$ & $s^{n}X(s) - \sum_{i=0}^{n-1} s^{n-1-i} \frac{d^{i}}{dt^{i}} x(t) \vert_{t=0^{-}}$ \\ \hline
 				Integration & $\int_{0}^{t} x \left( \lambda \right) d\lambda$ & $\frac{1}{s} X(s)$ \\ \hline
 				Multiply in Frequency, Convolution in Time & $x(t) * v(t)$ & $X(s)V(s)$ \\ \hline
 				Initial Value Theorem & \multicolumn{2}{|c|}{$x \left( 0^{+} \right) = \lim\limits_{s \rightarrow \infty} sX(s)$} \\ \hline
