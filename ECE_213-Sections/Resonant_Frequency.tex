@@ -1,0 +1,22 @@
+\section*{Resonant Frequencies} \label{sec:Frequency Resonance}
+Remember, $\omega = 2 \pi f$.
+Also, $\Im \lbrace Z_{eq} \rbrace = 0$ and $\Im \lbrace Y_{eq} \rbrace = 0$.
+\begin{itemize}[nolistsep]
+	\item $\omega_{0} = \frac{1}{\sqrt{LC}}$ - Imaginary portion of Transfer function vanishes
+	\item Half-Power Frequencies - Frequencies where power dissipated is 1/2 of that dissipated at resonant frequency
+	\begin{itemize}[noitemsep]
+		\item $\omega_{1} = - \frac{R}{2L} + \sqrt{\left( \frac{R}{2L} \right)^{2} + \frac{1}{LC}}$
+		\item $\omega_{2} = \frac{R}{2L} + \sqrt{\left( \frac{R}{2L} \right)^{2} + \frac{1}{LC}}$
+		\item $\omega_{0} = \sqrt{\omega_{1}\omega_{2}}$
+	\end{itemize}
+	\item $B = \omega_{2} - \omega_{1} = \frac{R}{L}$ - Bandwidth is the frequency band between half-power frequencies
+	\begin{itemize}[noitemsep]
+		\item $B = \frac{R}{L}$ - Series Impedance Circuit
+		\item $B = \frac{1}{RC}$ - Parallel Impedance Circuit
+	\end{itemize}
+	\item $Q = \frac{\omega_{0}}{B}$ - Quality Factor: Sharpness of resonance peak
+	\begin{itemize}[noitemsep]
+		\item $Q =\frac{\omega_{0}L}{R} = \frac{1}{\omega_{0}RC}$ - Series Impedance Circuit
+		\item $Q = \omega_{0}RC = \frac{R}{\omega_{0}L}$ - Parallel Impedance Circuit
+	\end{itemize}
+\end{itemize}

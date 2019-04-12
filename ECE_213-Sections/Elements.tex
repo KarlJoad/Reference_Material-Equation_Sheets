@@ -1,0 +1,22 @@
+\section*{Elements} \label{sec:Circuit Elements}
+	\begin{table}[h!] % Element Equation Table
+		\centering
+		\renewcommand{\arraystretch}{1.4}
+		\begin{tabular}{|c|c|c|c|}
+		\hline
+		Relation & R & C & L \\
+		\hline
+		v-i & $V=IR$ & $v = \frac{1}{C} \int_{t_0}^t i(x)dx + v(t_0)$ & $v=L\frac{di}{dt}$  \\
+		i-v & $I=\frac{V}{R}$ & $i = C\frac{dv}{dt}$ & $i=\frac{1}{L}\int_{t_0}^t v(x)dx +i(t_0)$ \\
+		\hline
+		P or W & $P=I^2R=\frac{V^2}{R}$ & $P=\frac{1}{2}Cv_{c}^2$ & $W=\frac{1}{2}Li_{l}^2$ \\
+		\hline
+		Series & $R_{eq}=R_1+R_2+\ldots+R_n$ & $\frac{1}{C_{eq}}=\frac{1}{C_1}+\frac{1}{C_2}+\ldots+\frac{1}{C_n}$ & $L_{eq}=L_1+L_2+\ldots+L_n$ \\
+		Parallel & $\frac{1}{R_{eq}}=\frac{1}{R_1}+\frac{1}{R_2}+\ldots+\frac{1}{R_n}$ & $C_{eq}=C_1+C_2+\ldots+C_n$ & $\frac{1}{L_{eq}}=\frac{1}{L_1}+\frac{1}{L_2}+\ldots+\frac{1}{L_n}$ \\
+		\hline
+		@ Steady State & Same (Nothing Happens) & Open Circuit & Short Circuit \\
+		\hline
+		Phasors & $Z_R=R$ & $Z_C = \frac{1}{j \omega C}$ & $Z_L=j \omega L$ \\
+		\hline
+		\end{tabular}
+	\end{table}
