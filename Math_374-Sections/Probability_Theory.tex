@@ -102,3 +102,27 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 					\end{itemize}
 			\end{itemize}
 		\end{definition}
+	If 2 events $A$ and $B$ are independent, then their complements are also independent. This is shown in \nameref{proof:Independence of Complements of Events}.
+		\begin{proof}[Independence of Complements of Events] \label{proof:Independence of Complements of Events}
+			We assumed that $A$ and $B$ were independent, so $P \left[ A \cap B \right] = P \left[ A \right] \cdot P \left[ B \right]$.
+			There are 2 more facts we will need:
+			\begin{enumerate}[leftmargin=1.0in, label=Fact \arabic*: , ref=Fact \arabic*, noitemsep, nolistsep]
+				% leftmargin sets a distance for left margin
+				% ref sets the way items will be cross-referenced, and can differ from the label.
+				\item $P \left[ B \right] + P \left[ B^{C} \right] = 1$ \label{proof:Independence of Complements of Events:Fact 1}
+				\item $P \left[ A \cap B^{C} \right] + P \left[ A \cap B \right] = P \left[ A \right]$ \label{proof:Independence of Complements of Events:Fact 2}
+			\end{enumerate}
+			From \ref{proof:Independence of Complements of Events:Fact 1}, we have:
+			\begin{equation*}
+				P \left[ A \cap B \right] = P \left[ A \right] \cdot \left( 1-P \left[ B^{C} \right] \right)
+			\end{equation*}
+			From \ref{proof:Independence of Complements of Events:Fact 2}, we have $P \left[ A \cap B \right] = P \left[ A \right] - P \left[ A \cap B^{C} \right]$.
+			Substituting these into the equation above:
+			\begin{align*}
+				P \left[ A \right] - P \left[ A \cap B^{C} \right] &= P \left[ A \right] \cdot \left( 1-P \left[ B^{C} \right] \right)\\
+				P \left[ A \right] - P \left[ A \cap B^{C} \right] &= P \left[ A \right] - P \left[ A \right] \cdot P \left[ B^{C} \right] \\
+				- P \left[ A \cap B^{C} \right] &= -P \left[ A \right] \cdot P \left[ B^{C} \right] \\
+				P \left[ A \cap B^{C} \right] &= P \left[ A \right] \cdot P \left[ B^{C} \right] \\
+			\end{align*}
+			$\therefore$ $A$ and $B^{C}$ are independent, according to the definition of \nameref{def:Event Independence}~events in Equation~\eqref{eq:Event Independence}.
+		\end{proof}
