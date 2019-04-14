@@ -1,0 +1,51 @@
+\section{Probability Models} \label{sec:Probability Models}
+	\subsection{Relative Frequency} \label{subsec:Relative Frequency}
+		\begin{definition}[Relative Frequency] \label{def:Relative Frequency}
+			\emph{Relative frequency} is defined in Equation~\eqref{eq:Relative Frequency}:
+			\begin{equation} \label{eq:Relative Frequency}
+				f_k (n) = \frac{N_k (n)}{n}
+			\end{equation}
+			\begin{itemize}[noitemsep, nolistsep]
+				\item $k$ is the outcome
+				\item $N_k (n)$ is the number of times outcome $k$
+			\end{itemize}
+		\end{definition}
+	
+		\subsubsection{Properties of Relative Frequencies} \label {subsec:Properties Relative Frequency}
+		\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+			\item 
+				\begin{equation}
+					f_k (n) = \frac{N_k (n)}{n}
+				\end{equation}
+			\item
+				\begin{equation}
+					0 \leq N_k (n) \leq n
+				\end{equation}
+			\item
+				\begin{equation}
+					0 \leq f_k (n) \leq 1 = \frac{0}{n} \leq \frac{N_k (n)}{n} \leq \frac{n}{n}
+				\end{equation}
+			\item
+				\begin{equation}
+					\sum\limits_{k=1}^{k} f_k (n) = \sum\limits_{k=1}^{k} \frac{N_k (n)}{n} = \frac{\sum\limits_{k=1}^{k} N_k (n)}{n} = \frac{n}{n} = 1
+				\end{equation}
+			\item
+				\begin{equation}
+					\sum\limits_{k=1}^{k} f_k (n) = 1
+				\end{equation}
+			\item If events $A$ and $B$ are disjoint and event $C$ is "$A$ or $B$", then 
+				\begin{equation}
+					F_C = F_A (n) + F_B (n)
+				\end{equation}
+		\end{enumerate}
+	\subsection{Statistical Regularity} \label{subsec:Statistical Regularity}
+		\begin{definition} \label{def:Statistical Regularity}
+			The averages obtained in long sequences of trials that lead to approximately the same value have a property called \emph{statistical regularity}.
+			This is defined in Equation~\eqref{eq:Statistical Regularity}.
+			\begin{equation} \label{eq:Statistical Regularity}
+				\lim\limits_{n \rightarrow \infty} f_k (n) = p_k
+			\end{equation}
+			\begin{itemize}[noitemsep, nolistsep]
+				\item $p_k$ is the probability of event $k$ occurring
+			\end{itemize}
+		\end{definition}

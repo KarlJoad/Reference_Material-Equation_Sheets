@@ -30,79 +30,36 @@
 
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}[definition]
+\newtheorem*{remark*}{Remark}
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
 
 \newcounter{example}[section]
 
+\renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
+
+\DeclareMathOperator{\EventClass}{\mathcal{F}}
+\DeclareMathOperator{\RealNums}{\mathbb{R}}
+\DeclareMathOperator{\ExpectedValue}{\mathbb{E}}
+\DeclareMathOperator{\Variance}{\text{VAR}}
+\DeclareMathOperator{\StdDev}{\text{STD}}
+\DeclareMathOperator{\Given}{\vert}
+\DeclareMathOperator{\DrawnFrom}{\sim}
 
 \author{Karl Hallsby}
 \title{Reference Material}
 
 \begin{document}
-\section{Relative Frequency} \label{sec:Relative Frequency}
-\begin{itemize}[noitemsep, nolistsep]
-	\item $f_k (n) = \frac{N_k (n)}{n}$ $\leftarrow$ {\large \textbf{Relative Frequency}}
-	\begin{itemize}[noitemsep, nolistsep]
-		\item $k$ is the outcome
-		\item $N_k (n)$ is the number of times outcome $k$
-	\end{itemize}
-	\item $\lim\limits_{n \rightarrow \infty} f_k (n) = p_k$ $\leftarrow$ {\large \textbf{Statistical Regularity}}
-	\begin{itemize}[noitemsep, nolistsep]
-		\item $p_k$ is the probability of event $k$ occurring
-	\end{itemize}
-\end{itemize}
-
-	\subsection{Properties of Relative Frequencies} \label {subsec:Properties Relative Frequency}
-	\begin{enumerate}[noitemsep, nolistsep]
-		\item $f_k (n) = \frac{N_k (n)}{n}$
-		\item $0 \leq N_k (n) \leq n$
-		\item $0 \leq f_k (n) \leq 1 = \frac{0}{n} \leq \frac{N_k (n)}{n} \leq \frac{n}{n}$
-		\item $\sum_{k=1}^{k} f_k (n) = \sum_{k=1}^{k} \frac{N_k (n)}{n} = \frac{\sum_{k=1}^{k} N_k (n)}{n} = \frac{n}{n} = 1$
-		\item $\sum_{k=1}^{k} f_k (n) = 1$
-		\item If events A and B are disjoint and event C is "A or B", then $F_C = F_A (n) + F_B (n)$
-	\end{enumerate}
+\input{./Math_374-Sections/Probability_Models}
 
 \input{./Math_374-Sections/Set_Theory}
 
 \input{./Math_374-Sections/Probability_Theory}
 
-\section{Counting} \label{sec:Counting}
-	\subsection[Permutations]{Ordered Sampling with Replacement} \label{subsec:Ordered Sampling with Replacement} \label{subsec:Permutations}
-		\begin{definition}[Permutations] \label{def:Ordered Sampling with Replacement}
-			The number of distinct outcomes of an experiment, where the elements being samples are replaced between each sampling.
-			\begin{equation*}
-				\text{If } k = n \\
-			\end{equation*}
-			\begin{equation} \label{eq:Ordered Sampling with Replacement}
-				\frac{n}{First} * \frac{n-1}{Second} * \frac{n-2}{Third} * \ldots * \frac{n-k-1}{kth \text{ Item}} = n!
-			\end{equation}
-		\end{definition}
-	\subsection{Ordered Sampling without Replacement} \label{subsec:Ordered Sampling without Replacement}
-		\begin{definition} \label{def:Ordered Sampling without Replacement}
-			Choose $k$ elements in succession wihtout replacement from a population of $n$ distinct objects, where $k \leq n$
-			\begin{equation} \label{eq:Ordered Sampling without Replacement}
-				\frac{n}{First} * \frac{n-1}{Second} * \frac{n-2}{Third} * \ldots * \frac{n-k-1}{kth \text{ Item}}
-			\end{equation}
-		\end{definition}
-	\subsection{Unordered Sampling with Replacement} \label{subsec:Unordered Sampling with Replacement}
-		
-	\subsection{Unordered Sampling without Replacement} \label{subsec:Unordered Sampling without Replacement}		
-		\begin{definition} \label{def:Unordered Sampling with Replacement}
-			The number of ways to choose $k$ items out of $n$ items.
-			Said $n$ choose $k$:
-			\begin{equation} \label{eq:Unordered Sampling with Replacement}
-			\binom{n}{k} = \frac{n * (n-1) * (n-2) * \ldots * (n-k+1)}{k!} = \frac{n!}{k! \left( n-k \right)!}
-			\end{equation}
-		\end{definition}
-		\begin{equation}
-			\binom{n}{k} = \binom{n}{n-k}
-		\end{equation}
-		
-\section{Single Discrete Random Variables} \label{sec:Single Discrete Random Variables}
-	\begin{definition}[Random Variable]
-		A \emph{random variable} $X$ is a function that assigns a real number $X \left( \zeta \right)$ to each outcome $\zeta$ in the sample space of the random experiment.
-	\end{definition}
-\section{Single Continuous Random Variables} \label{sec:Single Continuous Random Variables}
+\input{./Math_374-Sections/Counting}
+
+\input{./Math_374-Sections/Single_Discrete_Random_Variable}
+
+\input{./Math_374-Sections/Single_Continuous_Random_Variable}	
 
 \input{./Math_374-Sections/Multiple_Random_Variables}
 

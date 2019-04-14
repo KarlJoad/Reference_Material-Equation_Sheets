@@ -32,43 +32,45 @@
 				\end{aligned}
 			\end{equation}
 		\end{definition}
-		\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
-			\item $F_{X,Y} \left( x,y \right)$ is non decreasing.
-				\begin{equation} \label{eq:Joint CDF Property 1}
-					F_{X,Y} \left( x_{1},y_{1} \right) \leq F_{X,Y} \left( x_{2},y_{2} \right) \text{ if } x_{1} \leq x_{2} \text{ and } y_{1} \leq y_{2}
-				\end{equation}
-			\item \begin{equation} \label{eq:Joint CDF Property 2}
-					\begin{aligned}
-						\lim\limits_{y \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
-						\lim\limits_{x \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
-						\lim\limits_{\left( x,y \right) \rightarrow \left( \infty, \infty \right)} F_{X,Y} \left( x,y \right) &= 1 \\
-					\end{aligned}
-				\end{equation}
-			\item The Marginal CDFs can be obtained from the Joint CDF by removing restrictions for all but one variable.
-				\begin{equation} \label{eq:Joint CDF Property 3}
-					\begin{aligned}
-						F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
+		
+		\subsubsection{Properties of Joint Cumulative Distribution Functions} \label{subsubsec:Properties of Joint Cumulative Distribution Functions}
+			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+				\item $F_{X,Y} \left( x,y \right)$ is non decreasing.
+					\begin{equation} \label{eq:Joint CDF Property 1}
+						F_{X,Y} \left( x_{1},y_{1} \right) \leq F_{X,Y} \left( x_{2},y_{2} \right) \text{ if } x_{1} \leq x_{2} \text{ and } y_{1} \leq y_{2}
+					\end{equation}
+				\item \begin{equation} \label{eq:Joint CDF Property 2}
+						\begin{aligned}
+							\lim\limits_{y \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
+							\lim\limits_{x \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
+							\lim\limits_{\left( x,y \right) \rightarrow \left( \infty, \infty \right)} F_{X,Y} \left( x,y \right) &= 1 \\
+						\end{aligned}
+					\end{equation}
+				\item The Marginal CDFs can be obtained from the Joint CDF by removing restrictions for all but one variable.
+					\begin{equation} \label{eq:Joint CDF Property 3}
+						\begin{aligned}
+							F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
 													   &= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
 													   &= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
-						F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
-					\end{aligned}
-				\end{equation}
-			\item The Joint CDF is continuous from $\infty$ to $-\infty$.
-				\begin{equation} \label{eq:Joint CDF Property 4}
-					\begin{aligned}
-						\lim\limits_{x \rightarrow a^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( a,y \right) \\
-						\lim\limits_{y \rightarrow b^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( x,b \right) \\
-					\end{aligned}
-				\end{equation}
-			\item The probability of the ``rectangle'' $\lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace$
-				\begin{equation} \label{eq:Joint CDF Property 5}
-					\begin{aligned}
-						P \left[ \lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace \right] &= P \left[ \lbrace X \leq x_{2}, Y \leq y_{2} \rbrace \right] - P \left[ \lbrace X \leq x_{1}, Y \leq y_{2} \rbrace \right] - \\
-						&P \left[ \lbrace X \leq x_{2}, Y \leq y_{1} \rbrace \right] + P \left[ \lbrace X \leq x_{1}, Y \leq y_{1} \rbrace \right] \\
-						&= F_{X,Y} \left( x_{2}, y_{2} \right) - F_{X,Y} \left( x_{1}, y_{2} \right) - F_{X,Y} \left( x_{2}, y_{1} \right) + F_{X,Y} \left( x_{1}, y_{1} \right)
-					\end{aligned}
-				\end{equation}
-		\end{enumerate}
+							F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+						\end{aligned}
+					\end{equation}
+				\item The Joint CDF is continuous from $\infty$ to $-\infty$.
+					\begin{equation} \label{eq:Joint CDF Property 4}
+						\begin{aligned}
+							\lim\limits_{x \rightarrow a^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( a,y \right) \\
+							\lim\limits_{y \rightarrow b^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( x,b \right) \\
+						\end{aligned}
+					\end{equation}
+				\item The probability of the ``rectangle'' $\lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace$
+					\begin{equation} \label{eq:Joint CDF Property 5}
+						\begin{aligned}
+							P \left[ \lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace \right] &= P \left[ \lbrace X \leq x_{2}, Y \leq y_{2} \rbrace \right] - P \left[ \lbrace X \leq x_{1}, Y \leq y_{2} \rbrace \right] - \\
+							&P \left[ \lbrace X \leq x_{2}, Y \leq y_{1} \rbrace \right] + P \left[ \lbrace X \leq x_{1}, Y \leq y_{1} \rbrace \right] \\
+							&= F_{X,Y} \left( x_{2}, y_{2} \right) - F_{X,Y} \left( x_{1}, y_{2} \right) - F_{X,Y} \left( x_{2}, y_{1} \right) + F_{X,Y} \left( x_{1}, y_{1} \right)
+						\end{aligned}
+					\end{equation}
+			\end{enumerate}
 	
 		\subsubsection[Marginal CDF]{Marginal Cumulative Distribution Function} \label{subsubsec:Marginal CDF}
 			\begin{definition}[Marginal Cumulative Distribution Function] \label{def:Marginal CDF}
@@ -134,11 +136,11 @@
 			\begin{equation} \label{eq:Independence of Multiple Discrete Random Variables Using PMF}
 				p_{X,Y} \left( x,y \right) = p_{X} \left( x \right) * p_{Y} \left( y \right)
 			\end{equation}
-		\item For discrete random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
+		\item For general random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
 			\begin{equation} \label{eq:Independence of Multiple General Random Variables Using CDF}
 				F_{X,Y} \left( x,y \right) = F_{X} \left( x \right) * F_{Y} \left( y \right)
 			\end{equation}
-		\item For discrete random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
+		\item For (continuous) random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
 			\begin{equation} \label{eq:Independence of Multiple Continuous Random Variables Using PDF}
 				f_{X,Y} \left( x,y \right) = f_{X} \left( x \right) * f_{Y} \left( y \right)
 			\end{equation}
@@ -155,24 +157,24 @@
 		\begin{definition}[Expectation of a Function with 2 Random Variables] \label{def:Expectation of a Function with 2 Random Variables}
 			Let $Z$ be a random variable described by the function $Z = g \left( X,Y \right)$.
 			\begin{equation} \label{eq:Expected Value of a Function with 2 Random Variables}
-				\mathbb{E} = 
+				\ExpectedValue = 
 				\begin{cases}
 					\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g \left( x,y \right) \cdot f_{X,Y} \left( x,y \right) dx dy &
 						\text{if $X$ and $Y$ are jointly continuous} \\
-					\sum_{i \in S_{X}} \sum_{j \in S_{Y}} g \left( x_{i}, y_{j} \right) \cdot p_{X,Y} \left( x,y \right) &
+					\sum\limits_{i \in S_{X}} \sum\limits_{j \in S_{Y}} g \left( x_{i}, y_{j} \right) \cdot p_{X,Y} \left( x,y \right) &
 						\text{if $X$ and $Y$ are both discrete} \\
 				\end{cases}
 			\end{equation}
 			\begin{remark}[Expected Value of Sum of Random Variables] \label{rmk:Expected Value of Sum of Random Variables}
 				You \emph{\textbf{do not}} need to assume independence to say:
 				\begin{equation} \label{eq:Expected Value of Sum of Random Variables}
-					\mathbb{E} \left[ X_{1}+X_{2}+\ldots+X_{n} \right] = \mathbb{E} \left[ X_{1} \right] + \mathbb{E} \left[ X_{2} \right] + \ldots + \mathbb{E} \left[ X_{n} \right]
+					\ExpectedValue \left[ X_{1}+X_{2}+\ldots+X_{n} \right] = \ExpectedValue \left[ X_{1} \right] + \ExpectedValue \left[ X_{2} \right] + \ldots + \ExpectedValue \left[ X_{n} \right]
 				\end{equation}
 			\end{remark}
 			\begin{remark}[Expected Value of Product of Random Variables] \label{rmk:Expected Value of Product of Random Variables}
 				If $X$ and $Y$ are independent, then
 				\begin{equation} \label{eq:Expected Value of Product of Random Variables}
-					\mathbb{E} \left[ g \left( X \right) h \left( Y \right) \right] = \mathbb{E} \left[ g \left( X \right) \right] \cdot \mathbb{E} \left[ h \left( Y \right) \right]
+					\ExpectedValue \left[ g \left( X \right) h \left( Y \right) \right] = \ExpectedValue \left[ g \left( X \right) \right] \cdot \ExpectedValue \left[ h \left( Y \right) \right]
 				\end{equation}
 			\end{remark}
 		\end{definition}
@@ -182,27 +184,41 @@
 			\begin{definition}[The j,kth Moment] \label{def:jkth Moment}
 				The \emph{j,kth moment of $X$ and $Y$} is:
 				\begin{equation} \label{eq:jkth Moment}
-					\mathbb{E} \left[ X^{j} Y^{k} \right] =
+					\ExpectedValue \left[ X^{j} Y^{k} \right] =
 					\begin{cases}
 						\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x^{j} y^{k} \cdot f_{X,Y} \left( x,y \right) dx dy &
 							\text{if $X$, $Y$ are jointly continuous} \\
-						\sum_{i \in S_{X}} \sum_{l \in S_{Y}} x_{i}^{j} y_{l}^{k} \cdot p_{X,Y} \left( x,y \right) & 
+						\sum\limits_{i \in S_{X}} \sum\limits_{\ell \in S_{Y}} x_{i}^{j} y_{l}^{k} \cdot p_{X,Y} \left( x_{i},y_{\ell} \right) & 
 							\text{if $X$, $Y$ are discrete} \\
 					\end{cases}
+				\end{equation}
+			\end{definition} 
+		
+		\subsubsection{Covariance} \label{subsubsec:Covariance}
+			\begin{definition}[Covariance] \label{def:Covariance}
+				The \emph{covariance of $X$ and $Y$} is denoted:
+				\begin{equation} \label{eq:Covariance, Form 1}
+					\text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ \left( X - \ExpectedValue \left[ X \right] \right) \left( Y - \ExpectedValue \left[ Y \right] \right)\right]
+				\end{equation}
+				\begin{equation} \label{eq:Covariance, Form 2}
+					\text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ XY \right] - \ExpectedValue \left[ X \right] \ExpectedValue \left[ Y \right]
 				\end{equation}
 			\end{definition}
 		
 		\subsubsection{Correlation} \label{subsubsec:Correlation}
 			\begin{definition}[Correlation] \label{def:Correlation}
-				The \emph{Correlation of $X$ and $Y$} is defined as the $1,1$ moment, i.e. $\mathbb{E} \left[ X^{1} Y^{1} \right]$.
+				The \emph{Correlation of $X$ and $Y$} is defined as the $1,1$ moment, i.e. $\ExpectedValue \left[ X^{1} Y^{1} \right]$.
 				\begin{remark}
-					If $X$, $Y$ are such that $\mathbb{E} \left[ X^{1} Y^{1} \right] = 0$, then we say that $X$, $Y$ are \emph{orthogonal}.
+					If $X$, $Y$ are such that $\ExpectedValue \left[ X^{1} Y^{1} \right] = 0$, then we say that $X$, $Y$ are \emph{orthogonal}.
+				\end{remark}
+				\begin{remark}
+					If $X$, $Y$ are such that $\ExpectedValue \left[ XY \right] = \ExpectedValue \left[ X \right] \ExpectedValue \left[ Y \right]$, then $X$ and $Y$ are \emph{uncorrelated}.
 				\end{remark}
 			\end{definition}
 			\begin{definition}[Correlation Coefficient] \label{def:Correlation Coefficient}
 				The \emph{correlation coefficient of $X$, $Y$} is defined as
 				\begin{equation} \label{eq:Correlation Coefficient}
-					\rho_{X,Y} = \frac{\text{Cov} \left[ X,Y \right]}{\sigma_{X} \sigma_{Y}}
+				\rho_{X,Y} = \frac{\text{Cov} \left[ X,Y \right]}{\sigma_{X} \sigma_{Y}}
 				\end{equation}
 				\begin{remark}
 					$\rho_{X,Y}$ only ranges $-1 \leq \rho_{X,Y} \leq 1$
@@ -213,15 +229,4 @@
 				\begin{remark}
 					If $X$, $Y$ are independent, then they are uncorrelated; but if $X$ and $Y$ are uncorrelated, \emph{\textbf{they are not always independent}}.
 				\end{remark}
-			\end{definition} 
-		
-		\subsubsection{Covariance} \label{subsubsec:Covariance}
-			\begin{definition}[Covariance] \label{def:Covariance}
-				The \emph{covariance of $X$ and $Y$} is denoted:
-				\begin{equation} \label{eq:Covariance, Form 1}
-					\text{Cov} \left[ X,Y \right] = \mathbb{E} \left[ \left( X - \mathbb{E} \left[ X \right] \right) \left( Y - \mathbb{E} \left[ Y \right] \right)\right]
-				\end{equation}
-				\begin{equation} \label{eq:Covariance, Form 2}
-					\text{Cov} \left[ X,Y \right] = \mathbb{E} \left[ X,Y \right] - \mathbb{E} \left[ X \right] \mathbb{E} \left[ Y \right]
-				\end{equation}
 			\end{definition}

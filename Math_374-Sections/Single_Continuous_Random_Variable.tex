@@ -1,0 +1,283 @@
+\section{Single Continuous Random Variables} \label{sec:Single Continuous Random Variables}
+	\begin{definition}[Random Variable] \label{def:Random Variable, Full}
+		Consider a random experiment with sample space $S$ and event class $\EventClass$.
+		A \emph{random variable} $X$ is a function from the sample space $S$ to the real line $\RealNums$ with the property the set $A_{b} = \lbrace \zeta: X \vert \zeta \leq b \rbrace$ is in $\EventClass$ for every $b$ in $\RealNums$.
+	\end{definition}
+	\begin{definition}[Continuous Random Variable] \label{def:Continuous Random Variable}
+		A \emph{continuous random variable} is a random variable whose \nameref{subsec:Cumulative Distribution Function} is continuous everywhere.
+	\end{definition}
+
+	\subsection{Cumulative Distribution Function (CDF)} \label{subsec:Cumulative Distribution Function}
+		\begin{definition}[Cumulative Distribution Function] \label{def:Cumulative Distribution Function}
+			\emph{Cumulative Distribution Function (CDF)} of a random variable $X$ is defined as the probability of the event $\lbrace X \leq x \rbrace$.
+			\begin{equation} \label{eq:Cumulative Distribution Function}
+				F_{X} \left( x \right) = P \left[ X \leq x \right] \text{ for } -\infty < x < \infty
+			\end{equation}
+		\end{definition}
+	
+		\subsubsection{Properties of Cumulative Distribution Functions} \label{subsubsec:Properties of Cumulative Distribution Functions}
+			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+				\item 
+					\begin{equation}
+						x \leq F_{X} \left( x \right) \leq 1
+					\end{equation}
+				\item If you include the whole sample space, you should end up with $1$.
+					\begin{equation}
+						\lim\limits_{x \rightarrow \infty} F_{X} \left( x \right) = 1
+					\end{equation}
+				\item If you exclude the whole sample space, you should end up with $0$.
+					\begin{equation}
+						\lim\limits_{x \rightarrow -\infty} F_{X} \left( x \right) = 0
+					\end{equation}
+				\item $F_{X} \left( x \right)$ is non-decreasing.
+					\begin{equation}
+						F_{X} \left( a \right) \leq F_{X} \left( b \right) \text{ if } a \leq b
+					\end{equation}
+				\item The CDF is continuous from the right.
+					\begin{equation}
+				 		F_{b} = \lim\limits_{h \rightarrow 0} F_{X} \left( b+h \right) \text{ where } h>0
+					\end{equation}
+				\item
+					\begin{equation}
+						P \left[ a<X \leq b \right] = F_{X} \left( b \right) - F_{X} \left( a \right)
+					\end{equation}
+				\item The probability at a point in a CDF. (This usually ends up being $0$).
+					\begin{equation}
+						P \left[ X=b \right] = F_{X} \left( b \right) - F_{X} \left( b^{-} \right)
+					\end{equation}
+				\item The probability of the event \emph{\textbf{not}} occurring.
+					\begin{equation}
+						P \left[ X>x \right] = 1 - P \left[ X \leq x \right] =  1 - F_{X} \left( x \right)
+					\end{equation}
+			\end{enumerate}
+		
+		\subsubsection{Conditional Cumulative Distribution Function} \label{subsubsec:Conditional Cumulative Distribution Fuction}
+			\begin{definition} [Conditional Cumulative Distribution Function] \label{def:Conditional Cumulative Distribution Function}
+				The \emph{conditional cumulative distribution function (Conditional CDF)} of $X$ given $C$ is defined by:
+				\begin{equation} \label{eq:Conditional Cumulative Distribution Function}
+					F_{X \Given C} \left( x \Given C \right) = \frac{P \left[ \lbrace X = x \rbrace \Given C \right]}{P \left[ C \right]}
+				\end{equation}
+				\begin{remark}
+					The conditional CDF, $F_{X \Given C} \left( x \Given C \right)$ satisfies \emph{\textbf{all}} \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
+				\end{remark}
+			\end{definition}
+		
+	\subsection{Probability Density Function (PDF)} \label{subsec:Probability Density Function}
+		\begin{definition}[Probability Density Function] \label{def:Probability Density Function}
+			The \emph{probability density function (PDF)} of a random variable $X$, if it exists, is defined as the derivative of the CDF of $X$.
+			\begin{equation} \label{eq:Probability Density Function}
+				f_{X} \left( x \right) = \frac{d}{dx} f_{X} \left( x \right)
+			\end{equation}
+			\begin{remark} \label{rmk:Probability Density Function}
+				Both discrete and continuous random variables can have PDFs, however, the discrete random variable will have a discontinuous PDF.
+			\end{remark}
+			\begin{remark} \label{rmk:Probability Density Function Construction}
+				It is possible to construct a random variable that has a \nameref{subsec:Cumulative Distribution Function}, but an undefined \nameref{subsec:Probability Density Function}.
+			\end{remark}
+			\begin{remark}
+				This is an alternate, more useful way to specify the probability law described by the \nameref{subsec:Cumulative Distribution Function}.
+			\end{remark}
+		\end{definition}
+	
+		\subsubsection{Properties of Probability Density Functions} \label{subsubsec:Properties of Probability Density Functions}
+			These properties apply to PDFs of continuous random variables, and may not hold true for other types of random variables.
+			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+				\item The associated CDF is non-decreasing, a \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
+					\begin{equation}
+						f_{X} \left( x \right) \geq 0
+					\end{equation}
+				\item Since the definition of the PDF is that it's the derivative of the CDF, integrating the space over the PDF will yield the CDF.
+					\begin{equation}
+						P \left[ a \leq X \leq b \right] = \int_{a}^{b} f_{X} \left( x \right) dx = F_{X} \left( b \right) - F_{X} \left( a \right)
+					\end{equation}
+				\item The value of a location in CDF is the integral of the PDF over the area.
+					\begin{equation}
+						F_{X} \left( x \right) = \int_{-\infty}^{x} f_{X} \left( t \right) dt
+					\end{equation}
+				\item Including the whole sample space should yield $1$.
+					\begin{equation}
+						\int_{-\infty}^{\infty} f_{X} \left( x \right) dx = 1
+					\end{equation}
+			\end{enumerate}
+			\begin{remark*}
+				Any non-negative, piecewise continuous function $g \left( x \right)$ with finite $\int_{-\infty}^{\infty} g \left( x \right) dx = C$ can be used to form a PDF.
+			\end{remark*}
+		
+		\subsubsection{Conditional Probability Density Function} \label{subsubsec:Conditional Probability Density Function}
+			\begin{definition}[Conditional Probability Density Function] \label{def:Conditional Probability Density Function}
+				The \emph{conditional probability density function (Conditional PDF)} of $X$ given $C$ is defined by:
+				\begin{equation} \label{eq:Conditional Probability Density Function}
+					f_{X \Given C} \left( x \Given C \right) = \frac{d}{dx} F_{X \Given C} \left( x \Given C \right)
+				\end{equation}
+				\begin{remark}
+					The conditional PDF, $f_{X \Given C} \left( x \Given C \right)$ satisfies \emph{\textbf{all}} \nameref{subsubsec:Properties of Probability Density Functions}.
+				\end{remark}
+			\end{definition}
+	
+	\subsection{Expected Value of Single Continuous Random Variable} \label{subsec:Expected Value of Single Continuous}
+		\begin{definition}[Expected Value/Mean of Random Variable] \label{def:Expected Value of Single Continuous}
+			The \emph{expected value of a random variable} $X$, denoted $\ExpectedValue \left[ X \right]$ is defined as:
+			\begin{equation} \label{eq:Expected Value of Single Continuous}
+				\ExpectedValue \left[ X \right] = \int_{-\infty}^{\infty} t f_{X} \left( t \right) dt
+			\end{equation}
+			\begin{remark}
+				This works with \emph{\textbf{all}} random variables, or general random variables.
+			\end{remark}
+			\begin{remark}
+				$\ExpectedValue \left[ X \right]$ is defined if the integral in Equation~\eqref{eq:Expected Value of Single Continuous} converges absolutely.
+				This means:
+				\begin{equation*}
+					\ExpectedValue \left[ X \right] = \int_{-\infty}^{\infty} t f_{X} \left( t \right) dt < \infty
+				\end{equation*}
+			\end{remark}
+		\end{definition}
+	
+		\subsubsection{Properties of Expected Value} \label{subsubsec:Properties of Continuous Expected Value}
+			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+				\item The expected value of a function of a random variable.
+					\begin{equation}
+						\ExpectedValue \left[ h \left( X \right) \right] = \int_{-\infty}^{\infty} h \left( t \right) \cdot f_{X} \left( t \right) dt
+					\end{equation}
+				\item Expectation of a constant, $c$, should be the constant itself.
+					\begin{equation}
+						\ExpectedValue \left[ c \right] = c
+					\end{equation}
+				\item Sum of a random variable, $X$, and a constant, $c$, is the same as the sum of the expectation of the random variable and the constant.
+					\begin{equation}
+						\ExpectedValue \left[ X+c \right] = \ExpectedValue \left[ X \right] + \ExpectedValue \left[ c \right]
+					\end{equation}
+				\item Linearity of Expectations for random variables
+					\begin{equation}
+						\ExpectedValue \left[ a_{0} + a_{1}X + a_{2}X^{2} + \ldots + a_{n}X^{n} \right] = a_{0} + a_{1}\ExpectedValue \left[ X \right] + a_{2}\ExpectedValue \left[ X^{2} \right] + \ldots + a_{n}\ExpectedValue \left[ X^{n} \right]
+					\end{equation}
+			\end{enumerate}
+		
+	\subsection{Variance of Single Continuous Random Variable} \label{subsec:Variance of Single Continuous}
+		\begin{definition}[Variance of Random Variable] \label{def:Variance of Single Continuous}
+			The \emph{variance} of the random variable $X$ is defined by:
+			\begin{equation} \label{eq:Variance of Single Continuous}
+				\sigma^{2} = \Variance \left[ X \right] = \ExpectedValue \left[ \left( X - \ExpectedValue \left[ X \right] \right)^{2} \right]
+			\end{equation}
+			\begin{remark}
+				This holds true for \emph{\textbf{all}} types of random variables; discrete, continuous, and mixed.
+			\end{remark}
+		\end{definition}
+		\begin{definition}[Standard Deviation] \label{def:Standard Deviation of Single Continuous}
+			The \emph{standard deviation} of a random variable $X$, denoted by:
+			\begin{equation} \label{eq:Standard Deviation of Single Continuous}
+				\sigma = \StdDev \left[ X \right] = \sqrt{\Variance \left[ X \right]}
+			\end{equation}
+			\begin{remark}
+				This holds true for \emph{\textbf{all}} types of random variables; discrete, continuous, and mixed.
+			\end{remark}
+		\end{definition}
+	
+	\subsection{Gaussian/Normal Random Variable} \label{subsec:Gaussian Random Variable}
+		\begin{definition}[Gaussian/Normal Random Variable] \label{def:Gaussian Random Variable}
+			The \emph{Gaussian or normal random variable} is the classic ``bell curve'' probability distribution.
+			It is usually described as $X \DrawnFrom N \left( \mu, \sigma^{2} \right)$.
+			$\mu$ is $\ExpectedValue \left[ X \right] $ and $\sigma^{2}$ is how narrow/sharp the bell is.
+			A Gaussian Random Variable has a PDF of:
+			\begin{equation} \label{eq:PDF of Gaussian Random Variable}
+				f_{X} \left( x \right) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{\left( x - \mu \right)^{2}}{2 \sigma^{2}}} \text{, } x \in \RealNums
+			\end{equation}
+		\end{definition}
+		\begin{definition}[Standard Normal Distribution] \label{def:Standard Normal Distribution}
+			The \emph{standard normal distribution} is just a specific \nameref{def:Gaussian Random Variable}.
+			The standard normal distribution is a \nameref{def:Gaussian Random Variable} with $\mu = 0, \sigma^{2} = 1$.
+			\begin{remark} \label{rmk:CDF of Standard Normal Distribution}
+				The CDF of the \nameref{def:Standard Normal Distribution} is denoted with $\Phi$.
+			\end{remark}
+		\end{definition}
+	
+	To find the probability of something for a Gaussian Random Variable, you would end up converting it to the \nameref{def:Standard Normal Distribution}.
+	If $X \DrawnFrom N \left( \mu, \sigma^{2} \right)$ and $Y \DrawnFrom N \left( 0,1 \right)$,
+		\begin{equation} \label{eq:Probability of Gaussian Random Variable}
+			\begin{aligned}
+				P \left[ a \leq x \leq b \right] &= \frac{1}{\sqrt{2 \pi} \sigma} \int_{-\infty}^{\infty} e^{\frac{-1}{2} \left( \frac{x-\mu}{\sigma} \right)^{2}} dx \\
+				&= \frac{1}{\sqrt{2 \pi}} \int_{\frac{a-\mu}{\sigma}}^{\frac{b-\mu}{\sigma}} e^{\frac{-1}{2}y}dy \\
+				&= P \left[ \frac{a-\mu}{\sigma} \leq Y \leq \frac{b-\mu}{\sigma} \right] \\
+				&= F_{Y} \left( \frac{b-\mu}{\sigma} \right) - F_{Y} \left( \frac{a-\mu}{\sigma} \right) \\
+				&= \Phi \left( \frac{b-\mu}{\sigma} \right) - \Phi \left( \frac{a-\mu}{\sigma} \right) \\
+			\end{aligned}
+		\end{equation}
+		
+		\subsubsection{Q-Function} \label{subsubsec:Q-Function}
+			\begin{definition}[Q-Function] \label{def:Q-Function}
+				The \emph{Q-Function} is primarily used in electrical engineering.
+				It is defined as:
+				\begin{equation} \label{eq:Q-Function}
+					\begin{aligned}
+						Q &= 1 - \Phi \left( x \right) \\
+						&= \frac{1}{\sqrt{2 \pi}} \int_{x}^{\infty} e^{\frac{-t^{2}}{2}} dt \\
+					\end{aligned}
+				\end{equation}
+				\begin{remark}
+					\begin{equation}
+						Q \left( Z \right) = 1-f_{Z} \left( z \right)
+					\end{equation}
+				\end{remark}
+			\end{definition}
+	
+	\subsection{Markov Inequality} \label{subsec:Markov Inequality}
+		\begin{definition}[Markov Inequality] \label{def:Markov Inequality}
+			Let $X$ be a non-negative random variable with $\ExpectedValue \left[ X \right] < \infty$.
+			The \emph{Markov Inequality} states that:
+			\begin{equation} \label{eq:Markov Inequality}
+				P \left[ X \geq a \right] \leq \frac{\ExpectedValue\left[ X \right]}{a}
+			\end{equation}
+		\end{definition}
+		\begin{proof}[Proving the Markov Inequality] \label{proof:Markov Inequality}
+			\begin{equation*}
+				\ExpectedValue \left[ X \right] = \int_{-\infty}^{\infty} x \cdot f_{X} \left( x \right) dx 
+			\end{equation*}
+			Because we defined $X \geq 0$, we change the lower bound to $0$.
+			\begin{equation*}
+				\ExpectedValue \left[ X \right] = \int_{0}^{\infty} x f_{X} \left( x \right) dx 
+			\end{equation*}
+			We then split the integral up around some point, $a$.
+			\begin{equation*}
+				\ExpectedValue \left[ X \right] = \int_{0}^{a} x f_{X} \left( x \right) dx + \int_{a}^{\infty} x f_{X} \left( x \right) dx
+			\end{equation*}
+			Since the first integral is integrating over a non-negative function, the integral is also non-negative.
+			\begin{equation*}
+				\int_{0}^{a} x f_{X} \left( x \right) dx + \int_{a}^{\infty} x f_{X} \left( x \right) dx \geq \int_{a}^{\infty} x f_{X} \left( x \right) dx
+			\end{equation*}
+			\begin{equation*}
+				\ExpectedValue \left[ X \right] \geq \int_{a}^{\infty} x f_{X} \left( x \right) dx
+			\end{equation*}
+			Because $x>a$, we can pull a term out of $f_{X} \left( x \right)$
+			\begin{equation*}
+				\ExpectedValue \left[ X \right] \geq \int_{a}^{\infty} a f_{X} \left(x \right) dx
+			\end{equation*}
+			Because $a$ is a constant, we pull it out of the integral,
+			\begin{equation*}
+				\ExpectedValue \left[ X \right] \geq a \int_{a}^{\infty} f_{X} \left( x \right) dx
+			\end{equation*}
+			Then, we end up with an integral that is the definition of the probability of a continuous random variable.
+			\begin{equation*}
+				\ExpectedValue \left[ X \right] \geq a P \left[ X \geq a \right]
+			\end{equation*}
+			\begin{equation*} \label{eq:Proved Markov Inequality}
+				\therefore
+				\ExpectedValue \left[ X \right] \geq a P \left[ X \geq a \right]
+			\end{equation*}
+		\end{proof}
+	
+	\subsection{Chebychev Inequality} \label{subsec:Chebychev Inequality}
+		\begin{definition}[Chebychev Inequality] \label{def:Chebychev Inequality}
+			Let $X$ be a non-negative random variable with $\ExpectedValue \left[ X \right] < \infty$.
+			The \emph{Chebychev Inequality} states that:
+			\begin{equation} \label{eq:Chebychev Inequality}
+				P \left[ \lvert X-\mu \rvert \geq a \right] \leq \frac{\sigma^{2}}{a^{2}}
+			\end{equation}
+			\begin{proof}[Proving the Chebychev Inequality] \label{proof:Chebychev Inequality}
+				\begin{equation*}
+					P \left[ \left( X-\mu \right)^{2} \geq a^{2} \right] \leq \frac{\ExpectedValue \left[ \left( X-\mu \right)^{2} \right]}{a^{2}}
+				\end{equation*}
+				Because $X-\mu = \sigma$, we replace it.
+				\begin{equation*}
+					P \left[ \left( X-\mu \right)^{2} \geq a^{2} \right] \leq \frac{\ExpectedValue \left[ \sigma^{2} \right]}{a^{2}}
+				\end{equation*}
+			\end{proof}
+		\end{definition}

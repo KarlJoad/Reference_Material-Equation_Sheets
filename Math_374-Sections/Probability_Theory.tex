@@ -1,9 +1,9 @@
 \section{Probability Theory} \label{sec:Probability Theory}
 There are 3 main components to \nameref{sec:Probability Theory}.
 \begin{enumerate}[noitemsep, nolistsep]
-	\item Set Theory
-	\item Axioms of Probability
-	\item Conditional Probability and Independence
+	\item \nameref{sec:Set Theory}
+	\item \nameref{subsec:Probability Law Corollary}
+	\item \nameref{subsec:Conditional Probability}~and~\nameref{subsec:Event Independence}
 \end{enumerate}
 
 	\subsection{Random Experiments} \label{subsec:Random Experiments}
@@ -20,14 +20,14 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 		An \emph{event} corresponds to a subset of the sample space. We say an event occurs if and only if (iff) the outcome of the experiment is in the subset representing the event.
 	\end{definition}
 	\begin{definition}[Event Classes] \label{def:Event Classes}
-		An \emph{event class} $\mathcal{F}$ is the collection of the all the events' sets. $\mathcal{F}$ should be closed under unions, intersections, and complements.
+		An \emph{event class} $\EventClass$ is the collection of the all the events' sets. $\EventClass$ should be closed under unions, intersections, and complements.
 		\begin{itemize}[noitemsep, nolistsep]
-			\item For $S$ finite, or countably infinite, then we can let $\mathcal{F}$ be all subsets of $S$.
-			\item For $S$ uncountably infinite, instead we can let $\mathcal{F}$ consist of the subsets that can be obtained as countable unions and intersections of some sets of $\mathcal{F}$.
+			\item For $S$ finite, or countably infinite, then we can let $\EventClass$ be all subsets of $S$.
+			\item For $S$ uncountably infinite, instead we can let $\EventClass$ consist of the subsets that can be obtained as countable unions and intersections of some sets of $\EventClass$.
 		\end{itemize}
 	\end{definition}
 	\begin{definition}[Probability Law] \label{def:Probability Law}
-		A \emph{probability law} for a random experiment $E$, with sample space $S$, and an event class $\mathcal{F}$ is a rule that assigns to each event $A \in \mathcal{F}$ a number $P \left[A \right]$, called the probability of $A$ that satisfies the axioms:
+		A \emph{probability law} for a random experiment $E$, with sample space $S$, and an event class $\EventClass$ is a rule that assigns to each event $A \in \EventClass$ a number $P \left[A \right]$, called the probability of $A$ that satisfies the axioms:
 		\begin{enumerate}[label=Axiom~\Roman*:, align=left, noitemsep, nolistsep] \label{subdef:Probability Law Axioms}
 			\item $0 \leq P\left[ A \right]$
 			\item $P \left[ S \right] = 1$
@@ -59,7 +59,7 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 			$P \left[ A \cup B \right] = P \left[ A \right] + P \left[ B \right] - P \left[ A \cap B \right]$
 		\end{corollary}
 		\begin{corollary} \label{cor:Inclusion-Exclusion Principle to n Sets}
-			$P \left[ A \cup B \right] = \sum_{j=1}^{n} P \left[ A_{j} \right] - \sum_{j<k} P \left[A_{j} \cap A_{k} \right] + \ldots + \left( -1 \right)^{n+1} P \left[ A_{1} \cap \ldots \cap A_{n} \right]$
+			$P \left[ A \cup B \right] = \sum\limits_{j=1}^{n} P \left[ A_{j} \right] - \sum_{j<k} P \left[A_{j} \cap A_{k} \right] + \ldots + \left( -1 \right)^{n+1} P \left[ A_{1} \cap \ldots \cap A_{n} \right]$
 		\end{corollary}
 		\begin{corollary} \label{cor:Subset Probability to Superset}
 			If $A \subset B$, then $P \left[ A \right] \leq P \left[ B \right]$

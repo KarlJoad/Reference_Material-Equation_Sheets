@@ -1,0 +1,155 @@
+\section{Single Discrete Random Variables} \label{sec:Single Discrete Random Variables}
+	\begin{definition}[Random Variable] \label{def:Random Variable, Simple}
+		A \emph{random variable} $X$ is a function that assigns a real number $X \left( \zeta \right)$ to each outcome $\zeta$ in the sample space of the random experiment.
+	\end{definition}
+	\begin{definition}[Discrete Random Variable] \label{def:Discrete Random Variable}
+		A \emph{discrete random variable} is a random variable that assumes values in a countable set. For example, the number of heads in 3 coin flips is a discrete random variable.
+	\end{definition}
+
+	\subsection{Probability Mass Function  (PMF)} \label{subsec:Probability Mass Function}
+		\begin{definition}[Probability Mass Function] \label{def:Probability Mass Function}
+			The \emph{probability mass function (PMF)} of a discrete random variable $X$ is defined as:
+			\begin{equation} \label{eq:Probability Mass Function}
+				p_{X} \left( x \right) = P \left[ X=x \right]
+			\end{equation}
+			Using the coin example from the definition of a~\nameref{def:Discrete Random Variable},
+			\begin{equation}
+				p_{X} \left( x \right) = 
+				\begin{cases}
+					\frac{1}{8} & x=0 \\
+					\frac{3}{8} & x=1 \\
+					\frac{3}{8} & x=2 \\
+					\frac{1}{8} & x=3 \\
+				\end{cases}
+			\end{equation}
+		\end{definition}
+		
+		\subsubsection{Properties of Probability Mass Functions} \label{subsubsec:Properties of Probability Mass Functions}
+			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+				\item
+					\begin{equation}
+						p_{X} \left( x \right) \geq 0 \text{, } \forall x \in \RealNums
+					\end{equation}
+				\item
+					\begin{equation}
+						\sum\limits_{x \in S_{X}} p_{X} \left( x \right) = 1
+					\end{equation}
+				\item
+					\begin{equation}
+						P \left[ x \in B \right] = \sum\limits_{x \in B} p_{X} \left( x \right) \text{, where } B \subset S_{X}
+					\end{equation}
+			\end{enumerate}
+		
+	\subsection{Expected Value/Mean of Single Discrete Random Variable} \label{subsec:Expected Value of Single Discrete}
+		\begin{definition}[Expected Value/Mean of Single Discrete Random Variable] \label{def:Expected Value of Single Discrete}
+			The \emph{expected value} or \emph{mean} of a single discrete random variable $X$ is defined by
+			\begin{equation} \label{eq:Expected Value of Single Discrete}
+				m_{X} = \ExpectedValue \left[ X \right] = \sum_{x \in S_{X}} x \cdot p_{X} \left( x \right)
+			\end{equation}
+			\begin{remark} \label{rmk:Expected Value of Single Discrete Countably Infinite}
+				If $X$ is countably infinite, you will have an infinite series that exists only if
+				\begin{equation} \label{eq:Expected Value of Single Discrete Countably Infinite}
+					\sum_{s \in S_{X}} \lvert x \rvert \cdot p_{X} \left( x \right)
+				\end{equation}
+				is absolutely convergent.
+			\end{remark}
+		\end{definition}
+	
+		\subsubsection{Properties of Expected Values} \label{subsubsec:Properties of Discrete Expected Value}
+			\begin{definition}[Linearity of Expectation] \label{def:Linearity of Expectation}
+				Let $Y = X_{1} + X_{2}$
+				\begin{equation}
+					\ExpectedValue \left[ X \right] = \ExpectedValue \left[ X_{1} \right] + \ExpectedValue \left[ X_{2} \right]
+				\end{equation}
+				This can be generalized to
+				\begin{equation} \label{eq:General Linearity of Expectation}
+					\ExpectedValue \left[ \sum_{i=1}^{k} x_{i} \right] = \sum_{i=1}^{k} \ExpectedValue \left[ X_{i} \right]
+				\end{equation}
+			\end{definition}
+			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+				\item
+					\begin{equation}
+						\ExpectedValue \left[ X_{1} + X_{2} \right] = \ExpectedValue \left[ X_{1} \right] + \ExpectedValue \left[ X_{2} \right]
+					\end{equation}
+				\item
+					\begin{equation}
+						\ExpectedValue \left[ g \left( X \right) \right] = \sum\limits_{s \in S_{X}} g \left( x \right) \cdot p_{X} \left[ X \right]
+					\end{equation}
+				\item
+					\begin{equation}
+						\ExpectedValue \left[ c g\left( X \right) \right] = c \ExpectedValue \left[ g\left( X \right) \right]
+					\end{equation}
+				\item
+					\begin{equation}
+						\ExpectedValue \left[ g_{1} \left( X \right) + g_{2} \left( X \right) + \ldots + g_{m} \left( X \right) \right] = \sum\limits_{i=1}^{m} \ExpectedValue \left[ g_{i} \left( X \right) \right]
+					\end{equation}
+			\end{enumerate}
+		
+		\subsubsection{Moments of Random Variable} \label{subsubsec:Moments of a Random Variable}
+			\begin{definition}[Moment]
+				The \emph{moment} of a random variable, $X$ is defined as the expectation of the random variable raised to the moment.
+				\begin{equation} \label{eq:Moments of a Random Variable}
+					\begin{aligned}
+						\ExpectedValue \left[ X^{1} \right] &= \text{First Moment} \\
+						\ExpectedValue \left[ X^{2} \right] &= \text{Second Moment} \\
+						&\vdots \\
+						\ExpectedValue \left[ X^{k} \right] &= \text{kth Moment} \\
+					\end{aligned}
+				\end{equation}
+			\end{definition}					
+	
+	\subsection{Variance of Single Discrete Random Variable} \label{subsec:Variance of Single Discrete}
+		\begin{definition}[Variance] \label{def:Variance of Single Discrete}
+			The \emph{variance} of a single discrete random variable $X$ is defined as:
+			\begin{equation} \label{eq:Variance of Single Discrete, Form 1}
+				\ExpectedValue \left[ \left( X - \ExpectedValue \left[ X \right] \right)^{2} \right]
+			\end{equation}
+			\begin{equation} \label{eq:Variance of Single Discrete, Form 2}
+				\Variance \left[ X \right] = \ExpectedValue \left[ X^{2} \right] - \left( \ExpectedValue \left[ X \right] \right)^{2}
+			\end{equation}
+			and is denoted as $\sigma_{X}^{2}$, or as the operator $\Variance \left[ X \right]$.
+			\begin{remark} \label{rmk:Constant in Variance}
+				If $X$ is a random variable, and $c$ is some constant coefficient, then:
+				\begin{equation}
+					\Variance \left[ cX \right] = c^{2} \Variance \left[ X \right]
+				\end{equation}
+			\end{remark}
+		\end{definition}
+		\begin{definition}[Standard Deviation] \label{def:Standard Deviation}
+			The standard deviation of a random variable $X$ is:
+			\begin{equation} \label{eq:Standard Deviation}
+				\sigma_{X} = \sqrt{\Variance \left[ X \right]}
+			\end{equation}
+		\end{definition}
+	
+	\subsection{Conditional Probability Mass Function} \label{subsec:Conditional Probability Mass Function}
+		\begin{definition}[Conditional Probability Mass of Function] \label{def:Conditional Probability Mass Function}
+			Let $X$ be a discrete random variable, with PMF $p_{X} \left( x \right)$ and let $C$ be the event with non-zero probability, i.e. $P \left[ C \right] > 0$.
+			The \emph{conditional probability mass function of $X$ given $C$ (Conditional PMF)} is defined as:
+			\begin{equation} \label{eq:Conditional Probability Mass Function}
+				p_{X \Given C} \left( x \Given C \right) = P \left[ X=x \Given C \right] \text{ for } x \in \RealNums
+			\end{equation}
+			\begin{remark} \label{rmk:Properties of Conditional Probability Mass Functions}
+				The conditional PMF, $p_{X \Given C} \left( x \Given C \right)$, satisfies \emph{\textbf{all}} properties of \nameref{subsubsec:Properties of Probability Density Functions}.
+			\end{remark}
+		\end{definition}
+	\subsection{Conditional Expected Value of Single Discrete Random Variable} \label{subsec:Conditional Expected Value of Single Discrete}
+		\begin{definition}[Conditional Expected Value of Discrete Random Variable] \label{def:Conditional Expected Value of Single Discrete}
+			The \emph{conditional expected value of the discrete random variable} $X$ given $B$ is defined as:
+			\begin{equation} \label{eq:Conditional Expected Value of Single Discrete}
+				m_{X \Given B} = \ExpectedValue \left[ X \Given B \right] = \sum\limits_{x \in S_{X}} s \cdot p_{X} \left( x \Given B \right)
+			\end{equation}
+		\end{definition}
+	
+	\subsection{Conditional Variance of Single Discrete Random Variable} \label{subsec:Conditional Variance of Single Discrete}
+		\begin{definition}[Conditional Variance of Discrete Random Variable] \label{def:Conditional Variance of Single Discrete}
+			The \emph{conditional variance of a discrete random variable} $X$ given event $B$ as defined as:
+			\begin{equation} \label{eq:Conditional Variance of Single Discrete}
+				\begin{aligned}
+					\sigma_{X \Given B}^{2} &= \Variance \left[ X \Given B \right] \\
+						&= \ExpectedValue \left[ \left( X - \ExpectedValue \left[ X \Given B \right] \right)^{2} \Given B \right] \\
+						&= \sum\limits_{x \in S_{X}} \left( x - m_{X \Given B} \right)^{2} \cdot p_{X} \left( x \Given B \right) \\
+					\Variance \left[ X \Given B \right] &= \ExpectedValue \left[ X^{2} \Given B \right] - \left( \ExpectedValue \left[ X \Given B \right] \right)^{2} \\
+				\end{aligned}
+			\end{equation}
+		\end{definition}
