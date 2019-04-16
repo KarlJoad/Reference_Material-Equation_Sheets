@@ -224,14 +224,128 @@
 					$\rho_{X,Y}$ only ranges $-1 \leq \rho_{X,Y} \leq 1$
 				\end{remark}
 				\begin{remark}
-					If $\rho_{X,Y} = 0$, the $\text{Cov}\left[ X,Y \right] = 0$, which means that $X$ and $Y$ are \emph{uncorrelated}
+					The closer $\rho_{X,Y}$ is to $+1$, the closer $X$ and $Y$ are to having a positive linear relationship (Positive slope). \newline
+					The closer $\rho_{X,Y}$ is to $-1$, the closer $X$ and $Y$ are to having a negative linear relationship (Negative slope). \newline
+					If $\rho_{X,Y} = 0$, the $\text{Cov}\left[ X,Y \right] = 0$, which means that $X$ and $Y$ are \emph{uncorrelated}.
 				\end{remark}
 				\begin{remark}
 					If $X$, $Y$ are independent, then they are uncorrelated; but if $X$ and $Y$ are uncorrelated, \emph{\textbf{they are not always independent}}.
 				\end{remark}
 			\end{definition}
 		
-		\subsection{Conditional Probability Functions} \label{subsec:Conditonal Probability Functions}
-			\subsubsection{Conditional PMF} \label{subsubsec:Conditional Probability Mass Function}
-			\subsubsection{Conditional CDF} \label{subsubsec:Conditional Cumulative Distribution Function}
-			\subsubsection{}
+		\subsection{Conditional Probability Functions} \label{subsec:Conditional Probability Functions}
+		There are 3 major cases for these:
+			\begin{enumerate}[noitemsep, nolistsep]
+				\item \nameref{subsubsec:2 Discrete Random Variables}
+				\item \nameref{subsubsec:1 Discrete 1 Continuous Random Variables}
+				\item \nameref{subsubsec:2 Continuous Random Variables}
+			\end{enumerate}
+					
+			\subsubsection{2 Discrete Random Variables} \label{subsubsec:2 Discrete Random Variables}
+				\begin{definition}[Conditional Probability Mass Function] \label{def:2 Discrete-Conditional PMF}
+					The \emph{conditional Probability Mass Function (Conditional PMF)} of $Y$ given that $X=x$ is:
+					\begin{equation} \label{eq:2 Discrete-Conditional PMF}
+						p_{Y} \left( y \Given x \right)
+							= \frac{P \left[ \lbrace Y=y \rbrace \cap \lbrace X=x \rbrace \right]}{P \left[ X=x \right]} 
+							= \frac{p_{X,Y} \left( x,y \right)}{p_{X} \left( x \right)}
+					\end{equation}
+					\begin{remark}
+						This also implies that
+						\begin{equation} \label{eq:2 Discrete-Joint PMF}
+							p_{X,Y} \left( x,y \right) = p_{Y} \left( y \Given x \right) \cdot p_{X} \left( x \right)
+						\end{equation}
+					\end{remark}
+					\begin{remark}
+						If $X$ and $Y$ are \emph{independent}, then:
+						\begin{equation} \label{eq:2 Discrete-Independent Conditional PMF}
+							p_{X} \left( y \Given x \right)
+							= \frac{p_{X,Y} \left( x,y \right)}{p_{X} \left( x \right)}
+							= \frac{p_{X} \left( x \right) p_{Y} \left( y \right)}{p_{X} \left( x \right)}
+							= p_{Y} \left( y \right)
+						\end{equation}
+					\end{remark}
+					\begin{remark}
+						The \nameref{def:2 Discrete-Conditional PMF} of 2 discrete random variables satisfies all \nameref{subsubsec:Properties of Probability Mass Functions}.
+					\end{remark}
+				\end{definition}
+
+			\subsubsection{1 Discrete and 1 Continuous Random Variable} \label{subsubsec:1 Discrete 1 Continuous Random Variables}
+			For this section, let $X$ be a discrete random variable and $Y$ a continuous random variable.
+				\begin{definition}[Conditional Cumulative Distribution Function] \label{def:1 Discrete 1 Continuous-Conditional CDF}
+					The \emph{conditional Cumulative Distribution Function (Conditional CDF)} of $Y$ given that $X=x$ is:
+					\begin{equation} \label{eq:1 Discrete 1 Continuous-Conditional CDF}
+						F_{Y} \left( y \Given x \right) = P \left[ Y \leq y \Given X=x \right]
+						= \frac{P \left[ \lbrace Y \leq y \rbrace \cap \lbrace X=x \rbrace \right]}{P \left[ X=x \right]}
+					\end{equation}
+					\begin{remark}
+						If $X$ and $Y$ are \emph{independent}, then:
+						\begin{equation} \label{eq:1 Discrete 1 Continuous-Independent Conditional CDF}
+							F_{Y} \left( y \Given x \right)
+							= \frac{F_{X,Y} \left( x,y \right)}{p_{X} \left( x \right)}
+							= \frac{F_{Y} \left( y \right) p_{X} \left( x \right)}{p_{X} \left( x \right)}
+							= F_{Y} \left( y \right)
+						\end{equation}
+						This also means that:
+						\begin{equation*}
+							P \left[ Y \leq y \Given X=x \right]
+							= P \left[ Y \leq y \right] \cdot P \left[ X=x \right]
+						\end{equation*}
+					\end{remark}
+					\begin{remark}
+						The similar relations for independent random variables with their conditional and marginal probability functions does not hold true with this.
+					\end{remark}
+					\begin{remark}
+						The \nameref{def:1 Discrete 1 Continuous-Conditional CDF} of 1 discrete random variable and 1 continuous random variable satisfies all \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
+					\end{remark}
+				\end{definition}
+				\begin{definition}[Conditional Probability Density Function] \label{def:1 Discrete 1 Continuous-Conditional PDF}
+					The \emph{conditional Probability Distribution Function (Conditional PDF)} of $Y$ given $X=x$ is
+					\begin{equation} \label{eq:1 Discrete 1 Continuous-Conditional PDF}
+						f_{Y} \left( y \Given x \right) = \frac{d}{dy} F_{Y} \left( y \Given x \right)
+					\end{equation}
+					This also means,
+					\begin{equation*}
+						P \left[ Y \leq y \Given X=x \right]
+						= \int_{y \in A} f_{Y} \left( y \Given x \right) dy
+					\end{equation*}
+					\begin{remark}
+						The \nameref{def:1 Discrete 1 Continuous-Conditional PDF} of 1 discrete random variable and 1 continuous random variable satisfies all \nameref{subsubsec:Properties of Probability Density Functions}.
+					\end{remark}
+				\end{definition}
+			
+			\subsubsection{2 Continuous Random Variables} \label{subsubsec:2 Continuous Random Variables}
+				\begin{definition}[Conditional Cumulative Distribution Function] \label{def:2 Continuous-Conditional CDF}
+					The \emph{conditional Cumulative Distribution Function (Conditional CDF)} of $Y$ given $X=x$ for $X$ and $Y$ continuous random variables is:
+					\begin{equation} \label{eq:2 Continuous-Conditional CDF}
+						F_{Y} \left(y \Given x \right)
+						= \lim\limits_{h\rightarrow 0} F_{Y} \left( y \Given x < X \leq \left( x+h \right) \right)
+						= \frac{\int_{-\infty}^{y} f_{X,Y} \left( x,v \right) dv}{f_{X} \left( x \right)}
+					\end{equation}
+					\begin{remark}
+						The \nameref{def:2 Continuous-Conditional CDF} of 2 continuous random variables satisfies all \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
+					\end{remark}
+					\begin{remark}
+						The similar relations for the conditional and marginal probability functions do not hold up for 2 continuous random variables too well.
+					\end{remark}
+				\end{definition}
+			
+				\begin{definition}[Conditional Probability Density Function] \label{def:2 Continuous-Conditional PDF}
+					The \emph{conditional Probability Density Function (Conditional PDF)} of $Y$ given $X=x$ for $X$ and $Y$ continuous random variables is:
+					\begin{equation} \label{eq:2 Continuous-Conditional PDF}
+						f_{Y} \left( y \Given x \right)
+						= \frac{d}{dy} F_{Y} \left( y \Given x \right)
+						= \frac{f_{X,Y} \left( x,y \right)}{f_{X} \left( x \right)}
+					\end{equation}
+					\begin{remark}
+						If $X$ and $Y$ are independent, then:
+						\begin{equation} \label{eq:2 Continuous-Independent Conditional PDF}
+							f_{X} \left( y \Given x \right)
+							= \frac{f_{X,Y} \left( x,y \right)}{f_{X} \left( x \right)}
+							= \frac{f_{X} \left( x \right) f_{Y} \left( y \right)}{f_{X} \left( x \right)}
+							= f_{Y} \left( y \right)
+						\end{equation}
+					\end{remark}
+					\begin{remark}
+						The \nameref{def:2 Continuous-Conditional PDF} of 2 continuous random variables satisfies all \nameref{subsubsec:Properties of Probability Density Functions}.
+					\end{remark}
+				\end{definition}
