@@ -349,3 +349,26 @@
 						The \nameref{def:2 Continuous-Conditional PDF} of 2 continuous random variables satisfies all \nameref{subsubsec:Properties of Probability Density Functions}.
 					\end{remark}
 				\end{definition}
+			
+	\subsection{Conditional Expectation of Multiple Random Variables} \label{subsec:Conditional Expectation of Multiple Variables}
+		\begin{definition}[Conditional Expectation] \label{def:Conditional Expectation of Multiple Variables}
+			The \emph{conditional expectation} of $Y$ given $X$ is:
+			\begin{equation} \label{eq:Conditional Expectation of Multiple Variables}
+				\ExpectedValue \left[ Y \Given X=x \right] = \int_{-\infty}^{\infty} y \cdot f_{Y} \left( y \Given x \right) dy
+			\end{equation}
+			\begin{remark}[Special Case]
+				There is a special case when \emph{\textbf{both}} $X$ and $Y$ are discrete random variables.
+				\begin{equation} \label{eq:Conditional Expectation of Multiple Discrete Variables}
+					\ExpectedValue \left[ Y \Given X=x \right] = \sum_{y \in S_{Y}} y \cdot p_{Y} \left( y \Given x \right)
+				\end{equation}
+			\end{remark}
+			\begin{remark}
+				$\ExpectedValue \left[ Y \Given X=x \right]$ is a function of $X$, so it can be written as $g \left( x \right) = \ExpectedValue \left[ Y \Given X=x \right]$.
+				Thus, we can also say
+				\begin{equation} \label{eq:Expected Value of Conditional Expected Value of Multiple Variables}
+					\ExpectedValue \left[ g \left( x \right) \right] = \ExpectedValue \left[ \ExpectedValue \left[ Y \Given X \right] \right] = \ExpectedValue \left[ Y \right]
+				\end{equation}
+			\end{remark}
+		\end{definition}
+		\begin{proof}[Prove Expectation of Conditional Expected Value] \label{proof:Expected Value of Conditional Expected Value of Multiple Variables}
+		\end{proof}
