@@ -1,0 +1,19 @@
+\begin{proof}[Solve for Eigenvalue] \label{proof:Solve for Eigenvalue}
+	Let $\Psi$ be a normalized function, i.e.
+	\begin{equation*}
+		\iiint \Psi \Psi^{*} dx dy dz =1
+	\end{equation*}
+	Then,
+	\begin{equation*}
+		\widehat{\mathbf{O}} \Psi = o \Psi
+	\end{equation*}
+	Multiply both sides by $\Psi^{*}$, the complex conjugate of $\Psi$.
+	\begin{equation*}
+		\Psi^{*} \widehat{\mathbf{O}} \Psi = \Psi^{*} o \Psi
+	\end{equation*}
+	Integrate both sides over the space $\Omega$.
+	\begin{equation*}
+		\int \Psi^{*} \widehat{\mathbf{O}} \Psi d\Omega = \int \Psi^{*} o \Psi d\Omega
+		= o \int Psi^{*} \Psi d\Omega = o \text{, since } int Psi^{*} \Psi d\Omega = 1
+	\end{equation*}
+\end{proof}

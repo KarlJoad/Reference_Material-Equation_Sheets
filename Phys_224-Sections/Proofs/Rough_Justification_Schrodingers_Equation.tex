@@ -1,0 +1,93 @@
+\begin{proof}[Rough Justification of \nameref{def:Schrodinger's Equation}] \label{proof:Schrodinger's Equation Justification}
+		If $\Psi$ is to be a wave function, it must satisfy the following differential equation:
+		\begin{equation*}
+			\frac{\partial^{2} \Psi}{\partial x^{2}} = \frac{1}{v^{2}} \frac{\partial^{2} \Psi}{\partial t^{2}}
+		\end{equation*}
+		Since we are looking for \nameref{eq:Schrodinger's Equation, Form 1}, in which all the dynamical observables are contained within $\Psi$, we will set $v=c$, the upper limit of information transfer.
+		We will first consider (without loss of generality) one dimension, the $x$-dimension.
+		Then,
+		\begin{equation*}
+			\frac{\partial^{2} \Psi}{\partial x^{2}} = \frac{1}{v^{2}} \frac{\partial^{2} \Psi}{\partial t^{2}}
+		\end{equation*}
+		As a test solution, we will propose
+		\begin{equation*}
+			\Psi = A e^{-i \left( kx-\omega t \right)}
+		\end{equation*}
+		With respect to $x$:
+		\begin{align*}
+			\frac{\partial \Psi}{\partial x} &= A \left( -ik \right) e^{-i \left( kx-\omega t \right)} \\
+			\frac{\partial^{2} \Psi}{\partial x^{2}} &= A \left( -ik \right)^{2} e^{-i \left( kx-\omega t \right)} = \left( -ik \right)^{2} \Psi = k^{2} \Psi \\
+		\end{align*}
+		Therefore, $\Psi$ is a satisfactory solution in $x$.
+		With respect to $t$:
+		\begin{align*}
+			\frac{\partial \Psi}{\partial t} &= A \left( i\omega \right) e^{-i \left( kx-\omega t \right)} \\
+			\frac{\partial^{2} \Psi}{\partial t^{2}} &= A \left( i\omega \right)^{2} e^{-i \left( kx-\omega t \right)} \\
+		\end{align*}
+		Therefore, $\Psi$ is a satisfactory solution in $t$.
+		Thus, $\Psi$ is a solution to $\frac{\partial^{2} \Psi}{\partial x^{2}} = \frac{1}{c^{2}} \frac{\partial^{2} \Psi}{\partial t^{2}}$.
+		(Also, $\frac{1}{c^{2}} = \frac{k^{2}}{\omega^{2}}$). \newline
+		In our solution, $\Psi = A e^{-i \left( kx-\omega t \right)} $, k has its usual meaning:
+		\begin{equation*} 
+			k = \frac{2 \pi}{\lambda}
+		\end{equation*}
+		\emph{Where the wavelength, $\lambda$, is to be the \nameref{def:de Broglie Wavelength}, i.e. the wavelength that is associated with a particle.}
+		In otherwords, a particle does not have a wavelength, but the equations describing the particle's action have a wavelength.
+		\begin{align*}
+			\frac{\partial \Psi}{\partial x} &= A \left( -ik \right) e^{-i \left( kx-\omega t \right)} \\
+			&= A \left( -ik \right) e^{-i \left( \frac{2\pi}{\lambda}x- 2\pi ft \right)} \\
+			&= A \left( -ik \right) e^{-i \frac{h}{h} \left( \frac{2\pi}{\lambda}x- 2\pi ft \right)} \\
+			&= A \left( -ik \right) e^{-i \frac{2\pi}{h} \left( \frac{h}{\lambda}x- hft \right)} \\
+		\end{align*}
+		\emph{According to the \nameref{def:de Broglie Wavelength}, $p = \frac{h}{\lambda}$; according to Einstein, $E = hf$}; substituting:
+		\begin{align*}
+			\frac{\partial \Psi}{\partial x} &= -i \left( \frac{2 \pi}{h} \right) \left( \frac{h}{\lambda} \right) A e^{-i \frac{2\pi}{h} \left( \frac{h}{\lambda}x- hft \right)} \\ 
+			\frac{\partial \Psi}{\partial x} &= -i \left( \frac{2 \pi}{h} \right) \left( p \right) A e^{-i \frac{2\pi}{h} \left( px- Et \right)} \\
+		\end{align*}
+		Define ($\hbar$ is pronounced ``h-bar''):
+		\begin{equation*}
+			\hbar = \frac{h}{2 \pi}
+		\end{equation*}
+		This leads us to:
+		\begin{align*}
+			\frac{\partial \Psi}{\partial x} &= \frac{i}{\hbar} \left( p \right) \Psi \\
+			\frac{-\hbar}{i} \frac{\partial \Psi}{\partial x} &= p \Psi \\
+		\end{align*}
+		Here, it is clear that $p$ does not equal the classical mechanical $p = mv$. Rather, $p$ is an \emph{operator} such that:
+		\begin{equation*}
+			\hat{p} = \frac{\hbar}{i} \frac{\partial}{\partial x}
+		\end{equation*}
+		It is possible to construct other operators that correspond to observable dynamical variables in a similar way. (Operators are expressed with a ``hat'' above the variable name). \newline
+		In classical mechanics, the kinetic energy of a particle can be written as:
+		\begin{equation*}
+			K = \frac{\vec{p} \cdot \vec{p}}{2m}
+		\end{equation*}
+		Since there exists a quantum mechanical operator that corresponds to any observable, we can write the kinetic energy operator for a one-dimensional system as:
+		\begin{equation*}
+			\widehat{K} = \frac{\hat{p} \cdot \hat{p}}{2m}
+			= \frac{\frac{-\hbar}{i} \frac{\partial}{\partial x} \cdot \frac{-\hbar}{i} \frac{\partial}{\partial x}}{2m}
+			= \frac{\hbar^{2}}{2m} \frac{\partial^{2}}{\partial x^{2}}
+		\end{equation*}
+		\begin{center}
+			\textbf{\Large Extension to Three Dimensions}
+		\end{center}
+		Recall that the ``del-squared'' can be written as
+		\begin{equation*}
+			\nabla^{2} = \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}}
+		\end{equation*}
+		So, the kinetic energy part of the 3-dimensional Hamiltonian for a wave can be written as:
+		\begin{equation*}
+			\widehat{K} =  \frac{-\hbar}{2m} \left( \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}} \right)
+		\end{equation*}
+		Define $\Psi_{x,y,z} \left( x,y,z \right)$:
+		\begin{equation*}
+			\Psi_{x,y,z} \left( x,y,z \right) = \langle \Psi_{x} \left( x \right),\Psi_{y} \left( y \right),\Psi_{z} \left( z \right) \rangle
+		\end{equation*}
+		Therefore, 
+		\begin{align*}
+			\widehat{K}
+			&= -\frac{\hbar^{2}}{2m} \left( \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}}  + \frac{\partial^{2}}{\partial z^{2}} \right) \Psi_{x,y,z} \left( x,y,z \right) \\
+			&= -\frac{\hbar^{2}}{2m} \left( \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}}  + \frac{\partial^{2}}{\partial z^{2}} \right) \langle \Psi_{x} \left( x \right),\Psi_{y} \left( y \right),\Psi_{z} \left( z \right) \rangle \\
+			&= -\frac{\hbar^{2}}{2m} \left[ \left( \frac{\partial^{2} \Psi_{x} \left( x \right)}{\partial x^{2}} \right) + \left(\frac{\partial^{2} \Psi_{y} \left( y \right)}{\partial y^{2}}\right) + \left(\frac{\partial^{2} \Psi_{z} \left( z \right)}{\partial z^{2}}\right) \right] \\
+		\end{align*}
+	\end{proof}

@@ -30,6 +30,8 @@
 
 \DeclareMathOperator{\PLD}{\text{PLD}}
 
+\renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
+
 \author{Karl Hallsby}
 \title{Phys 224 Reference Sheet}
 
@@ -50,136 +52,12 @@
 	\end{itemize}
 
 \input{./Phys_224-Sections/Fluids}
+
 \input{./Phys_224-Sections/Waves}
+
 \input{./Phys_224-Sections/Thermodynamics}
 
-\section{Kinetic Theory of Ideal Gases} \label{sec:Kinetic Theory of Ideal Gases}
-	\begin{definition}[Ideal Gas] \label{def:Ideal Gas}
-		An \emph{ideal gas} is a gas that obeys the ideal gas law.
-		\begin{equation} \label{eq:Ideal Gas Law}
-			pV = nRT \text{, } R \approxeq 8.31 \si{\joule / \mole~\kelvin}
-		\end{equation}
-	\end{definition}
-	\begin{align} \label{eq:Total Internal Energy of Ideal Gas}
-		E_{Internal} &= K_{Translate} + K_{Rotate} \\
-		\Delta E_{Internal} &= \Delta K_{Translate} + \Delta K_{Rotate} 
-	\end{align}
-	\begin{equation} \label{eq:Vrms of Ideal Gas}
-		v_{rms} = \sqrt{\frac{3RT}{M}} \text{ M=molar mass of gas}
-	\end{equation}
-	
-	\subsection*{Mean Free Path} \label{subsec:Mean Free Path of Ideal Gas}
-		\begin{definition}[Mean Free Path]
-			The \emph{mean free path}, $\lambda$ is the average distance traversed by a molecule between collisions.
-			\begin{equation} \label{eq:Mean Free Path of Ideal Gas}
-				\lambda = \frac{1}{\sqrt{2} \pi d^{2} \frac{N}{V}}
-			\end{equation}
-			Where:
-			\begin{itemize}[noitemsep, nolistsep]
-				\item $d$ is the diameter of the atoms, or distance between centers during collision (\si{\meter})
-				\item $N$ is the number of molecules (\si{\mole})
-				\item $V$ is the volume of gas being handled (\si{\liter})
-				\item $\lambda$ is the wavelength, the same as in $v=f\lambda$
-			\end{itemize}
-			\begin{note}
-				If all the particles, except 1 are stationary, then you can use:
-				\begin{equation} \label{eq:Mean Free Path of Stationary Ideal Gas}
-					\lambda = \frac{1}{\pi d^{2} \frac{N}{V}}
-				\end{equation}
-			\end{note}
-		\end{definition}
-	
-	\subsection*{Work Done by Ideal Gases} \label{subsec:Work Done By Ideal Gas}
-		\subsubsection*{Isothermally} \label{subsubsec:Work Done Isothermally}
-			\begin{equation}
-				\begin{aligned}
-					W &= \int \vec{F} \vec{ds} \\
-					W &= \int_{V_{1}}^{V_{2}} p \left( V,T \right) dV \\
-					W &= \int_{V_{1}}^{V_{2}} \frac{nRT}{V} dV \\
-					W &= nRT \int_{V_{1}}^{V_{2}} \frac{1}{V} dV \\
-					W &= nRT \ln \left( \frac{V_{2}}{V_{1}} \right) \\
-				\end{aligned}
-			\end{equation}
-		\subsubsection*{Constant Pressure} \label{subsubsec:Work Done Under Constant Pressure}
-			\begin{equation}
-				W = p \left(V_{final}-V_{init} \right)
-			\end{equation}
-			
-	\subsection*{Translational Kinetic Energy} \label{subsec:Translational Kinetic Energy}
-		\begin{definition}[Degrees of Freedom] \label{def:Degrees of Freedom}
-			\emph{Degrees of freedom} represent the number of variables that are needed to describe a system. Represented with $d$, occasionally.
-			\begin{note}
-				In an ideal gas, these are a means to store energy.
-			\end{note}
-		\end{definition}
-		\begin{equation} \label{eq:Translational Kinetic Energy}
-			\begin{aligned}
-				K_{Translate} &= \frac{3}{2}nRT \\
-				\Delta K_{Translate} &= \frac{3}{2}nR \Delta T \\
-			\end{aligned}
-		\end{equation}
-		\begin{table}[h!]
-			\centering
-			\begin{tabular}{c|c|c|c}
-				 & Translational & Rotational & Total \\ \hline
-				Monatomic & 3 & 0 & 3 \\ \hline
-				Diatomic & 3 & 2 & 5 \\ \hline
-				Polyatomic & 3 & 3 & 6 \\
-			\end{tabular}
-			\caption{Degrees of Freedom Table for Gases}
-			\label{tab:Degrees of Freedom}
-		\end{table}
-		\begin{itemize}[noitemsep, nolistsep]
-			\item An ideal gas has \emph{\textbf{ONLY}} kinetic energy
-			\item Completely elastic collisions
-		\end{itemize}
-		
-		\begin{equation} \label{eq:Internal Energy of Ideal Gas}
-			E_{int} = \frac{DoF}{2} nRT \text{, where } DoF=\text{Degrees of Freedom}
-		\end{equation}
-		
-	\subsection*{Molar Specific Heats of Ideal Gases} \label{subsec:Molar Specific Heats of Ideal Gases}
-		\subsubsection*{Molar Specific Heat @ Constant Volume} \label{subsubsec:Molar Specific Heat at Constant Volume}
-			\begin{equation} \label{eq:Molar Specific Heat at Constant Volume}
-				\begin{aligned}
-					C_{V} &= \frac{\Delta E}{n \Delta T} \\
-					C_{V} &= \frac{dE}{dT} \\
-					C_{V} &= \left( \frac{DoF}{2} \right) R \\
-				\end{aligned}
-			\end{equation}
-			\begin{equation} \label{eq:Heat with Molar Specific Heat at Constant Volume}
-				Q = n C_{V} \Delta T
-			\end{equation}
-		\subsubsection*{Molar Specific Heat @ Constant Pressure} \label{Molar Specific Heat at Constant Pressure}
-			\begin{equation} \label{eq:Molar Specific Heat at Constant Pressure}
-				C_{P} = C_{V} + R
-			\end{equation}
-			\begin{equation} \label{eq:Heat with Molar Specific Heat at Constant Pressure}
-			Q = n C_{P} \Delta T
-			\end{equation}
-	
-	\subsection*{Adiabatic Processes in Ideal Gases} \label{subsec:Adiabatic Processes in Ideal Gases}
-		\begin{definition}[Adiabatic Process] \label{def:Adiabatic Processes in Ideal Gases}
-			An \emph{adiabatic process} is one in which no heat exchange occurs, namely:
-			\begin{equation} \label{eq:Adiabatic Processes in Ideal Gases}
-				\begin{aligned}
-					dE_{Internal} &= dQ - dW \\
-					dQ &= 0 \\
-					dE_{Internal} &= -dW \\
-				\end{aligned}
-			\end{equation}
-		\end{definition}
-		This leads to:
-		\begin{equation}
-			pV^{\gamma} = \text{Constant}, \gamma = \frac{C_{P}}{C_{V}}
-		\end{equation}
-		\begin{equation} \label{eq:Adiabatic Pressure Volume}
-			p_{1}V_{1}^{\gamma} = p_{2}V_{2}^{\gamma}
-		\end{equation}
-		\begin{equation} \label{eq:Adiabatic Temperature Volume}
-			T_{1}V_{1}^{\gamma -1} = T_{2}V_{2}^{\gamma -1} 
-		\end{equation}
-		You get Equation~\eqref{eq:Adiabatic Temperature Volume} by plugging $p = \frac{nRT}{V}$ into Equation~\eqref{eq:Adiabatic Pressure Volume}.
+\input{./Phys_224-Sections/Kinetic_Theory_Ideal_Gas}
 		
 \section{Entropy} \label{sec:Entropy}
 There is a heavy relationship between this and the \nameref{def:2nd Law of Thermo}.
@@ -243,106 +121,10 @@ There is a heavy relationship between this and the \nameref{def:2nd Law of Therm
 					\end{aligned}
 				\end{equation}
 			\end{definition}
-		
-\section{Light} \label{sec:Light}
-	\begin{definition}[Photon]
-		A \emph{photon} is an electric field (wave) propagating through another electric field.
-	\end{definition}
-The various $\theta$ used in Equations~\eqref{eq:Reflected Light},~\eqref{eq:Refracted Light} are measured from the surface normal.
 
-\emph{Chromatic Dispersion} is the breaking up of polychromatic light by spectra.
-Think of Pink Floyd's \textit{Dark Side of the Moon} album cover.
-This happens because shorter wavelength, higher frequency light has a slightly higher index of refraction.
-%	\begin{figure}[h!]
-%		\centering
-%		\includegraphics[scale=0.5]{Polychromatic_Light_Indices_Refraction.png}
-%		\caption{Indices of Refraction for Polychromatic Light}
-%		\label{fig:Indices of Refraction for Polychromatic Light}
-%	\end{figure}
+\input{./Phys_224-Sections/Light}
 
-	\subsection*{Reflection} \label{subsec:Reflection}
-		\begin{equation} \label{eq:Reflected Light}
-			\theta_{reflected} = \theta_{incident}
-		\end{equation}
-		
-	\subsection*{Refraction} \label{subsec:Refraction}
-		\begin{definition}[Snell's Law] \label{def:Snell's Law}
-			\begin{equation} \label{eq:Refracted Light} 
-				n_{refract} \sin \left( \theta_{refract} \right) = n_{incident} \sin \left( \theta_{incident} \right)
-			\end{equation}
-		\end{definition}
-		\begin{definition}[Index of Refraction] \label{def:Index of Refraction}
-			\begin{equation} \label{eq:Index of Refraction}
-				\begin{aligned}
-					n_{i} &= \frac{c}{v_{i}} \\
-					\lambda &= \frac{\lambda_{0}}{n} \\
-				\end{aligned}
-			\end{equation}
-		\end{definition}
-	
-	\subsection*{Total Internal Reflection} \label{subsec:Total Internal Reflection}
-		\begin{definition}[Total Internal Reflection] \label{def:Total Internal Reflection}
-			Total Internal Reflection occurs when the \emph{refracted light's angle is $\frac{\pi}{2}$}.
-			\begin{equation} \label{eq:Total Internal Reflection}
-				n_{refract} \sin \left( \theta_{refract} \right) = n_{incident} \sin \left( \theta_{incident} \right) \text{, where } \theta_{refract} = \frac{\pi}{2}
-			\end{equation}
-		\end{definition}
-		
-	\subsection*{Interference and Diffraction} \label{subsec:Interference and Diffraction}
-		\begin{definition}[Huygen's Principle] \label{def:Huygen's Principle}
-			Any point on a plane wavefront can be treated as a source of outgoing spherical waves.
-			\begin{note}
-				This is a mathematical construct/model.
-			\end{note}
-		\end{definition}
-		\begin{definition}[Phase Difference] \label{def:Phase Difference}
-			Waves from the same source, but measured in such a way that there is a Path Length Difference (PLD) between them will have a \emph{phase difference}.
-			\begin{equation} \label{eq:Phase Difference}
-				\varphi = \frac{2 \pi \PLD}{\lambda}
-			\end{equation}
-		\end{definition}
-	All \nameref{subsec:Interference and Diffraction} equations used from here on out are based on Equation~\eqref{eq:Phase Difference}.
-		\begin{definition}[Single Slit Diffraction] \label{def: Single Slit Diffraction}
-			When waves propagate through a single slit, there is a Probability Distribution Function that describes where intensity of light is greatest and smallest.
-			The location of the \emph{\textbf{minima}} are given in Equation~\eqref{eq:Minima of Single Slit Diffraction}
-			\begin{equation} \label{eq:Minima of Single Slit Diffraction}
-				m \lambda = a \sin \left( \theta_{m} \right)
-			\end{equation}
-			\begin{note}
-				$m$ is the number of minima from the central major distribution of intensity.
-				\begin{enumerate}[noitemsep, nolistsep]
-					\item First minima means $m=1$
-					\item Second minima means $m=2$
-					\item etc.
-				\end{enumerate}
-			\end{note}
-			Thus, the equation for the \nameref{eq:Phase Difference of Single Slit Diffraction} is given in Equation~\eqref{eq:Phase Difference of Single Slit Diffraction}.
-			\begin{equation} \label{eq:Phase Difference of Single Slit Diffraction}
-				\varphi_{\text{Single Slit}} = \frac{2 \pi}{\lambda} a \sin \left( \theta \right)
-			\end{equation}
-		\end{definition}
-		\begin{definition}[Double Slit Diffraction] \label{def:Single Slit Diffraction}
-			This is really interference.
-			The \emph{\textbf{maxima}} of the interference is given in Equation.
-			\begin{equation} \label{eq:Maxima of Double Slit Diffraction}
-				n \lambda = d \sin \left( \theta_{n} \right)
-			\end{equation}
-			\begin{note}
-				$n$ is the number of maxima from the central major distribution of intensity.
-				\begin{enumerate}[noitemsep, nolistsep]
-					\item First maxima means $n=1$
-					\item Second maxima means $n=2$
-					\item etc.
-				\end{enumerate}
-			\end{note}
-			Thus, the equation for the \nameref{eq:Phase Difference of Double Slit Refraction} is given in Equation~\eqref{eq:Phase Difference of Double Slit Refraction}.
-			\begin{equation} \label{eq:Phase Difference of Double Slit Refraction}
-				\varphi_{\text{Double Slit}} = \frac{2 \pi}{\lambda} d \sin \left( \theta \right)
-			\end{equation}
-		\end{definition}
-	
-
-\section{Quantum Mechanics} \label{sec:Quantum Mech}
+\input{./Phys_224-Sections/Quantum_Mechanics}
 
 %====================================APPENDIX====================================
 \appendix

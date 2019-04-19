@@ -1,0 +1,50 @@
+Finding $\Psi$, the wave function that satisfies the \nameref{eq:Schrodinger's Equation, Form 1} for the one-dimensional infinite square well potential (particle in a box) is presented in the physics textbooks.
+Now we wish to find values for dynamical observables.
+Starting with the energy $E$.
+
+Recall the \nameref{subsubsec:Properties of Schrodingers Equation}, Section~\ref{subsubsec:Properties of Schrodingers Equation}.
+The solution for the \nameref{eq:Schrodinger's Equation, Form 1} in a box of length $L$ is
+\begin{equation*}
+	\Psi_{n} = \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \text{, where $n$ is the quantum number of the wave function}
+\end{equation*}
+First, we operate on $\Psi_{n}$ with the kinetic energy operator $\widehat{K}$:
+\begin{equation*}
+	\widehat{K} \Psi_{n} = E \Psi_{n} = \varepsilon_{n} \Psi_{n}
+\end{equation*}
+$\varepsilon_{n}$ is the kinetic energy since $E$; the total energy is all kinetic with quantized values $varepsilon_{n}$. \newline
+Rewrite $\widehat{K} \Psi_{n}$.
+\begin{align*}
+	\widehat{K} \Psi_{n} &= -\frac{\hbar^{2}}{2m} \frac{d^{2} \Psi_{n}}{dx^{2}} = \varepsilon_{n} \Psi_{n} \\
+	&= -\frac{\hbar^{2}}{2m} \frac{d^{2}}{dx^{2}} \left[ \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \right] = \varepsilon_{n} \Psi_{n} \\
+\end{align*}
+Multiply both sides by $\Psi_{n}^{*}$, the complex conjugate of $\Psi_{n}$ (which in this case $\Psi_{n}^{*} = \Psi_{n}$ since $\Psi_{n}$ is real) \emph{\textbf{before the operator}} (since operators may not commute nor be distributive):
+\begin{align*}
+	\Psi_{n}^{*} \widehat{K} \Psi_{n} &= \Psi_{n}^{*} \left( -\frac{\hbar^{2}}{2m} \cdot \frac{d^{2} \Psi_{n}}{dx^{2}} \right) = \Psi_{n}^{*} \varepsilon_{n} \Psi_{n} \\
+	&= -\sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \cdot \left( -\frac{\hbar^{2}}{2m} \right) \frac{d^2}{dx^{2}} \left[ \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \right] \\
+	&= \varepsilon_{n} \sqrt{\frac{2}{L}} \left( \sin \left( \frac{n \pi x}{L} \right) \right) \frac{n^{2} \pi^{2}}{L^{2}} \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \\
+\end{align*}
+Now integrate over both sides:
+\begin{align*}
+	\int \Psi_{n} \left( -\frac{\hbar^{2}}{2m} \frac{d^{2} \Psi_{n}}{dx^{2}} \right) dx 
+	&= \int \Psi_{n}^{*} \varepsilon_{n} \Psi_{n} dx \\
+	&= \int \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \cdot \left( -\frac{\hbar^{2}}{2m} \frac{d^{2}}{dx^{2}} \left[ \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \right] \right) dx \\
+\end{align*}
+Take the second derivative of $\Psi_{n}$ with respect to $x$:
+\begin{equation*}
+	\frac{d^{2}}{dx^{2}} \left[ \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) = \frac{n^{2} \pi^{2}}{L^{2}} \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \right]
+\end{equation*}
+Substitute into the integral
+\begin{equation*}
+	\int \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \left( -\frac{\hbar^{2}}{2m} \right) \left( -\frac{n^{2} \pi^{2}}{L^{2}} \right) \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) dx
+	= \int \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \varepsilon_{n} \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) dx
+\end{equation*}
+Pull out the constants
+\begin{equation*}
+	\left( -\frac{\hbar^{2}}{2m} \right) \left( -\frac{n^{2} \pi^{2}}{L^{2}} \right) \int \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) dx
+	= \varepsilon_{n} \int \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) dx
+\end{equation*}
+Recall that 
+\begin{equation*}
+	\int \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) dx = 1
+\end{equation*}
+So, $\left( \frac{\hbar^{2}}{2m} \right) \left( \frac{n^{2} \pi^{2}}{L^{2}} \right) = \varepsilon_{n}$ is the kinetic energy of a particle with $n$ as its quantum number.
