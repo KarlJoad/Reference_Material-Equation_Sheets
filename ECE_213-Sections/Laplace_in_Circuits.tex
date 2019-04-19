@@ -1,0 +1,23 @@
+\section*{Laplace in Circuits}
+Steps to solve a circuit with Laplace Transforms:
+	\begin{enumerate}[noitemsep, nolistsep]
+		\item Find the initial conditions in the inductor and capacitor
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item $v_{C} \left( \text{init} \right)$
+			\item $i_{L} \left( \text{init} \right)$
+		\end{enumerate}
+		
+		\item Convert the circuit elements to the s-domain.
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item $Z_{R} = R$
+			\item $Z_{C} = \frac{1}{Cs}$
+			\item $Z_{L} = Ls$
+		\end{enumerate}
+		
+		\item Add an independent source next to the element that might have had an initial value.
+			\begin{enumerate}[noitemsep, nolistsep]
+				\item $C$ gets Voltage source in series: $\frac{v_{C} \left( \text{init} \right)}{s}$
+				\item $L$ gets Current source in parallel: $\frac{i_{L}  \left( \text{init} \right)}{s}$
+				\item \emph{\textbf{You CAN perform source transformation on these to get favorable circuits}}
+			\end{enumerate}
+	\end{enumerate}
