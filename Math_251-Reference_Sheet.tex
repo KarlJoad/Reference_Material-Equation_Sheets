@@ -1,0 +1,163 @@
+\documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
+\usepackage[margin=.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm} % Gives us plain, definition, and remark to use in \theoremstyle{style}
+\usepackage{graphicx}
+
+\usepackage{hyperref} % Generate hyperlinks to referenced items
+\usepackage{nameref} % Can make references by name to places
+\usepackage{ctable} % Greater control over tables and how they look
+\usepackage{subcaption} % Allows for multiple figures in one Figure environment
+\usepackage{textcomp} % Forcibly loads a package that gensymb relies on
+\usepackage{gensymb} % Gives access to some characters, for example, the degree symbol
+\usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
+\usepackage{chngcntr} % Allows us to tamper with the counter a little more
+\usepackage{empheq} % Allow boxing of equations in special math environments
+
+%\graphicspath{{./Drawings/Class_Name_and_Number}} % Uncomment this to use pictures in this document
+%\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Defn}
+\newtheorem{corollary}{Corollary}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[definition]
+\newtheorem*{remark*}{Remark}
+%\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
+
+\newcounter{example}[section]
+
+\renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
+
+\DeclareMathOperator{\RealNums}{\mathbb{R}}
+
+\author{Karl Hallsby}
+\title{Math 251 Differential Equations}
+
+\begin{document}
+\section{Introduction} \label{sec:Introduction}
+	\subsection{Definitions and Terminology} \label{subsec:Definitions and Terminology}
+		\begin{definition}[Differential Equation] \label{def:Differential Equation}
+			A \emph{differential equation (DE)} is an equation with 1 or more derivatives.
+			\begin{remark}
+				The highest differential determines the order of the differential equation.
+				This means that the differential equation below is of order 2.
+				\begin{align*} 
+					y'' + y &= 0 \\
+					\frac{d^{2}y}{dx^{2}} + y &= 0 \\
+				\end{align*} 
+			\end{remark}
+		\end{definition}
+		\begin{definition}[Initial Value Problem] \label{def:Initial Value Problem}
+			A differential equation with one or more initial conditions is called an \emph{initial value problem (IVP)}.
+			\begin{remark}
+				To solve an initial value problem, you must have the same number of initial conditions as the order of the differential equation.
+			\end{remark}
+			\begin{remark}[Existence of Unique Solution]
+				$R$ is a rectangular region on the xy-plane $a \leq x \leq b$, $c \leq y \leq d$ that contains $\left( x_{0}, y_{0} \right)$ interior.
+				If $f \left( x,y \right)$ and $\frac{df}{dy}$ are continuous on $R$, then an interval exists $I_{0}$ such that $\left( x_{0}-h, x_{0}+h \right)$ where $h>0$, on the interval $\left[ a,b \right]$, and a unique function $y \left( x \right)$, defined on $I_{0}$ that is a solution of the initial value problem.
+			\end{remark}
+		\end{definition}
+	
+	\subsection{Separable Differential Equation}
+		\begin{definition}[Separable]
+			A \emph{separable} differential equation allows you to move various elements around to solve the equation.
+			For example,
+			\begin{align*}
+				\frac{dP}{dt} &= kP \\
+				\frac{1}{P} dP &= k dt \\
+				\ln \left( P \right) &= kt + C \\
+				P &= Ce^{kt}
+			\end{align*}
+			\begin{remark}
+				These are used extensively in modelling phenomena with differential equations.
+				These include: \nameref{subsubsec:Population Growth}, \nameref{subsubsec:Radioactive Decay}, \nameref{subsubsec:Newton Law of Cooling/Heating}, and \nameref{subsubsec:Spread of Disease}.
+			\end{remark}
+		\end{definition}
+		
+	\subsection{Modeling with Differential Equations} \label{subsec:Modeling with DEs}
+		\subsubsection{Population Growth} \label{subsubsec:Population Growth}
+			\begin{definition}[Population Growth]
+				\emph{Population growth} can be modelled with a separable differential equation. Namely,
+				\begin{equation} \label{eq:Population Growth}
+					\frac{dP}{dt} = kP
+				\end{equation}
+				\begin{remark}[Population Growth Parameters] \label{rmk:Population Growth Parameters}
+					The parameters for the \nameref{eq:Population Growth}~equation are given below.
+					\begin{itemize}[noitemsep, nolistsep]
+						\item $k>0$
+						\item $P>0$
+					\end{itemize}
+				\end{remark}
+			\end{definition}
+		\subsubsection{Radioactive Decay} \label{subsubsec:Radioactive Decay}
+			\begin{definition}[Radioactive Decay] \label{def:Radioactive Decay}
+				\emph{Radioactive decay} is the process that some particularly heave atoms undergo.
+				\begin{definition}[Half-Life] \label{subdef:Half-Life}
+					The \emph{half-life} is the usual reported metric, and is defined as the amount of time required for an element to half its mass through \nameref{def:Radioactive Decay}.
+				\end{definition}
+				\begin{equation} \label{eq:Radioactive Decay}
+					\frac{1}{2} A_{0} = A_{0} e^{kt}
+				\end{equation}
+				\begin{remark}[Radioactive Decay Parameters] \label{rmk:Radioactive Decay Parameters}
+					The parameters for the \nameref{eq:Radioactive Decay}~equation are given below.
+					\begin{itemize}[noitemsep, nolistsep]
+						\item $k<0$
+						\item $A>0$
+					\end{itemize}
+				\end{remark}
+			\end{definition}
+		\subsubsection{Newton's Law of Cooling/Heating} \label{subsubsec:Newton Law of Cooling/Heating}
+			\begin{definition}[Newton's Law of Cooling/Heating] \label{def:Newton Law of Cooling/Heating}
+				\emph{Newton's Law of Cooling/Heating} is the same equation, but some of the parameters change.
+				This equation is defined as:
+				\begin{equation} \label{eq:Newton Law of Cooling/Heating}
+					\frac{dT}{dt} = k \left( T-T_{m} \right)
+				\end{equation}
+				\begin{remark} \label{rmk:Newton Law of Cooling/Heating Parameters}
+					The parameters for the \nameref{eq:Newton Law of Cooling/Heating}~equation are given below.
+					\begin{itemize}[noitemsep, nolistsep]
+						\item $\frac{dT}{dt}$; The rate of change of temperature in the object per unit time.
+						\item $k<0$; The cooling constant and is unique to every object.
+						\item $T$; The starting temperature.
+						\item $T_{m}$; The temperature of the surrounding medium.
+					\end{itemize}
+				\end{remark}
+			\end{definition}
+		\subsubsection{Spread of Disease} \label{subsubsec:Spread of Disease}
+			\begin{definition}[Spread of Disease] \label{def:Spread of Disease}
+				This is used to model the spread of something throughout a society or group of people.
+				\begin{equation} \label{eq:Spread of Disease}
+					\frac{dx}{dt} = kxy
+				\end{equation}
+				\begin{remark}
+					The parameters for the \nameref{eq:Spread of Disease}~equation are given below.
+					\begin{itemize}[noitemsep, nolistsep]
+						\item $\frac{dx}{dt}$; Change in the number of infected per unit time.
+						\item $k<0$; Transmission Constant
+						\item$x$; Number of Infected
+						\item $y$; Number of non-infected, $y$ is really a function of $x$
+						\begin{itemize}[noitemsep, nolistsep]
+							\item $y = n+1-x$
+						\end{itemize}
+					\end{itemize}
+				\end{remark}
+			\end{definition}
+
+%====================================APPENDIX====================================
+\clearpage
+\appendix
+\counterwithin{equation}{section}
+
+\section{Reference Material} \label{sec:Reference Material}
+\input{./Appendix-Reference_Material/Trig}
+\input{./Appendix-Reference_Material/Calculus}
+\end{document}
