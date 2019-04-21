@@ -34,8 +34,8 @@
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
 
 \newcounter{example}[section]
-\newenvironment{example} % Define an example environment
-	{\refstepcounter{example} \begin{center}\begin{tabular}{|p{0.9\textwidth}|} \hline Example~\theexample.  \\ }
+\newenvironment{example}[1] % Define an example environment
+	{\refstepcounter{example} \begin{center}\begin{tabular}{|p{0.9\textwidth}|} \hline \textbf{Example~\theexample.} \textit{#1}  \\ }
 	{\\ \hline \end{tabular} \end{center}}
 
 \renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
@@ -47,7 +47,7 @@
 
 \begin{document}
 \section{Introduction} \label{sec:Introduction}
-	\begin{example}
+	\begin{example}{Confirm Differential Solution}
 		Test example.
 	\end{example}
 	\subsection{Definitions and Terminology} \label{subsec:Definitions and Terminology}
@@ -62,7 +62,7 @@
 				\end{align*} 
 			\end{remark}
 		\end{definition}
-		\begin{definition}[Initial Value Problem] \label{def:Initial Value Problem}
+		\begin{definition}{Initial Value Problem} \label{def:Initial Value Problem}
 			A differential equation with one or more initial conditions is called an \emph{initial value problem (IVP)}.
 			\begin{remark}
 				To solve an initial value problem, you must have the same number of initial conditions as the order of the differential equation.
@@ -73,8 +73,21 @@
 			\end{remark}
 		\end{definition}
 	
-	\subsection{Separable Differential Equation}
-		\begin{definition}[Separable]
+	\subsection{Confirm If Differential Equation} \label{subsec:Confirm Differential Equation}
+	You can confirm if the solution $y \left( x \right)$ found for a differential equation $y \left( x \right)'$ is the solution by differentiating the solution and putting that in the solved differential equation and verfiying that the equation holds true.
+	This is shown in Example~\ref{ex:Confirm Differential Solution}
+	\begin{example}{} \label{ex:Confirm Differential Solution}
+		Given the differential equation, $2y' + y = 0$, is $y = e^{\frac{-x}{2}}$ a solution? \newline
+		\begin{align*}
+			y'% &= \frac{-1}{2} e^{\frac{-x}{2}} \\
+%			2 \left( \frac{-1}{2} e^{\frac{-x}{2}} \right) + \left( e^{\frac{-x}{2}} \right) &= 0 \\
+%			-e^{\frac{-x}{2}} + e^{\frac{-x}{2}} &= 0 \\
+%			0 &= 0 \text{ \checkmark}
+		\end{align*}
+	\end{example}
+		
+	\subsection{Separable Differential Equation} \label{subsec:Separable Differential Equation}
+		\begin{definition}[Separable] \label{def:Separable}
 			A \emph{separable} differential equation allows you to move various elements around to solve the equation.
 			For example,
 			\begin{align*}
@@ -157,6 +170,51 @@
 					\end{itemize}
 				\end{remark}
 			\end{definition}
+		
+		\subsubsection{Chemical Reactions} \label{subsubsec:Chem Reactions}
+		\subsubsection{Tank Mixture} \label{subsubsec:Tank Mixture}
+		\subsubsection{Torricelli's Law} \label{subsubsec:Torricelli's Law}
+		\subsubsection{LRC Circuits} \label{subsubsec:LRC Circuits}
+			\begin{definition}[LRC Circuits] \label{def:LRC Circuits}
+				An \emph{LRC Circuit} is analyzed in terms of the energy moving through the circuit.
+				There is a unique relationship for the energy in each element:
+				\begin{equation} \label{eq:Energy in Capacitor}
+					E \left( t \right) = \frac{q}{C}
+				\end{equation}
+				\begin{equation} \label{eq:Energy in Resistor}
+					E \left( t \right) = RI = R \frac{dq}{dt}
+				\end{equation}
+				\begin{equation} \label{eq:Energy in Inductor}
+					E \left( t \right) = L \frac{dI}{dt} = L \frac{d^{2}q}{dt^{2}}
+				\end{equation}
+				\begin{remark}
+					Depending on the circuit given, you might use a combination of these, but you \emph{\textbf{must}} have at least one capacitor or inductor, otherwise it is not a differential equation.
+				\end{remark}
+				\begin{remark}
+					These equations \emph{add} together when the entire circuit is in series, i.e. the elements are put together back-to-back.
+				\end{remark}
+			\end{definition}
+	
+	\subsection{Linear and Non-Linear Differential Equations} \label{Linear vs. Non-Linear Differential Equations}
+		\begin{definition}[Linear Differential Equation] \label{def:Linear Differential Equation}
+			A \emph{linear differential equation} is one that satisfies one of the following equations below.
+			\begin{equation} \label{eq:Linear Differential Equation}
+				\begin{aligned}
+					a_{1} \left( x \right) \frac{dy}{dx} + a_{0} \left( x \right) &= g \left( x \right) \\
+					a_{2} \left( x \right) \frac{d^{2}y}{dx^{2}} + a_{1} \left( x \right) \frac{dy}{dx} + a_{0} \left( x \right) &= g \left( x \right) \\
+				\end{aligned}
+			\end{equation}
+			\begin{remark}
+				The equations in Equation~\eqref{eq:Linear Differential Equation} can be generalized to the $n$th order as shown below.
+				\begin{equation} \label{eq:General Linear Differential Equation}
+					a_{n} \left( x \right) \frac{d^{n}y}{dx^{n}} + a_{n-1} \left( x \right) \frac{d^{n-1}y}{dx^{n-1}} + \ldots + a_{1} \left( x \right) \frac{dy}{dx} + a_{0} \left( x \right) = g \left( x \right)
+				\end{equation}
+			\end{remark}
+		\end{definition}
+		\begin{definition}[Non-Linear] \label{def:Non-Linear Differential Equation}
+			A \emph{non-linear} differential equation is one that does not satisfy the definition of a \nameref{def:Linear Differential Equation}.
+			It does not obey Equation~\eqref{eq:General Linear Differential Equation}.
+		\end{definition}
 
 %====================================APPENDIX====================================
 \clearpage
