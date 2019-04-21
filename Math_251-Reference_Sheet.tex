@@ -34,6 +34,9 @@
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
 
 \newcounter{example}[section]
+\newenvironment{example} % Define an example environment
+	{\refstepcounter{example} \begin{center}\begin{tabular}{|p{0.9\textwidth}|} \hline Example~\theexample.  \\ }
+	{\\ \hline \end{tabular} \end{center}}
 
 \renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
 
@@ -44,6 +47,9 @@
 
 \begin{document}
 \section{Introduction} \label{sec:Introduction}
+	\begin{example}
+		Test example.
+	\end{example}
 	\subsection{Definitions and Terminology} \label{subsec:Definitions and Terminology}
 		\begin{definition}[Differential Equation] \label{def:Differential Equation}
 			A \emph{differential equation (DE)} is an equation with 1 or more derivatives.
