@@ -1,0 +1,62 @@
+\section{Entropy} \label{sec:Entropy}
+There is a heavy relationship between this and the \nameref{def:2nd Law of Thermo}.
+	\begin{definition}[Entropy] \label{def:Entropy}
+		\emph{Entropy} is a measure of the number of available states/configurations.
+		The \emph{units for entropy} are \si{\joule / \kelvin}.
+		\begin{equation} \label{eq:Entropy}
+			S = k_{B} \ln \left( \Omega \right)
+		\end{equation}
+		\begin{note}
+			\textbf{Entropy is NOT disorder.}
+		\end{note}
+	\end{definition}
+	\begin{definition}[Change in Entropy] \label{def:Change in Entropy}
+		\emph{Change in entropy} is the change in the number of available states/configurations for energy in a system.
+		\begin{equation} \label{eq:Change in Entropy}
+			\begin{aligned}
+				\Delta S &= S_{f} - S_{i} \\
+						 &= \int_{a}^{b} \frac{dQ \left( T \right)}{T} \\
+						 &= nR \ln \left( \frac{V_{f}}{V_{i}} \right) \\
+						 &= mC \ln \left( \frac{T_{f}}{T_{i}} \right) \\
+			\end{aligned}
+		\end{equation}
+		\begin{note}
+			Because $\Delta S$ is based off of heat,
+			\begin{equation}
+				\Delta S_{Total} = \sum_{states} \Delta S
+			\end{equation}
+		\end{note}
+	\end{definition}
+
+	\subsection{Engines} \label{subsec:Engines}
+	Engines are inherently cyclical.
+		\begin{definition}[Efficiency] \label{def:Efficiency}
+			\emph{Efficiency} is a measure of how effect an engine is in turning the heat taken in and turning it into work out.
+			\begin{equation} \label{eq:Efficiency}
+				\begin{aligned}
+					\text{Efficiency} &= \frac{W_{Out}}{Q_{In}} \\
+					\text{Eff} &= \frac{Q_{In}-Q_{Out}}{Q_{In}} \\
+					\text{Eff} &= \frac{T_{Hot}-T_{Cold}}{T_{Hot}} \\
+				\end{aligned}
+			\end{equation}
+		\end{definition}
+	
+		\subsubsection{Stirling Engine} \label{subsubsec:Stirling Engine}
+		Based on the \nameref{eq:Ideal Gas Law}.
+		You can find \nameref{def:Efficiency} with Equation~\eqref{eq:Efficiency}.
+		
+		\subsubsection{Carnot Engine} \label{subsubsec:Carnot Engine}
+		Uses Isothermal expansion and adiabatic expansion of gases to achieve work.
+		The total work done is the area of the Carnot figure.
+		You can find \nameref{def:Efficiency} with Equation~\eqref{eq:Efficiency}.
+		
+			\begin{definition}[Coefficient of Performance] \label{def:Coefficient of Performance}
+				\emph{Coefficient of performance} is a measurement of the amount of energy a Carnot engine moves in comparison to its cold reservoir.
+				\begin{equation} \label{eq:Coefficient of Performance}
+					\begin{aligned}
+						K_{C} &= \frac{T_{L}}{T_{H} - T_{L}} \\
+						K_{C} &= \frac{\lvert Q_{L} \rvert}{\lvert Q_{H} \rvert - \lvert Q_{L} \rvert} \\
+						K &= \frac{\lvert Q_{L} \rvert}{\lvert W \rvert} \\
+					\end{aligned}
+				\end{equation}
+			\end{definition}
