@@ -233,7 +233,7 @@
 				\end{remark}
 			\end{definition}
 		
-		\subsection{Conditional Probability Functions} \label{subsec:Conditional Probability Functions}
+		\subsection{Conditional Probability Functions} \label{subsec:Multiple Variable Conditional Probability Functions}
 		There are 3 major cases for these:
 			\begin{enumerate}[noitemsep, nolistsep]
 				\item \nameref{subsubsec:2 Discrete Random Variables}
@@ -363,11 +363,33 @@
 				\end{equation}
 			\end{remark}
 			\begin{remark}
+				When calculating the \nameref{subsec:Conditional Expectation of Multiple Variables}, and they as for $\ExpectedValue \left[ Y \Given X=x \right]$, that means you \emph{\textbf{must}} consider all possible values that $X$ can take.
+				This can be generalized to the equation below.
+				\begin{equation} \label{eq:General Conditional Expectation of Multiple Variables}
+					\ExpectedValue \left[ Y \Given X=x \right] = \sum_{x \in S_{X}} \left( \sum_{y \in S_{Y}} y \cdot p_{Y} \left( y \Given x \right) \right)
+				\end{equation}
+				This can be described. You must take a single value for $x$, and take it over all $y$'s, then take the next value for $x$, until you have exhausted all values in both $S_{X}$ and $X_{Y}$. \newline
+				This can also be translated into the continuous case, but the discrete case is a little simpler to understand this generality.
+			\end{remark}
+			\begin{remark}
 				$\ExpectedValue \left[ Y \Given X=x \right]$ is a function of $X$, so it can be written as $g \left( x \right) = \ExpectedValue \left[ Y \Given X=x \right]$.
 				Thus, we can also say
 				\begin{equation} \label{eq:Expected Value of Conditional Expected Value of Multiple Variables}
 					\ExpectedValue \left[ g \left( x \right) \right] = \ExpectedValue \left[ \ExpectedValue \left[ Y \Given X \right] \right] = \ExpectedValue \left[ Y \right]
 				\end{equation}
+				\begin{subequations}
+					\begin{align} \label{eq:Joint PDF of Multiple Continuous Random Variables}
+						\ExpectedValue \left[ Y \right]
+						= \ExpectedValue \left[ \ExpectedValue \left[ Y \Given X \right] \right]
+						&= \int_{-\infty}^{\infty} \ExpectedValue \left[ Y \Given x \right] f_{X} \left( x \right) dx
+						= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} y f_{Y} \left( y \Given x \right) dy f_{X} \left( x \right) dx \\
+					 \label{eq:Joint PDF of Multiple Discrete Random Variables}
+						\ExpectedValue \left[ Y \right]
+						= \ExpectedValue \left[ \ExpectedValue \left[ Y \Given X \right] \right]
+						&= \sum_{x \in S_{X}} \ExpectedValue \left[ Y \Given x \right] p_{X} \left( x \right)
+						= \sum_{x_{j} \in S_{X}} \sum_{y_{i} \in S_{Y}} y_{i} p_{Y} \left( y_{i} \Given x_{k} \right) p_{X} \left( x_{j} \right)
+					\end{align}
+				\end{subequations}
 			\end{remark}
 		\end{definition}
 		\begin{proof}[Prove Expectation of Conditional Expected Value] \label{proof:Expected Value of Conditional Expected Value of Multiple Variables}
