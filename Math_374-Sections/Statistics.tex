@@ -1,4 +1,24 @@
 \section{Statistics} \label{sec:Statistics}
+In applying probability models to real situations, we perform experiments and collect data to answer questions such as:
+	\begin{enumerate}[noitemsep, nolistsep]
+		\item What are the values of the parameters of the distribution of a random variable of interest?
+			\begin{itemize}[noitemsep, nolistsep]
+				\item Mean or Expected value
+				\item Variance
+			\end{itemize}
+		
+		\item Is the data set consistent with some model?
+			\begin{itemize}[noitemsep, nolistsep]
+				\item Some assumed distribution, which must be true, otherwise the model is wrong.
+			\end{itemize}
+		
+		\item Is the data set consistent with some parameter value of the assumed value?
+	\end{enumerate}
+
+	\begin{definition}[Statistic] \label{def:Statistic}
+		A \emph{statistic} $W \left( X \right)$ is a function of the data from random variables $X_{1},X_{2},\ldots,X_{n}$.
+	\end{definition}
+
 	\subsection{Sums of Random Variables} \label{subsec:Sums of Random Variables}
 		\begin{definition}[Sum of Random Variables] \label{def:Sum of Random Variables}
 			The definition of a \emph{sum of random variables} is given in Equation~\eqref{eq:Sum of Random Variables} below.
@@ -30,3 +50,106 @@
 				\end{equation}
 			\end{remark}
 		\end{definition}
+		\begin{definition}[Independent and Identically Distributed] \label{def:Independent and Identically Distributed}
+			We say that $X_{1},X_{2},\ldots,X_{n}$ are \emph{Independent and Identically Distributed (iid)} random variables if $X_{i}$ are drawn independently from the same population/probability distribution.
+			\begin{subequations}
+				\begin{equation} \label{eq:Mean of Independent and Identically Distributed}
+					\sum_{i=1}^{n} \ExpectedValue \left[ X_{i} \right] = n \mu
+				\end{equation}
+				\begin{equation} \label{eq:Variance of Independent and Identically Distributed}
+					\Variance \left[ S_{n} \right] = n \sigma^{2}
+				\end{equation}
+			\end{subequations}
+			\begin{itemize}[noitemsep, nolistsep]
+				\item $\mu$ is the mean of a random variable $X_{i}$
+				\item $\sigma^{2}$ is the variance of a random variable $X_{i}$.
+			\end{itemize}
+		\end{definition}
+	
+	\subsection{Sample Mean} \label{subsec:Sample Mean}
+		\begin{definition}[Sample Mean] \label{def:Sample Mean}
+			The \emph{sample mean} of a sequence is denoted as,
+			\begin{equation} \label{eq:Sample Mean}
+				\bar{X} = M_{n} = \frac{\sum_{i=1}^{n} X_{i}}{n}
+			\end{equation}
+		\end{definition}
+		\begin{definition}[Expected Value of Sample Mean] \label{def:Expected Value of Sample Mean}
+			The \emph{expected value of the sample mean} is defined as:
+			\begin{equation} \label{eq:Expected Value of Sample Mean}
+				\ExpectedValue \left[ \bar{X} \right]
+				= \ExpectedValue \left[ M_{n} \right]
+				= \frac{\ExpectedValue \left[ S_{n} \right]}{n}
+				= \frac{n \mu}{n}
+				= \mu
+			\end{equation}
+			\begin{remark}
+				The sample mean $M_{n}$ is an \emph{\nameref{def:Unbiased Estimator}} of population mean $\mu$.
+			\end{remark}
+		\end{definition}
+		\begin{definition}[Variance of Sample Mean] \label{def:Variance of Sample Mean}
+			The \emph{variance of the sample mean} is denoted as:
+			\begin{equation} \label{eq:Variance of Sample Mean}
+				\Variance \left[ \bar{X} \right]
+				= \Variance \left[ M_{n} \right]
+				= \Variance \left[ \frac{S_{n}}{n} \right]
+				= \frac{1}{n^{2}} \Variance \left[ S_{n} \right]
+				= \frac{\sigma^{2}}{n}
+			\end{equation}
+			\begin{remark}
+				The larger $n$ gets, the smaller $\Variance \left[ M_{n} \right]$ gets, and the closer $M_{n}$ gets to $\mu$.
+			\end{remark}
+		\end{definition}
+		\begin{definition}[Unbiased Estimator] \label{def:Unbiased Estimator}
+			In general we say that a \nameref{def:Statistic} $W \left( X \right)$ (a function of data $X_{1},X_{2},\ldots,X_{n}$) is an \emph{unbiased estimator} of a parameter $\theta$ if $\ExpectedValue \left[ W \left( X \right) \right] = \theta$.
+			\begin{remark}[What makes a good estimator of any parameter, $\theta$?]
+				A \emph{good estimator} of any parameter, $\theta$, should:
+				\begin{itemize}[noitemsep, nolistsep]
+					\item Give the correct value of $\theta$
+					\item Not vary too much around $\theta$
+				\end{itemize}
+			\end{remark}
+		\end{definition}
+	
+	Also, we can use the \nameref{eq:Chebychev Inequality} to approximate many values. In this case, we change the Chebychev Inequality from Equation~\eqref{eq:Chebychev Inequality} to Equation~\eqref{eq:Statistics Chebychev Inequality} like so:
+		\begin{equation} \label{eq:Statistics Chebychev Inequality}
+			P \left[ \lvert M_{n} - \ExpectedValue \left[ M_{n} \right] \rvert \geq \varepsilon \right] \leq \frac{\Variance \left[ M_{n} \right]}{\varepsilon^{2}}
+		\end{equation}
+		
+	\subsection{Important Probability and Statistics Theorems} \label{subsec:Important Probability and Statistics Theorems}
+		There are 3 very import theorems that are used quite frequently in both \nameref{sec:Probability Theory} and \nameref{sec:Statistics}.
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item 
+			\item 
+			\item 
+		\end{enumerate}
+		\begin{theorem}[Weak Law of Large Numbers] \label{thm:Weak Law of Large Numbers}
+			Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu$, then for $\varepsilon > 0$,
+			\begin{equation} \label{eq:Weak Law of Large Numbers}
+				\lim\limits_{n \rightarrow \infty} P \left[ \lvert M_{n} - \mu \rvert < \varepsilon \right] = 1
+			\end{equation}
+			\begin{remark*}
+				In words this means, for large enough fixed values of $n$, $M_{n}$ is close to $\mu$ with high probability.
+			\end{remark*}
+		\end{theorem}
+		\begin{theorem}[Strong Law of Large Numbers] \label{thm:Strong Law of Large Numbers}
+			Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu$ and finite variance, then
+			\begin{equation} \label{eq:Strong Law of Large Numbers}
+				P \left[ \lim\limits_{n \rightarrow \infty} M_{n} = \mu \right] = 1
+			\end{equation}
+			\begin{remark*}
+				With probability 1, every sequence of sample mean calculations will eventually approach and stay close to the population mean.
+			\end{remark*}
+		\end{theorem}
+		\begin{theorem}[Central Limit Theorem] \label{thm:Central Limit Theorem}
+			Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu < \infty$ and finite variance $\sigma^{2}$ and let
+			\begin{equation*}
+				Z_{n} = \frac{S_{n} - n\mu}{\sigma \sqrt{n}} = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
+			\end{equation*}
+			then,
+			\begin{equation} \label{eq:Central Limit Theorem}
+				\lim\limits_{n \rightarrow \infty} P \left[ Z_{n} \leq z \right] = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{z} e^{-\frac{x^{2}}{2}} dx
+			\end{equation}
+			\begin{remark*}
+				This means that over time, as you gain more and more sample means, they will start to resemble the \nameref{def:Gaussian Random Variable}, or the Normal Random Variable.
+			\end{remark*}
+		\end{theorem}
