@@ -107,13 +107,13 @@ Random Vectors are usually denoted:
 		\begin{definition}[Correlation Matrix]
 			The \emph{correlation matrix} has the second moments of $\bar{X}$ as its entries:
 			\begin{equation} \label{eq:Correlation Matrix}
-				\bar{R}_{X}
+				\mathbf{\bar{R}_{X}}
 				= \begin{bmatrix}
 					\ExpectedValue \left[ X_{1}^{2} \right] & \ExpectedValue \left[ X_{1}X_{2} \right] & \cdots & \ExpectedValue \left[ X_{1}X_{n} \right] \\
 					\ExpectedValue \left[ X_{2}X_{1} \right] & \ExpectedValue \left[ X_{2}^{2} \right] & \cdots & \ExpectedValue \left[ X_{2}X_{n} \right] \\
 					\vdots & \vdots & \ddots & \vdots \\
 					\ExpectedValue \left[ X_{n}X_{1} \right] & \ExpectedValue \left[ X_{n}X_{2} \right] & \cdots & \ExpectedValue \left[ X_{n}^{2} \right] \\
-				\end{bmatrix}
+				\end{bmatrix} \\
 			\end{equation}
 			\begin{remark}
 				$\bar{R}_{X}$ is a $n \times n$ symmetric matrix.
@@ -122,13 +122,21 @@ Random Vectors are usually denoted:
 		\begin{definition}[Covariance Matrix] \label{def:Covariance Matrix}
 			The \emph{covariance matrix} has the second-order central moments as its entries:
 			\begin{equation} \label{eq:Covariance Matrix}
-				\bar{K}_{X}
-				= \begin{bmatrix}
+				\begin{aligned}
+				\mathbf{\bar{K}_{X}}
+				&= \begin{bmatrix}
 					\ExpectedValue \left[ \left( X_{1} - m_{1} \right)^{2} \right] & \ExpectedValue \left[ \left( X_{1}-m_{1} \right) \left( X_{2}-m_{2} \right) \right] & \cdots & \ExpectedValue \left[ \left( X_{1}-m_{1} \right) \left( X_{n}-m_{n} \right) \right] \\
 					\ExpectedValue \left[ \left( X_{2}-m_{2} \right) \left( X_{1}-m_{1} \right) \right] & \ExpectedValue \left[ \left( X_{2}-m_{2} \right)^{2} \right] & \cdots & \ExpectedValue \left[ \left( X_{2}-m_{2} \right) \left( X_{n}-m_{n} \right) \right] \\
 					\vdots & \vdots & \ddots & \vdots \\
 					\ExpectedValue \left[ \left( X_{n}-m_{n} \right) \left( X_{1}-m_{1} \right) \right] & \ExpectedValue \left[ \left( X_{n}-m_{n} \right) \left( X_{2}-m_{2} \right) \right] & \cdots & \ExpectedValue \left[ \left( X_{n}-m_{n} \right)^{2} \right] \\
+				\end{bmatrix} \\
+				&= \begin{bmatrix}
+				\Variance \left[ X_{1} \right] & \Covariance \left[X_{1},X_{2} \right] & \cdots & \Covariance \left[ X_{1},X_{n} \right] \\
+				\Covariance \left[ X_{2},X_{1} \right] & \Variance \left[ X_{2} \right]  & \cdots & \Covariance \left[ X_{2},X_{n} \right] \\
+				\cdots & \cdots & \ddots & \cdots \\
+				\Covariance \left[ X_{n},X_{1} \right] & \Covariance \left[ X_{2},X_{n} \right] & \cdots & \Variance \left[ X_{n} \right] \\
 				\end{bmatrix}
+				\end{aligned}
 			\end{equation}
 			\begin{remark}
 				$\bar{K}_{X}$ is a $n \times n$ symmetric matrix.
