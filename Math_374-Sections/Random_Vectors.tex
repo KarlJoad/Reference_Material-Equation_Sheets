@@ -78,6 +78,71 @@ Random Vectors are usually denoted:
 		
 		\subsubsection{Continuous Random Vectors} \label{subsubsec:Conditional Probability Continuous Random Vectors}
 		
-		
+	\subsection{Mean Vector} \label{subsec:Mean Vector}
+		\begin{definition}[Mean Vector] \label{def:Mean Vector}
+			For $\vec{X} = \langle X_{1},X_{2},\ldots,X_{n} \rangle$, the \emph{mean vector} is defined as the column vector of expected values of the components of $X_{k}$:
+			\begin{equation} \label{eq:Mean Vector}
+				\mathbf{m_{X}}
+				= \ExpectedValue \left[ \vec{X} \right]
+				= \begin{bmatrix}
+					X_{1} \\
+					X_{2} \\
+					\vdots \\
+					X_{n}
+				\end{bmatrix}
+				\triangleq \begin{bmatrix}
+					\ExpectedValue \left[ X_{1} \right] \\
+					\ExpectedValue \left[ X_{2} \right] \\
+					\vdots \\
+					\ExpectedValue \left[ X_{n} \right] \\
+				\end{bmatrix}
+			\end{equation}
+			\begin{remark}
+				Note that we defined the vector of expected values as a column vector.
+				Other texts will use row vectors for other things, but the use of column vectors here is intentional.
+			\end{remark}
+		\end{definition}
 	
-	
+	\subsection{Correlation and Covariance Matrix} \label{subsec:Correlation and Correlation Matrix}
+		\begin{definition}[Correlation Matrix]
+			The \emph{correlation matrix} has the second moments of $\bar{X}$ as its entries:
+			\begin{equation} \label{eq:Correlation Matrix}
+				\bar{R}_{X}
+				= \begin{bmatrix}
+					\ExpectedValue \left[ X_{1}^{2} \right] & \ExpectedValue \left[ X_{1}X_{2} \right] & \cdots & \ExpectedValue \left[ X_{1}X_{n} \right] \\
+					\ExpectedValue \left[ X_{2}X_{1} \right] & \ExpectedValue \left[ X_{2}^{2} \right] & \cdots & \ExpectedValue \left[ X_{2}X_{n} \right] \\
+					\vdots & \vdots & \ddots & \vdots \\
+					\ExpectedValue \left[ X_{n}X_{1} \right] & \ExpectedValue \left[ X_{n}X_{2} \right] & \cdots & \ExpectedValue \left[ X_{n}^{2} \right] \\
+				\end{bmatrix}
+			\end{equation}
+			\begin{remark}
+				$\bar{R}_{X}$ is a $n \times n$ symmetric matrix.
+			\end{remark}
+		\end{definition}
+		\begin{definition}[Covariance Matrix] \label{def:Covariance Matrix}
+			The \emph{covariance matrix} has the second-order central moments as its entries:
+			\begin{equation} \label{eq:Covariance Matrix}
+				\bar{K}_{X}
+				= \begin{bmatrix}
+					\ExpectedValue \left[ \left( X_{1} - m_{1} \right)^{2} \right] & \ExpectedValue \left[ \left( X_{1}-m_{1} \right) \left( X_{2}-m_{2} \right) \right] & \cdots & \ExpectedValue \left[ \left( X_{1}-m_{1} \right) \left( X_{n}-m_{n} \right) \right] \\
+					\ExpectedValue \left[ \left( X_{2}-m_{2} \right) \left( X_{1}-m_{1} \right) \right] & \ExpectedValue \left[ \left( X_{2}-m_{2} \right)^{2} \right] & \cdots & \ExpectedValue \left[ \left( X_{2}-m_{2} \right) \left( X_{n}-m_{n} \right) \right] \\
+					\vdots & \vdots & \ddots & \vdots \\
+					\ExpectedValue \left[ \left( X_{n}-m_{n} \right) \left( X_{1}-m_{1} \right) \right] & \ExpectedValue \left[ \left( X_{n}-m_{n} \right) \left( X_{2}-m_{2} \right) \right] & \cdots & \ExpectedValue \left[ \left( X_{n}-m_{n} \right)^{2} \right] \\
+				\end{bmatrix}
+			\end{equation}
+			\begin{remark}
+				$\bar{K}_{X}$ is a $n \times n$ symmetric matrix.
+			\end{remark}
+			\begin{remark}
+				The diagonal elements of $\bar{K}_{X}$ are given by the variances $\Variance \left[ X_{k} \right] = \ExpectedValue \left[ \left( X_{k}-m_{k} \right)^{2} \right]$ of the elements of $\vec{X}$.
+			\end{remark}
+			\begin{remark}
+				If the diagonal elements of $\bar{K}_{X}$ are \nameref{rmk:Uncorrelated}, then $\Covariance \left[ X_{j}, X_{k} \right] = 0$ for $j \neq k$, and $\bar{K}_{X}$, the \nameref{def:Covariance Matrix} is a diagonal matrix.
+			\end{remark}
+			\begin{remark}
+				If the random variables $X_{1},X_{2},\cdots,X_{n}$ are independent, then they are uncorrelated and $\bar{K}_{X}$ is diagonal.
+			\end{remark}
+			\begin{remark}
+				If the \nameref{def:Mean Vector} is $\bar{0}$, that is, $m_{k} = \ExpectedValue \left[ X_{k} \right] = 0$ for all $k$, then $\bar{R}_{X} = \bar{K}_{X}$.
+			\end{remark}
+		\end{definition}
