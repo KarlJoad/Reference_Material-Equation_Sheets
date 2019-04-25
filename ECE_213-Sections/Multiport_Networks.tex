@@ -1,0 +1,159 @@
+\section*{Multiport Networks} \label{sec:Multiport Networks}
+	\begin{enumerate}[noitemsep, nolistsep]
+		\item $\left[ \mathbf{Y} \right] = \left[ \mathbf{Z} \right]^{-1}$
+		\item $\left[ \mathbf{G} \right] = \left[ \mathbf{H} \right]^{-1}$
+		\item $\left[ \mathbf{t} \right] \neq \left[ \mathbf{T} \right]^{-1}$
+	\end{enumerate}
+
+Multiple \nameref{sec:Multiport Networks} can be arranged in 3 ways:
+	\begin{enumerate}[noitemsep, nolistsep]
+		\item \nameref{subsec:Parallel Multiport Networks}
+		\item \nameref{subsec:Series Multiport Networks}
+		\item \nameref{subsec:Cascade Multiport Networks}
+	\end{enumerate}
+
+	\subsection*{$\mathbf{Z}$ Parameter} \label{subsec:Z Parameter}
+		\begin{equation*} \label{eq:Z Parameter}
+			\begin{bmatrix}
+				\mathbf{V}_{1} \\
+				\mathbf{V}_{2}
+			\end{bmatrix}
+			=\begin{bmatrix}
+				\mathbf{z}_{11} & \mathbf{z}_{12} \\
+				\mathbf{z}_{21} & \mathbf{z}_{22}
+			\end{bmatrix}
+			\begin{bmatrix}
+				\mathbf{I}_{1} \\
+				\mathbf{I}_{2}
+			\end{bmatrix}
+		\end{equation*}
+		
+	\subsection*{$\mathbf{Y}$ Parameter} \label{subsec:Y Parameter}
+		\begin{equation*} \label{eq:Y Parameter}
+			\begin{bmatrix}
+				\mathbf{I}_{1} \\
+				\mathbf{I}_{2} 
+			\end{bmatrix}
+			=\begin{bmatrix}
+				\mathbf{y}_{11} & \mathbf{y}_{12} \\
+				\mathbf{y}_{21} & \mathbf{y}_{22}
+			\end{bmatrix}
+			\begin{bmatrix}
+				\mathbf{V}_{1} \\
+				\mathbf{V}_{2} 
+			\end{bmatrix}
+		\end{equation*}
+		
+	\subsection*{$\mathbf{H}$ Parameter} \label{subsec:H Parameter}
+		\begin{equation*} \label{eq:H Parameter}
+			\begin{bmatrix}
+				\mathbf{V}_{1} \\
+				\mathbf{I}_{2} 
+			\end{bmatrix}
+			=\begin{bmatrix}
+				\mathbf{h}_{11} & \mathbf{h}_{12} \\
+				\mathbf{h}_{21} & \mathbf{h}_{22}
+			\end{bmatrix}
+			\begin{bmatrix}
+				\mathbf{I}_{1} \\
+				\mathbf{V}_{2} 
+			\end{bmatrix}
+		\end{equation*}
+
+
+	\subsection*{$\mathbf{G}$ Parameter} \label{subsec:G Parameter}
+		\begin{equation*} \label{eq:G Parameter}
+			\begin{bmatrix}
+				\mathbf{I}_{1} \\
+				\mathbf{V}_{2} 
+			\end{bmatrix}
+			=\begin{bmatrix}
+				\mathbf{g}_{11} & \mathbf{g}_{12} \\
+				\mathbf{g}_{21} & \mathbf{g}_{22}
+			\end{bmatrix}
+			\begin{bmatrix}
+				\mathbf{V}_{1} \\
+				\mathbf{I}_{2} 
+			\end{bmatrix}
+		\end{equation*}
+	
+	\subsection*{$\mathbf{T}$ Parameter} \label{subsec:T Parameter}
+		\begin{equation*} \label{eq:T Parameter}
+			\begin{bmatrix}
+				\mathbf{I}_{1} \\
+				\mathbf{I}_{2} 
+			\end{bmatrix}
+			=\begin{bmatrix}
+				\mathbf{A} & \mathbf{B} \\
+				\mathbf{C} & \mathbf{D}
+			\end{bmatrix}
+			\begin{bmatrix}
+				\mathbf{V}_{2} \\
+				\mathbf{-I}_{2} 
+			\end{bmatrix}
+	\end{equation*}
+	
+	\subsection*{$\mathbf{t}$ Parameter} \label{subsec:t Parameter}
+		\begin{equation*} \label{eq:t Parameter}
+			\begin{bmatrix}
+				\mathbf{V}_{2} \\
+				\mathbf{I}_{2} 
+			\end{bmatrix}
+			=\begin{bmatrix}
+				\mathbf{a} & \mathbf{b} \\
+				\mathbf{c} & \mathbf{d}
+			\end{bmatrix}
+			\begin{bmatrix}
+				\mathbf{V}_{1} \\
+				\mathbf{-I}_{2} 
+			\end{bmatrix}
+		\end{equation*}
+	
+	\subsection*{Multiport Networks in Parallel} \label{subsec:Parallel Multiport Networks}
+	Admittances add.
+		\begin{equation*} \label{eq:Parallel Multiport Networks}
+			\begin{bmatrix}
+				\mathbf{Y}
+			\end{bmatrix}
+			= \begin{bmatrix}
+				\mathbf{y}_{11} & \mathbf{y}_{12} \\
+				\mathbf{y}_{21} & \mathbf{y}_{22} \\
+			\end{bmatrix}
+			= \begin{bmatrix}
+				\mathbf{y}_{11a}+\mathbf{y}_{11b} & \mathbf{y}_{12a}+\mathbf{y}_{12b} \\
+				\mathbf{y}_{21a}+\mathbf{y}_{21b} & \mathbf{y}_{22a}+\mathbf{y}_{22b} \\
+			\end{bmatrix}
+		\end{equation*}
+		
+	\subsection*{Multiport Networks in Series} \label{subsec:Series Multiport Networks}
+	Impedances add.
+		\begin{equation*} \label{eq:Series Multiport Networks}
+			\begin{bmatrix}
+				\mathbf{Z}
+			\end{bmatrix}
+			= \begin{bmatrix}
+				\mathbf{z}_{11} & \mathbf{z}_{12} \\
+				\mathbf{z}_{21} & \mathbf{z}_{22} \\
+			\end{bmatrix}
+			= \begin{bmatrix}
+				\mathbf{z}_{11a}+\mathbf{z}_{11b} & \mathbf{z}_{12a}+\mathbf{z}_{12b} \\
+				\mathbf{z}_{21a}+\mathbf{z}_{21b} & \mathbf{z}_{22a}+\mathbf{z}_{22b} \\
+			\end{bmatrix}
+		\end{equation*}	
+	
+	\subsection*{Multiport Networks in Cascade} \label{subsec:Cascade Multiport Networks}
+	Transmission Parameters Multiply.
+		\begin{equation*} \label{eq:Cascade Multiport Networks}
+			\begin{bmatrix}
+				\mathbf{T}
+				\end{bmatrix}
+			= \begin{bmatrix}
+				\mathbf{T}_{11a} & \mathbf{T}_{12a} \\
+				\mathbf{T}_{21a} & \mathbf{T}_{22a} \\
+			\end{bmatrix}
+			\begin{bmatrix}
+				\mathbf{T}_{11b} & \mathbf{T}_{12b} \\
+				\mathbf{T}_{21b} & \mathbf{T}_{22b} \\
+			\end{bmatrix}
+	\end{equation*}
+	
