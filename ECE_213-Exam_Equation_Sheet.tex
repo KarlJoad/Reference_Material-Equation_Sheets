@@ -36,221 +36,21 @@
 	\end{itemize}
 	\vspace{-5mm}
 
-\section*{Phasors} \label{sec:Phasors}
-Phasors will only show us the steady state response of the circuit, not the transient response. \newline 
-\textbf{\large Eq: $v(t)=V_{M} \cos \left(\omega t + \theta \right)$ $\leftrightarrow$ $\bar{V}=V_{M} \angle \theta_{v} = V_{M}e^{\jmath \theta_{v}} = V_{M}\left(\cos \theta_{v} + \jmath \sin \theta_{v}\right)$} \newline
-You can use phasors with \nameref{subsec:Nodal Analysis}, \nameref{subsec:Mesh Analysis}, \nameref{subsec:Superposition}, and \nameref{sec:Thevenin/Norton}. \newline
-	\begin{table}[ht] % Phasor Operation Table
-		\centering
-		\renewcommand{\arraystretch}{1.4}
-		$z_1=x_1+\jmath y_2=r_1\angle\phi_1$, $z_2=x_2+\jmath y_2=r_2\angle\phi_2$
-		\begin{tabular}{|c|c|} 
-			\hline
-			Addition & $z_1+z_2=\left( x_1+x_2 \right)+ \jmath \left( y_1+y_2 \right)$ \\ \hline
-			Subtraction & $z_1-z_2=\left( x_1-x_2 \right)+ \jmath \left( y_1-y_2 \right)$ \\ \hline
-			Multiplication & $z_{1}z_{2}=r_{1}r_{2}\angle \left( \phi_1 + \phi_2 \right)$ \\ \hline
-			Division & $\frac{z_{1}}{z_{2}} = \frac{r_{1}}{r_{2}} \angle \left(\phi_1 - \phi_2 \right)$ \\ \hline
-			Reciprocal & $\frac{1}{z_1}=\frac{1}{z_1} \angle -\phi_1$ \\ \hline
-			Square Root & $\sqrt{z_1}=\sqrt{r_1} \angle \frac{\phi_1}{2}$ \\ \hline
-			Complex Conjugate & $ z_1^*=x- \jmath y=r \angle -\phi_1=re^{-\jmath \phi_1}$\\ \hline
-		\end{tabular}
-	\end{table}
-	\vspace{-8mm}
+\input{./ECE_213-Sections/Phasors}
 
-\section*{RMS/Complex Power/Max Power Transfer} \label{sec:Complex Power}
-	\vspace{-6mm}
-	\begin{multicols}{2}
-		\begin{itemize}[noitemsep]
-			\item $X_{rms}=\sqrt{\frac{1}{T} \int_{0}^{T} x(t)^2 dt}=\frac{X_{PP}}{2 \sqrt{2}}=\frac{X_{PP}}{2 \sqrt{2}}$
-			\item $P_{avg}=\frac{1}{2} \Re\lbrace \mathbf{V} \mathbf{I}^* \rbrace=\frac{1}{2}V_{m}I_{m}\cos \left(\theta_v -\theta_i \right)$
-			\item $\mathbf{S} = I_{rms}^2\mathbf{Z} = \frac{V_{rms}^2}{\mathbf{Z}^*} = \mathbf{V}_{rms}\mathbf{I}_{rms}^*$ \vspace{1.2mm}
-			\item $\sum_{k=1}^{n} S_{k}$ \vspace{1.2mm}
-			\item $C = \frac{Q_{C}}{\omega V_{rms}^2} = \frac{P\left( \tan \theta_1 - \tan \theta_2 \right)}{\omega V_{rms}^2}$ \vspace{1.2mm}
-			\item $L=\frac{V_{rms}^2}{\omega \left(Q_1 - Q_2 \right)}$
-		\end{itemize}
-
-		\columnbreak
-		
-		\includegraphics[scale=0.375]{Phasor_Power_Triangle.jpg} % Can't do figure because floats aren't allowed in multicol
-		\label{fig:Phasor/Power Triangle}
-	\end{multicols}
-	\vspace{-4mm}
-
-	\begin{table}[h!] % Complex Power Table
-		\centering
-		\renewcommand{\arraystretch}{1.4}
-		\begin{tabular}{|c|c|c|c|}
-			\hline
-			\textbf{Name} & \textbf{Symbol} & \textbf{Equation(s)} & \textbf{Units} \\ \hline
-			Complex Power & $\mathbf{S}$ & $\frac{P}{Pf} \angle\arccos\left( Pf\right)=P+\jmath Q=\mathbf{V}_{rms} \mathbf{I}_{rms}^{*} = \lvert \mathbf{V}_{rms}\rvert \lvert \mathbf{I}_{rms}\rvert \angle \left( \theta_v - \theta_i\right) $ & \si{\volt \ampere} \\ \hline
-			Apparent Power & $S$ & $\lVert \mathbf{S} \rVert = \lvert \mathbf{V}_{rms} \rvert \lvert \mathbf{I}_{rms} \rvert = \sqrt{P^2 + Q^2}$ & \si{\volt \ampere} \\ \hline
-			Real Power & $P$ & $\Re\lbrace \mathbf{S} \rbrace = S * Pf \cos \left[ \arccos \left( Pf \right) \right] = S \cos\left( \theta_v - \theta_i \right)$ & \si{\watt} \\ \hline
-			Reactive (Imaginary) Power & $Q$ & $\Im\lbrace \mathbf{S} \rbrace = S * Pf \sin \left[ \arccos \left( Pf \right) \right] =  S \sin \left( \theta_v - \theta_i \right)$ & \si{VAR}\\ \hline
-			Power Factor &\textit{Pf} & $\frac{P}{S} = \cos(\theta_v - \theta_i)$ & Lead/Lag \\ \hline
-		\end{tabular}
-	\end{table}
-	\textbf{NOTE:} If you are looking for 3-Phase complex power, it is in \nameref{sec:3-Phase}.
-	\vspace{-4mm}
+\input{./ECE_213-Sections/RMS-Complex_Power}
 
 \input{./ECE_213-Sections/Elements}
 
-\section*{Methods to Solve Equations} \label{sec:Solve Circuits}
-	\subsection*{Nodal Analysis} \label{subsec:Nodal Analysis}
-		\begin{enumerate}[noitemsep, nolistsep]
-			\item \# of Nodes? $\rightarrow n$
-			\item Make one node the reference node. Assign $n-1$ nodal voltages
-			\item For a \textbf{voltage} source, write a CONSTRAINT EQUATION (Con. Eq.). If there is a voltage source between 2 non-reference nodes, make that a \textbf{SUPERNODE}.
-			\item Write KCL at each node. ($n-1$) equations.
-			\item Solve Equations.
-		\end{enumerate}
-	\subsection*{Mesh/Loop Analysis} \label{subsec:Mesh Analysis}
-		\begin{enumerate}[noitemsep, nolistsep]
-			\item \# of Nodes? $\rightarrow n$ \# of Branches? $\rightarrow b$ \# of meshes/loops? $\rightarrow b-n+1 = l$
-			\item Assign $l$ loop currents.
-			\item For \textbf{current} sources, write a CONSTRAINT EQUATION (Con. Eq.). If there is a current source between 2 meshes, that's a \textbf{SUPERMESH}.
-			\item Write KVL for each mesh.
-			\item Solve Equations.
-		\end{enumerate}
-	\subsection*{Superposition} \label{subsec:Superposition}
-		\begin{itemize}[noitemsep, nolistsep]
-			\item \# of sources, $n$, determines the number of equations you will have.
-			\item Shut off each source, one at a time, solving for the term that you want.
-			\begin{itemize}[noitemsep, nolistsep]
-				\item Voltage Source = S.C.
-				\item Current Source = O.C.
-			\end{itemize}
-			\item Sum each of the individual terms together. $\sum_{i=1}^{n} x_{i}$ \vspace{1.5mm}
-			\item \textbf{\large THIS IS THE ONLY WAY TO SOLVE FOR A CIRCUIT WITH MULTIPLE SOURCES!!}
-		\end{itemize}
+\input{./ECE_213-Sections/Methods_to_Solve}
 
-	\subsection*{Source Transformations} \label{sec:Source Transforms}
-		\textbf{ALL} source transformations obey Ohm's Law. $V=IR$.
-		This will \textbf{ONLY} work on impedances in series with \textbf{VOLTAGE} sources, or impedances in parallel with \textbf{CURRENT} sources.
-		\vspace{-5mm}
-		
-\section*{Thevenin and Norton Equivalencies} \label{sec:Thevenin/Norton}
-	\begin{itemize}[noitemsep, nolistsep]
-		\item ONLY independent sources - Zero all sources, find $\mathbf{Z}_{eq}$.
-		\begin{itemize}[noitemsep, nolistsep] % Zero Sources
-			\item 0-ing Current Sources = O.C., 0-ing Voltage Sources = S.C.
-			\item Look at circuit from load's perspective for $\mathbf{Z}_{eq}$
-			\item $\mathbf{V}_{Th}=\mathbf{V}_{OC}$, $\mathbf{I}_{N} = \mathbf{I}_{SC}$
-		\end{itemize}
-		\item BOTH dependent and independent sources
-			\begin{itemize}[noitemsep, nolistsep] % Voc/Isc
-				\item Find $\mathbf{V}_{Th}=\mathbf{V}_{OC}$, $\mathbf{I}_{N}=\mathbf{I}_{SC}$
-				\item Solve $\mathbf{Z}_{Th}=\frac{\mathbf{V}_{OC}}{\mathbf{I}_{SC}}$
-			\end{itemize}
-		\item ONLY dependent sources
-			\begin{itemize}[noitemsep, nolistsep] % Test Source
-				\item $\mathbf{V}_{Th}=0$, $\mathbf{I}_{N}=0$
-				\item $\mathbf{Z}_{Th}=\mathbf{Z}_{N} \rightarrow$ Attach test source @ load.
-				\begin{itemize}
-					\item If voltage test source, find current. If current test source, find voltage
-				\end{itemize}
-				\item $\mathbf{Z}_{Th}=\frac{\mathbf{V}_{Test}}{\mathbf{I}_{Test}}$
-			\end{itemize}
-		\end{itemize}
-	\vspace{-5mm}
+\input{./ECE_213-Sections/Thevenin_Norton_Equivalents}
 	
 \input{./ECE_213-Sections/Max_Power_Transfer}
 
-\section*{Mutual Inductance} \label{sec:Mutual Inductance}
-	\subsection*{Equivalent Mutual Inductance}
-		\begin{table}[h!] % Mutual Inductance Equivalency Table
-			\centering
-			\renewcommand{\arraystretch}{2.25}
-			\begin{tabular}{|c|c|c|}
-			\hline
-			Series-\textbf{Aiding} Connection & $L=L_{1}+L_{2}+2M$ & \includegraphics[scale=0.35]{Mutual_Inductors_Series_Dots_Aiding.png} \\ \hline
-			Series-\textbf{Opposing} Connection & $L=L_{1}+L_{2}-2M$ & \includegraphics[scale=0.35]{Mutual_Inductors_Series_Dots_Opposing.png} \\ \hline
-			\end{tabular}
-		\end{table}
+\input{./ECE_213-Sections/Mutual_Inductance}
 
-	\subsection*{Dot Convention} \label{subsec:Dot Convention}
-		There are 2 cases:
-		\begin{enumerate}[noitemsep, nolistsep]
-			\item Current enters through dotted side on 1 inductor $\longrightarrow$ \textbf{POSITIVE VOLTAGE ON DOTTED SIDE OF OTHER INDUCTOR}
-				\begin{itemize}[noitemsep, nolistsep]
-					\item Current flows into the dotted side of one inductor
-					\item Current flows out of the un-dotted side of second inductor, just like the first
-				\end{itemize}
-			\item Current enters through \textbf{NON}-dotted side of 1 inductor $\longrightarrow$ \textbf{POSITIVE VOLTAGE ON UN-DOTTED SIDE OF OTHER INDUCTOR}
-				\begin{itemize}[noitemsep, nolistsep]
-					\item Current flows into the un-dotted side of one inductor
-					\item Current flows out of the dotted side of the second inductor, just like the first
-				\end{itemize}
-		\end{enumerate}
-	
-	\subsection*{Solving Disjoint Coupled Circuits} \label{subsec:Solve Disjoint Coupled Circuits}
-		\begin{enumerate}[noitemsep] % Steps
-			\item Apply KVL
-			\item Don't forget about the Mutual Inductance Voltage Difference because of the first current
-			\item There is a second way to thing about these, shown in Figures~\ref{subfig:Disjoint Coupled Inductors OG}~and~\ref{subfig:Disjoint Coupled Inductors Simplified}, below.
-		\end{enumerate}
-		\begin{figure}[ht!] % Convert
-			\begin{subfigure}{0.5\textwidth}
-				\centering
-				\includegraphics[scale=0.35]{Disjoint_Coupled_Inductors-OG.png}
-				\subcaption{Original Circuit}
-				\label{subfig:Disjoint Coupled Inductors OG}
-			\end{subfigure}
-			\begin{subfigure}{0.5\textwidth}
-				\centering
-				\includegraphics[scale=0.30]{Disjoint_Coupled_Inductors-Simplified.png}
-				\subcaption{Circuit "Simplified" by Adding Dependent Sources}
-				\label{subfig:Disjoint Coupled Inductors Simplified}
-			\end{subfigure}
-		\end{figure}
-		\textbf{The sign on the dependent sources depends on which side of the inductor the current is going into.} \newline
-		\textbf{Use the \nameref{subsec:Dot Convention} to determine which direction the source's voltage should go.}
-	\vspace{-6mm}
-		
-\section*{Transformers} \label{sec:Transformers}
-These elements consume no power, and convert voltages and currents.
-\begin{itemize}[noitemsep, nolistsep]
-	\item $\frac{v_{1}}{v_{2}} = \frac{N_{1}}{N_{2}} \longleftarrow$ Voltage Change
-	\item $\frac{i_{1}}{i_{2}} = -\frac{N_{2}}{N_{1}} \longleftarrow$ Current Change
-\end{itemize}
-\vspace{-4.75mm}
-
-	\subsection*{Representations for Turns} \label{subsec:Turn Representations}
-		There are 3 common ways to represent the number of turns in a transformer:
-		\begin{enumerate}[noitemsep, nolistsep]
-			\item $N_{1} : N_{2}$
-			\begin{itemize}[noitemsep, nolistsep]
-				\item Both $N_{1}$ and $N_{2}$ are integers
-			\end{itemize}
-			\item $1 : n$
-			\begin{itemize}[noitemsep, nolistsep]
-				\item The first term might not be $1$, if there isn't perfect division, i.e. $2 : 5$ will not be reduced to $1 : \frac{5}{2}$
-				\item $n = \frac{N_{2}}{N_{1}}$
-				\item This is the form generally used by our textbook
-			\end{itemize}
-			\item $a : 1$
-			\begin{itemize}[noitemsep, nolistsep]
-				\item The second term might not be $1$, if there isn't perfect division, i.e. $2 : 5$ will not be reduced to $\frac{2}{5} : 1$
-				\item $a = \frac{N_{1}}{N_{2}}$
-				\item This is the form generally used by utility companies
-			\end{itemize}
-		\end{enumerate}
-		\vspace{-5mm}
-		
-	\subsection*{Reflecting Elements} \label{subsec:Element Reflection}
-		There are only 3 equations:
-		\begin{enumerate}[noitemsep, nolistsep]
-			\item $\frac{v_{1}}{v_{2}} = \frac{N_{1}}{N_{2}} \longleftarrow$ Voltage Change
-			\item $\frac{i_{1}}{i_{2}} = -\frac{N_{2}}{N_{1}} \longleftarrow$ Current Change
-			\item $Z_{1} = \frac{Z_{2}}{n^{2}}$, as seen in Figure~\ref{fig:Transformer Reflecting}
-			\item A negative can be in any one of these, depending on the dot orientation
-		\end{enumerate}
-		\begin{figure}[ht!]
-			\centering
-			\includegraphics[scale=0.375]{Transformer_Reflecting.png}
-			\caption{Transformer Reflecting Elements}
-			\label{fig:Transformer Reflecting}
-		\end{figure}
-		\vspace{-10mm}
+\input{./ECE_213-Sections/Transformers}
 	
 \input{./ECE_213-Sections/Transfer_Functions-Bode_Plots}
 
@@ -260,5 +60,7 @@ These elements consume no power, and convert voltages and currents.
 \input{./ECE_213-Sections/Laplace_Transforms}
 
 \input{./ECE_213-Sections/Laplace_in_Circuits}
+
+\input{./ECE_213-Sections/Multiport_Networks}
 
 \end{document}

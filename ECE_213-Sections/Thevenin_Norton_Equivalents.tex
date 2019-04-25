@@ -1,0 +1,24 @@
+\section*{Thevenin and Norton Equivalencies} \label{sec:Thevenin/Norton}
+	\begin{itemize}[noitemsep, nolistsep]
+		\item ONLY independent sources - Zero all sources, find $\mathbf{Z}_{eq}$.
+		\begin{itemize}[noitemsep, nolistsep] % Zero Sources
+			\item 0-ing Current Sources = O.C., 0-ing Voltage Sources = S.C.
+			\item Look at circuit from load's perspective for $\mathbf{Z}_{eq}$
+			\item $\mathbf{V}_{Th}=\mathbf{V}_{OC}$, $\mathbf{I}_{N} = \mathbf{I}_{SC}$
+		\end{itemize}
+		\item BOTH dependent and independent sources
+			\begin{itemize}[noitemsep, nolistsep] % Voc/Isc
+				\item Find $\mathbf{V}_{Th}=\mathbf{V}_{OC}$, $\mathbf{I}_{N}=\mathbf{I}_{SC}$
+				\item Solve $\mathbf{Z}_{Th}=\frac{\mathbf{V}_{OC}}{\mathbf{I}_{SC}}$
+			\end{itemize}
+		\item ONLY dependent sources
+			\begin{itemize}[noitemsep, nolistsep] % Test Source
+				\item $\mathbf{V}_{Th}=0$, $\mathbf{I}_{N}=0$
+				\item $\mathbf{Z}_{Th}=\mathbf{Z}_{N} \rightarrow$ Attach test source @ load.
+				\begin{itemize}
+					\item If voltage test source, find current. If current test source, find voltage
+				\end{itemize}
+				\item $\mathbf{Z}_{Th}=\frac{\mathbf{V}_{Test}}{\mathbf{I}_{Test}}$
+			\end{itemize}
+		\end{itemize}
+	\vspace{-5mm}

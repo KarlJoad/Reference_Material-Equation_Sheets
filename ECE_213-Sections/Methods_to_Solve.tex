@@ -1,0 +1,33 @@
+\section*{Methods to Solve Equations} \label{sec:Solve Circuits}
+	\subsection*{Nodal Analysis} \label{subsec:Nodal Analysis}
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item \# of Nodes? $\rightarrow n$
+			\item Make one node the reference node. Assign $n-1$ nodal voltages
+			\item For a \textbf{voltage} source, write a CONSTRAINT EQUATION (Con. Eq.). If there is a voltage source between 2 non-reference nodes, make that a \textbf{SUPERNODE}.
+			\item Write KCL at each node. ($n-1$) equations.
+			\item Solve Equations.
+		\end{enumerate}
+	\subsection*{Mesh/Loop Analysis} \label{subsec:Mesh Analysis}
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item \# of Nodes? $\rightarrow n$ \# of Branches? $\rightarrow b$ \# of meshes/loops? $\rightarrow b-n+1 = l$
+			\item Assign $l$ loop currents.
+			\item For \textbf{current} sources, write a CONSTRAINT EQUATION (Con. Eq.). If there is a current source between 2 meshes, that's a \textbf{SUPERMESH}.
+			\item Write KVL for each mesh.
+			\item Solve Equations.
+		\end{enumerate}
+	\subsection*{Superposition} \label{subsec:Superposition}
+		\begin{itemize}[noitemsep, nolistsep]
+			\item \# of sources, $n$, determines the number of equations you will have.
+			\item Shut off each source, one at a time, solving for the term that you want.
+			\begin{itemize}[noitemsep, nolistsep]
+				\item Voltage Source = S.C.
+				\item Current Source = O.C.
+			\end{itemize}
+			\item Sum each of the individual terms together. $\sum_{i=1}^{n} x_{i}$ \vspace{1.5mm}
+			\item \textbf{\large THIS IS THE ONLY WAY TO SOLVE FOR A CIRCUIT WITH MULTIPLE SOURCES!!}
+		\end{itemize}
+
+	\subsection*{Source Transformations} \label{sec:Source Transforms}
+		\textbf{ALL} source transformations obey Ohm's Law. $V=IR$.
+		This will \textbf{ONLY} work on impedances in series with \textbf{VOLTAGE} sources, or impedances in parallel with \textbf{CURRENT} sources.
+		\vspace{-5mm}
