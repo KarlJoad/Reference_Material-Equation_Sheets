@@ -15,12 +15,31 @@ In applying probability models to real situations, we perform experiments and co
 		\item Is the data set consistent with some parameter value of the assumed value?
 	\end{enumerate}
 
+	\begin{definition}[Random Sample] \label{def:Random Sample}
+		A \emph{random sample} is a set of $n$ \nameref{def:Random Variable, Full} or \nameref{def:Statistic} that are drawn with \nameref{def:Independent and Identically Distributed}.
+		\begin{equation} \label{eq:Random Sample}
+			\mathbf{X}_{n} = \left( X_{1},X_{2},\ldots,X_{n} \right)
+		\end{equation}
+		\begin{remark}
+			This is \emph{similar} to the definition of a \nameref{def:Random Vector}.
+			The difference here is that the values in a \nameref{def:Random Sample} must be \nameref{def:Independent and Identically Distributed} and \emph{may} be related to each other somehow.
+		\end{remark}
+		\begin{remark}[Random Sample Parameters] \label{rmk:Random Sample Parameters}
+			These are an additional variable that is added onto the \nameref{def:Probability Density Function} or \nameref{def:Probability Mass Function}.
+			When we were using these functions in the previous sections, these parameters were either constant or assumed to be constant.
+			When considering these samples in \nameref{sec:Statistics}, you must also account for the \nameref{rmk:Random Sample Parameters}.
+		\end{remark}
+	\end{definition}
 	\begin{definition}[Statistic] \label{def:Statistic}
-		A \emph{statistic} $W (X)$ is a function of the data from random variables $X_{1},X_{2},\ldots,X_{n}$.
+		A \emph{statistic} $W (\mathbf{X}_{n})$ is a function of the random sample $X_{1},X_{2},\ldots,X_{n}$.
+		\begin{equation} \label{eq:Statistic}
+			W \left( \mathbf{X}_{n} \right) = g \left( X_{1},X_{2},\ldots,X_{n} \right)
+		\end{equation}
 	\end{definition}
 	\begin{definition}[Unit Variance] \label{def:Unit Variance}
 		The \emph{unit variance} means that the standard deviation, $\sigma$ of a sample, as well as the variance, $\sigma^{2}$ will tend towards 1 as the sample size increases to infinity.
 	\end{definition}
+
 	\subsection{Sums of Random Variables} \label{subsec:Sums of Random Variables}
 		\begin{definition}[Sum of Random Variables] \label{def:Sum of Random Variables}
 			The definition of a \emph{sum of random variables} is given in Equation~\eqref{eq:Sum of Random Variables} below.
@@ -152,7 +171,7 @@ In applying probability models to real situations, we perform experiments and co
 			\item An \emph{estimator} for a parameter, $\theta$, usually denoted $\hat{\theta}$, is also a statistic
 		\end{itemize}
 		\begin{definition}[Unbiased Estimator] \label{def:Unbiased Estimator}
-			In general we say that a \nameref{def:Statistic} $W (X)$ (a function of data $X_{1},X_{2},\ldots,X_{n}$) is an \emph{unbiased estimator} of a parameter $\theta$ if $\ExpectedValue \left[ W \left( X \right) \right] = \theta$.
+			In general we say that a \nameref{def:Statistic} $\Theta (X)$ (a function of data $X_{1},X_{2},\ldots,X_{n}$) is an \emph{unbiased estimator} of a parameter $\theta$ if $\ExpectedValue \left[ W \left( X \right) \right] = \theta$.
 			\begin{remark}[What makes a good estimator of any parameter, $\theta$?]
 				A \emph{good estimator} of any parameter, $\theta$, should:
 				\begin{itemize}[noitemsep, nolistsep]
@@ -160,22 +179,90 @@ In applying probability models to real situations, we perform experiments and co
 					\item Not vary too much around $\theta$
 				\end{itemize}
 			\end{remark}
+			\begin{remark}
+				This is the definition of \emph{unbiased}, drawn from the definition of \nameref{def:Bias}
+			\end{remark}
 		\end{definition}
-	If our estimator is an \nameref{def:Unbiased Estimator}, then:
-		\begin{itemize}
-			\item Accuracy is defined as $\Bias [\hat{\theta} ] = \ExpectedValue [\hat{\theta}] - \theta$
-			\item Precision is defined as $\Variance [\hat{\theta}]$
-		\end{itemize}
-		\begin{definition}[Mean Squared Error] \label{def:Mean Squared Error}
-			The \emph{Mean Squared Error} of an estimator for parameter $\hat{\theta}$ is:
-			\begin{equation} \label{eq:Mean Squared Error}
-				\MeanSqErr \left[ \hat{\theta} \right]
-				= \ExpectedValue \left[ \left( \hat{\theta} - \theta \right)^{2} \right]
-				= \Variance \left[ \hat{\theta} \right] + \Bias^{2} \left[ \hat{\theta} \right]
-			\end{equation}
-		\end{definition}
-		\begin{remark}
-			When doing statistical analysis, there is something called the \emph{Bias-Variance Tradeoff}.
-			When doing the analysis, if you try to minimize bias, your variance will increase and vice-versa.
-			There is a happy medium, which is not discussed in this class.
-		\end{remark}
+	
+		\subsubsection{Goodness of an Estimator} \label{subsubsec:Estimator Goodness}
+		There are 4 measures we use to determine how good our estimator is.
+			\begin{enumerate}[noitemsep, nolistsep]
+				\item \nameref{def:Bias}
+				\item \nameref{def:Variance of Sample Mean}
+				\item \nameref{def:Mean Squared Error}
+				\item \nameref{def:Consistency}
+			\end{enumerate}
+		If our estimator is an \nameref{def:Unbiased Estimator}, then:
+			\begin{itemize}
+				\item Accuracy is defined as $\Bias [\hat{\theta} ] = \ExpectedValue [\hat{\theta}] - \theta$
+				\item Precision is defined as $\Variance [\hat{\theta}]$
+			\end{itemize}
+			\begin{definition}[Bias] \label{def:Bias}
+				\emph{Bias} is defined as:
+				\begin{equation} \label{eq:Accuracy}
+					\Bias [ \hat{\Theta} ] = \ExpectedValue [ \hat{\Theta} ] - \theta
+				\end{equation}
+				\begin{remark} \label{rmk:Unbiased}
+					The estimator $\hat{\Theta}$ is \emph{unbiased} for $\theta$ if
+					\begin{equation} \label{Unbiased}
+						\ExpectedValue [ \hat{\Theta} ] = \theta
+					\end{equation}
+				\end{remark}
+			\end{definition}
+					
+			\begin{definition}[Mean Squared Error] \label{def:Mean Squared Error}
+				The \emph{Mean Squared Error} of an estimator for parameter $\hat{\theta}$ is:
+				\begin{equation} \label{eq:Mean Squared Error}
+					\MeanSqErr [ \hat{\theta} ]
+					= \ExpectedValue \left[ \left( \hat{\theta} - \theta \right)^{2} \right]
+					= \Variance \left[ \hat{\theta} \right] + \Bias^{2} \left[ \hat{\theta} \right]
+				\end{equation}
+			\end{definition}
+			\begin{remark*}
+				When doing statistical analysis, there is something called the \emph{Bias-Variance Tradeoff}.
+				When doing the analysis, if you try to minimize bias, your variance will increase and vice-versa.
+				There is a happy medium, which is not discussed in this class.
+			\end{remark*}
+			\begin{definition}[Consistency] \label{def:Consistency}
+				$\hat{\theta}$ is a \emph{consistent estimator} for $\theta$ if $\hat{\theta}$ converges to $\theta$ in probability.
+				\begin{equation} \label{eq:Consistency}
+					\lim\limits_{n \rightarrow \infty} \Prob \left[ \lvert \hat{\theta} - \theta \rvert > \varepsilon \right] = 0
+				\end{equation}
+			\end{definition}
+	
+	\subsection{How to Find a Good Estimator} \label{subsec:Find Good Estimator}
+	There are several methods, two of which are:
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item Method of Moments
+				\begin{itemize}[noitemsep, nolistsep]
+					\item Sample Moments and Population Moments, $\bar{X}_{n} = \mu$
+					\item You needs as many moments as parameters to get enough equations
+				\end{itemize}
+			\item \nameref{def:Maximum Likelihood Estimation}
+		\end{enumerate}
+	
+		\subsubsection{Maximum Likelihood Estimation} \label{subsubsec:Maximum Likelihood Estimation}
+			\begin{definition}[Maximum Likelihood Estimation] \label{def:Maximum Likelihood Estimation}
+				Let $ X_{1},X_{2},\ldots,X_{n} \DrawnIID f \left( x \Given \theta \right) $.
+				\begin{equation} \label{eq:Maximum Likelihood Estimation}
+					\hat{\Theta}_{\MaxLikeEstim} = \argmax_{\theta \in \Theta} \Likelihood \left( \theta \Given x_{1},x_{2},\ldots,x_{n} \right)
+				\end{equation}
+				\begin{remark} \label{rmk:Likelihood}
+					Likelihood, denoted $\Likelihood$ is defined as the \nameref{def:Joint PDF} of the \nameref{def:Random Sample} and its \nameref{rmk:Random Sample Parameters}.
+					\begin{equation} \label{eq:Likelihood}
+						\Likelihood \left( \theta \Given x_{1},x_{2},\ldots,x_{n} \right) = f_{X_{1}} \left( x_{1} \Given \theta \right) \cdot f_{X_{2}} \left( x_{2} \Given \theta \right) \cdot \ldots \cdot f_{X_{n}} \left( x_{n} \Given \theta \right)
+					\end{equation}
+				\end{remark}
+				\begin{remark}
+					It is often easier to maximize $\hat{\Theta}_{\MaxLikeEstim}$ over the log-likelihood.
+					\begin{equation*}
+						\hat{\Theta}_{\MaxLikeEstim} = \argmax_{\theta \in \Theta} \log \Likelihood \left( \theta \Given x_{1},x_{2},\ldots,x_{n} \right)
+					\end{equation*}
+				\end{remark}
+				\begin{remark}
+					\[ \argmax_{\theta \in \Theta} \] is the global maxima of the function. This is further described in Definition~\ref{def:argmax}.
+				\end{remark}
+			\end{definition}
+	
+	\subsection{Confidence Interval} \label{subsec:Confidence Interval}
+		

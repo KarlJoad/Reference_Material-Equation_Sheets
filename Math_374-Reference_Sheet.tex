@@ -39,12 +39,18 @@
 
 \DeclareMathOperator{\EventClass}{\mathcal{F}}
 \DeclareMathOperator{\RealNums}{\mathbb{R}}
+\DeclareMathOperator{\Prob}{P} % Can redefine this to change how probability is shown
 \DeclareMathOperator{\ExpectedValue}{\mathbb{E}}
 \DeclareMathOperator{\Variance}{\text{VAR}}
 \DeclareMathOperator{\StdDev}{\text{STD}}
 \DeclareMathOperator{\Covariance}{\text{Cov}}
-\DeclareMathOperator{\Bias}{\text{Bias}}
+\DeclareMathOperator{\DrawnIID}{\overset{\text{iid}}{\DrawnFrom}}
+\DeclareMathOperator{\Bias}{B}
 \DeclareMathOperator{\MeanSqErr} {\text{MSE}}
+\DeclareMathOperator{\Likelihood}{\mathcal{L}}
+\DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
+\DeclareMathOperator{\MaxLikeEstim}{\text{MLE}}
+
 \DeclareMathOperator{\Given}{\vert}
 \DeclareMathOperator{\DrawnFrom}{\sim}
 
@@ -79,6 +85,7 @@
 \clearpage
 \appendix
 \counterwithin{equation}{section}
+\counterwithin{definition}{subsection}
 
 \section{Reference Material} \label{sec:Reference Material}
 \input{./Appendix-Reference_Material/Trig}
