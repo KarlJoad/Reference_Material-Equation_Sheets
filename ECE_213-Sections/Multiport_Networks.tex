@@ -160,7 +160,7 @@ Multiple \nameref{sec:Multiport Networks} can be arranged in 3 ways:
 	\subsection*{Transistors}
 		\begin{align*}
 			V_{C} &= -R_{L}I_{C} & I_{C} &= \frac{h_{fe}}{1+h_{oe}R_{L}} \\
-			I_{B} &= \frac{h_{oe}\left( 1 + h_{oe}R_{L} \right)}{-h_{oe}R_{L}} V_{C} & V_{B} &= \frac{h_{ie}+\left( h_{ie}h_{oe} + h_{ie}h_{fe} \right)R_{L}}{h_{fe}R_{L}} \\ \hline
-			A_{V} &= \frac{V_{C}}{V_{B}} & A_{I} &= \frac{I_{C}}{I_{B}} \\
+			I_{B} &= \frac{h_{oe}\left( 1 + h_{oe}R_{L} \right)}{-h_{oe}R_{L}} V_{C} & V_{B} &= \frac{h_{ie}+\left( h_{ie}h_{oe} + h_{ie}h_{fe} \right)R_{L}}{h_{fe}R_{L}} \\ 
+			A_{V} &= \frac{V_{C}}{V_{B}} = \frac{-h_{fe}R_{L}}{h_{ie}+\left(h_{ie}h_{oe} - h_{re}h_{fe} \right) R_{L}} & A_{I} &= \frac{I_{C}}{I_{B}} = \frac{h_{fe}}{1+h_{oe}R_{L}} \\
 			Z_{in} &= h_{oe}+h_{fe}\left( \frac{-h_{re}}{R_{S}+h_{ie}} \right) & Z_{out} &= \frac{R_{S}+h_{ie}}{h_{oe} \left( R_{S} + h_{ie} \right) - h_{fe}h_{re}} \text{ MUST be Thevenin Equivalent} \\
 		\end{align*}
