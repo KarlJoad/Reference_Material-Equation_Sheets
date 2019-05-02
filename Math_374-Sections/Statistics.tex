@@ -264,5 +264,42 @@ In applying probability models to real situations, we perform experiments and co
 				\end{remark}
 			\end{definition}
 	
-	\subsection{Confidence Interval} \label{subsec:Confidence Interval}
-		
+	\subsection{Confidence Intervals} \label{subsec:Confidence Interval}
+	Because certain estimators are not discrete, but continuous, the estimators expected value might not be quite right.
+	This is where \ref{def:Confidence Interval}s come in.
+		\begin{definition}[Confidence Interval] \label{def:Confidence Interval}
+			A \emph{confidence interval} is an interval or set of values that is highly likely to contain the true value of the parameter.
+		\end{definition}
+		\begin{definition}[$1-\alpha$ Confidence Interval] \label{def:1-alpha Confidence Interval}
+			The \emph{$1-\alpha$ confidence interval} is a \nameref{def:Confidence Interval} where we estimate the probability of the parameter, $\theta$, being in the random interval to $1-\alpha$.
+			The problem is, find a random interval $\left[ \ell \left( \mathbf{X} \right), u \left( \mathbf{X} \right) \right]$ such that
+			\begin{equation} \label{eq:1-alpha Confidence Interval}
+				\Prob \left[ \ell \left( \mathbf{X}_{n} \right) , u \left( \mathbf{X}_{n} \right) \right] = 1-\alpha
+			\end{equation}
+			\begin{remark}
+				$\ell \left( \mathbf{X} \right)$ is the \emph{lower bound of the random interval}.
+				$u \left( \mathbf{X} \right)$ is the \emph{upper bound of the random interval}.
+				\textbf{Only ONE of these may be $\infty$ at a time.} Otherwise, you're including the whole sample space, making the confidence interval useless.
+			\end{remark}
+			\begin{remark}
+				If the problem says, with a confidence interval of 95\%, that is the $1-\alpha$ portion; i.e. $1-\alpha = 0.95 \%$.
+			\end{remark}
+		\end{definition}
+	
+	\subsection{Hypothesis Testing} \label{subsec:Hypothesis Testing}
+	There are 4 parts to \nameref{subsec:Hypothesis Testing}
+		\begin{enumerate}[noitemsep, nolistsep]
+			\item Identify the hypotheses. $H_{0}$ is the \emph{null hypothesis}. It is usually compared against another, complementary hypothesis, $H_{1}$.
+			\item The Rejection Region, which is evidence against the null hypothesis that we may or may not choose to include. $R \subset \mathcal{X}$, where $\mathcal{X}$ is the sample space.
+			\item The Decision Rule:
+				\begin{enumerate}[noitemsep, nolistsep]
+					\item Reject $H_{0}$ if $X \in R$
+					\item Accept/Do not reject $H_{0}$ if $X \notin R$
+				\end{enumerate}
+			\item The Test Statistic
+		\end{enumerate}
+	There are 2 errors that can occur in \nameref{subsec:Hypothesis Testing}.
+		\begin{enumerate}[label=\textbf{Type \Roman* Error: }, ref=Hypothesis Testing Type \Roman* Error, align=left, noitemsep, nolistsep]
+			\item Reject $H_{0}$ if $H_{0}$ is true.
+			\item Accept $H_{0}$ if $H_{0}$ is false.
+		\end{enumerate}
