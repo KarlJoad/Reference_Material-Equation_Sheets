@@ -16,6 +16,7 @@
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
 \usepackage{chngcntr} % Allows us to tamper with the counter a little more
 \usepackage{empheq} % Allow boxing of equations in special math environments
+\usepackage{tcolorbox} % Allows us to create boxes of various types for examples
 
 %\graphicspath{{./Drawings/Math_374}} % Uncomment this to use pictures in this document
 \counterwithin{equation}{section} % Uncomment to number eqns with sec nums too
@@ -81,6 +82,9 @@
 
 \input{./Math_374-Sections/Statistics}
 
+\begin{tcolorbox}[title=\textbf{Example Test}, colbacktitle=white!100!black, coltitle=black!100!white, colback=white!100!black, sharp corners=all]
+	Test
+\end{tcolorbox}
 %====================================APPENDIX====================================
 \clearpage
 \appendix
