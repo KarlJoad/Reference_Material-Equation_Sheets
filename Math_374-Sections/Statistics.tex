@@ -39,53 +39,6 @@ In applying probability models to real situations, we perform experiments and co
 	\begin{definition}[Unit Variance] \label{def:Unit Variance}
 		The \emph{unit variance} means that the standard deviation, $\sigma$ of a sample, as well as the variance, $\sigma^{2}$ will tend towards 1 as the sample size increases to infinity.
 	\end{definition}
-
-	\subsection{Sums of Random Variables} \label{subsec:Sums of Random Variables}
-		\begin{definition}[Sum of Random Variables] \label{def:Sum of Random Variables}
-			The definition of a \emph{sum of random variables} is given in Equation~\eqref{eq:Sum of Random Variables} below.
-			Where $X_{i}$ is a random variable,
-			\begin{equation} \label{eq:Sum of Random Variables}
-				S_{n} = \sum_{i=1}^{n} X_{i} = X_{1} + X_{2} + \ldots + X_{n}
-			\end{equation}
-		\end{definition}
-	
-	\subsubsection{Means and Variances of Sums of Random Variables} \label{subsubsec:Means and Variances of Sums of Random Variables}
-		\begin{definition}[Mean of Sums of Random Variables] \label{def:Mean of Sums of Random Variables}
-			The \emph{mean of sums of random variables} is the same as the \emph{expected value of sums of random variables}.
-			\begin{equation}
-				\ExpectedValue \left[ S_{n} \right] = \sum_{i=1}^{n} \ExpectedValue \left[ X_{i} \right]
-			\end{equation}
-			\begin{remark}
-				All the properties of \nameref{subsubsec:Properties of Discrete Expected Value} and/or \nameref{subsubsec:Properties of Continuous Expected Value} hold true here as well..
-			\end{remark}
-		\end{definition}
-		\begin{definition}[Variance of Sums of Random Variables] \label{def:Variance of Sums of Random Variables}
-			The defintion of the \emph{variance of sums of random variables} is the same as we have been using them previously, \nameref{subsec:Variance of Single Discrete} and \nameref{subsec:Variance of Single Continuous}.
-			\begin{equation} \label{eq:Variance of Sums of Random Variables}
-				\Variance \left[ S_{n} \right] = \Variance \left[ \sum_{i=1}^{n} X_{i} \right] = \sum_{i=1}^{n} \Variance \left[ X_{i} \right] + \sum_{j=1}^{n} \sum_{\substack{k=1 \\ j \neq k}}^{n} \Covariance \left[ X_{j}, X_{k} \right]
-			\end{equation}
-			\begin{remark} \label{rmk:Variance of Sums of Independent Random Variables}
-				If $X_{1}, X_{2}, \ldots , X_{n}$ are independent, then:
-				\begin{equation} \label{eq:Variance of Sums of Independent Random Variables}
-					\Variance \left[ \sum_{i=1}^{n} X_{i} \right] = \sum_{i=1}^{n} \Variance \left[ X_{i} \right]
-				\end{equation}
-			\end{remark}
-		\end{definition}
-		\begin{definition}[Independent and Identically Distributed] \label{def:Independent and Identically Distributed}
-			We say that $X_{1},X_{2},\ldots,X_{n}$ are \emph{Independent and Identically Distributed (iid)} random variables if $X_{i}$ are drawn independently from the same population/probability distribution.
-			\begin{subequations}
-				\begin{equation} \label{eq:Mean of Independent and Identically Distributed}
-					\sum_{i=1}^{n} \ExpectedValue \left[ X_{i} \right] = n \mu
-				\end{equation}
-				\begin{equation} \label{eq:Variance of Independent and Identically Distributed}
-					\Variance \left[ S_{n} \right] = n \sigma^{2}
-				\end{equation}
-			\end{subequations}
-			\begin{itemize}[noitemsep, nolistsep]
-				\item $\mu$ is the mean of a random variable $X_{i}$
-				\item $\sigma^{2}$ is the variance of a random variable $X_{i}$.
-			\end{itemize}
-		\end{definition}
 	
 	\subsection{Sample Mean} \label{subsec:Sample Mean}
 		\begin{definition}[Sample Mean] \label{def:Sample Mean}
@@ -160,10 +113,20 @@ In applying probability models to real situations, we perform experiments and co
 			\begin{equation} \label{eq:Central Limit Theorem}
 				\lim\limits_{n \rightarrow \infty} P \left[ Z_{n} \leq z \right] = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{z} e^{-\frac{x^{2}}{2}} dx
 			\end{equation}
+			\begin{itemize} % I preferred the way it looked without noitemsep/nolistsep
+				\item $S_{n}=X_{1}+X_{2}+\ldots+X_{n}$, The sum of the random variables
+				\item $\mu=\ExpectedValue \left[ X_{1} \right]$, The mean for an individual random variable
+				\item $\sigma=\sqrt{\Variance \left[ X_{1} \right]}$, The variance of an individual random variable
+				\item $n$ is the number of trials/recordings/samples/etc.
+				\item $\bar{X} = \frac{1}{n} \sum\limits_{i=1}^{n} X_{i}$, The \nameref{def:Sample Mean}
+			\end{itemize}
 			\begin{remark*}
 				This means that over time, as you gain more and more sample means, they will start to resemble the \nameref{def:Gaussian Random Variable}, or the Normal Random Variable.
 			\end{remark*}
 		\end{theorem}
+		\begin{tcolorbox}[title=\textbf{\nameref{thm:Central Limit Theorem} Example}, colbacktitle=white!100!black, coltitle=black!100!white, colback=white!100!black, sharp corners=all] \label{ex:Central Limit Theorem}
+			Problem 7.25 from Homework 11 (Extra Credit).
+		\end{tcolorbox}
 	
 	\subsection{Estimators} \label{subsec:Estimators}
 		\begin{itemize}[noitemsep, nolistsep]
@@ -171,7 +134,7 @@ In applying probability models to real situations, we perform experiments and co
 			\item An \emph{estimator} for a parameter, $\theta$, usually denoted $\hat{\theta}$, is also a statistic
 		\end{itemize}
 		\begin{definition}[Unbiased Estimator] \label{def:Unbiased Estimator}
-			In general we say that a \nameref{def:Statistic} $\Theta (X)$ (a function of data $X_{1},X_{2},\ldots,X_{n}$) is an \emph{unbiased estimator} of a parameter $\theta$ if $\ExpectedValue \left[ W \left( X \right) \right] = \theta$.
+			In general we say that a \nameref{def:Statistic} $\Theta (X)$ (a function of data $X_{1},X_{2},\ldots,X_{n}$) is an \emph{unbiased estimator} of a parameter $\theta$ if $\ExpectedValue \left[ W \left( \mathbf{X} \right) \right] = \theta$.
 			\begin{remark}[What makes a good estimator of any parameter, $\theta$?]
 				A \emph{good estimator} of any parameter, $\theta$, should:
 				\begin{itemize}[noitemsep, nolistsep]
@@ -214,8 +177,8 @@ In applying probability models to real situations, we perform experiments and co
 				The \emph{Mean Squared Error} of an estimator for parameter $\hat{\theta}$ is:
 				\begin{equation} \label{eq:Mean Squared Error}
 					\MeanSqErr [ \hat{\theta} ]
-					= \ExpectedValue \left[ \left( \hat{\theta} - \theta \right)^{2} \right]
-					= \Variance \left[ \hat{\theta} \right] + \Bias^{2} \left[ \hat{\theta} \right]
+					= \ExpectedValue \left[ \left( \hat{\Theta} - \theta \right)^{2} \right]
+					= \Variance \left[ \hat{\theta} \right] + \left( \Bias \left[ \hat{\theta} \right] \right)^{2}
 				\end{equation}
 			\end{definition}
 			\begin{remark*}
@@ -224,16 +187,16 @@ In applying probability models to real situations, we perform experiments and co
 				There is a happy medium, which is not discussed in this class.
 			\end{remark*}
 			\begin{definition}[Consistency] \label{def:Consistency}
-				$\hat{\theta}$ is a \emph{consistent estimator} for $\theta$ if $\hat{\theta}$ converges to $\theta$ in probability.
+				$\hat{\theta}$ is a \emph{consistent estimator} for $\theta$ if $\hat{\Theta}$ converges to $\theta$ in probability.
 				\begin{equation} \label{eq:Consistency}
-					\lim\limits_{n \rightarrow \infty} \Prob \left[ \lvert \hat{\theta} - \theta \rvert > \varepsilon \right] = 0
+					\lim\limits_{n \rightarrow \infty} \Prob \left[ \lvert \hat{\Theta} - \theta \rvert > \varepsilon \right] = 0
 				\end{equation}
 			\end{definition}
 	
 	\subsection{How to Find a Good Estimator} \label{subsec:Find Good Estimator}
 	There are several methods, two of which are:
 		\begin{enumerate}[noitemsep, nolistsep]
-			\item Method of Moments
+			\item \nameref{subsubsec:Method of Moments}
 				\begin{itemize}[noitemsep, nolistsep]
 					\item Sample Moments and Population Moments, $\bar{X}_{n} = \mu$
 					\item You needs as many moments as parameters to get enough equations
@@ -241,6 +204,11 @@ In applying probability models to real situations, we perform experiments and co
 			\item \nameref{def:Maximum Likelihood Estimation}
 		\end{enumerate}
 	
+		\subsubsection{Method of Moments} \label{subsubsec:Method of Moments}
+			\begin{tcolorbox}[title=\textbf{\nameref{subsubsec:Method of Moments} Example}, colbacktitle=white!100!black, coltitle=black!100!white, colback=white!100!black, sharp corners=all] \label{ex:Method of Moments}
+				Problem 8.6 from Homework 11 (Extra Credit).
+			\end{tcolorbox}
+		
 		\subsubsection{Maximum Likelihood Estimation} \label{subsubsec:Maximum Likelihood Estimation}
 			\begin{definition}[Maximum Likelihood Estimation] \label{def:Maximum Likelihood Estimation}
 				Let $ X_{1},X_{2},\ldots,X_{n} \DrawnIID f \left( x \Given \theta \right) $.

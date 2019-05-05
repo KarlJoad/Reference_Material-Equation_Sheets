@@ -68,21 +68,25 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 	\subsection{Conditional Probability} \label{subsec:Conditional Probability}
 		\begin{definition}[Conditional Probability] \label{def:Conditional Probability}
 			The \emph{conditional probability} of event $A$ \textbf{GIVEN THAT} event $B$ occurred is denoted $P \left[ A \vert B \right]$ and is defined as
-			\begin{equation} 
+			\begin{equation} \label{eq:Conditional Probability}
 				P \left[ A \vert B \right] = \frac{P \left[ A \cap B \right]}{P \left[ B \right]}
 			\end{equation}
 		\end{definition}
-		\begin{theorem}[Theorem of Total Probability]
-			Let $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ be mutually exclusive events whose union equals the sample space $S$, i.e. $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ is a \emph{partition of $S$}.
+		\begin{theorem}[Theorem of Total Probability] \label{thm:Theorem of Total Probability}
+			Let $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ be mutually exclusive events whose union equals the sample space $S$, i.e. $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ is a partition of $S$.
 		\end{theorem}
-		\begin{definition}[Baye's Rule]
+		\begin{definition}[Baye's Rule] \label{def:Baye's Rule}
 			Let $B_{1}$, $B_{2}$, $\ldots$, $B_{n}$ be a partition of sample space $S$.
 			\begin{equation}
 				P \left[ B_{j} \vert A \right] = \frac{P \left[ A \cap B_{j} \right]}{P \left[ A \right]}
 				= \frac{P \left[ A \vert B_{j} \right] * P \left[ B_{j} \right]}{\sum\limits_{k=1}^{n} P \left[ A \vert B_{k} \right] * P \left[ B_{k} \right]}
 			\end{equation}
 		\end{definition}
-	
+		\begin{tcolorbox}[title=\textbf{\nameref{def:Baye's Rule} Example}, colbacktitle=white!100!black, coltitle=black!100!white, colback=white!100!black, sharp corners=all] \label{ex:Baye's Rule}
+			An urn with 5 balls, identical  in every way, except that 2 are red and 3 are green.
+			You select two balls at random, without replacement and record the sequence of colors you observed.
+			What is probability that the first ball was green given that the second was green?
+		\end{tcolorbox}
 	\subsection{Event Independence} \label{subsec:Event Independence}
 		\begin{definition}[Independent] \label{def:Event Independence}
 			Two events $A$ and $B$ are \emph{independent} if 

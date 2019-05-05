@@ -1,0 +1,46 @@
+\section{Sums of Random Variables} \label{sec:Sums of Random Variables}
+	\begin{definition}[Sum of Random Variables] \label{def:Sum of Random Variables}
+		The definition of a \emph{sum of random variables} is given in Equation~\eqref{eq:Sum of Random Variables} below.
+		Where $X_{i}$ is a random variable,
+		\begin{equation} \label{eq:Sum of Random Variables}
+			S_{n} = \sum_{i=1}^{n} X_{i} = X_{1} + X_{2} + \ldots + X_{n}
+		\end{equation}
+	\end{definition}
+	
+	\subsection{Means and Variances of Sums of Random Variables} \label{subsec:Means and Variances of Sums of Random Variables}
+		\begin{definition}[Mean of Sums of Random Variables] \label{def:Mean of Sums of Random Variables}
+			The \emph{mean of sums of random variables} is the same as the \emph{expected value of sums of random variables}.
+			\begin{equation}
+				\ExpectedValue \left[ S_{n} \right] = \sum_{i=1}^{n} \ExpectedValue \left[ X_{i} \right]
+			\end{equation}
+			\begin{remark}
+				All the properties of \nameref{subsubsec:Properties of Discrete Expected Value} and/or \nameref{subsubsec:Properties of Continuous Expected Value} hold true here as well..
+			\end{remark}
+		\end{definition}
+		\begin{definition}[Variance of Sums of Random Variables] \label{def:Variance of Sums of Random Variables}
+			The defintion of the \emph{variance of sums of random variables} is the same as we have been using them previously, \nameref{subsec:Variance of Single Discrete} and \nameref{subsec:Variance of Single Continuous}.
+			\begin{equation} \label{eq:Variance of Sums of Random Variables}
+				\Variance \left[ S_{n} \right] = \Variance \left[ \sum_{i=1}^{n} X_{i} \right] = \sum_{i=1}^{n} \Variance \left[ X_{i} \right] + \sum_{j=1}^{n} \sum_{\substack{k=1 \\ j \neq k}}^{n} \Covariance \left[ X_{j}, X_{k} \right]
+			\end{equation}
+			\begin{remark} \label{rmk:Variance of Sums of Independent Random Variables}
+				If $X_{1}, X_{2}, \ldots , X_{n}$ are independent, then:
+				\begin{equation} \label{eq:Variance of Sums of Independent Random Variables}
+					\Variance \left[ \sum_{i=1}^{n} X_{i} \right] = \sum_{i=1}^{n} \Variance \left[ X_{i} \right]
+				\end{equation}
+			\end{remark}
+		\end{definition}
+		\begin{definition}[Independent and Identically Distributed] \label{def:Independent and Identically Distributed}
+			We say that $X_{1},X_{2},\ldots,X_{n}$ are \emph{Independent and Identically Distributed (iid)} random variables if $X_{i}$ are drawn independently from the same population/probability distribution.
+			\begin{subequations}
+				\begin{equation} \label{eq:Mean of Independent and Identically Distributed}
+					\sum_{i=1}^{n} \ExpectedValue \left[ X_{i} \right] = n \mu
+				\end{equation}
+				\begin{equation} \label{eq:Variance of Independent and Identically Distributed}
+					\Variance \left[ S_{n} \right] = n \sigma^{2}
+				\end{equation}
+			\end{subequations}
+			\begin{itemize}[noitemsep, nolistsep]
+				\item $\mu$ is the mean of a random variable $X_{i}$
+				\item $\sigma^{2}$ is the variance of a random variable $X_{i}$.
+			\end{itemize}
+		\end{definition}
