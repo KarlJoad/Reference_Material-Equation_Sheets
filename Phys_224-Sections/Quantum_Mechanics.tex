@@ -124,7 +124,7 @@ Quantum mechanics may seem strange or weird, but it really isn't.
 				\item $+$
 				\item $-$
 				\item $\times$
-				\item $\divideontimes$
+				\item $\div$
 				\item $\frac{\partial^{2}}{\partial t^{2}}$
 				\item $\int$
 				\item $\sum$
@@ -142,12 +142,12 @@ Quantum mechanics may seem strange or weird, but it really isn't.
 			Some examples of simple quantum mechanical operators are:
 			\begin{itemize}[noitemsep, nolistsep] \label{item:List of Quantum Mechanical Operators}
 				\item Kinetic Energy: $\frac{-\hbar^{2}}{2m} \nabla^{2}$
-				\item Momentum: $\frac{-\hbar}{i} \frac{\partial}{\partial x}$
+				\item Momentum: $\frac{-\hbar}{i} \nabla$
 				\item Potential Energy: $V$ is simply multiplication by $V$
 				\item Angular Momentum: $L_{z} = \mathbf{r} \times \frac{-\hbar}{i} \nabla^{2}$
 			\end{itemize}
 			Further, some, but not all, operators are linear.
-			Fortunately, the quantum mechanics kinetic energy operators, $\nabla^{2} = \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial x^{2}}$ is a linear operator.
+			Fortunately, the quantum mechanics kinetic energy operators, $\nabla^{2} = \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}}$ is a linear operator.
 			This allows us to \emph{reduce a 3-dimensional problem into 3 1-dimensional problems.}
 		\end{definition}
 	
@@ -169,3 +169,19 @@ Quantum mechanics may seem strange or weird, but it really isn't.
 	\subsection{Determine Dynamical Variables in Quantum Mechanics} \label{subsec:Determine Dynamical Variables in Quantum Mechanics}
 		This section has an example where we solve for dynamical variables.
 		\input{./Phys_224-Sections/Examples/Determine_Dynamical_Variables}
+		
+	\subsection{Heisenberg's Uncertainty Principle} \label{subsec:Heisenberg's Uncertainty Principle}
+		\begin{definition} \label{def:Heisenberg's Uncertainty Principle}
+			The \nameref{def:Heisenberg's Uncertainty Principle} states that measured values cannot be assigned to the position vector, $\vec{r}$ and the momentum vector, $\vec{p}$ simultaneously with unlimited precision.
+			\begin{equation} \label{eq:Heisenberg's Uncertainty Principle}
+				\begin{aligned}
+					\delta x \cdot \delta p_{x} &\geq \hbar \\
+					\delta y \cdot \delta p_{y} &\geq \hbar \\
+					\delta z \cdot \delta p_{z} &\geq \hbar \\
+				\end{aligned}
+			\end{equation}
+			\begin{itemize}[noitemsep, nolistsep]
+				\item $\delta x$ and $\delta p_{x}$ represent the uncertainty of the value from the given values of $\vec{r}_{x}x$ and $\vec{p}_{x}$.
+				\item $\hbar$ is defined in Equation~\eqref{eq:hbar Definition}.
+			\end{itemize}
+		\end{definition}
