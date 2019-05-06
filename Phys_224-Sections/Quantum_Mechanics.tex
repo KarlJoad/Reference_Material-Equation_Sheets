@@ -19,12 +19,39 @@ Quantum mechanics may seem strange or weird, but it really isn't.
 		\end{itemize}
 	\end{definition}
 
+	\subsection{Photoelectric Effect} \label{subsec:Photoelectric Effect}
+		\begin{definition}[Photoelectric Effect] \label{def:Photoelectric Effect}
+			Occurs when light shines on an object.
+			The object will lose electrons $e^{-}$ if the light has a great enough frequency.
+			This \emph{is not} a function of intensity or brightness, only frequency.
+			\begin{equation} \label{eq:Photoelectric Effect}
+				\begin{aligned}
+					K_{\text{Max}} &= hf - \Phi \\
+					K_{\text{Max}} = E - \Phi &\Rightarrow K_{\text{Max}} + \Phi = E \\
+				\end{aligned}
+			\end{equation}
+			\begin{itemize}[noitemsep, nolistsep]
+				\item $K_{\text{Max}} = e V_{\text{Stop}}$ is Kinetic Energy of released electrons (\si{\joule})
+					\begin{itemize}[noitemsep, nolistsep]
+						\item $e$ is charge of electron
+						\item $V_{\text{Stop}}$ is the stopping potential
+					\end{itemize}
+				\item $h$ is Planck's Constant
+				\item $f$ is Frequency of the incident wave (\si{\hertz})
+				\item $\Phi$ is the Work Function (\si{\electronvolt})
+			\end{itemize}
+		\end{definition}
+	The \nameref{eq:Kinetic Energy of Matter Wave} is given in Equation~\eqref{eq:Kinetic Energy of Matter Wave}.
+		
 	\subsection{Schr\"{o}dinger's Equation} \label{subsec:Schrodingers Equation}
 		\begin{definition}[de Broglie Wavelength] \label{def:de Broglie Wavelength}
 			The \emph{de Broglie wavelength, $\lambda$}, is the wavelength that is \emph{associated} with a particle.
 			In other words, a particle does \emph{\textbf{not}} have a wavelength, but the equations describing the particle's actions have a wavelength.
+			\begin{equation} \label{eq:de Broglie Wavelength}
+				\lambda = \frac{h}{p}
+			\end{equation}
 			\begin{note} \label{note:de Broglie Wavelength Momentum}
-				As a direction consequence of the \nameref{def:de Broglie Wavelength},
+				As a direction consequence of the \nameref{def:de Broglie Wavelength}, Equation~\eqref{eq:de Broglie Wavelength}:
 				\begin{equation}
 					p = \frac{h}{\lambda}
 				\end{equation}
@@ -32,6 +59,14 @@ Quantum mechanics may seem strange or weird, but it really isn't.
 					\item $h$ is Planck's Constant
 					\item $\lambda$ is the \nameref{def:de Broglie Wavelength}
 				\end{itemize}
+			For electromagnetic waves, Equation~\eqref{eq:Momentum of Electromagnetic Wave} holds true.
+				\begin{equation} \label{eq:Momentum of Electromagnetic Wave}
+					p = \frac{E}{c}
+				\end{equation}
+			For matter waves, Equation~\eqref{eq:Kinetic Energy of Matter Wave} holds true.
+				\begin{equation} \label{eq:Kinetic Energy of Matter Wave}
+					K = \frac{p^{2}}{2m}
+				\end{equation}
 			\end{note}
 		\end{definition}
 		\begin{definition}[Schr\"{o}dinger's Equation] \label{def:Schrodinger's Equation}

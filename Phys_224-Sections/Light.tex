@@ -14,12 +14,12 @@ This happens because shorter wavelength, higher frequency light has a slightly h
 %		\label{fig:Indices of Refraction for Polychromatic Light}
 %	\end{figure}
 
-	\subsection*{Reflection} \label{subsec:Reflection}
+	\subsection{Reflection} \label{subsec:Reflection}
 		\begin{equation} \label{eq:Reflected Light}
 			\theta_{reflected} = \theta_{incident}
 		\end{equation}
 		
-	\subsection*{Refraction} \label{subsec:Refraction}
+	\subsection{Refraction} \label{subsec:Refraction}
 		\begin{definition}[Snell's Law] \label{def:Snell's Law}
 			\begin{equation} \label{eq:Refracted Light} 
 				n_{refract} \sin \left( \theta_{refract} \right) = n_{incident} \sin \left( \theta_{incident} \right)
@@ -33,8 +33,16 @@ This happens because shorter wavelength, higher frequency light has a slightly h
 				\end{aligned}
 			\end{equation}
 		\end{definition}
-	
-	\subsection*{Total Internal Reflection} \label{subsec:Total Internal Reflection}
+	The total number of waves that pass through a material is given in Equation~\eqref{eq:Number of Waves}.
+		\begin{equation} \label{eq:Number of Waves}
+			\begin{aligned}
+				N &= \frac{L}{\lambda_{n}} \\
+				&= \frac{L}{\frac{\lambda_{0}}{n}}
+				N &= \frac{nL}{\lambda_{0}} \\
+			\end{aligned}
+		\end{equation}
+		
+	\subsection{Total Internal Reflection} \label{subsec:Total Internal Reflection}
 		\begin{definition}[Total Internal Reflection] \label{def:Total Internal Reflection}
 			Total Internal Reflection occurs when the \emph{refracted light's angle is $\frac{\pi}{2}$}.
 			\begin{equation} \label{eq:Total Internal Reflection}
@@ -42,7 +50,7 @@ This happens because shorter wavelength, higher frequency light has a slightly h
 			\end{equation}
 		\end{definition}
 		
-	\subsection*{Interference and Diffraction} \label{subsec:Interference and Diffraction}
+	\subsection{Interference and Diffraction} \label{subsec:Interference and Diffraction}
 		\begin{definition}[Huygen's Principle] \label{def:Huygen's Principle}
 			Any point on a plane wavefront can be treated as a source of outgoing spherical waves.
 			\begin{note}
@@ -52,45 +60,72 @@ This happens because shorter wavelength, higher frequency light has a slightly h
 		\begin{definition}[Phase Difference] \label{def:Phase Difference}
 			Waves from the same source, but measured in such a way that there is a Path Length Difference (PLD) between them will have a \emph{phase difference}.
 			\begin{equation} \label{eq:Phase Difference}
-				\varphi = \frac{2 \pi \PLD}{\lambda}
+				\varphi = \frac{2 \pi}{\lambda} \left( \PLD \right)
 			\end{equation}
 		\end{definition}
 	All \nameref{subsec:Interference and Diffraction} equations used from here on out are based on Equation~\eqref{eq:Phase Difference}.
-		\begin{definition}[Single Slit Diffraction] \label{def:Single Slit Diffraction}
-			When waves propagate through a single slit, there is a Probability Distribution Function that describes where intensity of light is greatest and smallest.
-			The location of the \emph{\textbf{minima}} are given in Equation~\eqref{eq:Minima of Single Slit Diffraction}
-			\begin{equation} \label{eq:Minima of Single Slit Diffraction}
-				m \lambda = a \sin \left( \theta_{m} \right)
-			\end{equation}
-			\begin{note}
-				$m$ is the number of minima from the central major distribution of intensity.
-				\begin{enumerate}[noitemsep, nolistsep]
-					\item First minima means $m=1$
-					\item Second minima means $m=2$
-					\item etc.
-				\end{enumerate}
-			\end{note}
-			Thus, the equation for the \nameref{eq:Phase Difference of Single Slit Diffraction} is given in Equation~\eqref{eq:Phase Difference of Single Slit Diffraction}.
-			\begin{equation} \label{eq:Phase Difference of Single Slit Diffraction}
-				\varphi_{\text{Single Slit}} = \frac{2 \pi}{\lambda} a \sin \left( \theta \right)
+		\begin{definition}[Intensity] \label{def:Intensity}
+			\emph{Intensity} of an electromagnetic wave (light) is proportional to the square of the amplitude of the electric field.
+			\begin{equation} \label{eq:Intensity}
+				\begin{aligned}
+					\Intensity &= E^{2} = \sin^{2} \left( \alpha \right) \\
+					\Intensity_{0} &= \alpha^{2} \\
+				\end{aligned}
 			\end{equation}
 		\end{definition}
-		\begin{definition}[Double Slit Diffraction] \label{def:Double Slit Diffraction}
-			This is really interference.
-			The \emph{\textbf{maxima}} of the interference is given in Equation.
-			\begin{equation} \label{eq:Maxima of Double Slit Diffraction}
-				n \lambda = d \sin \left( \theta_{n} \right)
-			\end{equation}
-			\begin{note}
-				$n$ is the number of maxima from the central major distribution of intensity.
-				\begin{enumerate}[noitemsep, nolistsep]
-					\item First maxima means $n=1$
-					\item Second maxima means $n=2$
-					\item etc.
-				\end{enumerate}
-			\end{note}
-			Thus, the equation for the \nameref{eq:Phase Difference of Double Slit Refraction} is given in Equation~\eqref{eq:Phase Difference of Double Slit Refraction}.
-			\begin{equation} \label{eq:Phase Difference of Double Slit Refraction}
-				\varphi_{\text{Double Slit}} = \frac{2 \pi}{\lambda} d \sin \left( \theta \right)
-			\end{equation}
-		\end{definition}
+		
+		\subsubsection{Single Slit Interference} \label{subsubsec:Single Slit Interference}
+			\begin{definition}[Single Slit Interference] \label{def:Single Slit Interference}
+				When waves propagate through a single slit, there is a Probability Distribution Function that describes where intensity of light is greatest and smallest.
+				The location of the \emph{\textbf{minima}} are given in Equation~\eqref{eq:Minima of Single Slit Interference}.
+				This phenomena occurs because \nameref{def:Huygen's Principle} says a wave has infinite sources of light that radiate spherically.
+				\begin{equation} \label{eq:Minima of Single Slit Interference}
+					m \lambda = a \sin \left( \theta_{m} \right)
+				\end{equation}
+				\begin{itemize}
+					\item $m$ is the number of minima from the central major distribution of intensity.
+					\begin{enumerate}[noitemsep, nolistsep]
+						\item First minima from central intensity point means $m=1$
+						\item Second minima from central intensity point means $m=2$
+						\item etc.
+					\end{enumerate}
+					\item $\lambda$ is the wavelength of the incoming wave
+					\item $a$ is the width of the single slit
+					\item $\theta_{m}$ is the angle formed by the diffracted light from the normal
+				\end{itemize}
+				Thus, the equation for the \nameref{eq:Phase Difference of Single Slit Interference} is given in Equation~\eqref{eq:Phase Difference of Single Slit Interference}.
+				\begin{equation} \label{eq:Phase Difference of Single Slit Interference}
+					\varphi_{\text{Single Slit}} = \frac{2 \pi}{\lambda} a \sin \left( \theta \right) \si{\radian}
+				\end{equation}
+				There is a connection between the angle $\theta$ that locates a point on the screen with the light intensity $I\left( \theta \right)$ at that point.
+				\begin{equation} \label{eq:Alpha for Single Slit Interference}
+					\begin{aligned}
+						\alpha &= \frac{1}{2} \phi \\
+						\alpha &= m \pi \\
+						\alpha &= \frac{\pi}{\lambda} a\sin \left( \theta \right) \\
+					\end{aligned}
+				\end{equation}
+			\end{definition}
+		
+		\subsubsection{Double Slit Diffraction} \label{subsubsec:Double Slit Diffraction}
+			\begin{definition}[Double Slit Diffraction] \label{def:Double Slit Diffraction}
+				The \emph{\textbf{maxima}} of the interference is given in Equation.
+				\begin{equation} \label{eq:Maxima of Double Slit Diffraction}
+					n \lambda = d \sin \left( \theta_{n} \right)
+				\end{equation}
+				\begin{itemize}[noitemsep, nolistsep]
+					\item $n$ is the number of maxima from the central major distribution of intensity.
+						\begin{enumerate}[noitemsep, nolistsep]
+							\item Central maxima means $n=0$
+							\item First maxima means $n=\pm 1$
+							\item etc.
+						\end{enumerate}
+					\item $d$ is the distance between the slits
+					\item $\lambda$ is the incoming wave's wavelength
+					\item $\theta_{n}$ is the phase difference from the normal by the diffracted light
+				\end{itemize}
+				Thus, the equation for the \nameref{eq:Phase Difference of Double Slit Refraction} is given in Equation~\eqref{eq:Phase Difference of Double Slit Refraction}.
+				\begin{equation} \label{eq:Phase Difference of Double Slit Refraction}
+					\varphi_{\text{Double Slit}} = \frac{2 \pi}{\lambda} d \sin \left( \theta \right) \si{\radian}
+				\end{equation}
+			\end{definition}
