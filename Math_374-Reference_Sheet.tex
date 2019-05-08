@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 
 \usepackage{hyperref} % Generate hyperlinks to referenced items
+\usepackage[noabbrev,nameinlink]{cleveref} % Fancy cross-references in the document everywhere
 \usepackage{nameref} % Can make references by name to places
 \usepackage{ctable} % Greater control over tables and how they look
 \usepackage{subcaption} % Allows for multiple figures in one Figure environment
@@ -34,7 +35,22 @@
 \newtheorem*{remark*}{Remark}
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
 
-\newcounter{example}[section]
+\newtcolorbox[auto counter,
+	number within=section,
+	number format=\arabic,
+	crefname={example}{examples}, % Define reference format for cref (No Capitals)
+	Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
+]{example}[2][]{
+	width=\textwidth,
+	title={Example \thetcbcounter: #2. #1},
+	fonttitle=\bfseries,
+	label={ex:#2},
+	nameref=#2,
+	colbacktitle=white!100!black,
+	coltitle=black!100!white,
+	colback=white!100!black,
+	sharp corners=all
+}
 
 \renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
 
@@ -84,17 +100,13 @@
 
 \input{./Math_374-Sections/Statistics}
 
-\begin{tcolorbox}[title=\textbf{Example Test}, colbacktitle=white!100!black, coltitle=black!100!white, colback=white!100!black, sharp corners=all]
-	Test
-\end{tcolorbox}
+\Cref{sec:Probability Models}
 %====================================APPENDIX====================================
-\clearpage
 \appendix
 \counterwithin{equation}{section}
 \counterwithin{definition}{subsection}
 
-\section{Reference Material} \label{sec:Reference Material}
-\input{./Appendix-Reference_Material/Trig}
-\input{./Appendix-Reference_Material/Calculus}
+\include{./Appendix-Reference_Material/Trig}
+\include{./Appendix-Reference_Material/Calculus}
 
 \end{document}
