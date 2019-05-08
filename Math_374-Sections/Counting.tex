@@ -1,11 +1,14 @@
 \section{Counting} \label{sec:Counting}
-		\subsection{Sampling \emph{with} Replacement \emph{with} Order} \label{subsec:Ordered Sampling with Replacement}
+	\subsection{Sampling \emph{with} Replacement \emph{with} Order} \label{subsec:Ordered Sampling with Replacement}
 		\begin{definition} \label{def:Ordered Sampling with Replacement}
 			Choose $k$ elements in succession with replacement between selections, from a population of $n$ distinct objects, where $k$ needs to have no relation to $n$.
 			\begin{equation} \label{eq:Ordered Sampling with Replacement}
 				\frac{n}{First} * \frac{n}{Second} * \frac{n}{Third} * \ldots * \frac{n}{kth \text{ Item}} = n^{k}
 			\end{equation}
 		\end{definition}
+		\begin{example}[Problem 2.42]{Sampling with Replacement with Order}
+			Problem 2.42 from Homework 3.
+		\end{example}
 	
 	\subsection{Sampling \emph{without} Replacement \emph{with} Order} \label{subsec:Ordered Sampling without Replacement}
 		\begin{definition} \label{def:Ordered Sampling without Replacement}
@@ -27,7 +30,7 @@
 		\begin{definition} \label{def:Unordered Sampling without Replacement}
 			Pick $k$ objects from a set of $n$ distinct object with replacement.
 			Record the result without order.
-			The total number of ways to do this is given in Equation~\eqref{eq:Unordered Sampling without Replacement}.
+			The total number of ways to do this is given in \Cref{eq:Unordered Sampling without Replacement}.
 			\begin{equation} \label{eq:Unordered Sampling without Replacement}
 				\binom{n+k-1}{k} = \binom{n+k-1}{n-1}
 			\end{equation}
@@ -38,7 +41,7 @@
 			Pick $k$ objects from a set of $n$ distinct objects without replacement.
 			Record the results with without order.
 			We call the resulting subset of $k$ selected objects a ``combination of size $k$.''
-			The number of ways to choose $k$ items out of $n$ items is given in Equation~\eqref{eq:Unordered Sampling with Replacement}.
+			The number of ways to choose $k$ items out of $n$ items is given in \Cref{eq:Unordered Sampling with Replacement}.
 			Also said $n$ choose $k$:
 			\begin{equation} \label{eq:Unordered Sampling with Replacement}
 			\binom{n}{k} = \frac{n * (n-1) * (n-2) * \ldots * (n-k+1)}{k!} = \frac{n!}{k! \left( n-k \right)!}

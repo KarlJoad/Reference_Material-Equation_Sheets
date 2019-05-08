@@ -82,11 +82,16 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 				= \frac{P \left[ A \vert B_{j} \right] * P \left[ B_{j} \right]}{\sum\limits_{k=1}^{n} P \left[ A \vert B_{k} \right] * P \left[ B_{k} \right]}
 			\end{equation}
 		\end{definition}
-		\begin{tcolorbox}[title=\textbf{\nameref{def:Baye's Rule} Example}, colbacktitle=white!100!black, coltitle=black!100!white, colback=white!100!black, sharp corners=all] \label{ex:Baye's Rule}
-			An urn with 5 balls, identical  in every way, except that 2 are red and 3 are green.
-			You select two balls at random, without replacement and record the sequence of colors you observed.
-			What is probability that the first ball was green given that the second was green?
-		\end{tcolorbox}
+		\begin{example}[Exam 1, Problem 5]{Baye's Rule}
+			An urn contains 9 balls, identical in every way, except that they are labeled with numbers 1 through 9.
+			Two balls are selected at random, without replacement, and the sequence of labels observed are recorded.
+			\begin{enumerate}[label=(\alph*), noitemsep, nolistsep]
+				\item Give the formula for the conditional probability of event $A$ given that event $B$ occurred (where $A$ and $B$ are arbitrary events).
+				\item What is the probability that the label of the second ball is even?
+				\item What is the probability that the label of the first ball was odd given that the second was even?
+			\end{enumerate}
+		\end{example}
+	
 	\subsection{Event Independence} \label{subsec:Event Independence}
 		\begin{definition}[Independent] \label{def:Event Independence}
 			Two events $A$ and $B$ are \emph{independent} if 
@@ -129,5 +134,5 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 				- P \left[ A \cap B^{C} \right] &= -P \left[ A \right] \cdot P \left[ B^{C} \right] \\
 				P \left[ A \cap B^{C} \right] &= P \left[ A \right] \cdot P \left[ B^{C} \right] \\
 			\end{align*}
-			$\therefore$ $A$ and $B^{C}$ are independent, according to the definition of \nameref{def:Event Independence}~events in Equation~\eqref{eq:Event Independence}.
+			$\therefore$ $A$ and $B^{C}$ are independent, according to the definition of \nameref{def:Event Independence}~events in \Cref{eq:Event Independence}.
 		\end{proof}

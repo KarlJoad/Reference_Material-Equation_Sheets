@@ -11,7 +11,7 @@
 		\begin{definition}[Cumulative Distribution Function] \label{def:Cumulative Distribution Function}
 			\emph{Cumulative Distribution Function (CDF)} of a random variable $X$ is defined as the probability of the event $\lbrace X \leq x \rbrace$.
 			\begin{equation} \label{eq:Cumulative Distribution Function}
-				F_{X} \left( x \right) = P \left[ X \leq x \right] \text{ for } -\infty < x < \infty
+				F_{X} \left( x \right) = \Prob \left[ X \leq x \right] \text{ for } -\infty < x < \infty
 			\end{equation}
 		\end{definition}
 	
@@ -19,7 +19,7 @@
 			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
 				\item 
 					\begin{equation}
-						x \leq F_{X} \left( x \right) \leq 1
+						0 \leq F_{X} \left( x \right) \leq 1
 					\end{equation}
 				\item If you include the whole sample space, you should end up with $1$.
 					\begin{equation}
@@ -35,19 +35,19 @@
 					\end{equation}
 				\item The CDF is continuous from the right.
 					\begin{equation}
-				 		F_{b} = \lim\limits_{h \rightarrow 0} F_{X} \left( b+h \right) \text{ where } h>0
+				 		F_{X} \left( b \right) = \lim\limits_{h \rightarrow 0} F_{X} \left( b+h \right) \text{ where } h>0
 					\end{equation}
 				\item
 					\begin{equation}
-						P \left[ a<X \leq b \right] = F_{X} \left( b \right) - F_{X} \left( a \right)
+						\Prob \left[ a<X \leq b \right] = F_{X} \left( b \right) - F_{X} \left( a \right)
 					\end{equation}
 				\item The probability at a point in a CDF. (This usually ends up being $0$).
 					\begin{equation}
-						P \left[ X=b \right] = F_{X} \left( b \right) - F_{X} \left( b^{-} \right)
+						\Prob \left[ X=b \right] = F_{X} \left( b \right) - F_{X} \left( b^{-} \right)
 					\end{equation}
 				\item The probability of the event \emph{\textbf{not}} occurring.
 					\begin{equation}
-						P \left[ X>x \right] = 1 - P \left[ X \leq x \right] =  1 - F_{X} \left( x \right)
+						\Prob \left[ X>x \right] = 1 - \Prob \left[ X \leq x \right] =  1 - F_{X} \left( x \right)
 					\end{equation}
 			\end{enumerate}
 		
@@ -55,7 +55,7 @@
 			\begin{definition} [Conditional Cumulative Distribution Function] \label{def:Conditional Cumulative Distribution Function}
 				The \emph{conditional cumulative distribution function (Conditional CDF)} of $X$ given $C$ is defined by:
 				\begin{equation} \label{eq:Conditional Cumulative Distribution Function}
-					F_{X \Given C} \left( x \Given C \right) = \frac{P \left[ \lbrace X = x \rbrace \Given C \right]}{P \left[ C \right]}
+					F_{X \Given C} \left( x \Given C \right) = \frac{P \left[ \lbrace X = x \rbrace \Given C \right]}{\Prob \left[ C \right]}
 				\end{equation}
 				\begin{remark}
 					The conditional CDF, $F_{X \Given C} \left( x \Given C \right)$ satisfies \emph{\textbf{all}} \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
@@ -88,7 +88,7 @@
 					\end{equation}
 				\item Since the definition of the PDF is that it's the derivative of the CDF, integrating the space over the PDF will yield the CDF.
 					\begin{equation}
-						P \left[ a \leq X \leq b \right] = \int_{a}^{b} f_{X} \left( x \right) dx = F_{X} \left( b \right) - F_{X} \left( a \right)
+						\Prob \left[ a \leq X \leq b \right] = \int_{a}^{b} f_{X} \left( x \right) dx = F_{X} \left( b \right) - F_{X} \left( a \right)
 					\end{equation}
 				\item The value of a location in CDF is the integral of the PDF over the area.
 					\begin{equation}
@@ -98,6 +98,20 @@
 					\begin{equation}
 						\int_{-\infty}^{\infty} f_{X} \left( x \right) dx = 1
 					\end{equation}
+					\begin{example}[Final Exam Practice Problem 4]{Find Normalizing Constant $c$}
+						A random variable $X$ has Probability Distribution Function (PDF):
+						\begin{equation*}
+							f_{X}\left( x \right) = \begin{cases}
+								cx \left( 1- x^{3} \right) & 0 \leq x \leq 1 \\
+								0 & \text{otherwise} \\
+								\end{cases}
+							\end{equation*}
+						\begin{enumerate}[noitemsep, nolistsep]
+							\item Find the normalizing constant $c$. (5 pts)
+							\item Find $P \left[ X = 0.5 \right]$. (3 pts)
+							\item Find $P \left[ X > 0.5 \right]$. (7 pts)
+						\end{enumerate}
+					\end{example}
 			\end{enumerate}
 			\begin{remark*}
 				Any non-negative, piecewise continuous function $g \left( x \right)$ with finite $\int_{-\infty}^{\infty} g \left( x \right) dx = C$ can be used to form a PDF.
@@ -124,7 +138,7 @@
 				This works with \emph{\textbf{all}} random variables, or general random variables.
 			\end{remark}
 			\begin{remark}
-				$\ExpectedValue \left[ X \right]$ is defined if the integral in Equation~\eqref{eq:Expected Value of Single Continuous} converges absolutely.
+				$\ExpectedValue \left[ X \right]$ is defined if the integral in \Cref{eq:Expected Value of Single Continuous} converges absolutely.
 				This means:
 				\begin{equation*}
 					\ExpectedValue \left[ X \right] = \int_{-\infty}^{\infty} t f_{X} \left( t \right) dt < \infty
@@ -194,7 +208,7 @@
 	If $X \DrawnFrom N \left( \mu, \sigma^{2} \right)$ and $Y \DrawnFrom N \left( 0,1 \right)$,
 		\begin{equation} \label{eq:Probability of Gaussian Random Variable}
 			\begin{aligned}
-				P \left[ a \leq x \leq b \right] &= \frac{1}{\sqrt{2 \pi} \sigma} \int_{-\infty}^{\infty} e^{\frac{-1}{2} \left( \frac{x-\mu}{\sigma} \right)^{2}} dx \\
+				\Prob \left[ a \leq x \leq b \right] &= \frac{1}{\sqrt{2 \pi} \sigma} \int_{-\infty}^{\infty} e^{\frac{-1}{2} \left( \frac{x-\mu}{\sigma} \right)^{2}} dx \\
 				&= \frac{1}{\sqrt{2 \pi}} \int_{\frac{a-\mu}{\sigma}}^{\frac{b-\mu}{\sigma}} e^{\frac{-1}{2}y}dy \\
 				&= P \left[ \frac{a-\mu}{\sigma} \leq Y \leq \frac{b-\mu}{\sigma} \right] \\
 				&= F_{Y} \left( \frac{b-\mu}{\sigma} \right) - F_{Y} \left( \frac{a-\mu}{\sigma} \right) \\
@@ -224,7 +238,7 @@
 			Let $X$ be a non-negative random variable with $\ExpectedValue \left[ X \right] < \infty$.
 			The \emph{Markov Inequality} states that:
 			\begin{equation} \label{eq:Markov Inequality}
-				P \left[ X \geq a \right] \leq \frac{\ExpectedValue\left[ X \right]}{a}
+				\Prob \left[ X \geq a \right] \leq \frac{\ExpectedValue\left[ X \right]}{a}
 			\end{equation}
 		\end{definition}
 		\begin{proof}[Proving the Markov Inequality] \label{proof:Markov Inequality}
@@ -256,11 +270,11 @@
 			\end{equation*}
 			Then, we end up with an integral that is the definition of the probability of a continuous random variable.
 			\begin{equation*}
-				\ExpectedValue \left[ X \right] \geq a P \left[ X \geq a \right]
+				\ExpectedValue \left[ X \right] \geq a \Prob \left[ X \geq a \right]
 			\end{equation*}
 			\begin{equation*} \label{eq:Proved Markov Inequality}
 				\therefore
-				\ExpectedValue \left[ X \right] \geq a P \left[ X \geq a \right]
+				\ExpectedValue \left[ X \right] \geq a \Prob \left[ X \geq a \right]
 			\end{equation*}
 		\end{proof}
 	

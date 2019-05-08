@@ -74,7 +74,7 @@ In applying probability models to real situations, we perform experiments and co
 			\end{remark}
 		\end{definition}
 			
-	Also, we can use the \nameref{eq:Chebychev Inequality} to approximate many values. In this case, we change the Chebychev Inequality from Equation~\eqref{eq:Chebychev Inequality} to Equation~\eqref{eq:Statistics Chebychev Inequality} like so:
+	Also, we can use the \nameref{eq:Chebychev Inequality} to approximate many values. In this case, we change the Chebychev Inequality from \Cref{eq:Chebychev Inequality} to \Cref{eq:Statistics Chebychev Inequality} like so:
 		\begin{equation} \label{eq:Statistics Chebychev Inequality}
 			P \left[ \lvert M_{n} - \ExpectedValue \left[ M_{n} \right] \rvert \geq \varepsilon \right] \leq \frac{\Variance \left[ M_{n} \right]}{\varepsilon^{2}}
 		\end{equation}
@@ -124,10 +124,11 @@ In applying probability models to real situations, we perform experiments and co
 				This means that over time, as you gain more and more sample means, they will start to resemble the \nameref{def:Gaussian Random Variable}, or the Normal Random Variable.
 			\end{remark*}
 		\end{theorem}
-		\begin{tcolorbox}[title=\textbf{\nameref{thm:Central Limit Theorem} Example}, colbacktitle=white!100!black, coltitle=black!100!white, colback=white!100!black, sharp corners=all] \label{ex:Central Limit Theorem}
+		\begin{example}[Problem 7.25]{Central Limit Theorem} 
 			Problem 7.25 from Homework 11 (Extra Credit).
-		\end{tcolorbox}
+		\end{example}
 	
+		\nameref{ex:Central Limit Theorem} is \Cref{ex:Central Limit Theorem}.
 	\subsection{Estimators} \label{subsec:Estimators}
 		\begin{itemize}[noitemsep, nolistsep]
 			\item A \nameref{def:Statistic} is a function of the data $X_{1},X_{2},\ldots,X_{n}$
@@ -205,9 +206,13 @@ In applying probability models to real situations, we perform experiments and co
 		\end{enumerate}
 	
 		\subsubsection{Method of Moments} \label{subsubsec:Method of Moments}
-			\begin{tcolorbox}[title=\textbf{\nameref{subsubsec:Method of Moments} Example}, colbacktitle=white!100!black, coltitle=black!100!white, colback=white!100!black, sharp corners=all] \label{ex:Method of Moments}
+			\begin{example}{Method of Moments} 
 				Problem 8.6 from Homework 11 (Extra Credit).
-			\end{tcolorbox}
+				$x+y=z$
+				\begin{equation*}
+					\sum_{x \in S_{X}} p_{k} \left( x \right) = 1
+				\end{equation*}
+			\end{example}
 		
 		\subsubsection{Maximum Likelihood Estimation} \label{subsubsec:Maximum Likelihood Estimation}
 			\begin{definition}[Maximum Likelihood Estimation] \label{def:Maximum Likelihood Estimation}
@@ -228,13 +233,13 @@ In applying probability models to real situations, we perform experiments and co
 					\end{equation*}
 				\end{remark}
 				\begin{remark}
-					\[ \argmax_{\theta \in \Theta} \] is the global maxima of the function. This is further described in Definition~\ref{def:argmax}.
+					\[ \argmax_{\theta \in \Theta} \] is the global maxima of the function. This is further described in \Cref{def:argmax}.
 				\end{remark}
 			\end{definition}
 	
 	\subsection{Confidence Intervals} \label{subsec:Confidence Interval}
 	Because certain estimators are not discrete, but continuous, the estimators expected value might not be quite right.
-	This is where \ref{def:Confidence Interval}s come in.
+	This is where \nameref{def:Confidence Interval}s come in.
 		\begin{definition}[Confidence Interval] \label{def:Confidence Interval}
 			A \emph{confidence interval} is an interval or set of values that is highly likely to contain the true value of the parameter.
 		\end{definition}
