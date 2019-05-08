@@ -99,14 +99,14 @@
 		\subsubsection{Properties of Joint Probability Density Functions} \label{subsubsec:Joint PDF Properties}
 			\begin{gather}
 				\iint_{B} f_{X,Y} \left( x,y \right) = 1 \\
-				x \geq 0, y \geq 0 \forall x \forall y \\
+				x \geq 0, y \geq 0 \forall x \forall y 
 			\end{gather}
 			
 		\subsubsection{Facts about Joint PDFs} \label{subsubsec:Joint PDF Facts}
 			\begin{align}
 				\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} &f_{X,Y} \left( x,y \right) = 1 \\
 				F_{X,Y} \left( x,y \right) &= \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y} \left( s,t \right) dt ds \\
-				f_{X,Y} &= \frac{\partial^{2} f_{X,Y} \left( x,y \right)}{\partial x \partial y} \\
+				f_{X,Y} &= \frac{\partial^{2} f_{X,Y} \left( x,y \right)}{\partial x \partial y} 
 			\end{align}
 			
 		\subsubsection{Marginal PDF} \label{subsubsec:Marginal PDF}
@@ -145,7 +145,7 @@
 				f_{X,Y} \left( x,y \right) = f_{X} \left( x \right) * f_{Y} \left( y \right)
 			\end{equation}
 	\end{enumerate}
-	You can prove \nameref{eq:Independence of Multiple Discrete Random Variables Using PMF}, Equation~\eqref{eq:Independence of Multiple Discrete Random Variables Using PMF}.
+	You can prove \nameref{eq:Independence of Multiple Discrete Random Variables Using PMF}, \Cref{eq:Independence of Multiple Discrete Random Variables Using PMF}.
 	\begin{proof}[Independence of Discrete Random Variables with PMF] \label{proof:Independence of Discrete Random Variables with PMF}
 		
 	\end{proof}
@@ -194,31 +194,23 @@
 				\end{equation}
 			\end{definition} 
 		
-		\subsubsection{Covariance} \label{subsubsec:Covariance}
-			\begin{definition}[Covariance] \label{def:Covariance}
-				The \emph{covariance of $X$ and $Y$} is denoted:
-				\begin{equation} \label{eq:Covariance, Form 1}
-					\text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ \left( X - \ExpectedValue \left[ X \right] \right) \left( Y - \ExpectedValue \left[ Y \right] \right)\right]
-				\end{equation}
-				\begin{equation} \label{eq:Covariance, Form 2}
-					\text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ XY \right] - \ExpectedValue \left[ X \right] \ExpectedValue \left[ Y \right]
-				\end{equation}
-			\end{definition}
-		
 		\subsubsection{Correlation} \label{subsubsec:Correlation}
 			\begin{definition}[Correlation] \label{def:Correlation}
 				The \emph{Correlation of $X$ and $Y$} is defined as the $1,1$ moment, i.e. $\ExpectedValue \left[ X^{1} Y^{1} \right]$.
 				\begin{remark}
 					If $X$, $Y$ are such that $\ExpectedValue \left[ X^{1} Y^{1} \right] = 0$, then we say that $X$, $Y$ are \emph{orthogonal}.
 				\end{remark}
-				\begin{remark} \label{rmk:Uncorrelated}
+				\begin{remark}[Uncorrelated] \label{rmk:Uncorrelated}
 					If $X$, $Y$ are such that $\ExpectedValue \left[ XY \right] = \ExpectedValue \left[ X \right] \ExpectedValue \left[ Y \right]$, then $X$ and $Y$ are \emph{uncorrelated}.
+				\end{remark}
+				\begin{remark}
+					If $X$, $Y$ are independent, then they are uncorrelated; but if $X$ and $Y$ are uncorrelated, \emph{\textbf{they are not always independent}}.
 				\end{remark}
 			\end{definition}
 			\begin{definition}[Correlation Coefficient] \label{def:Correlation Coefficient}
 				The \emph{correlation coefficient of $X$, $Y$} is defined as
 				\begin{equation} \label{eq:Correlation Coefficient}
-				\rho_{X,Y} = \frac{\text{Cov} \left[ X,Y \right]}{\sigma_{X} \sigma_{Y}}
+					\rho_{X,Y} = \frac{\text{Cov} \left[ X,Y \right]}{\sigma_{X} \sigma_{Y}}
 				\end{equation}
 				\begin{remark}
 					$\rho_{X,Y}$ only ranges $-1 \leq \rho_{X,Y} \leq 1$
@@ -228,9 +220,17 @@
 					The closer $\rho_{X,Y}$ is to $-1$, the closer $X$ and $Y$ are to having a negative linear relationship (Negative slope). \newline
 					If $\rho_{X,Y} = 0$, the $\text{Cov}\left[ X,Y \right] = 0$, which means that $X$ and $Y$ are \emph{uncorrelated}.
 				\end{remark}
-				\begin{remark}
-					If $X$, $Y$ are independent, then they are uncorrelated; but if $X$ and $Y$ are uncorrelated, \emph{\textbf{they are not always independent}}.
-				\end{remark}
+			\end{definition}
+	
+		\subsubsection{Covariance} \label{subsubsec:Covariance}
+			\begin{definition}[Covariance] \label{def:Covariance}
+				The \emph{covariance of $X$ and $Y$} is denoted:
+				\begin{equation} \label{eq:Covariance-Form 1}
+					\text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ \left( X - \ExpectedValue \left[ X \right] \right) \left( Y - \ExpectedValue \left[ Y \right] \right)\right]
+				\end{equation}
+				\begin{equation} \label{eq:Covariance-Form 2}
+					\text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ XY \right] - \ExpectedValue \left[ X \right] \ExpectedValue \left[ Y \right]
+				\end{equation}
 			\end{definition}
 		
 		\subsection{Conditional Probability Functions} \label{subsec:Multiple Variable Conditional Probability Functions}
