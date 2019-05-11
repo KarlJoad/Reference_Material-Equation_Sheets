@@ -35,6 +35,8 @@
 \newtheorem*{remark*}{Remark}
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
 
+\newlist{propertylist}{enumerate}{1} % Name, template, max-depth of new list
+\setlist[propertylist, 1]{label=\textbf{(\roman*)}, noitemsep, nolistsep}
 \newtcolorbox[auto counter,
 	number within=section,
 	number format=\arabic,
