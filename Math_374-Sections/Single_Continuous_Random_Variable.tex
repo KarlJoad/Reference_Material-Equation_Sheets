@@ -16,7 +16,7 @@
 		\end{definition}
 	
 		\subsubsection{Properties of Cumulative Distribution Functions} \label{subsubsec:Properties of Cumulative Distribution Functions}
-			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+			\begin{propertylist}
 				\item 
 					\begin{equation}
 						0 \leq F_{X} \left( x \right) \leq 1
@@ -49,7 +49,20 @@
 					\begin{equation}
 						\Prob \left[ X>x \right] = 1 - \Prob \left[ X \leq x \right] =  1 - F_{X} \left( x \right)
 					\end{equation}
-			\end{enumerate}
+			\end{propertylist}
+			\begin{example}[Problem 4.29]{Properties of Cumulative Distribution Functions}
+				Let $C$ be an event for which $\Prob \left[ C \right] > 0$. Show that $F_{X} \left( X \Given C \right)$ satisfies the 8 properties of a Cumulative Distribution Function.
+				\begin{propertylist}
+					\item $0 \leq F_{X} \left( x \right) \leq 1$
+					\item $\lim \limits_{x \rightarrow \infty} F_{X} \left( x \right) = 1$
+					\item $\lim \limits_{x \rightarrow -\infty} F_{X} \left( x \right) = 0$
+					\item For $a < b$, $F_{X} \left( a \right) \leq F_{X} \left( b \right)$
+					\item $h>0$, $F_{X} \left( b \right) = \lim\limits_{h \rightarrow 0^{+}} F_{X} \left( b+h \right) = F_{X} \left( b^{+} \right)$
+					\item $\Prob \left[ a < X \leq b \right] = F_{X} \left( b \right) - F_{X} \left( a \right)$
+					\item $\Prob \left[ X = a \right] = F_{X} \left( a \right) - F_{X} \left( a^{-} \right)$
+					\item $\Prob \left[ X > x \right] = 1 - F_{X} \left( x \right)$
+				\end{propertylist}
+			\end{example}
 		
 		\subsubsection{Conditional Cumulative Distribution Function} \label{subsubsec:Conditional Cumulative Distribution Fuction}
 			\begin{definition} [Conditional Cumulative Distribution Function] \label{def:Conditional Cumulative Distribution Function}
@@ -61,6 +74,9 @@
 					The conditional CDF, $F_{X \Given C} \left( x \Given C \right)$ satisfies \emph{\textbf{all}} \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
 				\end{remark}
 			\end{definition}
+			\begin{example}[Problem 4.38]{Conditional Cumulative Distribution Function}
+				Problem 4.38 from Homework 7.
+			\end{example}
 		
 	\subsection{Probability Density Function (PDF)} \label{subsec:Probability Density Function}
 		\begin{definition}[Probability Density Function] \label{def:Probability Density Function}
@@ -78,10 +94,13 @@
 				This is an alternate, more useful way to specify the probability law described by the \nameref{subsec:Cumulative Distribution Function}.
 			\end{remark}
 		\end{definition}
+		\begin{example}[Problem 4.25]{Find Probability Density Function}
+			Problem 4.25 from Homework 6.
+		\end{example}
 	
 		\subsubsection{Properties of Probability Density Functions} \label{subsubsec:Properties of Probability Density Functions}
 			These properties apply to PDFs of continuous random variables, and may not hold true for other types of random variables.
-			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+			\begin{propertylist}
 				\item The associated CDF is non-decreasing, a \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
 					\begin{equation}
 						f_{X} \left( x \right) \geq 0
@@ -98,6 +117,7 @@
 					\begin{equation}
 						\int_{-\infty}^{\infty} f_{X} \left( x \right) dx = 1
 					\end{equation}
+			\end{propertylist}
 					\begin{example}[Final Exam Practice Problem 4]{Find Normalizing Constant $c$}
 						A random variable $X$ has Probability Distribution Function (PDF):
 						\begin{equation*}
@@ -112,7 +132,6 @@
 							\item Find $P \left[ X > 0.5 \right]$. (7 pts)
 						\end{enumerate}
 					\end{example}
-			\end{enumerate}
 			\begin{remark*}
 				Any non-negative, piecewise continuous function $g \left( x \right)$ with finite $\int_{-\infty}^{\infty} g \left( x \right) dx = C$ can be used to form a PDF.
 			\end{remark*}
@@ -145,9 +164,12 @@
 				\end{equation*}
 			\end{remark}
 		\end{definition}
+		\begin{example}[Problem 4.57]{Conditional Expected Value of Continuous Random Variable}
+			Problem 4.57 from Homework 7.
+		\end{example}
 	
 		\subsubsection{Properties of Expected Value} \label{subsubsec:Properties of Continuous Expected Value}
-			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+			\begin{propertylist}
 				\item The expected value of a function of a random variable.
 					\begin{equation}
 						\ExpectedValue \left[ h \left( X \right) \right] = \int_{-\infty}^{\infty} h \left( t \right) \cdot f_{X} \left( t \right) dt
@@ -164,7 +186,7 @@
 					\begin{equation}
 						\ExpectedValue \left[ a_{0} + a_{1}X + a_{2}X^{2} + \ldots + a_{n}X^{n} \right] = a_{0} + a_{1}\ExpectedValue \left[ X \right] + a_{2}\ExpectedValue \left[ X^{2} \right] + \ldots + a_{n}\ExpectedValue \left[ X^{n} \right]
 					\end{equation}
-			\end{enumerate}
+			\end{propertylist}
 		
 	\subsection{Variance of Single Continuous Random Variable} \label{subsec:Variance of Single Continuous}
 		\begin{definition}[Variance of Random Variable] \label{def:Variance of Single Continuous}
@@ -232,6 +254,9 @@
 					\end{equation}
 				\end{remark}
 			\end{definition}
+			\begin{example}[Problem 4.62]{Q-Function Application}
+				Problem 4.62 from Homework 7.
+			\end{example}
 	
 	\subsection{Markov Inequality} \label{subsec:Markov Inequality}
 		\begin{definition}[Markov Inequality] \label{def:Markov Inequality}
@@ -277,6 +302,9 @@
 				\ExpectedValue \left[ X \right] \geq a \Prob \left[ X \geq a \right]
 			\end{equation*}
 		\end{proof}
+		\begin{example}[Problem 4.97]{Markov Inequality}
+			Problem 4.97 from Homework 7.
+		\end{example}
 	
 	\subsection{Chebychev Inequality} \label{subsec:Chebychev Inequality}
 		\begin{definition}[Chebychev Inequality] \label{def:Chebychev Inequality}
@@ -295,3 +323,6 @@
 				\end{equation*}
 			\end{proof}
 		\end{definition}
+		\begin{example}[Problem 4.100]{Chebychev Inequality}
+			Problem 4.100 from Homework 7.
+		\end{example}

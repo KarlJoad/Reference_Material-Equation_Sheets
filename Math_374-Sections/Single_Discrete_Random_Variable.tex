@@ -28,7 +28,7 @@
 		\end{example}
 		
 		\subsubsection{Properties of Probability Mass Functions} \label{subsubsec:Properties of Probability Mass Functions}
-			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+			\begin{propertylist}%[label=\textbf{(\roman*)}, noitemsep, nolistsep]
 				\item
 					\begin{equation}
 						p_{X} \left( x \right) \geq 0 \text{, } \forall x \in \RealNums
@@ -37,14 +37,16 @@
 					\begin{equation}
 						\sum\limits_{x \in S_{X}} p_{X} \left( x \right) = 1
 					\end{equation}
+			\end{propertylist}
 					\begin{example}[Problem 3.13]{Find Normalizing Constant}
 						Problem 3.13 from Homework 4.
 					\end{example}
+			\begin{propertylist}[resume]
 				\item
 					\begin{equation}
 						P \left[ x \in B \right] = \sum\limits_{x \in B} p_{X} \left( x \right) \text{, where } B \subset S_{X}
 					\end{equation}
-			\end{enumerate}
+			\end{propertylist}
 		
 	\subsection{Expected Value/Mean of Single Discrete Random Variable} \label{subsec:Expected Value of Single Discrete}
 		\begin{definition}[Expected Value/Mean of Single Discrete Random Variable] \label{def:Expected Value of Single Discrete}
@@ -75,7 +77,7 @@
 					\ExpectedValue \left[ \sum_{i=1}^{k} x_{i} \right] = \sum_{i=1}^{k} \ExpectedValue \left[ X_{i} \right]
 				\end{equation}
 			\end{definition}
-			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+			\begin{propertylist}
 				\item
 					\begin{equation}
 						\ExpectedValue \left[ X_{1} + X_{2} \right] = \ExpectedValue \left[ X_{1} \right] + \ExpectedValue \left[ X_{2} \right]
@@ -92,7 +94,7 @@
 					\begin{equation}
 						\ExpectedValue \left[ g_{1} \left( X \right) + g_{2} \left( X \right) + \ldots + g_{m} \left( X \right) \right] = \sum\limits_{i=1}^{m} \ExpectedValue \left[ g_{i} \left( X \right) \right]
 					\end{equation}
-			\end{enumerate}
+			\end{propertylist}
 		
 		\subsubsection{Moments of Random Variable} \label{subsubsec:Moments of a Random Variable}
 			\begin{definition}[Moment]
@@ -152,6 +154,9 @@
 				m_{X \Given B} = \ExpectedValue \left[ X \Given B \right] = \sum\limits_{x \in S_{X}} s \cdot p_{X} \left( x \Given B \right)
 			\end{equation}
 		\end{definition}
+		\begin{example}[Problem 3.39]{Conditional Expected Value}
+			Problem 3.39 from Homework 5.
+		\end{example}
 	
 	\subsection{Conditional Variance of Single Discrete Random Variable} \label{subsec:Conditional Variance of Single Discrete}
 		\begin{definition}[Conditional Variance of Discrete Random Variable] \label{def:Conditional Variance of Single Discrete}

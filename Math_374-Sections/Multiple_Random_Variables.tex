@@ -9,6 +9,9 @@
 				\item This satisfies ALL properties of single random variable PMFs
 			\end{itemize}
 		\end{definition}
+		\begin{example}[Problem 5.1]{Joint PMF}
+			Problem 5.1, Part a \& Part B.
+		\end{example}
 	
 		\subsubsection[Marginal PMF]{Marginal Probability Mass Function} \label{subsubsec:Marginal PMF}
 			\begin{definition}[Marginal Probability Mass Function] \label{def:Marginal PMF}
@@ -21,6 +24,9 @@
 					p \left( x_{i} \right) = \sum_{y \in S_{Y}} p_{X,Y} \left( x_{i}, y \right)
 				\end{equation}
 			\end{definition}
+			\begin{example}[Problem 5.11]{Marginal PMFs}
+				Problem 5.11, Part a \& Part b \& Part c.
+			\end{example}
 		
 	\subsection[Joint CDF]{Joint Cumulative Distribution Function} \label{subsec:Joint CDF}
 		\begin{definition}[Joint Cumulative Distribution Function] \label{def:Joint CDF}
@@ -34,7 +40,7 @@
 		\end{definition}
 		
 		\subsubsection{Properties of Joint Cumulative Distribution Functions} \label{subsubsec:Properties of Joint Cumulative Distribution Functions}
-			\begin{enumerate}[label=\textbf{(\roman*)}, noitemsep, nolistsep]
+			\begin{propertylist}
 				\item $F_{X,Y} \left( x,y \right)$ is non decreasing.
 					\begin{equation} \label{eq:Joint CDF Property 1}
 						F_{X,Y} \left( x_{1},y_{1} \right) \leq F_{X,Y} \left( x_{2},y_{2} \right) \text{ if } x_{1} \leq x_{2} \text{ and } y_{1} \leq y_{2}
@@ -70,7 +76,7 @@
 							&= F_{X,Y} \left( x_{2}, y_{2} \right) - F_{X,Y} \left( x_{1}, y_{2} \right) - F_{X,Y} \left( x_{2}, y_{1} \right) + F_{X,Y} \left( x_{1}, y_{1} \right)
 						\end{aligned}
 					\end{equation}
-			\end{enumerate}
+			\end{propertylist}
 	
 		\subsubsection[Marginal CDF]{Marginal Cumulative Distribution Function} \label{subsubsec:Marginal CDF}
 			\begin{definition}[Marginal Cumulative Distribution Function] \label{def:Marginal CDF}
@@ -84,6 +90,10 @@
 					\end{aligned}
 				\end{equation}
 			\end{definition}
+			\begin{example}[Problem 5.20]{Marginal CDFs}
+				Problem 5.20, Part b from Homework 8.
+			\end{example}
+		
 	\subsection[Joint PDF]{Joint Probability Density Function} \label{subsec:Joint PDF}
 		\begin{definition}[Joint Probability Density Function] \label{def:Joint PDF}
 			We say that $X$, $Y$ are jointly continuous if the probabilities of events involving $X$ and $Y$ can be expressed as an integral of a \emph{Joint Probability Density Function (Joint PDF)}. \newline
@@ -95,19 +105,36 @@
 				The probability mass of an event is found by integrating the PDF over the region in the xy plane corresponding to your event.
 			\end{remark}
 		\end{definition}
+		
 	
 		\subsubsection{Properties of Joint Probability Density Functions} \label{subsubsec:Joint PDF Properties}
-			\begin{gather}
-				\iint_{B} f_{X,Y} \left( x,y \right) = 1 \\
-				x \geq 0, y \geq 0 \forall x \forall y 
-			\end{gather}
-			
-		\subsubsection{Facts about Joint PDFs} \label{subsubsec:Joint PDF Facts}
-			\begin{align}
-				\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} &f_{X,Y} \left( x,y \right) = 1 \\
-				F_{X,Y} \left( x,y \right) &= \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y} \left( s,t \right) dt ds \\
-				f_{X,Y} &= \frac{\partial^{2} f_{X,Y} \left( x,y \right)}{\partial x \partial y} 
-			\end{align}
+			\begin{propertylist}
+				\item 
+					\begin{equation}
+						\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{X,Y} \left( x,y \right) = 1
+					\end{equation}
+			\end{propertylist}
+				\begin{example}[Example 5.16]{Find Normalizing Constant 1}
+					Example 5.16 from the textbook.
+				\end{example}
+				\begin{example}[Problem 5.27]{Find Normalizing Constant 2}
+					Problem 5.27, Part a form Homework 8.
+				\end{example}
+			\begin{propertylist}[resume]
+				\item 
+					\begin{equation}
+						F_{X,Y} \left( x,y \right) = \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y} \left( s,t \right) dt ds
+					\end{equation}
+			\end{propertylist}
+				\begin{example}[Problem 5.27]{Find Joint CDF}
+					Problem 5.27, Part b from Homework 8.
+				\end{example}
+			\begin{propertylist}[resume]
+				\item 
+					\begin{equation}
+						f_{X,Y} = \frac{\partial^{2} f_{X,Y} \left( x,y \right)}{\partial x \partial y} 
+					\end{equation}
+			\end{propertylist}
 			
 		\subsubsection{Marginal PDF} \label{subsubsec:Marginal PDF}
 			\begin{definition}[Marginal Probability Density Function] \label{def:Marginal PDF}
@@ -123,6 +150,10 @@
 					\end{aligned}
 				\end{equation}
 			\end{definition}
+			\begin{example}[Problem 5.27]{Find Marginal PDFs}
+				Problem 5.27, Part c from Homework 8.
+			\end{example}
+		
 	\subsection{Independence of Multiple Random Variables} \label{subsec:Independence of Multiple Random Variables}
 		\begin{definition}[Independent Random Variables] \label{def:Independence of Multiple Random Variables}
 			\emph{$X$ and $Y$ are independent random variables} if \emph{\textbf{ANY}} event $A_{1}$ defined in terms of $S$ is independent of \emph{\textbf{ANY}} event $A_{2}$ defined in terms of $Y$.
@@ -136,15 +167,38 @@
 			\begin{equation} \label{eq:Independence of Multiple Discrete Random Variables Using PMF}
 				p_{X,Y} \left( x,y \right) = p_{X} \left( x \right) * p_{Y} \left( y \right)
 			\end{equation}
+	
 		\item For general random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
 			\begin{equation} \label{eq:Independence of Multiple General Random Variables Using CDF}
 				F_{X,Y} \left( x,y \right) = F_{X} \left( x \right) * F_{Y} \left( y \right)
 			\end{equation}
+	\end{enumerate}
+		\begin{example}[Final Exam Practice, Problem 7]{Confirm Independence by PDF}
+			Let $X$ and $Y$ have joint Probability Density Function (PDF):
+			\begin{equation*}
+				f_{X,Y} \left( x,y \right) = \begin{cases}
+					12x \left( 1-x \right)y & 0 < x < 1, 0 < y < 1 \\
+					0 & \text{otherwise}
+				\end{cases}
+			\end{equation*}
+			Are $X$ and $Y$ independent?
+		\end{example}
+	\begin{enumerate}[resume]		
 		\item For (continuous) random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
 			\begin{equation} \label{eq:Independence of Multiple Continuous Random Variables Using PDF}
 				f_{X,Y} \left( x,y \right) = f_{X} \left( x \right) * f_{Y} \left( y \right)
 			\end{equation}
 	\end{enumerate}
+		\begin{example}[Final Exam Practice, Problem 7]{Confirm Independence by CDF}
+			Let $X$ and $Y$ have joint Cumulative Distribution Function (CDF):
+			\begin{equation*}
+				F_{X,Y} \left( x,y \right) = \begin{cases}
+					6y^{2} \left( \frac{x^{2}}{2} - \frac{x^{3}}{3} \right) & 0 < x < 1, 0 < y < 1 \\
+					0 & \text{otherwise}
+				\end{cases}
+			\end{equation*}
+			Are $X$ and $Y$ independent?
+		\end{example}
 	You can prove \nameref{eq:Independence of Multiple Discrete Random Variables Using PMF}, \Cref{eq:Independence of Multiple Discrete Random Variables Using PMF}.
 	\begin{proof}[Independence of Discrete Random Variables with PMF] \label{proof:Independence of Discrete Random Variables with PMF}
 		
