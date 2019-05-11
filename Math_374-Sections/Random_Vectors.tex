@@ -12,6 +12,7 @@ Random Vectors are usually denoted:
 	\end{definition}
 	
 	\subsection{Joint CDF of a Random Vector} \label{subsec:Joint CDF of Random Vector}
+	This is just the generalization of \nameref{def:Joint CDF} to $n$ random variables.
 		\begin{equation} \label{eq:Joint CDF of Random Vector}
 			\begin{aligned}
 				F_{\vec{X}} \left( \vec{x} \right) 
@@ -21,11 +22,13 @@ Random Vectors are usually denoted:
 		\end{equation}
 		
 	\subsection{Joint PDF of a Random Vector} \label{subsec:Joint PDF of Random Vector}
+	This is just the generalization of \nameref{def:Joint PDF} to $n$ random variables.
 		\begin{equation} \label{eq:Joint PDF of Random Vector}
 			f_{\vec{X}} \left( \vec{x} \right) = \frac{\partial^{n} F_{\vec{X}} \left( \vec{x} \right)}{\partial x_{1} \partial x_{2} \partial x_{3} \cdots \partial x_{n}}
 		\end{equation}
 		
 		\subsubsection{Marginal PDF of a Random Vector} \label{subsubsec:Marginal PDF of Random Vector}
+		This is just the generalization of \nameref{def:Marginal PDF} to $n$ random variables.
 		Integrate out the terms that you're not interested in.
 		\begin{equation} \label{eq:Marginal PDF of Random Vector}
 			f_{\vec{X}} = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f_{\vec{X}} \left( \vec{x} \right) \partial x_{2} \partial x_{3} \cdots \partial x_{n}
@@ -53,7 +56,7 @@ Random Vectors are usually denoted:
 		\end{remark*}
 	
 		\subsubsection{Discrete Random Vectors} \label{subsubsec:Conditional Probability Discrete Random Vectors}
-			\begin{definition}[Conditional Probability Mass Function] \label{def:Discrete Random Vector-Conditional PMF}
+			\begin{definition}[Discrete Random Vector Conditional Probability Mass Function] \label{def:Discrete Random Vector-Conditional PMF}
 				The \emph{conditional Probability Mass Function (Conditional PMF)} of $Y_{3}$ given that $Y=y$ is:
 				\begin{equation} \label{eq:Discrete Random Vector-Conditional PMF}
 					p_{Y_{3}} \left( y_{3} \Given y_{1},y_{2} \right)
@@ -66,6 +69,9 @@ Random Vectors are usually denoted:
 						p_{\vec{Y}} \left( \vec{y} \right) = p_{Y_{3}} \left( y_{3} \Given y_{1},y_{2} \right) \cdot p_{Y_{2}} \left( y_{2} \Given y_{1} \right) \cdot p_{Y_{1}} \left( y_{1} \right)
 					\end{equation}
 				\end{remark}
+				\begin{example}[Problem 6.11]{Conditional PMFs Yield Joint PMF}
+					Problem 6.11 from Homework 10.
+				\end{example}
 				\begin{remark}
 					If all elements of $\vec{Y}$ are \emph{independent} (Remember that you need to check each subgroup too, like shown in \Cref{subsec:Event Independence}), then:
 					\begin{equation} \label{eq:Discrete Random Vector-Independent Conditional PMF}
@@ -81,9 +87,85 @@ Random Vectors are usually denoted:
 			\end{definition}
 		
 		\subsubsection{Mixed Random Vectors} \label{subsubsec:Conditional Probability Mixed Random Vectors}
-		
-		
+		Because of the continuous random variable present in the random vector, we can describe a mixed random vector with either:
+			\begin{enumerate}[noitemsep, nolistsep]
+				\item \nameref{def:Mixed Random Vector-Conditional CDF}
+				\item \nameref{def:Mixed Random Vector-Conditional PDF}
+			\end{enumerate}
+			\begin{definition}[Mixed Random Vector Conditional CDF] \label{def:Mixed Random Vector-Conditional CDF}
+				The \emph{conditional Cumulative Distribution Function (CDF)} of $Y$ given that $X = x$ is:
+				\begin{equation} \label{eq:Mixed Random Vector-Conditional CDF}
+					F_{Y} \left( y \Given x \right) = \Prob \left[ Y \leq y \Given X=x \right] = \frac{\Prob \left[ \lbrace Y \leq y \rbrace \cap \lbrace X = x \rbrace \right]}{\Prob \left[ X = x \right]} \text{for } \Prob \left[ X = x \right] >0
+				\end{equation}
+				\begin{remark}
+					If $X$ and $Y$ are independent, then:
+					\begin{equation} \label{eq: Mixed Random Vector-Independent-Conditional CDF}
+						\begin{aligned}
+							\Prob \left[ Y \leq y \Given X=x \right] &= \Prob \left[ Y \leq y \right] \cdot \Prob \left[ X = x \right] \\
+							&= F_{Y} \left( y \right) \cdot p_{X} \left( x \right)
+						\end{aligned}
+					\end{equation}
+				\end{remark}
+				\begin{remark}
+					The \nameref{def:Mixed Random Vector-Conditional CDF} of mixed random variables satisfies all \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
+				\end{remark}
+			\end{definition}
+			\begin{definition}[Mixed Random Vector Conditional PDF] \label{def:Mixed Random Vector-Conditional PDF}
+				The \emph{conditional Probability Density Function (PDF)} of $Y$ given that $X=x$ is:
+					\begin{equation} \label{eq:Mixed Random Vector-Conditional PDF}
+						f_{Y} \left( y \Given x \right) = \frac{d}{dy} F_{Y} \left( y \Given x \right)
+					\end{equation}
+					\begin{remark}
+						In this case, we only take the derivative with respect to the continuous random variable because the discrete random variables are constant.
+					\end{remark}
+					\begin{remark}
+						The \nameref{def:Mixed Random Vector-Conditional PDF} of mixed random variables satisfies all \nameref{subsubsec:Properties of Probability Density Functions}.
+					\end{remark}
+			\end{definition}
+						
 		\subsubsection{Continuous Random Vectors} \label{subsubsec:Conditional Probability Continuous Random Vectors}
+			\begin{definition}[Continuous Random Vector Conditional CDF] \label{def:Continuous Random Vector-Conditional CDF}
+				The \emph{conditional Cumulative Distribution Function (CDF)} of a continuous random vector of $Y$ given $X=x$, where both $Y$ and $X$ are continuous random variables is given below.
+				\begin{equation}
+					\begin{aligned}
+						F_{Y} \left( y \Given x \right) &= \lim\limits_{h \rightarrow 0} F_{Y} \left( y \Given x < X \leq x+h \right) \\
+						&= \frac{\int_{-\infty}^{y} f_{X,Y} \left( x,v \right) dv}{f_{X} \left( x \right)} \\
+					\end{aligned}
+				\end{equation}
+				\begin{remark}
+					Since $X$ is a continuous random variable, $\Prob \left[ X=x \right] =0$.
+					So, we must use limits to get an infinitely close approximation, so: $\lim \limits_{h \rightarrow 0} \Prob \left[ x < X \leq x+h \right]$.
+				\end{remark}
+				\begin{remark}
+					The \nameref{def:Continuous Random Vector-Conditional CDF} satisfies all \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
+				\end{remark}
+			\end{definition}
+			\begin{definition}[Continuous Random Vector Conditional PDF] \label{def:Continuous Random Vector-Conditional PDF}
+				The \emph{conditional Probability Density Function (PDF)} of a continuous random vector of $Y$ given $X=x$, where both $Y$ and $X$ are continuous random variables is given below.
+				\begin{equation}
+					\begin{aligned}
+						f_{Y} \left( y \Given x \right) &= \frac{d}{dy} F_{Y} \left( y \Given x \right) \\
+						&= \frac{f_{X,Y} \left( x,y \right)}{f_{X} \left( x \right)} \\
+					\end{aligned}
+				\end{equation}
+				\begin{remark}
+					This can be done both ways:
+					\begin{enumerate}[noitemsep, nolistsep]
+						\item \begin{equation*}
+								f_{X,Y} \left( x,y \right) = f_{Y} \left( y \Given x \right) \cdot f_{X} \left( x \right)
+							\end{equation*}
+						\item \begin{equation*}
+								f_{X,Y} \left( x,y \right) = f_{X} \left( x \Given y \right) \cdot f_{X} \left( y \right)
+							\end{equation*}
+					\end{enumerate}
+				\end{remark}
+				\begin{remark}
+					The \nameref{def:Continuous Random Vector-Conditional PDF} satisfies all \nameref{subsubsec:Properties of Probability Density Functions}.
+				\end{remark}
+			\end{definition}
+			\begin{example}[Example 5.32]{Find Conditional PDF of Continuous Random Vector}
+				Problem 5.32 from Lecture 23.
+			\end{example}
 		
 	\subsection{Mean Vector} \label{subsec:Mean Vector}
 		\begin{definition}[Mean Vector] \label{def:Mean Vector}
@@ -109,6 +191,9 @@ Random Vectors are usually denoted:
 				Other texts will use row vectors for other things, but the use of column vectors here is intentional.
 			\end{remark}
 		\end{definition}
+		\begin{example}[Problem 6.35]{Finding Mean Vector}
+			Problem 6.35, ONLY Mean Vector Part, from Homework 10.
+		\end{example}
 	
 	\subsection{Correlation and Covariance Matrix} \label{subsec:Correlation and Correlation Matrix}
 		\begin{definition}[Correlation Matrix]
@@ -161,3 +246,6 @@ Random Vectors are usually denoted:
 				If the \nameref{def:Mean Vector} is $\bar{0}$, that is, $m_{k} = \ExpectedValue \left[ X_{k} \right] = 0$ for all $k$, then $\bar{R}_{X} = \bar{K}_{X}$.
 			\end{remark}
 		\end{definition}
+		\begin{example}[Problem 6.35]{Find Covariance Matrix}
+			Problem 6.35, Only Covariance Matrix part, from Homework 10.
+		\end{example}

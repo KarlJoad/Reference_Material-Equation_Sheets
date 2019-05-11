@@ -78,6 +78,9 @@ In applying probability models to real situations, we perform experiments and co
 		\begin{equation} \label{eq:Statistics Chebychev Inequality}
 			P \left[ \lvert M_{n} - \ExpectedValue \left[ M_{n} \right] \rvert \geq \varepsilon \right] \leq \frac{\Variance \left[ M_{n} \right]}{\varepsilon^{2}}
 		\end{equation}
+		\begin{example}[Problem 7.15]{Chebychev Inequality to Bound Probability}
+			Problem 7.15 from Homework 11 (Extra Credit).
+		\end{example}
 		
 	\subsection{Important Probability and Statistics Theorems} \label{subsec:Important Probability and Statistics Theorems}
 		There are 3 very import theorems that are used quite frequently in both \nameref{sec:Probability Theory} and \nameref{sec:Statistics}.
@@ -128,7 +131,6 @@ In applying probability models to real situations, we perform experiments and co
 			Problem 7.25 from Homework 11 (Extra Credit).
 		\end{example}
 	
-		\nameref{ex:Central Limit Theorem} is \Cref{ex:Central Limit Theorem}.
 	\subsection{Estimators} \label{subsec:Estimators}
 		\begin{itemize}[noitemsep, nolistsep]
 			\item A \nameref{def:Statistic} is a function of the data $X_{1},X_{2},\ldots,X_{n}$
@@ -161,6 +163,7 @@ In applying probability models to real situations, we perform experiments and co
 				\item Accuracy is defined as $\Bias [\hat{\theta} ] = \ExpectedValue [\hat{\theta}] - \theta$
 				\item Precision is defined as $\Variance [\hat{\theta}]$
 			\end{itemize}
+		
 			\begin{definition}[Bias] \label{def:Bias}
 				\emph{Bias} is defined as:
 				\begin{equation} \label{eq:Accuracy}
@@ -173,6 +176,9 @@ In applying probability models to real situations, we perform experiments and co
 					\end{equation}
 				\end{remark}
 			\end{definition}
+			\begin{example}[Problem 8.14]{Show Bias in Estimator}
+				Problem 8.14, Part a from Homework 11 (Extra Credit).
+			\end{example}
 					
 			\begin{definition}[Mean Squared Error] \label{def:Mean Squared Error}
 				The \emph{Mean Squared Error} of an estimator for parameter $\hat{\theta}$ is:
@@ -182,17 +188,25 @@ In applying probability models to real situations, we perform experiments and co
 					= \Variance \left[ \hat{\theta} \right] + \left( \Bias \left[ \hat{\theta} \right] \right)^{2}
 				\end{equation}
 			\end{definition}
+			\begin{example}[Problem 8.14]{Find Mean Square Error of Estimator}
+				Problem 8.14, Part b from Homework 11 (Extra Credit).
+			\end{example}
+		
 			\begin{remark*}
 				When doing statistical analysis, there is something called the \emph{Bias-Variance Tradeoff}.
 				When doing the analysis, if you try to minimize bias, your variance will increase and vice-versa.
 				There is a happy medium, which is not discussed in this class.
 			\end{remark*}
+		
 			\begin{definition}[Consistency] \label{def:Consistency}
 				$\hat{\theta}$ is a \emph{consistent estimator} for $\theta$ if $\hat{\Theta}$ converges to $\theta$ in probability.
 				\begin{equation} \label{eq:Consistency}
 					\lim\limits_{n \rightarrow \infty} \Prob \left[ \lvert \hat{\Theta} - \theta \rvert > \varepsilon \right] = 0
 				\end{equation}
 			\end{definition}
+			\begin{example}[Problem 8.17]{Confirm Consistency of Estimator}
+				Problem 8.17, Part b from Homework 11 (Extra Credit).
+			\end{example}
 	
 	\subsection{How to Find a Good Estimator} \label{subsec:Find Good Estimator}
 	There are several methods, two of which are:
@@ -208,10 +222,6 @@ In applying probability models to real situations, we perform experiments and co
 		\subsubsection{Method of Moments} \label{subsubsec:Method of Moments}
 			\begin{example}{Method of Moments} 
 				Problem 8.6 from Homework 11 (Extra Credit).
-				$x+y=z$
-				\begin{equation*}
-					\sum_{x \in S_{X}} p_{k} \left( x \right) = 1
-				\end{equation*}
 			\end{example}
 		
 		\subsubsection{Maximum Likelihood Estimation} \label{subsubsec:Maximum Likelihood Estimation}
@@ -258,6 +268,9 @@ In applying probability models to real situations, we perform experiments and co
 				If the problem says, with a confidence interval of 95\%, that is the $1-\alpha$ portion; i.e. $1-\alpha = 0.95 \%$.
 			\end{remark}
 		\end{definition}
+		\begin{example}{Confidence Intervals}
+			Example 1 from Lecture 28.
+		\end{example}
 	
 	\subsection{Hypothesis Testing} \label{subsec:Hypothesis Testing}
 	There are 4 parts to \nameref{subsec:Hypothesis Testing}
@@ -276,3 +289,6 @@ In applying probability models to real situations, we perform experiments and co
 			\item Reject $H_{0}$ if $H_{0}$ is true.
 			\item Accept $H_{0}$ if $H_{0}$ is false.
 		\end{enumerate}
+		\begin{example}{Use Hypothesis Testing}
+			Example 2 from Lecture 28.
+		\end{example}

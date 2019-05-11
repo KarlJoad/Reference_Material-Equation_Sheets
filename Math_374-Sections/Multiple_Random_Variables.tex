@@ -97,7 +97,7 @@
 	\subsection[Joint PDF]{Joint Probability Density Function} \label{subsec:Joint PDF}
 		\begin{definition}[Joint Probability Density Function] \label{def:Joint PDF}
 			We say that $X$, $Y$ are jointly continuous if the probabilities of events involving $X$ and $Y$ can be expressed as an integral of a \emph{Joint Probability Density Function (Joint PDF)}. \newline
-			i.e. THere exists soem nonnegative function $f_{X,Y} \left( x,y \right)$, which we call the joint PDF, that is defined on the real plane such that tfor every event $B$ which is a subset of the xy plane
+			i.e. There exists some non-negative function $f_{X,Y} \left( x,y \right)$, which we call the joint PDF, that is defined on the real plane such that for every event $B$ which is a subset of the xy plane
 			\begin{equation}\label{eq:Joint PDF}
 				P \left[ \left( X,Y \right) \text{in } B \right] = \iint_{B} f_{X,Y} \left( x,y \right) dx dy
 			\end{equation}
@@ -232,6 +232,9 @@
 				\end{equation}
 			\end{remark}
 		\end{definition}
+		\begin{example}[Problem 5.56]{Expectation of Multiple Random Variables}
+			Problem 5.56, Part a from Homework 9.
+		\end{example}
 
 	\subsection{Joint Moments, Correlation, and Covariance} \label{subsec:Joint Moments, Correlation, and Covariance}
 		\subsubsection{Joint Moments} \label{subsubsec:Joint Moments}
@@ -261,6 +264,9 @@
 					If $X$, $Y$ are independent, then they are uncorrelated; but if $X$ and $Y$ are uncorrelated, \emph{\textbf{they are not always independent}}.
 				\end{remark}
 			\end{definition}
+			\begin{example}[Problem 5.65]{Finding Correlation}
+				Problem 5.56, Everything except Covariance from Homework 9.
+			\end{example}
 			\begin{definition}[Correlation Coefficient] \label{def:Correlation Coefficient}
 				The \emph{correlation coefficient of $X$, $Y$} is defined as
 				\begin{equation} \label{eq:Correlation Coefficient}
@@ -275,7 +281,7 @@
 					If $\rho_{X,Y} = 0$, the $\text{Cov}\left[ X,Y \right] = 0$, which means that $X$ and $Y$ are \emph{uncorrelated}.
 				\end{remark}
 			\end{definition}
-	
+			
 		\subsubsection{Covariance} \label{subsubsec:Covariance}
 			\begin{definition}[Covariance] \label{def:Covariance}
 				The \emph{covariance of $X$ and $Y$} is denoted:
@@ -286,6 +292,9 @@
 					\text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ XY \right] - \ExpectedValue \left[ X \right] \ExpectedValue \left[ Y \right]
 				\end{equation}
 			\end{definition}
+			\begin{example}[Problem 5.65]{Finding Covariance}
+				Problem 5.65, the Covariance part from Homework 9.
+			\end{example}
 		
 		\subsection{Conditional Probability Functions} \label{subsec:Multiple Variable Conditional Probability Functions}
 		There are 3 major cases for these:
@@ -322,6 +331,9 @@
 						The \nameref{def:2 Discrete-Conditional PMF} of 2 discrete random variables satisfies all \nameref{subsubsec:Properties of Probability Mass Functions}.
 					\end{remark}
 				\end{definition}
+				\begin{example}[Problem 5.75]{Determine Independence of Multiple Discrete Random Variables}
+					Problem 5.75, Part b from Homework 9.
+				\end{example}
 
 			\subsubsection{1 Discrete and 1 Continuous Random Variable} \label{subsubsec:1 Discrete 1 Continuous Random Variables}
 			For this section, let $X$ be a discrete random variable and $Y$ a continuous random variable.
@@ -448,3 +460,6 @@
 		\end{definition}
 		\begin{proof}[Prove Expectation of Conditional Expected Value] \label{proof:Expected Value of Conditional Expected Value of Multiple Variables}
 		\end{proof}
+		\begin{example}[Problem 5.75]{Finding Conditional Expected Value}
+			Problem 5.75, Part e from Homework 10.
+		\end{example}
