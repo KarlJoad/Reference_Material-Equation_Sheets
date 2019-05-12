@@ -11,7 +11,7 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 		A \emph{random experiment} is an experiment whose outcome varies in an unpredictable fashion when performed under the same conditions.
 	\end{definition}
 	\begin{definition}[Sample Space] \label{def:Sample Space}
-		A \emph{sample space, $S$} of a random experiment is the set of all possible experiments.
+		A \emph{sample space, $S$} of a random experiment is the set of all possible experiments' outcomes.
 	\end{definition}
 	\begin{definition}[Outcome/Sample Point] \label{def:Outcome}
 		An \emph{outcome}, or \emph{sample point} of a random experiment is a result that cannot be decomposed into other results.
@@ -89,6 +89,17 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 				\item Give the formula for the conditional probability of event $A$ given that event $B$ occurred (where $A$ and $B$ are arbitrary events).
 				\item What is the probability that the label of the second ball is even?
 				\item What is the probability that the label of the first ball was odd given that the second was even?
+			\end{enumerate}
+		
+			\tcblower
+			To begin, it is usually best if you create an event tree, like below.
+			\newline
+			\begin{center}
+				\input{./Drawings/Math_374/Ex_3.1-Bayes_Rule.tikz}
+			\end{center}
+			\begin{enumerate}[label=(\alph*)]
+				\item $\Prob \left[ A \Given B \right] = \frac{\Prob \left[ A \cap B \right]}{\Prob \left[ B \right]}$
+				\item 
 			\end{enumerate}
 		\end{example}
 	
