@@ -1,0 +1,27 @@
+\begin{tikzpicture}[level distance=1.0cm,
+nodes={align=center},sibling distance=25mm]
+
+% Nodes
+\node{}
+	child{node{$E_{1}$} % First Draw Option 1
+		child{node{$E_{2}$}
+			child{node{$E_{3}$}}
+			child{node{$O_{1}$}}
+		}
+%		child{node{$O_{1}$}
+%			child{node{$O_{2}$}}
+%			child{node{$E_{2}$}}
+%		}
+	}
+	child{node{$O_{1}$} % First Draw Option 2
+		child{node{$O_{2}$}
+			child{node{$O_{3}$}}
+			child{node{$E_{1}$}}
+		}
+		child{node{$E_{1}$}
+			child{node{$E_{2}$}}
+			child{node{$O_{2}$}}
+		}
+	};
+
+\end{tikzpicture}
