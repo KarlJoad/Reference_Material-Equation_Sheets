@@ -1,5 +1,5 @@
 # EquationSheets
-This repository holds the \LaTeX equation sheets that Karl Hallsby made for his classes at IIT.
+This repository holds the $\LaTeX$ equation sheets that Karl Hallsby made for his classes at IIT.
 To use this repository, you must `git clone` this repository to a directory.
 
 # TEMPLATE.tex
