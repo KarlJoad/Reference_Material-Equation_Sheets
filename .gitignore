@@ -131,8 +131,8 @@ acs-*.bib
 # knitr
 *-concordance.tex
 # TODO Comment the next line if you want to keep your tikz graphics files
-*.tikz
-*-tikzDictionary
+#*.tikz
+#*-tikzDictionary
 
 # listings
 *.lol
