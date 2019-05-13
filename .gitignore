@@ -253,4 +253,6 @@ TSWLatexianTemp*
 
 # standalone packages
 *.sta
-README.md~
+
+# Emacs Auto-Restore Files
+*.*~
