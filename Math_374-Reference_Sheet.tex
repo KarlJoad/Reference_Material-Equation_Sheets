@@ -37,8 +37,11 @@
 \newtheorem*{remark*}{Remark}
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
 
+% Create a special list that handles properties. It can be broken and restarted
 \newlist{propertylist}{enumerate}{1} % Name, template, max-depth of new list
 \setlist[propertylist, 1]{label=\textbf{(\roman*)}, noitemsep, nolistsep}
+
+% Create a tcolorbox for examples
 \newtcolorbox[auto counter,
 	number within=section,
 	number format=\arabic,
@@ -58,8 +61,10 @@
 	sharp corners=all
 }
 
+% Redefine the 'end of proof' symbol to be a black square, not blank
 \renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
 
+% Math Operators that are useful to abstract the written math away to one spot
 \DeclareMathOperator{\EventClass}{\mathcal{F}}
 \DeclareMathOperator{\RealNums}{\mathbb{R}}
 \DeclareMathOperator{\Prob}{\operatorname{P}}
