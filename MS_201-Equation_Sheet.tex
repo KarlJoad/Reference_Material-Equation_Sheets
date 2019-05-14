@@ -1,19 +1,27 @@
-\documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
-\usepackage[margin=.5in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\documentclass[10pt,letterpaper,final,twocolumn,twoside,notitlepage]{article}
+\usepackage[margin=.5in]{geometry} % 1/2 inch margins on all pages
+\usepackage[utf8]{inputenc} % Define the input encoding
+\usepackage[USenglish]{babel} % Define language used
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{amsthm} % Gives us plain, definition, and remark to use in \theoremstyle{style}
 \usepackage{graphicx}
 
-\usepackage{subfigure} % Float environment to place multiple figures in one figure environment
-\usepackage{nameref} % \nameref{label} lets you reference things by name
-\usepackage{hyperref} % Hyperlinks between references
+\usepackage{hyperref} % Generate hyperlinks to referenced items
+\usepackage[noabbrev,nameinlink]{cleveref} % Fancy cross-references in the document everywhere
+\usepackage{nameref} % Can make references by name to places
+\usepackage{subcaption} % Allows for multiple figures in one Figure environment
+\usepackage{siunitx} % Gives us ways to typeset units for stuff
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
+\usepackage{chngcntr} % Allows us to tamper with the counter a little more
+\usepackage{empheq} % Allow boxing of equations in special math environments
+\usepackage{tcolorbox} % Allows us to create boxes of various types for examples
+\usepackage{tikz} % Allows us to create TikZ and PGF Pictures
+%\usepackage{ctable} % Greater control over tables and how they look
 
 %\graphicspath{{./Drawings/MS_201}} % Uncomment this to use pictures in this document
-%\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
+\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
 
 \author{Karl Hallsby}
 \title{MS 201 Equations}

@@ -1,0 +1,111 @@
+\section{Exam 1 Equations} \label{sec:Exam 1}
+	\begin{equation*}
+		E_{N} = E_{A} + E_{R}
+	\end{equation*}
+
+	\begin{equation}
+		F_{A} = \frac{\left( 1.602 \times 10^{-19} \right)^{2}}{4 \pi \left( 8.85 \times 10^{-12} \right) r^{2}} \left( \lVert Z_{1} \rVert \right) \left( \lVert Z_{2} \rVert \right)
+	\end{equation}
+	\begin{itemize}[noitemsep]
+		\item $r$ - Distance in \si{\meter}
+		\item $Z$ - Number of Valence Electrons
+		\item $F_{A}$ - Interatomic Force in \si{\newton}
+	\end{itemize}
+
+	\begin{align}
+		\text{Force} &= \frac{dE}{dr} \\
+		\text{Elastic Modulus} &= \frac{dF}{dr}
+	\end{align}
+
+	\subsection{Lattice Parameters}
+		\begin{align}
+			a_{\text{BCC}} &= \frac{4r}{\sqrt{3}} \\
+			a_{\text{FCC}} &= \frac{4r}{\sqrt{2}} \\
+			a_{\text{HCP}} &= \frac{c}{1.633} 
+		\end{align}
+		\begin{itemize}[noitemsep]
+			\item $a$ - Lattice Parameter
+			\item $r$ - Radius of atom
+		\end{itemize}
+
+	\subsection{Volume of Hexagonal Prism}
+		\begin{equation}
+			V_{H} = \frac{3 \sqrt{3}}{2} a^{2} h
+		\end{equation}
+
+	\subsection{Densities}
+		\begin{equation}
+			\rho = \frac{nA}{V_{C} N_{A}}
+		\end{equation}
+		\begin{itemize}[noitemsep]
+			\item $n$ - Number of atoms/unit cell
+			\item $A$ - Molar Mass of Material
+			\item $V_{C}$ - Volume of Unit Cell in \si{\centi \meter \cubic}
+			\item $N_{A}$ - Avogadro's Number ($6.022 \times 10^{23}$)
+		\end{itemize}
+
+		\begin{equation}
+			\text{Planar Density} = \frac{\frac{\text{Atoms}}{\text{2D Unit Area}}}{\frac{\text{Area}}{\text{2D Repeat Unit}}}
+		\end{equation}
+		\begin{equation}
+			\text{Linear Density} = \frac{\text{\# of Atoms in a Direction}}{\text{Magnitude of Linear Vector}}
+		\end{equation}
+		\begin{itemize}[noitemsep]
+			\item The repeat units/vector magnitude are in terms of atomic radii
+		\end{itemize}
+
+		\begin{equation}
+			\text{APF} = \frac{\frac{\text{Atoms}}{\text{Unit Cell}} \left( \frac{4}{3} \pi \left( \text{atom radius} \right)^{3} \right)}{\text{Unit Cell Volume}}
+		\end{equation}
+	
+		\begin{equation}
+			\text{\%IC} = \left( 1 - e^{\frac{\left( x_{A}-x_{B} \right)^{2}}{4}} \right) \times 100\%
+		\end{equation}
+		\begin{itemize}[noitemsep]
+			\item $x$ - Electronegativities
+		\end{itemize}
+
+	\subsection{Thermal Expansion}
+		\begin{equation}
+			\frac{\Delta L}{L_{0}} = \alpha \left( T_{2} - T_{1} \right)
+		\end{equation}
+		\begin{itemize}[noitemsep]
+			\item $E \uparrow$, $T_{m} \uparrow$
+			\item $E \uparrow$, $\alpha \downarrow$
+		\end{itemize}
+
+	\subsection{Convert between Coordinates}
+		\begin{equation}
+			\left[ XYZ \right] = \left[ a_{1} a_{2} a_{3} c \right]
+			\begin{aligned}
+				a_{1} &= \frac{1}{3} \left( 2X - Y \right) \\
+				a_{2} &= \frac{1}{3} \left( 2Y - X \right) \\
+				a_{3} &= - \left( a_{1} + a_{2} \right) \\
+				c &= Z \\
+				a_{1} + a_{2} + a_{3} &= 0 \\
+			\end{aligned}
+		\end{equation}
+	
+	\subsection{Planes}
+		\begin{enumerate}[noitemsep]
+			\item Given $x$, $y$, $z$ as intersects
+			\item Convert to $\frac{1}{x}$, $\frac{1}{y}$, $\frac{1}{z}$
+			\item Reduce to smallest common denominator
+			\item Leave as $\left( \frac{1}{x} \frac{1}{y} \frac{1}{z} \right)$
+		\end{enumerate}
+	
+	\subsection{Light Refraction}
+		\begin{equation}
+			D = \frac{n \lambda}{2 \sin \theta}
+		\end{equation}
+		\begin{itemize}[noitemsep]
+			\item $n$ = 1
+			\item $\lambda$ - Wavelength in \si{\nano \meter}
+			\item $\theta$ - Angle of Incidence
+			\item $\theta$ is usually given as $2 \theta$. Be careful
+		\end{itemize}
+	
+	\subsection{Randoms}
+		\begin{equation}
+			D_{HKL} = \frac{a}{\sqrt{h^{2}+k^{2}+l^{2}}}
+		\end{equation}		
