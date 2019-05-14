@@ -9,17 +9,19 @@
 \usepackage{graphicx}
 
 \usepackage{hyperref} % Generate hyperlinks to referenced items
+\usepackage[noabbrev,nameinlink]{cleveref} % Fancy cross-references in the document everywhere
 \usepackage{nameref} % Can make references by name to places
-\usepackage{ctable} % Greater control over tables and how they look
 \usepackage{subcaption} % Allows for multiple figures in one Figure environment
-\usepackage{textcomp} % Forcibly loads a package that gensymb relies on
-\usepackage{gensymb} % Gives access to some characters, for example, the degree symbol
+\usepackage{siunitx} % Gives us ways to typeset units for stuff
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
 \usepackage{chngcntr} % Allows us to tamper with the counter a little more
 \usepackage{empheq} % Allow boxing of equations in special math environments
+\usepackage{tcolorbox} % Allows us to create boxes of various types for examples
+\usepackage{tikz} % Allows us to create TikZ and PGF Pictures
+%\usepackage{ctable} % Greater control over tables and how they look
 
 %\graphicspath{{./Drawings/Class_Name_and_Number}} % Uncomment this to use pictures in this document
-%\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
+\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
@@ -33,11 +35,31 @@
 \newtheorem*{remark*}{Remark}
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
 
-\newcounter{example}[section]
+\newlist{propertylist}{enumerate}{1} % Name, template, max-depth of new list
+\setlist[propertylist, 1]{label=\textbf{(\roman*)}, noitemsep, nolistsep}
+\newtcolorbox[auto counter,
+	number within=section,
+	number format=\arabic,
+	crefname={example}{examples}, % Define reference format for cref (No Capitals)
+	Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
+]{example}[2][]{
+	width=\textwidth,
+	title={Example \thetcbcounter: #2. #1},
+	fonttitle=\bfseries,
+	label={ex:#2},
+	nameref=#2,
+	colbacktitle=white!100!black,
+	coltitle=black!100!white,
+	colback=white!100!black,
+	upperbox=visible,
+	lowerbox=visible,
+	sharp corners=all
+}
 
 \renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
 
 \DeclareMathOperator{\RealNums}{\mathbb{R}}
+\DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
 
 \author{Karl Hallsby}
 \title{Class Name Number Equations}
