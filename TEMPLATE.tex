@@ -1,7 +1,7 @@
 \documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
-\usepackage[margin=.5in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[margin=.5in]{geometry} % 1/2 inch margins on all pages
+\usepackage[utf8]{inputenc} % Define the input encoding
+\usepackage[USenglish]{babel} % Define language used
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -20,28 +20,35 @@
 \usepackage{tikz} % Allows us to create TikZ and PGF Pictures
 %\usepackage{ctable} % Greater control over tables and how they look
 
-%\graphicspath{{./Drawings/Class_Name_and_Number}} % Uncomment this to use pictures in this document
-\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
-
+% Create a theorem environment
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
 
+% Create a definition environment
 \theoremstyle{definition}
 \newtheorem{definition}{Defn}
 \newtheorem{corollary}{Corollary}[section]
+% \begin{definition}[Term] \label{def:}
+% 		Make sure the term is emphasized with \emph{term}.
+%		This ensures that if \emph is changed, it shows up everywhere
+% \end{definition}
 
+% Create a numbered remark environment numbered based on definition
+% NOTE: This version of remark MUST go inside a definition environment
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}[definition]
-\newtheorem*{remark*}{Remark}
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
 
-\newlist{propertylist}{enumerate}{1} % Name, template, max-depth of new list
-\setlist[propertylist, 1]{label=\textbf{(\roman*)}, noitemsep, nolistsep}
+% Create an unnumbered remark environment for general use
+% NOTE: This version of remark has NO restrictions on placement
+\newtheorem*{remark*}{Remark}
+
+% Create a tcolorbox for examples
 \newtcolorbox[auto counter,
-	number within=section,
-	number format=\arabic,
-	crefname={example}{examples}, % Define reference format for cref (No Capitals)
-	Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
+number within=section,
+number format=\arabic,
+crefname={example}{examples}, % Define reference format for cref (No Capitals)
+Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 ]{example}[2][]{
 	width=\textwidth,
 	title={Example \thetcbcounter: #2. #1},
@@ -56,8 +63,10 @@
 	sharp corners=all
 }
 
+% Redefine the 'end of proof' symbol to be a black square, not blank
 \renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
 
+% Math Operators that are useful to abstract the written math away to one spot
 \DeclareMathOperator{\RealNums}{\mathbb{R}}
 \DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
 
