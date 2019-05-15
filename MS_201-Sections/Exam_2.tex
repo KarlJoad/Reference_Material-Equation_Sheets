@@ -1,0 +1,118 @@
+\section{Exam 2 Equations}
+	\subsection{Ch. 4 Imperfections}
+		\subsubsection{Vacancies}
+		Number of Vacancies:
+			\begin{equation}
+				N_{V} = \text{Vacancy Frac.} \times \frac{N_{A} \rho_{\text{Ele}}}{A_{\text{Ele}}}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $A_{\text{Ele}}$ - Atomic Weight (\si{\gram / \mole})
+				\item $\rho_{\text{Ele}}$ - Element Density (\si{\gram / \cubic \centi \meter})
+				\item $N_{A}$ - Avogadro's Number ($6.022 \times 10^{23}$)
+			\end{itemize}
+		Number of Potential Vacancy Sites:
+			\begin{equation}
+				N = \frac{\rho_{\text{Ele}} N_{A}}{A_{\text{Ele}}}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $A_{\text{Ele}}$ - Atomic Weight (\si{\gram / \mole})
+				\item $\rho_{\text{Ele}}$ - Element Density (\si{\gram / \cubic \centi \meter})
+				\item $N_{A}$ - Avogadro's Number ($6.022 \times 10^{23}$)
+			\end{itemize}
+		Grains per Area:
+			\begin{equation}
+				n_{M} = \left( \frac{100}{M} \right)^{2} = 2^{G-1}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $n_{M}$ - Grains/in\textsuperscript{2}
+				\item $G$ - Grain Size Number
+				\begin{itemize}[noitemsep]
+					\item $G = -6.6457 \log \left( \bar{\ell} \right) - 3.298$ for \si{\milli \meter}
+					\item $G = -6.6353 \log \left( \bar{\ell} \right) - 12.6$ for in.
+				\end{itemize}
+			\end{itemize}
+		
+		\subsubsection{Mean Intercept Length}
+			\begin{equation}
+				\bar{\ell} = \frac{L_{T}}{P M}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $L_{T}$ - Total Length of all Lines
+				\item $P$ - Number of Grain Intersections
+				\item $M$ - Magnification
+					\begin{equation}
+						M = \frac{\text{Scale Length}}{\text{\# on Scale Bar}}
+					\end{equation}
+			\end{itemize}
+		
+		\subsubsection{Complete Substitution}
+		To have a complete substitution, it must be:
+			\begin{itemize}[noitemsep]
+				\item $\Delta r < 15\%$
+				\item Electronegativity $\leq .4$
+				\item SAME Crystal Structure
+				\item SAME Valence
+			\end{itemize}
+		
+		\subsubsection{Edges}
+		Burger's Vector:
+			\begin{itemize}[noitemsep]
+				\item Burger's Vector
+				\begin{itemize}[noitemsep]
+					\item $\perp$ for Edge Dislocations
+					\item $\parallel$ for Screw Dislocations
+				\end{itemize}
+				\item Twin Boundary - Symmetric Around Fault
+				\item Stacking Fault - NOT Symmetric Around Fault
+				\begin{itemize}[noitemsep]
+					\item High Angle - $E \uparrow$
+					\item Low Angle - $E \downarrow$
+				\end{itemize}
+			\end{itemize}
+		
+	\subsection{Ch. 5 Diffusion}
+		\subsubsection{Diffusion Coefficient}
+			\begin{equation}
+				D = D_{0} \times e^{\frac{-Q_{d}}{RT}}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $D$ - Diffusion Coefficient (\si{\meter \squared / \second})
+				\item $Q_{d}$ - Activation Energy (\si{\joule / \mole}, \si{\electronvolt / atom})
+				\item $R$ - 8.314 (\si{\joule / \mole \kelvin})
+				\item $T$ - Temperature (\si{\kelvin})
+			\end{itemize}
+			\begin{equation}
+				D_{1} t_{1} = D_{2} t_{2}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $D$ - Diffusion Coefficients
+				\item $t$ - Time
+			\end{itemize}
+		
+		\subsubsection{Flux}
+			\begin{equation}
+				J = -D A \frac{dC}{dx}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item For Steady State Diffusion
+				\item $D$ - Diffusion Coefficient
+				\item $dC$ - $\Delta$ Concentration (Low-High)
+				\item $dx$ - Distance to Cross
+				\item $A$ - Area
+			\end{itemize}
+		
+		\subsubsection{Diffusion Concentration}
+			\begin{equation}
+				\frac{C \left( x,t \right) - C_{0}}{C_{s}-C_{0}} = 1 - \text{erf} \left( \frac{x}{2 \sqrt{Dt}} \right)
+			\end{equation}
+			\begin{equation}
+				Z = \frac{x}{2 \sqrt{Dt}} = \frac{z-\text{point below}}{\text{point above}-\text{point below}}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $C \left( x,t \right)$ - Concentration at a point AND time
+				\item $C_{0}$  - Initial Concentration
+				\item $C_{2}$ - Surface Concentration of \textsc{diffusing} species
+				\item $x$ - Position
+				\item $D$ - Diffusion Coefficient
+				\item $t$ - Time
+			\end{itemize}
