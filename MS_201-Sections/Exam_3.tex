@@ -1,0 +1,198 @@
+\section{Exam 3 Equations} \label{sec:Exam 3 Equations}
+	\subsection{Ch. 6 - Mechanical Properties} \label{subsec:Ch 6}
+		\subsubsection{Stress} \label{subsubsec:Stress}
+			\paragraph{Tensile Stress} \label{par:Tensile Stress}
+			\begin{equation} \label{eq:Tensile Stress}
+				\sigma = \frac{F_{t}}{A_{0}}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item Think of amount of force required to pull ends of paper apart
+				\item $\sigma$ has units $lb_{f}/in^{2}$ or \si{\newton / \meter \squared}
+				\item $F_{t}$ - Normal Force
+				\item $A_{0}$ - Original Cross-Sectional Area
+				\item $\sigma < 0$ - Compressive Force
+				\item $\sigma > 0$ - Tensile Force
+			\end{itemize}
+		
+			\paragraph{Shear Stress} \label{par:Shear Stress}
+				\begin{equation} \label{eq:Shear Stress}
+					\tau = \frac{F_{S}}{A_{0}}
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item Think of amount of force required to rip a piece of paper
+					\item $\tau$ has units $lb_{f}/in^{2}$ or \si{\newton / \meter \squared}
+					\item $F_{S}$ - Shear Force
+					\item $A_{0}$ - Original Cross-Sectional Area
+				\end{itemize}
+		
+		\subsubsection{Strain} \label{subsubsec:Strain}
+			\paragraph{Tensile Strain} \label{par:Tensile Strain}
+				\begin{equation} \label{eq:Tensile Strain}
+					\varepsilon = \frac{\delta}{L_{0}} = \frac{L - L_{0}}{L_{0}}
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item Think of pulling ends of paper apart and seeing how much it stretches
+					\item $\varepsilon$ - \nameref{par:Tensile Strain}
+					\item $\delta$ - Change in Length of Material
+					\item $L_{0}$ - Original Length of Material
+				\end{itemize}
+		
+			\paragraph{Shear Strain} \label{par:Shear Strain}
+				\begin{equation} \label{eq:Shear Strain}
+					\gamma = \frac{\Delta x}{y} = \tan \theta
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item Change of length of material compared to height when ripped apart
+					\item $\gamma$ - \nameref{par:Shear Strain}
+					\item $\Delta x$ - Change in length
+					\item $y$ - Height of Material Tested
+				\end{itemize}
+		
+		\subsubsection{Moduli}
+			\paragraph{Young's Modulus} \label{par:Youngs Modulus}
+				\begin{equation} \label{eq:Young's Modulus}
+					E = \frac{\sigma}{\varepsilon} = \frac{dF}{dr}
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item How Stiff a Material is from being pulled apart
+					\item $E$ - \nameref{par:Youngs Modulus}
+					\item $\sigma$ - \nameref{par:Tensile Stress}
+					\item $\varepsilon$ - \nameref{par:Tensile Strain}
+				\end{itemize}
+			
+			\paragraph{Elastic Shear Modulus} \label{par:Elastic Shear Modulus}
+				\begin{equation} \label{eq:Elastic Shear Modulus}
+					G = \frac{\tau}{\gamma}
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item How Stiff a material is from Ripping
+					\item $\tau$ - \nameref{par:Shear Stress}
+					\item $\gamma$ - \nameref{par:Shear Strain}
+				\end{itemize}
+			
+			\paragraph{Elastic Bulk Modulus} \label{par:Elastic Bulk Modulus}
+				\begin{equation} \label{eq:Elastic Bulk Modulus}
+					K = -P \frac{V_{0}}{\Delta V}
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item $K$ - \nameref{par:Elastic Bulk Modulus}
+					\item $P$ - 
+					\item $V_{0}$ - Original Volume
+					\item $\Delta V$ - Change in Volume
+				\end{itemize}
+					
+			\paragraph{Poisson's Ratio} \label{par:Poissons Ratio}
+				\begin{equation}
+					v = -\frac{\varepsilon_{L}}{\varepsilon}
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item $v$ - \nameref{par:Poissons Ratio}
+					\item $\varepsilon_{L}$ - \nameref{par:Tensile Strain} at the length $L$
+					\item $\varepsilon$ - \nameref{par:Tensile Strain}
+				\end{itemize}
+			
+		\subsubsection{Isotropic Materials} \label{subsubsec:Isotropic Materials}
+		If a material is isotropic, these equations apply to \nameref{par:Elastic Shear Modulus} and \nameref{par:Elastic Bulk Modulus}.
+			\begin{equation} \label{eq:Isotropic Elastic Shear Modulus}
+				G = \frac{E}{2 \left( 1+v \right)}
+			\end{equation}
+			\begin{equation} \label{eq:Isotropic Elastic Bulk Modulus}
+				K = \frac{E}{3 \left( 1-2v \right)}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $G$ - Elastic Shear Modulus of isotropic material
+				\item $K$ - Elastic Bulk Modulus of isotropic material
+				\item $E$ - Young's Modulus of material
+				\item $v$ - \nameref{par:Poissons Ratio} of Material
+			\end{itemize}
+			
+		\subsubsection{Deflection} \label{subsubsec:Deflection}
+			\begin{equation} \label{eq:Deflection}
+				\delta = \frac{F L_{0}}{E A_{0}}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $F$ - Force Applied
+				\item $L_{0}$ - Original Length of Material
+				\item $E$ - \nameref{par:Youngs Modulus}
+				\item $A_{0}$ - Original Cross-Sectional Area of Material
+			\end{itemize}
+			
+			\paragraph{Simple Tension} \label{par:Simple Tension}
+				\begin{equation} \label{eq:Simple Tension}
+					\delta_{L} = -v \frac{F w_{0}}{E A_{0}}
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item $delta_{L}$ - \nameref{par:Deflection}
+					\item $v$ - \nameref{par:Poissons Ratio}
+					\item $F$ - Force Applied
+					\item $w_{0}$ - Width of Thing applying the force
+					\item $E$ - \nameref{par:Youngs Modulus}
+					\item $A_{0}$ - Original Cross-Sectional Area of Material
+				\end{itemize}
+		
+		\subsubsection{Simple Torsion} \label{subsubsec:Simple Torsion}
+			\begin{equation} \label{eq:Simple Torsion}
+				\alpha = \frac{2 M L_{0}}{\pi \left( r_{0} \right)^{4} G}
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $\alpha$ - \nameref{subsubsec:Simple Torsion}
+				\item $M$ - 
+				\item $L_{0}$ - Original Length of Material
+				\item $r_{0}$ - 
+				\item $G$ - \nameref{par:Elastic Shear Modulus}
+			\end{itemize}
+			
+		\subsubsection{Working with Stress Curve}
+			\begin{itemize}[noitemsep]
+				\item $\sigma_{y}$ = Yield Strength
+				\item Tensile Strength = Max Height on Curve (Plastic Deformation)
+				\item Toughness = Area Beneath the Stress Curve (Energy Absorbed)
+				\item \nameref{par:Percent Elongation}
+				\item \nameref{par:Percent Reduction Area}
+				\item $U_{r} \cong \frac{1}{2} \sigma_{y} \varepsilon_{y}$ = Resilience (Energy Absorbed in Elastic Deformation)
+				\item $\sigma_{T} = \frac{F}{A_{0}} = K \varepsilon_{T}^{n}$ = True Stress
+				\item $\epsilon_{T} = \ln \left( \frac{L}{L_{0}} \right)$ = True Strain
+				\item $\sigma_{\text{Working}} = \frac{\sigma_{y}}{N}$ = Safety Measure Measure
+			\end{itemize}
+			
+			\paragraph{Percent Elongation (\%EL)} \label{par:Percent Elongation}
+				\begin{equation} \label{eq:Percent Elongation}
+					\%EL = \frac{L_{f} - L_{0}}{L_{0}} \times 100\%
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item $\%EL$ - Percent Elongation
+					\item $L_{f}$ - Final Length of Material
+					\item $L_{0}$ - Starting Length of Material
+				\end{itemize}
+			
+			\paragraph{Percent Reduction in Area} \label{par:Percent Reduction Area}
+				\begin{equation} \label{eq:Percent Reduction Area}
+					\%RA = \frac{A_{0} - A_{f}}{A_{0}} \times 100\%
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item $\%RA$ - Percent Reduction in Area
+					\item $A_{f}$ - Final Cross-Sectional Area of Material
+					\item $A_{0}$ - Starting Cross-Sectional Area of Material
+				\end{itemize}
+		
+		\subsubsection{Random Equations}
+			\begin{equation}
+				\text{HB} = \frac{2P}{\pi D \left( D - \sqrt{D^{2} - d^{2}} \right)}
+			\end{equation}
+			\begin{equation}
+				\text{HV} = 1.854 \times \frac{P}{d^{2}}
+			\end{equation}
+			\begin{equation}
+				\text{HK} = 14.2 \times \frac{P}{l^{2}}
+			\end{equation}
+			
+	\subsection{Ch. 7 - Deformation \& Strengthening Mechanisms} \label{subsec:Ch 7}
+		\subsubsection{Burger's Vector Explained} \label{subsubsec:Burgers Vector Explained}
+			\begin{equation}
+				\lVert \vec{b} \rVert = \frac{a}{2} \sqrt{u^{2} + v^{2} + w^{2}}
+				\begin{aligned}
+					\vec{b}_{BCC} &= \frac{a}{2} \left[ 111 \right] \\
+					\vec{b}_{FCC} &= \frac{a}{2} \left[ 110 \right] \\
+					\vec{b}_{HCP} &= \frac{a}{2} \left[ 11 \bar{2} 0 \right] \\
+				\end{aligned}
+			\end{equation}
