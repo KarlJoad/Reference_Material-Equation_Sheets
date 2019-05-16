@@ -24,7 +24,18 @@
 			\end{equation}
 		\end{definition}
 		\begin{example}[Problem 3.2]{Probability Mass Function}
-			Problem 3.2 from Homework 4
+		A die is tossed and the random variable $X$ is defined as the number of full pairs of dots on the fact showing up.
+			\begin{enumerate}[label=\textbf{(\alph*)}, ref=(\alph*)]
+				\item Describe the underlying space $S$ of this random experiment and specify the probabilities of the elementary events. \label{ex:3.2a}
+				\item Show the mapping from $S$ to $S_{X}$, the range of $S$ \label{ex:3.2b}
+				\item Find the probabilities for the various values of $X$. \label{ex:3.2c}
+				\item Repeat parts \ref{ex:3.2a}, \ref{ex:3.2b}, and \ref{ex:3.2c} if $Y$ is the number of full or partial pairs of dots in the face showing up.
+				\item Explain why $\Prob \left[ X = 0 \right]$ and $\Prob \left[ Y = 0 \right]$ are not equal.
+			\end{enumerate}
+		
+		\tcblower
+		
+		Solution from Homework 3.
 		\end{example}
 		
 		\subsubsection{Properties of Probability Mass Functions} \label{subsubsec:Properties of Probability Mass Functions}
@@ -39,7 +50,16 @@
 					\end{equation}
 			\end{propertylist}
 					\begin{example}[Problem 3.13]{Find Normalizing Constant}
-						Problem 3.13 from Homework 4.
+					Let $X$ be a random varaible with PMF $p_{k} = \frac{c}{k^{2}}$ for $k = 1,2,\ldots$
+						\begin{enumerate}[label=\textbf{(\alph*)}]
+							\item Estimate the value of $c$ numerically. Note that the series converges.
+							\item Find $\Prob \left[ X > 4 \right]$.
+							\item Find $\Prob \left[ 6 \leq X \leq 8 \right]$.
+						\end{enumerate}
+					
+					\tcblower
+					
+						Solution from Homework 4.
 					\end{example}
 			\begin{propertylist}[resume]
 				\item
@@ -63,7 +83,11 @@
 			\end{remark}
 		\end{definition}
 		\begin{example}[Problem 3.27]{Expectation of Discrete Random Variable}
-			Problem 3.27 from Homework 4. ONLY THE Expectation PART.
+			Find the expectation of $X$ where the PMF of $X$ is \[p_{k} = \frac{\frac{pi^{2}}{6}}{k^{2}}\]. (Note that this PMF is the same as in \Cref{ex:Find Normalizing Constant}).
+			
+			\tcblower
+			
+			Solution from Homework 4. ONLY THE Expectation PART.
 		\end{example}
 	
 		\subsubsection{Properties of Expected Values} \label{subsubsec:Properties of Discrete Expected Value}
@@ -127,7 +151,11 @@
 			\end{remark}
 		\end{definition}
 		\begin{example}[Problem 3.27]{Variance of Discrete Random Variable}
-			Problem 3.27 from Homework 4. ONLY THE Variance PART.
+			Find the variance of $X$ where the PMF of $X$ is \[p_{k} = \frac{\frac{pi^{2}}{6}}{k^{2}}\]. (Note that this PMF is the same as in \Cref{ex:Find Normalizing Constant}).
+			
+			\tcblower
+			
+			Solution from Homework 4. ONLY THE Variance PART.
 		\end{example}
 		\begin{definition}[Standard Deviation] \label{def:Standard Deviation}
 			The standard deviation of a random variable $X$ is:
@@ -147,6 +175,7 @@
 				The conditional PMF, $p_{X \Given C} \left( x \Given C \right)$, satisfies \emph{\textbf{all}} properties of \nameref{subsubsec:Properties of Probability Density Functions}.
 			\end{remark}
 		\end{definition}
+	
 	\subsection{Conditional Expected Value of Single Discrete Random Variable} \label{subsec:Conditional Expected Value of Single Discrete}
 		\begin{definition}[Conditional Expected Value of Discrete Random Variable] \label{def:Conditional Expected Value of Single Discrete}
 			The \emph{conditional expected value of the discrete random variable} $X$ given $B$ is defined as:
@@ -155,7 +184,16 @@
 			\end{equation}
 		\end{definition}
 		\begin{example}[Problem 3.39]{Conditional Expected Value}
-			Problem 3.39 from Homework 5.
+			\begin{enumerate}[label=\textbf{(\alph*)}, ref=(\alph*)]
+				\item Find the conditional expected value of $X$ in Problem 3.5 given that no message gets through in the first time slow. SHow that $\ExpectedValue \left[ X \Given X>1 \right] = \ExpectedValue \left[ X \right] + 1$. \label{ex:3.39a}
+				\item Find the conditional expected value of $X$ in problem 3.5 given that a message gets through in the first time slot. \label{ex:3.39b}
+				\item Find $\ExpectedValue \left[ X \right]$ by using the results of Parts \ref{ex:3.39a} and \ref{ex:3.39b}. \label{ex:3.39c}
+				\item Find $\ExpectedValue \left[ X^{2} \right]$ and $\Variance \left[ X \right]$ using the approach in parts \ref{ex:3.39b} and \ref{ex:3.39c}.
+			\end{enumerate}
+		
+			\tcblower
+			
+			Solution from Homework 5.
 		\end{example}
 	
 	\subsection{Conditional Variance of Single Discrete Random Variable} \label{subsec:Conditional Variance of Single Discrete}
