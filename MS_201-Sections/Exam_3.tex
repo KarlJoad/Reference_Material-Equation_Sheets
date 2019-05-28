@@ -189,10 +189,68 @@
 	\subsection{Ch. 7 - Deformation \& Strengthening Mechanisms} \label{subsec:Ch 7}
 		\subsubsection{Burger's Vector Explained} \label{subsubsec:Burgers Vector Explained}
 			\begin{equation}
-				\lVert \vec{b} \rVert = \frac{a}{2} \sqrt{u^{2} + v^{2} + w^{2}}
 				\begin{aligned}
+					\lVert \vec{b} \rVert &= \frac{a}{2} \sqrt{u^{2} + v^{2} + w^{2}} \\
 					\vec{b}_{BCC} &= \frac{a}{2} \left[ 111 \right] \\
 					\vec{b}_{FCC} &= \frac{a}{2} \left[ 110 \right] \\
 					\vec{b}_{HCP} &= \frac{a}{2} \left[ 11 \bar{2} 0 \right] \\
 				\end{aligned}
 			\end{equation}
+			
+		\subsubsection{Angled Stresses} \label{subsubsec:Angled Stresses}
+			\begin{equation} \label{eq:Angled Stresses}
+				\phi / \lambda = \arccos \left( \frac{u_{1}u_{2} + v_{1}v_{2} + w_{1}w_{2}}{\sqrt{\left( u_{1}^{2} + v_{1}^{2} + w_{1}^{2} \right) \left( u_{2}^{2} + v_{2}^{2} + w_{2}^{2} \right)}} \right)
+			\end{equation}
+			\begin{itemize}[noitemsep]
+				\item $\phi$ - Angle of stress to normal
+				\item $\lambda$ - Angle of stress to slip direction
+			\end{itemize}
+		
+		\subsubsection{Strengthening Mechanisms} \label{subsubsec:Strengthening Mechanisms}
+			\begin{enumerate}[noitemsep]
+				\item \nameref{par:Grain-Size Reduction} - Increase grain boundaries, increase misalignment
+				
+				\item \nameref{par:Solid-Solution} - Add interstitial atoms
+				
+				\item \nameref{par:Cold Work/Annealing} - Increase the number of dislocations
+				
+				\item \nameref{par:Precipitate Strengthening} - Shear precipitate or bend the slip line
+			\end{enumerate}
+		
+			\paragraph{Grain-Size Reduction} \label{par:Grain-Size Reduction}
+				\begin{equation} \label{eq:Grain-Size Reduction}
+					\sigma_{y} = \sigma_{0} + kdy^{\frac{-1}{2}}
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item $\rho_{\text{disloc}} \uparrow = \sigma_{y} \uparrow$
+					\item $\rho_{\text{disloc}} = \frac{\text{Total disloc. Length}}{\text{Unit Volume}}$
+				\end{itemize}
+			
+			\paragraph{Solid-Solution} \label{par:Solid-Solution}
+				\begin{equation} \label{eq:Solid-Solution}
+					\sigma_{y} = c^{\frac{1}{2}}
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item $c$ - Impurity Concentration
+				\end{itemize}
+			
+			\paragraph{Cold Work/Annealing} \label{par:Cold Work/Annealing}
+				\begin{equation} \label{eq:Cold Work}
+					\text{\%CW} = \frac{A_{0} - A}{A_{0}} \times 100
+				\end{equation}
+				
+				\begin{equation} \label{eq:Cold Work/Annealing}
+					d^{n} - d_{0}^{n} = kt
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item \Cref{eq:Cold Work/Annealing} only works if heat treatment occurs
+					\item $n=2$, usually
+				\end{itemize}
+			
+			\paragraph{Precipitation Strengthening} \label{par:Precipitate Strengthening}
+				\begin{equation} \label{eq:Precipitate Strengthening}
+					\sigma_{y} = \frac{1}{s}
+				\end{equation}
+				\begin{itemize}[noitemsep]
+					\item $s$ - Space in pinning sites
+				\end{itemize}
