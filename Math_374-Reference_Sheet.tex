@@ -38,8 +38,12 @@
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
 
 % Create a special list that handles properties. It can be broken and restarted
-\newlist{propertylist}{enumerate}{1} % Name, template, max-depth of new list
-\setlist[propertylist, 1]{label=\textbf{(\roman*)}, noitemsep, nolistsep}
+\newlist{propertylist}{enumerate}{1} % {Name}{Template}{Max Depth}
+\setlist[propertylist, 1]{label=\textbf{(\roman*)}, noitemsep, nolistsep} % Set options
+
+% Create a special list that handles enumerate starting with lower letters. Breakable/Restartable.
+\newlist{boldalphlist}{enumerate}{1} % {Name}{Template}{Max Depth}
+\setlist[boldalphlist, 1]{label=\textbf{(\alph*)}, noitemsep, nolistsep} % Set options
 
 % Create a tcolorbox for examples
 \newtcolorbox[auto counter,
