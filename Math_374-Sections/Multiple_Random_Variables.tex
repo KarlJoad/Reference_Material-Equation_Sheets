@@ -10,7 +10,15 @@
 			\end{itemize}
 		\end{definition}
 		\begin{example}[Problem 5.1]{Joint PMF}
-			Problem 5.1, Part a \& Part B.
+			Let $X$ be the maximum and let $Y$ be the minimum of the number of heads obtained when Carlos and Michael each flip a fair coin twice.
+			\begin{boldalphlist}
+				\item Describe the underlying space $S$ of this random experiment and show the mapping from $S$ to $S_{X,Y}$, the range of the pair $\left( X,Y \right)$.
+				\item Find the probability for all values of $\left( X,Y \right)$.
+			\end{boldalphlist}
+			
+			\tcblower
+				
+			Solution to Problem 5.1, Part a \& Part B.
 		\end{example}
 	
 		\subsubsection[Marginal PMF]{Marginal Probability Mass Function} \label{subsubsec:Marginal PMF}
@@ -25,7 +33,24 @@
 				\end{equation}
 			\end{definition}
 			\begin{example}[Problem 5.11]{Marginal PMFs}
-				Problem 5.11, Part a \& Part b \& Part c.
+				\begin{boldalphlist}
+					\item Find the \nameref{def:Marginal PMF}'s for th epairs of random variable with the indicated \nameref{def:Joint PMF}. \\
+						\begin{tabular}{cccc|cccc|cccc}
+							\hline
+							\multicolumn{4}{c|}{i} & \multicolumn{4}{c|}{ii} & \multicolumn{4}{c}{iii} \\ \hline
+							$X/Y$ & -1 & 0 & 1 & $X/Y$ & -1 & 0 & 1 & $X/Y$ & -1 & 0 & 1 \\
+							-1 & $1/6$ & $1/6$ & 0 & -1 & $1/9$ & $1/9$ & $1/9$ & -1 & $1/3$ & 0 & 0 \\
+							0 & 0 & 0 & $1/3$ & 0 & $1/9$ & $1/9$ & $1/9$ & 0 & 0 & $1/3$ & 0 \\
+							1 & $1/6$ & $1/6$ & 0 & 1 & $1/9$ & $1/9$ & $1/9$ & 1 & 0 & 0 & $1/3$ \\
+							\hline
+						\end{tabular} \\ % Extra vertical space here between table and next question
+					
+					\item Find the probability of the events $A = \lbrace X>0 \rbrace$, $B = \lbrace X \geq Y \rbrace$, and $C = \lbrace X = -Y \rbrace$ for the above Joint PMF's.
+				\end{boldalphlist}
+				
+				\tcblower
+				
+				Solution to Problem 5.11, Part i \& Part ii \& Part iii.
 			\end{example}
 		
 	\subsection[Joint CDF]{Joint Cumulative Distribution Function} \label{subsec:Joint CDF}
@@ -91,7 +116,20 @@
 				\end{equation}
 			\end{definition}
 			\begin{example}[Problem 5.20]{Marginal CDFs}
-				Problem 5.20, Part b from Homework 8.
+				The pair $\left( X,Y \right)$ has Joint CDF given by:
+				\begin{equation*}
+					F_{X,Y} \left( x,y \right) = \begin{cases}
+						\left( 1- \frac{1}{x^{2}} \right) \left( 1- \frac{1}{y^{2}} \right) & \text{for } x>1, y>1 \\
+						0 & \text{elsewhere}
+					\end{cases}
+				\end{equation*}
+				\begin{boldalphlist}
+					\item[\textbf{(b)}] Find the Marginal CDF of $X$ and $Y$.
+				\end{boldalphlist}
+			
+				\tcblower
+				
+				Solution to Problem 5.20, Part b from Homework 8.
 			\end{example}
 		
 	\subsection[Joint PDF]{Joint Probability Density Function} \label{subsec:Joint PDF}
@@ -118,7 +156,17 @@
 					Example 5.16 from the textbook.
 				\end{example}
 				\begin{example}[Problem 5.27]{Find Normalizing Constant 2}
-					Problem 5.27, Part a form Homework 8.
+					Let $X$ and $Y$ have Joint PDF:
+					\begin{equation*}
+						f_{X,Y} \left( x,y \right) = k x \left( 1-x \right) y \text{, } 0<x<1, 0<y<1
+					\end{equation*}
+					\begin{boldalphlist}
+						\item Find $k$.
+					\end{boldalphlist}
+					
+					\tcblower
+					
+					Solution to Problem 5.27, Part a from Homework 8.
 				\end{example}
 			\begin{propertylist}[resume]
 				\item 

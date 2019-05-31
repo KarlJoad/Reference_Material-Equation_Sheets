@@ -62,6 +62,9 @@
 					\item $\Prob \left[ X = a \right] = F_{X} \left( a \right) - F_{X} \left( a^{-} \right)$
 					\item $\Prob \left[ X > x \right] = 1 - F_{X} \left( x \right)$
 				\end{propertylist}
+				
+				\tcblower
+				
 			\end{example}
 		
 		\subsubsection{Conditional Cumulative Distribution Function} \label{subsubsec:Conditional Cumulative Distribution Fuction}
@@ -75,7 +78,19 @@
 				\end{remark}
 			\end{definition}
 			\begin{example}[Problem 4.38]{Conditional Cumulative Distribution Function}
-				Problem 4.38 from Homework 7.
+				A binary transmission system sends a ``0'' bit using a -1 voltage signal and a ``1'' by transmitting a +1.
+				The received signal is corrupted by noise $N$ that has a Laplacian distribution with parameter $\alpha$.
+				Assume that ``0'' and ``1'' bits are equiprobable.
+				\begin{boldalphlist}
+					\item Find the PDF of the received signal $Y = X+N$ where $X$ is the transmitted signal, given that ``0'' was transmitted; that a ``1'' was transmitted?
+					\item Suppose that the receiver decides that a ``0'' was sent if $Y<0$ and a ``1'' was sent if $Y \geq 0$.
+					What is the probability that the receiver makes an error given that a +1 was transmitted? A -1 was tramsitted?
+					\item What is the overall probability of error?
+				\end{boldalphlist}
+				
+				\tcblower
+				
+				Solution to Problem 4.38 from Homework 7.
 			\end{example}
 		
 	\subsection{Probability Density Function (PDF)} \label{subsec:Probability Density Function}
@@ -95,7 +110,17 @@
 			\end{remark}
 		\end{definition}
 		\begin{example}[Problem 4.25]{Find Probability Density Function}
-			Problem 4.25 from Homework 6.
+			Find the PDF of the Weibull random variable where $\beta = 0.5$, $1$, and $2$.
+			\begin{equation*}
+				F_{X} \left( x \right) = \begin{cases}
+					0 & \text{for } x<0 \\
+					1-e^{-\left(\frac{x}{\lambda}\right)^{\beta}} & \text{for } x \geq 0
+				\end{cases}
+			\end{equation*}
+			
+			\tcblower
+			
+			Solution to Problem 4.25 from Homework 6.
 		\end{example}
 	
 		\subsubsection{Properties of Probability Density Functions} \label{subsubsec:Properties of Probability Density Functions}
@@ -131,6 +156,10 @@
 							\item Find $P \left[ X = 0.5 \right]$. (3 pts)
 							\item Find $P \left[ X > 0.5 \right]$. (7 pts)
 						\end{enumerate}
+						
+						\tcblower
+						
+						Solution to Final Exam Practice Problem 4.
 					\end{example}
 			\begin{remark*}
 				Any non-negative, piecewise continuous function $g \left( x \right)$ with finite $\int_{-\infty}^{\infty} g \left( x \right) dx = C$ can be used to form a PDF.
@@ -165,7 +194,12 @@
 			\end{remark}
 		\end{definition}
 		\begin{example}[Problem 4.57]{Conditional Expected Value of Continuous Random Variable}
-			Problem 4.57 from Homework 7.
+			Find the $n$th moment of $U$, the uniform random variable in the unit interval.
+			Repeat for $X$ uniform in $\left[ a,b \right]$.
+			
+			\tcblower
+			
+			Solution to Problem 4.57 from Homework 7.
 		\end{example}
 	
 		\subsubsection{Properties of Expected Value} \label{subsubsec:Properties of Continuous Expected Value}
@@ -255,7 +289,15 @@
 				\end{remark}
 			\end{definition}
 			\begin{example}[Problem 4.62]{Q-Function Application}
-				Problem 4.62 from Homework 7.
+				The $r$th percentile, $\pi \left( r \right)$, of a random variable $X$ is defined by $\Prob \left[ X \leq \pi \left( r \right) \right] = \frac{r}{100}$.
+				\begin{boldalphlist}
+					\item Find the 90\%, 95\%, and 99\% percentiles of the exponential random variable with parameter $\lambda$.
+					\item Repeat part a for the Gaussian random variable with parameters $m=0$ and $\sigma^{2}$.
+				\end{boldalphlist}
+				
+				\tcblower
+				
+				Solution to Problem 4.62 from Homework 7.
 			\end{example}
 	
 	\subsection{Markov Inequality} \label{subsec:Markov Inequality}
@@ -303,7 +345,17 @@
 			\end{equation*}
 		\end{proof}
 		\begin{example}[Problem 4.97]{Markov Inequality}
-			Problem 4.97 from Homework 7.
+			Compare the \nameref{eq:Markov Inequality} and the exact probability for th event $\lbrace X > c \rbrace$ as a function of $c$ for:
+			\begin{boldalphlist}
+				\item $X$ is a uniform random variable in the interval $\left[ 0,b \right]$.
+				\item $X$ is an exponential random variable with parameter $\lambda$.
+				\item $X$ is a Pareto random varaible with $\alpha >1$.
+				\item $X$ is a Rayleigh random variable.
+			\end{boldalphlist}
+			
+			\tcblower
+			
+			Solution to Problem 4.97 from Homework 7.
 		\end{example}
 	
 	\subsection{Chebychev Inequality} \label{subsec:Chebychev Inequality}
@@ -324,5 +376,12 @@
 			\end{proof}
 		\end{definition}
 		\begin{example}[Problem 4.100]{Chebychev Inequality}
-			Problem 4.100 from Homework 7.
+			Let $X$ be the number of successes in $n$ Bernoulli trials were the probability of success is $p$.
+			Let $Y = \frac{X}{n}$ be the average number of successes per trial.
+			Apply the \nameref{eq:Chebychev Inequality} to the event $\lbrace \lvert Y-p \rvert > a \rbrace$.
+			What happens as $n \rightarrow \infty$?
+		
+			\tcblower
+			
+			Solution to Problem 4.100 from Homework 7.
 		\end{example}
