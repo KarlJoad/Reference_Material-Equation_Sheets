@@ -9,20 +9,24 @@
 \usepackage{graphicx}
 
 \usepackage{hyperref} % Generate hyperlinks to referenced items
+\usepackage[noabbrev,nameinlink]{cleveref} % Fancy cross-references in the document everywhere
 \usepackage{nameref} % Can make references by name to places
-\usepackage{ctable} % Greater control over tables and how they look
 \usepackage{subcaption} % Allows for multiple figures in one Figure environment
-\usepackage{textcomp} % Forcibly loads a package that gensymb relies on
-\usepackage{gensymb} % Gives access to some characters, for example, the degree symbol
+\usepackage{siunitx} % Gives us ways to typeset units for stuff
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
 \usepackage{chngcntr} % Allows us to tamper with the counter a little more
 \usepackage{empheq} % Allow boxing of equations in special math environments
+\usepackage{tcolorbox} % Allows us to create boxes of various types for examples
+\usepackage{tikz} % Allows us to create TikZ and PGF Pictures
+\usetikzlibrary{trees}
+%\usepackage{ctable} % Greater control over tables and how they look
 
-%\graphicspath{{./Drawings/Class_Name_and_Number}} % Uncomment this to use pictures in this document
-%\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
+%\graphicspath{{./Drawings/Math_252}} % Uncomment this to use pictures in this document
+\counterwithin{equation}{section} % Uncomment to number eqns with sec nums too
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
+\counterwithin{theorem}{section}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Defn}
@@ -33,14 +37,39 @@
 \newtheorem*{remark*}{Remark}
 %\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
 
-\newcounter{example}[section]
-\newenvironment{example}[1] % Define an example environment
-	{\refstepcounter{example} \begin{center}\begin{tabular}{|p{0.9\textwidth}|} \hline \textbf{Example~\theexample.} \textit{#1}  \\ }
-	{\\ \hline \end{tabular} \end{center}}
+% Create a special list that handles properties. It can be broken and restarted
+\newlist{propertylist}{enumerate}{1} % {Name}{Template}{Max Depth}
+\setlist[propertylist, 1]{label=\textbf{(\roman*)}, noitemsep, nolistsep} % Set options
 
+% Create a special list that handles enumerate starting with lower letters. Breakable/Restartable.
+\newlist{boldalphlist}{enumerate}{1} % {Name}{Template}{Max Depth}
+\setlist[boldalphlist, 1]{label=\textbf{(\alph*)}, noitemsep, nolistsep} % Set options
+
+% Create a tcolorbox for examples
+\newtcolorbox[auto counter,
+number within=section,
+number format=\arabic,
+crefname={example}{examples}, % Define reference format for cref (No Capitals)
+Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
+]{example}[2][]{
+	width=\textwidth,
+	title={Example \thetcbcounter: #2. #1},
+	fonttitle=\bfseries,
+	label={ex:#2},
+	nameref=#2,
+	colbacktitle=white!100!black,
+	coltitle=black!100!white,
+	colback=white!100!black,
+	upperbox=visible,
+	lowerbox=visible,
+	sharp corners=all
+}
+
+% Redefine the 'end of proof' symbol to be a black square, not blank
 \renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
 
 \DeclareMathOperator{\RealNums}{\mathbb{R}}
+\DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
 
 \author{Karl Hallsby}
 \title{Math 251 Differential Equations}
