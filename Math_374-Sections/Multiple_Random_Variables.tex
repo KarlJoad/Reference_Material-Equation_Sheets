@@ -152,9 +152,14 @@
 						\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{X,Y} \left( x,y \right) = 1
 					\end{equation}
 			\end{propertylist}
-				\begin{example}[Example 5.16]{Find Normalizing Constant 1}
-					Example 5.16 from the textbook.
-				\end{example}
+                        \begin{example}[Example 5.16]{Find Normalizing Constant 1}
+                          Let $X$ be the maximum and $Y$ be the minimum of the number of heads obtained with Carlos and Micahel each flip a fair coin twice.
+                          Find the Marginal CDF of $X$ and $Y$?
+
+                          \tcblower
+
+                          Solution to Problem 5.16 from Homework 8.
+                        \end{example}
 				\begin{example}[Problem 5.27]{Find Normalizing Constant 2}
 					Let $X$ and $Y$ have Joint PDF:
 					\begin{equation*}
@@ -174,9 +179,21 @@
 						F_{X,Y} \left( x,y \right) = \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y} \left( s,t \right) dt ds
 					\end{equation}
 			\end{propertylist}
-				\begin{example}[Problem 5.27]{Find Joint CDF}
-					Problem 5.27, Part b from Homework 8.
-				\end{example}
+                        \begin{example}[Problem 5.27]{Find Joint CDF}
+                          Let $X$ and $Y$ have the Joint PDF:
+                          \begin{equation*}
+                            f_{X,Y} \left( x,y \right) = k x \left( 1-x \right) y \text{for } 0<x<1, 0<y<1
+                          \end{equation*}
+                                                   
+                          \begin{boldalphlist}
+                          \item Find $k$.
+                          \item Find the Joint CDF of $\left( X,Y \right)$
+                          \end{boldalphlist}
+
+                          \tcblower
+
+                          Solution to Problem 5.27, Part b from Homework 8.
+                        \end{example}
 			\begin{propertylist}[resume]
 				\item 
 					\begin{equation}
@@ -199,7 +216,15 @@
 				\end{equation}
 			\end{definition}
 			\begin{example}[Problem 5.27]{Find Marginal PDFs}
-				Problem 5.27, Part c from Homework 8.
+                          Let $X$ and $Y$ have the Joint PDF:
+                          \begin{equation*}
+                            f_{X,Y} \left( x,y \right) = k x \left( 1-x \right) y \text{for } 0<x<1, 0<y<1
+                          \end{equation*}
+                          Find the Marginal DF of $X$ and $Y$?
+
+                          \tcblower
+
+                          Solution to Problem 5.27, Part c from Homework 8.
 			\end{example}
 		
 	\subsection{Independence of Multiple Random Variables} \label{subsec:Independence of Multiple Random Variables}
@@ -281,7 +306,15 @@
 			\end{remark}
 		\end{definition}
 		\begin{example}[Problem 5.56]{Expectation of Multiple Random Variables}
-			Problem 5.56, Part a from Homework 9.
+                  \begin{boldalphlist}
+                  \item Find $\ExpectedValue \left[ \left( X+Y \right)^{2} \right]$.
+                  \item Find $\Variance \left[ X+Y \right]$.
+                  \item Under what condition is the variance of the sum equal to the sum of the individual variances?
+                  \end{boldalphlist}
+
+                  \tcblower
+
+                  Solution to Problem 5.56, Part a from Homework 9.
 		\end{example}
 
 	\subsection{Joint Moments, Correlation, and Covariance} \label{subsec:Joint Moments, Correlation, and Covariance}
@@ -313,7 +346,16 @@
 				\end{remark}
 			\end{definition}
 			\begin{example}[Problem 5.65]{Finding Correlation}
-				Problem 5.56, Everything except Covariance from Homework 9.
+                          Let $X$ and $Y$ have Joint PDF:
+                          \begin{equation*}
+                            f_{X,Y} \left( x,y \right) = k \left( x+y \right)
+                          \end{equation*}
+                          Find the correlation of $X$ and $Y$.
+                          Determine whether $X$ and $Y$ are independent, orthogonal, or uncorrelated.
+
+                          \tcblower
+
+                          Solution to Problem 5.65, Everything except Covariance from Homework 9.
 			\end{example}
 			\begin{definition}[Correlation Coefficient] \label{def:Correlation Coefficient}
 				The \emph{correlation coefficient of $X$, $Y$} is defined as
@@ -341,7 +383,15 @@
 				\end{equation}
 			\end{definition}
 			\begin{example}[Problem 5.65]{Finding Covariance}
-				Problem 5.65, the Covariance part from Homework 9.
+                          Let $X$ and $Y$ have Joint PDF:
+                          \begin{equation*}
+                            f_{X,Y} \left( x,y \right) = k \left( x+y \right)
+                          \end{equation*}
+                          Find the covariance of $X$ and $Y$.
+                          Using what you found in \Cref{ex:Finding Correlation}, \nameref{ex:Finding Correlation}, determine whether $X$ and $Y$ are independent, orthogonal, or uncorrelated.
+
+                          \tcblower
+				Solution to Problem 5.65, the Covariance part from Homework 9.
 			\end{example}
 		
 		\subsection{Conditional Probability Functions} \label{subsec:Multiple Variable Conditional Probability Functions}
@@ -380,7 +430,7 @@
 					\end{remark}
 				\end{definition}
 				\begin{example}[Problem 5.75]{Determine Independence of Multiple Discrete Random Variables}
-					Problem 5.75, Part b from Homework 9.
+                                  Need to find new example for this one.
 				\end{example}
 
 			\subsubsection{1 Discrete and 1 Continuous Random Variable} \label{subsubsec:1 Discrete 1 Continuous Random Variables}
@@ -509,5 +559,15 @@
 		\begin{proof}[Prove Expectation of Conditional Expected Value] \label{proof:Expected Value of Conditional Expected Value of Multiple Variables}
 		\end{proof}
 		\begin{example}[Problem 5.75]{Finding Conditional Expected Value}
-			Problem 5.75, Part e from Homework 10.
+                  Let $X$ be the maximum and let $Y$ be the minimum of the number of heads obtained when Carlos and Michael each flip a coin twice.
+                  \begin{boldalphlist}
+                  \item Find $p_{Y} \left( y \Given x \right)$ and $p_{x} \left( x \Given y \right)$, assuming fair coins are used. \label{prob:5.75a}
+                  \item Find $p_{Y} \left( y \Given x \right)$ and $p_{x} \left( x \Given y \right)$, assuming Carlos uses a coin with $p = \frac{3}{4}$. \label{prob:5.75b}
+                  \item Find $\ExpectedValue \left[ Y \Given X=x \right]$ and $\ExpectedValue \left[ X \Given Y=y \right]$ in part \ref{prob:5.75a}; then find $\ExpectedValue \left[ X \right]$ and $\ExpectedValue \left[ Y \right]$.
+                  \item Find $\ExpectedValue \left[ Y \Given X=x \right]$ and $\ExpectedValue \left[ X \Given Y=y \right]$ in part \ref{prob:5.75b}; then find $\ExpectedValue \left[ X \right]$ and $\ExpectedValue \left[ Y \right]$.
+                  \end{boldalphlist}
+
+                  \tcblower
+
+                  Solution to Problem 5.75, Part e from Homework 10.
 		\end{example}

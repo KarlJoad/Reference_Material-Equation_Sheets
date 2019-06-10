@@ -70,7 +70,11 @@ Random Vectors are usually denoted:
 					\end{equation}
 				\end{remark}
 				\begin{example}[Problem 6.11]{Conditional PMFs Yield Joint PMF}
-					Problem 6.11 from Homework 10.
+                                  Show that $f_{X,Y,Z} \left( x,y,z \right) = f_{Z} \left( z \Given x,y \right) f_{Y} \left( y \Given x \right) f_{X} \left( x \right)$.
+
+                                  \tcblower
+
+                                  Solution to Problem 6.11 from Homework 10.
 				\end{example}
 				\begin{remark}
 					If all elements of $\vec{Y}$ are \emph{independent} (Remember that you need to check each subgroup too, like shown in \Cref{subsec:Event Independence}), then:
@@ -164,7 +168,25 @@ Random Vectors are usually denoted:
 				\end{remark}
 			\end{definition}
 			\begin{example}[Example 5.32]{Find Conditional PDF of Continuous Random Vector}
-				Problem 5.32 from Lecture 23.
+                          Let $X$ and $Y$ be jointly continuous random variables.
+                          \begin{equation*}
+                            \begin{aligned}
+                              f_{X,Y} \left( x,y \right) &= \begin{cases}
+                                2 e^{-x} e^{-y} & 0 \leq x \leq y \leq \infty \\
+                                0 & \text{otherwise}
+                              \end{cases}
+                              f_{X} \left( x \right) &= 2 e^{-x} \left( 1-e^{-x} \right) \text{for } 0 \leq x \leq \infty \\
+                              f_{Y} \left( y \right) &= 2 e^{-y} \text{for } 0 \leq y \leq \infty \\
+                            \end{aligned}
+                          \end{equation*}
+                          \begin{enumerate}[noitemsep, nolistsep]
+                          \item Find $f_{X} \left( x \Given y \right)$.
+                          \item Find $f_{Y} \left( y \Given x \right)$.
+                          \end{enumerate}
+
+                          \tcblower
+
+                          Solution to Example 5.32 from Lecture 23.
 			\end{example}
 		
 	\subsection{Mean Vector} \label{subsec:Mean Vector}
@@ -192,7 +214,15 @@ Random Vectors are usually denoted:
 			\end{remark}
 		\end{definition}
 		\begin{example}[Problem 6.35]{Finding Mean Vector}
-			Problem 6.35, ONLY Mean Vector Part, from Homework 10.
+                  Let $X, Y, Z$ have joint PDF
+                  \begin{equation*}
+                    f_{X,Y,Z} \left( x,y,z \right) = \frac{2}{3} \left( x+y+z \right) \text{for } 0 \leq x \leq 1, 0 \leq y \leq 1, 0 \leq z \leq 1
+                  \end{equation*}
+                  Find the mean vector for $\left( X,Y,Z \right)$.
+
+                  \tcblower
+
+                  Solution to Problem 6.35, ONLY Mean Vector Part, from Homework 10.
 		\end{example}
 	
 	\subsection{Correlation and Covariance Matrix} \label{subsec:Correlation and Correlation Matrix}
@@ -247,5 +277,13 @@ Random Vectors are usually denoted:
 			\end{remark}
 		\end{definition}
 		\begin{example}[Problem 6.35]{Find Covariance Matrix}
-			Problem 6.35, Only Covariance Matrix part, from Homework 10.
+                  Let $X, Y, Z$ have joint PDF
+                  \begin{equation*}
+                    f_{X,Y,Z} \left( x,y,z \right) = \frac{2}{3} \left( x+y+z \right) \text{for } 0 \leq x \leq 1, 0 \leq y \leq 1, 0 \leq z \leq 1
+                  \end{equation*}
+                  Find the covariance matrix for $\left( X,Y,Z \right)$.
+
+                  \tcblower
+
+                  Solution to Problem 6.35, Only Covariance Matrix part, from Homework 10.
 		\end{example}

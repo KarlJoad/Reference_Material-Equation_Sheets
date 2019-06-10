@@ -43,7 +43,7 @@
 
 % Create a special list that handles enumerate starting with lower letters. Breakable/Restartable.
 \newlist{boldalphlist}{enumerate}{1} % {Name}{Template}{Max Depth}
-\setlist[boldalphlist, 1]{label=\textbf{(\alph*)}, noitemsep, nolistsep} % Set options
+\setlist[boldalphlist, 1]{label=\textbf{(\alph*)}, ref=\alph*, noitemsep, nolistsep} % Set options
 
 % Create a tcolorbox for examples
 \newtcolorbox[auto counter,

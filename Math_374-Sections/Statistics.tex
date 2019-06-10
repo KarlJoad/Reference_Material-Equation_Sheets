@@ -79,7 +79,12 @@ In applying probability models to real situations, we perform experiments and co
 			P \left[ \lvert M_{n} - \ExpectedValue \left[ M_{n} \right] \rvert \geq \varepsilon \right] \leq \frac{\Variance \left[ M_{n} \right]}{\varepsilon^{2}}
 		\end{equation}
 		\begin{example}[Problem 7.15]{Chebychev Inequality to Bound Probability}
-			Problem 7.15 from Homework 11 (Extra Credit).
+                  Suppose that the number of particle emissions by a radioactive mass in $t$ seconds is a Poisson random variable with mean $\lambda t$.
+                  Use the Chebychev inequality to obtain a boind for the probability that $\lvert \frac{N \left( t \right)}{t} - \lambda \rvert$ exceeds $\varepsilon$.
+
+                  \tcblower
+
+                  Solution to Problem 7.15 from Homework 11 (Extra Credit).
 		\end{example}
 		
 	\subsection{Important Probability and Statistics Theorems} \label{subsec:Important Probability and Statistics Theorems}
@@ -127,8 +132,14 @@ In applying probability models to real situations, we perform experiments and co
 				This means that over time, as you gain more and more sample means, they will start to resemble the \nameref{def:Gaussian Random Variable}, or the Normal Random Variable.
 			\end{remark*}
 		\end{theorem}
-		\begin{example}[Problem 7.25]{Central Limit Theorem} 
-			Problem 7.25 from Homework 11 (Extra Credit).
+		\begin{example}[Problem 7.25]{Central Limit Theorem}
+                  The lifetime of a cheap light bulb is an exponential random variable with mean 36 hours.
+                  Suppose that 16 light bulbs are tested and their lifetimes measured.
+                  Use the \nameref{thm:Central Limit Theorem} to estimate the probability that the sum of the lifetimes is less than 600 hours.
+
+                  \tcblower
+
+                  Solution to Problem 7.25 from Homework 11 (Extra Credit).
 		\end{example}
 	
 	\subsection{Estimators} \label{subsec:Estimators}
@@ -177,7 +188,13 @@ In applying probability models to real situations, we perform experiments and co
 				\end{remark}
 			\end{definition}
 			\begin{example}[Problem 8.14]{Show Bias in Estimator}
-				Problem 8.14, Part a from Homework 11 (Extra Credit).
+                          The output of a communication system is $Y = \theta + N$, where $\theta$ is an input signal and $N$ is a noise signal that is uniformly distributed in the interval $\left[ 0,2 \right]$.
+                          Suppose the signal is transmitted $n$ times and that the noise terms are iid random variables.
+                          Show that the sample mean of the outputs is a biased estimator for $\theta$.
+
+                          \tcblower
+
+                          Solution to Problem 8.14, Part a from Homework 11 (Extra Credit).
 			\end{example}
 					
 			\begin{definition}[Mean Squared Error] \label{def:Mean Squared Error}
@@ -189,7 +206,13 @@ In applying probability models to real situations, we perform experiments and co
 				\end{equation}
 			\end{definition}
 			\begin{example}[Problem 8.14]{Find Mean Square Error of Estimator}
-				Problem 8.14, Part b from Homework 11 (Extra Credit).
+                          The output of a communication system is $Y = \theta + N$, where $\theta$ is an input signal and $N$ is a noise signal that is uniformly distributed in the interval $\left[ 0,2 \right]$.
+                          Suppose the signal is transmitted $n$ times and that the noise terms are iid random variables.
+                          Find the \nameref{def:Mean Squared Error} of the estimator.
+
+                          \tcblower
+
+                          Solution to Problem 8.14, Part b from Homework 11 (Extra Credit).
 			\end{example}
 		
 			\begin{remark*}
@@ -205,7 +228,16 @@ In applying probability models to real situations, we perform experiments and co
 				\end{equation}
 			\end{definition}
 			\begin{example}[Problem 8.17]{Confirm Consistency of Estimator}
-				Problem 8.17, Part b from Homework 11 (Extra Credit).
+                          To extimate the variance of a Bernoilli random variable $X$, we perform $n$ iid trials and count the number of successes $k$ and obtain the estimate $\hat{p} = \frac{k}{n}$.
+                          We then estimate the variance of $X$ by
+                          \begin{equation*}
+                            \hat{\sigma}^{2} = \hat{p} \left( 1-\hat{p} \right) = \frac{k}{n} \left( 1- \frac{k}{n} \right)
+                          \end{equation*}
+                          Is $\hat{\sigma}^{2}$ a consistent estimator for the variance of $X$?
+
+                          \tcblower
+
+                          Solution to Problem 8.17, Part b from Homework 11 (Extra Credit).
 			\end{example}
 	
 	\subsection{How to Find a Good Estimator} \label{subsec:Find Good Estimator}
@@ -220,10 +252,21 @@ In applying probability models to real situations, we perform experiments and co
 		\end{enumerate}
 	
 		\subsubsection{Method of Moments} \label{subsubsec:Method of Moments}
-			\begin{example}{Method of Moments} 
-				Problem 8.6 from Homework 11 (Extra Credit).
-			\end{example}
-		
+                \begin{example}{Method of Moments}
+                  Let the sample $X_{1}, X_{2}, \ldots, X_{n}$ consist of iid version of the random variable $X$. The method of moments involves estimating the moments of $X$ as follows:
+                  \begin{equation*}
+                    \hat{m}_{k} = \frac{1}{n} \sum\limits_{j=1}^{n} X_{j}^{k}
+                  \end{equation*}
+                  \begin{boldalphlist}
+                  \item Suppose that $X$ is a uniform random variable in the interval $\left[ 0, \theta \right]$. Use $\hat{m}_{1}$ to find an estimator for $\theta$. \label{prob:8.6a}
+                  \item Find the mean and variance of the estimator in part \ref{prob:8.6a}.
+                  \end{boldalphlist}
+
+                  \tcblower
+
+                  Solution to Problem 8.6 from Homework 11 (Extra Credit).
+                \end{example}
+                		
 		\subsubsection{Maximum Likelihood Estimation} \label{subsubsec:Maximum Likelihood Estimation}
 			\begin{definition}[Maximum Likelihood Estimation] \label{def:Maximum Likelihood Estimation}
 				Let $ X_{1},X_{2},\ldots,X_{n} \DrawnIID f \left( x \Given \theta \right) $.
@@ -269,26 +312,42 @@ In applying probability models to real situations, we perform experiments and co
 			\end{remark}
 		\end{definition}
 		\begin{example}{Confidence Intervals}
-			Example 1 from Lecture 28.
+                  Let $X_{1}, X_{2}, \ldots, X_{n} \DrawnIID N \left( \mu, \sigma^{2} \right)$.
+                  The population mean, $\mu$ is unknown.
+                  The population variance, $\sigma^{2}$ is konwn.
+                  What is a 95\% \nameref{def:Confidence Interval} for the population mean, $\mu$?
+
+                  \tcblower
+
+                  Solution in Example 1 from Lecture 28.
 		\end{example}
 	
-	\subsection{Hypothesis Testing} \label{subsec:Hypothesis Testing}
-	There are 4 parts to \nameref{subsec:Hypothesis Testing}
-		\begin{enumerate}[noitemsep, nolistsep]
-			\item Identify the hypotheses. $H_{0}$ is the \emph{null hypothesis}. It is usually compared against another, complementary hypothesis, $H_{1}$.
-			\item The Rejection Region, which is evidence against the null hypothesis that we may or may not choose to include. $R \subset \mathcal{X}$, where $\mathcal{X}$ is the sample space.
-			\item The Decision Rule:
-				\begin{enumerate}[noitemsep, nolistsep]
-					\item Reject $H_{0}$ if $X \in R$
-					\item Accept/Do not reject $H_{0}$ if $X \notin R$
-				\end{enumerate}
-			\item The Test Statistic
-		\end{enumerate}
-	There are 2 errors that can occur in \nameref{subsec:Hypothesis Testing}.
-		\begin{enumerate}[label=\textbf{Type \Roman* Error: }, ref=Hypothesis Testing Type \Roman* Error, align=left, noitemsep, nolistsep]
-			\item Reject $H_{0}$ if $H_{0}$ is true.
-			\item Accept $H_{0}$ if $H_{0}$ is false.
-		\end{enumerate}
+                \subsection{Hypothesis Testing} \label{subsec:Hypothesis Testing}
+                \begin{definition}[Hypothesis Testing] \label{def:Hypothesis Testing}
+                  There are 4 parts to \emph{hypothesis testing}.
+                  \begin{enumerate}[noitemsep, nolistsep]
+                  \item Identify the hypotheses. $H_{0}$ is the \emph{null hypothesis}. It is usually compared against another, complementary hypothesis, $H_{1}$.
+                  \item The Rejection Region, which is evidence against the null hypothesis that we may or may not choose to include. $R \subset \mathcal{X}$, where $\mathcal{X}$ is the sample space.
+                  \item The Decision Rule:
+                    \begin{enumerate}[noitemsep, nolistsep]
+                    \item Reject $H_{0}$ if $X \in R$
+                    \item Accept/Do not reject $H_{0}$ if $X \notin R$
+                    \end{enumerate}
+                  \item The Test Statistic
+                  \end{enumerate}
+                  \begin{remark}
+                    There are 2 errors that can occur in \nameref{def:Hypothesis Testing}.
+                    \begin{enumerate}[label=\textbf{Type \Roman* Error: }, ref=Hypothesis Testing Type \Roman* Error, align=left, noitemsep, nolistsep]
+                    \item Reject $H_{0}$ if $H_{0}$ is true.
+                    \item Accept $H_{0}$ if $H_{0}$ is false.
+                    \end{enumerate}
+                  \end{remark}
+                \end{definition}
+                                          
 		\begin{example}{Use Hypothesis Testing}
-			Example 2 from Lecture 28.
+                  Using \nameref{def:Hypothesis Testing}, how can you determine if a coin is fair?
+
+                  \tcblower
+
+                  Solution from Example 2 from Lecture 28.
 		\end{example}
