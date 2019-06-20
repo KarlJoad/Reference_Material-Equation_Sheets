@@ -23,13 +23,13 @@
 \usepackage{subcaption} % Allows for multiple figures in one Figure environment
 \usepackage{siunitx} % Gives us ways to typeset units for stuff
 \usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
-\usepackage{chngcntr} % Allows us to tamper with the counter a little more
+%\usepackage{chngcntr} % Included with LaTeX as of 2018/04/09, v1.1a. Allows us to tamper with the counter a little more
 \usepackage{empheq} % Allow boxing of equations in special math environments
 \usepackage{tcolorbox} % Allows us to create boxes of various types for examples
 \usepackage{tikz} % Allows us to create TikZ and PGF Pictures
 %\usepackage{ctable} % Greater control over tables and how they look
 
-\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
+\counterwithin{equation}{section} % Uncomment this to number equations with section numbers too
 
 % Create a theorem environment
 \theoremstyle{plain}
