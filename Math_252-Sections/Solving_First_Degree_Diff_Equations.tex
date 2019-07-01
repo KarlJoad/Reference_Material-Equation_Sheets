@@ -1,0 +1,85 @@
+\section{Solving First Degree Differential Equations} \label{sec:Solve First Degree Differential Equations}
+This section shows various ways to solve first-degree ordinary differential equations.
+
+\subsection{Solution Curves without a Solution} \label{subsec:Solution Curves without a Solution}
+These differential equations are ones that do not have a solution.
+Instead, they can be categorized by \nameref{def:Direction Fields}
+\begin{definition}[Direction Fields] \label{def:Direction Fields}
+  \emph{Direction fields} are similar to vector fields, in that they show how potential solutions could satisfy the equation.
+  % \input{./Drawings/Math_252/Direction_Fields.tikz}
+
+  \begin{remark}
+    It is important to note that this only applies to first order differential equations.
+  \end{remark}
+\end{definition}
+
+\subsection{Separable Ordinary Differential Equations} \label{subsec:Separable ODEs}
+These are some of the simplest ordinary differential equations to solve.
+\begin{definition}[Separable Ordinary Differential Equations] \label{def:Separable ODEs}
+  \begin{equation} \label{eq:Separable ODEs}
+    \begin{aligned}
+      \frac{dy}{dx} &= g \left( x \right) h \left( y \right) \\
+      \int \frac{1}{h \left( y \right)} dy &= \int g \left( x \right) dx \\
+    \end{aligned}
+  \end{equation}
+
+  \begin{remark}
+    To be \emph{separable}, all functions of respective variables must be on the same side.
+  \end{remark}
+\end{definition}
+
+\begin{example}[]{Separable Ordinary Differential Equation-Example 1}
+  Solve \[ x \frac{dy}{dx} = 4y \]
+
+  \tcblower
+
+  \begin{align*}
+    \frac{1}{y} dy &= \frac{4}{x} dx \\
+    \ln \lvert y \rvert &= \left( 4 \ln \lvert x \rvert + C \right) \\
+    \lvert y \rvert &= x^{4} \cdot e^{C} \\
+    y &= \pm e^{C}x^{4} \\
+    y &= C x^{4} \\
+  \end{align*}
+  Now we have to check our answer.
+  \begin{align*}
+    \frac{dy}{dx} &= 4 C x^{3} \\
+    x \left( 4 C x^{3} \right) &= 4y \\
+    4 x^{4} &= 4y \text{, } C = 1 \\
+  \end{align*}
+\end{example}
+\begin{example}[]{Separable Ordinary Differential Equation-Example 2}
+  Solve \[ \frac{dP}{dt} = P \left( 1-P \right) \]
+
+  \tcblower
+
+  \begin{align*}
+    \frac{1}{P \left( 1-P \right)} dP &= dt \\
+    \int \frac{1}{P} + \frac{1}{1-P} dP &= dt \\
+    \ln \left( P \right) - \ln \left( 1-P \right) &= t + C \\
+    \ln \left( \frac{P}{1-P} \right) &= e^{t+C} \\
+    \frac{P}{1-P} &= C e^{t} \\
+    P &= C e^{t} \left( 1-P \right) \\
+    P + PC e^{t} &= Ce^{t} \\
+    P \left( 1+ Ce^{t} \right) &= C e^{t} \\
+    P \left( t \right) &= \frac{Ce^{t}}{1+Ce^{t}}
+  \end{align*}
+\end{example}
+\begin{example}[]{Application of Newton's Law of Cooling/Heating}
+  Find the function for the constant for \nameref{def:Newton Law of Cooling/Heating}, where $k = -2$ and the temperature of the surrounding medium is $T_{m} = 70$.
+
+  \tcblower
+
+  \begin{align*}
+    \frac{dT}{dt} &= k \left( T - T_{m} \right) \\
+    \frac{dT}{dt} &= -2 \left( T - 70 \right) \\
+    \frac{1}{T-70} dT &= -2 dt \\
+    \ln \lvert T-70 \rvert &= -2t + C \\
+    \lvert T-70 \rvert &= e^{C}e^{-2t} \\
+    T-70 &= \pm e^{C}e^{-2t} \\
+    T-70 &= Ce^{-2t} \\
+    T \left( t \right) &= Ce^{-2t} +70 \\
+    T \left( 0 \right) &= C e^{0} +70 \\
+    T \left( 0 \right) &= C + 70 \\
+    C &= T \left( 0 \right) -70 \\
+  \end{align*}
+\end{example}
