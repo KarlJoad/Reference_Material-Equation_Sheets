@@ -51,7 +51,7 @@
 \end{example}
 
 \subsection{Matter} \label{subsec:Matter}
-As \cref{def:Matter} said, matter must have both volume and mass.
+As \Cref{def:Matter} said, matter must have both volume and mass.
 Matter can have several \nameref{def:Matter State}s.
 
 \begin{definition}[Matter State] \label{def:Matter State}
@@ -94,4 +94,23 @@ But, \nameref{def:Matter} can be categorized in a different way as well.
 \item 0s at the end, if there is no decimal/fractional portion, are not significant (16000 has 2 sig figs)
 \end{enumerate}
 
-  
+\begin{example}[]{Addition and Subtraction of Significant Figures}
+  Add $20.3056$, $1.34$, and $54.2$ and keeping in mind significant figures.
+
+  \tcblower
+
+  You want to find the least precise number first, in this case it is $54.2$ because it only has one decimal place.
+  This also determines how many decimal places to go past on the solution.
+  Adding these 3 together gives $75.8456$, but because of $54.2$, it becomes $75.8$.
+\end{example}
+
+\begin{example}[]{Multiplication and Division of Significant Figures}
+  Multiply $3.4456$ and $2.15$ keeping in mind significant figures.
+
+  \tcblower
+
+  You find the number with the least number of significant figures and use that.
+  So, $2.15$ has 3 sig figs, that's the same amount your answer must have.
+  \[ 3.4456 \times 2.15 = 7.40804 \]
+  But because we can only have 3 sig figs in our answer, $7.41$ is our solution.
+\end{example}
