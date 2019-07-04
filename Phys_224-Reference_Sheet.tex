@@ -73,11 +73,11 @@
 
 %====================================APPENDIX====================================
 \appendix
-\clearpage
-\section{Reference Material} \label{sec:Reference Material}
+\counterwithin{equation}{section}
+\counterwithin{definition}{subsection}
 
-\input{./Appendix-Reference_Material/Phys_Constants}
-\input{./Appendix-Reference_Material/Trig}
-\input{./Appendix-Reference_Material/Complex_Numbers}
+\include{./Appendix-Reference_Material/Phys_Constants}
+\include{./Appendix-Reference_Material/Trig}
+\include{./Appendix-Reference_Material/Complex_Numbers}
 
 \end{document}
