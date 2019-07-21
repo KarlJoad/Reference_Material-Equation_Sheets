@@ -1,10 +1,11 @@
 \section{The Periodic Table} \label{sec:Periodic Table}
 The Periodic Table was developed as a way to categorize the many chemical elements in the world.
 Most of the elements on the table are naturally occurring, but some of the heaviest elements have been synthesized in laboratories.
+
 \begin{definition}[The Periodic Table] \label{def:Periodic Table}
-  \emph{The Periodic Table} is an arrangement of elements by their atomic number, Z, or the number of protons in the nucleus.
+  \emph{The Periodic Table} is an arrangement of elements by their atomic number, $Z$, or the number of protons in the nucleus.
   \begin{remark}
-    The number of protons is the \emph{ONLY} thing that determines what an element is.
+    The number of protons is the \emph{ONLY} thing that determines what an element is and where it is located on \nameref{def:Periodic Table}.
     If an element has a different number of neutrons, that is an \nameref{def:Isotope}.
     If an element has a different number of electrons, that is an \nameref{def:Ion}.
   \end{remark}
@@ -20,3 +21,143 @@ A single element drawn out of \nameref{def:Periodic Table} will look like \figur
   \caption{Example Element from Periodic Table}
   \label{fig:Single Element Periodic Table}
 \end{figure}
+
+There are 4 parts of each element in \nameref{def:Periodic Table}.
+\begin{enumerate}[noitemsep, nolistsep]
+  \item The element's name
+  \item The element's atomic number, $Z$, which is also the number of protons in the element
+  \item The element's symbol
+  \item The element's \emph{AVERAGE} atomic mass (\si{\gram / \mole}), $A$
+\end{enumerate}
+An element is usually written as such: $_{Z}^{A}\mathrm{X}$.
+\begin{example}[]{Element Notation}
+  What is Copper's (Cu) notation in text?
+  
+  \tcblower
+  
+  \ch{ {}_{29}^{63.546} Cu}
+\end{example}
+
+\subsection{Variations of Atoms} \label{subsec:Variations of Atoms}
+\begin{definition}[Isotope] \label{def:Isotope}
+  An \emph{isotope} is the same element, but with a different number of neutrons.
+  While this does \emph{NOT} change the element, it may change some of the properties of this element.
+\end{definition}
+
+\begin{example}[]{Number of Neutrons}
+  What is the number of neutrons in the average isotope of these elements: \ch{{}_{14}^{28}Si}, \ch{{}_{14}^{29}Si}, \si{{}_{14}^{30}Si}?
+  
+  \tcblower
+  
+  Since Silicon, \ch{Si} has 14 protons, so subtract 14 from each of the total nuclei weight. \\
+  
+  \begin{enumerate}[noitemsep, nolistsep]
+    \item \ch{ {}_{14}^{28}Si} has 14 neutrons
+    \item \ch{ {}_{14}^{29}Si} has 15 neutrons
+    \item \ch{ {}_{14}^{30}Si} has 16 neutrons
+  \end{enumerate}
+\end{example}
+
+\begin{definition}[Ion] \label{def:Ion}
+  An \emph{ion} is the same element as the non-ionic form, however, the number of electrons and protons is different.
+  This means that an ion can be positively or negatively charged.
+  \begin{remark}
+    The number of electrons in relation to protons determines the type of ion it is.
+    \begin{itemize}[noitemsep, nolistsep]
+      \item If there are more electrons than protons, it is a negatively charged ion.
+      \item If there are more protons than electrons, it is a positively charged ion.
+    \end{itemize}
+  \end{remark}
+  \begin{remark}
+    In general:
+    \begin{itemize}[noitemsep, nolistsep]
+      \item \nameref{def:Metal}s are usually cations
+      \item \nameref{def:Non-Metal}s are usually anions
+    \end{itemize}
+  \end{remark}
+\end{definition}
+
+\begin{example}[]{What is that Element?}
+  Given that an element has 38 protons, 50 neutrons, and 36 electrons, what is the element?
+  
+  \tcblower
+  
+  Since there are 38 protons, that makes it Strontium (\ch{Sr}).
+  The atomic weight will be $38 + 50 = 88$.
+  The ion is $38 + -36 = +2$.
+  Therefore, the written atom would be \ch{ {}_{38}^{88}Sr^{+2}}.
+\end{example}
+
+\begin{example}[]{An Ion's Protons Neutrons and Electrons}
+  Given the element \ch{ {}_{33}^{75}As^{-3}}, how many protons, neutrons and electrons are there?
+  
+  \tcblower
+  
+  Astatine has 33 protons.
+  The number of neutrons is $75 - 33 = 42$.
+  Since this is Astatine, the number of electrons is $\lvert -33 - -3 \rvert = 36$.
+\end{example}
+
+\subsection{Types of Materials} \label{subsec:Types of Materials}
+\begin{definition}[Metal] \label{def:Metal}
+  A \emph{metal} is a type of material that:
+  \begin{itemize}[noitemsep, nolistsep]
+    \item Conducts heat well
+    \item Conducts electricity well by freely losing electrons
+    \item Their nuclei are congregated and their electrons form an outer electron cloud
+  \end{itemize}
+  \begin{remark}
+    For \nameref{def:Metal}s, there are variations of some metals.
+    For example, Iron (\RomanNumeral{2}) and Iron (RomanNumeral{3}).
+    These are \emph{NOT} different ions.
+    Rather, they are Iron in different \nameref{def:Oxidation States}.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Non-Metal] \label{def:Non-Metal}
+  A \emph{non-metal} is a type of material that:
+  \begin{itemize}[noitemsep, nolistsep]
+    \item Do not conduct heat well
+    \item Do not conduct electricity well
+    \item Gain electrons easily due to high electronegativity
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Metalloid] \label{def:Metalloid}
+  A \emph{metalloid} is a type of material that has properties of both \nameref{def:Metal} and \nameref{def:Non-Metal}.
+  These elements on right on the edge between \nameref{def:Metal}s and \nameref{def:Non-Metal}s on the periodic table.
+  These include:
+  \begin{itemize}[noitemsep, nolistsep]
+    \item Boron, \ch{B}
+    \item Silicon, \ch{Si}
+    \item Germanium, \ch{Ge}
+    \item Astatine, \ch{As}
+    \item Antimony, \ch{Sb}
+    \item Tellurium, \ch{Te}
+  \end{itemize}
+\end{definition}
+
+\begin{example}[]{Metal Nonmetal or Metalloid?}
+  Are these elements \nameref{def:Metal}s, \nameref{def:Non-Metal}s, or \nameref{def:Metalloid}s?
+  \begin{enumerate}[noitemsep, nolistsep]
+    \item Phosphorus, \ch{P}
+    \item Osmium, \ch{Os}
+    \item Selenium, \ch{Se}
+    \item Thallium, \ch{Tl}
+    \item Nickel, \ch{Ni}
+    \item Argon, \ch{Ar}
+    \item Tellurium, \ch{Te}
+  \end{enumerate}
+  
+  \tcblower
+  
+  \begin{enumerate}[noitemsep, nolistsep]
+    \item Phosphorus, \ch{P} is a Non-Metal
+    \item Osmium, \ch{Os} is a Metal
+    \item Selenium, \ch{Se} is a Non-Metal
+    \item Thallium, \ch{Tl} is a Metal
+    \item Nickel, \ch{Ni} is a Metal
+    \item Argon, \ch{Ar} is a Non-Metal
+    \item Tellurium, \ch{Te} is a Metalloid
+  \end{enumerate}
+\end{example}
