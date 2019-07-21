@@ -1,4 +1,4 @@
-\documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
+1\documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
 \usepackage[margin=.5in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -122,7 +122,10 @@
 \counterwithin{equation}{section}
 \counterwithin{definition}{subsection}
 
-\include{./Appendix-Reference_Material/Trig}
-\include{./Appendix-Reference_Material/Calculus}
+\clearpage
+\input{./Appendix-Reference_Material/Trig}
+
+\clearpage
+\input{./Appendix-Reference_Material/Calculus}
 
 \end{document}

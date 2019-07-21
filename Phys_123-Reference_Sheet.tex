@@ -1,11 +1,77 @@
 \documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
-\usepackage{referencesheet}
+\usepackage[margin=.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm} % Gives us plain, definition, and remark to use in \theoremstyle{style}
+\usepackage{graphicx}
 
-%\graphicspath{{./Drawings/Phys_123}} % Uncomment this to use pictures in this document
-\counterwithin{equation}{section} % Uncomment this to number equations with section numbers too
+\usepackage{hyperref} % Generate hyperlinks to referenced items
+\usepackage[noabbrev,nameinlink]{cleveref} % Fancy cross-references in the document everywhere
+\usepackage{nameref} % Can make references by name to places
+\usepackage{subcaption} % Allows for multiple figures in one Figure environment
+\usepackage{siunitx} % Gives us ways to typeset units for stuff
+\usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
+\usepackage{chngcntr} % Allows us to tamper with the counter a little more
+\usepackage{empheq} % Allow boxing of equations in special math environments
+\usepackage{tcolorbox} % Allows us to create boxes of various types for examples
+\usepackage{tikz} % Allows us to create TikZ and PGF Pictures
+\usetikzlibrary{trees}
+%\usepackage{ctable} % Greater control over tables and how they look
 
-\author{Karl Hallsby}
-\title{Phys 123 Equations}
+\graphicspath{{./Drawings/Phys_123}} % Uncomment this to use pictures in this document
+\counterwithin{equation}{section} % Uncomment to number eqns with sec nums too
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\counterwithin{theorem}{section}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Defn}
+\newtheorem{corollary}{Corollary}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[definition]
+\newtheorem*{remark*}{Remark}
+%\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
+
+% Create a special list that handles properties. It can be broken and restarted
+\newlist{propertylist}{enumerate}{1} % {Name}{Template}{Max Depth}
+\setlist[propertylist, 1]{label=\textbf{(\roman*)}, noitemsep, nolistsep} % Set options
+
+% Create a special list that handles enumerate starting with lower letters. Breakable/Restartable.
+\newlist{boldalphlist}{enumerate}{1} % {Name}{Template}{Max Depth}
+\setlist[boldalphlist, 1]{label=\textbf{(\alph*)}, noitemsep, nolistsep} % Set options
+
+% Create a tcolorbox for examples
+% Argument #1 is optional, given by [], that is the textbook's problem number
+% Argument #2 is mandatory, given by {}, that is the title for the example
+\newtcolorbox[auto counter,
+number within=section,
+number format=\arabic,
+crefname={example}{examples}, % Define reference format for cref (No Capitals)
+Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
+]{example}[2][]{ % The [2][] Means the first argument is optional
+	width=\textwidth,
+	title={Example \thetcbcounter: #2. #1},
+	fonttitle=\bfseries,
+	label={ex:#2},
+	nameref=#2,
+	colbacktitle=white!100!black,
+	coltitle=black!100!white,
+	colback=white!100!black,
+	upperbox=visible,
+	lowerbox=visible,
+	sharp corners=all
+}
+
+% Redefine the 'end of proof' symbol to be a black square, not blank
+\renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
+
+\DeclareMathOperator{\RealNums}{\mathbb{R}}
+\DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
 
 \begin{document}
 \pagenumbering{roman} % i, ii, iii on beginning pages, that don't have content
@@ -63,6 +129,23 @@
     a = \lim\limits_{\Delta t \rightarrow 0} \frac{\Delta v}{\Delta t} = \frac{dv}{dt} = \frac{d^{2}x}{dt^{2}}
   \end{equation}
 \end{definition}
-    
+
+%====================================APPENDIX====================================
+\appendix
+\counterwithin{equation}{section}
+\counterwithin{definition}{subsection}
+
+\clearpage
+\input{./Appendix-Reference_Material/Phys_Constants}
+
+\clearpage
+\input{./Appendix-Reference_Material/Trig}
+
+\clearpage
+\input{./Appendix-Reference_Material/Calculus}
+
+\clearpage
+\input{./Appendix-Reference_Material/Complex_Numbers}
+
 
 \end{document}
