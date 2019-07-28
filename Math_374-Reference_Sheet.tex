@@ -1,4 +1,4 @@
-1\documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
+\documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
 \usepackage[margin=.5in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -88,10 +88,15 @@
 \DeclareMathOperator{\Given}{\vert}
 \DeclareMathOperator{\DrawnFrom}{\sim}
 
-\author{Karl Hallsby}
-\title{Reference Material}
+\begin{titlepage}
+  \title{Math 374: Probability and Statistics for ECE - Reference Sheet}
+  \author{Karl Hallsby}
+  \date{Last Edited: \today}
+\end{titlepage}
 
 \begin{document}
+\pagenumbering{gobble}
+\maketitle
 \pagenumbering{roman} % i, ii, iii on beginning pages, that don't have content
 \tableofcontents
 \clearpage
