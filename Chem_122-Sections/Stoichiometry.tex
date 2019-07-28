@@ -1,0 +1,138 @@
+\section{Stoichiometry} \label{sec:Stoichiometry}
+\begin{definition}[Stoichiometry] \label{def:Stoichiometry}
+  \emph{Stoichiometry} is the calculation of reactants and products in chemical reactions.
+  \emph{Stoichiometry} is founded on the \nameref{def:Law of Conservation of Matter}, where the total mass of the reactants equals the total mass of the products.
+\end{definition}
+
+Stoichiometry fits together with \nameref{sec:Chemical Equations} very closely.
+
+Some terms that are thrown around a lot, seemingly interchangeably are \nameref{def:Formula Weight} and \nameref{def:Molecular Weight}.
+
+\begin{definition}[Formula Weight] \label{def:Formula Weight}
+  \emph{Formula weight} is the sum of atomic weights in a \emph{chemical formula}.
+  Since chemical formulae might be in a reduced form, it's formula weight might be different.
+\end{definition}
+
+\begin{definition}[Molecular Weight] \label{def:Molecular Weight}
+  \emph{Molecular Weight} is the sum of atomic weights in the \emph{molecule}.
+  This is the molecule as would be found in nature, not the reduced formula, like in the chemical formula.
+  Therefore, the \nameref{def:Molecular Weight} might be different than the \nameref{def:Formula Weight}.
+\end{definition}
+
+One question that can be asked is what is the percent composition of a molecule based on weight.
+This is generally referred to as \nameref{def:Percent Composition}.
+\begin{definition}[Percent Composition] \label{def:Percent Composition}
+  \emph{Percent Composition} is the percentage of weight that certain atoms are a aprt of in a molecule.
+  The equation for \nameref{def:Percent Composition} is shown below.
+  \begin{equation} \label{eq:Percent Composition}
+    \text{\% Element} = \frac{\left( \text{\# of atoms} \right) \left( \text{Atomic Weight of Element} \right)}{\text{Molecular Weight}} \times 100
+  \end{equation}
+\end{definition}
+
+\begin{example}[]{Percent Composition of Carbon in Ethane}
+  What is the percentage of carbon in ethane, by weight?
+
+  \tcblower
+  
+  Ethane has the chemical formula \ch{C2H6}.
+  Therefore, the \nameref{def:Percent Composition} of carbon in ethane is as shown:
+  \begin{equation*}
+    \text{\% C} = \frac{2 * 12.0107}{30.0690} \times 100 = 79.8876 \%
+  \end{equation*}
+\end{example}
+
+One other thing that could be asked is to calculate the \nameref{def:Empirical Formula}.
+\begin{definition}[Empirical Formula] \label{def:Empirical Formula}
+  The \emph{empirical formula} of a molecule is the smallest possible whole number ratio on each of the molecule's constituent elements.
+  For example the \nameref{def:Molecular Weight} of \ch{B2H6} is \ch{B2H6}.
+  However, it's \nameref{def:Empirical Formula} is \ch{BH3}.
+
+  Calculating the \nameref{def:Empirical Formula} is done with the steps and equation below.
+  \begin{enumerate}[noitemsep, nolistsep]
+    \item You can assume that you have a 100 \si{\gram} sample, to make things easier.
+    \item \begin{equation} \label{eq:Empirical Formula}
+        \frac{\text{Sample Mass}}{\text{Sample Molar Mass}} = \text{Empirical Formula Factor}
+      \end{equation}
+    \item Divide each Empirical Formula factor by the smallest factor, and found to relatively nice numbers.
+    \item Multiply your resultant, roughly nice, numbers to whole integers.
+  \end{enumerate} 
+\end{definition}
+
+\begin{example}[]{Calculate Empirical Formula 1}
+  Calculate the empirical formula if the molecule's percent composition is as follows:
+  \begin{itemize}[noitemsep, nolistsep]
+    \item 75.69\% Carbon
+    \item 8.80\% Hydrogen
+    \item 15.51\% Oxygen
+  \end{itemize}
+
+  \tcblower
+
+  First, assume that you have a 100\si{\gram} sample, to make calculating the percentages into mass more easily.
+  \begin{align*}
+    \frac{75.69 \si{\gram}}{12.0 \si{\gram / \mole}} &= 6.31 \si{\mole} \\
+    \frac{8.80 \si{\gram}}{1.0 \si{\gram / \mole}} &= 8.80 \si{\mole} \\
+    \frac{15.51 \si{\gram}}{16.0 \si{\gram / \mole}} &= .969 \si{\mole}
+  \end{align*}
+  Then, you have to divide each mole by the lowest number, in this case $.969 \si{\mole}$.
+  \begin{align*}
+    \frac{6.31 \si{\mole}}{.969 \si{\mole}} &= 6.5 \\
+    \frac{8.80 \si{\mole}}{.969 \si{\mole}} &= 9 \\
+    \frac{.969 \si{\mole}}{.969 \si{\mole}} &= 1
+  \end{align*}
+  Then, multiply each number until you reach a whole integer, in this case, $2$.
+  \begin{align*}
+    6.5 \times 2 &= 13 \\
+    9 \times 2 &= 18 \\
+    1 \times 2 &= 2
+  \end{align*}
+  So, we end up with \ch{C13H18O2} as the empirical formula.
+\end{example}
+
+\begin{example}[]{Calculate Empirical Formula 2}
+  Calculate the empirical formula if the molecule's percent composition is as follows:
+  \begin{itemize}[noitemsep, nolistsep]
+    \item 38.7\% Carbon
+    \item 9.7\% Hydrogen
+    \item 51.6\% Oxygen
+  \end{itemize}
+
+  \tcblower
+
+\end{example}
+
+\subsection{Theoretical Yield} \label{subsec:Theoretical Yield}
+\begin{definition}[Theoretical Yield] \label{def:Theoretical Yield}
+  \emph{Theoretical Yield} is the theoretical maximum amount of a product that can be made from the input reagents.
+\end{definition}
+\begin{definition}[Percent Yield] \label{def:Percent Yield}
+  \emph{Percent Yield} is a percentage of the amount of product that you actually received from a reaction in comparison to the \nameref{def:Theoretical Yield}.
+
+  \begin{equation} \label{eq:Percent Yield}
+    \text{\% Yield} = \frac{\text{Actual Yield}}{\text{Theoretical Yield}} \times 100
+  \end{equation}
+  \begin{remark}
+    The use of \nameref{def:Percent Yield} can be combined with limiting reactants to find out some other information.
+  \end{remark}
+\end{definition}
+
+\begin{example}[]{Percent Yield}
+  Given the chemical equation \ch{Fe2O3 + 3 CO -> 2Fe + 3 CO2} and a limiting reactant of 150 \si{\gram} of \ch{Fe2O3}, what is the theoretical yield of \ch{Fe}?
+  Given that the reaction actually produced 87.9 \si{\gram} of \ch{Fe}, what was the percent yield?
+
+  \tcblower
+
+  \begin{equation*}
+    150 \si{\gram} \ch{Fe2O3} \left( \frac{1 \si{\mole} \ch{Fe2O3}}{159.688 \si{\gram} \ch{Fe2O3}} \right) \left( \frac{2 \si{\mole} \ch{Fe}}{1 \si{\mole} \ch{Fe2O3}} \right) \left( \frac{55.845 \si{\gram} \ch{Fe}}{1 \si{\mole} \ch{Fe}} \right) = 105 \si{\gram} \ch{Fe}
+  \end{equation*}
+  Therefore, the theoretical yield of \ch{Fe} is 105 \si{\gram}.
+
+  It's percent yield is:
+  \begin{equation*}
+    \frac{87.9 \si{\gram} \ch{Fe}}{105 \si{\gram} \ch{Fe}} \times 100 = 83.7 \%
+  \end{equation*}
+\end{example}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Chem_122-Reference_Sheet"
+%%% End:

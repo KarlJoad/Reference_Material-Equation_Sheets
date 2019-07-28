@@ -11,7 +11,7 @@
     \begin{itemize}[noitemsep, nolistsep]
       \item $\leftrightarrow$ is for reactions that can occur in both directions. Nearly all do not follow this.
     \end{itemize}
-    \item Elements \textbf{\emph{MUST}} follow the \nameref{def:Law of Conservation of Matter}
+    \item Elements \textbf{\emph{MUST}} follow the \nameref{def:Law of Conservation of Matter}. Refer to \Cref{sec:Stoichiometry}, \nameref{sec:Stoichiometry} for further information.
   \end{enumerate}
 \end{definition}
 
@@ -79,3 +79,43 @@
   
   \ch{2 C6H14 ($\ell$) + 19 O2 (g) -> 14 CO2 (g) + 12 H2O (g)}
 \end{example}
+
+\subsection{Limiting Reactants} \label{subsec:Limiting Reactants}
+\begin{definition}[Limiting Reactants] \label{def:Limiting Reactants}
+  The \emph{limiting reactant(s)} is the reactant(s) that limits a reaction's total output.
+  This means that there is some amount of excess reagent from the other, no limited reactant.
+\end{definition}
+
+\begin{example}[]{Limiting Reactants 1}
+  Given the chemical equation \ch{2 Al (s) + 3 Cl2 (g) -> 2 AlCl3 (s)} and 1.50 \si{\mole} of \ch{Al} and 3.0 \si{\mole} of \ch{Cl2}.
+  Which reactant limits the reaction?
+
+  \tcblower
+  
+  \begin{align*}
+    1.50 \si{\mole} \ch{Al} \left( \frac{3 \si{\mole} \ch{Cl2}}{2 \si{\mole} \ch{Al}} \right) &= 2.25 \si{\mole} \ch{Cl2} \\
+    3.00 \si{\mole} \ch{Cl2} \left( \frac{2 \si{\mole} \ch{Cl2}}{3 \si{\mole} \ch{Cl2}} \right) &= 2.00 \si{\mole} \ch{Al}
+  \end{align*}
+  Since 2.25 \si{\mole} of \ch{Cl2} would be consumed when we have 1.50 \si{\mole} of \ch{Al}, and 2.00 \si{\mole} \ch{Al} would be consumed when we have 3.00 \si{\mole} \ch{Cl2}, the \ch{Al} is the limiting reactant.
+
+  This means that 1.50 \si{\mole} of \ch{AlCl3} will be created from this reaction.
+  \begin{equation*}
+    1.50 \si{\mole} \ch{Al} \left( \frac{2 \si{\mole} \ch{AlCl3}}{2 \si{\mole} \ch{Al}} \right) = 1.50 \si{\mole} \ch{AlCl3}
+  \end{equation*}
+
+  We will have .75 \si{\mole} \ch{Cl2} left after the reaction takes place.
+  \begin{equation*}
+    3.00 \si{\mole} \ch{Cl2} - 2.25 \si{\mole} \ch{Cl2} = .75 \si{\mole} \ch{Cl2}
+  \end{equation*}
+\end{example}
+
+\begin{example}[]{Limiting Reactants 2}
+  Given the chemical equation \ch{Zn (s) + 2 AgNO3 (aq) -> 2 Ag (s) + Zn(NO3)2 (aq)} and 2.00 \si{\gram} of \ch{Zn} and 2.50 \si{\gram} of \ch{AgNO3}.
+  Which reactant limits the reaction?
+
+  \tcblower
+\end{example}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Chem_122-Reference_Sheet"
+%%% End:
