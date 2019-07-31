@@ -87,56 +87,9 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 \clearpage
 \pagenumbering{arabic} % 1,2,3 on content pages
 
-\section{General Information} \label{sec:General Info}
-\subsection{Vectors} \label{subsec:Vectors}
+\input{./Appendix-Reference_Material/Vectors} % Section 1
 
-\section{Kinematics} \label{sec:Kinematics}
-\begin{definition}[Kinematics]
-  \emph{Kinematics} is a way to describe macroscopic motion with equations.
-  This includes anything moving, falling, thrown, shot, launched, etc.
-  This forms the fundamental basis for all of classical mechanics.
-\end{definition}
-
-\subsection{1-D Kinematics} \label{subsec:1D Kinematics}
-\begin{definition}[1-D Displacement] \label{def:1D Displacement}
-  \emph{One dimensional displacement} is calculated based on the change in position of the `thing.'
-  \begin{equation} \label{eq:1D Displacement}
-    s = x_{2} - x_{1}
-  \end{equation}
-  \begin{remark}
-    \emph{Displacement is different than path!}
-    Displacement is the change in position of an object.
-    Path is the length of the path takes between its starting and end point.
-  \end{remark}
-\end{definition}
-
-\begin{definition}[1-D Velocity] \label{def:1D Velocity}
-  \emph{One dimensional velocity} is calculated as the displacement per unit time.
-  There is instantaneous velocity and average velocity.
-  Average velocity is calculated with \Cref{eq:1D Average Velocity}.
-  \begin{equation} \label{eq:1D Average Velocity}
-    v = \frac{\Delta x}{\Delta t} = \frac{x_{2}-x_{1}}{t_{2}-t_{1}}
-  \end{equation}
-  Instantaneous velocity is calculated by reducing the time interval $\Delta t$ to 0.
-  This can be summarized in \Cref{eq:1D Instantaneous Velocity}.
-  \begin{equation} \label{eq:1D Instantaneous Velocity}
-    v = \lim\limits_{\Delta t \rightarrow 0} \frac{\Delta x}{\Delta t} = \frac{dx}{dt}
-  \end{equation}
-\end{definition}
-
-\begin{definition}[Acceleration] \label{def:1D Acceleration}
-  \emph{One dimesional acceleration} is the change in velocity over time.
-  Again, there is average acceleration and instantaneous acceleration.
-  Average acceleration is calculated with \Cref{eq:1D Average Acceleration}
-  \begin{equation} \label{eq:1D Average Acceleration}
-    a = \frac{\Delta v}{\Delta t} = \frac{v_{2} - v_{1}}{t_{2} - t_{1}}
-  \end{equation}
-  Instantaneous acceleration is calculated by reducing the time interval $\Delta t$ to 0.
-  This can be summarized by \Cref{eq:1D Instantaneous Acceleration}.
-  \begin{equation} \label{eq:1D Instantaneous Acceleration}
-    a = \lim\limits_{\Delta t \rightarrow 0} \frac{\Delta v}{\Delta t} = \frac{dv}{dt} = \frac{d^{2}x}{dt^{2}}
-  \end{equation}
-\end{definition}
+\input{./Phys_123-Sections/Kinematics}  % Section 2
 
 %====================================APPENDIX====================================
 \appendix
