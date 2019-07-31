@@ -1,0 +1,112 @@
+\section{Kinematics} \label{sec:Kinematics}
+\begin{definition}[Kinematics]
+  \emph{Kinematics} is a way to describe macroscopic motion with equations.
+  This includes anything moving, falling, thrown, shot, launched, etc.
+  This forms the fundamental basis for all of classical mechanics.
+\end{definition}
+
+\subsection{1-D Kinematics} \label{subsec:1-D Kinematics}
+\begin{definition}[1-D Displacement] \label{def:1-D Displacement}
+  \emph{One dimensional displacement} is calculated based on the change in position of the `thing.'
+  \begin{equation} \label{eq:1-D Displacement}
+    s = x_{2} - x_{1}
+  \end{equation}
+  \begin{remark}
+    \emph{Displacement is different than path!}
+    Displacement is the change in position of an object.
+    Path is the length of the path takes between its starting and end point.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[1-D Velocity] \label{def:1-D Velocity}
+  \emph{One dimensional velocity} is calculated as the displacement per unit time.
+  There is instantaneous velocity and average velocity.
+  Average velocity is calculated with \Cref{eq:1-D Average Velocity}.
+  \begin{equation} \label{eq:1-D Average Velocity}
+    v = \frac{\Delta x}{\Delta t} = \frac{x_{2}-x_{1}}{t_{2}-t_{1}}
+  \end{equation}
+  Instantaneous velocity is calculated by reducing the time interval $\Delta t$ to 0.
+  This can be summarized in \Cref{eq:1-D Instantaneous Velocity}.
+  \begin{equation} \label{eq:1-D Instantaneous Velocity}
+    \begin{aligned}
+      v &= \lim\limits_{\Delta t \rightarrow 0} \frac{\Delta x}{\Delta t} \\
+      &= \frac{dx}{dt}
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Acceleration] \label{def:1-D Acceleration}
+  \emph{One dimesional acceleration} is the change in velocity over time.
+  Again, there is average acceleration and instantaneous acceleration.
+  Average acceleration is calculated with \Cref{eq:1-D Average Acceleration}
+  \begin{equation} \label{eq:1-D Average Acceleration}
+    a = \frac{\Delta v}{\Delta t} = \frac{v_{2} - v_{1}}{t_{2} - t_{1}}
+  \end{equation}
+  Instantaneous acceleration is calculated by reducing the time interval $\Delta t$ to 0.
+  This can be summarized by \Cref{eq:1-D Instantaneous Acceleration}.
+  \begin{equation} \label{eq:1-D Instantaneous Acceleration}
+    \begin{aligned}
+      a &= \lim\limits_{\Delta t \rightarrow 0} \frac{\Delta v}{\Delta t} \\
+      &= \frac{dv}{dt} = \frac{d^{2}x}{dt^{2}}
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\subsection{Multi-Dimensional Kinematics} \label{Multi-D Kinematics}
+Because we can represent a two-dimensional and three-dimensional space in sets, and movement through this space as their respectively dimensioned vectors, we can construct multi-dimensional problems with multi-dimensional vectors!
+This is a massive simplification, because instead of solving for one equation with three variables, we can solve three equations for one variable each!!
+
+\textbf{For the following definitions, I have assumed that we are in a 3-dimensional space $(x, y, z)$.}
+
+\begin{definition}[Multi-Dimensional Position] \label{Multi-D Position}
+  \emph{Position} in multiple dimensions is done by referring to each of the consituent dimensions.
+
+  \begin{equation} \label{eq:Multi-D Position}
+    \vec{s} = \left( x(t), y(t), z(t) \right)
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Multi-Dimensional Displacement] \label{Multi-D Displacement}
+  \emph{Displacement} in multiple dimensions can be broken down into several \nameref{def:1-D Displacement}s.
+  Since \nameref{def:1-D Displacement} is calculated as the differnce between the start and end position, the same is true for th emulti-dimensional case.
+
+  \begin{equation} \label{eq:Multi-D Displacement}
+    \begin{aligned}
+      \vec{r} &= \Delta \vec{s} = \vec{s}_{2} - \vec{s}_{1} \\
+      &= \langle x_{2}(t)-x_{1}(t), y_{2}(t)-y_{1}(t), z_{2}(t)-z_{1}(t) \\
+      &= \langle r_{x}(t), r_{y}(t), r_{z}(t)
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Multi-Dimensional Velocity] \label{Multi-D Velocity}
+  \emph{Velocity} in multiple dimensions is described in much the same way as \nameref{def:1-D Velocity}.
+
+  \begin{equation} \label{eq:Multi-D Velocity}
+    \begin{aligned}
+      \vec{v} &= \frac{d \vec{r}}{dt} \\
+      &= \langle \frac{d r_{x}(t)}{dt}, \frac{d r_{y}(t)}{dt}, \frac{d r_{z}(t)}{dt} \\
+      &= \langle r_{x}'(t), r_{y}'(t), r_{z}'(t)
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Multi-Dimensional Acceleration] \label{Multi-D Acceleration}
+  \emph{Acceleration} in multiple dimensions is described in much the same way as \nameref{def:1-D Acceleration}.
+
+  \begin{equation} \label{eq:Multi-D Acceleration}
+    \begin{aligned}
+      \vec{a} &= \frac{d \vec{v}}{dt} = \frac{d^{2} \vec{r}}{dt} \\
+      &= \langle \frac{d v_{x}(t)}{dt}, \frac{d v_{y}(t)}{dt}, \frac{d v_{z}(t)}{dt} = \langle \frac{d^{2} r_{x}(t)}{dt}, \frac{d^{2} r_{y}(t)}{dt}, \frac{d^{2} r_{z}(t)}{dt} \\
+      &= \langle v_{x}'(t), v_{y}'(t), v_{z}'(t) = \langle r_{x}''(t), r_{y}''(t), r_{z}''(t)
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\subsection{Projectile Motion} \label{subsec:Projectile Motion}
+\begin{definition}[Projectile] \label{def:Projectile}
+  A \emph{projectile} is any body given an initial velocity that then follows a path determined by gravity and air resistance.
+  \begin{remark}
+    However, for most of our calculations, we will neglect air resistance.
+    Air resistance can be a difficult thing to calcultate for, especially in the variable cases that we will have.
+  \end{remark}
