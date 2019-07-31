@@ -110,3 +110,68 @@ This is a massive simplification, because instead of solving for one equation wi
     However, for most of our calculations, we will neglect air resistance.
     Air resistance can be a difficult thing to calcultate for, especially in the variable cases that we will have.
   \end{remark}
+\end{definition}
+
+There are a few things to keep in mind with projectiles in motion.
+\begin{enumerate}
+  \item Origin is where the projectile starts from
+  \item The x-axis is the \emph{distance} that the projectile travels. This is its displacement.
+  \item The y-axis is the \emph{height} that the projectile travels.
+  \item The end point (landing point) is the only thing that may change on the x-axis.
+  \item The acceleration vector is as follows: $\langle 0, -g \rangle$.
+  \item \emph{Trajectory} depends on $\vec{v}_{0}$ and $\vec{a}$ \emph{ONLY}.
+  \item The two components of the projectile's initial velocity are \emph{independent} ($v_{0,x}, v_{0,y}$).
+\end{enumerate}
+
+\subsubsection{Projectile Motion Equations} \label{subsubsec:Projectile Motion Eqns}
+The following equations are used to solve for various questions that could be asked about projectile motion.
+
+\paragraph{Initial Velocity Components} \label{par:Projectile Initial Velocity Components}
+\begin{equation} \label{eq:Projectile Initial Velocity Components}
+  \begin{aligned}
+    v_{0,x} &= v_{0} \cos ( \theta ) & v_{0,y} &= v_{0} \sin ( \theta ) \\
+  \end{aligned}
+\end{equation}
+
+\paragraph{Velocity Components} \label{par:Projectile Velocity Components}
+\begin{equation} \label{eq:Projectile Velocity Components}
+  \begin{aligned}
+    v_{x} &= v_{0,x} \cos ( \theta ) & v_{y} &= v_{0,y} \sin ( \theta ) -gt \\
+  \end{aligned}
+\end{equation}
+
+\paragraph{Projectile Position} \label{par:Projectile Position}
+\begin{equation} \label{eq:Projectile Position}
+  \begin{aligned}
+    x &= v_{0} t \cos ( \theta ) & y &= v_{0} t \sin ( \theta ) - \frac{1}{2} gt^{2} \\
+  \end{aligned}
+\end{equation}
+
+\paragraph{Projectile Time} \label{par:Projectile Time}
+\begin{equation} \label{eq:Projectile Time}
+  \begin{aligned}
+    t &= \frac{x}{v_{0} \cos ( \theta )} & t &= \frac{v_{0} \sin ( \theta )}{g}
+  \end{aligned}
+\end{equation}
+
+\paragraph{Projectile Range} \label{par:Projectile Range}
+\begin{equation} \label{eq:Projectile Range}
+  R = \frac{v_{0}}{g} \cos ( \theta ) \sin ( \theta )
+\end{equation}
+
+\paragraph{Projectile Maximum Range} \label{par:Projectile Maximum Range}
+\begin{equation} \label{eq:Projectile Maximum Range}
+  R_{\text{Max}} = \frac{v_{0}^{2}}{g}
+\end{equation}
+This means that the $\theta$ in \Cref{eq:Projectile Range} is \ang{45}.
+
+\paragraph{Projectile Height} \label{par:Projectile Height}
+\begin{equation} \label{eq:Projectile Height}
+  h = \frac{v_{0}^{2}}{2g} \sin^{2} ( \theta )
+\end{equation}
+
+\paragraph{Projectile Maximum Height} \label{par:Projectile Maximum Height}
+\begin{equation}
+  h = \frac{v_{0}^{2}}{2g}
+\end{equation}
+The lack of $\sin^{2} ( \theta )$ from \Cref{eq:Projectile Height} means that there is \textbf{\emph{NO}} $y$-component to the velocity, meaning the projectile is at its instant of maximum height.
