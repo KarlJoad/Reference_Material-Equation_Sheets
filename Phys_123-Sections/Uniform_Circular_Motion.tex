@@ -8,6 +8,7 @@
   \end{remark}
 \end{definition}
 
+\subsection{Angular Part of Circular Motion} \label{subsec:Angular Circular Motion}
 During \nameref{def:Uniform Circular Motion}, your terminology changes a little bit.
 \begin{definition}[Angular Position] \label{def:Angular Position}
   \emph{Angular position} is determined with radians around a circle.
@@ -16,6 +17,7 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
 
 \begin{definition}[Angular Velocity] \label{def:Angular Velocity}
   \emph{Angular velocity} is orthogonal to the flat 2-D plane that the object is traveling in.
+  It is the dervative of the \nameref{def:Angular Position}.
 
   \begin{equation} \label{eq:Angular Velocity}
     \begin{aligned}
@@ -26,7 +28,7 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
 \end{definition}
 
 \begin{definition}[Angular Acceleration] \label{def:Angular Acceleration}
-  \emph{Angular acceleration} is the derivative of the angular velocity.
+  \emph{Angular acceleration} is the derivative of the \nameref{def:Angular Velocity}.
 
   \begin{equation} \label{eq:Angular Acceleration}
     \vec{\alpha} = \frac{d \vec{\omega}}{dt} = \frac{d^{2} \vec{\theta}}{dt}
@@ -40,8 +42,9 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
   \end{remark}
 \end{definition}
 
+\subsection{Linear Part of Circular Motion} \label{subsec:Linear Circular Motion}
 \begin{definition}[Linear Position] \label{def:Linear Position}
-  \emph{Linear position} relates the position of an object from the cartesian coordinate plane to the polar.
+  \emph{Linear position} relates the position of an object from the cartesian coordinate plane to the polar. 
   This means that:
 
   \begin{equation} \label{eq:Linear Position}
@@ -76,3 +79,18 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
     \end{aligned}
   \end{equation}
 \end{definition}
+
+\subsection{Relation Between the \nameref{subsec:Angular Circular Motion} and the \nameref{subsec:Linear Circular Motion}} \label{subsec:Relations Circular Motion}
+There are a few equations that relate both the \nameref{subsec:Angular Circular Motion} and the \nameref{subsec:Linear Circular Motion}.
+\paragraph{Velocity and Angular Velocity} \label{par:Relate Velocity Angular Velocity}
+\begin{equation} \label{eq:Relate Velocity Angular Velocity}
+  v = \omega r
+\end{equation}
+
+\paragraph{Acceleration and Angular Acceleration} \label{par:Relate Acceleration Angular Acceleration}
+\begin{equation}
+  \begin{aligned}
+    a &= \omega^{2} r \\
+    &= \frac{v^{2}}{r} \\
+  \end{aligned}
+\end{equation}
