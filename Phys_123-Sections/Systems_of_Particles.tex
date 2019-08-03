@@ -1,3 +1,77 @@
 \section{Systems of Particles} \label{sec:Systems of Particles}
+Up until now we have only been considering the objects that we work with to be single, equally distributed masses.
+However, in the real world, we have strangely shaped things and objects that have multiple materials inside of them for balance and strength.
+
+To account for oddities in these objects, we calculate something called the \nameref{def:Center of Mass}.
 
 \subsection{Center of Mass} \label{subsec:Center of Mass}
+\begin{definition}[Center of Mass] \label{def:Center of Mass}
+  The \emph{center of mass} of an object is a weighted average of all particles in a system.
+  Center of mass takes the mass of a point and the distance from the center the point is into account, then normalizes by mass.
+
+  \begin{equation} \label{eq:Center of Mass}
+    \vec{R} = \frac{\sum\limits_{i=1}^{n} m_{i} \vec{r}_{i}}{\sum\limits_{i=1}^{n} m_{i}}
+  \end{equation}
+\end{definition}
+
+\begin{example}[]{Center of Mass of Atomic Bond}
+  Take a carbon monoxide molecule, CO.
+  Carbon has a mass of 12 \si{\atomicmassunit} and Oxygen has a mass of 16 \si{\atomicmassunit}.
+  The bond between them is $a$ long.
+  What is the center of mass of this system?
+
+  \tcblower
+
+  We need to start by having a reference point, which we can define to be the center of the carbon atom.
+  So, $r_{\text{C}} = 0$ and $r_{\text{O}} = a$.
+  \begin{align*}
+    \vec{R} &= \frac{m_{\text{C}} (0) + m_{\text{O}} (a)}{m_{\text{C}} + m_{\text{O}}} \\
+    \vec{R} &= \frac{12 (0) + 16 (a)}{12 + 16} \\
+    \vec{R} &= \frac{16}{28} a \\
+    \vec{R} &= \frac{4}{7} a
+  \end{align*}
+
+  So, the center of mass of this carbon monoxide molecule is $\frac{4}{7}$ of the way towards the Oxygen atom.
+\end{example}
+
+\subsubsection{Center of Mass in Multiple Dimensions} \label{subsubsec:Multi-D Center of Mass}
+\nameref{def:Center of Mass} can be applied to systems in multiple dimensions.
+All that must be done is that the distances be calculated for each dimension separately.
+
+\begin{example}[]{Center of Mass of Atomic Bond in 2-D}
+  Given a water atom, $\text{H}_{2} \text{0}$, what is its center of mass?
+  \begin{itemize}[noitemsep, nolistsep]
+    \item Mass of Hydrogen is 1 \si{\atomicmassunit}
+    \item Mass of Oxygen is 16 \si{\atomicmassunit}
+    \item Distance between hydrogen bonds is $a$
+  \end{itemize}
+
+  \tcblower
+
+  We can start by placing the hydrogen atoms on the $x$-axis of an $xy$-plane.
+  The oxygen atom will sit on the $y$-axis.
+  The variable $h$ stands for the distance between the oxygen atom and the hydrogen bond location. \\
+
+  The center of mass, $\vec{R}$ will be broken down into its components.
+  The $x$ portion of the center of mass will be given the variable $\vec{X}$.
+  The $y$ portion of the center of mass will be given the variable $\vec{Y}$.
+
+  \begin{align*}
+    \vec{X} &= \frac{m_{\text{H}} \left( \frac{-a}{2} \right) + m_{\text{H}} \left( \frac{-a}{2} \right) + m_{\text{O}}(0)}{m_{\text{H}} + m_{\text{H}} + m_{\text{O}}} = \frac{0}{2m_{\text{H}} + m_{\text{O}}} \\
+    \vec{X} &= 0
+  \end{align*}
+  Since the oxygen atom is at $x=0$, it does not contribute to the center of mass in the $x$ direction.
+  
+  \begin{align*}
+    \vec{Y} &= \frac{m_{\text{O}} (h) + m_{\text{H}}(0) + m_{\text{H}}(0)}{m_{\text{O}} + m_{\text{H}} + m_{\text{H}}} \\
+    \vec{Y} &= \frac{m_{\text{O}}}{m_{\text{O}} + 2m_{\text{H}}} h \\
+    \vec{Y} &= \frac{16}{16 + 2(1)} h = \frac{16}{18} h \\
+    \vec{Y} &= \frac{8}{9} h
+  \end{align*}
+  Since the hydrogen atoms are on $y=0$, they do not contribute to the center of mass in the $y$ direction.
+
+  Combining both the $x$ and $y$ solutions, we come up with
+  \begin{equation*}
+    \vec{R} = \biggl \langle 0, \frac{8}{9} h \biggr \rangle
+  \end{equation*}
+\end{example}
