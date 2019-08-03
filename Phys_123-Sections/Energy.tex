@@ -1,7 +1,180 @@
 \section{Energy} \label{sec:Energy}
+There is a way to rewrite \nameref{sec:Newtons Laws} such that we get the \nameref{def:Work Kinetic Energy Theorem}.
+
+\begin{definition}[Work] \label{def:Work}
+  \emph{Work} is defined as the amount of force done over a distance.
+  This is summarized with its equation.
+
+  \begin{equation} \label{eq:Work}
+    \text{W} = \vec{F} \cdot \vec{s}
+  \end{equation}
+  \begin{itemize}[noitemsep, nolistsep]
+    \item $\vec{F}$ - The force applied
+    \item $\vec{s}$ - The distance the thing travelled while under influence of the force
+  \end{itemize}
+
+  \begin{remark}
+    One outcome of \Cref{eq:Work} is that if a force is acting orthogonally to the direction of motion, the force is doing \textbf{\emph{NO}} \nameref{def:Work}.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Work-Kinetic Energy Theorem] \label{def:Work Kinetic Energy Theorem}
+  The \emph{work-energy theorem} rewrites Newton's Second law.
+  \begin{equation*}
+    \vec{F}_{\text{Net}} = m \frac{d \vec{v}}{dt}
+  \end{equation*}
+
+  This differential equation can be solved for.
+  \begin{align*}
+    m \left( \vec{v} \right) d \vec{v} &= \vec{F}_{\text{Net}} \left( \vec{v} \: dt \right) \\
+    \int m \vec{v} \: d \vec{v} &= \int \vec{F}_{\text{Net}} \cdot d \vec{r} \\ % The \: is a medium space that separates variables from differentials
+    \frac{1}{2} m \vec{v}^{\,2} &= \text{W} % The \, is a thin space that separates the vector from the exponent
+  \end{align*}
+\end{definition}
 
 \subsection{Kinetic Energy} \label{subsec:Kinetic Energy}
+\begin{definition}[Kinetic Energy] \label{def:Kinetic Energy}
+  Kinetic Energy is the energy an object has due to its velocity.
+  Using the \nameref{def:Work Kinetic Energy Theorem}, we can define the \emph{Kinetic Energy} of an object as:
+  \begin{equation} \label{eq:Kinetic Energy}
+    \text{K} = \frac{1}{2} m \vec{v}^{\,2}
+  \end{equation}
+  \begin{itemize}[noitemsep, nolistsep]
+    \item $m$ - Mass of the object
+    \item $\vec{v}$ - Velocity of the object
+    \item $\text{K}$ - The total kinetic energy of the object
+  \end{itemize}
+\end{definition}
+
+\begin{example}[]{Kinetic Energy of Rolling Downhill}
+  If something is moving downhill with a force of friction $F_{f} = 71 \si{\newton}$, mass of $m=58 \si{\kilo \gram}$ an initial velocity of $v_{0} = 3.6 \si{\meter / \second}$ over a distance of $s=57 \si{\meter}$, what is its final velocity?
+
+  \tcblower
+
+  Solution on Work/Kinetic Energy note page.
+\end{example}
 
 \subsection{Potential Energy} \label{subsec:Potential Energy}
+\begin{definition}[Potential Energy] \label{def:Potential Energy}
+  \emph{Potential energy} is the energy an object has because of a change in height.
+  It is derived as shown.
+
+  \begin{align*}
+    \vec{F}_{h} &= -m \vec{g} \\
+    \text{W} &= \int\limits_{h_{1}}^{h_{2}} \vec{F}_{h} \, dh \\
+    \text{W} &= \int\limits_{h_{1}}^{h_{2}} -m \vec{g} \: dh \\
+    \text{W} &= -m \vec{g} \left( h_{2}-h_{1} \right)
+  \end{align*}
+
+  This means that the \nameref{def:Potential Energy} of something is defined as
+  \begin{equation} \label{eq:Potential Energy}
+    \text{U} = m \vec{g} h
+  \end{equation}
+  \begin{itemize}[noitemsep, nolistsep]
+    \item $m$ - Mass of the object
+    \item $\vec{g}$ - Gravity of Earth
+    \item $h$ - Height of the object above some reference height that we call ``0''
+    \item $U$ - The \nameref{def:Potential Energy} of the object
+  \end{itemize}
+\end{definition}  
+
+\begin{example}[]{Potential Energy of Skiier}
+  If a skiier is on super slick ice such that there is no friction , starting from a height of $h_{0}=200 \si{\meter}$, is starting from rest, $v_{0} = 0$, what is their final velocity, $v$?
+
+  \tcblower
+
+  To start this off, lets use the \nameref{def:Conservation of Energy}
+  \begin{align*}
+    \text{K}_{0} + \text{U}_{0} &= \text{K} + \text{U} \\
+    \frac{1}{2} m v_{0}^{2} + m \vec{g} h_{0} &= \frac{1}{2} m v^{2} + m \vec{g} h
+  \end{align*}
+  To simplify this, we can say that $h=0$, meaning that the final height is our reference height.
+  This means that our final potential energy will be 0, $\text{U} = 0$.
+  Also, since the skiier starts at rest, their initial kinetic energy, $\text{K}_{0} = 0$.
+
+  \begin{align*}
+    0 + m \vec{g} h_{0} &= \frac{1}{2} m v^{2} + 0 \\
+    \vec{g} h_{0} &= \frac{1}{2} v^{2} \\
+    v^{2} &= 2 \vec{g} h_{0} \\
+    v &= \sqrt{2 \vec{g} h_{0}} \\
+    v &= \sqrt{2 (9.81) (200)} \\
+    v &= 62.94 \si{\meter / \second}
+  \end{align*}
+
+  So, the final velocity of the skiier after going down the hill is 62.94 \si{\meter / \second}.
+\end{example}
+
+\subsubsection{Hooke's Law and Potential Energy} \label{subsubsec:Hookes Law and Potential Energy}
+\nameref{def:Hookes Law} can be applied to the concept of potential energy as well.
+\begin{align*}
+  F_{\text{H}} &= -k \Delta x \\
+  \text{U} &= - \int F_{\text{H}} \: dx \\
+  \text{U} &= - \int -k \Delta x \: dx \\
+  \text{U} &= \frac{1}{2} k \left( \Delta x \right)^{2}
+\end{align*}
+
+\begin{equation} \label{eq:Hookes Law and Potential Energy}
+  \text{U} = \frac{1}{2} k \left( \Delta x \right)^{2}
+\end{equation}
 
 \subsection{Conservation of Energy} \label{subsec:Conservation of Energy}
+\begin{definition}[Law of Conservation of Energy] \label{def:Conservation of Energy}
+  The \emph{law of conservation of energy} states that energy can never be created, nor destroyed.
+  Energy can only change forms.
+
+  \begin{equation} \label{eq:Conservation of Energy}
+    \sum \text{E} = \text{Constant}
+  \end{equation}
+  
+  In this classical mechanical context, it means that kinetic energy and potential energy are always going to have to add up and be equal between the start and end of an experiment.
+
+  \begin{equation} \label{eq:Mechanical Conservation of Energy}
+    \begin{aligned}
+      \text{K} + \text{U} &= \text{Constant} \\
+      \text{K}_{0} + \text{U}_{0} &= \text{K} + \text{U} \\
+    \end{aligned}
+  \end{equation}
+
+  \begin{remark}
+    This law always hold true.
+    However, if you do not make your experiment a closed system, it might seem like energy was created or destroyed.
+    When really is was provided by or lost to the environment.
+    Types of systems are discussed much more in Physics 224: Modern Physics.
+  \end{remark}
+\end{definition}
+
+\begin{example}[]{Conservation of Energy}
+  If you drop a pendulum, where its initial conditions were:
+  \begin{itemize}[noitemsep, nolistsep]
+    \item $\ell = 2 \si{\meter}$ - Length of the string the mass is attached to
+    \item $\theta = \ang{30}$ - Angle from equilibrium pendulum was pulled to
+  \end{itemize}
+
+  What is the maximum velocity that the pendulum achieves $v_{\text{Max}}$?
+
+  \tcblower
+
+  Let's start by using \Cref{eq:Mechanical Conservation of Energy}.
+  \begin{align*}
+    \text{K}_{0} + \text{U}_{0} &= \text{K} + \text{U} \\
+    \frac{1}{2} m v_{0}^{2} + m \vec{g} h_{0} &= \frac{1}{2} m v^{2} + m \vec{g} h
+  \end{align*}
+  
+  We can start by assuming that the velocity when it is dropped is $v_{0} = 0$.
+  This makes $\text{K}_{0} = 0$.
+  The height that the pendulum is dropped from will be $h_{0} = \ell - \left( \ell \cos \left( \theta \right) \right)$.
+  The point where the pendulum has the greatest velocity is right when it reaches the vertex of its swing, at the very bottom.
+  This means that we want to know about $h = 0$.
+  
+  \begin{align*}
+    0 + m \vec{g} h_{0} &= \frac{1}{2} m v_{\text{Max}}^{2} + m \vec{g} h \\
+    0 + m \vec{g} \left( \ell - \ell \cos \left( \theta \right) \right) &= \frac{1}{2} m v_{\text{Max}}^{2} + 0 \\
+    \vec{g} \ell \left( 1 - \cos \left( \theta \right) \right) &= \frac{1}{2} v_{\text{Max}}^{2} \\
+    v_{\text{Max}}^{2} &= 2 \vec{g} \ell \left( 1 - \cos \left( \theta \right) \right) \\
+    v_{\text{Max}} &= \sqrt{2 \vec{g} \ell \left( 1 - \cos \left( \theta \right) \right)} \\
+    v_{\text{Max}} &= \sqrt{2 (9.81) (2) \left( 1 - \cos \left( \ang{30} \right) \right)} \\
+    v_{\text{Max}} &= 2.4 \si{\meter / \second}
+  \end{align*}
+
+  So, the maximum velocity of the pendulum is 2.4 \si{\meter / \second}.
+\end{example}
