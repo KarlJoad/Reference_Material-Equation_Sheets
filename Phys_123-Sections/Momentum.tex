@@ -1,1 +1,47 @@
 \section{Momentum} \label{sec:Momentum}
+Along with \nameref{sec:Energy}, another key takeaway from \nameref{sec:Newtons Laws} is \nameref{def:Momentum}.
+
+\begin{definition}[Momentum] \label{def:Momentum}
+  \emph{Momentum} is the product of mass and velocity.
+  It can be thought of as the amount of moving ``power'' something has.
+  Keep in mind this ``power'' is \textbf{\emph{NOT}} the same as \nameref{def:Power}.
+
+  \begin{equation} \label{eq:Momentum}
+    \vec{p} = \sum\limits_{i=1}^{n} m_{i} \vec{v}_{i}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Conservation of Momentum] \label{def:Conservation of Momentum}
+  \nameref{def:Momentum} is always \emph{conserved}, when it is a closed system.
+
+  \begin{equation} \label{eq:Conservation of Momentum}
+    \begin{aligned}
+      \vec{p} &= \text{Constant} \\
+      \vec{p}_{0} &= \vec{p}
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\begin{example}[]{Conservation of Momentum}
+  If a cannon, initially at rest, fires a cannonball from rest, what is the recoil velocity of the cannon, $V$?
+  The cannonball is fired at $v = 150 \si{\meter / \second}$.
+  The cannon is $M = 500 \si{\kilo \gram}$ and $m = 10 \si{\kilo \gram}$.
+
+  \tcblower
+
+  Let's start with \Cref{eq:Conservation of Momentum}.
+  \begin{equation*}
+    \vec{p}_{0} = \vec{p}
+  \end{equation*}
+
+  Since everything is at rest when we start, $\vec{p}_{0} = 0$.
+  Since things are moving after the cannon was fired, we need to find $\vec{p}$.
+
+  \begin{align*}
+    \vec{p} &= MV + mv = 0 \\
+    \vec{p} &= 500V + 10(150) = 0 \\
+    500V &= 0 - 10(150) \\
+    V &= -3 \si{\meter / \second}
+  \end{align*}
+  So, the cannon will move away from the starting position at 3 \si{\meter / \second}.
+\end{example}
