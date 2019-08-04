@@ -1,0 +1,46 @@
+\begin{example}[]{Elastic Collision with Stationary Object}
+  Saw we have 2 cars, with springs attached to them.
+  The first car is moving at $v_{1} = 5 \si{\meter / \second}$ and has a mass of $m_{1} = 2 \si{\kilo \gram}$.
+  The second car is no moving $v_{2} = 0 \si{\meter / \second}$ and has a mass of $m_{2} = 1 \si{\kilo \gram}$.
+  What is the final velocities of the cars?
+
+  \tcblower
+
+  Start by referencing \Cref{eq:Elastic Collision}.
+  \begin{align*}
+    \frac{1}{2} m_{1} v_{1}^{2} + \frac{1}{2} m_{2} v_{2}^{2} &= \frac{1}{2} m_{1} v_{1}'^{\,2} + \frac{1}{2} m_{2} v_{2}'^{\,2} \\
+    m_{1} v_{1} + m_{2} v_{2} &= m_{1} v_{1}'^{\,2} + m_{2} v_{2}'^{\,2}
+  \end{align*}
+
+  Now we start plugging our given values in.
+  Starting with the \nameref{def:Kinetic Energy} portion of the above equations.
+
+  \begin{align*}
+    \frac{1}{2} (2) 5^{2} + \frac{1}{2} (1) 0^{2} &= \frac{1}{2} (2) v_{1}'^{\,2} + \frac{1}{2} (1) v_{2}'^{\,2} \\
+    25 + 0 &= v_{1}'^{\,2} + \frac{1}{2} v_{2}'^{\,2} \\
+    25 &= v_{1}'^{\,2} + \frac{1}{2} v_{2}'^{\,2}
+  \end{align*}
+
+  Now, moving to the \nameref{def:Momentum} portion of the equation.
+
+  \begin{align*}
+    2 (5) + 1 (0) &= 2 v_{1}'^{\,2} + 1 v_{2}'^{\,2} \\
+    10 &= 2 v_{1}'^{\,2} + 1 v_{2}'^{\,2}
+  \end{align*}
+
+  Now we have to solve this system of equations.
+  \begin{align*}
+    25 &= v_{1}'^{\,2} + \frac{1}{2} v_{2}'^{\,2} \\
+    10 &= 2 v_{1}'^{\,2} + 1 v_{2}'^{\,2}
+  \end{align*}
+
+  When solved, you end up with,
+  \begin{align*}
+    v_{1}' &= \frac{5}{3} \si{\meter / \second} \\
+    v_{2}' &= \frac{20}{3} \si{\meter / \second}
+  \end{align*}
+
+  After the collision, both cars are going the same direction.
+  The originally moving one is moving at $\frac{5}{3}$ \si{\meter / \second}.
+  The originally stationary one is moving at $\frac{20}{3}$ \si{\meter / \second}.
+\end{example}
