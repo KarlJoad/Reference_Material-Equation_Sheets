@@ -1,1 +1,237 @@
 \section{Collisions} \label{sec:Collisions}
+Collisions are a fundamental part of classical physics.
+For our uses, we will assume that these are closed systems.
+
+In practice, there are 2 types of collisions.
+
+\begin{enumerate}[noitemsep, nolistsep]
+  \item \nameref{def:Elastic Collision}s
+  \item \nameref{def:Inelastic Collision}s
+\end{enumerate}
+
+\subsection{Elastic Collision} \label{subsec:Elastic Collision}
+\begin{definition}[Elastic Collision] \label{def:Elastic Collision}
+  An \emph{elastic collision} is a collision where the objects colliding:
+
+  \begin{itemize}[noitemsep, nolistsep]
+    \item ``Bounce'' apart
+    \item The objects' internal structure is unchanged
+  \end{itemize}
+
+  There are some conclusions that we can draw about these collisions based on the criteria above, assuming it is a closed system.
+  \begin{enumerate}
+    \item Mechanical energy is conserved. No kinetic energy is lost, it is converted to potential energies.
+    \item Linear \nameref{def:Momentum} is conserved.
+  \end{enumerate}
+
+  The set of equations you will need to solve to solve an \nameref{def:Elastic Collision} problem are:
+  \begin{equation} \label{eq:Elastic Collision}
+    \begin{aligned}
+      \sum\limits_{i=1}^{n} \frac{1}{2} m_{i}v_{i}^{2} &= \sum\limits_{i=1}^{n} \frac{1}{2} m_{i}v_{i}'^{\,2} \\
+      \sum\limits_{i=1}^{n} m_{i}v_{i} &= \sum\limits_{i=1}^{n} m_{i}v_{i}'
+    \end{aligned}
+  \end{equation}
+
+  \begin{itemize}[noitemsep, nolistsep]
+    \item The $v_{i}'$ are \textbf{\emph{NOT}} derivatives, but the velocities after the collision
+    \item Each equation is just the sum of each object's \nameref{def:Momentum} or \nameref{def:Kinetic Energy} before and after the collision
+  \end{itemize}
+
+  \begin{remark}
+    Remember to keep your signs ($+$, $-$) in order!!
+    The initial velocity and final velocity might be going in different directions, keep that in mind!!
+  \end{remark}
+\end{definition}
+
+\begin{example}[]{Elastic Collision with Stationary Object}
+  Say we have 2 cars, with springs attached to them.
+  The first car is moving at $v_{1} = 5 \si{\meter / \second}$ and has a mass of $m_{1} = 2 \si{\kilo \gram}$.
+  The second car is not moving $v_{2} = 0 \si{\meter / \second}$ and has a mass of $m_{2} = 1 \si{\kilo \gram}$.
+  What is the final velocities of the cars?
+
+  \tcblower
+
+  Start by referencing \Cref{eq:Elastic Collision}.
+  \begin{align*}
+    \frac{1}{2} m_{1} v_{1}^{2} + \frac{1}{2} m_{2} v_{2}^{2} &= \frac{1}{2} m_{1} v_{1}'^{\,2} + \frac{1}{2} m_{2} v_{2}'^{\,2} \\
+    m_{1} v_{1} + m_{2} v_{2} &= m_{1} v_{1}'^{\,2} + m_{2} v_{2}'^{\,2}
+  \end{align*}
+
+  Now we start plugging our given values in.
+  Starting with the \nameref{def:Kinetic Energy} portion of the above equations.
+
+  \begin{align*}
+    \frac{1}{2} (2) 5^{2} + \frac{1}{2} (1) 0^{2} &= \frac{1}{2} (2) v_{1}'^{\,2} + \frac{1}{2} (1) v_{2}'^{\,2} \\
+    25 + 0 &= v_{1}'^{\,2} + \frac{1}{2} v_{2}'^{\,2} \\
+    25 &= v_{1}'^{\,2} + \frac{1}{2} v_{2}'^{\,2}
+  \end{align*}
+
+  Now, moving to the \nameref{def:Momentum} portion of the equation.
+
+  \begin{align*}
+    2 (5) + 1 (0) &= 2 v_{1}'^{\,2} + 1 v_{2}'^{\,2} \\
+    10 &= 2 v_{1}'^{\,2} + 1 v_{2}'^{\,2}
+  \end{align*}
+
+  Now we have to solve this system of equations.
+
+  \begin{align*}
+    25 &= v_{1}'^{\,2} + \frac{1}{2} v_{2}'^{\,2} \\
+    10 &= 2 v_{1}'^{\,2} + 1 v_{2}'^{\,2}
+  \end{align*}
+
+  When solved, you end up with
+  \begin{align*}
+    v_{1}' &= \frac{5}{3} \si{\meter / \second} \\
+    v_{2}' &= \frac{20}{3} \si{\meter / \second}
+  \end{align*}
+
+  After the collision, both cars are going the same direction.
+  The originally moving one is moving at $\frac{5}{3}$ \si{\meter / \second}.
+  The originally stationary one is moving at $\frac{20}{3}$ \si{\meter / \second}.
+\end{example}
+
+\begin{example}[]{Elastic Collision with Non-Stationary Objects}
+  Say we have 2 cars, with springs attached to them.
+  The first car is moving at $v_{1} = 5 \si{\meter / \second}$ and has a mass of $m_{1} = 2 \si{\kilo \gram}$.
+  The second car is moving towards the first $v_{2} = 10 \si{\meter / \second}$ and has a mass of $m_{2} = 1 \si{\kilo \gram}$.
+  What is the final velocities of the cars?
+
+  \tcblower
+
+  Start by referencing \Cref{eq:Elastic Collision}.
+  \begin{align*}
+    \frac{1}{2} m_{1} v_{1}^{2} + \frac{1}{2} m_{2} v_{2}^{2} &= \frac{1}{2} m_{1} v_{1}'^{\,2} + \frac{1}{2} m_{2} v_{2}'^{\,2} \\
+    m_{1} v_{1} + m_{2} v_{2} &= m_{1} v_{1}'^{\,2} + m_{2} v_{2}'^{\,2}
+  \end{align*}
+
+  Now we start plugging our given values in.
+  Starting with the \nameref{def:Kinetic Energy} portion of the above equations.
+  Keep in mind that the velocity of one car will have to be defined as negative, since the two cars are moving towards each other.
+
+  \begin{align*}
+    \frac{1}{2} (2) 5^{2} + \frac{1}{2} (1) (-10)^{2} &= \frac{1}{2} (2) v_{1}'^{\,2} + \frac{1}{2} (1) v_{2}'^{\,2} \\
+    25 + 50 &= v_{1}'^{\,2} + \frac{1}{2} v_{2}'^{\,2} \\
+    75 &= v_{1}'^{\,2} + \frac{1}{2} v_{2}'^{\,2}
+  \end{align*}
+
+  Now, moving to the \nameref{def:Momentum} portion of the equation.
+
+  \begin{align*}
+    2 (5) + 1 (-10) &= 2 v_{1}'^{\,2} + 1 v_{2}'^{\,2} \\
+    10 + -10 &= 2 v_{1}'^{\,2} + v_{2}'^{\,2} \\
+    0 &= 2 v_{1}'^{\,2} + v_{2}'^{\,2}
+  \end{align*}
+
+  Now we have to solve this system of equations.
+
+  \begin{align*}
+    v_{1}'^{\,2} + \frac{1}{2} v_{2}'^{\,2} &= 75 \\
+    2 v_{1}'^{\,2} + v_{2}'^{\,2} &= 0
+  \end{align*}
+
+  When solved, you end up with
+
+  \begin{align*}
+    v_{1}' &= -5 \si{\meter / \second} \\
+    v_{2}' &= 10 \si{\meter / \second}
+  \end{align*}
+
+  After the collision, the cars are going away from each other. The first car is going backward at 5 \si{\meter / \second}. The second car is moving forward (what we defined as forward) at 10 \si{\meter / \second}.
+\end{example}
+
+\subsection{Inelastic Collisions} \label{subsuec:Inelastic Collisions}
+\begin{definition}[Inelastic Collision] \label{def:Inelastic Collision}
+  An \emph{inelastic collision} is a collision where the objects colliding:
+
+  \begin{itemize}[noitemsep, nolistsep]
+    \item ``Stick'' together
+    \item The objects' internal structure is changed
+  \end{itemize}
+
+  There are some conclusions that we can draw about these collisions based on the criteria above, assuming it is a closed system.
+  \begin{enumerate}[noitemsep, nolistsep]
+    \item Mechanical energy is \textbf{\emph{NOT}} conserved.
+    \item Linear \nameref{def:Momentum} is conserved.
+  \end{enumerate}
+
+  The equation that you will need to solve an \nameref{def:Inelastic Collision} problem is:
+  \begin{equation} \label{eq:Inelastic Collision}
+    \sum\limits_{i=1}^{n} m_{i}v_{i} = \left( \sum\limits_{i=1}^{n} m_{i} \right) v'
+  \end{equation}
+
+  \begin{itemize}[noitemsep, nolistsep]
+    \item $v'$ is the final velocity of the objects after they have collided. It is the same for all objects because they stuck together.
+  \end{itemize}
+
+  \begin{remark}
+    Remember to keep your signs ($+$, $-$) in order!!
+    The initial velocity and final velocity might be going in different directions, keep that in mind!!
+  \end{remark}
+\end{definition}
+
+\subsection{Collisions in Multiple Dimensions} \label{subsec:Multi-D Collisions}
+To solve a collision problem that is in multiple dimensions, you break it down into its component vectors, and solve each separately.
+
+\begin{example}[]{Multiple Dimension Collision}
+  Say 2 objects are travelling in an $xy$-plane.
+  When they have an \emph{inelastic} collision, they veer off at different angles.
+  Object A has an angle of $\alpha$ from the $x$-axis and is travelling at $\vec{v}_{A,f}$.
+  Object A is initally travelling on the $x$-axis, with no $y$-component.
+  Object B has an angle of $\beta$ from the $x$-axis and is travelling at $v_{B,f}$.
+  Object B initially starts at rest, $\vec{v}_{B,i} = \langle 0, 0 \rangle$.
+
+  What are the initial velocity of object A?
+
+  \tcblower
+
+  Since this is an \nameref{def:Inelastic Collision}, we want to use \Cref{eq:Inelastic Collision}.
+
+  \begin{equation*}
+    m_{A} \, \vec{v}_{A,i} + m_{B} \, \vec{v}_{B,i} = m_{A} \, \vec{v}_{A,f} + m_{B} \, \vec{v}_{B,f}
+  \end{equation*}
+
+  Now start plugging in information that we know.
+
+  \begin{align*}
+    m_{A} \, \vec{v}_{A,i} + m_{B} \left( \vec{0} \right) &= m_{A} \, \vec{v}_{A,f} + m_{B} \, \vec{v}_{B,f} \\
+    m_{A} \, \vec{v}_{A,i} + 0 &= m_{A} \, \vec{v}_{A,f} + m_{B} \, \vec{v}_{B,f} \\
+    m_{A} \, \vec{v}_{A,i} &= m_{A} \, \vec{v}_{A,f} + m_{B} \, \vec{v}_{B,f}
+  \end{align*}
+
+  Since this is a multi-dimensional collision problem, we need need to break the velocity vectors down into their component vectors.
+
+  \begin{align*}
+    \mathbf{X} \rightarrow m_{A} \, \vec{v}_{A,i} \cos (0) &= m_{A} v_{A,f} \cos (\alpha) + m_{B} \, v_{B,f} \cos (\beta) \\
+    \mathbf{Y} \rightarrow m_{A} \, \vec{v}_{A,i} \sin (0) &= m_{A} v_{A,f} \sin (\alpha) - m_{B} \, v_{B,f} \sin (\beta) \\
+  \end{align*}
+
+  Object B is moving the the negative $y$-direction, so it has a negative in front of its term.
+  We know that Object A was not moving in the $y$-direction at all, so the above equations simplify down to:
+
+  \begin{align*}
+    \mathbf{X} &\rightarrow m_{A} \, \vec{v}_{A,i} \cos (0) = m_{A} v_{A,f} \cos (\alpha) + m_{B} \, v_{B,f} \cos (\beta) \\
+    \mathbf{Y} &\rightarrow 0 = m_{A} v_{A,f} \sin (\alpha) - m_{B} \, v_{B,f} \sin (\beta) \\
+  \end{align*}
+
+  Since we know the final velocity of Object A, the $y$-component equation can give us the one unknown we have, $v_{B,f}$.
+
+  \begin{align*}
+    0 &= m_{A} \, v_{A,f} \sin (\alpha) - m_{B} \, v_{B,f} \sin (\beta) \\
+    m_{A} \, v_{A,f} \sin (\alpha) &= m_{B} \, v_{B,f} \sin (\beta) \\
+    v_{B,f} &= \frac{m_{A}v_{A,f} \sin (\alpha)}{m_{B} \sin (\beta)}
+  \end{align*}
+
+  Now, plugging in that value to the $x$-component equation, we can solve for $v_{A,i}$.
+
+  \begin{align*}
+    m_{A} \, v_{A,i} &= m_{A} \, v_{A,f} \cos (\alpha) + m_{B} \left( \frac{m_{A}v_{A,f} \sin (\alpha)}{m_{B} \sin (\beta)} \right) \cos (\beta) \\
+    v_{A,i} &= v_{A,f} \cos (\alpha) + \left( \frac{v_{A,f} \sin (\alpha)}{\sin (\beta)} \right) \cos (\beta)
+  \end{align*}
+
+  So, the answer for the inital velocity of Object A is:
+
+  \begin{equation*}
+    \vec{v}_{A,i} = \biggl \langle v_{A,f} \cos (\alpha) + \frac{v_{A,f}\sin (\alpha) \cos (\beta)}{\sin (\beta)}, 0 \biggr \rangle \si{\meter / \second}
+  \end{equation*}
+\end{example}
