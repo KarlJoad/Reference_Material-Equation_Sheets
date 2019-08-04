@@ -1,0 +1,51 @@
+\section{Rotational Kinematics} \label{sec:Rotational Kinematics}
+\begin{definition}[Rotational Kinematics] \label{def:Rotational Kinematics}
+  \emph{Rotational kinematics} is the application of \nameref{def:Kinematics} to rotating objects.
+  There are some stipulations that need to be made for rotational kinematics to make sense.
+
+  \begin{enumerate}[noitemsep, nolistsep]
+    \item The thing \textbf{\emph{MUST}} be macroscopic. If the thing gets too small, rotation doesn't make sense.
+    \item The thing must be an absolutely \nameref{def:Rigid Body}
+  \end{enumerate}
+
+  If an object is undergoing rotation, then there are is both Linear \nameref{def:Kinematics} and \nameref{def:Rotational Kinematics}.
+\end{definition}
+
+\begin{definition}[Rigid Body] \label{def:Rigid Body}
+  A \emph{rigid body} is one that that experiences no or negligible deformation during the experiment.
+  Another way to define this is that any 2 arbitrary points do not change during rotation.
+\end{definition}
+
+\subsection{Linear \nameref{sec:Kinematics} and \nameref{sec:Rotational Kinematics} Correlation} \label{subsec:Linear Kinematics Rotational Kinematics Correlation}
+\nameref{sec:Rotational Kinematics} are closely related to Linear \nameref{sec:Kinematics}.
+Many of the definitions that were presented in \nameref{sec:Uniform Circular Motion} can be translated between the two.
+
+\begin{table}[h!] % Linear Kinematics and Rotational Kinematics Correlation Table
+  \centering
+  \renewcommand{\arraystretch}{1.4} % Space each of the cells out a little more for the fractions
+  \begin{tabular}{ccc}
+     & Linear & Rotational \\ \hline
+    Coordinates & $x$ & $\theta$ \\ \hline
+    Velocity & $\vec{v} = \frac{dx}{dt}$ & $\vec{\omega} = \frac{d \theta}{dt}$ \\ \hline
+    Acceleration & $\vec{a} = \frac{d \vec{v}}{dt}$ & $\vec{\alpha} = \frac{d \vec{\omega}}{dt}$ \\ \hline
+  \end{tabular}
+  \caption{Linear Kinematics and Rotational Kinematics Correlation}
+  \label{tab:Linear Kinematics Rotational Kinematics Correlation}
+\end{table}
+
+\subsection{Linear Dynamics and Rotational Dynamics Correlation} \label{subsec:Linear Dynamics Rotational Dynamics Correlation}
+\begin{table}[h!] % Linear Dynamics and Rotational Dynamics Correlation Table
+  \centering
+  \renewcommand{\arraystretch}{1.5} % Speace each of the cells out a little more for the fractions and exponents
+  \begin{tabular}{ccc}
+     & Linear & Rotational \\ \hline
+    \nameref{def:Kinetic Energy} & $\text{K} = \frac{1}{2} m v^{2}$ & $\text{K} = \frac{1}{2} I \omega^{2}$ \\ \hline
+    \nameref{def:Center of Mass}/\nameref{def:Moment of Inertia} & $\vec{R} = \sum\limits_{i=1}^{n} \frac{m_{i}r_{i}}{m_{i}}$ & $I = \sum\limits_{i=1}^{n} m_{i}r_{i}^{2}$ \\ \hline
+    Force & $\vec{F} = m \vec{a}$ & $\vec{\tau} = I \vec{\alpha}$ \\ \hline
+    \nameref{def:Work} & $\text{W} = \int \vec{F} \cdot d \vec{r}$ & $\text{W} = \int \vec{\tau} \cdot d \theta$ \\ \hline
+    \nameref{def:Power} & $\text{P} = \frac{d \text{W}}{dt}$ & $\text{P} = \vec{\tau} \cdot \vec{\omega}$ \\ \hline
+    \nameref{def:Momentum} & $\vec{p} = m \vec{v}$ & $\vec{\ell} = I \vec{\omega}$ \\ \hline
+  \end{tabular}
+  \caption{Linear Dynamics and Rotational Dynamics Correlation}
+  \label{tab:Linear Dynamics Rotational Dynamics Correlation}
+\end{table}
