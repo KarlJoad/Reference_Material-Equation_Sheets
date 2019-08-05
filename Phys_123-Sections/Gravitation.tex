@@ -3,4 +3,46 @@
   \emph{Gravity} is one of \nameref{sec:Fundamental Interactions}.
   It is also one of the least understood.
   However, it it the thing that is keeping us ``glued'' to this plant.
+
+  There is an equation that describes the force caused by gravity on multiple objects.
+
+  \begin{equation} \label{eq:Gravitation}
+    \vec{F}_{g} = G \frac{m_{1}m_{2}}{r^{2}} \cdot \frac{\vec{r}}{\hat{r}}
+  \end{equation}
+  \begin{itemize}[noitemsep, nolistsep]
+    \item $G$ - The universal gravitational constant. The actual value is in \Cref{app:Physical Constants}.
+    \item $m_{1}$ - The mass of one of the objects.
+    \item $m_{2}$ - The mass of the other object.
+    \item $r^{2}$ - Distance between the objects.
+    \item $\vec{r}$ - Vector describing the direction of the distance.
+    \item $\hat{r}$ - Normalizing unit vector
+  \end{itemize}
+
+  \begin{remark}
+    \Cref{eq:Gravitation} only applies if:
+    \begin{itemize}[noitemsep, nolistsep]
+      \item Relativistic effects are small
+      \item Relatively low density, compared to a black hole for instance
+      \item Relatively low velocity, compared to light speed
+    \end{itemize}
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Kepler's Laws] \label{def:Keplers Laws}
+  Johannes Kepler developed these three laws for gravitation and planetary motion.
+
+  \begin{enumerate}[noitemsep, nolistsep]
+    \item Planets move in ellipses with one focus at the sun.
+    \item Planets move fastest when close to the sun, and slowest when furthest from the sun, in the same time. The area of sectors in the ellipse are the same.
+    \item The sun's side is perihelion, the far side is the aphelion. $\text{Period}^{2} \propto \text{Semi-Major}^{3}$. \begin{equation}
+        \frac{T_{1}^{2}}{a_{1}^{3}} = \frac{T_{2}^{2}}{a_{2}^{3}}
+      \end{equation}
+    \end{enumerate}
+
+    Using the information from \Cref{def:Gravity}, we can construct an updated set of \nameref{def:Keplers Laws}.
+    \begin{enumerate}[noitemsep, nolistsep]
+      \item All trajectories are conic sections.
+      \item Angular momentum, $\vec{\ell}$ is conserved.
+      \item $\frac{T^{2}}{a^{3}} = \frac{4 \pi^{2}}{G \left( m + M \right)}$.
+    \end{enumerate}
 \end{definition}
