@@ -161,3 +161,22 @@ These are some of the simplest ordinary differential equations to solve.
   \tcblower
 
 \end{example}
+
+\subsection{Exact Differential Equations} \label{subsec:Exact ODEs}
+\begin{definition}[Exact Differential Equation] \label{def:Exact ODE}
+  An \emph{exact differential equation} is one defined \Cref{eq:Exact ODE}.
+
+  \begin{equation} \label{eq:Exact ODE}
+    M(x,y) \, dx + N(x,y) \, dy = 0
+  \end{equation}
+
+  For a differential equation to be \emph{exact} there are 2 criteria:
+  \begin{enumerate}[noitemsep, nolistsep]
+    \item $\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}$
+    \item There exists a function of $f(x,y)$ such that:
+      \begin{enumerate}[noitemsep, nolistsep]
+        \item $\frac{\partial f}{\partial x} = M(x,y) \rightarrow f(x,y) = \int M(x,y) \, dx$
+        \item $\frac{\partial f}{\partial y} = N(x,y) \rightarrow f(x,y) = \int N(x,y) \, dy$
+      \end{enumerate}
+  \end{enumerate}
+\end{definition}
