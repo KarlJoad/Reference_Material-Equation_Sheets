@@ -31,3 +31,21 @@
     \argmax_{x}
   \end{equation*}
 \end{definition}
+
+\subsection{Rules of Calculus} \label{subsec:Rules of Calculus}
+\subsubsection{Chain Rule} \label{subsubsec:Chain Rule}
+\begin{definition}[Chain Rule] \label{def:Chain Rule}
+  The \emph{chain rule} is a way to differentiate a function that has 2 functions multiplied together.
+
+  If
+  \begin{equation*}
+    f(x) = g(x) \cdot h(x)
+  \end{equation*}
+  then,
+  \begin{equation} \label{eq:Chain Rule}
+    \begin{aligned}
+      f'(x) &= g'(x) \cdot h(x) + g(x) \cdot h'(x) \\
+      \frac{df(x)}{dx} &= \frac{dg(x)}{dx} \cdot g(x) + g(x) \cdot \frac{dh(x)}{dx} \\
+    \end{aligned}
+  \end{equation}
+\end{definition}
