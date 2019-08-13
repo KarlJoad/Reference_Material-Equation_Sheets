@@ -83,3 +83,51 @@ These are some of the simplest ordinary differential equations to solve.
     C &= T \left( 0 \right) -70 \\
   \end{align*}
 \end{example}
+
+\subsection{Linear Differential Equations} \label{subsec:Linear ODEs}
+\begin{definition}[Linear Differential Equation] \label{def:Linear ODE}
+  A \emph{linear differential equation} is one that satisfies the below equation.
+
+  \begin{equation} \label{eq:Linear ODE Equation}
+    \begin{aligned}
+      a_{1}(x) \frac{dy}{dx} + a_{0}(x)y &= g(x) \\
+      a_{1}(x) y' + a_{0}(x)y &= g(x) \\
+    \end{aligned}
+  \end{equation}
+
+  This can be ``simplified'' down to:
+  \begin{equation*}
+    \begin{aligned}
+      y' + \frac{a_{0}(x)}{a_{1}(x)} y &= \frac{g(x)}{a_{1}(x)} \\
+      y' + P(x) y &= f(x) \\
+    \end{aligned}
+  \end{equation}
+
+  It will have an integrating factor of:
+  \begin{equation} \label{eq:Linear ODE Integrating Factor}
+    I(x) = e^{\int \frac{a_{0}(x)}{a_{1}(x)} dx}
+  \end{equation}
+
+  If we plug the integrating factor into \Cref{eq:Linear ODE Equation}, the we have:
+    \begin{equation*}
+    I(x) \frac{dy}{dx} + I(x) \frac{a_{0}(x)}{a_{1}(x)} y = I(x) f(x)
+  \end{equation*}
+
+  But, using the \nameref{def:Chain Rule} you get
+  \begin{equation*}
+    \begin{aligned}
+      \left( I(x) y \right)' = I'(x)P(x) + I(x)P'(x) \\
+      I'(x) y &= I(x) P(x) y + I(x) y' \\
+      I'(x) = I(x) P(x) \\
+    \end{aligned}
+  \end{equation*}
+
+  This means that the solution to a linear differential equation is simplified to
+  \begin{equation} \label{eq:Linear ODE Solution}
+    \left( I(x) y \right)' = I(x) f(x)
+  \end{equation}
+  
+  \begin{remark}
+    Each of the terms in \Cref{eq:Linear ODE Equation} can be functions that accept one parameter.
+  \end{remark}
+\end{definition}
