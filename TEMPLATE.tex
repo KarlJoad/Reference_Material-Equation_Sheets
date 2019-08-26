@@ -70,17 +70,30 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 \DeclareMathOperator{\RealNums}{\mathbb{R}}
 \DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
 
-\author{Karl Hallsby}
-\title{Class Name Number Equations}
+\begin{titlepage}
+  \title{Course Number: Class Name - Type of Document}
+  \author{Karl Hallsby}
+  \date{Last Edited: \today} % We want to inform people when this document was last edited
+\end{titlepage}
 
 \begin{document}
+\pagenumbering{gobble}
+\maketitle
+\pagenumbering{roman} % i, ii, iii on beginning pages, that don't have content
+\tableofcontents
+\clearpage
+\pagenumbering{arabic} % 1,2,3 on content pages
+
 
 %====================================APPENDIX====================================
-\clearpage
 \appendix
 \counterwithin{equation}{section}
+\counterwithin{definition}{subsection}
 
-\section{Reference Material} \label{sec:Reference Material}
+\clearpage
 \input{./Appendix-Reference_Material/Trig}
+
+\clearpage
 \input{./Appendix-Reference_Material/Calculus}
+
 \end{document}
