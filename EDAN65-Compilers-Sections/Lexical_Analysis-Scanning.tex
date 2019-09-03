@@ -1,0 +1,38 @@
+\section{Lexical Analysis/Scanning}\label{sec:Lexical Analysis}
+\begin{definition}[Lexical Analysis (Scanning)]\label{def:Lexical Analysis}
+  \emph{Lexical Analysis} or \emph{Scanning} is the phase of the compilation process that reads in the source code text.
+  It breaks the things it reads into \emph{tokens}.
+  \begin{remark}
+    \nameref{def:Lexical Analysis} \emph{ONLY} handles the reading IN of source code and the outputting of tokens.
+    It \emph{DOES NOT} attach any meaning or put anything together.
+  \end{remark}
+
+  This means that these are the \textbf{\emph{ONLY}} types of errors that will be caught.
+  \begin{javasource}
+    int #s() {
+      return 3;
+    }
+  \end{javasource}
+
+  Because the \# token isn't understood by the scanner, the whole thing fails.
+  The Scanner is just a simple look up device. It can only find things that it knows about.
+  If it sees something that it has no clue about, it fails.
+\end{definition}
+
+There are several ways to implement a scanner.
+One of the most common ways is the use of a \nameref{def:Finite State Automaton} or Finite State Machine.
+
+\begin{definition}[Finite State Automaton]\label{def:Finite State Automaton}
+  A \emph{finite state automaton} or \emph{finite state machine} is a mathematical model of computation.
+  It is an abstract machine that can be in exactly one of a finite number of states at any given time.
+  The FSM can change from one state to another in response to some external inputs; the change from one state to another is called a transition.
+  An FSM is defined by a list of its states, its initial state, and the conditions for each transition.
+
+  There are 2 types of finite statue automata:
+  \begin{enumerate}[noitemsep, nolistsep]
+  \item Deterministic Finite State Automata
+  \item Non-deterministic Finite State Automata
+  \end{enumerate}
+
+  A deterministic finite state automata can be constructed to be equivalent to any non-deterministic one.
+\end{definition}
