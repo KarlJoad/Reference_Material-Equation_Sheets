@@ -10,6 +10,7 @@ You can also classify sinusoids by their independent variable (usually time) and
 \begin{enumerate}[noitemsep]
 \item \nameref{def:Continuous-Time Signals} or Analog Signals
 \item \nameref{def:Discrete-Time Signals}
+\item There is a third way to classify sinusoids and their signals: \nameref{subsec:Digital Signals}
 \end{enumerate}
 
 \begin{definition}[Continuous-Time Signals]\label{def:Continuous-Time Signals}
@@ -85,7 +86,7 @@ The analog sinusoidal signal in \cref{eq:Frequency Harmonic Oscillation} is char
 \subsubsection{Frequency in Discrete-Time Signals}\label{subsubsec:Frequency in Discrete-Time Signals}
 A discrete-time sinusoidal signal may be expressed as
 \begin{equation}\label{eq:Discrete Time Sinusoid}
-  x(n) = A \cos \left( \omega n + \theta \right) \text{, } n \in \mathbb{Z} \text{, } -\infty < n < \infty
+  x(n) = A \cos \left( \omega n + \theta \right) \text{, } n \in \AllIntegers \text{, } -\infty < n < \infty
 \end{equation}
 
 The signal is characterized by these parameters:
@@ -103,7 +104,7 @@ Instead of $\omega$, we use the frequency variable $f$ defined by
 
 Using~\eqref{eq:Discrete Time Sinusoid} and~\eqref{eq:Discrete Angular Frequency to Frequency} yields
 \begin{equation}\label{eq:Discrete Frequency Sinusoid}
-  x(n) = A \cos \left( 2 \pi fn + \theta \right) \text{, } n \in \mathbb{Z} \text{, } -\infty < n < \infty
+  x(n) = A \cos \left( 2 \pi fn + \theta \right) \text{, } n \in \AllIntegers \text{, } -\infty < n < \infty
 \end{equation}
 
 \subsubsection{Properties of Discrete-Time Sinusoidal Signals}\label{subsubsec:Properties Discrete-Time Sinusoids}
@@ -113,6 +114,22 @@ Using~\eqref{eq:Discrete Time Sinusoid} and~\eqref{eq:Discrete Angular Frequency
 \item The highest rate of oscillation in a discrete-time sinusoid is attained when $\omega = \pm \pi$ or, equivalently, $f= \pm \frac{1}{2}$.
 \end{propertylist}
 
+\subsubsection{Frequency Aliases}\label{subsubsec:Frequency Aliases}
+
+\subsection{Sampling Rates and Sampling Frequency}\label{subsec:Sampling Rates and Frequency}
+\subsubsection{Nyquist Rate}\label{subsubsec:Nyquist Rate}
+\subsubsection{Nyquist Frequency}\label{subsubsec:Nyquist Frequency}
+
+\subsection{Digital Signals}\label{subsec:Digital Signals}
+\begin{definition}[Digital Signals]\label{def:Digital Signals}
+  \emph{Digital signals} are a subset of \nameref{def:Discrete-Time Signals}.
+  In this case, not only are the values being measured occuring at fixed points in time, the values themselves can only take certain, fixed values.
+\end{definition}
+
+\subsubsection{Quantization}\label{subsubsec:Quantization}
+\paragraph{Quantization Levels}\label{par:Quantization Levels}
+\paragraph{Bit Requirements}\label{par:Quantization Bit Requirements}
+\paragraph{Bit Rate}\label{par:Quantization Bit Rate}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
