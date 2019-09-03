@@ -1,0 +1,119 @@
+\section{Sinusoids}\label{sec:Sinusoids}
+There are several ways to characterize \nameref{sec:Sinusoids}.
+The first is by dimension:
+\begin{enumerate}[noitemsep]
+\item Multidimensional/Multichannel Signals
+\item Monodimensional/Monochannel Signals
+\end{enumerate}
+
+You can also classify sinusoids by their independent variable (usually time) and the values they take.
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Continuous-Time Signals} or Analog Signals
+\item \nameref{def:Discrete-Time Signals}
+\end{enumerate}
+
+\begin{definition}[Continuous-Time Signals]\label{def:Continuous-Time Signals}
+  \emph{Continuous-time signals} or \emph{Analog signals} are defined for every value of time and they take on values in the continuous interval $(a,b)$, where $a$ can be $-\infty$ and $b$ can be $\infty$.
+  Mathematically, these signals can be described by functions of a continuous variable.
+
+  For example,
+  \begin{equation*}
+    x_{1}(t) = \cos \pi t \text{, } x_{2}(t) = e^{-\lvert t \rvert} \text{, } -\infty < t < \infty
+  \end{equation*}
+\end{definition}
+
+\begin{definition}[Discrete-Time Signals]\label{def:Discrete-Time Signals}
+  \emph{Discrete-time signals} are defined only at certain specifed values of time.
+  These time instants \textbf{\emph{need not}} be equidistant, but in practice, they are usually taken at equally speced intervals for computation convenience and mathematical tractability.
+
+  For example,
+  \begin{equation*}
+    x(t_{n}) = e^{-\lvert t_{n} \rvert} \text{, } n=0, \pm 1, \pm 2, \ldots
+  \end{equation*}
+
+  A \nameref{def:Discrete-Time Signals} can be represented mathematically by a sequence of real or complex numbers.
+  \begin{remark}
+    To emphasize the discrete-time nature of the signal, we shall denote the signal as $x(n)$, rather than $x(t)$.
+  \end{remark}
+  \begin{remark}
+    If the time instants $t_{n}$ are equally spaced (i.e., $t_{n}=nT$), the notation $x(nT)$ is also used.
+  \end{remark}
+\end{definition}
+
+\subsection{Continuous-Time Signals}\label{subsec:Continuous-Time Signals}
+\subsubsection{Frequency in Continuous-Time Signals}\label{subsubsec:Frequency in Continuous-Time Signals}
+A simple harmonic oscillation is mathematically described by \Cref{eq:Simple Harmonic Oscillation}.
+
+\begin{equation}\label{eq:Simple Harmonic Oscillation}
+  x_{a}(t) = A \cos \left( \Omega t + \theta \right) \text{, } -\infty < t < \infty
+\end{equation}
+
+\begin{remark*}
+  The subscript $a$ is used with $x(t)$ to denote an analog signal.
+\end{remark*}
+
+This signal is completely characterized by three parameters:
+\begin{enumerate}[noitemsep]
+\item $A$, the \emph{amplitude} of the sinusoid
+\item $\Omega$, the \emph{frequency} in radians per second (\si{\radian / \second})
+\item $\theta$, the \emph{phase} in radians.
+\end{enumerate}
+
+Instead of $\Omega$, the frequency $F$ in cycles per second or hertz (\si{\hertz}) is used.
+\begin{equation}\label{eq:Continuous Angular Frequency to Frequency}
+  \Omega = 2 \pi F
+\end{equation}
+
+Plugging~\eqref{eq:Continuous Angular Frequency to Frequency} into~\eqref{eq:Simple Harmonic Oscillation}, yields
+\begin{equation}\label{eq:Frequency Harmonic Oscillation}
+  x_{a}(t) = A \cos \left( 2 \pi Ft + \theta \right) \text{, } -\infty < t < \infty
+\end{equation}
+
+\subsubsection{Properties of Continuous-Time Sinusoidal Signals}\label{subsubsec:Properties Continuous-Time Sinusoids}
+The analog sinusoidal signal in \cref{eq:Frequency Harmonic Oscillation} is characterized by the following properties:
+\begin{propertylist}
+\item For every fixed value of the frequency $F$, $x_{a}(t)$ is periodic.
+  \begin{equation*}
+    x_{a}(t+T_{p}) = x_{a}(t)
+  \end{equation*}
+  where $T_{p} = \frac{1}{F}$ is the fundamental period.
+\item Continuous-time sinusoidal signals with distinct (different) frequencies are themselves distinct.
+\item Increasing the frequency $F$ results in an increase in the rate of oscillation of the signal, in the sense that more periods are included in the given time interval.
+\end{propertylist}
+
+\subsection{Discrete-Time Signals}\label{subsec:Discrete-Time Signals}
+\subsubsection{Frequency in Discrete-Time Signals}\label{subsubsec:Frequency in Discrete-Time Signals}
+A discrete-time sinusoidal signal may be expressed as
+\begin{equation}\label{eq:Discrete Time Sinusoid}
+  x(n) = A \cos \left( \omega n + \theta \right) \text{, } n \in \mathbb{Z} \text{, } -\infty < n < \infty
+\end{equation}
+
+The signal is characterized by these parameters:
+\begin{enumerate}[noitemsep]
+\item $n$, the sample number. MUST be an integer.
+\item $A$, the \emph{amplitude} of the sinusoid
+\item $\omega$, the \emph{angular frequency} in radians per sample
+\item $\theta$, is the \emph{phase}, in radians.
+\end{enumerate}
+
+Instead of $\omega$, we use the frequency variable $f$ defined by
+\begin{equation}\label{eq:Discrete Angular Frequency to Frequency}
+  \omega \equiv 2 \pi f
+\end{equation}
+
+Using~\eqref{eq:Discrete Time Sinusoid} and~\eqref{eq:Discrete Angular Frequency to Frequency} yields
+\begin{equation}\label{eq:Discrete Frequency Sinusoid}
+  x(n) = A \cos \left( 2 \pi fn + \theta \right) \text{, } n \in \mathbb{Z} \text{, } -\infty < n < \infty
+\end{equation}
+
+\subsubsection{Properties of Discrete-Time Sinusoidal Signals}\label{subsubsec:Properties Discrete-Time Sinusoids}
+\begin{propertylist}
+\item A discrete-time sinusoid is periodic \textbf{\emph{ONLY}} if its frequency is a rational number.
+\item Discrete-time sinusoids whose frequencies are separated by an integer multiple of $2\pi$ are identical.
+\item The highest rate of oscillation in a discrete-time sinusoid is attained when $\omega = \pm \pi$ or, equivalently, $f= \pm \frac{1}{2}$.
+\end{propertylist}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
+%%% End:
