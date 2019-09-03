@@ -21,6 +21,9 @@
 % \usepackage{ctable} % Greater control over tables and how they look
 % \usepackage{minted} % Allow us to nicely typeset 300+ programming languages
 
+%\graphicspath{{./Drawings/Course_Num}} % Uncomment this to use pictures in this document
+\counterwithin{equation}{section} % Uncomment to number eqns with sec nums too
+
 % Create a theorem environment
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
@@ -69,6 +72,10 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 
 % Math Operators that are useful to abstract the written math away to one spot
 \DeclareMathOperator{\RealNums}{\mathbb{R}}
+\DeclareMathOperator{\AllIntegers}{\mathbb{Z}}
+\DeclareMathOperator{\PositiveInts}{\mathbb{Z}^{+}}
+\DeclareMathOperator{\NegativeInts}{\mathbb{Z}^{-}}
+\DeclareMathOperator{\NaturalNums}{\mathbb{N}}
 \DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
 
 \begin{titlepage}
@@ -88,7 +95,6 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 
 %====================================APPENDIX====================================
 \appendix
-\counterwithin{equation}{section}
 \counterwithin{definition}{subsection}
 
 \clearpage
