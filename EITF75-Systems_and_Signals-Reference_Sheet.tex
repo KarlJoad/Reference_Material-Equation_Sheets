@@ -21,6 +21,7 @@
 % \usepackage{ctable} % Greater control over tables and how they look
 % \usepackage{minted} % Allow us to nicely typeset 300+ programming languages
 
+\counterwithin{equation}{section}
 % Create a theorem environment
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
@@ -99,9 +100,10 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 
 \input{./EITF75-Systems_and_Signals-Sections/Sinusoids}
 
+\input{./EITF75-Systems_and_Signals-Sections/Convolutions}
+
 %====================================APPENDIX====================================
 \appendix
-\counterwithin{equation}{section}
 \counterwithin{definition}{subsection}
 
 \clearpage
