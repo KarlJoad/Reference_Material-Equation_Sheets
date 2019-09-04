@@ -60,17 +60,37 @@ number format=\arabic,
 crefname={example}{examples}, % Define reference format for cref (No Capitals)
 Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 ]{example}[2][]{
-	width=\textwidth,
-	title={Example \thetcbcounter: #2. #1},
-	fonttitle=\bfseries,
-	label={ex:#2},
-	nameref=#2,
-	colbacktitle=white!100!black,
-	coltitle=black!100!white,
-	colback=white!100!black,
-	upperbox=visible,
-	lowerbox=visible,
-	sharp corners=all
+  width=\textwidth,
+  title={Example \thetcbcounter: #2. #1},
+  fonttitle=\bfseries,
+  label={ex:#2},
+  nameref=#2,
+  colbacktitle=white!100!black,
+  coltitle=black!100!white,
+  colback=white!100!black,
+  upperbox=visible,
+  lowerbox=visible,
+  sharp corners=all
+}
+
+% Create a tcolorbox for general use
+\newtcolorbox[% auto counter,
+% number within=section,
+% number format=\arabic,
+% crefname={example}{examples}, % Define reference format for cref (No Capitals)
+% Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
+]{blackbox}{
+  width=\textwidth,
+  % title={},
+  fonttitle=\bfseries,
+  % label={},
+  % nameref=,
+  colbacktitle=white!100!black,
+  coltitle=black!100!white,
+  colback=white!100!black,
+  upperbox=visible,
+  lowerbox=visible,
+  sharp corners=all
 }
 
 % Redefine the 'end of proof' symbol to be a black square, not blank
