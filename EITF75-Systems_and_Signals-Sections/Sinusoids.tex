@@ -154,6 +154,16 @@ The concept of a \nameref{def:Frequency Alias} is drawn from the idea that discr
 \end{definition}
 
 \subsection{Sampling Rates and Sampling Frequency}\label{subsec:Sampling Rates and Frequency}
+Most signals of interest are analog.
+To process these signals, they must be collected and converted to a digital form, that is, to convert them to a sequence of numbers having finite precision.
+This is called \emph{analog-to-digital (A/D) conversion}.
+Conceptually, we view this conversion as a 3-step process.
+\begin{enumerate}[noitemsep]
+\item Sampling
+\item \nameref{subsubsec:Quantization}
+\item Coding
+\end{enumerate}
+
 \subsubsection{Nyquist Rate}\label{subsubsec:Nyquist Rate}
 \subsubsection{Nyquist Frequency}\label{subsubsec:Nyquist Frequency}
 
@@ -164,7 +174,18 @@ The concept of a \nameref{def:Frequency Alias} is drawn from the idea that discr
 \end{definition}
 
 \subsubsection{Quantization}\label{subsubsec:Quantization}
+\begin{definition}[Quantization]\label{def:Quantization}
+  This is the conversion of a discrete-time continuous-valued signal into a discrete-time, discrete-value (digital) signal.
+  The value of each signal sample is represented by a value selected from a finite set of possible values.
+  The difference between the unquantized sample $x(n)$ and the quantized output $x_{q}(n)$ is called the \nameref{def:Quantization Error}.
+\end{definition}
+
 \paragraph{Quantization Levels}\label{par:Quantization Levels}
+\paragraph{Quantization Error}\label{par:Quantization Error}
+\begin{definition}[Quantization Error]\label{def:Quantization Error}
+  The \emph{quantization error} of something.
+\end{definition}
+
 \paragraph{Bit Requirements}\label{par:Quantization Bit Requirements}
 \paragraph{Bit Rate}\label{par:Quantization Bit Rate}
 %%% Local Variables:
