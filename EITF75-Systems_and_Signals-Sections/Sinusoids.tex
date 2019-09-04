@@ -110,11 +110,48 @@ Using~\eqref{eq:Discrete Time Sinusoid} and~\eqref{eq:Discrete Angular Frequency
 \subsubsection{Properties of Discrete-Time Sinusoidal Signals}\label{subsubsec:Properties Discrete-Time Sinusoids}
 \begin{propertylist}
 \item A discrete-time sinusoid is periodic \textbf{\emph{ONLY}} if its frequency is a rational number.
-\item Discrete-time sinusoids whose frequencies are separated by an integer multiple of $2\pi$ are identical.
-\item The highest rate of oscillation in a discrete-time sinusoid is attained when $\omega = \pm \pi$ or, equivalently, $f= \pm \frac{1}{2}$.
+\item Discrete-time sinusoids whose frequencies are separated by an integer multiple of $2\pi$ are identical. This leads us to the idea of a \nameref{def:Frequency Alias}.\label{prop:Discrete-Time Integer Multiple}
+\item The highest rate of oscillation in a discrete-time sinusoid is attained when $\omega = \pm \pi$ or, equivalently, $f= \pm \frac{1}{2}$.\label{prop:Discrete-Time Frequency Limit}
 \end{propertylist}
 
 \subsubsection{Frequency Aliases}\label{subsubsec:Frequency Aliases}
+The concept of a \nameref{def:Frequency Alias} is drawn from the idea that discrete-time sinusoids whose frequencies are separated by an integer mutliple of $2\pi$ are identical and that frequencies $\lvert f \rvert > \frac{1}{2}$ are identical.
+(Properties~\ref{prop:Discrete-Time Integer Multiple} and~\ref{prop:Discrete-Time Frequency Limit})
+
+\begin{definition}[Frequency Alias]\label{def:Frequency Alias}
+  A \emph{frequency alias} is a sinusoid having a frequency $\lvert \omega \rvert > \pi$ or $\lvert f \rvert > \frac{1}{2}$.
+  This is because this sinusoid is \emph{indistinguishable} (\emph{identical}) to one with  frequency $\lvert \omega \rvert < \pi$ or $\lvert f \rvert < \frac{1}{2}$.
+  \newline
+  \begin{blackbox}
+    A \emph{frequency alias} is a sequence resulting from the
+    following assertion based on the sinusoid
+    $\cos(\omega_{0}n + \theta)$.
+
+    It follows that
+    \begin{equation*}
+      \cos \left[ \left( \omega_{0} + 2\pi \right)n + \theta \right] = \cos \left( \omega_{0}n + 2\pi n + \theta \right) = \cos (\omega_{0}n + \theta
+    \end{equation*}
+
+    As a result, all sinusoidal sequences
+    \begin{equation*}
+      x_{k}(n) = A \cos (\omega_{k}n + \theta) , \> k=0, 1, 2, \ldots
+    \end{equation*}
+
+    where
+    \begin{equation*}
+      \omega k = \omega_{0} + 2k \pi , \> -\pi \leq \omega_{0} \leq \pi
+    \end{equation*}
+
+    are \emph{indistinguishable} (i.e., \emph{identical}). \newline
+  \end{blackbox}
+
+  Because of this, we regard frequencies in the range of $-\pi \leq \omega \leq \pi$ or $-\frac{1}{2} \leq f \leq \frac{1}{2}$ as unique, and all frequencies that fall outside of these ranges as aliases.
+
+  \begin{remark}
+    It should be noted that there is a difference between discrete-time sinusoids and continuous-time sinusoids here.
+    Continuous-time sinusoids have distinct signals for $\Omega$ or $F$ in the entire range $-\infty < \Omega < \infty$ or $-\infty < F < \infty$.
+  \end{remark}
+\end{definition}
 
 \subsection{Sampling Rates and Sampling Frequency}\label{subsec:Sampling Rates and Frequency}
 \subsubsection{Nyquist Rate}\label{subsubsec:Nyquist Rate}
