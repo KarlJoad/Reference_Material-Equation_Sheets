@@ -132,10 +132,53 @@ The following signals are basic signals that appear often and play an important 
 \end{definition}
 
 \subsection{Classification of Discrete-Time Signals}\label{subsec:Classification Discrete-Time Signals}
+In order to apply some mathematical methods to discrete-time signals, we must characterize these signals.
+
 \subsubsection{Energy Signal}\label{subsubsec:Energy Signal}
+\begin{definition}[Energy Signal]\label{def:Energy Signal}
+  The energy $E$ of a signal $x(n)$ is defined as
+  \begin{equation}\label{eq:Energy Signal}
+    E \equiv \sum_{n=-\infty}^{\infty} \lvert x(n) \rvert ^{2}
+  \end{equation}
+  The energy of a signal can be finite or infinite. If $E$ is finite ($0 < E < \infty$), then $x(n)$ is called an \emph{energy signal}.
+\end{definition}
+
 \subsubsection{Power Signal}\label{subsubsec:Power Signal}
+\begin{definition}[Power Signal]\label{def:Power Signal}
+  The average power of a discrete time signal $x(n)$ is defined as
+  \begin{equation}\label{eq:Power Signal}
+    P = \lim_{N \rightarrow \infty} \frac{1}{2N+1} \sum_{n=-N}^{N} \lvert x(n) \rvert ^{2}
+  \end{equation}
+
+  This means that there are 2 potential outcomes:
+  \begin{enumerate}[noitemsep]
+  \item If $E$ is finite, $P=0$
+  \item If $E$ is infinite, $P$ may be either finite or infinite
+  \end{enumerate}
+
+  If $P$ is finite and nonzero, the signal is called a \emph{power signal}.
+\end{definition}
+
 \subsubsection{Periodic and Aperiodic Signals}\label{subsubsec:Periodic Aperiodic Signals}
+A signal $x(n)$ is periodic with period $N$ ($N>0$) if and only if
+\begin{equation}\label{eq:Periodic Signal}
+  x(n+N) = x(n) \text{for all } n
+\end{equation}
+
+The smallest value of $N$ for which~\eqref{eq:Periodic Signal} holds is called the fundamental period.
+If there is no value of $N$ that satisfies~\eqref{eq:Periodic Signal}, the signal is called \emph{nonperiodic} or \emph{aperiodic}.
+
 \subsubsection{Symmetric and Antisymmetric Signals}\label{subsubsec:Symmetric and Antisymmetric Signals}
+A real-valued signal $x(n)$ is called \emph{symmetric} or \emph{even} if
+\begin{equation}\label{eq:Symmetric Signal}
+  x(n) = x(-n)
+\end{equation}
+
+On the other hand, a signal $x(n)$ is called \emph{antisymmetric} or \emph{odd} if
+\begin{equation}\label{eq:Asymmetric Signal}
+  x(n) = -x(-n)
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
