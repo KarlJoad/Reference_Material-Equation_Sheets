@@ -1,0 +1,142 @@
+\section{Discrete-Time Systems}\label{sec:Discrete-Time Systems}
+As discussed in \Cref{subsec:Discrete-Time Signals}, $x(n)$ is a function of an independent variable that is an integer.
+It is important to note that a discrete-time signal is \emph{not defined} at instants between the samples.
+Also, if $n$ is not an integer, $x(n)$ is not defined.
+
+Besides graphical representation of a discrete-time system, there are 3 ways to represent a discrete-time signal.
+\begin{enumerate}[noitemsep]
+\item \nameref{subsubsec:Functional Representation}
+\item \nameref{subsubsec:Tabular Representation}
+\item \nameref{subsubsec:Sequence Representation}
+\end{enumerate}
+
+\subsection{Representing Discrete-Time Systems}\label{subsec:Representing Discrete-Time Systems}
+\subsubsection{Functional Representation}\label{subsubsec:Functional Representation}
+This representation of a discrete-time system is done as a mathematical function.
+\begin{equation}\label{eq:Functional Representation}
+  x(n) = \begin{cases}
+    1 ,& \text{for } n = 1,3 \\
+    4 ,& \text{for } n = 2 \\
+    0 ,& \text{elsewhere}
+  \end{cases}
+\end{equation}
+
+\subsubsection{Tabular Representation}\label{subsubsec:Tabular Representation}
+This representation of a discrete-time sysem is done as a table of corresponding values.
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c|cccccccccc}
+    $n$ & $\ldots$ & -2 & -1 & 0 & 1 & 2 & 3 & 4 & 5 & $\ldots$ \\ \midrule
+    $x(n)$ & $\ldots$ & 0 & 0 & 0 & 1 & 4 & 1 & 0 & 0 & $\ldots$
+  \end{tabular}
+\end{table}
+
+\subsubsection{Sequence Representation}\label{subsubsec:Sequence Representation}
+There are 2 methods of representation for this.
+The first includes all values for $-\infty < n < \infty$.
+In all cases, $n=0$ is marked in the sequence, somehow.
+I will do this with an underline.
+\begin{equation}\label{eq:Infinite Sequence Representation}
+  x(n) = \lbrace \ldots, 0, \underline{0}, 1, 4, 1, 0, 0, \ldots \rbrace
+\end{equation}
+
+The second only works if all $x(n)$ values for $n < 0$ are 0.
+\begin{equation}\label{eq:Zero Sequence Representation}
+  x(n) = \lbrace \underline{0}, 1, 4, 1, 0, 0, \ldots \rbrace
+\end{equation}
+
+A finite-duration sequence can be represented as
+\begin{equation}\label{eq:Finite Sequence Representation}
+  x(n) = \lbrace 3, -1, \underline{-2}, 5, 0, 4, -1 \rbrace
+\end{equation}
+This is identified as a seven-point sequence.
+
+A finite-duration sequence where $x(n)=0$ for all $n<0$ is represented as
+\begin{equation}\label{eq:Zero Finite Sequence Representation}
+  x(n) = \lbrace \underline{0}, 1, 4, 1 \rbrace
+\end{equation}
+This is identified as a four-point sequence.
+
+\subsection{Elementary Discrete-Time Signals}\label{subsec:Elementary Discrete-Time Signals}
+The following signals are basic signals that appear often and play an important role in signal processing.
+
+\subsubsection{Unit Impulse Signal}\label{subsubsec:Unit Impulse Signal}
+\begin{definition}[Unit Impulse Signal]\label{def:Unit Impulse Signal}
+  The \emph{unit impulse signal} or \emph{unit sample sequence} is denoted as $\delta(n)$ and is defined as
+  \begin{equation}\label{eq:Unit Impulse Signal}
+    \delta(n) \equiv = \begin{cases}
+      1, & \text{for } n = 0 \\
+      0, & \text{for } n \neq 0
+    \end{cases}
+  \end{equation}
+
+  This function is a signal that is zero everywhere, except at $n=0$, where its value is $1$.
+
+  \begin{remark}
+    This signal is different that the analog signal $\delta (t)$, which is also called a unit impulse, and is defined to be 0 everywhere except $t=0$.
+    The discrete unit impulse sequence is much less mathematically complicated.
+  \end{remark}
+\end{definition}
+
+\subsubsection{Unit Step Signal}\label{subsubsec:Unit Step Signal}
+\begin{definition}[Unit Step Signal]\label{def:Unit Step Signal}
+  The \emph{unit step signal} is denoted as $u(n)$ and is defined as
+  \begin{equation}\label{eq:Unit Step Signal}
+    u(n) \equiv \begin{cases}
+      1, & \text{for } n \geq 0 \\
+      0, & \text{for } n < 0
+    \end{cases}
+  \end{equation}
+\end{definition}
+
+\subsubsection{Unit Ramp Signal}\label{subsubsec:Unit Ramp Signal}
+\begin{definition}[Unit Ramp Signal]\label{def:Unit Ramp Signal}
+  The \emph{unit ramp signal} is denoted as $u_{r}(n)$ and is defined as
+  \begin{equation}\label{eq:Unit Ramp Signal}
+    u_{r}(n) \equiv \begin{cases}
+      n, & \text{for } n \geq 0 \\
+      0, & \text{for } n < 0
+    \end{cases}
+  \end{equation}
+\end{definition}
+
+\subsubsection{Exponential Signal}\label{subsubsec:Exponential Signal}
+\begin{definition}[Exponential Signal]\label{def:Exponential Signal}
+  The \emph{exponential signal} is a sequence of the form
+  \begin{equation}\label{eq:Exponential Signal}
+    x(n) = a^{n} \>\> \text{for all } n
+  \end{equation}
+
+  If $a$ is real, then $x(n)$ is a real signal.
+  When $a$ is complex valued ($a \equiv b \pm c j$), it can be expressed as
+   \begin{equation}\label{eq:Complex Exponential Signal}
+     \begin{aligned}
+       x(n) &= r^{n} e^{j \theta n} \\
+       &= r^{n} \left( \cos \theta n + j \sin \theta n \right)
+     \end{aligned}
+   \end{equation}
+  This can be expressed by graphing the real and imaginary parts
+  \begin{equation}\label{eq:Real Imaginary Complex Exponential Signal}
+    \begin{aligned}
+      x_{R}(n) &\equiv r^{n} \cos \theta n \\
+      x_{I}(n) &\equiv r^{n} j \sin \theta n
+    \end{aligned}
+  \end{equation}
+  or by graphing the amplitude function and phase function.
+  \begin{equation}\label{eq:Amplitude Phase Complex Exponential Signal}
+    \begin{aligned}
+      \lvert x(n) \rvert &= A(n) \equiv r^{n} \\
+      \angle x(n) &= \phi(n) \equiv \theta n
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\subsection{Classification of Discrete-Time Signals}\label{subsec:Classification Discrete-Time Signals}
+\subsubsection{Energy Signal}\label{subsubsec:Energy Signal}
+\subsubsection{Power Signal}\label{subsubsec:Power Signal}
+\subsubsection{Periodic and Aperiodic Signals}\label{subsubsec:Periodic Aperiodic Signals}
+\subsubsection{Symmetric and Antisymmetric Signals}\label{subsubsec:Symmetric and Antisymmetric Signals}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
+%%% End:
