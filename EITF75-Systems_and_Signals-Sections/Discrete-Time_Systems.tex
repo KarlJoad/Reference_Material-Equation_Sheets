@@ -181,13 +181,62 @@ On the other hand, a signal $x(n)$ is called \emph{antisymmetric} or \emph{odd} 
 
 \subsection{Discrete-Time Signal Manipulations}\label{subsec:Discrete-Time Signal Manipulations}
 \subsubsection{Transformation of the Independent Variable (Time)}\label{subsubsec:Transform Independent Variable}
+It is important to note that \nameref{par:Shifting in Time} and \nameref{par:Folding} are not commutative.
+For example,
+\begin{equation}\label{eq:Delay then Fold}
+  \TimeDelay \lbrace \FoldTime \left[ x(n) \right] \rbrace = \TimeDelay \left[ x(-n) \right] = x(-n + k)
+\end{equation}
+whereas
+\begin{equation}\label{eq:Fold then Delay}
+  \FoldTime \lbrace \TimeDelay \left[ x(n) \right] \rbrace = \FoldTime \left[ x(n-k) \right] = x(-n-k)
+\end{equation}
+
 \paragraph{Shifting in Time}\label{par:Shifting in Time}
+A signal $x(n)$ may be shifted in time by replacing the independent variable $n$ by $n-k$, where $k$ is an integer.
+If $k$ is a positive integer, the time shift results in a delay of the signal by $k$ units of time (moves left).
+If $k$ is a negative integer, the time shift results in an advance of the signal by $\lvert k \rvert$ units of time (moves right).
+
+This could be denoted by
+\begin{equation}\label{eq:Shifting in Time}
+  \TimeDelay \left[ x(n) \right] = x(n-k)
+\end{equation}
+
+You cannot advance a signal that is being generated in real-time.
+Because that would involve signal samples that haven't been generated yet.
+So, you can only advance a signal that is stored on something.
+However, you can always introduce a delay to a signal.
+
 \paragraph{Folding}\label{par:Folding}
+Another useful modification of the time base is to replace $n$ with $-n$.
+The result is a \emph{folding} or \emph{reflection} of the original signal around $n=0$.
+
+This could be denoted by
+\begin{equation}\label{eq:Folding}
+  \FoldTime \left[ x(n) \right] = x(-n)
+\end{equation}
 
 \subsubsection{Addition, Multiplication, and Scaling}\label{subsubsec:Addition Multiplication and Scaling}
-\paragraph{Addition}\label{par:Addition}
-\paragraph{Multiplication}\label{par:Multiplication}
+Amplitude modifications include \nameref{par:Amplitude Addition}, \nameref{par:Amplitude Multiplication}, and \nameref{par:Amplitude Scaling}.
+
+\paragraph{Addition}\label{par:Amplitude Addition}
+The \emph{sum} of 2 signals $x_{1}(n)$ and $x_{2}(n)$ is a signal $y(n)$ whose value at any instant is equal to the sum of the values of these two signals at that instant.
+\begin{equation}\label{eq:Amplitude Addition}
+  y(n) = x_{1}(n) + x_{2}(n), \> -\infty < n < \infty
+\end{equation}
+
+\paragraph{Multiplication}\label{par:Amplitude Multiplication}
+The \emph{product} of two signals $x_{1}(n)$ and $x_{2}(n)$ is a signal $y(n)$ whose value at any instant is equal to the product of the values of these two signals at that instant.
+\begin{equation}\label{eq:Amplitude Multiplication}
+  y(n) = x_{1}(n) x_{2}(n), \> -\infty < n < \infty
+\end{equation}
+
 \paragraph{Amplitude Scaling}\label{par:Amplitude Scaling}
+\emph{Amplitude scaling} of a signal by a constant $A$ is accomplished by multiplying every signal smaple by $A$.
+Consequently, we obtain
+\begin{equation}\label{eq:Amplitude Scaling}
+  y(n) = A x(n), \> -\infty < n < \infty
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
