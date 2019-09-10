@@ -10,11 +10,59 @@ The \nameref{def:Z-Transform} plays the same role in the analysis of discrete-ti
 \end{definition}
 
 \subsubsection{The One-Sided $Z$-Transform}\label{subsubsec:One-Sided Z-Transform}
+\begin{definition}[One-Sided $Z$-Transform]\label{def:One-Sided Z-Transform}
+  The \emph{one-sided $z$-transform} is the same as the \nameref{def:Z-Transform}, but is only defined at $n$ values greater than or equal to 0.
+  \begin{equation}\label{eq:One-Sided Z-Transform}
+    X(z) \equiv \sum_{n=0}^{\infty} x(n)z^{-n}
+  \end{equation}
+\end{definition}
+
+The \nameref{def:One-Sided Z-Transform} is generally used when there are initial conditions on a causal signal.
+This captures the normal causal portion of the signal, while also showing the effect of the initial condition.
+
 \subsection{The Inverse $Z$-Transform}\label{subsec:Inverse Z-Transform}
+This is the formal definition of \nameref{subsec:Inverse Z-Transform}.
+\begin{equation}\label{eq:Inverse Z-Transform}
+  x(n) = \frac{1}{2 \pi j} \oint_{C} X(z) z^{n-1} \, dz
+\end{equation}
+where the integrals is a contour integral over a closed path C that encloses the origin and lies within the region of convergence of $X(z)$.
+
+There are 3 methods that are often used for the evaluation of the inverse $z$-transform in practice:
+\begin{enumerate}[noitemsep]
+\item Direct evaluation of~\eqref{eq:Inverse Z-Transform}.
+\item Expansion into a series of terms, in the variable s$z$ and $z^{-1}$.
+\item Partial-fraction expansion and table lookup.
+\end{enumerate}
+
 \subsubsection{The Inverse $Z$-Transform by Contour Integration}\label{subsubsec:Inverse Z-Transform by Contour Integration}
+\begin{definition}[Cauchy's Integral Theorem]\label{def:Cauchy Integral Theorem}
+  Let $f(z)$ be a function of the complex variable $z$ and $C$ be a closed path in the $z$-plane.
+  If the derivative $\frac{\mathrm{d}f(z)}{\mathrm{d}z}$ exists on and inside the contour $C$ and if $f(z)$ has no poles at $z = z_{0}$, then
+  \begin{equation}\label{eq:Cauchy Integral Theorem Specfic}
+    \frac{1}{2 \pi j} \oint_{C} \frac{f(z)}{z-z_{0}} \, \mathrm{d}z = \begin{cases}
+      f(z_{0}), & \text{ if $z_{0}$ is inside $C$} \\
+      0, & \text{ if $z_{0}$ is outside $C$}
+    \end{cases}
+  \end{equation}
+
+  More generally, if the $(k+1)$-order derivative of $f(z)$ exists and $f(z)$ has no poles at $z = z_{0}$, then
+  \begin{equation}\label{eq:Cauchy Integral THeorem General}
+    \frac{1}{2 \pi j} \oint_{C} \frac{f(z)}{\left( z-z_{0} \right)^{k}} \, \mathrm{d}z = \begin{cases}
+      \frac{1}{\left( k-1 \right)!} \frac{\mathrm{d}^{k-1}f(z)}{\mathrm{d}z^{k-1}} \bigg \vert_{z=z_{0}}, & \text{ if $z_{0}$ is inside $C$} \\
+      0, & \text{ if $z_{0}$ is outside $C$}
+    \end{cases}
+  \end{equation}
+\end{definition}
+
+
 \subsubsection{The Inverse $Z$-Transform by Power Series Expansion}\label{subsubsec:Inverse Z-Transform by Power Series Expansion}
 \subsubsection{The Inverse $Z$-Transform by Partial-Fraction Expansion}\label{subsubsec:Inverse Z-Transform by Partial-Fraction Expansion}
 \subsection{Properties of the $Z$-Transform}\label{subsec:Z-Transform Properties}
+\begin{propertylist}
+\item 
+\end{propertylist}
+
+\subsubsection{Properties of the One-Sided $Z$-Transform}\label{subsubsec:One-Sided Z-Transform Properties}
 \begin{propertylist}
 \item 
 \end{propertylist}
