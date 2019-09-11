@@ -1,15 +1,81 @@
-\section{The $Z$-Transform}\label{sec:Z-Transform}
+\section{The \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{sec:Z-Transform}
 The \nameref{def:Z-Transform} plays the same role in the analysis of discrete-time signals and LTI systems as the \nameref{def:Laplace Transform} does in the analysis of continuous time-signals and LTI systems.
 
-\subsection{The $Z$-Transform}\label{subsec:Z-Transform}
+\subsection{The \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:Z-Transform}
 \begin{definition}[$Z$-Transform]\label{def:Z-Transform}
   The \emph{$z$-transform} is defined as the power series
   \begin{equation}\label{eq:Z-Transform}
-    X(z) \equiv \sum_{n=-\infty}^{\infty} x(n)z^{-n}
+    % X(z) \equiv \sum_{n=-\infty}^{\infty} x(n)z^{-n}
   \end{equation}
+
+  \begin{remark}
+    For convenience, the $z$-transform of a signal $x(n)$ is denoted by
+    \begin{equation}\label{eq:Z-Transform Representation}
+      X(z) \equiv \ZTransform \lbrace x(n) \rbrace
+    \end{equation}
+    and the relationship between $x(n)$ and $X(z)$ is indicated by
+    \begin{equation}\label{eq:Z-Transform Relationship}
+      x(n) \overset{z}{\leftrightarrow} X(z)
+    \end{equation}
+  \end{remark}
 \end{definition}
 
-\subsubsection{The One-Sided $Z$-Transform}\label{subsubsec:One-Sided Z-Transform}
+\subsubsection{Region of Convergence}\label{subsubsec:ROC}
+\begin{definition}[ROC]\label{def:ROC}
+  The \emph{ROC} or \emph{region of convergence} is the region for which the infinite power series in the $z$-transform has a convergent solution.
+  \begin{remark}
+    \textbf{\emph{Any time we cite a $z$-transform, we should also indicate its \nameref{def:ROC}}}
+  \end{remark}
+\end{definition}
+
+\begin{example}[]{Simple $Z$-Transform}
+  Determine the $z$-transform of the signal
+  \begin{equation*}
+    x(n) = \left( \frac{1}{2} \right)^{n} \UnitStep(n)
+  \end{equation*}
+
+  \tcblower
+
+  The $z$-transform is the infinite power series
+  \begin{equation*}
+    \begin{aligned}
+      X(z) &= 1 + \frac{1}{2}z^{-1} + {\left( \frac{1}{2} \right)}^{-2} + \cdots + {\left( \frac{1}{2} \right)}^{n}z^{-n} + \cdots \\
+      &= \sum_{n=0}^{\infty} {\left( \frac{1}{2} \right)}^{n}z^{-n} = \sum_{n=0}^{\infty} {\left( \frac{1}{2}z^{-1} \right)}^{n}
+    \end{aligned}
+  \end{equation*}
+  Because this is an infinite geometric series, we can solve with with our equivalency:
+  \begin{equation*}
+    1 + A + A^{2} + \cdots + A^{n} + \cdots = \frac{1}{1-A} \> \text{if } \lvert A \rvert < 1
+  \end{equation*}
+
+  Thus, $X(z)$ converges to
+  \begin{equation*}
+    X(z) = \frac{1}{1-\frac{1}{2}z^{-1}}, \quad \ROC: \lvert z \rvert > \frac{1}{2}
+  \end{equation*}
+\end{example}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    Signal & ROC \\
+    \midrule
+    \multicolumn{2}{c}{Finite-Duration Signals} \\
+    Causal & Entire $z$-plane except $z=0$ \\
+    Anticausal & Entire $z$-plane except $z=\infty$ \\
+    Two-Sided & Entire $z$-plane except $z=0$ and $z=\infty$ \\
+    \midrule
+    \multicolumn{2}{c}{Infinite-Duration Signals} \\
+    Causal & $\lvert z \rvert > r_{2}$ \\
+    Anticausal & $\lvert z \rvert < r_{1}$ \\
+    Two-Sided & $r_{2} < \lvert z \rvert < r_{1}$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Characteristic Familes of Signals with Their Corresponding ROCs}
+  \label{tab:Z-Transform ROC Correspondence}
+\end{table}
+
+\subsubsection{The One-Sided \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsubsec:One-Sided Z-Transform}
 \begin{definition}[One-Sided $Z$-Transform]\label{def:One-Sided Z-Transform}
   The \emph{one-sided $z$-transform} is the same as the \nameref{def:Z-Transform}, but is only defined at $n$ values greater than or equal to 0.
   \begin{equation}\label{eq:One-Sided Z-Transform}
@@ -20,7 +86,7 @@ The \nameref{def:Z-Transform} plays the same role in the analysis of discrete-ti
 The \nameref{def:One-Sided Z-Transform} is generally used when there are initial conditions on a causal signal.
 This captures the normal causal portion of the signal, while also showing the effect of the initial condition.
 
-\subsection{The Inverse $Z$-Transform}\label{subsec:Inverse Z-Transform}
+\subsection{The Inverse \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:Inverse Z-Transform}
 This is the formal definition of \nameref{subsec:Inverse Z-Transform}.
 \begin{equation}\label{eq:Inverse Z-Transform}
   x(n) = \frac{1}{2 \pi j} \oint_{C} X(z) z^{n-1} \, dz
@@ -34,7 +100,7 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
 \item Partial-fraction expansion and table lookup.
 \end{enumerate}
 
-\subsubsection{The Inverse $Z$-Transform by Contour Integration}\label{subsubsec:Inverse Z-Transform by Contour Integration}
+\subsubsection{The Inverse \texorpdfstring{$Z$-Transform}{Z-Transform} by Contour Integration}\label{subsubsec:Inverse Z-Transform by Contour Integration}
 \begin{definition}[Cauchy's Integral Theorem]\label{def:Cauchy Integral Theorem}
   Let $f(z)$ be a function of the complex variable $z$ and $C$ be a closed path in the $z$-plane.
   If the derivative $\frac{\mathrm{d}f(z)}{\mathrm{d}z}$ exists on and inside the contour $C$ and if $f(z)$ has no poles at $z = z_{0}$, then
@@ -55,22 +121,70 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
 \end{definition}
 
 
-\subsubsection{The Inverse $Z$-Transform by Power Series Expansion}\label{subsubsec:Inverse Z-Transform by Power Series Expansion}
-\subsubsection{The Inverse $Z$-Transform by Partial-Fraction Expansion}\label{subsubsec:Inverse Z-Transform by Partial-Fraction Expansion}
-\subsection{Properties of the $Z$-Transform}\label{subsec:Z-Transform Properties}
+\subsubsection{The Inverse \texorpdfstring{$Z$-Transform}{Z-Transform} by Power Series Expansion}\label{subsubsec:Inverse Z-Transform by Power Series Expansion}
+\subsubsection{The Inverse \texorpdfstring{$Z$-Transform}{Z-Transform} by Partial-Fraction Expansion}\label{subsubsec:Inverse Z-Transform by Partial-Fraction Expansion}
+\subsection{Properties of the \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:Z-Transform Properties}
+\begin{propertylist}
+\item \nameref{subsubsec:Linearity}
+\item \nameref{subsubsec:Time Shifting}
+\item \nameref{subsubsec:Z-Domain Scaling}
+\item \nameref{subsubsec:Time Reversal}
+\item \nameref{subsubsec:Z-Domain Differentiation}
+\item \nameref{subsubsec:Z-Domain Convolutions}
+\item \nameref{subsubsec:2 Sequence Correlation}
+\item \nameref{subsubsec:2 Sequence Multiplication}
+\item \nameref{subsubsec:Parsevals Relation}
+\item \nameref{subsubsec:Initial Value Theorem}
+\end{propertylist}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{4cm}ccp{5cm}}
+    \toprule
+    Property & Time Domain & $z$-Domain & $\ROC$ \\
+    \midrule
+    Notation & $x(n)$ & $X(z)$ & $\ROC: r_{2} < \lvert z \rvert < r_{1}$ \\
+             & $x_{1}(n)$ & $X_{1}(z)$ & $\ROC_{1}$ \\
+             & $x_{2}(n)$ & $X_{2}(z)$ & $\ROC_{2}$ \\
+    \nameref{subsubsec:Linearity} & $a_{1}x_{1}(n) + a_{2}x_{2}(n)$ & $a_{1}X_{1}(z) + a_{2}X_{2}(z)$ & At least the intersection of $\ROC_{1}$ and $\ROC_{2}$ \\
+    \nameref{subsubsec:Time Shifting} & $x(n-k)$ & $z^{-k}X(z)$ & That of $X(z)$, except $z=0$ if $k>0$ and $z=\infty$ if $k<0$ \\
+    \nameref{subsubsec:Z-Domain Scaling} & $a^{n}x(n)$ & $X(a^{-1}z)$ & $\lvert a \rvert r_{2} < \lvert z \rvert < \lvert a \rvert r_{1}$ \\
+    \nameref{subsubsec:Time Reversal} & $x(-n)$ & $X(z^{-1})$ & $\frac{1}{r_{1}} < \lvert z \rvert < \frac{1}{r_{2}}$ \\
+    Conjugation & $x^{*}(n)$ & $X^{*}(z^{*})$ & $\ROC$ \\
+    Real Part & $\Re \lbrace x(n) \rbrace$ & $\frac{1}{2} \left[ X(z) + X^{*}(z^{*}) \right]$ & Includes $\ROC$ \\
+    Imaginary Part & $\Im \lbrace x(n) \rbrace$ & $\frac{1}{2} j \left[ X(z) - X^{*}(z^{*}) \right]$ & Includes $\ROC$ \\
+    \nameref{subsubsec:Z-Domain Differentiation} & $nx(n)$ & $-z \frac{dX(z)}{dz}$ & $r_{2} < \lvert z \rvert r_{1}$ \\
+    \nameref{subsubsec:Z-Domain Convolutions} & $x_{1} * x_{2}$ & $X_{1}(z)X_{2}(z)$ & At least, the intersection of $\ROC_{1}$ and $\ROC_{2}$ \\
+    \nameref{subsubsec:2 Sequence Correlation} & $r_{x_{1}x_{2}}(l) = x_{1}(l) * x_{2}(-l)$ & $R_{x_{1}x_{2}}(z) = X_{1}(z)x_{2}(z^{-1})$ & At least, the intersection of $\ROC$ of $X_{1}(z)$ and $X_{2}(z^{-1})$ \\
+    \nameref{subsubsec:Initial Value Theorem} & If $x(n)$ causal & $x(0) = \lim\limits_{z \rightarrow \infty} X(z)$ & \\
+    \nameref{subsubsec:2 Sequence Multiplication} & $x_{1}(n)x_{2}(n)$ & $\frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}(\frac{z}{v}) v^{-1} dv$ & At least, $r_{1l}r_{2l} < \lvert a \rvert < r_{1u}r_{2u}$ \\
+    \nameref{subsubsec:Parsevals Relation} & $\sum\limits_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n)$ &= $\frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}^{*}(\frac{1}{v^{*}})v^{-1} dv$ & \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{subsec:Z-Transform Properties}}
+  \label{tab:Z-Transform Properties}
+\end{table}
+
+\subsubsection{Linearity}\label{subsubsec:Linearity}
+\subsubsection{Time Shifting}\label{subsubsec:Time Shifting}
+\subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Scaling}\label{subsubsec:Z-Domain Scaling}
+\subsubsection{Time Reversal}\label{subsubsec:Time Reversal}
+\subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Differentiation}\label{subsubsec:Z-Domain Differentiation}
+\subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Convolutions}\label{subsubsec:Z-Domain Convolutions}
+\subsubsection{2 Sequence Correlation}\label{subsubsec:2 Sequence Correlation}
+\subsubsection{2 Sequence Multiplication}\label{subsubsec:2 Sequence Multiplication}
+\subsubsection{Parsevals Relation}\label{subsubsec:Parsevals Relation}
+\subsubsection{Initial Value Theorem}\label{subsubsec:Initial Value Theorem}
+
+\subsection{Properties of the One-Sided \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:One-Sided Z-Transform Properties}
 \begin{propertylist}
 \item 
 \end{propertylist}
 
-\subsubsection{Properties of the One-Sided $Z$-Transform}\label{subsubsec:One-Sided Z-Transform Properties}
-\begin{propertylist}
-\item 
-\end{propertylist}
+\subsection{Rational \texorpdfstring{$Z$-Transforms}{Z-Transform}}\label{subsec:Rational Z-Transforms}
+\subsubsection{Decomposition of Rational \texorpdfstring{$Z$-Transforms}{Z-Transform}}\label{subsubsec:Decompose Rational Z-Transforms}
 
-\subsection{Rational $Z$-Transforms}\label{subsec:Rational Z-Transforms}
-\subsubsection{Decomposition of Rational $Z$-Transforms}\label{subsubsec:Decompose Rational Z-Transforms}
-
-\subsection{Analysis of LTI Systems in the $Z$-Domain}\label{subsec:Analysis LTI Systems Z-Domain}
+\subsection{Analysis of LTI Systems in the \texorpdfstring{$Z$-Domain}{Z-Transform}}\label{subsec:Analysis LTI Systems Z-Domain}
 
 %%% Local Variables:
 %%% mode: latex

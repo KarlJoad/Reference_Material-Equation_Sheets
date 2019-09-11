@@ -25,6 +25,7 @@
 \counterwithin{equation}{section}
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4} % Include \paragraph in toc
+\counterwithin{table}{section}
 
 % Create a theorem environment
 \theoremstyle{plain}
@@ -58,6 +59,8 @@
 \setlist[boldalphlist, 1]{label=\textbf{(\alph*)}, ref=\alph*, noitemsep, nolistsep} % Set options
 
 % Create a tcolorbox for examples
+% /begin{example}[extra name]{NAME}
+% NAME is mandatory, but neither can have commas in it.
 \newtcolorbox[auto counter,
 number within=section,
 number format=\arabic,
@@ -100,7 +103,10 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 % Redefine the 'end of proof' symbol to be a black square, not blank
 \renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
 
+\renewcommand{\Re}{\operatorname{Re}} % Redefine to use the command, but not the fraktur version
+\renewcommand{\Im}{\operatorname{Im}} % Redefine to use the command, but not the fraktur version
 % Math Operators that are useful to abstract the written math away to one spot
+\DeclareMathOperator{\DiffD}{\mathrm{d}} % Used for differentiation fractions
 \DeclareMathOperator{\RealNums}{\mathbb{R}}
 \DeclareMathOperator{\AllIntegers}{\mathbb{Z}}
 \DeclareMathOperator{\PositiveInts}{\mathbb{Z}^{+}}
@@ -109,6 +115,10 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 \DeclareMathOperator{\TimeDelay}{\mathrm{TD}_{k}}
 \DeclareMathOperator{\FoldTime}{\mathrm{FD}}
 \DeclareMathOperator{\SignalOperator}{\mathcal{T}}
+\DeclareMathOperator{\Lapl}{\mathcal{L}} % Declare a Laplace symbol to be used
+\DeclareMathOperator{\ZTransform}{Z}
+\DeclareMathOperator{\UnitStep}{\mathcal{U}}
+\DeclareMathOperator{\ROC}{\mathrm{ROC}}
 \DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
 
 \begin{titlepage}
