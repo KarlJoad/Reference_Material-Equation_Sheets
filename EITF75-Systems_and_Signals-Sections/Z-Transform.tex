@@ -134,7 +134,7 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
 \item \nameref{subsubsec:Z-Transform 2 Sequence Correlation}
 \item \nameref{subsubsec:Z-Transform 2 Sequence Multiplication}
 \item \nameref{subsubsec:Parsevals Relation for Z-Transform}
-\item \nameref{subsubsec:Initial Value Theorem}
+\item \nameref{subsubsec:Initial Value Theorem for Z-Transform}
 \end{propertylist}
 
 \begin{table}[h!]
@@ -151,12 +151,12 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
     \nameref{subsubsec:Z-Domain Scaling} & $a^{n}x(n)$ & $X(a^{-1}z)$ & $\lvert a \rvert r_{2} < \lvert z \rvert < \lvert a \rvert r_{1}$ \\
     \nameref{subsubsec:Z-Transform Time Reversal} & $x(-n)$ & $X(z^{-1})$ & $\frac{1}{r_{1}} < \lvert z \rvert < \frac{1}{r_{2}}$ \\
     Conjugation & $x^{*}(n)$ & $X^{*}(z^{*})$ & $\ROC$ \\
-    Real Part & $\Re \lbrace x(n) \rbrace$ & $\frac{1}{2} \left[ X(z) + X^{*}(z^{*}) \right]$ & Includes $\ROC$ \\
+    Real Part & $\Re \lbrace x(n) \rbrace$ & $\frac{1}{2} \left[ X(z) + X^{*}(z^{*}) \right]$ & Includes $\ROC$ \\p
     Imaginary Part & $\Im \lbrace x(n) \rbrace$ & $\frac{1}{2} j \left[ X(z) - X^{*}(z^{*}) \right]$ & Includes $\ROC$ \\
     \nameref{subsubsec:Z-Domain Differentiation} & $nx(n)$ & $-z \frac{dX(z)}{dz}$ & $r_{2} < \lvert z \rvert r_{1}$ \\
     \nameref{subsubsec:Z-Domain Convolutions} & $x_{1} * x_{2}$ & $X_{1}(z)X_{2}(z)$ & At least, the intersection of $\ROC_{1}$ and $\ROC_{2}$ \\
     \nameref{subsubsec:Z-Transform 2 Sequence Correlation} & $r_{x_{1}x_{2}}(l) = x_{1}(l) * x_{2}(-l)$ & $R_{x_{1}x_{2}}(z) = X_{1}(z)x_{2}(z^{-1})$ & At least, the intersection of $\ROC$ of $X_{1}(z)$ and $X_{2}(z^{-1})$ \\
-    \nameref{subsubsec:Initial Value Theorem} & If $x(n)$ causal & $x(0) = \lim\limits_{z \rightarrow \infty} X(z)$ & \\
+    \nameref{subsubsec:Initial Value Theorem for Z-Transform} & If $x(n)$ causal & $x(0) = \lim\limits_{z \rightarrow \infty} X(z)$ & \\
     \nameref{subsubsec:Z-Transform 2 Sequence Multiplication} & $x_{1}(n)x_{2}(n)$ & $\frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}(\frac{z}{v}) v^{-1} dv$ & At least, $r_{1l}r_{2l} < \lvert a \rvert < r_{1u}r_{2u}$ \\
     \nameref{subsubsec:Parsevals Relation for Z-Transform} & $\sum\limits_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n)$ &= $\frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}^{*}(\frac{1}{v^{*}})v^{-1} dv$ & \\
     \bottomrule
@@ -165,7 +165,7 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
   \label{tab:Z-Transform Properties}
 \end{table}
 
-\subsubsection{Z-Transform Linearity}\label{subsubsec:Z-Transform Linearity}
+\subsubsection{\texorpdfstring{$Z$-Transform}{Z-Transform} Linearity}\label{subsubsec:Z-Transform Linearity}
 If
 \begin{equation*}
   \begin{aligned}
@@ -174,14 +174,14 @@ If
   \end{aligned}
 \end{equation*}
 then
-\begin{equation}\label{eq:Z-Transform Z-Transform Linearity}
+\begin{equation}\label{eq:Z-Transform Linearity}
   x(n) = a_{1}x_{1}(n) + a_{2}x_{2}(n) \ZTransformRelation X(z) = a_{1}X_{1}(z) + a_{2}X_{2}(z)
 \end{equation}
 for any constants $a_{1}$ and $a_{2}$.
 
 The linearity property can be generalized to an arbitrary number of signals.
 
-\begin{example}[Example 3.2.1]{Simple Z-Transform Linearity Problem}
+\begin{example}[Example 3.2.1]{Simple \texorpdfstring{$Z$-Transform}{Z-Transform} Linearity Problem}
   Deermine the $z$-transform and the ROC of the signal
   \begin{equation*}
     x(n) = \left[ 3 \left( 2^{n} \right) - 4 \left( 3^{n} \right) \right] \UnitStep(n)
@@ -192,7 +192,7 @@ The linearity property can be generalized to an arbitrary number of signals.
   Solution on Page 158.
 \end{example}
 
-\begin{example}[Example 3.2.2]{Z-Transform Linearity on Trig Functions}
+\begin{example}[Example 3.2.2]{\texorpdfstring{$Z$-Transform}{Z-Transform} Linearity on Trig Functions}
   Determine the $z$-transform of the signals
   \begin{boldalphlist}
   \item $x(n) = \left( \cos \omega_{0}n \right) \UnitStep(n)$
@@ -204,7 +204,7 @@ The linearity property can be generalized to an arbitrary number of signals.
   Solution on Pages 158-159.
 \end{example}
 
-\subsubsection{Z-Transform Time Shifting}\label{subsubsec:Z-Transform Time Shifting}
+\subsubsection{\texorpdfstring{$Z$-Transform}{Z-Transform} Time Shifting}\label{subsubsec:Z-Transform Time Shifting}
 If
 \begin{equation*}
   x(n) \ZTransformRelation X(z)
@@ -215,7 +215,7 @@ then
 \end{equation}
 The ROC of $z^{-k}X(z)$ is the same as that of $X(z)$ except for $z=0$ if $k > 0$ and $z = \infty$ if $k < 0$.
 
-\begin{example}[Example 3.2.3]{Z-Transform Time Shifting}
+\begin{example}[Example 3.2.3]{\texorpdfstring{$Z$-Transform}{Z-Transform} Time Shifting}
   By applying the time-shifting property, determine the $z$-transform of the signals
   \begin{equation*}
     \begin{aligned}
@@ -246,7 +246,7 @@ then
   a^{n}x(n) \ZTransformRelation X \left( a^{-1}z \right), \> \ROC: \lvert a \rvert r_{1} < \lvert z \rvert < \lvert a \rvert r_{2}
 \end{equation}
 
-\subsubsection{Z-Transform Time Reversal}\label{subsubsec:Z-Transform Time Reversal}
+\subsubsection{\texorpdfstring{$Z$-Transform}{Z-Transform} Time Reversal}\label{subsubsec:Z-Transform Time Reversal}
 If
 \begin{equation*}
   x(n) \ZTransformRelation X(z), \> \ROC: r_{1}< \lvert z \rvert < r_{2}
@@ -256,7 +256,7 @@ then
   x(-n) \ZTransformRelation X(z^{-1}), \ROC: \frac{1}{r_{2}} < \lvert z \rvert < \frac{1}{r_{1}}
 \end{equation}
 
-\begin{example}[Example 3.2.6]{Z-Transform Time Reversal}
+\begin{example}[Example 3.2.6]{\texorpdfstring{$Z$-Transform}{Z-Transform} Time Reversal}
   Determine the $z$-transform of the signal
   \begin{equation*}
     x(n) = \UnitStep(-n)
@@ -284,7 +284,7 @@ then
   nx(n) \ZTransformRelation -z \frac{dX(z)}{dz}
 \end{equation}
 
-\begin{example}[Example 3.2.7]{Z-Domain Differentiation}
+\begin{example}[Example 3.2.7]{\texorpdfstring{$Z$-Domain}{Z-Domain} Differentiation}
   Determine the $z$-transform of the signal
   \begin{equation*}
     x(n) = na^{n}\UnitStep(n)
@@ -317,7 +317,7 @@ then
 \end{equation}
 The ROC of $X(z)$ is, at least, the intersection of that for $X_{1}(z)$ and $X_{2}(z)$.
 
-\begin{example}[Example 3.2.9]{Z-Domain Convolutions}
+\begin{example}[Example 3.2.9]{\texorpdfstring{$Z$-Domain}{Z-Domain} Convolutions}
   Compute the convolution $x(n)$ of the signals
   \begin{align*}
     x_{1}(n) &= \lbrace 1, -2, 1 \rbrace \\
@@ -343,10 +343,9 @@ The ROC of $X(z)$ is, at least, the intersection of that for $X_{1}(z)$ and $X_{
   \begin{equation*}
     x(n) = \lbrace \underline{1}, -1, 0, 0, 0, 0, -1, 1 \rbrace
   \end{equation*}
-
 \end{example}
 
-\subsubsection{Z-Transform 2 Sequence Correlation}\label{subsubsec:Z-Transform 2 Sequence Correlation}
+\subsubsection{\texorpdfstring{$Z$-Transform}{Z-Transform} 2 Sequence Correlation}\label{subsubsec:Z-Transform 2 Sequence Correlation}
 If
 \begin{equation*}
   \begin{aligned}
@@ -359,7 +358,7 @@ then
   r_{x_{1}x_{2}}(l) = \sum\limits_{n=-\infty}^{\infty} x_{1}(n)x_{2}(n-l) \ZTransformRelation R_{x_{1}x_{2}}(z) = X_{1}(z)X_{2}(z^{-1})
 \end{equation}
 
-\begin{example}[Example 3.2.10]{Z-Transform 2 Sequence Correlation}
+\begin{example}[Example 3.2.10]{\texorpdfstring{$Z$-Transform}{Z-Transform} 2 Sequence Correlation}
   Determine the autocorrelation of the signal
   \begin{equation*}
     x(n) = a^{n}\UnitStep(n), \> -1<a<1
@@ -370,7 +369,7 @@ then
   Solution on Page 166.
 \end{example}
 
-\subsubsection{Z-Transform 2 Sequence Multiplication}\label{subsubsec:Z-Transform 2 Sequence Multiplication}
+\subsubsection{\texorpdfstring{$Z$-Transform}{Z-Transform} 2 Sequence Multiplication}\label{subsubsec:Z-Transform 2 Sequence Multiplication}
 If
 \begin{equation*}
   \begin{aligned}
@@ -384,13 +383,17 @@ then
 \end{equation}
 where $C$ is a closed contour that encloses the origin and lies within th eregion of convergence common to both $X_{1}(v)$ and $X_{2}(\frac{1}{v})$.
 
-\subsubsection{Parsevals Relation for Z-Transform}\label{subsubsec:Parsevals Relation for Z-Transform}
+\subsubsection{Parsevals Relation for \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsubsec:Parsevals Relation for Z-Transform}
 If $x_{1}(n)$ and $x_{2}(n)$ are complex-valued sequences, then
 \begin{equation}\label{eq:Parsevals Relation for Z-Transform}
   \sum\limits_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n) = \frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}^{*} \left( \frac{1}{v^{*}} \right) v^{-1} dv
 \end{equation}
 
-\subsubsection{Initial Value Theorem}\label{subsubsec:Initial Value Theorem}
+\subsubsection{Initial Value Theorem for \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsubsec:Initial Value Theorem for Z-Transform}
+If $x(n)$ is \emph{causal} [i.e., $x(n)=0$ for $n<0$], then
+\begin{equation}\label{eq:Initial Value Theorem for Z-Transform}
+  x(0) = \lim\limits_{z\rightarrow\infty}X(z)
+\end{equation}
 
 \subsection{Properties of the One-Sided \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:One-Sided Z-Transform Properties}
 \begin{propertylist}
