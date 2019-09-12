@@ -125,8 +125,8 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
 \subsubsection{The Inverse \texorpdfstring{$Z$-Transform}{Z-Transform} by Partial-Fraction Expansion}\label{subsubsec:Inverse Z-Transform by Partial-Fraction Expansion}
 \subsection{Properties of the \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:Z-Transform Properties}
 \begin{propertylist}
-\item \nameref{subsubsec:Linearity}
 \item \nameref{subsubsec:Time Shifting}
+\item \nameref{subsubsec:Z-Transform Linearity}
 \item \nameref{subsubsec:Z-Domain Scaling}
 \item \nameref{subsubsec:Time Reversal}
 \item \nameref{subsubsec:Z-Domain Differentiation}
@@ -146,8 +146,8 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
     Notation & $x(n)$ & $X(z)$ & $\ROC: r_{2} < \lvert z \rvert < r_{1}$ \\
              & $x_{1}(n)$ & $X_{1}(z)$ & $\ROC_{1}$ \\
              & $x_{2}(n)$ & $X_{2}(z)$ & $\ROC_{2}$ \\
-    \nameref{subsubsec:Linearity} & $a_{1}x_{1}(n) + a_{2}x_{2}(n)$ & $a_{1}X_{1}(z) + a_{2}X_{2}(z)$ & At least the intersection of $\ROC_{1}$ and $\ROC_{2}$ \\
     \nameref{subsubsec:Time Shifting} & $x(n-k)$ & $z^{-k}X(z)$ & That of $X(z)$, except $z=0$ if $k>0$ and $z=\infty$ if $k<0$ \\
+    \nameref{subsubsec:Z-Transform Linearity} & $a_{1}x_{1}(n) + a_{2}x_{2}(n)$ & $a_{1}X_{1}(z) + a_{2}X_{2}(z)$ & At least the intersection of $\ROC_{1}$ and $\ROC_{2}$ \\
     \nameref{subsubsec:Z-Domain Scaling} & $a^{n}x(n)$ & $X(a^{-1}z)$ & $\lvert a \rvert r_{2} < \lvert z \rvert < \lvert a \rvert r_{1}$ \\
     \nameref{subsubsec:Time Reversal} & $x(-n)$ & $X(z^{-1})$ & $\frac{1}{r_{1}} < \lvert z \rvert < \frac{1}{r_{2}}$ \\
     Conjugation & $x^{*}(n)$ & $X^{*}(z^{*})$ & $\ROC$ \\
@@ -165,8 +165,78 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
   \label{tab:Z-Transform Properties}
 \end{table}
 
-\subsubsection{Linearity}\label{subsubsec:Linearity}
 \subsubsection{Time Shifting}\label{subsubsec:Time Shifting}
+\subsubsection{Z-Transform Linearity}\label{subsubsec:Z-Transform Linearity}
+If
+\begin{equation*}
+  \begin{aligned}
+    x_{1}(n) &\ZTransformRelation X_{1}(z) \\
+    x_{2}(n) &\ZTransformRelation X_{2}(z) \\
+  \end{aligned}
+\end{equation*}
+then
+\begin{equation}\label{eq:Z-Transform Z-Transform Linearity}
+  x(n) = a_{1}x_{1}(n) + a_{2}x_{2}(n) \ZTransformRelation X(z) = a_{1}X_{1}(z) + a_{2}X_{2}(z)
+\end{equation}
+for any constants $a_{1}$ and $a_{2}$.
+
+The linearity property can be generalized to an arbitrary number of signals.
+
+\begin{example}[Example 3.2.1]{Simple Z-Transform Linearity Problem}
+  Deermine the $z$-transform and the ROC of the signal
+  \begin{equation*}
+    x(n) = \left[ 3 \left( 2^{n} \right) - 4 \left( 3^{n} \right) \right] \UnitStep(n)
+  \end{equation*}
+
+  \tcblower
+
+  Solution on Page 158.
+\end{example}
+
+\begin{example}[Example 3.2.2]{Z-Transform Linearity on Trig Functions}
+  Determine the $z$-transform of the signals
+  \begin{boldalphlist}
+  \item $x(n) = \left( \cos \omega_{0}n \right) \UnitStep(n)$
+  \item $x(n) = \left( \sin \omega_{0}n \right) \UnitStep(n)$
+  \end{boldalphlist}
+
+  \tcblower
+
+  Solution on Pages 158-159.
+\end{example}
+
+\subsubsection{Z-Transform Time Shifting}\label{subsubsec:Z-Transform Time Shifting}
+If
+\begin{equation*}
+  x(n) \ZTransformRelation X(z)
+\end{equation*}
+then
+\begin{equation}\label{eq:Z-Transform Time Shifting}
+  x(n-k) \ZTransformRelation z^{-k}X(z)
+\end{equation}
+The ROC of $z^{-k}X(z)$ is the same as that of $X(z)$ except for $z=0$ if $k > 0$ and $z = \infty$ if $k < 0$.
+
+\begin{example}[Example 3.2.3]{Z-Transform Time Shifting}
+  By applying the time-shifting property, determine the $z$-transform of the signals
+  \begin{equation*}
+    \begin{aligned}
+      x_{1}(n) &= \lbrace 1, 2, \underline{5}, 7, 0, 1 \rbrace \\
+      x_{2}(n) &= \lbrace \underline{0}, 0, 1, 2, 5, 7, 0, 1 \rbrace \\
+    \end{aligned}
+  \end{equation*}
+  from the $z$-transform of
+  \begin{equation*}
+    \begin{aligned}
+      x_{0}(n) &= \lbrace \underline{1}, 2, 5, 7, 0, 1 \rbrace \\
+        X_{0}(z) &= 1 + 2z^{-1} + 5z^{-2} + 7z^{-3} + z^{-5}, \ROC: \text{entire $z$-plane except } z=0 \\
+      \end{aligned}
+    \end{equation*}
+
+    \tcblower
+
+    Solution on Page 160.
+\end{example}
+
 \subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Scaling}\label{subsubsec:Z-Domain Scaling}
 \subsubsection{Time Reversal}\label{subsubsec:Time Reversal}
 \subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Differentiation}\label{subsubsec:Z-Domain Differentiation}
