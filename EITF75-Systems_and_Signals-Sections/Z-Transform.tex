@@ -403,19 +403,27 @@ If $x(n)$ is \emph{causal} [i.e., $x(n)=0$ for $n<0$], then
 \subsection{Rational \texorpdfstring{$Z$-Transforms}{Z-Transform}}\label{subsec:Rational Z-Transforms}
 \subsubsection{Decomposition of Rational \texorpdfstring{$Z$-Transforms}{Z-Transform}}\label{subsubsec:Decompose Rational Z-Transforms}
 
-\subsection{Analysis of LTI Systems in the \texorpdfstring{$Z$-Domain}{Z-Transform}}\label{subsec:Analysis LTI Systems Z-Domain}
+\subsection{Analysis of LTI Systems in the \texorpdfstring{$Z$-Domain}{Z-Domain}}\label{subsec:Analysis LTI Systems Z-Domain}
 
 \subsection{Common \texorpdfstring{$Z$-Transforms}{Z-Transforms}}\label{subsubsec:Common Z-Transforms}
 \begin{table}[h!]
   \centering
-  \begin{tabular}{cc}
-    \toprule \\
-    $f(x)$ & $F(z)$ \\
-    \midrule \\
-    $\UnitStep(n)$ & $\frac{1}{1-z^{-1}}$ \\
-    $a^{n}\UnitStep(n)$ & $\frac{1}{1-az^{-1}}$ \\
-    $na^{n}\UnitStep(n)$ & $\frac{az^{-1}}{{\left( 1-az^{-1} \right)}^{2}}$ \\
-    \bottomrule \\
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{ccc}
+    \toprule
+    Signal, $x(n)$ & $z$-Transform, $X(z)$ & $\ROC$ \\
+    \midrule
+    $\UnitImpulse(n)$ & 1 & All $z$ \\
+    $\UnitStep(n)$ & $\frac{1}{1-z^{-1}}$ & $\lvert z \rvert > 1$ \\
+    $a^{n}\UnitStep(n)$ & $\frac{1}{1-az^{-1}}$ & $\lvert z \rvert > \lvert a \rvert$ \\
+    $na^{n}\UnitStep(n)$ & $\frac{az^{-1}}{{\left( 1-az^{-1} \right)}^{2}}$ & $\lvert z \rvert > \lvert a \rvert$ \\
+    $-a^{n}\UnitStep(-n-1)$ & $\frac{1}{1-az^{-1}}$ & $\lvert z \rvert < \lvert a \rvert$ \\
+    $-na^{n}\UnitStep(-n-1)$ & $\frac{az^{-z}}{{\left( 1-az^{-1} \right)}^{2}}$ & $\lvert z \rvert < \lvert a \rvert$ \\
+    $\left( \cos \omega_{0}n \right) \UnitStep(n)$ & $\frac{1-z^{-1}\cos \omega_{0}}{1-2z^{-1}\cos \omega_{0} + z^{-2}}$ & $\lvert z \rvert > 1$ \\
+    $\left( \sin \omega_{0}n \right) \UnitStep(n)$ & $\frac{z^{-1}\sin \omega_{0}}{1-2z^{-1}\cos \omega_{0} + z^{-2}}$ & $\lvert z \rvert > 1$ \\
+    $\left( a^{n} \cos \omega_{0}n \right) \UnitStep(n)$ & $\frac{1-az^{-1}\cos \omega_{0}}{1-2az^{-1} \cos \omega_{0} + a^{2}z^{-2}}$ & $\lvert z \rvert > \lvert a \rvert$ \\
+        $\left( a^{n} \sin \omega_{0}n \right) \UnitStep(n)$ & $\frac{az^{-1}\sin \omega_{0}}{1-2az^{-1} \cos \omega_{0} + a^{2}z^{-2}}$ & $\lvert z \rvert > \lvert a \rvert$ \\
+    \bottomrule
   \end{tabular}
   \caption{Common $Z$-Transforms}
   \label{tab:Common Z-Transforms}
