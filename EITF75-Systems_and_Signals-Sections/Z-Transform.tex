@@ -133,7 +133,7 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
 \item \nameref{subsubsec:Z-Domain Convolutions}
 \item \nameref{subsubsec:Z-Transform 2 Sequence Correlation}
 \item \nameref{subsubsec:Z-Transform 2 Sequence Multiplication}
-\item \nameref{subsubsec:Parsevals Relation}
+\item \nameref{subsubsec:Parsevals Relation for Z-Transform}
 \item \nameref{subsubsec:Initial Value Theorem}
 \end{propertylist}
 
@@ -158,7 +158,7 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
     \nameref{subsubsec:Z-Transform 2 Sequence Correlation} & $r_{x_{1}x_{2}}(l) = x_{1}(l) * x_{2}(-l)$ & $R_{x_{1}x_{2}}(z) = X_{1}(z)x_{2}(z^{-1})$ & At least, the intersection of $\ROC$ of $X_{1}(z)$ and $X_{2}(z^{-1})$ \\
     \nameref{subsubsec:Initial Value Theorem} & If $x(n)$ causal & $x(0) = \lim\limits_{z \rightarrow \infty} X(z)$ & \\
     \nameref{subsubsec:Z-Transform 2 Sequence Multiplication} & $x_{1}(n)x_{2}(n)$ & $\frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}(\frac{z}{v}) v^{-1} dv$ & At least, $r_{1l}r_{2l} < \lvert a \rvert < r_{1u}r_{2u}$ \\
-    \nameref{subsubsec:Parsevals Relation} & $\sum\limits_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n)$ &= $\frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}^{*}(\frac{1}{v^{*}})v^{-1} dv$ & \\
+    \nameref{subsubsec:Parsevals Relation for Z-Transform} & $\sum\limits_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n)$ &= $\frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}^{*}(\frac{1}{v^{*}})v^{-1} dv$ & \\
     \bottomrule
   \end{tabular}
   \caption{\nameref{subsec:Z-Transform Properties}}
@@ -345,7 +345,6 @@ The ROC of $X(z)$ is, at least, the intersection of that for $X_{1}(z)$ and $X_{
   \end{equation*}
 
 \end{example}
-\subsubsection{2 Sequence Multiplication}\label{subsubsec:2 Sequence Multiplication}
 
 \subsubsection{Z-Transform 2 Sequence Correlation}\label{subsubsec:Z-Transform 2 Sequence Correlation}
 If
@@ -385,7 +384,12 @@ then
 \end{equation}
 where $C$ is a closed contour that encloses the origin and lies within th eregion of convergence common to both $X_{1}(v)$ and $X_{2}(\frac{1}{v})$.
 
-\subsubsection{Parsevals Relation}\label{subsubsec:Parsevals Relation}
+\subsubsection{Parsevals Relation for Z-Transform}\label{subsubsec:Parsevals Relation for Z-Transform}
+If $x_{1}(n)$ and $x_{2}(n)$ are complex-valued sequences, then
+\begin{equation}\label{eq:Parsevals Relation for Z-Transform}
+  \sum\limits_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n) = \frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}^{*} \left( \frac{1}{v^{*}} \right) v^{-1} dv
+\end{equation}
+
 \subsubsection{Initial Value Theorem}\label{subsubsec:Initial Value Theorem}
 
 \subsection{Properties of the One-Sided \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:One-Sided Z-Transform Properties}
