@@ -401,6 +401,42 @@ If $x(n)$ is \emph{causal} [i.e., $x(n)=0$ for $n<0$], then
 \end{propertylist}
 
 \subsection{Rational \texorpdfstring{$Z$-Transforms}{Z-Transform}}\label{subsec:Rational Z-Transforms}
+An important family of $z$-transforms are those for which $X(z)$ is a rational function, a ratio of two polynomials in $z^{-1}$ (or $z$).
+
+\subsubsection{Poles and Zeros of a \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsubsec:Poles and Zeros of Z-Transform}
+\begin{definition}[Zeros]\label{def:Zeros of a Z-Transform}
+  The \emph{zeros} of a $z$-transform $X(z)$ are the values of $z$ for which $X(z)=0$.
+
+  This is analogous to ``setting the numerator equal to zero.''
+\end{definition}
+\begin{definition}[Poles]\label{def:Poles of a Z-Transform}
+  The \emph{poles} of a $z$ transform $X(z)$ are the values of $z$ for which $X(z)=\infty$.
+
+  This is analogous to ``setting the denominator equal to zero.''
+\end{definition}
+
+If $X(z)$ is a rational function, then
+\begin{equation*}
+  X(z) = \frac{B(z)}{A(z)} = \frac{b_{0} + b_{1}z^{-1} + \cdots + b_{M}z^{-M}}{a_{0} + a_{1}z^{-1} + \cdots + a_{N}z^{-N}} = \frac{\sum_{k=0}^{M} b_{k}z^{-k}}{\sum_{k=0}^{N} a_{k}z^{-k}}
+\end{equation*}
+If $a_{0} \neq 0$ and $b_{0} \neq 0$, we can avoid negative powers of $z$ by factoring out the terms $z^{-M}$ and $z^{-N}$.
+\begin{equation*}
+  X(z) = \frac{B(z)}{A(z)} = \frac{z^{-M}}{z^{-N}} \frac{b_{0}z^{M} + b_{1}z^{M-1} + \cdots + b_{M}}{a_{0}z^{N} + a_{1}z^{N-1} + \cdots + a_{N}}
+\end{equation*}
+Since $B(z)$ and $A(z)$ are polynomials in $z$, they can be expressed in factored form as
+\begin{equation}\label{eq:Rational Z-Transform Poles and Zeros Factored}
+  X(z) = \frac{B(z)}{A(z)} = \frac{z^{-M}}{z^{-N}} \frac{(z-z_{1})(z-z_{2}) \cdots (z-z_{M})}{(z-p_{1})(z-p_{2}) \cdots (z-p_{N})}
+\end{equation}
+Thus, $X(z)$ has $M$ finite \nameref{def:Zeros of a Z-Transform} at $z=z_{1},z_{2}, \ldots, z_{M}$ (the roots of the numerator polynomial), $N$ finite \nameref{def:Poles of a Z-Transform} at $z=p_{1},p_{2}, \ldots, p_{N}$ (the roots of the denominator polynomial, and $\lvert N-M \rvert$ zeros (if $N>M$) or poles (if $N<M$) at the origin $z=0$.
+Poles and zeroes may occur at $z=\infty$.
+A zero exists at $z=\infty$ if $X(\infty) = 0$ and a pole exists at $z=\infty$ if $X(\infty) = \infty$.
+
+\begin{definition}[Pole-Zero Plot]\label{def:Pole-Zero Plot of Z-Transform}
+  Poles and Zeros of a $z$-transform can be shown graphically by a \emph{pole-zero plot} in the complex plane, which shows the location of poles by crosses ($\cross$) and the location of zeros by circles.
+  Multiplicity is shown by a number close to the corresponding cross or circle.
+  The ROC of a $z$-transform should not contain any poles, by definition.
+\end{definition}
+
 \subsubsection{Decomposition of Rational \texorpdfstring{$Z$-Transforms}{Z-Transform}}\label{subsubsec:Decompose Rational Z-Transforms}
 
 \subsection{Analysis of LTI Systems in the \texorpdfstring{$Z$-Domain}{Z-Domain}}\label{subsec:Analysis LTI Systems Z-Domain}
