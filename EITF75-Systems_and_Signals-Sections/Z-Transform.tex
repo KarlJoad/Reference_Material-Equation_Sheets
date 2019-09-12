@@ -268,7 +268,7 @@ then
   \begin{equation*}
     \UnitStep(n) \ZTransformRelation \frac{1}{1-x^{-1}}, \> \ROC: \lvert z \rvert > 1
   \end{equation*}
-  By using \eqref{eq:Z-Transform Time Reversal}, we obtain
+  By using~\eqref{eq:Z-Transform Time Reversal}, we obtain
   \begin{equation*}
     \UnitStep(-n) \ZTransformRelation \frac{1}{1-z}, \ROC: \lvert z \rvert < 1
   \end{equation*}
@@ -297,13 +297,54 @@ then
   \begin{equation*}
     x_{1}(n) = a^{n}\UnitStep(n) \ZTransformRelation X_{1}(z) = \frac{1}{1-az^{-1}}, \> \ROC: \lvert z \rvert > \lvert a \rvert
   \end{equation*}
-  Then by using \eqref{eq:Z-Domain Differentiation}, we obtain
+  Then by using~\eqref{eq:Z-Domain Differentiation}, we obtain
   \begin{equation*}
     na^{n} \UnitStep(n) \ZTransformRelation X(z) = -z \frac{dX_{1}(z)}{dz} = \frac{az^{-1}}{{\left( 1-az^{-1}\right)}^{2}}
   \end{equation*}
 \end{example}
 
 \subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Convolutions}\label{subsubsec:Z-Domain Convolutions}
+If
+\begin{equation*}
+  \begin{aligned}
+    x_{1}(n) &\ZTransformRelation X_{1}(z) \\
+    x_{2}(n) &\ZTransformRelation X_{2}(z) \\
+  \end{aligned}
+\end{equation*}
+then
+\begin{equation}\label{eq:Z-Domain Convolutions}
+  x(n) = x_{1}(n) * x_{2}(n) \ZTransformRelation X(z) = X_{1}(z)X_{2}(z)
+\end{equation}
+The ROC of $X(z)$ is, at least, the intersection of that for $X_{1}(z)$ and $X_{2}(z)$.
+
+\begin{example}[Example 3.2.9]{Z-Domain Convolutions}
+  Compute the convolution $x(n)$ of the signals
+  \begin{align*}
+    x_{1}(n) &= \lbrace 1, -2, 1 \rbrace \\
+    x_{2}(n) &= \begin{cases}
+      1, & 0 \leq n \leq 6 \\
+      0, & \text{elsewhere}
+    \end{cases}
+  \end{align*}
+  When
+  \begin{align*}
+    X_{1}(z) &= 1-2z^{-1}+z^{-2} \\
+    X_{2}(z) &= 1 + z^{-1} + z^{-2} + z^{-3} + z^{-4} + z^{-5}
+  \end{align*}
+
+  \tcblower
+
+  According to~\eqref{eq:Z-Domain Convolutions} we carry out the multiplication of $X_{1}(z)$ and $X_{2}(z)$.
+  Thus
+  \begin{equation*}
+    X(z) = X_{1}(z)X_{2}(z) = 1-z^{-1}-z^{-6}+z^{-7}
+  \end{equation*}
+  Hence
+  \begin{equation*}
+    x(n) = \lbrace \underline{1}, -1, 0, 0, 0, 0, -1, 1 \rbrace
+  \end{equation*}
+
+\end{example}
 \subsubsection{2 Sequence Correlation}\label{subsubsec:2 Sequence Correlation}
 \subsubsection{2 Sequence Multiplication}\label{subsubsec:2 Sequence Multiplication}
 \subsubsection{Parsevals Relation}\label{subsubsec:Parsevals Relation}
