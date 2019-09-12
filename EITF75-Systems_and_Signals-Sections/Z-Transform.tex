@@ -128,7 +128,7 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
 \item \nameref{subsubsec:Z-Transform Linearity}
 \item \nameref{subsubsec:Z-Transform Time Shifting}
 \item \nameref{subsubsec:Z-Domain Scaling}
-\item \nameref{subsubsec:Time Reversal}
+\item \nameref{subsubsec:Z-Transform Time Reversal}
 \item \nameref{subsubsec:Z-Domain Differentiation}
 \item \nameref{subsubsec:Z-Domain Convolutions}
 \item \nameref{subsubsec:2 Sequence Correlation}
@@ -149,7 +149,7 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
     \nameref{subsubsec:Z-Transform Linearity} & $a_{1}x_{1}(n) + a_{2}x_{2}(n)$ & $a_{1}X_{1}(z) + a_{2}X_{2}(z)$ & At least the intersection of $\ROC_{1}$ and $\ROC_{2}$ \\
     \nameref{subsubsec:Z-Transform Time Shifting} & $x(n-k)$ & $z^{-k}X(z)$ & That of $X(z)$, except $z=0$ if $k>0$ and $z=\infty$ if $k<0$ \\
     \nameref{subsubsec:Z-Domain Scaling} & $a^{n}x(n)$ & $X(a^{-1}z)$ & $\lvert a \rvert r_{2} < \lvert z \rvert < \lvert a \rvert r_{1}$ \\
-    \nameref{subsubsec:Time Reversal} & $x(-n)$ & $X(z^{-1})$ & $\frac{1}{r_{1}} < \lvert z \rvert < \frac{1}{r_{2}}$ \\
+    \nameref{subsubsec:Z-Transform Time Reversal} & $x(-n)$ & $X(z^{-1})$ & $\frac{1}{r_{1}} < \lvert z \rvert < \frac{1}{r_{2}}$ \\
     Conjugation & $x^{*}(n)$ & $X^{*}(z^{*})$ & $\ROC$ \\
     Real Part & $\Re \lbrace x(n) \rbrace$ & $\frac{1}{2} \left[ X(z) + X^{*}(z^{*}) \right]$ & Includes $\ROC$ \\
     Imaginary Part & $\Im \lbrace x(n) \rbrace$ & $\frac{1}{2} j \left[ X(z) - X^{*}(z^{*}) \right]$ & Includes $\ROC$ \\
@@ -255,6 +255,24 @@ then
 \begin{equation}\label{eq:Z-Transform Time Reversal}
   x(-n) \ZTransformRelation X(z^{-1}), \ROC: \frac{1}{r_{2}} < \lvert z \rvert < \frac{1}{r_{1}}
 \end{equation}
+
+\begin{example}[Example 3.2.6]{Z-Transform Time Reversal}
+  Determine the $z$-transform of the signal
+  \begin{equation*}
+    x(n) = \UnitStep(-n)
+  \end{equation*}
+
+  \tcblower
+
+  The transform for $\UnitStep(n)$ is given in \Cref{tab:Common Z-Transforms}.
+  \begin{equation*}
+    \UnitStep(n) \ZTransformRelation \frac{1}{1-x^{-1}}, \> \ROC: \lvert z \rvert > 1
+  \end{equation*}
+  By using \eqref{eq:Z-Transform Time Reversal}, we obtain
+  \begin{equation*}
+    \UnitStep(-n) \ZTransformRelation \frac{1}{1-z}, \ROC: \lvert z \rvert < 1
+  \end{equation*}
+\end{example}
 
 \subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Differentiation}\label{subsubsec:Z-Domain Differentiation}
 \subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Convolutions}\label{subsubsec:Z-Domain Convolutions}
