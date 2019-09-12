@@ -186,6 +186,22 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
 
 \subsection{Analysis of LTI Systems in the \texorpdfstring{$Z$-Domain}{Z-Transform}}\label{subsec:Analysis LTI Systems Z-Domain}
 
+\subsection{Common \texorpdfstring{$Z$-Transforms}{Z-Transforms}}\label{subsubsec:Common Z-Transforms}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cc}
+    \toprule \\
+    $f(x)$ & $F(z)$ \\
+    \midrule \\
+    $\UnitStep(n)$ & $\frac{1}{1-z^{-1}}$ \\
+    $a^{n}\UnitStep(n)$ & $\frac{1}{1-az^{-1}}$ \\
+    $na^{n}\UnitStep(n)$ & $\frac{az^{-1}}{{\left( 1-az^{-1} \right)}^{2}}$ \\
+    \bottomrule \\
+  \end{tabular}
+  \caption{Common $Z$-Transforms}
+  \label{tab:Common Z-Transforms}
+\end{table}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
