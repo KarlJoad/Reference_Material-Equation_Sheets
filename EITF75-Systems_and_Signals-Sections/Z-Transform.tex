@@ -275,6 +275,34 @@ then
 \end{example}
 
 \subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Differentiation}\label{subsubsec:Z-Domain Differentiation}
+If
+\begin{equation*}
+  x(n) \ZTransformRelation X(z)
+\end{equation*}
+then
+\begin{equation}\label{eq:Z-Domain Differentiation}
+  nx(n) \ZTransformRelation -z \frac{dX(z)}{dz}
+\end{equation}
+
+\begin{example}[Example 3.2.7]{Z-Domain Differentiation}
+  Determine the $z$-transform of the signal
+  \begin{equation*}
+    x(n) = na^{n}\UnitStep(n)
+  \end{equation*}
+
+  \tcblower
+
+  The signal $x(n)$ can be expressed as $nx_{1}(n)$, where $x_{1}(n) = a^{n}\UnitStep(n)$.
+  By passing this through the $z$-transform, we have
+  \begin{equation*}
+    x_{1}(n) = a^{n}\UnitStep(n) \ZTransformRelation X_{1}(z) = \frac{1}{1-az^{-1}}, \> \ROC: \lvert z \rvert > \lvert a \rvert
+  \end{equation*}
+  Then by using \eqref{eq:Z-Domain Differentiation}, we obtain
+  \begin{equation*}
+    na^{n} \UnitStep(n) \ZTransformRelation X(z) = -z \frac{dX_{1}(z)}{dz} = \frac{az^{-1}}{{\left( 1-az^{-1}\right)}^{2}}
+  \end{equation*}
+\end{example}
+
 \subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Convolutions}\label{subsubsec:Z-Domain Convolutions}
 \subsubsection{2 Sequence Correlation}\label{subsubsec:2 Sequence Correlation}
 \subsubsection{2 Sequence Multiplication}\label{subsubsec:2 Sequence Multiplication}
