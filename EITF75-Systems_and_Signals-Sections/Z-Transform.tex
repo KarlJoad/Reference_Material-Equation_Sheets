@@ -1,8 +1,8 @@
-\section{The \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{sec:Z-Transform}
+\section{The \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{sec:Z-Transform}
 The \nameref{def:Z-Transform} plays the same role in the analysis of discrete-time signals and LTI systems as the \nameref{def:Laplace Transform} does in the analysis of continuous time-signals and LTI systems.
 
-\subsection{The \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:Z-Transform}
-\begin{definition}[$Z$-Transform]\label{def:Z-Transform}
+\subsection{The \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:Z-Transform}
+\begin{definition}[$\ZTransform$-Transform]\label{def:Z-Transform}
   The \emph{$z$-transform} is defined as the power series
   \begin{equation}\label{eq:Z-Transform}
     X(z) \equiv \sum_{n=-\infty}^{\infty} x(n)z^{-n}
@@ -75,8 +75,8 @@ The \nameref{def:Z-Transform} plays the same role in the analysis of discrete-ti
   \label{tab:Z-Transform ROC Correspondence}
 \end{table}
 
-\subsubsection{The One-Sided \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsubsec:One-Sided Z-Transform}
-\begin{definition}[One-Sided $Z$-Transform]\label{def:One-Sided Z-Transform}
+\subsubsection{The One-Sided \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsubsec:One-Sided Z-Transform}
+\begin{definition}[One-Sided $\ZTransform$-Transform]\label{def:One-Sided Z-Transform}
   The \emph{one-sided $z$-transform} is the same as the \nameref{def:Z-Transform}, but is only defined at $n$ values greater than or equal to 0.
   \begin{equation}\label{eq:One-Sided Z-Transform}
     X(z) \equiv \sum_{n=0}^{\infty} x(n)z^{-n}
@@ -86,7 +86,7 @@ The \nameref{def:Z-Transform} plays the same role in the analysis of discrete-ti
 The \nameref{def:One-Sided Z-Transform} is generally used when there are initial conditions on a causal signal.
 This captures the normal causal portion of the signal, while also showing the effect of the initial condition.
 
-\subsection{The Inverse \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:Inverse Z-Transform}
+\subsection{The Inverse \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:Inverse Z-Transform}
 This is the formal definition of \nameref{subsec:Inverse Z-Transform}.
 \begin{equation}\label{eq:Inverse Z-Transform}
   x(n) = \frac{1}{2 \pi j} \oint_{C} X(z) z^{n-1} \, dz
@@ -100,7 +100,7 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
 \item Partial-fraction expansion and table lookup.
 \end{enumerate}
 
-\subsubsection{The Inverse \texorpdfstring{$Z$-Transform}{Z-Transform} by Contour Integration}\label{subsubsec:Inverse Z-Transform by Contour Integration}
+\subsubsection{The Inverse \texorpdfstring{$\ZTransform$-Transform}{Z-Transform} by Contour Integration}\label{subsubsec:Inverse Z-Transform by Contour Integration}
 \begin{definition}[Cauchy's Integral Theorem]\label{def:Cauchy Integral Theorem}
   Let $f(z)$ be a function of the complex variable $z$ and $C$ be a closed path in the $z$-plane.
   If the derivative $\frac{\mathrm{d}f(z)}{\mathrm{d}z}$ exists on and inside the contour $C$ and if $f(z)$ has no poles at $z = z_{0}$, then
@@ -121,22 +121,9 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
 \end{definition}
 
 
-\subsubsection{The Inverse \texorpdfstring{$Z$-Transform}{Z-Transform} by Power Series Expansion}\label{subsubsec:Inverse Z-Transform by Power Series Expansion}
-\subsubsection{The Inverse \texorpdfstring{$Z$-Transform}{Z-Transform} by Partial-Fraction Expansion}\label{subsubsec:Inverse Z-Transform by Partial-Fraction Expansion}
-\subsection{Properties of the \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:Z-Transform Properties}
-\begin{propertylist}
-\item \nameref{subsubsec:Z-Transform Linearity}
-\item \nameref{subsubsec:Z-Transform Time Shifting}
-\item \nameref{subsubsec:Z-Domain Scaling}
-\item \nameref{subsubsec:Z-Transform Time Reversal}
-\item \nameref{subsubsec:Z-Domain Differentiation}
-\item \nameref{subsubsec:Z-Domain Convolutions}
-\item \nameref{subsubsec:Z-Transform 2 Sequence Correlation}
-\item \nameref{subsubsec:Z-Transform 2 Sequence Multiplication}
-\item \nameref{subsubsec:Parsevals Relation for Z-Transform}
-\item \nameref{subsubsec:Initial Value Theorem for Z-Transform}
-\end{propertylist}
-
+\subsubsection{The Inverse \texorpdfstring{$\ZTransform$-Transform}{Z-Transform} by Power Series Expansion}\label{subsubsec:Inverse Z-Transform by Power Series Expansion}
+\subsubsection{The Inverse \texorpdfstring{$\ZTransform$-Transform}{Z-Transform} by Partial-Fraction Expansion}\label{subsubsec:Inverse Z-Transform by Partial-Fraction Expansion}
+\subsection{Properties of the \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:Z-Transform Properties}
 \begin{table}[h!]
   \centering
   \begin{tabular}{p{4cm}ccp{5cm}}
@@ -165,7 +152,7 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
   \label{tab:Z-Transform Properties}
 \end{table}
 
-\subsubsection{\texorpdfstring{$Z$-Transform}{Z-Transform} Linearity}\label{subsubsec:Z-Transform Linearity}
+\subsubsection{\texorpdfstring{$\ZTransform$-Transform}{Z-Transform} Linearity}\label{subsubsec:Z-Transform Linearity}
 If
 \begin{equation*}
   \begin{aligned}
@@ -204,7 +191,7 @@ The linearity property can be generalized to an arbitrary number of signals.
   Solution on Pages 158-159.
 \end{example}
 
-\subsubsection{\texorpdfstring{$Z$-Transform}{Z-Transform} Time Shifting}\label{subsubsec:Z-Transform Time Shifting}
+\subsubsection{\texorpdfstring{$\ZTransform$-Transform}{Z-Transform} Time Shifting}\label{subsubsec:Z-Transform Time Shifting}
 If
 \begin{equation*}
   x(n) \ZTransformRelation X(z)
@@ -236,7 +223,7 @@ The ROC of $z^{-k}X(z)$ is the same as that of $X(z)$ except for $z=0$ if $k > 0
     Solution on Page 160.
 \end{example}
 
-\subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Scaling}\label{subsubsec:Z-Domain Scaling}
+\subsubsection{\texorpdfstring{$\ZTransform$-Domain}{Z-Domain} Scaling}\label{subsubsec:Z-Domain Scaling}
 If
 \begin{equation*}
   x(n) \ZTransformRelation X(z), \> \ROC: r_{1}< \lvert z \rvert < r_{2}
@@ -246,7 +233,7 @@ then
   a^{n}x(n) \ZTransformRelation X \left( a^{-1}z \right), \> \ROC: \lvert a \rvert r_{1} < \lvert z \rvert < \lvert a \rvert r_{2}
 \end{equation}
 
-\subsubsection{\texorpdfstring{$Z$-Transform}{Z-Transform} Time Reversal}\label{subsubsec:Z-Transform Time Reversal}
+\subsubsection{\texorpdfstring{$\ZTransform$-Transform}{Z-Transform} Time Reversal}\label{subsubsec:Z-Transform Time Reversal}
 If
 \begin{equation*}
   x(n) \ZTransformRelation X(z), \> \ROC: r_{1}< \lvert z \rvert < r_{2}
@@ -274,7 +261,7 @@ then
   \end{equation*}
 \end{example}
 
-\subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Differentiation}\label{subsubsec:Z-Domain Differentiation}
+\subsubsection{\texorpdfstring{$\ZTransform$-Domain}{Z-Domain} Differentiation}\label{subsubsec:Z-Domain Differentiation}
 If
 \begin{equation*}
   x(n) \ZTransformRelation X(z)
@@ -303,7 +290,7 @@ then
   \end{equation*}
 \end{example}
 
-\subsubsection{\texorpdfstring{$Z$-Domain}{Z-Domain} Convolutions}\label{subsubsec:Z-Domain Convolutions}
+\subsubsection{\texorpdfstring{$\ZTransform$-Domain}{Z-Domain} Convolutions}\label{subsubsec:Z-Domain Convolutions}
 If
 \begin{equation*}
   \begin{aligned}
@@ -345,7 +332,7 @@ The ROC of $X(z)$ is, at least, the intersection of that for $X_{1}(z)$ and $X_{
   \end{equation*}
 \end{example}
 
-\subsubsection{\texorpdfstring{$Z$-Transform}{Z-Transform} 2 Sequence Correlation}\label{subsubsec:Z-Transform 2 Sequence Correlation}
+\subsubsection{\texorpdfstring{$\ZTransform$-Transform}{Z-Transform} 2 Sequence Correlation}\label{subsubsec:Z-Transform 2 Sequence Correlation}
 If
 \begin{equation*}
   \begin{aligned}
@@ -369,7 +356,7 @@ then
   Solution on Page 166.
 \end{example}
 
-\subsubsection{\texorpdfstring{$Z$-Transform}{Z-Transform} 2 Sequence Multiplication}\label{subsubsec:Z-Transform 2 Sequence Multiplication}
+\subsubsection{\texorpdfstring{$\ZTransform$-Transform}{Z-Transform} 2 Sequence Multiplication}\label{subsubsec:Z-Transform 2 Sequence Multiplication}
 If
 \begin{equation*}
   \begin{aligned}
@@ -383,27 +370,27 @@ then
 \end{equation}
 where $C$ is a closed contour that encloses the origin and lies within th eregion of convergence common to both $X_{1}(v)$ and $X_{2}(\frac{1}{v})$.
 
-\subsubsection{Parsevals Relation for \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsubsec:Parsevals Relation for Z-Transform}
+\subsubsection{Parsevals Relation for \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsubsec:Parsevals Relation for Z-Transform}
 If $x_{1}(n)$ and $x_{2}(n)$ are complex-valued sequences, then
 \begin{equation}\label{eq:Parsevals Relation for Z-Transform}
   \sum\limits_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n) = \frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}^{*} \left( \frac{1}{v^{*}} \right) v^{-1} dv
 \end{equation}
 
-\subsubsection{Initial Value Theorem for \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsubsec:Initial Value Theorem for Z-Transform}
+\subsubsection{Initial Value Theorem for \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsubsec:Initial Value Theorem for Z-Transform}
 If $x(n)$ is \emph{causal} [i.e., $x(n)=0$ for $n<0$], then
 \begin{equation}\label{eq:Initial Value Theorem for Z-Transform}
   x(0) = \lim\limits_{z\rightarrow\infty}X(z)
 \end{equation}
 
-\subsection{Properties of the One-Sided \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsec:One-Sided Z-Transform Properties}
+\subsection{Properties of the One-Sided \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:One-Sided Z-Transform Properties}
 \begin{propertylist}
 \item 
 \end{propertylist}
 
-\subsection{Rational \texorpdfstring{$Z$-Transforms}{Z-Transform}}\label{subsec:Rational Z-Transforms}
+\subsection{Rational \texorpdfstring{$\ZTransform$-Transforms}{Z-Transform}}\label{subsec:Rational Z-Transforms}
 An important family of $z$-transforms are those for which $X(z)$ is a rational function, a ratio of two polynomials in $z^{-1}$ (or $z$).
 
-\subsubsection{Poles and Zeros of a \texorpdfstring{$Z$-Transform}{Z-Transform}}\label{subsubsec:Poles and Zeros of Z-Transform}
+\subsubsection{Poles and Zeros of a \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsubsec:Poles and Zeros of Z-Transform}
 \begin{definition}[Zeros]\label{def:Zeros of a Z-Transform}
   The \emph{zeros} of a $z$-transform $X(z)$ are the values of $z$ for which $X(z)=0$.
 
@@ -437,11 +424,11 @@ A zero exists at $z=\infty$ if $X(\infty) = 0$ and a pole exists at $z=\infty$ i
   The ROC of a $z$-transform should not contain any poles, by definition.
 \end{definition}
 
-\subsubsection{Decomposition of Rational \texorpdfstring{$Z$-Transforms}{Z-Transform}}\label{subsubsec:Decompose Rational Z-Transforms}
+\subsubsection{Decomposition of Rational \texorpdfstring{$\ZTransform$-Transforms}{Z-Transform}}\label{subsubsec:Decompose Rational Z-Transforms}
 
-\subsection{Analysis of LTI Systems in the \texorpdfstring{$Z$-Domain}{Z-Domain}}\label{subsec:Analysis LTI Systems Z-Domain}
+\subsection{Analysis of LTI Systems in the \texorpdfstring{$\ZTransform$-Domain}{Z-Domain}}\label{subsec:Analysis LTI Systems Z-Domain}
 
-\subsection{Common \texorpdfstring{$Z$-Transforms}{Z-Transforms}}\label{subsubsec:Common Z-Transforms}
+\subsection{Common \texorpdfstring{$\ZTransform$-Transforms}{Z-Transforms}}\label{subsubsec:Common Z-Transforms}
 \begin{table}[h!]
   \centering
   \renewcommand{\arraystretch}{1.4}
@@ -461,7 +448,7 @@ A zero exists at $z=\infty$ if $X(\infty) = 0$ and a pole exists at $z=\infty$ i
         $\left( a^{n} \sin \omega_{0}n \right) \UnitStep(n)$ & $\frac{az^{-1}\sin \omega_{0}}{1-2az^{-1} \cos \omega_{0} + a^{2}z^{-2}}$ & $\lvert z \rvert > \lvert a \rvert$ \\
     \bottomrule
   \end{tabular}
-  \caption{Common $Z$-Transforms}
+  \caption{Common $\ZTransform$-Transforms}
   \label{tab:Common Z-Transforms}
 \end{table}
 

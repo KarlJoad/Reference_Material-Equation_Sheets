@@ -1,19 +1,62 @@
-\section{The Fourier Transform and Fourier Series} \label{sec:Fourier Transform and Series}
-When a signal is decomposed with either the \nameref{def:Fourier Transform} or the \nameref{def:Fourier Series}, you receive either sinusoids or complex-valued exponentials.
+\section{The Fourier Transform and Fourier Series}\label{sec:FourierTransformSeries}
+When a signal is decomposed with either the \nameref{def:FourierTransform} or the \nameref{def:FourierSeries}, you receive either sinusoids or complex-valued exponentials.
 This decomposition is said to be represented in the \emph{frequency domain}.
-\begin{definition}[Fourier Transform]\label{def:Fourier Transform}
+
+\begin{definition}[Fourier Transform]\label{def:FourierTransform}
   When decomposing the class of signals with finite energy, you perform a \emph{Fourier transform}.
   This is generally shown as the function
   \begin{equation*}
     c_{k} = \FourierTransform \lbrace x(t) \rbrace
   \end{equation*}
+
+  There are 2 possible equations for the \nameref{def:FourierTransform}, depending of the function is continuous-time or discrete-time.
+  \begin{enumerate}[noitemsep]
+  \item Continuous-Time: \Cref{eq:FourierTransform-Continuous}
+  \item Discrete-Time: \Cref{eq:FourierTransform-Discrete}
+  \end{enumerate}
+  
+  The \nameref{def:FourierTransform} is defined as
+  \begin{equation}\label{eq:FourierTransform-Continuous}
+    X(F) = \int\limits_{-\infty}^{\infty} x(t) e^{-j 2 \pi F t} dt
+  \end{equation}
+  \begin{equation}\label{eq:FourierTransform-Discrete}
+    X(f) = \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j 2 \pi f n}
+  \end{equation}
+  \begin{remark}
+    Sometimes $X(F)$ and $X(f)$ will be denoted with $\Omega$ and $\omega$ ($X(\Omega)$ and $X(\omega)$) respectively.
+    In both cases, $\Omega$ and $\omega$ mean something similar.
+    \begin{align*}
+      \Omega &= 2 \pi F \\
+      \omega &= 2 \pi f
+    \end{align*}
+  \end{remark}
 \end{definition}
-\begin{definition}[Fourier Series]\label{def:Fourier Series}
+\begin{definition}[Fourier Series]\label{def:FourierSeries}
   When decomposing the class of periodic signals, you are returned a \emph{Fourier series}.
   This is generally shown as the function
   \begin{equation*}
     X(F) = \FourierTransform \lbrace x(t) \rbrace
   \end{equation*}
+\end{definition}
+
+\subsection{\texorpdfstring{$\ZTransform$-Transform Fourier Transform Relation}{Z-Transform Fourier Transform Relation}}\label{subsec:ZTransformFourierTransformRelation}
+There is a relationship between the $\ZTransform$-Transform and the \nameref{def:FourierTransform}.
+\begin{equation}\label{eq:ZTransformFourierTransformRelation}
+  \begin{aligned}
+    z &= e^{2\pi f} \\
+    z &= e^{2\pi n} \\
+  \end{aligned}
+\end{equation}
+
+\subsection{The Inverse Fourier Transform}\label{subsec:InverseFourierTransform}
+\begin{definition}[Inverse Fourier Transform]\label{def:InverseFourierTransform}
+  Since the \ref{def:FourierTransform} is a ``lossless'' function (the definition of a transformation), the \emph{inverse fourier transform} is just the opposite setup of~\Crefrange{eq:FourierTransform-Continuous}{eq:FourierTransform-Discrete}.
+
+  In both cases, a Continuous-Time signal and a Discrete-Time signal, you use the below synthesis equation.
+  
+  \begin{equation}\label{eq:InverseFourierTransform-Continuous}
+    x(t) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} X(F) e^{j 2\pi Ft} dF
+  \end{equation}
 \end{definition}
 %%% Local Variables:
 %%% mode: latex
