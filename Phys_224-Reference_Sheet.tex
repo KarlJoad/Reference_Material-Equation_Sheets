@@ -1,37 +1,23 @@
-\documentclass[10pt,letterpaper,final,twoside,notitlepage]{article}
-\usepackage[margin=.5in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsthm} % Gives us plain, definition, and remark to use in \theoremstyle{style}
-\usepackage{graphicx}
+\input{Reference_Sheet_Preamble}
 
-\usepackage{hyperref} % Generate hyperlinks to referenced items
-\usepackage{nameref} % Can make references by name to places
-\usepackage{ctable} % Greater control over tables and how they look
-\usepackage{subcaption} % Allows for multiple figures in one Figure environment
-\usepackage{siunitx} % Gives us ways to typeset units for stuff
-\usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
-\usepackage{chngcntr} % Allows us to tamper with the counter a little more
-\usepackage{empheq} % Allow boxing of equations in special math environments
+% These packages are more specific to certain documents, but will be availabe in the template
+% \usepackage{esint} % Provides us with more types of integral symbols to use
+% \usepackage{minted} % Allow us to nicely typeset 300+ programming languages
 
 \graphicspath{./Drawings/Phys_224/} % Uncomment this to use pictures in this document
 
-\numberwithin{equation}{section} % Uncomment this to number equations with section numbers too
-
-\theoremstyle{definition}
-\newtheorem{definition}{Defn} % Definition environment, for definition of terms
-
+% This is the same as the remark environment. I need to go through subdocuments and remove
+% \begin{note} and replace it with \begin{remark}
 \theoremstyle{remark}
 \newtheorem{note}{Note}[definition] % Note environment, counted by definition
 \newtheorem*{note*}{Note}
 
+% Math Operators that are useful to abstract the written math away to one spot
+% These are supposed to be document-specific mathematical operators that will make life easier
+% Many fundamental operators are defined in Reference_Sheet_Preamble.tex
 \DeclareMathOperator{\PLD}{\text{PLD}}
 \DeclareMathOperator{\Intensity}{I}
 
-\renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
 \begin{titlepage}
   \title{Phys 224: Modern Physics - Reference Sheet}
   \author{Karl Hallsby}
@@ -46,20 +32,19 @@
 \newpage
 \pagenumbering{arabic}
 	
-\section{General Stuff} \label{sec:General}
-	\begin{itemize}[noitemsep]
-		\item Density - $\rho = \frac{\Delta m}{\Delta V}$
-			\begin{itemize}
-				\item Uniform Density - $\rho = \frac{m}{V}$
-			\end{itemize}
-		
-		\item Pressure - $p = \frac{\Delta F}{\Delta A}$
-			\begin{itemize}
-				\item Uniform Force on Flat Area - $\rho = \frac{F}{A}$
-				\item Conversions - $1 atm = 1.01 \times 10^5 Pa = 760 torr = 14.7 lb/in^2$
-			\end{itemize}
-		\item Trig Relations are in \nameref{subsec:Trig Formulas}, Section~\ref{subsec:Trig Formulas}.
-	\end{itemize}
+\section{General Stuff}\label{sec:General}
+\begin{itemize}[noitemsep]
+\item Density: $\rho = \frac{\Delta m}{\Delta V}$
+  \begin{itemize}
+  \item Uniform Density: $\rho = \frac{m}{V}$
+  \end{itemize}
+\item Pressure: $p = \frac{\Delta F}{\Delta A}$
+  \begin{itemize}
+  \item Uniform Force on Flat Area: $\rho = \frac{F}{A}$
+  \item Conversions: $1 atm = 1.01 \times 10^5 \si{\pascal} = 760 torr = 14.7 lb/in^2$
+  \end{itemize}
+\item Trig Relations are in \nameref{subsec:Trig Formulas}, Section~\ref{subsec:Trig Formulas}.
+\end{itemize}
 
 \input{./Phys_224-Sections/Fluids}
 
@@ -87,6 +72,13 @@
 \input{./Appendix-Reference_Material/Trig}
 
 \clearpage
+\input{./Appendix-Reference_Material/Calculus}
+
+\clearpage
 \input{./Appendix-Reference_Material/Complex_Numbers}
 
 \end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
