@@ -11,15 +11,15 @@ This decomposition is said to be represented in the \emph{frequency domain}.
 
   There are 2 possible equations for the \nameref{def:FourierTransform}, depending of the function is continuous-time or discrete-time.
   \begin{enumerate}[noitemsep]
-  \item Continuous-Time: \Cref{eq:FourierTransform-Continuous}
-  \item Discrete-Time: \Cref{eq:FourierTransform-Discrete}
+  \item Continuous-Time: \Cref{eq:FourierTransform-Continuous-Frequency}
+  \item Discrete-Time: \Cref{eq:FourierTransform-Discrete-Frequency}
   \end{enumerate}
   
   The \nameref{def:FourierTransform} is defined as
-  \begin{equation}\label{eq:FourierTransform-Continuous}
+  \begin{equation}\label{eq:FourierTransform-Continuous-Frequency}
     X(F) = \int\limits_{-\infty}^{\infty} x(t) e^{-j 2 \pi F t} dt
   \end{equation}
-  \begin{equation}\label{eq:FourierTransform-Discrete}
+  \begin{equation}\label{eq:FourierTransform-Discrete-Frequency}
     X(f) = \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j 2 \pi f n}
   \end{equation}
   \begin{remark}
@@ -29,6 +29,13 @@ This decomposition is said to be represented in the \emph{frequency domain}.
       \Omega &= 2 \pi F \\
       \omega &= 2 \pi f
     \end{align*}
+    This means that we can rewrite \Crefrange{eq:FourierTransform-Continuous-Frequency}{eq:FourierTransform-Discrete-Frequency} as
+    \begin{equation}\label{eq:FourierTransform-Continuous-Omega}
+      X(\Omega) = \int\limits_{-\infty}^{\infty} x(t) e^{-j \Omega t} dt
+    \end{equation}
+    \begin{equation}\label{eq:FourierTransform-Discrete-Omega}
+      X(\omega) = \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j \omega n}
+    \end{equation}
   \end{remark}
 \end{definition}
 \begin{definition}[Fourier Series]\label{def:FourierSeries}
@@ -50,14 +57,68 @@ There is a relationship between the $\ZTransform$-Transform and the \nameref{def
 
 \subsection{The Inverse Fourier Transform}\label{subsec:InverseFourierTransform}
 \begin{definition}[Inverse Fourier Transform]\label{def:InverseFourierTransform}
-  Since the \ref{def:FourierTransform} is a ``lossless'' function (the definition of a transformation), the \emph{inverse fourier transform} is just the opposite setup of~\Crefrange{eq:FourierTransform-Continuous}{eq:FourierTransform-Discrete}.
+  Since the \nameref{def:FourierTransform} is a ``lossless'' function (the definition of a transformation), the \emph{inverse fourier transform} is just the opposite setup of~\Crefrange{eq:FourierTransform-Continuous-Frequency}{eq:FourierTransform-Discrete-Frequency}.
 
-  In both cases, a Continuous-Time signal and a Discrete-Time signal, you use the below synthesis equation.
+  In both cases, a Continuous-Time signal and a Discrete-Time signal, you use the below synthesis equations (\Crefrange{eq:InverseFourierTransform-Frequency}{eq:InverseFourierTransform-Omega}).
   
-  \begin{equation}\label{eq:InverseFourierTransform-Continuous}
-    x(t) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} X(F) e^{j 2\pi Ft} dF
+  \begin{equation}\label{eq:InverseFourierTransform-Frequency}
+    \begin{aligned}
+      x(t) &= \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} X(F) e^{j 2\pi Ft} dF \\
+      x(n) &= \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} X(f) e^{j 2\pi fn} df \\
+    \end{aligned}
+  \end{equation}
+
+  If you're calculating with $\Omega$ or $\omega$ instead of $F$ or $f$, then use these synthesis equations.
+  \begin{equation}\label{eq:InverseFourierTransform-Omega}
+    \begin{aligned}
+      x(t) &= \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} X(\Omega) e^{j \Omega t} d\Omega \\
+      x(n) &= \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} X(\omega) e^{j \omega n} d\omega \\
+    \end{aligned}
   \end{equation}
 \end{definition}
+
+\subsection{Fourier Transform Properties for Discrete-Time Signals}\label{subsec:FourierTransformProperties-Discrete}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+    Property & Time Domain & Frequency Domain \\
+             & $x(n)$ & $X(f)$ or $X(\omega)$ \\
+    \midrule
+    \multirow{3}{*}{Notation} & $x(n)$ & $X(\omega)$ \\ %\multirow{numrows}{cellwidth (* is natural width)}{value}
+             & $x_{1}(n)$ & $X_{1}(\omega)$ \\
+             & $x_{2}(n)$ & $X_{2}(\omega)$ \\
+    \nameref{subsubsec:FourierTransformProperties-Linearity} & $a_{1}x_{1}(n) + a_{2}x_{2}(n)$ & $a_{1}X_{1}(\omega)+a_{2}X_{2}(\omega)$ \\
+    \nameref{subsubsec:FourierTransformProperties-TimeShifting} & $x(n-k)$ & $e^{-j\omega k}X(\omega)$ \\
+    \nameref{subsubsec:FourierTransformProperties-TimeReversal} & $x(-n)$ & $X(-\omega)$ \\
+    \nameref{subsubsec:FourierTransformProperties-Convolution} & $x_{1}(n) * x_{2}(n)$ & $X_{1}(\omega)X_{2}(\omega)$ \\
+    \nameref{subsubsec:FourierTransformProperties-Correlation} & $r_{x_{1},x_{2}}(l) = x_{1}(l) * x_{2}(-l)$ & \multicolumn{1}{r}{$S_{x_{1},x_{2}}(\omega) = X_{1}(\omega)X_{2}(\omega)$} \\
+             && \multicolumn{1}{r}{$= X_{1}(\omega)X_{2}^{*}(\omega)$} \\
+             && \multicolumn{1}{r}{[if $x_{2}(n)$ is real]} \\
+    \nameref{subsubsec:FourierTransformProperties-WienerKhintchineTheorem} && \\
+    \nameref{subsubsec:FourierTransformProperties-FrequencyShifting} && \\
+    \nameref{subsubsec:FourierTransformProperties-Modulation} && \\
+    \nameref{subsubsec:FourierTransformProperties-MultiplicationTimeDomain} && \\
+    \nameref{subsubsec:FourierTransformProperties-DifferentiationFrequencyDomain} && \\
+    \nameref{subsubsec:FourierTransformProperties-Conjugation} && \\
+    \nameref{subsubsec:FourierTransformProperties-ParsevalsTheorem} && \\
+    \bottomrule
+  \end{tabular}
+  \caption{Properties of the \nameref{def:FourierTransform} for \nameref{def:Discrete-Time Signals}}
+  \label{tab:FourierTransformProperties}
+\end{table}
+\subsubsection{Linearity}\label{subsubsec:FourierTransformProperties-Linearity}
+\subsubsection{Time Shifting}\label{subsubsec:FourierTransformProperties-TimeShifting}
+\subsubsection{Time Reversal}\label{subsubsec:FourierTransformProperties-TimeReversal}
+\subsubsection{Convolution}\label{subsubsec:FourierTransformProperties-Convolution}
+\subsubsection{Correlation}\label{subsubsec:FourierTransformProperties-Correlation}
+\subsubsection{Wiener-Khintchine Theorem}\label{subsubsec:FourierTransformProperties-WienerKhintchineTheorem}
+\subsubsection{Frequency Shifting}\label{subsubsec:FourierTransformProperties-FrequencyShifting}
+\subsubsection{Modulation}\label{subsubsec:FourierTransformProperties-Modulation}
+\subsubsection{Multiplication in Time Domain}\label{subsubsec:FourierTransformProperties-MultiplicationTimeDomain}
+\subsubsection{Differentiation in Frequency Domain}\label{subsubsec:FourierTransformProperties-DifferentiationFrequencyDomain}
+\subsubsection{Conjugation}\label{subsubsec:FourierTransformProperties-Conjugation}
+\subsubsection{Parseval's Theorem}\label{subsubsec:FourierTransformProperties-ParsevalsTheorem}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
