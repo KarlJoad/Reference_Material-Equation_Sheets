@@ -1,0 +1,421 @@
+\section{Syntactic Analysis/Parsing}\label{sec:SyntacticAnalysis}
+There are 2 kinds of parsing techniques:
+\begin{enumerate}[noitemsep]
+\item \nameref{subsec:LLParsing}
+\item \nameref{subsec:LRParsing}
+\end{enumerate}
+
+The table below will help characterize the differences between them.
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{4cm}cc}
+    \toprule
+    & $LL(k)$ & $LR(k)$ \\
+    \midrule
+    Parses Input & \multicolumn{2}{c}{\emph{L}eft-to-Right} \\ \midrule
+    Derivation & \emph{L}eftmost & \emph{R}ightmost \\ \midrule
+    Lookahead & \multicolumn{2}{c}{$k$ Symbols} \\ \midrule
+    Build the Tree & Top Down & Bottom Up \\ \midrule
+    Select Rule & After seeing its first $k$ tokens & After seeing all its tokens, and an addition $k$ tokens \\ \midrule
+    Left Recursion & No & Yes \\ \midrule
+    Unlimited Common Prefix & No & Yes \\ \midrule
+    Resolve Ambiguities Through Rule Priority & Dangling Else & Dangling Else, Associativity, Priority \\ \midrule
+    Error Recovery & Trial-and-Error & Good Algorithms Exist \\ \midrule
+    Implement by Hand? & Possible & Too complicated. Use a generator. \\
+    \bottomrule
+  \end{tabular}
+  \caption{LL vs. LR Parsing}
+  \label{tab:LLvsLRParsing}
+\end{table}
+
+\subsection{LL Parsing}\label{subsec:LLParsing}
+There are 5 basic steps in constructing an $\LLParse(1)$ parser.
+\begin{enumerate}[noitemsep]
+\item Write the grammar in canonical form.
+\item Compute \nameref{subsubsec:Nullable}, \nameref{subsubsec:FIRST}, and \nameref{subsubsec:FOLLOW}.
+\item Use them to contruct a table. It shows what production to select given the current lookahead token.
+\item Check for conflicts.
+  \begin{enumerate}[noitemsep]
+  \item If there \emph{are} conflicts, then the grammar is not $\LLParse(1)$.
+  \item If there are \emph{no} conflicts, then there is a straight-forward implementation using table-driven parser or recursive descent.
+  \end{enumerate}
+\end{enumerate}
+
+Many times, you will encounter \nameref{def:Fixed-Point_Problems}.
+\begin{definition}[Fixed-Point Problems]\label{def:Fixed-Point_Problems}
+  \emph{Fixed-point problems} have the form:
+  \begin{equation}\label{eq:Fixed-Point_Problems}
+    x == f(x)
+  \end{equation}
+
+  Can we find a value $x$ for which the equation holds (i.e., a solution)?
+  $x$ is then called the \emph{fixed point} of the function $f(x)$.
+
+  \nameref{def:Fixed-Point_Problems} can (sometimes) be solved using iteration.
+  The steps involved in \emph{fixed-point iteration} are:
+  \begin{enumerate}[noitemsep]
+  \item Guess an initial value $x_{0}$
+  \item Apply the function iteratively
+  \item Iterate until the fixed point is reached.
+  \end{enumerate}
+  \begin{align*}
+    x_{1} &= f(x_{0}) \\
+    x_{2} &= f(x_{1}) \\
+    & \vdots \\
+    x_{n} &= f(x_{n-1})
+  \end{align*}
+  You continue this iteration until $x_{n} = x_{n-1}$, and $x_{n}$ is called the \emph{fixed point}.
+\end{definition}
+
+\subsubsection{Nullable}\label{subsubsec:Nullable}
+\begin{definition}[Nullable]\label{def:Nullable}
+  For the production $p$, where $p: X \rightarrow \gamma$, and $X$ and $\gamma$ are nonterminals; $p$ is \emph{\nameref{def:Nullable}} if we can derive $\epsilon$ from $\gamma$.
+
+  More formally, this can be defined as $\Nullable(\gamma)$ is true iff the empty sequence can be derived from $\gamma$:
+  \begin{equation*}
+    \Nullable(\gamma) =
+    \begin{cases}
+      \True, &  \exists(\gamma \Rightarrow \!\! * \, \epsilon) \\
+      \False, & \text{Otherwise}
+    \end{cases}
+  \end{equation*}
+
+  You can define an equation system for \nameref{def:Nullable} given that $G=(N,T,P,S)$.
+  \begin{subequations}
+    \begin{equation}\label{eq:NullableEpsilon}
+      \Nullable(\epsilon)== \True
+    \end{equation}
+    \begin{equation}\label{eq:NullableTerminals}
+      \Nullable(t) = \False
+    \end{equation}
+    where $t \in T$, i.e., $t$ is a terminal symbol
+    
+    \begin{equation}\label{eq:NullableNonterminals}
+      \Nullable(X) = \Nullable(\gamma_{1}) \OR \ldots \OR \Nullable(\gamma_{n})
+    \end{equation}
+    where $X \rightarrow \gamma_{1}, \ldots, X \rightarrow \gamma_{n}$ are all the productions for $X$ in $P$.
+    
+    \begin{equation}\label{eq:NullableNonterminalorTerminal}
+      \Nullable(s\gamma) = \Nullable(s) \AND \Nullable(\gamma)
+    \end{equation}
+    where $s \in N \cup T$, i.e., $s$ is a nonterminal or a terminal
+  \end{subequations}
+
+  \begin{remark}
+    The equations (\Crefrange{eq:NullableEpsilon}{eq:NullableNonterminalorTerminal}) for \nameref{def:Nullable} are recursive.
+    Therefore, you can't just calculate these recursively, because you might never terminate if the empty sequence is never reached.
+    This is one set of \nameref{def:Fixed-Point_Problems}.
+  \end{remark}
+\end{definition}
+
+\subsubsection{FIRST}\label{subsubsec:FIRST}
+\begin{definition}[FIRST]\label{def:FIRST}
+  For the production $p$, where $p: X \rightarrow \gamma$, and $X$ and $\gamma$ are nonterminals.
+  The $\text{FIRST}(\gamma)$ are the tokens that occur \emph{\nameref{def:FIRST}} in a sentence derived from $\gamma$.
+
+  More formally, this can be defined as: $\FIRST(\gamma)$ is the set of tokens that can occur \emph{first} in the sentences derived from $\gamma$.
+  \begin{equation*}
+    \FIRST(\gamma) = \lbrace t \in T \vert \gamma \Rightarrow \!\! * \, t \delta \rbrace
+  \end{equation*}
+
+  You can define an equation system for \nameref{def:FIRST} given that $G=(N,T,P,S)$.
+  \begin{subequations}
+    \begin{equation}\label{eq:FOLLOW_Epsilon}
+      \FIRST(\epsilon) = \emptyset
+    \end{equation}
+    \begin{equation}\label{eq:FOLLOW_Terminal}
+      \FIRST(t) = \lbrace t \rbrace
+    \end{equation}
+    where $t \in T$, i.e., $t$ is a terminal symbol
+
+    \begin{equation}\label{eq:FOLLOW_Nonterminal}
+      \FIRST(X) = \FIRST(\gamma_{1}) \cup \ldots \cup \FIRST(\gamma_{n})
+    \end{equation}
+    where $X \rightarrow \gamma_{1}, \ldots, X \rightarrow \gamma_{n}$ are all the productions for $X$ in $P$.
+
+    \begin{equation}\label{eq:FOLLOW_Nonterminal_or_Terminal}
+      \FIRST(s\gamma) = \FIRST(s) \cup (\text{if } \Nullable(s) \text{ then } \FIRST(\gamma) \text{ else } \emptyset \text{ fi})
+    \end{equation}
+    where $s \in N \cup T$, i.e., $s$ is a nonterminal or a terminal
+  \end{subequations}
+
+  \begin{remark}
+    The equations (\Crefrange{eq:FOLLOW_Epsilon}{eq:FOLLOW_Nonterminal_or_Terminal}) for \nameref{def:FIRST} are recursive.
+    Therefore, they might not terminate, so you must calculate this as another set of \nameref{def:Fixed-Point_Problems}.
+  \end{remark}
+\end{definition}
+
+\subsubsection{FOLLOW}\label{subsubsec:FOLLOW}
+\begin{definition}[FOLLOW]\label{def:FOLLOW}
+  For the production $p$, where $p: X \rightarrow \gamma$, and $X$ and $\gamma$ are nonterminals.
+  The $\text{FOLLOW}(X)$ are the tokens that \emph{\nameref{def:FOLLOW}} immediately after an $X$-sentence.
+
+  More formally, this can be defined as: $\FOLLOW(X)$ is the set of tokens that can occur as the \emph{first} token \emph{following} $X$, in any \nameref{rmk:Sentential_Form} derived from the start symbol $S$:
+  \begin{equation*}
+    \FOLLOW(X) = \lbrace t \in T \vert S \Rightarrow \!\! * \, \alpha X t \beta \rbrace
+  \end{equation*}
+  
+  The nonterminal $X$ occurs on the right-hand side of a number of productions.
+
+  Let $Y \rightarrow \gamma X \delta$ denote such an occurrence, where $\gamma$ and $\delta$ are arbitrary sequences of terminals and nonterminals.
+  You can define an equation system for \nameref{def:FOLLOW} given that $G=(N,T,P,S)$.
+  \begin{subequations}
+    \begin{equation}\label{eq:FOLLOW_Nonterminals}
+      \FOLLOW(X) = \bigcup \FOLLOW(Y \rightarrow \gamma \underline{X} \delta)
+    \end{equation}
+    over all occurrences $Y \rightarrow \gamma X \delta$, and where
+    \begin{equation}\label{eq:FOLLOW_Sentential_Form}
+      \FOLLOW(Y \rightarrow \gamma \underline{X} \delta) = \FIRST(\delta) \cup (\text{if } \Nullable(\delta) \text{ then } \FOLLOW(Y) \text{ else } \emptyset \text{ fi})
+    \end{equation}
+  \end{subequations}
+
+  \begin{remark}
+    Again, the equations (\Crefrange{eq:FOLLOW_Nonterminals}{eq:FOLLOW_Sentential_Form}) are recursive.
+    Therefore, they might not terminate, so you must calculate this as another set of \nameref{def:Fixed-Point_Problems}.
+  \end{remark}
+
+  \begin{remark}[Sentential Form]\label{rmk:Sentential_Form}
+    Sequence of terminal and nonterminal symbols.
+  \end{remark}
+\end{definition}
+
+\begin{blackbox}
+  One way to think about solving a problem asking about
+  \nameref{def:FOLLOW} is shown below. I will use this grammar to
+  demonstrate:
+  \begin{align*}
+    S &\rightarrow Xa \\
+    X &\rightarrow Y \vert Yb \\
+    Y &\rightarrow YZc \vert \epsilon \\
+    Z &\rightarrow d \vert \epsilon
+  \end{align*}
+  \begin{enumerate}[noitemsep]
+  \item Determine the nonterminal you are interested in, let's say
+    $Y$.
+  \item Find all occurrences of that nonterminal on the
+    \textbf{\emph{RIGHT-HAND SIDE}} of the productions. In this case
+    our nonterminal occurs in:
+    \begin{itemize}[noitemsep]
+    \item Production 2
+    \item Production 3
+    \end{itemize}
+  \item Find the nonterminals that can directly follow your
+    nonterminal.
+    \begin{itemize}[noitemsep]
+    \item $b$, from Production 2
+    \item $c$, from Production 3
+    \end{itemize}
+  \item If there are nonterminals after the nonterminal you are
+    interested in, follow them. In this case, we follow $Z$. Then,
+    find the nonterminals that can directly follow that nonterminal
+    and add them to you're list.
+    \begin{itemize}[noitemsep]
+    \item $b$, from Production 2
+    \item $c$, from Production 3
+    \item $d$, from Production 4
+    \end{itemize}
+  \item If no token follows the nonterminal you want, then go
+    ``backwards'' through the production.
+    \begin{enumerate}[noitemsep]
+    \item Since Production 2 has $X \rightarrow Y$ as an option and
+      nothing follows this $Y$
+    \item Go backwards, up to the production(s) that produces $X$ on
+      the right-hand side
+    \item Compute Follow on the right-hand side of that production.
+      This produces:
+      \begin{itemize}[noitemsep]
+      \item $a$, from Production 1
+      \end{itemize}
+    \end{enumerate}
+    This leaves us with our $\FOLLOW(Y)$ set:
+    $\lbrace a, b, c, d \rbrace$, which is the solution.
+  \end{enumerate}
+\end{blackbox}
+
+\subsubsection{Constructing an \texorpdfstring{$\LLParse(1)$}{LL(1)} Table}\label{subsubsec:Construct_LL1_Table}
+Using the information that was gathered from the \nameref{subsubsec:Nullable}, \nameref{subsubsec:FIRST}, and \nameref{subsubsec:FOLLOW} calculations, you can construct an $\LLParse(1)$ parse table with the following steps.
+\begin{enumerate}[noitemsep]
+\item Look at each production $p: X \rightarrow \gamma$.
+\item Compute the token set $\FIRST(\gamma)$. Add $p$ to each corresponding entry for $X$.
+\item Check if $\gamma$ is \nameref{def:Nullable}.
+  \begin{enumerate}[noitemsep]
+  \item If so, compute the token set $\FOLLOW(X)$, and add $p$ to each corresponding entry for $X$.
+  \end{enumerate}
+\end{enumerate}
+
+\paragraph{\texorpdfstring{$\LLParse(1)$}{LL(1)} Parse Table Conflicts}\label{par:LL1_Table_Conflicts}
+For every case where an $\LLParse(1)$ grammar fails, it can be illustrated by the parse table for the grammer.
+The table for any of these grammars with have a \emph{conflict} in one of its cells, as shows when there are multiple productions in the cell.
+Some of the cases where this may happen are listed below:
+\begin{enumerate}[noitemsep]
+\item Ambiguous Grammar
+\item Left-Recursive
+\item Common Prefix
+\end{enumerate}
+
+\subsubsection{Eliminating Left Recursion}\label{subsubsec:Eliminate_Left_Recursion}
+$\LLParse(1)$ cannot support left recursion, however, they can support right recursion.
+So, if we have a grammar with left recursion, and want to $\LLParse(1)$ parse it, we need to rewrite the grammar.
+We can introduce a new nonterminal, which allows us to recurse on the right side of the production, but not the left.
+
+\subsection{LR Parsing}\label{subsec:LRParsing}
+$\LRParse(k)$ parsing stands for Left-to-right parse, rightmost-derivation, $k$-token lookahead.
+This parsing technique postpones the decision of which production to use until it sees the entire right-hand side of the production in question (and $k$ more tokens beyond).
+
+An LR parser has a \emph{stack} and and \emph{input}.
+The first $k$ tokens of the input are the \emph{lookahead}.
+Based on the contents of the stack and the lookahead, the parser performs 1 of 2 actions.
+\begin{enumerate}[noitemsep]
+\item \nameref{def:LR_Shift}
+\item \nameref{def:LR_Reduce}
+\end{enumerate}
+
+\begin{definition}[Shift]\label{def:LR_Shift}
+  A \emph{shift} operation corresponds to moving the first input token onto the top of the stack.
+  This is equivalent to reading the token and moving it onto the stack, and advancing forward through the sentence.
+  \begin{remark}[Accepting]\label{rmk:LR_Accept}
+    \nameref{def:LR_Shift}ing over the EOF (End of File) marker, typically denoted \$, is called \emph{accepting} and causes the parser to stop successfully.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Reduce]\label{def:LR_Reduce}
+  A \emph{reduce} operation corresponds to choosing a grammar rule $X \rightarrow ABC$; pop $C, B, A$ off the top of the stack, and push $X$ onto the stack.
+\end{definition}
+
+Initially, the stack is empty and the parser is sitting at the beginning of the input.
+
+In practice, $k>1$ is not used.
+These would generate incredibly large tables that would be hard to used and hard to make.
+Most reasonable programming languages can be described by $\LRParse(1)$ grammars.
+
+\subsubsection{LR Finite State Automata}\label{subsubsec:LRFiniteStateAutomata}
+These automata are \nameref{def:DeterministicFiniteAutomataDFA}.
+They are used in the parser to decide when to \nameref{def:LR_Shift} and when to \nameref{def:LR_Reduce}, and are applied to the stack.
+
+They can be used to generate an \nameref{subsubsec:LRParseTable}.
+
+Each of the states consists of one ore more \nameref{def:LRItem}s.
+
+\begin{definition}[LR Item]\label{def:LRItem}
+  The parser uses a \nameref{def:DeterministicFiniteAutomataDFA} to decide whether to shift or reduce the expression that is has seen so far.
+  The \emph{states} in the DFA are sets of \emph{LR Items}.
+
+  An example of an \nameref{def:LRItem} is shown in \Cref{eq:LRItem}.
+  \begin{equation}\label{eq:LRItem}
+    X \rightarrow \alpha \bullet \beta \:\:\: t,s
+  \end{equation}
+
+  An $\LRParse(1)$ item is a production extended with:
+  \begin{itemize}[noitemsep]
+  \item A \emph{dot}  ($\bullet$), corresponding to the position in the input sentence.
+  \item One or more possible \emph{lookahead} terminal symbols: $t,s$.
+    \begin{itemize}[noitemsep]
+    \item We will use ? when the lookahead doesn't matter.
+    \end{itemize}
+  \end{itemize}
+
+  \begin{remark}
+    The stack that is referenced in this section is left side of the dot that is present in \nameref{def:LRItem}s.
+  \end{remark}
+  
+  The $\LRParse(1)$ item corresponds to a state where (using \Cref{eq:LRItem}):
+  \begin{itemize}[noitemsep]
+  \item The topmost part of the stack is $\alpha$
+  \item The first part of the remaining input is expected to match either, in no particular order:
+    \begin{itemize}[noitemsep]
+    \item $\beta t$
+    \item $\beta s$
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\subsubsection{LR Parse Table}\label{subsubsec:LRParseTable}
+This table is generated after making an \nameref{subsubsec:LRFiniteStateAutomata}.
+To make one, there are 4 actions to note in the table.
+\begin{enumerate}[noitemsep]
+\item \nameref{par:ShiftActions}
+\item \nameref{par:ReduceActions}
+\item \nameref{par:GotoActions}
+\item \nameref{par:AcceptAction}
+\item Errors are denoted by blank entries in the table.
+\end{enumerate}
+
+\paragraph{Shift Actions}\label{par:ShiftActions}
+These are found by reading \textbf{\emph{TOKENS}}.
+For each \textbf{token edge, $t$}, from state $j$ to state $k$, add a \textbf{\emph{shift action}} $\mathbf{s} k$ to $\text{table}[j,t]$.
+(This corresponds to reading a token and pushing it onto the stack.)
+
+\paragraph{Reduce Actions}\label{par:ReduceActions}
+These are found when the \textbf{dot is at the end}.
+Add a \textbf{\emph{reduce action}} $\mathbf{r} p$ (reduce $p$) to $\text{table}[j,t]$, where $p$ is the production and $t$ is the lookahead token.
+(This corresponds to popping the right-hand side of a production off the stack and going backwards through the state machine.)
+
+\paragraph{Goto Actions}\label{par:GotoActions}
+These are found by reading a \textbf{\emph{NONTERMINAL}}.
+For each \emph{nonterminal edge, $X$}, from state $j$ to state $k$, add a \textbf{\emph{Goto Action}} $ g\mathbf{} k$ (goto state $k$) to $\text{table}[j,X]$.
+(This corresponds to pushing the left-hand side of a nonterminal production onto the stack.)
+
+\paragraph{Accept Action}\label{par:AcceptAction}
+These are found when in a state containing an LR item with your \textbf{dot on the left of \$}.
+If this is so, then add an \textbf{\emph{accept action}} $a$ to the table with indices $\text{table}[j,\$]$.
+(If we are about to perform a shift action over the EOF (End Of File) token, \$, then parsing has succeeded.)
+
+\subsubsection{\texorpdfstring{$\LALRParse(1)$ Parsing Tables}{LALR(1) Parsing Tables}}\label{subsubsec:LALR1_Parsing Tables}
+Since $\LRParse(1)$ tables can get quite large, a smaller table can be made by merging any 2 states whose items are identical except for lookahead sets.
+The resulting parser is called a \emph{Lookahead $\LRParse(1)$} parser.
+For example, compare the same states, but different parser types as shown in \Cref{subtab:LR1_Parser_State} and \Cref{subtab:LALR1_Parser_State}.
+\begin{table}[h!]
+  \centering
+  \begin{subtable}[t!]{0.30\linewidth}
+    \begin{tabular}[t!]{lc}
+      \toprule
+      Productions & Lookahead Token \\
+      \midrule
+      $S' \rightarrow \bullet S \$$ & ? \\
+      $S \rightarrow \bullet V = E$ & \$ \\
+      $S \rightarrow \bullet E$ & \$ \\
+      $E \rightarrow \bullet V$ & \$ \\
+      $V \rightarrow \bullet x$ & \$ \\
+      $V \rightarrow \bullet * E$ & \$ \\
+      $V \rightarrow \bullet x$ & = \\
+      $V \rightarrow \bullet * E$ & = \\
+      \bottomrule
+    \end{tabular}
+    \caption{$\LRParse(1)$ Table State}
+    \label{subtab:LR1_Parser_State}
+  \end{subtable}
+  \begin{subtable}[t!]{0.30\linewidth}
+    \begin{tabular}[t!]{lc}
+      \toprule
+      Productions & Lookahead Token \\
+      \midrule
+      $S' \rightarrow \bullet S \$$ & ? \\
+      $S \rightarrow \bullet V = E$ & \$ \\
+      $S \rightarrow \bullet E$ & \$ \\
+      $E \rightarrow \bullet V$ & \$ \\
+      $V \rightarrow \bullet x$ & \$,= \\
+      $V \rightarrow \bullet * E$ & \$,= \\
+      \bottomrule
+    \end{tabular}
+    \caption{ $\LALRParse(1)$ Table State}
+    \label{subtab:LALR1_Parser_State}
+  \end{subtable}
+  \caption{$\LRParse(1)$ Table State vs $\LALRParse(1)$ Table State}
+  \label{tab:LR1_Parser_vs_LALR1_Parser}
+\end{table}
+
+\subsubsection{Syntax Versus Semantics}\label{subsubsec:LR_Syntax_vs_Semantics}
+There are some things that context-free grammars cannot describe, and thus cannot be parsed correctly.
+For instance, the expression
+\begin{equation*}
+  a + 5 \AND b
+\end{equation*}
+
+The precedence here has the mathematical addition in greater priority than the logical AND operator.
+But logical and mathematical operators are not allowed in the same expression, because the types of the variables and operations don't make sense together.
+However, the context-free grammar and parser have no knowledge of the \emph{types} of the variables and oeprators in play here.
+So, the solution is to let this expression pass through the parser, but it should be caught later, during the \nameref{sec:Semantic_Analysis}.
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAN65-Compilers-Reference_Sheet"
+%%% End:

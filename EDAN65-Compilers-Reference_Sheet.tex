@@ -16,6 +16,16 @@
 % Math Operators that are useful to abstract the written math away to one spot
 % These are supposed to be document-specific mathematical operators that will make life easier
 % Many fundamental operators are defined in Reference_Sheet_Preamble.tex
+\DeclareMathOperator{\True}{\text{True}}
+\DeclareMathOperator{\False}{\text{False}}
+\DeclareMathOperator{\OR}{\parallel}
+\DeclareMathOperator{\AND}{\&\&}
+\DeclareMathOperator{\Nullable}{\text{Nullable}}
+\DeclareMathOperator{\FIRST}{\text{FIRST}}
+\DeclareMathOperator{\FOLLOW}{\text{FOLLOW}}
+\DeclareMathOperator{\LLParse}{\text{LL}}
+\DeclareMathOperator{\LRParse}{\text{LR}}
+\DeclareMathOperator{\LALRParse}{\text{LALR}}
 
 \begin{titlepage}
   \title{EDAN65: Compilers - Reference Sheet}
@@ -34,6 +44,8 @@
 \input{./EDAN65-Compilers-Sections/Introduction}
 
 \input{./EDAN65-Compilers-Sections/Lexical_Analysis-Scanning}
+
+\input{./EDAN65-Compilers-Sections/Syntactic_Analysis-Parsing}
 %====================================APPENDIX====================================
 \appendix
 \counterwithin{equation}{section}
