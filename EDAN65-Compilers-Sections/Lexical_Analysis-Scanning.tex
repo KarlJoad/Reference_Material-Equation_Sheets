@@ -22,6 +22,9 @@
 There are several ways to implement a scanner.
 One of the most common ways is the use of a \nameref{def:Finite State Automaton} or Finite State Machine.
 
+\subsection{Finite State Automata}\label{subsec:Finite State Automata}
+Finite state automata are used for regular expressions (regex's) to determine a matching word.
+
 \begin{definition}[Finite State Automaton]\label{def:Finite State Automaton}
   A \emph{finite state automaton} or \emph{finite state machine} is a mathematical model of computation.
   It is an abstract machine that can be in exactly one of a finite number of states at any given time.
@@ -30,9 +33,51 @@ One of the most common ways is the use of a \nameref{def:Finite State Automaton}
 
   There are 2 types of finite statue automata:
   \begin{enumerate}[noitemsep, nolistsep]
-  \item Deterministic Finite State Automata
-  \item Non-deterministic Finite State Automata
+  \item \nameref{def:DeterministicFiniteAutomataDFA}
+  \item \nameref{def:Non-deterministicFiniteAutomataNFA}
   \end{enumerate}
 
   A deterministic finite state automata can be constructed to be equivalent to any non-deterministic one.
+
+  \begin{remark}
+    The plural of Finite State Automaton is Finite State Automata.
+  \end{remark}
 \end{definition}
+
+\begin{definition}[Deterministic Finite Automata (DFA)]\label{def:DeterministicFiniteAutomataDFA}
+  In a \emph{deterministic finite automaton}, no two edges leaving from the same state are labeled with the same symbol.
+  Additionally, there cannot be an edge that matches the empty string, $\epsilon$.
+  A deterministic finite automaton will eventually terminate when it steps through all of its states necessary to reach the accepting state.
+  However, the key difference between a \nameref{def:DeterministicFiniteAutomataDFA} and a \nameref{def:Non-deterministicFiniteAutomataNFA} is that you can always figure out the path that a deterministic finite automaton will take.
+\end{definition}
+
+\begin{definition}[Non-deterministic Finite Automata (NFA)]\label{def:Non-deterministicFiniteAutomataNFA}
+  A \emph{non-deterministic finite automaton} is one that has multiple edges leaving a single state that have the same symbol.
+  It may also have special edges labeled with the empty string $\epsilon$, which is when a state is followed without ``eating'' any of the input string.
+  A non-deterministic finite automaton may eventually terminate when it steps through all its states necessary to reach its accepting state.
+  However, the key difference between a \nameref{def:Non-deterministicFiniteAutomataNFA} and a \nameref{def:DeterministicFiniteAutomataDFA} is that you can always figure out the path that a deterministic finite automaton will take.
+\end{definition}
+
+\subsubsection{Converting a NFA to a DFA}\label{subsubsec:Convert_NFA_to_DFA}
+There are a few steps for converting a non-deterministic finite automaton to a deterministic one.
+\begin{enumerate}[noitemsep]
+\item Start at the start state and enter it
+\item Follow all the states that accept the empty string $\epsilon$ and combine them with the start state.
+\item After that, read in the first character/word from the input and follow all the states that you combined.
+  \begin{itemize}[noitemsep]
+  \item This means that you will be following multiple states or edges at the same time.
+  \end{itemize}
+\item Continue doing this until you combine all the states down to a deterministic finite automaton.
+  \begin{itemize}[noitemsep]
+  \item You can have multiple instances of the same state, i.e., you can have state 5 in two different state bubbles, so long as the list of states inside is unique.
+  \end{itemize}
+\item The end states are found by taking the end states from the non-deterministic finite automaton and placing them in the deterministic finite automaton.
+  \begin{itemize}[noitemsep]
+  \item This means that if state 3 is and end state in the non-deterministic finite automaton, then every occurrence of state 3 in the deterministic finite automaton will be and end state.
+  \end{itemize}
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAN65-Compilers-Reference_Sheet"
+%%% End:
