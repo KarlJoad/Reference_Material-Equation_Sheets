@@ -108,10 +108,56 @@ Many times, you will encounter \nameref{def:Fixed-Point_Problems}.
   \end{remark}
 \end{definition}
 
+\begin{blackbox}
+  One way to think about solving a problem asking about \nameref{def:Nullable} is shown below. I will use this grammar to demonstrate:
+  \begin{align*}
+    p1&: X \rightarrow Y \vert Z \\
+    p2&: Y \rightarrow a \vert b \vert V \\
+    p3&: Z \rightarrow c \vert \epsilon \\
+    p4&: V \rightarrow d \vert Y
+  \end{align*}
+
+  \begin{enumerate}[noitemsep]
+  \item Determine the nonterminal you are interested in, let's say $X$.
+  \item Find all the productions with $X$ on the \textbf{\emph{LEFT-HAND SIDE}}.
+    \begin{itemize}[noitemsep]
+    \item $X$ is present on the left-hand side of $p1$.
+    \end{itemize}
+  \item Follow these productions to their right-hand side.
+    \begin{itemize}[noitemsep]
+    \item So we are considering the right-hand side of $p1$, which is $Y \vert Z$.
+    \end{itemize}
+  \item You will evaluate each of the tokens on the \textbf{\emph{RIGHT-HAND SIDE}} of the production(s) we are interested in.
+  \item If the token we are looking at on the \textbf{\emph{RIGHT-HAND SIDE}} is a terminal, the nonterminal $\gamma$ is \textbf{\emph{NOT}} nullable.
+    \begin{itemize}[noitemsep]
+    \item This is the case for $Y$.
+      Since either $a$ or $b$ could present, and $V$ can either produce $d$ or recurse back to $Y$, $Y$ can NEVER yield $\epsilon$.
+    \item In our case, both $X \rightarrow Y$ and $X \rightarrow Z$; $Y$ and $Z$ are nonterminals, so this step doesn't apply.
+    \end{itemize}
+  \item If the token that we are looking at on the \textbf{\emph{RIGHT-HAND SIDE}} is a nonterminal, then follow them.
+    \begin{itemize}[noitemsep]
+    \item In both $X \rightarrow Y$ and $X \rightarrow Z$, $Y$ and $Z$ are nonterminals, so we follow both.
+      \begin{itemize}[noitemsep]
+      \item Since we already calculated $Y$ in the previous step, we know that $Y$ is not nullable.
+        However, we can add the values that $Y$ can produce to a set to make sure we are correct.
+        So, $\Nullable(X) = \lbrace a, b, d \rbrace$.
+        Now we move onto $Z$.
+      \item The production for $Z$ is $Z \rightarrow c \vert \epsilon$.
+        In this case, $Z$ may be $\epsilon$.
+        We can add these values to our $\Nullable(X)$ set: $\Nullable(X) = \lbrace a, b, c, d, \epsilon \rbrace$
+      \end{itemize}
+    \end{itemize}
+  \item Once we have computed all possible $\Nullable(X)$ occurrences, we are done.
+  \end{enumerate}
+
+  This leaves us with our $\Nullable(X)$ set: $\lbrace a, b, c, d, \epsilon \rbrace$.
+  Since there is an option for $X$ to be $\epsilon$, $X$ \textbf{is} Nullable.
+\end{blackbox}
+
 \subsubsection{FIRST}\label{subsubsec:FIRST}
 \begin{definition}[FIRST]\label{def:FIRST}
   For the production $p$, where $p: X \rightarrow \gamma$, and $X$ and $\gamma$ are nonterminals.
-  The $\text{FIRST}(\gamma)$ are the tokens that occur \emph{\nameref{def:FIRST}} in a sentence derived from $\gamma$.
+  The $\text{FIRST}(\gamma)$ are the \textbf{tokens} that occur \emph{\nameref{def:FIRST}} in a sentence derived from $\gamma$.
 
   More formally, this can be defined as: $\FIRST(\gamma)$ is the set of tokens that can occur \emph{first} in the sentences derived from $\gamma$.
   \begin{equation*}
@@ -120,35 +166,74 @@ Many times, you will encounter \nameref{def:Fixed-Point_Problems}.
 
   You can define an equation system for \nameref{def:FIRST} given that $G=(N,T,P,S)$.
   \begin{subequations}
-    \begin{equation}\label{eq:FOLLOW_Epsilon}
+    \begin{equation}\label{eq:FIRST_Epsilon}
       \FIRST(\epsilon) = \emptyset
     \end{equation}
-    \begin{equation}\label{eq:FOLLOW_Terminal}
+    \begin{equation}\label{eq:FIRST_Terminal}
       \FIRST(t) = \lbrace t \rbrace
     \end{equation}
     where $t \in T$, i.e., $t$ is a terminal symbol
 
-    \begin{equation}\label{eq:FOLLOW_Nonterminal}
+    \begin{equation}\label{eq:FIRST_Nonterminal}
       \FIRST(X) = \FIRST(\gamma_{1}) \cup \ldots \cup \FIRST(\gamma_{n})
     \end{equation}
     where $X \rightarrow \gamma_{1}, \ldots, X \rightarrow \gamma_{n}$ are all the productions for $X$ in $P$.
 
-    \begin{equation}\label{eq:FOLLOW_Nonterminal_or_Terminal}
+    \begin{equation}\label{eq:FIRST_Nonterminal_or_Terminal}
       \FIRST(s\gamma) = \FIRST(s) \cup (\text{if } \Nullable(s) \text{ then } \FIRST(\gamma) \text{ else } \emptyset \text{ fi})
     \end{equation}
     where $s \in N \cup T$, i.e., $s$ is a nonterminal or a terminal
   \end{subequations}
 
   \begin{remark}
-    The equations (\Crefrange{eq:FOLLOW_Epsilon}{eq:FOLLOW_Nonterminal_or_Terminal}) for \nameref{def:FIRST} are recursive.
+    The equations (\Crefrange{eq:FIRST_Epsilon}{eq:FIRST_Nonterminal_or_Terminal}) for \nameref{def:FIRST} are recursive.
     Therefore, they might not terminate, so you must calculate this as another set of \nameref{def:Fixed-Point_Problems}.
   \end{remark}
 \end{definition}
 
+\begin{blackbox}
+  One way to think about solving a problem asking about \nameref{def:FIRST} is shown below. I will use this grammar to demonstrate:
+  \begin{align*}
+    p1&: X \rightarrow YZa \\
+    p2&: Y \rightarrow b \vert Z \vert V \\
+    p3&: Z \rightarrow c \vert \epsilon \\
+    p4&: V \rightarrow \epsilon
+  \end{align*}
+
+  \begin{enumerate}[noitemsep]
+  \item Determine the nonterminal you are interested in, let's say $Y$.
+  \item Find all productions with $Y$ on the left-hand side.
+    \begin{itemize}[noitemsep]
+    \item $Y$ is present on the left-hand side of $p2$.
+    \end{itemize}
+  \item Follow each of these productions to their right-hand side.
+    \begin{itemize}[noitemsep]
+    \item So we are considering the right-hand side of $p2$, which is $b \vert Z \vert V$.
+    \end{itemize}
+  \item If the first token on the \textbf{\emph{RIGHT-HAND SIDE}} is a terminal, add it to the $\FIRST$ set.
+    \begin{itemize}[noitemsep]
+    \item $\FIRST(Y) = \lbrace b \rbrace$
+    \end{itemize}
+  \item If the first token on the  \textbf{\emph{RIGHT-HAND SIDE}} is a nonterminal, go to that production and compute $\FIRST$ on that.
+    \begin{itemize}[noitemsep]
+    \item Since $Z$ is an option in $p2$, we compute $\FIRST(Z)$, which yields $\lbrace c, \epsilon \rbrace$.
+      We add both to the $\FIRST(Y)$ list.
+      Our list is now $\FIRST(Y) = \lbrace b, c, \epsilon \rbrace$
+    \item Since $B$ is an option in $p2$, we compute $\FIRST(V)$, which yields $\lbrace \epsilon \rbrace$.
+      We add this to the $\FIRST(Y)$ list.
+      Our list is now $\FIRST(Y) = \lbrace b, c, \epsilon \rbrace$
+    \end{itemize}
+  \item Since $\epsilon$ is an empty string, we can remove it from the list, or just ignore it.
+  \item Once we have computed all possible $\FIRST(Y)$ occurrences, we are done.
+  \end{enumerate}
+
+  This leaves us with our $\FIRST(Y)$ set: $\lbrace b, c \rbrace$, which is the solution.
+\end{blackbox}
+
 \subsubsection{FOLLOW}\label{subsubsec:FOLLOW}
 \begin{definition}[FOLLOW]\label{def:FOLLOW}
   For the production $p$, where $p: X \rightarrow \gamma$, and $X$ and $\gamma$ are nonterminals.
-  The $\text{FOLLOW}(X)$ are the tokens that \emph{\nameref{def:FOLLOW}} immediately after an $X$-sentence.
+  The $\text{FOLLOW}(X)$ are the \textbf{tokens} that \emph{\nameref{def:FOLLOW}} immediately after an $X$-sentence.
 
   More formally, this can be defined as: $\FOLLOW(X)$ is the set of tokens that can occur as the \emph{first} token \emph{following} $X$, in any \nameref{rmk:Sentential_Form} derived from the start symbol $S$:
   \begin{equation*}
@@ -180,56 +265,48 @@ Many times, you will encounter \nameref{def:Fixed-Point_Problems}.
 \end{definition}
 
 \begin{blackbox}
-  One way to think about solving a problem asking about
-  \nameref{def:FOLLOW} is shown below. I will use this grammar to
-  demonstrate:
+  One way to think about solving a problem asking about \nameref{def:FOLLOW} is shown below. I will use this grammar to demonstrate:
   \begin{align*}
-    S &\rightarrow Xa \\
-    X &\rightarrow Y \vert Yb \\
-    Y &\rightarrow YZc \vert \epsilon \\
-    Z &\rightarrow d \vert \epsilon
+    p1&: S \rightarrow Xa \\
+    p2&: X \rightarrow Y \vert Yb \\
+    p3&: Y \rightarrow YZc \vert \epsilon \\
+    p4&: Z \rightarrow d \vert \epsilon
   \end{align*}
   \begin{enumerate}[noitemsep]
-  \item Determine the nonterminal you are interested in, let's say
-    $Y$.
-  \item Find all occurrences of that nonterminal on the
-    \textbf{\emph{RIGHT-HAND SIDE}} of the productions. In this case
-    our nonterminal occurs in:
+  \item Determine the nonterminal you are interested in, let's say $Y$.
+  \item Find all occurrences of that nonterminal on the \textbf{\emph{RIGHT-HAND SIDE}} of the productions.
+    If the nonterminal is \textbf{\emph{NOT}} present anywhere on the right-hand side, it yields the empty set, $\lbrace \emptyset \rbrace$.
+    In this case our nonterminal occurs in:
     \begin{itemize}[noitemsep]
-    \item Production 2
-    \item Production 3
+    \item $p2$
+    \item $p3$
     \end{itemize}
-  \item Find the nonterminals that can directly follow your
-    nonterminal.
+  \item Find the terminals that can directly follow your nonterminal \textit{in the same production}.
     \begin{itemize}[noitemsep]
-    \item $b$, from Production 2
-    \item $c$, from Production 3
+    \item $b$, from $p2$
+    \item $c$, from $p3$
     \end{itemize}
-  \item If there are nonterminals after the nonterminal you are
-    interested in, follow them. In this case, we follow $Z$. Then,
-    find the nonterminals that can directly follow that nonterminal
-    and add them to you're list.
+  \item If there are nonterminals after the nonterminal you are interested in, follow them.
+    In this case, we follow $Z$.
+    Then, find the nonterminals that can directly follow that nonterminal and add them to you're list.
     \begin{itemize}[noitemsep]
-    \item $b$, from Production 2
-    \item $c$, from Production 3
-    \item $d$, from Production 4
+    \item $b$, from $p2$
+    \item $c$, from $p3$
+    \item $d$, from $p4$
     \end{itemize}
-  \item If no token follows the nonterminal you want, then go
-    ``backwards'' through the production.
+  \item If nothing (no nonterminal AND no terminal) follows the nonterminal you want, then go ``backwards'' through the production.
     \begin{enumerate}[noitemsep]
-    \item Since Production 2 has $X \rightarrow Y$ as an option and
-      nothing follows this $Y$
-    \item Go backwards, up to the production(s) that produces $X$ on
-      the right-hand side
+    \item Since $p2$ has $X \rightarrow Y$ as an option and nothing follows this $Y$
+    \item Go backwards, up to the production(s) that produces $X$ on the right-hand side
     \item Compute Follow on the right-hand side of that production.
       This produces:
       \begin{itemize}[noitemsep]
-      \item $a$, from Production 1
+      \item $a$, from $p1$
       \end{itemize}
     \end{enumerate}
-    This leaves us with our $\FOLLOW(Y)$ set:
-    $\lbrace a, b, c, d \rbrace$, which is the solution.
   \end{enumerate}
+
+  This leaves us with our $\FOLLOW(Y)$ set: $\lbrace a, b, c, d \rbrace$, which is the solution.
 \end{blackbox}
 
 \subsubsection{Constructing an \texorpdfstring{$\LLParse(1)$}{LL(1)} Table}\label{subsubsec:Construct_LL1_Table}
@@ -243,6 +320,42 @@ Using the information that was gathered from the \nameref{subsubsec:Nullable}, \
   \end{enumerate}
 \end{enumerate}
 
+\begin{example}[]{LL1 Parse Table}
+  An example of an $\LLParse(1)$ table is shown in
+  \Cref{tab:LL1_Parse_Table_Example}. It uses the grammar below.
+  \begin{align*}
+    p0&: S \rightarrow \text{varDecl } \$ \\
+    p1&: \text{varDecl} \rightarrow \text{type } \text{ID } \text{optInit} \\
+    p2&: \text{type} \rightarrow \text{``Integer''} \\
+    p3&: \text{type} \rightarrow \text{``Boolean''} \\
+    p4&: \text{optInit} \rightarrow \text{``=''} \text{INT} \\
+    p5&: \text{optInit} \rightarrow \epsilon
+  \end{align*}
+
+  The steps to constructing an $\LLParse(1)$ table are:
+  \begin{enumerate}[noitemsep]
+  \item Look at each production $p: X \rightarrow \gamma$
+  \item Compute $\FIRST(\gamma)$, and add the corresponding $p$ to the table for $X$
+  \item If $\gamma$ is Nullable, then compute $\FOLLOW(\gamma)$ and add the $p$ with the Nullable production to each corresponding value for $X$
+  \end{enumerate}
+\end{example}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c||cccccc}
+    \toprule
+    & ID & Integer & Boolean & ``='' & INT & \$ \\
+    \midrule
+    S & & $p0$ & $p0$ & & & \\
+    varDecl & & $p1$ & $p1$ & & & \\
+    type & & $p2$ & $p3$ & & & \\
+    optInit & & & & $p4$ & $p5$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{$\LLParse(1)$ Table Example}
+  \label{tab:LL1_Parse_Table_Example}
+\end{table}
+  
 \paragraph{\texorpdfstring{$\LLParse(1)$}{LL(1)} Parse Table Conflicts}\label{par:LL1_Table_Conflicts}
 For every case where an $\LLParse(1)$ grammar fails, it can be illustrated by the parse table for the grammer.
 The table for any of these grammars with have a \emph{conflict} in one of its cells, as shows when there are multiple productions in the cell.
