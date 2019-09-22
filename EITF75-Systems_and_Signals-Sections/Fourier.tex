@@ -151,7 +151,7 @@ There is a relationship between the $\ZTransform$-Transform and the \nameref{def
     \nameref{subsubsec:FourierTransformProperties-Modulation} & $x(n) \cos \left( \omega_{0} n \right)$ & $\frac{1}{2} X(\omega + \omega_{0}) + \frac{1}{2} X(\omega - \omega_{0})$ \\
     \nameref{subsubsec:FourierTransformProperties-MultiplicationTimeDomain} & $ x_{1}(n)x_{2}(n)$ & $\frac{1}{2 \pi} \int_{-\pi}^{\pi} X_{1}(\lambda) x_{2}(\omega - \lambda) d\lambda$ \\
     \nameref{subsubsec:FourierTransformProperties-DifferentiationFrequencyDomain} & $n x(n)$ & $j \frac{dX(\omega)}{d\omega}$ \\
-    \nameref{subsubsec:FourierTransformProperties-Conjugation} & $x^{*}(n)$ & $X^{*}(-\omega)$ \\
+    Conjugation & $x^{*}(n)$ & $X^{*}(-\omega)$ \\
     \nameref{subsubsec:FourierTransformProperties-ParsevalsTheorem} & \multicolumn{2}{c}{$\sum_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n) = \frac{1}{2 \pi} \int_{-\pi}^{\pi}X_{1}(\omega)X_{2}^{*}(\omega) d\omega$} \\
     \bottomrule
   \end{tabular}
@@ -160,6 +160,18 @@ There is a relationship between the $\ZTransform$-Transform and the \nameref{def
 \end{table}
 
 \subsubsection{Linearity}\label{subsubsec:FourierTransformProperties-Linearity}
+If
+\begin{equation*}
+  \begin{aligned}
+    x_{1}(n) &\FourierTransformRelation X_{1}(f) \\
+    x_{2}(n) &\FourierTransformRelation X_{2}(f) \\
+  \end{aligned}
+\end{equation*}
+then
+\begin{equation}\label{eq:FourierTransformProperties-Linearity}
+  a_{1}x_{1}(n) + a_{2}x_{2}(n) \FourierTransformRelation a_{1}X_{1}(f) + a_{2}X_{2}(f)
+\end{equation}
+
 \subsubsection{Time Shifting}\label{subsubsec:FourierTransformProperties-TimeShifting}
 \subsubsection{Time Reversal}\label{subsubsec:FourierTransformProperties-TimeReversal}
 \subsubsection{Convolution}\label{subsubsec:FourierTransformProperties-Convolution}
