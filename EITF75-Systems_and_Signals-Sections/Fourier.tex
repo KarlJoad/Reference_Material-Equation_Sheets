@@ -234,8 +234,14 @@ Let $x(n)$ be a real signal. Then
 That is, the energy spectral density of an energy signal is the \nameref{def:FourierTransform} of its autocorrelation sequence. This is a special case of \Cref{eq:FourierTransformProperties-Correlation}.
 
 \subsubsection{Frequency Shifting}\label{subsubsec:FourierTransformProperties-FrequencyShifting}
-Refer to \Cref{subsubsec:Z-Transform Time Shifting}, \nameref{subsubsec:Z-Transform Time Shifting} for greater explanation.
-Since there are many similarities between the \nameref{def:Z-Transform} and the \nameref{def:Discrete-Time_Fourier_Transform}, the explanation holds, so long as you keep $z=e^{-j 2\pi ft}$ in mind.
+If
+\begin{equation*}
+  x(n) \FourierTransformRelation X(f)
+\end{equation*}
+then
+\begin{equation}\label{eq:FourierTransformProperties-TimeReversal}
+  e^{-i 2 \pi f_{0} n}x(n) \FourierTransformRelation X(f - f_{0})
+\end{equation}
 
 \subsubsection{Modulation}\label{subsubsec:FourierTransformProperties-Modulation}
 \subsubsection{Multiplication in Time Domain}\label{subsubsec:FourierTransformProperties-MultiplicationTimeDomain}
