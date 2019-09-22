@@ -5,92 +5,119 @@ This will begin the portion of the compiler where we have read in our program an
 
 To improve modularity, it is better to seaparate issues of syntax (parsing) from issues of semantics (type-checking and translation to machine code).
 
-\begin{table}[h!]
-  \centering
-  \begin{tabular}{p{3cm}p{6cm}p{6cm}}
-    \toprule
-    & \multicolumn{1}{c}{\textbf{\nameref{def:Concrete_Syntax}}} & \multicolumn{1}{c}{\textbf{\nameref{def:Abstract_Syntax}}} \\
-    \midrule
-    What does it Describe? & The concrete representation of the programs & The abstract structure of the programs \\ \midrule
-    Main Use & Parsing text to trees & Model representing program inside compiler \\ \midrule
-    Underlying formalism & Context-Free Grammar & Recursive Data Types \\ \midrule
-    What is Named? & Only non-terminals. (Productions usually anonymous) & Nonterminals and Productions \\ \midrule
-    What tokens occur in the grammar? & All tokens corresponding to ``words'' in the text & Usually tokens with values (identifiers, literals) \\ \midrule
-    & Independent of abstract structure & Independent of parser and parser algorithm \\
-    \bottomrule
-  \end{tabular}
-  \caption{Concrete Syntax vs. Abstract Syntax}
-  \label{tab:Concrete_vs_Abstract_Syntax}
-\end{table}
+\subsection{Visitors}\label{subsec:Visitors}
+\nameref{def:Visitors} are an example of ``The Expression Problem''.
+This problem states that we would like to:
+\begin{itemize}[noitemsep]
+\item Define \emph{language constructs} in a modular way (Java Class Hierarchy)
+\item Define \emph{computations} in a modular way (On those Classes)
+\item \emph{Compose} these modules as we like
+\item Be able to \emph{separately compile} these modules
+\item Have full \emph{static type safety} (No need for typecasting or instanceof)
+\end{itemize}
 
-\begin{definition}[Concrete Syntax]\label{def:Concrete_Syntax}
-  The \emph{concrete syntax} is more verbose than that of an \nameref{def:Abstract_Syntax}.
-  It contains the necessary information, grammar transformations, and elimination of ambiguity required to parse the program.
-  However, they can be unwieldy to use in the later stages of compilation.
-\end{definition}
+The Expression Problem contains:
+\begin{itemize}[noitemsep]
+\item \textit{Kinds} of objects: compound statements, assignment statements, print statements, etc.
+\item \textit{Interpretations} of these objects: type-checking, translate to other code, optimize, interpret, etc.
+\end{itemize}
 
-\begin{definition}[Abstract Syntax]\label{def:Abstract_Syntax}
-  The \emph{abstract syntax} is less verbose than that of the \nameref{def:Concrete_Syntax}, but it contains all the of the same information.
-  This makes a clean interface between the parser and later stages of a compiler (or other kinds of program-analysis tools).
-  
-  The \emph{abstract syntax} conveys the phrase structure of the source program, with all the parsing issues resolved, but no semantic interpretation yet.
+This means there are 2 ``methods'' to solve The Expression Problem:
+\begin{enumerate}[noitemsep]
+\item Separate your \nameref{def:Abstract_Syntax} from your interpretation.
+  This makes it easy and modular to:
+  \begin{itemize}[noitemsep]
+  \item Add a new interpretation, because they are all logically grouped together
+  \item However, it is hard to add a new kind of interpretation, because you need to add new functions to all existing interpretations
+  \end{itemize}
+\item Tie your \nameref{def:Abstract_Syntax} to your interpretations
+  \begin{itemize}[noitemsep]
+  \item Easy to add new kind. All the interpretations of that kind are grouped together as methods of the new kind.
+  \item Not modular to add a new interpretation, a new method must be added to every class
+  \end{itemize}
+\end{enumerate}
 
-  Early compilers did not use these because of memory issues.
-\end{definition}
+These require your language to support static aspects, and Java natively doesn't.
+You would need another language like AspectJ or JastAdd.
 
-\subsection{Parse Trees}\label{subsec:Parse_Trees}
-One method of doing this is for the parser to produce a \emph{parse tree}.
-\begin{definition}[Parse Tree]\label{def:Parse_Tree}
-  A \emph{parse tree} is a data structure for later phases of the compiler to traverse.
-  It describes the entirety of the program within a tree structure.
-  Here, there is exactly one leaf for each token of the input and one internal node for each grammar rule reduced during the parse.
-  This is called a \nameref{def:Concrete_Parse_Tree}
-\end{definition}
-
-\begin{definition}[Concrete Parse Tree]\label{def:Concrete_Parse_Tree}
-  A \emph{concrete parse tree} is one that has exactly one leaf for each token of the input and one internal node for each grammar rule reduced during the parse.
-  This represents the \emph{\nameref{def:Concrete_Syntax}} of the source language, which may be difficult to use internally.
-  Much of the punctuation that is borken up from the input string conveys no information to the compiler, but are useful for the programmer.
-  However, once the \nameref{def:Parse_Tree} is built, the structure of the tree conveys the structuring information in a more convienent way.
-
-  Additionally, the structure of the \nameref{def:Concrete_Parse_Tree} may depend too much on the grammar and \nameref{def:Concrete_Syntax}.
-  Grammar transformations and the elimination of ambiguity should only take place during parsing, and no later.
-\end{definition}
-
-\begin{definition}[Abstract Parse Tree]\label{def:Abstract_Parse_Tree}
-  An \emph{abstract parse tree} is also called an \emph{Abstract Syntax Tree}.
-  Here, the \nameref{def:Concrete_Parse_Tree} is represented only by the operations present in the program.
-  The precedence and formatting of the tree is handled by the \nameref{def:Concrete_Syntax} and \nameref{def:Concrete_Parse_Tree}.
-
-  \emph{Abstract Parse/Syntax Trees} are data structures within the compiler program, and are not going to be used outside of it.
-
-  \begin{remark}[Abstract Syntax Tree in Java]\label{rmk:Abstract_Syntax_Tree_in_Java}
-    In Java, because of its Object-Oriented nature, the \nameref{def:Abstract_Parse_Tree} is organized in the following way:
+So, to deal with The Expression Problem, there are a few options:
+\begin{enumerate}[noitemsep]
+\item Edit the AST classes
+  \begin{itemize}[noitemsep]
+  \item Doesn't actually solve the problem
+  \item Non-modular
+  \item Non-compositional
+  \item \textbf{BAD IDEA TO EDIT GENERATED CODE}
+  \item However, sometimes this is done in industry
+  \end{itemize}
+\item \nameref{def:Visitors}
+  \begin{itemize}[noitemsep]
+  \item An Object-Oriented design pattern
+  \item Modularize through clever indirect function/method calls
+  \item Not full modularization
+  \item No composition
+  \item Supported by many parser generators
+  \item Reasonably useful, commonly used in industry
+  \end{itemize}
+\item Static Aspect-Oriented Programming (AOP)
+  \begin{itemize}[noitemsep]
+  \item Also known as \textit{Inter-Type Declarations (ITDs)}
+  \item Use new language constructs (aspects) to factor out code
+  \item Solves The Expression Problem in a nice simple way
+  \item Drawback: You need a new language
     \begin{itemize}[noitemsep]
-    \item An abstract class for each nonterminal
-    \item A subclass for each production
-    \item etc.
+    \item AspectJ
+    \item JastAdd
     \end{itemize}
-  \end{remark}
+  \end{itemize}
+\item Advanced Language Constructs
+  \begin{itemize}[noitemsep]
+  \item Use more advanced language constructs:
+    \begin{itemize}[noitemsep]
+    \item Virtual Classes in bgeta
+    \item Traits in Scala
+    \item Typeclasses in Haskell
+    \end{itemize}
+  \item Drawbacks:
+    \begin{itemize}[noitemsep]
+    \item More complex than Static Aspect-Oriented Programming
+    \item You need an advanced language
+    \item Not much practical experience (so far)
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+\begin{definition}[Visitors]\label{def:Visitors}
+  \emph{Visitors} are used to modularize compilers in Java, or any other Object-Oriented language without Aspect-Oriented Programming mechanisms.
+  ``The Visitor design pattern lets you define a new operation without changing the elements on which it operates'' \parencite{ElementsReusableObjectOrientedSoftware1994}.
+
+  The Visitor pattern is a technique to use the \nameref{def:Abstract_Syntax}-separate-from-interpretation style.
+
+  A visitor implements an interpretation; it is an object which contains a \texttt{visit} method for each \nameref{def:Abstract_Parse_Tree} class.
+  Each \nameref{def:Abstract_Parse_Tree} should contain an \texttt{accept} method, which serves a hook for all interpretations.
+  It is called by a visitor and passes control back to an appropriate method of the visitor.
+
+  This can be thought of as a dialogue between the \nameref{def:Abstract_Parse_Tree} class and the visitor class.
+  The visitor calls the \texttt{accept} method of a node and asks ``What is your class?''
+  The \texttt{accept} method answers by calling the corresponding \texttt{visit} method from the visitor.
+
+  These \texttt{visit} methods are usually overloaded for the various types present in the \nameref{def:Abstract_Parse_Tree}, further increasing code modularity.
 \end{definition}
 
 \begin{table}[h!]
   \centering
   \begin{tabular}{ccc}
     \toprule
-    \textbf{Abstract Grammar} & \textbf{Object-Oriented Model} & \textbf{Other Model} (Algebraic Data Types) \\
+    & Frequent type-casts? & Frequent recompilation? \\
     \midrule
-    Programming Language & Java & Haskell \\
-    Nonterminal & Superclass & Type, Sort \\
-    Production & Subclass & Constructor, Operator \\
+    \texttt{Instanceof} and type-casts & Yes & No \\
+    Dedicated methods & No & Yes \\
+    The Visitor Pattern & No & No \\
     \bottomrule
   \end{tabular}
-  \caption{Abstract Syntax Tree Hierarchy in Programming Paradigms}
-  \label{tab:Abstract_Syntax_Tree_Programming_Paradigms}
+  \caption{Summary of the \nameref{def:Visitors} Pattern}
+  \label{tab:Visitor_Pattern_Summary}
 \end{table}
-\subsubsection{Abstract Parse/Syntax Trees}\label{subsubsec:Abstract_Parse_Trees}
-
-
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAN65-Compilers-Reference_Sheet"
