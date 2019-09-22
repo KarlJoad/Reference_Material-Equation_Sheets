@@ -195,6 +195,23 @@ then
 \end{equation}
 
 \subsubsection{Convolution}\label{subsubsec:FourierTransformProperties-Convolution}
+If
+\begin{equation*}
+  \begin{aligned}
+    x_{1}(n) &\FourierTransformRelation X_{1}(f) \\
+    x_{2}(n) &\FourierTransformRelation X_{2}(f) \\
+  \end{aligned}
+\end{equation*}
+then
+\begin{equation}\label{eq:FourierTransformProperties-Convolution}
+  x(n) = x_{1}(n) * x_{2}(n) \FourierTransformRelation X(f) = X_{1}(f)X_{2}(f)
+\end{equation}
+
+\begin{remark*}
+  There is one thing to note here.
+  Both $x_{1}(n)$ and $x_{2}(n)$ must be reasonably well-behaved and have be BIBO-stable for this relation to hold.
+\end{remark*}
+
 \subsubsection{Correlation}\label{subsubsec:FourierTransformProperties-Correlation}
 \subsubsection{Wiener-Khintchine Theorem}\label{subsubsec:FourierTransformProperties-WienerKhintchineTheorem}
 \subsubsection{Frequency Shifting}\label{subsubsec:FourierTransformProperties-FrequencyShifting}
