@@ -12,6 +12,7 @@
 }
 
 % \graphicspath{{./Drawings/EDAN65}} % Uncomment this to use pictures in this document
+\addbibresource{./Bibliographies/EDAN65-Compilers.bib}
 
 % Math Operators that are useful to abstract the written math away to one spot
 % These are supposed to be document-specific mathematical operators that will make life easier
@@ -47,6 +48,8 @@
 
 \input{./EDAN65-Compilers-Sections/Syntactic_Analysis-Parsing}
 
+\input{./EDAN65-Compilers-Sections/Abstract_Syntax_Trees}
+
 \input{./EDAN65-Compilers-Sections/Semantic_Analysis}
 %====================================APPENDIX====================================
 \appendix
@@ -58,6 +61,10 @@
 
 % \clearpage
 % \input{./Appendix-Reference_Material/Calculus}
+
+\clearpage
+% To make this print, you must include a citation somewhere in the document
+\printbibliography{}
 
 \end{document}
 %%% Local Variables:
