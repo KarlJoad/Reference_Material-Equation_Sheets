@@ -254,6 +254,20 @@ then
 \end{equation}
 
 \subsubsection{Multiplication in Time Domain}\label{subsubsec:FourierTransformProperties-MultiplicationTimeDomain}
+This is also called the \emph{Windowing Theorem}.
+
+If
+\begin{equation*}
+  \begin{aligned}
+    x_{1}(n) &\FourierTransformRelation X_{1}(f) \\
+    x_{2}(n) &\FourierTransformRelation X_{2}(f) \\
+  \end{aligned}
+\end{equation*}
+then
+\begin{equation}\label{eq:FourierTransformProperties-MultiplicationTimeDomain}
+  x_{3}(n) \equiv x_{1}(n)x_{2}(n) \FourierTransformRelation X_{3}(f) = \int_{\frac{1}{2}}^{\frac{1}{2}} X_{1}(\lambda) X_{2}(f-\lambda) d\lambda
+\end{equation}
+
 \subsubsection{Differentiation in Frequency Domain}\label{subsubsec:FourierTransformProperties-DifferentiationFrequencyDomain}
 \subsubsection{Conjugation}\label{subsubsec:FourierTransformProperties-Conjugation}
 \subsubsection{Parseval's Theorem}\label{subsubsec:FourierTransformProperties-ParsevalsTheorem}
