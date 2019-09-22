@@ -19,9 +19,11 @@ This decomposition is said to be represented in the \emph{frequency domain}.
   \begin{equation}\label{eq:FourierTransform-Continuous-Frequency}
     X(F) = \int\limits_{-\infty}^{\infty} x(t) e^{-j 2 \pi F t} dt
   \end{equation}
+
   \begin{equation}\label{eq:FourierTransform-Discrete-Frequency}
     X(f) = \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j 2 \pi f n}
   \end{equation}
+
   \begin{remark}
     Sometimes $X(F)$ and $X(f)$ will be denoted with $\Omega$ and $\omega$ ($X(\Omega)$ and $X(\omega)$) respectively.
     In both cases, $\Omega$ and $\omega$ mean something similar.
@@ -29,6 +31,7 @@ This decomposition is said to be represented in the \emph{frequency domain}.
       \Omega &= 2 \pi F \\
       \omega &= 2 \pi f
     \end{align*}
+
     This means that we can rewrite \Crefrange{eq:FourierTransform-Continuous-Frequency}{eq:FourierTransform-Discrete-Frequency} as
     \begin{equation}\label{eq:FourierTransform-Continuous-Omega}
       X(\Omega) = \int\limits_{-\infty}^{\infty} x(t) e^{-j \Omega t} dt
@@ -37,7 +40,15 @@ This decomposition is said to be represented in the \emph{frequency domain}.
       X(\omega) = \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j \omega n}
     \end{equation}
   \end{remark}
+
+  \begin{remark}
+    Generally, when people say the \nameref{def:FourierTransform}, they are referring to the transform on \nameref{def:Continuous-Time Signals}.
+    There is a distinction that occurs with the \emph{DTFT} or \emph{\nameref{def:Discrete-Time_Fourier_Transform}}.
+
+    This document explains them side-by-side, but will primarily focus on the \nameref{def:Discrete-Time_Fourier_Transform}.
+  \end{remark}
 \end{definition}
+
 \begin{definition}[Fourier Series]\label{def:FourierSeries}
   When decomposing the class of periodic signals, you are returned a \emph{Fourier series}.
   This is generally shown as the function
@@ -46,8 +57,48 @@ This decomposition is said to be represented in the \emph{frequency domain}.
   \end{equation*}
 \end{definition}
 
-\subsection{\texorpdfstring{$\ZTransform$-Transform Fourier Transform Relation}{Z-Transform Fourier Transform Relation}}\label{subsec:ZTransformFourierTransformRelation}
-There is a relationship between the $\ZTransform$-Transform and the \nameref{def:FourierTransform}.
+\begin{definition}[Discrete-Time Fourier Transform]\label{def:Discrete-Time_Fourier_Transform}
+  The \emph{Discrete-Time \nameref{def:FourierTransform}, DTFT} is a special case of the \nameref{def:FourierTransform} that occurs when the input function $x(n)$ is a case of \nameref{def:Discrete-Time Signals}.
+
+  The transformation (analysis) equations are:
+  \begin{subequations}
+    \begin{equation}\label{eq:Discrete-Time_Fourier_Transform-Discrete-Frequency}
+      X(f) = \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j 2 \pi f n}
+    \end{equation}
+    \begin{equation*}
+      \omega = 2 \pi f
+    \end{equation*}
+    \begin{equation}\label{eq:FourierTransform-Discrete-Omega}
+      X(\omega) = \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j \omega n}
+    \end{equation}
+  \end{subequations}
+
+  The reverse (synthesis) equations are:
+  \begin{subequations}
+    \begin{equation}\label{eq:InverseFourierTransform-Frequency}
+      x(n) = \int\limits_{-\infty}^{\infty} X(f) e^{j 2\pi fn} df
+    \end{equation}
+    \begin{equation}\label{eq:InverseFourierTransform-Omega}
+      x(n) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} X(\omega) e^{j \omega n} d\omega
+    \end{equation}
+  \end{subequations}
+  These equations are expanded more upon in \Cref{subsec:InverseFourierTransform}, \nameref{subsec:InverseFourierTransform}.
+\end{definition}
+
+\subsection{\nameref{def:FourierTransform} Relations}\label{subsec:Fourier_Transform_Relations}
+Each of these relations is just a side-note, the only relation of real importance is \Cref{eq:ZTransformFourierTransformRelation}.
+The \nameref{def:FourierTransform} is just a special case in each of these scenarios.
+The \nameref{def:FourierTransform} is evaluated around the unit circle on the real-imaginary plane.
+
+\subsubsection{\nameref{app:Laplace_Transform} \nameref{def:FourierTransform} Relation}\label{subsubsec:Laplace-Transform_Fourier_Transform_Relation}
+There is a correlation between the \nameref{app:Laplace_Transform} and the \nameref{def:FourierTransform}.
+The \nameref{def:FourierTransform} is a more specific case of the \nameref{app:Laplace_Transform}, when
+\begin{equation*}
+  e^{-st} = e^{-j 2\pi ft}
+\end{equation*}
+
+\subsubsection{\texorpdfstring{\nameref{def:Z-Transform} \nameref{def:Discrete-Time_Fourier_Transform} Relation}{Z-Transform Fourier Transform Relation}}\label{subsubsec:ZTransformFourierTransformRelation}
+There is a relationship between the $\ZTransform$-Transform and the \nameref{def:Discrete-Time_Fourier_Transform}.
 \begin{equation}\label{eq:ZTransformFourierTransformRelation}
   \begin{aligned}
     z &= e^{2\pi f} \\
@@ -63,8 +114,8 @@ There is a relationship between the $\ZTransform$-Transform and the \nameref{def
   
   \begin{equation}\label{eq:InverseFourierTransform-Frequency}
     \begin{aligned}
-      x(t) &= \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} X(F) e^{j 2\pi Ft} dF \\
-      x(n) &= \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} X(f) e^{j 2\pi fn} df \\
+      x(t) &= \int\limits_{-\infty}^{\infty} X(F) e^{j 2\pi Ft} dF \\
+      x(n) &= \int\limits_{-\infty}^{\infty} X(f) e^{j 2\pi fn} df \\
     \end{aligned}
   \end{equation}
 
@@ -95,18 +146,19 @@ There is a relationship between the $\ZTransform$-Transform and the \nameref{def
     \nameref{subsubsec:FourierTransformProperties-Correlation} & $r_{x_{1},x_{2}}(l) = x_{1}(l) * x_{2}(-l)$ & \multicolumn{1}{r}{$S_{x_{1},x_{2}}(\omega) = X_{1}(\omega)X_{2}(\omega)$} \\
              && \multicolumn{1}{r}{$= X_{1}(\omega)X_{2}^{*}(\omega)$} \\
              && \multicolumn{1}{r}{[if $x_{2}(n)$ is real]} \\
-    \nameref{subsubsec:FourierTransformProperties-WienerKhintchineTheorem} && \\
-    \nameref{subsubsec:FourierTransformProperties-FrequencyShifting} && \\
-    \nameref{subsubsec:FourierTransformProperties-Modulation} && \\
-    \nameref{subsubsec:FourierTransformProperties-MultiplicationTimeDomain} && \\
-    \nameref{subsubsec:FourierTransformProperties-DifferentiationFrequencyDomain} && \\
-    \nameref{subsubsec:FourierTransformProperties-Conjugation} && \\
-    \nameref{subsubsec:FourierTransformProperties-ParsevalsTheorem} && \\
+    \nameref{subsubsec:FourierTransformProperties-WienerKhintchineTheorem} &$ r_{xx}(l)$ & $S_{xx}(\omega)$ \\
+    \nameref{subsubsec:FourierTransformProperties-FrequencyShifting} & $e^{j \omega_{0} n} x(n)$ & $X(\omega - \omega_{0})$ \\
+    \nameref{subsubsec:FourierTransformProperties-Modulation} & $x(n) \cos \left( \omega_{0} n \right)$ & $\frac{1}{2} X(\omega + \omega_{0}) + \frac{1}{2} X(\omega - \omega_{0})$ \\
+    \nameref{subsubsec:FourierTransformProperties-MultiplicationTimeDomain} & $ x_{1}(n)x_{2}(n)$ & $\frac{1}{2 \pi} \int_{-\pi}^{\pi} X_{1}(\lambda) x_{2}(\omega - \lambda) d\lambda$ \\
+    \nameref{subsubsec:FourierTransformProperties-DifferentiationFrequencyDomain} & $n x(n)$ & $j \frac{dX(\omega)}{d\omega}$ \\
+    \nameref{subsubsec:FourierTransformProperties-Conjugation} & $x^{*}(n)$ & $X^{*}(-\omega)$ \\
+    \nameref{subsubsec:FourierTransformProperties-ParsevalsTheorem} & \multicolumn{2}{c}{$\sum_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n) = \frac{1}{2 \pi} \int_{-\pi}^{\pi}X_{1}(\omega)X_{2}^{*}(\omega) d\omega$} \\
     \bottomrule
   \end{tabular}
   \caption{Properties of the \nameref{def:FourierTransform} for \nameref{def:Discrete-Time Signals}}
   \label{tab:FourierTransformProperties}
 \end{table}
+
 \subsubsection{Linearity}\label{subsubsec:FourierTransformProperties-Linearity}
 \subsubsection{Time Shifting}\label{subsubsec:FourierTransformProperties-TimeShifting}
 \subsubsection{Time Reversal}\label{subsubsec:FourierTransformProperties-TimeReversal}
@@ -119,6 +171,29 @@ There is a relationship between the $\ZTransform$-Transform and the \nameref{def
 \subsubsection{Differentiation in Frequency Domain}\label{subsubsec:FourierTransformProperties-DifferentiationFrequencyDomain}
 \subsubsection{Conjugation}\label{subsubsec:FourierTransformProperties-Conjugation}
 \subsubsection{Parseval's Theorem}\label{subsubsec:FourierTransformProperties-ParsevalsTheorem}
+If
+\begin{equation*}
+  \begin{aligned}
+    x_{1}(n) &\FourierTransformRelation X_{1}(f) \\
+    x_{2}(n) &\FourierTransformRelation X_{2}(f) \\
+  \end{aligned}
+\end{equation*}
+then
+
+\begin{equation}\label{eq:FourierTransformProperties-ParsevalsTheorem-Frequency}
+  \sum\limits_{n=-\infty}^{\infty} x_{1}(n) x_{2}^{*}(n) = \int\limits_{-\pi}^{\pi} X_{1}(f) X_{2}^{*}(f) df
+\end{equation}
+\begin{equation}\label{eq:FourierTransformProperties-ParsevalsTheorem-Omega}
+  \sum\limits_{n=-\infty}^{\infty} x_{1}(n) x_{2}^{*}(n) = \frac{1}{2 \pi} \int\limits_{-\pi}^{\pi} X_{1}(\omega) X_{2}^{*}(\omega) d\omega
+\end{equation}
+
+Both \Crefrange{eq:FourierTransformProperties-ParsevalsTheorem-Frequency}{eq:FourierTransformProperties-ParsevalsTheorem-Omega} can be expressed in another format.
+\begin{equation}\label{eq:FourierTransformProperties-ParsevalsTheorem-Frequency-Absolute}
+  \sum\limits_{n=-\infty}^{\infty} \lvert x_{1}(n) \rvert^{2} = \int\limits_{-\pi}^{\pi} \lvert X_{1}(f) \rvert^{2} df
+\end{equation}
+\begin{equation}\label{eq:FourierTransformProperties-ParsevalsTheorem-Omega-Absolute}
+  \sum\limits_{n=-\infty}^{\infty} \lvert x_{1}(n) \rvert^{2} = \frac{1}{2 \pi} \int\limits_{-\pi}^{\pi} \lvert X_{1}(\omega) \rvert^{2} d\omega
+\end{equation}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
