@@ -129,6 +129,8 @@ There is a relationship between the $\ZTransform$-Transform and the \nameref{def
 \end{definition}
 
 \subsection{Fourier Transform Properties for Discrete-Time Signals}\label{subsec:FourierTransformProperties-Discrete}
+One thing to keep in mind with all of these properties is that $\omega = 2 \pi f$.
+
 \begin{table}[h!]
   \centering
   \begin{tabular}{lll}
@@ -173,6 +175,15 @@ then
 \end{equation}
 
 \subsubsection{Time Shifting}\label{subsubsec:FourierTransformProperties-TimeShifting}
+If
+\begin{equation*}
+  x(n) \FourierTransformRelation X(f)
+\end{equation*}
+then
+\begin{equation}\label{eq:FourierTransformProperties-TimeShifting}
+  x(n-k) \FourierTransformRelation e^{-j \omega k} X(f)
+\end{equation}
+
 \subsubsection{Time Reversal}\label{subsubsec:FourierTransformProperties-TimeReversal}
 \subsubsection{Convolution}\label{subsubsec:FourierTransformProperties-Convolution}
 \subsubsection{Correlation}\label{subsubsec:FourierTransformProperties-Correlation}
