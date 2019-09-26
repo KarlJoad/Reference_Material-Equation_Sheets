@@ -1,0 +1,57 @@
+\section{Solving Differential Equations with Laplace Transforms}\label{sec:Solve_Diff_Eqns_Laplace}
+\begin{example}[]{Solve Differential Equation with Laplace Transform 1}
+  Given the ODE
+  \begin{equation*}
+    y''(t) + 4y(t) = \delta(t-\pi) \; y(0) = 0, \, y'(0) = 0
+  \end{equation*}
+
+  \tcblower
+
+  \begin{align*}
+    \Lapl \lbrace y''(t) \rbrace + \Lapl \lbrace 4 y(t) \rbrace &= \Lapl \lbrace \delta (t - \pi) \\
+    \left(  -y'(0) - sy(0) + s^{2}Y(s) \right) + 4Y(s) &= e^{-s \pi} \\
+    \left( s^{2}Y(s) - 0 - s(0) \right) + 4Y(s) &= e^{-s \pi} \\
+    Y(s) \left( s^{2} + 4 \right) &= e^{-s \pi} \\
+    Y(s) &= \frac{e^{-s \pi}}{s^{2}+4} \\
+    y(t) &= \Lapl^{-1} \biggl\lbrace \frac{e^{-s \pi}}{s^{2}+4} \biggr\rbrace = \biggl\lbrace \frac{e^{-s \pi}}{s^{2}+4} + \frac{0}{s^{2}+4} \biggr\rbrace
+  \end{align*}
+  Now using our Laplace Transform table we receive our answer.
+  \begin{equation*}
+    y(t) = 0 + \UnitStep(t - \pi) \frac{1}{2}\sin \left( 2 \left( t - \pi \right) \right)
+  \end{equation*}
+\end{example}
+
+\begin{example}[]{Solve Differential Equation with Laplace Transform 2}
+  Given the ODE
+  \begin{equation*}
+    y''(t) + 2y'(t) + 2y(t) = \delta (t - \pi) \; y(0) = 1, \, y'(0) = 0
+  \end{equation*}
+
+  \tcblower
+
+  \begin{align*}
+    \Lapl \lbrace y''(t) \rbrace + \Lapl \lbrace 2y'(t) \rbrace + \Lapl \lbrace 2 y(t) \rbrace &= \Lapl \lbrace \delta (t - \pi) \\
+    \Lapl \lbrace y''(t) \rbrace + 2 \Lapl \lbrace y'(t) \rbrace + 2 \Lapl \lbrace y(t) \rbrace &= \Lapl \lbrace \delta (t - \pi) \\
+    \left( -y'(0) -sy(0) + s^{2}Y(s) \right) + 2 \left( -y(0) + sY(s) \right) + 2Y(s) &= e^{-s \pi} \\
+    \left( -0 - 1s + s^{2}Y(s) \right) + 2 \left( -1 + sY(s) \right) + 2Y(s) &= e^{-s \pi} \\
+    \left( -s + s^{2}Y(s) \right) + -2 + 2sY(s) + 2Y(s) &= e^{-s \pi} \\
+    s^{2}Y(s) + 2sY(s) + 2Y(s) &= e^{-s \pi} + s + 2 \\
+    Y(s) \left( s^{2} + 2s + 2 \right) &= e^{-s \pi} + s + 2 \\
+    Y(s) &= \frac{e^{-s \pi} + s + 2}{s^{2} + 2s + 2} \\
+    Y(s) &= \frac{e^{-s \pi} + s + 2}{{(s + 1)}^{2} + 1}
+  \end{align*}
+  Now we perform partial fraction decomposition and receive
+  \begin{align*}
+    Y(s) &= \frac{e^{-s \pi}}{{(s + 1)}^{2} + 1} + \frac{s+1}{{(s + 1)}^{2} + 1} + \frac{1}{{(s + 1)}^{2} + 1} \\
+    y(t) &= \Lapl \Biggl\lbrace \frac{e^{-s \pi}}{{(s + 1)}^{2} + 1} \Biggr\rbrace + \Lapl \Biggl\lbrace \frac{s+1}{{(s + 1)}^{2} + 1} \Biggr\rbrace + \Lapl \Biggl\lbrace \frac{1}{{(s + 1)}^{2} + 1} \Biggr\rbrace
+  \end{align*}
+  Now, using our handy-dandy Laplace Transform table, we receive our answer.
+  \begin{equation*}
+    y(t) = \UnitStep(t-\pi)e^{-(t-\pi)}\sin(t-\pi) + e^{-t}\cos(t-\pi) + e^{-t}\sin(t-\pi)
+  \end{equation*}
+\end{example}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Math_252-Reference_Sheet"
+%%% End:
