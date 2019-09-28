@@ -425,6 +425,53 @@ Based on the contents of the stack and the lookahead, the parser performs 1 of 2
 
 Initially, the stack is empty and the parser is sitting at the beginning of the input.
 
+\begin{example}[]{\texorpdfstring{$\LRParse(1)$}{$LR(1)$} Shift-Reduce Parsing}
+  Say you have a set of productions as follows:
+  \begin{align*}
+    p1&: X \rightarrow YZV \\
+    p2&: Y \rightarrow ab \\
+    p2&: Z \rightarrow c \\
+    p3&: V \rightarrow de
+  \end{align*}
+  and an input string of
+  \begin{equation*}
+    abcde
+  \end{equation*}
+  to parse.
+  Assume that there is a production to handle the end-of-file character \$.
+
+  \tcblower
+
+  You start by constructing a ``queue'' and ``stack'' of your input tokens.
+  The front of the queue is after the dot, and the top of the stack is before the dot.
+  So, to parse the above string:
+  \begin{enumerate}[noitemsep]
+  \item Construct your data structures.
+    \begin{equation*}
+      \bullet abcde
+    \end{equation*}
+  \item Then you start pulling tokens off the front of the queue and putting them onto the stack with \nameref{def:LR_Shift} actions.
+    \begin{align*}
+      \text{Shift}& \: a \bullet bcde \\
+      \text{Shift}& \: ab \bullet cde
+    \end{align*}
+  \item Whenever you have a set of terminals and/or nonterminals on the top of the stack, you pop them, perform a \nameref{def:LR_Reduce} action, and push the resulting nonterminal back onto the top of the stack.
+    \begin{equation*}
+      \text{Reduce} \: Y \bullet cde
+    \end{equation*}
+  \item Repeat this operation until you reach an \nameref{rmk:LR_Accept} action.
+    \begin{align*}
+      \text{Shift}& \: Yc \bullet de \\
+      \text{Reduce}& \: YZ \bullet de \\
+      \text{Shift}& \: YZd \bullet e \\
+      \text{Shift}& \: YZde \bullet \\
+      \text{Reduce}& \: YZV \bullet \\
+      \text{Reduce}& \: X \bullet \\
+      \text{Accept}&
+    \end{align*}
+  \end{enumerate}
+\end{example}
+
 In practice, $k>1$ is not used.
 These would generate incredibly large tables that would be hard to used and hard to make.
 Most reasonable programming languages can be described by $\LRParse(1)$ grammars.
