@@ -28,6 +28,34 @@ The table below will help characterize the differences between them.
   \label{tab:LLvsLRParsing}
 \end{table}
 
+The block below will show the difference in derivation between \nameref{subsec:LLParsing} and \nameref{subsec:LRParsing}.
+\begin{blackbox}
+  Say you have a set of productions as follows:
+  \begin{align*}
+    p1&: X \rightarrow YZV \\
+    p2&: Y \rightarrow ab \\
+    p2&: Z \rightarrow c \\
+    p3&: V \rightarrow de
+  \end{align*}
+
+  The LL derivation will be as follows:
+  \begin{equation*}
+    \underline{X} \Rightarrow \underline{Y}ZV \Rightarrow ab\underline{Z}V \Rightarrow abc\underline{V} \Rightarrow abcde
+  \end{equation*}
+
+  The LR derivation has 2 options, both of which achieve the same thing.
+  \begin{enumerate}[noitemsep]
+  \item The way it works in practice, you have the terminals and have to go ``up'' the production rules.
+    \begin{equation*}
+      \underline{ab}cde \Rightarrow Y\underline{c}de \Rightarrow YZ\underline{de} \Rightarrow \underline{YZV} \Rightarrow X
+    \end{equation*}
+  \item The way it works in theory, you have a starting nonterminal and work your way down by deriving the right-most side of the input string.
+    \begin{equation*}
+      \underline{X} \Rightarrow YZ\underline{V} \Rightarrow Y\underline{Z}de \Rightarrow \underline{Y}cde \Rightarrow abcde
+    \end{equation*}
+  \end{enumerate}
+\end{blackbox}
+
 \subsection{LL Parsing}\label{subsec:LLParsing}
 There are 5 basic steps in constructing an $\LLParse(1)$ parser.
 \begin{enumerate}[noitemsep]
