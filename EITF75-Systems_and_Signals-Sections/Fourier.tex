@@ -62,23 +62,23 @@ This decomposition is said to be represented in the \emph{frequency domain}.
 
   The transformation (analysis) equations are:
   \begin{subequations}
-    \begin{equation}\label{eq:Discrete-Time_Fourier_Transform-Discrete-Frequency}
+    \begin{equation}\label{eq:Discrete-Time_Fourier_Transform-Analysis-Discrete-Frequency}
       X(f) = \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j 2 \pi f n}
     \end{equation}
     \begin{equation*}
       \omega = 2 \pi f
     \end{equation*}
-    \begin{equation}\label{eq:FourierTransform-Discrete-Omega}
+    \begin{equation}\label{eq:FourierTransform-Analysis-Discrete-Omega}
       X(\omega) = \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j \omega n}
     \end{equation}
   \end{subequations}
 
   The reverse (synthesis) equations are:
   \begin{subequations}
-    \begin{equation}\label{eq:InverseFourierTransform-Frequency}
+    \begin{equation}\label{eq:InverseFourierTransform-Synthesis-Frequency}
       x(n) = \int\limits_{-\infty}^{\infty} X(f) e^{j 2\pi fn} df
     \end{equation}
-    \begin{equation}\label{eq:InverseFourierTransform-Omega}
+    \begin{equation}\label{eq:InverseFourierTransform-Synthesis-Omega}
       x(n) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} X(\omega) e^{j \omega n} d\omega
     \end{equation}
   \end{subequations}
@@ -90,7 +90,7 @@ Each of these relations is just a side-note, the only relation of real importanc
 The \nameref{def:FourierTransform} is just a special case in each of these scenarios.
 The \nameref{def:FourierTransform} is evaluated around the unit circle on the real-imaginary plane.
 
-\subsubsection{\nameref{app:Laplace_Transform} \nameref{def:FourierTransform} Relation}\label{subsubsec:Laplace-Transform_Fourier_Transform_Relation}
+\subsubsection{\texorpdfstring{\nameref{app:Laplace_Transform} \nameref{def:FourierTransform} Relation}{Laplace Transform Fourier Transform Relation}}\label{subsubsec:Laplace-Transform_Fourier_Transform_Relation}
 There is a correlation between the \nameref{app:Laplace_Transform} and the \nameref{def:FourierTransform}.
 The \nameref{def:FourierTransform} is a more specific case of the \nameref{app:Laplace_Transform}, when
 \begin{equation*}
@@ -101,10 +101,40 @@ The \nameref{def:FourierTransform} is a more specific case of the \nameref{app:L
 There is a relationship between the $\ZTransform$-Transform and the \nameref{def:Discrete-Time_Fourier_Transform}.
 \begin{equation}\label{eq:ZTransformFourierTransformRelation}
   \begin{aligned}
-    z &= e^{2\pi f} \\
-    z &= e^{2\pi n} \\
+    z &= e^{j 2\pi f} \\
+    z &= e^{j 2\pi n} \\
   \end{aligned}
 \end{equation}
+
+The \nameref{def:Discrete-Time_Fourier_Transform} can be viewed as the $\ZTransform$-transform at of the sequence evaluated at the unit circle.
+If $X(z)$ does not converge in the region $\lvert z \rvert = 1$ (i.e., if the unit circle is not contained within the $\ROC$ of $X(z)$), the Fourier Transform $X(f)$ does not exist.
+
+The existence of the $\ZTransform$-transform requires that the sequence $\lbrace x(n) r^{-n} \rbrace$ be absolutely summable for some value of $r$, that is,
+\begin{equation}\label{eq:ZTransform_DTFT_Existence_Requirement}
+  \sum\limits_{n=-\infty}^{\infty} \lvert x(n) r^{-n} \rvert < \infty
+\end{equation}
+Therefore, if \Cref{eq:ZTransform_DTFT_Existence_Requirement} converges only for values of $r<r_{0}<1$, the \textbf{\emph{$\ZTransform$-transform exists}}, but the \textbf{\emph{\nameref{def:Discrete-Time_Fourier_Transform} DOES NOT EXIST}}.
+This is the case for causal sequences of the form $x(n) = a^{n}\UnitStep(n)$, where $\lvert a \rvert > 1$.
+
+There are sequences that do not satisfy \Cref{eq:ZTransform_DTFT_Existence_Requirement}, for example
+\begin{equation*}
+  x(n) = \frac{\sin \omega_{c}n}{\pi n}, \: -\infty < n < \infty
+\end{equation*}
+This sequences does not have a $\ZTransform$-transform.
+However, since it is a finite \nameref{def:Energy Signal}, it has a \nameref{def:Discrete-Time_Fourier_Transform} that converges to
+\begin{equation*}
+  X(f) = \begin{cases}
+    1, & \lvert f \rvert < f_{c} \\
+    0, & f_{c} < \lvert f \rvert \leq \frac{1}{2}
+  \end{cases}
+\end{equation*}
+
+\begin{blackbox}
+  The existece of the $\ZTransform$-transform requires that \Cref{eq:ZTransform_DTFT_Existence_Requirement} be satisfied for some region in the $z$-plane.
+  If this region contains the unit circle, the \nameref{def:Discrete-Time_Fourier_Transform}, $X(f)$ exists.
+  However, the existence of the \nameref{def:Discrete-Time_Fourier_Transform}, which is defined for finite \nameref{def:Energy Signal}s, does not necessarily ensure the existence of the $\ZTransform$-transform.
+\end{blackbox}
+
 
 \subsection{The Inverse Fourier Transform}\label{subsec:InverseFourierTransform}
 \begin{definition}[Inverse Fourier Transform]\label{def:InverseFourierTransform}
@@ -151,7 +181,7 @@ One thing to keep in mind with all of these properties is that $\omega = 2 \pi f
     \nameref{subsubsec:FourierTransformProperties-WienerKhintchineTheorem} &$ r_{xx}(l)$ & $S_{xx}(\omega)$ \\
     \nameref{subsubsec:FourierTransformProperties-FrequencyShifting} & $e^{j \omega_{0} n} x(n)$ & $X(\omega - \omega_{0})$ \\
     \nameref{subsubsec:FourierTransformProperties-Modulation} & $x(n) \cos \left( \omega_{0} n \right)$ & $\frac{1}{2} X(\omega + \omega_{0}) + \frac{1}{2} X(\omega - \omega_{0})$ \\
-    \nameref{subsubsec:FourierTransformProperties-MultiplicationTimeDomain} & $ x_{1}(n)x_{2}(n)$ & $\frac{1}{2 \pi} \int_{-\pi}^{\pi} X_{1}(\lambda) x_{2}(\omega - \lambda) d\lambda$ \\
+    \nameref{subsubsec:FourierTransformProperties-MultiplicationTimeDomain} & $ x_{1}(n)x_{2}(n)$ & $\frac{1}{2 \pi} \int_{-\pi}^{\pi} X_{1}(\lambda) X_{2}(\omega - \lambda) d\lambda$ \\
     \nameref{subsubsec:FourierTransformProperties-DifferentiationFrequencyDomain} & $n x(n)$ & $j \frac{dX(\omega)}{d\omega}$ \\
     Conjugation & $x^{*}(n)$ & $X^{*}(-\omega)$ \\
     \nameref{subsubsec:FourierTransformProperties-ParsevalsTheorem} & \multicolumn{2}{c}{$\sum_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n) = \frac{1}{2 \pi} \int_{-\pi}^{\pi}X_{1}(\omega)X_{2}^{*}(\omega) d\omega$} \\
@@ -239,7 +269,7 @@ If
   x(n) \FourierTransformRelation X(f)
 \end{equation*}
 then
-\begin{equation}\label{eq:FourierTransformProperties-TimeReversal}
+\begin{equation}\label{eq:FourierTransformProperties-FrequencyShifting}
   e^{-i 2 \pi f_{0} n}x(n) \FourierTransformRelation X(f - f_{0})
 \end{equation}
 
@@ -289,7 +319,7 @@ If
 then
 
 \begin{equation}\label{eq:FourierTransformProperties-ParsevalsTheorem-Frequency}
-  \sum\limits_{n=-\infty}^{\infty} x_{1}(n) x_{2}^{*}(n) = \int\limits_{-\pi}^{\pi} X_{1}(f) X_{2}^{*}(f) df
+  \sum\limits_{n=-\infty}^{\infty} x_{1}(n) x_{2}^{*}(n) = \int\limits_{-0.5}^{0.5} X_{1}(f) X_{2}^{*}(f) df
 \end{equation}
 \begin{equation}\label{eq:FourierTransformProperties-ParsevalsTheorem-Omega}
   \sum\limits_{n=-\infty}^{\infty} x_{1}(n) x_{2}^{*}(n) = \frac{1}{2 \pi} \int\limits_{-\pi}^{\pi} X_{1}(\omega) X_{2}^{*}(\omega) d\omega
@@ -297,7 +327,7 @@ then
 
 Both \Crefrange{eq:FourierTransformProperties-ParsevalsTheorem-Frequency}{eq:FourierTransformProperties-ParsevalsTheorem-Omega} can be expressed in another format.
 \begin{equation}\label{eq:FourierTransformProperties-ParsevalsTheorem-Frequency-Absolute}
-  \sum\limits_{n=-\infty}^{\infty} \lvert x_{1}(n) \rvert^{2} = \int\limits_{-\pi}^{\pi} \lvert X_{1}(f) \rvert^{2} df
+  \sum\limits_{n=-\infty}^{\infty} \lvert x_{1}(n) \rvert^{2} = \int\limits_{-0.5}^{0.5} \lvert X_{1}(f) \rvert^{2} df
 \end{equation}
 \begin{equation}\label{eq:FourierTransformProperties-ParsevalsTheorem-Omega-Absolute}
   \sum\limits_{n=-\infty}^{\infty} \lvert x_{1}(n) \rvert^{2} = \frac{1}{2 \pi} \int\limits_{-\pi}^{\pi} \lvert X_{1}(\omega) \rvert^{2} d\omega
