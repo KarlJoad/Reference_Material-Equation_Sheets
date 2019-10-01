@@ -68,6 +68,7 @@ citestyle=authoryear]{biblatex} % Must include citation somewhere in document to
 % Create a tcolorbox for examples
 % Argument #1 is optional, given by [], that is the textbook's problem number
 % Argument #2 is mandatory, given by {}, that is the title for the example
+% Avoid putting special characters, (), [], {}, ",", etc. in the title.
 \newtcolorbox[auto counter,
 number within=section,
 number format=\arabic,
@@ -75,7 +76,7 @@ crefname={example}{examples}, % Define reference format for cref (No Capitals)
 Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 ]{example}[2][]{ % The [2][] Means the first argument is optional
   width=\textwidth,
-  title={Example \thetcbcounter: #2. #1},
+  title={Example \thetcbcounter: #2. #1}, % Parentheses and commas are not well supported
   fonttitle=\bfseries,
   label={ex:#2},
   nameref=#2,
