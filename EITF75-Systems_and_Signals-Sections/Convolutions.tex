@@ -13,52 +13,6 @@ This results in the equation shown below.
   y(n) = x(n) * h(n)
 \end{equation}
 
-\subsection{Correlation}\label{subsec:Correlation}
-\begin{definition}[Correlation]\label{def:Correlation}
-  \emph{Correlation} measures the similarity between two signals.
-  The greater the correlation, the more similar they are.
-
-  There are 2 types of \nameref{def:Correlation}.
-  \begin{enumerate}[noitemsep]
-  \item \nameref{subsubsec:Cross_Correlation}
-  \item \nameref{subsubsec:Auto_Correlation}
-  \end{enumerate}
-\end{definition}
-
-\subsubsection{Cross Correlation}\label{subsubsec:Cross_Correlation}
-\begin{definition}[Cross Correlation]\label{def:Cross_Correlation}
-  \emph{Cross correlation} measures the similarity between time shifted versions of \textbf{\emph{different}} signals.
-
-  The defining equation is shown below:
-  \begin{equation}\label{eq:Cross_Correlation}
-    r_{y,x}(k) = \sum\limits_{n=-\infty}^{\infty} y(n) x(n-k)
-  \end{equation}
-
-  However, there is a way to express \Cref{eq:Cross_Correlation} in terms of a \nameref{def:Convolution}.
-  \begin{equation}\label{eq:Cross_Correlation-Convolution}
-    r_{y,x}(k) = y(n) * x(-n)
-  \end{equation}
-\end{definition}
-
-\subsubsection{Auto Correlation}\label{subsubsec:Auto_Correlation}
-\begin{definition}[Auto Correlation]\label{def:Auto_Correlation}
-  \emph{Auto correlation} measures the similarity between time shifted version of the \textbf{\emph{same}} signal.
-
-  The defining equation is:
-  \begin{equation}\label{eq:Auto_Correlation}
-    r_{x,x}(k) = \sum\limits_{n=-\infty}^{\infty} x(n) x(n-k)
-  \end{equation}
-
-  However, there is a way to express \Cref{eq:Auto_Correlation} in terms of a \nameref{def:Convolution}.
-  \begin{equation}\label{eq:Auto_Correlation-Convolution}
-    r_{x,x}(k) = x(n) * x(-n)
-  \end{equation}
-
-  \begin{remark}\label{rmk:Cross-Auto_Correlation_Relation}
-    It is good to note that the \nameref{def:Auto_Correlation} is technically a type of \nameref{def:Cross_Correlation} where the second function is the same as the first.
-  \end{remark}
-\end{definition}
-
 \subsection{Properties of the Convolution}\label{subsec:Convolution_Properties}
 \begin{table}[h!]
   \centering
@@ -113,6 +67,52 @@ This results in the equation shown below.
   \begin{equation}\label{eq:Convolution_Property-Distributive}
     x(n) * \left[ h_{1}(n) + h_{2}(n) \right] = x(n) * h_{1}(n) + x(n) * h_{2}(n)
   \end{equation}
+\end{definition}
+
+\subsection{Correlation}\label{subsec:Correlation}
+\begin{definition}[Correlation]\label{def:Correlation}
+  \emph{Correlation} measures the similarity between two signals.
+  The greater the correlation, the more similar they are.
+
+  There are 2 types of \nameref{def:Correlation}.
+  \begin{enumerate}[noitemsep]
+  \item \nameref{subsubsec:Cross_Correlation}
+  \item \nameref{subsubsec:Auto_Correlation}
+  \end{enumerate}
+\end{definition}
+
+\subsubsection{Cross Correlation}\label{subsubsec:Cross_Correlation}
+\begin{definition}[Cross Correlation]\label{def:Cross_Correlation}
+  \emph{Cross correlation} measures the similarity between time shifted versions of \textbf{\emph{different}} signals.
+
+  The defining equation is shown below:
+  \begin{equation}\label{eq:Cross_Correlation}
+    r_{y,x}(k) = \sum\limits_{n=-\infty}^{\infty} y(n) x(n-k)
+  \end{equation}
+
+  However, there is a way to express \Cref{eq:Cross_Correlation} in terms of a \nameref{def:Convolution}.
+  \begin{equation}\label{eq:Cross_Correlation-Convolution}
+    r_{y,x}(k) = y(n) * x(-n)
+  \end{equation}
+\end{definition}
+
+\subsubsection{Auto Correlation}\label{subsubsec:Auto_Correlation}
+\begin{definition}[Auto Correlation]\label{def:Auto_Correlation}
+  \emph{Auto correlation} measures the similarity between time shifted version of the \textbf{\emph{same}} signal.
+
+  The defining equation is:
+  \begin{equation}\label{eq:Auto_Correlation}
+    r_{x,x}(k) = \sum\limits_{n=-\infty}^{\infty} x(n) x(n-k)
+  \end{equation}
+
+  However, there is a way to express \Cref{eq:Auto_Correlation} in terms of a \nameref{def:Convolution}.
+  \begin{equation}\label{eq:Auto_Correlation-Convolution}
+    r_{x,x}(k) = x(n) * x(-n)
+  \end{equation}
+
+  \begin{remark}\label{rmk:Cross-Auto_Correlation_Relation}
+    It is good to note that the \nameref{def:Auto_Correlation} is technically a type of \nameref{def:Cross_Correlation} where the second function is the same as the first.
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
