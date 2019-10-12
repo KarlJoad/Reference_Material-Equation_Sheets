@@ -1,0 +1,73 @@
+\section{The Fourier Transform and LTI Systems}\label{sec:Fourier_Transform-LTI_Systems}
+\subsection{Frequency Response}\label{subsec:Fourier_Frequency_Response}
+The \nameref{subsec:Fourier_Frequency_Response} of a function is defined in 2 parts.
+\begin{enumerate}[noitemsep]
+\item \nameref{subsec:Fourier_Magnitude_Response}
+\item \nameref{subsec:Fourier_Phase_Response}
+\end{enumerate}
+\begin{equation}\label{eq:Fourier_Frequency_Response}
+  \begin{aligned}
+    H(\omega) &= \lVert H(\omega) \rVert \, \Theta(\omega) \\
+    H(f) &= \lVert H(f) \rVert \, \Theta(f) \\
+  \end{aligned}
+\end{equation}
+
+\begin{remark*}
+  This is similar to the \nameref{subsec:Rectangular to Polar} conversion shown on \Cpageref{subsec:Rectangular to Polar}.
+\end{remark*}
+
+\subsection{Magnitude Response}\label{subsec:Fourier_Magnitude_Response}
+\begin{definition}[Magnitude Reponse]\label{def:Fourier_Magnitude_Response}
+  The \emph{magnitude response} of a Fourier Transform is commonly denoted as $\lvert H(\omega) \rvert$ or $\lvert H(f) \rvert$.
+  However, in this text, it is denoted as $\lVert H(\omega) \rVert$ or $\lVert H(f) \rVert$.
+
+  The equation that defines a \nameref{def:FourierTransform}'s \nameref{def:Fourier_Magnitude_Response} is
+  \begin{equation}\label{eq:Fourier_Magnitude_Response}
+    \begin{aligned}
+      \lVert H(\omega) \rVert &= \sqrt{{\Bigl( \Re \lbrace H(\omega) \rbrace \Bigr)}^{2} + {\Bigl( \Im \lbrace H(\omega) \rbrace \Bigr)}^{2}} \\
+      \lVert H(f) \rVert &= \sqrt{{\Bigl( \Re \lbrace H(f) \rbrace \Bigr)}^{2} + {\Bigl( \Im \lbrace H(f) \rbrace \Bigr)}^{2}} \\
+    \end{aligned}
+  \end{equation}
+
+  \begin{remark}
+    It is important to note that the numerator will \textbf{\emph{NOT}} have any imaginary terms ($i$ or $j$) in it!
+  \end{remark}
+\end{definition}
+
+\begin{remark*}
+  It is important to note that in this reference guide, the magnitude is denoted with double bars.
+  For example, if a complex function $a(n)$ exists, then I will denote its magnitude as $\lVert a(n) \rVert$.
+  This helps distinguish between magnitude of a function and its absolute value.
+  These sometimes have different values, so it is useful to differentiate between the two.
+\end{remark*}
+
+\subsection{Phase Response}\label{subsec:Fourier_Phase_Response}
+\begin{definition}[Phase Response]\label{def:Fourier_Phase_Response}
+  The \emph{phase response} of a Fourier Transform is commonly denoted as $\measuredangle H(\omega)$ or $\measuredangle H(f)$.
+  This is a function that defines a \nameref{def:FourierTransform}'s \nameref{def:Fourier_Phase_Response} is defined in the equation below.
+  \begin{equation}\label{eq:Fourier_Phase_Response}
+    \begin{aligned}
+      \measuredangle H(\omega) = \Theta (\omega) &= \tan^{-1} \Biggl( \frac{\Im \lbrace H(\omega) \rbrace}{\Re \lbrace H(\omega) \rbrace} \Biggr) \\
+      \measuredangle H(f) = \Theta (f) &= \tan^{-1} \Biggl( \frac{\Im \lbrace H(f) \rbrace}{\Re \lbrace H(f) \rbrace} \Biggr) \\
+    \end{aligned}
+  \end{equation}
+
+  \begin{remark}
+    It is important to note that the numerator will \textbf{\emph{NOT}} have any imaginary terms ($i$ or $j$) in it!
+  \end{remark}
+
+  \begin{remark}[Complex Exponential to Unit Circle]\label{rmk:Complex_Exp-Unit_Circle_Relation}
+    \textbf{\emph{REMEMBER:}}
+    \begin{equation}\label{eq:Complex_Exp-Unit_Circle_Relation}
+      \begin{aligned}
+        e^{\pm j\omega} &= \cos (\omega) \pm j \sin (\omega) \\
+        e^{\pm j 2 \pi f} &= \cos (2 \pi f) \pm j \sin (2 \pi f) \\
+      \end{aligned}
+    \end{equation}
+    This is also defined in \Cref{eq:Euler Complex} on \Cpageref{eq:Euler Complex}.
+  \end{remark}
+\end{definition}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
+%%% End:
