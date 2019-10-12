@@ -7,6 +7,68 @@
   \end{equation}
 \end{definition}
 
+If there is a relaxed \nameref{def:Linear_Time-Invariant} system to an input $x(n)$, then the output can be found by computing the \nameref{def:Convolution} of the input with the sample response on the system.
+This results in the equation shown below.
+\begin{equation}\label{eq:LTI_System_Convolution}
+  y(n) = x(n) * h(n)
+\end{equation}
+
+\subsection{Properties of the Convolution}\label{subsec:Convolution_Properties}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    \nameref{subsubsec:Convolution_Property-Identity} & $y(n) = x(n) * \delta(n) = x(n)$ \\
+    \nameref{subsubsec:Convolution_Property-Shifting} & $x(n) * \delta(n-k) = y(n-k) = x(n-k)$ \\
+    \nameref{subsubsec:Convolution_Property-Commutative} & $x(n) * h(n) = h(n) * x(n)$ \\
+    \nameref{subsubsec:Convolution_Property-Associative} & $\left[ x(n) * h_{1}(n) \right] * h_{2}(n) = x(n) * \left[ h_{1}(n) * h_{2}(n) \right]$\\
+    \nameref{subsubsec:Convolution_Property-Distributive} & $x(n) * \left[ h_{1}(n) + h_{2}(n) \right] = x(n) * h_{1}(n) + x(n) * h_{2}(n)$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{subsec:Convolution_Properties}}
+  \label{tab:Convolution_Properties}
+\end{table}
+
+\subsubsection{Identity Property}\label{subsubsec:Convolution_Property-Identity}
+\begin{definition}[Identity Property]\label{def:Convolution_Property-Identity}
+  The \nameref{def:Unit Impulse Signal} is the identity element for the \nameref{def:Convolution}.
+  \begin{equation}\label{eq:Convolution_Property-Identity}
+    y(n) = x(n) * \delta(n) = x(n)
+  \end{equation}
+\end{definition}
+
+\subsubsection{Shifting Property}\label{subsubsec:Convolution_Property-Shifting}
+\begin{definition}[Shifting Property]\label{def:Convolution_Property-Shifting}
+  Since the $\delta(n)$ function is the Identity function, if we shift $\delta(n)$ by $k$, the convolution sequence is also shifted by $k$.
+  \begin{equation}\label{eq:Convolution_Property-Shifting}
+    x(n) * \delta(n-k) = y(n-k) = x(n-k)
+  \end{equation}
+\end{definition}
+
+\subsubsection{Commutative Law}\label{subsubsec:Convolution_Property-Commutative}
+\begin{definition}[Commutative Law for Convolutions]\label{def:Convolution_Property-Commutative}
+  The \emph{commutative law for \nameref{def:Convolution}s} is just like many other operations.
+  \begin{equation}\label{eq:Convolution_Property-Commutative}
+    x(n) * h(n) = h(n) * x(n)
+  \end{equation}
+\end{definition}
+
+\subsubsection{Associative Law}\label{subsubsec:Convolution_Property-Associative}
+\begin{definition}[Associative Law for Convolutions]\label{def:Convolution_Property-Associative}
+  The \emph{associative law for \nameref{def:Convolution}s} is just like many other operations.
+  \begin{equation}\label{eq:Convolution_Property-Associative}
+    \left[ x(n) * h_{1}(n) \right] * h_{2}(n) = x(n) * \left[ h_{1}(n) * h_{2}(n) \right]
+  \end{equation}
+\end{definition}
+
+\subsubsection{Distributive Law}\label{subsubsec:Convolution_Property-Distributive}
+\begin{definition}[Distributive Law for Convolutions]\label{def:Convolution_Property-Distributive}
+  The \emph{distributive law for \nameref{def:Convolution}s} is just like many other operations.
+  \begin{equation}\label{eq:Convolution_Property-Distributive}
+    x(n) * \left[ h_{1}(n) + h_{2}(n) \right] = x(n) * h_{1}(n) + x(n) * h_{2}(n)
+  \end{equation}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
