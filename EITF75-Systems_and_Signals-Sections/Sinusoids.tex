@@ -83,6 +83,15 @@ The analog sinusoidal signal in \cref{eq:Frequency Harmonic Oscillation} is char
 \end{propertylist}
 
 \subsection{Discrete-Time Signals}\label{subsec:Discrete-Time Signals}
+These are usually found by sampling analog signals or \nameref{subsec:Continuous-Time Signals}.
+There are 2 ways to express this, both are shown in \Cref{eq:A_D_By_Sampling}.
+\begin{equation}\label{eq:A_D_By_Sampling}
+  \begin{aligned}
+    x(n) = x(t \vert t = nT_{S}) \\
+    x(n) = x \Biggl( t \vert t = \frac{n}{F_{S}} \Biggr) \\
+  \end{aligned}
+\end{equation}
+
 \subsubsection{Frequency in Discrete-Time Signals}\label{subsubsec:Frequency in Discrete-Time Signals}
 A discrete-time sinusoidal signal may be expressed as
 \begin{equation}\label{eq:Discrete Time Sinusoid}

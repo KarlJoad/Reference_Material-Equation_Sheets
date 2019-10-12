@@ -179,6 +179,137 @@ On the other hand, a signal $x(n)$ is called \emph{antisymmetric} or \emph{odd} 
   x(n) = -x(-n)
 \end{equation}
 
+
+\subsection{Classification of Discrete-Time Systems}\label{subsec:Classification_Discrete-Time_Systems}
+\subsubsection{Static versus Dynamic Systems}\label{subsubsec:Static_vs_Dynamic_Systems}
+\begin{definition}[Static]\label{def:Static}
+  A discrete-time system is called \emph{static} or \emph{memoryless} if its output at any instant $n$ depends only on the input sample at the same time, but not on past or future samples of the input.
+\end{definition}
+
+\begin{definition}[Dynamic]\label{def:Dynamic}
+  A discrete-time system is called \emph{dynamic} if its output at any instant $n$ depends not only on the input sample at the same time, but \textbf{also} on past and/or future samples of the input.
+
+  If the output of s system at tine $n$ is completely determined by the input samples in the interval from $n-N$ to $n(N\geq 0)$, the system is said to have a \emph{memory} of duration $N$.
+  If $N=0$, then the system is \nameref{def:Static}, whereas if $N=\infty$, the system is said to have \emph{infinite memory}.
+\end{definition}
+
+\subsubsection{Time-Invariant versus Time-Variant Systems}\label{subsubsec:Time-Invariant_vs_Time-Variant_Systems}
+\begin{definition}[Time-Invariant]\label{def:Time_Invariant}
+  A \emph{time-invariant} system in one whose output is affected only in time, if the input's time is changed.
+  A relaxed system $\SignalOperator$ is \emph{time-invariant} or \emph{shift invariant} is and only if
+  \begin{equation*}
+    x(n) \overset{\mathcal{T}}{\longrightarrow} y(n)
+  \end{equation*}
+  implies that
+  \begin{equation*}
+    x(n-k) \overset{\mathcal{T}}{\longrightarrow} y(n-k)
+  \end{equation*}
+  for every input signal $x(n)$ and every time shift $k$.
+\end{definition}
+
+To determine if any given system is \nameref{def:Time_Invariant}, we need to perform a test drawn from \Cref{def:Time_Invariant}.
+\begin{enumerate}[noitemsep]
+\item Excite the system with an arbitrary input sequence $x(n)$, which produces an output $y(n)$.
+\item Delay the input sequence by some amount $k$ and recompute the output.
+\item If $y(n,k) = y(n-k)$ for all possible values of $k$, the system is \nameref{def:Time_Invariant}.
+\end{enumerate}
+
+\subsubsection{Linear versus Non-Linear Systems}\label{subsubsec:Linear_vs_Non-Linear_Systems}
+A linear system is one that satisfies the \textit{superposition principle}.
+\begin{definition}[Linear]\label{def:Linear}
+  A system is \emph{linear} if and only if
+  \begin{equation}\label{eq:Linear}
+    \SignalOperator \left[ a_{1}x_{1}(n) + a_{2}x_{2}(n) \right] = a_{1}\SignalOperator \left[ x_{1}(n) \right] + a_{2} \SignalOperator \left[ x_{2}(n) \right]
+  \end{equation}
+  for any arbitrary input sequences $x_{1}(n)$ and $x_{2}(n)$, and any arbitrary constants $a_{1}$ and $a_{2}$.
+
+  The \nameref{def:Linear}ity property can be broken down into 2 parts:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{par:Linear-Multiplicative_Property}
+  \item \nameref{par:Linear-Additive_Property}
+  \end{enumerate}
+
+  \begin{remark}
+    The \nameref{def:Linear}ity property can be extended to any number of terms.
+  \end{remark}
+\end{definition}
+
+\paragraph{Multiplicative Property}\label{par:Linear-Multiplicative_Property}
+\begin{definition}[Multiplicative Property]\label{def:Linear-Multiplicative_Property}
+  The \emph{multiplicative} or \emph{scaling property} is one requirement of a \nameref{def:Linear} system and is part of the definition of the superposition principle.
+  If the input is scaled, the output is scaled by a proportional amount.
+  
+  \begin{equation}\label{eq:Linear-Multiplicative_Property}
+    \begin{aligned}
+      \SignalOperator \left[ a_{1}x_{1}(n) \right] &= a_{1} \SignalOperator \left[ x_{1}(n) \right] \\
+      &= a_{1}y_{1}(n) \\
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\paragraph{Additive Property}\label{par:Linear-Additive_Property}
+\begin{definition}[Additive Property]\label{def:Linear-Additive_Property}
+  The \emph{additive property} is one requirement of a \nameref{def:Linear} system and is part of the definition of the superposition principle.
+
+  \begin{equation}\label{eq:Linear-Additive_Property}
+    \begin{aligned}
+      \SignalOperator \left[ x_{1}(n) + x_{2}(n) \right] &= \SignalOperator \left[ x_{1}(n) \right] + \SignalOperator \left[ x_{2}(n) \right] \\
+      &= y_{1}(n) + y_{2}(n)
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Nonlinear]\label{def:Nonlinear}
+  If a relaxed system does no satisfy the superposition principle, or the definition of a \nameref{def:Linear} system, it is \emph{nonlinear}.
+\end{definition}
+
+\subsubsection{Causal versus Noncausal Systems}\label{subsubsec:Causal_vs_Noncausal_Systems}
+\begin{definition}[Causal]\label{def:Causal}
+  A system is said to \emph{causal} if the output of the system, $y(n)$, at any time $n$ depends only on present and past inputs [i.e., $x(n), x(n-1), x(n-2), \ldots$], but does not depends on future inputs [i.e., $x(n+1), x(n+2), \ldots$].
+
+  Mathematically, the output of a causal system satisfies an equation of the form
+  \begin{equation}\label{eq:Causal}
+    y(n) = F \left[ x(n), x(n-1), x(n-2), \ldots \right]
+  \end{equation}
+  where $F\left[ \cdot \right]$ is some arbitrary function.
+\end{definition}
+
+\begin{definition}[Noncausal]\label{def:Noncausal}
+  If a system does not satisfy the definition of a \nameref{def:Causal} system, then it is \emph{noncausal}.
+  A noncausal system depends not just on present and past inputs, but also on future inputs.
+
+  \begin{remark}
+    You can never have a noncausal system in real-time signal processing applications.
+    However, if the signal has been recorded and will be processed offline, then a noncausal system can be constructed.
+  \end{remark}
+\end{definition}
+
+\subsubsection{Stable versus Unstable Systems}\label{subsubsec:Stable_vs_Unstable_Systems}
+Stability is incredibly important.
+Unstable stystems usually have erratic and extreme behavior.
+
+\begin{definition}[Stable]\label{def:Stable}
+  An arbitrary relaxed system is said to be \emph{Bounded Input-Bounded Output Stable (BIBO)} if and only if every bounded input produces a bounded output.
+
+  Mathematically, this means the input sequence $x(n)$ and the output sequence $y(n)$ are bounded, where there are some finite numbers $M_{x}$ and $M_{y}$ such that
+  \begin{equation}\label{eq:Stable}
+    \lvert x(n) \rvert \leq M_{x} < \infty \:\: \lvert y(n) \rvert \leq M_{y} < \infty \: \forall n
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Unstable]
+  If the some bounded input $x(n)$, the output is unbounded (infinite), the system is \emph{unstable}.
+\end{definition}
+
+\subsubsection{Linear Time-Invariant Systems}\label{subsubsec:Linear_Time-Invariant}
+\begin{definition}[Linear Time-Invariant]\label{def:Linear_Time-Invariant}
+  A \emph{Linear Time-Invariant (LTI)} signal or system is one that is:
+  \begin{propertylist}
+  \item \nameref{def:Linear}
+  \item \nameref{def:Time_Invariant}
+  \end{propertylist}
+\end{definition}
+
 \subsection{Discrete-Time Signal Manipulations}\label{subsec:Discrete-Time Signal Manipulations}
 \subsubsection{Transformation of the Independent Variable (Time)}\label{subsubsec:Transform Independent Variable}
 It is important to note that \nameref{par:Shifting in Time} and \nameref{par:Folding} are not commutative.
@@ -231,11 +362,33 @@ The \emph{product} of two signals $x_{1}(n)$ and $x_{2}(n)$ is a signal $y(n)$ w
 \end{equation}
 
 \paragraph{Amplitude Scaling}\label{par:Amplitude Scaling}
-\emph{Amplitude scaling} of a signal by a constant $A$ is accomplished by multiplying every signal smaple by $A$.
+\emph{Amplitude scaling} of a signal by a constant $A$ is accomplished by multiplying every signal sample by $A$.
 Consequently, we obtain
 \begin{equation}\label{eq:Amplitude Scaling}
   y(n) = A x(n), \> -\infty < n < \infty
 \end{equation}
+
+\subsection{Discrete-Time System Difference Equation}\label{subsec:Discrete-Time_System_Difference_Equation}
+There exists an equation that describes any \nameref{def:Linear_Time-Invariant} discrete-time system.
+This equation works for both \nameref{def:IIR} and \nameref{def:FIR} filters.
+
+\begin{equation}\label{eq:General_Difference_Equation}
+  y(n) + \sum\limits_{k=1}^{N}a_{k}y(n-k) = \sum\limits_{l=0}^{L}b_{l}x(n-l)
+\end{equation}
+Occasionally, \Cref{eq:General_Difference_Equation} will be written like below.
+\begin{equation*}
+  y(n) = \sum\limits_{l=0}^{L}b_{l}x(n-l) - \sum\limits_{k=1}^{N}a_{k}y(n-k)
+\end{equation*}
+
+\begin{definition}[Infinite Impulse Response]\label{def:IIR}
+  An \emph{Infinite Impulse Response (IIR)} filter is one that has an impulse response which does not become exactly zero past a certain point, but continues indefinitely.
+  This is opposite to a \nameref{def:FIR} Filter.
+\end{definition}
+
+\begin{definition}[Finite Impulse Response]\label{def:FIR}
+  A \emph{Finite Impulse Response (FIR)} filter is a filter whose impulse response (or response to any finite length input) is of finite duration, because it settles to zero in finite time.
+  This is opposite to a \nameref{def:IIR} Filter.
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
