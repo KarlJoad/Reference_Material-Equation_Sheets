@@ -1,0 +1,184 @@
+\section{Discrete Fourier Transform}\label{sec:DFT}
+\begin{definition}[Discrete Fourier Transform]\label{def:DFT}
+  The \emph{Discrete Fourier Transform} or \emph{DFT} can be the \nameref{def:Discrete-Time_Fourier_Transform} sampled at certain values.
+  This is only true if $N > \text{Length of Signal DTFT}$.
+
+  Mathematically, this is shown as
+  \begin{equation}\label{eq:DFT}
+    X_{DFT}(k) = \sum\limits_{n=0}^{N-1} x(n) e^{-j 2\pi \frac{k}{N} n} \:\: \text{for } k=0, 1, 2, \ldots, N-1
+  \end{equation}
+
+  \begin{remark}
+    We now have several possible representations of the same signal with slight variations in the function description.
+    We will list them out to ensure clarity.
+    \begin{itemize}[noitemsep]
+    \item $x(t)$, a \nameref{def:Continuous-Time Signals}
+    \item $x(n)$, a \nameref{def:Discrete-Time Signals}
+    \item $X(z)$, the \nameref{subsec:Z-Transform} of $x(n)$
+    \item $X(F)$, the \nameref{def:FourierTransform} of $x(t)$
+    \item $X(f)$, the \nameref{def:Discrete-Time_Fourier_Transform} of $x(n)$
+    \item $X(k)$, the \nameref{def:DFT} of $x(n)$
+    \end{itemize}
+  \end{remark}
+
+  \begin{remark}[Time Complexity to Compute]\label{rmk:DFT_Time_Complexity}
+    If we are interested in the time complexity (Big-O) $O(n)$ of the \nameref{def:DFT}, it is $O(n^{2})$.
+    \begin{enumerate}[noitemsep]
+    \item $N$ values of $X_{DFT}(k)$ to be computed
+    \item Each value of $X_{DFT}(k)$ requires $N$ multiplications of $x(n) e^{-j 2\pi \frac{k}{N} n}$
+    \item This means the time complexity is $O(n^{2})$.
+    \end{enumerate}
+  \end{remark}
+\end{definition}
+
+The \nameref{def:DFT} is used for many reasons, some of which are listed below:
+\begin{enumerate}[noitemsep]
+\item Computers have limited memory, and the \nameref{def:Discrete-Time_Fourier_Transform} of a \nameref{def:Discrete-Time Signals} is a \nameref{def:Continuous-Time Signals}. Thus, the \nameref{def:Discrete-Time_Fourier_Transform} cannot be stored in memory.
+\item The \nameref{def:FFT} can be used to compute \nameref{def:Circular_Convolution}s relatively quickly.
+\end{enumerate}
+
+\begin{definition}[Fast Fourier Transform]\label{def:FFT}
+  This is a special case of the \nameref{def:DFT} that is only useful for computers.
+  If $N=2^{k}$, where $k$ is an integer, then the \nameref{def:DFT} can be performed in $O(n \log_{2}(n))$ time.
+  This can be used to calculate \nameref{def:Linear_Convolution}s relatively quickly, especially when the number of terms in the sequence is quite large.
+
+  These 2 pieces of MATLAB/GNU Octave source produce the same output, but through different methods.
+  \begin{matlabsource}
+    x = [1 2 3 4]
+    h = [2 2 1 1]
+    y = conv(x, h)
+    y = 2 6 11 17 13 7 4
+  \end{matlabsource}
+
+  \begin{matlabsource}
+    x = [1 2 3 4 0 0 0 0]
+    h = [2 2 1 1 0 0 0 0]
+    Y_k = ifft(fft(x) .* fft(h))
+    Y_k = 2.0000 6.0000 11.0000 17.0000 13.0000 7.0000 4.0000 -0.0000
+  \end{matlabsource}
+  \begin{remark}[Zero-Padding]
+    Note that the padding with zeros to a length greater than the output length of the \nameref{def:Linear_Convolution} is required.
+    Also, to take advantage of the \nameref{def:FFT}'s quick calculation property, the length of the inputs \textbf{MUST} be a power of 2, $2^{k}$.
+
+    So, the below code produces something different because it calculates the \nameref{def:Circular_Convolution} directly.
+    \begin{matlabsource}
+      x = [1 2 3 4]
+      h = [2 2 1 1]
+      Y_k_bad = ifft(fft(x) .* fft(h))
+      Y_k_bad = 15 13 15 17
+    \end{matlabsource}
+  \end{remark}
+\end{definition}
+
+\subsection{Inverse Discrete Fourier Transform}\label{subsec:IDFT}
+\begin{definition}[Inverse Discrete Fourier Transform]\label{def:IDFT}
+  The \emph{Inverse Discrete Fourier Transform (IDFT)} is the inverse of the \nameref{def:DFT}.
+
+  \begin{equation}\label{eq:IDFT}
+    x_{IDFT}(n) = \frac{1}{N} \sum\limits_{k=0}^{N-1} X(k) e^{j 2\pi \frac{k}{N} n} \:\: \text{for } n = 0, 1, \ldots, N-1
+  \end{equation}
+\end{definition}
+
+\subsection{Properties of the Discrete Fourier Transform}\label{subsec:DFT_Properties}
+With the \nameref{def:DFT}, the usual properties do not apply.
+\begin{itemize}[noitemsep]
+\item $x(n) * y(n) \neq X(k)Y(k)$
+\item $x(n-n_{0}) \nleftrightarrow X(k) e^{j 2\pi \frac{k}{N} n_{0}}$
+\end{itemize}
+
+These have to be modified instead.
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{ccc}
+    \toprule
+    Property & Time Domain $x(n)$ & DFT Domain $X(k)$ \\
+    \midrule
+    \nameref{subsubsec:DFT_Properties-Circular_Convolution} & $x(n) \CircularConvolution y(n)$ & $X(k)Y(k)$ \\
+    \nameref{subsubsec:DFT_Properties-Time_Shifting} & $x(n - n_{0} \bmod N)$ & $X(k) e^{-j 2\pi \frac{k}{N} n_{0}} $ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Properties of the \nameref{def:DFT}}
+  \label{tab:DFT_Properties}
+\end{table}
+
+\subsubsection{Circular Convolution}\label{subsubsec:DFT_Properties-Circular_Convolution}
+\begin{definition}[Circular Convolution]\label{def:Circular_Convolution}
+  The \emph{circular convolution} is similar to the \nameref{def:Linear_Convolution}.
+  The key difference is that the circular convolution repeats its sequence indefinitely.
+
+  Mathematically, this type of convolution is represented as
+  \begin{equation}\label{eq:Circular_Convolution}
+    x_{N}(n) \CircularConvolution h(n) = \sum\limits_{m=-\infty}^{\infty} h(m) \sum\limits_{k=-\infty}^{\infty} x(n-m-kN)
+  \end{equation}
+
+  Computing a \nameref{def:Circular_Convolution} is shown in \Cref{ex:Circular Convolution}.
+
+  The length of the resulting sequence from a \nameref{def:Circular_Convolution} is
+  \begin{equation}\label{eq:Circular_Convolution_Length}
+    L
+  \end{equation}
+  where $L$ is the length of the input sequences.
+  \begin{remark}[Linear vs. Circular Convolution Length]
+    The length of a \nameref{def:Linear_Convolution} is $2L-1$, whereas the length of a \nameref{def:Circular_Convolution} is $L$; given that the input signal lengths are $L$.
+  \end{remark}
+\end{definition}
+
+\begin{example}[]{Circular Convolution}
+  Perform a \nameref{def:Circular_Convolution} on these signals.
+  \begin{align*}
+    x(n) &= \lbrace \underline{1}, 2, 3, 4 \rbrace \\
+    h(n) &= \lbrace \underline{2}, 2, 1, 1 \rbrace
+  \end{align*}
+
+  \tcblower{}
+
+  There are 2 realistic ways to solve this by hand.
+  \begin{enumerate}[noitemsep]
+  \item Perform a convolution where one of the signals is repeated periodically
+  \item Perform a normal convolution, but pad with 0s to get input signals that are longer than $2L-1$ of the original signals. Then, add the first term where 0s were padded to the first where they weren't.
+    \begin{itemize}[noitemsep]
+    \item This is the basis of performing a \nameref{def:Linear_Convolution} with the \nameref{def:FFT} and \nameref{def:Circular_Convolution}s
+    \end{itemize}
+  \end{enumerate}
+
+  For both methods, I will perform a \nameref{par:Folding} on $h(n)$ to get $h(-n)$.
+
+  \textbf{Method 1} \\
+  \begin{center}
+    \begin{tabular}{ccccccccccc}
+      \toprule
+      $h(k)$ & 1 & 1 & 2 & \underline{2} & $\rightarrow$ & & & & & \\
+      $x(k)$ & \textcolor{red}{2} & \textcolor{red}{3} & \textcolor{red}{4} & \underline{1} & 2 & 3 & 4 & \textcolor{red}{1} & \textcolor{red}{2} & \textcolor{red}{3} \\
+      \midrule
+      $y(k)$ & & & & \underline{15} & 13 & 15 & 17 & & \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  \textbf{Method 2}
+  \begin{center}
+    \begin{tabular}{ccccccccccccccc}
+      \toprule
+      $h(k)$ & 1 & 1 & 2 & \underline{2} & $\rightarrow$ & & & & & & & & & \\
+      $x(k)$ & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \underline{1} & 2 & 3 & 4 & 0 & 0 & 0 & 0 & \textcolor{red}{1} & \textcolor{red}{2} & \textcolor{red}{3} \\
+      \midrule
+      $y(k)$ & & & & \underline{2} & 6 & 11 & 17 & 13 & 7 & 4 & 0 & & & \\
+    \end{tabular}
+  \end{center}
+  Then, $\underline{2} + 13 = 15$, $6 + 7 = 13$, $11 + 4 = 15$, $17 + 0 = 17$.
+  \newline
+
+  Both methods yield $y(k) = \lbrace \underline{15}, 13, 15, 17 \rbrace$.
+\end{example}
+
+\begin{remark*}
+  Personally, I use Method 2 shown in \Cref{ex:Circular Convolution} to calculate \nameref{def:Circular_Convolution}s by hand.
+\end{remark*}
+
+\subsubsection{Time Shifting}\label{subsubsec:DFT_Properties-Time_Shifting}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
+%%% End:
