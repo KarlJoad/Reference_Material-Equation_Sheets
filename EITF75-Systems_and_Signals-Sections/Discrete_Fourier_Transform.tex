@@ -9,15 +9,15 @@
   \end{equation}
 
   \begin{remark}
-    We now have several possible representations of the same signal with slight variations in the function description.
-    We will list them out to ensure clarity.
+    If the length, $N$ of the DFT is not specified, it is assumed that $N = \text{length of the signal}$.
+    If the length of the DFT $N$ is greater than the length of the signal, you are sampling the \nameref{def:Discrete-Time_Fourier_Transform} of the signal.
+  \end{remark}
+
+  \begin{remark}[Discrete Fourier Transform Resolution]\label{rmk:DFT_Resolution}
+    The \emph{resolution} of the \nameref{def:DFT} is tied to the length of the signal used.
+    The longer the signal is, the greater the resolution of the \nameref{def:DFT}.
     \begin{itemize}[noitemsep]
-    \item $x(t)$, a \nameref{def:Continuous-Time Signals}
-    \item $x(n)$, a \nameref{def:Discrete-Time Signals}
-    \item $X(z)$, the \nameref{subsec:Z-Transform} of $x(n)$
-    \item $X(F)$, the \nameref{def:FourierTransform} of $x(t)$
-    \item $X(f)$, the \nameref{def:Discrete-Time_Fourier_Transform} of $x(n)$
-    \item $X(k)$, the \nameref{def:DFT} of $x(n)$
+    \item Padding a signal with 0s will increase the resolution of a signal without changing it too much
     \end{itemize}
   \end{remark}
 
@@ -70,6 +70,19 @@ The \nameref{def:DFT} is used for many reasons, some of which are listed below:
   \end{remark}
 \end{definition}
 
+\begin{remark*}
+  We now have several very different possible representations of the same signal with only slight variations in the function description.
+  We will list them out to ensure clarity.
+  \begin{itemize}[noitemsep]
+  \item $x(t)$, \nameref{def:Continuous-Time Signals}
+  \item $x(n)$, \nameref{def:Discrete-Time Signals}
+  \item $X(z)$, the \nameref{subsec:Z-Transform} of $x(n)$
+  \item $X(F)$, the \nameref{def:FourierTransform} of $x(t)$
+  \item $X(f)$, the \nameref{def:Discrete-Time_Fourier_Transform} of $x(n)$
+  \item $X(k)$, the \nameref{def:DFT} of $x(n)$
+  \end{itemize}
+\end{remark*}
+
 \subsection{Inverse Discrete Fourier Transform}\label{subsec:IDFT}
 \begin{definition}[Inverse Discrete Fourier Transform]\label{def:IDFT}
   The \emph{Inverse Discrete Fourier Transform (IDFT)} is the inverse of the \nameref{def:DFT}.
@@ -105,25 +118,46 @@ These have to be modified instead.
 \begin{definition}[Circular Convolution]\label{def:Circular_Convolution}
   The \emph{circular convolution} is similar to the \nameref{def:Linear_Convolution}.
   The key difference is that the circular convolution repeats its sequence indefinitely.
+  Computing a \nameref{def:Circular_Convolution} is shown in \Cref{ex:Circular Convolution}.
 
   Mathematically, this type of convolution is represented as
   \begin{equation}\label{eq:Circular_Convolution}
     x_{N}(n) \CircularConvolution h(n) = \sum\limits_{m=-\infty}^{\infty} h(m) \sum\limits_{k=-\infty}^{\infty} x(n-m-kN)
   \end{equation}
 
-  Computing a \nameref{def:Circular_Convolution} is shown in \Cref{ex:Circular Convolution}.
-
-  The length of the resulting sequence from a \nameref{def:Circular_Convolution} is
-  \begin{equation}\label{eq:Circular_Convolution_Length}
-    L
+  This can be simplified a little bit to
+  \begin{equation}\label{eq:Circular_Convolution-Simplified}
+    x_{1}(n) \CircularConvolution x_{2}(n) = \sum\limits_{k=0}^{N-1} x_{1}(k) x_{2}(n-k \bmod N)
   \end{equation}
-  where $L$ is the length of the input sequences.
+  It is important to remember that the modulus (mod) operator yields 0 when the input is a multiple of the divisor.
+
+  \begin{remark}[Alternate Circular Convolution Symbol]
+    There is no single defined symbol for \nameref{def:Circular_Convolution}s and \nameref{def:Linear_Convolution}s.
+    In this text, and personally, I use the $\CircularConvolution$ symbol.
+    However, other texts may use:
+    \begin{enumerate}[noitemsep]
+    \item $\otimes$
+    \item $*$
+    \item $\cdot$ (Centered Dot)
+    \item $\bullet$
+    \item etc.
+    \end{enumerate}
+  \end{remark}
+  
+  \begin{remark}[Circular Convolution Length]\label{rmk:Circular_Convolution_Length}
+    The length of the resulting sequence from a \nameref{def:Circular_Convolution} is
+    \begin{equation}\label{eq:Circular_Convolution_Length}
+      L
+    \end{equation}
+    where $L$ is the length of the input sequences.
+  \end{remark}
+
   \begin{remark}[Linear vs. Circular Convolution Length]
     The length of a \nameref{def:Linear_Convolution} is $2L-1$, whereas the length of a \nameref{def:Circular_Convolution} is $L$; given that the input signal lengths are $L$.
   \end{remark}
 \end{definition}
 
-\begin{example}[]{Circular Convolution}
+\begin{example}[Lecture 10, Slide 90]{Circular Convolution}
   Perform a \nameref{def:Circular_Convolution} on these signals.
   \begin{align*}
     x(n) &= \lbrace \underline{1}, 2, 3, 4 \rbrace \\
@@ -141,7 +175,7 @@ These have to be modified instead.
     \end{itemize}
   \end{enumerate}
 
-  For both methods, I will perform a \nameref{par:Folding} on $h(n)$ to get $h(-n)$.
+  For both methods, I will perform a \nameref{par:Folding} on $h(n)$ to get $h(-n) = \lbrace 1, 1, 2, \underline{2} \rbrace$.
 
   \textbf{Method 1} \\
   \begin{center}
@@ -163,12 +197,17 @@ These have to be modified instead.
       $x(k)$ & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \underline{1} & 2 & 3 & 4 & 0 & 0 & 0 & 0 & \textcolor{red}{1} & \textcolor{red}{2} & \textcolor{red}{3} \\
       \midrule
       $y(k)$ & & & & \underline{2} & 6 & 11 & 17 & 13 & 7 & 4 & 0 & & & \\
+      \bottomrule
     \end{tabular}
   \end{center}
   Then, $\underline{2} + 13 = 15$, $6 + 7 = 13$, $11 + 4 = 15$, $17 + 0 = 17$.
   \newline
 
   Both methods yield $y(k) = \lbrace \underline{15}, 13, 15, 17 \rbrace$.
+
+  \begin{remark*}
+    You can also solve this with MATLAB/GNU Octave by following the code examples in the definition of the \nameref{def:FFT},~\Cref{def:FFT}.
+  \end{remark*}
 \end{example}
 
 \begin{remark*}
@@ -176,7 +215,130 @@ These have to be modified instead.
 \end{remark*}
 
 \subsubsection{Time Shifting}\label{subsubsec:DFT_Properties-Time_Shifting}
+The definition of time shifting needs to be modified from the definition of time shifting in~\Cref{subsubsec:FourierTransformProperties-TimeShifting}.
 
+\begin{definition}[Discrete Fourier Transform Time Shifting]\label{def:DFT_Properties-Time_Shifting}
+  If a signal $x(n)$ is shifted by $n_{0}$, then the \nameref{def:DFT} is also shifted.
+
+  \begin{equation}\label{eq:DFT_Properties-Time_Shifting}
+    x(n - n_{0} \bmod N) = X(k) e^{-j 2\pi \frac{k}{N} n_{0}}
+  \end{equation}
+
+  The modulus is because the signal is now circular.
+\end{definition}
+
+\subsection{Application of the Discrete Fourier Transform}\label{subsec:DFT_Application}
+If the signal that is being filtered by a finite filter with equation $h(n)$ has length $M$ is generating an infinite number of discrete values, then the standard \nameref{def:Linear_Convolution} does not work.
+This is the case with things like data streams, where there is a constant flow of data that is discretely valued.
+
+We need to have a way to perform convolutions and other operations on, what is essentially, an infinite signal.
+There are 3 ways discussed in the textbook, but I will only heavily discuss the first 2.
+These \textbf{do not} work for \nameref{def:IIR} filters.
+\begin{enumerate}[noitemsep]
+\item \nameref{subsubsec:DFT_Application-Overlap_Add}
+\item \nameref{subsubsec:DFT_Application-Overlap_Save}
+\item \nameref{subsubsec:DFT_Application-Overlap_Discard}
+\end{enumerate}
+
+\subsubsection{Overlap-Add}\label{subsubsec:DFT_Application-Overlap_Add}
+This is a way to perform a \nameref{def:Linear_Convolution} on an infinite discretely-valued signal with a filter $h(n)$ that has a finite length of $M$.
+
+The steps to perform \nameref{subsubsec:DFT_Application-Overlap_Add} are:
+\begin{enumerate}[noitemsep]
+\item Partition your ``infinite'' discrete signal into blocks of length $L$
+  \begin{itemize}[noitemsep]
+  \item This will give you $A$ blocks, where $0 \leq A < \infty$.
+  \item This means you have blocks with sequences $x_{a}(n), \: a \in A$ that are of length $L$.
+  \end{itemize}
+\item Compute the \nameref{def:DFT} of your filter $h(n)$ to get $H(k)$.
+  \begin{enumerate}[noitemsep]
+  \item Zero-pad $h(n)$ to a length of $N=L+M-1$. Remember that $h(n)$ has length $L$.
+  \item Perform the \nameref{def:DFT} on the zero-padded sequence to get $H(k)$
+  \item You can disregard $h(n)$ now
+    \begin{itemize}[noitemsep]
+    \item If you're programming this, this means you can precalculate $H(k)$ somewhere else.
+    \end{itemize}
+  \end{enumerate}
+\item Compute the \nameref{def:DFT} of one of the blocks from the partitioned input signal
+  \begin{enumerate}[noitemsep]
+  \item Zero-Pad $x_{a}(n)$ to a length of $N=L+M-1$
+  \item Perform the \nameref{def:DFT} on the zero padded sequence to get $X_{a}(k)$
+  \end{enumerate}
+\item Multiply $X_{a}(k)$ and $H(k)$ to get $Y_{a}(k)$
+  \begin{itemize}[noitemsep]
+  \item $Y_{a}(k) = X_{a}(k) H(k)$
+  \end{itemize}
+\item Perform the \nameref{def:IDFT} on $Y_{a}(k)$ to get $y_{a}(n)$.
+  \begin{itemize}[noitemsep]
+  \item $y_{a}(n)$ is of length $N=L+M-1$
+  \end{itemize}
+\item Take the first $L$ terms of $y(n)$ and make that your real output $z(n)$
+\item Save the other $M-1$ terms in memory (leftovers), call this $\ell_{a}(n)$
+\item Take the next block, find $y_{a+1}(n)$, and add $\ell_{a}(n)$ to the output of the next block's $y_{a+1}(n)$
+  \begin{enumerate}[noitemsep]
+  \item The first term of $\ell_{a}(n)$, while not the first term from block $a$, is now the first term when adding it to $y_{a+1}(n)$.
+  \item Perform element-wise addition.
+  \item $z_{a+1}(n) = y_{a+1}(n) + \ell_{a}(n)$
+  \end{enumerate}
+\item Repeat this for the entire length of the infinitely long input signal.
+\end{enumerate}
+
+\begin{remark*}
+  In case the steps above were confusing, the variables used and their meanings are below.
+  \begin{itemize}[noitemsep]
+  \item $x(n)$, the infinitely long input signal
+  \item $a$, the block index from the partitioning of the input signal
+  \item $A$, the total number of partitions of $x(n)$ that are present
+  \item $L$, the length of each block
+  \item $x_{a}(n)$, the signal sequence in block $a$
+  \item $X_{a}(k)$, the \nameref{def:DFT} of the signal sequence in block $a$
+  \item $h(n)$, the finite length filter's sequence
+  \item $H(k)$, the \nameref{def:DFT} of the filter's sequence
+  \item $M$, the length of the filter's sequence
+  \item $N$, the length used in the circular convolution, equal to $L+M-1$
+  \item $Y_{a}(k)$, the output of the multiplication of $X_{a}(k)$ and $H(k)$
+  \item $y_{a}(n)$, the \nameref{def:IDFT} of $Y_{a}(k)$
+  \item $\ell_{a}(n)$, the part of $y_{a}(n)$ after pulling off the first $L$ terms
+  \item $z_{a}(n)$, the final output of performing the convolution of block $a$ and adding $\ell_{a-1}(n)$
+  \end{itemize}
+\end{remark*}
+
+The trick for \nameref{subsubsec:DFT_Application-Overlap_Add} is to get each block's convolution and multiplication fast enough, and it becomes efficient.
+To make it fast enough, $N$ should be a power of 2 ($2^{k}$).
+This turns the calculation of the \nameref{def:DFT}s into \nameref{def:FFT}s, which are really fast.
+Then multiplication, while lengthy, is a singular operation, unlike convolutions which are many.
+Because we zero-pad smartly, while we are technically calculating the \nameref{def:Circular_Convolution} of the signal, we are actually performing the \nameref{def:Linear_Convolution}.
+
+\subsubsection{Overlap-Save}\label{subsubsec:DFT_Application-Overlap_Save}
+This is another way to perform a \nameref{def:Linear_Convolution} on an infinitely long discretely-valued signal with a filter $h(n)$ that has finite length of $M$.
+
+The steps to perform \nameref{subsubsec:DFT_Application-Overlap_Save} are:
+\begin{enumerate}[noitemsep]
+\item Partition your infinite discrete input signal, $x(n)$, into blocks of length $L$ to get $x_{a}(n)$
+  \begin{itemize}[noitemsep]
+  \item This will give you $A$ block, where $0 \leq A < \infty$.
+  \item This means you have blocks with sequences $x_{a}(n), \: a \in A$ that are of length $L$.
+  \end{itemize}
+\item Compute the \nameref{def:DFT} of your filter $h(n)$ to get $H(k)$.
+  \begin{enumerate}[noitemsep]
+  \item Perform the \nameref{def:DFT} on the sequence
+  \item You can disregard $h(n)$ now
+    \begin{itemize}[noitemsep]
+    \item If you're programming this, this means you can precalculate $H(k)$ somewhere else.
+    \end{itemize}
+  \end{enumerate}
+\item Compute the \nameref{def:DFT} of one of the blocks from the partitioned input signal to get $X_{a}(k)$
+  \begin{enumerate}[noitemsep]
+  \item Zero-pad the \textbf{\emph{FRONT}} of the block until the length of the block's sequences with the padding is $N=L+M-1$.
+  \end{enumerate}
+\item Perform the \nameref{def:Circular_Convolution} of $h(n)$ and zero-padded block signal $x_{a}(n)$ by multiplying $X_{a}(k)$ and $H(k)$, which yields $Y_{a}(k)$
+\item Make your output $Z_{a}(k)$ the last $M-1$ terms in the $Y_{a}(k)$ sequences. (Leave out the first $L$ terms).
+\item Take the \nameref{def:IDFT} of $Z_{a}(k)$ to get $z_{a}(n)$.
+\item Move onto the $(a+1)$th block, and prepend (attach to the front) the last $L-M$ terms from $x_{a}(n)$, to $x_{a+1}(n)$.
+\item Perform the \nameref{def:DFT} of this sequence, and take the last $M-1$ terms from $Y_{a+1}(k)$ to the output $Z(k)$
+\end{enumerate}
+
+\subsubsection{Overlap-Discard}\label{subsubsec:DFT_Application-Overlap_Discard}
 
 %%% Local Variables:
 %%% mode: latex
