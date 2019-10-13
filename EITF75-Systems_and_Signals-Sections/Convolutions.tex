@@ -1,17 +1,92 @@
 \section{Convolutions}\label{sec:Convolutions}
-\begin{definition}[Convolution]\label{def:Convolution}
-  The \emph{convolution} operator.
+\begin{definition}[Linear Convolution]\label{def:Linear_Convolution}
+  The \emph{linear convolution} is more commonly called a \emph{convolution}.
+  It is a mathematical operation that involves infinite sums.
+  It defines the relationship between 2 signals to produce an output.
 
-  \begin{equation}\label{eq:Convolution}
+  \begin{equation}\label{eq:Linear_Convolution-1}
     y(t) = \sum\limits_{k=-\infty}^{\infty} x(k) * h(n-k)
   \end{equation}
+
+  Because of associativity, commutativity, and distributivity, \Cref{eq:Linear_Convolution-1} can be equivalently rewritten as
+  \begin{equation}\label{eq:Linear_Convolution-2}
+    y(t) = \sum\limits_{k=-\infty}^{\infty} h(k) * x(n-k)
+  \end{equation}
+
+  The length of the resulting sequence from a linear convolution is
+  \begin{equation}\label{eq:Linear_Convolution_Length}
+    2L-1
+  \end{equation}
+  where $L$ is the length of the input sequences.
 \end{definition}
 
-If there is a relaxed \nameref{def:Linear_Time-Invariant} system to an input $x(n)$, then the output can be found by computing the \nameref{def:Convolution} of the input with the sample response on the system.
-This results in the equation shown below.
-\begin{equation}\label{eq:LTI_System_Convolution}
-  y(n) = x(n) * h(n)
-\end{equation}
+To compute the \nameref{def:Linear_Convolution} of \Crefrange{eq:Linear_Convolution-1}{eq:Linear_Convolution-2}:
+\begin{enumerate}[noitemsep]
+\item Perform a \nameref{par:Folding} on one of the two signals
+\item If necessary, pad a signal with 0s to ensure the 2 signals are the same length, $L$
+\item ``Run'' both signals by each other.
+  \begin{itemize}[noitemsep]
+  \item This is illustrated in \Cref{ex:Linear Convolution}.
+  \end{itemize}
+\item Perform this for all values of $n$.
+\end{enumerate}
+
+\begin{example}[Problem 2.16b, Part 2]{Linear Convolution}
+  Compute the \nameref{def:Linear_Convolution} $y(n) = h(n) * x(n)$ of the following signal.
+  Check your result with this formula $\sum\limits_{y \in Y} = \sum\limits_{h \in H} \sum\limits_{x \in X}$.
+  \begin{align*}
+    x(n) &= \lbrace \underline{1}, 2, -1 \rbrace \\
+    h(n) &= \lbrace \underline{1}, 2, -1 \rbrace
+  \end{align*}
+  
+  \tcblower{}
+
+  Start by \nameref{par:Folding} a signal, I chose $h(n)$ to get
+  \begin{equation*}
+    h(-n) = \lbrace -1, 2, \underline{1} \rbrace
+  \end{equation*}
+
+  Now we ``run'' each signal past each other.
+  The $x(n)$ signal is the left operand and the $h(-n)$ signal is the right operand in the multiplications below.
+  \begin{align*}
+    y(0) &= (0 \cdot -1) + (0 \cdot 2) + (1 \cdot 1) + (2 \cdot 0) + (-1 \cdot 0) = 1 \\
+    y(1) &= (0 \cdot -1) + (1 \cdot 2) + (2 \cdot 1) + (-1 \cdot 0) = 4 \\
+    y(2) &= (1 \cdot -1) + (2 \cdot 2) + (-1 \cdot 1) = 2 \\
+    y(3) &= (1 \cdot 0) + (2 \cdot -1) + (-1 \cdot 2) + (0 \cdot 1) = -4 \\
+    y(4) &= (1 \cdot 0) + (2 \cdot 0) + (-1 \cdot -1) + (0 \cdot 2) + (0 \cdot 1) = 1 \\
+    y(5) &= (1 \cdot 0) + (2 \cdot 0) + (-1 \cdot 0) + (0 \cdot -1) + (0 \cdot 2) + (0 \cdot 1) = 0 \\
+  \end{align*}
+
+  Thus, our output sequence is
+  \begin{equation*}
+    y(n) = \lbrace \underline{1}, 4, 2, -4, 1 \rbrace
+  \end{equation*}
+
+  We can verify the length of the output to be $2L-1$.
+  Since $2(3)-1 = 5$, and the convolution is of length 5, we are correct here.
+
+  Now we check our solution
+  \begin{align*}
+    \sum\limits_{y \in Y} &= 4 \\
+    \sum\limits_{x \in X} &= 2 \\
+    \sum\limits_{h \in H} &= 2 \\
+  \end{align*}
+  so, according to the equation provided
+  \begin{equation*}
+    4 = 2 \cdot 2
+  \end{equation*}
+  is true and correct.
+
+  So, our answer is: $y(n) = \lbrace \underline{1}, 4, 2, -4, 1 \rbrace$.
+\end{example}
+
+\begin{definition}[\nameref{def:Linear_Time-Invariant} System Convolution]\label{def:LTI_System_Convolution}
+  If there is a relaxed \nameref{def:Linear_Time-Invariant} system to an input $x(n)$, then the output can be found by computing the \nameref{def:Linear_Convolution} of the input with the sample response on the system.
+  This results in the equation shown below.
+  \begin{equation}\label{eq:LTI_System_Convolution}
+    y(n) = x(n) * h(n)
+  \end{equation}
+\end{definition}
 
 \subsection{Properties of the Convolution}\label{subsec:Convolution_Properties}
 \begin{table}[h!]
@@ -30,15 +105,15 @@ This results in the equation shown below.
 \end{table}
 
 \subsubsection{Identity Property}\label{subsubsec:Convolution_Property-Identity}
-\begin{definition}[Identity Property]\label{def:Convolution_Property-Identity}
-  The \nameref{def:Unit Impulse Signal} is the identity element for the \nameref{def:Convolution}.
+\begin{definition}[Identity Property]\label{def:Linear_Convolution_Property-Identity}
+  The \nameref{def:Unit Impulse Signal} is the identity element for the \nameref{def:Linear_Convolution}.
   \begin{equation}\label{eq:Convolution_Property-Identity}
     y(n) = x(n) * \delta(n) = x(n)
   \end{equation}
 \end{definition}
 
 \subsubsection{Shifting Property}\label{subsubsec:Convolution_Property-Shifting}
-\begin{definition}[Shifting Property]\label{def:Convolution_Property-Shifting}
+\begin{definition}[Shifting Property]\label{def:Linear_Convolution_Property-Shifting}
   Since the $\delta(n)$ function is the Identity function, if we shift $\delta(n)$ by $k$, the convolution sequence is also shifted by $k$.
   \begin{equation}\label{eq:Convolution_Property-Shifting}
     x(n) * \delta(n-k) = y(n-k) = x(n-k)
@@ -46,24 +121,24 @@ This results in the equation shown below.
 \end{definition}
 
 \subsubsection{Commutative Law}\label{subsubsec:Convolution_Property-Commutative}
-\begin{definition}[Commutative Law for Convolutions]\label{def:Convolution_Property-Commutative}
-  The \emph{commutative law for \nameref{def:Convolution}s} is just like many other operations.
+\begin{definition}[Commutative Law for Convolutions]\label{def:Linear_Convolution_Property-Commutative}
+  The \emph{commutative law for \nameref{def:Linear_Convolution}s} is just like many other operations.
   \begin{equation}\label{eq:Convolution_Property-Commutative}
     x(n) * h(n) = h(n) * x(n)
   \end{equation}
 \end{definition}
 
 \subsubsection{Associative Law}\label{subsubsec:Convolution_Property-Associative}
-\begin{definition}[Associative Law for Convolutions]\label{def:Convolution_Property-Associative}
-  The \emph{associative law for \nameref{def:Convolution}s} is just like many other operations.
+\begin{definition}[Associative Law for Convolutions]\label{def:Linear_Convolution_Property-Associative}
+  The \emph{associative law for \nameref{def:Linear_Convolution}s} is just like many other operations.
   \begin{equation}\label{eq:Convolution_Property-Associative}
     \left[ x(n) * h_{1}(n) \right] * h_{2}(n) = x(n) * \left[ h_{1}(n) * h_{2}(n) \right]
   \end{equation}
 \end{definition}
 
 \subsubsection{Distributive Law}\label{subsubsec:Convolution_Property-Distributive}
-\begin{definition}[Distributive Law for Convolutions]\label{def:Convolution_Property-Distributive}
-  The \emph{distributive law for \nameref{def:Convolution}s} is just like many other operations.
+\begin{definition}[Distributive Law for Convolutions]\label{def:Linear_Convolution_Property-Distributive}
+  The \emph{distributive law for \nameref{def:Linear_Convolution}s} is just like many other operations.
   \begin{equation}\label{eq:Convolution_Property-Distributive}
     x(n) * \left[ h_{1}(n) + h_{2}(n) \right] = x(n) * h_{1}(n) + x(n) * h_{2}(n)
   \end{equation}
@@ -90,7 +165,7 @@ This results in the equation shown below.
     r_{y,x}(k) = \sum\limits_{n=-\infty}^{\infty} y(n) x(n-k)
   \end{equation}
 
-  However, there is a way to express \Cref{eq:Cross_Correlation} in terms of a \nameref{def:Convolution}.
+  However, there is a way to express \Cref{eq:Cross_Correlation} in terms of a \nameref{def:Linear_Convolution}.
   \begin{equation}\label{eq:Cross_Correlation-Convolution}
     r_{y,x}(k) = y(n) * x(-n)
   \end{equation}
@@ -105,7 +180,7 @@ This results in the equation shown below.
     r_{x,x}(k) = \sum\limits_{n=-\infty}^{\infty} x(n) x(n-k)
   \end{equation}
 
-  However, there is a way to express \Cref{eq:Auto_Correlation} in terms of a \nameref{def:Convolution}.
+  However, there is a way to express \Cref{eq:Auto_Correlation} in terms of a \nameref{def:Linear_Convolution}.
   \begin{equation}\label{eq:Auto_Correlation-Convolution}
     r_{x,x}(k) = x(n) * x(-n)
   \end{equation}
