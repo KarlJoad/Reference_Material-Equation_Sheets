@@ -1,7 +1,13 @@
 \input{Reference_Sheet_Preamble}
+
 % \usepackage{esint} % Provides us with more types of integral symbols to use
-% \usepackage{minted} % Allow us to nicely typeset 300+ programming languages
+\usepackage[outputdir=./TeX_Output]{minted} % Allow us to nicely typeset 300+ programming languages
 % \graphicspath{{./Drawings/Course}} % Uncomment this to use pictures in this document
+
+\newminted[matlabsource]{matlab}{
+  frame=lines,
+  linenos
+}
 
 % Math Operators that are useful to abstract the written math away to one spot
 % These are supposed to be document-specific mathematical operators that will make life easier
@@ -42,6 +48,12 @@
 \input{./EITF75-Systems_and_Signals-Sections/Fourier}
 
 \input{./EITF75-Systems_and_Signals-Sections/Fourier_and_LTI_Systems}
+
+\input{./EITF75-Systems_and_Signals-Sections/Sampling_and_Reconstruction}
+
+\input{./EITF75-Systems_and_Signals-Sections/Discrete_Fourier_Transform}
+
+\input{./EITF75-Systems_and_Signals-Sections/Filter_Implementation}
 %====================================APPENDIX====================================
 \appendix
 \counterwithin{definition}{subsection}
