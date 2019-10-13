@@ -421,16 +421,59 @@ Poles and zeroes may occur at $z=\infty$.
 A zero exists at $z=\infty$ if $X(\infty) = 0$ and a pole exists at $z=\infty$ if $X(\infty) = \infty$.
 
 \begin{definition}[Pole-Zero Plot]\label{def:Pole-Zero Plot of Z-Transform}
-  Poles and Zeros of a $z$-transform can be shown graphically by a \emph{pole-zero plot} in the complex plane, which shows the location of poles by crosses ($\times$) and the location of zeros by circles.
+  Poles and Zeros of a $z$-transform can be shown graphically by a \emph{pole-zero plot} in the complex plane, which shows the location of poles by crosses ($\times$) and the location of zeros by circles ($\circ$).
   Multiplicity is shown by a number close to the corresponding cross or circle.
   The ROC of a $z$-transform should not contain any poles, by definition.
 \end{definition}
 
 \subsubsection{Decomposition of Rational \texorpdfstring{$\ZTransform$-Transforms}{Z-Transform}}\label{subsubsec:Decompose Rational Z-Transforms}
+The short end of this story is that you should group complex-conjugate pairs together.
 
 \subsection{Analysis of LTI Systems in the \texorpdfstring{$\ZTransform$-Domain}{Z-Domain}}\label{subsec:Analysis LTI Systems Z-Domain}
+There are a few steps to move from the time-domain to the $\ZTransform$-domain to perform analysis.
+\begin{enumerate}[noitemsep]
+\item Convert all your time-based to terms to the $\ZTransform$-domain.
+  \begin{itemize}[noitemsep]
+  \item $y(n-k) \rightarrow z^{-k}Y(z)$
+  \item $x(n-k) \rightarrow z^{-k}X(z)$
+  \end{itemize}
+\item Express $H(z)$ as $\frac{Y(z)}{X(z)}$, the \nameref{def:System_Function}.
+\item Find the roots of the numerator and the denominator.
+  \begin{itemize}[noitemsep]
+  \item When solving for the roots, you should solve in terms of $z^{k}$, not $z^{-k}$. Factor our $z^{-k}$ to achieve this.
+  \item If the degree of the numerator is greater than or equal to the degree of the numerators, you have to reduce the degree of the numerator.
+    \begin{enumerate}[noitemsep]
+    \item Use Long Polynomial Division
+    \item Use Partial-Fraction Expansion on the Remainder
+    \end{enumerate}
+  \end{itemize}
+  \begin{enumerate}[noitemsep]
+  \item The roots of the numerator is/are \nameref{def:Zeros of a Z-Transform}. This is where the $\ZTransform$-plane becomes 0.
+  \item The roots of the denominator is/are \nameref{def:Poles of a Z-Transform}. This is where the $\ZTransform$-plane tends towards $\infty$.
+  \end{enumerate}
+\end{enumerate}
+
+\begin{definition}[System Function]\label{def:System_Function}
+  The \emph{system function} or \emph{system equation} is the $\ZTransform$-transform of the filter response.
+
+  \begin{equation}\label{eq:System_Function}
+     H(z) = \ZTransform \lbrace h(n) \rbrace
+   \end{equation}
+
+   Because of~\Cref{eq:Z-Domain Convolutions}, and the relation shown in~\Cref{eq:LTI_System_Convolution}, we can write the system equation like so
+   \begin{equation}\label{eq:System_Function-LTI_System}
+     \begin{aligned}
+       Y(z) &= X(z) H(z) \\
+       H(z) &= \frac{Y(z)}{X(z)} \\
+     \end{aligned}
+   \end{equation}
+
+   This forms the basis for \nameref{subsec:Rational Z-Transforms} and \nameref{subsec:Analysis LTI Systems Z-Domain}
+\end{definition}
 
 \subsection{Common \texorpdfstring{$\ZTransform$-Transforms}{Z-Transforms}}\label{subsubsec:Common Z-Transforms}
+The most common $\ZTransform$-transforms are shown in~\Cref{tab:Common Z-Transforms}.
+
 \begin{table}[h!]
   \centering
   \renewcommand{\arraystretch}{1.4}
