@@ -1,5 +1,51 @@
 \section{Implementation of Filters}\label{sec:Filter_Implementation}
+\subsection{\nameref{def:FIR} Filters}\label{subsec:Filter_Implementation-FIR}
+\subsection{\nameref{def:IIR} Filters}\label{subsec:Filter_Implementation-IIR}
+\subsection{Transposing a System}\label{subsec:Filter_Implementation-Transposing_System}
+To transpose any system's block diagram, you need to follow these steps.
+\begin{enumerate}[noitemsep]
+\item Reverse the direction of each interconnection
+\item Reverse direction of each multiplier
+\item Change junctions to adders and adders to junctions
+  \begin{itemize}[noitemsep]
+  \item Adders become junctions
+  \item Junctions become adders
+  \end{itemize}
+\item Interchange the input and output
+\end{enumerate}
 
+\subsection{Numerical Precision Issues}\label{subsec:Filter_Implementation-Numerical_Precision_Issues}
+The main issues here are:
+\begin{enumerate}[noitemsep]
+\item Our coefficients, $\alpha$, $\beta$, etc.\ are stored in hardware with finite precision, if not a power of 2.
+\item Arithmetic is done with finite precision
+\end{enumerate}
+
+To deal with this, use typically say ``Our system is perfect, and the above issues are just noise in the system.''
+These imprecisions cause \textbf{\emph{\large{HUGE}}} issues.
+Wilkinson's Polynomial illustrates this.
+
+The solution to these issues is to not implement the filter's whole $H(z)$ at once.
+Instead, we create a cascade of smaller filters with \nameref{def:Biquad}s.
+You implement a cascade of \nameref{def:Biquad} filters until you have achieved the $H(z)$ that you desire.
+
+\begin{definition}[Biquad]\label{def:Biquad}
+  A \emph{biquad} filter is one that has only 2 poles and 2 zeros.
+\end{definition}
+
+You pick the setup of the cascade in the following order:
+\begin{enumerate}[noitemsep]
+\item Find the optimal pole-zero combinations
+  \begin{enumerate}[noitemsep]
+  \item Plot the magnitude response
+  \item Choose the \nameref{def:Biquad} that minimizes noise and maximizes the signal frequency desired
+  \end{enumerate}
+\item Find the optimal arrangement of cascaded filter \nameref{def:Biquad}s
+  \begin{enumerate}[noitemsep]
+  \item Minimize the average output power of the noise signal
+  \item This means the filter with the lowest output power is \textbf{LAST} in the cascade.
+  \end{enumerate}
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
