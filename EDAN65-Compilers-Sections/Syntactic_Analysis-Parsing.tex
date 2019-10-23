@@ -45,7 +45,7 @@ The block below will show the difference in derivation between \nameref{subsec:L
 
   The LR derivation has 2 options, both of which achieve the same thing.
   \begin{enumerate}[noitemsep]
-  \item The way it works in practice, you have the terminals and have to go ``up'' the production rules.
+  \item The way it works in practice, you have the terminals and a lookup token (either a terminal or nonterminal) and go ``up'' the production rules based on the given terminals and the lookup token.
     \begin{equation*}
       \underline{ab}cde \Rightarrow Y\underline{c}de \Rightarrow YZ\underline{de} \Rightarrow \underline{YZV} \Rightarrow X
     \end{equation*}
