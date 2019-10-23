@@ -506,6 +506,61 @@ Some of the cases where this may happen are listed below:
 \item Common Prefix
 \end{enumerate}
 
+\subsubsection{Issues with \nameref{subsec:LLParsing}}\label{subsubsec:LLParsing_Issues}
+There are 2 major issues with \nameref{subsec:LLParsing}.
+\begin{enumerate}[noitemsep]
+\item \nameref{par:LLParsing_Issues_Common_Prefix}
+\item \nameref{par:LLParsing_Issues_Left_Recursion}
+\end{enumerate}
+
+\paragraph{Common Prefix}\label{par:LLParsing_Issues_Common_Prefix}
+\begin{definition}[Common Prefix]\label{def:Common_Prefix}
+  A \emph{common prefix} issue is one in which multiple productions that start from the same \nameref{def:Nonterminal_Symbol} \emph{start} with the same \nameref{def:Nonterminal_Symbol} or \nameref{def:Terminal_Symbol}.
+\end{definition}
+
+The below grammar is an example of a \emph{direct} \nameref{def:Common_Prefix} issue:
+\begin{equation}\label{eq:Direct_Common_Prefix}
+  \begin{aligned}
+    X &\rightarrow aY \\
+    X &\rightarrow aZ
+  \end{aligned}
+\end{equation}
+
+The below grammar is an example of an \emph{indirect} \nameref{def:Common_Prefix} issue:
+\begin{equation}\label{eq:Indirect_Common_Prefix}
+  \begin{aligned}
+    Y &\rightarrow Zb \\
+    Y &\rightarrow Uc \\
+    Z &\rightarrow a \\
+    U &\rightarrow a
+  \end{aligned}
+\end{equation}
+
+\paragraph{Left Recursion}\label{par:LLParsing_Issues_Left_Recursion}
+\begin{definition}[Left Recursion]\label{def:Left_Recursion}
+  A \emph{left recursion} issue is one where a set of productions can eventually yield the same \nameref{def:Nonterminal_Symbol} as was started with.
+
+  \begin{remark}
+    Every \nameref{par:LLParsing_Issues_Left_Recursion} is a special case of \nameref{par:LLParsing_Issues_Common_Prefix}s where the \nameref{def:Nonterminal_Symbol}s are the common element.
+  \end{remark}  
+\end{definition}
+
+The below grammar is an example of a \emph{direct} \nameref{def:Left_Recursion} issue:
+\begin{equation}\label{eq:Direct_Left_Recursion}
+  \begin{aligned}
+    X &\rightarrow XYZ \\
+  \end{aligned}
+\end{equation}
+
+The below grammar is an example of an \emph{indirect} \nameref{def:Left_Recursion} issue:
+\begin{equation}\label{eq:Indirect_Left_Recursion}
+  \begin{aligned}
+    X &\rightarrow YZ \\
+    Y &\rightarrow XD \\
+  \end{aligned}
+\end{equation}
+In \Cref{eq:Indirect_Left_Recursion}, if you perform a left-most derivation, you will recurse down $X$ permanently.
+
 \subsubsection{Eliminating Left Recursion}\label{subsubsec:Eliminate_Left_Recursion}
 $\LLParse(1)$ cannot support left recursion, however, they can support right recursion.
 So, if we have a grammar with left recursion, and want to $\LLParse(1)$ parse it, we need to rewrite the grammar.
