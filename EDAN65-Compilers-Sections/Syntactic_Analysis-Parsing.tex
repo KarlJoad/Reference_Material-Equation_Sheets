@@ -56,6 +56,118 @@ The block below will show the difference in derivation between \nameref{subsec:L
   \end{enumerate}
 \end{blackbox}
 
+\subsection{Context-Free Grammars}\label{subsec:Context_Free_Grammars}
+\begin{definition}[Context-Free Grammar]\label{def:Context_Free_Grammar}
+  A \emph{context-free grammar} or \emph{CFG} is a way to define a set of \textit{strings} that form a \nameref{def:Language}.
+  Each string is a finite sequence of \nameref{def:Terminal_Symbol} taken from a finite \nameref{def:Alphabet}.
+  This is done with one or more \nameref{def:Production}s, where each production can have both \nameref{def:Nonterminal_Symbol} and \nameref{def:Terminal_Symbol}.
+
+  More formally, a \nameref{def:Context_Free_Grammar} is defined as $G = (N, T, P, S)$, where
+  \begin{itemize}[noitemsep]
+  \item $N$, the set of \nameref{def:Nonterminal_Symbol}s
+  \item $T$, the set of \nameref{def:Terminal_Symbol}s
+  \item $P$, the set of production rules, each with the form
+    \begin{equation*}
+      X \rightarrow Y_{1} Y_{2} \ldots Y_{n} \: \text{where } X \in N, x \geq 0, \text{and } Y_{k} \in N \cup T
+    \end{equation*}
+  \item $S$, the start symbol (one of the \nameref{def:Nonterminal_Symbol}s, $N$). $S \in N$.
+  \end{itemize}
+
+  \begin{remark}
+    It is important to note that there are 2 forms of \nameref{def:Context_Free_Grammar}s:
+    \begin{enumerate}[noitemsep]
+    \item \nameref{def:CFG_Canonical_Form}
+    \item \nameref{def:CFG_EBNF_Form}
+    \end{enumerate}
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Language]\label{def:Language}
+  A \emph{language} is the set of \textbf{\textup{all}} strings that can be formed by the \nameref{def:Production}s in the \nameref{def:Context_Free_Grammar}.
+\end{definition}
+
+\begin{definition}[Production]\label{def:Production}
+  A \emph{production} is a rule that defines the relation between a single \nameref{def:Nonterminal_Symbol} and a string comprised of \nameref{def:Nonterminal_Symbol}s, \nameref{def:Terminal_Symbol}s, and the \nameref{def:Empty_String}.
+
+  The are denoted as shown below:
+  \begin{equation}\label{eq:Production}
+    p_{0}: A \rightarrow \alpha
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Nonterminal Symbol]\label{def:Nonterminal_Symbol}
+  A \emph{nonterminal symbol} is a symbol that is used in the \nameref{def:Context_Free_Grammar} as a symbol for a \nameref{def:Production}.
+\end{definition}
+
+\begin{definition}[Terminal Symbol]\label{def:Terminal_Symbol}
+  A \emph{terminal symbol} is a symbol that cannot be derived any further.
+  This is a symbol that is part of the \nameref{def:Alphabet} that is used to form the \nameref{def:Language}.
+\end{definition}
+
+\begin{definition}[Empty String]\label{def:Empty_String}
+  The \emph{empty string} is a special symbol that is neither a \nameref{def:Nonterminal_Symbol} nor a \nameref{def:Terminal_Symbol}.
+  The empty string is a \emph{metasymbol}.
+  It is a unique symbol meant to represent the lack of a string.
+  It is denoted with the lowercase Greek epsilon, $\epsilon$ or $\varepsilon$.
+\end{definition}
+
+\begin{definition}[Alphabet]\label{def:Alphabet}
+  The finite set of \nameref{def:Nonterminal_Symbol}s that can be used to form a \nameref{def:Language}.
+\end{definition}
+
+\subsubsection{\nameref{def:Context_Free_Grammar} Forms}\label{subsubsec:CFG_Forms}
+\begin{definition}[Canonical Form]\label{def:CFG_Canonical_Form}
+  The \emph{canonical form} of a \nameref{def:Context_Free_Grammar} is the most formal use of a \nameref{def:Context_Free_Grammar}.
+  The \nameref{def:CFG_Canonical_Form} is:
+  \begin{itemize}[noitemsep]
+  \item The core formalism for \nameref{def:Context_Free_Grammar}s
+  \item Useful for proving properties and explaining algorithms
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Extended Backus-Naur Form]\label{def:CFG_EBNF_Form}
+  The \emph{Extended Backus-Naur form} of a \nameref{def:Context_Free_Grammar} is an extension of the \emph{Backus-Naur Form}.
+  This is a more informal implementation of a \nameref{def:Context_Free_Grammar}.
+  This informality allows for some additional constructs in the \nameref{def:Production} rules.
+
+  These include:
+  \begin{enumerate}[noitemsep]
+  \item Alternatives with $\vert$
+  \item Repetition with the Kleene Star (*)
+  \item Optionals
+  \item Parentheses
+  \end{enumerate}
+
+  The \nameref{def:CFG_EBNF_Form} is:
+  \begin{itemize}[noitemsep]
+  \item Compact, easy to read and write
+  \item Common notation for practical use
+  \end{itemize}
+\end{definition}
+
+\subsubsection{Chomsky Hierarchy of Formal Grammars}\label{subsubsec:Formal_Grammar_Hierarchy}
+There exists a hierarchy for the definition of Grammars that define \nameref{def:Language}s.
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{ccc}
+    \toprule
+    Grammar & Rule Patterns & Type \\
+    \midrule
+    Regular & $X \rightarrow a Y$ or $X \rightarrow a$ or $X \rightarrow \epsilon$ & 3 \\
+    \nameref{def:Context_Free_Grammar} & $X \rightarrow \gamma$ & 2 \\
+    Context Sensitive & $\alpha X \beta \rightarrow \alpha \gamma \beta$ & 1 \\
+    Arbitrary & $\gamma \rightarrow \delta$ & 0 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Chomsky Hierarchy of Formal Grammars}
+  \label{tab:Formal_Grammar_Hierarchy}
+\end{table}
+Where $a$ is a \nameref{def:Terminal_Symbol}, $\alpha$, $\beta$, $\gamma$, and $\delta$ are \emph{sequences} of symbols (\nameref{def:Terminal_Symbol} or \nameref{def:Nonterminal_Symbol}).
+
+Type(3) $\subset$ Type(2) $\subset$ Type(1) $\subset$ Type(0)
+
+Regular grammars have the same power as \nameref{def:Regular_Expression}s.
+
 \subsection{LL Parsing}\label{subsec:LLParsing}
 There are 5 basic steps in constructing an $\LLParse(1)$ parser.
 \begin{enumerate}[noitemsep]
