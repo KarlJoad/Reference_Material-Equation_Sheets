@@ -74,9 +74,10 @@ The block below will show the difference in derivation between \nameref{subsec:L
   \end{itemize}
 
   \begin{remark}
-    It is important to note that there are 2 forms of \nameref{def:Context_Free_Grammar}s:
+    It is important to note that there are 3 forms of \nameref{def:Context_Free_Grammar}s:
     \begin{enumerate}[noitemsep]
     \item \nameref{def:CFG_Canonical_Form}
+    \item \nameref{def:CFG_BNF_Form}
     \item \nameref{def:CFG_EBNF_Form}
     \end{enumerate}
   \end{remark}
@@ -148,6 +149,17 @@ The block below will show the difference in derivation between \nameref{subsec:L
   \end{itemize}
 \end{definition}
 
+\begin{definition}[Backus-Naur Form]\label{def:CFG_BNF_Form}
+  The \emph{Backus-Naur form} of a \nameref{def:Context_Free_Grammar} is an extension of the \nameref{def:CFG_Canonical_Form}.
+  This form is less formal than the \nameref{def:CFG_Canonical_Form}, but is allows for condensation of multiple productions that have the same nonterminal on the left-hand side to the same production.
+  This is done with the $\vert$ symbol.
+
+  For example, \Cref{eq:CFG_BNF_Form} is equivalent to \Cref{eq:CFG_Canonical_Form}.
+  \begin{equation}\label{eq:CFG_BNF_Form}
+    A \rightarrow B \; d \; e \; C \; f \: \vert \: g\; A
+  \end{equation}
+\end{definition}
+
 \begin{definition}[Extended Backus-Naur Form]\label{def:CFG_EBNF_Form}
   The \emph{Extended Backus-Naur form} of a \nameref{def:Context_Free_Grammar} is an extension of the \emph{Backus-Naur Form}.
   This is a more informal implementation of a \nameref{def:Context_Free_Grammar}.
@@ -155,7 +167,7 @@ The block below will show the difference in derivation between \nameref{subsec:L
 
   These include:
   \begin{enumerate}[noitemsep]
-  \item Alternatives with $\vert$
+
   \item Repetition with the Kleene Star (*)
   \item Optionals
   \item Parentheses
