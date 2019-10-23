@@ -182,6 +182,7 @@ The block below will show the difference in derivation between \nameref{subsec:L
 
 \subsubsection{Chomsky Hierarchy of Formal Grammars}\label{subsubsec:Formal_Grammar_Hierarchy}
 There exists a hierarchy for the definition of Grammars that define \nameref{def:Language}s.
+It is called the \emph{\nameref{subsubsec:Formal_Grammar_Hierarchy}}.
 \begin{table}[h!]
   \centering
   \begin{tabular}{ccc}
@@ -190,14 +191,15 @@ There exists a hierarchy for the definition of Grammars that define \nameref{def
     \midrule
     Regular & $X \rightarrow a Y$ or $X \rightarrow a$ or $X \rightarrow \epsilon$ & 3 \\
     \nameref{def:Context_Free_Grammar} & $X \rightarrow \gamma$ & 2 \\
-    Context Sensitive & $\alpha X \beta \rightarrow \alpha \gamma \beta$ & 1 \\
+    Context-Sensitive & $\alpha X \beta \rightarrow \alpha \gamma \beta$ & 1 \\
     Arbitrary & $\gamma \rightarrow \delta$ & 0 \\
     \bottomrule
   \end{tabular}
   \caption{Chomsky Hierarchy of Formal Grammars}
   \label{tab:Formal_Grammar_Hierarchy}
 \end{table}
-Where $a$ is a \nameref{def:Terminal_Symbol}, $\alpha$, $\beta$, $\gamma$, and $\delta$ are \emph{sequences} of symbols (\nameref{def:Terminal_Symbol} or \nameref{def:Nonterminal_Symbol}).
+
+Where $a$ is a \nameref{def:Terminal_Symbol}, $\alpha$, $\beta$, $\gamma$, and $\delta$ are \emph{sequences} of symbols (\nameref{def:Terminal_Symbol}s or \nameref{def:Nonterminal_Symbol}s).
 
 Type(3) $\subset$ Type(2) $\subset$ Type(1) $\subset$ Type(0)
 
