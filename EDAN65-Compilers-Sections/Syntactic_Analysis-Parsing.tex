@@ -600,10 +600,100 @@ The below grammar is an example of an \emph{indirect} \nameref{def:Left_Recursio
 \end{equation}
 In \Cref{eq:Indirect_Left_Recursion}, if you perform a left-most derivation, you will recurse down $X$ permanently.
 
-\subsubsection{Eliminating Left Recursion}\label{subsubsec:Eliminate_Left_Recursion}
-$\LLParse(1)$ cannot support left recursion, however, they can support right recursion.
+\subsubsection{Eliminating \nameref{subsubsec:LLParsing_Issues}}\label{subsubsec:Eliminate_LLParsing_Issues}
+The goal when eliminating $\LLParse(1)$ parser issues is to generate an \nameref{def:Equivalent_Grammar}, while fixing the issues present in the original grammar.
+
+\begin{definition}[Equivalent \nameref{def:Context_Free_Grammar}]\label{def:Equivalent_Grammar}
+  Two \nameref{def:Context_Free_Grammar}s are said to be  \emph{equivalent} if they both produce the same \nameref{def:Language}.
+  Technically, this is another unsolvable problem for \nameref{def:Context_Free_Grammar}s that generate an infinitely large \nameref{def:Language}s.
+  However, you can show that they \emph{may} be equivalent by using example cases.
+\end{definition}
+
+\paragraph{Eliminate \nameref{par:LLParsing_Issues_Common_Prefix}}\label{par:Eliminate_Common_Prefix}
+Since \nameref{def:Common_Prefix} issues rely in two different productions starting with the same \nameref{def:Terminal_Symbol}, if you combine the productions into one, and create a new production to handle the unique cases, then you can solve the issue.
+
+\begin{example}[Exercise 13, Problem 4]{Eliminate Common Prefix}
+  The following grammar has a common prefix problem.
+  Transform the grammar to an \nameref{def:Equivalent_Grammar} where the common prefix is eliminated.
+
+  \begin{equation*}
+    \begin{aligned}
+      p_{0} &: G \rightarrow \text{ElementList} \\
+      p_{1} &: \text{ElementList} \rightarrow \text{Element } \text{ElementList} \\
+      p_{2} &: \text{ElementList} \rightarrow \epsilon \\
+      p_{3} &: \text{Element} \rightarrow \text{Node} \\
+      p_{4} &: \text{Element} \rightarrow \text{Edge} \\
+      p_{5} &: \text{Node} \rightarrow \text{ID} \\
+      p_{6} &: \text{Edge} \rightarrow \text{ID ``('' ID ``$\rightarrow$'' ID ``)''} \\
+    \end{aligned}
+  \end{equation*}
+
+  \tcblower{}
+
+  The \nameref{def:Common_Prefix} in this grammar is an indirect one.
+  If you follow $p_{3}$ and $p_{4}$, then $p_{5}$ and $p_{6}$ are the issue.
+
+  We start by removing the redundant productions to make things a bit clearer.
+  \begin{equation*}
+    \begin{aligned}
+      p_{0} &: G \rightarrow \text{ElementList} \\
+      p_{1} &: \text{ElementList} \rightarrow \text{Element } \text{ElementList} \\
+      p_{2} &: \text{ElementList} \rightarrow \epsilon \\
+      p_{3} &: \text{Element} \rightarrow \text{ID} \\
+      p_{4} &: \text{Element} \rightarrow \text{ID ``('' ID ``$\rightarrow$'' ID ``)''} \\
+    \end{aligned}
+  \end{equation*}
+
+  The \nameref{def:Common_Prefix} issue is more obvious now.
+  Like said earlier, we can remove the issue by factoring the unique terms out to their own productions and leaving the common elements alone.
+  In this case, that means we combine $p_{3}$ and $p_{4}$ and leave the ID alone.
+  However, we factor out the unique elements in $p_{3}$ and $p_{4}$ with their own productions.
+  \begin{equation*}
+    \begin{aligned}
+      p_{0} &: G \rightarrow \text{ElementList} \\
+      p_{1} &: \text{ElementList} \rightarrow \text{Element } \text{ElementList} \\
+      p_{2} &: \text{ElementList} \rightarrow \epsilon \\
+      p_{3} &: \text{Element} \rightarrow \text{ID } \text{ElementRest} \\
+      p_{4} &: \text{ElementRest} \rightarrow \epsilon \\
+      p_{5} &: \text{ElementRest} \rightarrow \text{``('' ID ``$\rightarrow$'' ID ``)''} \\
+    \end{aligned}
+  \end{equation*}
+\end{example}
+
+\paragraph{Eliminate \nameref{par:LLParsing_Issues_Left_Recursion}}\label{par:Eliminate_Left_Recursion}
+$\LLParse(1)$ parsers cannot support \nameref{def:Left_Recursion}, however, they can support right recursion.
 So, if we have a grammar with left recursion, and want to $\LLParse(1)$ parse it, we need to rewrite the grammar.
 We can introduce a new nonterminal, which allows us to recurse on the right side of the production, but not the left.
+
+\begin{example}[Exercise 13, Problem 5]{Eliminate Left Recursion}
+  The following grammar is left-recursive.
+  Transform the grammar into an \nameref{def:Equivalent_Grammar}.
+
+  \begin{equation*}
+    \begin{aligned}
+      p_{0} &: T \rightarrow T \text{ ``*'' } F \\
+      p_{1} &: T \rightarrow F \\
+      p_{2} &: T \rightarrow \text{ID} \\
+      p_{3} &: T \rightarrow \text{``('' } T \text{ ``)''} \\
+    \end{aligned}
+  \end{equation*}
+  
+  \tcblower{}
+
+  This is a simple case where we want to \nameref{par:Eliminate_Left_Recursion}.
+  Since this is for a $\LLParse(1)$ parser, we can simply flip $p_{0}$ to make the new grammar right-recursive.
+  \begin{equation*}
+    \begin{aligned}
+      p_{0} &: T \rightarrow F \text{ ``*'' } T \\
+      p_{1} &: T \rightarrow F \\
+      p_{2} &: T \rightarrow \text{ID} \\
+      p_{3} &: T \rightarrow \text{``('' } T \text{ ``)''} \\
+    \end{aligned}
+  \end{equation*}
+  
+  This new grammar has a \nameref{def:Common_Prefix} issue, but we leave that for the reader to solve.
+  \textit{Note: It is identical to \Cref{ex:Eliminate Common Prefix}}.
+\end{example}
 
 \subsection{LR Parsing}\label{subsec:LRParsing}
 $\LRParse(k)$ parsing stands for Left-to-right parse, rightmost-derivation, $k$-token lookahead.
