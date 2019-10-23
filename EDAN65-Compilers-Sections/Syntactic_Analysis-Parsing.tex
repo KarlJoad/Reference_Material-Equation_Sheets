@@ -724,10 +724,10 @@ Initially, the stack is empty and the parser is sitting at the beginning of the 
 \begin{example}[]{LR1 Shift-Reduce Parsing}
   Say you have a set of productions as follows:
   \begin{align*}
-    p1&: X \rightarrow YZV \\
-    p2&: Y \rightarrow ab \\
-    p2&: Z \rightarrow c \\
-    p3&: V \rightarrow de
+    p_{1}&: X \rightarrow YZV \\
+    p_{2}&: Y \rightarrow ab \\
+    p_{2}&: Z \rightarrow c \\
+    p_{3}&: V \rightarrow de
   \end{align*}
   and an input string of
   \begin{equation*}
@@ -744,25 +744,25 @@ Initially, the stack is empty and the parser is sitting at the beginning of the 
   \begin{enumerate}[noitemsep]
   \item Construct your data structures.
     \begin{equation*}
-      \bullet abcde
+      \underset{Stack\:}{\underbrace{\bullet}} \underset{Queue}{\underbrace{abcde}}
     \end{equation*}
   \item Then you start pulling tokens off the front of the queue and putting them onto the stack with \nameref{def:LR_Shift} actions.
     \begin{align*}
-      \text{Shift}& \: a \bullet bcde \\
-      \text{Shift}& \: ab \bullet cde
+      \text{Shift}&: \:\: a \bullet bcde \\
+      \text{Shift}&: \:\: ab \bullet cde
     \end{align*}
   \item Whenever you have a set of terminals and/or nonterminals on the top of the stack, you pop them, perform a \nameref{def:LR_Reduce} action, and push the resulting nonterminal back onto the top of the stack.
     \begin{equation*}
-      \text{Reduce} \: Y \bullet cde
+      \text{Reduce}: \:\: Y \bullet cde
     \end{equation*}
   \item Repeat this operation until you reach an \nameref{rmk:LR_Accept} action.
     \begin{align*}
-      \text{Shift}& \: Yc \bullet de \\
-      \text{Reduce}& \: YZ \bullet de \\
-      \text{Shift}& \: YZd \bullet e \\
-      \text{Shift}& \: YZde \bullet \\
-      \text{Reduce}& \: YZV \bullet \\
-      \text{Reduce}& \: X \bullet \\
+      \text{Shift}&: \:\: Yc \bullet de \\
+      \text{Reduce}&: \:\: YZ \bullet de \\
+      \text{Shift}&: \:\: YZd \bullet e \\
+      \text{Shift}&: \:\: YZde \bullet \\
+      \text{Reduce}&: \:\: YZV \bullet \\
+      \text{Reduce}&: \:\: X \bullet \\
       \text{Accept}&
     \end{align*}
   \end{enumerate}
@@ -791,7 +791,7 @@ Each of the states consists of one ore more \nameref{def:LRItem}s.
 
   An $\LRParse(1)$ item is a production extended with:
   \begin{itemize}[noitemsep]
-  \item A \emph{dot}  ($\bullet$), corresponding to the position in the input sentence.
+  \item A \emph{dot}  ($\bullet$), corresponding to the position in the input sentence (and the token at the top of the stack).
   \item One or more possible \emph{lookahead} terminal symbols: $t,s$.
     \begin{itemize}[noitemsep]
     \item We will use ? when the lookahead doesn't matter.
@@ -846,7 +846,7 @@ If this is so, then add an \textbf{\emph{accept action}} $a$ to the table with i
 
 \subsubsection{\texorpdfstring{$\LALRParse(1)$ Parsing Tables}{LALR(1) Parsing Tables}}\label{subsubsec:LALR1_Parsing Tables}
 Since $\LRParse(1)$ tables can get quite large, a smaller table can be made by merging any 2 states whose items are identical except for lookahead sets.
-The resulting parser is called a \emph{Lookahead $\LRParse(1)$} parser.
+The resulting parser is called a \emph{Lookahead $\LRParse(1)$}, \emph{$\text{LALR}(1)$}, parser.
 For example, compare the same states, but different parser types as shown in \Cref{subtab:LR1_Parser_State} and \Cref{subtab:LALR1_Parser_State}.
 \begin{table}[h!]
   \centering
@@ -889,14 +889,14 @@ For example, compare the same states, but different parser types as shown in \Cr
 \end{table}
 
 \subsubsection{Syntax Versus Semantics}\label{subsubsec:LR_Syntax_vs_Semantics}
-There are some things that context-free grammars cannot describe, and thus cannot be parsed correctly.
+There are some things that \nameref{def:Context_Free_Grammar}s cannot describe, and thus \textbf{\emph{CAN}} parsed correctly, but make no sense \textbf{\emph{SEMANTICALLY}}.
 For instance, the expression
 \begin{equation*}
   a + 5 \AND b
 \end{equation*}
 
 The precedence here has the mathematical addition in greater priority than the logical AND operator.
-But logical and mathematical operators are not allowed in the same expression, because the types of the variables and operations don't make sense together.
+But, logical and mathematical operators are not allowed in the same expression, because the types of the variables and operations don't make sense together.
 However, the context-free grammar and parser have no knowledge of the \emph{types} of the variables and oeprators in play here.
 So, the solution is to let this expression pass through the parser, but it should be caught later, during the \nameref{sec:Semantic_Analysis}.
 %%% Local Variables:
