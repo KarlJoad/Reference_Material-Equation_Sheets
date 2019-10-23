@@ -115,9 +115,32 @@ The block below will show the difference in derivation between \nameref{subsec:L
   The finite set of \nameref{def:Nonterminal_Symbol}s that can be used to form a \nameref{def:Language}.
 \end{definition}
 
+\begin{definition}[Ambiguous]\label{def:Ambiguous}
+  A \nameref{def:Context_Free_Grammar} is said to be \emph{ambiguous} or has \emph{ambiguities} if there is more than one way to derive the same string in a grammar.
+
+  The grammar below is ambiguous because there are multiple ways to parse the string: ``statement;statement;statement''.
+  \begin{equation}\label{eq:Ambiguous}
+    \begin{aligned}
+      p_{0} &: \text{start} \rightarrow \text{program } \$ \\
+      p_{1} &: \text{program} \rightarrow \text{statement} \\
+      p_{2} &: \text{statement} \rightarrow \text{statement ``;'' statement} \\
+      p_{3} &: \text{statement} \rightarrow \text{ID ``='' INT} \\
+      p_{4} &: \text{statement} \rightarrow \epsilon \\
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
 \subsubsection{\nameref{def:Context_Free_Grammar} Forms}\label{subsubsec:CFG_Forms}
 \begin{definition}[Canonical Form]\label{def:CFG_Canonical_Form}
   The \emph{canonical form} of a \nameref{def:Context_Free_Grammar} is the most formal use of a \nameref{def:Context_Free_Grammar}.
+
+  \begin{equation}\label{eq:CFG_Canonical_Form}
+    \begin{aligned}
+      A &\rightarrow B \; d \; e \; C \; f \\
+      A &\rightarrow g \; A \\
+    \end{aligned}
+  \end{equation}
+
   The \nameref{def:CFG_Canonical_Form} is:
   \begin{itemize}[noitemsep]
   \item The core formalism for \nameref{def:Context_Free_Grammar}s
