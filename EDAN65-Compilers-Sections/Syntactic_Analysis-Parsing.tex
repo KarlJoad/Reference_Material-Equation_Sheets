@@ -543,6 +543,8 @@ Some of the cases where this may happen are listed below:
 \item Common Prefix
 \end{enumerate}
 
+However, the $\LLParse(1)$ table \textbf{\emph{DOES NOT}} show that a grammar is ambiguous; it only shows that that \nameref{def:Context_Free_Grammar} is not $\LLParse(1)$.
+
 \subsubsection{Issues with \nameref{subsec:LLParsing}}\label{subsubsec:LLParsing_Issues}
 There are 2 major issues with \nameref{subsec:LLParsing}.
 \begin{enumerate}[noitemsep]
@@ -579,7 +581,7 @@ The below grammar is an example of an \emph{indirect} \nameref{def:Common_Prefix
 
   \begin{remark}
     Every \nameref{par:LLParsing_Issues_Left_Recursion} is a special case of \nameref{par:LLParsing_Issues_Common_Prefix}s where the \nameref{def:Nonterminal_Symbol}s are the common element.
-  \end{remark}  
+  \end{remark}
 \end{definition}
 
 The below grammar is an example of a \emph{direct} \nameref{def:Left_Recursion} issue:
