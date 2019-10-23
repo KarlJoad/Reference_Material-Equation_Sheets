@@ -20,7 +20,69 @@
 \end{definition}
 
 There are several ways to implement a scanner.
-One of the most common ways is the use of a \nameref{def:Finite State Automaton} or Finite State Machine.
+One of the most common ways is the use of a \nameref{def:Finite State Automaton} or Finite State Machine through \nameref{def:Regular_Expression}s.
+
+\subsection{Regular Expressions}\label{subsec:Regular_Expressions}
+\begin{definition}[Regular Expression]\label{def:Regular_Expression}
+  A \emph{regular expression}, sometimes called a \emph{regex} is a way to define a sequence of characters to form strings.
+\end{definition}
+
+There are 2 types of \nameref{def:Regular_Expression}s, based on the features available to make the regular expression.
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Regex_Core_Notation}
+\item \nameref{def:Regex_Extended_Notation}
+\end{enumerate}
+
+\begin{definition}[Core Notation]\label{def:Regex_Core_Notation}
+  The \emph{core notation} of a \nameref{def:Regular_Expression} has a small number of features available.
+  These are shown in \Cref{tab:Regex_Core_Notation}.
+
+  \begin{table}[h!]
+    \centering
+    \begin{tabular}{ccc}
+      \toprule
+      \nameref{def:Regular_Expression} & Read As & Called \\
+      \midrule
+      $a$ & a & Symbol \\
+      $M \vert N$ & $M$ or $N$ & Alternative \\
+      $MN$ & $M$ followed by $N$ & Concatenation \\
+      $\epsilon$ & The \nameref{def:Empty_String} & Epsilon \\
+      $M*$ & Zero or more $M$ & Repetition (Kleene Star) \\
+      $(M)$ & & Scope \\
+      \bottomrule
+    \end{tabular}
+    \caption{\nameref{def:Regular_Expression} \nameref{def:Regex_Core_Notation}}
+    \label{tab:Regex_Core_Notation}
+  \end{table}
+  Where $a$ is a symbol in the alphabet.
+  $M$ and $N$ are \nameref{def:Regular_Expression}s.
+\end{definition}
+
+\begin{definition}[Extended Notation]\label{def:Regex_Extended_Notation}
+  The \emph{extended notation} of a \nameref{def:Regular_Expression} contains all the features of the \nameref{def:Regex_Core_Notation}, and some additional features.
+  These additional features \emph{can} be represented in the \nameref{def:Regex_Core_Notation}, but are confusing to read and write.
+  
+  The \nameref{def:Regex_Core_Notation} features are shown in \Cref{tab:Regex_Core_Notation}, the additional features added by the \nameref{def:Regex_Extended_Notation} are shown in \Cref{tab:Regex_Extended_Notation}.
+
+  \begin{table}[h!]
+    \centering
+    \begin{tabular}{ccc}
+      \toprule
+      Extended \nameref{def:Regular_Expression} & Read As & Means \\
+      \midrule
+      $M+$ & One or more & $M M*$ \\
+      $M$? & Optional & $\epsilon \lvert M$ \\
+      $[aou]$ & One of $\ldots$ (a character class) & $a \vert o \vert u$ \\
+      $[a-zA-Z]$ & & $a \vert b \vert \ldots \vert z \vert A \vert B \ldots \vert Z$ \\
+      $[\wedge 0-9]$ & \multirow{2}{*}{Not} & \multirow{2}{*}{One character, but any one of those listed} \\
+      Appel Notation: $\thicksim{}[0-9]$ & & \\
+      ``a+b'' & The string & a \+ b \\
+      \bottomrule
+    \end{tabular}
+    \caption{\nameref{def:Regular_Expression} \nameref{def:Regex_Extended_Notation}}
+    \label{tab:Regex_Extended_Notation}
+  \end{table}
+\end{definition}
 
 \subsection{Finite State Automata}\label{subsec:Finite State Automata}
 Finite state automata are used for regular expressions (regex's) to determine a matching word.
@@ -45,17 +107,19 @@ Finite state automata are used for regular expressions (regex's) to determine a 
 \end{definition}
 
 \begin{definition}[Deterministic Finite Automata (DFA)]\label{def:DeterministicFiniteAutomataDFA}
-  In a \emph{deterministic finite automaton}, no two edges leaving from the same state are labeled with the same symbol.
+  In a \emph{deterministic finite automaton} or \emph{DFA}, no two edges leaving from the same state are labeled with the same symbol.
   Additionally, there cannot be an edge that matches the empty string, $\epsilon$.
   A deterministic finite automaton will eventually terminate when it steps through all of its states necessary to reach the accepting state.
-  However, the key difference between a \nameref{def:DeterministicFiniteAutomataDFA} and a \nameref{def:Non-deterministicFiniteAutomataNFA} is that you can always figure out the path that a deterministic finite automaton will take.
+  
+  The key difference between a \nameref{def:DeterministicFiniteAutomataDFA} and a \nameref{def:Non-deterministicFiniteAutomataNFA} is that you can always figure out the path that a deterministic finite automaton will take.
 \end{definition}
 
 \begin{definition}[Non-deterministic Finite Automata (NFA)]\label{def:Non-deterministicFiniteAutomataNFA}
-  A \emph{non-deterministic finite automaton} is one that has multiple edges leaving a single state that have the same symbol.
+  A \emph{non-deterministic finite automaton}, or \emph{NFA}, is one that has multiple edges leaving a single state that have the same symbol.
   It may also have special edges labeled with the empty string $\epsilon$, which is when a state is followed without ``eating'' any of the input string.
   A non-deterministic finite automaton may eventually terminate when it steps through all its states necessary to reach its accepting state.
-  However, the key difference between a \nameref{def:Non-deterministicFiniteAutomataNFA} and a \nameref{def:DeterministicFiniteAutomataDFA} is that you can always figure out the path that a deterministic finite automaton will take.
+  
+  The key difference between a \nameref{def:Non-deterministicFiniteAutomataNFA} and a \nameref{def:DeterministicFiniteAutomataDFA} is that you cannot always determine the exact path that the \nameref{def:Finite State Automaton} will will take.
 \end{definition}
 
 \subsubsection{Converting a NFA to a DFA}\label{subsubsec:Convert_NFA_to_DFA}
