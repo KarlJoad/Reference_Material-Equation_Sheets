@@ -1,4 +1,38 @@
 \section{Reference Attribute Grammars}\label{sec:Reference_Attribute_Grammars}
+First, for this course, \theauthor{} used the \href{http://jastadd.org/web/documentation/reference-manual.php}{JastAdd} program to use Reference Attribute Grammars.
+This means that if you use something different, then the syntax of these might change, but the concept stays the same.
+Most \nameref{sec:Reference_Attribute_Grammars} support all of the elements (\Crefrange{subsec:Synthesized_Attributes}{subsec:Circular_Attributes}) that are shown in this section.
+
+\begin{definition}[Reference Attribute Grammar]\label{def:Reference_Attribute_Grammar}
+  A \emph{reference attribute grammar} or \emph{RAG} is a formal way to define \nameref{def:Attribute}s for nodes in the \nameref{def:Abstract_Parse_Tree} and associating them with values.
+  In the case of JastAdd, these are written in a \nameref{def:Declarative_Programming} style.
+\end{definition}
+
+\begin{definition}[Attribute]\label{def:Attribute}
+  An \emph{attribute} is similar to a key-value pair from a Hash-based data structure, except the value is an equation that returns some value.
+  These are selectively attached to the various nodes in the \nameref{def:Abstract_Parse_Tree}.
+  For example, there may be an attribute that attaches a reference from a variable use to the variable's declaration.
+  There are many types of attributes, each of which is explained in this chapter.
+\end{definition}
+
+\begin{definition}[Declarative Programming]\label{def:Declarative_Programming}
+  \emph{Declarative programming} is a programming paradigm that expresses the logic of a computation without describing its control flow.
+  In short, this means programs describe their desired results without explicitly listing commands or steps that must be performed.
+
+  There are a few more points of interest when it comes to \nameref{def:Declarative_Programming}.
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Declarative_Programming} describes what a computation should perform, not necessarily how it does it.
+  \item \nameref{def:Declarative_Programming} lacks side effects. Functions cannot change data that is visible outside of the function itself. For example:
+    \begin{itemize}[noitemsep]
+    \item Array elements cannot be updated. This can be skirted around by making a copy of the array.
+    \item Strings cannot be changed. Similar way to skirt the issue as with arrays.
+    \item Counters cannot be updated which is visible outside of the function.
+    \end{itemize}
+    This means that every time a function is run, if the input is the same, the output will be the same \textbf{\emph{EVERY TIME}}.
+  \item \nameref{def:Declarative_Programming} resembles mathematical logic.
+  \end{itemize}
+\end{definition}
+
 \subsection{Collection Attributes}\label{subsec:Collection_Attributes}
 \begin{definition}[Collection Attribute]\label{def:Collection_Attribute}
   A \emph{collection attribute} is an \nameref{def:Attribute} that is defined by a set of \nameref{def:Contribution}s instead of an equation.
