@@ -127,7 +127,7 @@ Most \nameref{sec:Reference_Attribute_Grammars} support all of the elements (\Cr
     \item \texttt{value-expression}: Java expression that evaluates to an object to be added to the intermediate collection of the target collection attribute.
     \item \texttt{when conditional-expression} (Optional): the contribution is only added to the target collection attribute if the Java expression cond-exp evaluates to \texttt{true}.
     \item \texttt{A}: Node type where the target collection attribute is declared. Matches the node type declared for the \nameref{def:Collection_Attribute}.
-    \item \texttt{.c()}: The name of the target collection attribute.
+    \item \texttt{.c()}: The name of the target \nameref{def:Collection_Attribute}.
     \item \texttt{for A-reference-expression} (Optional): Java expression which evaluates to a reference to the AST node that owns the collection attribute this contribution is contributing to.
       This is the target expression, and it can be omitted if the target node is identical to the collection root node.
       \begin{itemize}[noitemsep]
@@ -149,7 +149,7 @@ Most \nameref{sec:Reference_Attribute_Grammars} support all of the elements (\Cr
     \item \texttt{value-expression}: Java expression that evaluates to an object to be added to the intermediate collection of the target collection attribute.
     \item \texttt{when conditional-expression} (Optional): the contribution is only added to the target collection attribute if the Java expression cond-exp evaluates to \texttt{true}.
     \item \texttt{A}: Node type where the target collection attribute is declared. Matches the node type declared for the \nameref{def:Collection_Attribute}.
-    \item \texttt{.c()}: The name of the target collection attribute.
+    \item \texttt{.c()}: The name of the target \nameref{def:Collection_Attribute}.
     \item \texttt{for each A-reference-set} (Optional): Java expression that evaluates to an \texttt{Iterable<A>} containing references for the set of contribution target nodes.
       \begin{itemize}[noitemsep]
       \item This is just an extension of the \texttt{A-reference-expression}.
@@ -173,7 +173,7 @@ Most \nameref{sec:Reference_Attribute_Grammars} support all of the elements (\Cr
       \end{itemize}
     \item \texttt{when conditional-expression} (Optional): the contribution is only added to the target collection attribute if the Java expression cond-exp evaluates to \texttt{true}.
     \item \texttt{A}: Node type where the target collection attribute is declared. Matches the node type declared for the \nameref{def:Collection_Attribute}.
-    \item \texttt{.c()}: The name of the target collection attribute.
+    \item \texttt{.c()}: The name of the target \nameref{def:Collection_Attribute}.
     \item \texttt{for each A-reference-set} (Optional): Java expression that evaluates to an \texttt{Iterable<A>} containing references for the set of contribution target nodes.
       \begin{itemize}[noitemsep]
       \item This is just an extension of the \texttt{A-reference-expression}.
