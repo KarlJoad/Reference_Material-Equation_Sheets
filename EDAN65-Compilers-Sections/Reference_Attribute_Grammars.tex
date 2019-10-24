@@ -63,15 +63,52 @@ Most \nameref{sec:Reference_Attribute_Grammars} support all of the elements (\Cr
 \subsection{Parameterized Attributes}\label{subsec:Parameterized_Attributes}
 \begin{definition}[Parameterized Attribute]\label{def:Parameterized_Attribute}
   A \emph{parameterized attribute} is one where the \nameref{def:Attribute} takes in some parameters to achieve a  goal.
+  They are defined the same way as \nameref{def:Synthesized_Attribute}s and \nameref{def:Inherited_Attribute}s, but they also take parameters.
 \end{definition}
 
 \subsection{Nonterminal Attributes}\label{subsec:Nonterminal_Attributes}
 \begin{definition}[Nonterminal Attribute]\label{def:Nonterminal_Attribute}
   A \emph{nonterminal attribute} is one in which the \nameref{def:Attribute} in ``nonterminal''.
   This means that a whole new node, or potentially a whole new subtree, is created.
+
+  There are some perks of using a nonterminal attribute in the \nameref{def:Reference_Attribute_Grammar}:
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Nonterminal_Attribute}s can be \nameref{def:Inherited_Attribute}s or \nameref{def:Synthesized_Attribute}s.
+  \item The value in the equation should be a freshly built \nameref{def:Abstract_Parse_Tree} subtree.
+    It should be complete in the sense that all its children should also be freshly created nodes (i.e., they are not allowed to be initialized to null).
+  \item The \nameref{def:Nonterminal_Attribute} can itself have \nameref{def:Attribute}s that can be accessed like normal.
+  \item If the \nameref{def:Nonterminal_Attribute} has inherited attributes, there must be equations for those attributes in some ancestor, as for normal children.
+
+  \end{itemize}
+  In \JastAdd{} they are defined as:
+\begin{javasource}
+  syn nta C A.anNTA() = new C();
+\end{javasource}
+  \begin{itemize}[noitemsep]
+  \item \texttt{syn}: Declares that this \nameref{def:Nonterminal_Attribute} is a \nameref{def:Synthesized_Attribute}
+  \item \texttt{nta}: Declares that this \nameref{def:Attribute} is a \nameref{def:Nonterminal_Attribute}
+  \item \texttt{C}: Declare the type that this \nameref{def:Nonterminal_Attribute} is to have
+  \item \texttt{A}: Declare the type of \nameref{def:Abstract_Parse_Tree} node that this \nameref{def:Nonterminal_Attribute} is to be on
+  \item \texttt{.anNTA()}: The name of this \nameref{def:Nonterminal_Attribute}
+  \item \texttt{new C()}: The starting value that the \nameref{def:Nonterminal_Attribute} is to have
+  \end{itemize}
 \end{definition}
+
 \subsubsection{Parameterized Nonterminal Attributes}\label{subsubsec:Parameterized_Nonterminal_Attributes}
 \nameref{def:Nonterminal_Attribute}s can have parameters, just like normal \nameref{def:Parameterized_Attribute}s.
+These are declared as:
+\begin{javasource}
+  syn nta C A.anNTA(P param) = new C();
+\end{javasource}
+\begin{itemize}[noitemsep]
+\item \texttt{syn}: Declares that this \nameref{def:Nonterminal_Attribute} is a \nameref{def:Synthesized_Attribute}
+\item \texttt{nta}: Declares that this \nameref{def:Attribute} is a \nameref{def:Nonterminal_Attribute}
+\item \texttt{C}: Declare the type that this \nameref{def:Nonterminal_Attribute} is to have
+\item \texttt{A}: Declare the type of \nameref{def:Abstract_Parse_Tree} node that this \nameref{def:Nonterminal_Attribute} is to be on
+\item \texttt{.anNTA()}: The name of this \nameref{def:Nonterminal_Attribute}
+\item \texttt{P param}: The type and name of the parameter that is passed to the \nameref{def:Nonterminal_Attribute}.
+\item \texttt{new C()}: The starting value that the \nameref{def:Nonterminal_Attribute} is to have.
+\end{itemize}
 
 \subsection{Collection Attributes}\label{subsec:Collection_Attributes}
 \begin{definition}[Collection Attribute]\label{def:Collection_Attribute}
