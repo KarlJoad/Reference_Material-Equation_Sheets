@@ -13,6 +13,8 @@ Most \nameref{sec:Reference_Attribute_Grammars} support all of the elements (\Cr
   These are selectively attached to the various nodes in the \nameref{def:Abstract_Parse_Tree}.
   For example, there may be an attribute that attaches a reference from a variable use to the variable's declaration.
   There are many types of attributes, each of which is explained in this chapter.
+
+  Each attribute's equation does not necessarily have to be a small expression, it can be a whole method.
 \end{definition}
 
 \begin{definition}[Declarative Programming]\label{def:Declarative_Programming}
@@ -36,9 +38,59 @@ Most \nameref{sec:Reference_Attribute_Grammars} support all of the elements (\Cr
 \subsection{Synthesized Attributes}\label{subsec:Synthesized_Attributes}
 \begin{definition}[Synthesized Attribute]\label{def:Synthesized_Attribute}
   A \emph{synthesized attribute} is an \nameref{def:Attribute} where the equation is defined in the same node as the \nameref{def:Attribute}.
+  These can be used when all the information to calculate the \nameref{def:Synthesized_Attribute} is present in \emph{that} node.
+
+  If there is information from other nodes that is needed, then there must either be a \nameref{def:Reference_Attribute}, or the equation needs to be defined by something that knows about both objects required to calculate the \nameref{def:Synthesized_Attribute}, which means it is an \nameref{def:Inherited_Attribute}.
+
+  \nameref{def:Synthesized_Attribute}s are declared as:
+\begin{javasource}
+  syn T A.x();
+\end{javasource}
+  \begin{itemize}[noitemsep]
+  \item \texttt{syn}: Declare that this \nameref{def:Attribute} is a \nameref{def:Synthesized_Attribute}
+  \item \texttt{T}: Declare the type that this \nameref{def:Synthesized_Attribute} should have
+  \item \texttt{A}: Declare what type of \nameref{def:Abstract_Parse_Tree} node this \nameref{def:Synthesized_Attribute} is on
+  \item \texttt{.x()}: The name of this \nameref{def:Synthesized_Attribute}
+  \item These must be defined by an equation, as shown in \Cref{subsubsec:Define_Synthesized_Equations}.
+  \end{itemize}
+
+  \nameref{def:Synthesized_Attribute}s can also be declared as:
+\begin{javasource}
+  syn T A.x() = Java-expression;
+\end{javasource}
+  \begin{itemize}[noitemsep]
+  \item \texttt{syn}: Declare that this \nameref{def:Attribute} is a \nameref{def:Synthesized_Attribute}
+  \item \texttt{T}: Declare the type that this \nameref{def:Synthesized_Attribute} should have
+  \item \texttt{A}: Declare what type of \nameref{def:Abstract_Parse_Tree} node this \nameref{def:Synthesized_Attribute} is on
+  \item \texttt{.x()}: The name of this \nameref{def:Synthesized_Attribute}
+  \item \texttt{Java-expression}: An expression or method that is evaluated to calculate the value of this \nameref{def:Synthesized_Attribute}.
+    \begin{itemize}[noitemsep]
+    \item This must return a value that is of the same type, \texttt{T}, as declared.
+    \end{itemize}
+  \end{itemize}
 \end{definition}
 
 \subsubsection{Defining Equations for \nameref{subsec:Synthesized_Attributes}}\label{subsubsec:Define_Synthesized_Equations}
+Defining an equation for a \nameref{def:Synthesized_Attribute} is done by:
+\begin{javasource}
+eq A.x() = Java-expr;
+\end{javasource}
+\begin{itemize}[noitemsep]
+\item \texttt{eq}: Declare that this is an equation
+\item \texttt{A}: Declare what type of \nameref{def:Abstract_Parse_Tree} node this equation is on
+\item \texttt{.x()}: The name of the \nameref{def:Synthesized_Attribute} that this equation belongs to
+\item \texttt{Java-expression}: An expression or method that is evaluated to calculate the value of this equation
+  \begin{itemize}[noitemsep]
+  \item This must return a value that is of the same type, \texttt{T}, as declared.
+  \end{itemize}
+\end{itemize}
+
+In order to define an equation for a \nameref{def:Synthesized_Attribute}, all the information \textbf{must} be available in this node.
+If the information needed to calculate this \nameref{def:Synthesized_Attribute}'s value, then use:
+\begin{enumerate}[noitemsep]
+\item A \nameref{def:Reference_Attribute}.
+\item An \nameref{def:Inherited_Attribute} with an equation defined by a common parent.
+\end{enumerate}
 
 \subsection{Inherited Attributes}\label{subsec:Inherited_Attributes}
 \begin{definition}[Inherited Attribute]\label{def:Inherited_Attribute}
