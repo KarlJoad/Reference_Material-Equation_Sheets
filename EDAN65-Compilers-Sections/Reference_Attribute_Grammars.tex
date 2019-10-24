@@ -185,7 +185,28 @@ Most \nameref{sec:Reference_Attribute_Grammars} support all of the elements (\Cr
 
 \subsection{Circular Attributes}\label{subsec:Circular_Attributes}
 \begin{definition}[Circular Attribute]\label{def:Circular_Attribute}
-  A \emph{circular attribute} is one in which an attribute depends on itself, either directly or indirectly.
+  A \emph{circular attribute} is one in which an \nameref{def:Attribute} depends on itself, either directly or indirectly.
+  Since these are \nameref{def:Fixed-Point_Problems}, circular attributes are calculated iteratively.
+  Thus, they must have some starting value.
+
+  In \JastAdd{}, circular attributes are defined as:
+\begin{javasource}
+  syn T A.x([P param]) circular [bv];
+  eq A.x([P param]) = rv;
+\end{javasource}
+  or
+\begin{javasource}
+  syn T A.x([P param]) circular [bv] = rv;
+\end{javasource}
+  \begin{itemize}[noitemsep]
+  \item \texttt{T}: The type of things being stored/calculated in the \nameref{def:Circular_Attribute}.
+  \item \texttt{A}: The type of \nameref{def:Abstract_Parse_Tree} node that that the \nameref{def:Circular_Attribute} is on.
+  \item \texttt{.x()}: The name of the \nameref{def:Circular_Attribute}.
+  \item \texttt{[P param]}: Parameters that may be needed to calculate the value in the definition
+  \item \texttt{circular}: Declare that this attribute is \emph{supposed} to be circular and inform \JastAdd{} that this is supposed to be calculated with fixed-point iteration.
+  \item \texttt{[bv]}: The starting value that is used for the fixed-point iteration.
+  \item \texttt{rv}: The expression that will define the \nameref{def:Circular_Attribute}.
+  \end{itemize}
 \end{definition}
 
 %%% Local Variables:
