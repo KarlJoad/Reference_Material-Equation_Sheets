@@ -129,6 +129,11 @@ eq C.getA().y() = Java-expr;
 \subsection{Broadcasting Attributes}\label{subsec:Broadcasting_Attributes}
 \begin{definition}[Broadcasting]\label{def:Broadcasting}
   \emph{Broadcasting} an \nameref{def:Attribute} is when an equation holds for some node and all of its children.
+
+  \begin{remark}
+    In \JastAdd{}, \nameref{def:Broadcasting} only occurs on \nameref{def:Attribute}s that declare an attribute for that equation.
+    This means that if you declare an equation for an attribute in a parent node, it \emph{will not} propagate down to the children in the tree unless the children have also declared this attribute/equation.
+  \end{remark}
 \end{definition}
 
 \subsection{Reference Attributes}\label{subsec:Reference_Attributes}
