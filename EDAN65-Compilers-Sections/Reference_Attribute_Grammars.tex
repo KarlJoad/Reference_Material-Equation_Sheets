@@ -1,4 +1,114 @@
 \section{Reference Attribute Grammars}\label{sec:Reference_Attribute_Grammars}
+\subsection{Collection Attributes}\label{subsec:Collection_Attributes}
+\begin{definition}[Collection Attribute]\label{def:Collection_Attribute}
+  A \emph{collection attribute} is an \nameref{def:Attribute} that is defined by a set of \nameref{def:Contribution}s instead of an equation.
+  These are special attributes that are attached to specific nodes in the \nameref{def:Abstract_Parse_Tree} that can have specific things added to them with the \nameref{def:Contribution} equations.
+\begin{javasource}
+  coll T A.c() [fresh]
+    [with m]
+    [root R];
+\end{javasource}
+  \begin{itemize}[noitemsep]
+  \item \texttt{T}: type of the attribute. Usually T is a subtype of \texttt{java.lang.Collection}.
+  \item \texttt{A}: \nameref{def:Abstract_Parse_Tree} class on which the attribute is evaluated (put on).
+  \item \texttt{.c()}: Declares the attribute name, in this case c.
+  \item \texttt{fresh} (Optional): How the \nameref{def:Collection_Attribute} is initialized.
+    The Java expression \texttt{fresh} creates an empty instance of the result type, \texttt{T}.
+    This part is optional if \texttt{T} is a concrete type with a default constructor, if it is omitted the default constructor of the type \texttt{T} is used, i.e. \texttt{new T()}.
+  \item \texttt{with m} (Optional): Specifies the name of a method to be used for updating the \nameref{def:Collection_Attribute} object.
+    This part is optional and the default method \texttt{add} is used if no method \texttt{m} is specified.
+    The update method must fulfill these requirements:
+    \begin{itemize}[noitemsep]
+    \item The method \texttt{m}, should be a one-argument method of \texttt{T}. It only takes one argument, the thing being updated.
+    \item The method \texttt{m} should mutate the \texttt{T} object by adding \emph{one} object to it.
+    \item The method \texttt{m} should be commutative, in the sense that the order of calling \texttt{m} for different contributions should yield the same resulting \texttt{T} value.
+    \end{itemize}
+  \item \texttt{root R} (Optional): Declares the \nameref{def:Collection_Attribute} root type, \texttt{R}.
+    The collection mechanism starts by finding the nearest ancestor node of type \texttt{R} for the \texttt{A} node which the collection attribute is evaluated on.
+    The subtree rooted at that nearest \texttt{R} ancestor is searched for contributions to \texttt{A.c()}, this means that the collection is scoped to the subtree of \texttt{R}, and contributions outside that tree are not visible.
+    \begin{itemize}[noitemsep]
+    \item This allows you to have multiple \nameref{def:Collection_Attribute}s in a single \nameref{def:Abstract_Parse_Tree} by placing the attribute on an arbitrary root type.
+    \item If you do this, only the tree beneath that node type will be able to access the \nameref{def:Collection_Attribute}.
+    \end{itemize}
+  \end{itemize}
+  \begin{remark}
+    These are the main way to introduce mutable objects to the \nameref{def:Reference_Attribute_Grammar}.
+    However, because the contributions cannot have side-effects, this technically fits into the \nameref{def:Declarative_Programming} paradigm.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Contribution]\label{def:Contribution}
+  A \emph{contribution} is a special equation that adds or mutates a value inside of the \nameref{def:Collection_Attribute}.
+  There are 3 main ways to contribute to a \nameref{def:Collection_Attribute}:
+  \begin{enumerate}[noitemsep]
+  \item Contribute a single value to a single \nameref{def:Collection_Attribute}. This is the most commonly used one.
+\begin{javasource}
+  N1 contributes value-expression
+    [when conditional-expression]
+    to A.c()
+    [for A-reference-expression];
+\end{javasource}
+    \begin{itemize}[noitemsep]
+    \item \texttt{N1}: The type of \nameref{def:Abstract_Parse_Tree} node that is providing the \nameref{def:Contribution}.
+    \item \texttt{value-expression}: Java expression that evaluates to an object to be added to the intermediate collection of the target collection attribute.
+    \item \texttt{when conditional-expression} (Optional): the contribution is only added to the target collection attribute if the Java expression cond-exp evaluates to \texttt{true}.
+    \item \texttt{A}: Node type where the target collection attribute is declared. Matches the node type declared for the \nameref{def:Collection_Attribute}.
+    \item \texttt{.c()}: The name of the target collection attribute.
+    \item \texttt{for A-reference-expression} (Optional): Java expression which evaluates to a reference to the AST node that owns the collection attribute this contribution is contributing to.
+      This is the target expression, and it can be omitted if the target node is identical to the collection root node.
+      \begin{itemize}[noitemsep]
+      \item Essentially, if the \nameref{def:Collection_Attribute} is not located on the \texttt{N1} node type, then we have to give a pointer to what node the \nameref{def:Collection_Attribute} is actually contained.
+      \item This means there must be an \nameref{def:Attribute} that has a pointer to the node type (\nameref{def:Reference_Attribute}) that does contain the \nameref{def:Collection_Attribute}.
+      \item It is likely that the Pointer will have to be an \nameref{def:Inherited_Attribute}.
+      \end{itemize}
+    \end{itemize}
+
+  \item Contribute a single value to multiple target \nameref{def:Collection_Attribute}s.
+\begin{javasource}
+  N1 contributes value-expression
+    [when cond-expression]
+    to A.c()
+    [for each A-reference-set];
+\end{javasource}
+    \begin{itemize}[noitemsep]
+    \item \texttt{N1}: The type of \nameref{def:Abstract_Parse_Tree} node that is providing the \nameref{def:Contribution}.
+    \item \texttt{value-expression}: Java expression that evaluates to an object to be added to the intermediate collection of the target collection attribute.
+    \item \texttt{when conditional-expression} (Optional): the contribution is only added to the target collection attribute if the Java expression cond-exp evaluates to \texttt{true}.
+    \item \texttt{A}: Node type where the target collection attribute is declared. Matches the node type declared for the \nameref{def:Collection_Attribute}.
+    \item \texttt{.c()}: The name of the target collection attribute.
+    \item \texttt{for each A-reference-set} (Optional): Java expression that evaluates to an \texttt{Iterable<A>} containing references for the set of contribution target nodes.
+      \begin{itemize}[noitemsep]
+      \item This is just an extension of the \texttt{A-reference-expression}.
+      \item Instead of a single \texttt{A-reference-expression}, there is an \texttt{Iterable} collection of \texttt{A-reference-expression}s.
+      \end{itemize}
+    \end{itemize}
+
+  \item Contribute multiple values to multiple target \nameref{def:Collection_Attribute}s.
+\begin{javasource}
+  N1 contributes each value-iterable
+    [when conditional-expression]
+    to A.c()
+    [for each A-reference-set];
+\end{javasource}
+    \begin{itemize}[noitemsep]
+    \item \texttt{N1}: The type of \nameref{def:Abstract_Parse_Tree} node that is providing the \nameref{def:Contribution}.
+    \item \texttt{each value-expression}: This syntax works if \texttt{value-expression} has the type \texttt{Iterable<E>} where \texttt{E} is the element type of the \nameref{def:Collection_Attribute}.
+      \begin{itemize}[noitemsep]
+      \item For example, if the collection attribute is declared as \texttt{coll LinkedList<String> $\ldots$} then \texttt{value-iterable} should have the type \texttt{Iterable<String>}.
+      \item Meaning the \texttt{value-iterable} should be an \texttt{Iterable} collection.
+      \end{itemize}
+    \item \texttt{when conditional-expression} (Optional): the contribution is only added to the target collection attribute if the Java expression cond-exp evaluates to \texttt{true}.
+    \item \texttt{A}: Node type where the target collection attribute is declared. Matches the node type declared for the \nameref{def:Collection_Attribute}.
+    \item \texttt{.c()}: The name of the target collection attribute.
+    \item \texttt{for each A-reference-set} (Optional): Java expression that evaluates to an \texttt{Iterable<A>} containing references for the set of contribution target nodes.
+      \begin{itemize}[noitemsep]
+      \item This is just an extension of the \texttt{A-reference-expression}.
+      \item Instead of a single \texttt{A-reference-expression}, there is an \texttt{Iterable} collection of \texttt{A-reference-expression}s.
+      \end{itemize}
+    \end{itemize}
+  \end{enumerate}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAN65-Compilers-Reference_Sheet"
