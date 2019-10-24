@@ -95,9 +95,36 @@ If the information needed to calculate this \nameref{def:Synthesized_Attribute}'
 \subsection{Inherited Attributes}\label{subsec:Inherited_Attributes}
 \begin{definition}[Inherited Attribute]\label{def:Inherited_Attribute}
   An \emph{inherited attribute} is one that is declared on a node in the \nameref{def:Abstract_Parse_Tree}, but its equation is defined by a parent (ancestor) higher in the \nameref{def:Abstract_Parse_Tree}.
+
+  \nameref{def:Inherited_Attribute}s are declared as:
+\begin{javasource}
+  inh T A.y();
+\end{javasource}
+  \begin{itemize}[noitemsep]
+  \item \texttt{inh}: Declare that this \nameref{def:Attribute} is an \nameref{def:Inherited_Attribute}.
+  \item \texttt{T}: Declare the type that this \nameref{def:Inherited_Attribute} holds
+  \item \texttt{A}: Declare the \nameref{def:Abstract_Parse_Tree} node type that this \nameref{def:Inherited_Attribute} is bound to
+  \item \texttt{.y()}: Declare the name of this \nameref{def:Inherited_Attribute}
+  \end{itemize}
+
+  and the \nameref{def:Inherited_Attribute} must be defined by some common parent.
+  This is shown in \Cref{subsubsec:Define_Inherited_Equations}.
 \end{definition}
 
 \subsubsection{Defining Equations for \nameref{subsec:Inherited_Attributes}}\label{subsubsec:Define_Inherited_Equations}
+\begin{javasource}
+eq C.getA().y() = Java-expr;
+\end{javasource}
+  \begin{itemize}[noitemsep]
+  \item \texttt{eq}: Declare that this \nameref{def:Attribute} is an \nameref{def:Inherited_Attribute}.
+  \item \texttt{C}: Declare the parent \nameref{def:Abstract_Parse_Tree} node type that this \nameref{def:Inherited_Attribute} is bound to
+  \item \texttt{.getA()}: Declare the child \nameref{def:Abstract_Parse_Tree} node that is receiving this equation
+  \item \texttt{.y()}: The name of the equation that matches some \nameref{def:Inherited_Attribute}'s name
+  \item \texttt{Java-expression}: An expression or method that is evaluated to calculate the value of this equation
+    \begin{itemize}[noitemsep]
+    \item This must return a value that is of the same type, \texttt{T}, as declared.
+    \end{itemize}
+  \end{itemize}
 
 \subsection{Broadcasting Attributes}\label{subsec:Broadcasting_Attributes}
 \begin{definition}[Broadcasting]\label{def:Broadcasting}
