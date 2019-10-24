@@ -5,6 +5,55 @@ This will begin the portion of the compiler where we have read in our program an
 
 To improve modularity, it is better to seaparate issues of syntax (parsing) from issues of semantics (type-checking and translation to machine code).
 
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{3.0cm}p{5.0cm}p{5.0cm}}
+    \toprule
+    \multicolumn{1}{c}{Method} & \multicolumn{1}{c}{Pros} & \multicolumn{1}{c}{Cons} \\
+    \midrule
+    Ordinary Programming & Straightforward Code & No modular extension (All classes to be modified) \\
+           & Modular extension of subclasses & Tangled code, many things in same class \\
+    \midrule
+    \nameref{def:Visitors} & Modular extension (Add new Visitor) & Lots of boilerplate code \\
+           & & Limited modular extensibility of language \\
+    \midrule
+    \nameref{def:Aspect_Oriented_Programming} & Straightforward code & Cannot use plain Java \\
+           & Modular extension in operation dimension (new aspect) & No Separate compilation \\
+    & Modular extension of language (new subclass) & \\
+    \bottomrule
+  \end{tabular}
+  \caption{Semantic Analysis Methods}
+  \label{tab:Semantic_Analysis_Methods}
+\end{table}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{ccc}
+    \toprule
+    & \nameref{def:Aspect_Oriented_Programming} & \nameref{def:Visitors} \\
+    \midrule
+    Factor what? & Instace variables & Only methods \\
+    & Methods & \\
+    & Implements clauses & \\
+    \midrule
+    Type safety & full type precision & May need typecasts \\
+    \midrule
+    Method Parameters & Any number & Only 1 \\
+    \midrule
+    Ease of Use & Very simple & Clumsy, need boilerplate code \\
+    \midrule
+    Arbitrary Module Composition & Yes & No \\
+    & & Hard to extend factories to create visitors \\
+    \midrule
+    Separate Compilation & Not for \JastAdd{} & Yes \\
+    \midrule
+    Mainstream OOP Lang? & No. Need \JastAdd{} or equivalent & Yes, can use Java \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{def:Visitors} vs. \nameref{def:Aspect_Oriented_Programming}}
+  \label{tab:Visitors_vs_AOP}
+\end{table}
+
 \subsection{Visitors}\label{subsec:Visitors}
 \nameref{def:Visitors} are an example of ``The Expression Problem''.
 This problem states that we would like to:
@@ -119,7 +168,18 @@ So, to deal with The Expression Problem, there are a few options:
   \label{tab:Visitor_Pattern_Summary}
 \end{table}
 
-\subsection{Reference Attribute Grammars}\label{subsec:Reference_Attribute_Grammars}
+\subsection{Aspect-Oriented Programming}\label{subsec:Aspect_Oriented_Programming}
+\nameref{def:Visitors} offer only a limited solution to our Expression Problem.
+\nameref{def:Aspect_Oriented_Programming} offers a better, more fully realized solution to this problem.
+
+\begin{definition}[Aspect-Oriented Programming]\label{def:Aspect_Oriented_Programming}
+  \emph{Aspect-oriented programming} is similar to normal imperative programming, but where fields and methods can be factored out from classes and placed in aspect files.
+  When the tool that is being used runs over these aspect files, the code that belongs to a class is ``woven'' into the class.
+
+  \begin{remark}[Static vs. Dynamic Aspect-Oriented Programming]
+    
+  \end{remark}
+\end{definition}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAN65-Compilers-Reference_Sheet"
