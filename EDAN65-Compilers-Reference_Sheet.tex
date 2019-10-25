@@ -1,7 +1,6 @@
 \input{Reference_Sheet_Preamble}
 
 % These packages are more specific to certain documents, but will be availabe in the template
-% \usepackage{esint} % Provides us with more types of integral symbols to use
 \usepackage[outputdir=./TeX_Output]{minted} % Allow us to nicely typeset 300+ programming languages
 % This document must be compiled with the -shell-escape flag because of minted
 
@@ -11,7 +10,12 @@
   linenos
 }
 
-% \graphicspath{{./Drawings/EDAN65}} % Uncomment this to use pictures in this document
+\newminted[assemblysource]{nasm}{
+  frame=lines,
+  linenos
+}
+
+\graphicspath{{./Drawings/EDAN65-Compilers}} % Uncomment this to use pictures in this document
 \addbibresource{./Bibliographies/EDAN65-Compilers.bib}
 
 % Math Operators that are useful to abstract the written math away to one spot
@@ -29,6 +33,11 @@
 \DeclareMathOperator{\LALRParse}{\text{LALR}}
 
 \newcommand{\JastAdd}{\href{http://jastadd.org/web/documentation/reference-manual.php}{JastAdd}}
+\newcommand{\rbp}{\texttt{\%rbp}}
+\newcommand{\rsp}{\texttt{\%rsp}}
+\newcommand{\rip}{\texttt{\%rip}}
+\newcommand{\rax}{\texttt{\%rax}}
+\newcommand{\rbx}{\texttt{\%rbx}}
 
 \begin{titlepage}
   \title{EDAN65: Compilers - Reference Sheet}
@@ -57,6 +66,8 @@
 \input{./EDAN65-Compilers-Sections/Reference_Attribute_Grammars}
 
 \input{./EDAN65-Compilers-Sections/Runtime_Systems}
+
+\input{./EDAN65-Compilers-Sections/Code_Generation}
 %====================================APPENDIX====================================
 \appendix
 \counterwithin{equation}{section}
