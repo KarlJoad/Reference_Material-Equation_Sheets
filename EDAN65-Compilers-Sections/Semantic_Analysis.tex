@@ -173,12 +173,45 @@ So, to deal with The Expression Problem, there are a few options:
 \nameref{def:Aspect_Oriented_Programming} offers a better, more fully realized solution to this problem.
 
 \begin{definition}[Aspect-Oriented Programming]\label{def:Aspect_Oriented_Programming}
-  \emph{Aspect-oriented programming} is similar to normal imperative programming, but where fields and methods can be factored out from classes and placed in aspect files.
+  \emph{Aspect-Oriented Programming} (\emph{AOP}) is similar to normal imperative programming, but where fields and methods can be factored out from classes and placed in aspect files.
   When the tool that is being used runs over these aspect files, the code that belongs to a class is ``woven'' into the class.
 
   \begin{remark}[Static vs. Dynamic Aspect-Oriented Programming]
-    
+    For this course, we are mostly using \emph{static aspect-oriented programming}.
+    Dynamic AOP has some very specific properties that we will not/did not use.
   \end{remark}
+\end{definition}
+
+\begin{definition}[Full Aspect-Oriented Programming]\label{def:Full_AOP}
+  \emph{Full aspect-oriented programming} focuses on dynamic behavior.
+  There are 3 major things that define full aspect-oriented programming.
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Joinpoint}
+  \item \nameref{def:Pointcut}
+  \item \nameref{def:Advice}
+  \end{enumerate}
+
+  Some example applications of full aspect-oriented programming are:
+  \begin{itemize}[noitemsep]
+  \item Add logging of method calls in an aspect (Instead of adding print statements all over your code)
+  \item Add synchronization code for basic code that is unsynchronized (Multi-threading/Multicore)
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Joinpoint]\label{def:Joinpoint}
+  A \emph{joinpoint} is a point execution where \nameref{def:Advice} code can be added.
+\end{definition}
+
+\begin{definition}[Pointcut]\label{def:Pointcut}
+  A \emph{pointcut} is a set of \nameref{def:Joinpoint}s that can be described in a simple way.
+  \begin{itemize}[noitemsep]
+  \item All calls to the method \texttt{m()}
+  \item All accesses of a variable \texttt{v}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Advice]\label{def:Advice}
+  \emph{Advice} is code you can specify in an aspect that can be added to \nameref{def:Joinpoint}s, either before, after, or around the \nameref{def:Joinpoint}.
 \end{definition}
 %%% Local Variables:
 %%% mode: latex
