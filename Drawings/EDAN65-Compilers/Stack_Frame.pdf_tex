@@ -1,0 +1,80 @@
+%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'Stack_Frame.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{243.34850651bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.82502634)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(1.21171461,0.8210976){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.37670804\unitlength}\raggedright \end{minipage}}}%
+    \put(0.30828944,0.65261142){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.3175995\unitlength}\raggedright dynlink\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{Stack_Frame.pdf}}%
+    \put(0.30828944,0.07548809){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.3175995\unitlength}\raggedright dynlink\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{Stack_Frame.pdf}}%
+    \put(0.32068434,0.15262273){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.16209434\unitlength}\raggedright local0\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{Stack_Frame.pdf}}%
+    \put(0.32458336,0.23506798){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24116473\unitlength}\raggedright local1\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{Stack_Frame.pdf}}%
+    \put(0.31807306,0.32332422){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.25302534\unitlength}\raggedright temp0\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{Stack_Frame.pdf}}%
+    \put(0.3431704,0.40606357){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.189769\unitlength}\raggedright arg1\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{Stack_Frame.pdf}}%
+    \put(0.33927246,0.48835525){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.17659055\unitlength}\raggedright arg0\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{Stack_Frame.pdf}}%
+    \put(0.30639019,0.56485315){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.23193989\unitlength}\raggedright retaddr\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{Stack_Frame.pdf}}%
+    \put(0.66426051,0.40423514){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.37962458\unitlength}\raggedright Calling Function\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{Stack_Frame.pdf}}%
+    \put(0.32068434,0.72974605){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.16209434\unitlength}\raggedright local0\end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{Stack_Frame.pdf}}%
+    \put(0.31807306,0.81800128){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.25302534\unitlength}\raggedright temp0\end{minipage}}}%
+    \put(0.62406445,0.80649415){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.44082808\unitlength}\raggedright Callee Function\end{minipage}}}%
+  \end{picture}%
+\endgroup%

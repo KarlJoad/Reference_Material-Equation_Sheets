@@ -1,0 +1,73 @@
+\section{Code Generation}\label{sec:Code_Generation}
+Code generation is the last step of the compilation process.
+The assembly code is also optimized in this step, before the code is generated, in the \nameref{subsec:Intermediate_Code} portion.
+
+\subsection{Intermediate Code}\label{subsec:Intermediate_Code}
+There are 2 common forms of intermediate code generation:
+\begin{enumerate}[noitemsep]
+\item \nameref{subsubsec:Three_Address_Code}
+\item \nameref{subsubsec:Stack_Code}
+\end{enumerate}
+
+\subsubsection{Three-Address Code}\label{subsubsec:Three_Address_Code}
+The \nameref{subsubsec:Three_Address_Code} is the type of \nameref{subsec:Intermediate_Code} used for static, compiled languages.
+An example of \nameref{subsubsec:Three_Address_Code} is shown below.
+They have these elements on common:
+\begin{itemize}[noitemsep]
+\item Each instruction has 3 operands, in the form of \mint{nasm}{op src1 src2 dest}
+\item \nameref{def:Temporary_Variable}s are frequently used
+\item Very related to a register-based machine
+\item \textbf{\emph{VERY GOOD FOR OPTIMIZATION}}
+  \begin{itemize}[noitemsep]
+  \item Removing unnecessary instructions for operations
+  \item Keep as many values in registers rather than memory
+  \end{itemize}
+\end{itemize}
+
+\begin{assemblysource}
+    ADD v1 v2 t1
+    JEQ t1 v3 L1
+    SUB v3 1 t2
+    MOV t2 c1
+  L1:
+    MOV v2 v4
+\end{assemblysource}
+
+\subsubsection{Stack Code}\label{subsubsec:Stack_Code}
+The other type of \nameref{subsec:Intermediate_Code} is more commonly used for dynamic languages.
+These have these elements in common:
+\begin{itemize}[noitemsep]
+\item The use of a \emph{value stack} instead of \nameref{def:Temporary_Variable}s
+\item Each instruction needs the necessary operands popped, performs the operation, then pushes the result
+\item Commonly used for interpreters and virtual machines
+\item Similar to \nameref{subsec:LRParsing}
+  \begin{itemize}[noitemsep]
+  \item Push the operands/arguments onto the value stack
+  \item Pop the appropriate number of arguments off the top of the value stack when performing an operation
+  \item Perform the operation and push the result
+  \end{itemize}
+\end{itemize}
+
+\begin{assemblysource}
+  PUSH v1
+  PUSH v2
+  ADD
+  PUSH v3
+  JEQ L1
+  PUSH v3
+  PUSH 1
+  SUB
+  POP v1
+  L1:
+  PUSH v2
+  POP v4
+\end{assemblysource}
+
+\subsection{Target Code Generation}\label{subsec:Target_Code_Generation}
+The assembly code that we generate in this course is completely \textbf{\emph{UNOPTIMIZED}}.
+Thus, the assembly code that we generated was nearly identical to the \nameref{subsubsec:Three_Address_Code}.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAN65-Compilers-Reference_Sheet"
+%%% End:
