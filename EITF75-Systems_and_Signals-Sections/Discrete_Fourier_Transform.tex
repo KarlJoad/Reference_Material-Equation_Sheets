@@ -3,10 +3,12 @@
   The \emph{Discrete Fourier Transform} or \emph{DFT} can be the \nameref{def:Discrete-Time_Fourier_Transform} sampled at certain values.
   This is only true if $N > \text{Length of Signal DTFT}$.
 
-  Mathematically, this is shown as
+  The $N$-point DFT is shown as:
   \begin{equation}\label{eq:DFT}
     X_{DFT}(k) = \sum\limits_{n=0}^{N-1} x(n) e^{-j 2\pi \frac{k}{N} n} \:\: \text{for } k=0, 1, 2, \ldots, N-1
   \end{equation}
+
+  If $N$ is specified, then replace all occurrences of $N$ in \Cref{eq:DFT} with that value.
 
   \begin{remark}
     If the length, $N$ of the DFT is not specified, it is assumed that $N = \text{length of the signal}$.
@@ -83,6 +85,32 @@ The \nameref{def:DFT} is used for many reasons, some of which are listed below:
   \end{itemize}
 \end{remark*}
 
+\subsection{\nameref{sec:DFT} of Sinusoids}\label{subsec:DFT_of_Sinusoids}
+The 2 equations presented below are important for performing the \nameref{def:DFT} on sinusoids.
+Both \Crefrange{eq:DFT_of_Cosine}{eq:DFT_of_Sine} work in both directions.
+
+\begin{equation}\label{eq:DFT_of_Cosine}
+  \begin{aligned}
+    x(n) &= A \cos \left( 2\pi \frac{k_{0}}{N} n \right),\; 0 < k_{0} \leq N-1 \\
+    &= \frac{A}{2} \left( e^{j \frac{2\pi k_{0}}{N} n} + e^{-j \frac{2\pi k_{0}}{N} n} \right) \\
+    X(k) &= \sum\limits_{n=0}^{N-1} \frac{A}{2} e^{j \frac{2\pi k_{0} n}{N}} e^{-j \frac{2\pi k n}{N}} + \sum\limits_{n=0}^{N-1} \frac{A}{2} e^{-j \frac{2\pi k_{0} n}{N}} e^{-j \frac{2\pi k n}{N}} \\
+    &= \frac{A}{2} \sum\limits_{n=0}^{N-1} e^{\frac{-j 2\pi (k-1)}{N}} + \frac{A}{2} \sum\limits_{n=0}^{N-1} e^{\frac{-j 2\pi (k+1)}{N}} \\
+    &\text{This is a Geometric Series} \\
+    X(k) &= \frac{AN}{2} \biggl[ (\delta(k-k_{0}) \bmod N) + (\delta(k+k_{0}) \bmod N) \biggr]
+  \end{aligned}
+\end{equation}
+
+\begin{equation}\label{eq:DFT_of_Sine}
+  \begin{aligned}
+    x(n) &= A \sin \left( 2\pi \frac{k_{0}}{N} n \right),\; 0 < k_{0} \leq N-1 \\
+    &= \frac{A}{2j} \left( e^{j \frac{2\pi k_{0}}{N} n} - e^{-j \frac{2\pi k_{0}}{N} n} \right) \\
+    X(k) &= \sum\limits_{n=0}^{N-1} \frac{A}{2j} e^{j \frac{2\pi k_{0} n}{N}} e^{-j \frac{2\pi k n}{N}} - \sum\limits_{n=0}^{N-1} \frac{A}{2j} e^{-j \frac{2\pi k_{0} n}{N}} e^{-j \frac{2\pi k n}{N}} \\
+    &= \frac{A}{2j} \sum\limits_{n=0}^{N-1} e^{\frac{-j 2\pi (k-1)}{N}} - \frac{A}{2j} \sum\limits_{n=0}^{N-1} e^{\frac{-j 2\pi (k+1)}{N}} \\
+    &\text{This is a Geometric Series} \\
+    X(k) &= \frac{AN}{2j} \biggl[ (\delta(k-k_{0}) \bmod N) - (\delta(k+k_{0}) \bmod N) \biggr]
+  \end{aligned}
+\end{equation}
+
 \subsection{Inverse Discrete Fourier Transform}\label{subsec:IDFT}
 \begin{definition}[Inverse Discrete Fourier Transform]\label{def:IDFT}
   The \emph{Inverse Discrete Fourier Transform (IDFT)} is the inverse of the \nameref{def:DFT}.
@@ -106,13 +134,102 @@ These have to be modified instead.
     \toprule
     Property & Time Domain $x(n)$ & DFT Domain $X(k)$ \\
     \midrule
+    Notation & $x(n)$, $y(n)$ & $X(k)$, $Y(k)$ \\
+    \nameref{subsubsec:DFT_Properties-Periodicity} & $x(n) = x(n+N)$ & $X(k) = X(k+N)$ \\
+    \nameref{subsubsec:DFT_Properties-Linearity} & $a_{1}x_{1}(n) + a_{2}x_{2}(n)$ & $a_{1}X_{1}(k) + a_{2}X_{2}(k)$ \\
+    \nameref{subsubsec:DFT_Properties-Time_Reversal} & $x(N-n)$ & $X(N-k)$ \\
+    \nameref{subsubsec:DFT_Properties-Circular_Time_Shifting} & $x(n - n_{0} \bmod N)$ & $X(k) e^{-j 2\pi \frac{k}{N} n_{0}} $ \\
+    \nameref{subsubsec:DFT_Properties-Circular_Frequency_Shift} & $x(n)e^{j2\pi l n/N}$ & $X(k-l \bmod N)$ \\
+    \nameref{subsubsec:DFT_Properties-Complex_Conjugate} & $X^{*}(n)$ & $X^{*}(N-k)$ \\
     \nameref{subsubsec:DFT_Properties-Circular_Convolution} & $x(n) \CircularConvolution y(n)$ & $X(k)Y(k)$ \\
-    \nameref{subsubsec:DFT_Properties-Time_Shifting} & $x(n - n_{0} \bmod N)$ & $X(k) e^{-j 2\pi \frac{k}{N} n_{0}} $ \\
+    \nameref{subsubsec:DFT_Properties-Circular_Correlation} & $x(n) \CircularConvolution y^{*}(-n)$ & $X(k)Y^{*}(k)$ \\
+    \nameref{subsubsec:DFT_Properties-2_Sequence_Multiplication} & $x_{1}(n)x_{2}(n)$ & $\frac{1}{N} X_{1}(k) \CircularConvolution X_{2}(k)$ \\
+    \nameref{subsubsec:DFT_Properties-Parsevals_Theorem} & $\sum\limits_{n=0}^{N-1} x(n) y^{*}(n)$ & $\frac{1}{N} \sum\limits_{k=0}^{N-1} X(k)Y^{*}(k)$ \\
     \bottomrule
   \end{tabular}
   \caption{Properties of the \nameref{def:DFT}}
   \label{tab:DFT_Properties}
 \end{table}
+
+\subsubsection{Periodicity}\label{subsubsec:DFT_Properties-Periodicity}
+If $x(n)$ and $X(k)$ are an $N$-point \nameref{def:DFT} pair, then
+\begin{equation}\label{eq:DFT_Properties-Periodicity-Time}
+  x(n+N) = x(n)
+\end{equation}
+\begin{equation}\label{eq:DFT_Properties-Periodicity-Frequency}
+  X(k+N) = X(k)
+\end{equation}
+
+The periodicities in $x(n)$ and $X(k)$ follow immediately from \Cref{eq:DFT} and \Cref{eq:IDFT}, respectively.
+
+\subsubsection{Linearity}\label{subsubsec:DFT_Properties-Linearity}
+If
+\begin{align*}
+  x_{1}(n) &\DFTRelation X_{1}(k) \\
+  x_{2}(n) &\DFTRelation X_{2}(k)
+\end{align*}
+then for any real-valued or complex-valued constants $a_{1}$ and $a_{2}$,
+
+\begin{equation}\label{eq:DFT_Properties-Linearity}
+  a_{1}x_{1}(n) + a_{2}x_{2}(n) \DFTRelation a_{1}X_{1}(k) + a_{2}X_{2}(k)
+\end{equation}
+
+\subsubsection{Time Reversal}\label{subsubsec:DFT_Properties-Time_Reversal}
+If
+\begin{equation*}
+  x(n) \DFTRelation X(k)
+\end{equation*}
+then
+\begin{equation}\label{eq:DFT_Properties-Time_Reversal}
+  x(-n \bmod N) = x(N-n) \DFTRelation X(-k \bmod N) = X(N-k)
+\end{equation}
+
+Hence, reversing the $N$-point sequence in time is equivalent to reversing the \nameref{def:DFT} values.
+
+\subsubsection{Circular Time Shifting}\label{subsubsec:DFT_Properties-Circular_Time_Shifting}
+The definition of time shifting needs to be modified from the definition of time shifting in~\Cref{subsubsec:FourierTransformProperties-TimeShifting}.
+
+\begin{definition}[Discrete Fourier Transform Time Shifting]\label{def:DFT_Properties-Circular_Time_Shifting}
+  If a signal $x(n)$ is shifted by $n_{0}$, then the \nameref{def:DFT} is also shifted.
+
+  \begin{equation}\label{eq:DFT_Properties-Circular_Time_Shifting}
+    x(n - n_{0} \bmod N) = X(k) e^{-j 2\pi \frac{k}{N} n_{0}}
+  \end{equation}
+
+  The modulus is because the signal is now circular.
+\end{definition}
+
+\subsubsection{Circular Frequency Shift}\label{subsubsec:DFT_Properties-Circular_Frequency_Shift}
+If
+\begin{equation*}
+  x(n) \DFTRelation X(k)
+\end{equation*}
+then
+\begin{equation}\label{eq:DFT_Properties-Circular_Frequency_Shift}
+  x(n)e^{j 2\pi l n/N} \DFTRelation X((k-l) \bmod N)
+\end{equation}
+
+Hence, the multiplication of the sequence $x(n)$ with the complex exponential sequence $e^{k 2\pi k n/N}$ is equivalent to the circular shift of the \nameref{def:DFT} by $l$ unitus in frequency.
+This is the dual to the \nameref{subsubsec:DFT_Properties-Circular_Time_Shifting} property.
+
+\subsubsection{Complex Conjugate}\label{subsubsec:DFT_Properties-Complex_Conjugate}
+If
+\begin{equation*}
+  x(n) \DFTRelation X(k)
+\end{equation*}
+then
+\begin{equation}\label{eq:DFT_Properties-Complex_Conjugate}
+  x^{*}(n) \DFTRelation X^{*}(-k \bmod N) = X^{*}(N-k)
+\end{equation}
+
+The \nameref{def:IDFT} of $X^{*}(k)$ is
+\begin{equation*}
+  \frac{1}{N} \sum\limits_{k=0}^{N-1} X^{*}(k)e^{j 2\pi k n/N} = \Biggl[ \frac{1}{N} \sum\limits_{k=0}^{N-1} X(k) e^{j 2\pi k (N-n)/N} \Biggr]
+\end{equation*}
+therefore,
+\begin{equation}\label{eq:DFT_Properties-IDFT_Complex_Conjugate}
+  x^{*}(-n \bmod N) = x^{*}(N-n) \DFTRelation X^{*}(k)
+\end{equation}
 
 \subsubsection{Circular Convolution}\label{subsubsec:DFT_Properties-Circular_Convolution}
 \begin{definition}[Circular Convolution]\label{def:Circular_Convolution}
@@ -137,6 +254,7 @@ These have to be modified instead.
     However, other texts may use:
     \begin{enumerate}[noitemsep]
     \item $\otimes$
+    \item $\textcircled{N}$
     \item $*$
     \item $\cdot$ (Centered Dot)
     \item $\bullet$
@@ -214,18 +332,43 @@ These have to be modified instead.
   Personally, I use Method 2 shown in \Cref{ex:Circular Convolution} to calculate \nameref{def:Circular_Convolution}s by hand.
 \end{remark*}
 
-\subsubsection{Time Shifting}\label{subsubsec:DFT_Properties-Time_Shifting}
-The definition of time shifting needs to be modified from the definition of time shifting in~\Cref{subsubsec:FourierTransformProperties-TimeShifting}.
+\subsubsection{Circular Correlation}\label{subsubsec:DFT_Properties-Circular_Correlation}
+In general, for complex-valued sequences $x(n)$ and $y(n)$, if
+\begin{align*}
+  x(n) &\DFTRelation X(k) \\
+  y(n) &\DFTRelation Y(k)
+\end{align*}
+then
+\begin{equation}\label{eq:DFT_Properties-Circular_Correlation}
+  \tilde{r}_{xy}(l) \DFTRelation \tilde{R}_{xy}(k) = X(k)Y^{*}(k)
+\end{equation}
 
-\begin{definition}[Discrete Fourier Transform Time Shifting]\label{def:DFT_Properties-Time_Shifting}
-  If a signal $x(n)$ is shifted by $n_{0}$, then the \nameref{def:DFT} is also shifted.
+\subsubsection{Multiplication of 2 Sequences}\label{subsubsec:DFT_Properties-2_Sequence_Multiplication}
+If
+\begin{align*}
+  x_{1}(n) &\DFTRelation X_{1}(k) \\
+  x_{2}(n) &\DFTRelation X_{2}(K)
+\end{align*}
+then
+\begin{equation}\label{eq:2_Sequence_Multiplication}
+  x_{1}(n)x_{2}(n) \DFTRelation \frac{1}{N} X_{1}(k) \CircularConvolution X_{2}(k)
+\end{equation}
 
-  \begin{equation}\label{eq:DFT_Properties-Time_Shifting}
-    x(n - n_{0} \bmod N) = X(k) e^{-j 2\pi \frac{k}{N} n_{0}}
-  \end{equation}
+\subsubsection{Parseval's Theorem}\label{subsubsec:DFT_Properties-Parsevals_Theorem}
+For complex-valued sequences $x(n)$ and $y(n)$, in general, if
+\begin{align*}
+  x(n) &\DFTRelation X(k) \\
+  y(n) &\DFTRelation Y(k)
+\end{align*}
+then
+\begin{equation}\label{eq:DFT_Properties-Parsevals_Theorem}
+  \sum\limits_{n=0}^{N-1}x(n)y^{*}(n) = \frac{1}{N} \sum\limits_{k=0}^{N-1} X(k)Y^{*}(k)
+\end{equation}
 
-  The modulus is because the signal is now circular.
-\end{definition}
+If $x(n) = y(n)$
+\begin{equation}\label{eq:DFT_Properties-Parsevals_Theorem-Magnitude}
+  \sum\limits_{n=0}^{N-1}x(n) x^{*}(n) = \sum\limits_{n=0}^{N-1} \lVert x(n) \rVert^{2} = \frac{1}{N} \sum\limits_{k=0}^{N-1} X(k)X^{*}(k) = \frac{1}{N} \sum\limits_{k=0}^{N-1} \lVert X(k) \rVert^{2}
+\end{equation}
 
 \subsection{Application of the Discrete Fourier Transform}\label{subsec:DFT_Application}
 If the signal that is being filtered by a finite filter with equation $h(n)$ has length $M$ is generating an infinite number of discrete values, then the standard \nameref{def:Linear_Convolution} does not work.
