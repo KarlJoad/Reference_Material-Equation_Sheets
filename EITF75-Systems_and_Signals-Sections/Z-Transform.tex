@@ -78,6 +78,7 @@ The \nameref{def:Z-Transform} plays the same role in the analysis of \nameref{de
 \end{table}
 
 \subsubsection{The One-Sided \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsubsec:One-Sided Z-Transform}
+\textbf{TODO}
 \begin{definition}[One-Sided $\ZTransform$-Transform]\label{def:One-Sided Z-Transform}
   The \emph{one-sided $z$-transform} is the same as the \nameref{def:Z-Transform}, but is only defined at $n$ values greater than or equal to 0.
   \begin{equation}\label{eq:One-Sided Z-Transform}
@@ -124,7 +125,9 @@ There are 3 methods that are often used for the evaluation of the inverse $z$-tr
 
 
 \subsubsection{The Inverse \texorpdfstring{$\ZTransform$-Transform}{Z-Transform} by Power Series Expansion}\label{subsubsec:Inverse Z-Transform by Power Series Expansion}
+\textbf{TODO}
 \subsubsection{The Inverse \texorpdfstring{$\ZTransform$-Transform}{Z-Transform} by Partial-Fraction Expansion}\label{subsubsec:Inverse Z-Transform by Partial-Fraction Expansion}
+\textbf{TODO}
 \subsection{Properties of the \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:Z-Transform Properties}
 \begin{table}[h!]
   \centering
@@ -385,9 +388,7 @@ If $x(n)$ is \emph{causal} [i.e., $x(n)=0$ for $n<0$], then
 \end{equation}
 
 \subsection{Properties of the One-Sided \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:One-Sided Z-Transform Properties}
-\begin{propertylist}
-\item 
-\end{propertylist}
+\textbf{TODO}
 
 \subsection{Rational \texorpdfstring{$\ZTransform$-Transforms}{Z-Transform}}\label{subsec:Rational Z-Transforms}
 An important family of $z$-transforms are those for which $X(z)$ is a rational function, a ratio of two polynomials in $z^{-1}$ (or $z$).
@@ -423,11 +424,16 @@ A zero exists at $z=\infty$ if $X(\infty) = 0$ and a pole exists at $z=\infty$ i
 \begin{definition}[Pole-Zero Plot]\label{def:Pole-Zero Plot of Z-Transform}
   Poles and Zeros of a $z$-transform can be shown graphically by a \emph{pole-zero plot} in the complex plane, which shows the location of poles by crosses ($\times$) and the location of zeros by circles ($\circ$).
   Multiplicity is shown by a number close to the corresponding cross or circle.
-  The ROC of a $z$-transform should not contain any poles, by definition.
+  The ROC of a $z$-transform should not contain any poles, by definition of a \nameref{def:Stable} signal.
 \end{definition}
 
 \subsubsection{Decomposition of Rational \texorpdfstring{$\ZTransform$-Transforms}{Z-Transform}}\label{subsubsec:Decompose Rational Z-Transforms}
 The short end of this story is that you should group complex-conjugate pairs together.
+
+\subsection{Application of the \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:Application_Z-Transform}
+\textbf{TODO}.
+Include an example of how to perform the $\ZTransform$ to solve a system when the output is noncausal.
+There is a good example of this in the October 2018 exam.
 
 \subsection{Analysis of LTI Systems in the \texorpdfstring{$\ZTransform$-Domain}{Z-Domain}}\label{subsec:Analysis LTI Systems Z-Domain}
 There are a few steps to move from the time-domain to the $\ZTransform$-domain to perform analysis.
