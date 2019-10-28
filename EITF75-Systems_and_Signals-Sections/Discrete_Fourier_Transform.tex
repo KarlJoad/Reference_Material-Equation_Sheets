@@ -120,6 +120,69 @@ Both \Crefrange{eq:DFT_of_Cosine}{eq:DFT_of_Sine} work in both directions.
   \end{equation}
 \end{definition}
 
+\subsection{The Discrete Fourier Transform Expressed with Matrices}\label{subsec:DFT_Matrix}
+We start with \Cref{eq:DFT_W_Variable} to simplify the writing of our equations.
+\begin{equation}\label{eq:DFT_W_Variable}
+  W_{N} = e^{-j \frac{2\pi}{N}}
+\end{equation}
+
+$W_{N}$ is a complex variable used to replace the exponential function.
+You will see $W_{N}^{kn}$, which evaluates to $e^{-j \frac{2\pi}{N}kn}$.
+
+If we define 2 matrices, where $\mathbf{x}(n)$ is a discretely-valued function and $\mathbf{X}_{N}(k)$ is its \nameref{def:DFT}:
+\begin{equation}\label{eq:DFT_Function_Matrices}
+  \mathbf{x}_{N}(n) =
+  \begin{bmatrix}
+    x(0) \\
+    x(1) \\
+    \vdots \\
+    x(N -1)
+  \end{bmatrix},\:\:\:
+  \mathbf{X}_{N}(k) =
+  \begin{bmatrix}
+    X(0) \\
+    X(1) \\
+    \vdots \\
+    X(N-1) \\
+  \end{bmatrix}
+\end{equation}
+
+Now, we extend our definition of $W_{N}$ from \Cref{eq:DFT_W_Variable} to this matrix format as well.
+\begin{equation}\label{eq:DFT_W_Matrix}
+  \mathbf{W}_{N} =
+  \begin{bmatrix}
+    1 & 1 & 1 & \cdots & 1 \\
+    1 & W_{N}^{kn} \vert_{k=1, n=1} & W_{N}^{kn} \vert_{k=1, n=2} & \cdots & W_{N}^{kn} \vert_{k=1, n=N-1} \\
+    \vdots & W_{N}^{kn} \vert_{k=2, n=1} & W_{N}^{kn} \vert_{k=2, n=2} & \cdots & W_{N}^{kn} \vert_{k=2, n=N-1} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    1 & W_{N}^{kn} \vert_{k=N-1, n=1} & W_{N}^{kn} \vert_{k=N-1, n=2} & \cdots & W_{N}^{kn} \vert_{k=N-1, n=N-1} \\
+  \end{bmatrix}
+\end{equation}
+
+With these matrices defined, we can express the $N$-point \nameref{def:DFT} as
+\begin{equation}\label{eq:DFT_Matrix}
+  \mathbf{X}_{N}(k) = \mathbf{W}_{N} \mathbf{x}_{n}(n)
+\end{equation}
+
+and, because of matrix inversion, we can express the $N$-point \nameref{def:IDFT} as
+\begin{equation}\label{eq:IDFT_Matrix_Inverted_W_Matrix}
+  \mathbf{x}_{N}(n) = \mathbf{W}_{N}^{-1} \mathbf{X}_{N}(k)
+\end{equation}
+
+$\mathbf{x}_{N}(n)$ can also be expressed as the \nameref{def:IDFT} with \Cref{eq:IDFT_Matrix_Complex_Conjugate}
+\begin{equation}\label{eq:IDFT_Matrix_Complex_Conjugate}
+  \mathbf{x}_{N}(n) = \frac{1}{N} \mathbf{W}_{N}^{*} \mathbf{X}_{N}(k)
+\end{equation}
+
+The duality presented from \Crefrange{eq:IDFT_Matrix_Inverted_W_Matrix}{eq:IDFT_Matrix_Complex_Conjugate} means
+\begin{equation}\label{eq:DFT_W_Matrix_Unitary}
+  \begin{aligned}
+    \mathbf{W}_{N}^{-1} = \frac{1}{N} \mathbf{W}_{N}^{*} \\
+    \mathbf{W}_{N} \mathbf{W}_{N}^{*} = N \mathbf{I}_{N} \\
+  \end{aligned}
+\end{equation}
+where $\mathbf{I}_{N}$ is an $N \times N$ identity matrix.
+
 \subsection{Properties of the Discrete Fourier Transform}\label{subsec:DFT_Properties}
 With the \nameref{def:DFT}, the usual properties do not apply.
 \begin{itemize}[noitemsep]
