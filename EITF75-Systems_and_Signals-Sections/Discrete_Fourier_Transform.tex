@@ -403,7 +403,17 @@ In general, for complex-valued sequences $x(n)$ and $y(n)$, if
 \end{align*}
 then
 \begin{equation}\label{eq:DFT_Properties-Circular_Correlation}
-  \tilde{r}_{xy}(l) \DFTRelation \tilde{R}_{xy}(k) = X(k)Y^{*}(k)
+  x(n) \CircularConvolution y^{*}(n) = \tilde{r}_{xy}(l) \DFTRelation \tilde{R}_{xy}(k) = X(k)Y^{*}(k)
+\end{equation}
+\begin{remark*}
+  This is closely related to the linear \nameref{def:Cross_Correlation}.
+\end{remark*}
+
+\paragraph{Circular Autocorrelation}\label{par:DFT_Properties-Circular_Autocorrelation}
+If $x(n) = y(n)$, then an autocorrelation is performed.
+This is closely related to the linear \nameref{def:Auto_Correlation}.
+\begin{equation}\label{eq:DFT_Properties-Circular_Autocorrelation}
+  x(n) \CircularConvolution x^{*}(n) = \tilde{r}_{xx}(l) \DFTRelation \tilde{R}_{XX}(k) = X(k)X^{*}(k)
 \end{equation}
 
 \subsubsection{Multiplication of 2 Sequences}\label{subsubsec:DFT_Properties-2_Sequence_Multiplication}
