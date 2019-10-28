@@ -1,5 +1,142 @@
-\section{Sampling and Reconstruction}\label{sec:Sampling and Reconstruction}
+\section{Sampling and Reconstruction}\label{sec:Sampling_and_Reconstruction}
+\begin{definition}[Optimal Sampling]\label{def:Optimal_Sampling}
+  \emph{Optimal sampling} (\emph{lossless sampling}) of a signal $x(t)$ occurs when
+  \begin{equation}\label{eq:Optimal_Sampling}
+    x_{a}\left( \frac{n}{F_{S}} \right) = x(n)
+  \end{equation}
 
+  If there is a noisy signal $x(t) = s(t) + n(t)$, then so long as we can recover the interesting signal $s(t)$, then the sampling was lossless or optimal.
+
+  We can recover $x(t)$ from $x(n)$ if $X_{a}(F)$ looks the same as $X(f)$.
+  (If the \nameref{def:FourierTransform} of the analog signal is the same as the \nameref{def:Discrete-Time_Fourier_Transform} of the discrete signal).
+  \begin{equation}\label{eq:Recover_Signal}
+    X_{a}(F) \approx X(f)
+  \end{equation}
+  \begin{remark}[Shape of $X(f)$]
+    The sampling of $X(f)$ is optimal even if $X(f)$ is:
+    \begin{itemize}[noitemsep]
+    \item Flipped
+    \item Scaled
+    \item Negative
+    \item Compressed
+    \item Expanded
+    \item etc.
+    \end{itemize}
+  \end{remark}
+
+  In summary, the sampling is \emph{optimal} or \emph{lossless} if:
+  \begin{enumerate}[noitemsep]
+  \item $X_{a}(F)$ contains all information about $x(t)$
+  \item $A_{a}(F)$ is aperiodic, but has finite bandwidth
+  \item $x(n)$ is a sampled version of $x(t)$
+  \item $X(f)$ is sufficient to recover $X_{a}(F)$ $\longrightarrow$ $x(n)$ sufficient to recover $x(t)$
+  \end{enumerate}
+\end{definition}
+
+There exists a relationship between $x(n)$ and $x\left( \frac{n}{F_{S}} \right)$ in the frequency domain.
+\begin{subequations}
+  \begin{equation}\label{eq:DTFT_of_xn}
+    x(n) = \frac{1}{F_{s}} \int_{\frac{-F_{S}}{2}}^{\frac{F_{S}}{2}} X\left( \frac{F}{F_{S}} \right) e^{j 2\pi n \frac{F}{F_{S}}} \, dF
+  \end{equation}
+  \begin{equation}\label{eq:Fourier_Representation_of_Sampled_xt}
+    x(n) = x(t \vert t = \frac{n}{F_{S}}) = \int_{\frac{-F_{S}}{2}}^{\frac{F_{S}}{2}} \left[ \sum\limits_{k=-\infty}^{\infty} X_{a}(F-kF_{S}) \right] e^{j 2\pi n \frac{F}{F_{S}}} \, dF
+  \end{equation}
+\end{subequations}
+\begin{itemize}[noitemsep]
+\item \Cref{eq:DTFT_of_xn} is the \nameref{def:Discrete-Time_Fourier_Transform} of $x(n)$, the discrete signal
+\item \Cref{eq:Fourier_Representation_of_Sampled_xt} is the Fourier representation of the sampled continuous-time signal, $x(t \vert t = \frac{n}{F_{S}}) = x(n)$
+\end{itemize}
+
+\Crefrange{eq:DTFT_of_xn}{eq:Fourier_Representation_of_Sampled_xt} can be combined and simplified to form \Cref{eq:Optimally_Sampled_Signal}.
+
+\begin{equation}\label{eq:Optimally_Sampled_Signal}
+  X(f) = F_{S} \sum\limits_{k=-\infty}^{\infty} X_{a}\Bigl( (f-k) F_{S} \Bigr)
+\end{equation}
+
+\subsection{Sampling}\label{subsec:Sampling}
+There exists a sampling theory presented by Shannon in 1948 that describes a sufficient condition for complete signal recovery.
+
+\begin{theorem}[Sampling Theorem (Shannon 1948)]\label{thm:Shannon_Sampling_Theorem}
+  If $F_{S} > 2B$, where $B$ is the highest frequency of the analog signal, then the analog signal can be recovered from its sampled version.
+\end{theorem}
+
+\begin{remark*}
+  Note that \nameref{thm:Shannon_Sampling_Theorem} is a \emph{sufficient} condition.
+  It does not necessarily represent the smallest sampling frequency possible.
+  If the conditions frequency conditions are correct, and later signal processing possible, you can fold signals into empty bands.
+\end{remark*}
+
+\subsubsection{Aliasing}\label{subsubsec:Aliasing}
+\begin{definition}[Aliasing]\label{def:Aliasing}
+  \emph{Aliasing} occurs when the sampling frequency $2 F_{S}< F$.
+  When this happens, some of the values on each side of the origin ($X_{a}(0)$ in \Cref{eq:Optimally_Sampled_Signal}) modify each other.
+
+  If \Cref{eq:Optimally_Sampled_Signal} is applied directly, the values for each point in the sampled frequency domain are found directly.
+  If done graphically, you can employ \nameref{def:Folding}.
+
+  \begin{remark}[\nameref{def:Optimal_Sampling}]
+    \nameref{def:Optimal_Sampling} occurs when there is \emph{no} aliasing.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Folding]\label{def:Folding}
+  \emph{Folding} is a method of realizing an \nameref{def:Aliasing}.
+  There are several steps to perform a folding:
+  \begin{enumerate}[noitemsep]
+  \item Identify $\frac{F_{S}}{2}$
+  \item Fold at $\frac{F_{S}}{2}$. (Turn the values past $\frac{F_{S}}{2}$ backwards, towards the origin).
+  \item Add the turned value to the original
+  \item If your folded signal goes past the origin, fold the remainaing signal at the origin.
+  \item Add this secondly-turned value to the current amount
+  \item Repeat Steps 1-6 until all of the original signal is contained between $0$ and $\frac{F_{S}}{2}$.
+  \item Change the bounds from $F$ to $\frac{-1}{2} \leq f \leq \frac{1}{2}$
+  \end{enumerate}
+\end{definition}
+
+\subsection{Reconstruction}\label{subsec:Reconstruction}
+The equation for reconstruction of a signal from its sampled counterpart is shown in \Cref{eq:Reconstruction}
+\begin{equation}\label{eq:Reconstruction}
+  x(t) = \sum\limits_{n=-\infty}^{\infty} x(n) \sinc\Bigl( F_{S} \left( \frac{t-n}{F_{S}} \right) \Bigr)
+\end{equation}
+\begin{equation}\label{eq:Reconstruction_Sufficient_Sampling}
+  x(n) = x(t \vert t = \frac{n}{F_{S}})
+\end{equation}
+
+\subsection{Interconnection of Systems with Different Sampling Frequencies}\label{subsec:Interconnect_Different_Sampling_Frequency}
+Frequently, various elements in a system will have different sampling frequencies.
+This means that your A/D converter and D/A converter will have different sampling frequencies.
+This could affect the output of your system, by changing the frequency characteristics through \nameref{def:Aliasing}.
+
+\subsubsection{Decimation}\label{subsubsec:Decimation}
+\begin{definition}[Decimation]\label{def:Decimation}
+  \emph{Decimation} takes an input signal and compresses it.
+  Decimation uses the symbol $D \in \PositiveInts$.
+  \begin{equation*}
+    y(m) = x(mD)
+  \end{equation*}
+
+  If decimation occurs later in the system, then if just the input and output are compared, $y(m)$ appears it was sampled at
+  \begin{equation}\label{eq:Input_Output_Decimation}
+    f = \frac{F_{S}}{D}
+  \end{equation}
+  
+  Thus, when we perform sampling on the input signal, then there is folding at
+  \begin{equation}\label{eq:Decimation_Sampling_Frequency_Change}
+    f = \frac{F_{S}}{2D}
+  \end{equation}
+\end{definition}
+
+\subsubsection{Interpolation}\label{subsubsec:Interpolation}
+\begin{definition}[Interpolation]\label{def:Interpolation}
+  \emph{Interpolation} is the act of putting zeros in between each of the original signal values, while maintaining the original signal profile.
+  This effectively ``upsamples'' the signal.
+  Interpolation uses the symbol $I \in \PositiveInts$.
+
+  The input/output relationship of a signal when interpolated is more easily shown in the frequency domain.
+  \begin{equation}\label{eq:Interpolation}
+    Y(f) = X(If)
+  \end{equation}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
