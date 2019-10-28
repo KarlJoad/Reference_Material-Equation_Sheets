@@ -5,12 +5,18 @@
   It defines the relationship between 2 signals to produce an output.
 
   \begin{equation}\label{eq:Linear_Convolution-1}
-    y(t) = \sum\limits_{k=-\infty}^{\infty} x(k) * h(n-k)
+    \begin{aligned}
+      y(n) &= x(k) * h(n-k) \\
+      &= \sum\limits_{k=-\infty}^{\infty} x(k) h(n-k) \\
+    \end{aligned}
   \end{equation}
 
   Because of associativity, commutativity, and distributivity, \Cref{eq:Linear_Convolution-1} can be equivalently rewritten as
   \begin{equation}\label{eq:Linear_Convolution-2}
-    y(t) = \sum\limits_{k=-\infty}^{\infty} h(k) * x(n-k)
+    \begin{aligned}
+      y(n) &= h(n) * x(n-k) \\
+      &= \sum\limits_{k=-\infty}^{\infty} h(k) x(n-k) \\
+    \end{aligned}
   \end{equation}
 
   The length of the resulting sequence from a linear convolution is
@@ -20,7 +26,7 @@
   where $L$ is the length of the input sequences.
 
   \begin{remark}[Alternate Convolution Symbol]
-    There is no signle defined symbol for \nameref{def:Linear_Convolution}s.
+    There is no single defined symbol for \nameref{def:Linear_Convolution}s.
     In this text, and personally, I use the $*$ symbol.
     However, other texts may use:
     \begin{enumerate}[noitemsep]
