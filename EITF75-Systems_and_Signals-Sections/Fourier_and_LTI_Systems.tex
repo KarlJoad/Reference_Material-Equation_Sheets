@@ -1,21 +1,4 @@
 \section{The Fourier Transform and LTI Systems}\label{sec:Fourier_Transform-LTI_Systems}
-\subsection{Frequency Response}\label{subsec:Fourier_Frequency_Response}
-The \nameref{subsec:Fourier_Frequency_Response} of a function is defined in 2 parts.
-\begin{enumerate}[noitemsep]
-\item \nameref{subsec:Fourier_Magnitude_Response}
-\item \nameref{subsec:Fourier_Phase_Response}
-\end{enumerate}
-\begin{equation}\label{eq:Fourier_Frequency_Response}
-  \begin{aligned}
-    H(\omega) &= \lVert H(\omega) \rVert \, \Theta(\omega) \\
-    H(f) &= \lVert H(f) \rVert \, \Theta(f) \\
-  \end{aligned}
-\end{equation}
-
-\begin{remark*}
-  This is similar to the \nameref{subsec:Rectangular to Polar} conversion shown on \Cpageref{subsec:Rectangular to Polar}.
-\end{remark*}
-
 \subsection{Magnitude Response}\label{subsec:Fourier_Magnitude_Response}
 \begin{definition}[Magnitude Reponse]\label{def:Fourier_Magnitude_Response}
   The \emph{magnitude response} of a Fourier Transform is commonly denoted as $\lvert H(\omega) \rvert$ or $\lvert H(f) \rvert$.
@@ -56,6 +39,17 @@ The \nameref{subsec:Fourier_Frequency_Response} of a function is defined in 2 pa
     It is important to note that the numerator will \textbf{\emph{NOT}} have any imaginary terms ($i$ or $j$) in it!
   \end{remark}
 
+  \begin{remark}
+    Note that real positive values have argument $=0$
+    \begin{equation}\label{eq:Fourier_Phase_Response-Real_Positive_Values}
+      \Theta(\omega) = 0,\:\:\: \Theta(f) = 0
+    \end{equation}
+    Real negative values have argument $=\pm \pi$
+    \begin{equation}\label{eq:Fourier_Phase_Response-Real_Negative_Values}
+      \Theta(\omega) = \pm \pi,\:\:\: \Theta(f) = \pm \pi
+    \end{equation}
+  \end{remark}
+
   \begin{remark}[Complex Exponential to Unit Circle]\label{rmk:Complex_Exp-Unit_Circle_Relation}
     \textbf{\emph{REMEMBER:}}
     \begin{equation}\label{eq:Complex_Exp-Unit_Circle_Relation}
@@ -67,6 +61,24 @@ The \nameref{subsec:Fourier_Frequency_Response} of a function is defined in 2 pa
     This is also defined in \Cref{eq:Euler Complex} on \Cpageref{eq:Euler Complex}.
   \end{remark}
 \end{definition}
+
+\subsection{Frequency Response}\label{subsec:Fourier_Frequency_Response}
+The \nameref{subsec:Fourier_Frequency_Response} of a function is defined in 2 parts.
+\begin{enumerate}[noitemsep]
+\item \nameref{subsec:Fourier_Magnitude_Response}
+\item \nameref{subsec:Fourier_Phase_Response}
+\end{enumerate}
+\begin{equation}\label{eq:Fourier_Frequency_Response}
+  \begin{aligned}
+    H(\omega) &= \lVert H(\omega) \rVert \, \Theta(\omega) \\
+    H(f) &= \lVert H(f) \rVert \, \Theta(f) \\
+  \end{aligned}
+\end{equation}
+
+\begin{remark*}
+  This is similar to the \nameref{subsec:Rectangular to Polar} conversion shown on \Cpageref{subsec:Rectangular to Polar}.
+\end{remark*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EITF75-Systems_and_Signals-Reference_Sheet"
