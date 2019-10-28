@@ -1,0 +1,180 @@
+\input{Reference_Sheet_Preamble}
+
+% These packages are more specific to certain documents, but will be availabe in the template
+% \usepackage{esint} % Provides us with more types of integral symbols to use
+% \usepackage[outputdir=./TeX_Output]{minted} % Allow us to nicely typeset 300+ programming languages
+
+% \graphicspath{{./Drawings/Course}} % Uncomment this to use pictures in this document
+% \addbibresource{./Bibliographies/CourseNum-Name.bib}
+
+% Math Operators that are useful to abstract the written math away to one spot
+% These are supposed to be document-specific mathematical operators that will make life easier
+% Many fundamental operators are defined in Reference_Sheet_Preamble.tex
+
+\DeclareMathOperator{\TimeDelay}{\mathrm{TD}_{k}}
+\DeclareMathOperator{\FoldTime}{\mathrm{FD}}
+\DeclareMathOperator{\SignalOperator}{\mathcal{T}}
+\DeclareMathOperator{\ZTransformRelation}{\overset{z}{\longleftrightarrow}}
+\DeclareMathOperator{\ZTransform}{\mathcal{Z}}
+\DeclareMathOperator{\UnitImpulse}{\delta}
+\DeclareMathOperator{\ROC}{\mathrm{ROC}}
+\DeclareMathOperator{\FourierTransform}{F}
+\DeclareMathOperator{\FourierTransformRelation}{\overset{F}{\longleftrightarrow}}
+\DeclareMathOperator{\CircularConvolution}{\circledast}
+\DeclareMathOperator{\DFTRelation}{\overset{\text{DFT}}{\underset{N}{\longleftrightarrow}}}
+
+\begin{titlepage}
+  \title{EITF75: Systems and Signals - Equation Sheet}
+  \author{Karl Hallsby}
+  \date{Last Edited: \today} % We want to inform people when this document was last edited
+\end{titlepage}
+
+\begin{document}
+\section{Convolution}
+\begin{equation}\label{eq:Cross_Correlation-Convolution}
+  r_{y,x}(k) = y(n) * x(-n)
+\end{equation}
+
+\section{$\ZTransform$-Transform}
+\begin{table}[h!]
+  \centering
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{ccc}
+    \toprule
+    Signal, $x(n)$ & $z$-Transform, $X(z)$ & $\ROC$ \\
+    \midrule
+    $\UnitImpulse(n)$ & 1 & All $z$ \\
+    $\UnitStep(n)$ & $\frac{1}{1-z^{-1}}$ & $\lvert z \rvert > 1$ \\
+    $a^{n}\UnitStep(n)$ & $\frac{1}{1-az^{-1}}$ & $\lvert z \rvert > \lvert a \rvert$ \\
+    $na^{n}\UnitStep(n)$ & $\frac{az^{-1}}{{\left( 1-az^{-1} \right)}^{2}}$ & $\lvert z \rvert > \lvert a \rvert$ \\
+    $-a^{n}\UnitStep(-n-1)$ & $\frac{1}{1-az^{-1}}$ & $\lvert z \rvert < \lvert a \rvert$ \\
+    $-na^{n}\UnitStep(-n-1)$ & $\frac{az^{-z}}{{\left( 1-az^{-1} \right)}^{2}}$ & $\lvert z \rvert < \lvert a \rvert$ \\
+    $\left( \cos \omega_{0}n \right) \UnitStep(n)$ & $\frac{1-z^{-1}\cos \omega_{0}}{1-2z^{-1}\cos \omega_{0} + z^{-2}}$ & $\lvert z \rvert > 1$ \\
+    $\left( \sin \omega_{0}n \right) \UnitStep(n)$ & $\frac{z^{-1}\sin \omega_{0}}{1-2z^{-1}\cos \omega_{0} + z^{-2}}$ & $\lvert z \rvert > 1$ \\
+    $\left( a^{n} \cos \omega_{0}n \right) \UnitStep(n)$ & $\frac{1-az^{-1}\cos \omega_{0}}{1-2az^{-1} \cos \omega_{0} + a^{2}z^{-2}}$ & $\lvert z \rvert > \lvert a \rvert$ \\
+        $\left( a^{n} \sin \omega_{0}n \right) \UnitStep(n)$ & $\frac{az^{-1}\sin \omega_{0}}{1-2az^{-1} \cos \omega_{0} + a^{2}z^{-2}}$ & $\lvert z \rvert > \lvert a \rvert$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Common $\ZTransform$-Transforms}
+  \label{tab:Common Z-Transforms}
+\end{table}
+
+\subsection{Properties of the \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:Z-Transform Properties}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{4cm}ccp{5cm}}
+    \toprule
+    Property & Time Domain & $z$-Domain & $\ROC$ \\
+    \midrule
+    \multirow{3}{*}{Notation} & $x(n)$ & $X(z)$ & $\ROC: r_{2} < \lvert z \rvert < r_{1}$ \\
+             & $x_{1}(n)$ & $X_{1}(z)$ & $\ROC_{1}$ \\
+             & $x_{2}(n)$ & $X_{2}(z)$ & $\ROC_{2}$ \\
+    Linearity & $a_{1}x_{1}(n) + a_{2}x_{2}(n)$ & $a_{1}X_{1}(z) + a_{2}X_{2}(z)$ & At least the intersection of $\ROC_{1}$ and $\ROC_{2}$ \\
+    Time Shifting & $x(n-k)$ & $z^{-k}X(z)$ & That of $X(z)$, except $z=0$ if $k>0$ and $z=\infty$ if $k<0$ \\
+    Scaling & $a^{n}x(n)$ & $X(a^{-1}z)$ & $\lvert a \rvert r_{2} < \lvert z \rvert < \lvert a \rvert r_{1}$ \\
+    Time Reversal & $x(-n)$ & $X(z^{-1})$ & $\frac{1}{r_{1}} < \lvert z \rvert < \frac{1}{r_{2}}$ \\
+    Conjugation & $x^{*}(n)$ & $X^{*}(z^{*})$ & $\ROC$ \\
+    Real Part & $\Re \lbrace x(n) \rbrace$ & $\frac{1}{2} \left[ X(z) + X^{*}(z^{*}) \right]$ & Includes $\ROC$ \\
+    Imaginary Part & $\Im \lbrace x(n) \rbrace$ & $\frac{1}{2} j \left[ X(z) - X^{*}(z^{*}) \right]$ & Includes $\ROC$ \\
+    Differentiation & $nx(n)$ & $-z \frac{dX(z)}{dz}$ & $r_{2} < \lvert z \rvert r_{1}$ \\
+    Convolution & $x_{1} * x_{2}$ & $X_{1}(z)X_{2}(z)$ & At least, the intersection of $\ROC_{1}$ and $\ROC_{2}$ \\
+    2 Sequence Correlation & $r_{x_{1}x_{2}}(l) = x_{1}(l) * x_{2}(-l)$ & $R_{x_{1}x_{2}}(z) = X_{1}(z)x_{2}(z^{-1})$ & At least, the intersection of $\ROC$ of $X_{1}(z)$ and $X_{2}(z^{-1})$ \\
+    Initial Value Theorem & If $x(n)$ causal & $x(0) = \lim\limits_{z \rightarrow \infty} X(z)$ & \\
+    2 Sequence Multiplication & $x_{1}(n)x_{2}(n)$ & $\frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}(\frac{z}{v}) v^{-1} dv$ & At least, $r_{1l}r_{2l} < \lvert a \rvert < r_{1u}r_{2u}$ \\
+    Parsevals Relation & $\sum\limits_{n=-\infty}^{\infty} x_{1}(n)x_{2}^{*}(n)$ &= $\frac{1}{2 \pi j} \oint_{C} X_{1}(v)X_{2}^{*}(\frac{1}{v^{*}})v^{-1} dv$ & \\
+    \bottomrule
+  \end{tabular}
+  \caption{Z-Transform Properties}
+  \label{tab:Z-Transform Properties}
+\end{table}
+
+\section{DTFT}
+\begin{equation}\label{eq:1}
+  \begin{aligned}
+    z &= e^{j 2\pi f} \\
+    z &= e^{j \omega} \\
+  \end{aligned}
+\end{equation}
+
+\begin{equation}\label{eq:2}
+  \begin{aligned}
+    X(f) &= \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j 2\pi f n} \\
+    X(\omega) &= \sum\limits_{n=-\infty}^{\infty} x(n) e^{-j \omega n} \\
+  \end{aligned}
+\end{equation}
+
+\section{DFT}
+The $N$-point DFT is shown as:
+\begin{equation}\label{eq:DFT}
+  X_{DFT}(k) = \sum\limits_{n=0}^{N-1} x(n) e^{-j 2\pi \frac{k}{N} n} \:\: \text{for } k=0, 1, 2, \ldots, N-1
+\end{equation}
+
+If $N$ is specified, then replace all occurrences of $N$ in \Cref{eq:DFT} with that value.
+
+\begin{remark}
+  If the length, $N$ of the DFT is not specified, it is assumed that $N = \text{length of the signal}$.
+  If the length of the DFT $N$ is greater than the length of the signal, you are sampling the DTFT of the signal.
+\end{remark}
+\begin{equation}\label{eq:DFT_of_Cosine}
+  \begin{aligned}
+    x(n) &= A \cos \left( 2\pi \frac{k_{0}}{N} n \right),\; 0 < k_{0} \leq N-1 \\
+    &= \frac{A}{2} \left( e^{j \frac{2\pi k_{0}}{N} n} + e^{-j \frac{2\pi k_{0}}{N} n} \right) \\
+    X(k) &= \frac{AN}{2} \biggl[ (\delta(k-k_{0}) \bmod N) + (\delta(k+k_{0}) \bmod N) \biggr]
+  \end{aligned}
+\end{equation}
+
+
+\begin{equation}\label{eq:IDFT}
+  x_{IDFT}(n) = \frac{1}{N} \sum\limits_{k=0}^{N-1} X(k) e^{j 2\pi \frac{k}{N} n} \:\: \text{for } n = 0, 1, \ldots, N-1
+\end{equation}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{ccc}
+    \toprule
+    Property & Time Domain $x(n)$ & DFT Domain $X(k)$ \\
+    \midrule
+    Notation & $x(n)$, $y(n)$ & $X(k)$, $Y(k)$ \\
+    Periodicity & $x(n) = x(n+N)$ & $X(k) = X(k+N)$ \\
+    Linearity & $a_{1}x_{1}(n) + a_{2}x_{2}(n)$ & $a_{1}X_{1}(k) + a_{2}X_{2}(k)$ \\
+    Time Reversal & $x(N-n)$ & $X(N-k)$ \\
+    Circular Time Shifting & $x(n - n_{0} \bmod N)$ & $X(k) e^{-j 2\pi \frac{k}{N} n_{0}} $ \\
+    Circular Frequency Shift & $x(n)e^{j2\pi l n/N}$ & $X(k-l \bmod N)$ \\
+    Complex Conjugate & $X^{*}(n)$ & $X^{*}(N-k)$ \\
+    Circular Convolution & $x(n) \CircularConvolution y(n)$ & $X(k)Y(k)$ \\
+    Circular Correlation & $x(n) \CircularConvolution y^{*}(-n)$ & $X(k)Y^{*}(k)$ \\
+    2 Sequence Multiplication & $x_{1}(n)x_{2}(n)$ & $\frac{1}{N} X_{1}(k) \CircularConvolution X_{2}(k)$ \\
+    Parsevals Theorem & $\sum\limits_{n=0}^{N-1} x(n) y^{*}(n)$ & $\frac{1}{N} \sum\limits_{k=0}^{N-1} X(k)Y^{*}(k)$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Properties of the DFT}
+  \label{tab:DFT_Properties}
+\end{table}
+
+\begin{equation}\label{eq:Circular_Convolution-Simplified}
+  x_{1}(n) \CircularConvolution x_{2}(n) = \sum\limits_{k=0}^{N-1} x_{1}(k) x_{2}(n-k \bmod N)
+\end{equation}
+It is important to remember that the modulus (mod) operator yields 0 when the input is a multiple of the divisor.
+
+\begin{definition}[Decimation]\label{def:Decimation}
+  \emph{Decimation} takes an input signal and compresses it.
+  Decimation uses the symbol $D \in \PositiveInts$.
+  \begin{equation*}
+    y(m) = x(mD)
+  \end{equation*}
+
+  If decimation occurs later in the system, then if just the input and output are compared, $y(m)$ appears it was sampled at
+  \begin{equation}\label{eq:Input_Output_Decimation}
+    f = \frac{F_{S}}{D}
+  \end{equation}
+  
+  Thus, when we perform sampling on the input signal, then there is folding at
+  \begin{equation}\label{eq:Decimation_Sampling_Frequency_Change}
+    f = \frac{F_{S}}{2D}
+  \end{equation}
+\end{definition}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
