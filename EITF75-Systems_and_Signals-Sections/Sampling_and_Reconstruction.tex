@@ -107,9 +107,16 @@ Frequently, various elements in a system will have different sampling frequencie
 This means that your A/D converter and D/A converter will have different sampling frequencies.
 This could affect the output of your system, by changing the frequency characteristics through \nameref{def:Aliasing}.
 
+There are 2 main ways that an interconnection of elements in a system will affect the output:
+\begin{enumerate}[noitemsep]
+\item \nameref{subsubsec:Decimation}
+\item \nameref{subsubsec:Interpolation}
+\end{enumerate}
+
 \subsubsection{Decimation}\label{subsubsec:Decimation}
 \begin{definition}[Decimation]\label{def:Decimation}
   \emph{Decimation} takes an input signal and compresses it.
+  This effectively ``downsamples'' the signal.
   Decimation uses the symbol $D \in \PositiveInts$.
   \begin{equation*}
     y(m) = x(mD)
