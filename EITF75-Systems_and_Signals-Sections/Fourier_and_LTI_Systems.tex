@@ -24,6 +24,52 @@
   These sometimes have different values, so it is useful to differentiate between the two.
 \end{remark*}
 
+\subsubsection{Methods of Finding Magnitude Response}\label{subsubsec:Fourier_Magnitude_Response_Methods}
+There are 2 easy ways to find the \nameref{def:Fourier_Magnitude_Response}.
+\begin{enumerate}[noitemsep]
+\item Solve $H(\omega)$ or $H(f)$ and make sinusoids
+\item Multiply $H(\omega)$ or $H(f)$ by $e^{-j \omega}$ or $e^{-j 2\pi f}$ and cancel terms out
+\end{enumerate}
+
+\begin{example}[]{Find Magnitude Response-Method 2}
+  Compute the amplitude function $\lVert H(f) \rVert$?
+
+  \begin{equation*}
+    H(z) = \frac{1}{5} \left( 1 + z^{-1} + z^{-2} + z^{-3} + z^{-4} \right)
+  \end{equation*}
+
+  \tcblower{}
+
+  Substitute $z=e^{j 2\pi f}$.
+  \begin{equation*}
+    H(f) = \frac{1}{5} \left( 1 + e^{-1 j 2\pi f} + e^{-2 j 2\pi f} + e^{-3 j 2\pi f} + e^{-4 j 2\pi f} \right)
+  \end{equation*}
+
+  You could try to find a common exponential term(s) to factor out, but there this second method is easier for series of exponentials.
+  \begin{align*}
+    H(f) &= \frac{1}{5} \left( 1 + e^{-1 j 2\pi f} + e^{-2 j 2\pi f} + e^{-3 j 2\pi f} + e^{-4 j 2\pi f} \right) \\
+    e^{-j 2\pi f} H(f) &= \frac{1}{5} \left( e^{-1 j 2\pi f} + e^{-2 j 2\pi f} + e^{-3 j 2\pi f} + e^{-4 j 2\pi f} + e^{-5 j 2\pi f} \right) \\
+    H(f) - e^{-j 2\pi f} H(f) &= \Bigl( \frac{1}{5} \left( 1 + e^{-1 j 2\pi f} + e^{-2 j 2\pi f} + e^{-3 j 2\pi f} + e^{-4 j 2\pi f} \right) \Bigr) \\
+    &- \Bigl( \frac{1}{5} \left( e^{-1 j 2\pi f} + e^{-2 j 2\pi f} + e^{-3 j 2\pi f} + e^{-4 j 2\pi f} + e^{-5 j 2\pi f} \right) \Bigr) \\
+    H(f) \left( 1-e^{-j 2\pi f} \right) &= \frac{1}{5} \left( 1-e^{-5 j 2\pi f} \right) \\
+    H(f) &= \frac{1}{5} \frac{1-e^{-5 j 2\pi f}}{1-e^{-j 2\pi f}} \\
+  \end{align*}
+  Now we can factor terms out to make complex exponentials that can form sinusoids.
+  \begin{align*}
+    H(f) &= \frac{1}{5} \frac{e^{-\frac{5}{2} j 2\pi f} \left( e^{\frac{5}{2} j 2\pi f} - e^{-\frac{5}{2} j 2\pi f} \right)}{e^{-\frac{1}{2} j 2\pi f} \left( e^{\frac{1}{2} j 2\pi f} - e^{-\frac{1}{2} j 2\pi f} \right)} \\
+         &= \frac{1}{5} \frac{e^{-\frac{5}{2} j 2\pi f}}{e^{-\frac{1}{2} j 2\pi f}} \frac{2 \cos \left( \frac{5}{2} \cdot 2\pi f \right)}{2 \cos \left( \frac{1}{2} \cdot 2\pi f \right)} \\
+         &= \frac{1}{5} e^{-2 j 2\pi f} \frac{\cos(5\pi f)}{\cos(\pi f)} \\
+    \lVert H(f) \rVert &= \Biggl\lVert \frac{1}{5} e^{-2 j 2\pi f} \frac{\cos(5\pi f)}{\cos(\pi f)} \Biggr\rVert \\
+         &= \frac{1}{5} (1) \Biggl\lVert \frac{\cos(5\pi f)}{\cos(\pi f)} \Biggr\rVert \\
+         &= \frac{1}{5} \Biggl\lVert \frac{\cos(5\pi f)}{\cos(\pi f)} \Biggr\rVert \\
+  \end{align*}
+
+  Our solution is
+  \begin{equation*}
+    \lVert H(f) \rVert = \frac{1}{5} \Biggl\lVert \frac{\cos(5\pi f)}{\cos(\pi f)} \Biggr\rVert
+  \end{equation*}
+\end{example}
+
 \subsection{Phase Response}\label{subsec:Fourier_Phase_Response}
 \begin{definition}[Phase Response]\label{def:Fourier_Phase_Response}
   The \emph{phase response} of a Fourier Transform is commonly denoted as $\measuredangle H(\omega)$ or $\measuredangle H(f)$.
