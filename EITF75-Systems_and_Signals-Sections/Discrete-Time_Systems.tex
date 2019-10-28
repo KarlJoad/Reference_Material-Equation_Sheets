@@ -138,7 +138,10 @@ In order to apply some mathematical methods to discrete-time signals, we must ch
 \begin{definition}[Energy Signal]\label{def:Energy Signal}
   The energy $E$ of a signal $x(n)$ is defined as
   \begin{equation}\label{eq:Energy Signal}
-    E \equiv \sum_{n=-\infty}^{\infty} \lvert x(n) \rvert ^{2}
+    \begin{aligned}
+      E &\equiv \sum_{n=-\infty}^{\infty} \lvert x(n) \rvert^{2} \\
+      &\equiv \sum_{n=-\infty}^{\infty} x(n) x^{*}(n) \\
+    \end{aligned}
   \end{equation}
   The energy of a signal can be finite or infinite. If $E$ is finite ($0 < E < \infty$), then $x(n)$ is called an \emph{energy signal}.
 \end{definition}
