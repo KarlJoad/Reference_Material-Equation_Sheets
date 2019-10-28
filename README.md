@@ -2,6 +2,7 @@
 This repository holds the LaTeX equation sheets that Karl Hallsby made for his classes.
 These courses are both from IIT and from Lund University's LTH (Lunds Tekniska Högskola).
 To use this repository, you must `git clone` this repository to a directory.
+
 -------------------------------------------------------------------------------
 Note: You could also download this repository as a `.zip` folder, and unzip it yourself.
 However, you will not get the most up-to-date documents all the time.
