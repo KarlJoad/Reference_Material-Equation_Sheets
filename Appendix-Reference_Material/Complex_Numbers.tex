@@ -1,4 +1,74 @@
-\section{Complex Numbers} \label{app:Complex Numbers}
-	\begin{equation} \label{eq:Exponential to Rectangular}
-		A e^{-ix} = A \left[ \cos \left( x \right) + i\sin \left( x \right) \right]
-	\end{equation}
+\section{Complex Numbers}\label{app:Complex Numbers}
+Complex numbers are numbers that have both a real part and an imaginary part.
+\begin{equation}\label{eq:Complex_Number}
+  z = a \pm bi
+\end{equation}
+
+where
+\begin{equation}\label{eq:Imaginary_Value}
+  i = \sqrt{-1}
+\end{equation}
+
+\begin{remark*}[$i$ vs. $j$ for Imaginary Numbers]
+  Complex numbers are generally denoted with either $i$ or $j$.
+  Since this is an appendix section, I will denote complex numbers with $i$, to make it more general.
+  However, electrical engineering regularly makes use of $j$ as the imaginary value.
+  This is because alternating current $i$ is already taken, so $j$ is used as the imaginary value instad.
+\end{remark*}
+
+\begin{equation} \label{eq:Exponential to Rectangular}
+  A e^{-ix} = A \left[ \cos \left( x \right) + i\sin \left( x \right) \right]
+\end{equation}
+
+\subsection{Complex Conjugates}\label{app:Complex_Conjugates}
+If we have a complex number as shown below,
+\begin{equation*}
+  z = a \pm bi
+\end{equation*}
+
+then, the conjugate is denoted and calculated as shown below.
+\begin{equation}\label{eq:Complex_Conjugates}
+  \overline{z} = a \mp bi
+\end{equation}
+
+\begin{definition}[Complex Conjugate]
+  The conjugate of a complex number is called its \emph{complex conjugate}.
+  The complex conjugate of a complex number is the number with an equal real part and an imaginary part equal in magnitude but opposite in sign.
+\end{definition}
+
+The complex conjugate can also be denoted with an asterisk ($*$).
+This is generally done for complex functions, rather than single variables.
+\begin{equation}\label{eq:Complex_Conjugates_Asterisk}
+  z^{*} = \overline{z}
+\end{equation}
+
+\subsubsection{Complex Conjugates of Exponentials}\label{app:Exponential_Complex_Conjugates}
+\begin{equation}\label{eq:Exponential_Complex_Conjugates-e}
+  \overline{e^{z}} = e^{\overline{z}}
+\end{equation}
+
+\begin{equation}\label{eq:Exponential_Complex_Conjugates-log}
+  \overline{\log(z)} = \log(\overline{z})
+\end{equation}
+
+\subsubsection{Complex Conjugates of Sinusoids}\label{app:Sinusoid_Complex_Conjugates}
+Since sinusoids can be represented by complex exponentials, as shown in \Cref{subsec:Euler Equivalents}, we could calculate their complex conjugate.
+
+\begin{equation}\label{eq:Sinusoid_Complex_Conjugate-Cosine}
+  \begin{aligned}
+    \overline{\cos(x)} &= \cos(x) \\
+    &= \frac{1}{2} \left( e^{ix} + e^{-ix} \right) \\
+  \end{aligned}
+\end{equation}
+
+\begin{equation}\label{eq:Sinusoid_Complex_Conjugate-Sine}
+  \begin{aligned}
+    \overline{\sin(x)} &= \sin(x) \\
+    &= \frac{1}{2i} \left( e^{ix} - e^{-ix} \right) \\
+  \end{aligned}
+\end{equation}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: shared
+%%% End:
