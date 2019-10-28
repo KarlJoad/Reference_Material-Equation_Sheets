@@ -169,7 +169,7 @@ and, because of matrix inversion, we can express the $N$-point \nameref{def:IDFT
   \mathbf{x}_{N}(n) = \mathbf{W}_{N}^{-1} \mathbf{X}_{N}(k)
 \end{equation}
 
-$\mathbf{x}_{N}(n)$ can also be expressed as the \nameref{def:IDFT} with \Cref{eq:IDFT_Matrix_Complex_Conjugate}
+Because $W_{N}$ is a complex-valued matrix, $\mathbf{x}_{N}(n)$ can also be expressed as the \nameref{def:IDFT} with \Cref{eq:IDFT_Matrix_Complex_Conjugate}
 \begin{equation}\label{eq:IDFT_Matrix_Complex_Conjugate}
   \mathbf{x}_{N}(n) = \frac{1}{N} \mathbf{W}_{N}^{*} \mathbf{X}_{N}(k)
 \end{equation}
@@ -184,13 +184,13 @@ The duality presented from \Crefrange{eq:IDFT_Matrix_Inverted_W_Matrix}{eq:IDFT_
 where $\mathbf{I}_{N}$ is an $N \times N$ identity matrix.
 
 \subsection{Properties of the Discrete Fourier Transform}\label{subsec:DFT_Properties}
-With the \nameref{def:DFT}, the usual properties do not apply.
+With the \nameref{def:DFT}, the properties that we have grown used to do not apply.
 \begin{itemize}[noitemsep]
 \item $x(n) * y(n) \neq X(k)Y(k)$
 \item $x(n-n_{0}) \nleftrightarrow X(k) e^{j 2\pi \frac{k}{N} n_{0}}$
 \end{itemize}
+They must be modified for the circular nature of our new transformation.
 
-These have to be modified instead.
 \begin{table}[h!]
   \centering
   \begin{tabular}{ccc}
@@ -260,6 +260,10 @@ The definition of time shifting needs to be modified from the definition of time
   \end{equation}
 
   The modulus is because the signal is now circular.
+
+  \begin{remark}
+    This is closely related to \Cref{subsubsec:Z-Transform Time Shifting} and \Cref{subsubsec:FourierTransformProperties-TimeShifting}.
+  \end{remark}
 \end{definition}
 
 \subsubsection{Circular Frequency Shift}\label{subsubsec:DFT_Properties-Circular_Frequency_Shift}
@@ -272,7 +276,7 @@ then
   x(n)e^{j 2\pi l n/N} \DFTRelation X((k-l) \bmod N)
 \end{equation}
 
-Hence, the multiplication of the sequence $x(n)$ with the complex exponential sequence $e^{k 2\pi k n/N}$ is equivalent to the circular shift of the \nameref{def:DFT} by $l$ unitus in frequency.
+Hence, the multiplication of the sequence $x(n)$ with the complex exponential sequence $e^{k 2\pi k n/N}$ is equivalent to the circular shift of the \nameref{def:DFT} by $l$ units in frequency.
 This is the dual to the \nameref{subsubsec:DFT_Properties-Circular_Time_Shifting} property.
 
 \subsubsection{Complex Conjugate}\label{subsubsec:DFT_Properties-Complex_Conjugate}
@@ -313,11 +317,12 @@ therefore,
 
   \begin{remark}[Alternate Circular Convolution Symbol]
     There is no single defined symbol for \nameref{def:Circular_Convolution}s and \nameref{def:Linear_Convolution}s.
-    In this text, and personally, I use the $\CircularConvolution$ symbol.
-    However, other texts may use:
+    In this text, and personally, I use the $\CircularConvolution$ symbol, however, I occasionally use the $\otimes$ symbol.
+    However, other texts may use (In order of likelihood):
     \begin{enumerate}[noitemsep]
-    \item $\otimes$
     \item $\textcircled{N}$
+    \item $\circledast$
+    \item $\otimes$
     \item $*$
     \item $\cdot$ (Centered Dot)
     \item $\bullet$
@@ -392,7 +397,7 @@ therefore,
 \end{example}
 
 \begin{remark*}
-  Personally, I use Method 2 shown in \Cref{ex:Circular Convolution} to calculate \nameref{def:Circular_Convolution}s by hand.
+  Personally, I use Method 1 shown in \Cref{ex:Circular Convolution} to calculate \nameref{def:Circular_Convolution}s by hand.
 \end{remark*}
 
 \subsubsection{Circular Correlation}\label{subsubsec:DFT_Properties-Circular_Correlation}
@@ -440,7 +445,10 @@ then
 
 If $x(n) = y(n)$
 \begin{equation}\label{eq:DFT_Properties-Parsevals_Theorem-Magnitude}
-  \sum\limits_{n=0}^{N-1}x(n) x^{*}(n) = \sum\limits_{n=0}^{N-1} \lVert x(n) \rVert^{2} = \frac{1}{N} \sum\limits_{k=0}^{N-1} X(k)X^{*}(k) = \frac{1}{N} \sum\limits_{k=0}^{N-1} \lVert X(k) \rVert^{2}
+  \begin{aligned}
+    \sum\limits_{n=0}^{N-1}x(n) x^{*}(n) &= \frac{1}{N} \sum\limits_{k=0}^{N-1} X(k)X^{*}(k) \\
+    \sum\limits_{n=0}^{N-1} \lVert x(n) \rVert^{2} &= \frac{1}{N} \sum\limits_{k=0}^{N-1} \lVert X(k) \rVert^{2} \\
+  \end{aligned}
 \end{equation}
 
 \subsection{Application of the Discrete Fourier Transform}\label{subsec:DFT_Application}
@@ -490,7 +498,7 @@ The steps to perform \nameref{subsubsec:DFT_Application-Overlap_Add} are:
   \end{itemize}
 \item Take the first $L$ terms of $y(n)$ and make that your real output $z(n)$
 \item Save the other $M-1$ terms in memory (leftovers), call this $\ell_{a}(n)$
-\item Take the next block, find $y_{a+1}(n)$, and add $\ell_{a}(n)$ to the output of the next block's $y_{a+1}(n)$
+\item Take the next block, find $y_{a+1}(n)$, and add $\ell_{a}(n)$ to the output of the next block, $y_{a+1}(n)$
   \begin{enumerate}[noitemsep]
   \item The first term of $\ell_{a}(n)$, while not the first term from block $a$, is now the first term when adding it to $y_{a+1}(n)$.
   \item Perform element-wise addition.
@@ -521,7 +529,7 @@ The steps to perform \nameref{subsubsec:DFT_Application-Overlap_Add} are:
 
 The trick for \nameref{subsubsec:DFT_Application-Overlap_Add} is to get each block's convolution and multiplication fast enough, and it becomes efficient.
 To make it fast enough, $N$ should be a power of 2 ($2^{k}$).
-This turns the calculation of the \nameref{def:DFT}s into \nameref{def:FFT}s, which are really fast.
+This turns the calculation of the \nameref{def:DFT}s into \nameref{def:FFT}s, which are really fast (relatively speaking).
 Then multiplication, while lengthy, is a singular operation, unlike convolutions which are many.
 Because we zero-pad smartly, while we are technically calculating the \nameref{def:Circular_Convolution} of the signal, we are actually performing the \nameref{def:Linear_Convolution}.
 
@@ -555,6 +563,8 @@ The steps to perform \nameref{subsubsec:DFT_Application-Overlap_Save} are:
 \end{enumerate}
 
 \subsubsection{Overlap-Discard}\label{subsubsec:DFT_Application-Overlap_Discard}
+This was not discussed in this class and is not necessary to pass the course or take the course's exam.
+Thus, this section will \textbf{NOT} be completed.
 
 %%% Local Variables:
 %%% mode: latex
