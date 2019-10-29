@@ -61,7 +61,7 @@
   \label{tab:Common Z-Transforms}
 \end{table}
 
-\subsection{Properties of the \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:Z-Transform Properties}
+ \subsection{Properties of the \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:Z-Transform Properties}
 \begin{table}[h!]
   \centering
   \begin{tabular}{p{4cm}ccp{5cm}}
@@ -89,6 +89,23 @@
   \caption{Z-Transform Properties}
   \label{tab:Z-Transform Properties}
 \end{table}
+
+\subsection{One-Sided \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}
+The \emph{one-sided $z$-transform} is the same as the \nameref{def:Z-Transform}, but is only defined at $n$ values greater than or equal to 0.
+\begin{equation}\label{eq:One-Sided Z-Transform}
+  X(z) \equiv \sum_{n=0}^{\infty} x(n)z^{-n}
+\end{equation}
+
+\subsubsection{Time Delay}\label{subsubsec:One-Sided_Z-Transform_Properties-Time_Delay}
+If
+\begin{equation*}
+  x(n) \OneSideZTransformRelation X^{+}(z)
+\end{equation*}
+then
+\begin{equation}\label{eq:One-Sided_Z-Transform_Properties-Time_Delay}
+  x(n-k) \OneSideZTransformRelation z^{-k} \left[ X^{+}(z) + \sum\limits_{n=1}^{k}x(-n)z^{n} \right], \:\:\: k>0
+\end{equation}
+
 
 \section{DTFT}
 \begin{equation}\label{eq:1}

@@ -89,6 +89,9 @@ The \nameref{def:Z-Transform} plays the same role in the analysis of \nameref{de
 The \nameref{def:One-Sided Z-Transform} is generally used when there are initial conditions on a causal signal.
 This captures the normal causal portion of the signal, while also showing the effect of the initial condition.
 
+\paragraph{Application of \nameref{subsubsec:One-Sided Z-Transform}}\label{par:Application_One_Sided_Z_Transform}
+
+
 \subsection{The Inverse \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:Inverse Z-Transform}
 This is the formal definition of \nameref{subsec:Inverse Z-Transform}.
 \begin{equation}\label{eq:Inverse Z-Transform}
@@ -389,6 +392,26 @@ If $x(n)$ is \emph{causal} [i.e., $x(n)=0$ for $n<0$], then
 
 \subsection{Properties of the One-Sided \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{subsec:One-Sided Z-Transform Properties}
 \textbf{TODO}
+
+\subsubsection{Time Delay}\label{subsubsec:One-Sided_Z-Transform_Properties-Time_Delay}
+If
+\begin{equation*}
+  x(n) \OneSideZTransformRelation X^{+}(z)
+\end{equation*}
+then
+\begin{equation}\label{eq:One-Sided_Z-Transform_Properties-Time_Delay}
+  x(n-k) \OneSideZTransformRelation z^{-k} \left[ X^{+}(z) + \sum\limits_{n=1}^{k}x(-n)z^{n} \right], \:\:\: k>0
+\end{equation}
+
+\subsubsection{Time Advance}\label{subsubsec:One-Sided_Z-Transform_Properties-Time_Advance}
+If
+\begin{equation*}
+  x(n) \OneSideZTransformRelation X^{+}(z)
+\end{equation*}
+then
+\begin{equation}\label{eq:One-Sided_Z-Transform_Properties-Time_Advance}
+  x(n+k) \OneSideZTransformRelation z^{k} \left[ X^{+}(k) - \sum\limits_{n=0}^{k-1}x(n) z^{-n} \right], \:\:\: k>0
+\end{equation}
 
 \subsection{Rational \texorpdfstring{$\ZTransform$-Transforms}{Z-Transform}}\label{subsec:Rational Z-Transforms}
 An important family of $z$-transforms are those for which $X(z)$ is a rational function, a ratio of two polynomials in $z^{-1}$ (or $z$).
