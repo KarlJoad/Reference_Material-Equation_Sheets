@@ -1,0 +1,231 @@
+\section{Language Critique}\label{sec:Language_Critique}
+There are several very open-ended questions that need to be asked when categorizing and critiqueing languages:
+\begin{enumerate}[noitemsep]
+\item What programming language is best for \emph{what task}?
+\item \emph{What criteria} do we measure?
+  \begin{itemize}[noitemsep]
+  \item Most criteria do not have good measurement tools.
+  \end{itemize}
+
+\item \emph{How} do we obtain measurements for these criteria?
+\end{enumerate}
+
+These are all qualities of:
+\begin{itemize}[noitemsep]
+\item The language
+\item The language implementation(s)
+\item The available tooling for the language and that particular implementation
+\item The available libraries for the language and that particular implementation
+\item Other infrastructure
+  \begin{itemize}[noitemsep]
+  \item User groups
+  \item Books
+  \item etc.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    & \multicolumn{3}{c}{Criteria} \\
+    \midrule
+    Characteristic & \nameref{subsec:Readability} & \nameref{subsec:Writability} & \nameref{subsec:Reliability} \\
+    \midrule
+    \nameref{subsubsec:Simplicity} & \checkmark{} & \checkmark{} &  \checkmark{} \\
+    \nameref{subsubsec:Orthogonality} & \checkmark{} & \checkmark{} & \checkmark{} \\
+    \nameref{subsubsec:Data_Types} & \checkmark{} & \checkmark{} & \checkmark{} \\
+    \nameref{subsubsec:Syntax_Design} & \checkmark{} & \checkmark{} & \checkmark{} \\
+    \midrule
+    \nameref{subsubsec:Abstraction_Support} & & \checkmark{} & \checkmark{} \\
+    \nameref{subsubsec:Expressivity} & & \checkmark{} & \checkmark{} \\
+    \midrule
+    \nameref{subsubsec:Type_Checking} & & & \checkmark{} \\
+    \nameref{subsubsec:Exception_Handling} & & & \checkmark{} \\
+    Restricted \nameref{subsubsec:Aliasing} & & & \checkmark{} \\
+    \bottomrule
+  \end{tabular}
+  \caption[Language Evaluation Criteria]{Language Evaluation Criteran and the Characteristics that Affect Them}
+  \label{tab:Language_Evaluation_Criteria}
+\end{table}
+
+\subsection{Readability}\label{subsec:Readability}
+\begin{definition}[Readability]\label{def:Readability}
+  \emph{Readability} is how easily a program can be read and understood \emph{by a human}.
+  Some languages do not support certain functions, but programmers try to make the language do what it is not designed to do.
+  This will lead to complicated and difficult-to-read programs.
+  
+  The idea of program readability was first presented as the software life-cycle concept~\parencite{Booch1987}.
+  The initial coding was downplayed compared to earlier, and the maintenance and improvement of the code was brought to the forefront.
+\end{definition}
+
+\subsubsection{Simplicity}\label{subsubsec:Simplicity}
+There are 2 main factors and 1 minor factor for a language's simplicity:
+\begin{enumerate}[noitemsep]
+\item The number of features present in the language.
+\item The \nameref{def:Feature_Multiplicity} of a language.
+\item The ability to \nameref{def:Overload_Operator}s.
+\end{enumerate}
+
+Assembly language is on the most-simple end of the simplicity spectrum.
+In assembly, the form and meaning of most statements are incredibly simple, but without more complex control statements, the program's structure is less obvious.
+
+\begin{definition}[Feature Multiplicity]\label{def:Feature_Multiplicity}
+  \emph{Feature multiplicity} is when there is more than one way to accomplish a particular operation with language built-in features.
+  For example, in Java these are all equivalent when evaluated as standalone expressions:
+  \begin{enumerate}[noitemsep]
+  \item \texttt{count = count + 1}
+  \item \texttt{count += 1}
+  \item \texttt{count++}
+  \item \texttt{++count}
+  \end{enumerate}
+\end{definition}
+
+\begin{minted}[frame=lines,linenos]{python3}
+def d(x):
+    r = x[::-1]
+    return x == r
+\end{minted}
+
+\begin{definition}[Overload Operator]\label{def:Overload_Operator}
+  An \emph{overloaded operator} is one where a single symbol has more than one meaning.
+  For example the \texttt{+} operator can be overloaded to add 2 integers, 2 floating-point numbers, or an integer and a floating-point number.
+  This overloading helps \emph{improve} the \nameref{subsubsec:Simplicity} of a language.
+\end{definition}
+
+\begin{minted}[frame=lines,linenos]{python3}
+x = 3 + 4  # Evaluates to 7
+y = 3.0 + 4.0  # Evaluates to 7.0
+z = 3 + 4.0  # Evaluates to 7.0
+\end{minted}
+
+\subsubsection{Orthogonality}\label{subsubsec:Orthogonality}
+\begin{definition}[Orthogonality]\label{def:Orthogonality}
+  \emph{Orthogonality} in a programming language means that a relatively small set of primitive constructs can be combined in a relatively small number of ways to build the control and data structures of a language.
+  Additionally, every possible combination of primitives is legal and meaningful.
+
+  The more orthogonal a language, the fewer exceptions to the language rules there can be.
+  These fewer exceptions means there is a higher degree of regularity in the language design, making it easier to learn, read, and understand.
+
+  \begin{remark}[Over-Orthogonality]\label{rmk:Over_Orthogonality}
+    Too much orthogonality can cause problems.
+    Having too much combinational freedom with primitive constructs and their combinations can make for an extremely complex compound construct.
+    This leads to unnecessary complexity.
+  \end{remark}
+\end{definition}
+
+\begin{minted}[frame=lines,linenos]{c}
+// global variable section
+
+float f1 = 2.0f * 2.0f;
+float f2 = sqrt(2.0f); // error
+\end{minted}
+
+\subsubsection{Data Types}\label{subsubsec:Data_Types}
+The use of data types conveys intent when reading and writing the program.
+For example, a boolean data type conveys a true/false value better than an integer that is 1/0 for true/false respectively.
+\begin{itemize}[noitemsep]
+\item \texttt{timeOut = 1}
+\item \texttt{timeOut = true}
+\end{itemize}
+
+\begin{minted}[frame=lines,linenos]{java}
+enum Color {
+  Red, Green, Blue
+};
+
+Color c = readColorFromUser();
+\end{minted}
+
+\subsubsection{Syntax Design}\label{subsubsec:Syntax_Design}
+There are 2 main syntactic design choices that affect \nameref{subsec:Readability}:
+\begin{enumerate}[noitemsep]
+\item \nameref{par:Reserved_Words}
+\item \nameref{par:Syntax_Form_Meaning}
+\end{enumerate}
+
+\paragraph{Reserved/Special Words}\label{par:Reserved_Words}
+\begin{definition}[Reserved Word]\label{def:Reserved_Word}
+  \emph{Reserved word}s are words that are reserved by the language constructors because those particular words have a meaning in the language.
+  For example:
+  \begin{itemize}[noitemsep]
+  \item \texttt{while}
+  \item \texttt{class}
+  \item \texttt{for}
+  \end{itemize}
+\end{definition}
+
+There are also special words and matching characters that can denote groups of instructions.
+\begin{itemize}[noitemsep]
+\item C and its decendants
+  \begin{itemize}[noitemsep]
+  \item Matching brances
+  \item \texttt{\{} and \texttt{\}}
+  \end{itemize}
+\item Ada/Fortran 95 and their decendants:
+  \begin{itemize}[noitemsep]
+  \item Distinct closing syntax for each statement group
+  \item \texttt{end if} to end an if statement
+  \end{itemize}
+\end{itemize}
+
+Also, can these \nameref{def:Reserved_Word}s be used as names for program variables?
+If so, this will increase overall complexity of a program.
+The code block below, from Fortran 95, illustrates this point.
+\begin{minted}[frame=lines,linenos]{fortran}
+program hello
+  implicit none
+  integer end, do
+  do = 0
+  end = 10
+  do do=do, end
+    print *,do
+  end do
+end program hello
+\end{minted}
+
+\paragraph{Form and Meaning}\label{par:Syntax_Form_Meaning}
+Statements should be designed such that their appearance partially indicates what their purpose is.
+For example, the UNIX command \texttt{grep} gives no hint at what it is supposed to do, unless you know the text editor \texttt{ed}.
+
+Semantics, or meaning, should follow directly from syntax or form.
+In some cases, this principle is violated by 2 language constructs that are identical or similar in appearance, but different in meaning, depending on the context.
+For example, C's \texttt{static} \nameref{def:Reserved_Word}s.
+
+\subsection{Writability}\label{subsec:Writability}
+\subsubsection{\nameref{subsubsec:Simplicity} and \nameref{subsubsec:Orthogonality}}\label{subsubsec:Written_Simplicity_Orthogonality}
+\subsubsection{Support for Abstraction}\label{subsubsec:Abstraction_Support}
+\begin{definition}[Abstraction]\label{def:Abstraction}
+  \emph{Abstraction} is the ability to define and then use complicated structures or operations in ways that allow many of the details to be ignored.
+  This is a key concept in modern programming language design.
+
+  There are 2 categories of abstraction:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{par:Process_Abstraction}
+  \item \nameref{par:Data_Abstraction}
+  \end{enumerate}
+\end{definition}
+
+\paragraph{Process Abstraction}\label{par:Process_Abstraction}
+Process abstraction is the use of a subprogram to implement some block of code used multiple times.
+For example, a sorting algorithm.
+If the code for the algorithm could not be factored out into a separate piece of code, the algorithm would need to be copied everywhere it was used.
+This would lead to additional complexity and reduce the \nameref{subsec:Readability} of the code.
+
+\paragraph{Data Abstraction}\label{par:Data_Abstraction}
+For example, representing a binary tree in C++/Java is done by making a tree node class that has 2 pointers and an integer.
+This abstraction is more natural to think about than what would need to be done in Fortran 77.
+In Fortran 77, there would need to be 3 parallel integer arrays, where 2 of the integers in each array would be used as subscripts to find their children.
+
+\subsubsection{Expressivity}\label{subsubsec:Expressivity}
+
+\subsection{Reliability}\label{subsec:Reliability}
+\subsubsection{Type Checking}\label{subsubsec:Type_Checking}
+\subsubsection{Exception Handling}\label{subsubsec:Exception_Handling}
+\subsubsection{Aliasing}\label{subsubsec:Aliasing}
+\subsubsection{\nameref{subsec:Readability} and \nameref{subsec:Writability}}\label{subsubsec:Reliable_Readability_and_Writability}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
