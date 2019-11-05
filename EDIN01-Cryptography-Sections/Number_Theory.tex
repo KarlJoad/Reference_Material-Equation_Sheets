@@ -1,0 +1,271 @@
+\section{Number Theory}\label{sec:Number_Theory}
+Before we can start with any of the deeper cryptography stuff, we need to start with some basic number theory.
+\begin{definition}[Number Theory]\label{def:Number_Theory}
+  \emph{Number theory} is a branch of pure mathematics devoted primarily to the study of the integers and integer-valued functions.
+  Number theorists study prime numbers as well as the properties of objects made out of integers (for example, rational numbers) or defined as generalizations of the integers (for example, algebraic integers).
+\end{definition}
+
+\begin{definition}[Divides]\label{def:Divides}
+  For $a, b \in \AllIntegers$, we say that $a$ \emph{divides} $b$ (written $a \divides b$) if there exists an integer $c$ such that $b = ac$.
+
+  Properties:
+  \begin{propertylist}
+  \item $a \divides a$
+  \item If $a \divides b$ and $b \divides c$, then $a \divides c$.
+  \item If $a \divides b$ and $a \divides c$, then $a \divides (bx + cy)$ for any $x, y \in \AllIntegers$.
+  \item If $a \divides b$ and $b \divides a$, then $a = \pm b$.
+  \end{propertylist}
+\end{definition}
+
+\subsection{Quotient and Remainder}\label{subsec:Quotient_and_Remainder}
+For $a, b \in \AllIntegers$, with $b \geq 1$.
+Then an ordinary long division of $a$ by $b$, i.e. $a \div b$ yields two integers $q$ and $r$ such that
+\begin{equation}\label{eq:Quotient_and_Remainder}
+  a = qb + r, \text{where } 0 \leq r < b
+\end{equation}
+
+$q$ and $r$ are called the \nameref{def:Quotient} and \nameref{def:Remainder}, respectively, and are \textbf{unique}.
+
+\begin{definition}[Quotient]\label{def:Quotient}
+  The \emph{quotient}, $q$, of $a$ divided by $b$ is denoted $a \DIV b$.
+\end{definition}
+
+\begin{definition}[Remainder]\label{def:Remainder}
+  The \emph{remainder}, $r$, of $a$ divided by $b$ is denoted $a \bmod b$.
+\end{definition}
+
+\begin{example}[]{Quotient and Remainder}
+  If $a=53$ and $b=9$, what is $a \bmod b$?
+
+  \tcblower{}
+
+  \begin{align*}
+    53 &= q9 + r \\
+    q &= 5 \\
+    r &= 8
+  \end{align*}
+\end{example}
+
+\subsection{Greatest Common Divisor}\label{subsec:Greatest_Common_Divisor}
+\begin{definition}[Common Divisor]\label{def:Common_Divisor}
+  An integer $c$ is a \emph{common divisor} of $a$ and $b$ if $c \divides a$ and $c \divides b$.
+\end{definition}
+
+\begin{definition}[Greatest Common Divisor]\label{def:GCD}
+  A non-negative integer $d$ is called the \emph{greatest common divisor} (\emph{GCD}) of integers $a$ and $b$ if:
+  \begin{enumerate}[noitemsep]
+  \item $d$ is a \nameref{def:Common_Divisor} of $a$ and $b$.
+  \item For every other common divisor $c$ it holds that $c \divides d$.
+  \end{enumerate}
+
+  The greatest common divisor is denoted
+  \begin{equation}\label{eq:GCD}
+    \gcd(a, b)
+  \end{equation}
+
+  $\gcd(a,b)$ is the \textbf{largest positive} integer dividing both $a$ and $b$ (except for $\gcd(0,0)=0$).
+  
+  \begin{remark}
+    If $a, b \in \PositiveInts$, then $\lcm(a, b) \cdot \gcd(a, b) = a \cdot b$
+  \end{remark}
+\end{definition}
+
+\begin{example}[]{Greatest Common Divisor}
+  What is the $\gcd(18, 24)$?
+
+  \tcblower{}
+
+  Common Divisors = $\lbrace \pm 1, \pm 2, \pm 4, \pm 6 \rbrace$.
+
+  Since we can only allow positive integers,
+  \begin{equation*}
+    \gcd(18, 24) = +6
+  \end{equation*}
+\end{example}
+
+\subsection{Least Common Multiple}\label{subsec:Least_Common_Multiple}
+\begin{definition}[Least Common Multiple]\label{def:LCM}
+  A non-negative integer $d$ is called the \emph{least common multiple} (\emph{LCM}) of integers $a$ and $b$ if:
+  \begin{enumerate}[noitemsep]
+  \item $a \divides d$ and $b \divides d$
+  \item For every integer $c$ such that $a \divides c$ and $b \divides c$, we have $d \divides c$.
+  \end{enumerate}
+
+  The least common multiple is denoted
+  \begin{equation}\label{eq:LCM}
+    \lcm(a, b)
+  \end{equation}
+
+  $\lcm(a, b)$ is the \textbf{smallest positive} integer divisible by both $a$ and $b$.
+
+  \begin{remark}
+    If $a, b \in \PositiveInts$, then $\lcm(a, b) \cdot \gcd(a, b) = a \cdot b$
+  \end{remark}
+\end{definition}
+
+\subsection{Primality}\label{subsec:Primality}
+\begin{definition}[Relatively Prime]\label{def:Relatively_Prime}
+  $a, b$ are called \emph{relatively prime} if $\gcd(a, b) = 1$.
+\end{definition}
+
+\begin{definition}[Prime]\label{def:Prime}
+  An integer $p \geq 2$ is called \emph{prime} if its only positive divisors are $1$ and $p$.
+  Otherwise, $p$ is called a \emph{\nameref{def:Composite}}.
+\end{definition}
+
+\begin{definition}[Composite]\label{def:Composite}
+  An integer $p \geq 2$ is called \emph{composite} if it has more positive divisors than just $1$ and $p$.
+  Otherwise, $p$ is called a \emph{\nameref{def:Prime}}.
+\end{definition}
+
+\subsubsection{Number of Primes}\label{subsubsec:Number_of_Primes}
+The number of primes $\leq x$ is denoted
+\begin{equation}\label{eq:Number_of_Primes}
+  \pi(x)
+\end{equation}
+\begin{enumerate}[noitemsep]
+\item There are infinitely many primes
+\item $\lim\limits_{x \rightarrow \infty} \frac{\pi(x)}{\frac{x}{\ln(x)}} = 1$
+\item For $x \geq 17$, $\frac{x}{\ln(x)} < \pi(x) < \frac{1.25506x}{\ln(x)}$
+\end{enumerate}
+
+\subsection{Unique Factorization}\label{subsec:Unique_Factorization}
+\begin{theorem}[Unique Factorization Theorem]\label{thm:Unique_Factorization_Theorem}
+  Every integer $n \geq 2$ can be written as a product of prime powers,
+  \begin{equation*}
+    n = p_{1}^{e_{1}} p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}
+  \end{equation*}
+  where $p_{1}, p_{2}, \ldots p_{k}$ are distinct primes and $e_{1}, e_{2}, \ldots e_{k}$ are positive integers.
+  Furthermore, the factorization is unique up to rearrangement of the factors.
+\end{theorem}
+
+\subsubsection{\nameref{def:GCD} and \nameref{def:LCM} with Unique Factors}\label{subsubsec:GCD_LCM_Unique_Factors}
+If $a = p_{1}^{e_{1}} p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$ and $b = p_{1}^{f_{1}} p_{2}^{f_{2}} \cdots p_{k}^{e_{k}}$, where $e_{i}, f_{i}, i = 1, 2, \ldots k$ are non-negative integers, then
+\begin{equation}\label{eq:GCD_Unique_Factors}
+  \gcd(a, b) = p_{1}^{\min(e_{1}, f_{1})} p_{2}^{\min(e_{2}, f_{2})} \cdots p_{k}^{\min(e_{k}, f_{k})}
+\end{equation}
+and
+\begin{equation}\label{eq:LCM_Unique_Factors}
+  \lcm(a, b) = p_{1}^{\max(e_{1}, f_{1})} p_{2}^{\max(e_{2}, f_{2})} \cdots p_{k}^{\max(e_{k}, f_{k})}
+\end{equation}
+
+\subsection{Euler Phi Function}\label{subsec:Euler_Phi_Function}
+\begin{definition}[Euler Phi Function]\label{def:Euler_Phi_Function}
+  For $n \geq 1$, let $\phi(n)$ denote the number of integers in the interval $[1, n]$, which are \nameref{def:Relatively_Prime} to $n$.
+  This function is called the \emph{Euler Phi Function}.
+\end{definition}
+\begin{theorem}[Euler Phi Function]\label{thm:Euler_Phi_Function}
+  There are a few properties of the \nameref{def:Euler_Phi_Function} that we will treat as true because of this theorem.
+  \begin{enumerate}[noitemsep]
+  \item If $p$ is a \nameref{def:Prime}, then $\phi(p) = p - 1$.
+  \item If $\gcd(a, b) = 1$, then $\phi(ab) = \phi(a) \phi(b)$.
+  \item If $n = p_{1}^{e_{1}} p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$, then
+    \begin{equation*}
+      \phi(n) = \left( p_{1}^{e_{1}} - p_{1}^{e_{1}-1} \right) \left( p_{2}^{e_{2}} - p_{2}^{e_{2}-1} \right) \cdots \left( p_{k}^{e_{k}} - p_{k}^{e_{k}-1} \right)
+    \end{equation*}
+  \end{enumerate}
+\end{theorem}
+
+\begin{lemma}[Computing the \nameref{def:GCD}]\label{lemma:Compute_GCD}
+  If $a$ and $b$ are positive integers where $a > b$, then
+  \begin{equation}\label{eq:Compute_GCD}
+    \gcd(a, b) = \gcd(b, a \bmod b)
+  \end{equation}
+  \begin{remark*}
+    This can be repeated to efficiently calculate the $\gcd(a, b)$.
+    This is called the \nameref{def:Euclidean_Algorithm}.
+  \end{remark*}
+\end{lemma}
+
+\begin{definition}[Euclidean Algorithm]\label{def:Euclidean_Algorithm}
+  The \emph{euclidean algorithm} is a way to efficiently calculate the $\gcd(a, b)$.
+  \begin{enumerate}[noitemsep]
+  \item Set $r_{0} \leftarrow a, r_{1} \leftarrow b, i \leftarrow 1$.
+  \item While $r_{i} \neq 0$ do:
+    \begin{enumerate}[noitemsep]
+    \item Set $r_{i+1} \leftarrow r_{i-1} \bmod r_{i}, i \leftarrow i+1$
+    \end{enumerate}
+  \item Return $r_{i}$
+  \end{enumerate}
+\end{definition}
+
+\begin{example}{Euclidean Algorithm}
+  Find the \nameref{def:GCD} of 147 and 273?
+
+  \tcblower{}
+
+  \begin{align*}
+    273 = 1 \cdot 147 + 126 &\Rightarrow \gcd(126, 147) \\
+    147 = 1 \cdot 126 + 21 &\Rightarrow \gcd(21, 126) \\
+    126 = 6 \cdot 21 + 0 &\Rightarrow \gcd(21, 126) \\
+  \end{align*}
+
+  Thus, since $6 \cdot 21 = 126$, 21 is the \nameref{def:GCD} of 147 and 273.
+\end{example}
+
+\begin{theorem}
+  There exist integers $x, y$ such that $\gcd(a, b)$ can be written as
+  \begin{equation}\label{eq:Extended_Euclidean_Algorithm_Basis}
+    \gcd(a, b) = ax + by
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  \begin{align*}
+    \gcd(a, b) &= r_{i} \\
+               &= r_{i-2} - q_{i-1}r_{i-1} \\
+               &= r_{i-2} - q_{i-1}(r_{i-3} - q_{i-2}r_{i-2}) \\
+               &\vdots \\
+               &= r_{0}x + r_{1}y \\
+               &= ax + by
+  \end{align*}
+  for some integers $x, y \in \AllIntegers$.
+\end{proof}
+
+This means that the \nameref{def:Euclidean_Algorithm} can be extended to return the values of $x$ and $y$ from \Cref{eq:Extended_Euclidean_Algorithm_Basis}.
+
+\subsection{The Integers modulo $n$}\label{subsec:Integer_Modulo_n}
+Let $n$ be a positive integer.
+If $a$ and $b$ are integers, then \emph{$a$ is said to be congruent to $b$ modulo $n$}, which is written as
+\begin{equation}\label{eq:A_Congruent_B}
+  a \equiv b \pmod{n}
+\end{equation}
+
+If $n$ divides $(a-b)$, i.e. $n \divides (a-b)$, then we call $n$ the \emph{modulus} of the congruence.
+
+\begin{theorem}
+  For $a, a_{1}, b, b_{1}, c\in \AllIntegers$, we have
+  \begin{propertylist}
+  \item $a \equiv b \pmod{n}$ \emph{if and only if} $a$ and $b$ leave the same \nameref{def:Remainder} when divided by $n$.
+  \item $a \equiv a \pmod{n}$ \label{prop:A_Congruent_B_Reflexivity}
+  \item If $a \equiv b \pmod{n}$, then $b \equiv a \pmod{n}$ \label{prop:A_Congruent_B_Symmetry}
+  \item If $a \equiv b \pmod{n}$ adn $b \equiv c \pmod{n}$, then $a \equiv c \pmod{n}$ \label{prop:A_Congruent_B_Transitivity}
+  \item If $a \equiv a_{1} \pmod{n}$ and $b \equiv b_{1} \pmod{n}$, then $a+b = a_{1} + b_{1} \pmod{n}$ and $ab = a_{1}b_{1} \pmod{n}$.
+  \end{propertylist}
+
+  The \crefrange{prop:A_Congruent_B_Reflexivity}{prop:A_Congruent_B_Transitivity} are called \emph{reflexivity}, \emph{symmetry}, and \emph{transitivity}, respectively.
+\end{theorem}
+
+\subsection{Equivalence Classes}\label{subsec:Equivalence_Classes}
+\begin{definition}[Equivalence Class]\label{def:Equivalence Class}
+  Congruence modulo $n$ partitions $\AllIntegers$ into $n$ sets, called \emph{equivalence class}es, where each integer belongs to exactly one equivalence class.
+
+  For example, these are all congruent to each other modulo $n$:
+  \begin{subequations}\label{eq:Equivalence_Class}
+    \begin{equation}\label{subeq:Equivalence_Class_Remainder_0}
+      \lbrace \ldots, -2n, -n,\, 0, n, 2n, \ldots \rbrace
+    \end{equation}
+    \begin{equation}\label{subeq:Equivalence_Class_Remainder_1}
+      \lbrace \ldots -2n + 1, -n+1,\, 1, n+1, 2n+1 \ldots \rbrace
+    \end{equation}
+  \end{subequations}
+
+  Since all elements in an equivalent class have the same \nameref{def:Remainder}, $r$, we use $r$ as a \emph{represenatative} for the equivalence class.
+  \begin{remark}
+    In this case, the representatives of the equivalence classes shown in \Crefrange{subeq:Equivalence_Class_Remainder_0}{subeq:Equivalence_Class_Remainder_1} are 0 and 1, respectively.
+  \end{remark}
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
+%%% End:
