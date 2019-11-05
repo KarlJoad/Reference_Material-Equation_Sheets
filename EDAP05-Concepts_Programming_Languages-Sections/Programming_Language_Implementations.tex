@@ -1,0 +1,171 @@
+\section{Programming Language Implementations}\label{sec:Lang_Implementations}
+There are 3 main ways for a programming language to be implemented:
+\begin{enumerate}[noitemsep]
+\item \nameref{subsec:Interpretation}
+\item \nameref{subsec:Compilation}
+\item \nameref{subsec:Hybrid_Implementation}
+\end{enumerate}
+
+There are benefits and drawbacks for each of these implementations:
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    Property & \nameref{subsec:Interpretation} & \nameref{subsec:Compilation} & \nameref{subsec:Hybrid_Implementation} \\
+    \midrule
+    Execution Performance & Slow & Fast & Fast \\
+    Turnaround & Fast & Slow (Compile and Link) & Fast (Compile when needed) \\
+    Language Flexibility & High & Limited & High \\
+    \bottomrule
+  \end{tabular}
+  \caption{Pros and Cons for Programming Language Implementations}
+  \label{tab:Lang_Implementations_Pros_Cons}
+\end{table}
+
+There is a trade-off to be made between:
+\begin{itemize}[noitemsep]
+\item Language flexibility
+\item CPU time / RAM time
+\end{itemize}
+
+\subsection{Interpretation}\label{subsec:Interpretation}
+\begin{definition}[Interpretation]\label{def:Interpretation}
+  If a programming language is implemented with \emph{interpretation}, is \emph{interpreted}, then there is an intermediate program that runs between the source code and what the CPU can run on.
+  This \emph{interpreter} reads the high-level source code, then alternates between:
+  \begin{itemize}[noitemsep]
+  \item Figure out next command
+    \begin{itemize}[noitemsep]
+    \item This means that the current instruction is parsed in
+    \item Equivalent commands are generated in the CPU-specific or VM-specific instruction sets from the high-level source code
+    \end{itemize}
+  \item Execute Command
+  \end{itemize}
+\end{definition}
+
+Some examples of languages with a \nameref{def:Interpretation} implementation are:
+\begin{itemize}[noitemsep]
+\item Python
+\item Perl
+\item Ruby
+\item Bash
+\item AWK
+\item $\cdots$
+\end{itemize}
+
+\subsection{Compilation}\label{subsec:Compilation}
+\begin{definition}[Compilation]\label{def:Compilation}
+  If a programming language is implemented with \emph{compilation}, is \emph{compiled}, then there are several programs that must be run before the high-level source code can be run.
+  \begin{enumerate}[noitemsep]
+  \item The \nameref{def:Compiler}
+  \item The \nameref{def:Assembler}
+  \item The \nameref{def:Linker}
+  \item The \nameref{def:Loader}
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Compiler]\label{def:Compiler}
+  The \emph{compiler} is the main program needed in a compiled language implementation.
+  It is responsible for taking the high-level source code written in some language, and converting it to assembly code, which can then be run through an \nameref{def:Assembler}.
+
+  The steps involved in a compiler are:
+  \begin{enumerate}[noitemsep]
+  \item Lexical Analysis/Tokenizing: Convert the input file into a set of tokens
+  \item Syntactic Analysis/Parsing: Convert the tokens into a tree representing all the tokens in the program
+  \item Semantic Analysis: Interpret the program and ensure that everything expressed in the program is correct.
+    \begin{itemize}[noitemsep]
+    \item This is where compile-time errors are \textbf{usually} caught. Though, this is just a generalization.
+    \item Type analysis is handled here for instance
+    \end{itemize}
+    
+  \item Optimize the Code: The output assembly code could be optimized before actually making the output. Take care of that here.
+  \item Output Assembly: With the potentially optimized machine-equivalent code from our program, write out the equivalent assembly, and finish the compilation process.
+  \end{enumerate}
+
+  \begin{remark}
+    The specifics of a \nameref{def:Compiler}'s implementation are \textbf{not} discussed in this course, but it is useful to know the basics of the compilation process.
+    For both the implementation details, please refer to \href{run:./EDAN65-Compilers-Reference_Sheet.pdf}{EDAN65:Compilers-Reference Material}.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Assembler]\label{def:Assembler}
+  The \emph{assembler} is an intermediate program used after the \nameref{def:Compiler} has been run.
+  The assembler takes the assembly code that the \nameref{def:Compiler} outputs and applies a one-to-one mapping.
+  Since all assembly code is just an abstraction and humanization of machine code in a one-to-one mapping fashion, the assembler takes the assembly code and converts it to its equivalent machine code.
+
+  \begin{remark}
+    This particular program is not discussed heavily in this course.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Linker]\label{def:Linker}
+  The \emph{linker} is an intermediate program, that may be provided by the operating system or may be provided by that language implementation's tooling.
+  It is run after the \nameref{def:Compiler} and/or the \nameref{def:Assembler} have been run.
+  \begin{itemize}[noitemsep]
+  \item Provided by operating system
+    \begin{itemize}[noitemsep]
+    \item If the programming language implementation relies on the operating system and critical portions of the system.
+    \end{itemize}
+  \item Provided by the language implementation's tooling
+    \begin{itemize}[noitemsep]
+    \item If the implementation provides certain libraries, it will likely have their own linker too.
+    \end{itemize}
+  \end{itemize}
+
+  \begin{remark}
+    This particular program is not discussed in this course.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Loader]\label{def:Loader}
+  The \emph{loader} is the program provided by the operating system that loads the specified program into main memory and begins execution.
+  
+  \begin{remark}
+    This particular program is not discussed in this course.
+  \end{remark}
+\end{definition}
+
+Some examples of languages with a \nameref{def:Compilation} implementation are:
+\begin{itemize}[noitemsep]
+\item C
+\item C++
+\item SML
+\item Haskell
+\item FORTRAN
+\item $\cdots$
+\end{itemize}
+
+\subsection{Hybrid Implementation}\label{subsec:Hybrid_Implementation}
+\begin{definition}[Hybrid Implementation]\label{def:Hybrid_Implementation}
+  A programming language can be implemented with a \emph{hybrid implementation}.
+  This means that it takes some aspects of a language implemented by \nameref{def:Interpretation} and some aspects of the language implemented with \nameref{def:Compilation}.
+
+  For example, Java does this with their Just-In-Time (JIT) compilation scheme.
+\end{definition}
+
+One way to do this is with \nameref{subsubsec:Dynamic_Compilation}.
+\subsubsection{Dynamic Compilation}\label{subsubsec:Dynamic_Compilation}
+\begin{itemize}[noitemsep]
+\item Idea: behind dynamic compilation is that code is compiled \emph{while executing}.
+\item Theory: The best of \nameref{def:Interpretation} and \nameref{def:Compilation} worlds.
+\item Practice:
+  \begin{itemize}[noitemsep]
+  \item Difficult to build
+  \item Memory usage can increase (sometimes dramatically)
+  \item Performance can be higher than pre-compiled code, because only the code needed is compiled.
+  \end{itemize}
+\end{itemize}
+
+Some examples of these are:
+\begin{itemize}[noitemsep]
+\item Java
+\item Scala
+\item C\#
+\item JavaScript
+\item $\cdots$
+\end{itemize}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
