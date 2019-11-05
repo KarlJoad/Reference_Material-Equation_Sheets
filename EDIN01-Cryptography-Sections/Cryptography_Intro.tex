@@ -1,0 +1,105 @@
+\section{Cryptography Introduction}\label{sec:Intro_Cryptography}
+\begin{definition}[Cryptographic Primitive]\label{def:Cryptographic_Primitive}
+  A \emph{cryptographic primitive} is an algorithm with basic cryptographic properties.
+\end{definition}
+
+\begin{definition}[Cryptographic Protocol]\label{def:Cryptographic_Protocol}
+  A \emph{cryptographic protocol} involves the back-and-forth communication among two or more parties.
+
+  \begin{remark}[Bob and Alice]\label{rmk:Bob_and_Alice}
+    Typically, the parties are named Bob and Alice.
+    These are arbitrary names, but these are the most commonly used ones.
+  \end{remark}
+\end{definition}
+
+There are have been several \nameref{def:Cryptographic_Protocol}s.
+\begin{enumerate}[noitemsep]
+\item \textit{Symmetric-key cryptography} - Methods in which both the sender and receiver share the same key
+  \begin{enumerate}[noitemsep]
+  \item Block ciphers
+  \item Stream ciphers
+  \item MAC algorithms
+  \end{enumerate}
+\item \textit{Public-key cryptography}: 2 different, but mathematically related keys are used.
+  A public key and a private key.
+  \begin{enumerate}[noitemsep]
+  \item The public key cannot decrypt something that was encrypted with the private key.
+  \item The public key can be shared freely, because the private key cannot be generated from the public key.
+  \end{enumerate}
+\item \textit{Cryptographic hash functions} are a related and important class of cryptographic algorithms.
+  \begin{enumerate}[noitemsep]
+  \item This is a keyless \nameref{def:Cryptographic_Primitive}.
+  \item Takes an arbitrary length input and produces a fixed-length output.
+  \item The mapping between the input and output is such that the output cannot generate the input, therefore making it cryptographic.
+  \end{enumerate}
+\end{enumerate}
+
+\subsection{Historical Cryptography}\label{subsec:Historical_Cryptography}
+Just to give a super quick background on how we've gotten to where we are today when it comes to cryptography.
+
+\subsubsection{Monoalphabetic Ciphers}\label{subsubsec:Monoalphabetic_Ciphers}
+\begin{definition}[Monoalphabetic Cipher]\label{def:Monoalphabetic_Cipher}
+  In a \emph{monoalphabetic cipher} a single letter is replaced by the cipher's mapping.
+  Since the cipher can do this to arbitrary letters, this could continue indefinitely for any single letter.
+
+  These were some of the first ciphers developed by Man.
+  These include simple substitute ciphers, and letter shifting ciphers.
+  However, these can be broken with \emph{frequency analysis}.
+\end{definition}
+
+\subsubsection{Polyalphabetic Ciphers}\label{subsubsec:Polyalphabetic_Ciphers}
+\begin{definition}[Polyalphabetic Cipher]\label{def:Polyalphabetic_Cipher}
+  In a \emph{polyalphabetic cipher} multiple letters are replaced by the cipher's mapping.
+  Additionally, since the cipher can output multiple letters, the ciphered letters could be run through the cipher again.
+
+  These were developed in response to \nameref{def:Monoalphabetic_Cipher}s being broken.
+  However, these can also be broken, with \emph{extended frequency analysis}.
+\end{definition}
+
+Eventually, it was realized that the secrecy of the cipher is not sensible/possible.
+This leads us to the conclusion that \textbf{any cryptographic scheme should remain secure even if the adversary understands the cipher algorithm itself}.
+
+\subsubsection{Cryptographic Keys}\label{subsubsec:Cryptographic_Keys}
+The use of keys as ciphers is a slightly more modern occurrence.
+\begin{definition}[Kerckhoff's Principle]\label{def:Kerckhoffs_Principle}
+  \emph{Kerckhoff's Principle} states that the security of the key used should alone be sufficient for a good cipher to maintain confidentiality under an attack.
+  Essentially, the security of the key used should be sufficient such that the cipher can be maintained confidently while under attack.
+\end{definition}
+
+However, only since the mid-1970s, has public key cryptography has been possible.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    Symmetric-Key Cryptography & Public-Key Cryptography \\
+    \midrule
+    Block ciphers & Public-Key encryption \\
+    Stream ciphers & Digital Signature Schemes \\
+    Cryptographic Hash Functions & Key exchange protocols \\
+                               & Electronic Cash/Cryptocurrency \\
+                               & Interactive Proof Systems \\
+    \bottomrule
+  \end{tabular}
+  \caption{Uses of Key-Based Cryptography}
+  \label{tab:Key_Cryptography_Uses}
+\end{table}
+
+Computers can efficiently encrypt, given the following constraints:
+\begin{enumerate}[noitemsep]
+\item Some modern techniques can only keep the keys secret if certain mathematical problems are \nameref{def:Intractable}.
+  \begin{enumerate}[noitemsep]
+  \item Integer factorization
+  \item Discrete logarithm problems
+  \end{enumerate}
+\item However, there are no absolute proofs that a cryptographic technique is secure.
+\end{enumerate}
+
+\begin{definition}[Intractable]\label{def:Intractable}
+  An \emph{intractable} problem is one in which there are no \textbf{efficient} algorithms to solve them.
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
+%%% End:
