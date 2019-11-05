@@ -58,6 +58,10 @@ citestyle=authoryear]{biblatex} % Must include citation somewhere in document to
 % NOTE: This version of remark has NO restrictions on placement
 \newtheorem*{remark*}{Remark}
 
+% Create a numbered theorem-like environment for lemmas
+% Since Lemmas are based off the Theorem environment, they are automatically numbered with section numbers
+\newtheorem{lemma}[theorem]{Lemma}
+
 % Create a special list that handles properties. It can be broken and restarted
 \newlist{propertylist}{enumerate}{1} % {Name}{Template}{Max Depth}
 \setlist[propertylist, 1]{label=\textbf{(\roman*)}, noitemsep, nolistsep} % Set options
