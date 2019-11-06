@@ -38,6 +38,8 @@ citestyle=authoryear]{biblatex} % Must include citation somewhere in document to
 % Create a theorem environment
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
+% Create a numbered theorem-like environment for lemmas
+\newtheorem{lemma}{Lemma}[theorem]
 
 % Create a definition environment
 \theoremstyle{definition}
@@ -57,10 +59,6 @@ citestyle=authoryear]{biblatex} % Must include citation somewhere in document to
 % Create an unnumbered remark environment for general use
 % NOTE: This version of remark has NO restrictions on placement
 \newtheorem*{remark*}{Remark}
-
-% Create a numbered theorem-like environment for lemmas
-% Since Lemmas are based off the Theorem environment, they are automatically numbered with section numbers
-\newtheorem{lemma}[theorem]{Lemma}
 
 % Create a special list that handles properties. It can be broken and restarted
 \newlist{propertylist}{enumerate}{1} % {Name}{Template}{Max Depth}
