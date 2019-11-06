@@ -1,0 +1,328 @@
+\section{\nameref*{sec:Number_Theory} on Sets}\label{sec:Number_Theory_on_Sets}
+While this section is not technically different than \Cref{sec:Number_Theory}, it is worth it to split these up, since \Cref{sec:Number_Theory} does not deal with sets.
+However, using what we learned in \Cref{sec:Number_Theory}, \nameref{sec:Number_Theory}, it is natural to extend these to sets of numbers.
+
+\subsection{\texorpdfstring{\TextIntsModN{}}{Sets of Integers Modulo n}}\label{subsec:Z_mod_n}
+\begin{definition}[\TextIntsModN{}]\label{def:Z_mod_n}
+  The set of integers modulo $n$, denoted \TextIntsModN{}, is the set of (equivalence classes of) integers $\lbrace 0, 1, \ldots , n-1 \rbrace$.
+  Addition, subtraction, and multiplication are all performed with modulo $n$.
+  \Crefrange{ex:Addition on Integers mod n}{ex:Multiplication on Integers mod n} demonstrate this.
+\end{definition}
+
+\begin{example}[]{Addition on Integers mod n}
+  When dealing with the set of integers \TextIntsMod{15}, what is the sum of 5 and 9?
+  \tcblower{}
+  \begin{equation*}
+    5 \bmod 15 + 9 \bmod 15 = 11 \bmod 15
+  \end{equation*}
+
+  Thus, the answer is 11.
+\end{example}
+
+\begin{example}[]{Subtraction on Integers mod n}
+  When dealing with the set of integers \TextIntsMod{15}, what is 5 minus 9?
+  \tcblower{}
+  \begin{align*}
+    5 \bmod 15 - 9 \bmod 15 &= 5 \bmod 15 + (-9 \bmod 15) \\
+                            &= 5 \bmod 15 + \underbrace{-9 \bmod 15}_{-9 + 15 = 6} \\
+                            &= 5 \bmod 15 + 6 \bmod 15 \\
+                            &= 11 \bmod 15
+  \end{align*}
+
+  Thus, the answer is, again, 11.
+\end{example}
+
+\begin{example}[]{Multiplication on Integers mod n}
+  When dealing with the set of integers \TextIntsMod{15}, what is the product of 5 and 9?
+  \tcblower{}
+  \begin{align*}
+    5 \bmod 15 \cdot 9 \bmod 15 &= 45 \bmod 15 \\
+                                &= 0
+  \end{align*}
+
+  Thus, the answer is 0, because $45 = 3 \cdot 15$.
+\end{example}
+
+\subsection{\texorpdfstring{Inverse in \TextIntsModN{}}{Inverse in Integers Modulo n}}\label{subsec:Inverse_Z_mod_n}
+Addition, subtraction, and multiplication can be performed trivially in \TextIntsModN{}, as shown in \Crefrange{ex:Addition on Integers mod n}{ex:Multiplication on Integers mod n}.
+However, the concept of division is a little bit more difficult.
+\begin{definition}[Multiplicative Inverse]\label{def:Multiplicative_Inverse}
+  Let $a \in \IntsModN{}$.
+  The \emph{multiplicative inverse} of $a$ is an integer $x \in \IntsModN{}$, such that $ax = 1$.
+  If such an integer, $x$, exists, then $a$ is said to be \emph{invertible} and $x$ is called the inverse of $a$, denoted as $a^{-1}$.
+\end{definition}
+
+\begin{definition}[Division in \TextIntsModN{}]\label{def:Division_Z_mod_n}
+  \emph{Division} of $a$ by an element $b \in \IntsModN{}$ (written $a/b$) is defined as $ab^{-1}$, and is only defined if $b$ has a \nameref{def:Multiplicative_Inverse}.
+\end{definition}
+
+\begin{lemma}
+  Let $a \in \IntsModN{}$.
+  Then $a$ is invertible if and only iff $\gcd(a, n) = 1$.
+\end{lemma}
+
+\begin{proof}
+  Assume that $\gcd(a, n) = 1$.
+  We know that $1 = \gcd(a, n) = xa + yn$ for some $x, y \in \AllIntegers$.
+  Since $yn$ is a multiple of $n$, namely $yn \bmod n = 0$, it is removed from the equation.
+  Then $x \bmod n$ is an inverse to $a$.
+
+  Now assume $\gcd(a, n) > 1$.
+  If $a$ has an inverse $x$, then $ax = 1 \bmod n$, which means $1 = ax + ny$ for some $x, y \in \AllIntegers$, directly contradicting the assumption that $\gcd(a, n) = 1$.
+\end{proof}
+
+The two possible cases of division, i.e.\ possible and impossible, are shown in \Crefrange{ex:Possible Division on Integers mod n}{ex:Impossible Division on Integers mod n}.
+
+\begin{example}[]{Possible Division on Integers mod n}
+  When dealing with the set of integers \TextIntsMod{15}, what is the result from the division of 5 by 11?
+  \tcblower{}
+  \begin{align*}
+    5 \bmod 15 \div 11 \bmod 15 &= 5 \cdot 11^{-1}
+  \end{align*}
+  Now we need to find the \nameref{def:Multiplicative_Inverse} of $1$.
+  \begin{equation*}
+    11^{-1} = \gcd(11, 15)
+  \end{equation*}
+  We can compute the \nameref{def:GCD} efficiently with the \nameref{def:Euclidean_Algorithm}.
+  \begin{align*}
+    15 &= 1 \cdot 11 + 4 \\
+    11 &= 2 \cdot 4 + 3 \\
+    4 &= 1 \cdot 3 + 1 \\
+    3 &= 3 \cdot 1 + 0 \\
+  \end{align*}
+  Thus, the \nameref{def:Euclidean_Algorithm} gives us $\gcd(11, 15) = 1$.
+  Since $\gcd(11, 15) = 1 = 1$, 11 \textbf{does} have a \nameref{def:Multiplicative_Inverse}, making the division possible.
+  Now we need to run through the \nameref{def:Extended_Euclidean_Algorithm}, to find the values $x, y \in \AllIntegers$.
+  \begin{align*}
+    1 &= 4 - 1 \cdot 3 \\
+      &= 4 - 1 \cdot (11 - 2 \cdot 4) = 3 \cdot 4 - 1 \cdot 11 \\
+      &= 3 (15 - 1 \cdot 11) - 1 \cdot 11 \\
+      &= 3 \cdot 15 - 3 \cdot 11 - 1 \cdot 11 \\
+      &= 3 \cdot 15 - 4 \cdot 11
+  \end{align*}
+  Thus,
+  \begin{align*}
+    x &= -4 \\
+    y &= 3
+  \end{align*}
+  Now we know
+  \begin{equation*}
+    {(11 \bmod 15)}^{-1} = -4 \bmod 15
+  \end{equation*}
+  Since $-4$ is not part of \TextIntsMod{15}, we need to find the additive inverse.
+  $-4 + 15 = 11$.
+  Thus,
+  \begin{equation*}
+    {(11 \bmod 15)}^{-1} = 11 \bmod 15
+  \end{equation*}
+  Now, we perform a simple substitution.
+  \begin{align*}
+    5 \bmod 15 / 11 \bmod 15 &= 5 \bmod 15 \cdot {(11 \bmod 15)}^{-1} \\
+                             &= 5 \bmod 15 \cdot 11 \bmod 15 \\
+                             &= 55 \bmod 15 \\
+                             &= 10
+  \end{align*}
+
+  So, the result of the division of $5$ by $11$ is $10$.
+\end{example}
+
+\begin{example}[]{Impossible Division on Integers mod n}
+  When dealing with the set of integers \TextIntsMod{15}, what is the result from the division of 5 by 9?
+  \tcblower{}
+  \begin{equation*}
+    5 \bmod 15 \div 9 \bmod 15 = 5 \cdot 9^{-1}
+  \end{equation*}
+  Now we need to find the \nameref{def:Multiplicative_Inverse} of $9$.
+  \begin{equation*}
+    9^{-1} = \gcd(9, 15)
+  \end{equation*}
+  We can compute the \nameref{def:GCD} efficiently with the \nameref{def:Euclidean_Algorithm}.
+  \begin{align*}
+    15 &= 1 \cdot 9 + 6 \\
+    9 &= 1 \cdot 6 + 3 \\
+    3 &= 1 \cdot 3 + 0 \\
+  \end{align*}
+  Thus, the \nameref{def:Euclidean_Algorithm} gives us $\gcd(9, 15) = 3$.
+  Since $\gcd(9, 15) = 3 \neq 1$, 9 does \textbf{not} have a \nameref{def:Multiplicative_Inverse}, making the division impossible.
+\end{example}
+
+\subsection{Chinese Remainder Theorem}\label{subsec:Chinese_Remainder_Theorem}
+\begin{theorem}[Chinese Remainder Theorem]\label{thm:Chinese_Remainder_Theorem}
+  Let the integers $n_{1}, n_{2}, \ldots, n_{k}$ be pairwise \nameref{def:Relatively_Prime}.
+  Then the system of \nameref{def:Congruence}s
+  \begin{align*}
+    x &\equiv a_{1} \pmod{n_{1}} \\
+    x &\equiv a_{2} \pmod{n_{2}} \\
+      &\vdots \\
+    x &\equiv a_{k} \pmod{n_{k}}
+  \end{align*}
+  has a unique solution modulo $n = n_{1}n_{2} \cdots n_{k}$.
+\end{theorem}
+
+\begin{definition}[Gauss's Algorithm]\label{def:Gauss_Algorithm}
+  The solution $x$ to the system of \nameref{def:Congruence}s promised by the \nameref{thm:Chinese_Remainder_Theorem} can be calculated as
+  \begin{equation}\label{eq:Gauss_Algorithm}
+    x = \sum\limits_{i=1}^{k}a_{i} N_{i} M_{i} \bmod n
+  \end{equation}
+  where $N_{i} = \frac{n}{n_{i}}$ and $M_{i} = N_{i}^{-1} = \frac{n_{i}}{n} \bmod n_{i}$.
+  
+  This simplifies to
+  \begin{equation}\label{eq:Gauss_Algorithm_Simplified}
+    x = \sum\limits_{i=1}^{k}a_{i} \frac{n}{n_{i}} \left( \frac{n_{i}}{n} \bmod n \right)
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Chinese Remainder Theorem]\label{def:Chinese_Remainder_Theorem}
+  The \emph{\nameref{thm:Chinese_Remainder_Theorem}} allows us to change the way we represent elements of our set, \TextIntsModN{}.
+  
+  The integers modulo $n$, \TextIntsModN{}, where $n = n_{1}n_{2}$ and $\gcd(n_{1}, n_{2}) = 1$.
+  An element $a \in$ \TextIntsModN{} has a unique representation: $(a \bmod n_{1}, a \bmod n_{2})$.
+  We can denote this mapping by $\gamma : \IntsModN{} \rightarrow \IntsMod{n_{1}} \times \IntsMod{n_{2}}$.
+  \begin{propertylist}
+  \item $\gamma(a) = \gamma(b)$ if and only if $a = b$. \label{prop:Chinese_Remainder_Theorem_Property-Equivalence}
+  \item For all $(a_{1}, a_{2}) \in \IntsMod{n_{1}} \times \IntsMod{n_{2}}$, there exists an $a$ such that $\gamma(a) = (a_{1}, a_{2})$.
+  \item $\gamma(a+b) = \gamma(a) + \gamma(b)$
+  \item $\gamma(ab) = \gamma(a) \gamma(b)$ \label{prop:Chinese_Remainder_Theorem_Property-Multiplication}
+  \end{propertylist}
+  These properties (\Crefrange{prop:Chinese_Remainder_Theorem_Property-Equivalence}{prop:Chinese_Remainder_Theorem_Property-Multiplication}) make $\gamma$ an \emph{\nameref{def:Isomorphism}}.
+
+  \begin{remark}
+    In the case of large integers for cryptography, knowing just one part of the number can ehlp get the other part.
+    However, if the number is very large, 2048 bits for instance, these calculations start becoming \nameref{def:Intractable}.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Isomorphism]\label{def:Isomorphism}
+  An \emph{isomorphism} is a transformation that does \textbf{NOT} change any information about the thing, but just changes the representation of the thing.
+\end{definition}
+
+\begin{example}[]{Chinese Remainder Theorem Mapping}
+  Find the mapping of $7$ when in \TextIntsMod{15}?
+  \tcblower{}
+  Since 7 is an element in \TextIntsMod{15},
+  \begin{equation*}
+    7 \Leftrightarrow (7 \bmod 3, 7 \bmod 5) = (1, 2)
+  \end{equation*}
+\end{example}
+
+\subsection{\texorpdfstring{Multiplicative Groups, \TextMultiplicativeGroupN{}}{Multiplicative Groups}}\label{Multiplicative_Groups}
+\begin{definition}[Multiplicative Group, \TextMultiplicativeGroupN{}]\label{def:Multiplicative_Group}
+  Define the \emph{multiplicative group} of \TextIntsModN{}, denoted \TextMultiplicativeGroupN{} as the set of all elements in \TextIntsModN{} with \nameref{def:Multiplicative_Inverse}s.
+  \begin{equation}\label{eq:Multiplicative_Group}
+    \MultiplicativeGroupN{} = \lbrace a \in \IntsModN{} \vert \gcd(a, b) = 1 \rbrace
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Set Order]\label{def:Set_Order}
+  The \emph{order a set}, for example, \TextMultiplicativeGroupN{}, is the number of elements in \TextMultiplicativeGroupN{} ($\lvert \MultiplicativeGroupN{} \rvert$).
+  From the definition of the \nameref{def:Euler_Phi_Function}
+  \begin{equation}\label{eq:Set_Order_Euler_Phi_Function}
+    \lvert \MultiplicativeGroupN{} \rvert = \phi(n)
+  \end{equation}
+
+  \begin{remark}[Closed Under Multiplication]\label{rmk:Set_Order_Closed_Multiplication}
+    Since the produce of two elements with \nameref{def:Multiplicative_Inverse}s is another element with a \nameref{def:Multiplicative_Inverse}, we say that $\lvert \MultiplicativeGroupN{} \rvert$ is \emph{closed under multiplication}.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Element Order]\label{def:Element_Order}
+  The \emph{order of an element} $a$, denoted $\ElementOrder(a)$ is defined as the least positive integer $t$ ($t \in \AllIntegers$) such that
+  \begin{equation}\label{eq:Element_Order}
+    a^{t} = 1
+  \end{equation}
+\end{definition}
+
+\begin{lemma}[Element Order]\label{lemma:Element_Order}
+  Let $a \in \MultiplicativeGroupN{}$.
+  If $a^{s}$ for some $s$, then $\ElementOrder(a) \divides s$.
+  In particular, $\ElementOrder(a) \divides \phi(n)$.
+\end{lemma}
+
+\begin{proof}[Element Order]\label{proof:Element_Order}
+  Let $t = \ElementOrder(a)$.
+  By long division, $s = qt + r$, where $r < t$.
+  Then $a^{s} = a^{qt + r} = a^{qt}a^{r}$ and since $a^{t} = 1$, from \Cref{eq:Element_Order}, we have $a^{s} = a^{r}$ and $a^{r} = 1$.
+  This reduction is shown below:
+  \begin{align*}
+    a^{s} &= a^{qt + r} \\
+          &= a^{qt}a^{r} \\
+          &= {\left( a^{t} \right)}^{q} a^{r} \\
+          &= {\left( 1 \right)}^{q} a^{r} \\
+          &= 1^{q} a^{r} \\
+          &= 1 a^{r} \\
+          &= a^{r}
+  \end{align*}
+
+  But, $r<t$, so we must have $r=0$, and so $\ElementOrder(a) \divides s$.
+\end{proof}
+
+\subsection{Euler's Theorem}\label{subsec:Eulers_Theorem}
+\begin{theorem}[Euler's Theorem]\label{thm:Eulers_Theorem}
+  If $a \in \MultiplicativeGroupN{}$, then
+  \begin{equation}\label{eq:Eulers_Theorem}
+    a^{\phi(n)} \equiv 1 \pmod{n}
+  \end{equation}
+\end{theorem}
+
+\begin{proof}[Euler's Theorem]\label{proof:Eulers_Theorem}
+  Let $\MultiplicativeGroupN{} = \lbrace a_{1}, a_{2}, \ldots, a_{\phi(n)} \rbrace$.
+  Looking at the set of elements $A = \lbrace aa_{1}, aa_{2}, \ldots, aa_{\phi(n)} \rbrace$, it is easy to see that $A = a \MultiplicativeGroupN{}$.
+  So we have 2 ways of writing the product of all of the elements, i.e.
+  \begin{equation*}
+    \prod\limits_{i=1}^{\phi(n)} a a_{i} = \prod\limits_{i=1}^{\phi(n)} a_{i}
+  \end{equation*}
+  
+  This leads to
+  \begin{equation*}
+    \prod\limits_{i=1}^{\phi(n)} a = a^{\phi(n)} = 1
+  \end{equation*}
+  which is the same as what we said in \Cref{eq:Eulers_Theorem}.
+\end{proof}
+
+\subsection{Fermat's Little Theorem}\label{subsec:Fermats_Little_Theorem}
+\begin{theorem}[Fermat's Little Theorem]\label{thm:Fermats_Little_Theorem}
+  Let $p$ be a \nameref{def:Prime} number.
+  If $\gcd(a, p) = 1$, then
+  \begin{equation}\label{eq:Fermats_Little_Theorem}
+    a^{p-1} \equiv 1 \pmod{p}
+  \end{equation}
+\end{theorem}
+\begin{remark*}
+  This ties in with \nameref{thm:Eulers_Theorem}, because working in \TextIntsModN{}, all exponents can be reduced by modulo $\phi(n)$.
+\end{remark*}
+
+\subsection{Generators}\label{subsec:Generators}
+\begin{definition}[Generator]\label{def:Generator}
+  Let $a \in \MultiplicativeGroupN{}$.
+  If $\ElementOrder(a) = \phi(n)$, then $a$ is said to be a \emph{generator} (or a \emph{primitive element}) of \TextMultiplicativeGroupN{}.
+  Furthermore, if \TextMultiplicativeGroupN{} has a generator, then \TextMultiplicativeGroupN{} is said to be\emph{\nameref{def:Cyclic}}.
+  \begin{remark}
+    It is clear that if $a \in \MultiplicativeGroupN{}$ is a \nameref{def:Generator}, then every element in \TextMultiplicativeGroupN{} can be expressed as $a^{i}$ for some integer $i$ ($i \in \AllIntegers$).
+    So, we can write
+    \begin{equation}\label{eq:Generator_in_Multiplicative_Group}
+      \MultiplicativeGroupN{} = \lbrace a^{i} \vert 0 \leq i \leq \phi(n) - 1 \rbrace
+    \end{equation}
+  \end{remark}
+\end{definition}
+
+\subsection{Quadratic Residues}\label{subsec:Quadratic_Residues}
+\begin{definition}[Quadratic Residue]\label{def:Quadratic_Residue}
+  An element $a \in \MultiplicativeGroupN{}$ is said to be a \emph{quadratic residue} modulo $n$ (or a \emph{square}) if there exists an $x \in \MultiplicativeGroupN{}$ such that $x^{2} = a$.
+  \begin{equation}\label{eq:Quadratic_Residue}
+    \exists x \in \MultiplicativeGroupN{} x^{2} = a
+  \end{equation}
+  Otherwise, $a$ is called a \emph{\nameref{def:Quadratic_Non_Residue} modulo $n$}.
+  If $x^{2} = a$, then $x$ is called the \emph{square root} of $a \bmod n$.
+\end{definition}
+
+\begin{definition}[Quadratic Non-Residue]\label{def:Quadratic_Non_Residue}
+  An element $a \in \MultiplicativeGroupN{}$ is said to be a \emph{quadratic non-residue} modulo $n$ if there does not exist an $x \in \MultiplicativeGroupN{}$ such that $x^{2} = a$.
+  \begin{equation*}
+    \nexists x \in \MultiplicativeGroupN{} x^{2} = a
+  \end{equation*}
+  Otherwise, $a$ is called a \emph{\nameref{def:Quadratic_Residue} modulo $n$}.
+\end{definition}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
+%%% End:

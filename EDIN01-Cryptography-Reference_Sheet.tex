@@ -15,6 +15,22 @@
 \DeclareMathOperator{\divides}{\vert}
 \DeclareMathOperator{\DIV}{\text{div}}
 \DeclareMathOperator{\lcm}{\text{lcm}}
+\DeclareMathOperator{\ElementOrder}{\text{ord}}
+
+% REQUIRES THAN \AllIntegers BE DEFINED BEFORE MAKING THE NEW COMMAND
+% \input-ing the Reference Preamble before here handles this for you.
+% \IntsMod{#} takes something and subscripts it with the all integers symbol
+% These commands MUST be placed inside of a math environment to work
+\newcommand{\IntsMod}[1]{\AllIntegers_{#1}}
+% Wrapper command. You don't need to specify anything because n is specified as the modulus for you
+\newcommand{\IntsModN}{\IntsMod{n}}
+\newcommand{\TextIntsMod}[1]{$\IntsMod{#1}$}
+% Wrapper command. You don't need to specify anything because n is specified as the modulus for you
+\newcommand{\TextIntsModN}{$\IntsModN{}$}
+\newcommand{\MultiplicativeGroup}[1]{\IntsMod{#1}^{*}}
+\newcommand{\MultiplicativeGroupN}{\IntsModN^{*}}
+\newcommand{\TextMultiplicativeGroup}[1]{$\IntsMod{#1}^{*}$}
+\newcommand{\TextMultiplicativeGroupN}{$\IntsModN^{*}$}
 
 \begin{titlepage}
   \title{EDIN01: Cryptography - Reference Sheet}
@@ -33,6 +49,8 @@
 \input{./EDIN01-Cryptography-Sections/Cryptography_Intro}
 
 \input{./EDIN01-Cryptography-Sections/Number_Theory}
+
+\input{./EDIN01-Cryptography-Sections/Number_Theory_on_Sets}
 %====================================APPENDIX====================================
 \appendix
 \counterwithin{definition}{subsection}
