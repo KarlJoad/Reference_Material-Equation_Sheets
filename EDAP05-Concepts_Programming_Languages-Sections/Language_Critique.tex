@@ -49,6 +49,16 @@ These are all qualities of:
   \label{tab:Language_Evaluation_Criteria}
 \end{table}
 
+Some additional criteria that could be used to evaluate programming languages are:
+\begin{itemize}[noitemsep]
+\item Portability: Ease with with programs can be moved from one implementation to another
+\item Generality: The applicability to a wide range of applications
+\item Well-Definedness: The completeness and precision of the language's official defining document
+\end{itemize}
+
+Some of criteria are given different weightings/importance by different people, thus making each slightly subjective.
+Additionally, many of these criteria are not precisely defined, nor are they exactly measurable.
+
 \subsection{Readability}\label{subsec:Readability}
 \begin{definition}[Readability]\label{def:Readability}
   \emph{Readability} is how easily a program can be read and understood \emph{by a human}.
@@ -193,7 +203,17 @@ In some cases, this principle is violated by 2 language constructs that are iden
 For example, C's \texttt{static} \nameref{def:Reserved_Word}s.
 
 \subsection{Writability}\label{subsec:Writability}
+Writability is a measure of how easy it is to write a program in a language for a given problem domain.
+This is closely related to the language characteristics presented in \Cref{subsec:Readability}, \nameref{subsec:Readability}.
+The definition of the problem domain is incredibly important, because C would not be used to make a GUI, and Visual BASIC would not be used to make an operating system.
+
 \subsubsection{\nameref{subsubsec:Simplicity} and \nameref{subsubsec:Orthogonality}}\label{subsubsec:Written_Simplicity_Orthogonality}
+Programmers might not know all the features for a language.
+Or, the might know about them, but use them incorrectly.
+This means there should be a smaller number of primitive constructs and a consistent set of rules for combining them.
+This reduces the number of primitive constructs in a language, and allows a programmer to design a complex solution by only using a simple set of primitive constructs.
+By reducing the orthogonality of a program, the total possible combinations of constructs is reduced, simplifying the process of reading and writing the program.
+
 \subsubsection{Support for Abstraction}\label{subsubsec:Abstraction_Support}
 \begin{definition}[Abstraction]\label{def:Abstraction}
   \emph{Abstraction} is the ability to define and then use complicated structures or operations in ways that allow many of the details to be ignored.
@@ -218,12 +238,97 @@ This abstraction is more natural to think about than what would need to be done 
 In Fortran 77, there would need to be 3 parallel integer arrays, where 2 of the integers in each array would be used as subscripts to find their children.
 
 \subsubsection{Expressivity}\label{subsubsec:Expressivity}
+Expressivity has several characteristics.
+\begin{enumerate}[noitemsep]
+\item Verbosity of the language
+  \begin{itemize}[noitemsep]
+  \item The amount of code needed to describe some computation to the computer.
+  \end{itemize}
+\item Powerful/Convenient way to specify computations.
+  \begin{itemize}[noitemsep]
+  \item \texttt{count++} vs. \texttt{count = count + 1} to increment a value in Java
+  \end{itemize}
+\end{enumerate}
 
 \subsection{Reliability}\label{subsec:Reliability}
+Reliability is a measure of the program performing to its specifications reliably under all conditions.
+
 \subsubsection{Type Checking}\label{subsubsec:Type_Checking}
+\begin{definition}[Type Checking]\label{def:Type_Checking}
+  \emph{Type checking} is a process for testing for type errors in a given program, by the compiler or the interpreter, depending on its implementation (\nameref{subsec:Interpretation} vs. \nameref{def:Compilation}).
+  Runtime type checking is expensive, so compile-time checking is preferred.
+\end{definition}
+
+The earlier that type checking can occur reduces the potential errors, and corrective actions can be taken.
+
 \subsubsection{Exception Handling}\label{subsubsec:Exception_Handling}
+The programming language should have the ability to intercept runtime errors, along with other unusual conditions, take corrective actions, the continue normally is traditionally called \emph{exception handling}.
+
 \subsubsection{Aliasing}\label{subsubsec:Aliasing}
+\begin{definition}[Aliasing]\label{def:Aliasing}
+  \emph{Aliasing} is having 2 or more distinct names that can be used to access the same memory location.
+  Most languages allow for 2 pointers to point to the same thing in memory, but others prevent this completely.
+\end{definition}
+
+Sometimes, \nameref{def:Aliasing} is used to overcome deficiencies in the language's \nameref{subsubsec:Abstraction_Support}.
+Others greatly restrict possible \nameref{def:Aliasing} to increase their \nameref{subsec:Reliability}.
+
 \subsubsection{\nameref{subsec:Readability} and \nameref{subsec:Writability}}\label{subsubsec:Reliable_Readability_and_Writability}
+The \nameref{subsec:Readability} and \nameref{subsec:Writability} greatly influence a program's \nameref{subsec:Reliability}.
+A program written in a language that exceeds the languages original problem domain will use unnatural approaches to solve the problem.
+These unnatural approaches are less likely to be correct for all possible situations.
+Thus, the easier a program is to write, the more likely it is to be correct for all possible situations.
+
+Programs that are difficult to read will affect the writing and maintenance phases of the software's life cycle.
+
+\subsection{Cost}\label{subsec:Cost}
+There are several parts that increase the cost of a programming language.
+\begin{enumerate}[noitemsep]
+\item Training programmers in a new language
+  \begin{itemize}[noitemsep]
+  \item Function of \nameref{subsubsec:Simplicity} and \nameref{subsubsec:Orthogonality}
+  \item Function of programmer experience
+  \end{itemize}
+  
+\item Writing software
+  \begin{itemize}[noitemsep]
+  \item Function of \nameref{subsec:Writability} of the language
+  \end{itemize}
+  
+\item Compilation time
+  \begin{itemize}[noitemsep]
+  \item Time to compile a program
+  \item Resources required to compile a program in a language
+  \end{itemize}
+
+\item Run time
+  \begin{itemize}[noitemsep]
+  \item Performance during runtime
+  \item Dependent on the effort made to optimize the input source code
+  \end{itemize}
+
+\item Financial cost of special software
+  \begin{itemize}[noitemsep]
+  \item The cost of using the \nameref{def:Compiler} for a language for instance.
+  \item Languages with free \nameref{def:Compiler}s or interpreters tend to be accepted more quickly than languages with a financial cost
+  \end{itemize}
+
+\item Cost of limited reliability
+  \begin{itemize}[noitemsep]
+  \item Maintenance time
+    \begin{itemize}[noitemsep]
+    \item Corrections made to errors in the program
+    \item Modifications to add new functionality
+    \end{itemize}
+
+  \item Insurance cost, in special cases
+    \begin{itemize}[noitemsep]
+    \item Airplanes
+    \item Nuclear power plants
+    \item X-Ray machines
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
