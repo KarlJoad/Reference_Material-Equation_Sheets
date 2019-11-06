@@ -18,6 +18,8 @@
 \DeclareMathOperator{\ElementOrder}{\text{ord}}
 \newcommand{\SetOrder}[1]{\lvert #1 \rvert}
 \newcommand{\TextSetOrder}[1]{$\SetOrder{#1}$}
+\newcommand{\BinaryOperation}{*}
+\DeclareMathOperator{\Degree}{\text{deg}}
 
 % REQUIRES THAN \AllIntegers BE DEFINED BEFORE MAKING THE NEW COMMAND
 % \input-ing the Reference Preamble before here handles this for you.
@@ -33,6 +35,10 @@
 \newcommand{\MultiplicativeGroupN}{\IntsModN^{*}}
 \newcommand{\TextMultiplicativeGroup}[1]{$\IntsMod{#1}^{*}$}
 \newcommand{\TextMultiplicativeGroupN}{$\IntsModN^{*}$}
+
+% Used to denote cyclic subgroups
+\newcommand{\CyclicSubgroup}[1]{<#1>}
+\newcommand{\TextCyclicSubgroup}[1]{$\CyclicSubgroup{#1}$}
 
 \begin{titlepage}
   \title{EDIN01: Cryptography - Reference Sheet}
@@ -53,6 +59,8 @@
 \input{./EDIN01-Cryptography-Sections/Number_Theory}
 
 \input{./EDIN01-Cryptography-Sections/Number_Theory_on_Sets}
+
+\input{./EDIN01-Cryptography-Sections/Abstract_Algebra}
 %====================================APPENDIX====================================
 \appendix
 \counterwithin{definition}{subsection}
