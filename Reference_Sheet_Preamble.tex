@@ -121,11 +121,20 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 \renewcommand{\Re}{\operatorname{Re}} % Redefine to use the command, but not the fraktur version
 \renewcommand{\Im}{\operatorname{Im}} % Redefine to use the command, but not the fraktur version
 % Math Operators that are useful to abstract the written math away to one spot
-\DeclareMathOperator{\RealNums}{\mathbb{R}}
+\DeclareMathOperator{\RealNumbers}{\mathbb{R}}
+\newcommand{\TextRealNumbers}{$\RealNumbers$}
 \DeclareMathOperator{\AllIntegers}{\mathbb{Z}}
+\newcommand{\TextAllIntegers}{$\AllIntegers$}
 \DeclareMathOperator{\PositiveInts}{\mathbb{Z}^{+}}
+\newcommand{\TextPositiveInts}{$\PositiveInts$}
 \DeclareMathOperator{\NegativeInts}{\mathbb{Z}^{-}}
-\DeclareMathOperator{\NaturalNums}{\mathbb{N}}
+\newcommand{\TextNegativeInts}{$\NegativeInts$}
+\DeclareMathOperator{\NaturalNumbers}{\mathbb{N}}
+\newcommand{\TextNaturalNumbers}{$\NaturalNumbers$}
+\DeclareMathOperator{\ComplexNumbers}{\mathbb{C}}
+\newcommand{\TextComplexNumbers}{$\ComplexNumbers$}
+\DeclareMathOperator{\RationalNumbers}{\mathbb{Q}}
+\newcommand{\TextRationalNumbers}{$\RationalNumbers$}
 \DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
 \DeclareMathOperator{\Lapl}{\mathcal{L}} % Declare a Laplace symbol to be used
 \DeclareMathOperator{\UnitStep}{\mathcal{U}}
