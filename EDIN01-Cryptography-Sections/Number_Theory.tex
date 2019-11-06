@@ -156,15 +156,56 @@ and
 \end{definition}
 \begin{theorem}[Euler Phi Function]\label{thm:Euler_Phi_Function}
   There are a few properties of the \nameref{def:Euler_Phi_Function} that we will treat as true because of this theorem.
-  \begin{enumerate}[noitemsep]
-  \item If $p$ is a \nameref{def:Prime}, then $\phi(p) = p - 1$.
-  \item If $\gcd(a, b) = 1$, then $\phi(ab) = \phi(a) \phi(b)$.
+  \begin{propertylist}
+  \item If $p$ is a \nameref{def:Prime}, then $\phi(p) = p - 1$.\label{prop:Euler_Phi_Function_Properties-Prime_Number}
+  \item If $\gcd(a, b) = 1$, then $\phi(ab) = \phi(a) \phi(b)$.\label{prop:Euler_Phi_Function_Properties-Split_Multiplication}
   \item If $n = p_{1}^{e_{1}} p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$, then
     \begin{equation*}
       \phi(n) = \left( p_{1}^{e_{1}} - p_{1}^{e_{1}-1} \right) \left( p_{2}^{e_{2}} - p_{2}^{e_{2}-1} \right) \cdots \left( p_{k}^{e_{k}} - p_{k}^{e_{k}-1} \right)
-    \end{equation*}
-  \end{enumerate}
+    \end{equation*}\label{prop:Euler_Phi_Function_Properties-Product_of_Primes}
+  \end{propertylist}
 \end{theorem}
+
+\begin{example}[Exercise 1, Question 1.2a]{Euler Phi Function}
+  Find the value of $\phi(36)$?
+  \tcblower{}
+  First, we note that 36 is not a \nameref{def:Prime} number, thus we need to find a set of primes that are equal to 36.
+  The divisors of 36 are
+  \begin{equation*}
+    \lbrace \pm 1, \pm 2, \pm 3, \pm 4, \pm 9, \pm 12, \pm 18, \pm 36 \rbrace
+  \end{equation*}
+  And all possible prime numbers present as divisors of 36 are
+  \begin{equation*}
+    \lbrace 2, 3 \rbrace
+  \end{equation*}
+
+  So, there must be some combination of $2^{x}\cdot 3^{y}$ that yields 36.
+  In fact, $2^{2} \cdot 3^{2} = 4 \cdot 9 = 36$.
+  Since 36 can be broken up as a product of 2 \nameref{def:Prime} numbers raised to some power, we can use \Cref{prop:Euler_Phi_Function_Properties-Product_of_Primes} of the \nameref{def:Euler_Phi_Function} to simplify this.
+  But first, we need to separate the two values from each other using \Cref{prop:Euler_Phi_Function_Properties-Split_Multiplication} of the \nameref{def:Euler_Phi_Function} to apply \Cref{prop:Euler_Phi_Function_Properties-Product_of_Primes}.
+
+  We need to check $\gcd \left( 2^{2}, 3 ^{2} \right) = 1$.
+  \begin{align*}
+    \gcd \left( 2^{2}, 3^{2} \right) &= \gcd(4, 9) \\
+    9 &= a4 + b \\
+                                     &= 2 \cdot 4 + 1 \\
+    4 &= a \cdot 1 + b \\
+                                     &= 4 \cdot 1 + 0
+  \end{align*}
+  So, $\gcd \left( 2^{2}, 3^{2} \right) = 1$, so we can use \Cref{prop:Euler_Phi_Function_Properties-Split_Multiplication}.
+  \begin{equation*}
+    \phi \left( 2^{2} \cdot 3^{2} \right) = \phi \left( 2^{2} \right) \phi \left( 3^{2} \right)
+  \end{equation*}
+  And now we can apply \Cref{prop:Euler_Phi_Function_Properties-Product_of_Primes} to find our answer.
+
+  \begin{align*}
+    \phi \left( 2^{2} \right) \phi \left( 3^{2} \right) &= \left( 2^{2} - 2^{2-1} \right) \left( 3^{2} - 3^{2-1} \right) \\
+                                                        &= (4-2)(9-3) \\
+                                                        &= (2)(6) \\
+                                                        &= 12
+  \end{align*}
+  Thus, $\phi(36) = 12$.
+\end{example}
 
 \begin{lemma}[Computing the \nameref{def:GCD}]\label{lemma:Compute_GCD}
   If $a$ and $b$ are positive integers where $a > b$, then
@@ -189,18 +230,27 @@ and
   \end{enumerate}
 \end{definition}
 
-\begin{example}{Euclidean Algorithm}
-  Find the \nameref{def:GCD} of 147 and 273?
+\begin{example}[Exercise 1, Question 1.1a]{Euclidean Algorithm}
+  Find the \nameref{def:GCD} of 222 and 1870?
 
   \tcblower{}
 
   \begin{align*}
-    273 = 1 \cdot 147 + 126 &\Rightarrow \gcd(126, 147) \\
-    147 = 1 \cdot 126 + 21 &\Rightarrow \gcd(21, 126) \\
-    126 = 6 \cdot 21 + 0 &\Rightarrow \gcd(21, 126) \\
+    1870 &= a 222 + b \\
+         &= 8 \cdot 222 + 94 \\
+    222 &= a 94 + b \\
+         &= 2 \cdot 94 + 34 \\
+    94 &= a 34 + b \\
+         &= 2 \cdot 34 + 26 \\
+    34 &= a 26 + b \\
+         &= 1 \cdot 26 + 8 \\
+    26 &= a 8 + b \\
+         &= 3 \cdot 8 + 2 \\
+    8 &= a 2 + b \\
+         &= 4 \cdot 2 + 0
   \end{align*}
 
-  Thus, since $6 \cdot 21 = 126$, 21 is the \nameref{def:GCD} of 147 and 273.
+  Thus, since $4 \cdot 2 = 8$, 2 is the \nameref{def:GCD} of 222 and 1870.
 \end{example}
 
 \begin{theorem}
@@ -241,6 +291,41 @@ This means that the \nameref{def:Euclidean_Algorithm} can be extended to return 
   \end{enumerate}
 \end{definition}
 
+\begin{example}[Exercise 1, Question 1.1b]{Extended Euclidean Algorithm}
+  Find the integers $x$ and $y$ such that $\gcd(222, 1870) = 222x + 1870y$?
+  \tcblower{}
+  From \Cref{ex:Euclidean Algorithm}, we know $\gcd(222, 1870) = 2$, so we can plug that in.
+  We now know that
+  \begin{equation*}
+    2 = 222x + 1870y
+  \end{equation*}
+
+  Now, we essentially run the \nameref{def:Euclidean_Algorithm} backwards.
+  \begin{align*}
+    2 &= 26 - 3 \cdot 8 \\
+      &= 26 - 3(34 - 1 \cdot 26) = 26 - 3 \cdot 34 + 3 \cdot 26 \\
+      &= 4 \cdot 26 - 3 \cdot 34 \\
+      &= 4(94 - 2 \cdot 34) - 3 \cdot 34 = 4 \cdot 94 - 8 \cdot 34 - 3 \cdot 34\\
+      &= 4 \cdot 94 - 11 \cdot 34 \\
+      &= 4 \cdot 94 - 11(222 - 2 \cdot 94) = 4 \cdot 94 - 11 \cdot 222 + 22 \cdot 94 \\
+      &= 26 \cdot 94 - 22 \cdot 222 \\
+      &= 26(1870 - 8 \cdot 222) - 22 \cdot 222 = 26 \cdot 1870 - 208 \cdot 222 - 11 \cdot 222 \\
+      &= -219 \cdot 222 + 26 \cdot 1870
+  \end{align*}
+  Now we need to check the solution we might have found
+  \begin{align*}
+    -219 \cdot 222 + 26 \cdot 1870 &= 2 \\
+    -48618 + 48620 &= 2 \\
+    2 &= 2
+  \end{align*}
+
+  Thus,
+  \begin{align*}
+    x &= -219 \\
+    y &= 26
+  \end{align*}
+\end{example}
+
 \subsection{\texorpdfstring{The Integers modulo $n$}{The Integers modulo n}}\label{subsec:Integer_Modulo_n}
 Let $n$ be a positive integer.
 \begin{definition}[Congruence]\label{def:Congruence}
@@ -266,23 +351,46 @@ Let $n$ be a positive integer.
   \Crefrange{prop:A_Congruent_B_Reflexivity}{prop:A_Congruent_B_Transitivity} are called \emph{reflexivity}, \emph{symmetry}, and \emph{transitivity}, respectively.
 \end{theorem}
 
+\begin{example}[Exercise 1, Question 1.2b]{Integers modulo n}
+  Write all the units (\nameref{def:Invertible_Element}) in \TextIntsMod{36}?
+  \tcblower{}
+  First, we start by constructing our set of integers modulo $n$.
+  \begin{equation*}
+    \IntsMod{36} = \bigl\lbrace [0], [1], [2], [3], [4], \ldots, [35] \bigr\rbrace
+  \end{equation*}
+
+  Since we are only worried about the units of \TextIntsMod{36}, we need to find the integers that satisfy \Cref{eq:Invertible_Element}.
+  This is done by finding an $a$ value that has a \nameref{def:Multiplicative_Inverse}, which requires that \Cref{eq:Invertible} be true, namely
+  \begin{equation*}
+    \gcd(a, n) = 1
+  \end{equation*}
+  This leaves us with
+  \begin{equation*}
+    \IntsMod{36} = \bigl\lbrace [1], [5], [7], [11], [13], [17], [19], [23], [25], [29], [31], [35] \bigr\rbrace
+  \end{equation*}
+  which is the solution.
+\end{example}
+
 \subsection{Equivalence Classes}\label{subsec:Equivalence_Classes}
-\begin{definition}[Equivalence Class]\label{def:Equivalence Class}
-  Congruence modulo $n$ partitions $\AllIntegers$ into $n$ sets, called \emph{equivalence class}es, where each integer belongs to exactly one equivalence class.
+\begin{definition}[Equivalence Class]\label{def:Equivalence_Class}
+  \nameref{def:Congruence} modulo $n$ partitions $\AllIntegers$ into $n$ sets, called \emph{equivalence class}es, where each integer belongs to exactly one equivalence class.
 
   For example, these are all congruent to each other modulo $n$:
   \begin{subequations}\label{eq:Equivalence_Class}
     \begin{equation}\label{subeq:Equivalence_Class_Remainder_0}
-      \lbrace \ldots, -2n, -n,\, 0, n, 2n, \ldots \rbrace
+      [0] = \lbrace \ldots, -2n, -n,\, 0, n, 2n, \ldots \rbrace
     \end{equation}
     \begin{equation}\label{subeq:Equivalence_Class_Remainder_1}
-      \lbrace \ldots -2n + 1, -n+1,\, 1, n+1, 2n+1 \ldots \rbrace
+      [1] = \lbrace \ldots -2n + 1, -n+1,\, 1, n+1, 2n+1 \ldots \rbrace
+    \end{equation}
+    \begin{equation}\label{eq:General_Equivalent_Class_Remainder}
+      [r] = \IntsMod{r} = (x \bmod r) + n\AllIntegers
     \end{equation}
   \end{subequations}
 
   Since all elements in an equivalent class have the same \nameref{def:Remainder}, $r$, we use $r$ as a \emph{represenatative} for the equivalence class.
   \begin{remark}
-    In this case, the representatives of the equivalence classes shown in \Crefrange{subeq:Equivalence_Class_Remainder_0}{subeq:Equivalence_Class_Remainder_1} are 0 and 1, respectively.
+    In this case, the representatives of the equivalence classes shown in \Crefrange{subeq:Equivalence_Class_Remainder_0}{subeq:Equivalence_Class_Remainder_1} are 0 and 1, respectively, and consist of all integers that are mod 0 or mod 1, respectively.
   \end{remark}
 \end{definition}
 

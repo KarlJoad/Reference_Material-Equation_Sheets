@@ -4,7 +4,7 @@ However, using what we learned in \Cref{sec:Number_Theory}, \nameref{sec:Number_
 
 \subsection{\texorpdfstring{\TextIntsModN{}}{Sets of Integers Modulo n}}\label{subsec:Z_mod_n}
 \begin{definition}[\TextIntsModN{}]\label{def:Z_mod_n}
-  The set of integers modulo $n$, denoted \TextIntsModN{}, is the set of (equivalence classes of) integers $\lbrace 0, 1, \ldots , n-1 \rbrace$.
+  \nameref{subsec:Integer_Modulo_n}, denoted \TextIntsModN{}, is the set of (\nameref{def:Equivalence_Class}es of) integers $\lbrace [0], [1], \ldots , [n-1] \rbrace$.
   Addition, subtraction, and multiplication are all performed with modulo $n$.
   \Crefrange{ex:Addition on Integers mod n}{ex:Multiplication on Integers mod n} demonstrate this.
 \end{definition}
@@ -56,10 +56,13 @@ However, the concept of division is a little bit more difficult.
   \emph{Division} of $a$ by an element $b \in \IntsModN{}$ (written $a/b$) is defined as $ab^{-1}$, and is only defined if $b$ has a \nameref{def:Multiplicative_Inverse}.
 \end{definition}
 
-\begin{lemma}
+\begin{definition}[Invertible]\label{def:Invertible}
   Let $a \in \IntsModN{}$.
-  Then $a$ is invertible if and only iff $\gcd(a, n) = 1$.
-\end{lemma}
+  Then $a$ is \emph{invertible} if and only iff
+  \begin{equation}\label{eq:Invertible}
+    \gcd(a, n) = 1
+  \end{equation}
+\end{definition}
 
 \begin{proof}
   Assume that $\gcd(a, n) = 1$.
