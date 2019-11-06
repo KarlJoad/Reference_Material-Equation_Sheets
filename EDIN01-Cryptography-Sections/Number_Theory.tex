@@ -223,14 +223,35 @@ and
 
 This means that the \nameref{def:Euclidean_Algorithm} can be extended to return the values of $x$ and $y$ from \Cref{eq:Extended_Euclidean_Algorithm_Basis}.
 
-\subsection{The Integers modulo $n$}\label{subsec:Integer_Modulo_n}
-Let $n$ be a positive integer.
-If $a$ and $b$ are integers, then \emph{$a$ is said to be congruent to $b$ modulo $n$}, which is written as
-\begin{equation}\label{eq:A_Congruent_B}
-  a \equiv b \pmod{n}
-\end{equation}
+\begin{definition}[Extended Euclidean Algorithm]\label{def:Extended_Euclidean_Algorithm}
+  The \emph{extended euclidean algorithm} is a way to efficiently calculate the linear pair of integers ($x, y \in \AllIntegers$) that satisfy \Cref{eq:Extended_Euclidean_Algorithm_Basis}.
+  \begin{equation*}
+    \gcd(a, b) = ax + by
+  \end{equation*}
 
-If $n$ divides $(a-b)$, i.e. $n \divides (a-b)$, then we call $n$ the \emph{modulus} of the congruence.
+  \begin{enumerate}[noitemsep]
+  \item If $b = 0$, then return $a, x \leftarrow 1, y \leftarrow 0$.
+  \item Set $x_{2} \leftarrow 1, x_{2} \leftarrow 0, y_{2} \leftarrow 0, y_{1} \leftarrow 1$
+  \item While $b > 0$ do:
+    \begin{enumerate}[noitemsep]
+    \item $q \leftarrow a \DIV b, r \leftarrow a-qb, x \leftarrow x_{2} - qx_{1}, y \leftarrow y_{2} - qy_{1}$
+    \item $a \leftarrow b, b \leftarrow r, x_{2} \leftarrow x_{1}, x_{1} \leftarrow x, y_{2} \leftarrow y_{1}, y_{1} \leftarrow y$.
+    \end{enumerate}
+  \item Set $d \leftarrow a, x \leftarrow x_{2}, y \leftarrow y_{2}$ and return $d, x, y$.
+  \end{enumerate}
+\end{definition}
+
+\subsection{\texorpdfstring{The Integers modulo $n$}{The Integers modulo n}}\label{subsec:Integer_Modulo_n}
+Let $n$ be a positive integer.
+\begin{definition}[Congruence]\label{def:Congruence}
+  If $a$ and $b$ are integers, then \emph{$a$ is said to be congruent to $b$ modulo $n$}, which is written as
+  \begin{equation}\label{eq:A_Congruent_B}
+    a \equiv b \pmod{n}
+  \end{equation}
+
+  If $n$ divides $(a-b)$, i.e. $n \divides (a-b)$, then we call $n$ the \emph{modulus} of the congruence.
+
+\end{definition}
 
 \begin{theorem}
   For $a, a_{1}, b, b_{1}, c\in \AllIntegers$, we have
