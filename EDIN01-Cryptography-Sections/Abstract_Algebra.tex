@@ -194,13 +194,70 @@ These include:
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Polynomial \nameref*{subsec:Rings}}\label{subsubsec:Polynomial_Rings}
+\subsection{Fields}\label{subsec:Fields}
+\begin{definition}[Field]\label{def:Field}
+  A \emph{field} is a commutative \nameref{def:Ring} where all nonzero elements have \nameref{def:Multiplicative_Inverse}s.
+\end{definition}
+
+\begin{definition}[Characteristic]\label{def:Field_Characteristic}
+  The \emph{characteristic} of a field is the smallest integer $m > 0$ such that
+  \begin{equation}\label{eq:Field_Characteristic}
+    \overbrace{1 + 1 + \cdots + 1}^{m} = 0
+  \end{equation}
+
+  If no such integer $m$ exists, the characteristic is defined to be 0.
+\end{definition}
+
+\begin{definition}[Finite Field]\label{def:Finite_Field}
+  A \nameref{def:Field} is \emph{finite} only if \Cref{thm:Finite_Field} is satisfied.
+\end{definition}
+
+\begin{theorem}[Finite Field]\label{thm:Finite_Field}
+  \TextIntsModN{} is a \nameref{def:Field} if and only if $n$ is a \nameref{def:Prime} number.
+  If $n$ is a \nameref{def:Prime}, the \nameref{def:Field_Characteristic} of \TextIntsModN{} is $n$.
+\end{theorem}
+
+\begin{definition}[Subfield]\label{def:Subfield}
+  A subset $F$ of a \nameref{def:Field} $E$ is called a \emph{subfield} of $E$ if $F$ is itself a \nameref{def:Field} with respect to the operations of $E$.
+  
+  \begin{remark}[Extension Field]\label{rmk:Extension_Field}
+    Likewise, we say $E$ is an \emph{extension field} of $F$.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Isomorphism]\label{def:Isomorphism}
+  Two \nameref{def:Field}s are \emph{isomorphic} if they are structurally the same, but elements hvae a different representation.
+  For example, for a \nameref{def:Prime}, $p$, \TextIntsMod{p} is a \nameref{def:Field} or \nameref{def:Set_Order} $p$.
+  So we associate the \nameref{def:Finite_Field} \TextFiniteMathField{F}{p} with \TextIntsMod{p} and its representation.
+\end{definition}
+
+\subsubsection{Examples of \nameref*{subsec:Fields}}\label{subsubsec:Examples_of_Fields}
+\begin{itemize}[noitemsep]
+\item The rational Numbers: \TextRationalNumbers{}
+\item The Real Numbers: \TextRealNumbers{}
+\item The Complex Numbers: \TextComplexNumbers{}
+\item \nameref{def:Finite_Field}:
+  \begin{itemize}[noitemsep]
+  \item \TextIntsMod{p}, where $p$ is \nameref{def:Prime}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Polynomial \nameref*{subsec:Rings}}\label{subsec:Polynomial_Rings}
+\nameref{subsec:Polynomial_Rings} are getting their own subsection separate from other \nameref{subsec:Rings}, because they are actually a more general case of what we have learned already.
 \begin{definition}[Polynomial]\label{def:Polynomial}
   A \emph{polynomial} in the indeterminate $x$ over the \nameref{def:Ring} $R$ is an expression of the form
   \begin{equation}\label{eq:Polynomial_Ring}
     f(x) = a_{n}x^{n} + \cdots + a_{2}x^{2} + a_{1}x + a_{0}
   \end{equation}
   where each $a_{i} in R$, $a_{n} neq 0$, and $n \geq 0$.
+
+  \begin{remark}
+    \textbf{Remember that even integers can be polynomials!}
+    This means that everything we have learned about \nameref{subsec:Rings} already is actually a special case of \nameref{subsec:Polynomial_Rings}.
+    \begin{equation*}
+      1 = 0x^{m} + 0x^{m-1} + \cdots + 0x + 1
+    \end{equation*}
+  \end{remark}
 \end{definition}
 
 \begin{definition}[Degree]\label{def:Polynomial_Degree}
@@ -235,47 +292,194 @@ These include:
   \end{equation*}
 \end{example}
 
-\subsection{Fields}\label{subsec:Fields}
-\begin{definition}[Field]\label{def:Field}
-  A \emph{field} is a commutative \nameref{def:Ring} where all nonzero elements have \nameref{def:Multiplicative_Inverse}s.
-\end{definition}
+If you consider the \TextMathField{F}{x}, where $F$ denotes an arbitrary \nameref{def:Field}.
+\TextMathField{F}{x} has many properties in common with integers.
 
-\begin{definition}[Characteristic]\label{def:Field_Characteristic}
-  The \emph{characteristic} of a field is the smallest integer $m > 0$ such that
-  \begin{equation}\label{eq:Field_Characteristic}
-    \overbrace{1 + 1 + \cdots + 1}^{m} = 0
-  \end{equation}
+\begin{definition}[Irreducible]\label{def:Irreducible_Polynomial}
+  A polynomial $f(x) \in \MathField{F}{x}$, of \nameref{def:Polynomial_Degree} $d \geq 1$ is \emph{irreducible} if $f(x)$ cannot be written as a product of 2 polynomials, $g(x), h(x) \in \MathField{F}{x}$, where the $\Degree g(x)$ and $\Degree h(x)$ are both less than $d$.
 
-  If no such integer $m$ exists, the characteristic is defined to be 0.
-\end{definition}
-
-\begin{definition}[Finite Field]\label{def:Finite_Field}
-  A \nameref{def:Field} is \emph{finite} only if \Cref{thm:Finite_Field} is satisfied.
-\end{definition}
-
-\begin{theorem}[Finite Field]\label{thm:Finite_Field}
-  \TextIntsModN{} is a \nameref{def:Field} if and only if $n$ is a \nameref{def:Prime} number.
-  If $n$ is a \nameref{def:Prime}, the \nameref{def:Field_Characteristic} of \TextIntsModN{} is $n$.
-\end{theorem}
-
-\begin{definition}[Subfield]\label{def:Subfield}
-  A subset $F$ of a \nameref{def:Field} $E$ is called a \emph{subfield} of $E$ if $F$ is itself a \nameref{def:Field} with respect to the operations of $E$.
-  
-  \begin{remark}[Extension Field]\label{rmk:Extension_Field}
-    Likewise, we say $E$ is an \emph{extension field} of $F$.
+  \begin{remark}[Relation Between Irreducible Polynomials and Prime Numbers]\label{rmk:Irreducible_Polynomials_and_Prime_Numbers}
+    \nameref{def:Irreducible_Polynomial} polynomials are the \nameref{def:Polynomial_Ring} counterpart of \nameref{def:Prime} numbers.
   \end{remark}
 \end{definition}
 
-\subsubsection{Examples of \nameref*{subsec:Fields}}\label{subsubsec:Examples_of_Fields}
-\begin{itemize}[noitemsep]
-\item The rational Numbers: \TextRationalNumbers{}
-\item The Real Numbers: \TextRealNumbers{}
-\item The Complex Numbers: \TextComplexNumbers{}
-\item \nameref{def:Finite_Field}:
+\subsubsection{Long Division of \nameref*{def:Polynomial}s}\label{subsubsec:Polynomial_Long_Division}
+Similarly as for integers (\Cref{subsec:Integer_Long_Division}), we have a division algorithm for polynomials.
+\begin{definition}[Polynomial Long Division]\label{def:Polynomial_Long_Division}
+  If $a(x), b(x) \in \MathField{F}{x}$, with $h(x) \neq 0$, then there are polynomials $q(x), r(x) \in \MathField{F}{x}$ such that
+  \begin{equation}\label{eq:Polynomials_Long_Division}
+    a(x) = q(x) b(x) + r(x)
+  \end{equation}
+  where
   \begin{itemize}[noitemsep]
-  \item \TextIntsMod{p}, where $p$ is \nameref{def:Prime}
+  \item $\Degree r(x) < \Degree h(x)$.
+  \item $q(x)$ and $r(x)$ are unique.
+  \item $q(x)$ is referred to as the \nameref{def:Polynomial_Quotient}
+  \item $r(x)$ is referred to as the \nameref{def:Polynomial_Remainder}
   \end{itemize}
+\end{definition}
+
+\begin{definition}[Polynomial Quotient]\label{def:Polynomial_Quotient}
+  The \emph{\nameref{def:Polynomial} quotient}, $q(x)$, of $a(x)$ divided by $b(x)$ ($a(x) \div b(x)$, $a(x) / b(x)$) is denoted $a(x) \DIV b(x)$.
+\end{definition}
+
+\begin{definition}[Polynomial Remainder]\label{def:Polynomial_Remainder}
+  The \emph{\nameref{def:Polynomial} remainder}, $r(x)$, of $a(x)$ divided by $b(x)$ ($a(x) \div b(x)$, $a(x) / b(x)$) is denoted $a(x) \bmod b(x)$.
+\end{definition}
+
+\begin{example}[Lecture 3]{Long Division of Polynomials}
+  \textbf{TODO}
+\end{example}
+
+\subsubsection{Properties of \nameref*{subsec:Polynomial_Rings}}\label{subsubsec:Polynomial_Ring_Properties}
+\begin{definition}[Divide]\label{def:Polynomial_Ring_Properties-Divide}
+  If $g(x), h(x) \in \MathField{F}{x}$, then $h(x)$ is said to \emph{divide} $g(x)$, written
+  \begin{equation}\label{eq:Polynomial_Ring_Properties-Divide}
+    h(x) \Divides g(x) \text{if } g(x) \bmod h(x) = 0
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Congruent]\label{def:Polynomial_Ring_Properties-Congruent}
+  Let $g(x), h(x) \in \MathField{F}{x}$.
+  Then, $g(x)$ is said to be \emph{congruent} to $h(x) \bmod f(x)$ if $f(x) \Divides \bigl( g(x) - h(x) \bigr)$.
+  We denote this
+  \begin{equation}\label{eq:Polynomial_Ring_Properties-Congruent}
+    g(x) \equiv h(x) \pmod{f(x)}
+  \end{equation}
+\end{definition}
+
+\begin{propertylist}
+\item $g(x) \equiv h(x) \pmod{f(x)}$ if and only if $g(x)$ and $h(x)$ leave the same remainder when divided by $f(x)$.\label{prop:Polynomial_Ring_Properties-Equivalence}
+\item $g(x) \equiv g(x) \pmod{f(x)}$.\label{prop:Polynomial_Ring_Properties-Reflexivity}
+\item If $g(x) \equiv h(x) \pmod{f(x)}$, the $h(x) \equiv g(x) \pmod{f(x)}$.\label{prop:Polynomial_Ring_Properties-Symmetry}
+\item If $g(x) \equiv h(x) \pmod{f(x)}$ and $h(x) \equiv s(x) \pmod{f(x)}$, then $g(x) \equiv s(x) \pmod{f(x)}$.\label{prop:Polynomial_Ring_Properties-Transitivity}
+\item If $g(x) \equiv g_{1}(x) \pmod{f(x)}$ and $h(x) \equiv h_{1}(x) \pmod{f(x)}$, then:\label{prop:Polynomial_Ring_Properties-Linearity}
+\begin{itemize}[noitemsep]
+\item $g(x) + h(x) \equiv g_{1}(x) + h_{1}(x) \pmod{f(x)}$
+\item $g(x) h(x) \equiv g_{1}(x) h_{1}(x) \pmod{f(x)}$
 \end{itemize}
+\end{propertylist}
+
+We can divide \TextMathField{F}{x} into sets called \nameref{def:Polynomial_Ring_Properties-Equivalence_Classes}, where each \nameref{def:Polynomial_Ring_Properties-Equivalence_Classes} contains all \nameref{def:Polynomial}s that leaves a certain \nameref{def:Polynomial_Remainder} when divided by $f(x)$.
+
+\begin{definition}[Equivalence Class]\label{def:Polynomial_Ring_Properties-Equivalence_Classes}
+  By $\MathField{F}{x} / f(x)$, we denote the set of \emph{equivalence class}es of \nameref{def:Polynomial}s in \TextMathField{F}{x} of degree less than $\Degree f(x0$.
+  The addition and multiplication operations are performed $\mod f(x)$.
+\end{definition}
+
+\begin{definition}[Representative]\label{def:Polynomial_Ring_Properties-Representative}
+  Since the \nameref{def:Polynomial_Remainder}, $r(x)$ itself is a \nameref{def:Polynomial} in the \nameref{def:Polynomial_Ring_Properties-Equivalence_Classes} we use it as a \emph{representative} of the \nameref{def:Polynomial_Ring_Properties-Equivalence_Classes}.
+\end{definition}
+
+\begin{definition}[Commutative Ring]\label{def:Polynomial_Ring_Properties-Commutative_Ring}
+  A commutative \nameref{def:Ring} for \nameref{def:Polynomial}s is defined as
+  \begin{equation}\label{eq:Polynomial_Ring_Properties-Commutative_Ring}
+    \MathField{F}{x} / f(x)
+  \end{equation}
+  \begin{remark}
+    Note that this is the inverse condition of when a \nameref{def:Polynomial_Ring} is a \nameref{def:Polynomial_Ring_Properties-Field}.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Field]\label{def:Polynomial_Ring_Properties-Field}
+  If $f(x) \in \MathField{F}{x}$ is \nameref{def:Irreducible_Polynomial}, then $\MathField{F}{x} / f(x)$ is a \nameref{def:Field}.
+  \begin{remark}
+    Note that this is the inverse condition of when a \nameref{def:Polynomial_Ring} is a \nameref{def:Polynomial_Ring_Properties-Commutative_Ring}
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Finite Field]\label{def:Polynomial_Ring_Properties-Finite_Field}
+  A \emph{finite \nameref{def:Polynomial_Ring_Properties-Field}} is a \nameref{def:Polynomial_Ring_Properties-Field} which contains a finite number of elements, i.e. the \nameref{def:Set_Order} of the \nameref{def:Polynomial_Ring_Properties-Field} is not $\infty$.
+
+  \begin{propertylist}
+  \item If $F$ is a \nameref{def:Polynomial_Ring_Properties-Finite_Field}, then the \nameref{def:Set_Order} of $F$ is $p^{m}$ for some \nameref{def:Prime} $p$ and integer $m \geq 1$.\label{prop:Polynomial_Ring_Properties-Order}
+  \item For every \nameref{def:Prime} power order $p^{m}$, there is a unique (up to \nameref{def:Isomorphism}) \nameref{def:Polynomial_Ring_Properties-Finite_Field} of \nameref{def:Set_Order} $p^{m}$. This \nameref{def:Polynomial_Ring_Properties-Field} is denoted by \TextFiniteMathField{F}{p}{m} or $GF \left(p^{m} \right)$.\label{prop:Polynomial_Ring_Properties-Uniqueness}
+  \item If \TextFiniteMathField{F}{q}{} is a \nameref{def:Polynomial_Ring_Properties-Finite_Field} of \nameref{def:Set_Order} $q = p^{m}$, i.e. \TextFiniteMathField{F}{p}{m}, the the \emph{\nameref{def:Field_Characteristic}} of \TextFiniteMathField{F}{q}{} is $p$.
+    Furthermore, \TextMathField{F}{q} contains a copy of \TextIntsMod{p} as a \emph{\nameref{def:Subfield}}.\label{prop:Polynomial_Ring_Properties-Characteristic}
+  \item Let \TextFiniteMathField{F}{q}{} be a \nameref{def:Polynomial_Ring_Properties-Finite_Field} of \nameref{def:Set_Order} $q = p^{m}$, i.e. \TextFiniteMathField{F}{p}{m}.
+    Then every \nameref{def:Subfield} of \TextFiniteMathField{F}{q}{} has \nameref{def:Set_Order} $p^{n}$ for some positive integer $n$ where $n \Divides m$.
+    Conversely, if $n \Divides m$, then there is exactly one \nameref{def:Subfield} of \TextFiniteMathField{F}{q}{} of \nameref{def:Set_Order} $p^{n}$.\label{prop:Polynomial_Ring_Properties-Subfield}
+  \item An element $a \in \FiniteMathField{F}{q}{}$ is in the \nameref{def:Subfield} \TextFiniteMathField{F}{p}{n} if and only if $a^{p^{n} - 1} = 1$.\label{prop:Polynomial_Ring_Properties-Element_in_Subfield}
+  \end{propertylist}
+\end{definition}
+
+\begin{definition}[Multiplicative Group]\label{def:Polynomial_Ring_Properties-Multiplicative_Group}
+  The non-zero elements of \TextFiniteMathField{F}{q} all have inverses and thus, they form a \nameref{def:Group} under multiplication.
+  This \nameref{def:Group} is called the \emph{multiplicative group} of \TextFiniteMathField{F}{q} and denoted by $\FiniteMathField{F}{q}{}^{*}$.
+  It can be shown that $\FiniteMathField{F}{q}{}^{*}$ is a \nameref{def:Cyclic} \nameref{def:Group} (of \nameref{def:Set_Order} $q-1$).
+  Especially, this means that $a^{q-1} = 1$ for all $a \in \FiniteMathField{F}{q}{}$.
+\end{definition}
+
+\begin{definition}[Primitive Element]\label{def:Polynomial_Ring_Properties-Primitive_Element}
+  A \nameref{def:Generator} of the \nameref{def:Cyclic} \nameref{def:Group} $\FiniteMathField{F}{q}{}^{*}$ is called a \emph{primitive element}.
+\end{definition}
+
+\subsubsection{Extension of \nameref*{def:GCD}, \nameref*{def:Euclidean_Algorithm}, and \nameref*{def:Extended_Euclidean_Algorithm}}\label{subsubsec:Extend_GCD_Euclidean_Algorithms}
+\begin{definition}[Greatest Common Divisor]\label{def:Polynomial_Ring_GCD}
+  Let $g(x), h(x) \in \FinitePolynomialRing{Z}{p}{x}$, where not both are zero.
+  Then the \emph{greatest common divisor}, \emph{GCD}, of $g(x)$ and $h(x)$, denoted $\gcd\bigl( g(x), h(x) \bigr)$, is the \nameref{def:Monic_Polynomial} of greatest \nameref{def:Polynomial_Degree} in \TextFinitePolynomialRing{Z}{p}{x} which \nameref{def:Polynomial_Ring_Properties-Divide}s both $g(x)$ and $h(x)$.
+
+  \begin{remark}
+    By definition $\gcd(0, 0) = 0$.
+  \end{remark}
+\end{definition}
+
+\begin{theorem}[Unique Factorization of Polynomials]\label{thm:Unique_Factorization_of_Polynomials}
+  Every non-zero polynomial $f(x) \in \FinitePolynomialRing{Z}{p}{x}$ has a factorization
+  \begin{equation}\label{eq:Unique_Factorization_of_Polynomials}
+    f(x) = a {f_{1}(x)}^{e_{1}} {f_{2}(x)}^{e_{2}} \cdots {f_{k}(x)}^{e_{k}}
+  \end{equation}
+  where each $f_{i}(x)$ is a distinct \nameref{def:Monic_Polynomial} that is also an \nameref{def:Irreducible_Polynomial} in \TextFinitePolynomialRing{Z}{p}{x}, the $e_{i}$ are positive integers, and $a \in \IntsMod{p}$, where $p$ is for \nameref{def:Prime}s.
+  The factorization is unique up to the rearrangement of factors.
+\end{theorem}
+
+\begin{definition}[Polynomial Euclidean Algorithm]\label{def:Polynomial_Euclidean_Algorithm}
+  Takes 2 non-negative polynomials $a(x), b(x) \in \FinitePolynomialRing{F}{q}{x}$.
+  Returns the $\gcd \bigl( a(x), b(x) \bigr)$
+  \begin{enumerate}[noitemsep]
+  \item Set $r_{0}(x) \leftarrow a(x)$, $r_{1}(x) \leftarrow b(x)$, $i \leftarrow 1$.
+  \item While $r_{i}(x) \neq 0$ do:
+    \begin{enumerate}[noitemsep]
+    \item Set $r_{i+1}(x) \leftarrow r_{i-1}(x) \bmod r_{i}(x)$, $i \leftarrow i + 1$
+    \end{enumerate}
+  \item Return the value $r_{i}(x)$.
+  \end{enumerate}
+  
+  This is demonstrated in \Cref{ex:Polynomial Euclidean Algorithm}
+\end{definition}
+
+\begin{example}[Lecture 3]{Polynomial Euclidean Algorithm}
+  \textbf{TODO}
+\end{example}
+
+\begin{definition}[Extended Euclidean Algorithm]\label{def:Polynomial_Extended_Euclidean_Algorithm}
+  let $a(x)$ and $b(x)$ be two non-negative polynomials in \TextPolynomialRing{F}{q}{x}.
+  Then, there exists polynomials $s(x), t(x)$ such that $\gcd \bigl( a(x), b(x) \bigr)$ can be written as
+  \begin{equation}\label{eq:Polynomial_Extended_Euclidean_Algorithm}
+    \gcd \bigl( a(x), b(x) \bigr) = a(x) s(x) + b(x) t(x)
+  \end{equation}
+
+  This is demonstrated in \Cref{ex:Polynomial Extended Euclidean Algorithm}
+\end{definition}
+
+\begin{example}[Lecture 3]{Polynomial Extended Euclidean Algorithm}
+  \textbf{TODO}
+\end{example}
+
+\begin{definition}[Polynomial Basis Representation]
+  The most common representation of element of a \nameref{def:Finite_Field} \TextFiniteMathField{F}{q}, where $q = p^{m}$, $p$ is a \nameref{def:Prime}, and is a \emph{polynomial basis representation}.
+\end{definition}
+
+\begin{theorem}\label{thm:Polynomial_Ring-Addition_Multiplication_Elements}
+  Let $f(x) \in \FinitePolynomialRing{Z}{p}{x}$ be an \nameref{def:Irreducible_Polynomial} of \nameref{def:Polynomial_Degree} $m$.
+  Then $\FinitePolynomialRing{Z}{p}{x} / f(x)$ is a \nameref{def:Polynomial_Ring_Properties-Finite_Field} of \nameref{def:Set_Order} $p^{m}$.
+  The elements are all \nameref{def:Polynomial}s of \nameref{def:Polynomial_Degree} less than $m$.
+  Addition and multiplication of elements is performed modulo $f(x)$.
+\end{theorem}
+
+\begin{lemma}\label{lemma:Polynomial_Ring-Monic_Irreducible_Polynomial_Existence}
+  For each $m \geq 1$, there exists a \nameref{def:Monic_Polynomial} that is also an \nameref{def:Irreducible_Polynomial} of \nameref{def:Polynomial_Degree} $m$ over \TextIntsMod{p}.
+\end{lemma}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"

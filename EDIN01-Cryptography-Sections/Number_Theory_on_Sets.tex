@@ -171,7 +171,7 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
   
   This simplifies to
   \begin{equation}\label{eq:Gauss_Algorithm_Simplified}
-    x = \sum\limits_{i=1}^{k}a_{i} \frac{n}{n_{i}} \left( \frac{n_{i}}{n} \bmod n \right)
+    x = \sum\limits_{i=1}^{k}a_{i} \frac{n}{n_{i}} \Biggl( \frac{n_{i}}{n} \bmod n \Biggr)
   \end{equation}
 \end{definition}
 
@@ -193,10 +193,6 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
     In the case of large integers for cryptography, knowing just one part of the number can ehlp get the other part.
     However, if the number is very large, 2048 bits for instance, these calculations start becoming \nameref{def:Intractable}.
   \end{remark}
-\end{definition}
-
-\begin{definition}[Isomorphism]\label{def:Isomorphism}
-  An \emph{isomorphism} is a transformation that does \textbf{NOT} change any information about the thing, but just changes the representation of the thing.
 \end{definition}
 
 \begin{example}[]{Chinese Remainder Theorem Mapping}

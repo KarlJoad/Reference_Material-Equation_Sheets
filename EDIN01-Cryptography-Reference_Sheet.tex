@@ -39,6 +39,15 @@
 % Used to denote cyclic subgroups
 \newcommand{\CyclicSubgroup}[1]{<#1>}
 \newcommand{\TextCyclicSubgroup}[1]{$\CyclicSubgroup{#1}$}
+\newcommand{\MathField}[2]{#1[#2]}
+\newcommand{\TextMathField}[2]{$\MathField{#1}{#2}$}
+\newcommand{\FiniteMathField}[3]{\mathbb{#1}_{#2^{#3}}}
+\newcommand{\TextFiniteMathField}[3]{$\FiniteMathField{#1}{#2}{#3}$}
+
+\newcommand{\PolynomialRing}[3]{\MathField{#1_{#2}}{#3}}
+\newcommand{\TextPolynomialRing}[3]{$\PolynomialRing{#1}{#2}{#3}$}
+\newcommand{\FinitePolynomialRing}[3]{\MathField{\mathbb{#1}_{#2}}{#3}}
+\newcommand{\TextFinitePolynomialRing}[3]{$\PolynomialRing{#1}{#2}{#3}$}
 
 \begin{titlepage}
   \title{EDIN01: Cryptography - Reference Sheet}
