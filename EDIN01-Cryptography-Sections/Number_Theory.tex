@@ -17,24 +17,24 @@ Before we can start with any of the deeper cryptography stuff, we need to start 
   \end{propertylist}
 \end{definition}
 
-\subsection{Quotient and Remainder}\label{subsec:Quotient_and_Remainder}
+\subsection{Integer Long Division}\label{subsec:Integer_Long_Division}
 For $a, b \in \AllIntegers$, with $b \geq 1$.
 Then an ordinary long division of $a$ by $b$, i.e. $a \div b$ yields two integers $q$ and $r$ such that
-\begin{equation}\label{eq:Quotient_and_Remainder}
+\begin{equation}\label{eq:Integer_Long_Division}
   a = qb + r, \text{where } 0 \leq r < b
 \end{equation}
 
-$q$ and $r$ are called the \nameref{def:Quotient} and \nameref{def:Remainder}, respectively, and are \textbf{unique}.
+$q$ and $r$ are called the \nameref{def:Integer_Quotient} and \nameref{def:Integer_Remainder}, respectively, and are \textbf{unique}.
 
-\begin{definition}[Quotient]\label{def:Quotient}
+\begin{definition}[Quotient]\label{def:Integer_Quotient}
   The \emph{quotient}, $q$, of $a$ divided by $b$ is denoted $a \DIV b$.
 \end{definition}
 
-\begin{definition}[Remainder]\label{def:Remainder}
+\begin{definition}[Remainder]\label{def:Integer_Remainder}
   The \emph{remainder}, $r$, of $a$ divided by $b$ is denoted $a \bmod b$.
 \end{definition}
 
-\begin{example}[]{Quotient and Remainder}
+\begin{example}[]{Integer Long Division}
   If $a=53$ and $b=9$, what is $a \bmod b$?
 
   \tcblower{}
@@ -139,7 +139,7 @@ The number of primes $\leq x$ is denoted
   Furthermore, the factorization is unique up to rearrangement of the factors.
 \end{theorem}
 
-\subsubsection{\nameref{def:GCD} and \nameref{def:LCM} with Unique Factors}\label{subsubsec:GCD_LCM_Unique_Factors}
+\subsubsection{\nameref*{def:GCD} and \nameref*{def:LCM} with Unique Factors}\label{subsubsec:GCD_LCM_Unique_Factors}
 If $a = p_{1}^{e_{1}} p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$ and $b = p_{1}^{f_{1}} p_{2}^{f_{2}} \cdots p_{k}^{e_{k}}$, where $e_{i}, f_{i}, i = 1, 2, \ldots k$ are non-negative integers, then
 \begin{equation}\label{eq:GCD_Unique_Factors}
   \gcd(a, b) = p_{1}^{\min(e_{1}, f_{1})} p_{2}^{\min(e_{2}, f_{2})} \cdots p_{k}^{\min(e_{k}, f_{k})}
@@ -388,7 +388,7 @@ Let $n$ be a positive integer.
     \end{equation}
   \end{subequations}
 
-  Since all elements in an equivalent class have the same \nameref{def:Remainder}, $r$, we use $r$ as a \emph{represenatative} for the equivalence class.
+  Since all elements in an equivalent class have the same \nameref{def:Integer_Remainder}, $r$, we use $r$ as a \emph{represenatative} for the equivalence class.
   \begin{remark}
     In this case, the representatives of the equivalence classes shown in \Crefrange{subeq:Equivalence_Class_Remainder_0}{subeq:Equivalence_Class_Remainder_1} are 0 and 1, respectively, and consist of all integers that are mod 0 or mod 1, respectively.
   \end{remark}
