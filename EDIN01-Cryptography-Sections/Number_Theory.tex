@@ -6,14 +6,14 @@ Before we can start with any of the deeper cryptography stuff, we need to start 
 \end{definition}
 
 \begin{definition}[Divides]\label{def:Divides}
-  For $a, b \in \AllIntegers$, we say that $a$ \emph{divides} $b$ (written $a \divides b$) if there exists an integer $c$ such that $b = ac$.
+  For $a, b \in \AllIntegers$, we say that $a$ \emph{divides} $b$ (written $a \Divides b$) if there exists an integer $c$ such that $b = ac$.
 
   Properties:
   \begin{propertylist}
-  \item $a \divides a$
-  \item If $a \divides b$ and $b \divides c$, then $a \divides c$.
-  \item If $a \divides b$ and $a \divides c$, then $a \divides (bx + cy)$ for any $x, y \in \AllIntegers$.
-  \item If $a \divides b$ and $b \divides a$, then $a = \pm b$.
+  \item $a \Divides a$
+  \item If $a \Divides b$ and $b \Divides c$, then $a \Divides c$.
+  \item If $a \Divides b$ and $a \Divides c$, then $a \Divides (bx + cy)$ for any $x, y \in \AllIntegers$.
+  \item If $a \Divides b$ and $b \Divides a$, then $a = \pm b$.
   \end{propertylist}
 \end{definition}
 
@@ -48,14 +48,14 @@ $q$ and $r$ are called the \nameref{def:Quotient} and \nameref{def:Remainder}, r
 
 \subsection{Greatest Common Divisor}\label{subsec:Greatest_Common_Divisor}
 \begin{definition}[Common Divisor]\label{def:Common_Divisor}
-  An integer $c$ is a \emph{common divisor} of $a$ and $b$ if $c \divides a$ and $c \divides b$.
+  An integer $c$ is a \emph{common divisor} of $a$ and $b$ if $c \Divides a$ and $c \Divides b$.
 \end{definition}
 
 \begin{definition}[Greatest Common Divisor]\label{def:GCD}
   A non-negative integer $d$ is called the \emph{greatest common divisor} (\emph{GCD}) of integers $a$ and $b$ if:
   \begin{enumerate}[noitemsep]
   \item $d$ is a \nameref{def:Common_Divisor} of $a$ and $b$.
-  \item For every other common divisor $c$ it holds that $c \divides d$.
+  \item For every other common divisor $c$ it holds that $c \Divides d$.
   \end{enumerate}
 
   The greatest common divisor is denoted
@@ -87,8 +87,8 @@ $q$ and $r$ are called the \nameref{def:Quotient} and \nameref{def:Remainder}, r
 \begin{definition}[Least Common Multiple]\label{def:LCM}
   A non-negative integer $d$ is called the \emph{least common multiple} (\emph{LCM}) of integers $a$ and $b$ if:
   \begin{enumerate}[noitemsep]
-  \item $a \divides d$ and $b \divides d$
-  \item For every integer $c$ such that $a \divides c$ and $b \divides c$, we have $d \divides c$.
+  \item $a \Divides d$ and $b \Divides d$
+  \item For every integer $c$ such that $a \Divides c$ and $b \Divides c$, we have $d \Divides c$.
   \end{enumerate}
 
   The least common multiple is denoted
@@ -334,14 +334,14 @@ Let $n$ be a positive integer.
     a \equiv b \pmod{n}
   \end{equation}
 
-  If $n$ divides $(a-b)$, i.e. $n \divides (a-b)$, then we call $n$ the \emph{modulus} of the congruence.
+  If $n$ divides $(a-b)$, i.e. $n \Divides (a-b)$, then we call $n$ the \emph{modulus} of the congruence.
 
 \end{definition}
 
 \begin{theorem}
   For $a, a_{1}, b, b_{1}, c\in \AllIntegers$, we have
   \begin{propertylist}
-  \item $a \equiv b \pmod{n}$ \emph{if and only if} $a$ and $b$ leave the same \nameref{def:Remainder} when divided by $n$.
+  \item $a \equiv b \pmod{n}$ \emph{if and only if} $a$ and $b$ leave the same \nameref{def:Integer_Remainder} when divided by $n$.
   \item $a \equiv a \pmod{n}$ \label{prop:A_Congruent_B_Reflexivity}
   \item If $a \equiv b \pmod{n}$, then $b \equiv a \pmod{n}$ \label{prop:A_Congruent_B_Symmetry}
   \item If $a \equiv b \pmod{n}$ adn $b \equiv c \pmod{n}$, then $a \equiv c \pmod{n}$ \label{prop:A_Congruent_B_Transitivity}
