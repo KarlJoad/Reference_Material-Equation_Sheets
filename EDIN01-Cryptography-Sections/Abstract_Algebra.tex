@@ -71,6 +71,11 @@ These include:
   A non-empty subset $H$ of a \nameref{def:Group} $G$ is called a \emph{subgroup} of $G$, if $H$ itself is a \nameref{def:Group} with respect to the operation of $G$.
 \end{definition}
 
+\begin{example}[Exercise 1, Problem 1.10]{Find Subgroups}
+  Find all \nameref{def:Subgroup}s in the multiplicative group \TextMultiplicativeGroup{19} (under the multiplication \nameref{def:Binary_Operation}?
+  \tcblower{}
+\end{example}
+
 \begin{definition}[Cyclic]\label{def:Cyclic}
   $G$ is \emph{cyclic} if there is an element $a \in G$ such that each $b \in G$ can be written as $a^{i}$ for some integer $i$.
   The element $a$ is called a \emph{\nameref{def:Generator}} of $G$.
@@ -96,6 +101,44 @@ These include:
   \end{equation}
   If such an integer $t$ does not exist, then the order of $a$ is defined to be $\infty$.
 \end{definition}
+
+\begin{example}[Exercise 1, Problem 1.8c]{Order of Element in Group}
+  Given the element $(1, 1, 1,)$ from the group of bit triples, $S = \lbrace \left( s_{0}, s_{1}, s_{2} \right) \vert s_{i} \in \IntsMod{2} \rbrace$, using an bitwise addition \nameref{def:Binary_Operation}, what is the \nameref{def:Element_in_Group_Order} of $(1, 1, 1)$?
+  The identity element of this \nameref{def:Group} is $1 = (0, 0, 0)$.
+  \tcblower{}
+  It is important to remember the note in \Cref{rmk:Element_in_Group_Order_Term_Explanation}, especially for this problem.
+
+  Since the given \nameref{def:Binary_Operation} was ``bitwise'', i.e.\ element-wise, I will define the operation to be $.+\,$.
+  In this case, the \nameref{def:Element_in_Group_Order} of any element in this \nameref{def:Group} will be the number of element-wise additions that must occur to get the identity element, $1$.
+
+  For this problem, since we are working in the modulo 2 domain, we have some basic facts:
+  \begin{align*}
+    (0 + 0) \bmod 2 &= 0 \\
+    (1 + 0) \bmod 2 &= 1 \\
+    (0 + 1) \bmod 2 &= 1 \\
+    (1 + 1) \bmod 2 &= 0
+  \end{align*}
+  And for subtraction:
+  \begin{align*}
+    (0 - 0) \bmod 2 &= 0 \\
+    (1 - 0) \bmod 2 &= 1 \\
+    (0 - 1) \bmod 2 &= -1 \bmod 2 = 1 \\
+    (1 - 1) \bmod 2 &= 0
+  \end{align*}
+
+  We start by constructing the equation needed to solve this problem.
+  \begin{equation*}
+    (1, 1, 1) .+ a = (0, 0, 0)
+  \end{equation*}
+  Now we can move the $(1, 1, 1)$ term over to the left, and since we are working in the modulo 2 domain, the ``negative'' that would be introduced by normal subtraction (negative addition) is irrelevant.
+  Thus, we end up with
+  \begin{align*}
+    a &= (0, 0, 0) .+ (1, 1, 1) \\
+      &= (1, 1, 1)
+  \end{align*}
+  This means that if $t$ from \Cref{eq:Element_in_Group_Order} is 2, we get the identity element $1$.
+  So, our answer is $t = 2$, thus $\ElementOrder \bigl[ (1, 1, 1) \bigr] = 2$.
+\end{example}
 
 \begin{lemma}
   Let $a \in G$ be an element of finite \nameref{def:Element_in_Group_Order} $t$.
@@ -213,6 +256,12 @@ These include:
 \begin{definition}[Field]\label{def:Field}
   A \emph{field} is a commutative \nameref{def:Ring} where all nonzero elements from the underlying set have \nameref{def:Multiplicative_Inverse}s.
 \end{definition}
+
+\begin{example}[Exercise 1, Problem 1.11]{Prove Set is Not Field}
+  Prove that \TextIntsMod{4} is not a \nameref{def:Field}?
+  \tcblower{}
+  We begin by checking that all elements from the underlying set, \TextIntsMod{4}, have \nameref{def:Multiplicative_Inverses}.
+\end{example}
 
 \begin{definition}[Characteristic]\label{def:Field_Characteristic}
   The \emph{characteristic} of a field is the smallest integer $m > 0$ such that
