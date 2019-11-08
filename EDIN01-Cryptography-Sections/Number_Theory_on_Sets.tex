@@ -300,7 +300,16 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
 \subsection{Generators}\label{subsec:Generators}
 \begin{definition}[Generator]\label{def:Generator}
   Let $a \in \MultiplicativeGroupN{}$.
-  If $\ElementOrder(a) = \phi(n)$, then $a$ is said to be a \emph{generator} (or a \emph{primitive element}) of \TextMultiplicativeGroupN{}.
+  If the \nameref{def:Element_Order} of $a$ is equal to the \nameref{def:Euler_Phi_Function}, i.e.\ $\ElementOrder(a) = \phi(n)$, then $a$ is said to be a \emph{generator} (or a \emph{primitive element}) of \TextMultiplicativeGroupN{}.
+  \begin{subequations}\label{eq:Generator}
+    \begin{equation}\label{eq:Generator-Equivalent_Element_Euler_Phi_Function}
+      \ElementOrder(a) = \phi(n)
+    \end{equation}
+    \begin{equation}\label{eq:Generator-Equivalent_Element_Set_Orders}
+      \ElementOrder(a) = \SetOrder{\MultiplicativeGroupN{}}
+    \end{equation}
+  \end{subequations}
+
   Furthermore, if \TextMultiplicativeGroupN{} has a generator, then \TextMultiplicativeGroupN{} is said to be\emph{\nameref{def:Cyclic}}.
   \begin{remark}
     It is clear that if $a \in \MultiplicativeGroupN{}$ is a \nameref{def:Generator}, then every element in \TextMultiplicativeGroupN{} can be expressed as $a^{i}$ for some integer $i$ ($i \in \AllIntegers$).
