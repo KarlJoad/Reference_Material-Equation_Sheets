@@ -320,9 +320,19 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
 \subsection{Quadratic Residues}\label{subsec:Quadratic_Residues}
 \begin{definition}[Quadratic Residue]\label{def:Quadratic_Residue}
   An element $a \in \MultiplicativeGroupN{}$ is said to be a \emph{quadratic residue} modulo $n$ (or a \emph{square}) if there exists an $x \in \MultiplicativeGroupN{}$ such that $x^{2} = a$.
-  \begin{equation}\label{eq:Quadratic_Residue}
-    \exists x \in \MultiplicativeGroupN{} x^{2} = a
-  \end{equation}
+  \begin{subequations}\label{eq:Quadratic_Residue}
+    \begin{equation}\label{subeq:Quadratic_Residue_1}
+      a \in \IntsModN{} \exists x \in \MultiplicativeGroupN{}\:\: x^{2} = a \pmod{n}
+    \end{equation}
+    \begin{equation}\label{subeq:Quadratic_Residue_2}
+      a \in \IntsModN{} \exists x \in \MultiplicativeGroupN{}\:\: a \equiv x^{2} \pmod{n}
+    \end{equation}
+  \end{subequations}
+
+  \begin{remark}[Square Root]\label{rmk:Square_Root}
+    If $x^{2} = a$, then $x$ is called the \emph{square root} of $a \bmod n$.
+  \end{remark}
+
   Otherwise, $a$ is called a \emph{\nameref{def:Quadratic_Non_Residue} modulo $n$}.
 \end{definition}
 
