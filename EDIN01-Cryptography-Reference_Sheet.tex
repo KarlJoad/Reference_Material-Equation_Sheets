@@ -49,6 +49,12 @@
 \newcommand{\FinitePolynomialRing}[3]{\MathField{\mathbb{#1}_{#2}}{#3}}
 \newcommand{\TextFinitePolynomialRing}[3]{$\PolynomialRing{#1}{#2}{#3}$}
 
+\DeclareMathOperator{\Plaintexts}{\mathcal{P}}
+\DeclareMathOperator{\Ciphertexts}{\mathcal{C}}
+\DeclareMathOperator{\Keyspace}{\mathcal{K}}
+\DeclareMathOperator{\EncryptionRules}{\mathcal{E}}
+\DeclareMathOperator{\DecryptionRules}{\mathcal{D}}
+
 \begin{titlepage}
   \title{EDIN01: Cryptography - Reference Sheet}
   \author{Karl Hallsby}
@@ -70,6 +76,8 @@
 \input{./EDIN01-Cryptography-Sections/Number_Theory_on_Sets}
 
 \input{./EDIN01-Cryptography-Sections/Abstract_Algebra}
+
+\input{./EDIN01-Cryptography-Sections/Classical_Cryptography}
 %====================================APPENDIX====================================
 \appendix
 \counterwithin{definition}{subsection}
