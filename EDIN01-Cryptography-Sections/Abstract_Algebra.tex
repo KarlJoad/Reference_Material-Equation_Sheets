@@ -51,7 +51,55 @@ These include:
   We will need to prove that \Crefrange{prop:Group_Properties-Associativity}{prop:Group_Properties-Identity} are true.
   \Cref{prop:Group_Properties-Commutativity} is \emph{not} necessary to show that a set is a \nameref{def:Group}.
   \Cref{prop:Group_Properties-Commutativity} only shows that the \nameref{def:Group} is \nameref{def:Abelian}
-  \textbf{TODO, Finish}
+
+  First, the elements present in the set $S$:
+  \begin{equation*}
+    S = \Bigl\lbrace (0, 0, 0), (0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1) \Bigr\rbrace
+  \end{equation*}
+
+  To prove that $S$ is a group with an element-wise addition \nameref{def:Binary_Operation}, I will arbitrarily select
+  \begin{align*}
+    a &= (0, 1, 0) \\
+    b &= (0, 1, 1) \\
+    c &= (1, 1, 0)
+  \end{align*}
+
+  Starting with \Cref{prop:Group_Properties-Associativity}:
+  \begin{align*}
+    a \, .+ (b \, .+ c) &= (a \, .+ b) \, .+ c \\
+    (0, 1, 0) \, .+ \bigl( (0, 1, 1) \, .+ (1, 1, 0) \bigr) &= \bigl( (0, 1, 0) \, .+ (0, 1, 1) \bigr) \, .+ (1, 1, 0) \\
+    (0, 1, 0) \, .+ \bigl( (1, 0, 1) \bigr) &= \bigl( (0, 0, 1) \bigr) \, .+ (1, 1, 0) \\
+    (1, 1, 1)  &= (1, 1, 1) \\
+  \end{align*}
+  Thus, \Cref{prop:Group_Properties-Associativity} is satisfied.
+
+  Now, \Cref{prop:Group_Properties-Identity}
+  \begin{align*}
+    a \, .+ 1 &= a \\
+    (0, 1, 0) \, .+ 1 &= (0, 1, 0) \\
+    1 &= (0, 1, 0) \, .+ \Bigl( -(0, 1, 0) \Bigr)
+  \end{align*}
+  It is important to remamber that these additions are done in the modulo 2 domain, so addition and subtraction yield the same results, making negatives irrelevant.
+  \begin{align*}
+    1 &= (0, 1, 0) \, .+ (0, 1, 0) \\
+    1 &= (0, 0, 0)
+  \end{align*}
+  Thus, \Cref{prop:Group_Properties-Identity} is satisfied, and $1 = (0, 0, 0)$.
+
+  Lastly, we need to prove \Cref{prop:Group_Properties-Inverse}.
+  \begin{align*}
+    a \, .+ a^{-1} &= 1 \\
+    (0, 1, 0) \, .+ a^{-1} &= (0, 0, 0) \\
+    a^{-1} &= (0, 0, 0) \, .+ \Bigl( -(0, 1, 0) \Bigr)
+  \end{align*}
+  Like before, addition and subtraction are irrelevant here.
+  \begin{align*}
+    a^{-1} &= (0, 0, 0) \, .+ (0, 1, 0) \\
+    a^{-1} &= (0, 1, 0)
+  \end{align*}
+  Thus, \Cref{prop:Group_Properties-Inverse} is satisfied, where each element $a$ is its own inverse.
+
+  Since \Crefrange{prop:Group_Properties-Associativity}{prop:Group_Properties-Inverse} are satisfied, $S$ \textbf{is} a \nameref{def:Group} with the bitwise addition \nameref{def:Binary_Operation}.
 \end{example}
 
 \begin{definition}[Abelian]\label{def:Abelian}
@@ -72,8 +120,41 @@ These include:
 \end{definition}
 
 \begin{example}[Exercise 1, Problem 1.10]{Find Subgroups}
-  Find all \nameref{def:Subgroup}s in the multiplicative group \TextMultiplicativeGroup{19} (under the multiplication \nameref{def:Binary_Operation}?
+  Find all \nameref{def:Subgroup}s in the multiplicative group \TextMultiplicativeGroup{19} (under the multiplication \nameref{def:Binary_Operation})?
   \tcblower{}
+  The goal here is to find a \nameref{def:Generator} that can be raised to some set of exponents that can generate \nameref{def:Subgroup}s of \TextMultiplicativeGroup{19}.
+
+  The first thing to note is that 19 is a \nameref{def:Prime}, so
+  \begin{equation*}
+    \SetOrder{\MultiplicativeGroup{19}} = 18 = \phi(n)
+  \end{equation*}
+
+  We can also apply \nameref{thm:Lagranges_Theorem} to restrict the number of \nameref{def:Subgroup}s possible.
+  Because \TextMultiplicativeGroup{19} is a finite \nameref{def:Group}, and we are considering $G$ to be a \nameref{def:Subgroup} of \TextMultiplicativeGroup{19}, we apply \nameref{thm:Lagranges_Theorem}.
+  This means $\SetOrder{G} \Divides \SetOrder{\MultiplicativeGroup{19}}$ must be true.
+  Thus,
+  \begin{equation*}
+    \SetOrder{G} = \lbrace 1, 2, 3, 6, 9, 18 \rbrace
+  \end{equation*}
+
+  Now, we can find a \nameref{def:Generator} for the \nameref{def:Group} \TextMultiplicativeGroup{19}.
+  This means, we need to find some element $a$ that raised to some power $t$, modulo 19 will yield 1.
+  We know that $t$ \textbf{must} equal 18, because $\phi(n) = 18$, and we want to find a \nameref{def:Generator}.
+  So, we solve for $a$.
+  \begin{equation*}
+    a^{18} \bmod 18 = 1
+  \end{equation*}
+  In this case, $a = 2$, making $2$ a \nameref{def:Generator} of \TextMultiplicativeGroup{19}, or \TextCyclicSubgroup{2}.
+
+  Now, all possible \nameref{def:Subgroup}s of \TextMultiplicativeGroup{19} are:
+  \begin{align*}
+    G_{1} &= \biggl \lbrace \Bigl[ 2^{18} \Bigr] \biggr \rbrace \\
+    G_{2} &= \biggl \lbrace \Bigl[ 2^{9} \Bigr], \Bigl[ 2^{18}\Bigr] \biggr \rbrace \\
+    G_{3} &= \biggl \lbrace \Bigl[ 2^{6} \Bigr], \Bigl[ 2^{12} \Bigr], \Bigl[ 2^{18} \Bigr] \biggr \rbrace \\
+    G_{6} &= \biggl \lbrace \Bigl[ 2^{3} \Bigr], \Bigl[ 2^{6} \Bigr], \Bigl[ 2^{9} \Bigr], \Bigl[ 2^{12} \Bigr], \Bigl[ 2^{15} \Bigr], \Bigl[ 2^{18} \Bigr] \biggr \rbrace \\
+    G_{9} &= \biggl \lbrace \Bigl[ 2^{2} \Bigr], \Bigl[ 2^{4} \Bigr], \Bigl[ 2^{6} \Bigr], \Bigl[ 2^{8} \Bigr], \Bigl[ 2^{10} \Bigr], \Bigl[ 2^{12} \Bigr], \Bigl[ 2^{14} \Bigr], \Bigl[ 2^{16} \Bigr], \Bigl[ 2^{18} \Bigr] \biggr \rbrace \\
+    G_{18} &= \biggl \lbrace \Bigl[ 2^{0} \Bigr], \Bigl[ 2^{1} \Bigr], \ldots, \Bigl[ 2^{18} \Bigr] \biggr \rbrace \\
+  \end{align*}
 \end{example}
 
 \begin{definition}[Cyclic]\label{def:Cyclic}
@@ -186,7 +267,7 @@ These include:
 \end{propertylist}
 
 \subsubsection{Lagrange's Theorem}\label{subsubsec:Lagranges_Theorem}
-\begin{theorem}[Lagrange's Theorem]
+\begin{theorem}[Lagrange's Theorem]\label{thm:Lagranges_Theorem}
   If $G$ is a finite group and $H$ is a \nameref{def:Subgroup} of $G$, then \TextSetOrder{H} divides \TextSetOrder{G}.
   In particular if $a \in G$, then the order of $a$ divides \TextSetOrder{G}.
 \end{theorem}
@@ -321,7 +402,7 @@ These include:
   \begin{equation}\label{eq:Polynomial_Ring}
     f(x) = a_{n}x^{n} + \cdots + a_{2}x^{2} + a_{1}x + a_{0}
   \end{equation}
-  where each $a_{i} in R$, $a_{n} neq 0$, and $n \geq 0$.
+  where each $a_{i} \in R$, $a_{n} \neq 0$, and $n \geq 0$.
 
   \begin{remark}
     \textbf{Remember that even integers can be polynomials!}
@@ -400,7 +481,26 @@ Similarly as for integers (\Cref{subsec:Integer_Long_Division}), we have a divis
 \end{definition}
 
 \begin{example}[Lecture 3]{Long Division of Polynomials}
-  \textbf{TODO}
+  Calculate $\left( x^{3} + 11x^{2} + x + 7 \right) \bmod \left( x^{2} + x + 3 \right)$ while working in the \nameref{def:Field} \TextPolynomialRing{Z}{13}{x}?
+  \tcblower{}
+  First thing to note is that \TextPolynomialRing{Z}{13}{x} is a \nameref{def:Finite_Field} because 13 is a \nameref{def:Prime}.
+  Now, we perform long division:
+
+  \begin{center}
+    \polylongdiv{x^3 + 11x^2 + x + 7}{x^2 + x + 3}
+  \end{center}
+
+  Since our \nameref{def:Polynomial_Remainder} is $(-12x - 23) \bmod 13$, we perform some reduction.
+  Thus, the \nameref{def:Polynomial_Remainder} is:
+  \begin{align*}
+    -12x \bmod 13 &= 1x \bmod 13 \\
+    -23 \bmod 13 = -10 \bmod 13 &= 3 \bmod 13
+  \end{align*}
+  So, the reduced \nameref{def:Polynomial_Quotient} and \nameref{def:Polynomial_Remainder} are:
+  \begin{align*}
+    q(x) &= x + 10 \\
+    r(x) &= x + 3
+  \end{align*}
 \end{example}
 
 \subsubsection{Properties of \nameref*{subsec:Polynomial_Rings}}\label{subsubsec:Polynomial_Ring_Properties}
@@ -521,7 +621,71 @@ We can divide \TextMathField{F}{x} into sets called \nameref{def:Polynomial_Ring
 \end{definition}
 
 \begin{example}[Lecture 3]{Polynomial Euclidean Algorithm}
-  \textbf{TODO}
+  Given $f(x) = x^{3} + x$, where $f(x) \in \PolynomialRing{Z}{2}{x}$, find the \nameref{def:GCD} of $f(x)$ given that $f(x) g(x) = 1 \bmod \left( x^{4} + x + 1 \right)$.
+    Assume $f(x) g(x)$ is \nameref{def:Irreducible_Polynomial}.
+    \tcblower{}
+    Considering that $\PolynomialRing{Z}{2}{x} / f(x)$ where $f(x) \in \PolynomialRing{Z}{2}{x}$ and $f(x)$ is \nameref{def:Irreducible_Polynomial}, this is a \nameref{def:Polynomial_Ring}.
+    Since the order of the \nameref{def:Polynomial_Ring} is a \nameref{def:Prime} power, this is a \nameref{def:Finite_Field}.
+    Because this is a \nameref{def:Finite_Field}, $\FinitePolynomialRing{F}{2^{4}}{} = 2^{4} = 16$ elements.
+    
+    Now, we calculate the \nameref{def:Polynomial_Euclidean_Algorithm}.
+    \begin{align*}
+      \gcd \Bigl( &\left( x^{4} + x + 1 \right), \left( x^{3} + x \right) \Bigl) \\
+      x^{4} + x + 1 &= q(x) \left( x^{3} + x \right) + r(x) \\
+    \end{align*}
+    We can perform \nameref{def:Polynomial_Long_Division} to find $q(x)$ and $r(x)$ for this iteration.
+    \begin{center}
+      \polylongdiv{x^4+x+1}{x^3+x}
+    \end{center}
+    So,
+    \begin{align*}
+      q(x) &= x \\
+      r(x) &= \left( -x^{2} + x + 1 \right) \bmod 2
+    \end{align*}
+    We need to correct the coefficients in $r(x)$ with modulo 2 (where the coefficients come from in the first place).
+    \begin{align*}
+      r(x) &= \left( -x^{2} + x + 1 \right) \bmod 2 \\
+           &= x^{2} + x + 1 \\
+      x^{4} + x + 1 &= x \left( x^{3} + x \right) + \left( x^{2} + x + 1 \right)
+    \end{align*}
+
+    Now, the next iteration of \nameref{def:Polynomial_Euclidean_Algorithm}.
+    \begin{equation*}
+      x^{3} + x = q(x) \left( x^{2} + x + 1 \right) + r(x)
+    \end{equation*}
+    \begin{center}
+      \polylongdiv{x^{3} + x}{x^{2} + x + 1}
+    \end{center}
+    \begin{align*}
+      q(x) &= x-1 \\
+      r(x) &= x+1 \\
+      x^{3} + x &= (x-1) \left( x^{2} + x + 1 \right) + (x+1)
+    \end{align*}
+
+    Another iteration:
+    \begin{equation*}
+      x^{2} + x + 1 = q(x) (x+1) + r(x)
+    \end{equation*}
+    \begin{center}
+      \polylongdiv{x^{2} + x + 1}{x+1}
+    \end{center}
+    \begin{align*}
+      q(x) &= x \\
+      r(x) &= 1 \\
+      x^{2} + x + 1 &= x (x+1) + 1
+    \end{align*}
+
+    Another iteration (the last):
+    \begin{equation*}
+      x+1 = q(x) \cdot 1 + r(x)
+    \end{equation*}
+    \begin{align*}
+      q(x) &= x+1 \\
+      r(x) &= 0 \\
+      x+1 &= (x+1) \cdot 1 + 0
+    \end{align*}
+
+    Thus, the $\gcd \Bigl( x^{4} + x + 1, x^{3} + x \Bigr) = 1$.
 \end{example}
 
 \begin{definition}[Extended Euclidean Algorithm]\label{def:Polynomial_Extended_Euclidean_Algorithm}
@@ -535,7 +699,40 @@ We can divide \TextMathField{F}{x} into sets called \nameref{def:Polynomial_Ring
 \end{definition}
 
 \begin{example}[Lecture 3]{Polynomial Extended Euclidean Algorithm}
-  \textbf{TODO}
+  Given $f(x) = x^{3} + x$, where $f(x) \in \PolynomialRing{Z}{2}{x}$, find $g(x)$ of $f(x)$ given that $f(x) g(x) = 1 \bmod \left( x^{4} + x + 1 \right)$.
+  Assume $f(x) g(x)$ is \nameref{def:Irreducible_Polynomial}.
+  \tcblower{}
+  Since we know that the $\gcd \left( x^{4} + x + 1, x^{3} + x \right) = 1$, from \Cref{ex:Polynomial Euclidean Algorithm}, we can solve \Cref{eq:Polynomial_Extended_Euclidean_Algorithm}.
+
+  \begin{align*}
+    1 &= \left( x^{2} + x + 1 \right) - x (x+1) \\
+      &= \left( x^{2} + x + 1 \right) - x \Bigl( \left( x^{3} + x \right) - (x-1) \left( x^{2} + x + 1 \right) \Bigr) = \left( x^{2} + x + 1 \right) - x \left( x^{3} + x \right) - x(x-1) \left( x^{2} + x + 1 \right) \\
+      &= \bigl( 1 - x(x-1) \bigr) \left( x^{2} + x + 1 \right) - x \left( x^{3} + x \right) \\
+      &= \bigl (1 - x(x-1) \bigr) \Bigl( \left( x^{4} + x + 1 \right) - x \left(x^{3} + x \right) \Bigr) - x \left( x^{3} +x  \right) \\
+      &= \bigl( 1 - x(x-1) \bigr) \left( x^{4} + x + 1 \right) - x \bigl( 1 - x(x-1) \bigr) \left( x^{3} + x \right) - x \left( x^{3} + x \right) \\
+    &= \bigl[ 1 - x(x-1) \bigr] \left( x^{4} + x + 1 \right) - \Bigl[ x \bigl( 1 - x(x-1) \bigr) - x \Bigr] \left( x^{3} + x \right)
+  \end{align*}
+
+  \begin{align*}
+    s(x) &= 1 - x(x-1) = -x^{2} - x - 1 \\
+    t(x) &= x \bigl( 1-x (x-1) \bigr) - x = -x^{3} + x^{2}
+  \end{align*}
+  Now, we reduce the coefficients with respect to modulo 2.
+  \begin{align*}
+    s(x) &= x^{2} + x + 1 \\
+    t(x) &= x^{3} + x^{2}
+  \end{align*}
+
+  So, we end up with:
+  \begin{align*}
+    1 \bmod \left( x^{4} + x + 1 \right) &= \left( x^{2} + x + 1 \right) \left( x^{4} + x + 1 \right) + \left( x^{3} + x^{2} \right) \left( x^{3} + x \right) \\
+                                        &= \biggl( \left( x^{2} + x + 1 \right) \left( x^{4} + x + 1 \right) + \left( x^{3} + x^{2} \right) \left( x^{3} + x \right) \biggr) \bmod \left( x^{4} + x + 1 \right) \\
+                                        &= 0 + \left( x^{3} + x^{2} \right) \left( x^{3} + x \right) \\
+    f(x) &= \left( x^{3} + x \right) \\
+                                         &= \left( x^{3} + x^{2} \right) f(x)
+  \end{align*}
+
+  Thus, $g(x) = x^{3} + x^{2}$.
 \end{example}
 
 \begin{definition}[Polynomial Basis Representation]
