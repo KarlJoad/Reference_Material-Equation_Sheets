@@ -10,7 +10,7 @@ These include:
 
 \subsection{Groups}\label{subsec:Groups}
 \begin{definition}[Binary Operation]\label{def:Binary_Operation}
-  A \emph{binary operation}, denoted $\BinaryOperation$ on a set $S$, is a mapping from $S \times S$ to $S$.
+  A \emph{binary operation}, denoted $\BinaryOperation$ on a set $S$, is a mapping from $S \BinaryOperation S$ to $S$.
   \begin{remark}
     Note that $\BinaryOperation$ is \textbf{NOT} multiplication nor any kind of convolution.
     It is just a placeholder for some \nameref{def:Binary_Operation} that can be done.
@@ -18,29 +18,44 @@ These include:
 \end{definition}
 
 \begin{definition}[Group]\label{def:Group}
-  A \emph{group} is a set $G$ and a \nameref{def:Binary_Operation}, $*$ on $G$ denoted as $(G, *)$, which satisfies the following properties:
+  A \emph{group} is a set $G$ and a \nameref{def:Binary_Operation}, $*$, on $G$ denoted as $(G, *)$, which satisfies the following properties:
   \begin{propertylist}
   \item $a \BinaryOperation (b \BinaryOperation c) = (a \BinaryOperation b) \BinaryOperation c$ for all $a, b, c, \in G$ (Associativity).\label{prop:Group_Properties-Associativity}.
-  \item There is a special element $1 \in G$ such that $a \BinaryOperation 1 = 1 \BinaryOperation a = a$ for all $a \in G$ (Multiplicative Identity).\label{prop:Group_Properties-Multiplicative_Identity}
+  \item There is a special element $1 \in G$ such that $a \BinaryOperation 1 = 1 \BinaryOperation a = a$ for all $a \in G$ (Identity).\label{prop:Group_Properties-Identity}
     \begin{equation*}
       \exists 1 \in G \forall a \in G \, \left( a \BinaryOperation 1 = 1 \BinaryOperation a = a \right)
     \end{equation*}
 
-  \item Foe each $a \in G$ there is an element $a^{-1} \in G$ such that $a \BinaryOperation a^{-1} = a^{-1} \BinaryOperation a = 1$  (Multiplicative Inverse).\label{prop:Group_Properties-Mutliplicative_Inverse}
+  \item For each $a \in G$ there is an element $a^{-1} \in G$ such that $a \BinaryOperation a^{-1} = a^{-1} \BinaryOperation a = 1$  (Inverse).\label{prop:Group_Properties-Inverse}
   \end{propertylist}
   
-  We call 1 the \emph{identity element} and call $a^{-1}$ the inverse of $a$.
+  We call 1 the \emph{identity element} as defined in \Cref{prop:Group_Properties-Identity}, and call $a^{-1}$ the \emph{inverse} of $a$.
   Furthermore,
   \begin{propertylist}[resume]
-  \item If $a \BinaryOperation b = a \BinaryOperation a$ for all $a,b \in G$ (\nameref{def:Abelian}/Commutativity).\label{prop:Group_Properties-Commutativity}
+  \item If $a \BinaryOperation b = b \BinaryOperation a$ for all $a,b \in G$ (\nameref{def:Abelian}/Commutativity).\label{prop:Group_Properties-Commutativity}
     \begin{equation*}
-      \forall a,b \in G \, \left( a \BinaryOperation b = a \BinaryOperation a \right)
+      \forall a,b \in G \, \left( a \BinaryOperation b = b \BinaryOperation a \right)
     \end{equation*}
   \end{propertylist}
 \end{definition}
 
+\begin{example}[Exercise 1, Problem 1.8a]{Show Set Is Group}
+  Let $S$ be the set of binary triples, $S = \lbrace \left( s_{0}, s_{1}, s_{2} \right) \vert s_{i} \in \IntsMod{2} \rbrace$.
+  Let the operation be bitwise addition.
+  \tcblower{}
+  \begin{remark*}
+    In this case, ``bitwise addition'' means element-wise addition, i.e.\ each element of each triple gets added together.
+    Additionally, all additions are done in modulo 2.
+  \end{remark*}
+  I will define the bitwise addition \nameref{def:Binary_Operation} with the symbol $.+$, like how MATLAB or GNU Octave define it.
+  We will need to prove that \Crefrange{prop:Group_Properties-Associativity}{prop:Group_Properties-Identity} are true.
+  \Cref{prop:Group_Properties-Commutativity} is \emph{not} necessary to show that a set is a \nameref{def:Group}.
+  \Cref{prop:Group_Properties-Commutativity} only shows that the \nameref{def:Group} is \nameref{def:Abelian}
+  \textbf{TODO, Finish}
+\end{example}
+
 \begin{definition}[Abelian]\label{def:Abelian}
-  An \emph{abelian} group, also called a commutative group, is a group in which the result of applying the group operation to two group elements does not depend on the order in which they are written.
+  An \emph{abelian} group, also called a \emph{commutative \nameref{def:Group}}, is a group in which the result of applying the group operation to two group elements does not depend on the order in which they are written.
   That is, these are the groups that obey the axiom of commutativity.
 \end{definition}
 
@@ -119,8 +134,8 @@ These include:
   \end{enumerate}
 \end{propertylist}
 
-\subsubsection{Langrange's Theorem}\label{subsubsec:Langranges_Theorem}
-\begin{theorem}[Langrange's Theorem]
+\subsubsection{Lagrange's Theorem}\label{subsubsec:Lagranges_Theorem}
+\begin{theorem}[Lagrange's Theorem]
   If $G$ is a finite group and $H$ is a \nameref{def:Subgroup} of $G$, then \TextSetOrder{H} divides \TextSetOrder{G}.
   In particular if $a \in G$, then the order of $a$ divides \TextSetOrder{G}.
 \end{theorem}
@@ -196,7 +211,7 @@ These include:
 
 \subsection{Fields}\label{subsec:Fields}
 \begin{definition}[Field]\label{def:Field}
-  A \emph{field} is a commutative \nameref{def:Ring} where all nonzero elements have \nameref{def:Multiplicative_Inverse}s.
+  A \emph{field} is a commutative \nameref{def:Ring} where all nonzero elements from the underlying set have \nameref{def:Multiplicative_Inverse}s.
 \end{definition}
 
 \begin{definition}[Characteristic]\label{def:Field_Characteristic}
@@ -306,13 +321,13 @@ If you consider the \TextMathField{F}{x}, where $F$ denotes an arbitrary \namere
 \subsubsection{Long Division of \nameref*{def:Polynomial}s}\label{subsubsec:Polynomial_Long_Division}
 Similarly as for integers (\Cref{subsec:Integer_Long_Division}), we have a division algorithm for polynomials.
 \begin{definition}[Polynomial Long Division]\label{def:Polynomial_Long_Division}
-  If $a(x), b(x) \in \MathField{F}{x}$, with $h(x) \neq 0$, then there are polynomials $q(x), r(x) \in \MathField{F}{x}$ such that
+  If $a(x), b(x) \in \MathField{F}{x}$, with $b(x) \neq 0$, then there are polynomials $q(x), r(x) \in \MathField{F}{x}$ such that
   \begin{equation}\label{eq:Polynomials_Long_Division}
     a(x) = q(x) b(x) + r(x)
   \end{equation}
   where
   \begin{itemize}[noitemsep]
-  \item $\Degree r(x) < \Degree h(x)$.
+  \item $\Degree r(x) < \Degree b(x)$.
   \item $q(x)$ and $r(x)$ are unique.
   \item $q(x)$ is referred to as the \nameref{def:Polynomial_Quotient}
   \item $r(x)$ is referred to as the \nameref{def:Polynomial_Remainder}
@@ -429,12 +444,12 @@ We can divide \TextMathField{F}{x} into sets called \nameref{def:Polynomial_Ring
   \begin{equation}\label{eq:Unique_Factorization_of_Polynomials}
     f(x) = a {f_{1}(x)}^{e_{1}} {f_{2}(x)}^{e_{2}} \cdots {f_{k}(x)}^{e_{k}}
   \end{equation}
-  where each $f_{i}(x)$ is a distinct \nameref{def:Monic_Polynomial} that is also an \nameref{def:Irreducible_Polynomial} in \TextFinitePolynomialRing{Z}{p}{x}, the $e_{i}$ are positive integers, and $a \in \IntsMod{p}$, where $p$ is for \nameref{def:Prime}s.
+  where each $f_{i}(x)$ is a distinct \nameref{def:Monic_Polynomial} \nameref{def:Irreducible_Polynomial} \nameref{def:Polynomial} in \TextFinitePolynomialRing{Z}{p}{x}, the $e_{i}$ are positive integers, and $a \in \IntsMod{p}$, where $p$ is for \nameref{def:Prime}s.
   The factorization is unique up to the rearrangement of factors.
 \end{theorem}
 
 \begin{definition}[Polynomial Euclidean Algorithm]\label{def:Polynomial_Euclidean_Algorithm}
-  Takes 2 non-negative polynomials $a(x), b(x) \in \FinitePolynomialRing{F}{q}{x}$.
+  Takes 2 non-negative \nameref{def:Polynomial}s $a(x), b(x) \in \FinitePolynomialRing{F}{q}{x}$.
   Returns the $\gcd \bigl( a(x), b(x) \bigr)$
   \begin{enumerate}[noitemsep]
   \item Set $r_{0}(x) \leftarrow a(x)$, $r_{1}(x) \leftarrow b(x)$, $i \leftarrow 1$.

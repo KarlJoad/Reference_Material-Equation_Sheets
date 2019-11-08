@@ -225,7 +225,7 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
 \end{definition}
 
 \begin{definition}[Element Order]\label{def:Element_Order}
-  The \emph{order of an element} $a$, denoted $\ElementOrder(a)$ is defined as the least positive integer $t$ ($t \in \AllIntegers$) such that
+  The \emph{order of an element} $a \in \MultiplicativeGroupN{}$, denoted $\ElementOrder(a)$ is defined as the least positive integer $t$ ($t \in \AllIntegers$) such that
   \begin{equation}\label{eq:Element_Order}
     a^{t} = 1
   \end{equation}
@@ -234,7 +234,7 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
 \begin{lemma}[Element Order]\label{lemma:Element_Order}
   Let $a \in \MultiplicativeGroupN{}$.
   If $a^{s}$ for some $s$, then $\ElementOrder(a) \Divides s$.
-  In particular, $\ElementOrder(a) \Divides \phi(n)$.
+  In particular, $\ElementOrder(a) \Divides \phi(n)$ must be true.
 \end{lemma}
 
 \begin{proof}[Element Order]\label{proof:Element_Order}
@@ -311,13 +311,12 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
     \exists x \in \MultiplicativeGroupN{} x^{2} = a
   \end{equation}
   Otherwise, $a$ is called a \emph{\nameref{def:Quadratic_Non_Residue} modulo $n$}.
-  If $x^{2} = a$, then $x$ is called the \emph{square root} of $a \bmod n$.
 \end{definition}
 
 \begin{definition}[Quadratic Non-Residue]\label{def:Quadratic_Non_Residue}
   An element $a \in \MultiplicativeGroupN{}$ is said to be a \emph{quadratic non-residue} modulo $n$ if there does not exist an $x \in \MultiplicativeGroupN{}$ such that $x^{2} = a$.
   \begin{equation*}
-    \nexists x \in \MultiplicativeGroupN{} x^{2} = a
+    a \in \IntsModN{} \nexists x \in \MultiplicativeGroupN{}\:\: x^{2} = a \pmod{n}
   \end{equation*}
   Otherwise, $a$ is called a \emph{\nameref{def:Quadratic_Residue} modulo $n$}.
 \end{definition}
