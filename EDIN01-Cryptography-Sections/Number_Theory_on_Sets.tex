@@ -198,9 +198,14 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
 \begin{example}[]{Chinese Remainder Theorem Mapping}
   Find the mapping of $7$ when in \TextIntsMod{15}?
   \tcblower{}
-  Since 7 is an element in \TextIntsMod{15},
+  We need to find a prime factorization for $15$.
   \begin{equation*}
-    7 \Leftrightarrow (7 \bmod 3, 7 \bmod 5) = (1, 2)
+    15 = 3^{1} \cdot 5^{1}
+  \end{equation*}
+  So, the 2 modulos we will use are $3$ and $5$.
+  Additionally, since 7 is an element in \TextIntsMod{15} we can simply say,
+  \begin{equation*}
+    7 \Leftrightarrow (7 \bmod 3,\, 7 \bmod 5) = (1, 2)
   \end{equation*}
 \end{example}
 
@@ -240,8 +245,22 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
 \begin{example}[Exercise 1, Problem 1.6b]{Element Order}
   Find the $\ElementOrder(5)$ in \TextMultiplicativeGroup{8}?
   \tcblower{}
-  \textbf{TODO}
-  \textit{Remember to check with $\Divides \phi(n)$, since $5 \in \MultiplicativeGroup{8}$.}
+  We need to solve
+  \begin{equation*}
+    a^{t} \bmod n = 1
+  \end{equation*}
+  where $a = 5$ and $n = 8$.
+  \begin{equation*}
+    5^{t} \bmod 8 = 1
+  \end{equation*}
+
+  Now we test values for $t$ until we satisfy the equation.
+  \begin{align*}
+    t &= 1 \rightarrow 5^{1} \bmod 8 = 5 \bmod 8 = 5 \neq 1 \\
+    t &= 2 \rightarrow 5^{2} \bmod 8 = 25 \bmod 8 = 1 = 1
+  \end{align*}
+
+  Since $t=2$ satisfies our equation, the $\ElementOrder(5) = 2$.
 \end{example}
 
 \begin{proof}[Element Order]\label{proof:Element_Order}
@@ -320,10 +339,56 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
   \end{remark}
 \end{definition}
 
-\begin{example}[Exercise 1, Question 1.6c]{Cyclic Group}
+\begin{example}[Exercise 1, Problem 1.6c]{Cyclic Group}
   Is \TextMultiplicativeGroup{8} a \nameref{def:Cyclic} \nameref{def:Group}?
   \tcblower{}
-  \textbf{TODO}
+    We need to find an $a$ that satisfies $\ElementOrder(a) = \phi(n)$.
+  In this case $n=8$.
+  First, we will calculate $\phi(n)$.
+  \begin{equation*}
+    \phi(n) = \phi(8)
+  \end{equation*}
+  We need to find a \nameref{def:Prime} factorization of $8$.
+  \begin{align*}
+    \phi(8) &= \phi \left( 2^{3} \right) \\
+            &= \left( 2^{3} - 2^{3-1} \right) \\
+            &= \left( 2^{3} - 2^{2} \right) \\
+            &= (8-4) \\
+            &= 4
+  \end{align*}
+  So, $\phi(8) = 4$.
+
+  Now we need to solve
+  \begin{equation*}
+    \ElementOrder (a) = 4
+  \end{equation*}
+
+  All of the terms in \TextMultiplicativeGroup{8} must be \nameref{def:Invertible}, so they \textbf{must} satisfy $\gcd(z, 8) = 1, \, z \in \IntsMod{8}$.
+  All of the terms in \TextIntsMod{8} are:
+  \begin{equation*}
+    \IntsMod{8} = \Bigl\lbrace [0], [1], [2], [3], [4], [5], [6], [7] \Bigr\rbrace
+  \end{equation*}
+  Now we check the \nameref{def:GCD}s for $z \in \IntsMod{8}$.
+  \begin{align*}
+    \gcd(0, 8) &= 8 & \gcd(4, 8) &= 2 \\
+    \gcd(1, 8) &= 1 & \gcd(5, 8) &= 1 \\
+    \gcd(2, 8) &= 2 & \gcd(6, 8) &= 2 \\
+    \gcd(3, 8) &= 1 & \gcd(7, 8) &= 1
+  \end{align*}
+  So,
+  \begin{equation*}
+    \MultiplicativeGroup{8} = \Bigl\lbrace [1], [3], [5], [7] \Bigr\rbrace
+  \end{equation*}
+
+  Now we test $\ElementOrder{a} = 4, \, a \in \MultiplicativeGroup{8}$.
+  \begin{align*}
+    \ElementOrder(1) &= 1 \\
+    \ElementOrder(3) = 3^{t} \bmod 8 = 1 \rightarrow t = 2 \rightarrow \ElementOrder(3) &= 2 \\
+    \ElementOrder(5) &= 2 \\
+    \ElementOrder(7) = 7^{t} \bmod 8 = 1 \rightarrow t = 2 \rightarrow \ElementOrder(7) &= 2
+  \end{align*}
+
+  Since no element from $\ElementOrder (\MultiplicativeGroup{8}) = \phi(8) = 4$, \TextMultiplicativeGroup{8} is \textbf{NOT} \nameref{def:Cyclic}.
 \end{example}
 
 \subsection{Quadratic Residues}\label{subsec:Quadratic_Residues}
