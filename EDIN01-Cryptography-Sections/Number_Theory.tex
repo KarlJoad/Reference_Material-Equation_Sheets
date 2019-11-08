@@ -153,7 +153,14 @@ and
 \begin{definition}[Euler Phi Function]\label{def:Euler_Phi_Function}
   For $n \geq 1$, let $\phi(n)$ denote the number of integers in the interval $[1, n]$, which are \nameref{def:Relatively_Prime} to $n$.
   This function is called the \emph{Euler Phi Function}.
+  \begin{equation}\label{eq:Euler_Phi_Function}
+    \phi(n) = \left( p_{1}^{e_{1}} - p_{1}^{e_{1}-1} \right) \left( p_{2}^{e_{2}} - p_{2}^{e_{2}-1} \right) \cdots \left( p_{k}^{e_{k}} - p_{k}^{e_{k}-1} \right)
+  \end{equation}
+  \begin{remark}
+    The \nameref{def:Euler_Phi_Function} is closely related to \nameref{def:Set_Order}.
+  \end{remark}
 \end{definition}
+
 \begin{theorem}[Euler Phi Function]\label{thm:Euler_Phi_Function}
   There are a few properties of the \nameref{def:Euler_Phi_Function} that we will treat as true because of this theorem.
   \begin{propertylist}
