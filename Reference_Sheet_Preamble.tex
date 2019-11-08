@@ -70,6 +70,7 @@ citestyle=authoryear]{biblatex} % Must include citation somewhere in document to
 \newlist{boldalphlist}{enumerate}{1} % {Name}{Template}{Max Depth}
 \setlist[boldalphlist, 1]{label=\textbf{(\alph*)}, ref=\alph*, noitemsep, nolistsep} % Set options
 
+\tcbuselibrary{breakable} % Allow tcolorboxes to be broken across pages
 % Create a tcolorbox for examples
 % /begin{example}[extra name]{NAME}
 % Create a tcolorbox for examples
@@ -92,7 +93,8 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
   colback=white!100!black,
   upperbox=visible,
   lowerbox=visible,
-  sharp corners=all
+  sharp corners=all,
+  breakable
 }
 
 % Create a tcolorbox for general use
