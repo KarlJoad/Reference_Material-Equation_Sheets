@@ -135,6 +135,36 @@ Data-oriented models emphasize:
 \end{itemize}
 
 This data-oriented design led to the to development of object-oriented design.
+
+\subsection{Language Categories}\label{subsec:Language_Categories}
+There are 3 main categories that languages fall into (that we are considering in this course):
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Imperative_Programming_Language}
+\item \nameref{def:Functional_Programming_Language}
+\item \nameref{def:Logical_Programming_Language}
+\end{enumerate}
+
+If you want to view all possible language categories, visit \href{https://en.wikipedia.org/wiki/Programming_paradigm}{Wikipedia's Programming Paradigms}.
+
+\begin{definition}[Imperative Programming Language]\label{def:Imperative_Programming_Language}
+  \emph{Imperative programming languages} have a programming paradigm that uses statements that change a program's state.
+  An imperative program consists of commands for the computer to perform.
+  Imperative programming focuses on describing how a program operates.
+\end{definition}
+
+\begin{definition}[Functional Programming Language]\label{def:Functional_Programming_Language}
+  \emph{Functional programming languages} treat computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
+  It is a declarative programming paradigm in that programming is done with expressions or declarations instead of statements.
+  In functional code, the output value of a function depends only on its arguments, so calling a function with the same value for an argument always produces the same result.
+
+  This is in contrast to \nameref{def:Imperative_Programming_Language}s where, in addition to a function's arguments, global program state can affect a function's resulting value.
+  Eliminating side effects, that is, changes in state that do not depend on the function inputs, can make understanding a program easier, which is one of the key motivations for the development of functional programming. 
+\end{definition}
+
+\begin{definition}[Logical Programming Language]\label{def:Logical_Programming_Language}
+  \emph{Logic programming languages} are a type of programming language which is largely based on formal logic.
+  Any program written in a logic programming language is a set of sentences in logical form, expressing facts and rules about some problem domain.
+\end{definition}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
