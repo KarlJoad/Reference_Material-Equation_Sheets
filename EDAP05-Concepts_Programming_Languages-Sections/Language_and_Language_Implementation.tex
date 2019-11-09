@@ -14,6 +14,127 @@ It is important that we make the distinction between a programming language and 
   \end{itemize}
 \end{itemize}
 
+\subsection{Influences on Language Design}\label{subsec:Influences_Language_Design}
+The 2 other major influences on the design of programming languages have been:
+\begin{enumerate}[noitemsep]
+\item \nameref{subsubsec:Computer_Architecture}
+\item \nameref{subsubsec:Programming_Design_Methodologies}
+\end{enumerate}
+
+\subsubsection{Computer Architecture}\label{subsubsec:Computer_Architecture}
+The prevalent computer architecture used is the \nameref{def:von_Neumann_Architecture}.
+This is in contrast to the \nameref{def:Harvard_Architecture}, and its descendant \nameref{def:Modified_Harvard_Architecture}.
+
+\begin{definition}[von Neumann Architecture]\label{def:von_Neumann_Architecture}
+  In the \emph{von Neumann architecture}, named after John von Neumann, instructions and data are stored in a shared memory location.
+  The central processing unit, CPU, is separate from the memory, meaning it must fetch the instructions and data from memory before doing something.
+  When the CPU computes something, it needs to store the result \emph{back} in memory.
+  The constant fetching of instructions/data and storage of results in memory means there is a bottleneck, the \emph{\nameref{rmk:von_Neumann_Bottleneck}}.
+
+  \begin{remark}[von Neumann Bottleneck]\label{rmk:von_Neumann_Bottleneck}
+    The shared bus between the program memory and data memory leads to the \emph{von Neumann bottleneck}, the limited throughput (data transfer rate) between the CPU and memory compared to the amount of memory.
+    Because the single bus can only access one of the two classes of memory at a time, throughput is lower than the rate at which the CPU can work.
+    This seriously limits the effective processing speed when the CPU is required to perform minimal processing on large amounts of data. The CPU is continually forced to wait for needed data to move to or from memory.
+
+    Since CPU speed and memory size have increased much faster than the throughput between them, the bottleneck has become more of a problem.
+  \end{remark}
+
+  The execution of a machine code program on a \nameref{def:von_Neumann_Architecture} computer occurs in a process called the \emph{fetch-execute cycle}.
+  To find where each instruction is in memory, the CPU needs to have a \emph{program counter}.
+
+  Functional or applicative programming languages, where applying functions to parameters does not lend itself to the \nameref{def:von_Neumann_Architecture}.
+
+  \begin{remark}[Cache in the \nameref*{def:von_Neumann_Architecture}]
+    In the original \nameref{def:von_Neumann_Architecture}, there was no such thing as \emph{cache} on the CPU.\@
+    In modern computers, cache is located on the CPU directly, and acts similarly to memory.
+    However, it copies a block of memory into the cache and feeds the CPU from that, refreshing the cache less periodically, and allowing for fater instruction/data access rates.
+    This is an example of the \nameref{def:Harvard_Architecture} in the traditional \nameref{def:von_Neumann_Architecture} making a \nameref{def:Modified_Harvard_Architecture}.
+  \end{remark}
+
+  \begin{remark}[Alternative Names]\label{rmk:von_Neumann_Architecture_Alternative_Names}
+    The \nameref{def:von_Neumann_Architecture} can also be called:
+    \begin{itemize}[noitemsep]
+    \item von Neumann Model
+    \item Princeton Architecture
+    \item Dataflow Model
+    \end{itemize}
+  \end{remark}
+
+  \begin{remark}[Alternative Architectures]\label{rmk:von_Neumann_Architecture_Alternatives}
+    The \nameref{def:von_Neumann_Architecture} is one way to implement a computational model.
+    There are alternatives, namely the \nameref{def:Harvard_Architecture} and its descendant \nameref{def:Modified_Harvard_Architecture}.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Harvard Architecture]\label{def:Harvard_Architecture}
+  The \emph{Harvard architecture} is a computer architecture with separate storage and signal pathways for instructions and data.
+  It contrasts with the \nameref{def:von_Neumann_Architecture}, where program instructions and data share the same memory and pathways.
+
+  This partition of instructions and data means the CPU can simultaneously read an instruction and perform data memory access.
+  Additionally, the address space for the instructions and data are separate, meaning instruction address zero is not the same as data address zero.
+\end{definition}
+
+\begin{definition}[Modified Harvard Architecture]\label{def:Modified_Harvard_Architecture}
+  Most modern computers act as \emph{both} \nameref{def:von_Neumann_Architecture} machines and \nameref{def:Harvard_Architecture} machines.
+  These have been called \emph{modified Harvard architecture}s.
+  The \emph{modified Harvard architecture} is also a variation of the \nameref{def:Harvard_Architecture} that allows the contents of the instruction memory to be accessed as data.
+  The different types of modified Harvard architectures are discussed in \Cref{rmk:Types_Modified_Harvard_Architecture}.
+
+  \begin{remark}[Modern CPU Architecture]\label{rmk:Modern_CPU_Architecture}
+    In modern CPUs, with both their system memory and on-chip cache, they act as both \nameref{def:von_Neumann_Architecture} machines and \nameref{def:Harvard_Architecture} machines.
+    The CPU acts as:
+    \begin{itemize}[noitemsep]
+    \item A \nameref{def:Harvard_Architecture} machine when the CPU is accessing its on-chip cache.
+    \item A \nameref{def:von_Neumann_Architecture} machine when the CPU is accessing the system memory.
+    \end{itemize}
+  \end{remark}
+
+  \begin{remark}[Types of Modified Harvard Architectures]\label{rmk:Types_Modified_Harvard_Architecture}
+    There are many different types of \nameref{def:Modified_Harvard_Architecture}s.
+    Some of the major ones are discussed here:
+    \begin{itemize}[noitemsep]
+    \item Split-cache (or almost-\nameref{def:von_Neumann_Architecture} architecture)
+      \begin{itemize}[noitemsep]
+      \item The most common modification builds a memory hierarchy with a CPU cache separating instructions and data.
+      \item This unifies all except small portions of the data and instruction address spaces, providing the von Neumann model.
+      \end{itemize}
+    \item Instruction-Memory-as-Data Architecture
+      \begin{itemize}[noitemsep]
+      \item Another change preserves the ``separate address space'' nature of a \nameref{def:Harvard_Architecture} machine, but provides special machine operations to access the contents of the instruction memory as data.
+      \item Because data is not directly executable as instructions, there are 2 different operations possible:
+        \begin{enumerate}[noitemsep]
+        \item Read access: initial data values can be copied from the instruction memory into the data memory when the program starts.
+          Or, if the data is not to be modified (it might be a constant value, such as pi, or a text string), it can be accessed by the running program directly from instruction memory without taking up space in data memory (which is often at a premium).
+        \item Write access: a capability for reprogramming is generally required; few computers are purely ROM-based.
+          For example, a microcontroller usually has operations to write to the flash memory used to hold its instructions.
+          This capability may be used for purposes including software updates. EEPROM/PROM replacement is an alternative method.
+        \end{enumerate}
+      \end{itemize}
+    \item Data-Memory-as-Instruction Architecture
+      \begin{itemize}[noitemsep]
+      \item A few \nameref{def:Harvard_Architecture} processors can execute instructions fetched from any memory segment
+      \item Unlike the original Harvard processor, which can only execute instructions fetched from the program memory segment.
+      \item Such processors, like other \nameref{def:Harvard_Architecture} processors, and unlike pure \nameref{def:von_Neumann_Architecture}, can read an instruction and read a data value simultaneously, \textbf{if they're in separate memory segments}, since the processor has (at least) two separate memory segments with independent data buses.
+      \item The most obvious programmer-visible difference between this kind of modified Harvard architecture and a pure von Neumann architecture is that – when executing an instruction from one memory segment – the same memory segment cannot be simultaneously accessed as data.
+      \end{itemize}
+    \end{itemize}
+  \end{remark}
+\end{definition}
+
+The \nameref{def:von_Neumann_Architecture} models variables incredibly well, as memory cells, assignment statements as the writing of data back to memory, and iteration.
+In fact, the \nameref{def:von_Neumann_Architecture} models iteration so well, that it encourages iteration over recursion (when possible), sometimes at the detriment of the overall program.
+
+\subsubsection{Programming Design Methodologies}\label{subsubsec:Programming_Design_Methodologies}
+Starting in the 1960s, bigger and more complicated programs were being written for more complicated things (controlling whole facilities, worldwide airline reservation systems, etc.).
+New software development methodologies appeared, and a shift from procedure-oriented to data-oriented design methodologies emerged.
+
+Data-oriented models emphasize:
+\begin{itemize}[noitemsep]
+\item Data design
+\item Abstract data types to solve problems
+\end{itemize}
+
+This data-oriented design led to the to development of object-oriented design.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
