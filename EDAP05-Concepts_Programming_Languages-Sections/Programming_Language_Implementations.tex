@@ -31,6 +31,8 @@ There is a trade-off to be made between:
 \subsection{Interpretation}\label{subsec:Interpretation}
 \begin{definition}[Interpretation]\label{def:Interpretation}
   If a programming language is implemented with \emph{interpretation}, is \emph{interpreted}, then there is an intermediate program that runs between the source code and what the CPU can run on.
+  When a programming language is interpreted, there is \textbf{no} translation of the high-level source language to anything else.
+  The \emph{interpreter} uses the high-level source code directly.
   This \emph{interpreter} reads the high-level source code, then alternates between:
   \begin{itemize}[noitemsep]
   \item Figure out next command
@@ -40,9 +42,22 @@ There is a trade-off to be made between:
     \end{itemize}
   \item Execute Command
   \end{itemize}
+
+  Interpretation allows for easy implementation of source-level debugging.
+  Meaning when semantic analysis occurs on the program while running, the errors are returned in a fashion that makes sense with relation to the high-level language.
+  For instance, if there is an array index error, the error could refer to the index itself, the name of the array, and its line.
+
+  \begin{remark}[Interpretation Drawbacks]\label{rmk:Interpretation_Drawbacks}
+    There is roughly a 10--100 times performance slowdown.
+    The main bottleneck in an interpreted language is the instruction decoding from the high-level source to something the interprett can use.
+    This is because \textit{every} instruction must be decoded \textit{every} time.
+
+    Additionally, interpreted programs take up more space on disk in a form not designed to be space efficient.
+    In memory, interpreted programs take up more space because the symbol table and interpreter must be in memory at the same time to make the program run.
+  \end{remark}
 \end{definition}
 
-Some examples of languages with a \nameref{def:Interpretation} implementation are:
+Some examples of languages with an \nameref{def:Interpretation} implementation are:
 \begin{itemize}[noitemsep]
 \item Python
 \item Perl
@@ -69,12 +84,12 @@ Some examples of languages with a \nameref{def:Interpretation} implementation ar
 
   The steps involved in a compiler are:
   \begin{enumerate}[noitemsep]
-  \item Lexical Analysis/Tokenizing: Convert the input file into a set of tokens
-  \item Syntactic Analysis/Parsing: Convert the tokens into a tree representing all the tokens in the program
-  \item Semantic Analysis: Interpret the program and ensure that everything expressed in the program is correct.
+  \item Lexical Analysis/Tokenizing: Convert the text in the input file into a set of tokens
+  \item Syntactic Analysis/Parsing: Convert the tokens into a parse tree representing all the tokens in the program in a hierarchical and prioritative manner
+  \item Semantic Analysis: ``Interpret'' the program and ensure that everything expressed in the program is correct.
     \begin{itemize}[noitemsep]
     \item This is where compile-time errors are \textbf{usually} caught. Though, this is just a generalization.
-    \item Type analysis is handled here for instance
+    \item Type analysis is typically handled here for instance
     \end{itemize}
     
   \item Optimize the Code: The output assembly code could be optimized before actually making the output. Take care of that here.
@@ -139,10 +154,22 @@ Some examples of languages with a \nameref{def:Compilation} implementation are:
   A programming language can be implemented with a \emph{hybrid implementation}.
   This means that it takes some aspects of a language implemented by \nameref{def:Interpretation} and some aspects of the language implemented with \nameref{def:Compilation}.
 
-  For example, Java does this with their Just-In-Time (JIT) compilation scheme.
+  Typically what happens is the high-level source language translates the source language to an intermediate language that allows for easy interpretation.
+  This is faster because instructions in the source language are only decoded once.
+
+  For example, Java does this with their Just-In-Time (JIT) compilation scheme, which translates all instructions to an intermediate language, then translates those to machine code on-the-fly when needed.
+
+  Some examples of \nameref{def:Hybrid_Implementation} are:
+  \begin{itemize}[noitemsep]
+  \item Java
+  \item Scala
+  \item C\#
+  \item JavaScript
+  \item $\cdots$
+  \end{itemize}
 \end{definition}
 
-One way to do this is with \nameref{subsubsec:Dynamic_Compilation}.
+One way to implement a language with \nameref{def:Hybrid_Implementation} is with \nameref{subsubsec:Dynamic_Compilation}.
 \subsubsection{Dynamic Compilation}\label{subsubsec:Dynamic_Compilation}
 \begin{itemize}[noitemsep]
 \item Idea: behind dynamic compilation is that code is compiled \emph{while executing}.
@@ -154,16 +181,6 @@ One way to do this is with \nameref{subsubsec:Dynamic_Compilation}.
   \item Performance can be higher than pre-compiled code, because only the code needed is compiled.
   \end{itemize}
 \end{itemize}
-
-Some examples of these are:
-\begin{itemize}[noitemsep]
-\item Java
-\item Scala
-\item C\#
-\item JavaScript
-\item $\cdots$
-\end{itemize}
-
 
 %%% Local Variables:
 %%% mode: latex
