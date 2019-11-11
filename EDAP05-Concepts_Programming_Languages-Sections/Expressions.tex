@@ -18,6 +18,39 @@ One of the main goals of high-level languages was to have automatic evaluation o
 Most of these characteristics came from mathematics directly.
 
 \subsubsection{Arity}\label{subsubsec:Operator_Arity} % Not in textbook, from video
+\begin{definition}[Arity]\label{def:Arity}
+  \emph{Arity} is the number of \nameref{def:Operand}s that must be present to evaluate that \nameref{def:Expression}.
+  In most programming languages, there are 3:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Arity-Unary}
+  \item \nameref{def:Arity-Binary}
+  \item \nameref{def:Arity-Ternary}
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Unary]\label{def:Arity-Unary}
+  A \emph{unary} operation requires a single \nameref{def:Operand}.
+  For example, negation, \texttt{-x}
+\end{definition}
+
+\begin{definition}[Binary]\label{def:Arity-Binary}
+  A \emph{binary} operation requires 2 \nameref{def:Operand}s.
+  For example, addition, \texttt{y + z}
+
+  \begin{remark}
+    These are usually use \nameref{def:Fixity-Infix} notation.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Ternary]\label{def:Arity-Ternary}
+  A \emph{ternary} operation requires 3 \nameref{def:Operand}s.
+  For example, \verb|w = if x ? y : z|.
+
+  \begin{remark}
+    As far as I know, the only ternary operator is a single-line if statement.
+  \end{remark}
+\end{definition}
+
 \subsubsection{Fixity}\label{subsubsec:Operator_Fixity} % Not in textbook, from video
 \subsubsection{Operator Evaluation Order}\label{subsubsec:Operator_Evaluation_Order}
 \paragraph{Precedence}\label{par:Operator_Evaluation_Order-Precedence}
