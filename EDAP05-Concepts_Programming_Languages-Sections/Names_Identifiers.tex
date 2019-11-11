@@ -609,6 +609,22 @@ In some languages, \nameref{def:Variable}s cannot used before they have been dec
 This is a highly language-dependent thing, and one must consult with the language specification to figure out exactly how it works.
 
 \subsubsection{Global Scope}\label{subsubsec:Variable_Global_Scope}
+\begin{definition}[Global Variable]\label{def:Global_Variable}
+  These are usually \nameref{def:Variable}s that sit outside of all functions.
+  They can be accessed from anywhere in the program.
+  They can also be defined and/or declared in other files in the program's project.
+\end{definition}
+
+It important to note the difference between a \nameref{def:Global_Variable}'s declaration and definition.
+\begin{itemize}[noitemsep]
+\item Declaration: The \nameref{def:Variable_Type}s and attributes are bound, but the \nameref{def:Memory} space required is \textbf{not} allocated.
+\item Definition: The \nameref{def:Variable_Type}s and attributes are bound, but the \nameref{def:Memory} space required \textbf{is} allocated.
+\end{itemize}
+
+\begin{remark*}
+  This is a highly language-dependent thing, and one must consult with the language specification to figure out exactly how it works.
+\end{remark*}
+
 \subsubsection{Dynamic Scope}\label{subsubsec:Dynamic_Scope}
 
 %%% Local Variables:
