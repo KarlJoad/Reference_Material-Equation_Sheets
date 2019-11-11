@@ -565,6 +565,38 @@ However, inside of \texttt{sub1()}, the use of the variable \texttt{x} would ref
 In some languages, if a \nameref{def:Variable} is declared in a sub-program unit/block, like in \texttt{sub1()}, then preceding the \nameref{def:Variable} name with the outer program unit/block will give the outer \nameref{def:Variable} \nameref{def:Variable_Value}.
 
 \subsubsection{Blocks}\label{subsubsec:Variable_Blocks}
+New \nameref{subsubsec:Variable_Static_Scope}s can be defined in the middle of executing code.
+This allows a small section to have its own \nameref{def:Local_Variable}s.
+
+\begin{definition}[Block]\label{def:Block_Scope}
+  A \emph{block} is a section of code that has its own \nameref{def:Local_Variable}s.
+  These \nameref{def:Local_Variable}s are \textbf{not} shared with any \nameref{def:Variable_Static_Ancestor}s.
+\end{definition}
+
+The use of \nameref{def:Block_Scope}s create a \nameref{def:Block_Structured_Language}.
+
+\begin{definition}[Block-Structured Language]\label{def:Block_Structured_Language}
+  The use of \nameref{def:Block_Scope}s to create the \nameref{subsubsec:Variable_Static_Scope}s creates a \emph{block-structured language}.
+\end{definition}
+
+Consider the following C function:
+\begin{minted}[frame=lines,linenos]{c}
+void sub() {
+  int count;
+  ...
+  while (...) {
+    int count;
+    count++;
+  }
+  ...
+}
+\end{minted}
+The \texttt{count} inside the \texttt{while} loop is that loop's local count, and does not reference the \texttt{count} in \texttt{sub}.
+
+\paragraph{Blocks in Functional Languages}\label{par:Variable_Block_in_Functional_Languages}
+Since \nameref{def:Variable}s in \nameref{def:Functional_Programming_Language}s actually evaluate and store expressions, they behave differently.
+Each functional language handles this differently, so you will have to look at the language specification to find out exactly how \nameref{def:Variable}s are scoped.
+
 \subsubsection{Declaration Order}\label{subsubsec:Variable_Declaration_Order}
 \subsubsection{Global Scope}\label{subsubsec:Variable_Global_Scope}
 \subsubsection{Dynamic Scope}\label{subsubsec:Dynamic_Scope}
