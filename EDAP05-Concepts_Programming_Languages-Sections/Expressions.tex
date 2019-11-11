@@ -197,8 +197,54 @@ average = (count == 0) ? 0 : sum / count;
 \end{minted}
 
 \subsubsection{Operand Evaluation Order}\label{subsubsec:Operand_Evaluation_Order}
+How do we determine and what steps must be taken to get the value of the \nameref{def:Operand} used in the current \nameref{def:Expression}?
+
 \paragraph{Side Effects}\label{par:Operand_Evaluation-Side_Effects}
+\begin{definition}[Side Effect]\label{def:Function_Side_Effect}
+  A \emph{side effect} of a function is when the function changes either one of its parameters or a \nameref{def:Global_Variable}.
+\end{definition}
+
+\begin{definition}[Pure]\label{def:Function_Pure}
+  A function can be called \emph{pure} when the function \textbf{does not} change its parameters or a \nameref{def:Global_Variable}.
+
+  \begin{remark}
+    These are used in both mathematics and \nameref{def:Functional_Programming_Language}s.
+  \end{remark}
+\end{definition}
+If a function has \nameref{def:Function_Side_Effect}s, then the order in which the \nameref{def:Operand}s are evaluated may affect the operation.
+
+There are 2 possible solutions to this:
+\begin{enumerate}[noitemsep]
+\item Language designer can disallow functional \nameref{def:Function_Side_Effect}s, essentially making all functions used in an \nameref{def:Expression} \nameref{def:Function_Pure}.
+  \begin{itemize}[noitemsep]
+  \item However, implementing this is difficult in \nameref{def:Imperative_Programming_Language}s
+  \item Eliminates some flexibility for the programmer
+  \item Access to \nameref{def:Global_Variable}s would have to be disallowed, which the compiler may want to do to improve speed.
+  \end{itemize}
+\item Language definition could state that \nameref{def:Operand}s in \nameref{def:Expression}s are to be evaluated in a particular order and demand implementors guarantee that order.
+  \begin{itemize}[noitemsep]
+  \item Some code optimization techniques that reorder the \nameref{def:Operand} evaluations could no longer be used.
+  \end{itemize}
+\end{enumerate}
+
 \paragraph{Referential Transparency and Side Effects}\label{par:Operand_Evaluation-Referential_Transparency_Side_Effects}
+\begin{definition}[Referential Transparency]\label{def:Referential_Transparency}
+  A program has \emph{referential transparency} if any 2 \nameref{def:Expression}s in the program that have the same value can be substituted for another, without affecting the action of the program.
+
+  \begin{remark}
+    A function/program that has \nameref{def:Referential_Transparency} should also be a \nameref{def:Function_Pure} program/function.
+  \end{remark}
+
+  \begin{remark}
+    In a \nameref{def:Functional_Programming_Language} \textbf{\emph{ALL}} functions/programs have \nameref{def:Referential_Transparency}, by definition.
+  \end{remark}
+\end{definition}
+
+There are several advantages:
+\begin{itemize}[noitemsep]
+\item Semantics of referentially transparent programs are easier to understand.
+\item A programmed function is equivalent to a mathematical function in that it is \nameref{def:Function_Pure}.
+\end{itemize}
 
 \subsection{Relational and Boolean Expressions}\label{subsec:Relational_Boolean_Expressions}
 \subsubsection{Relational Expressions}\label{subsubsec:Relational_Expressions}
