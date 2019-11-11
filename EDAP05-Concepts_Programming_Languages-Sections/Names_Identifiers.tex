@@ -598,6 +598,16 @@ Since \nameref{def:Variable}s in \nameref{def:Functional_Programming_Language}s 
 Each functional language handles this differently, so you will have to look at the language specification to find out exactly how \nameref{def:Variable}s are scoped.
 
 \subsubsection{Declaration Order}\label{subsubsec:Variable_Declaration_Order}
+Some languages require that all \nameref{def:Variable} declarations occur at the beginning of a function (C89).
+
+In some languages, \nameref{def:Variable}s cannot used before they have been declared.
+\begin{itemize}[noitemsep]
+\item Some of these languages allow for \nameref{def:Variable}s to be declared anywhere in the function, but can only be referenced \textbf{after} their declaration until the end of their scope.
+\item Some of these languages allow for \nameref{def:Variable}s to be declared anywhere in the function, but if used before their declaration, they use a value like \texttt{undefined} (JavaScript).
+\end{itemize}
+
+This is a highly language-dependent thing, and one must consult with the language specification to figure out exactly how it works.
+
 \subsubsection{Global Scope}\label{subsubsec:Variable_Global_Scope}
 \subsubsection{Dynamic Scope}\label{subsubsec:Dynamic_Scope}
 
