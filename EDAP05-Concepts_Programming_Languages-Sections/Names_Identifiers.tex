@@ -357,6 +357,33 @@ The act of unbinding is called \nameref{def:Variable_Memory_Deallocation}.
   \item \nameref{par:Implicit_Heap-Dyanmic_Variable_Binding_Lifetime}
   \end{itemize}
 \end{definition}
+
+\paragraph{Static Variables}\label{par:Static_Variable_Binding_Lifetime}
+\begin{definition}[Static Variable]\label{def:Static_Variable_Binding_Lifetime}
+  \emph{Static variable}s are those that are bound to \nameref{def:Memory} cells before program execution begins and remain bound until the program terminates.
+\end{definition}
+
+\nameref{def:Static_Variable_Binding_Lifetime}s can be used as globally accessible \nameref{def:Variable}s, or ensure that subprograms are history-sensitive.
+
+The pros and cons of \nameref{def:Static_Variable_Binding_Lifetime}s are:
+\begin{itemize}[noitemsep]
+\item Pros
+  \begin{itemize}[noitemsep]
+  \item Efficiency. All \nameref{def:Memory} addressing is done with absolute addresses, making things very fast.
+  \end{itemize}
+\item Cons
+  \begin{itemize}[noitemsep]
+  \item Reduced flexibility. If there is a language that only has \nameref{def:Static_Variable_Binding_Lifetime}s, then recursive subprograms are impossible.
+  \end{itemize}
+\end{itemize}
+
+\begin{remark*}
+  In C and C++, \texttt{static} can be set on functions, making the \nameref{def:Variable}s declared in the function \nameref{def:Static_Variable_Binding_Lifetime}.
+\end{remark*}
+
+\begin{remark*}
+  In Java, C++, and C\#, \texttt{static} can appear on classes, meaning class \nameref{def:Variable}s are created statically some time before the class is first instantiated.
+\end{remark*}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
