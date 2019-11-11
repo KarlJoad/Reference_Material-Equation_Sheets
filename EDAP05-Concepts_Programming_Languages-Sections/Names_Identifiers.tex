@@ -1,0 +1,297 @@
+\section{Names}\label{sec:Names}
+\emph{Names} or \emph{identifiers} are, obviously, names given to things.
+They can identify:
+\begin{itemize}[noitemsep]
+\item Variables
+\item Subprograms
+\item Formal Parameters
+\item Other program constructs
+\end{itemize}
+
+\subsection{Issues}\label{subsec:Names_Issues}
+There are 2 questions that need to be asked when designing the names or identifiers possible in a language.
+\begin{enumerate}[noitemsep]
+\item Are names case-sensitive? For example, are these identifiers different?
+  \begin{itemize}[noitemsep]
+  \item \texttt{myvariable}
+  \item \texttt{MYVARIABLE}
+  \item \texttt{MyVariable}
+  \item \texttt{myVariable}
+  \end{itemize}
+\item Are the special words of the language \nameref{def:Reserved_Word}s or are they \nameref{def:Keyword}s?
+\end{enumerate}
+
+\subsection{Name Forms}\label{subsec:Name_Forms}
+How is a name/identifier defined?
+\begin{itemize}[noitemsep]
+\item Is there a character limit on the identifier/name?
+\item Are all characters in the identifier/name significant?
+\item What characters are allowed in the identifier/name?
+\item Are there special characters required by a language?
+  \begin{itemize}[noitemsep]
+  \item \texttt{\$} being required in front of identifiers in PHP
+  \item \texttt{\$}, \texttt{@}, \texttt{\%} specifying a ``type''  in Perl
+  \item \texttt{@} and \texttt{@@} to denote an instance or class variable in Ruby, respectively
+  \end{itemize}
+\end{itemize}
+
+Some languages are \emph{case-sensitive}.
+C, Java, C++, etc.\ would all treat \texttt{rose}, \texttt{ROSE}, and \texttt{Rose} differently.
+This could be a detriment to readability, because names that \textit{look} similar are actually not.
+In terms of writability, the programmer must remember the exact typecasing of the identifier/name.
+
+\subsection{Special Names}\label{subsec:Special_Names}
+There are \nameref{def:Reserved_Word}s and \nameref{def:Keyword}s.
+They are similar in that the programming language specification defines that these words have special meanings when constructing programs.
+However, the 2 differ in how these words can potentially be reused.
+
+\begin{definition}[Keyword]\label{def:Keyword}
+  \emph{Keyword}s are words that are defined by the language constructors to have some special meaning.
+  However, it only has these special meanings in \textbf{\emph{certain contexts}}.
+  This means you can define a keyword as a variable and use it together with the keyword.
+  For example, this is a perfectly valid piece of Fortran code:
+\begin{minted}[frame=lines,linenos]{fortran}
+Integer Apple
+Integer = 4
+\end{minted}
+\end{definition}
+
+\begin{definition}[Reserved Word]\label{def:Reserved_Word}
+  \emph{Reserved word}s are words that are reserved by the language constructors because those particular words have a meaning in the language.
+  These words cannot be used as identifiers for \textbf{ANYTHING} else.
+  For example:
+  \begin{itemize}[noitemsep]
+  \item \texttt{while}
+  \item \texttt{class}
+  \item \texttt{for}
+  \end{itemize}
+
+  \begin{remark}[Too Many \nameref{def:Reserved_Word}s]\label{rmk:Too_Many_Reserved_Words}
+    The potential problem with \nameref{def:Reserved_Word}s is that if a language has a large number of reserved words, the user might have a hard time creating names for themselves.
+    Unfortunately, the most commonly chosen words by programs are usually \nameref{def:Reserved_Word}s.
+    For example,
+    \begin{itemize}[noitemsep]
+    \item \texttt{LENGTH}
+    \item \texttt{BOTTOM}
+    \item \texttt{DESTINATION}
+    \item \texttt{COUNT}
+    \end{itemize}
+  \end{remark}
+\end{definition}
+
+\subsection{Variables}\label{subsec:Variables}
+\begin{definition}[Variable]\label{def:Variable}
+  A program \emph{variable} is an abstraction of a computer \nameref{def:Memory} cell or a collection of \nameref{def:Memory} cells.
+  A variable can be characterized by a sextuple of attributes:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{subsubsec:Variable_Name}
+  \item \nameref{subsubsec:Variable_Address}
+  \item \nameref{subsubsec:Variable_Value}
+  \item \nameref{subsubsec:Variable_Type}
+  \item Lifetime
+  \item Scope
+  \end{enumerate}
+\end{definition}
+
+\subsubsection{Name}\label{subsubsec:Variable_Name}
+Most \nameref{def:Variable}s have names.
+These are symbolic references to the value that is actually stored.
+There are various issues that may arise with the name of a variable, which were discussed earlier.
+
+\subsubsection{Address}\label{subsubsec:Variable_Address}
+\begin{definition}[Address]\label{def:Variable_Address}
+  The \emph{address} of a \nameref{def:Variable} is the machine's memory address with which the \nameref{def:Variable} is associated.
+
+  The address of a variable is sometimes called its \emph{L-Value}.
+  This is because the address is required when the name of a variable appears on the left-hand side of an assignment statement.
+
+  \begin{remark}[Alias]
+    An \emph{alias} is having another \nameref{def:Variable} have the same \nameref{def:Variable_Address}, so the 2 \nameref{def:Variable}s point to the same value in \nameref{def:Memory}.
+  \end{remark}
+\end{definition}
+
+For some languages, it is possible for the same \nameref{def:Variable} to be associated with different addresses at different times during the \nameref{def:Variable}'s lifetime.
+
+\subsubsection{Type}\label{subsubsec:Variable_Type}
+\begin{definition}[Type]\label{def:Variable_Type}
+  The \emph{type} of a \nameref{def:Variable} determines the range of values that \nameref{def:Variable} can store.
+  For example, the \texttt{int} type in Java specifies a value range of $-2147483648$ to $2147483647$.
+  It is a 32-bit signed integer.
+\end{definition}
+
+\subsubsection{Value}\label{subsubsec:Variable_Value}
+\begin{definition}[Value]\label{def:Variable_Value}
+  The \emph{value} of a \nameref{def:Variable} is the contents of the \nameref{def:Memory} cell or cells associated with the \nameref{def:Variable}.
+  The value of a variable is sometimes called it \emph{R-Value}.
+  This is because the value of the \nameref{def:Variable} is required on the right-hand side of an assignment statement.
+  To access the \textit{r}-value, the \textit{l}-value must be determined first.
+  
+  \begin{remark}[Abstract Memory Cells]\label{rmk:Abstract_Memory_Cells}
+    While in hardware, the individual sizes of \nameref{def:Memory} are fixed, we can think of \nameref{def:Memory} as having \emph{abstract memory cells}, that can accomodate anything we attempt to put into \nameref{def:Memory}.
+    This means that a single-precision floating point number technically takes up 4 bytes, 32 bits, of \nameref{def:Memory} cells, that number only takes one abstract memory cell.
+  \end{remark}
+\end{definition}
+
+\subsection{Binding}\label{subsec:Binding}
+\begin{definition}[Binding]\label{def:Binding}
+  A \emph{binding} is an association between an attribute and an entity.
+  This association can be between:
+  \begin{itemize}[noitemsep]
+  \item A variable
+    \begin{itemize}[noitemsep]
+    \item Its type
+    \item Its value
+    \end{itemize}
+  \item An operation
+    \begin{itemize}[noitemsep]
+    \item Its symbol
+    \end{itemize}
+  \end{itemize}
+
+  The time at which a binding occurs is called the \nameref{def:Binding_Time}.
+\end{definition}
+
+\begin{definition}[Binding Time]\label{def:Binding_Time}
+  The time at which \nameref{def:Binding} occurs is called the \emph{binding time}.
+  These include:
+  \begin{itemize}[noitemsep]
+  \item Language Design Time
+    \begin{itemize}[noitemsep]
+    \item Defining \texttt{*} to represent multiplication
+    \end{itemize}
+  \item Language Implementation Time
+    \begin{itemize}[noitemsep]
+    \item Having an \texttt{int} in C be a 32-bit signed integer
+    \end{itemize}
+  \item Compiler Time
+    \begin{itemize}[noitemsep]
+    \item The type of a variable in a Java program
+    \end{itemize}
+  \item Link Time
+    \begin{itemize}[noitemsep]
+    \item A call to a library subprogram is bound to the subprogram code
+    \end{itemize}
+  \item Load Time
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:Variable} bound when loaded into \nameref{def:Memory}
+    \item Could happen at run time too
+    \end{itemize}
+  \item Run Time
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:Variable} bound when loaded into \nameref{def:Memory}
+    \item Could happen at compile time too
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+We need to know the \nameref{def:Binding_Time}s for the attributes of a program to understand the semantics of the programming language.
+
+\subsubsection{Binding of Attributes to \nameref*{def:Variable}s}\label{subsubsec:Binding_Attributes_Variables}
+\begin{definition}[Static]\label{def:Static_Variable_Binding}
+  A \nameref{def:Binding} is \emph{static} if the \nameref{def:Binding} first occurs before run time begins and remains unchanged throughout program execution.
+  An example of this is declaring a \nameref{def:Variable} as an \texttt{int} in C.
+  Throughout the whole C program, that \nameref{def:Variable} can only hold signed 32-big integers.
+\begin{minted}[frame=lines,linenos]{c}
+int x = 4;
+float x = 4.0; // Error here, x already declared
+x = 4.0 // Error here, x is of int type
+\end{minted}
+\end{definition}
+
+\begin{definition}[Dynamic]\label{def:Dynamic_Variable_Binding}
+  A \nameref{def:Binding} is \emph{dynamic} if the \nameref{def:Binding} occurs during run time, or can change in the course of program execution.
+  An example of this is declaring a \nameref{def:Variable} in Python.
+\begin{minted}[frame=lines,linenos]{python3}
+x = 4
+x = [1, 2, 3]
+x = 'dynamically bound string'
+\end{minted}
+  All three lines have a variable declaration, where the \nameref{def:Binding} occur during the program's execution and changed during it.
+\end{definition}
+
+We are only concerned with the distinction between \nameref{def:Static_Variable_Binding} and \nameref{def:Dynamic_Variable_Binding} \nameref{def:Variable} \nameref{def:Binding}.
+Meaning, we will ignore how hardware may bind and unbind things repeatedly when it is switching and moving things around.
+
+\subsubsection{Type \nameref*{subsec:Binding}s}\label{subsubsec:Type_Bindings}
+Before a \nameref{def:Variable} can be used or referenced in a program, its \nameref{def:Variable_Type} must be declared.
+\begin{definition}[Type]\label{def:Variable_Type}
+  A \nameref{def:Variable}'s \emph{type} determines the range of values that can be stored in the \nameref{def:Variable}.
+  In a more abstract sense, it also determines what kind of operations make sense and are possible to use on these \nameref{def:Variable}s.
+  There are 2 important aspects of this \nameref{def:Binding}:
+  \begin{enumerate}[noitemsep]
+  \item How the \nameref{def:Variable} \nameref{def:Variable_Type} is specified
+  \item When the \nameref{def:Binding} takes place
+  \end{enumerate}
+\end{definition}
+
+There are 2 ways to bind \nameref{def:Variable_Type}s to \nameref{def:Variable}s:
+\begin{enumerate}[noitemsep]
+\item \nameref{par:Static_Variable_Type_Binding}
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Explicit_Static_Variable_Type_Binding}
+  \item \nameref{def:Implicit_Static_Variable_Type_Binding}
+  \end{itemize}
+\item \nameref{par:Dynamic_Variable_Type_Binding}
+\end{enumerate}
+
+\paragraph{Static \nameref*{def:Variable_Type} \nameref*{subsec:Binding}}\label{par:Static_Variable_Type_Binding}
+\begin{definition}[Explicit]\label{def:Explicit_Static_Variable_Type_Binding}
+  An \emph{explicit} declaration is a statement that explicitly sets each \nameref{def:Variable} to its respective \nameref{def:Variable_Type}.
+  For example,
+\begin{minted}[frame=lines,linenos]{c}
+int x = 0;
+float x = 0.0;
+char x = 'x';
+\end{minted}
+\end{definition}
+
+\begin{definition}[Implicit]\label{def:Implicit_Static_Variable_Type_Binding}
+  An \emph{implicit} declaration associates \nameref{def:Variable}s with \nameref{def:Variable_Type}s through default conventions.
+  The first appearance of a \nameref{def:Variable} name is its implicit declaration.
+\end{definition}
+
+Implicit declarations are handled by the language processor (\nameref{def:Compiler} or Interpreter).
+There are several ways to have implicit declarations work, some of which are:
+\begin{itemize}[noitemsep]
+\item Naming conventions
+  \begin{itemize}[noitemsep]
+  \item In \textbf{Fortran}, if an identifier starts with
+    \begin{itemize}[noitemsep]
+    \item \texttt{I}, \texttt{J}, \texttt{K}, \texttt{L}, \texttt{M}, or \texttt{N}, or their lowercase versions, it is \nameref{def:Implicit_Static_Variable_Type_Binding}ly declared to be an \texttt{Integer} type.
+    \item Otherwise, it is \nameref{def:Implicit_Static_Variable_Type_Binding}ly declared to be a \texttt{Real} type.
+    \end{itemize}
+  \item In \textbf{Perl}, an identifier must be preceded by a special character denoting the \nameref{def:Variable_Type}. This method forms separate namespaces for each \nameref{def:Variable} \nameref{def:Variable_Type}.
+    \begin{itemize}[noitemsep]
+    \item \texttt{\$}, is a scalar. This holds numbers and strings
+    \item \texttt{@}, is an array.
+    \item \texttt{\%}, is a hash structure.
+    \item The separate namespaces means that all 3 of these variables are considered unique, and potentially unrelated.
+      \begin{itemize}[noitemsep]
+      \item \texttt{\$apple}
+      \item \texttt{@apple}
+      \item \texttt{\%apple}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+  
+\item Context or type inference
+  \begin{itemize}[noitemsep]
+  \item In \textbf{C\#}, a \texttt{var} declaration for a \nameref{def:Variable} must include an initial value, which determines the \nameref{def:Variable_Type} of the \nameref{def:Variable}.
+\begin{minted}[frame=lines,linenos]{javascript}
+var sum = 0;
+var total = 0.0;
+var name = "Fred";
+\end{minted}
+  \item \texttt{sum}, \texttt{total}, and \texttt{name} are an \texttt{int}, \texttt{float}, and \texttt{string}, respectively.
+  \end{itemize}
+\end{itemize}
+
+\begin{remark*}
+  Both \nameref{def:Explicit_Static_Variable_Type_Binding} and \nameref{def:Implicit_Static_Variable_Type_Binding} declarations create \nameref{def:Static_Variable_Binding} \nameref{def:Binding}s to \nameref{def:Variable_Type}s.
+\end{remark*}
+
+\paragraph{Dynamic \nameref*{def:Variable_Type} \nameref*{subsec:Binding}}\label{par:Dynamic_Variable_Type_Binding}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
