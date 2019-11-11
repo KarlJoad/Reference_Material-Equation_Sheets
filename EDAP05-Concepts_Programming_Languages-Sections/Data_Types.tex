@@ -400,7 +400,64 @@ However, without restrictions on ranges of values and possible operations, this 
 \nameref{def:Subrange_Type}s are implemented the same way as their parent types, except range checks are implicity included by the compiler in every assignment of a variable or expression to a subrange variable.
 
 \subsection{List Types}\label{subsec:List_Types}
+Lists were first supported in LISP.\@
+\begin{definition}[List]\label{def:List}
+  A \emph{list} is a data structure heavily used in \nameref{def:Functional_Programming_Language}s.
+  They are similar to arrays in other languages, but they may lazily evaluated and may be infinite.
 
+  \begin{remark}
+    Lists, because of their (potentially, depends on the language) inherently infinite nature, have always been part of \nameref{def:Functional_Programming_Language}s, but are making their way to \nameref{def:Imperative_Programming_Language}s too.
+  \end{remark}
+\end{definition}
+
+\begin{remark*}
+  \theauthor{} went a little ham on this section because he uses Emacs and writes ELisp to customize it.
+  He is also \emph{really} interested in \nameref{def:Functional_Programming_Language}s.
+\end{remark*}
+
+Lists in Scheme, LISP, and Common LISP are written as such:
+\begin{minted}[frame=lines,linenos]{lisp}
+(A B C D) ; List of 4 elements
+(A (B C) D) ; List of 3 elements, with the middle being a 2 element nested list
+\end{minted}
+
+In LISP and its descendants, data and code have the same syntactic form, meaning this could be interpreted as a function call to \texttt{A} with \texttt{B} and \texttt{C} being parameters; or as a list of 3 elements.
+\begin{minted}[frame=lines,linenos]{lisp}
+(A B C)
+\end{minted}
+
+Lists in Scheme, LISP, and Common LISP can be considered linked-lists.
+This means there are operations to get the current node's data and to get the next nodes in the rest of the list.
+\begin{minted}[frame=lines,linenos]{scheme}
+; The ' in front of a list means to interpret the list as data and not a function call
+(CAR '(A B C)) ; Returns the element A
+(CDR '(A B C)) ; Returns the list (B C)
+\end{minted}
+
+There are 2 ways these lists can be constructed:
+\begin{enumerate}[noitemsep]
+\item \texttt{CONS} takes 2 parameters and returns a list with the first parameter as the first element and the second parameter as the remainder of the list.
+\begin{minted}[frame=lines,linenos]{common-lisp}
+(CONS 'A '(B C)) ; Returns (A B C)
+\end{minted}
+\item \texttt{LIST} takes any number of parameters and returns a new list with the parameters as the new list's elements
+\begin{minted}[frame=lines,linenos]{common-lisp}
+(LIST 'A 'B '(C D)) ; Returns (A B (C D))
+\end{minted}
+\end{enumerate}
+
+\begin{definition}[List Comprehension]\label{def:List_Comprehension}
+  A \emph{list comprehension} is an idea from set notation and set theory.
+  Essentially, a list comprehension applies a function to every element in a given array/\nameref{def:List}, and a new array/\nameref{def:List} is constructed from the results.
+
+  2 examples of this are shown below, the first in Haskell, the second in Python 3.
+\begin{minted}[frame=lines,linenos]{haskell}
+[n * n | n <- [1..10]]
+\end{minted}
+\begin{minted}[frame=lines,linenos]{python3}
+[x * x for x in range(1, 11, 1)]
+\end{minted}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
