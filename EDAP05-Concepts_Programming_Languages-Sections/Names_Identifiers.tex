@@ -421,6 +421,62 @@ The advantages and disadvantages of \nameref{def:Stack-Dynamic_Variable_Binding_
   \end{itemize}
 \end{itemize}
 
+\paragraph{Explicit Heap-Dynamic Variables}\label{par:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}
+\begin{definition}[Explicit Heap-Dynamic Variable]\label{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}
+  \emph{Explicit heap-dynamic variables} are namess (abstract) memory cells that are allocated and deallocated by explicit run-time instructions written by the programmer.
+  These \nameref{def:Variable}s are allocated to and deallocated from the \nameref{def:Heap}.
+  They can only be referenced through pointers or reference variables.
+
+  The pointer/reference can only be created and returned by:
+  \begin{itemize}[noitemsep]
+  \item An operator (in C++), \texttt{new}
+  \item A subprogram (in C), \texttt{malloc}
+  \end{itemize}
+
+  Some languages include ways to destroy these pointers/references:
+  \begin{itemize}[noitemsep]
+  \item An operator (in C++), \texttt{delete}
+  \item A subprogram (in C), \texttt{free}
+  \end{itemize}
+\end{definition}
+
+An example of an \nameref{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime} is shown below.
+\begin{minted}[frame=lines,linenos]{c++}
+int *intnode; // Create a pointer
+intnode = new int; // Create the heap-dynamic variable
+...
+delete intnode; // Deallocate the heap-dynamic variable to which intnode points
+\end{minted}
+
+The \nameref{def:Heap} is highly disorganized because of the unpredictability of its use.
+Garbage collection can help organize it.
+
+There are 2 ways to manage the \nameref{def:Heap}.
+\begin{enumerate}[noitemsep]
+\item Explicit \nameref{def:Variable_Memory_Deallocation}
+  \begin{itemize}[noitemsep]
+  \item The programmer must explicitly free the \nameref{def:Memory} themselves.
+  \end{itemize}
+\item Implicit \nameref{def:Variable_Memory_Deallocation}
+  \begin{itemize}[noitemsep]
+  \item The programming language has facilities, called \emph{garbage collection} that automatically manages the \nameref{def:Heap}.
+  \end{itemize}
+\end{enumerate}
+
+The advantages and disadvantages of these types of \nameref{def:Variable}s are:
+\begin{itemize}[noitemsep]
+\item Advantages
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime} are often used to construct dynamic data structures, like linked lists and trees. These are built conveniently using pointers and data.
+  \end{itemize}
+\item Disadvantages
+  \begin{itemize}[noitemsep]
+  \item The difficulty of using pointer/reference variables correctly
+  \item The \nameref{subsec:Cost} of using these pointers/reference variables
+  \item Complexity of the required storage management implementation (Although, this is a question of \nameref{def:Heap} management, which is costly and complicated).
+  \end{itemize}
+\end{itemize}
+
 \paragraph{Implicit Heap-Dynamic Variables}\label{par:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}
 \begin{definition}[Implicit Heap-Dynamic Variable]\label{def:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}
   \emph{Implicit heap-dynamic variable}s are bound to \nameref{def:Heap} storage onnly when they are assigned values.
