@@ -1,0 +1,363 @@
+\section{Backus-Naur Form and Context-Free Grammars}\label{sec:BNF_and_CFGs}
+In the 1950s, there were 2 men, \href{https://en.wikipedia.org/wiki/Noam_Chomsky}{Noam Chomsky} and \href{https://en.wikipedia.org/wiki/John_Backus}{John Backus}, that were working completely separately who were trying to formally describe language.
+They actually ended up developing very similar answers to that problem.
+
+\begin{remark*}
+  \nameref{def:Context_Free_Grammar}s are referred to only as grammars throughout this document.
+  Also, the terms BNF (\nameref{def:CFG_BNF_Form}) and grammar are used interchangeably.
+\end{remark*}
+
+\subsection{Context-Free Grammars}\label{subsec:CFGs}
+Chomsky, a linguist, described 4 classes of grammars that define 4 classes of languages, which are given in \Cref{tab:Formal_Grammar_Hierarchy}
+
+There exists a hierarchy for the definition of Grammars that define \nameref{def:Language}s.
+It is called the \emph{\nameref{tab:Formal_Grammar_Hierarchy}}.
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{ccc}
+    \toprule
+    Grammar & Rule Patterns & Type \\
+    \midrule
+    Regular & $X \rightarrow a Y$ or $X \rightarrow a$ or $X \rightarrow \epsilon$ & 3 \\
+    Context-Free & $X \rightarrow \gamma$ & 2 \\
+    Context-Sensitive & $\alpha X \beta \rightarrow \alpha \gamma \beta$ & 1 \\
+    Arbitrary & $\gamma \rightarrow \delta$ & 0 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Chomsky Hierarchy of Formal Grammars}
+  \label{tab:Formal_Grammar_Hierarchy}
+\end{table}
+
+Regular grammars have the same power as regular expressions, meaning they can be used to find tokens in a program.
+
+\begin{remark*}
+  Where $a$ is a \nameref{def:Terminal_Symbol}, $\alpha$, $\beta$, $\gamma$, and $\delta$ are \emph{sequences} of symbols (\nameref{def:Terminal_Symbol}s or \nameref{def:Nonterminal_Symbol}s).
+
+  Type(3) $\subset$ Type(2) $\subset$ Type(1) $\subset$ Type(0)
+\end{remark*}
+
+\subsection{Backus-Naur Form}\label{subsec:BNF}
+It is important to discuss where Backus-Naur form came from, and how ti has been modified since.
+Originally, there was the \nameref{def:CFG_Canonical_Form}.
+This only allowed for one production per line, and did not support options, repetition, etc.
+\begin{definition}[Canonical Form]\label{def:CFG_Canonical_Form}
+  The \emph{canonical form} of a \nameref{def:Context_Free_Grammar} is the most formal use of a \nameref{def:Context_Free_Grammar}.
+
+  \begin{equation}\label{eq:CFG_Canonical_Form}
+    \begin{aligned}
+      A &\rightarrow B \; d \; e \; C \; f \\
+      A &\rightarrow g \; A \\
+    \end{aligned}
+  \end{equation}
+
+  The \nameref{def:CFG_Canonical_Form} is:
+  \begin{itemize}[noitemsep]
+  \item The core formalism for \nameref{def:Context_Free_Grammar}s
+  \item Useful for proving properties and explaining algorithms
+  \end{itemize}
+\end{definition}
+
+When John Backus was working on ALGOL 58, his published paper used a new formal notation for specifying programming language syntax.
+\href{https://en.wikipedia.org/wiki/Peter_Naur}{Peter Naur} slightly modified Backus's original syntax which developed \nameref{def:CFG_BNF_Form}.
+
+\begin{definition}[Backus-Naur Form]\label{def:CFG_BNF_Form}
+  The \emph{Backus-Naur form} of a \nameref{def:Context_Free_Grammar} is an extension of the \nameref{def:CFG_Canonical_Form}.
+  This form is less formal than the \nameref{def:CFG_Canonical_Form}, but is allows for condensation of multiple productions that have the same nonterminal on the left-hand side to the same production.
+  This is done with the $\vert$ symbol.
+
+  For example, \Cref{eq:CFG_BNF_Form} is equivalent to \Cref{eq:CFG_Canonical_Form}.
+  \begin{equation}\label{eq:CFG_BNF_Form}
+    A \rightarrow B \; d \; e \; C \; f \: \vert \: g\; A
+  \end{equation}
+\end{definition}
+
+\nameref{def:CFG_BNF_Form} has some inconveniences, and has been extended to avoid thse issues.
+These extensions have been formalized and called \nameref{def:CFG_EBNF_Form}.
+\nameref{def:CFG_EBNF_Form} will not be used much in this course, but it is a good way to quickly and succinctly express a \nameref{def:Context_Free_Grammar}.
+
+\begin{definition}[Extended Backus-Naur Form]\label{def:CFG_EBNF_Form}
+  The \emph{Extended Backus-Naur form} of a \nameref{def:Context_Free_Grammar} is an extension of the \emph{Backus-Naur Form}.
+  This is a more informal implementation of a \nameref{def:Context_Free_Grammar}.
+  This informality allows for some additional constructs in the \nameref{def:Production} rules.
+
+  These include:
+  \begin{enumerate}[noitemsep]
+
+  \item Repetition with the Kleene Star (*), or with $\lbrace \text{ repItem } \rbrace$
+    \begin{itemize}[noitemsep]
+    \item Means that portion of the \nameref{def:Production} can be repeated 0 or more times.
+    \end{itemize}
+  \item Single Optionals, denoted as $(\text{ op1 } \vert \text{ op2 } \vert \ldots)$
+    \begin{itemize}[noitemsep]
+    \item Means select one of the options present between the parentheses.
+    \end{itemize}
+  \item Optional portions of the \nameref{def:Production}, denoted with $[\text{ op }]$
+    \begin{itemize}[noitemsep]
+    \item Means that portion of the \nameref{def:Production} is an optional part of the entire \nameref{def:Production}.
+    \end{itemize}
+  \end{enumerate}
+
+  The \nameref{def:CFG_EBNF_Form} is:
+  \begin{itemize}[noitemsep]
+  \item Compact, easy to read and write
+  \item Common notation for practical use
+  \end{itemize}
+\end{definition}
+
+\subsection{Use Today}\label{subsec:Use_Today}
+\begin{definition}[Metalanguage]\label{def:Metalanguage}
+  \emph{Metalanguage}s are languages that are used to describe other languages.
+  \nameref{def:Context_Free_Grammar}s are one example used as a metalanguage for programming languages.
+\end{definition}
+
+\begin{definition}[Context-Free Grammar]\label{def:Context_Free_Grammar}
+  A \emph{context-free grammar} or \emph{CFG} is a way to define a set of \textit{strings} that form a \nameref{def:Language}.
+  Each string is a finite sequence of \nameref{def:Terminal_Symbol} taken from a finite \nameref{def:Alphabet}.
+  This is done with one or more \nameref{def:Production}s, where each production can have both \nameref{def:Nonterminal_Symbol} and \nameref{def:Terminal_Symbol}.
+
+  More formally, a \nameref{def:Context_Free_Grammar} is defined as $G = (N, T, P, S)$, where
+  \begin{itemize}[noitemsep]
+  \item $N$, the set of \nameref{def:Nonterminal_Symbol}s
+  \item $T$, the set of \nameref{def:Terminal_Symbol}s
+  \item $P$, the set of production rules, each with the form
+    \begin{equation*}
+      X \rightarrow Y_{1} Y_{2} \ldots Y_{n} \: \text{where } X \in N, x \geq 0, \text{and } Y_{k} \in N \cup T
+    \end{equation*}
+  \item $S$, the start symbol (one of the \nameref{def:Nonterminal_Symbol}s, $N$). $S \in N$.
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Language]\label{def:Language}
+  A \emph{language} is the set of \textbf{\textup{all}} strings that can be formed by the \nameref{def:Production}s in the \nameref{def:Context_Free_Grammar}.
+\end{definition}
+
+\begin{definition}[Production]\label{def:Production}
+  A \emph{production} is a rule that defines the relation between a single \nameref{def:Nonterminal_Symbol} and a string comprised of \nameref{def:Nonterminal_Symbol}s, \nameref{def:Terminal_Symbol}s, and the \nameref{def:Empty_String}.
+  These can be though of as abstractions for syntactic structures.
+
+  The are denoted as shown below:
+  \begin{equation}\label{eq:Production}
+    p_{0}: A \rightarrow \alpha
+  \end{equation}
+
+  \begin{remark}
+    There \emph{can} be multiple productions for the same \nameref{def:Nonterminal_Symbol}
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Nonterminal Symbol]\label{def:Nonterminal_Symbol}
+  A \emph{nonterminal symbol}, or just \emph{nonterminal}, is a symbol that is used in the \nameref{def:Context_Free_Grammar} as a symbol for a \nameref{def:Production}.
+\end{definition}
+
+\begin{definition}[Terminal Symbol]\label{def:Terminal_Symbol}
+  A \emph{terminal symbol}, or just \emph{terminal}, is a symbol that cannot be derived any further.
+  This is a symbol that is part of the \nameref{def:Alphabet} that is used to form the \nameref{def:Language}.
+
+  \begin{remark}
+    These terminals could be tokens defined by a regular grammar or a regular expression.
+    They might just be abstractions of sequences or sets of symbols from the \nameref{def:Alphabet}.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Start Symbol]\label{def:Start_Symbol}
+  The \emph{start symbol} is a \nameref{def:Nonterminal_Symbol} which is specially designated as the start point of a \nameref{def:Derivation} for a grammar.
+
+  Other than the fact a \nameref{def:Derivation} starts with this \nameref{def:Nonterminal_Symbol} and its associated \nameref{def:Production}, it is not special.
+\end{definition}
+
+\begin{definition}[Empty String]\label{def:Empty_String}
+  The \emph{empty string} is a special symbol that is neither a \nameref{def:Nonterminal_Symbol} nor a \nameref{def:Terminal_Symbol}.
+  The empty string is a \emph{metasymbol}.
+  It is a unique symbol meant to represent the lack of a string.
+  It is denoted with the lowercase Greek epsilon, $\epsilon$ or $\varepsilon$.
+\end{definition}
+
+\begin{definition}[Alphabet]\label{def:Alphabet}
+  The finite set of \nameref{def:Nonterminal_Symbol}s that can be used to form a \nameref{def:Language}.
+\end{definition}
+
+\subsubsection{Multiple Productions on Single Line}\label{subsubsec:Multiple_Productions_One_Line}
+This is briefly discussed in \Cref{def:CFG_BNF_Form}.
+What this allows us to do is combine multiple \nameref{def:Production}s that have the same \nameref{def:Nonterminal_Symbol} on the left-hand side to a single line, or single \nameref{def:Production}.
+
+For example,
+\begin{equation}\label{eq:Multiple_Productions_Multiple_Lines}
+  \begin{aligned}
+    <\text{if stmt}> &\rightarrow \mathtt{if} ( <\text{logic expr}> ) <\text{stmt}> \\
+    <\text{if stmt}> &\rightarrow \mathtt{if} ( <\text{logic expr}> ) <\text{stmt}> \mathtt{else} <\text{stmt}> \\
+  \end{aligned}
+\end{equation}
+can be combined to
+\begin{equation}\label{eq:Multiple_Productions_One_Line}
+  \begin{aligned}
+    <\text{if stmt}> \rightarrow &\mathtt{if} ( <\text{logic expr}> ) <\text{stmt}> \\
+    \vert &\mathtt{if} ( <\text{logic expr}> ) <\text{stmt}> \mathtt{else} <\text{stmt}>
+  \end{aligned}
+\end{equation}
+
+\subsubsection{Describing Lists}\label{subsubsec:Describing_Lists}
+A \nameref{def:Production} is recursive if its left-hand side \nameref{def:Nonterminal_Symbol} appears somewhere ont he right-hand side.
+This recursive property is useful for constructing variable-length lists.
+
+This is a small extension of using \nameref{subsubsec:Multiple_Productions_One_Line}.
+\begin{equation}\label{eq:Describing_Lists}
+  \begin{aligned}
+    <\text{ident list}> \rightarrow &\text{identifier} \\
+    \vert &\text{identifier}, <\text{ident list}> \\
+  \end{aligned}
+\end{equation}
+
+\subsubsection{Grammars and Derivations}\label{subsubsec:Grammars_and_Derivations}
+\begin{definition}[Derivation]\label{def:Derivation}
+  A \emph{derivation} is the use of \nameref{def:Production} applications to parse a given input string.
+  \Cref{ex:Left-Most Derivation} demonstrates this.
+\end{definition}
+
+\begin{example}[]{Left-Most Derivation}
+  Perform a \nameref{def:Leftmost_Derivation} of the sentence
+  \begin{equation*}
+    \mathtt{begin} A = B + C ; B = C \mathtt{end}
+  \end{equation*}
+
+  With the grammar
+  \begin{align*}
+    \Nonterminal{program} \rightarrow &\mathtt{begin} \Nonterminal{stmt list} \mathtt{end} \\
+    \Nonterminal{stmt list} \rightarrow &\Nonterminal{stmt} \\
+                          \vert &\Nonterminal{stmt} ; \Nonterminal{stmt list} \\
+    \Nonterminal{stmt} \rightarrow &\Nonterminal{var} = \Nonterminal{expression} \\
+    \Nonterminal{var} \rightarrow &A \vert B \vert C \\
+    \Nonterminal{expression} \rightarrow &\Nonterminal{var} + \Nonterminal{var} \\
+                          \vert &\Nonterminal{var} - \Nonterminal{var} \\
+                          \vert &\Nonterminal{var}
+  \end{align*}
+  \tcblower{}
+  \begin{align*}
+    \Nonterminal{program} &\Rightarrow \mathtt{begin} \Nonterminal{stmt list} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{var} \: = \: \Nonterminal{expression}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A \: = \: \Nonterminal{expression}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A \: = \: \Nonterminal{var} + \Nonterminal{var}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + \Nonterminal{var}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: \Nonterminal{stmt} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: \Nonterminal{var} = \Nonterminal{expression} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: B = \Nonterminal{expression} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: B = \Nonterminal{var} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: B = C \:\: \mathtt{end} 
+  \end{align*}
+\end{example}
+
+In general, \nameref{def:Derivation}s occur from left-to-right, which is one L in the 2 different types of \nameref{def:Derivation}s.
+Both types of \nameref{def:Derivation}, \nameref{def:Leftmost_Derivation} and \nameref{def:Rightmost_Derivation}, will yield the same result when a \nameref{def:Derivation} is successfully completed.
+
+\begin{definition}[Leftmost Derivation]\label{def:Leftmost_Derivation}
+  \emph{Leftmost derivation}, or \emph{LL} derivation, stands for \emph{left-to-right leftmost derivation}.
+  Starting from the left of the sentence, you always derive the left-most \nameref{def:Nonterminal_Symbol}, until you reach a \nameref{def:Terminal_Symbol}.
+  Once all symbols present in the sentence are \nameref{def:Terminal_Symbol}, you are done.
+\end{definition}
+
+\begin{definition}[Rightmost Derivation]\label{def:Rightmost_Derivation}
+  \emph{Rightmost derivation}, or \emph{LR} derivation, stands for \emph{left-to-right rightmost derivation}.
+  Starting from the left of the sentence, you always derive the right-most \nameref{def:Nonterminal_Symbol}, until you reach a \nameref{def:Terminal_Symbol}.
+  Once all symbols present in the sentence are \nameref{def:Terminal_Symbol}, you are done.
+\end{definition}
+
+\begin{example}[]{Right-Most Derivation}
+  Perform a \nameref{def:Rightmost_Derivation} of the sentence
+  \begin{equation*}
+    \mathtt{begin} A = B + C ; B = C \mathtt{end}
+  \end{equation*}
+
+  With the grammar
+  \begin{align*}
+    \Nonterminal{program} \rightarrow &\mathtt{begin} \Nonterminal{stmt list} \mathtt{end} \\
+    \Nonterminal{stmt list} \rightarrow &\Nonterminal{stmt} \\
+                          \vert &\Nonterminal{stmt} ; \Nonterminal{stmt list} \\
+    \Nonterminal{stmt} \rightarrow &\Nonterminal{var} = \Nonterminal{expression} \\
+    \Nonterminal{var} \rightarrow &A \vert B \vert C \\
+    \Nonterminal{expression} \rightarrow &\Nonterminal{var} + \Nonterminal{var} \\
+                          \vert &\Nonterminal{var} - \Nonterminal{var} \\
+                          \vert &\Nonterminal{var}
+  \end{align*}
+  \tcblower{}
+  \begin{align*}
+    \Nonterminal{program} &\Rightarrow \mathtt{begin} \Nonterminal{stmt list} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt} \: ; \: \Nonterminal{stmt} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt} \: ; \: \Nonterminal{var} = \Nonterminal{expression} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt} \: ; \: \Nonterminal{var} = \Nonterminal{var} \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt} \: ; \: \Nonterminal{var} = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt} \: ; \: B = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{var} \: = \: \Nonterminal{expression} \: ; \: B = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{var} \: = \: \Nonterminal{var} \: + \: \Nonterminal{var} \: ; \: B = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{var} \: = \: \Nonterminal{var} \: + C \: ; \: B = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \Nonterminal{var} \: = \: B + C \: ; \: B = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: B = C \:\: \mathtt{end} 
+  \end{align*}
+\end{example}
+
+\subsubsection{Parse Trees}\label{subsubsec:Parse_Trees}
+Parse trees are hierarchical structures that describe the same information as a \nameref{def:Derivation} in a visual format.
+Every internal node is labeled with a \nameref{def:Nonterminal_Symbol} and every leaf is labeled with a \nameref{def:Terminal_Symbol}
+
+\subsubsection{Ambiguities}\label{subsubsec:Ambiguities}
+\begin{definition}[Ambiguous]\label{def:Ambiguous}
+  A \nameref{def:Context_Free_Grammar} is said to be \emph{ambiguous} or has \emph{ambiguities} if there is more than one way to derive the same string in a grammar.
+
+  The grammar below is ambiguous because there are multiple ways to parse the string: ``\texttt{statement;statement;statement}''.
+  \begin{equation}\label{eq:Ambiguous}
+    \begin{aligned}
+      p_{0} &: \text{start} \rightarrow \text{program } \$ \\
+      p_{1} &: \text{program} \rightarrow \text{statement} \\
+      p_{2} &: \text{statement} \rightarrow \text{statement ``;'' statement} \\
+      p_{3} &: \text{statement} \rightarrow \text{ID ``='' INT} \\
+      p_{4} &: \text{statement} \rightarrow \epsilon \\
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\paragraph{Dangling \texttt{if-then-else}}\label{par:Dangling_if-else}
+\texttt{if-then-else} statements are usually defined to have an \texttt{else} clause, that when present, matches with the nearest previous unmatched \texttt{then}.
+This can be represented with the \nameref{def:Production}s shown in \Cref{eq:Dangling_if-else}.
+\begin{equation}\label{eq:Dangling_if-else}
+  \begin{aligned}
+    \Nonterminal{stmt} \rightarrow &\Nonterminal{matched} \: \vert \: \Nonterminal{unmatched} \\
+    \Nonterminal{matched} \rightarrow &\mathtt{if} \Nonterminal{logic expr} \mathtt{then} \Nonterminal{matched} \mathtt{else} \Nonterminal{matched} \\
+    \vert \: &\text{any non-if statement} \\\
+    \Nonterminal{unmatched} \rightarrow &\mathtt{if} \Nonterminal{logic expr} \mathtt{then} \Nonterminal{stmt} \\
+    \vert \: &\mathtt{if} \Nonterminal{logic expr} \mathtt{then} \Nonterminal{matched} \mathtt{else} \Nonterminal{unmatched}
+  \end{aligned}
+\end{equation}
+
+\subsubsection{Operator Precedence}\label{subsubsec:Operator_Precedence}
+To handle the precedence of operators, we need to define a ``priority level'' to our \nameref{def:Production}s.
+It is good to note that the further \emph{down} an expression is in the parse tree, the higher its priority in mathematics.
+\begin{equation}\label{eq:Operator_Precedence}
+  \begin{aligned}
+    \Nonterminal{assign} \rightarrow &\Nonterminal{id} = \Nonterminal{expression} \\
+    \Nonterminal{id} \rightarrow &A \: \vert \: B \: \vert C \\
+    \Nonterminal{expression} \rightarrow &\Nonterminal{expression} + \Nonterminal{multiplicative expression} \\
+    \vert &\Nonterminal{multiplicative expression} \\
+    \Nonterminal{multiplicative expression} \rightarrow &\Nonterminal{multiplicative expression} * \Nonterminal{factor} \\
+    &\Nonterminal{factor} \\
+    \Nonterminal{factor} \rightarrow &( \: \Nonterminal{expression} \: ) \\
+    \vert &\Nonterminal{id} \\
+  \end{aligned}
+\end{equation}
+
+\subsubsection{Operator Associativity}\label{subsubsec:Operator_Associativity}
+We need to make sure that operators are associated with each other correctly.
+If we need to make an operator right associative, we just need to flip the terms in \Cref{eq:Operator_Precedence} around.
+The operators in \Cref{eq:Operator_Precedence} are left associative as they are right now.
+\begin{equation}\label{eq:Operator_Associativity}
+  \begin{aligned}
+    \Nonterminal{factor} \rightarrow &\Nonterminal{expression} ** \Nonterminal{factor} \\
+    \vert &\Nonterminal{term} \\
+    \Nonterminal{term} \rightarrow &( \: \Nonterminal{expression} \: ) \\
+    \vert &\Nonterminal{id} \\
+  \end{aligned}
+\end{equation}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
