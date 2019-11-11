@@ -52,6 +52,43 @@ Most of these characteristics came from mathematics directly.
 \end{definition}
 
 \subsubsection{Fixity}\label{subsubsec:Operator_Fixity} % Not in textbook, from video
+\begin{definition}[Fixity]\label{def:Fixity}
+  \emph{Fixity} is the position of an operation relative to an \nameref{def:Operand}.
+  There are 3 possible positions:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Fixity-Prefix}
+  \item \nameref{def:Fixity-Infix}
+  \item \nameref{def:Fixity-Suffix}
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Prefix]\label{def:Fixity-Prefix}
+  \emph{Prefix} notation has the operators before the \nameref{def:Operand}s that it operates on.
+  For example:
+  \begin{itemize}[noitemsep]
+  \item \texttt{-x}
+  \item \texttt{+ x y}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Infix]\label{def:Fixity-Infix}
+  \emph{Infix} notation has the operators between the \nameref{def:Operand}s that it operates on.
+  This necessitates that the expression uses at least 2 \nameref{def:Operand}s, making this a potential \nameref{def:Arity-Binary} operator.
+  For example:
+  \begin{itemize}[noitemsep]
+  \item \texttt{x+y}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Suffix]\label{def:Fixity-Suffix}
+  \emph{Postfix} or \emph{suffix} notation has the operator after the \nameref{def:Operand}s that it operates on.
+  For example:
+  \begin{itemize}[noitemsep]
+  \item \texttt{x!}
+  \item \texttt{x y +}
+  \end{itemize}
+\end{definition}
+
 \subsubsection{Operator Evaluation Order}\label{subsubsec:Operator_Evaluation_Order}
 \paragraph{Precedence}\label{par:Operator_Evaluation_Order-Precedence}
 \paragraph{Associativity}\label{par:Operator_Evaluation_Order-Associativity}
