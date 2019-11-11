@@ -248,7 +248,79 @@ There are several advantages:
 
 \subsection{Relational and Boolean Expressions}\label{subsec:Relational_Boolean_Expressions}
 \subsubsection{Relational Expressions}\label{subsubsec:Relational_Expressions}
+\begin{definition}[Relational Operator]\label{def:Relational_Operator}
+  A \emph{relational operator} is an operator that compares the values of its two \nameref{def:Operand}s.
+  These are \textbf{\emph{ALWAYS}} \nameref{def:Arity-Binary} operators.
+\end{definition}
+
+\begin{definition}[Relational Expression]\label{def:Relational_Expression}
+  A \emph{relational expression} has 2 \nameref{def:Operand}s and a \nameref{def:Relational_Operator}.
+  The value of a relational expression is Boolean, except when a language does not have a Boolean \nameref{def:Data_Type}.
+  \textbf{These expressions have a lower precedence than arithmetic expressions}.
+
+  This operation determines truth or falsehood.
+\end{definition}
+
+\nameref{def:Relational_Expression}s can be very simple (integers) or very complex (strings).
+The usual list of \nameref{def:Relational_Operator}s is shown below
+\begin{enumerate}[noitemsep]
+\item \texttt{==}, Equal to
+\item \texttt{!=}, Not Equal to
+  \begin{itemize}[noitemsep]
+  \item C-based languages use \texttt{!=}
+  \item Ada uses \texttt{/=}
+  \item Lua uses \texttt{\~=}
+  \item Fortran 95+ uses \texttt{.NE.}\footnote{This is because the punchcards used when Fortran was first developed did not have the $>$ or $<$ symbols.} or \texttt{<>}
+  \item ML and F\# use \texttt{<>}
+  \end{itemize}
+\item \texttt{>=}, Greater than or Equal to
+\item \texttt{<=}, Less than or Equal to
+\item \texttt{>}, Greater than
+\item \texttt{<}, Less than
+\end{enumerate}
+
+There is also a special case for equality relational operators
+\begin{itemize}[noitemsep]
+\item \texttt{==}, Equals to, after \nameref{def:Data_Type} coercion
+\item \texttt{===}, Equals to, without \nameref{def:Data_Type} coercion
+\item \texttt{eql?}, Equals to, without \nameref{def:Data_Type} coercion, for Ruby
+\end{itemize}
+
 \subsubsection{Boolean Expressions}\label{subsubsec:Boolean_Expressions}
+\begin{definition}[Boolean Expression]\label{def:Boolean_Expression}
+  A \emph{boolean epxression} consists of Boolean variables, constants, \nameref{def:Relational_Expression}s, and Boolean operators.
+  The most common Boolean operators are:
+  \begin{itemize}[noitemsep]
+  \item \texttt{AND}
+  \item \texttt{OR}
+  \item \texttt{NOT}, Logical complement
+  \item \texttt{XOR}, exclusive OR
+  \end{itemize}
+\end{definition}
+
+Boolean operators \textbf{only} take Boolean operands.
+Now that we have added 2 more types of expressions onto our precedence list, we need to fill in the rest.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    Highest & Postfix \texttt{++}, \texttt{--} \\
+            & Unary \texttt{+}, \texttt{-}, Prefix \texttt{++}, \texttt{--} \\
+            & \texttt{*}, \texttt{/}, \texttt{\%} \\
+            & Binary \texttt{+}, \texttt{-} \\
+            & \texttt{<}, \texttt{>}, \texttt{<=}, \texttt{>=} \\
+            & \texttt{==}, \texttt{===}, \texttt{!=} \\
+            & \texttt{\&\&} \\
+    Lowest & \texttt{||} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Precedence Table with All Expression Types}
+  \label{tab:Precedence_Table_with_All_Expression_Types}
+\end{table}
+
+Programming languages should implement a Boolean \nameref{def:Data_Type} for truth-based comparisons.
+However, versions of C before C99 did not have a Boolean type, forcing programmers to use 0 to represent \texttt{false} and anything else being \texttt{true}.
 
 \subsection{Short-Circuit Evaluation}\label{subsec:Short_Circuit_Evaluation}
 
