@@ -1,4 +1,33 @@
 \section{Data Types}\label{sec:Data_Types}
+\begin{definition}[Data Type]\label{def:Data_Type}
+  A \emph{data type} defines a collection of data values and a set of predefined operations on those values.
+  The data types present in a language used for a particular problem should closely mirror the objects in the real-world the program is solving.
+\end{definition}
+
+User-defined data types allow for:
+\begin{itemize}[noitemsep]
+\item Improved readability with better named \nameref{def:Data_Type}s.
+\item Improved modifiability with programmers having to change just one common data type somewhere for a large change throughout a program.
+\end{itemize}
+
+If we take user-defined \nameref{def:Data_Type}s further, we end up with \emph{abstract data types}.
+These force an interface for a particular data type, which is then visible to the user, and the data and background operations are hidden away.
+
+Because of the wide variety of \nameref{def:Data_Type}s present today, it is more useful to think about \nameref{def:Variable}s in terms of \nameref{def:Descriptor}
+
+\begin{definition}[Descriptor]\label{def:Descriptor}
+  A \emph{descriptor} is the collection of attributes of a \nameref{def:Variable}.
+  In an implementation, a descriptor is an area of \nameref{def:Memory} that stores the attributes of a \nameref{def:Variable}.
+  
+  There are a 2 cases for these:
+  \begin{enumerate}[noitemsep]
+  \item If all attributes are static, then they are known at compile-time, and the \nameref{def:Compiler} can use the symbol table to construct everything.
+  \item If all attributes are dynamic, then the symbol table and all attributes must be stored in \nameref{def:Memory} during program execution.
+  \end{enumerate}
+
+  Descriptors are used for \nameref{def:Type_Checking} and building the code for \nameref{def:Variable_Memory_Allocation} and \nameref{def:Variable_Memory_Deallocation} operations.
+\end{definition}
+
 \subsection{Primitive Data Types}\label{subsec:Primitive_Data_Types}
 \subsubsection{Numeric Types}\label{subsubsec:Numeric_Primitive_Data_Types}
 \paragraph{Integer}\label{par:Integer_Numeric_Primitive_Data_Type}
