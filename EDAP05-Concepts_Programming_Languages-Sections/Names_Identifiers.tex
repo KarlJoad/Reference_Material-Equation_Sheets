@@ -495,13 +495,13 @@ The advantages and disadvantages of these types of \nameref{def:Variable}s are:
   \end{itemize}
 \end{itemize}
 
-\subsection{Scope}\label{subsubsec:Variable_Scope}
+\subsection{Scope}\label{subsec:Variable_Scope}
 \begin{definition}[Scope]\label{def:Variable_Scope}
-  The \emph{scope} of a \nameref{def:Variable} is the range of statments in which the \nameref{def:Variable} is \nameref{def:Visible_Variable}.
+  The \emph{scope} of a \nameref{def:Variable} is the range of statements in which the \nameref{def:Variable} is \nameref{def:Visible_Variable}.
 \end{definition}
 
 \begin{definition}[Visible]\label{def:Visible_Variable}
-  A \nameref{def:Variable} is \emph{visible} in a statements if it can be referenced in that statment.
+  A \nameref{def:Variable} is \emph{visible} in a statements if it can be referenced in that statement.
 \end{definition}
 
 \begin{definition}[Local Variable]\label{def:Local_Variable}
@@ -518,6 +518,52 @@ The advantages and disadvantages of these types of \nameref{def:Variable}s are:
 \end{definition}
 
 \subsubsection{Static Scope}\label{subsubsec:Variable_Static_Scope}
+\begin{definition}[Static Scoping]\label{def:Variable_Static_Scoping}
+  \emph{Static scoping} is a way to statically determine the scope of a \nameref{def:Variable}.
+  When there is a reference to a \nameref{def:Variable}, the attributes of the \nameref{def:Variable} can be determined by finding the statement in which it is declared (either explicitly or implicitly).
+  This makes it easy for a human reader and compiler/interpreter to figure out the \nameref{def:Variable_Type} of every \nameref{def:Variable} in the program.
+
+  There are 2 types of statically-scoped languages:
+  \begin{enumerate}[noitemsep]
+  \item Subprograms can be nested inside programs (Python)
+  \item Subprograms cannot be nested inside programs (Java)
+  \end{enumerate}
+
+  \begin{remark}[Lexical Scoping]\label{rmk:Variable_Lexical_Scoping}
+    \nameref{def:Variable_Static_Scoping} is sometimes called \emph{lexical scoping}.
+  \end{remark}
+\end{definition}
+
+\nameref{def:Variable_Static_Scoping} creates a tree-like structure, where each \nameref{def:Variable} declared in a program unit/block has a \nameref{def:Variable_Static_Parent}.
+Then, each \nameref{def:Variable_Static_Parent} has a list of \nameref{def:Variable_Static_Ancestor}s.
+
+\begin{definition}[Static Parent]\label{def:Variable_Static_Parent}
+  If the \nameref{def:Variable} referenced is not present as a \nameref{def:Local_Variable}, then we have to go to the next outer program unit or block, the \emph{static parent}.
+\end{definition}
+
+\begin{definition}[Static Ancestor]\label{def:Variable_Static_Ancestor}
+  The \emph{static ancestor}s are all the \nameref{def:Variable_Static_Parent}s to that particular program unit/block.
+\end{definition}
+
+This is illustrated by finding \texttt{x} in \texttt{sub2()} in this JavaScript function.
+\begin{minted}[frame=lines,linenos]{javascript}
+function big() {
+  function sub1() {
+    var x = 7;
+    sub2();
+  }
+  function sub2() {
+    var y = x;
+  }
+  var x = 3;
+  sub1();
+}
+\end{minted}
+The \texttt{x} in \texttt{sub2()} refers to the \texttt{x=3} in \texttt{big()}, because \texttt{sub1()} is not a \nameref{def:Variable_Static_Ancestor} of \texttt{sub2()}.
+However, inside of \texttt{sub1()}, the use of the variable \texttt{x} would refer to the \texttt{x=7} value, and never the \texttt{x=3} value.
+
+In some languages, if a \nameref{def:Variable} is declared in a sub-program unit/block, like in \texttt{sub1()}, then preceding the \nameref{def:Variable} name with the outer program unit/block will give the outer \nameref{def:Variable} \nameref{def:Variable_Value}.
+
 \subsubsection{Blocks}\label{subsubsec:Variable_Blocks}
 \subsubsection{Declaration Order}\label{subsubsec:Variable_Declaration_Order}
 \subsubsection{Global Scope}\label{subsubsec:Variable_Global_Scope}
