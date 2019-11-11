@@ -384,6 +384,42 @@ The pros and cons of \nameref{def:Static_Variable_Binding_Lifetime}s are:
 \begin{remark*}
   In Java, C++, and C\#, \texttt{static} can appear on classes, meaning class \nameref{def:Variable}s are created statically some time before the class is first instantiated.
 \end{remark*}
+
+\paragraph{Stack-Dynamic Variables}\label{par:Stack-Dynamic_Variable_Binding_Lifetime}
+\begin{definition}[Stack-Dynamic Variable]\label{def:Stack-Dynamic_Variable_Binding_Lifetime}
+  \emph{Stack-dynamic variable}s are those whose storage \nameref{def:Binding}s are created when their declaration statements are elaborated.
+  These are allocated from the run-time stack.
+
+  \begin{remark}
+    These are the variables that are most commonly used.
+  \end{remark}
+
+  \begin{remark}
+    In languages that allow for variable declaration anywhere in the function, like Java and C++, the \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s may be bound to storage at the beginning of the block.
+    In these cases, the \nameref{def:Variable} becomes visible at the declaration, but the storage \nameref{def:Binding} occurs when the block begins execution.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Elaboration]\label{def:Variable_Storage_Binding_Elaboration}
+  \emph{Elaboration} of a \nameref{def:Variable} declaration refers to the storage \nameref{def:Variable_Memory_Allocation} and \nameref{def:Binding} process indicated by the declaration, which takes place when execution reaches that code.
+
+  This occurs at run time.
+\end{definition}
+
+The advantages and disadvantages of \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s, compared to \nameref{def:Static_Variable_Binding_Lifetime}s, are:
+\begin{itemize}[noitemsep]
+\item Advantages
+  \begin{itemize}[noitemsep]
+  \item Allows for recursive subprograms that have local variables
+  \item All subprograms can share the same memory space for their locals, allowing for a smaller memory footprint, by only having some variables bound to storage at once.
+  \end{itemize}
+\item Disadvantages
+  \begin{itemize}[noitemsep]
+  \item Runtime overhead of \nameref{def:Variable_Memory_Allocation} and \nameref{def:Variable_Memory_Deallocation}.
+  \item Slower accessing of \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s because of indirect addressing.
+  \item Subprograms cannot be history-sensitive with just \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s.
+  \end{itemize}
+\end{itemize}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
