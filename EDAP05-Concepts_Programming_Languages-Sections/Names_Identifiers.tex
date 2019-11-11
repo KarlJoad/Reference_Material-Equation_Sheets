@@ -626,6 +626,46 @@ It important to note the difference between a \nameref{def:Global_Variable}'s de
 \end{remark*}
 
 \subsubsection{Dynamic Scope}\label{subsubsec:Dynamic_Scope}
+\begin{definition}[Dynamic Scoping]\label{def:Dynamic_Scoping}
+  \emph{Dynamic scoping} is based on the calling sequence of subprograms, and not their spatial relationship to each other.
+  Thus, the scope can only be determined at run time.
+
+  Some languages that implement this are:
+  \begin{itemize}[noitemsep]
+  \item APL
+  \item SNOBOL4
+  \item Early LISP
+  \item Perl (Allowed, but must be said explicitly)
+  \item Common LISP (Allowed, but must be said explicitly)
+  \end{itemize}
+\end{definition}
+
+To illustrate \nameref{def:Dynamic_Scoping}, look at the code block below, and assume it is in a language that uses \nameref{def:Dynamic_Scoping}.
+\begin{minted}[frame=lines,linenos]{javascript}
+function big() {
+  function sub1() {
+    var x = 7;
+    sub2();
+  }
+  function sub2() {
+    var y = x;
+  }
+  var x = 3;
+  sub1();
+  sub2();
+}
+\end{minted}
+
+The call to \texttt{sub1()} by \texttt{big()}, which then calls \texttt{sub2()}.
+In that running of \texttt{sub2()}, the use of \texttt{x} cannot be determined locally (within that function).
+Thus, it goes to its dynamic parent, \texttt{sub1()} and finds a declaration for \texttt{x}.
+Thus, the \texttt{y} in \texttt{sub2()} evaluates to \texttt{y=7}.
+
+The next instruction, the call to \texttt{sub2()} by \texttt{big()}, produces a different result.
+In that running of \texttt{sub2()}, the use of \texttt{x} cannot be determined locally (within that function).
+Thus, it goes to its dynamic parent, \texttt{big()} and finds a declaration for \texttt{x}.
+Thus, the \texttt{y} in \texttt{sub2()} evaluates to \texttt{y=3}.
+
 
 %%% Local Variables:
 %%% mode: latex
