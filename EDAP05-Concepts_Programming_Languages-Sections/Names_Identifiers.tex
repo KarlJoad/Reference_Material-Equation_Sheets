@@ -332,6 +332,31 @@ The 2 major disadvantages are:
   \end{itemize}
 \end{remark*}
 
+\subsubsection{Storage \nameref*{subsec:Binding}s and Lifetime}\label{subsubsec:Storage_Bindings_and_Lifetime}
+The \nameref{def:Memory} cell to which a \nameref{def:Variable} is bound must be pulled from the pool of available \nameref{def:Memory}.
+The act of binding the \nameref{def:Variable_Value} to a \nameref{def:Variable} is called \nameref{def:Variable_Memory_Allocation}.
+The act of unbinding is called \nameref{def:Variable_Memory_Deallocation}.
+
+\begin{definition}[Allocation]\label{def:Variable_Memory_Allocation}
+  \emph{Allocation} is the act of binding a \nameref{def:Variable_Value} to a \nameref{def:Memory} cell for a \nameref{def:Variable}.
+\end{definition}
+
+\begin{definition}[Deallocation]\label{def:Variable_Memory_Deallocation}
+  \emph{Deallocation} is the process of placing a \nameref{def:Memory} cell that has been unbound from a variable back into the pool of available \nameref{def:Memory}.
+\end{definition}
+
+\begin{definition}[Lifetime]\label{def:Variable_Lifetime}
+  The \emph{lifetime} of a \nameref{def:Variable} is the time in which the \nameref{def:Variable} is bound to a \nameref{def:Memory} cell.
+  The lifetime of a \nameref{def:Variable} starts when it is bound to a cell and ends when it has been unbound from that cell.
+
+  We will split the discussion of scalar \nameref{def:Variable}s into 4 categories, according to their lifetimes.
+  \begin{itemize}[noitemsep]
+  \item \nameref{par:Static_Variable_Binding_Lifetime}
+  \item \nameref{par:Stack-Dynamic_Variable_Binding_Lifetime}
+  \item \nameref{par:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}
+  \item \nameref{par:Implicit_Heap-Dyanmic_Variable_Binding_Lifetime}
+  \end{itemize}
+\end{definition}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
