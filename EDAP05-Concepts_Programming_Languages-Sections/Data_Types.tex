@@ -171,11 +171,110 @@ The first 128 characters of Unicode match up with ASCII for intercompatibility.
 ASCII required 8 bits, Unicode (UTF-16) uses 16.
 
 \subsection{Character String Types}\label{subsec:Character_String_Types}
+\begin{definition}[Character String Type]\label{def:Character_String_Type}
+  A \emph{character string type} is one in which the values consist of sequences of characters.
+\end{definition}
+
 \subsubsection{Design Issues}\label{subsubsec:Character_String_Types_Design_Issues}
+There are 2 questions that need to be answered when designing a language implementation when it comes to strings.
+\begin{itemize}[noitemsep]
+\item Should strings be a special kind of character array or a primitive type?
+\item Should strings have static or dynamic lengths?
+\end{itemize}
+
 \subsubsection{Strings and Their Operations}\label{subsubsec:String_Types_and_Ops}
+The most common string operations are:
+\begin{itemize}[noitemsep]
+\item Assignment
+  \begin{itemize}[noitemsep]
+  \item What happens when a string is longer than expected? C/C++'s \texttt{strcpy} function
+  \end{itemize}
+\item Concatenation
+\item Substring Reference
+  \begin{itemize}[noitemsep]
+  \item Discussed more in the context of arrays, where substring references are called slices.
+  \end{itemize}
+\item Comparison
+  \begin{itemize}[noitemsep]
+  \item How do we compare 2 strings, where one is longer than the other?
+  \end{itemize}
+\item Pattern Matching
+\end{itemize}
+
+In C and C++, strings are terminated with the null character, \texttt{00}.
+This way we do not need to track the length of a string.
+
+Object-Oriented Languages (Java, Ruby, C\#) use classes to represent strings.
+The only field in these objects is a constant string.
+
+Python supports strings as a primitive type, and supports array-like operations on them.
+
+Some languages have \nameref{def:Regular_Expression}s built in, like Perl, JavaScript, Ruby, and PHP.\@
+Others have libraries that handle \nameref{def:Regular_Expression}s.
+
+\begin{definition}[Regular Expression]\label{def:Regular_Expression}
+    A \emph{regular expression}, sometimes called a \emph{regex} is a way to define a sequence of characters to form strings.
+\end{definition}
+
 \subsubsection{String Length Options}\label{subsubsec:String_Type_Length_Options}
+\begin{definition}[Static Length String]\label{def:Static_Length_String}
+  A \emph{static length string} has its length set at the time of string creation.
+  It is static, in that the length cannot be changed later in the program's execution.
+\end{definition}
+
+\begin{definition}[Dynamic Length String]\label{def:Dynamic_Length_String}
+  A \emph{dynamic length string} has its length set at the time of string creation.
+  However, strings can change their length, and there is no set maximum size they can have.
+\end{definition}
+
+\begin{definition}[Limited Dynamic Length String]\label{def:Limited_Dynamic_Length_String}
+  A \emph{dynamic length string} has its length set at the time of string creation.
+  However, the string can be redefined later in the program, so long as the new string is the same length or shorter than when the string \nameref{def:Variable} was defined.
+\end{definition}
+
 \subsubsection{Evaluation}\label{subsubsec:String_Type_Evaluation}
+Primitive string type implementations would require there to be predefined functions for many string operations.
+If there aren't, then programming in that language becomes more cumbersome.
+
+\nameref{def:Dynamic_Length_String}s are the most flexible, but the overhead of their implementation should be weighed against that flexibility.
+
 \subsubsection{Implementation of Character String Types}\label{subsubsec:Implementation_of_Character_String_Types}
+Software is used to implement string storage, retrieval, and manipulation.
+When a language uses character arrays to store character string types, the language usually supplies few operations.
+
+A \nameref{def:Descriptor} for a \nameref{def:Static_Length_String} has 3 fields:
+\begin{enumerate}[noitemsep]
+\item Name of the type
+\item The type's length in characters
+\item Address of the first character
+\end{enumerate}
+
+A \nameref{def:Descriptor} for a \nameref{def:Limited_Dynamic_Length_String} has 4 fields:
+\begin{enumerate}[noitemsep]
+\item Name of the type
+\item The type's maximum length in characters
+\item The length of the currently stored string
+\item The address of the first character
+\end{enumerate}
+
+A \nameref{def:Descriptor} for a \nameref{def:Dynamic_Length_String} is more difficult to handle because of its dynamic nature.
+There are 3 approaches to storing these:
+\begin{enumerate}[noitemsep]
+\item Strings stored in a linked list. If the string gets longer, individual nodes can be allocated from anywhere in the \nameref{def:Heap}.
+  \begin{itemize}[noitemsep]
+  \item A drawback of this is that extra storage of the links
+  \item The necessary complexity of string operations
+  \end{itemize}
+\item Store strings as arrays of pointers to individual characters on the \nameref{def:Heap}
+  \begin{itemize}[noitemsep]
+  \item This uses more memory, but processing is faster than the linked list approach.
+  \end{itemize}
+\item Store complete strings in adjacent cells, and when a new longer string comes along, store the whole thing in a new area in the \nameref{def:Heap} and deallocate the old location.
+  \begin{itemize}[noitemsep]
+  \item Less storage required compared to the linked list approach
+  \item Allocation and deallocation of the string is more difficult
+  \end{itemize}
+\end{enumerate}
 
 \subsection{User-Defined Ordinal Types}\label{subsec:User_Defined_Ordinal_Types}
 \subsubsection{Enumeration Types}\label{subsubsec:Enumeration_Types}
