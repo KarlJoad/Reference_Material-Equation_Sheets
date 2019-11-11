@@ -1,0 +1,61 @@
+\section{Computer Components}\label{app:Computer_Components}
+\subsection{Central Processing Unit}\label{subsec:CPU}
+\begin{definition}[Central Processing Unit]\label{def:CPU}
+  The \emph{Central Processing Unit}, \emph{CPU}, is a chip that performs all actions in the computer.
+  It calculates mathematical and logical values and acts based on them.
+  It has several components built onto it, and can be thought of as the ``brain'' of the computer.
+
+  The design of a CPU determines some of the functionality it has.
+  Therefore, more specialized processors can be made for special tasks, and more general processors can be built to handle a wide variety of calculations.
+\end{definition}
+
+\subsubsection{Registers}\label{subsubsec:Registers}
+\begin{definition}[Register]\label{def:Register}
+  A \emph{register} is a data storage mechanism built directly onto the \nameref{def:CPU}.
+  It is several hundred times faster than the system \nameref{def:Memory}.
+  Registers are generally used when the currently running program is performing calculations.
+  Since they are so fast, they are used as both source and destination operands in instructions.
+
+  \begin{remark}
+    Depending on the \nameref{def:CPU} architecture, there may be cases when \nameref{def:Register}s behave slightly differently between processors.
+    This is something that can only be found by checking the \nameref{def:CPU} manufacturer's documentation.
+  \end{remark}
+\end{definition}
+
+\subsubsection{Program Counter}\label{subsubsec:Program_Counter}
+\subsubsection{Arithmetic Logic Unit}\label{subsubsec:ALU}
+\subsubsection{Cache}\label{subsubsec:CPU_Cache}
+
+\subsection{Memory}\label{subsec:Memory}
+\begin{definition}[Memory]\label{def:Memory}
+  \emph{Memory}, or \emph{RAM} (\emph{Random Access Memory}), is a \nameref{def:Volatile} data storage mechanism.
+  It is directly connected to the \nameref{def:CPU}.
+  This is the location that the \nameref{def:CPU} writes to when it cannot or should not store something in the \nameref{def:CPU}'s \nameref{def:Register}s.
+
+  \begin{remark}[Volatility]
+    \nameref{def:Memory} is volatile because each of the cells is a small capacitor.
+    In between the clock cycles on the \nameref{def:CPU} and \nameref{def:Memory}, the capacitors discharge.
+    On the clock cycle, the capacitors are refreshed with electrical power, which does one of 2 things:
+    \begin{enumerate}[noitemsep]
+    \item Keep the data bits the same, 1 to 1.
+    \item Update the data bits from 0 to 1.
+    \end{enumerate}
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Volatile]\label{def:Volatile}
+  If a data storage mechanism is called \emph{volatile}, it means that once the storage mechanism loses power, the data is lost.
+  This is in contrast to \nameref{def:Non-Volatile} data storage mechanisms.
+\end{definition}
+
+\subsection{Disk}\label{subsec:Disk}
+\begin{definition}[Non-Volatile]\label{def:Non-Volatile}
+  If a data storage mechanism is called \emph{non-volatile}, it means that once the storage device loses power, the data is still safely stored.
+  This is in contrast to \nameref{def:Volatile} data storage mechanisms.
+\end{definition}
+
+\subsection{Fetch-Execute Cycle}\label{subsec:Fetch_Execute_Cycle}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: shared
+%%% End:
