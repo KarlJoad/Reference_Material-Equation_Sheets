@@ -151,7 +151,7 @@ If this hardware is not present, the calculations can be simulated in software.
 \subsubsection{Boolean Types}\label{subsubsec:Boolean_Primitive_Data_Types}
 \begin{definition}[Boolean Data Type]\label{def:Boolean_Data_Type}
   \emph{Boolean data type}s only store 2 values: \texttt{true} and \texttt{false}.
-  Some older langauge implementations did not support these, but most do today.
+  Some older language implementations did not support these, but most do today.
   If a language does not support a boolean data type, then 0 is considered false, and 1 is considered true.
 
   \begin{remark}[Storage in Memory]\label{rmk:Boolean_Storage_in_Memory}
@@ -277,15 +277,127 @@ There are 3 approaches to storing these:
 \end{enumerate}
 
 \subsection{User-Defined Ordinal Types}\label{subsec:User_Defined_Ordinal_Types}
+\begin{definition}[Ordinal Type]\label{def:Ordinal_Type}
+  An \emph{ordinal type} is a \nameref{def:Variable_Type} in which the range of possible values can be associated with the set of positive integers.
+
+  For example, in Java, the primitive ordinal types are: \texttt{int}, \texttt{char}, and \texttt{boolean}.
+
+  \begin{remark}
+    There are 2 \nameref*{subsec:User_Defined_Ordinal_Types} that are supported by most programming languages:
+    \begin{itemize}[noitemsep]
+    \item \nameref{subsubsec:Enumeration_Types}
+    \item \nameref{subsubsec:Subrange_Types}
+    \end{itemize}
+  \end{remark}
+\end{definition}
+
 \subsubsection{Enumeration Types}\label{subsubsec:Enumeration_Types}
+\begin{definition}[Enumeration Type]\label{def:Enumeration_Type}
+  An \emph{enumeration type} is one in which all of the possible values, which are named constants, are provided (enumerated) in the definition.
+  Enumeration types provide a way of defining and grouping collections of named constants, called \emph{enumeration constants}.
+
+  This is an example of an enumeration type in C\#:
+\begin{minted}[frame=lines,linenos]{csharp}
+enum days {Mon, Tue, Wed, Thu, Fri, Sat, Sun};
+\end{minted}
+
+  \begin{remark}
+    Typically, each of the numeration constants is implicitly assigned an integer literal, though they can be given integer literals explicitly too.
+  \end{remark}
+\end{definition}
+
+The design issues for \nameref{def:Enumeration_Type}s are:
+\begin{itemize}[noitemsep]
+\item Is an enumeration constant allowed to appear in more than one \nameref{def:Enumeration_Type} definition, and if so, how is the type of an occurance of that enumeration constant in the program checked?
+\item Are enumeration constants coerced to integers?
+\item Are any other types coerced to an \nameref{def:Enumeration_Type}?
+\end{itemize}
+
 \paragraph{Designs}\label{par:Enumeration_Types_Designs}
+In languages without native support of \nameref{def:Enumeration_Type}s, they are simulated with integer values.
+For example,
+\begin{minted}[frame=lines,linenos]{c}
+int red = 0, blue = 1;
+\end{minted}
+
+However, this can lead to unexpected behavior.
+For example, the variables \texttt{red} and \texttt{blue} can be added together.
+In essence, there would be no \nameref{def:Type_Checking}.
+The value for those variables could be overwritten somewhere.
+Though, that issue would be solved by making the variable a constant instead.
+
+C and Pascal introduced the use of \nameref{def:Enumeration_Type}s.
+These implicitly use default values, integers, as the enumeration constants.
+However, the values can be set explicitly, by the programmer.
+With these \nameref{def:Enumeration_Type}s, we have and avoid these issues:
+\begin{minted}[frame=lines,linenos]{c}
+enum colors {red, blue, green, yellow, black};
+colors myColor = blue, yourColor = red;
+myColor++; // Valid code, sets myColor from blue to green
+myColor = 4; // Illegal
+myColor = (colors) 4; // Legal because 4 is being typecast
+\end{minted}
+
+These help prevent some issues, but not all.
+
+The next iteration was in Ada.
+They allowed for \emph{overloaded literals} in their \nameref{def:Enumeration_Type}s.
+This means there were enumeration constants shared between 2 \nameref{def:Enumeration_Type}s in the same referencing environment.
+In this case, the value must be determinable from the context of the \nameref{def:Enumeration_Type}.
+Sometimes, a mroe explicit specification must be used.
+Additionally, because the enumerations constants were \textbf{not} coerced to integers, nor were the \textbf{enumeration variables}, the range of operations and range of values for the enumeration constants was limited.
+This allowed the compiler to pick up many more errors.
+
+\begin{remark*}
+  None of the relatively recent scripting kinds of languages include \nameref{def:Enumeration_Type}s.
+  These include Perl, JavaScript, PHP, Python, Ruby, and Lua.
+\end{remark*}
+
 \paragraph{Evaluation}\label{par:Enumeration_Types_Evaluation}
+Enhancements to both \nameref{subsec:Readability} and \nameref{subsec:Reliability}.
+\begin{itemize}[noitemsep]
+\item \nameref{subsec:Readability} is enhanced by better named values
+\item \nameref{subsec:Reliability} is enhanced by being able to perform \nameref{def:Type_Checking} on the \nameref{def:Enumeration_Type}s.
+  \begin{itemize}[noitemsep]
+  \item No arithmetic operations allowed on \nameref{def:Enumeration_Type}s.
+  \item No enumeration variable can be assigned a value outside the \nameref{def:Enumeration_Type}'s assigned range.
+  \end{itemize}
+\end{itemize}
 
 \subsubsection{Subrange Types}\label{subsubsec:Subrange_Types}
+\begin{definition}[Subrange Type]\label{def:Subrange_Type}
+  A \emph{subrange type} is a contiguous sequence of an \nameref{def:Ordinal_Type}.
+  For example, this is a subrange: \texttt{12..14}.
+\end{definition}
+
 \paragraph{Ada's Design}\label{par:Adas_Subrange_Types_Design}
+Ada included \nameref{def:Subrange_Type}s in \nameref{def:Ada_Subtype}s.
+
+\begin{definition}[Subtype]\label{def:Ada_Subtype}
+  A \emph{subtype} in Ada is an extension, usually constrained, version of existing types.
+  For example,
+\begin{minted}[frame=lines,linenos]{ada}
+type Days is (Mon, Tue, Wed, Thu, Fri, Sat, Sun);
+subtype Weekdays is Days range Mon..Fri;
+Day1 : Days;
+Day2 : Weekdays;
+...
+Day2 := Day1; -- Will only work if Day1 has Mon-Fri, fails if Day1 = Sat or Sun
+\end{minted}
+\end{definition}
+
+The compiler generates range-checking code for every assignment to the subrange type.
+Subranges require run-time range checking.
+
 \paragraph{Evaluation}\label{par:Subrange_Types_Evaluation}
+\nameref{def:Subrange_Type}s improve \nameref{subsec:Readability} by making it clear that \nameref{def:Variable}s of \nameref{def:Ada_Subtype}s can only store a certain range of values.
+\nameref{subsec:Reliability} is increased with \nameref{def:Subrange_Type}s because assigning a value to a subrange variable outside its range is detected as an error.
 
 \subsubsection{Implementation of \nameref*{subsec:User_Defined_Ordinal_Types}}\label{subsubsec:Implementation_User_Defined_Ordinal_Types}
+\nameref{def:Enumeration_Type}s are usually implemented on integers.
+However, without restrictions on ranges of values and possible operations, this does \textbf{not} improve \nameref{subsec:Reliability}.
+
+\nameref{def:Subrange_Type}s are implemented the same way as their parent types, except range checks are implicity included by the compiler in every assignment of a variable or expression to a subrange variable.
 
 \subsection{List Types}\label{subsec:List_Types}
 
