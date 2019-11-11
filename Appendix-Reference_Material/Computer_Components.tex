@@ -61,7 +61,7 @@
   These include:
   \begin{itemize}[noitemsep]
   \item A \nameref{def:Dynamic_Link}
-  \item \nameref{def:Local_Variable}s
+  \item \nameref{def:Local_Variable_on_Stack}s
   \item \nameref{def:Temporary_Variable}s
   \item \nameref{def:Static_Link}s
   \item \nameref{def:Function_Argument}s
@@ -95,7 +95,7 @@
   \end{remark}
 \end{definition}
 
-\begin{definition}[Local Variable]\label{def:Local_Variable}
+\begin{definition}[Local Variable]\label{def:Local_Variable_on_Stack}
   \emph{Local variables} are handled very simply.
   They get an appropriate amount of memory allocated to them on the stack, and that is it.
 
@@ -113,7 +113,7 @@
   A \emph{temporary variable} is one that is allocated on this function's \nameref{def:Stack_Frame} while calculating values.
   Once the calculations are completed, these values are deallocated.
   These temporary variables can also point to objects on the \nameref{def:Heap}.
-  When the function has finished running, then these values are deallocated, along with all other \nameref{def:Local_Variable}s in use.
+  When the function has finished running, then these values are deallocated, along with all other \nameref{def:Local_Variable_on_Stack}s in use.
   
   For example, since assembly-level addition only allows for 2 operands, but in general, addition can have more than 2 operands in use, there needs to be a way to store the value used in the addition.
   While we can accumulate and use that value in the addition, the values being added together are \emph{not} modified.
@@ -131,7 +131,7 @@
   \item When a language allows for nested function declarations.
     \begin{itemize}[noitemsep]
     \item Then the static link points to the \nameref{def:Dynamic_Link} of the outer function
-    \item This allows access to the outer function's \nameref{def:Local_Variable}s like normal, and allows us to go back later.
+    \item This allows access to the outer function's \nameref{def:Local_Variable_on_Stack}s like normal, and allows us to go back later.
     \end{itemize}
   \end{itemize}
 \end{definition}
@@ -188,7 +188,7 @@
 \begin{definition}[Frame Pointer]\label{def:Frame_Pointer}
   The \emph{frame pointer} is a pointer that \textbf{\emph{ALWAYS}} points to the current function's \nameref{def:Dynamic_Link}.
   The frame pointer is commonly abbreviated as \emph{FP}.
-  This is the thing that allows us to access \nameref{def:Local_Variable}s, \nameref{def:Function_Argument}s, and everything else inside of the \nameref{def:Stack_Frame}.
+  This is the thing that allows us to access \nameref{def:Local_Variable_on_Stack}s, \nameref{def:Function_Argument}s, and everything else inside of the \nameref{def:Stack_Frame}.
   The value is held in the \rbp{} register.
 \end{definition}
 
