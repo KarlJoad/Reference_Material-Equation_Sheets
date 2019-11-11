@@ -354,7 +354,7 @@ The act of unbinding is called \nameref{def:Variable_Memory_Deallocation}.
   \item \nameref{par:Static_Variable_Binding_Lifetime}
   \item \nameref{par:Stack-Dynamic_Variable_Binding_Lifetime}
   \item \nameref{par:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}
-  \item \nameref{par:Implicit_Heap-Dyanmic_Variable_Binding_Lifetime}
+  \item \nameref{par:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}
   \end{itemize}
 \end{definition}
 
@@ -418,6 +418,24 @@ The advantages and disadvantages of \nameref{def:Stack-Dynamic_Variable_Binding_
   \item Runtime overhead of \nameref{def:Variable_Memory_Allocation} and \nameref{def:Variable_Memory_Deallocation}.
   \item Slower accessing of \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s because of indirect addressing.
   \item Subprograms cannot be history-sensitive with just \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Implicit Heap-Dynamic Variables}\label{par:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}
+\begin{definition}[Implicit Heap-Dynamic Variable]\label{def:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}
+  \emph{Implicit heap-dynamic variable}s are bound to \nameref{def:Heap} storage onnly when they are assigned values.
+\end{definition}
+
+The advantages and disadvantages of these types of \nameref{def:Variable}s are:
+\begin{itemize}[noitemsep]
+\item Advantages
+  \begin{itemize}[noitemsep]
+  \item Highest degree of flexibility, allowing for highly generic code
+  \end{itemize}
+\item Disadvantages
+  \begin{itemize}[noitemsep]
+  \item Run time overhead of maintaining all the dynamic attributes, which could include subscript types and ranges
+  \item Loss of some error dectection by the compiler/interpreter
   \end{itemize}
 \end{itemize}
 %%% Local Variables:
