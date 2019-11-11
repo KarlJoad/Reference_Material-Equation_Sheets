@@ -91,11 +91,110 @@ Most of these characteristics came from mathematics directly.
 
 \subsubsection{Operator Evaluation Order}\label{subsubsec:Operator_Evaluation_Order}
 \paragraph{Precedence}\label{par:Operator_Evaluation_Order-Precedence}
+\begin{definition}[Operator Precedence Rules]\label{def:Operator_Precedence_Rules}
+  \emph{Operator precedence rules} partially define the order in which operators of different precedence levels are evaluated.
+  This is based on the hierarchy or operator priorities, as defined by the language designer.
+
+  \begin{remark}
+    \nameref{def:Operator_Associativity_Rules} also define the order in which operators are evaluated in an \nameref{def:Expression}.
+  \end{remark}
+\end{definition}
+
+There may be unary addition, called the \emph{identity operator}, because it usually no associated operation.
+Unary ``subtraction'' changes the sign of the operand, negating it.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c|cc}
+    \toprule
+    & Ruby & C-Based Languages \\
+    \midrule
+    Highest & \texttt{**} & postfix \texttt{++}, \texttt{--} \\
+    & Unary \texttt{+}, \texttt{-} & Prefix \texttt{++}, \texttt{--}, Unary \texttt{+}, \texttt{-} \\
+    & \texttt{*}, \texttt{/}, \texttt{\%} & \texttt{*}, \texttt{/}, \texttt{\%} \\
+    Lowest & Binary \texttt{+}, \texttt{-} & Binary \texttt{+}, \texttt{-} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Precedence of Arithmetic Operators}
+  \label{tab:Operator_Evaluation_Order-Precedence}
+\end{table}
+
 \paragraph{Associativity}\label{par:Operator_Evaluation_Order-Associativity}
+\begin{definition}[Operator Associativity Rules]\label{def:Operator_Associativity_Rules}
+  \emph{Operator associativity rules} partially define the order in which operators of \textbf{the same} precedence levels are evaluated.
+  There can be:
+  \begin{itemize}[noitemsep]
+  \item Left associativity: When evaluating an expression, parentheses that determine the order of evaluation are accumulated to the left, meaning the left-hand side is evaluated first.
+  \item Right associativity: When evaluating an expression, parentheses that determine the order of evaluation are accumulated to the right, meaning the right-hand side is evaluated first.
+  \item Nonassociativity: When evaluating an expression, parentheses that determine the order of evaluation are unknown and must be \textbf{explicitly} specified.
+  \end{itemize}
+
+  \begin{remark}
+    There are very few operators that are right-associative.
+    As far as I know, only the exponentiation operator that can be right associative.
+  \end{remark}
+\end{definition}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    Language & Associativity Rule \\
+    Ruby & Left: \texttt{*}, \texttt{/}, \texttt{+}, \texttt{-} \\
+             & Right: \texttt{**} \\
+    C-Based languages & Left: \texttt{*}, \texttt{/}, \texttt{\%}, Binary \texttt{+}, Binary \texttt{-} \\
+             & Right: \texttt{++}, \texttt{--}, Unary \texttt{+}, Unary \texttt{-} \\
+    Ada & Left: All except \texttt{**} \\
+             & Right: None \\
+             & Nonassociative: \texttt{**} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Associativity of Arithmetic Operators}
+  \label{tab:Operator_Evaluation_order-Associativity}
+\end{table}
+
+\begin{remark*}
+  \textbf{This section only applies to integer arithmetic operators.}
+  Floating-point arithmetic is different because of the way numbers are represented and their finite precision.
+\end{remark*}
+
 \paragraph{Parentheses}\label{par:Operator_Evaluation_Order-Parentheses}
+Parentheses can alter the \nameref{def:Operator_Precedence_Rules} and \nameref{def:Operator_Associativity_Rules}.
+A parenthesized part of an expression has precedence over its adjacent unparenthesized parts.
+
+For example, the addition will be done first here
+\begin{equation*}
+  (A + B) * C
+\end{equation*}
+
 \paragraph{Ruby Expressions}\label{par:Operator_Evaluation_Order-Ruby_Expressions}
+Everything (literally everything, including literals) is an object in Ruby.
+Ruby supports the arithmetic and logic operations that are included in C-based languages, but they are slightly different.
+For example, the expression \texttt{a + b} is a call to the \texttt{+} method of the \texttt{a} object, and passes a reference to the \texttt{b} object as a parameter to the \texttt{+} method.
+This means that the operator can be overloaded by the programmer, which is useful for user-defined \nameref{def:Data_Type}s.
+
 \paragraph{LISP Expressions}\label{par:Operator_Evaluation_Order-LISP_Expressions}
+LISP is similar to Ruby in that arithmetic and logic operations are computed by subprograms.
+However, in LISP and its descendants, the subprograms (operators) \textbf{must} be called explicitly.
+For example, to write $A + B * C$ in LISP\footnote{When a LISP list is interpreted as code, the first element is the function name, and the rest are passed parameters.}.
+\begin{minted}[frame=lines,linenos]{lisp}
+(+ A (* B C)) ; Computes A + B * C
+\end{minted}
+
 \paragraph{Conditional Expressions}\label{par:Operator_Evaluation_Order-Conditional_Expressions}
+Conditional expressions can be used as an expression with the \nameref{def:Arity-Ternary} variant.
+For example,
+\begin{minted}[frame=lines,linenos]{c}
+if (count == 0) {
+  average = 0;
+} else {
+  average = sum / count;
+}
+\end{minted}
+is equivalent to
+\begin{minted}[frame=lines,linenos]{c}
+average = (count == 0) ? 0 : sum / count;
+\end{minted}
 
 \subsubsection{Operand Evaluation Order}\label{subsubsec:Operand_Evaluation_Order}
 \paragraph{Side Effects}\label{par:Operand_Evaluation-Side_Effects}
