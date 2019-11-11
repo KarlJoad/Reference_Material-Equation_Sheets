@@ -214,15 +214,13 @@ Meaning, we will ignore how hardware may bind and unbind things repeatedly when 
 
 \subsubsection{Type \nameref*{subsec:Binding}s}\label{subsubsec:Type_Bindings}
 Before a \nameref{def:Variable} can be used or referenced in a program, its \nameref{def:Variable_Type} must be declared.
-\begin{definition}[Type]\label{def:Variable_Type}
-  A \nameref{def:Variable}'s \emph{type} determines the range of values that can be stored in the \nameref{def:Variable}.
-  In a more abstract sense, it also determines what kind of operations make sense and are possible to use on these \nameref{def:Variable}s.
-  There are 2 important aspects of this \nameref{def:Binding}:
-  \begin{enumerate}[noitemsep]
-  \item How the \nameref{def:Variable} \nameref{def:Variable_Type} is specified
-  \item When the \nameref{def:Binding} takes place
-  \end{enumerate}
-\end{definition}
+A \nameref{def:Variable}'s \emph{type} determines the range of values that can be stored in the \nameref{def:Variable}.
+In a more abstract sense, it also determines what kind of operations make sense and are possible to use on these \nameref{def:Variable}s.
+There are 2 important aspects of this \nameref{def:Binding}:
+\begin{enumerate}[noitemsep]
+\item How the \nameref{def:Variable} \nameref{def:Variable_Type} is specified
+\item When the \nameref{def:Binding} takes place
+\end{enumerate}
 
 There are 2 ways to bind \nameref{def:Variable_Type}s to \nameref{def:Variable}s:
 \begin{enumerate}[noitemsep]
@@ -235,6 +233,17 @@ There are 2 ways to bind \nameref{def:Variable_Type}s to \nameref{def:Variable}s
 \end{enumerate}
 
 \paragraph{Static \nameref*{def:Variable_Type} \nameref*{subsec:Binding}}\label{par:Static_Variable_Type_Binding}
+\begin{definition}[Static]\label{def:Static_Variable_Type_Binding}
+  \emph{Static} \nameref{def:Binding} of \nameref{def:Variable}s means that the \nameref{def:Variable_Type} of a \nameref{def:Variable} is given to the program, either \nameref{def:Explicit_Static_Variable_Type_Binding}ly or \nameref{def:Explicit_Static_Variable_Type_Binding}ly.
+  Once the \nameref{def:Variable_Type} is declared, it cannot be changed throughout the entire program's execution.
+
+  There are 2 ways to \nameref{def:Static_Variable_Type_Binding}ly bind a \nameref{def:Variable_Type} to a \nameref{def:Variable}:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Explicit_Static_Variable_Type_Binding}
+  \item \nameref{def:Implicit_Static_Variable_Type_Binding}
+  \end{enumerate}
+\end{definition}
+
 \begin{definition}[Explicit]\label{def:Explicit_Static_Variable_Type_Binding}
   An \emph{explicit} declaration is a statement that explicitly sets each \nameref{def:Variable} to its respective \nameref{def:Variable_Type}.
   For example,
@@ -291,6 +300,38 @@ var name = "Fred";
 \end{remark*}
 
 \paragraph{Dynamic \nameref*{def:Variable_Type} \nameref*{subsec:Binding}}\label{par:Dynamic_Variable_Type_Binding}
+With \nameref*{par:Dynamic_Variable_Type_Binding}, the \nameref{def:Variable_Type} of a \nameref{def:Variable}:
+\begin{itemize}[noitemsep]
+\item Is not specified by a declaration statement
+\item Cannot be determined by the spelling of the \nameref{def:Variable}'s name
+\end{itemize}
+
+\begin{definition}[Dynamic]\label{def:Dynamic_Variable_Type_Binding}
+  A \emph{dynamic} \nameref{def:Binding} happens when a \nameref{def:Variable} is bound to a \nameref{def:Variable_Type} \textbf{when it is assigned a \nameref{def:Variable_Value}.}
+  Such an assignment might also bind the \nameref{def:Variable} to an \nameref{def:Variable_Address}.
+
+  Any \nameref{def:Variable} can be assigned any \nameref{def:Variable_Type}.
+  A \nameref{def:Variable}'s \nameref{def:Variable_Type} can be changed any number of times during program execution.
+
+  The name of the \nameref{def:Variable} is bound to the \nameref{def:Variable}, then the \nameref{def:Variable} is bound to a \nameref{def:Variable_Type} and given its \nameref{def:Variable_Value}.
+\end{definition}
+
+The primary benefit of having \nameref{def:Dynamic_Variable_Type_Binding} \nameref{def:Binding} is the programming flexibility it provides.
+The 2 major disadvantages are:
+\begin{enumerate}[noitemsep]
+\item Programs are less reliable, because error-detection of the compiler/interpreter is diminished relative to a compiler/interpreter for a language with \nameref{def:Static_Variable_Type_Binding} \nameref{def:Variable_Type} \nameref{def:Binding}s.
+\item The \nameref{subsec:Cost} is quite high because of the \nameref{def:Type_Checking} that must occur at run time. Also, every variable must have a run-time descriptor to describe the \nameref{def:Variable}'s current \nameref{def:Variable_Type}.
+\end{enumerate}
+
+\begin{remark*}
+  \nameref{def:Dynamic_Variable_Type_Binding} \nameref{def:Variable_Type} \nameref{def:Binding} is usually implemented with \nameref{subsec:Interpretation}.
+  This is because:
+  \begin{itemize}[noitemsep]
+  \item The overall \nameref{subsec:Cost} of \nameref{def:Variable_Type} handing is hidden by the \nameref{subsec:Cost} of the interpreter.
+  \item The \nameref{def:Variable_Type} of an operation's operands must be known to translate the instruction to the correct machine code instruction, which isn't possible with \nameref{def:Dynamic_Variable_Type_Binding} \nameref{def:Variable_Type} \nameref{def:Binding}.
+  \end{itemize}
+\end{remark*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
