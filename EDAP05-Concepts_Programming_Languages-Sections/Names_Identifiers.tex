@@ -494,6 +494,28 @@ The advantages and disadvantages of these types of \nameref{def:Variable}s are:
   \item Loss of some error dectection by the compiler/interpreter
   \end{itemize}
 \end{itemize}
+
+\subsection{Scope}\label{subsubsec:Variable_Scope}
+\begin{definition}[Scope]\label{def:Variable_Scope}
+  The \emph{scope} of a \nameref{def:Variable} is the range of statments in which the \nameref{def:Variable} is \nameref{def:Visible_Variable}.
+\end{definition}
+
+\begin{definition}[Visible]\label{def:Visible_Variable}
+  A \nameref{def:Variable} is \emph{visible} in a statements if it can be referenced in that statment.
+\end{definition}
+
+\begin{definition}[Local Variable]\label{def:Local_Variable}
+  A \nameref{def:Variable} is a \emph{local variable} in a program unit or block if it is declared there.
+\end{definition}
+
+\begin{definition}[Nonlocal Variable]\label{def:Nonlocal_Variable}
+  The nonlocal variables of a program are visible with that particular program unit or block, but are not declared there.
+
+  \begin{remark}[Global Variables]
+    Global variables are a special case of \nameref{def:Nonlocal_Variable}s.
+    These are discussed in \Cref{subsubsec:Variable_Global_Scope}.
+  \end{remark}
+\end{definition}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
