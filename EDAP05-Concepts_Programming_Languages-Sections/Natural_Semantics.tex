@@ -204,12 +204,12 @@ For this section, we are going to use \Cref{eq:LetAdd_Grammar} as our \nameref{d
   An \emph{environment} is a mathematical object that tells us the bindings of variables.
   We will use the following notation:
   \begin{equation}\label{eq:Environment}
-    E_{n} = \lbrace v_{1} \mapsto 1, v_{2} \mapsto 7 \rbrace
+    E_{n} = \lbrace \textcolor{Green4}{\mathtt{v_{1}}} \mapsto m_{1}, \textcolor{Green4}{\mathtt{v_{2}}} \mapsto m_{2} \rbrace
   \end{equation}
   where $v$ is a variable, and $n$ is the number of variables present.
   So, for example:
   \begin{equation*}
-    E_{2} = \lbrace a \mapsto 1, b \mapsto 7 \rbrace
+    E_{2} = \lbrace \textcolor{Green4}{\mathtt{a}} \mapsto 1, \textcolor{Green4}{\mathtt{b}} \mapsto 7 \rbrace
   \end{equation*}
 
   \begin{remark}[Empty \nameref*{def:Semantic_Environment}]\label{rmk:Empty_Environment}
@@ -220,13 +220,18 @@ For this section, we are going to use \Cref{eq:LetAdd_Grammar} as our \nameref{d
   \end{remark}
 \end{definition}
 
-If we wnat to update an environment with a new binding,
+To retrieve an value from an \nameref{def:Semantic_Environment}, where the \nameref{def:Semantic_Environment} being used is \Cref{eq:Environment}, we write:
+\begin{equation}\label{eq:Semantic_Environment_Get_Variable}
+  E(\textcolor{Green4}{\mathtt{a}}) \Rightarrow 1
+\end{equation}
+
+If we want to update an \nameref{def:Semantic_Environment} with a new binding,
 \begin{subequations}\label{eq:Update_Environment}
   \begin{equation}\label{subeq:Update_Environment_New_Variable}
-    E_{2} [c \mapsto 42] = \lbrace a \mapsto 1, b \mapsto 7, c \mapsto 42 \rbrace
+    E_{2} [\textcolor{Green4}{\mathtt{c}} \mapsto 42] = \lbrace \textcolor{Green4}{\mathtt{a}} \mapsto 1, \textcolor{Green4}{\mathtt{b}} \mapsto 7, \textcolor{Green4}{\mathtt{c}} \mapsto 42 \rbrace
   \end{equation}
   \begin{equation}\label{subeq:Update_Environment_Update_Variable}
-    E_{2} [a \mapsto 0] = \lbrace a \mapsto 0, b \mapsto 7\rbrace
+    E_{2} [\textcolor{Green4}{\mathtt{a}} \mapsto 0] = \lbrace \textcolor{Green4}{\mathtt{a}} \mapsto 0, \textcolor{Green4}{\mathtt{b}} \mapsto 7\rbrace
   \end{equation}
 \end{subequations}
 
@@ -234,19 +239,70 @@ We define this as:
 \begin{equation}\label{eq:Update_Environment_Definition}
   E[x \mapsto v](y) =
   \begin{cases}
-    v & \Longleftrightarrow y = x \\
+    v & \Longleftrightarrow x=y \\
     E(y) & \text{otherwise}
   \end{cases}
 \end{equation}
+This means that if $x=y$, then $x$ is remapped (updated) to the value $v$.
 
 \subsubsection{Defining \nameref*{def:Semantics} with Environments}\label{subsubsec:Define_Semantics_with_Environments}
-\nameref{def:Semantic_Environment}s, $E$ can now become parameters to our \nameref{def:Evaluation_Relation}s, $\EvaluatesTo$.
+\nameref{def:Semantic_Environment}s, $E$, can now become parameters to our \nameref{def:Evaluation_Relation}s, $\EvaluatesTo$.
 This is written
 \begin{equation}\label{eq:Define_Semantics_with_Environments}
   E \vdash p \EvaluatesTo n
 \end{equation}
 Which means $p$ can be drawn from the environment $E$, and should evaluate to a number, $n$ ($n$ is defined elsewhere).
 
+\begin{example}[Lecture 3]{Natural Semantics with Environments}
+  Given the \nameref{def:Context_Free_Grammar},
+  \begin{align*}
+    \Nonterminal{expr} &\longrightarrow \textcolor{Green4}{\underline{\mathtt{num}}} \\
+                       &\vert \Nonterminal{expr} \textcolor{Green4}{+} \Nonterminal{expr} \\
+                       &\vert \, \textcolor{Green4}{\mathtt{\max}} \Nonterminal{expr} \Nonterminal{expr} \\
+                       &\vert \, \textcolor{Green4}{\text{\texttt{let \underline{id}}} = } \Nonterminal{expr} \textcolor{Green4}{\mathtt{in}} \Nonterminal{expr} \\
+                       &\vert \, \textcolor{Green4}{\mathtt{\underline{id}}}
+  \end{align*}
+  Compute the result of $\text{\texttt{let }} \mathtt{x = 2} \text{\texttt{ in }} \mathtt{x+3}$?
+  \tcblower{}
+  We will start by using the rules that we defined in \Cref{ex:Natural Semantics}.
+  We will also need to add new semantic rules for \textcolor{Green4}{\texttt{id}} and the \texttt{let} statement.
+
+  \begin{equation*}
+    \frac{\textcolor{Green4}{i} \in \textcolor{Green4}{\mathtt{\underline{id}}}}{E \vdash \textcolor{Green4}{i} \EvaluatesTo E(\textcolor{Green4}{i})} \textcolor{red}{(id)}
+  \end{equation*}
+  \begin{equation*}
+    \frac{E \vdash e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \:\: E[\textcolor{Green4}{i} \mapsto \textcolor{Blue4}{n_{1}}] \vdash e_{1} \EvaluatesTo e_{2}}{E \vdash \textcolor{Green4}{\text{\texttt{let }}\mathtt{i =}} \; e_{1} \; \textcolor{Green4}{\mathtt{\text{in}}} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}}} \textcolor{red}{(let)}
+  \end{equation*}
+
+  We start by applying the most applicable rule, the \textcolor{red}{(let)} rule.
+  \begin{equation*}
+    \dfrac{
+      % The number used in the let-assignment
+      \dfrac{\textcolor{Green4}{2} \in \NaturalNumbers}{E_{\emptyset} \vdash \textcolor{Green4}{2} \EvaluatesTo \textcolor{Blue4}{2}} \textcolor{red}{(num)} \:\:
+      % The addition operation inside the in-block
+      \dfrac{
+        % The dereferencing of the ID and grabbing the value mapped to the variable
+        \dfrac{\textcolor{Green4}{\mathtt{x}} \in \textcolor{Green4}{\mathtt{\underline{id}}}}
+        % The bottom of the dereferencing of the ID
+        {E_{\emptyset} [\textcolor{Green4}{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \textcolor{Green4}{\mathtt{x}} \EvaluatesTo E(\textcolor{Green4}{\mathtt{x}}) \Rightarrow \textcolor{Orange3}{2}} \textcolor{red}{(id)} \:\:
+        % The number, 3, added with x in the in-block
+        \dfrac{\textcolor{Green4}{3} \in \NaturalNumbers}
+        % The bottom of the num derivation
+        {E_{\emptyset} [\textcolor{Green4}{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \textcolor{Green4}{3} \EvaluatesTo \textcolor{Orange3}{3}} \textcolor{red}{(num)}}
+      % Bottom of the addition derivation
+      {E_{\emptyset}[\textcolor{Green4}{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \textcolor{Green4}{\mathtt{x+3}} \EvaluatesTo \textcolor{Orange3}{2+3} = \textcolor{Burlywood4}{5}} \textcolor{red}{(add)}}
+    % Bottom portion of let expression
+    {E_{\emptyset} \vdash \textcolor{Green4}{\text{\texttt{let }}} \mathtt{\textcolor{Green4}{x=}\,2} \textcolor{Green4}{\text{\texttt{ in }}} \mathtt{x+3} \EvaluatesTo \textcolor{Burlywood4}{5}} \textcolor{red}{(let)}
+  \end{equation*}
+
+  Once we've applied the \textcolor{red}{(let)} rule, we apply the \textcolor{red}{(num)} rule, because the expression being assigned is just a number.
+  The result of that expression evaluation is piped into the next \textcolor{red}{(add)} derivation.
+  From there, it is mapped to the input \textcolor{Green4}{\texttt{x}}, and the \texttt{x+3} is calculated.
+  The first thing is to get the value of \textcolor{Green4}{\texttt{x}} from the mapping with the \textcolor{red}{(id)} rule.
+  Once the $E(\textcolor{Green4}{\mathtt{x}})$ returns the value of the variable \textcolor{Green4}{\texttt{x}}, we can use it.
+  The other operand in the addition is found using the \textcolor{red}{(num)} rule.
+  Then the addition occurs, and the derivation completes.
+\end{example}
   
 %%% Local Variables:
 %%% mode: latex
