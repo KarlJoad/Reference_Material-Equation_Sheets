@@ -12,6 +12,7 @@
 % These are supposed to be document-specific mathematical operators that will make life easier
 % Many fundamental operators are defined in Reference_Sheet_Preamble.tex
 \newcommand{\Nonterminal}[1]{<\text{#1}>}
+\DeclareMathOperator{\EvaluatesTo}{\Downarrow}
 
 \begin{titlepage}
   \title{EDAP05: Concepts of Programming Languages - Reference Sheet}
@@ -42,6 +43,8 @@
 \input{./EDAP05-Concepts_Programming_Languages-Sections/Data_Types}
 
 \input{./EDAP05-Concepts_Programming_Languages-Sections/Expressions}
+
+\input{./EDAP05-Concepts_Programming_Languages-Sections/Natural_Semantics}
 %====================================APPENDIX====================================
 \appendix
 \counterwithin{definition}{subsection}

@@ -1,0 +1,172 @@
+\section{Natural Semantics}\label{sec:Natural_Semantics}
+Natural semantics assumes that we know the syntax of the language.
+We will assume that we have a \nameref{def:CFG_BNF_Form} \nameref{def:Context_Free_Grammar}.
+We will also assume that ambiguities have been resolved, somehow.
+
+\begin{definition}[Semantics]\label{def:Semantics}
+  \emph{Semantics} is the act of attaching a meaning to a syntactic construct.
+  For instance, we know the value of 1 to be 1, but does $\text{one} = 1$?
+  We have defined the semantics of $\text{one}$ to be equivalent to the numeral 1.
+
+  We can defined these semantic relationships with \nameref{def:Evaluation_Relation}s.
+\end{definition}
+
+\begin{definition}[Evaluation Relation]\label{def:Evaluation_Relation}
+  The \emph{evaluation relation} states the relation between a program $p$ and the program's result $v$:
+  \begin{equation}\label{eq:Evaluation_Relation}
+    p \EvaluatesTo v
+  \end{equation}
+
+  This is read as ``$p$ evaluates to $v$''.
+\end{definition}
+
+\begin{definition}[Metavariable]\label{def:Metavariable}
+  A \emph{metavariable} is a variable in the \nameref{def:Metalanguage}.
+  In \Cref{eq:Evaluation_Relation}, $p$ and $v$ are metavariables.
+  
+  $p$ is a metavariable that can contain any input program, and $v$ is a metavariable that can contain any result that the language might compute.
+\end{definition}
+
+\begin{blackbox}
+  Throughout this section, we will use this \nameref{def:CFG_BNF_Form} \nameref{def:Context_Free_Grammar}.
+  \begin{equation}\label{eq:DivAdd_Grammar}
+    \begin{aligned}
+      \Nonterminal{expr} &\rightarrow nat \\
+      &\vert \Nonterminal{expr} \textcolor{Green4}{\mathtt{+}} \Nonterminal{expr} \\
+      &\vert \Nonterminal{expr} \textcolor{Green4}{\mathtt{div}} \Nonterminal{expr} \\
+    \end{aligned}
+  \end{equation}
+\end{blackbox}
+
+Let's start with the programming language specified by the \nameref{def:Context_Free_Grammar} below.
+\begin{equation*}
+  \Nonterminal{W} \rightarrow \textcolor{Green4}{\mathtt{ett}} \vert \textcolor{Green4}{\text{\texttt{tv\r{a}}}} \vert \textcolor{Green4}{\mathtt{tre}}
+\end{equation*}
+This allows only 3 programs, each of which is a single word in Swedish.
+We can define the semantics (attach meaning) with the following rules:
+\begin{align*}
+  \textcolor{Green4}{\mathtt{ett}} &\EvaluatesTo 1 & \textcolor{Green4}{\text{\texttt{tv\r{a}}}} &\EvaluatesTo 2 & \textcolor{Green4}{\mathtt{tre}} &\EvaluatesTo 3 \\
+\end{align*}
+
+\subsection{Ambiguous Semantics}\label{subsec:Ambiguous_Semantics}
+Just like in \nameref{def:Context_Free_Grammar}s, there can be ambiguities in \nameref{def:Semantics} too.
+They occur when there is more than 1 specification for a symbol.
+For example,
+\begin{equation*}
+  \Nonterminal{Q} \rightarrow \textcolor{Green4}{\mathtt{eins}} \vert \textcolor{Green4}{\mathtt{zwei}} \vert \textcolor{Green4}{\mathtt{?}}
+\end{equation*}
+with the \nameref{def:Semantics} below:
+\begin{align*}
+  \textcolor{Green4}{\mathtt{eins}} &\EvaluatesTo 1 & \textcolor{Green4}{\mathtt{zwei}} &\EvaluatesTo 2 & \textcolor{Green4}{\mathtt{?}} &\EvaluatesTo 0 & \textcolor{Green4}{\mathtt{?}} &\EvaluatesTo 3 \\
+\end{align*}
+
+In this course, we are interested in unambiguous \nameref{def:Semantics}.
+When language designers design a programming language, they try to avoid these ambiguities.
+
+We can normally check if a set of semantic rules are unambiguous by checking that the left-hand side of each of the \nameref{def:Evaluation_Relation}s does not overlap with another \nameref{def:Evaluation_Relation}.
+If there is an overlap, then it \textbf{must} be shown that the same result will be yielded.
+
+\subsection{Conditional Rules}\label{subsec:Conditional_Rules}
+When we want a \nameref{def:Metavariable} to only get a value under certain conditions, we have a special notation for that.
+For example, say we want $n$ to be a natural number that is used in the grammar of \Cref{eq:DivAdd_Grammar}.
+We can write this condition as:
+\begin{equation}\label{eq:Conditional_Rules}
+  \frac{n \in \NaturalNumbers}{n \EvaluatesTo \mathtt{asNat}(n)}
+\end{equation}
+
+The writers of these semantic grammars favor simplicity, so they might omit the \texttt{asNat} function by arguing ``separating between natural numbers and their textual representation is overly pedantic, as long as there is no ambiguity''.
+They might write the rule in \Cref{eq:Conditional_Rules} as:
+\begin{equation}\label{eq:Conditional_Rules_Simplified}
+  \frac{n \in \NaturalNumbers}{n \EvaluatesTo n}
+\end{equation}
+
+\subsection{Recursion}\label{subsec:Semantics_Recursion}
+If we want to construct the addition in \Cref{eq:DivAdd_Grammar}, then we can write:
+\begin{equation}\label{eq:Semantics_Recursion}
+  \frac{e_{1} \EvaluatesTo n_{1} \:\: e_{2} \EvaluatesTo n_{2}}{e_{1}+e_{2} \EvaluatesTo n_{1}+n_{2}}
+\end{equation}
+
+\subsection{Completeness}\label{subsec:Semantic_Completeness}
+A semantic specification is \emph{complete} when all possible cases have been defined, in some way.
+For example:
+\begin{equation}\label{eq:Incomplete_Semantic_Rule}
+  \frac{e_{1} \EvaluatesTo n_{1} \:\: e_{2} \EvaluatesTo n_{2}}{e_{1} \textcolor{Green4}{\mathtt{div}} e_{2} \EvaluatesTo \Bigl\lfloor \frac{n_{1}}{n_{2}} \Bigr\rfloor}
+\end{equation}
+This rule ignores the case when $n_{2} = 0$, which means we divide by 0.
+In mathematics, this is an undefined operation.
+
+There are 2 ways to solve this problem:
+\begin{enumerate}[noitemsep]
+\item \textbf{Adding a Meta-Rule:} Add an informal rule that states if the \nameref{def:Semantics} of an operation is not defined, then execution aborts with an error.
+  This is a solution, but it allows the language designer to solve corner cases with strange behavior.
+  This also prevents any forms of error recovery, harming \nameref{subsec:Reliability}.
+\item \textbf{Error Values:} Extend the $\EvaluatesTo$ \nameref{def:Evaluation_Relation} operator so that we can return \emph{error values} along with intended results.
+  This may require adding \textbf{MANY} new rules to the language.
+\end{enumerate}
+
+\subsection{Language with Variables}\label{subsec:Language_with_Variables}
+For this section, we are going to use \Cref{eq:LetAdd_Grammar}.
+\begin{blackbox}
+  \begin{equation}\label{eq:LetAdd_Grammar}
+    \begin{aligned}
+      \Nonterminal{expr} &\rightarrow nat \\
+      &\vert id \\
+      &\vert \Nonterminal{expr} \textcolor{Green4}{\mathtt{+}} \Nonterminal{expr} \\
+      &\vert \textcolor{Green4}{\mathtt{let}} id = \Nonterminal{expr} \textcolor{Green4}{\mathtt{in}} \Nonterminal{expr} \\
+    \end{aligned}
+  \end{equation}
+\end{blackbox}
+
+\subsubsection{Environments}\label{subsubsec:Semantic_Environments}
+\begin{definition}[Environment]\label{def:Semantic_Environment}
+  An \emph{environment} is a mathematical object that tells us the bindings of variables.
+  We will use the following notation:
+  \begin{equation}\label{eq:Environment}
+    E_{n} = \lbrace v_{1} \mapsto 1, v_{2} \mapsto 7 \rbrace
+  \end{equation}
+  where $v$ is a variable, and $n$ is the number of variables present.
+  So, for example:
+  \begin{equation*}
+    E_{2} = \brace a \mapsto 1, b \mapsto 7 \rbrace
+  \end{equation*}
+
+  \begin{remark}[Empty \nameref*{def:Semantic_Environment}]\label{rmk:Empty_Environment}
+    The \emph{empty environment} is written
+    \begin{equation}\label{eq:Empty_Environment}
+      E_{\emptyset} = \lbrace \rbrace
+    \end{equation}
+  \end{remark}
+\end{definition}
+
+If we wnat to update an environment with a new binding,
+\begin{subequations}\label{eq:Update_Environment}
+  \begin{equation}\label{subeq:Update_Environment_New_Variable}
+    E_{2} [c \mapsto 42] = \lbrace a \mapsto 1, b \mapsto 7, c \mapsto 42 \rbrace
+  \end{equation}
+  \begin{equation}\label{subeq:Update_Environment_Update_Variable}
+    E_{2} [a \mapsto 0] = \lbrace a \mapsto 0, b \mapsto 7\rbrace
+  \end{equation}
+\end{subequations}
+
+We define this as:
+\begin{equation}\label{eq:Update_Environment_Definition}
+  E[x \mapsto v](y) =
+  \begin{cases}
+    v & \Longleftrightarrow y = x \\
+    E(y) & \text{otherwise}
+  \end{cases}
+\end{equation}
+
+\subsubsection{Defining \nameref*{def:Semantics} with Environments}\label{subsubsec:Define_Semantics_with_Environments}
+\nameref{def:Semantic_Environment}s, $E$ can now become parameters to our \nameref{def:Evaluation_Relation}s, $\EvaluatesTo$.
+This is written
+\begin{equation}\label{eq:Define_Semantics_with_Environments}
+  E \vdash p \EvaluatesTo n
+\end{equation}
+Which means $p$ can be drawn from the environment $E$, and should evaluate to a number, $n$ ($n$ is defined elsewhere).
+
+  
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
