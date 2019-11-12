@@ -18,6 +18,13 @@ We will also assume that ambiguities have been resolved, somehow.
   \end{equation}
 
   This is read as ``$p$ evaluates to $v$''.
+
+  \begin{remark}
+    The value of the left-hand side is an arbitrary set of operator(s).
+    For instance, if we wanted to specify addition, but using the \texttt{add} operator, then $p$ would look $\mathtt{e_{1} \: add \: e_{2}}$.
+    However, on the right-hand side, we \emph{MUST} specify the operation that will take place.
+    The right-hand side is a mathematical construction that the reader will understand.
+  \end{remark}
 \end{definition}
 
 \begin{definition}[Metavariable]\label{def:Metavariable}
@@ -90,7 +97,7 @@ If we want to construct the addition in \Cref{eq:DivAdd_Grammar}, then we can wr
 A semantic specification is \emph{complete} when all possible cases have been defined, in some way.
 For example:
 \begin{equation}\label{eq:Incomplete_Semantic_Rule}
-  \frac{e_{1} \EvaluatesTo n_{1} \:\: e_{2} \EvaluatesTo n_{2}}{e_{1} \textcolor{Green4}{\mathtt{div}} e_{2} \EvaluatesTo \Bigl\lfloor \frac{n_{1}}{n_{2}} \Bigr\rfloor}
+  \frac{e_{1} \EvaluatesTo n_{1} \:\: e_{2} \EvaluatesTo n_{2}}{e_{1} \:\textcolor{Green4}{\mathtt{div}}\: e_{2} \EvaluatesTo \Bigl\lfloor \frac{n_{1}}{n_{2}} \Bigr\rfloor}
 \end{equation}
 This rule ignores the case when $n_{2} = 0$, which means we divide by 0.
 In mathematics, this is an undefined operation.
@@ -104,15 +111,90 @@ There are 2 ways to solve this problem:
   This may require adding \textbf{MANY} new rules to the language.
 \end{enumerate}
 
+\begin{example}[Lecture 3]{Natural Semantics}
+  For the given \nameref{def:Context_Free_Grammar}, construct rules for the Natural~\nameref{def:Semantics} of this language?
+  Then, perform a proof/derivation using those rules for the statement $\max (1+2) (1+1)$?
+  Ignore the parentheses; those are only used to show that the 2 expressions are separate.
+  Assume there is a process before applying the \nameref{def:Context_Free_Grammar} which handles the parentheses.
+  \begin{align*}
+    \Nonterminal{expr} &\longrightarrow \textcolor{Green4}{\underline{\mathtt{num}}} \\
+                       &\vert \Nonterminal{expr} \textcolor{Green4}{+} \Nonterminal{expr} \\
+                       &\vert \, \textcolor{Green4}{\mathtt{\max}} \Nonterminal{expr} \Nonterminal{expr}
+  \end{align*}
+  \tcblower{}
+  \textbf{NOTE}: Green will represent input to the rule and blue will represent rule output.
+  When deriving statements with these rules, there may be additional colors to represent various values.
+
+  The easiest rule to define is the rule for \textcolor{Green4}{\underline{\texttt{num}}}.
+  \begin{equation*}
+    \frac{\textcolor{Green4}{n} \in \textcolor{Green4}{\underline{\mathtt{num}}}}{\textcolor{Green4}{n} \EvaluatesTo \textcolor{Blue4}{n}} \textcolor{red}{(num)}
+  \end{equation*}
+
+  Next, we define the rule for the addition.
+  \begin{equation*}
+    \frac{\textcolor{Orange3}{e_{1}} \in \Nonterminal{expr} \: \textcolor{Orange3}{e_{2}} \in \Nonterminal{expr} \: \textcolor{Orange3}{e_{1}} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: \textcolor{Orange3}{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{2}}}{\textcolor{Orange3}{e_{1}} \textcolor{Green4}{\mathtt{+}} \textcolor{Orange3}{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{1} + n_{2}}} \textcolor{red}{(add)}
+  \end{equation*}
+  \begin{remark*}
+    In this case, the expression's rule actually returns the computed number from the expression $n_{1} + n_{2}$, rather than the 2 expressions added together (which would be had if we had written $e_{1} + e_{2}$ instead).
+  \end{remark*}
+
+  \begin{remark*}
+    From here on out, if there is $e_{x} \EvaluatesTo n_{x}$, then we also implicitly say $e_{x} \in \Nonterminal{expr}$.
+  \end{remark*}
+
+  Now we have to define the \texttt{max} operation.
+  In this case, we need 2 rules to specify the 2 cases, when the left expression is the relative maximum, and when the right expression is the relative maximum.
+  \begin{equation*}
+    \frac{e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}} \: \textcolor{Blue4}{n_{1}} \geq \textcolor{Blue4}{n_{2}}}{\textcolor{Green4}{\mathtt{\max}} \: e_{1} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{1}}} \textcolor{red}{(\text{max left})}
+  \end{equation*}
+  \begin{equation*}
+    \frac{e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}} \: \textcolor{Blue4}{n_{1}} \leq \textcolor{Blue4}{n_{2}}}{\textcolor{Green4}{\mathtt{\max}} \: e_{1} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}}} \textcolor{red}{(\text{max right})}
+  \end{equation*}
+  \begin{remark*}
+    Although the 2 equations for determining the relative maxima both have an equality aspect, in pure mathematics, that's fine.
+    In mathematical terms, if both rules apply, because $e_{1} == e_{2}$, then, both are technically maxima and should be returned.
+
+    However, this will change during implementation, because one of the rules will be checked first, which necessitates that the rules be made mutually exclusive.
+  \end{remark*}
+
+  Now that all the necessary rules have been developed, we can apply them to the statement $\max (1+2) (1+1)$.
+  \begin{equation*}
+    % Derivation of max started
+    \dfrac{
+      % Expression 1 derivation
+      \dfrac{
+        % Expression 1 Left number Derivation
+        \dfrac{\textcolor{Green4}{1} \in \NaturalNumbers}{\textcolor{Green4}{1} \EvaluatesTo \textcolor{Purple2}{n_{1} = 1}} \textcolor{red}{(num)} \:\:
+        % Expression 1 Right number derivation
+        \dfrac{\textcolor{Green4}{2} \in \NaturalNumbers}{\textcolor{Green4}{2} \EvaluatesTo \textcolor{Purple2}{n_{2} = 2}} \textcolor{red}{(num)}}
+      % Expression 1 bottom of derivation
+      {\textcolor{Orange3}{e_{1}} = \textcolor{Green4}{1+2} \EvaluatesTo \textcolor{Burlywood4}{n_{1}} = \textcolor{Purple2}{n_{1}} + \textcolor{Purple2}{n_{2}} = \textcolor{Purple2}{1}+\textcolor{Purple2}{2}=\textcolor{Burlywood4}{3}} \textcolor{red}{(add)} \:\:
+      % Expression 2 derivation
+      \dfrac{
+        % Expression 2 Left number Derivation
+        \dfrac{\textcolor{Green4}{1} \in \NaturalNumbers}{\textcolor{Green4}{1} \EvaluatesTo \textcolor{Purple2}{n_{1} = 1}} \textcolor{red}{(num)} \:\:
+        % Expression 2 Right number derivation
+        \dfrac{\textcolor{Green4}{1} \in \NaturalNumbers}{\textcolor{Green4}{1} \EvaluatesTo \textcolor{Purple2}{n_{2} = 1}} \textcolor{red}{(num)}}
+      % Expression 2 bottom of derivation
+      {\textcolor{Orange3}{e_{2}} = \textcolor{Green4}{1+1} \EvaluatesTo \textcolor{Burlywood4}{n_{2}} = \textcolor{Purple2}{n_{1}} + \textcolor{Purple2}{n_{2}} = \textcolor{Purple2}{1}+\textcolor{Purple2}{1} = \textcolor{Burlywood4}{2}} \textcolor{red}{(add)} \:\:
+      % Checking n1 geq n2
+      \textcolor{Burlywood4}{n_{1}} \geq \textcolor{Burlywood4}{n_{2}} = \textcolor{Burlywood4}{3} \geq \textcolor{Burlywood4}{2}}
+    % Bottom of the max rule derivation
+    {\textcolor{Green4}{\mathtt{\max}} \textcolor{Orange3}{\underbrace{(\textcolor{Green4}{1+2}\textcolor{Orange3}{)}}_{\textcolor{Orange3}{e_{1}}}} \textcolor{Orange3}{\underbrace{\textcolor{Orange3}{(\textcolor{Green4}{1+1}\textcolor{Orange3}{)}}}_{\textcolor{Orange3}{e_{2}}}} \EvaluatesTo \textcolor{Burlywood4}{n_{1}} = \textcolor{Blue4}{3}} \textcolor{red}{(\text{max left})}
+  \end{equation*}
+
+  We chose the \textcolor{red}{max left} rule only \textbf{after} the values of $\textcolor{Orange3}{e_{1}}$ and $\textcolor{Orange3}{e_{2}}$ were calculated.
+\end{example}
+
 \subsection{Language with Variables}\label{subsec:Language_with_Variables}
-For this section, we are going to use \Cref{eq:LetAdd_Grammar}.
+For this section, we are going to use \Cref{eq:LetAdd_Grammar} as our \nameref{def:Context_Free_Grammar}.
 \begin{blackbox}
   \begin{equation}\label{eq:LetAdd_Grammar}
     \begin{aligned}
       \Nonterminal{expr} &\rightarrow nat \\
       &\vert id \\
       &\vert \Nonterminal{expr} \textcolor{Green4}{\mathtt{+}} \Nonterminal{expr} \\
-      &\vert \textcolor{Green4}{\mathtt{let}} id = \Nonterminal{expr} \textcolor{Green4}{\mathtt{in}} \Nonterminal{expr} \\
+      &\vert \textcolor{Green4}{\mathtt{let}}\: id = \Nonterminal{expr} \textcolor{Green4}{\mathtt{in}} \Nonterminal{expr} \\
     \end{aligned}
   \end{equation}
 \end{blackbox}
@@ -127,7 +209,7 @@ For this section, we are going to use \Cref{eq:LetAdd_Grammar}.
   where $v$ is a variable, and $n$ is the number of variables present.
   So, for example:
   \begin{equation*}
-    E_{2} = \brace a \mapsto 1, b \mapsto 7 \rbrace
+    E_{2} = \lbrace a \mapsto 1, b \mapsto 7 \rbrace
   \end{equation*}
 
   \begin{remark}[Empty \nameref*{def:Semantic_Environment}]\label{rmk:Empty_Environment}
