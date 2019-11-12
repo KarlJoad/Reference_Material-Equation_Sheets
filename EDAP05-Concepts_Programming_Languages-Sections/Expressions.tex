@@ -323,6 +323,55 @@ Programming languages should implement a Boolean \nameref{def:Data_Type} for tru
 However, versions of C before C99 did not have a Boolean type, forcing programmers to use 0 to represent \texttt{false} and anything else being \texttt{true}.
 
 \subsection{Short-Circuit Evaluation}\label{subsec:Short_Circuit_Evaluation}
+\begin{definition}[Short-Circuit Evaluation]\label{def:Short_Circuit_Evaluation}
+  A \emph{short-circuit evaluation} of an \nameref{def:Expression} happens when a result is determined without evaluating all the \nameref{def:Operand}s in the \nameref{def:Expression}.
+\end{definition}
+
+This is \textbf{mostly} used for \nameref{def:Boolean_Expression}s.
+The 2 possible \nameref{def:Short_Circuit_Evaluation}s are for \texttt{AND} and \texttt{OR}.
+They are based off the operator's truth tables, shown in \Crefrange{tab:AND_Truth_Table}{tab:OR_Truth_Table}.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{|c|cc|}
+    \toprule
+    & 0 & 1 \\
+    \midrule
+    0 & 0 & 0 \\
+    1 & 0 & 1 \\
+    \bottomrule
+  \end{tabular}
+  \caption{\texttt{AND} Truth Table}
+  \label{tab:AND_Truth_Table}
+\end{table}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{|c|cc|}
+    \toprule
+    & 0 & 1 \\
+    \midrule
+    0 & 0 & 1 \\
+    1 & 1 & 1 \\
+    \bottomrule
+  \end{tabular}
+  \caption{\texttt{OR} Truth Table}
+  \label{tab:OR_Truth_Table}
+\end{table}
+
+The 2 possible \nameref{def:Short_Circuit_Evaluation}s are:
+\begin{enumerate}[noitemsep]
+\item If the first \nameref{def:Operand} in an \texttt{AND} \nameref{def:Boolean_Expression} is \texttt{false}, then it short-circuit evaluates to false.
+\item If the first \nameref{def:Operand} in an \texttt{OR} \nameref{def:Boolean_Expression} is \texttt{true}, then it short-circuit evaluates to true.
+\end{enumerate}
+
+\nameref{def:Short_Circuit_Evaluation} has some side effects:
+\begin{itemize}[noitemsep]
+\item The second \nameref{def:Operand} is \textbf{never} evaluated, and if its a function, there might be \nameref{def:Function_Side_Effect}s, or a lack of them.
+\end{itemize}
+
+Some languages specify special version of the Boolean operators to explicitly handle \nameref{def:Short_Circuit_Evaluation} separately.
+Most simply choose to only support \nameref{def:Short_Circuit_Evaluation}, and make sure the programmer keeps it in mind while working.
 
 %%% Local Variables:
 %%% mode: latex
