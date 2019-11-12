@@ -388,7 +388,7 @@ The pros and cons of \nameref{def:Static_Variable_Binding_Lifetime}s are:
 \paragraph{Stack-Dynamic Variables}\label{par:Stack-Dynamic_Variable_Binding_Lifetime}
 \begin{definition}[Stack-Dynamic Variable]\label{def:Stack-Dynamic_Variable_Binding_Lifetime}
   \emph{Stack-dynamic variable}s are those whose storage \nameref{def:Binding}s are created when their declaration statements are elaborated.
-  These are allocated from the run-time stack.
+  These are allocated from the run-time \nameref{def:Call_Stack}.
 
   \begin{remark}
     These are the variables that are most commonly used.
@@ -499,6 +499,30 @@ The advantages and disadvantages of these types of \nameref{def:Variable}s are:
 \begin{definition}[Scope]\label{def:Variable_Scope}
   The \emph{scope} of a \nameref{def:Variable} is the range of statements in which the \nameref{def:Variable} is \nameref{def:Visible_Variable}.
 \end{definition}
+
+\nameref{def:Variable_Scope} might seem similar to \nameref{def:Variable_Lifetime}, but they are different.
+Here are 2 examples that illustrate this point:
+\begin{enumerate}[noitemsep]
+\item At the second \texttt{print(x)}, \texttt{x} is \emph{in scope} (visible), but is \emph{dead}
+\begin{minted}[frame=lines,linenos]{c}
+int f(void) {
+  int *x;
+  x = (int *) calloc(sizeof(int), 1);
+  print(x);
+  free(x);
+  print(x);
+}
+\end{minted}
+  
+\item When executing inside of \texttt{g(y)}, the \texttt{x} in function \texttt{f} is \emph{alive}, but is \emph{out of scope} (not visible)
+\begin{minted}[frame=lines,linenos]{python3}
+def f(x):
+  return g(7)
+def g(y):
+  print (y)
+  return
+\end{minted}
+\end{enumerate}
 
 \begin{definition}[Visible]\label{def:Visible_Variable}
   A \nameref{def:Variable} is \emph{visible} in a statements if it can be referenced in that statement.
