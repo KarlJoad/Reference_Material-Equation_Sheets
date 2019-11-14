@@ -96,6 +96,52 @@ There are 2 main types of attacks:
 \end{enumerate}
 
 \subsection{The Caesar Cipher}\label{subsec:The_Caesar_Cipher}
+The Caesar Cipher is a \nameref{def:Monoalphabetic_Cipher} in which each letter is shifted 3 steps.
+
+This can be generalized to shift not just 3, but $K$ positions, where $K \in \lbrace 0, 1, \ldots, 25 \rbrace$ is the secret key.
+In this case, the \nameref{def:Keyspace}, $\Keyspace$, is the set of shifts in position possible.
+\begin{equation*}
+  K \in \Keyspace, \:\: \Keyspace = \lbrace 0, 1, \ldots, 25 \rbrace
+\end{equation*}
+
+To encrypt a message, each individual character is encrypted according to \Cref{eq:The_Caesar_Cipher-Encryption}.
+\begin{equation}\label{eq:The_Caesar_Cipher-Encryption}
+  e_{K}(m) = m + k \bmod 26
+\end{equation}
+
+The \nameref{def:Decryption_Rule} for \nameref*{subsec:The_Caesar_Cipher} is used to decrypt a message encrypted according to \Cref{eq:The_Caesar_Cipher-Encryption}.
+\begin{equation}\label{eq:The_Caesar_Cipher-Decryption}
+  d_{K}(c) = c - k
+\end{equation}
+
+\subsubsection{\nameref*{def:Cryptanalysis} of \nameref*{subsec:The_Caesar_Cipher}}\label{subsubsec:Cryptanalysis_Caesar_Cipher}
+The Caesar Cipher can be broken with an \emph{exhaustive key search}.
+\begin{example}[Lecture 4]{Cryptanalysis of The Caesar Cipher}
+  Given the input string \texttt{wklvlvdphvvdjhwrbrx}, decrypt and find the message.
+  The message was encrypted using \nameref{subsec:The_Caesar_Cipher}
+  \tcblower{}
+  \begin{center}
+    \begin{tabular}{cc}
+      \toprule
+      $K$ & Plaintext Equivalent \\
+      \midrule
+      0 & \texttt{wklvlvdphvvdjhwrbrx} \\
+      1 & \texttt{vjkukucoguucigvqaqw} \\
+      2 & \texttt{uijtjtbnfttbhfupzpv} \\
+      \midrule
+      3 & \texttt{thisisamessagetoyou} \\
+      \midrule
+      4 & \texttt{sghrhrzldrrzfdsnxnt} \\
+      5 & \texttt{rfgqgqykcqqyecrmwms} \\
+      $\vdots$ & $\vdots$ \\
+      25 & \texttt{xlmwmweqiwwekixscsy} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  So, the key used in this Caesar Cipher was $K=3$, and the message was \texttt{thisisamessagetoyou}.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
