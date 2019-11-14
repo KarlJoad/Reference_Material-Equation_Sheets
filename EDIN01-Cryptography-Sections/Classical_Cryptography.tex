@@ -2,7 +2,7 @@
 \begin{definition}[Cryptosystem]\label{def:Cryptosystem}
   A \emph{cryptosystem} five-tuple $(\Plaintexts, \Ciphertexts, \Keyspace, \EncryptionRules, \DecryptionRules)$ where the following conditions are satisfied:
   \begin{enumerate}[noitemsep]
-  \item $\Plaintexts$ is a finite set of possible \emph{\nameref{def:Plaintext}}
+  \item $\Plaintexts$ is a finite set of possible \emph{\nameref{def:Plaintext}}, producing a message, $\Message$.
   \item $\Ciphertexts$ is a finite set of possible \emph{\nameref{def:Ciphertext}}
   \item $\Keyspace$, the \emph{\nameref{def:Keyspace}}, is a finite set of all possible keys
   \item For each $K \in \Keyspace$, there is an \emph{\nameref{def:Encryption_Rule}} $e_{K}\in \EncryptionRules$ and a corresponding \emph{\nameref{def:Decryption_Rule}} $d_{K} \in \DecryptionRules$.
@@ -10,18 +10,54 @@
   \end{enumerate}
 \end{definition}
 
+This can be illustrated with the \nameref{fig:Shannon_Model_Symmetric_Encryption}.
+
+\begin{figure}[h!]
+  \centering
+  % \includegraphic{Shannon_Model_Symmetric_Encryption.png}
+  \caption{Shannon Model for Symmetric Encryption}
+  \label{fig:Shannon_Model_Symmetric_Encryption}
+\end{figure}
+
+A convention is to give the various parties in play names:
+\begin{itemize}[noitemsep]
+\item Alice
+\item Bob
+\item Caesar
+\item Eve (The enemy)
+\end{itemize}
+
 \begin{definition}[Plaintext]\label{def:Plaintext}
   \emph{Plaintext} is the information that Alice wants to send to Bob, and is denoted $\Plaintexts$
-  This information can be in any arbitrary format, we do not care.
-  However, Alice does not want Oscar to be able to understand what she sends to Bob.
+  This information can be in any arbitrary format, we do not care, however the elements in the message are drawn from the \nameref{def:Alphabet}.
+  However, Alice does not want Eve to be able to understand what she sends to Bob.
+
+  The message to be sent is:
+  \begin{equation}\label{eq:Plaintext}
+    \Message \in \Plaintexts = \left( m_{1}, m_{2}, \ldots, m_{n} \right) \forall m \in \Alphabet
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Alphabet]\label{def:Alphabet}
+  Let $\Alphabet$ be a finite set, which is called the \emph{alphabet}.
+  We often use the English letters as the alphabet, we number them $\mathtt{a} = 0, \mathtt{b} = 1, \ldots, \mathtt{z} = 25$.
+  This given $\Alphabet = \IntsMod{26}$ and $\SetOrder{\Alphabet} = 26$.
 \end{definition}
 
 \begin{definition}[Ciphertext]\label{def:Ciphertext}
   A \emph{ciphertext} is a piece of \nameref{def:Plaintext} information that has been run through an element of \nameref{def:Encryption_Rule} set.
+
+  \begin{equation}\label{eq:Ciphertext}
+    \CipherMessage = e_{K} (\Message)
+  \end{equation}
 \end{definition}
 
 \begin{definition}[Keyspace]\label{def:Keyspace}
   \emph{Keyspace}, denoted $\Keyspace$.
+  Each \emph{key} in the keyspace describes a certain function
+  \begin{equation}\label{eq:Keyspace}
+    e_{K} : \Plaintexts^{n} \rightarrow \Ciphertexts^{n'}
+  \end{equation}
   \textbf{TODO}
 \end{definition}
 
@@ -31,6 +67,10 @@
     e_{K} : \Plaintexts \rightarrow \Ciphertexts \text{where } e_{K} \in \EncryptionRules
   \end{equation}
   Namely, the encryption rule element is used to map the \nameref{def:Plaintext} pieces of information that Alice wants to send to a corresponding \nameref{def:Ciphertext} that she can send to Bob.
+
+  \begin{remark}[Invertible]\label{rmk:Encryption_Rule_Invertible}
+    Each \nameref{def:Encryption_Rule} \textbf{must} be \emph{invertible}, thus allowing decryption of the ciphertext.
+  \end{remark}
 \end{definition}
 
 \begin{definition}[Decryption Rule]\label{def:Decryption_Rule}
@@ -38,8 +78,16 @@
   \begin{equation}\label{eq:Decryption_Rule}
     d_{K} : \Ciphertexts \rightarrow \Plaintexts \text{where } d_{K} \in \DecryptionRules
   \end{equation}
-    Namely, the decryption rule element is used to map the \nameref{def:Ciphertext} pieces of information that Alice sent to a corresponding \nameref{def:Plaintext} that Bob can use.
+  Namely, the decryption rule element is used to map the \nameref{def:Ciphertext} pieces of information that Alice sent to a corresponding \nameref{def:Plaintext} that Bob can use.
+
+  \begin{remark}
+    \begin{equation}\label{eq:Decrypt_Encryption}
+p      d_{K}(e_{K}(\Message)) = \Message \: \forall \Message \in \Plaintexts
+    \end{equation}
+  \end{remark}
 \end{definition}
+
+\subsection{The Caesar Cipher}\label{subsec:The_Caesar_Cipher}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
