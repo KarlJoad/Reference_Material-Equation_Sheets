@@ -47,6 +47,7 @@ A convention is to give the various parties in play names:
 \begin{definition}[Ciphertext]\label{def:Ciphertext}
   A \emph{ciphertext} is a piece of \nameref{def:Plaintext} information that has been run through an element of \nameref{def:Encryption_Rule} set.
 
+  A message that has been transformed with an \nameref{def:Encryption_Rule} is a cipher message.
   \begin{equation}\label{eq:Ciphertext}
     \CipherMessage = e_{K} (\Message)
   \end{equation}
@@ -86,6 +87,13 @@ p      d_{K}(e_{K}(\Message)) = \Message \: \forall \Message \in \Plaintexts
     \end{equation}
   \end{remark}
 \end{definition}
+
+\subsection{Types of Attacks}\label{subsec:Attack_Types}
+There are 2 main types of attacks:
+\begin{enumerate}[noitemsep]
+\item Ciphertext-only: A ciphertext-only attack is an attack in which the enemy has access to the ciphertext $\Ciphertexts$ and tries to recover the plaintext $\Plaintexts$ or the key $K$.
+\item Known Plaintext: A known-plaintext attack is an attack in which the enemy has access to not only the ciphertext, $\Ciphertexts$, but may also have some or all of the $\Plaintexts$, and is trying to recover the key $K$.
+\end{enumerate}
 
 \subsection{The Caesar Cipher}\label{subsec:The_Caesar_Cipher}
 %%% Local Variables:
