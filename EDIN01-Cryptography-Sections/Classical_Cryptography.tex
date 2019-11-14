@@ -195,6 +195,65 @@ We could try matching the most common letters present in the \nameref{def:Cipher
 However, these 1-grams are only good for the most common letters in the English \nameref{def:Alphabet}.
 
 If we take use n-grams we will have better luck, because there is a dependence between consecutive letters.
+
+\subsection{Polyalphabetic Ciphers}\label{subsec:Polyalphabetic_Ciphers}
+Polyalphabetic ciphers operate differently on different portions of the \nameref{def:Plaintext}.
+
+The simplist \nameref{def:Polyalphabetic_Cipher} is a number of \nameref{def:Monoalphabetic_Cipher}s with different keys are used sequentially, the cyclically repeated.
+\nameref{subsubsec:The_Vigenere_Cipher} is one example of this kind of cipher.
+
+\subsubsection{The Vigen\'{e}re Cipher}\label{subsubsec:The_Vigenere_Cipher}
+Cyclically uses $t$ Caesar ciphers, where $t$ is the period of the cipher.
+
+The \nameref{def:Encryption_Rule} maps the \nameref{def:Plaintext} message $\Message = m_{1},m_{2},\ldots$ to the \nameref{def:Ciphertext} $\CipherMessage = c_{1},c_{2},\ldots$ through
+\begin{equation}\label{eq:The_Vigenere_Cipher-Encryption}
+  \CipherMessage = e_{\mathbf{K}} (m_{1}, m_{2}, \ldots, m_{t} ), e_{\mathbf{K}} (m_{t+1}, m_{t+2}, \ldots, m_{t+t}),\ldots
+\end{equation}
+where
+\begin{equation*}
+  e_{\mathbf{K}} (m_{1}, m_{2}, \ldots, m_{t}) = (m_{1}+k_{1}, m_{2}+k_{2}, \ldots, m_{t}+k_{t})
+\end{equation*}
+and $\mathbf{K}$ consists of $t$ characters $\mathbf{K} = (k_{1}, k_{2}, \ldots, k_{t})$.
+
+\begin{remark*}
+  The key, $\mathbf{K}$ is often chosen to be a word, called a keyword.
+\end{remark*}
+
+\begin{example}[Lecture 4]{Encryption Using The Vigenere Cipher}
+  The \nameref{def:Plaintext} \texttt{youmustvisitmetonight} is to be encrypted using a Vigen\'{e}re Cipher, with a period 4, where $\mathbf{K} = \mathtt{lucy}$.
+  \tcblower{}
+  \begin{center}
+    \begin{tabular}{ccccccccccccccccc}
+      \toprule
+      \texttt{y} &  \texttt{o} &  \texttt{u} &  \texttt{m} &  \texttt{u} &  \texttt{s} &  \texttt{t} &  \texttt{v} &  \texttt{i} &  \texttt{s} &  \texttt{i} &  \texttt{t} &  \texttt{m} &  \texttt{e} &  \texttt{t} &  \texttt{o} &  $\cdots$ \\
+      \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  $\cdots$ \\
+      \texttt{l} &  \texttt{u} &  \texttt{c} &  \texttt{y} &  \texttt{l} &  \texttt{u} &  \texttt{c} &  \texttt{y} &  \texttt{l} &  \texttt{u} &  \texttt{c} &  \texttt{y} &  \texttt{l} &  \texttt{u} &  \texttt{c} &  \texttt{y} &  $\cdots$ \\
+      \midrule
+      \texttt{j} &  \texttt{i} &  \texttt{w} &  \texttt{k} &  \texttt{f} &  \texttt{m} &  \texttt{v} &  \texttt{t} &  \texttt{t} &  \texttt{m} &  \texttt{k} &  \texttt{r} &  \texttt{x} &  \texttt{y} &  \texttt{v} &  \texttt{m} &  $\cdots$ \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  The resulting \nameref{def:Ciphertext} is \texttt{jiwkfmvttmkrxyvm}.
+\end{example}
+
+\paragraph{\nameref*{def:Cryptanalysis} of \nameref*{subsubsec:The_Vigenere_Cipher}}\label{par:Cryptanalysis_Vigenere_Cipher}
+There are 2 steps to breaking \nameref{subsubsec:The_Vigenere_Cipher}:
+\begin{enumerate}[noitemsep]
+\item Determine the period of the cipher, $t$. Generally, \nameref{def:Kasiskis_Method} is used.
+\item Reconstruct the $t$ different \nameref{subsec:Simple_Substitution_Cipher} \nameref{def:Alphabet}s used.
+\end{enumerate}
+
+\begin{definition}[Kasiski's Method]\label{def:Kasiskis_Method}
+  \emph{Kasiski's Method} relies on the observation that repeated portions of \nameref{def:Plaintext} input will yield a repeating \nameref{def:Ciphertext} output, with some cyclic distance, $t$ between each occurrence.
+  This distance will be a multiple of the keyword length.
+
+  To solve this, you calculate the \nameref{def:GCD} of these distances.
+\end{definition}
+
+Now we move onto the second part of breaking \nameref{subsubsec:The_Vigenere_Cipher}.
+Split the \nameref{def:Ciphertext} characters into $t$ different multisets, where each character should have been shifted according to a Simple Substitution Cipher.
+The key of each \nameref{def:Monoalphabetic_Cipher} can be determined with the statistics in \Cref{tab:Frequency_Letters_English_Alphabet} and some trial-and-error.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
