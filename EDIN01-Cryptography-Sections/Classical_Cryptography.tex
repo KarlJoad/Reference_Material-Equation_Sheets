@@ -161,6 +161,40 @@ The Caesar Cipher can be broken with an \emph{exhaustive key search}.
   So, the key used in this Caesar Cipher was $K=3$, and the message was \texttt{thisisamessagetoyou}.
 \end{example}
 
+\subsection{The Simple Substitution Cipher}\label{subsec:Simple_Substitution_Cipher}
+The Simple Substitution Cipher operates on the individual characters in $\Plaintexts$.
+However, the key, $K$ is now an arbitrary permutation of the characters.
+
+The set of all permutations on \TextIntsMod{26} is written as
+\begin{equation*}
+  \EncryptionRules = \lbrace \pi_{1}, \pi_{2}, \ldots, \pi_{\SetOrder{\Keyspace}} \rbrace
+\end{equation*}
+
+The keyspace, $\Keyspace$ for this cipher is:
+\begin{equation*}
+  \begin{aligned}
+    \Keyspace &= \lbrace 0, 1, 2, \ldots, 26!-1 \rbrace \\
+    \SetOrder{\Keyspace} &= 26!
+  \end{aligned}
+\end{equation*}
+
+The \nameref{def:Encryption_Rule} for this cipher is:
+\begin{equation}\label{eq:Simple_Substitution_Cipher-Encryption}
+  e_{K}(m) = \pi_{K}(m)
+\end{equation}
+
+The \nameref{def:Decryption_Rule} for this cipher's output is:
+\begin{equation}\label{eq:Simple_Substitution_Cipher-Decryption}
+  d_{K}(c) = \pi_{k}^{-1}(c)
+\end{equation}
+
+\subsubsection{\nameref*{def:Cryptanalysis} of \nameref*{subsec:Simple_Substitution_Cipher}}\label{subsubsec:Cryptanalysis_Simple_Substitution_Cipher}
+We could attemp to perform an exhaustive key search, but because the keyspace is all integers from 0 to $26!-1$, which is incredibly large, it makes more sense to exploit the statistical nature of the plaintext source.
+
+We could try matching the most common letters present in the \nameref{def:Ciphertext} against the most common letter in the \nameref{def:Plaintext} \nameref{def:Alphabet}, using \Cref{tab:Frequency_Letters_English_Alphabet}.
+However, these 1-grams are only good for the most common letters in the English \nameref{def:Alphabet}.
+
+If we take use n-grams we will have better luck, because there is a dependence between consecutive letters.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
