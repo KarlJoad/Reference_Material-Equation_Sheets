@@ -458,6 +458,218 @@ There are 2 ways these lists can be constructed:
 [x * x for x in range(1, 11, 1)]
 \end{minted}
 \end{definition}
+\subsection{Arrays}\label{subsec:Arrays}
+\begin{definition}[Array]\label{def:Array}
+  An \emph{array} is \textbf{TODO}.
+\end{definition}
+
+\subsection{Associative Arrays}\label{subsec:Associative_Arrays}
+\begin{definition}[Associative Array]\label{def:Associative_Array}
+  An \emph{associative array} is an unordered collection of data elements that are indexed by an equal number of values, called \emph{keys}.
+  The user-defined keys must be stored in the structure, along with the values to be stored.
+
+  To store the keys, they must be \emph{hashed}.
+  This is done with a hash function.
+
+  \begin{remark}[Alternative Names]
+    There are many alternative names for \nameref{def:Associative_Array}s.
+    \begin{itemize}[noitemsep]
+    \item Hashtable
+    \item Hashmap
+    \item \nameref{def:Associative_Array}
+    \item Dictionary
+    \end{itemize}
+  \end{remark}
+
+  \begin{remark}[Improving Capabilities]
+    What the associative array/dictionary/hashtable are allowed to store depends on the language.
+    In Python and Ruby, objects and \nameref{def:Primitive_Data_Type}s can be stored.
+    In PHP, integers or strings can be keys.
+    In Ruby, any object can be a key.
+  \end{remark}
+\end{definition}
+
+\subsubsection{Structure and Operations}\label{subsubsec:Structure_and_Ops_Associative_Arrays}
+The code examples here are done in Perl, but it is similar in most other languages.
+For more specific code, you will have to visit the language's documentation.
+\begin{minted}[frame=lines,linenos]{perl}
+# Defining an associative array
+%salaries = ("Gary" => 75000, "Perry" => 57000, "Mary" => 55750);
+
+# Switch from % for hash to $ for single values in the hash
+# That should be a dollar sign, not a Stirling Pound symbol
+
+# Changing a value in the associative array
+$salaries{"Perry"} = 58850;
+
+# Removing a key-value pair from the associative array
+delete $salaries{"Gary"};
+\end{minted}
+
+The size of a Perl \nameref{def:Associative_Array} is dynamic and will grow and shrink as needed.
+
+\nameref{def:Associative_Array}s are very useful if there is a lot of searching that needs to be done, because the hashing of the key, then the search term allows for $O(1)$ lookup speeds for an element located anywhere in the \nameref{def:Associative_Array}.
+
+\subsubsection{Implementing \nameref*{subsec:Associative_Arrays}}\label{subsubsec:Implementing_Associative_Arrays}
+The implementation for an \nameref{def:Associative_Array} differs between languages.
+However, in all languages, eventually the \nameref{def:Associative_Array} can get ``full''.
+This is when the collision chance of 2 hashes modulo the length of the structure gets too high.
+This means that if an element is already stored, and something new were hashed and modulo-d the length of the structure, there is a very high probability that the new element would ``collide'' with the old one.
+
+To handle this, \nameref{def:Associative_Array}s are grown.
+Every key-value pair will need to have their key recalculated.
+This is a slightly time-costly operation, $O(n)$, but the spatial-cost is much higher, because there are 2 potentially very large arrays in memory at the same time.
+
+\subsection{Record Types}\label{subsec:Record_Data_Types}
+\begin{definition}[Record]\label{def:Record_Data_Type}
+  A \emph{record} is an aggregate of data elements in which the individual elements are identified by names and accessed through offsets from the beginning of the structure, similar to arrays.
+  The offset from the head of the record to reach any \nameref{def:Record_Data_Type_Field} is known statically, because the sizes and \nameref{def:Variable_Type}s are known at compile time.
+
+  Records are used to model a collection of data in which the individual elements, the \nameref{def:Record_Data_Type_Field}s are not of the same \nameref{def:Variable_Type} or size.
+
+  \begin{remark}[Clarification]
+    An important clarification here is that the \nameref{def:Record_Data_Type}, defined in \Cref{def:Record_Data_Type} is \textbf{NOT} a record in a database \textbf{in any way}.
+  \end{remark}
+
+  \begin{remark}
+    A \nameref{def:Record_Data_Type} is similar to a heterogeneous array, but they differ in one key way.
+    A heterogeneous array is an array of pointers to areas of \nameref{def:Memory} that may be discontinuous.
+    However, all the \nameref{def:Record_Data_Type_Field}s in a \nameref{def:Record_Data_Type} all reside in adjacent \nameref{def:Memory} locations.
+  \end{remark}
+
+  \begin{remark}[\nameref*{def:Record_Data_Type} vs. Object]
+    A \nameref{def:Record_Data_Type} and an object are quite similar.
+    However, the differences between them depend on the language.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Field]\label{def:Record_Data_Type_Field}
+  A \emph{field} is an element a \nameref{def:Record_Data_Type}.
+  These are fixed length, with fixed \nameref{def:Variable_Type}, meaning the \nameref{def:Memory} address can be statically calculated to reach any \nameref{def:Record_Data_Type_Field} in the \nameref{def:Record_Data_Type}.
+
+  Fields are referenced by their identifier, rather than an index.
+\end{definition}
+
+\subsubsection{Definitions of \nameref*{def:Record_Data_Type}s}\label{subsubsec:Definitions_of_Records}
+There are 2 design questions that need to be asked when defining \nameref{def:Record_Data_Type}s.
+\begin{enumerate}[noitemsep]
+\item What is the syntactic form of references to \nameref{def:Record_Data_Type_Field}s?
+\item Are elliptical references allowed?
+\end{enumerate}
+
+Below are 2 blocks of code, the first from COBOL, the second from Ada.
+Both describe an employee.
+
+\begin{minted}[frame=lines,linenos]{cobol}
+01  EMPLOYEE-RECORD.
+    02 EMPLOYEE-NAME.
+       05 FIRST      PICTURE IS X(20).
+       05 MIDDLE     PICTURE IS X(20).
+       05 LAST       PICTURE IS X(20).
+    02 HOURLY-RATE   PICTURE IS 99V99.
+\end{minted}
+The numbers \texttt{01}, \texttt{02}, and \texttt{05} are \emph{level numbers}, which indicate relative hierarchical values.
+Any line that is followed by a line with a higher-level number is itself a record.
+\texttt{PICTURE} clauses show the formats of the storage locations.
+\texttt{X(20)} is a 20 character alphanumeric string and \texttt{99V99} is a 4 decimal digit number with the dcimal in the middle.
+
+However, Ada does not have the level numbers like COBOL, so they allow for nesting \nameref{def:Record_Data_Type} structures inside \nameref{def:Record_Data_Type} declarations.
+\begin{minted}[frame=lines,linenos]{ada}
+type Employee_Name_Type is record
+   First : String (1..20);
+   Middle : String (1..20);
+   Last : String (1..20);
+end record;
+type Employee_Record_Type is record   Employee_Name: Employee_Name_Type;
+   Hourly_Rate: Float;
+end record;
+Employee_Record: Employee_Record_Type;
+\end{minted}
+
+In Java and C\#, \nameref{def:Record_Data_Type}s can be defined as data classes, whith nested \nameref{def:Record_Data_Type}s defined as nested classes.
+Lua's tables serve this purpose.
+
+\subsubsection{References to \nameref*{def:Record_Data_Type} \nameref*{def:Record_Data_Type_Field}s}\label{subsubsec:References_to_Record_Fields}
+There are many ways to refer to individual \nameref{def:Record_Data_Type_Field}s.
+We will look at the way COBOL referenced \nameref{def:Record_Data_Type_Field}s, and the \nameref{def:Record_Data_Type_Field_Access-Dot_Notation}.
+
+\begin{definition}[Dot Notation]\label{def:Record_Data_Type_Field_Access-Dot_Notation}
+  Most programming languages use \emph{dot notation} for \nameref{def:Record_Data_Type_Field} references, where components necessary to reach the \nameref{def:Record_Data_Type_Field} are connected with periods.
+  The outermost \nameref{def:Record_Data_Type} goes on the left, and gets more specific as it grows to the right.
+\end{definition}
+
+There are 2 examples below of accessing the middle name of the Employee \nameref{def:Record_Data_Type}s we made in the previous section.
+
+\begin{minted}[frame=lines,linenos]{cobol}
+MIDDLE OF EMPLOYEE-NAME OF EMLOYEE-RECORD
+\end{minted}
+
+\begin{minted}[frame=lines,linenos]{ada}
+Employee_Record.Employee_Name.Middle;
+\end{minted}
+
+There are 2 ways to make a reference to a \nameref{def:Record_Data_Type} \nameref{def:Record_Data_Type_Field}.
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Fully_Qualified_Reference}s
+\item \nameref{def:Elliptical_Reference}s
+\end{enumerate}
+
+\begin{definition}[Fully Qualified Reference]\label{def:Fully_Qualified_Reference}
+  A \emph{fully qualified reference} to a record field is one in which to access a \nameref{def:Record_Data_Type_Field}, the programmer \textbf{MUST} specify all intermediate \nameref{def:Record_Data_Type}s to go through.
+
+  An alternative to fully qualified reference is the \nameref{def:Elliptical_Reference}.
+\end{definition}
+
+\begin{definition}[Elliptical Reference]\label{def:Elliptical_Reference}
+  An \emph{elliptical reference} allows a programmer to specify the \nameref{def:Record_Data_Type_Field} and omit any to all parent \nameref{def:Record_Data_Type}s; so long as the resulting reference in unambiguous in the referencing environment (the \nameref{def:Variable_Scope}).
+
+  These are a programmer convenience, but are \textbf{incredibly} difficult to compile, because of the alaborate data structures and procedures required to correctly identify the referenced field.
+  There is also a slight loss of \nameref{subsec:Readability}.
+\end{definition}
+
+\subsubsection{Evaluation of \nameref*{subsec:Record_Data_Types}}\label{subsubsec:Evaluation_of_Record_Types}
+\nameref{def:Record_Data_Type}s are valuable to programming and programming languages.
+Their design is straightforward and use is safe.
+
+\nameref{def:Record_Data_Type}s and \nameref{def:Array}s are quite similar, but differ in some key ways
+\begin{itemize}[noitemsep]
+\item \nameref{def:Array}s:
+  \begin{itemize}[noitemsep]
+  \item All data values have the same \nameref{def:Variable_Type}. This allows for easy subscripting of \nameref{def:Memory} addresses
+  \end{itemize}
+\item \nameref{def:Record_Data_Type}
+  \begin{itemize}[noitemsep]
+  \item When the collection of data values is heterogeneous
+  \item The different data \nameref{def:Record_Data_Type_Field}s are not processes the same way
+  \item The \nameref{def:Record_Data_Type_Field}s are not processed in any particular order
+  \item \nameref{def:Record_Data_Type_Field}s are like named subscripts
+  \item Since \nameref{def:Record_Data_Type_Field} names are static, they provide efficient access to fields.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Implementation of \nameref*{subsec:Record_Data_Types}}\label{subsubsec:Implementation_of_Record_Types}
+The \nameref{def:Record_Data_Type_Field}s of \nameref{def:Record_Data_Type}s are stored in adjacent \nameref{def:Memory} locations.
+But because each \nameref{def:Record_Data_Type_Field} may be of a different size, the offset address, relative to the beginning of the \nameref{def:Record_Data_Type} is associated with each field.
+These are calculated at compile-time.
+This way, there are no runtime calculations that need to be done.
+
+\subsection{Tuple Types}\label{subsec:Tuple_Types}
+\begin{definition}[Tuple]\label{def:Tuple}
+  A \emph{tuple} is a \nameref{def:Variable_Type} that is similar to a \nameref{def:Record_Data_Type}, except the elements are \textbf{not} named.
+
+  \begin{remark}
+    \nameref{def:Tuple}s can be used to return multiple values from a function in languages that do not natively support that.
+  \end{remark}
+
+  \begin{remark}
+    Python natively supports these.
+    These behave similarly to \nameref{def:List}s, but are immutable.
+  \end{remark}
+\end{definition}
+
+\begin{minted}[frame=lines,linenos]{python3}
+myTuple = (3, 5.8, 'apple')
+\end{minted}
 
 %%% Local Variables:
 %%% mode: latex
