@@ -18,9 +18,9 @@ It is called the \emph{\nameref{tab:Formal_Grammar_Hierarchy}}.
     \toprule
     Grammar & Rule Patterns & Type \\
     \midrule
-    Regular & $X \rightarrow a Y$ or $X \rightarrow a$ or $X \rightarrow \epsilon$ & 3 \\
-    Context-Free & $X \rightarrow \gamma$ & 2 \\
-    Context-Sensitive & $\alpha X \beta \rightarrow \alpha \gamma \beta$ & 1 \\
+    Regular & $\Nonterminal{X} \rightarrow a \Nonterminal{Y}$ or $\Nonterminal{X} \rightarrow a$ or $\Nonterminal{X} \rightarrow \epsilon$ & 3 \\
+    Context-Free & $\Nonterminal{X} \rightarrow \gamma$ & 2 \\
+    Context-Sensitive & $\alpha \Nonterminal{X} \beta \rightarrow \alpha \gamma \beta$ & 1 \\
     Arbitrary & $\gamma \rightarrow \delta$ & 0 \\
     \bottomrule
   \end{tabular}
@@ -45,8 +45,8 @@ This only allowed for one production per line, and did not support options, repe
 
   \begin{equation}\label{eq:CFG_Canonical_Form}
     \begin{aligned}
-      A &\rightarrow B \; d \; e \; C \; f \\
-      A &\rightarrow g \; A \\
+      \Nonterminal{A} &\rightarrow \Nonterminal{B} \; d \; e \; C \; f \\
+      \Nonterminal{A} &\rightarrow g \; \Nonterminal{A} \\
     \end{aligned}
   \end{equation}
 
@@ -67,7 +67,7 @@ When John Backus was working on ALGOL 58, his published paper used a new formal 
 
   For example, \Cref{eq:CFG_BNF_Form} is equivalent to \Cref{eq:CFG_Canonical_Form}.
   \begin{equation}\label{eq:CFG_BNF_Form}
-    A \rightarrow B \; d \; e \; C \; f \: \vert \: g\; A
+    \Nonterminal{A} \rightarrow \Nonterminal{B} \; d \; e \; \Nonterminal{C} \; f \: \vert \: g\; \Nonterminal{A}
   \end{equation}
 \end{definition}
 
@@ -121,7 +121,7 @@ These extensions have been formalized and called \nameref{def:CFG_EBNF_Form}.
   \item $T$, the set of \nameref{def:Terminal_Symbol}s
   \item $P$, the set of production rules, each with the form
     \begin{equation*}
-      X \rightarrow Y_{1} Y_{2} \ldots Y_{n} \: \text{where } X \in N, x \geq 0, \text{and } Y_{k} \in N \cup T
+      \MathNonterminal{X} \rightarrow \MathNonterminal{Y_{1}} \MathNonterminal{Y_{2}} \ldots \MathNonterminal{Y_{n}} \: \text{where } \MathNonterminal{X} \in N, x \geq 0, \text{and } \MathNonterminal{Y_{k}} \in N \cup T
     \end{equation*}
   \item $S$, the start symbol (one of the \nameref{def:Nonterminal_Symbol}s, $N$). $S \in N$.
   \end{itemize}
@@ -137,7 +137,7 @@ These extensions have been formalized and called \nameref{def:CFG_EBNF_Form}.
 
   The are denoted as shown below:
   \begin{equation}\label{eq:Production}
-    p_{0}: A \rightarrow \alpha
+    p_{0}: \Nonterminal{A} \rightarrow \alpha
   \end{equation}
 
   \begin{remark}
@@ -183,15 +183,15 @@ What this allows us to do is combine multiple \nameref{def:Production}s that hav
 For example,
 \begin{equation}\label{eq:Multiple_Productions_Multiple_Lines}
   \begin{aligned}
-    <\text{if stmt}> &\rightarrow \mathtt{if} ( <\text{logic expr}> ) <\text{stmt}> \\
-    <\text{if stmt}> &\rightarrow \mathtt{if} ( <\text{logic expr}> ) <\text{stmt}> \mathtt{else} <\text{stmt}> \\
+    \Nonterminal{if stmt} &\rightarrow \mathtt{if} \Bigl( \Nonterminal{logic expr} \Bigr) \Nonterminal{stmt} \\
+    \Nonterminal{if stmt} &\rightarrow \mathtt{if} \Bigl( \Nonterminal{logic expr} \Bigr) \Nonterminal{stmt} \; \mathtt{else} \; \Nonterminal{stmt} \\
   \end{aligned}
 \end{equation}
 can be combined to
 \begin{equation}\label{eq:Multiple_Productions_One_Line}
   \begin{aligned}
-    <\text{if stmt}> \rightarrow &\mathtt{if} ( <\text{logic expr}> ) <\text{stmt}> \\
-    \vert &\mathtt{if} ( <\text{logic expr}> ) <\text{stmt}> \mathtt{else} <\text{stmt}>
+    \Nonterminal{if stmt} \rightarrow &\mathtt{if} \Bigl( \Nonterminal{logic expr} \Bigr) \Nonterminal{stmt} \\
+    \vert &\mathtt{if} \Bigl( \Nonterminal{logic expr} \Bigr) \Nonterminal{stmt} \; \mathtt{else} \; \Nonterminal{stmt}
   \end{aligned}
 \end{equation}
 
@@ -202,8 +202,8 @@ This recursive property is useful for constructing variable-length lists.
 This is a small extension of using \nameref{subsubsec:Multiple_Productions_One_Line}.
 \begin{equation}\label{eq:Describing_Lists}
   \begin{aligned}
-    <\text{ident list}> \rightarrow &\text{identifier} \\
-    \vert &\text{identifier}, <\text{ident list}> \\
+    \Nonterminal{ident list} \rightarrow &\text{identifier} \\
+    \vert &\text{identifier}, \Nonterminal{ident list} \\
   \end{aligned}
 \end{equation}
 
@@ -216,12 +216,12 @@ This is a small extension of using \nameref{subsubsec:Multiple_Productions_One_L
 \begin{example}[]{Left-Most Derivation}
   Perform a \nameref{def:Leftmost_Derivation} of the sentence
   \begin{equation*}
-    \mathtt{begin} A = B + C ; B = C \mathtt{end}
+    \mathtt{begin} \; A = B + C ; \: B = C \; \mathtt{end}
   \end{equation*}
 
   With the grammar
   \begin{align*}
-    \Nonterminal{program} \rightarrow &\mathtt{begin} \Nonterminal{stmt list} \mathtt{end} \\
+    \Nonterminal{program} \rightarrow &\mathtt{begin} \; \Nonterminal{stmt list} \; \mathtt{end} \\
     \Nonterminal{stmt list} \rightarrow &\Nonterminal{stmt} \\
                           \vert &\Nonterminal{stmt} ; \Nonterminal{stmt list} \\
     \Nonterminal{stmt} \rightarrow &\Nonterminal{var} = \Nonterminal{expression} \\
@@ -232,17 +232,17 @@ This is a small extension of using \nameref{subsubsec:Multiple_Productions_One_L
   \end{align*}
   \tcblower{}
   \begin{align*}
-    \Nonterminal{program} &\Rightarrow \mathtt{begin} \Nonterminal{stmt list} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{var} \: = \: \Nonterminal{expression}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \:\: A \: = \: \Nonterminal{expression}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \:\: A \: = \: \Nonterminal{var} + \Nonterminal{var}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \:\: A = B + \Nonterminal{var}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: \Nonterminal{stmt} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: \Nonterminal{var} = \Nonterminal{expression} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: B = \Nonterminal{expression} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: B = \Nonterminal{var} \mathtt{end} \\
+    \Nonterminal{program} &\Rightarrow \mathtt{begin} \:\: \Nonterminal{stmt list} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{stmt}\: ; \: \Nonterminal{stmt list} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{var} \: = \: \Nonterminal{expression}\: ; \: \Nonterminal{stmt list} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A \: = \: \Nonterminal{expression}\: ; \: \Nonterminal{stmt list} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A \: = \: \Nonterminal{var} + \Nonterminal{var}\: ; \: \Nonterminal{stmt list} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + \Nonterminal{var}\: ; \: \Nonterminal{stmt list} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: \Nonterminal{stmt list} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: \Nonterminal{stmt} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: \Nonterminal{var} = \Nonterminal{expression} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: B = \Nonterminal{expression} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: B = \Nonterminal{var} \:\: \mathtt{end} \\
                           &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: B = C \:\: \mathtt{end} 
   \end{align*}
 \end{example}
@@ -265,12 +265,12 @@ Both types of \nameref{def:Derivation}, \nameref{def:Leftmost_Derivation} and \n
 \begin{example}[]{Right-Most Derivation}
   Perform a \nameref{def:Rightmost_Derivation} of the sentence
   \begin{equation*}
-    \mathtt{begin} A = B + C ; B = C \mathtt{end}
+    \mathtt{begin} \; A = B + C ; \: B = C \; mathtt{end}
   \end{equation*}
 
   With the grammar
   \begin{align*}
-    \Nonterminal{program} \rightarrow &\mathtt{begin} \Nonterminal{stmt list} \mathtt{end} \\
+    \Nonterminal{program} \rightarrow &\mathtt{begin} \; \Nonterminal{stmt list} \; \mathtt{end} \\
     \Nonterminal{stmt list} \rightarrow &\Nonterminal{stmt} \\
                           \vert &\Nonterminal{stmt} ; \Nonterminal{stmt list} \\
     \Nonterminal{stmt} \rightarrow &\Nonterminal{var} = \Nonterminal{expression} \\
@@ -281,17 +281,17 @@ Both types of \nameref{def:Derivation}, \nameref{def:Leftmost_Derivation} and \n
   \end{align*}
   \tcblower{}
   \begin{align*}
-    \Nonterminal{program} &\Rightarrow \mathtt{begin} \Nonterminal{stmt list} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt}\: ; \: \Nonterminal{stmt list} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt} \: ; \: \Nonterminal{stmt} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt} \: ; \: \Nonterminal{var} = \Nonterminal{expression} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt} \: ; \: \Nonterminal{var} = \Nonterminal{var} \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt} \: ; \: \Nonterminal{var} = C \:\: \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{stmt} \: ; \: B = C \:\: \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{var} \: = \: \Nonterminal{expression} \: ; \: B = C \:\: \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{var} \: = \: \Nonterminal{var} \: + \: \Nonterminal{var} \: ; \: B = C \:\: \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{var} \: = \: \Nonterminal{var} \: + C \: ; \: B = C \:\: \mathtt{end} \\
-                          &\Rightarrow \mathtt{begin} \Nonterminal{var} \: = \: B + C \: ; \: B = C \:\: \mathtt{end} \\
+    \Nonterminal{program} &\Rightarrow \mathtt{begin} \:\: \Nonterminal{stmt list} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{stmt}\: ; \: \Nonterminal{stmt list} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{stmt} \: ; \: \Nonterminal{stmt} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{stmt} \: ; \: \Nonterminal{var} = \Nonterminal{expression} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{stmt} \: ; \: \Nonterminal{var} = \Nonterminal{var} \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{stmt} \: ; \: \Nonterminal{var} = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{stmt} \: ; \: B = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{var} \: = \: \Nonterminal{expression} \: ; \: B = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{var} \: = \: \Nonterminal{var} \: + \: \Nonterminal{var} \: ; \: B = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{var} \: = \: \Nonterminal{var} \: + C \: ; \: B = C \:\: \mathtt{end} \\
+                          &\Rightarrow \mathtt{begin} \:\: \Nonterminal{var} \: = \: B + C \: ; \: B = C \:\: \mathtt{end} \\
                           &\Rightarrow \mathtt{begin} \:\: A = B + C\: ; \: B = C \:\: \mathtt{end} 
   \end{align*}
 \end{example}
@@ -307,11 +307,11 @@ Every internal node is labeled with a \nameref{def:Nonterminal_Symbol} and every
   The grammar below is ambiguous because there are multiple ways to parse the string: ``\texttt{statement;statement;statement}''.
   \begin{equation}\label{eq:Ambiguous}
     \begin{aligned}
-      p_{0} &: \text{start} \rightarrow \text{program } \$ \\
-      p_{1} &: \text{program} \rightarrow \text{statement} \\
-      p_{2} &: \text{statement} \rightarrow \text{statement ``;'' statement} \\
-      p_{3} &: \text{statement} \rightarrow \text{ID ``='' INT} \\
-      p_{4} &: \text{statement} \rightarrow \epsilon \\
+      p_{0} &: \Nonterminal{start} \rightarrow \Nonterminal{program} \$ \\
+      p_{1} &: \Nonterminal{program} \rightarrow \Nonterminal{statement} \\
+      p_{2} &: \Nonterminal{statement} \rightarrow \Nonterminal{statement ``;'' statement} \\
+      p_{3} &: \Nonterminal{statement} \rightarrow \text{ID ``='' INT} \\
+      p_{4} &: \Nonterminal{statement} \rightarrow \epsilon \\
     \end{aligned}
   \end{equation}
 \end{definition}
@@ -322,10 +322,10 @@ This can be represented with the \nameref{def:Production}s shown in \Cref{eq:Dan
 \begin{equation}\label{eq:Dangling_if-else}
   \begin{aligned}
     \Nonterminal{stmt} \rightarrow &\Nonterminal{matched} \: \vert \: \Nonterminal{unmatched} \\
-    \Nonterminal{matched} \rightarrow &\mathtt{if} \Nonterminal{logic expr} \mathtt{then} \Nonterminal{matched} \mathtt{else} \Nonterminal{matched} \\
+    \Nonterminal{matched} \rightarrow &\mathtt{if} \; \Nonterminal{logic expr} \; \mathtt{then} \; \Nonterminal{matched} \; \mathtt{else} \; \Nonterminal{matched} \\
     \vert \: &\text{any non-if statement} \\\
-    \Nonterminal{unmatched} \rightarrow &\mathtt{if} \Nonterminal{logic expr} \mathtt{then} \Nonterminal{stmt} \\
-    \vert \: &\mathtt{if} \Nonterminal{logic expr} \mathtt{then} \Nonterminal{matched} \mathtt{else} \Nonterminal{unmatched}
+    \Nonterminal{unmatched} \rightarrow &\mathtt{if} \; \Nonterminal{logic expr} \; \mathtt{then} \; \Nonterminal{stmt} \\
+    \vert \: &\mathtt{if} \; \Nonterminal{logic expr} \; \mathtt{then} \; \Nonterminal{matched} \; \mathtt{else} \; \Nonterminal{unmatched}
   \end{aligned}
 \end{equation}
 
