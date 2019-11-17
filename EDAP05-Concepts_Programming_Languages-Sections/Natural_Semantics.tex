@@ -39,20 +39,20 @@ We will also assume that ambiguities have been resolved, somehow.
   \begin{equation}\label{eq:DivAdd_Grammar}
     \begin{aligned}
       \Nonterminal{expr} &\rightarrow nat \\
-      &\vert \Nonterminal{expr} \textcolor{Green4}{\mathtt{+}} \Nonterminal{expr} \\
-      &\vert \Nonterminal{expr} \textcolor{Green4}{\mathtt{div}} \Nonterminal{expr} \\
+      &\vert \Nonterminal{expr} \; \SemanticInput{\mathtt{+}} \; \Nonterminal{expr} \\
+      &\vert \Nonterminal{expr} \; \SemanticInput{\mathtt{div}} \; \Nonterminal{expr} \\
     \end{aligned}
   \end{equation}
 \end{blackbox}
 
 Let's start with the programming language specified by the \nameref{def:Context_Free_Grammar} below.
 \begin{equation*}
-  \Nonterminal{W} \rightarrow \textcolor{Green4}{\mathtt{ett}} \vert \textcolor{Green4}{\text{\texttt{tv\r{a}}}} \vert \textcolor{Green4}{\mathtt{tre}}
+  \Nonterminal{W} \rightarrow \SemanticInput{\mathtt{ett}} \vert \SemanticInput{\text{\texttt{tv\r{a}}}} \vert \SemanticInput{\mathtt{tre}}
 \end{equation*}
 This allows only 3 programs, each of which is a single word in Swedish.
 We can define the semantics (attach meaning) with the following rules:
 \begin{align*}
-  \textcolor{Green4}{\mathtt{ett}} &\EvaluatesTo 1 & \textcolor{Green4}{\text{\texttt{tv\r{a}}}} &\EvaluatesTo 2 & \textcolor{Green4}{\mathtt{tre}} &\EvaluatesTo 3 \\
+  \SemanticInput{\mathtt{ett}} &\EvaluatesTo 1 & \SemanticInput{\text{\texttt{tv\r{a}}}} &\EvaluatesTo 2 & \SemanticInput{\mathtt{tre}} &\EvaluatesTo 3 \\
 \end{align*}
 
 \subsection{Ambiguous Semantics}\label{subsec:Ambiguous_Semantics}
@@ -60,11 +60,11 @@ Just like in \nameref{def:Context_Free_Grammar}s, there can be ambiguities in \n
 They occur when there is more than 1 specification for a symbol.
 For example,
 \begin{equation*}
-  \Nonterminal{Q} \rightarrow \textcolor{Green4}{\mathtt{eins}} \vert \textcolor{Green4}{\mathtt{zwei}} \vert \textcolor{Green4}{\mathtt{?}}
+  \Nonterminal{Q} \rightarrow \SemanticInput{\mathtt{eins}} \; \vert \; \SemanticInput{\mathtt{zwei}} \; \vert \; \SemanticInput{\mathtt{?}}
 \end{equation*}
 with the \nameref{def:Semantics} below:
 \begin{align*}
-  \textcolor{Green4}{\mathtt{eins}} &\EvaluatesTo 1 & \textcolor{Green4}{\mathtt{zwei}} &\EvaluatesTo 2 & \textcolor{Green4}{\mathtt{?}} &\EvaluatesTo 0 & \textcolor{Green4}{\mathtt{?}} &\EvaluatesTo 3 \\
+  \SemanticInput{\mathtt{eins}} &\EvaluatesTo 1 & \SemanticInput{\mathtt{zwei}} &\EvaluatesTo 2 & \SemanticInput{\mathtt{?}} &\EvaluatesTo 0 & \SemanticInput{\mathtt{?}} &\EvaluatesTo 3 \\
 \end{align*}
 
 In this course, we are interested in unambiguous \nameref{def:Semantics}.
@@ -97,7 +97,7 @@ If we want to construct the addition in \Cref{eq:DivAdd_Grammar}, then we can wr
 A semantic specification is \emph{complete} when all possible cases have been defined, in some way.
 For example:
 \begin{equation}\label{eq:Incomplete_Semantic_Rule}
-  \frac{e_{1} \EvaluatesTo n_{1} \:\: e_{2} \EvaluatesTo n_{2}}{e_{1} \:\textcolor{Green4}{\mathtt{div}}\: e_{2} \EvaluatesTo \Bigl\lfloor \frac{n_{1}}{n_{2}} \Bigr\rfloor}
+  \frac{e_{1} \EvaluatesTo n_{1} \:\: e_{2} \EvaluatesTo n_{2}}{e_{1} \:\SemanticInput{\mathtt{div}}\: e_{2} \EvaluatesTo \Bigl\lfloor \frac{n_{1}}{n_{2}} \Bigr\rfloor}
 \end{equation}
 This rule ignores the case when $n_{2} = 0$, which means we divide by 0.
 In mathematics, this is an undefined operation.
@@ -117,22 +117,22 @@ There are 2 ways to solve this problem:
   Ignore the parentheses; those are only used to show that the 2 expressions are separate.
   Assume there is a process before applying the \nameref{def:Context_Free_Grammar} which handles the parentheses.
   \begin{align*}
-    \Nonterminal{expr} &\longrightarrow \textcolor{Green4}{\underline{\mathtt{num}}} \\
-                       &\vert \Nonterminal{expr} \textcolor{Green4}{+} \Nonterminal{expr} \\
-                       &\vert \, \textcolor{Green4}{\mathtt{\max}} \Nonterminal{expr} \Nonterminal{expr}
+    \Nonterminal{expr} &\longrightarrow \SemanticInput{\underline{\mathtt{num}}} \\
+                       &\vert \Nonterminal{expr} \SemanticInput{+} \Nonterminal{expr} \\
+                       &\vert \, \SemanticInput{\mathtt{\max}} \Nonterminal{expr} \Nonterminal{expr}
   \end{align*}
   \tcblower{}
   \textbf{NOTE}: Green will represent input to the rule and blue will represent rule output.
   When deriving statements with these rules, there may be additional colors to represent various values.
 
-  The easiest rule to define is the rule for \textcolor{Green4}{\underline{\texttt{num}}}.
+  The easiest rule to define is the rule for \SemanticInput{\underline{\texttt{num}}}.
   \begin{equation*}
-    \frac{\textcolor{Green4}{n} \in \textcolor{Green4}{\underline{\mathtt{num}}}}{\textcolor{Green4}{n} \EvaluatesTo \textcolor{Blue4}{n}} \textcolor{red}{(num)}
+    \frac{\SemanticInput{n} \in \SemanticInput{\underline{\mathtt{num}}}}{\SemanticInput{n} \EvaluatesTo \textcolor{Blue4}{n}} \textcolor{red}{(num)}
   \end{equation*}
 
   Next, we define the rule for the addition.
   \begin{equation*}
-    \frac{\textcolor{Orange3}{e_{1}} \in \Nonterminal{expr} \: \textcolor{Orange3}{e_{2}} \in \Nonterminal{expr} \: \textcolor{Orange3}{e_{1}} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: \textcolor{Orange3}{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{2}}}{\textcolor{Orange3}{e_{1}} \textcolor{Green4}{\mathtt{+}} \textcolor{Orange3}{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{1} + n_{2}}} \textcolor{red}{(add)}
+    \frac{\textcolor{Orange3}{e_{1}} \in \Nonterminal{expr} \: \textcolor{Orange3}{e_{2}} \in \Nonterminal{expr} \: \textcolor{Orange3}{e_{1}} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: \textcolor{Orange3}{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{2}}}{\textcolor{Orange3}{e_{1}} \SemanticInput{\mathtt{+}} \textcolor{Orange3}{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{1} + n_{2}}} \textcolor{red}{(add)}
   \end{equation*}
   \begin{remark*}
     In this case, the expression's rule actually returns the computed number from the expression $n_{1} + n_{2}$, rather than the 2 expressions added together (which would be had if we had written $e_{1} + e_{2}$ instead).
@@ -145,10 +145,10 @@ There are 2 ways to solve this problem:
   Now we have to define the \texttt{max} operation.
   In this case, we need 2 rules to specify the 2 cases, when the left expression is the relative maximum, and when the right expression is the relative maximum.
   \begin{equation*}
-    \frac{e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}} \: \textcolor{Blue4}{n_{1}} \geq \textcolor{Blue4}{n_{2}}}{\textcolor{Green4}{\mathtt{\max}} \: e_{1} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{1}}} \textcolor{red}{(\text{max left})}
+    \frac{e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}} \: \textcolor{Blue4}{n_{1}} \geq \textcolor{Blue4}{n_{2}}}{\SemanticInput{\mathtt{\max}} \: e_{1} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{1}}} \textcolor{red}{(\text{max left})}
   \end{equation*}
   \begin{equation*}
-    \frac{e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}} \: \textcolor{Blue4}{n_{1}} \leq \textcolor{Blue4}{n_{2}}}{\textcolor{Green4}{\mathtt{\max}} \: e_{1} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}}} \textcolor{red}{(\text{max right})}
+    \frac{e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}} \: \textcolor{Blue4}{n_{1}} \leq \textcolor{Blue4}{n_{2}}}{\SemanticInput{\mathtt{\max}} \: e_{1} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}}} \textcolor{red}{(\text{max right})}
   \end{equation*}
   \begin{remark*}
     Although the 2 equations for determining the relative maxima both have an equality aspect, in pure mathematics, that's fine.
@@ -164,23 +164,23 @@ There are 2 ways to solve this problem:
       % Expression 1 derivation
       \dfrac{
         % Expression 1 Left number Derivation
-        \dfrac{\textcolor{Green4}{1} \in \NaturalNumbers}{\textcolor{Green4}{1} \EvaluatesTo \textcolor{Purple2}{n_{1} = 1}} \textcolor{red}{(num)} \:\:
+        \dfrac{\SemanticInput{1} \in \NaturalNumbers}{\SemanticInput{1} \EvaluatesTo \textcolor{Purple2}{n_{1} = 1}} \textcolor{red}{(num)} \:\:
         % Expression 1 Right number derivation
-        \dfrac{\textcolor{Green4}{2} \in \NaturalNumbers}{\textcolor{Green4}{2} \EvaluatesTo \textcolor{Purple2}{n_{2} = 2}} \textcolor{red}{(num)}}
+        \dfrac{\SemanticInput{2} \in \NaturalNumbers}{\SemanticInput{2} \EvaluatesTo \textcolor{Purple2}{n_{2} = 2}} \textcolor{red}{(num)}}
       % Expression 1 bottom of derivation
-      {\textcolor{Orange3}{e_{1}} = \textcolor{Green4}{1+2} \EvaluatesTo \textcolor{Burlywood4}{n_{1}} = \textcolor{Purple2}{n_{1}} + \textcolor{Purple2}{n_{2}} = \textcolor{Purple2}{1}+\textcolor{Purple2}{2}=\textcolor{Burlywood4}{3}} \textcolor{red}{(add)} \:\:
+      {\textcolor{Orange3}{e_{1}} = \SemanticInput{1+2} \EvaluatesTo \textcolor{Burlywood4}{n_{1}} = \textcolor{Purple2}{n_{1}} + \textcolor{Purple2}{n_{2}} = \textcolor{Purple2}{1}+\textcolor{Purple2}{2}=\textcolor{Burlywood4}{3}} \textcolor{red}{(add)} \:\:
       % Expression 2 derivation
       \dfrac{
         % Expression 2 Left number Derivation
-        \dfrac{\textcolor{Green4}{1} \in \NaturalNumbers}{\textcolor{Green4}{1} \EvaluatesTo \textcolor{Purple2}{n_{1} = 1}} \textcolor{red}{(num)} \:\:
+        \dfrac{\SemanticInput{1} \in \NaturalNumbers}{\SemanticInput{1} \EvaluatesTo \textcolor{Purple2}{n_{1} = 1}} \textcolor{red}{(num)} \:\:
         % Expression 2 Right number derivation
-        \dfrac{\textcolor{Green4}{1} \in \NaturalNumbers}{\textcolor{Green4}{1} \EvaluatesTo \textcolor{Purple2}{n_{2} = 1}} \textcolor{red}{(num)}}
+        \dfrac{\SemanticInput{1} \in \NaturalNumbers}{\SemanticInput{1} \EvaluatesTo \textcolor{Purple2}{n_{2} = 1}} \textcolor{red}{(num)}}
       % Expression 2 bottom of derivation
-      {\textcolor{Orange3}{e_{2}} = \textcolor{Green4}{1+1} \EvaluatesTo \textcolor{Burlywood4}{n_{2}} = \textcolor{Purple2}{n_{1}} + \textcolor{Purple2}{n_{2}} = \textcolor{Purple2}{1}+\textcolor{Purple2}{1} = \textcolor{Burlywood4}{2}} \textcolor{red}{(add)} \:\:
+      {\textcolor{Orange3}{e_{2}} = \SemanticInput{1+1} \EvaluatesTo \textcolor{Burlywood4}{n_{2}} = \textcolor{Purple2}{n_{1}} + \textcolor{Purple2}{n_{2}} = \textcolor{Purple2}{1}+\textcolor{Purple2}{1} = \textcolor{Burlywood4}{2}} \textcolor{red}{(add)} \:\:
       % Checking n1 geq n2
       \textcolor{Burlywood4}{n_{1}} \geq \textcolor{Burlywood4}{n_{2}} = \textcolor{Burlywood4}{3} \geq \textcolor{Burlywood4}{2}}
     % Bottom of the max rule derivation
-    {\textcolor{Green4}{\mathtt{\max}} \textcolor{Orange3}{\underbrace{(\textcolor{Green4}{1+2}\textcolor{Orange3}{)}}_{\textcolor{Orange3}{e_{1}}}} \textcolor{Orange3}{\underbrace{\textcolor{Orange3}{(\textcolor{Green4}{1+1}\textcolor{Orange3}{)}}}_{\textcolor{Orange3}{e_{2}}}} \EvaluatesTo \textcolor{Burlywood4}{n_{1}} = \textcolor{Blue4}{3}} \textcolor{red}{(\text{max left})}
+    {\SemanticInput{\mathtt{\max}} \textcolor{Orange3}{\underbrace{(\SemanticInput{1+2}\textcolor{Orange3}{)}}_{\textcolor{Orange3}{e_{1}}}} \textcolor{Orange3}{\underbrace{\textcolor{Orange3}{(\SemanticInput{1+1}\textcolor{Orange3}{)}}}_{\textcolor{Orange3}{e_{2}}}} \EvaluatesTo \textcolor{Burlywood4}{n_{1}} = \textcolor{Blue4}{3}} \textcolor{red}{(\text{max left})}
   \end{equation*}
 
   We chose the \textcolor{red}{max left} rule only \textbf{after} the values of $\textcolor{Orange3}{e_{1}}$ and $\textcolor{Orange3}{e_{2}}$ were calculated.
@@ -193,8 +193,8 @@ For this section, we are going to use \Cref{eq:LetAdd_Grammar} as our \nameref{d
     \begin{aligned}
       \Nonterminal{expr} &\rightarrow nat \\
       &\vert id \\
-      &\vert \Nonterminal{expr} \textcolor{Green4}{\mathtt{+}} \Nonterminal{expr} \\
-      &\vert \textcolor{Green4}{\mathtt{let}}\: id = \Nonterminal{expr} \textcolor{Green4}{\mathtt{in}} \Nonterminal{expr} \\
+      &\vert \Nonterminal{expr} \SemanticInput{\mathtt{+}} \Nonterminal{expr} \\
+      &\vert \SemanticInput{\mathtt{let}}\: id = \Nonterminal{expr} \SemanticInput{\mathtt{in}} \Nonterminal{expr} \\
     \end{aligned}
   \end{equation}
 \end{blackbox}
@@ -204,12 +204,12 @@ For this section, we are going to use \Cref{eq:LetAdd_Grammar} as our \nameref{d
   An \emph{environment} is a mathematical object that tells us the bindings of variables.
   We will use the following notation:
   \begin{equation}\label{eq:Environment}
-    E_{n} = \lbrace \textcolor{Green4}{\mathtt{v_{1}}} \mapsto m_{1}, \textcolor{Green4}{\mathtt{v_{2}}} \mapsto m_{2} \rbrace
+    E_{n} = \lbrace \SemanticInput{\mathtt{v_{1}}} \mapsto m_{1}, \SemanticInput{\mathtt{v_{2}}} \mapsto m_{2} \rbrace
   \end{equation}
   where $v$ is a variable, and $n$ is the number of variables present.
   So, for example:
   \begin{equation*}
-    E_{2} = \lbrace \textcolor{Green4}{\mathtt{a}} \mapsto 1, \textcolor{Green4}{\mathtt{b}} \mapsto 7 \rbrace
+    E_{2} = \lbrace \SemanticInput{\mathtt{a}} \mapsto 1, \SemanticInput{\mathtt{b}} \mapsto 7 \rbrace
   \end{equation*}
 
   \begin{remark}[Empty \nameref*{def:Semantic_Environment}]\label{rmk:Empty_Environment}
@@ -222,16 +222,16 @@ For this section, we are going to use \Cref{eq:LetAdd_Grammar} as our \nameref{d
 
 To retrieve an value from an \nameref{def:Semantic_Environment}, where the \nameref{def:Semantic_Environment} being used is \Cref{eq:Environment}, we write:
 \begin{equation}\label{eq:Semantic_Environment_Get_Variable}
-  E(\textcolor{Green4}{\mathtt{a}}) \Rightarrow 1
+  E(\SemanticInput{\mathtt{a}}) \Rightarrow 1
 \end{equation}
 
 If we want to update an \nameref{def:Semantic_Environment} with a new binding,
 \begin{subequations}\label{eq:Update_Environment}
   \begin{equation}\label{subeq:Update_Environment_New_Variable}
-    E_{2} [\textcolor{Green4}{\mathtt{c}} \mapsto 42] = \lbrace \textcolor{Green4}{\mathtt{a}} \mapsto 1, \textcolor{Green4}{\mathtt{b}} \mapsto 7, \textcolor{Green4}{\mathtt{c}} \mapsto 42 \rbrace
+    E_{2} [\SemanticInput{\mathtt{c}} \mapsto 42] = \lbrace \SemanticInput{\mathtt{a}} \mapsto 1, \SemanticInput{\mathtt{b}} \mapsto 7, \SemanticInput{\mathtt{c}} \mapsto 42 \rbrace
   \end{equation}
   \begin{equation}\label{subeq:Update_Environment_Update_Variable}
-    E_{2} [\textcolor{Green4}{\mathtt{a}} \mapsto 0] = \lbrace \textcolor{Green4}{\mathtt{a}} \mapsto 0, \textcolor{Green4}{\mathtt{b}} \mapsto 7\rbrace
+    E_{2} [\SemanticInput{\mathtt{a}} \mapsto 0] = \lbrace \SemanticInput{\mathtt{a}} \mapsto 0, \SemanticInput{\mathtt{b}} \mapsto 7\rbrace
   \end{equation}
 \end{subequations}
 
@@ -252,54 +252,57 @@ This is written
   E \vdash p \EvaluatesTo n
 \end{equation}
 Which means $p$ can be drawn from the environment $E$, and should evaluate to a number, $n$ ($n$ is defined elsewhere).
+If $p$ is \textbf{not} defined in the \nameref{def:Semantic_Environment}, but is possible to evaluate, for example $p=4$, then nothing happens with the \nameref{def:Semantic_Environment}.
+
+Essentially, using $E \vdash p$ means that $p$ has access to the \nameref{def:Metavariable}s present in the \nameref{def:Semantic_Environment}, but $p$ is not required to be drawn from $E$.
 
 \begin{example}[Lecture 3]{Natural Semantics with Environments}
   Given the \nameref{def:Context_Free_Grammar},
   \begin{align*}
-    \Nonterminal{expr} &\longrightarrow \textcolor{Green4}{\underline{\mathtt{num}}} \\
-                       &\vert \Nonterminal{expr} \textcolor{Green4}{+} \Nonterminal{expr} \\
-                       &\vert \, \textcolor{Green4}{\mathtt{\max}} \Nonterminal{expr} \Nonterminal{expr} \\
-                       &\vert \, \textcolor{Green4}{\text{\texttt{let \underline{id}}} = } \Nonterminal{expr} \textcolor{Green4}{\mathtt{in}} \Nonterminal{expr} \\
-                       &\vert \, \textcolor{Green4}{\mathtt{\underline{id}}}
+    \Nonterminal{expr} &\longrightarrow \SemanticInput{\underline{\mathtt{num}}} \\
+                       &\vert \Nonterminal{expr} \SemanticInput{+} \Nonterminal{expr} \\
+                       &\vert \, \SemanticInput{\mathtt{\max}} \Nonterminal{expr} \Nonterminal{expr} \\
+                       &\vert \, \SemanticInput{\text{\texttt{let \underline{id}}} = } \Nonterminal{expr} \SemanticInput{\mathtt{in}} \Nonterminal{expr} \\
+                       &\vert \, \SemanticInput{\mathtt{\underline{id}}}
   \end{align*}
   Compute the result of $\text{\texttt{let }} \mathtt{x = 2} \text{\texttt{ in }} \mathtt{x+3}$?
   \tcblower{}
   We will start by using the rules that we defined in \Cref{ex:Natural Semantics}.
-  We will also need to add new semantic rules for \textcolor{Green4}{\texttt{id}} and the \texttt{let} statement.
+  We will also need to add new semantic rules for \SemanticInput{\texttt{id}} and the \texttt{let} statement.
 
   \begin{equation*}
-    \frac{\textcolor{Green4}{i} \in \textcolor{Green4}{\mathtt{\underline{id}}}}{E \vdash \textcolor{Green4}{i} \EvaluatesTo E(\textcolor{Green4}{i})} \textcolor{red}{(id)}
+    \frac{\SemanticInput{i} \in \SemanticInput{\mathtt{\underline{id}}}}{E \vdash \SemanticInput{i} \EvaluatesTo E(\SemanticInput{i})} \textcolor{red}{(id)}
   \end{equation*}
   \begin{equation*}
-    \frac{E \vdash e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \:\: E[\textcolor{Green4}{i} \mapsto \textcolor{Blue4}{n_{1}}] \vdash e_{1} \EvaluatesTo e_{2}}{E \vdash \textcolor{Green4}{\text{\texttt{let }}\mathtt{i =}} \; e_{1} \; \textcolor{Green4}{\mathtt{\text{in}}} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}}} \textcolor{red}{(let)}
+    \frac{E \vdash e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \:\: E[\SemanticInput{i} \mapsto \textcolor{Blue4}{n_{1}}] \vdash e_{1} \EvaluatesTo e_{2}}{E \vdash \SemanticInput{\text{\texttt{let }}\mathtt{i =}} \; e_{1} \; \SemanticInput{\mathtt{\text{in}}} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}}} \textcolor{red}{(let)}
   \end{equation*}
 
   We start by applying the most applicable rule, the \textcolor{red}{(let)} rule.
   \begin{equation*}
     \dfrac{
       % The number used in the let-assignment
-      \dfrac{\textcolor{Green4}{2} \in \NaturalNumbers}{E_{\emptyset} \vdash \textcolor{Green4}{2} \EvaluatesTo \textcolor{Blue4}{2}} \textcolor{red}{(num)} \:\:
+      \dfrac{\SemanticInput{2} \in \NaturalNumbers}{E_{\emptyset} \vdash \SemanticInput{2} \EvaluatesTo \textcolor{Blue4}{2}} \textcolor{red}{(num)} \:\:
       % The addition operation inside the in-block
       \dfrac{
         % The dereferencing of the ID and grabbing the value mapped to the variable
-        \dfrac{\textcolor{Green4}{\mathtt{x}} \in \textcolor{Green4}{\mathtt{\underline{id}}}}
+        \dfrac{\SemanticInput{\mathtt{x}} \in \SemanticInput{\mathtt{\underline{id}}}}
         % The bottom of the dereferencing of the ID
-        {E_{\emptyset} [\textcolor{Green4}{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \textcolor{Green4}{\mathtt{x}} \EvaluatesTo E(\textcolor{Green4}{\mathtt{x}}) \Rightarrow \textcolor{Orange3}{2}} \textcolor{red}{(id)} \:\:
+        {E_{\emptyset} [\SemanticInput{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \SemanticInput{\mathtt{x}} \EvaluatesTo E(\SemanticInput{\mathtt{x}}) \Rightarrow \textcolor{Orange3}{2}} \textcolor{red}{(id)} \:\:
         % The number, 3, added with x in the in-block
-        \dfrac{\textcolor{Green4}{3} \in \NaturalNumbers}
+        \dfrac{\SemanticInput{3} \in \NaturalNumbers}
         % The bottom of the num derivation
-        {E_{\emptyset} [\textcolor{Green4}{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \textcolor{Green4}{3} \EvaluatesTo \textcolor{Orange3}{3}} \textcolor{red}{(num)}}
+        {E_{\emptyset} [\SemanticInput{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \SemanticInput{3} \EvaluatesTo \textcolor{Orange3}{3}} \textcolor{red}{(num)}}
       % Bottom of the addition derivation
-      {E_{\emptyset}[\textcolor{Green4}{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \textcolor{Green4}{\mathtt{x+3}} \EvaluatesTo \textcolor{Orange3}{2+3} = \textcolor{Burlywood4}{5}} \textcolor{red}{(add)}}
+      {E_{\emptyset}[\SemanticInput{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \SemanticInput{\mathtt{x+3}} \EvaluatesTo \textcolor{Orange3}{2+3} = \textcolor{Burlywood4}{5}} \textcolor{red}{(add)}}
     % Bottom portion of let expression
-    {E_{\emptyset} \vdash \textcolor{Green4}{\text{\texttt{let }}} \mathtt{\textcolor{Green4}{x=}\,2} \textcolor{Green4}{\text{\texttt{ in }}} \mathtt{x+3} \EvaluatesTo \textcolor{Burlywood4}{5}} \textcolor{red}{(let)}
+    {E_{\emptyset} \vdash \SemanticInput{\text{\texttt{let }}} \mathtt{\SemanticInput{x=}\,2} \SemanticInput{\text{\texttt{ in }}} \mathtt{x+3} \EvaluatesTo \textcolor{Burlywood4}{5}} \textcolor{red}{(let)}
   \end{equation*}
 
   Once we've applied the \textcolor{red}{(let)} rule, we apply the \textcolor{red}{(num)} rule, because the expression being assigned is just a number.
   The result of that expression evaluation is piped into the next \textcolor{red}{(add)} derivation.
-  From there, it is mapped to the input \textcolor{Green4}{\texttt{x}}, and the \texttt{x+3} is calculated.
-  The first thing is to get the value of \textcolor{Green4}{\texttt{x}} from the mapping with the \textcolor{red}{(id)} rule.
-  Once the $E(\textcolor{Green4}{\mathtt{x}})$ returns the value of the variable \textcolor{Green4}{\texttt{x}}, we can use it.
+  From there, it is mapped to the input \SemanticInput{\texttt{x}}, and the \texttt{x+3} is calculated.
+  The first thing is to get the value of \SemanticInput{\texttt{x}} from the mapping with the \textcolor{red}{(id)} rule.
+  Once the $E(\SemanticInput{\mathtt{x}})$ returns the value of the variable \SemanticInput{\texttt{x}}, we can use it.
   The other operand in the addition is found using the \textcolor{red}{(num)} rule.
   Then the addition occurs, and the derivation completes.
 \end{example}
