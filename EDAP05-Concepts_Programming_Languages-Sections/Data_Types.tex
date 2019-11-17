@@ -672,6 +672,98 @@ myTuple = (3, 5.8, 'apple')
 \end{minted}
 
 \subsection{Union Types}\label{subsec:Union_Types}
+\begin{definition}[Union]\label{def:Union_Type}
+  A \emph{union} is a \nameref{def:Data_Type} whose \nameref{def:Variable}s may store different \nameref{def:Variable_Type} \nameref{def:Variable_Value}s at different times during program execution.
+
+  The union will allocate the maximum space required by all the \nameref{def:Variable_Type}s of the union, and only use the parts it needs, based on what \nameref{def:Variable_Type}s are actually in use.
+\end{definition}
+
+\subsubsection{Design Issues}\label{subsubsec:Union_Types-Design_Issues}
+\begin{itemize}[noitemsep]
+\item Should \nameref{def:Type_Checking} be required?
+  \begin{itemize}[noitemsep]
+  \item This \nameref{def:Type_Checking} will have to be dynamic, running during program execution.
+  \end{itemize}
+\item Should \nameref{def:Union_Type}s be embedded in \nameref{def:Record_Data_Type}?
+\end{itemize}
+
+\subsubsection{Discriminated vs. Free Unions}\label{subsubsec:Union_Types-Discriminated_vs_Free}
+The \texttt{union} construct in C/C++ is used to specify \nameref{def:Union_Type} structures.
+These are called \nameref{def:Free_Union}s.
+These stand in stark contrast to \nameref{def:Discriminated_Union}s.
+\begin{definition}[Free Union]\label{def:Free_Union}
+  A \emph{free union} is a \nameref{def:Union_Type} that have \textbf{\textit{NO}} \nameref{def:Type_Checking} enforced on their use.
+  For example, this C snippet:
+\begin{minted}[frame=lines,linenos]{c}
+union flexType {
+    int intEl;
+    float floatEl;.
+};
+union flexType el1;
+float x;
+...
+el1.intEl = 27;
+x = el1.floatEl; // NOT type checked, because current type of el1 cannot be determined
+\end{minted}
+  The last assignment is not type checked, because the the current \nameref{def:Variable_Type} of \texttt{el1} cannot be checked.
+  So, \texttt{27} is assigned to the \texttt{float} variable \texttt{x}, which is nonsense.
+\end{definition}
+
+\begin{definition}[Discriminated Union]\label{def:Discriminated_Union}
+  A \emph{discriminated union} makes use of a \emph{tag} or \emph{discriminant} as a \nameref{def:Data_Type} indicator.
+  These allow for the \nameref{def:Type_Checking} of \nameref{def:Union_Type}s during runtime.
+\end{definition}
+
+\subsubsection{Ada \nameref*{subsec:Union_Types}}\label{subsubsec:Ada_Union_Types}
+Ada allows the use to specify variables for a variant \nameref{def:Record_Data_Type} that will only store one of the possible \nameref{def:Variable_Type} values in the variant.
+
+\begin{definition}[Constrained Variant Variable]\label{def:Union_Type-Constrained_Variant_Variable}
+  A \emph{constrained variant variable} is when a language allows the programmer to specify the types present in a variant \nameref{def:Record_Data_Type}, allowing for static \nameref{def:Type_Checking}.
+  These enforce that variants can only be changed by assigning the entire record at a time.
+
+  This is shown in the code snippet below.
+\begin{minted}[frame=lines,linenos]{ada}
+type Shape is (Circle, Triangle, Rectangle); -- Construct enumeration for types of shapes possible
+type Colors is (Red, Green, Blue); -- Construct enumeration for colors
+type Figure (Form : Shape) is record -- Figure has variant Form records of type Shape (from enumeration)
+    Filled : Boolean;
+    Color : Colors;
+    case Form is
+        when Circle =>
+            Diameter : Float;
+        when Triangle =>
+            Left_Side : Integer;
+            Right_Side : Integer;
+            Angle : Float;
+        when Rectangle =>
+            Side_1 : Integer;
+            Side_2 : Integer;
+    end case
+end record;
+...
+Figure_1 : Figure; -- Unconstrained variant record of the record type Figure, and has no initial values
+Figure_2 : Figure(Form => Triangle); -- Constrain the variant record to a Triangle
+-- Figure_1's type can be changed by the assignment of a whole record
+Figure_1 := (Filled => True,
+             Color => Blue,
+             Form => Rectangle,
+             Side_1 => 12,
+             Side_2 => 3);
+\end{minted}
+\end{definition}
+
+\subsubsection{Evaluation}\label{subsubsec:Union_Types-Evaluation}
+\nameref{def:Union_Type}s are potentially unsafe constructs in some languages, because they cannot be type checked.
+C and C++ are not strongly typed for this reason.
+However, Ada, ML, Haskell, and F\# are strongly typed, because they can perform \nameref{def:Type_Checking} on \nameref{def:Union_Type}s.
+Some languages, like Java and C\# do not even include the ability to construct a \nameref{def:Union_Type}.
+
+\subsubsection{Implementation of \nameref*{subsec:Union_Types}}\label{subsubsec:Union_Types-Implementation}
+\nameref{def:Union_Type}s are implemented by using the same address for a single \nameref{def:Union_Type}, no matter its variant.
+Enough storage is allocated for the largest possible variant.
+Then, depending on the variant, the space will be used according to how the \nameref{def:Union_Type} was defined.
+The tag of the \nameref{def:Union_Type} variant is stored in its \nameref{def:Descriptor}.
+
 \subsection{Type Equivalence}\label{subsec:Type_Equivalence}
 This section does not deal with \nameref{def:Type_Compatibility}, which works for scalar \nameref{def:Data_Type}s, but rather \nameref{def:Type_Equivalence}.
 \begin{definition}[Type Compatibility]\label{def:Type_Compatibility}
