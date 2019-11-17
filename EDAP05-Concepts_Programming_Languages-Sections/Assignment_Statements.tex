@@ -1,0 +1,126 @@
+\section{Assignment Statements}\label{sec:Assignment_Statement}
+Assignments are one of the central constructs in \nameref{def:Imperative_Programming_Language}s.
+Assignments allow progarmmers to dynamically change the bindings of \nameref{def:Binding}s to \nameref{def:Variable}s.
+
+\subsection{Simple Assignments}\label{subsec:Simple_Assignments}
+Nearly all languages use the \texttt{=} symbol as the assignment operator.
+In these languages, the use of \texttt{==} as the equivalence \nameref{def:Relational_Operator} is common.
+
+2 notable exceptions to this assignment symbol are:
+\begin{enumerate}[noitemsep]
+\item ALGOL 60, with \texttt{:=}
+\item Ada, with \texttt{:=}
+\end{enumerate}
+
+They chose this set of symbols so as to be able to use the \texttt{=} as the equivalence \nameref{def:Relational_Operator}.
+The destination of the \nameref{def:Variable_Value} has varied widely in many languages.
+Additionally, the appearance of an assignment as a stand-alone statement is also dependent on language.
+
+\subsection{Conditional Targets}\label{subsec:Conditional_Targets}
+Some languages allow for assignments to take place in conditional \nameref{def:Block_Scope}s.
+These assignments bind the \nameref{def:Variable_Value} to a \emph{conditional target}.
+
+In Perl for example,
+\begin{minted}[frame=lines,linenos]{perl}
+($flag ? $count1 : $count2) = 0;
+\end{minted}
+which is equivalent to
+\begin{minted}[frame=lines,linenos]{perl}
+if ($flag) {
+    $count1 = 0;
+} else {
+    $count2 = 0;
+}
+\end{minted}
+
+\subsection{Compound Assignment Operators}\label{subsec:Compound_Assignment_Operators}
+\begin{definition}[Compound Assignment Operator]\label{def:Compound_Assignment_Operator}
+  A \emph{compound assignment operator} is a shorthand method of specifying a commonly needed form of assignment.
+  The overwritting of a \nameref{def:Variable}'s \nameref{def:Variable_Value} with some new value that is dependent on the \nameref{def:Variable}'s previous \nameref{def:Variable_Value}.
+
+  For example:
+\begin{minted}[frame=lines,linenos]{python3}
+sum += value;
+# This is equivalent to
+sum = sum + value;
+\end{minted}
+
+  \begin{remark}[Supported Operators]\label{rmk:Supported_Compount_Assignment_Operators}
+    If a language supports an addition \nameref{def:Compound_Assignment_Operator}, then it is likely that is supports it for all the other binary arithmetic operations.
+    They are likely to be denoted \texttt{-=}, \texttt{*=}, \texttt{/=}, and \texttt{\%=} for subtraction, multiplication, division, and modulo, respectively.
+  \end{remark}
+\end{definition}
+
+\subsection{Unary Assignment Operators}\label{subsec:Unary_Assignment_Operators}
+Many C-based langagues support 2 special unary arithmetic operators, that are abbreviated assignment statements.
+These are:
+\begin{enumerate}[noitemsep]
+\item Increment by 1, usually written \texttt{++}
+  \begin{itemize}[noitemsep]
+  \item This is equivalent to \texttt{i = i + 1}, where \texttt{i} is a defined, in-scope, aliveinteger \nameref{def:Variable}
+  \end{itemize}
+\item Decrement by 1, usually written \texttt{--}
+  \begin{itemize}[noitemsep]
+  \item This is equivalent to \texttt{i = i - 1}, where \texttt{i} is a defined, in-scope, aliveinteger \nameref{def:Variable}
+  \end{itemize}
+\end{enumerate}
+
+Both of these can be \nameref{def:Fixity-Prefix} and \nameref{def:Fixity-Suffix} operators.
+The different fixities mean different things.
+\begin{itemize}[noitemsep]
+\item \nameref{def:Fixity-Prefix}, \texttt{sum = ++count}
+  \begin{itemize}[noitemsep]
+  \item First increment \texttt{count}
+  \item Then assign the result to \texttt{sum}
+  \end{itemize}
+\item \nameref{def:Fixity-Suffix}, \texttt{sum = count++}
+  \begin{itemize}[noitemsep]
+  \item First assign the value of \texttt{count} to \texttt{sum}
+  \item Increment the value stored in \texttt{count} by 1
+  \item Note, the value in \texttt{sum} will be the value that was in \texttt{count} \textbf{BEFORE} the increment occurred.
+  \end{itemize}
+\end{itemize}
+
+\begin{remark*}[Multiple Unary Operators Associativity]
+  When there are multiple unary operators on a single \nameref{def:Variable} at a single time, they are \textbf{RIHT-TO-LEFT ASSOCIATIVE}.
+  Thus,
+\begin{minted}[frame=lines,linenos]{python3}
+- count ++
+# is handled like
+- (count++)
+# rather than
+(- count) ++
+\end{minted}
+\end{remark*}
+
+\subsection{Assignment as an Expression}\label{subsec:Assignment_as_Expression}
+In C-based langauges, the assignment statement also produces a result that is the same as the value assigned.
+This means that the assignment statement can be treated as an \nameref{def:Expression}, and an \nameref{def:Operand} as well, and used as such.
+For example, this is a valid while-loop in C.
+\begin{minted}[frame=lines,linenos]{c}
+while ((ch = getchar()) != EOF) { ... }
+\end{minted}
+
+This statement gets a character from the standard input, which is usually the keyboard.
+If the letter input to the program is \textbf{not} the End-Of-File character, then the statement(s) in the while-loop's body execute.
+The character was \textbf{ALSO} assigned to the character \nameref{def:Variable}, \texttt{ch}.
+
+\subsubsection{Side Effects}\label{subsubsec:Assignment_as_Expression-Side_Effects}
+Allowing this action in programs means that \nameref{def:Expression}s can be more difficult to read and udnerstand.
+Instead of thinking of these kinds of \nameref{def:Expression}s as \nameref{def:Expression}s, they must be though of as a list of instructions with a strange order of execution.
+For example,
+\begin{minted}[frame=lines,linenos]{c}
+a = b + (c = d / b) - 1;
+// This gets translated to
+c = d / b;
+a = b + c - 1;
+\end{minted}
+
+In C programs, this is a big cause of problems.
+Because both \texttt{if (x = y)} and \texttt{if (x == y)} are valid, but the second is performing a \nameref{def:Relational_Operator}, while the first is performing an assignment.
+Java and C\# have avoided this problem by \textbf{only} allowing boolean expressions in their \texttt{if} statements.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
