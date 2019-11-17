@@ -249,9 +249,75 @@ Reliability is a measure of the program performing to its specifications reliabl
 \begin{definition}[Type Checking]\label{def:Type_Checking}
   \emph{Type checking} is a process for testing for type errors in a given program, by the compiler or the interpreter, depending on its implementation (\nameref{subsec:Interpretation} vs. \nameref{def:Compilation}).
   Runtime type checking is expensive, so compile-time checking is preferred.
+
+  \begin{remark}
+    The earlier that type checking can occur reduces the potential errors, and corrective actions can be taken.
+  \end{remark}
+
+  There are 2 types of type checking possible:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Strong_Type_Checking}
+  \item \nameref{def:Weak_Type_Checking}
+  \end{enumerate}
+
+  There are also 2 times when type checking is possible:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Static_Type_Checking}
+  \item \nameref{def:Dynamic_Type_Checking}
+  \end{enumerate}
 \end{definition}
 
-The earlier that type checking can occur reduces the potential errors, and corrective actions can be taken.
+\begin{definition}[Strong Type Checking]\label{def:Strong_Type_Checking}
+  \emph{Strong type checking} is a property of a programming language that states that any language implementation finds all type errors and prevents the operations that caused the type error from taking place.
+
+  A language that has strong type checking is called a \emph{strongly-typed language}.
+  Such languages are:
+  \begin{itemize}[noitemsep]
+  \item Haskell
+  \item Python
+  \item Ruby
+  \item JavaScript
+  \end{itemize}
+
+  \begin{remark}[Cost]\label{rmk:Strong_Type_Checking_Cost}
+    \nameref{def:Strong_Type_Checking} improves the \nameref{subsec:Reliability} of a language, at a \nameref{subsec:Cost} to the language's \nameref{subsubsec:Expressivity}, and sometimes also at a \nameref{subsec:Cost} to the language's execution time.
+
+    Usually this improvement to \nameref{subsec:Reliability} is worth it.
+    However, sometimes it is necessary to write directly to memory without regard to the \nameref{def:Data_Type} system.
+    These languages provide ``backdoors'' to do this.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Weak Type Checking]\label{def:Weak_Type_Checking}
+  \emph{Weak type checking} is the absence of \nameref{def:Strong_Type_Checking}.
+
+  A language that has weak type checking is called a \emph{weakly-typed language}.
+  Such languages are:
+  \begin{itemize}[noitemsep]
+  \item C
+  \item C++
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Static Type Checking]\label{def:Static_Type_Checking}
+  Any \nameref{def:Type_Checking} that is performed before runtime (at compile time, as part of the static
+  semantics) is called \emph{static type checking}.
+
+  Languages that perform static type checking are called \emph{statically typed language}s.
+
+  \begin{remark}[Undecidability of Static Type Checking]\label{rmk:Static_Type_Checking-Undecidability}
+    Not all \nameref{def:Data_Type}s can be checked statically.
+    For example, the subscript used in an array access must be checked dynamically.
+
+    This deference is actually \textbf{required} for a language to be strongly-typed.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Dynamic Type Checking]\label{def:Dynamic_Type_Checking}
+  Any \nameref{def:Type_Checking} that is performed at runtime is called \emph{dynamic type checking}.
+
+  Languages that perform dynamic type checking are called \emph{dynamically typed language}s.
+\end{definition}
 
 \subsubsection{Exception Handling}\label{subsubsec:Exception_Handling}
 The programming language should have the ability to intercept runtime errors, along with other unusual conditions, take corrective actions, the continue normally is traditionally called \emph{exception handling}.

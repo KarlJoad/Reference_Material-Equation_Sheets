@@ -1,6 +1,11 @@
 \section{Expressions}\label{sec:Expressions}
 \begin{definition}[Expression]\label{def:Expression}
   An \emph{expression} is a combination of one or more \nameref{def:Operand}s and operators that the programming language interprets (according to its particular rules of precedence and of association) and computes to produce another value.
+
+  \begin{remark}[Overloading]\label{rmk:Overloading_Expressions}
+    An expression can be overloaded if there is more than one definition for an operator.
+    These operators can be statically overloaded by defining multiple semantic rules with their operation being defined for each of the types $\DataType$ that can be used in the rule.
+  \end{remark}
 \end{definition}
 
 \begin{definition}[Operand]\label{def:Operand}
@@ -11,6 +16,10 @@
   \item Another \nameref{def:Expression}
   \item Result from function calls
   \end{itemize}
+\end{definition}
+
+\begin{definition}[Well-Typed]\label{def:Well_Typed_Expression}
+  An \nameref{def:Expression} is \emph{well-typed} if and only if we can show $e : \DataType$ for some type $\DataType$.
 \end{definition}
 
 \subsection{Arithmetic Expressions}\label{subsec:Arithmetic_Expressions}

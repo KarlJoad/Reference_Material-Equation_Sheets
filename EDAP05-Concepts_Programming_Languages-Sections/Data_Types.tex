@@ -2,6 +2,19 @@
 \begin{definition}[Data Type]\label{def:Data_Type}
   A \emph{data type} defines a collection of data values and a set of predefined operations on those values.
   The data types present in a language used for a particular problem should closely mirror the objects in the real-world the program is solving.
+
+  They can be mathematically defined as
+  \begin{equation}\label{eq:Data_Type}
+    v : \DataType
+  \end{equation}
+  where $v$ is a value and $\tau$ is a type.
+
+  \begin{remark}[Has the Type]\label{rmk:Has_the_Type}
+    To say ``$v$ has the type $\tau$''
+    \begin{equation}\label{eq:Has_the_Type}
+      v \in \DataType
+    \end{equation}
+  \end{remark}
 \end{definition}
 
 User-defined data types allow for:
@@ -13,7 +26,7 @@ User-defined data types allow for:
 If we take user-defined \nameref{def:Data_Type}s further, we end up with \emph{abstract data types}.
 These force an interface for a particular data type, which is then visible to the user, and the data and background operations are hidden away.
 
-Because of the wide variety of \nameref{def:Data_Type}s present today, it is more useful to think about \nameref{def:Variable}s in terms of \nameref{def:Descriptor}
+Because of the wide variety of \nameref{def:Data_Type}s present today, it is more useful to think about \nameref{def:Variable}s in terms of \nameref{def:Descriptor}.
 
 \begin{definition}[Descriptor]\label{def:Descriptor}
   A \emph{descriptor} is the collection of attributes of a \nameref{def:Variable}.
@@ -26,6 +39,21 @@ Because of the wide variety of \nameref{def:Data_Type}s present today, it is mor
   \end{enumerate}
 
   Descriptors are used for \nameref{def:Type_Checking} and building the code for \nameref{def:Variable_Memory_Allocation} and \nameref{def:Variable_Memory_Deallocation} operations.
+\end{definition}
+
+\begin{definition}[Type Error]\label{def:Type_Error}
+  A \emph{type error} is an attempt to perform an operation that requires an input value of type $\tau$ with a value $v$ even though $v : \tau$ does not hold.
+\end{definition}
+
+\begin{definition}[Type Preservation]\label{def:Type_Preservation}
+  A type system has the \emph{type preservation} (or \emph{subject reduction}) property if for any $e \EvaluatesTo v$, $e : \tau$ implies $v : \tau$.
+
+  There are 3 properties we want to have a type preserving type system to have:
+  \begin{enumerate}[noitemsep]
+  \item \emph{Type Preservation}: The predictions of the type system agree with the evaluation rules.
+  \item \emph{Progress}: The type system only assigns a type if the evaluation rules will not get ``stuck'' due to a missing semantic rule. This is not the same as guaranteeing that the program itself terminates, meaning but it does guarantee that the language implementation will never run into a situation in which it doesn't know what to do next.
+  \item \emph{Termination}: We want the type system to be decidable, that is, we want an automatic mechanism that performs type checking.
+  \end{enumerate}
 \end{definition}
 
 \subsection{Primitive Data Types}\label{subsec:Primitive_Data_Types}
@@ -718,7 +746,7 @@ x = el1.floatEl; // NOT type checked, because current type of el1 cannot be dete
 Ada allows the use to specify variables for a variant \nameref{def:Record_Data_Type} that will only store one of the possible \nameref{def:Variable_Type} values in the variant.
 
 \begin{definition}[Constrained Variant Variable]\label{def:Union_Type-Constrained_Variant_Variable}
-  A \emph{constrained variant variable} is when a language allows the programmer to specify the types present in a variant \nameref{def:Record_Data_Type}, allowing for static \nameref{def:Type_Checking}.
+  A \emph{constrained variant variable} is when a language allows the programmer to specify the types present in a variant \nameref{def:Data_Type}, allowing for static \nameref{def:Type_Checking}.
   These enforce that variants can only be changed by assigning the entire record at a time.
 
   This is shown in the code snippet below.
