@@ -219,6 +219,11 @@ How do we determine and what steps must be taken to get the value of the \namere
   \begin{remark}
     These are used in both mathematics and \nameref{def:Functional_Programming_Language}s.
   \end{remark}
+
+  \begin{remark}
+    This is \textbf{incredibly} important for multi-core/multi-thread processing, where the order that the data is accessed and potentially written to can change the program's state.
+    This means that 2 threads could be using the same information with 2 different contexts, which is problematic.
+  \end{remark}
 \end{definition}
 If a function has \nameref{def:Function_Side_Effect}s, then the order in which the \nameref{def:Operand}s are evaluated may affect the operation.
 
