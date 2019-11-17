@@ -260,6 +260,99 @@ There are several advantages:
 \item A programmed function is equivalent to a mathematical function in that it is \nameref{def:Function_Pure}.
 \end{itemize}
 
+\subsection{\nameref*{def:Data_Type} Conversions}\label{subsec:Type_Conversions}
+\begin{definition}[\nameref*{def:Data_Type} Conversion]\label{def:Type_Conversion}
+  A \emph{\nameref*{def:Data_Type} conversion} is the act of converting one \nameref{def:Data_Type} from one to another.
+  There are 2 effects of this:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Narrowing_Conversion}
+  \item \nameref{def:Widening_Conversion}
+  \end{enumerate}
+
+  Conversions can be:
+  \begin{itemize}[noitemsep]
+  \item Implicit
+  \item Explicit
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Narrowing Conversion]\label{def:Narrowing_Conversion}
+  A \emph{narrowing conversion} converts a \nameref{def:Variable_Value} of one \nameref{def:Data_Type} to another that cannot store approximations of all the \nameref{def:Variable_Value}s in the original \nameref{def:Data_Type}.
+  For example, converting a \texttt{double} to a \texttt{float} in Java.
+
+  \begin{remark}[Safety]\label{rmk:Narrowing_Conversion-Safety}
+    \nameref{def:Narrowing_Conversion}s are not always safe.
+    The magnitude of the converted value may be changed in during the process of conversion.
+
+    For example, in Java, converting the \texttt{double} \texttt{1.3E25} to an \texttt{int} will result in a very different number.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Widening Conversion]\label{def:Widening_Conversion}
+  A \emph{widening conversion} converts a \nameref{def:Variable_Value} of one \nameref{def:Data_Type} to another that \textbf{can store approximations of ALL} the \nameref{def:Variable_Value}s in the original \nameref{def:Data_Type}.
+  For example, converting an \texttt{int} to a \texttt{float} in Java.
+
+  \begin{remark}[Safety]\label{rmk:Widening_Conversion-Safety}
+    \nameref{def:Widening_Conversion}s are almost always safe, because the magnitude of the original value is maintained.
+    However, sometimes they result in reduced accuracy.
+    For example, converting an \texttt{int} to a \texttt{float} will drastically increase the range of potential values, but may decrease precision.
+  \end{remark}
+\end{definition}
+
+\subsubsection{Coercion in Expressions}\label{subsubsec:Coercion_in_Expressions}
+Operators that allow operands in an operation to have different \nameref{def:Data_Type}s are called \nameref{def:Mixed_Mode_Operation}s.
+
+\begin{definition}[Mixed-Mode Operation]\label{def:Mixed_Mode_Operation}
+  \emph{Mixed-mode operation}s are operations that allow the operands to have different \nameref{def:Data_Type}s.
+  However, there must be an implicit \nameref{def:Type_Conversion} present, because computers can only handle single-type operations.
+
+  \begin{remark}[Relation to Overloaded Operations]\label{rmk:Relation_to_Overloaded_Operations}
+    We will handle operations as if there are distinct operations for every \nameref{def:Data_Type} input.
+    However, if the language has overloaded operators and uses \nameref{def:Static_Type_Checking}, then the compiler/interpreter chooses the correct operation.
+    If the operands are of different \nameref{def:Data_Type}s and the operation is legal, then the compiler/interpreter must choose one to be coerced, supply the code for the coercion, then perform the operation.
+  \end{remark}
+
+  The advantages and disadvantages of this implicit \nameref{def:Type_Conversion} are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item Much greater flexibility in operators/operands and operations.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item \nameref{subsec:Reliability} problems may arise
+    \end{itemize}
+  \end{itemize}
+  The real question is whether the compiler/interpreter should handle these issues, or if the programmer should.
+\end{definition}
+
+In languages that support \texttt{byte} and \texttt{short}, or their equivalents, and operations are performed on them, they undergo implicit \nameref{def:Widening_Conversion} to \texttt{int}s.
+
+\subsubsection{Explicit \nameref*{def:Type_Conversion}}\label{subsubsec:Explicit_Type_Conversion}
+Most languages have facilities to explicitly perform a \nameref{def:Type_Conversion}, both widening and narrowing.
+Sometimes warnings are presented to the programmer.
+
+In C-based languages, an explicit \nameref{def:Type_Conversion} is called a \emph{type cast}.
+The specific syntax of these casts depends on the language.
+Refer to the language specification to find the exact details for explicit \nameref{def:Type_Conversion}s.
+
+\subsubsection{Errors in Expressions}\label{subsubsec:Errors_in_Expressions}
+Any number of errors can occur during an expression's evaluation.
+\begin{itemize}[noitemsep]
+\item If the language requires type checking, type errors can occur
+\item Limitations of computer arithmetic (Limited bit representation)
+  \begin{itemize}[noitemsep]
+  \item \emph{Overflow}: If the result was too large. In a signed integer system, the first bit is reserved as a sign bit, and if addition flips this first bit, the number becomes a large negative number.
+  \item \emph{Underflow}: If the result was too small. In a signed integer system, the first bit is reserved as a sign bit, and if this bit is flipped, the number becomes a large positive number.
+  \end{itemize}
+\item Limitations of arithmetic
+  \begin{itemize}[noitemsep]
+  \item Cannot divide by zero
+  \end{itemize}
+\end{itemize}
+
+Overflow, underflow, division by zero, and some other errors are run-time errors, which are sometimes called \emph{exceptions}.
+
 \subsection{Relational and Boolean Expressions}\label{subsec:Relational_Boolean_Expressions}
 \subsubsection{Relational Expressions}\label{subsubsec:Relational_Expressions}
 \begin{definition}[Relational Operator]\label{def:Relational_Operator}
