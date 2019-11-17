@@ -454,7 +454,7 @@ In LISP and its descendants, data and code have the same syntactic form, meaning
 (A B C)
 \end{minted}
 
-Lists in Scheme, LISP, and Common LISP can be considered linked-lists.
+Lists in Scheme, LISP, and Common LISP can be considered linked-lists with immutable nodes.
 This means there are operations to get the current node's data and to get the next nodes in the rest of the list.
 \begin{minted}[frame=lines,linenos]{scheme}
 ; The ' in front of a list means to interpret the list as data and not a function call
@@ -474,9 +474,12 @@ There are 2 ways these lists can be constructed:
 \end{minted}
 \end{enumerate}
 
+The empty list \texttt{()} is also denoted as \texttt{nil}.
+\texttt{nil} also serves as the \texttt{false} value of the language, and everything else is \texttt{true}.
+
 \begin{definition}[List Comprehension]\label{def:List_Comprehension}
   A \emph{list comprehension} is an idea from set notation and set theory.
-  Essentially, a list comprehension applies a function to every element in a given array/\nameref{def:List}, and a new array/\nameref{def:List} is constructed from the results.
+  Essentially, a list comprehension applies a function to every element in a given \nameref{def:Array}/\nameref{def:List}, and a new \nameref{def:Array}/\nameref{def:List} is constructed from the results.
 
   2 examples of this are shown below, the first in Haskell, the second in Python 3.
 \begin{minted}[frame=lines,linenos]{haskell}
