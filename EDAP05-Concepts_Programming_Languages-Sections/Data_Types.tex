@@ -812,7 +812,7 @@ Since \nameref{def:Data_Type} coercion is unlikely, the question is if the 2 \na
 
   The design of type equivalence rules influence the design of \nameref{def:Data_Type}s and operations provided for values of those types.
 
-  There are 2 approaches to \nameref{def:Type_Equivalence}:
+  There are 2 approaches to determining \nameref{def:Type_Equivalence}:
   \begin{enumerate}[noitemsep]
   \item \nameref{def:Type_Equivalence-Name}
   \item \nameref{def:Type_Equivalence-Structure}
@@ -822,6 +822,14 @@ Since \nameref{def:Data_Type} coercion is unlikely, the question is if the 2 \na
   ``$\ldots$ when all constant expressions are replaced by their values and all type names are replaced by their definitions.
   In the case of recursive types, the expansion is the infinite limit of the partial expansions $\ldots$''.
   Meaning you replace everything you can, and if there is an infinite recursion somewhere, you cut it off eventually, usually when you pass the same point again.
+
+  There are 4 types of equivalence that can be established.
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Type_Equivalence-Primitive}
+  \item \nameref{def:Type_Equivalence-Structure}
+  \item \nameref{def:Type_Equivalence-Reference}
+  \item \nameref{def:Type_Equivalence-User_Defined}
+  \end{enumerate}
 \end{definition}
 
 Different languages use different approaches and combinations of these types of \nameref{def:Type_Equivalence}.
@@ -851,16 +859,29 @@ index : Indextype;
   \end{remark}
 \end{definition}
 
+\begin{definition}[Primitive Equivalence]\label{def:Type_Equivalence-Primitive}
+  \emph{Primitive equivalence} directly compares two values by comparing their bit patterns in memory.
+\end{definition}
+
 \begin{definition}[Structure Type Equivalence]\label{def:Type_Equivalence-Structure}
   \emph{Structure type equivalence} means 2 \nameref{def:Variable}s have \nameref{def:Type_Equivalence} if their types have identical structures.
   The entire structure's \nameref{def:Variable_Type}s must be compared to determine equivalence.
-  This is more flexible than \nameref{def:Type_Equivalence-Name}, but more difficult to implement.
+  This may potentially invole recursing through the structure or iterating over the structure.
+  However, this is more flexible than \nameref{def:Type_Equivalence-Name}, but more difficult to implement.
 
   Ada, with its hyper-strict \nameref{def:Type_Equivalence} has defined 2 ways to make new types.
   \begin{enumerate}[noitemsep]
   \item \nameref{def:Derived_Type}
   \item \nameref{def:Subtype}
   \end{enumerate}
+\end{definition}
+
+\begin{definition}[Reference Equivalence]\label{def:Type_Equivalence-Reference}
+  \emph{Reference Equivalence} checks whether two pointers/references point to the same address in \nameref{def:Memory}.
+\end{definition}
+
+\begin{definition}[User-Defined Equivalence]\label{def:Type_Equivalence-User_Defined}
+  \emph{User-defined equivalence} performs arbitrary equality checking but isn't provided by the language itself, and must be specified by the programmer.
 \end{definition}
 
 \begin{definition}[Derived Type]\label{def:Derived_Type}
