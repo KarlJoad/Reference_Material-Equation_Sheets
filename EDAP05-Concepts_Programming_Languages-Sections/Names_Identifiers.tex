@@ -365,7 +365,7 @@ The act of unbinding is called \nameref{def:Variable_Memory_Deallocation}.
   The \emph{lifetime} of a \nameref{def:Variable} is the time in which the \nameref{def:Variable} is bound to a \nameref{def:Memory} cell.
   The lifetime of a \nameref{def:Variable} starts when it is bound to a cell and ends when it has been unbound from that cell.
 
-  We will split the discussion of scalar \nameref{def:Variable}s into 4 categories, according to their lifetimes.
+  We will split the discussion of \nameref*{subsubsec:Storage_Bindings_and_Lifetime} of scalar \nameref{def:Variable}s into 4 categories, according to their \nameref{def:Variable_Lifetime}s.
   \begin{itemize}[noitemsep]
   \item \nameref{par:Static_Variable_Binding_Lifetime}
   \item \nameref{par:Stack-Dynamic_Variable_Binding_Lifetime}
@@ -379,19 +379,19 @@ The act of unbinding is called \nameref{def:Variable_Memory_Deallocation}.
   \emph{Static variable}s are those that are bound to \nameref{def:Memory} cells before program execution begins and remain bound until the program terminates.
   They are placed in the ``static'' section of \nameref{def:Memory}.
   \nameref{def:Static_Variable_Binding_Lifetime}s can be used as globally accessible \nameref{def:Variable}s, or ensure that subprograms are history-sensitive.
-\end{definition}
 
-The pros and cons of \nameref{def:Static_Variable_Binding_Lifetime}s are:
-\begin{itemize}[noitemsep]
-\item Pros
+  The pros and cons of \nameref{def:Static_Variable_Binding_Lifetime}s are:
   \begin{itemize}[noitemsep]
-  \item Efficiency. All \nameref{def:Memory} addressing is done with absolute addresses, making things very fast.
+  \item Pros
+    \begin{itemize}[noitemsep]
+    \item Efficiency. All \nameref{def:Memory} addressing is done with absolute addresses, making things very fast.
+    \end{itemize}
+  \item Cons
+    \begin{itemize}[noitemsep]
+    \item Reduced flexibility. If there is a language that only has \nameref{def:Static_Variable_Binding_Lifetime}s, then recursive subprograms are impossible.
+    \end{itemize}
   \end{itemize}
-\item Cons
-  \begin{itemize}[noitemsep]
-  \item Reduced flexibility. If there is a language that only has \nameref{def:Static_Variable_Binding_Lifetime}s, then recursive subprograms are impossible.
-  \end{itemize}
-\end{itemize}
+\end{definition}
 
 \begin{remark*}
   In C and C++, \texttt{static} can be set on functions, making the \nameref{def:Variable}s declared in the function \nameref{def:Static_Variable_Binding_Lifetime}.
@@ -416,6 +416,21 @@ The pros and cons of \nameref{def:Static_Variable_Binding_Lifetime}s are:
     In these cases, the \nameref{def:Variable} becomes visible at the declaration, but the storage \nameref{def:Binding} occurs when the block begins execution.
     So, it is both in \nameref{def:Variable_Scope} and has begun its \nameref{def:Variable_Lifetime}, but has no useful value.
   \end{remark}
+
+  The advantages and disadvantages of \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s, compared to \nameref{def:Static_Variable_Binding_Lifetime}s, are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item Allows for recursive subprograms that have local variables
+    \item All subprograms can share the same memory space for their locals, allowing for a smaller memory footprint, by only having some variables bound to storage at once.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item Runtime overhead of \nameref{def:Variable_Memory_Allocation} and \nameref{def:Variable_Memory_Deallocation}.
+    \item Slower accessing of \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s because of indirect addressing.
+    \item Subprograms cannot be history-sensitive with just \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s.
+    \end{itemize}
+  \end{itemize}
 \end{definition}
 
 \begin{definition}[Elaboration]\label{def:Variable_Storage_Binding_Elaboration}
@@ -424,24 +439,9 @@ The pros and cons of \nameref{def:Static_Variable_Binding_Lifetime}s are:
   This occurs at run time.
 \end{definition}
 
-The advantages and disadvantages of \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s, compared to \nameref{def:Static_Variable_Binding_Lifetime}s, are:
-\begin{itemize}[noitemsep]
-\item Advantages
-  \begin{itemize}[noitemsep]
-  \item Allows for recursive subprograms that have local variables
-  \item All subprograms can share the same memory space for their locals, allowing for a smaller memory footprint, by only having some variables bound to storage at once.
-  \end{itemize}
-\item Disadvantages
-  \begin{itemize}[noitemsep]
-  \item Runtime overhead of \nameref{def:Variable_Memory_Allocation} and \nameref{def:Variable_Memory_Deallocation}.
-  \item Slower accessing of \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s because of indirect addressing.
-  \item Subprograms cannot be history-sensitive with just \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s.
-  \end{itemize}
-\end{itemize}
-
 \paragraph{Explicit Heap-Dynamic Variables}\label{par:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}
 \begin{definition}[Explicit Heap-Dynamic Variable]\label{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}
-  \emph{Explicit heap-dynamic variables} are namess (abstract) memory cells that are allocated and deallocated by explicit run-time instructions written by the programmer.
+  \emph{Explicit heap-dynamic variables} are nameless (abstract) memory cells that are allocated and deallocated by explicit run-time instructions written by the programmer.
   These \nameref{def:Variable}s are allocated to and deallocated from the \nameref{def:Heap}.
   They can only be referenced through pointers or reference variables.
 
@@ -456,6 +456,20 @@ The advantages and disadvantages of \nameref{def:Stack-Dynamic_Variable_Binding_
   \item An operator (in C++), \texttt{delete}
   \item A subprogram (in C), \texttt{free}
   \end{itemize}
+
+  The advantages and disadvantages of these types of \nameref{def:Variable}s are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime} are often used to construct dynamic data structures, like linked lists and trees. These are built conveniently using pointers and data.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item The difficulty of using pointer/reference variables correctly.
+    \item The \nameref{subsec:Cost} of using these pointers/reference variables.
+    \item Complexity of the required storage management implementation (Although, this is a question of \nameref{def:Heap} management, which is costly and complicated and completely separate discussion).
+    \end{itemize}
+  \end{itemize}
 \end{definition}
 
 An example of an \nameref{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime} is shown below.
@@ -467,7 +481,7 @@ delete intnode; // Deallocate the heap-dynamic variable to which intnode points
 \end{minted}
 
 The \nameref{def:Heap} is highly disorganized because of the unpredictability of its use.
-There are 2 ways to manage the \nameref{def:Heap}.
+There are 2 ways to manage the \nameref{def:Heap}:
 \begin{enumerate}[noitemsep]
 \item Explicit \nameref{def:Variable_Memory_Deallocation}
   \begin{itemize}[noitemsep]
@@ -481,40 +495,25 @@ There are 2 ways to manage the \nameref{def:Heap}.
   \end{itemize}
 \end{enumerate}
 
-The advantages and disadvantages of these types of \nameref{def:Variable}s are:
-\begin{itemize}[noitemsep]
-\item Advantages
-  \begin{itemize}[noitemsep]
-  \item \nameref{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime} are often used to construct dynamic data structures, like linked lists and trees. These are built conveniently using pointers and data.
-  \end{itemize}
-\item Disadvantages
-  \begin{itemize}[noitemsep]
-  \item The difficulty of using pointer/reference variables correctly.
-  \item The \nameref{subsec:Cost} of using these pointers/reference variables.
-  \item Complexity of the required storage management implementation (Although, this is a question of \nameref{def:Heap} management, which is costly and complicated and completely separate discussion).
-  \end{itemize}
-\end{itemize}
-
 \paragraph{Implicit Heap-Dynamic Variables}\label{par:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}
 \begin{definition}[Implicit Heap-Dynamic Variable]\label{def:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}
   \emph{Implicit heap-dynamic variable}s are bound to \nameref{def:Heap} storage \textbf{only when they are assigned \nameref{def:Variable_Value}s}.
   In many regards, \nameref{def:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}s and \nameref{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}s are quite similar.
 
   However, \nameref{def:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}s have \textbf{ALL} their attributes bound \textbf{EVERY} time they are assigned.
+  The advantages and disadvantages of these types of \nameref{def:Variable}s are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item Highest degree of flexibility, allowing for highly generic code
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item Run time overhead of maintaining all the dynamic attributes, which could include subscript types and ranges
+    \item Loss of some error dectection by the compiler/interpreter
+    \end{itemize}
+  \end{itemize}
 \end{definition}
-
-The advantages and disadvantages of these types of \nameref{def:Variable}s are:
-\begin{itemize}[noitemsep]
-\item Advantages
-  \begin{itemize}[noitemsep]
-  \item Highest degree of flexibility, allowing for highly generic code
-  \end{itemize}
-\item Disadvantages
-  \begin{itemize}[noitemsep]
-  \item Run time overhead of maintaining all the dynamic attributes, which could include subscript types and ranges
-  \item Loss of some error dectection by the compiler/interpreter
-  \end{itemize}
-\end{itemize}
 
 \subsection{Scope}\label{subsec:Variable_Scope}
 \begin{definition}[Scope]\label{def:Variable_Scope}
@@ -613,6 +612,47 @@ However, inside of \texttt{sub1()}, the use of the variable \texttt{x} would ref
 
 In some languages, if a \nameref{def:Variable} is declared in a sub-program unit/block, like in \texttt{sub1()}, then preceding the \nameref{def:Variable} name with the outer program unit/block will give the outer \nameref{def:Variable} \nameref{def:Variable_Value}.
 
+\subsubsection{Dynamic Scope}\label{subsubsec:Dynamic_Scope}
+\begin{definition}[Dynamic Scoping]\label{def:Dynamic_Scoping}
+  \emph{Dynamic scoping} is based on the calling sequence of subprograms, and not their spatial relationship to each other.
+  Thus, the scope can only be determined at run time.
+
+  Some languages that implement this are:
+  \begin{itemize}[noitemsep]
+  \item APL
+  \item SNOBOL4
+  \item Early LISP
+  \item Perl (Allowed, but must be said explicitly)
+  \item Common LISP (Allowed, but must be said explicitly)
+  \end{itemize}
+\end{definition}
+
+To illustrate \nameref{def:Dynamic_Scoping}, look at the code block below, and assume it is in a language that uses \nameref{def:Dynamic_Scoping}.
+\begin{minted}[frame=lines,linenos]{javascript}
+function big() {
+  function sub1() {
+    var x = 7;
+    sub2();
+  }
+  function sub2() {
+    var y = x;
+  }
+  var x = 3;
+  sub1();
+  sub2();
+}
+\end{minted}
+
+The call to \texttt{sub1()} by \texttt{big()}, which then calls \texttt{sub2()}.
+In that running of \texttt{sub2()}, the use of \texttt{x} cannot be determined locally (within that function).
+Thus, it goes to its dynamic parent, \texttt{sub1()} and finds a declaration for \texttt{x}.
+Thus, the \texttt{y} in \texttt{sub2()} evaluates to \texttt{y=7}.
+
+The next instruction, the call to \texttt{sub2()} by \texttt{big()}, produces a different result.
+In that running of \texttt{sub2()}, the use of \texttt{x} cannot be determined locally (within that function).
+Thus, it goes to its dynamic parent, \texttt{big()} and finds a declaration for \texttt{x}.
+Thus, the \texttt{y} in \texttt{sub2()} evaluates to \texttt{y=3}.
+
 \subsubsection{Blocks}\label{subsubsec:Variable_Blocks}
 New \nameref{subsubsec:Variable_Static_Scope}s can be defined in the middle of executing code.
 This allows a small section to have its own \nameref{def:Local_Variable}s.
@@ -673,47 +713,6 @@ It important to note the difference between a \nameref{def:Global_Variable}'s de
 \begin{remark*}
   This is a highly language-dependent thing, and one must consult with the language specification to figure out exactly how it works.
 \end{remark*}
-
-\subsubsection{Dynamic Scope}\label{subsubsec:Dynamic_Scope}
-\begin{definition}[Dynamic Scoping]\label{def:Dynamic_Scoping}
-  \emph{Dynamic scoping} is based on the calling sequence of subprograms, and not their spatial relationship to each other.
-  Thus, the scope can only be determined at run time.
-
-  Some languages that implement this are:
-  \begin{itemize}[noitemsep]
-  \item APL
-  \item SNOBOL4
-  \item Early LISP
-  \item Perl (Allowed, but must be said explicitly)
-  \item Common LISP (Allowed, but must be said explicitly)
-  \end{itemize}
-\end{definition}
-
-To illustrate \nameref{def:Dynamic_Scoping}, look at the code block below, and assume it is in a language that uses \nameref{def:Dynamic_Scoping}.
-\begin{minted}[frame=lines,linenos]{javascript}
-function big() {
-  function sub1() {
-    var x = 7;
-    sub2();
-  }
-  function sub2() {
-    var y = x;
-  }
-  var x = 3;
-  sub1();
-  sub2();
-}
-\end{minted}
-
-The call to \texttt{sub1()} by \texttt{big()}, which then calls \texttt{sub2()}.
-In that running of \texttt{sub2()}, the use of \texttt{x} cannot be determined locally (within that function).
-Thus, it goes to its dynamic parent, \texttt{sub1()} and finds a declaration for \texttt{x}.
-Thus, the \texttt{y} in \texttt{sub2()} evaluates to \texttt{y=7}.
-
-The next instruction, the call to \texttt{sub2()} by \texttt{big()}, produces a different result.
-In that running of \texttt{sub2()}, the use of \texttt{x} cannot be determined locally (within that function).
-Thus, it goes to its dynamic parent, \texttt{big()} and finds a declaration for \texttt{x}.
-Thus, the \texttt{y} in \texttt{sub2()} evaluates to \texttt{y=3}.
 
 %%% Local Variables:
 %%% mode: latex
