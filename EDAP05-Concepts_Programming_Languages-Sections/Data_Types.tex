@@ -673,6 +673,94 @@ myTuple = (3, 5.8, 'apple')
 
 \subsection{Union Types}\label{subsec:Union_Types}
 \subsection{Type Equivalence}\label{subsec:Type_Equivalence}
+This section does not deal with \nameref{def:Type_Compatibility}, which works for scalar \nameref{def:Data_Type}s, but rather \nameref{def:Type_Equivalence}.
+\begin{definition}[Type Compatibility]\label{def:Type_Compatibility}
+  \emph{Type compatibility} dictates the \nameref{def:Data_Type} of operands that are acceptable for eacch of the operations of the language.
+  This is called compatibility because there are cases when the \nameref{def:Data_Type} of the operand can be implicitly converted by the compiler or run-time system to make the operand acceptable to the operator.
+
+  An example of this is the addition of an integer number and a real number.
+  The integer number is typecast to a real number, then the addition is performed.
+\end{definition}
+
+\nameref{def:Type_Compatibility} rules are strict for predefined scalar types.
+However, structured \nameref{def:Data_Type}s such as \nameref{def:Array}s, \nameref{def:Record_Data_Type}, and others require more complex rules.
+Since \nameref{def:Data_Type} coercion is unlikely, the question is if the 2 \nameref{def:Data_Type}s are equivalent.
+
+\begin{definition}[Type Equivalence]\label{def:Type_Equivalence}
+  \emph{Type equivalence} is a strict form of \nameref{def:Type_Compatibility}.
+  It is when an operand of one \nameref{def:Data_Type} can be substituted for another operand of the same type, without \nameref{def:Data_Type} coercion.
+
+  The design of type equivalence rules influence the design of \nameref{def:Data_Type}s and operations provided for values of those types.
+
+  There are 2 approaches to \nameref{def:Type_Equivalence}:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Type_Equivalence-Name}
+  \item \nameref{def:Type_Equivalence-Structure}
+  \end{enumerate}
+\end{definition}
+
+Different languages use different approaches and combinations of these types of \nameref{def:Type_Equivalence}.
+You would have to look at the language's specification to find out exactly what is used where.
+Additionally, object-oriented languages present their own, unique, type of \nameref{def:Type_Compatibility} with object compatibility and its relationship to the inheritance hierarchy.
+
+\begin{definition}[Name Type Equivalence]\label{def:Type_Equivalence-Name}
+  \emph{Name type equivalence} means that 2 \nameref{def:Variable}s have \nameref{def:Type_Equivalence} if they are defined in:
+  \begin{itemize}[noitemsep]
+  \item The same declaration
+  \item In Declarations that use the same \nameref{def:Data_Type} name
+  \end{itemize}
+
+  This is easier to implement, but more restrictive.
+  In a strict interpretation, a \nameref{def:Variable} whose \nameref{def:Variable_Type} is a subrange of the integers would \textbf{not} be equivalent to an integer \nameref{def:Variable_Type} \nameref{def:Variable}.
+  For example,
+\begin{minted}[frame=lines,linenos]{ada}
+type Indextype is 1..100;
+count : Integer;
+index : Indextype;
+\end{minted}
+  \texttt{count} and \texttt{index} could \textbf{not} be substituted for each other.
+
+  \begin{remark}
+    To use \nameref{def:Type_Equivalence-Name}, all \nameref{def:Variable_Type}s must have names.
+    If the language supports anonymous \nameref{def:Data_Type}s, then they must be given internal names by the compiler/interpreter.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Structure Type Equivalence]\label{def:Type_Equivalence-Structure}
+  \emph{Structure type equivalence} means 2 \nameref{def:Variable}s have \nameref{def:Type_Equivalence} if their types have identical structures.
+  The entire structure's \nameref{def:Variable_Type}s must be compared to determine equivalence.
+  This is more flexible than \nameref{def:Type_Equivalence-Name}, but more difficult to implement.
+
+  Ada, with its hyper-strict \nameref{def:Type_Equivalence} has defined 2 ways to make new types.
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Derived_Type}
+  \item \nameref{def:Subtype}
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Derived Type]\label{def:Derived_Type}
+  A \emph{derived type} is a new \nameref{def:Data_Type} that is based on some previously defined \nameref{def:Data_Type}, that \textbf{is not equivalent, but may have an identical structure}.
+  Derived types inherit all the properties of their parent types.
+
+  Take the following Ada code snippet as an example.
+\begin{minted}[frame=lines,linenos]{ada}
+type Celsius is new Float;
+type Fahrenheit is new Float;
+\end{minted}
+  These are not equivalent, though they have identical structures.
+  They are also not type equivalent to any other \texttt{Float} type.
+\end{definition}
+
+\begin{definition}[Subtype]\label{def:Subtype}
+  A \emph{subtype} is a possibly range-constrained version of an existing type.
+  A subtype \textbf{is equivalent with its parent type}.
+
+  Take the following Ada code snippet as an example.
+\begin{minted}[frame=lines,linenos]{ada}
+subtype Small_type is Integer range 0..99;
+\end{minted}
+  The \texttt{Small\textunderscore{}type} is equivalent to the \texttt{Integer} type.
+\end{definition}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
