@@ -817,6 +817,11 @@ Since \nameref{def:Data_Type} coercion is unlikely, the question is if the 2 \na
   \item \nameref{def:Type_Equivalence-Name}
   \item \nameref{def:Type_Equivalence-Structure}
   \end{enumerate}
+
+  There is a general algorithm for determining if two \nameref{def:Data_Type}s are equivalent.
+  ``$\ldots$ when all constant expressions are replaced by their values and all type names are replaced by their definitions.
+  In the case of recursive types, the expansion is the infinite limit of the partial expansions $\ldots$''.
+  Meaning you replace everything you can, and if there is an infinite recursion somewhere, you cut it off eventually, usually when you pass the same point again.
 \end{definition}
 
 Different languages use different approaches and combinations of these types of \nameref{def:Type_Equivalence}.
