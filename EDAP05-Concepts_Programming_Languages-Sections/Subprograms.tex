@@ -58,7 +58,7 @@ else:
 This means that there are 2 possible \nameref{def:Subprogram_Definition}s possible during runtime, and which one is currently valid depends on the result of the \texttt{conditional\textunderscore{}expression}.
 
 \begin{definition}[Parameter Profile]\label{def:Subprogram_Parameter_Profile}
-  The \emph{parameter profile} of a subprogram contains the number, order, and types of its formal parameters.
+  The \emph{parameter profile} of a subprogram contains the number, order, and types of its \nameref{def:Formal_Parameter}s.
 \end{definition}
 
 \begin{definition}[Protocol]\label{def:Subprogram_Protocol}
@@ -76,9 +76,130 @@ This means that there are 2 possible \nameref{def:Subprogram_Definition}s possib
 \end{definition}
 
 \subsection{Parameters}\label{subsec:Subprogram_Parameters}
+Subprograms typically want access to nonlocal data to perform their computations.
+There are 2 ways to gain access to this nonlocal data:
+\begin{enumerate}[noitemsep]
+\item Direct access to nonlocal \nameref{def:Variable}s (\nameref{def:Global_Variable}s)
+\item Parameter passing
+\end{enumerate}
+
+Data that is passed to the subprogram as a parameter is acccessed through names local to the subprogram.
+Parameter passing is more flexible, because if direct access is used, new storage needs to be allocated for computation results.
+Direct access also leads to issues with \nameref{def:Variable}s being visible to places they shouldn't be.
+Pure \nameref{def:Functional_Programming_Language}s avoid this by having all their data being immutable.
+
+\begin{definition}[Formal Parameter]\label{def:Formal_Parameter}
+  A \emph{formal parameter} are the parameters present in the \nameref{def:Subprogram_Header}.
+  These are sometimes thought of as ``dummy variables'' because they aren't normal \nameref{def:Variable}s.
+  They are only bound to storage when the subprogram is called, and that storage is often through some other program \nameref{def:Variable}s.
+
+  \begin{remark}[Parameter]\label{rmk:Parameter}
+    Sometimes \nameref{def:Formal_Parameter}s are just called \emph{parameter}s, usually when \nameref{def:Actual_Parameter}s are called \nameref{rmk:Argument}s.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Actual Parameter]\label{def:Actual_Parameter}
+  An \emph{actual parameter} is the parameter that is bound to the \nameref{def:Formal_Parameter} of a subprogram.
+  
+  \begin{remark}[Argument]\label{rmk:Argument}
+    Sometimes \nameref{def:Actual_Parameter}s are called \emph{argument}s, usually when \nameref{def:Formal_Parameter}s are called \nameref{rmk:Parameter}s.
+  \end{remark}
+\end{definition}
+
+The binding of \nameref{def:Actual_Parameter}s to \nameref{def:Formal_Parameter}s is usually done by position.
+So, the first \nameref{def:Actual_Parameter} is bound to the first \nameref{def:Formal_Parameter}.
+However, this is only a good method when the number of parameters is small.
+
+When the \nameref{def:Formal_Parameter} list gets long, it is hard to get all of the \nameref{def:Actual_Parameter}s in the right order.
+One solution is to use \nameref{def:Keyword_Parameter}s.
+
+\begin{definition}[Keyword Parameter]\label{def:Keyword_Parameter}
+  \emph{Keyword parameter}s have the name of the \nameref{def:Formal_Parameter} usable by the \nameref{def:Actual_Parameter} to bind the \nameref{def:Variable_Value}.
+
+  For example, if \texttt{sumer} has the \nameref{def:Formal_Parameter}s \texttt{length}, \texttt{list}, and \texttt{sum}:
+\begin{minted}[frame=lines,linenos]{python3}
+sumer(length = my_length, list = my_array, sum = my_sum)
+\end{minted}
+
+  Advantages and Disadvantages of keyword parameters:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item No need to remember \nameref{def:Formal_Parameter} order.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item Need to remember the name of the \nameref{def:Formal_Parameter}s.
+    \end{itemize}
+  \end{itemize}
+
+  \begin{remark}[End of \nameref{def:Actual_Parameter}]\label{rmk:Keyword_Parameters_at_End}
+    In an \nameref{def:Actual_Parameter} list, all parameters after a \nameref{def:Keyword_Parameter} \textbf{must} be keyworded, because the list may not be well-formed enough for parameters to line up by position.
+  \end{remark}
+\end{definition}
+
+Languages that support default values on \nameref{def:Formal_Parameter}s handle them differently.
+In Python, regular \nameref{def:Formal_Parameter}s and ones with default values can be in any order.
+However, in C++, which does not support \nameref{def:Keyword_Parameter}s, \nameref{def:Formal_Parameter}s with default values must be at the end of the \nameref{def:Subprogram_Header}.
+This is illustrated in the next 2 code blocks, which are in Python and C++, respectively.
+\begin{minted}[frame=lines,linenos]{python3}
+def compute_pay(income, exemptions = 1, tax_rate)
+\end{minted}
+
+\begin{minted}[frame=lines,linenos]{c++}
+float compute_pay(float income, float tax_rate, int exemptions = 1)
+\end{minted}
+
+Other languages have more varied and interesting ways to pass \nameref{def:Actual_Parameter}s to subprograms.
+Look at the language specification for more details.
+
 \subsection{Local Referencing Environments}\label{subsec:Local_Referencing_Environments}
+Issues related to \nameref{def:Variable}s defined within subprograms.
+
 \subsubsection{Local Variables}\label{subsubsec:Local_Variables}
+The definition of \nameref{def:Local_Variable}s is given in \Cref{def:Local_Variable}.
+These can be either \nameref{def:Static_Variable_Binding_Lifetime} or \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}.
+
+If \nameref{def:Local_Variable}s are \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}, they are bound to storage when the subprogram begins and unbound when that execution terminates.
+The advantages and disadvantages of \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime} are:
+\begin{itemize}[noitemsep]
+\item Advantages
+  \begin{itemize}[noitemsep]
+  \item Allows for recursive subprograms
+  \item Inactive subprograms can share \nameref{def:Memory} with the active subprogram
+  \end{itemize}
+\item Disadvantages
+  \begin{itemize}[noitemsep]
+  \item The cost of the time requried to allocate, initialize, and deallocate these variables
+  \item The indirect \nameref{def:Memory} accesses to the data
+  \item When all \nameref{def:Variable}s are \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}, subprograms cannot be history sensitive.
+  \end{itemize}
+\end{itemize}
+
+However, the advantages and disadvantages of \nameref{def:Static_Variable_Binding_Lifetime} are:
+\begin{itemize}[noitemsep]
+\item Advantages
+  \begin{itemize}[noitemsep]
+  \item No runtime overhead to allocate/deallocate the storage
+  \item Direct \nameref{def:Memory} access (Absolute addressing)
+  \end{itemize}
+\item Disadvantages
+  \begin{itemize}[noitemsep]
+  \item Inability to support recursion
+  \item Cannot share \nameref{def:Memory} with inactive subprograms.
+  \end{itemize}
+\end{itemize}
+
+Most contemporary programming languages make their \nameref{def:Local_Variable}s \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime} by defautlt.
+However, this can usually be overridden with a \texttt{static} keyword.
+
 \subsubsection{Nested Subprograms}\label{subsubsec:Nested_Subprograms}
+The idea was to create a hierarchy of logic and \nameref{def:Variable_Scope}s.
+The motivation was that if a subprogram is only used within one other subprogram, why not place it there, and hide it from the rest of the program?
+
+\nameref{def:Variable_Static_Scoping} is usually used in languages that allow nested subprograms.
+Language support of this featuer depends \textbf{heavily} on the language.
+You will have to chek the language specification to find out if the programming language supports them.
 
 \subsection{Parameter-Passing Methods}\label{subsec:Parameter_Passing_Methods}
 \subsubsection{Semantic Models of Parameter Passing}\label{subsubsec:Semantic_Models_Parameter_Passing}

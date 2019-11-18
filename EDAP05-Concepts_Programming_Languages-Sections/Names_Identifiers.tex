@@ -385,10 +385,13 @@ The act of unbinding is called \nameref{def:Variable_Memory_Deallocation}.
   \item Pros
     \begin{itemize}[noitemsep]
     \item Efficiency. All \nameref{def:Memory} addressing is done with absolute addresses, making things very fast.
+    \item No cost to allocate and deallocate the \nameref{def:Memory} during run-time.
+    \item Programs can be history sensitive.
     \end{itemize}
   \item Cons
     \begin{itemize}[noitemsep]
     \item Reduced flexibility. If there is a language that only has \nameref{def:Static_Variable_Binding_Lifetime}s, then recursive subprograms are impossible.
+    \item \nameref{def:Memory} cannot be shared between inactive and active subprograms.
     \end{itemize}
   \end{itemize}
 \end{definition}
@@ -554,6 +557,12 @@ def g(y):
 
 \begin{definition}[Local Variable]\label{def:Local_Variable}
   A \nameref{def:Variable} is a \emph{local variable} in a program unit or block if it is declared there.
+  \nameref{def:Variable}s defined within subprograms are also local variables.
+  The \nameref{def:Variable_Scope} is usually the body of the subprogram in which they are defined.
+
+  \begin{remark}[Storage Binding]
+    If the \nameref{def:Local_Variable} is a \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}, it is bound to storage when the subprogram begins and unbound when that execution terminates.
+  \end{remark}
 \end{definition}
 
 \begin{definition}[Nonlocal Variable]\label{def:Nonlocal_Variable}
