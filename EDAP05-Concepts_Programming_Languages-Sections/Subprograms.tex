@@ -324,6 +324,39 @@ f.doIt(out list[sub], out sub); // What gets assigned to list[sub]? What is sub?
 \end{definition}
 
 \paragraph{Pass-by-Reference}\label{par:Parameter_Passing-Pass_By_Reference}
+\begin{definition}[Pass-by-Reference]\label{def:Pass_By_Reference}
+  \emph{Pass-by-reference} is a second implementation model for \nameref{def:Parameter_Passing-Inout_Mode}.
+  In this case, rather than copying the actual data \nameref{def:Variable_Value}s back and forth, pass-by-reference transmits an access pather, usually an address/pointer, to the called subprogram.
+  This allows the subprogram to access the \textbf{SAME} value as the calling program.
+
+  The advantages and disadvantages of this implementation are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item The passing process is efficient, in terms of time and space.
+      \begin{itemize}[noitemsep]
+      \item No duplicate space is required
+      \item There is also no copying required
+      \end{itemize}
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item Access to the \nameref{def:Formal_Parameter}s will be slower than \nameref{def:Pass_By_Value}, because of the indirect addressing required.
+    \item There may be inadvertent and erroneous changes to the \nameref{def:Actual_Parameter}'s \nameref{def:Variable_Value}.
+    \item \nameref{def:Aliasing} can be started.
+      \begin{itemize}[noitemsep]
+      \item This harms \nameref{subsec:Readability} and \nameref{subsec:Reliability}.
+      \end{itemize}
+\begin{minted}[frame=lines,linenos]{c++}
+void func(int &first, int &second);
+func(total, total); // Both first and second point to the same total variable
+fun(list[i], list[j]); // Assume i==j is true
+\end{minted}
+    \item Program verification is more difficult.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
 \paragraph{Pass-by-Name}\label{par:Parameter_Passing-Pass_By_Name}
 \paragraph{Pass-by-Need}\label{par:Parameter_Passing-Pass_By_Need}
 
