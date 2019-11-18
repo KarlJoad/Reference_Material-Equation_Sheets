@@ -358,6 +358,39 @@ fun(list[i], list[j]); // Assume i==j is true
 \end{definition}
 
 \paragraph{Pass-by-Name}\label{par:Parameter_Passing-Pass_By_Name}
+\begin{definition}[Pass-by-Name]\label{def:Pass_By_Name}
+  \emph{Pass-by-name} is an \nameref{def:Parameter_Passing-Inout_Mode} parameter transmission method that does not correspond to a single implementation model.
+  When \nameref{def:Actual_Parameter} are passed by name, the actual parameter is textually substituted for the corresponding \nameref{def:Formal_Parameter}.
+  A pass-by-name \nameref{def:Formal_Parameter} is bound to an access method at the time of the program call, but the actual binding to a \nameref{def:Variable_Value} or an \nameref{def:Variable_Address} is delayed until the \nameref{def:Formal_Parameter} is assigned or referenced.
+
+  Implementing this requires a subprogram be passed to the called subprogram to evaluate the \nameref{def:Variable_Address} or \nameref{def:Variable_Value} of the \nameref{def:Formal_Parameter}.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:Formal_Parameter}s are lazily evaluated, so they will only be evaluated once they are needed.
+    \item However, the \nameref{def:Formal_Parameter} must be evaluated \textbf{EACH TIME}, making this a very inefficient method.
+    \item Can add \nameref{subsubsec:Expressivity}.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item Pass-by-name parameters are difficult to implement
+    \item Pass-by-name parameters are inefficient
+    \item Add significant complexity to the program
+      \begin{itemize}[noitemsep]
+      \item Reduced \nameref{subsec:Readability}
+      \item Reduced \nameref{subsec:Reliability}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+
+  \begin{remark}[Languages using \nameref*{def:Pass_By_Name}]\label{rmk:Langauges_Using_Pass_By_Name}
+    There are no widely-used high-level languages that use \nameref{def:Pass_By_Name}.
+    However, it is used at compile time by macros is assembly languages and for generic parameters of generic subprograms.
+  \end{remark}
+\end{definition}
+
 \paragraph{Pass-by-Need}\label{par:Parameter_Passing-Pass_By_Need}
 
 %%% Local Variables:
