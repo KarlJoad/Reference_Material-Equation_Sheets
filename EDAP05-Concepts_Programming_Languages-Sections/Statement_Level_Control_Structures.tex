@@ -1,15 +1,232 @@
 \section{Statement-Level Control Structures}\label{sec:Statement_Level_Control_Structures}
-\subsection{Counter-Controlled Loops}\label{subsec:Counter_Controlled_Loops}
-\subsubsection{Design Issues}\label{subsubsec:Counter_Controlled_Loops-Design_Issues}
-\subsubsection{The \texttt{for} Statement of Ada}\label{subsubsec:Counter_Controlled_Loops-Ada}
-\subsubsection{The \texttt{for} Statement of the C-Based Languages}\label{subsubsec:Counter_Controlled_Loops-C_Langs}
-\subsubsection{The \texttt{for} Statement of Python}\label{subsubsec:Counter_Controlled_Loops-Python}
+\subsection{Iterative Statements}\label{subsec:Iterative_Statements}
+\begin{definition}[Iterative Statement]\label{def:Iterative_Statement}
+  An \emph{iterative statement} is one that causes a statement or collection of statements to be executed zero ore more times.
+  These are frequently called \emph{loops}.
 
-\subsection{Logically Controlled Loops}\label{subsec:Logically_Controlled_Loops}
-\subsubsection{Design Issues}\label{subsubsec:Logically_Controlled_Loops-Design_Issues}
-\subsubsection{Examples}\label{subsubsec:Logically_Controlled_Loops-Examples}
+  There are 2 questions that need to be answered to design iterative statements.
+  \begin{enumerate}[noitemsep]
+  \item How is the iteration controlled?
+  \item Where should the control mechanism appear in the loop statement, i.e.\ when is it executed in relation to the code in the statement body?
+  \end{enumerate}
 
-\subsection{Iteration Based on Data Structures}\label{subsec:Iteration_Based_on_Data_Structures}
+  \begin{remark}[Iteration Statement]\label{rmk:Iteration_Statement}
+    An \emph{iteration statement} is the combination of the \nameref{def:Iterative_Statement-Body} and the control mechanism.
+  \end{remark}
+\end{definition}
+
+\nameref{subsubsec:Counter_Controlled_Loops} and \nameref{subsubsec:Counter_Controlled_Loops}, and a combination of the 2, are the main ways to control an \nameref{def:Iterative_Statement}.
+The 2 main choices of when to execute the control mechanism of the loop are:
+\begin{enumerate}[noitemsep]
+\item At the beginning of the loop, before the body. \nameref{def:Iterative_Statement-Pretest_Control}
+\item At the end of the loop, after the body. \nameref{def:Iterative_Statement-Posttest_Control}
+\end{enumerate}
+
+\begin{definition}[Body]\label{def:Iterative_Statement-Body}
+  The \emph{body} of an \nameref{def:Iterative_Statement} is the collection of statements whose execution is controlled by the iteration station statement.
+\end{definition}
+
+\begin{definition}[Pretest]\label{def:Iterative_Statement-Pretest_Control}
+  A \emph{pretest} \nameref{def:Iterative_Statement} means the test for loop completion, the control mechanism, is evaluated before the loop \nameref{def:Iterative_Statement-Body} executes.
+\end{definition}
+
+\begin{definition}[Posttest]\label{def:Iterative_Statement-Posttest_Control}
+  A \emph{posttest} \nameref{def:Iterative_Statement} means the test for loop completion, the control mechanism, is evaluated after the loop \nameref{def:Iterative_Statement-Body} executes.
+\end{definition}
+
+\subsubsection{Counter-Controlled Loops}\label{subsubsec:Counter_Controlled_Loops}
+\begin{definition}[Counter Iteration Statement]\label{def:Counter_Iteration_Statement}
+  A \emph{counter iteration statement} has:
+  \begin{itemize}[noitemsep]
+  \item A \emph{loop variable}, where the count value is maintained
+  \item The \emph{loop parameters}. These include
+    \begin{itemize}[noitemsep]
+    \item A means of specifying the \emph{initial} and \emph{terminal} values of the loop variable
+    \item The \emph{step size}, the difference between sequential loop variable values
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\nameref{subsubsec:Logically_Controlled_Loops} are more \textbf{general} than \nameref{subsubsec:Counter_Controlled_Loops}, they are not necessarily more commonly used.
+The greater complexity of \nameref{subsubsec:Counter_Controlled_Loops} means that their design is more demanding.
+
+\begin{remark*}[Machine Instructions]
+  Sometimes there are machine-level instructions for performing \nameref{subsubsec:Counter_Controlled_Loops}.
+  However, these are rare, because a language can outlive a processor's ISA.\@
+\end{remark*}
+
+\paragraph{Design Issues}\label{par:Counter_Controlled_Loops-Design_Issues}
+\begin{itemize}[noitemsep]
+\item What are the \nameref{def:Data_Type}, and \nameref{def:Variable_Scope} of the loop variable?
+\item Should it be legal for the loop variable or loop parameters to be changed in the loop, and if so, does it affect the loop control?
+\item Should the loop parameters be evaluated only once, or once for each iteration?
+\end{itemize}
+
+\paragraph{The \texttt{for} Statement of Ada}\label{par:Counter_Controlled_Loops-Ada}
+The Ada \texttt{for} statement can be generalized to
+\begin{minted}[frame=lines,linenos]{ada}
+for variable in [reverse] discrete_range loop
+    -- Body statements
+end loop;
+\end{minted}
+\begin{itemize}[noitemsep]
+\item The \texttt{discrete\textunderscore{}range} is a \nameref{def:Subrange_Type} of an integer or \nameref{def:Enumeration_Type}, such as \texttt{1..10} or \texttt{Monday..Friday}.
+\item The \texttt{reverse} \nameref{def:Reserved_Word} indicates the values of the \texttt{discrete\textunderscore{}range} are assigned in reverse order.
+\item The \texttt{variable} is only in scope of the loop
+  \begin{itemize}[noitemsep]
+  \item It is implicitly declared at the beginning of the \texttt{for} statement
+  \item and implicitly undeclared after loop termination
+  \item It also shadows/masks variables with the same name as it
+  \end{itemize}
+\item The \texttt{body} cannot assign the loop variable a new value
+\end{itemize}
+
+The operational semantics are given below.
+\begin{verbatim}
+  [define for_var (its type is that of the discrete range)]
+  [evaluate discrete range]
+loop:
+  if [there are no elements left in the discrete range] goto out
+  for_var = [next element of discrete range]
+  [loop body]
+  goto loop
+out:
+  [undefine for_var]
+\end{verbatim}
+
+\paragraph{The \texttt{for} Statement of the C-Based Languages}\label{par:Counter_Controlled_Loops-C_Langs}
+The C \texttt{for} statement can be generalized to
+\begin{minted}[frame=lines,linenos]{c}
+for (expression_1; expression_2; expression_3) {
+    // Body statements
+}
+\end{minted}
+\begin{itemize}[noitemsep]
+\item \texttt{expression\textunderscore{}1} is usually an assignment statement to create the loop variable, which can produce results
+  \begin{itemize}[noitemsep]
+  \item This is only evaluated once, before the loop begins
+  \item In early versions of C, these could \textbf{not} be definitions (\texttt{int count = 0;})
+  \end{itemize}
+\item \texttt{expression\textunderscore{}2} is the loop control, it makes comparisons against the loop variable
+  \begin{itemize}[noitemsep]
+  \item This is evaluated before every iteration of the loop body
+  \end{itemize}
+\item \texttt{expression\textunderscore{}3} manipulates the loop variable
+  \begin{itemize}[noitemsep]
+  \item This is evaluated after every iteration of the loop body
+  \end{itemize}
+\item All 3 of these expressions are optional.
+  \begin{itemize}[noitemsep]
+  \item Having no \texttt{expression\textunderscore{}2} means the comparison is always true, which may result in an infinite loop
+  \item If \texttt{expression\textunderscore{}1} is absent, no loop variable is initialized, but that doesn't stop other \nameref{def:Variable}s declared elsewhere from being part of the control.
+  \end{itemize}
+\end{itemize}
+
+Because C expressions can be used as statements, expression evaluations are shown as statements in this operational semantics.
+\begin{verbatim}
+  expression_1
+loop:
+  if expression_2 = 0 goto out
+  [loop body]
+  expression_3
+  goto loop
+out:
+  ...
+\end{verbatim}
+
+C's design choices for its \texttt{for} loop are as follows:
+\begin{itemize}[noitemsep]
+\item No explicit loop variables or loop parameters
+\item All involved variables can be changed in the loop body
+\item Expressions are evaluated in the order shown before.
+  \begin{itemize}[noitemsep]
+  \item There can even be multiple expressions present in each of the \texttt{expression}s.
+  \end{itemize}
+\item You can branch into a C \texttt{for} loop body
+\end{itemize}
+
+\paragraph{The \texttt{for} Statement of Python}\label{par:Counter_Controlled_Loops-Python}
+The Python \texttt{for} statement can be generalized to
+\begin{minted}[frame=lines,linenos]{python3}
+for loop_variable in object:
+    # Body statements
+[else:
+    # Else clause]
+\end{minted}
+
+\begin{itemize}[noitemsep]
+\item The \texttt{loop\textunderscore{}variable} is assigned the one of the values in the object, which is often a range, for each iteration.
+\item The \texttt{else} clause is executed if the loop terminates \textbf{normally}
+\end{itemize}
+
+\subsubsection{Logically Controlled Loops}\label{subsubsec:Logically_Controlled_Loops}
+Collections of statements must be executed repeatedly, but should be controlled by a Boolean expression rather than a counter.
+Logically controlled loops are convenient for this.
+They are also more general than \nameref{subsubsec:Counter_Controlled_Loops}.
+
+\paragraph{Design Issues}\label{par:Logically_Controlled_Loops-Design_Issues}
+\begin{itemize}[noitemsep]
+\item Should the control be \nameref{def:Iterative_Statement-Pretest_Control} or \nameref{def:Iterative_Statement-Posttest_Control}?
+\item Should the logically controlled loop be a special form of a counting loop or a separate statement?
+\end{itemize}
+
+\paragraph{Examples}\label{par:Logically_Controlled_Loops-Examples}
+C-based programming languages have both \nameref{def:Iterative_Statement-Pretest_Control} and \nameref{def:Iterative_Statement-Posttest_Control} \nameref{subsubsec:Logically_Controlled_Loops}.
+These loops have these respective forms:
+\begin{minted}[frame=lines,linenos]{c}
+while (control_expression) {
+    // Loop body
+}
+\end{minted}
+\begin{minted}[frame=lines,linenos]{c}
+do
+    // Loop body
+while (control_expression);
+\end{minted}
+
+The \nameref{def:Iterative_Statement-Pretest_Control} (\texttt{while}) executes as long as the \texttt{control\textunderscore{}expression} evaluates to true.
+The \nameref{def:Iterative_Statement-Posttest_Control} (\texttt{do-while}) executes as long as the \texttt{control\textunderscore{}expression} evaluates to true.
+However, the \texttt{do-while} loop will cause the loop body to be executed at least once.
+
+The operational semantics are given below, with the \texttt{while} coming first, then the \texttt{do-while}.
+\begin{verbatim}
+loop:
+  if control-expression is falst go to outlive
+  [loop body]
+  goto loop
+out:
+  ...
+\end{verbatim}
+
+\begin{verbatim}
+loop:
+  [loop body]
+  if control_expression is true goto loop
+\end{verbatim}
+
+In C, it is possible to branch into these statement's bodies.
+Java's \texttt{while} and \texttt{do-while} statements are similar, but they require the \texttt{control\textunderscore{}expression} be \texttt{boolean} type.
+
+\subsubsection{Iteration Based on Data Structures}\label{subsubsec:Iteration_Based_on_Data_Structures}
+A general data-based iteration statement uses a user-defined data structure and user-defined iteration to go through the elements in the structure.
+An example of this is in Python, shown below
+\begin{minted}[frame=lines,linenos]{python3}
+for count in range(0, 9, 2)
+    # Body
+\end{minted}
+This would set the value of \texttt{count} to \texttt{0, 2, 4, 6, 8} before each iteration.
+
+The user-defined iterator function must be history sensitive.
+It should also terminate when it fails to find more elements.
+
+User-defined \nameref{rmk:Iteration_Statement}s are more commonly used and more important in object-oriented programming, because of the heavy use of abstract data types for data structures.
+In Java, this is done by having a class implement the \texttt{Iterable} interface.
+It is called the \texttt{foreach} loop, and is written as
+\begin{minted}[frame=lines,linenos]{java}
+for (String myElement : myList) {
+    ...
+}
+\end{minted}
 
 %%% Local Variables:
 %%% mode: latex
