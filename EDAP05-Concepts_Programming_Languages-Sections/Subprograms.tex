@@ -310,6 +310,19 @@ f.doIt(out list[sub], out sub); // What gets assigned to list[sub]? What is sub?
 \end{definition}
 
 \paragraph{Pass-by-Value-Result}\label{par:Parameter_Passing-Pass_By_Value_Result}
+\begin{definition}[Pass-by-Value-Result]\label{def:Pass_By_Value_Result}
+  \emph{Pass-by-value-result} is an implementation of the \nameref{def:Parameter_Passing-Inout_Mode} model in which actual values are copied.
+  It is a combination of \nameref{def:Pass_By_Value} and \nameref{def:Pass_By_Result}.
+  The \nameref{def:Variable_Value} of the \nameref{def:Actual_Parameter} is used to initialize the \nameref{def:Formal_Parameter}, which then acts as a \nameref{def:Local_Variable}.
+  At subprogram termination, the value of the \nameref{def:Formal_Parameter} \nameref{def:Local_Variable} is copied to the \nameref{def:Formal_Parameter}, then copied back to the \nameref{def:Actual_Parameter}.
+
+  \begin{remark}[Pass-by-Copy]\label{rmk:Pass_By_Copy}
+    \nameref{def:Pass_By_Value_Result} is sometimes called \emph{pass-by-copy}, because the \nameref{def:Actual_Parameter} is copied to the \nameref{def:Formal_Parameter} at the subprogram's start, and then copied back at the subprogram's termination.
+  \end{remark}
+
+  The advantages and disadvantages of pass-by-value-result are shared with both \nameref{def:Pass_By_Value} and \nameref{def:Pass_By_Result}.
+\end{definition}
+
 \paragraph{Pass-by-Reference}\label{par:Parameter_Passing-Pass_By_Reference}
 \paragraph{Pass-by-Name}\label{par:Parameter_Passing-Pass_By_Name}
 \paragraph{Pass-by-Need}\label{par:Parameter_Passing-Pass_By_Need}
