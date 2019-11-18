@@ -392,6 +392,27 @@ fun(list[i], list[j]); // Assume i==j is true
 \end{definition}
 
 \paragraph{Pass-by-Need}\label{par:Parameter_Passing-Pass_By_Need}
+\begin{definition}[Pass-by-Need]\label{def:Pass_By_Need}
+  This is a fairly niche way to pass \nameref{def:Actual_Parameter}s around to a subprogram's \nameref{def:Formal_Parameter}s.
+  It is only used by the Haskell language.
+
+  This is \textbf{VERY} similar to the \nameref{def:Pass_By_Name}  implementation, but the \nameref{def:Actual_Parameter} is evaluated \emph{AT MOST ONCE}.
+
+  The advantages and disadvantages of pass-by-need are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item More time-efficient than \nameref{def:Pass_By_Name}
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item Less flexity in the presence of updating \nameref{def:Variable}s.
+      \begin{itemize}[noitemsep]
+      \item Haskell avoids this problem because its ``variables'' are immutable, which makes this a moot point.
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
