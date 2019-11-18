@@ -226,9 +226,9 @@ How are \nameref{def:Actual_Parameter}s passed to the subprograms?
   This is generally used when returning a value from a subprogram.
 \end{definition}
 
-\begin{definition}[Inout Mode]\label{def:Parameter_Passing-Inout_Mode}
+\begin{definition}[In/Out Mode]\label{def:Parameter_Passing-Inout_Mode}
   The \nameref{def:Formal_Parameter}s can both transmit and receive data from the corresponding \nameref{def:Actual_Parameter}s.
-  This is called \emph{inout mode}.
+  This is called \emph{in/out mode}.
 
   This is generally used when a \nameref{def:Subprogram_Call} takes in \nameref{def:Actual_Parameter}s and returns a value.
 \end{definition}
@@ -240,7 +240,32 @@ There are 2 conceptual models of how data transfers take place in parameter tran
 \end{enumerate}
 
 \subsubsection{Implementation Models of Parameter Passing}\label{subsubsec:Implementation_Models_Parameter_Passing}
+A great variety of implementations for parameter passing have been put together.
+Here, we list some of them, and discuss their respective advantages and disadvantages.
+
 \paragraph{Pass-by-Value}\label{par:Parameter_Passing-Pass_By_Value}
+\begin{definition}[Pass-by-Value]\label{def:Pass_By_Value}
+  When a parameter is \emph{passed-by-value}, the value of the \nameref{def:Actual_Parameter} is used to initialize the corresponding \nameref{def:Formal_Parameter}, which then acts as a \nameref{def:Local_Variable} in the subprogram.
+  This implements \nameref{def:Parameter_Passing-In_Mode} \nameref{def:Semantics}.
+
+  Passing a parameter by value is typically done by copying the \nameref{def:Actual_Parameter}'s \nameref{def:Variable_Value} for the \nameref{def:Formal_Parameter}.
+  This means we don't have to make the \nameref{def:Memory} cell read-only, because making cells read-only can be difficult.
+
+  The advantages and disadvantages are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item Fast to copy scalars in both linkage cost and access time
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item Additional \nameref{def:Memory} is required for the \nameref{def:Formal_Parameter}'s new value.
+    \item The \nameref{def:Actual_Parameter} must be copied to the storage area for the corresponding \nameref{def:Formal_Parameter}
+    \item This copying can be expensive if the \nameref{def:Actual_Parameter} is large, like an array with many elements.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
 \paragraph{Pass-by-Result}\label{par:Parameter_Passing-Pass_By_Result}
 \paragraph{Pass-by-Value-Result}\label{par:Parameter_Passing-Pass_By_Value_Result}
 \paragraph{Pass-by-Reference}\label{par:Parameter_Passing-Pass_By_Reference}
