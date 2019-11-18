@@ -261,12 +261,54 @@ Here, we list some of them, and discuss their respective advantages and disadvan
     \begin{itemize}[noitemsep]
     \item Additional \nameref{def:Memory} is required for the \nameref{def:Formal_Parameter}'s new value.
     \item The \nameref{def:Actual_Parameter} must be copied to the storage area for the corresponding \nameref{def:Formal_Parameter}
+    \item Difficult to implement by transmitting access paths
     \item This copying can be expensive if the \nameref{def:Actual_Parameter} is large, like an array with many elements.
     \end{itemize}
   \end{itemize}
 \end{definition}
 
 \paragraph{Pass-by-Result}\label{par:Parameter_Passing-Pass_By_Result}
+\begin{definition}[Pass-by-Result]\label{def:Pass_By_Result}
+  \emph{Pass-by-result} is an implementation for \nameref{def:Parameter_Passing-Out_Mode} parameters.
+  When a parameter is passed-by-result, no \nameref{def:Variable_Value} is transmitted to the subprogram.
+  The corresponding \nameref{def:Formal_Parameter} acts as a \nameref{def:Local_Variable}, but before control is transferred back to the caller, the \nameref{def:Formal_Parameter}'s result is transmitted back to the caller's \nameref{def:Actual_Parameter}.
+
+  The advantages and disadvantages of pass-by-result are fairly similar to \nameref{def:Pass_By_Value}, but with some extra disadvantages.
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item Fast to copy scalars
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item If the values are returned by copying the value into the \nameref{def:Actual_Parameter}, extra storage and copy operations are required.
+    \item Difficult to transmit an access path.
+      \begin{itemize}[noitemsep]
+      \item Need to ensure the initial value of the \nameref{def:Actual_Parameter} is \textbf{not} used in the subprogram.
+      \end{itemize}
+    \item There can be an \nameref{def:Actual_Parameter} collision.
+\begin{minted}[frame=lines,linenos]{csharp}
+void Fixer(out int x, out int y) {
+  x = 17;
+  y = 35;
+}
+...
+f.Fixer(out a, out a); // What gets assigned first? 17? 35? Who knows?
+\end{minted}
+    \item A similar issue arises when the implementor can choose between 2 different times to evaluate the addresses of the \nameref{def:Actual_Parameter}s. This is illustrated below.
+\begin{minted}[frame=lines,linenos]{csharp}
+void DoIt(out int x, int index) {
+  x = 17;
+  index = 42;
+}
+...
+sub = 21;
+f.doIt(out list[sub], out sub); // What gets assigned to list[sub]? What is sub? 21? 42?
+\end{minted}
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
 \paragraph{Pass-by-Value-Result}\label{par:Parameter_Passing-Pass_By_Value_Result}
 \paragraph{Pass-by-Reference}\label{par:Parameter_Passing-Pass_By_Reference}
 \paragraph{Pass-by-Name}\label{par:Parameter_Passing-Pass_By_Name}
