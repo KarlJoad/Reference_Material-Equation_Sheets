@@ -202,7 +202,43 @@ Language support of this featuer depends \textbf{heavily} on the language.
 You will have to chek the language specification to find out if the programming language supports them.
 
 \subsection{Parameter-Passing Methods}\label{subsec:Parameter_Passing_Methods}
+How are \nameref{def:Actual_Parameter}s passed to the subprograms?
+
 \subsubsection{Semantic Models of Parameter Passing}\label{subsubsec:Semantic_Models_Parameter_Passing}
+\nameref{def:Formal_Parameter}s are characterized by 1 of 3 distinct \nameref{def:Semantics} models:
+\begin{enumerate}[noitemsep]
+\item They can received data from the corresponding \nameref{def:Actual_Parameter}. This is called \textbf{\nameref{def:Parameter_Passing-In_Mode}}.
+\item They can transmit data to the \nameref{def:Actual_Parameter}. This is called \textbf{\nameref{def:Parameter_Passing-Out_Mode}}.
+\item They can do both 1 and 2. This is called \textbf{\nameref{def:Parameter_Passing-Inout_Mode}}.
+\end{enumerate}
+
+\begin{definition}[In Mode]\label{def:Parameter_Passing-In_Mode}
+  \nameref{def:Formal_Parameter}s can receive data from the corresponding \nameref{def:Actual_Parameter}.
+  This is called \emph{in mode}.
+
+  This is generally used when passing \nameref{def:Actual_Parameter}s to a subprogram.
+\end{definition}
+
+\begin{definition}[Out Mode]\label{def:Parameter_Passing-Out_Mode}
+  \nameref{def:Formal_Parameter}s can transmit data to the corresponding \nameref{def:Actual_Parameter}s.
+  This is called \emph{out mode}.
+
+  This is generally used when returning a value from a subprogram.
+\end{definition}
+
+\begin{definition}[Inout Mode]\label{def:Parameter_Passing-Inout_Mode}
+  The \nameref{def:Formal_Parameter}s can both transmit and receive data from the corresponding \nameref{def:Actual_Parameter}s.
+  This is called \emph{inout mode}.
+
+  This is generally used when a \nameref{def:Subprogram_Call} takes in \nameref{def:Actual_Parameter}s and returns a value.
+\end{definition}
+
+There are 2 conceptual models of how data transfers take place in parameter transmission:
+\begin{enumerate}[noitemsep]
+\item An actual value is copied (to the caller, to the callee, or both).
+\item Or an access path is transmitted. This is usually a pointer/reference.
+\end{enumerate}
+
 \subsubsection{Implementation Models of Parameter Passing}\label{subsubsec:Implementation_Models_Parameter_Passing}
 \paragraph{Pass-by-Value}\label{par:Parameter_Passing-Pass_By_Value}
 \paragraph{Pass-by-Result}\label{par:Parameter_Passing-Pass_By_Result}
