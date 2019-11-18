@@ -1,6 +1,80 @@
 \section{Subprograms}\label{sec:Subprograms}
+This is a way to perform \nameref{par:Process_Abstraction}.
+This generally improves \nameref{subsec:Readability} and \nameref{subsec:Reliability}.
+
 \subsection{General Characteristics}\label{subsec:Suprogram_Characteristics}
+\begin{itemize}[noitemsep]
+\item Each subprogram has a single entry point
+\item The calling program unit is suspended during the execution of the called subprogram, which implies there is only one subprogram in execution at any given time
+\item Control always returns to the caller whenthe subprogram terminates
+\end{itemize}
+
+Alternatives to these generalizations result in coroutines and concurrent units.
+
 \subsection{Basic Definitions}\label{subsec:Subprogram_Definitions}
+\begin{definition}[Subprogram Definition]\label{def:Subprogram_Definition}
+  A \emph{subprogram definition} describes the interface to and the actions of the subprogram abstraction
+\end{definition}
+
+\begin{definition}[Subprogram Call]\label{def:Subprogram_Call}
+  A \emph{subprogram call} is the explicit request that a specific subprogram be executed.
+
+  \begin{remark}[Call]\label{rmk:Subprogram_Call}
+    This is generally shortened to just a \emph{call}.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Active]\label{def:Subprogram_Active}
+  A subprogram is said to be \emph{active} if it has been called, but not yet completed its execution.
+\end{definition}
+
+\begin{definition}[Subprogram Header]\label{def:Subprogram_Header}
+  A \emph{subprogram header} is the first part of a \nameref{def:Subprogram_Definition}.
+  This serves several purposes:
+  \begin{enumerate}[noitemsep]
+  \item Specifies that the following syntactic unit is a \nameref{def:Subprogram_Definition} of some kind.
+  \item Provides a name for the subprogram, if it's not an anonymous subprogram.
+  \item Optionally specify a list of parameters.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Subprogram Body]\label{def:Subprogram_Body}
+  The \emph{subprogram body} defines the actions that the subprogram takes when there is a \nameref{def:Subprogram_Call}.
+  The body may be delimited with curly-braces, \texttt{\{} and \texttt{\}}.
+  It may be whitespace delimited, Python.
+  It may also have an \texttt{end} statement that ends the execution of that block.
+\end{definition}
+
+Python is unique in that its \nameref{def:Subprogram_Definition}s can be executed in control-statement blocks.
+For example,
+\begin{minted}[frame=lines,linenos]{python3}
+if conditional_expression :
+    def func(...):
+        ...
+else:
+    def func(...):
+        ...
+\end{minted}
+This means that there are 2 possible \nameref{def:Subprogram_Definition}s possible during runtime, and which one is currently valid depends on the result of the \texttt{conditional\textunderscore{}expression}.
+
+\begin{definition}[Parameter Profile]\label{def:Subprogram_Parameter_Profile}
+  The \emph{parameter profile} of a subprogram contains the number, order, and types of its formal parameters.
+\end{definition}
+
+\begin{definition}[Protocol]\label{def:Subprogram_Protocol}
+  The \emph{protocol} of a subprogram is its \nameref{def:Subprogram_Parameter_Profile}, and if its a function, its return type.
+\end{definition}
+
+\begin{definition}[Subprogram Declaration]\label{def:Subprogram_Declaration}
+  A \emph{subprogram declaration} is the act of providing type and name information, but not giving any \nameref{def:Subprogram_Body}.
+  This is needed in languages that do not allow forward references to subprograms.
+
+  \begin{remark}[Prototype]\label{rmk:Subprogram_Prototype}
+    In C/C++, if a subprogram needs to be declared, it is called a \emph{prototype}.
+    These are generally specified in \emph{header} files, with a file extension of \texttt{.h}.
+  \end{remark}
+\end{definition}
+
 \subsection{Parameters}\label{subsec:Subprogram_Parameters}
 \subsection{Local Referencing Environments}\label{subsec:Local_Referencing_Environments}
 \subsubsection{Local Variables}\label{subsubsec:Local_Variables}
