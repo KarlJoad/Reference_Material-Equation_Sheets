@@ -223,7 +223,7 @@ and $\mathbf{K}$ consists of $t$ characters $\mathbf{K} = (k_{1}, k_{2}, \ldots,
   The \nameref{def:Plaintext} \texttt{youmustvisitmetonight} is to be encrypted using a Vigen\'{e}re Cipher, with a period 4, where $\mathbf{K} = \mathtt{lucy}$.
   \tcblower{}
   \begin{center}
-    \begin{tabular}{ccccccccccccccccc}
+    \begin{tabular}{cccc|cccc|cccc|cccc|c}
       \toprule
       \texttt{y} &  \texttt{o} &  \texttt{u} &  \texttt{m} &  \texttt{u} &  \texttt{s} &  \texttt{t} &  \texttt{v} &  \texttt{i} &  \texttt{s} &  \texttt{i} &  \texttt{t} &  \texttt{m} &  \texttt{e} &  \texttt{t} &  \texttt{o} &  $\cdots$ \\
       \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  \texttt{+} &  $\cdots$ \\
@@ -252,8 +252,87 @@ There are 2 steps to breaking \nameref{subsubsec:The_Vigenere_Cipher}:
 \end{definition}
 
 Now we move onto the second part of breaking \nameref{subsubsec:The_Vigenere_Cipher}.
-Split the \nameref{def:Ciphertext} characters into $t$ different multisets, where each character should have been shifted according to a Simple Substitution Cipher.
-The key of each \nameref{def:Monoalphabetic_Cipher} can be determined with the statistics in \Cref{tab:Frequency_Letters_English_Alphabet} and some trial-and-error.
+There are 2 main ways to do this.
+\begin{enumerate}[noitemsep]
+\item Split the \nameref{def:Ciphertext} characters into $t$ different multisets, where each character should have been shifted according to a Simple Substitution Cipher.
+  The key of each \nameref{def:Monoalphabetic_Cipher} can be determined with the statistics in \Cref{tab:Frequency_Letters_English_Alphabet} and some trial-and-error.
+\item \nameref{def:Measure_of_Roughness} and \nameref{def:Index_of_Coincidence}
+\end{enumerate}
+
+\begin{definition}[Measure of Roughness]\label{def:Measure_of_Roughness}
+  \begin{equation}\label{eq:Measure_of_Roughness}
+    \begin{aligned}
+      \mathrm{MR} &= \sum\limits_{i=a\Rightarrow1}^{z\Rightarrow26} {\left( p_{i} - \frac{1}{26} \right)}^{2} \\
+      &= \sum\limits_{i=a\Rightarrow1}^{z\Rightarrow26} {\left( p_{i} \right)}^{2} - \frac{1}{26} \\
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Index of Coincidence]\label{def:Index_of_Coincidence}
+  The \emph{index of coincidence} uses values found in the \nameref{def:Measure_of_Roughness}.
+  \begin{equation}\label{eq:Index_of_Coincidence}
+    \mathrm{IC} = \frac{\sum\limits_{i=a\Rightarrow1}^{z\Rightarrow26} f_{i} \left( f_{1} - 1 \right)}{n(n-1)}
+  \end{equation}
+
+  However, it does \emph{not} return the period of \nameref{subsubsec:The_Vigenere_Cipher}.
+\end{definition}
+
+\subsubsection{The Vernam Cipher (One-Time Pad)}\label{subsubsec:The_Vernam_Cipher}
+This is a special case of the \nameref{subsubsec:The_Vigenere_Cipher}, where the period of the key, $\mathbf{K}$ is chosen to be the same length as the output ciphertext, $\mathbf{C}$.
+More concretely, for a ciphertext, $\mathbf{C}$ of length $n$, pick a Vigen\'{e}re Cipher key with a period $t$.
+Where,
+\begin{equation*}
+  n = t
+\end{equation*}
+
+\paragraph{Cryptanalysis of \nameref*{subsubsec:The_Vernam_Cipher}}
+\nameref{subsubsec:The_Vernam_Cipher} is an example of \nameref{def:Perfect_Secrecy} (unbreakable) if the the elements of the key $\mathbf{K}$ are chosen uniformly at random among all possible $\IntsMod{26}^{n}$ possible values.
+
+\subsubsection{Transposition Cipher (Permutation Cipher)}\label{subsubsec:Transposition_Cipher}
+This cipher reorders all the letters in a block of length $t$.
+The \nameref{def:Encryption_Rule}'s key, $K$ that permutes all the characters in a word block.
+\Cref{eq:Transposition_Cipher-Encryption} is an example of how the \nameref{def:Encryption_Rule} is constructed.
+\begin{equation}\label{eq:Transposition_Cipher-Encryption}
+  \begin{aligned}
+    \pi_{e}(2, 5, 1, 3, 4) \Longrightarrow \pi(1) &= 2 \\
+    \pi(2) &= 5 \\
+    \pi(3) &= 1 \\
+    \pi(4) &= 3 \\
+    \pi(5) &= 4 \\
+  \end{aligned}
+\end{equation}
+
+The \nameref{def:Decryption_Rule} for \Cref{eq:Transposition_Cipher-Encryption} is given in \Cref{eq:Transposition_Cipher-Decryption}.
+\begin{equation}\label{eq:Transposition_Cipher-Decryption}
+  \begin{aligned}
+    \pi_{d}(4, 3, 1, 5, 2) \Longrightarrow \pi(1) &= 4 \\
+    \pi(2) &= 3 \\
+    \pi(3) &= 1 \\
+    \pi(4) &= 5 \\
+    \pi(5) &= 2 \\
+  \end{aligned}
+\end{equation}
+
+\begin{remark}
+  The number on the \textbf{right-hand side} is assigned to the position present on the \textbf{left-hand side}.
+\end{remark}
+
+\begin{example}[Lecture 5]{Transposition Cipher}
+  Given the plaintext message $\mathbf{M}=$ findi, and the \nameref{def:Encryption_Rule} shown in \Cref{eq:Transposition_Cipher-Encryption}, what is the resulting ciphertext message?
+  \tcblower{}
+  \begin{align*}
+    \pi(1) &= 2 \\
+    \pi(2) &= 5 \\
+    \pi(3) &= 1 \\
+    \pi(4) &= 3 \\
+    \pi(5) &= 4 \\
+  \end{align*}
+  So, each character in the input ``findi'' is moved around to result in ``iifnd''.
+\end{example}
+
+\subsubsection{The Hill Cipher}\label{subsubsec:The_Hill_Cipher}
+\nameref{subsubsec:The_Hill_Cipher} acts on $t$-grams from \TextIntsMod{26} through a key that is an \nameref{def:Invertible} $t \times t$ matrix.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
