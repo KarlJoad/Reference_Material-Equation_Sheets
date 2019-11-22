@@ -705,6 +705,10 @@ myTuple = (3, 5.8, 'apple')
 \subsection{Union Types}\label{subsec:Union_Types}
 \begin{definition}[Union]\label{def:Union_Type}
   A \emph{union} is a \nameref{def:Data_Type} whose \nameref{def:Variable}s may store different \nameref{def:Variable_Type} \nameref{def:Variable_Value}s at different times during program execution.
+  \textbf{However, ONLY ONE value is stored at a time.}
+
+  This means that in a C-program, which uses \nameref{def:Free_Union}s will only hold one thing at a time, and \textbf{based on the field that you call in the union, the program will interpret the bit pattern differently}.
+  This site gives a good exposition of this point: \href{https://www.tutorialspoint.com/cprogramming/c_unions.htm}{Greater Exposition}.
 
   The union will allocate the maximum space required by all the \nameref{def:Variable_Type}s of the union, and only use the parts it needs, based on what \nameref{def:Variable_Type}s are actually in use.
 \end{definition}
