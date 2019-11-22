@@ -1,0 +1,42 @@
+\section{Shannon's Theory of Secrecy}\label{sec:Shannon_Theory_of_Secrecy}
+\subsection{Attack and Security Assumptions}\label{subsec:Shannon_Attack_Security_Assumptions}
+There are several possible assumptions for Eve's attack on Alice's message.
+\begin{enumerate}[noitemsep]
+\item \emph{Ciphertext-Only Attack}: Eve has only the ciphertext $C$, and wants to get the key $K$ or the plaintext message $M$
+\item \emph{Known-Plaintext Attack}: Eve has both the ciphertext $C$ and the plaintext message $M$, and wants the key $K$
+\item \emph{Chosen-Plaintext Attack}: Eve knows $M$ and and can arbitrarily choose $M$ to get $C$ back. She wants to get the key $K$.
+\item \emph{Chosen-Ciphertext Attack (Lunchtime Attack)}: Eve has the \nameref{def:Decryption_Rule}, $d_{K}$ and can feed in any arbitrary $C$. She is attempting to find the key $K$.
+\item \emph{Related-Key Attack}: The message $M$ is encrypted with a key $K$ similar to another.
+\item \emph{Side Channel Attack}: Eve is attacking the implementation of the \nameref{def:Encryption_Rule}, $e_{K}$, by observing some other outputs.
+  \begin{itemize}[noitemsep]
+  \item The power consumed by the algorithm
+  \item The network communcations occurring
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Security Scenarios}\label{subsec:Shannon_Security_Scenarios}
+There are several scenarios we have for our \nameref{def:Encryption_Rule} and \nameref{def:Decryption_Rule}.
+In the order of \textbf{strongest security} to \textbf{weakest security}:
+\begin{enumerate}[noitemsep]
+\item \emph{Unconditional Security}: A \nameref{def:Cryptographic_Primitive} is unconditionally secure if it cannot be broken even if Eve has infinite computational power.
+  \begin{itemize}[noitemsep]
+  \item This means she can also perform an exhautive key search (Brute Force)
+  \end{itemize}
+\item \emph{Computational Security}: A \nameref{def:Cryptographic_Primitive} is computationally secure if the best algorithm to break the key requires at least $T$ operations, where $T$ is a very large number.
+\item \emph{Provable Security}: A \nameref{def:Cryptographic_Primitive} is provably secure if the key can be reduced to a well known and well-studied problem.
+  \begin{itemize}[noitemsep]
+  \item Semiprime Integer Factorization is an example a key that is provably secure.
+  \end{itemize}
+\item \emph{Heuristic Security}: If there is no known method of breaking the \nameref{def:Cryptographic_Primitive}, but the security cannot be proven in any sense.
+\end{enumerate}
+
+\begin{definition}[Perfect Secrecy]\label{def:Perfect_Secrecy}
+  A cryptosystem hsa \emph{perfect secrecy} if \Cref{eq:Perfect_Secrecy} is true.
+  \begin{equation}\label{eq:Perfect_Secrecy}
+    \MutualInformation(M;C) = 0 = H(M) - H(M \Given C)
+  \end{equation}
+\end{definition}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
+%%% End:
