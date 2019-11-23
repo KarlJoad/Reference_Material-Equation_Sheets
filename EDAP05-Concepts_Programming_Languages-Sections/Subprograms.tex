@@ -509,6 +509,18 @@ To prevent this, we have to have special \nameref{def:Variable}s which are said 
   These variables are usually heap-dynamic, rather than \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s.
 \end{definition}
 
+The code snippet below is an example of a \nameref{def:Closure} and its \nameref{def:Variable}s having \nameref{def:Unlimited_Extent}.
+\begin{minted}[frame=lines,linenos]{csharp}
+static Func<int, int> makeAdder(int x) {
+  return delegate(int y) { return x + y;};
+}
+...
+Func<int, int> Add10 = makeAdder(10); // Makes a function that adds 10 to a passed integer parameter
+Func<int, int> Add5 = makeAdder(5); // Makes a function that adds 5 to a passed integer parameter
+Console.WriteLine("Add 10 to 20: {0}", Add10(20)); // Prints "Add 10 to 20: 30"
+Console.WriteLine("{0}", Add5(20)); // Prints 25
+\end{minted}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
