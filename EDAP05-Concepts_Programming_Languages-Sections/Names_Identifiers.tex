@@ -574,8 +574,8 @@ def g(y):
   \end{remark}
 \end{definition}
 
-\subsubsection{Static Scope}\label{subsubsec:Variable_Static_Scope}
-\begin{definition}[Static Scoping]\label{def:Variable_Static_Scoping}
+\subsubsection{Static Scope}\label{subsubsec:Static_Scope}
+\begin{definition}[Static Scoping]\label{def:Static_Scoping}
   \emph{Static scoping} is a way to statically determine the scope of a \nameref{def:Variable}.
   When there is a reference to a \nameref{def:Variable}, the attributes of the \nameref{def:Variable} can be determined by finding the statement in which it is declared (either explicitly or implicitly).
   This makes it easy for a human reader and compiler/interpreter to figure out the \nameref{def:Variable_Type} of every \nameref{def:Variable} in the program.
@@ -587,11 +587,11 @@ def g(y):
   \end{enumerate}
 
   \begin{remark}[Lexical Scoping]\label{rmk:Variable_Lexical_Scoping}
-    \nameref{def:Variable_Static_Scoping} is sometimes called \emph{lexical scoping}.
+    \nameref{def:Static_Scoping} is sometimes called \emph{lexical scoping}.
   \end{remark}
 \end{definition}
 
-\nameref{def:Variable_Static_Scoping} creates a tree-like structure, where each \nameref{def:Variable} declared in a program unit/block has a \nameref{def:Variable_Static_Parent}.
+\nameref{def:Static_Scoping} creates a tree-like structure, where each \nameref{def:Variable} declared in a program unit/block has a \nameref{def:Variable_Static_Parent}.
 Then, each \nameref{def:Variable_Static_Parent} has a list of \nameref{def:Variable_Static_Ancestor}s.
 
 \begin{definition}[Static Parent]\label{def:Variable_Static_Parent}
@@ -663,7 +663,7 @@ Thus, it goes to its dynamic parent, \texttt{big()} and finds a declaration for 
 Thus, the \texttt{y} in \texttt{sub2()} evaluates to \texttt{y=3}.
 
 \subsubsection{Blocks}\label{subsubsec:Variable_Blocks}
-New \nameref{subsubsec:Variable_Static_Scope}s can be defined in the middle of executing code.
+New \nameref{subsubsec:Static_Scope}s can be defined in the middle of executing code.
 This allows a small section to have its own \nameref{def:Local_Variable}s.
 
 \begin{definition}[Block]\label{def:Block_Scope}
@@ -674,7 +674,7 @@ This allows a small section to have its own \nameref{def:Local_Variable}s.
 The use of \nameref{def:Block_Scope}s create a \nameref{def:Block_Structured_Language}.
 
 \begin{definition}[Block-Structured Language]\label{def:Block_Structured_Language}
-  The use of \nameref{def:Block_Scope}s to create the \nameref{subsubsec:Variable_Static_Scope}s creates a \emph{block-structured language}.
+  The use of \nameref{def:Block_Scope}s to create the \nameref{subsubsec:Static_Scope}s creates a \emph{block-structured language}.
 \end{definition}
 
 Consider the following C function:
