@@ -207,8 +207,8 @@ How are \nameref{def:Actual_Parameter}s passed to the subprograms?
 \subsubsection{Semantic Models of Parameter Passing}\label{subsubsec:Semantic_Models_Parameter_Passing}
 \nameref{def:Formal_Parameter}s are characterized by 1 of 3 distinct \nameref{def:Semantics} models:
 \begin{enumerate}[noitemsep]
-\item They can received data from the corresponding \nameref{def:Actual_Parameter}. This is called \textbf{\nameref{def:Parameter_Passing-In_Mode}}.
-\item They can transmit data to the \nameref{def:Actual_Parameter}. This is called \textbf{\nameref{def:Parameter_Passing-Out_Mode}}.
+\item The \nameref{def:Formal_Parameter}s receive data from the corresponding \nameref{def:Actual_Parameter}. This is called \textbf{\nameref{def:Parameter_Passing-In_Mode}}.
+\item The \nameref{def:Formal_Parameter}s  can transmit the computed data back to the \nameref{def:Actual_Parameter}. This is called \textbf{\nameref{def:Parameter_Passing-Out_Mode}}.
 \item They can do both 1 and 2. This is called \textbf{\nameref{def:Parameter_Passing-Inout_Mode}}.
 \end{enumerate}
 
@@ -220,17 +220,17 @@ How are \nameref{def:Actual_Parameter}s passed to the subprograms?
 \end{definition}
 
 \begin{definition}[Out Mode]\label{def:Parameter_Passing-Out_Mode}
-  \nameref{def:Formal_Parameter}s can transmit data to the corresponding \nameref{def:Actual_Parameter}s.
+  \nameref{def:Formal_Parameter}s transmit the computed data back to the corresponding \nameref{def:Actual_Parameter}s.
   This is called \emph{out mode}.
 
-  This is generally used when returning a value from a subprogram.
+  This is similar to a return value, but acts \emph{only} on the actual parameters.
 \end{definition}
 
 \begin{definition}[In/Out Mode]\label{def:Parameter_Passing-Inout_Mode}
   The \nameref{def:Formal_Parameter}s can both transmit and receive data from the corresponding \nameref{def:Actual_Parameter}s.
   This is called \emph{in/out mode}.
 
-  This is generally used when a \nameref{def:Subprogram_Call} takes in \nameref{def:Actual_Parameter}s and returns a value.
+  This is generally used when a \nameref{def:Subprogram_Call} takes in \nameref{def:Actual_Parameter}s and returns values in those same parameters.
 \end{definition}
 
 There are 2 conceptual models of how data transfers take place in parameter transmission:
@@ -242,6 +242,10 @@ There are 2 conceptual models of how data transfers take place in parameter tran
 \subsubsection{Implementation Models of Parameter Passing}\label{subsubsec:Implementation_Models_Parameter_Passing}
 A great variety of implementations for parameter passing have been put together.
 Here, we list some of them, and discuss their respective advantages and disadvantages.
+
+\begin{remark*}[Call-by-...]
+  All of these models can have the ``Pass-by'' replaced with ``Call-by'', which means the same thing.
+\end{remark*}
 
 \paragraph{Pass-by-Value}\label{par:Parameter_Passing-Pass_By_Value}
 \begin{definition}[Pass-by-Value]\label{def:Pass_By_Value}
@@ -293,7 +297,7 @@ void Fixer(out int x, out int y) {
   y = 35;
 }
 ...
-f.Fixer(out a, out a); // What gets assigned first? 17? 35? Who knows?
+f.Fixer(out a, out a); // What gets assigned first? Is a=17 or a=35? Who knows?
 \end{minted}
     \item A similar issue arises when the implementor can choose between 2 different times to evaluate the addresses of the \nameref{def:Actual_Parameter}s. This is illustrated below.
 \begin{minted}[frame=lines,linenos]{csharp}
@@ -303,7 +307,7 @@ void DoIt(out int x, int index) {
 }
 ...
 sub = 21;
-f.doIt(out list[sub], out sub); // What gets assigned to list[sub]? What is sub? 21? 42?
+f.doIt(out list[sub], out sub); // What gets assigned to list[sub], because sub is unknown: sub=21? sub=42?
 \end{minted}
     \end{itemize}
   \end{itemize}
@@ -314,7 +318,7 @@ f.doIt(out list[sub], out sub); // What gets assigned to list[sub]? What is sub?
   \emph{Pass-by-value-result} is an implementation of the \nameref{def:Parameter_Passing-Inout_Mode} model in which actual values are copied.
   It is a combination of \nameref{def:Pass_By_Value} and \nameref{def:Pass_By_Result}.
   The \nameref{def:Variable_Value} of the \nameref{def:Actual_Parameter} is used to initialize the \nameref{def:Formal_Parameter}, which then acts as a \nameref{def:Local_Variable}.
-  At subprogram termination, the value of the \nameref{def:Formal_Parameter} \nameref{def:Local_Variable} is copied to the \nameref{def:Formal_Parameter}, then copied back to the \nameref{def:Actual_Parameter}.
+  At subprogram termination, the value of the \nameref{def:Formal_Parameter}'s \nameref{def:Local_Variable} is copied back to the \nameref{def:Formal_Parameter}, then copied back to the \nameref{def:Actual_Parameter}.
 
   \begin{remark}[Pass-by-Copy]\label{rmk:Pass_By_Copy}
     \nameref{def:Pass_By_Value_Result} is sometimes called \emph{pass-by-copy}, because the \nameref{def:Actual_Parameter} is copied to the \nameref{def:Formal_Parameter} at the subprogram's start, and then copied back at the subprogram's termination.
@@ -326,7 +330,7 @@ f.doIt(out list[sub], out sub); // What gets assigned to list[sub]? What is sub?
 \paragraph{Pass-by-Reference}\label{par:Parameter_Passing-Pass_By_Reference}
 \begin{definition}[Pass-by-Reference]\label{def:Pass_By_Reference}
   \emph{Pass-by-reference} is a second implementation model for \nameref{def:Parameter_Passing-Inout_Mode}.
-  In this case, rather than copying the actual data \nameref{def:Variable_Value}s back and forth, pass-by-reference transmits an access pather, usually an address/pointer, to the called subprogram.
+  In this case, rather than copying the actual data \nameref{def:Variable_Value}s back and forth, pass-by-reference transmits an access path, usually an address/pointer/reference, to the called subprogram.
   This allows the subprogram to access the \textbf{SAME} value as the calling program.
 
   The advantages and disadvantages of this implementation are:
@@ -343,14 +347,14 @@ f.doIt(out list[sub], out sub); // What gets assigned to list[sub]? What is sub?
     \begin{itemize}[noitemsep]
     \item Access to the \nameref{def:Formal_Parameter}s will be slower than \nameref{def:Pass_By_Value}, because of the indirect addressing required.
     \item There may be inadvertent and erroneous changes to the \nameref{def:Actual_Parameter}'s \nameref{def:Variable_Value}.
-    \item \nameref{def:Aliasing} can be started.
+    \item \nameref{def:Aliasing} can occur.
       \begin{itemize}[noitemsep]
       \item This harms \nameref{subsec:Readability} and \nameref{subsec:Reliability}.
       \end{itemize}
 \begin{minted}[frame=lines,linenos]{c++}
 void func(int &first, int &second);
-func(total, total); // Both first and second point to the same total variable
-fun(list[i], list[j]); // Assume i==j is true
+func(total, total); // When using first or second, they both point to the same ``total'' variable
+fun(list[i], list[j]); // Assuming i==j is true, list[i] and list[j] both point to the same value
 \end{minted}
     \item Program verification is more difficult.
     \end{itemize}
@@ -360,7 +364,7 @@ fun(list[i], list[j]); // Assume i==j is true
 \paragraph{Pass-by-Name}\label{par:Parameter_Passing-Pass_By_Name}
 \begin{definition}[Pass-by-Name]\label{def:Pass_By_Name}
   \emph{Pass-by-name} is an \nameref{def:Parameter_Passing-Inout_Mode} parameter transmission method that does not correspond to a single implementation model.
-  When \nameref{def:Actual_Parameter} are passed by name, the actual parameter is textually substituted for the corresponding \nameref{def:Formal_Parameter}.
+  When \nameref{def:Actual_Parameter} are passed by name, every occurrence of the actual parameter is textually substituted for the corresponding \nameref{def:Formal_Parameter}.
   A pass-by-name \nameref{def:Formal_Parameter} is bound to an access method at the time of the program call, but the actual binding to a \nameref{def:Variable_Value} or an \nameref{def:Variable_Address} is delayed until the \nameref{def:Formal_Parameter} is assigned or referenced.
 
   Implementing this requires a subprogram be passed to the called subprogram to evaluate the \nameref{def:Variable_Address} or \nameref{def:Variable_Value} of the \nameref{def:Formal_Parameter}.
@@ -396,7 +400,8 @@ fun(list[i], list[j]); // Assume i==j is true
   This is a fairly niche way to pass \nameref{def:Actual_Parameter}s around to a subprogram's \nameref{def:Formal_Parameter}s.
   It is only used by the Haskell language.
 
-  This is \textbf{VERY} similar to the \nameref{def:Pass_By_Name}  implementation, but the \nameref{def:Actual_Parameter} is evaluated \emph{AT MOST ONCE}.
+  This is \textbf{VERY} similar to the \nameref{def:Pass_By_Name} implementation, but instead of evaluating the \nameref{def:Actual_Parameter} each time the \nameref{def:Formal_Parameter} appears, the \nameref{def:Actual_Parameter} is evaluated \emph{AT MOST ONCE}.
+  Then, every subsequent occurrence of the \nameref{def:Actual_Parameter} has it value substituted by \nameref{def:Referential_Transparency}, of if its a function call, the result of the \nameref{def:Pure_Function}.
 
   The advantages and disadvantages of pass-by-need are:
   \begin{itemize}[noitemsep]
