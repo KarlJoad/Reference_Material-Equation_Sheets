@@ -197,7 +197,7 @@ However, this can usually be overridden with a \texttt{static} keyword.
 The idea was to create a hierarchy of logic and \nameref{def:Variable_Scope}s.
 The motivation was that if a subprogram is only used within one other subprogram, why not place it there, and hide it from the rest of the program?
 
-\nameref{def:Variable_Static_Scoping} is usually used in languages that allow nested subprograms.
+\nameref{def:Static_Scoping} is usually used in languages that allow nested subprograms.
 Language support of this featuer depends \textbf{heavily} on the language.
 You will have to chek the language specification to find out if the programming language supports them.
 
@@ -401,7 +401,7 @@ fun(list[i], list[j]); // Assuming i==j is true, list[i] and list[j] both point 
   It is only used by the Haskell language.
 
   This is \textbf{VERY} similar to the \nameref{def:Pass_By_Name} implementation, but instead of evaluating the \nameref{def:Actual_Parameter} each time the \nameref{def:Formal_Parameter} appears, the \nameref{def:Actual_Parameter} is evaluated \emph{AT MOST ONCE}.
-  Then, every subsequent occurrence of the \nameref{def:Actual_Parameter} has it value substituted by \nameref{def:Referential_Transparency}, of if its a function call, the result of the \nameref{def:Pure_Function}.
+  Then, every subsequent occurrence of the \nameref{def:Actual_Parameter} has it value substituted by \nameref{def:Referential_Transparency}, or if its a function call, the result of the \nameref{def:Function_Pure} function.
 
   The advantages and disadvantages of pass-by-need are:
   \begin{itemize}[noitemsep]
