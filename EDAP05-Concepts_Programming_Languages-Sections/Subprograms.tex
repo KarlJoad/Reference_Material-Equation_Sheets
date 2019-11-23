@@ -461,6 +461,28 @@ There are 2 major complications of this desire:
     In the program below, the output of \texttt{sub2} is \texttt{3}, because ad-hoc binding binds the \nameref{def:Referencing_Environment} of \texttt{sub2} to \texttt{sub3}'s \nameref{def:Referencing_Environment}, where \texttt{sub2} was originally passed as a subprogram.
   \end{remark}
 \end{definition}
+
+This code block is written with JavaScript's syntax, but depending on the binding used, the output of \texttt{sub2} will be different.
+\begin{minted}[frame=lines,linenos]{javascript}
+function sub1() {
+  var x;
+  function sub2() {
+    alert(x); // Creates a box with the value of x
+  };
+  function sub3() {
+    var x;
+    x = 3;
+    sub4(sub2);
+  };
+  function sub4(subx) {
+    var x;
+    x = 4;
+    subx();
+  };
+  x = 1;
+  sub3();
+};
+\end{minted}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
