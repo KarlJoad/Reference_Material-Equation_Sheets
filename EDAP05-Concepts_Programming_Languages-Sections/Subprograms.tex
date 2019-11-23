@@ -483,6 +483,32 @@ function sub1() {
   sub3();
 };
 \end{minted}
+
+\subsection{Closures}\label{subsec:Closures}
+\begin{definition}[Closure]\label{def:Closure}
+  A \emph{closure} is a subprogram and the \nameref{def:Referencing_Environment} where it was defined.
+  The \nameref{def:Referencing_Environment} is needed if the subprogram can be called from any arbitrary place in the program.
+
+  \begin{remark}[\nameref*{subsubsec:Static_Scope}d, No Nested Subprograms]
+    If a statically-scoped programming language does not support nested subprograms, then it usually doesn't support \nameref{def:Closure}s either.
+    All of the \nameref{def:Variable}s in the \nameref{def:Referencing_Environment} of a subprogram are accessible, regardless of the place in the program where the subprogram is called.
+  \end{remark}
+\end{definition}
+
+When subprograms can be nested, the subprogram can use its \nameref{def:Local_Variable}s, the \nameref{def:Global_Variable}s, and any \nameref{def:Variable}s declared in parent subprograms.
+This isn't an issue when the nested subprogram can only be called where the enclosing scopes are active and \nameref{def:Visible_Variable}.
+
+However, if the nested subprogram can be called from elsewhere.
+This can happen if the subprogram is passed as a parameter or assigned to a variable.
+This also means that the subprogram could be called after its parent subprograms have terminated, meaning some of the \nameref{def:Variable}s defined there are no longer available.
+To prevent this, we have to have special \nameref{def:Variable}s which are said to have \emph{\nameref{def:Unlimited_Extent}}.
+
+\begin{definition}[Unlimited Extent]\label{def:Unlimited_Extent}
+  A \nameref{def:Variable} whose lifetime is that of the whole program, and are required by nested subprograms said to have \emph{unlimited extent}.
+
+  These variables are usually heap-dynamic, rather than \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
