@@ -419,6 +419,19 @@ fun(list[i], list[j]); // Assuming i==j is true, list[i] and list[j] both point 
   \end{itemize}
 \end{definition}
 
+\subsection{Parameters That Are Subprograms}\label{subsec:Parameters_are_Subprograms}
+Being able to use \nameref{sec:Subprograms} as \nameref{def:Actual_Parameter}s in a program can help simplify the programming of certain problems.
+There are 2 major complications of this desire:
+\begin{enumerate}[noitemsep]
+\item The \nameref{def:Type_Checking} of the parameters of the activations of the subprogram that was passed as a parameter.
+\item In languages that allow \nameref{subsubsec:Nested_Subprograms}, there is a question of what \nameref{def:Referencing_Environment} should be used. There are 3 possible solutions:
+  \begin{enumerate}[noitemsep]
+  \item \emph{\nameref{def:Shallow_Binding}}
+  \item \emph{\nameref{def:Deep_Binding}}
+  \item \emph{\nameref{def:Ad_Hoc_Binding}}
+  \end{enumerate}
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
