@@ -27,6 +27,52 @@ The required actions for a subprogram to return its execution to the parent subp
 \end{enumerate}
 
 \subsection{Implementing ``Simple'' Subprograms}\label{subsec:Implementing_Simple_Subprograms}
+In this case, ``simple'' means subprograms that cannot be nested and all local variables are static.
+
+There must be storage for:
+\begin{itemize}[noitemsep]
+\item Status information for the caller program.
+\item Parameters
+\item The return \nameref{def:Memory} address
+\item Return values for functions
+\item Temporaries used by the code of the subprogram(s)
+\end{itemize}
+
+Some of the semantic actions in the next 2 sections (\Crefrange{subsubsec:Implementing_Simple_Subprogram-Call}{subsubsec:Implementing_Simple_Subprogram-Return}) can be occur at 2 different times during \nameref{def:Subprogram_Linkage}.
+These are called the \emph{prologue} and \emph{epilogue} of the \nameref{def:Subprogram_Linkage}.
+
+\subsubsection{Semantics of the Subprogram \texttt{Call}}\label{subsubsec:Implementing_Simple_Subprogram-Call}
+The following steps must be followed:
+\begin{enumerate}[noitemsep]
+\item Save the execution status of the current program unit.
+\item Compute and pass the parameters.
+\item Pass the return address to be called at the end of subprogram execution.
+\item Transfer control to the called subprogram.
+\end{enumerate}
+
+The last 3 actions must be done by the caller program.
+The first action could be done by the caller program or the called subprogram.
+
+\subsubsection{Semantics of the Subprogram \texttt{Return}}\label{subsubsec:Implementing_Simple_Subprogram-Return}
+These are the steps that must be followed to \texttt{return} from a subprogram:
+\begin{enumerate}[noitemsep]
+\item If parameters are \nameref{def:Pass_By_Value_Result} or \nameref{def:Parameter_Passing-Inout_Mode}, the current values of those \nameref{def:Formal_Parameter}s are moved/made available to the corresponding \nameref{def:Actual_Parameter}s.
+\item If the subprogram is a function, the functional value is moved to a place accessible to the caller.
+\item The execution status of the caller program is restored.
+\item Control is transferred back to the caller program.
+\end{enumerate}
+
+The first, third, and fourth steps could be handled by the called subprogram.
+
+\subsubsection{Activation Records for ``Simple'' Subprograms}\label{subsubsec:Implementing_Simple_Subprogram-Activation_Record}
+\begin{definition}[Activation Record]\label{def:Activation_Record-Simple_Subprograms}
+  An \emph{activation record} for a ``simple'' subprogram is the noncode portion, because the data it describes is only relevant during the activation/execution of the subprogram.
+  A concrete example of an activation record is called an \emph{activation record instance}.
+
+  In this ``simple'' subprogram setup, activation records are of fixed size.
+  There can also only be one active version of a given subprogram at a time (since recursion isn't supported with just \nameref{def:Static_Variable_Binding_Lifetime}s).
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
