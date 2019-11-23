@@ -1,5 +1,31 @@
 \section{Implementing \nameref*{sec:Subprograms}}\label{sec:Implementing_Subprograms}
 \subsection{General Semantics of Calls and Returns}\label{subsec:Semantics_of_Calls_and_Returns}
+\begin{definition}[Subprogram Linkage]\label{def:Subprogram_Linkage}
+  The \texttt{call} and \texttt{return} operations are together called \emph{subprogram linkage}.
+\end{definition}
+
+There are several steps that must occur for a subprogram's \texttt{call} to work.
+\begin{enumerate}[noitemsep]
+\item Include the implementation of that language's parameter-passing method.
+\item If local variables are not static, there must be space allocation for the \nameref{def:Local_Variable}s declared in the subprogram, and bind them to storage.
+\item Must save the execution status of the CPU, everything required to jump back to the point where the \texttt{all} occurs. This includes:
+  \begin{itemize}[noitemsep]
+  \item CPU status bits
+  \item The Environment Pointer (\nameref{def:Dynamic_Link})
+  \item Register values
+  \end{itemize}
+\item Arrange the transfer of control to the code of the subprogram, and ensure control can be returned to the proper place when execution is done.
+\item If the language supports nested subprograms, there needs to be a mechanism to provide access to the parent subprogram's variables. (\nameref{def:Static_Link})
+\end{enumerate}
+
+The required actions for a subprogram to return its execution to the parent subprogram are:
+\begin{enumerate}[noitemsep]
+\item If the parameters are \nameref{def:Parameter_Passing-Out_Mode} or \nameref{def:Parameter_Passing-Inout_Mode}, the local values of the associated \nameref{def:Formal_Parameter}s must be copied to the \nameref{def:Actual_Parameter}s.
+\item All storage used for \nameref{def:Local_Variable}s must be deallocated.
+\item Restore the execution status of the calling parent subprogram.
+\item Return control to the calling parent subprogram.
+\end{enumerate}
+
 \subsection{Implementing ``Simple'' Subprograms}\label{subsec:Implementing_Simple_Subprograms}
 %%% Local Variables:
 %%% mode: latex
