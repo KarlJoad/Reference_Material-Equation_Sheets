@@ -766,8 +766,8 @@ def sub1():
 \end{table}
 
 \subsubsection{\nameref*{subsec:Referencing_Environments} in Languages with \nameref*{subsubsec:Dynamic_Scope}}\label{subsubsec:Dynamic_Scope_Referencing_Environment}
-In a language that uses \nameref{subsubsec:Dynamic_Scope}ing, the referencing environment includes all the \nameref{def:Local_Variable}s, the \nameref{def:Variable}s of all other \nameref{def:Active} subprograms, and the subprogram names.
-This means that some \nameref{def:Variable}s in \nameref{def:Active} subprograms can be hidden from the referencing environment.
+In a language that uses \nameref{subsubsec:Dynamic_Scope}ing, the referencing environment includes all the \nameref{def:Local_Variable}s, the \nameref{def:Variable}s of all other \nameref{def:Subprogram_Active} subprograms, and the subprogram names.
+This means that some \nameref{def:Variable}s in \nameref{def:Subprogram_Active} subprograms can be hidden from the referencing environment.
 
 The code block below and \Cref{tab:Dynamic_Scope_Referencing_Environment-Execution} illustrate how a \nameref{def:Referencing_Environment} behave in a language that uses \nameref{def:Dynamic_Scoping}.
 
