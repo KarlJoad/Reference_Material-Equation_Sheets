@@ -432,6 +432,35 @@ There are 2 major complications of this desire:
   \end{enumerate}
 \end{enumerate}
 
+\begin{definition}[Shallow Binding]\label{def:Shallow_Binding}
+  In \emph{shallow binding}, the \nameref{def:Referencing_Environment} of the call statement that enacts the subprogram is used.
+
+  The \nameref{def:Referencing_Environment} where the call statement to the passed subprogram occurs is \nameref{def:Referencing_Environment} when the subprogram is executed.
+
+  \begin{remark}[Shallow Binding Program Output]\label{rmk:Shallow_Binding-Program_Output}
+    In the program below, the output of \texttt{sub2} is \texttt{4}, because shallow binding binds the \nameref{def:Referencing_Environment} of \texttt{sub2} to \texttt{sub4}'s \nameref{def:Referencing_Environment}, where \texttt{sub2} was executed.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Deep Binding]\label{def:Deep_Binding}
+  In \emph{deep binding}, the \nameref{def:Referencing_Environment} of the definition of the passed subprogram is used.
+
+  The \nameref{def:Referencing_Environment} of the definition of the subprogram is used as the \nameref{def:Referencing_Environment}.
+
+  \begin{remark}[Deep Binding Program Output]\label{rmk:Deep_Binding-Program_Output}
+    In the program below, the output of \texttt{sub2} is \texttt{1}, because deep binding binds the \nameref{def:Referencing_Environment} of \texttt{sub2} to \texttt{sub1}'s \nameref{def:Referencing_Environment}, where \texttt{sub2} was defined.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Ad-Hoc Binding]\label{def:Ad_Hoc_Binding}
+  In \emph{ad-hod binding}, the \nameref{def:Referencing_Environment} of the call statement that \emph{passed} the program as an \nameref{def:Actual_Parameter} is used.
+
+  The \nameref{def:Referencing_Environment} where the call statement passes the subprogram is used as the \nameref{def:Referencing_Environment} for the subprogram.
+
+  \begin{remark}[Ad-Hoc Binding Program Output]\label{rmk:Ad_Hoc_Binding-Program_Output}
+    In the program below, the output of \texttt{sub2} is \texttt{3}, because ad-hoc binding binds the \nameref{def:Referencing_Environment} of \texttt{sub2} to \texttt{sub3}'s \nameref{def:Referencing_Environment}, where \texttt{sub2} was originally passed as a subprogram.
+  \end{remark}
+\end{definition}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
