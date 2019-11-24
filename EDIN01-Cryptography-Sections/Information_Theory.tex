@@ -49,6 +49,18 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
   \end{equation}
 \end{definition}
 
+\begin{definition}[Probability Distribution]\label{def:Probability_Distribution}
+  A \nameref{def:Discrete_Random_Variable} has a \emph{probability distribution} $P(X=x)$
+  \begin{equation}\label{eq:Probability_Distribution}
+    \Prob(X=x) = \sum\limits_{\omega : X(\omega) = x} \Prob(x)
+  \end{equation}
+
+  If $E \subset \mathcal{X}$, then $X \in E$ is an \nameref{def:Event} and
+  \begin{equation}\label{eq:7}
+    \Prob(X \in E) = \sum\limits_{x \in E} \Prob(x)
+  \end{equation}
+\end{definition}
+
 \subsubsection{Independent Discrete Random Variables}\label{subsubsec:Independent_Discrete_Random_Variables}
 \subsubsection{Conditional Probability of  Discrete Random Variables}\label{subsubsec:Conditional_Probability_Discrete_Random_Variables}
 
