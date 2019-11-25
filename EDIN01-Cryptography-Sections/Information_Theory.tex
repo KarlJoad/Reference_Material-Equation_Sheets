@@ -110,6 +110,38 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
 \end{definition}
 
 \subsection{Entropy}\label{subsec:Entropy}
+\begin{definition}[Entropy]\label{def:Entropy}
+  The \emph{entropy} $\Entropy(X)$ of a \nameref{def:Discrete_Random_Variable} $X$ is defined as
+  \begin{equation}\label{eq:Entropy}
+    \Entropy(X) = - \sum\limits_{x \in \mathcal{X}} \Prob(x) \log_{2}\bigl( \Prob(x) \bigr)
+  \end{equation}
+
+  \begin{remark}[Probability is 0]\label{rmk:Entropy_Probability_0}
+    By convention,
+    \begin{equation}\label{eq:Entropy_Probability_0}
+      0 \log_{2} (0) = 0
+    \end{equation}
+
+    This can be justified by saying $\lim\limits_{x \rightarrow 0} x \log_{2}(x) = 0$
+  \end{remark}
+
+  \begin{remark}[Entropy Bits]\label{rmk:Entropy_Bits}
+    Since this logarithm is expressed in base-2, the output has the units of ``bits''.
+    \textbf{These are not the same as bits in a computer}.
+    They are just a unit, if the natural logarithm $\ln$ were used, the unit would be ``nats''.
+  \end{remark}
+
+  \Cref{eq:Entropy} can be expressed using the \nameref{def:Expected_Value_of_Single_Discrete}.
+  \begin{equation}\label{eq:Entropy-Expected_Value}
+    \Entropy(X) = \ExpectedValue \left[ - \log_{2}\bigl( \Prob(X) \bigr) \right]
+  \end{equation}
+
+  The \nameref{def:Entropy} of multiple \nameref{def:Discrete_Random_Variable}s can be expressed as
+  \begin{equation}\label{eq:Entropy-Multiple_Discrete_Random_Variables}
+    \Entropy(X,Y) = - \sum\limits_{x \in \mathcal{X}, y \in \mathcal{Y}} \Prob(x, y) \log_{2} \bigl( \Prob(x, y) \bigr)
+  \end{equation}
+\end{definition}
+
 \subsubsection{Properties of \nameref*{subsec:Entropy}}\label{subsubsec:Entropy_Properties}
 
 \subsubsection{Conditional Entropy}\label{subsubsec:Conditional_Entropy}
