@@ -158,7 +158,7 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{remark}
 \end{definition}
 
-\begin{definition}[Message Equivocation]\label{Message_Equivocation}
+\begin{definition}[Message Equivocation]\label{def:Message_Equivocation}
   \emph{Message equivocation} is the case when Eve uses her knowledge of the \nameref{def:Ciphertext} to help break the \nameref{def:Plaintext}.
   \begin{equation}\label{eq:Message_Equivocation}
     \Entropy(\mathbf{M} \Given \mathbf{C}) = - \sum\limits_{\mathbf{m} \in \Plaintexts^{N}, \mathbf{c} \in \Ciphertexts^{N}} \Prob(\mathbf{m}, \mathbf{c}) \log_{2} \bigl( \Prob(\mathbf{m} \Given \mathbf{c}) \bigr)
