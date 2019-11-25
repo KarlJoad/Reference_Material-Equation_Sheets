@@ -130,6 +130,19 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{remark}
 \end{definition}
 
+\begin{definition}[Message \nameref*{def:Entropy}]\label{def:Message_Entropy}
+  The \emph{message \nameref{def:Entropy}} is the uncertainty regarding the transmitted message.
+  \begin{equation}\label{eq:Message_Entropy}
+    \Entropy(\mathbf{M}) = - \sum\limits_{\mathbf{m} \in \Plaintexts^{N}} \Prob(\mathbf{m}) \log_{2} \bigl( \Prob(\mathbf{m}) \bigr)
+  \end{equation}
+
+  \begin{remark}[Message Entropy Upper Bound]\label{rmk:Message_Entropy_Upper_Bound}
+    \begin{equation}\label{eq:Message_Entropy_Upper_Bound}
+      \Entropy(\mathbf{M}) \leq \log_{2} \SetOrder{\Plaintexts}^{N}
+    \end{equation}
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
