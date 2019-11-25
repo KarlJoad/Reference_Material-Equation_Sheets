@@ -63,11 +63,25 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
 
 \begin{propertylist}
 \item A pair of \nameref{def:Random_Variable}s defined on the same \nameref{def:Sample_Space} can be considered as a single \nameref{def:Random_Variable}, say $Z = (X,Y)$.
-\item $Z$ takes values in $\mathcal{X} \times \mathcal{Y}$, with $Z(\omega) = \Bigl( X(\omega), Y(\omega) \Bigr)$
+\item $Z$ takes values in $\mathcal{X} \times \mathcal{Y}$, with $Z(\omega) = \bigl( X(\omega), Y(\omega) \bigr)$
 \item $\Prob(Z) = \Prob(X,Y)$
 \item Consider the joint \nameref{def:Event} $G$ as both \nameref{def:Event}s $E$ and $F$ occurring. Then $G$ corresopnds to the \nameref{def:Event} $G = E \cap F$.
 \item The probability of the joint event $\Prob(G) = \Prob(E,F) = \Prob(E \cap F)$
 \end{propertylist}
+
+\begin{definition}[Expected Value/Mean of Single Discrete Random Variable]\label{def:Expected_Value_of_Single_Discrete}
+  The \emph{expected value} or \emph{mean} of a single discrete random variable $X$ is defined by
+  \begin{equation}\label{eq:Expected_Value_of_Single_Discrete}
+    m_{X} = \ExpectedValue \left[ X \right] = \sum_{x \in S_{X}} x \cdot p_{X} \left( x \right)
+  \end{equation}
+  \begin{remark}\label{rmk:Expected_Value_of_Single_Discrete_Countably_Infinite}
+    If $X$ is countably infinite, you will have an infinite series that exists only if
+    \begin{equation}\label{eq:Expected_Value_of_Single_Discrete_Countably_Infinite}
+      \sum_{s \in S_{X}} \lvert x \rvert \cdot p_{X} \left( x \right)
+    \end{equation}
+    is absolutely convergent.
+  \end{remark}
+\end{definition}
 
 \subsubsection{Independent Discrete Random Variables}\label{subsubsec:Independent_Discrete_Random_Variables}
 \begin{definition}[Independent]\label{def:Independent}
