@@ -144,8 +144,15 @@ let y =  // Assign either x to y if x > 0, otherwise, assign 2 * x to y
 The N-Way selection statement allows selection from one of any number of statements/statement groups.
 Although these can be constructed from 2-Way selectors and \texttt{goto}s, it is more readable with a dedicated statement.
 
-\subsubsection{N Way Selection}\label{subsubsec:N_Way_Selection}
 \paragraph{Design Issues}\label{par:N_Way_Selection-Design_Issues}
+\begin{itemize}[noitemsep]
+\item What is the form and type of the expression that controls the selections?
+\item How are the selectable segments specified?
+\item Is the execution flow through the structure restricted to just a single selectable statement?
+\item How are the case values specified?
+\item How should unrepresented selector expression values be handled, if at all?
+\end{itemize}
+
 \paragraph{Examples of Multiple Selectors}\label{par:N_Way_Selection-Examples}
 
 \subsection{Iterative Statements}\label{subsec:Iterative_Statements}
