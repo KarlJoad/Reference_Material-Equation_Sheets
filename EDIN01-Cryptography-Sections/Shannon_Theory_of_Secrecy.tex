@@ -227,6 +227,24 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{remark}
 \end{definition}
 
+\begin{definition}[Redundancy]\label{def:Redundancy}
+  The \emph{redundancy} of a source, denoted $D$ is
+  \begin{equation}\label{eq:Redundancy}
+    D = H_{0} - \Entropy(M)
+  \end{equation}
+
+  A higher redundancy means there is more regularity in the message, which makes it easier to break.
+
+  \begin{remark}[Benefits for Eve]\label{rmk:Redundancy_Benefits_Eve}
+    \nameref{def:Redundancy} helps Eve!
+    There are 2 ways to reduce redundancy in digital systems:
+    \begin{enumerate}[noitemsep]
+    \item Compress the message before encryption, because regularities in the message are ``removed'' by compression.
+    \item Channel coding (the addition of parity bits for correct/detection of errors) should be done after encryption, because their regularity before will increase redundancy, hurting the key's strength.
+    \end{enumerate}
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
