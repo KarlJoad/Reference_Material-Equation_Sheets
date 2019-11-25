@@ -239,6 +239,19 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
 \end{definition}
 
 \subsection{Mutual Information}\label{subsec:Mutual_Information}
+\begin{definition}[Mutual Information]\label{def:Mutual_Information}
+  The \emph{mutual information} $\MutualInformation(X;Y)$ (Read ``the mutual information between $X$ and $Y$'') measures the amount of information (in bits) we receive about the \nameref{def:Random_Variable} $X$ when observing the outcome of the \nameref{def:Random_Variable} $Y$.
+  It is defined as
+  \begin{equation}\label{eq:Mutual_Information}
+    \MutualInformation(X;Y) = \RelativeEntropy \bigl( \Prob(X,Y) \Between \Prob(X) \Prob(Y) \bigr)
+  \end{equation}
+
+  \Cref{eq:Mutual_Information} can be equivalently rewritten using using only summations.
+  \begin{equation}\label{eq:Mutual_Information-Summations}
+    \MutualInformation(X;Y) = \sum\limits_{x \in \mathcal{X}, y \in \mathcal{Y}} \Prob(x,y) \log_{2} \left( \frac{\Prob(x,y)}{\Prob(x) \Prob(y)} \right)
+  \end{equation}
+\end{definition}
+
 \subsubsection{Properties of \nameref*{subsec:Mutual_Information}}\label{subsubsec:Mutual_Information_Properties}
 %%% Local Variables:
 %%% mode: latex
