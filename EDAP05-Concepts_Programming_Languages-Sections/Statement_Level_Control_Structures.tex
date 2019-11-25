@@ -129,6 +129,20 @@ This matches the second C-like example.
 \end{remark*}
 
 \paragraph{Selector Expressions}\label{par:2_Way_Selection-Selector_Expressions}
+In ML, F\#, and LISP, the selector is an expression that can result in a value.
+In F\# for example,
+\begin{minted}[frame=lines,linenos]{fsharp}
+let y =  // Assign either x to y if x > 0, otherwise, assign 2 * x to y
+    if x > 0 then
+        x
+    else
+        2 * x;;
+\end{minted}
+\textbf{Note: This might be improperly formatted. This was done to increase regularity between all \texttt{if-then-else} statements.}
+
+\subsubsection{N-Way Selection}\label{subsubsec:N_Way_Selection}
+The N-Way selection statement allows selection from one of any number of statements/statement groups.
+Although these can be constructed from 2-Way selectors and \texttt{goto}s, it is more readable with a dedicated statement.
 
 \subsubsection{N Way Selection}\label{subsubsec:N_Way_Selection}
 \paragraph{Design Issues}\label{par:N_Way_Selection-Design_Issues}
