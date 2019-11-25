@@ -584,6 +584,23 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
   \end{itemize}
 \end{definition}
 
+\begin{definition}[Fixed Heap-Dynamic Array]\label{def:Fixed_Heap_Dynamic_Array}
+  A \emph{fixed heap-dynamic array} is similar to a \nameref{def:Fixed_Stack_Dynamic_Array}, in that subscript ranges and storage binding are done on demand at runtime, and are fixed throughout the array's lifetime.
+  However, the storage is allocated from the heap instead of the stack.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[nosep,noitemsep]
+  \item Advantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Flexibility, the array can be any size to fit any problem.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[nosep,noitemsep]
+    \item The allocation and deallocation time is much longer on the heap compared to the stack.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
 \subsubsection{Array Initialization}\label{subsubsec:Arrays-Initialization}
 \subsubsection{Array Operations}\label{subsubsec:Arrays-Operations}
 \subsubsection{Rectangular and Jagged Arrays}\label{subsubsec:Arrays-Rectangular_Jagged}
