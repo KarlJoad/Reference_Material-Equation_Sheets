@@ -230,6 +230,13 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
   \end{remark}
 \end{definition}
 
+\subsubsection{Conditional Relative Entropy}\label{subsubsec:Conditional_Relative_Entropy}
+\begin{definition}[Conditional Relative Entropy]\label{def:Conditional_Relative_Entropy}
+  \emph{Conditional relative entropy} is defined similarly to the previous cases on conditionals.
+  \begin{equation}\label{eq:Conditional_Relative_Entropy}
+    \RelativeEntropy \bigl(\Prob(X \Given Z) \Between \Prob(X \Given Z) \bigr) = \sum\limits_{z \in \mathcal{Z}} \Prob(z) \sum\limits_{x \in \mathcal{X}} \Prob(x \Given z) \log_{2} \left( \frac{P(x \Given z)}{Q(x \Given z)} \right)
+  \end{equation}
+\end{definition}
 
 \subsection{Mutual Information}\label{subsec:Mutual_Information}
 \subsubsection{Properties of \nameref*{subsec:Mutual_Information}}\label{subsubsec:Mutual_Information_Properties}
