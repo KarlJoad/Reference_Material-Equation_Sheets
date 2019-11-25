@@ -180,6 +180,23 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{equation}
 \end{theorem}
 
+\begin{proof}[\nameref*{def:Message_Equivocation} Bounded by \nameref*{def:Key_Equivocation}]\label{proof:Message_Equivocation_Bounded_Key_Equivocation}
+  The expression $\Entropy(K, \mathbf{M} \Given \mathbf{C})$ can be written
+  \begin{equation*}
+    \Entropy(K, \mathbf{M} \Given \mathbf{C}) = \Entropy(K \Given \mathbf{C}) + \Entropy(\mathbf{M} \Given \mathbf{C}, K)
+  \end{equation*}
+
+  When the key and ciphertext are given, the plaintext can be uniquely determined, so
+  \begin{equation*}
+    \Entropy(\mathbf{M} \Given \mathbf{C}, K) = 0
+  \end{equation*}
+
+  Since $Entropy(\mathbf{M} \Given \mathbf{C}) \leq \Entropy(K, \mathbf{M} \Given \mathbf{C})$, we get
+  \begin{equation*}
+    \Entropy(\mathbf{M} \Given \mathbf{C}) \leq \Entropy(K \Given \mathbf{C})
+  \end{equation*}
+\end{proof}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
