@@ -16,17 +16,51 @@
 \subsection{Attack and Security Assumptions}\label{subsec:Shannon_Attack_Security_Assumptions}
 There are several possible assumptions for Eve's attack on Alice's message.
 \begin{enumerate}[noitemsep]
-\item \emph{Ciphertext-Only Attack}: Eve has only the ciphertext $C$, and wants to get the key $K$ or the plaintext message $M$
-\item \emph{Known-Plaintext Attack}: Eve has both the ciphertext $C$ and the plaintext message $M$, and wants the key $K$
-\item \emph{Chosen-Plaintext Attack}: Eve knows $M$ and and can arbitrarily choose $M$ to get $C$ back. She wants to get the key $K$.
-\item \emph{Chosen-Ciphertext Attack (Lunchtime Attack)}: Eve has the \nameref{def:Decryption_Rule}, $d_{K}$ and can feed in any arbitrary $C$. She is attempting to find the key $K$.
-\item \emph{Related-Key Attack}: The message $M$ is encrypted with a key $K$ similar to another.
-\item \emph{Side Channel Attack}: Eve is attacking the implementation of the \nameref{def:Encryption_Rule}, $e_{K}$, by observing some other outputs.
+\item \emph{\nameref{def:Attack-Ciphertext_Only}}: Eve has only the ciphertext $C$, and wants to get the key $K$ or the plaintext message $M$.
+\item \emph{\nameref{def:Attack-Known_Plaintext}}: Eve has both the ciphertext $C$ and the plaintext message $M$, and wants the key $K$.
+\item \emph{\nameref{def:Attack-Chosen_Plaintext}}: Eve knows $M$ and and can arbitrarily choose $M$ to get $C$ back. She wants to get the key $K$.
+\item \emph{\nameref{def:Attack-Chosen_Ciphertext}}: Eve has the \nameref{def:Decryption_Rule}, $d_{K}$ and can feed in any arbitrary $C$. She is attempting to find the key $K$.
+\item \emph{\nameref{def:Attack-Related_Key}}: The message $M$ is encrypted with a key $K$ similar to another.
+\item \emph{\nameref{def:Attack-Side_Channel}}: Eve is attacking the implementation of the \nameref{def:Encryption_Rule}, $e_{K}$, by observing some other outputs.
   \begin{itemize}[noitemsep]
   \item The power consumed by the algorithm
   \item The network communcations occurring
   \end{itemize}
 \end{enumerate}
+
+\begin{definition}[Ciphertext-Only Attack]\label{def:Attack-Ciphertext_Only}
+  In a \emph{ciphertext-only attack}, Eve has only the ciphertext $C$, and wants to get the key $K$ or the plaintext message $M$.
+\end{definition}
+
+\begin{definition}[Known-Plaintext Attack]\label{def:Attack-Known_Plaintext}
+  In a \emph{known-plaintext attack}, Eve has both the ciphertext $C$ and the plaintext message $M$, and wants the key $K$.
+\end{definition}
+
+\begin{definition}[Chosen-Plaintext Attack]\label{def:Attack-Chosen_Plaintext}
+  In a \emph{chosen-plaintext attack}, Eve knows $M$ and and can arbitrarily choose $M$ to get $C$ back. She wants to get the key $K$.
+\end{definition}
+
+\begin{definition}[Chosen-Ciphertext Attack]\label{def:Attack-Chosen_Ciphertext}
+  In a \emph{chosen-ciphertext attack}, Eve has the \nameref{def:Decryption_Rule}, $d_{K}$ and can feed in any arbitrary $C$.
+  She is attempting to find the key $K$.
+
+  \begin{remark}[Lunchtime Attack]\label{rmk:Attack-Lunchtime}
+    Sometimes the \nameref{def:Attack-Chosen_Ciphertext} is called a \emph{lunchtime attack}, because an arbitrary \nameref{def:Plaintext} can be fed through the \nameref{def:Encryption_Rule} quickly.
+    This means the output can be found quickly, for example, while a coworker is having lunch.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Related-Key Attack]\label{def:Attack-Related_Key}
+  In a \emph{related-key attack}, the message $M$ is encrypted with a key $K$ similar to another, already broken key.
+\end{definition}
+
+\begin{definition}[Side Channel Attack]\label{def:Attack-Side_Channel}
+  In a \emph{side channel attack}, Eve is attacking the implementation of the \nameref{def:Encryption_Rule}, $e_{K}$, by observing some other outputs.
+  \begin{itemize}[noitemsep]
+  \item The power consumed by the algorithm
+  \item The network communcations occurring
+  \end{itemize}
+\end{definition}
 
 \subsection{Security Scenarios}\label{subsec:Shannon_Security_Scenarios}
 There are several scenarios we have for our \nameref{def:Encryption_Rule} and \nameref{def:Decryption_Rule}.
