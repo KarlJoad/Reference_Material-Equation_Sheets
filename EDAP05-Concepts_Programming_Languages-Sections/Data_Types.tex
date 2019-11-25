@@ -520,8 +520,9 @@ Some languages check the bounds of the array accesses through subscripts, though
 Some languages allow the index to be a negative integer, in which case, it is the index of that element starting from the end as 0.
 
 \subsubsection{Subscript Bindings}\label{subsubsec:Arrays-Subscript_Bindings}
-The binding of the subscript type to an array variable is usually static, but the value ranges are sometimes dynamic.
+The binding of the subscript type to an \nameref{def:Array} variable is usually static, but the value ranges are sometimes dynamic.
 Some languages have an implicit lower bound on the subscript range, usually 0.
+However, some languages allow for negative subscripting, which starts their indexing from the end of the \nameref{def:Array}
 
 \subsubsection{Array Categories}\label{subsubsec:Arrays-Categories}
 There are 5 categories of arrays, based on the binding to subscript ranges, the binding to storage, and from where the storage is allocated.
