@@ -97,6 +97,17 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
 \end{definition}
 
 \subsubsection{Conditional Probability of  Discrete Random Variables}\label{subsubsec:Conditional_Probability_Discrete_Random_Variables}
+\begin{definition}[Conditional Probability]\label{def:Conditional_Probability}
+  The \emph{conditional probability} $\Prob(E \Given F)$ (Read as ``the probability of $E$ given $F$'') is defined as
+  \begin{equation}\label{eq:Conditional_Probability}
+    \Prob(E \Given F) = \frac{\Prob(E,F)}{\Prob(F)} \:\: \text{where } \Prob(F) \neq 0
+  \end{equation}
+
+  For \nameref{def:Random_Variable}s, a similar definition is used.
+  \begin{equation}\label{eq:Conditional_Probability_Random_Variables}
+    \Prob(X=x \Given Y=y) = \frac{\Prob(X=x, Y=y)}{\Prob(Y=y)}
+  \end{equation}
+\end{definition}
 
 \subsection{Entropy}\label{subsec:Entropy}
 \subsubsection{Properties of \nameref*{subsec:Entropy}}\label{subsubsec:Entropy_Properties}
