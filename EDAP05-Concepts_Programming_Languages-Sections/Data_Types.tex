@@ -550,6 +550,22 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
   \end{itemize}
 \end{definition}
 
+\begin{definition}[Fixed Stack-Dynamic Array]\label{def:Fixed_Stack_Dynamic_Array}
+  In a \emph{fixed stack-dynamic array}, the subscript ranges are statically bound, but the storage allocation is done at declaration elaboration time during runtime.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[nosep,noitemsep]
+  \item Advantages
+    \begin{itemize}[nosep,noitemsep]
+    \item If 2 subprograms both have large arrays, they can use the same space, so long as only a single one is running at a time.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[nosep,noitemsep]
+    \item The time required to allocate and deallocate the array.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
 \subsubsection{Array Initialization}\label{subsubsec:Arrays-Initialization}
 \subsubsection{Array Operations}\label{subsubsec:Arrays-Operations}
 \subsubsection{Rectangular and Jagged Arrays}\label{subsubsec:Arrays-Rectangular_Jagged}
