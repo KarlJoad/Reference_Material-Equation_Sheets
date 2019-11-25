@@ -253,6 +253,14 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
 \end{definition}
 
 \subsubsection{Properties of \nameref*{subsec:Mutual_Information}}\label{subsubsec:Mutual_Information_Properties}
+\begin{propertylist}
+\item $\MutualInformation(X;Y) = \MutualInformation(Y;X)$\label{prop:Mutual_Information_Properties-Mutual}
+\item $\MutualInformation(X;Y) = \Entropy(X) - \Entropy(X \Given Y)$\label{prop:Mutual_Information_Properties-XY_Entropy}
+\item $\MutualInformation(X;Y) = \Entropy(Y) - \Entropy(Y \Given X)$\label{prop:Mutual_Information_Properties-YX_Entropy}
+\item $\MutualInformation(X;Y) = \Entropy(X) + \Entropy(Y) - \Entropy(X,Y)$\label{prop:Mutual_Information_Properties-X_and_Y_Entropy}
+\item $\MutualInformation(X;X) = \Entropy(X)$\label{prop:Mutual_Information_Properties-Self_Observance}
+\end{propertylist}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
