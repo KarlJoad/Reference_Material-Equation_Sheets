@@ -508,6 +508,17 @@ The empty list \texttt{()} is also denoted as \texttt{nil}.
 \end{itemize}
 
 \subsubsection{Arrays and Indices}\label{subsubsec:Arrays-Arrays_and_Indices}
+Specific elements in an array are referenced by means of the name of the aggregate and a dynamic selector, known as \emph{subscript}s or \emph{indices}.
+If all of the subscripts used are constants, the selector is static; otherwise, it is dynamic.
+Arrays are sometimes called \emph{finite mapping}s, because they map \nameref{def:Memory} cells to values, with a finite length.
+
+Most languages use brackets, \texttt{[} and \texttt{]}, to denote the array indices.
+However, some languages use parentheses.
+
+The type of the subscripts are usually integers, but Ada also allows any \nameref{def:Ordinal_Type} to be used as a subscript.
+Some languages check the bounds of the array accesses through subscripts, though some don't.
+Some languages allow the index to be a negative integer, in which case, it is the index of that element starting from the end as 0.
+
 \subsubsection{Subscript Bindings}\label{subsubsec:Arrays-Subscript_Bindings}
 \subsubsection{Array Categories}\label{subsubsec:Arrays-Categories}
 \subsubsection{Array Initialization}\label{subsubsec:Arrays-Initialization}
