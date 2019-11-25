@@ -274,6 +274,14 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{equation*}
 \end{proof}
 
+\begin{definition}[Unicity Distance]\label{def:Unicity_Distance}
+  The \emph{unicity distance}, denoted $N_{0}$ is defined as
+  \begin{equation}\label{eq:Unicity_Distance}
+    N_{0} = \frac{\Entropy(K)}{D}
+  \end{equation}
+
+  The unicity distance, practically, gives the number of symbols in the \nameref{def:Ciphertext} we need to observe to go from having multiple possible keys to a single possible key.
+\end{definition}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
