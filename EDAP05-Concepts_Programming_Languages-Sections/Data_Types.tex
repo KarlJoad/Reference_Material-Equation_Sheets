@@ -566,6 +566,24 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
   \end{itemize}
 \end{definition}
 
+\begin{definition}[Stack-Dynamic Array]\label{def:Stack_Dynamic_Array}
+  In a \emph{stack-dynamic array}, the subscript ranges and storage allocation are done during declaration elaboration time during program execution.
+  However, once the subscript ranges are bound and the storage allocatec, they are both fixed throughout the lifetime of the array.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[nosep,noitemsep]
+  \item Advantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Flexibility, the size of the array doesn't need to be known until just before the array is used.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[nosep,noitemsep]
+    \item The time required to allocate and deallocate the array.
+    \item Determine the subscript ranges and bind them.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
 \subsubsection{Array Initialization}\label{subsubsec:Arrays-Initialization}
 \subsubsection{Array Operations}\label{subsubsec:Arrays-Operations}
 \subsubsection{Rectangular and Jagged Arrays}\label{subsubsec:Arrays-Rectangular_Jagged}
