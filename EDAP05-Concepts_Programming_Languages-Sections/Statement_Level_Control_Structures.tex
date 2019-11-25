@@ -38,6 +38,21 @@ if control_expression
 \end{itemize}
 
 \paragraph{The Control Expression}\label{par:2_Way_Selection-Control_Expression}
+The control expressions are specified in parentheses if a \texttt{then} \nameref{def:Reserved_Word}/\nameref{def:Keyword} is not used to introduce the \texttt{then}-clause.
+\begin{minted}[frame=lines,linenos]{c}
+if(x==y) // The control expression is inside the parentheses, it is x==y
+..
+\end{minted}
+
+If there is a \texttt{then} \nameref{def:Reserved_Word}/\nameref{def:Keyword}, then the parentheses are optional, but are usually left out.
+\begin{minted}[frame=lines,linenos]{ruby}
+if x==y then # The control expression has no parentheses, it is x==y
+...
+\end{minted}
+
+In languages that did not have a Boolean data type, arithmetic expressions were used as control expressions.
+However, many modern languages allow either arithmetic and Boolean expressions, or \textbf{ONLY} Boolean expressions.
+
 \paragraph{Clause Form}\label{par:2_Way_Selection-Clause_Form}
 \paragraph{Nesting Selectors}\label{par:2_Way_Selection-Nesting}
 \paragraph{Selector Expressions}\label{par:2_Way_Selection-Selector_Expressions}
