@@ -151,6 +151,27 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
 \end{itemize}
 
 \subsubsection{Properties of \nameref*{subsec:Entropy}}\label{subsubsec:Entropy_Properties}
+\begin{propertylist}
+\item If $X$ is a \nameref{def:Discrete_Random_Variable} taking values in the set $\mathcal{X} = \lbrace x_{1}, x_{2}, \ldots, x_{\SetOrder{\mathcal{X}}} \rbrace$, then\label{prop:Entropy_Bounds}
+  \begin{equation}\label{eq:Entropy_Bounds}
+    0 \leq \Entropy(X) \leq \log_{2} \SetOrder{\mathcal{X}}
+  \end{equation}
+\item $\Entropy(X) = 0$ if and only if $\Prob(x) = 1$ \textbf{for some} $x \in \mathcal{X}$.\label{prop:Entropy_Min_Bound}
+\item $\Entropy(X) = \log_{2} \SetOrder{\mathcal{X}}$ if and only if $\Prob(x) = \frac{1}{\SetOrder{\mathcal{X}}}$ \textbf{for all} $x \in \mathcal{X}$.\label{prop:Entropy_Max_Bound}
+\item If there are multiple \nameref{def:Discrete_Random_Variable}s, the \nameref{def:Entropy} of their combination can be broken up\label{prop:Entropy_Splitting}
+  \begin{equation}\label{eq:Entropy_Splitting}
+    \Entropy(X_{1}X_{2}\ldots X_{n}) = \Entropy(X_{1}) + \Entropy(X_{2} \Given X_{1}) + \Entropy(X_{3} \Given X_{1}X_{2}) + \cdots + \Entropy(X_{n} \Given X_{1}X_{2} \ldots X_{n-1})
+  \end{equation}
+\item \Cref{prop:Entropy_Splitting} leads to the very useful equation\label{prop:Entropy_Multiple_Variable_Equivalence}
+  \begin{equation}\label{eq:Entropy_Multiple_Variable_Equivalence}
+    \Entropy(XY) = \Entropy(X) + \Entropy(Y \Given X) = \Entropy(Y) + \Entropy(X \Given Y)
+  \end{equation}
+\item Due to \nameref{prop:Conditional_Entropy_Bounded_By_Entropy} in \Cref{par:Conditional_Entropy_Properties}, if and only if $X$ and $Y$ are \nameref{def:Independent},\label{prop:Entropy_Independent_Random_Variable}
+  \begin{equation}\label{eq:Entropy_Independent_Random_Variable}
+    \Entropy(XY) = \Entropy(X) + \Entropy(Y)
+  \end{equation}
+\end{propertylist}
+
 
 \subsubsection{Conditional Entropy}\label{subsubsec:Conditional_Entropy}
 \paragraph{Properties of \nameref*{subsubsec:Conditional_Entropy}}\label{par:Conditional_Entropy_Properties}
