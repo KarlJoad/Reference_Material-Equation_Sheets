@@ -173,6 +173,13 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{remark}
 \end{definition}
 
+\begin{theorem}[\nameref*{def:Message_Equivocation} Bounded by \nameref*{def:Key_Equivocation}]\label{thm:Message_Equivocation_Bounded_Key_Equivocation}
+  For an encryption scheme, we have
+  \begin{equation}\label{eq:Message_Equivocation_Bounded_Key_Equivocation}
+    \Entropy(\mathbf{M} \Given \mathbf{C}) \leq \Entropy(K \Given \mathbf{C})
+  \end{equation}
+\end{theorem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
