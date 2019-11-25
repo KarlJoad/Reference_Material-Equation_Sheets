@@ -601,6 +601,23 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
   \end{itemize}
 \end{definition}
 
+\begin{definition}[Heap-Dynamic Array]\label{def:Heap_Dynamic_Array}
+  A \emph{heap-dynamic array} is one in which the binding of subscript ranges and storage allocation is done during program execution, \textbf{and can change any number of times during the array's lifetime}.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[nosep,noitemsep]
+  \item Advantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Flexibility, arrays can grow and shrink during program execution to fit the needs of the problem.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Allocation and deallocation take longer on the heap.
+    \item Allocation and deallocation may happen several times during a program's execution.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
 \subsubsection{Array Initialization}\label{subsubsec:Arrays-Initialization}
 \subsubsection{Array Operations}\label{subsubsec:Arrays-Operations}
 \subsubsection{Rectangular and Jagged Arrays}\label{subsubsec:Arrays-Rectangular_Jagged}
