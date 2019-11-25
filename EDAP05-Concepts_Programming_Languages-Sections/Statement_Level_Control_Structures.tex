@@ -62,6 +62,72 @@ Python is weird and uses indentation.
 The variety of methods of writing the \texttt{then} and \texttt{else} clauses have implications for nesting these selectors.
 
 \paragraph{Nesting Selectors}\label{par:2_Way_Selection-Nesting}
+The problem here is what is called the ``Dangling Else'' problem.
+For example, the following code snippet is valid in a C-based language.
+\begin{minted}[frame=lines,linenos]{c}
+if(sum == 0)
+  if(count == 0)
+    result = 0;
+  else
+    result = 1;
+\end{minted}
+
+However, to which \texttt{if} does the \texttt{else} belong to?
+There is no way to use syntax to determine which \texttt{if} to match the \texttt{else} to, rather the static semantics handle this.
+Generally, the static semantics match the current \texttt{else} with the nearest previous unpaired \texttt{then} clause.
+This is an issue that can be solved with some braces.
+
+To force the \texttt{else} clause above to match with the \texttt{if(sum == 0)} clause,
+\begin{minted}[frame=lines,linenos]{c}
+if(sum == 0) {
+  if(count == 0) {
+    result = 0;
+  }
+} else {
+  result = 1;
+}
+\end{minted}
+
+However, if the \texttt{else} clause was meant to go with the inner \texttt{if-then} statement,
+\begin{minted}[frame=lines,linenos]{c}
+if(sum == 0) {
+  if(count == 0) {
+    result = 0;
+  } else {
+    result = 1;
+  }
+}
+\end{minted}
+
+One way to completely avoid this type of issue is to use \texttt{then} and \texttt{end} \nameref{def:Reserved_Word}s/\nameref{def:Keyword}s.
+This also leads to more regularity in the writing of the language.
+Using the code snippets from earlier:
+\begin{minted}[frame=lines,linenos]{ruby}
+if sum == 0 then
+  if count == 0 then
+    result = 0
+  end
+else
+  result = 1
+end
+\end{minted}
+This matches the first C-like example.
+
+\begin{minted}[frame=lines,linenos]{ruby}
+if sum == 0 then
+  if count == 0 then
+    result = 0
+  else
+    result = 1
+  end
+end
+\end{minted}
+This matches the second C-like example.
+
+\begin{remark*}
+  Some languages completely avoid this issue by enforcing that there always be an \texttt{else} clause, even if it is to be empty.
+\end{remark*}
+
 \paragraph{Selector Expressions}\label{par:2_Way_Selection-Selector_Expressions}
 
 \subsubsection{N Way Selection}\label{subsubsec:N_Way_Selection}
