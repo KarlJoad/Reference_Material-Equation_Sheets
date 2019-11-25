@@ -143,6 +143,21 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{remark}
 \end{definition}
 
+\begin{definition}[Key Equivocation]\label{def:Key_Equivocation}
+  \emph{Key equivocation} is the case when Eve uses her knowledge of the \nameref{def:Ciphertext} to help break the key.
+  \begin{equation}\label{eq:Key_Equivocation}
+    \Entropy(K \Given \mathbf{C}) = - \sum\limits_{k \in \Keyspace, \mathbf{c} \in \Ciphertexts^{N}} \Prob(k, \mathbf{c}) \log_{2} \bigl( \Prob(k \Given \mathbf{c}) \bigr)
+  \end{equation}
+
+  \begin{remark}[\nameref*{def:Key_Equivocation} Upper Bound]\label{def:Key_Equivocation_Upper_Bound}
+    The uncertainty of the key can never increase by observing $\mathbf{C}$.
+    Otherwise, why even encrypt the \nameref{def:Plaintext}?
+    \begin{equation}\label{eq:Key_Equivocation_Upper_Bound}
+      \Entropy(K \Given \mathbf{C}) \leq \Entropy(K)
+    \end{equation}
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
