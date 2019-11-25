@@ -251,6 +251,29 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{equation}
 \end{theorem}
 
+\begin{proof}[Shannon's Theory of Secrecy]\label{proof:Shannon_Theory_of_Secrecy}
+  Since $\Entropy(K, \mathbf{M}, \mathbf{C}) = \Entropy(K, \mathbf{M}) = \Entropy(K, \mathbf{C})$ (assuming unique encryption/decryption, and nonprobabilistic encryption).
+
+  Starting with $\Entropy(K, \mathbf{M})$, we have the relation
+  \begin{equation*}
+    \Entropy(K, \mathbf{M}) = \Entropy(K) + \Entropy(\mathbf{M})
+  \end{equation*}
+  which can be simplified to
+  \begin{equation*}
+    \Entropy(K, \mathbf{M}) = \Entropy(K) + N \Entropy(M)
+  \end{equation*}
+
+  On the other side, $\Entropy(K, \mathbf{C})$, we have the relation
+  \begin{equation*}
+    \Entropy(K, \mathbf{C}) = \Entropy(\mathbf{C}) + \Entropy(K \Given \mathbf{C}) \leq N H_{0} + \Entropy(K \Given \mathbf{C})
+  \end{equation*}
+
+  Putting these 2 together gives us
+  \begin{equation*}
+    \Entropy(K \Given \mathbf{C}) \geq N \Entropy(M) + \Entropy(K) - NH_{0} = \Entropy(K) - ND
+  \end{equation*}
+\end{proof}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
