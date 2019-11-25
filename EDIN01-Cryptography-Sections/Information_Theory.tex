@@ -261,6 +261,15 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
 \item $\MutualInformation(X;X) = \Entropy(X)$\label{prop:Mutual_Information_Properties-Self_Observance}
 \end{propertylist}
 
+\subsubsection{Conditional Mutual Information}\label{subsubsec:Conditional_Mutual_Information}
+\begin{definition}[Conditional Mutual Information]\label{def:Conditional_Mutual_Information}
+  The \emph{conditional mutual information} is defined similarly as the other conditional cases.
+  \begin{equation}\label{eq:Conditional_Mutual_Information}
+    \MutualInformation(X; Y \Given Z) = \RelativeEntropy \bigl( \Prob(X,Y \Given Z) \Between \Prob(X \Given Z) \Prob(Y \Given Z) \bigr)
+  \end{equation}
+  where $\RelativeEntropy \bigl( \Prob(X \Given Z) \Between \Prob(Y \Given Z) \bigr)$ is the \nameref{def:Conditional_Relative_Entropy}.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
