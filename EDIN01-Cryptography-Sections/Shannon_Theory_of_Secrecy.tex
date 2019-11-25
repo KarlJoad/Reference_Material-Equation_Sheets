@@ -106,6 +106,17 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
     \MutualInformation(M;C) = 0 = H(M) - H(M \Given C)
   \end{equation}
 \end{definition}
+
+\subsection{Shannon's Theory with Discrete Random Variables}\label{subsec:Shannon_Theory_Discrete_Random_Variables}
+\nameref{def:Shannon_Theory_of_Secrecy} can be modelled with 3 random variables:
+\begin{equation}\label{eq:Shannon_Theory_Discrete_Random_Variables}
+  \begin{aligned}
+    \mathbf{M} &= (M_{1}, M_{2}, \ldots, M_{N}) \text{ and } \Prob(\mathbf{M}) \\
+    \mathbf{C} &= (C_{1}, C_{2}, \ldots, C_{N}) \text{ and } \Prob(\mathbf{C}) \\
+    K &\in \Keyspace \text{ and } \Prob(K) \\
+  \end{aligned}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
