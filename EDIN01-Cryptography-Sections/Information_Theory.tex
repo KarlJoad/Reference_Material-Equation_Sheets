@@ -180,6 +180,23 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
 \end{definition}
 
 \subsubsection{Conditional Entropy}\label{subsubsec:Conditional_Entropy}
+\begin{definition}[Conditional Entropy]\label{def:Conditional_Entropy}
+  The \emph{conditional \nameref{def:Entropy}}, $\Entropy(X \Given Y)$ (Read as ``the entropy of $X$ given $Y$ occurs'') is defined as
+  \begin{equation}\label{eq:Conditional_Entropy}
+    \Entropy(X \Given Y) = - \sum\limits_{x \in \mathcal{X}, y \in \mathcal{Y}} \Prob(x, y) \log_{2} \bigl( \Prob(x \Given y) \bigr)
+  \end{equation}
+
+  \Cref{eq:Conditional_Entropy} can be expressed with \nameref{def:Expected_Value_of_Single_Discrete}.
+  \begin{equation}\label{eq:Conditional_Entropy-Expected_Value}
+    \Entropy(X \Given Y) = \ExpectedValue \left[ -\log_{2} \bigl( \Prob(X \Given Y) \bigr) \right]
+  \end{equation}
+
+  If $\Prob(y) \neq 0$, we can introduce the notation
+  \begin{equation}\label{eq:Conditional_Entropy-Nonzero_Given}
+    \Entropy(X \Given Y) = \sum\limits_{y \in \mathcal{Y}} \Prob(y) \Entropy(X \Given Y=y)
+  \end{equation}
+\end{definition}
+
 \paragraph{Properties of \nameref*{subsubsec:Conditional_Entropy}}\label{par:Conditional_Entropy_Properties}
 
 \subsubsection{Relative Entropy}\label{subsubsec:Relative_Entropy}
