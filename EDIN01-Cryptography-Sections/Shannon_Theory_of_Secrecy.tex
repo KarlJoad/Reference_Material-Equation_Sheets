@@ -290,6 +290,21 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{equation*}
 \end{theorem}
 
+\begin{proof}[Drawback of \nameref*{def:Perfect_Secrecy}]\label{proof:Perfect_Secrecy_Drawback}
+  We know
+  \begin{equation*}
+    \Entropy(\mathbf{M} \Given \mathbf{C}) \leq \Entropy(K \Given \mathbf{C}) \leq \Entropy(K)
+  \end{equation*}
+
+  But the definition of \nameref{def:Perfect_Secrecy} (\Cref{def:Perfect_Secrecy}) implies
+  \begin{equation*}
+    \Entropy(\mathbf{M} \Given \mathbf{C}) = \Entropy(\mathbf{M})
+  \end{equation*}
+  So, \Cref{thm:Perfect_Secrecy_Drawback} follows.
+  \begin{equation*}
+    \Entropy(\mathbf{M}) \leq \Entropy(K \Given \mathbf{C}) \leq \Entropy(K)
+  \end{equation*}
+\end{proof}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
