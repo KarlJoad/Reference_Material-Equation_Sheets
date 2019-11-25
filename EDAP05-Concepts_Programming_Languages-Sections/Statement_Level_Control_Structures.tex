@@ -154,6 +154,44 @@ Although these can be constructed from 2-Way selectors and \texttt{goto}s, it is
 \end{itemize}
 
 \paragraph{Examples of Multiple Selectors}\label{par:N_Way_Selection-Examples}
+C and its derivative langauges use the \texttt{switch} statement.
+Its general form is
+\begin{minted}[frame=lines,linenos]{c}
+switch (expression) {
+  case constant_expression1: statement1;
+  ...
+  case constant_expressionN: statementN;
+  [default: statementN+1]
+}
+\end{minted}
+The control and constant expressions are some discrete type, including:
+\begin{itemize}[noitemsep]
+\item Integers
+\item Characters
+\item Enumeration Types
+\end{itemize}
+
+The selectable statements can be:
+\begin{itemize}[noitemsep]
+\item Statement sequences
+\item Compound Statements
+\item Blocks
+\end{itemize}
+
+The optional \texttt{default} segment is for options that do not fit with previously defined \texttt{case}s.
+Also, there is \textbf{no} implicit branching to the end of the whole statement at the end of each \texttt{case}.
+To branch during a \texttt{case}, a \texttt{break} is used.
+\texttt{break} is a restricted \texttt{goto}.
+
+Ruby has another syntax for this same construct, called a case expression.
+Additionally, because it is an expression, we can also use it to assign values conditionally.
+\begin{minted}[frame=lines,linenos]{ruby}
+leap = case
+       when year % 400 == 0 then true
+       when year % 100 == 0 then false
+       else year % 4 == 0
+       end
+\end{minted}
 
 \subsection{Iterative Statements}\label{subsec:Iterative_Statements}
 \begin{definition}[Iterative Statement]\label{def:Iterative_Statement}
