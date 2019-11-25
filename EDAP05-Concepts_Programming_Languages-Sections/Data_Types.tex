@@ -533,6 +533,23 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
 \item \nameref{def:Heap_Dynamic_Array}
 \end{enumerate}
 
+\begin{definition}[Static Array]\label{def:Static_Array}
+  A \emph{static array} is one in which the subscript ranges are statically bound and the storage allocation is static.
+  Meaning the entire array, other than the values it contains are created before runtime.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[nosep,noitemsep]
+  \item Advantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Efficiency, there is no dynamic allocation or deallocation overhead required.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Flexibility, the storage for the array is fixed for the entire execution of the program.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
 \subsubsection{Array Initialization}\label{subsubsec:Arrays-Initialization}
 \subsubsection{Array Operations}\label{subsubsec:Arrays-Operations}
 \subsubsection{Rectangular and Jagged Arrays}\label{subsubsec:Arrays-Rectangular_Jagged}
