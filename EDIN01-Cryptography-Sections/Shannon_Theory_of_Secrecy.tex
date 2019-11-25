@@ -282,6 +282,14 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
 
   The unicity distance, practically, gives the number of symbols in the \nameref{def:Ciphertext} we need to observe to go from having multiple possible keys to a single possible key.
 \end{definition}
+
+\begin{theorem}[Drawback of \nameref*{def:Perfect_Secrecy}]\label{thm:Perfect_Secrecy_Drawback}
+  For a cryptosystem with \nameref{def:Perfect_Secrecy}, we have
+  \begin{equation*}
+    \Entropy(\mathbf{M}) \leq \Entropy(K)
+  \end{equation*}
+\end{theorem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
