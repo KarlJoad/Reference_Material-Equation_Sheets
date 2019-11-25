@@ -211,6 +211,22 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{equation}
 \end{definition}
 
+\begin{definition}[\nameref*{def:Entropy} Per Alphabet Symbol]\label{def:Entropy_per_Alphabet_Symbol}
+  The actual \nameref{def:Entropy} of the message source \textbf{per alphabet symbol} is denoted $H(M)$ and is defined as
+  \begin{equation}\label{eq:Entropy_per_Alphabet_Symbol}
+    \Entropy(M) = \frac{\Entropy(\mathbf{M})}{N}
+  \end{equation}
+  for a message $\mathbf{M} = (M_{1}, M_{2}, \ldots, M_{N})$ of length $N$.
+
+  \begin{remark}[Cases of \nameref*{def:Entropy_per_Alphabet_Symbol}]\label{rmk:Entropy_per_Alphabet_Symbol-Cases}
+    There are 2 cases:
+    \begin{enumerate}[noitemsep]
+    \item A memoryless source
+    \item A non-memoryless source
+    \end{enumerate}
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
