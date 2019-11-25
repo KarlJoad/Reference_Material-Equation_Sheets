@@ -1,0 +1,59 @@
+\section{Stream Ciphers --- LFSR Sequences}\label{sec:Stream_Ciphers}
+There are 2 main types of \nameref{def:Symmetric_Encryption} algorithms:
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Block_Cipher}s
+\item \nameref{def:Stream_Cipher}s
+\end{enumerate}
+
+\begin{definition}[Block Cipher]\label{def:Block_Cipher}
+  \emph{Block cipher}s encrypt a block of symbols of a fixed size from the \nameref{def:Plaintext} message using an fixed-size encryption transformation.
+\end{definition}
+
+\begin{definition}[Stream Cipher]\label{def:Stream_Cipher}
+  \emph{Stream cipher}s encrypt individual characters of the \nameref{def:Plaintext} using an encryption transofrmation that varies with time.
+\end{definition}
+
+\begin{definition}[Keystream]\label{def:Keystream}
+  The \emph{keystream} is the output of the generator, which gets used on the \nameref{def:Plaintext} message to form the \nameref{def:Ciphertext}
+  \begin{equation}\label{eq:Keystream}
+    \mathbf{z} = z_{1}, z_{2}, \ldots
+  \end{equation}
+
+  \begin{remark}[Attacks]\label{rmk:Keystream_Attack_Vectors}
+    For a synchronous \nameref{def:Stream_Cipher}, a \nameref{def:Attack-Known_Plaintext}, \nameref{def:Attack-Chosen_Plaintext}, or \nameref{def:Attack-Chosen_Ciphertext} is equivalent to having access to the \nameref{def:Keystream}.
+  \end{remark}
+
+  \begin{remark}[Secret Key]\label{rmk:Keystream_Secret_Key}
+    When the \nameref{def:Keystream} first starts, because it is a synchronous system, it needs to have a starting value with which to generate subsequent values.
+    This first value may be fixed, and is the secret key, $K$, in this case.
+  \end{remark}
+\end{definition}
+
+\subsection{Assumptions}\label{subsec:Stream_Cipher_Assumptions}
+We assume that
+\begin{itemize}[noitemsep]
+\item The output \nameref{def:Keystream} of length $N$ is known to Eve.
+\end{itemize}
+
+\subsection{Attacks}\label{subsec:Stream_Cipher_Attacks}
+\begin{itemize}[noitemsep]
+\item \emph{\nameref{def:Attack-Key_Recovery}}: Eve tries to recover the \nameref{rmk:Keystream_Secret_Key}, $K$.
+\item \emph{\nameref{def:Attack-Distinguishing}}: Eve tries to determine whether a given sequence $\hat{\mathbf{z}} = z_{1}, z_{2}, \ldots, z_{N}$ is likely to have been generated from the considered \nameref{def:Stream_Cipher}, or if it's a truly random sequence.
+\end{itemize}
+
+\begin{definition}[Key Recovery Attack]\label{def:Attack-Key_Recovery}
+  In a \emph{key recovery attack}, Eve tries to recover the \nameref{rmk:Keystream_Secret_Key}, $K$.
+\end{definition}
+
+\begin{definition}[Distinguishing Attack]\label{def:Attack-Distinguishing}
+  In a \emph{distinguishing attack}, Eve tries to determine whether a given sequence $\hat{\mathbf{z}} = z_{1}, z_{2}, \ldots, z_{N}$ is likely to have been generated from the considered \nameref{def:Stream_Cipher}, or if it's a truly random sequence.
+
+  \begin{remark}
+    A \nameref{def:Attack-Distinguishing} is a much weaker attack than a \nameref{def:Attack-Key_Recovery}.
+  \end{remark}
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
+%%% End:
