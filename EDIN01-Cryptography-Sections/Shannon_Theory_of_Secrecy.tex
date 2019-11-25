@@ -117,6 +117,19 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \end{aligned}
 \end{equation}
 
+\begin{definition}[Key \nameref*{def:Entropy}]\label{def:Key_Entropy}
+  The \emph{key \nameref{def:Entropy}} is the uncertainty Eve faces regarding an unknown key that she has no experience with.
+  \begin{equation}\label{eq:Key_Entropy}
+    \Entropy(K) = - \sum\limits_{k \in \Keyspace} \Prob(k) \log_{2} \bigl( \Prob(k) \bigr)
+  \end{equation}
+
+  \begin{remark}[Key Entropy Upper Bound]\label{rmk:Key_Entropy_Upper_Bound}
+    \begin{equation}\label{eq:Key_Entropy_Upper_Bound}
+      \Entropy(K) \leq \log_{2} \SetOrder{\Keyspace}
+    \end{equation}
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
