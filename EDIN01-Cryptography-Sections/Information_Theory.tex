@@ -198,6 +198,19 @@ For \textbf{much} greater detail on some of the concepts presented here, refer t
 \end{definition}
 
 \paragraph{Properties of \nameref*{subsubsec:Conditional_Entropy}}\label{par:Conditional_Entropy_Properties}
+\begin{propertylist}
+\item If $X$ and $Y$ are \nameref{def:Discrete_Random_Variable}s taking values from the sets $\mathcal{X} = \lbrace x_{1}, x_{2}, \ldots, x_{\SetOrder{\mathcal{X}}} \rbrace$ and $\mathcal{Y} = \lbrace y_{1}, y_{2}, \ldots, y_{\SetOrder{\mathcal{Y}}} \rbrace$, respectively, then\label{prop:Conditional_Entropy_Bounds}
+  \begin{equation}\label{eq:Conditional_Entropy_Bounds}
+    0 \leq \Entropy(X \Given Y) \leq \log_{2} \SetOrder{\mathcal{X}}
+  \end{equation}
+\item $\Entropy(X \Given Y) = 0$ if and only if, \textbf{for every} $y$, $\Prob(x \Given Y) = 1$ \textbf{for some} $x \in \mathcal{X}$.\label{prop:Conditional_Entropy_Min_Bound}
+\item $\Entropy(x \Given Y) = \log_{2} \SetOrder{\mathcal{X}}$ if and only if \textbf{for every} $y$, $\Prob(x \Given y = \frac{1}{\SetOrder{\mathcal{X}}}$ \textbf{for all} $x \in \mathcal{X}$.\label{prop:Conditional_Entropy_Max_Bound}
+\item Similar properties hold for $\Entropy(X \Given Y=y)$
+\item The \nameref{def:Entropy} of a \nameref{def:Random_Variable}, $X$, can never increase by knowledge of the outcome of another \nameref{def:Random_Variable}.\label{prop:Conditional_Entropy_Bounded_By_Entropy}
+  \begin{equation}\label{eq:Conditional_Entropy_Bounded_By_Entropy}
+    \Entropy(X \Given Y) \leq \Entropy(X)
+  \end{equation}
+\end{propertylist}
 
 \subsubsection{Relative Entropy}\label{subsubsec:Relative_Entropy}
 
