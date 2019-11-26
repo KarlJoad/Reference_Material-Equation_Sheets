@@ -1181,6 +1181,10 @@ C/C++ do not offer a solution for the \nameref{def:Dangling_Pointer} or \nameref
 They are more like the way assembly languages handle addresses.
 This means they are extremely flexible, but must be used with great care.
 
+Because \nameref{def:Pointer}s in C/C++ are stored as a value, they can have some basic arithmetic done on them.
+This is how \nameref{def:Array} on the \nameref{def:Heap} are constructed.
+C/C++'s \nameref{def:Pointer}s can point to functions, which is used to pass functions as parameters to other functions.
+
 \subsubsection{Reference Types}\label{subsubsec:Pointer-Reference_Types}
 \begin{definition}[Reference]\label{def:Reference}
   A \emph{reference} type \nameref{def:Variable} is similar to a \nameref{def:Pointer}, in that it points to something.
