@@ -1205,6 +1205,9 @@ count = *ptr; // Dereference the address in "ptr" and take the value there and a
   The difference comes down to what it points to.
   A \nameref{def:Pointer} points to an address in \nameref{def:Memory}.
   A reference refers to an object or value in \nameref{def:Memory}.
+  A reference \textbf{can only refer to one thing}, i.e.\ the \nameref{def:Memory} address it refers to cannot change.
+
+  In C/C++, they are decalred with the \texttt{\&} operator.
 
   \begin{remark}[\nameref*{def:Memory} Address Arithmetic]\label{rmk:Reference-Memory_Address_Arithmetic}
     Therefore, address arithmetic cannot be done on references.
