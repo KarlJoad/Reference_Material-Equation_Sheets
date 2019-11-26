@@ -1144,6 +1144,17 @@ If a language does not support implicit deallocation of \nameref{def:Memory}, a 
 Due to the problems that \nameref{def:Pointer}s can introduce, some languages only support \nameref{def:Reference}s and utilize implicit deallocation.
 
 \paragraph{Dangling Pointers}\label{par:Pointer-Dangling_Pointers}
+\begin{definition}[Dangling Pointer]\label{def:Dangling_Pointer}
+  A \emph{dangling \nameref{def:Pointer}}, or a \emph{dangling \nameref{def:Reference}} is a \nameref{def:Pointer}/\nameref{def:Reference} that contains the address of a \nameref{def:Heap_Dynamic_Variable} that has already be deallocated.
+  These are dangerous for several reasons:
+  \begin{itemize}[noitemsep]
+  \item That \nameref{def:Memory} might be in-use by some other \nameref{def:Heap_Dynamic_Variable}.
+  \item \nameref{def:Type_Checking} might be invalid, if the types of the things stored were different.
+  \item There is potentially no relationship between the value stored in \nameref{def:Memory} and where the \nameref{def:Pointer} points to.
+  \item Possible that location is being temporarily used by the storage management system.
+  \end{itemize}
+\end{definition}
+
 \paragraph{Lost Heap-Dynamic Variables}\label{par:Pointer-Lost_Heap_Dynamic}
 
 \subsubsection{Pointers in Ada}\label{subsubsec:Pointer-Ada}
