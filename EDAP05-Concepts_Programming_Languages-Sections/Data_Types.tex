@@ -1072,6 +1072,15 @@ Then, depending on the variant, the space will be used according to how the \nam
 The tag of the \nameref{def:Union_Type} variant is stored in its \nameref{def:Descriptor}.
 
 \subsection{Pointer and Reference Types}\label{subsec:Pointer_Reference_Types}
+\nameref{def:Pointer}s and \nameref{def:Reference}s do are not structured types, like an \nameref{def:Array}.
+Nor are they scalar \nameref{def:Variable_Value}s, because they are used to reference some other \nameref{def:Variable}, rather than storing its own data.
+These are called:
+\begin{itemize}[noitemsep]
+\item Reference Types (Not directly related to \nameref{def:Reference}s)
+\item Value types
+\end{itemize}
+Both of these add \nameref{subsec:Writability} to the language.
+
 \subsubsection{Design Issues}\label{subsubsec:Pointer-Design_Issues}
 \subsubsection{Pointer Operations}\label{subsubsec:Pointer-Operations}
 \subsubsection{Pointer Problems}\label{subsubsec:Pointer-Problems}
