@@ -1272,6 +1272,14 @@ In this class, there are 2 ways to manage the \nameref{def:Heap}.
   So long as the count does not get smaller than 1, the \nameref{def:Heap_Dynamic_Variable} is reachable by the program.
   If the count reaches 0, then the \nameref{def:Heap_Dynamic_Variable} is deallocated.
 
+  \begin{remark}[Problems]\label{rmk:Reference_Counter_Problems}
+    \begin{itemize}[noitemsep]
+    \item Space: A little extra space is required to keep track of the count
+    \item Time: A little bit of time is required to update the counter everytime a \nameref{def:Pointer} is created/destroyed.
+    \item In a circular structure, the \nameref{def:Pointer} count will never reach zero, so an unreachable structure might not be deallocated.
+    \end{itemize}
+  \end{remark}
+
 
 \end{definition}
 
