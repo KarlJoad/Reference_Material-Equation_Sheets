@@ -715,6 +715,15 @@ The compile-time descriptor for a single-dimensioned \nameref{def:Array} is:
 
 If a language uses dynamic range checking on the index, then description must be included with the program during its execution.
 
+\paragraph{Multidimensional Arrays}\label{par:Array-Multidimensional}
+If true multidimensional \nameref{def:Array}s are being implemented, not just an array of arrays, things get more complicated.
+This is because of the multidimensional nature of the \nameref{def:Array} and the one dimensional nature of \nameref{def:Memory}.
+There are 2 ways to organize multidimensional \nameref{def:Array}s in \nameref{def:Memory}.
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Row_Major_Order}
+\item \nameref{def:Column_Major_Order}
+\end{enumerate}
+
 
 \subsection{Associative Arrays}\label{subsec:Associative_Arrays}
 \begin{definition}[Associative Array]\label{def:Associative_Array}
