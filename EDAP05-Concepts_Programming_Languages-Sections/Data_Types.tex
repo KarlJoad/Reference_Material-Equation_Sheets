@@ -1245,6 +1245,17 @@ There are several solutions, including:
     \item Every access to anything on the \nameref{def:Heap} requires an extra redirection, which may be another clock cycle.
     \end{itemize}
   \end{itemize}
+\item Locks-and-Keys Approach
+  \begin{itemize}[noitemsep]
+  \item The \nameref{def:Pointer}/\nameref{def:Reference} has a (\texttt{key}, \texttt{address}) pair.
+  \item The \nameref{def:Heap_Dynamic_Variable} has a header with a \texttt{lock}.
+  \item During execution, if a \nameref{def:Pointer} is dereferenced, its \texttt{key} is compared to the \texttt{lock}, and if they match, the execution happens.
+    \begin{itemize}[noitemsep]
+    \item If they don't match, then a runtime error is raised.
+    \end{itemize}
+  \item When the \nameref{def:Heap_Dynamic_Variable} is deallocated, the \texttt{lock} value is set to an illegal lock value.
+  \item If a \nameref{def:Pointer} is dereferenced to that particular \texttt{lock}, a runtime error is raised.
+  \end{itemize}
 \end{enumerate}
 \paragraph{Heap Management}\label{par:Pointer-Heap_Management}
 
