@@ -1081,6 +1081,19 @@ These are called:
 \end{itemize}
 Both of these add \nameref{subsec:Writability} to the language.
 
+\begin{definition}[Pointer]\label{def:Pointer}
+  A \emph{pointer} type is one in which the variables have a range of values that consists of \nameref{def:Memory} addresses and a special value, \texttt{nil}/\texttt{null}.
+  The \texttt{nil}/\texttt{null} is not a valid address and is used to indicate that a pointer cannot currently reference a \nameref{def:Memory} cell.
+
+  Pointers have 2 distinct uses:
+  \begin{enumerate}[noitemsep]
+  \item Provide some of the power of indirect addressing
+  \item \nameref{def:Pointer}s provide a way to manage dynamic storage, the \nameref{def:Heap}.
+  \end{enumerate}
+\end{definition}
+
+\end{definition}
+
 \subsubsection{Design Issues}\label{subsubsec:Pointer-Design_Issues}
 \subsubsection{Pointer Operations}\label{subsubsec:Pointer-Operations}
 \subsubsection{Pointer Problems}\label{subsubsec:Pointer-Problems}
