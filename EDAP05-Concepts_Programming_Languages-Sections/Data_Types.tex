@@ -1119,6 +1119,17 @@ Both of these add \nameref{subsec:Writability} to the language.
 \subsubsection{Pointers in Ada}\label{subsubsec:Pointer-Ada}
 \subsubsection{Pointers in C/C++}\label{subsubsec:Pointer-C_C++}
 \subsubsection{Reference Types}\label{subsubsec:Pointer-Reference_Types}
+\begin{definition}[Reference]\label{def:Reference}
+  A \emph{reference} type \nameref{def:Variable} is similar to a \nameref{def:Pointer}, in that it points to something.
+  The difference comes down to what it points to.
+  A \nameref{def:Pointer} points to an address in \nameref{def:Memory}.
+  A reference refers to an object or value in \nameref{def:Memory}.
+
+  \begin{remark}[\nameref*{def:Memory} Address Arithmetic]\label{rmk:Reference-Memory_Address_Arithmetic}
+    Therefore, address arithmetic cannot be done on references.
+  \end{remark}
+\end{definition}
+
 \subsubsection{Evaluation}\label{subsubsec:Pointer-Evaluation}
 \subsubsection{Implementation}\label{subsubsec:Pointer-Implementation}
 \paragraph{Representations of Pointers and References}\label{par:Pointer-Representations}
