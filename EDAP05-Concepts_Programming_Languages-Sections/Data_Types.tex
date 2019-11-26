@@ -1156,6 +1156,15 @@ Due to the problems that \nameref{def:Pointer}s can introduce, some languages on
 \end{definition}
 
 \paragraph{Lost Heap-Dynamic Variables}\label{par:Pointer-Lost_Heap_Dynamic}
+\begin{definition}[Lost \nameref*{def:Heap_Dynamic_Variable}]\label{def:Lost_Heap_Dynamic_Variable}
+  A \emph{lost \nameref{def:Heap_Dynamic_Variable}} is an allocated \nameref{def:Heap_Dynamic_Variable} that is no longer accessible to the user program.
+
+  This is sometimes refered to as \emph{garbage}.
+\end{definition}
+
+\begin{definition}[Memory Leak]\label{def:Memory_Leak}
+  A \emph{memory leak} is a case of when a \nameref{def:Lost_Heap_Dynamic_Variable} does not get collected by the runtime system, or the programmer, causing some \nameref{def:Memory} to be in-use, inaccessible, and potentially program-threatening.
+\end{definition}
 
 \subsubsection{Pointers in Ada}\label{subsubsec:Pointer-Ada}
 \subsubsection{Pointers in C/C++}\label{subsubsec:Pointer-C_C++}
