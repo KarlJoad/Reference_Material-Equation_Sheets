@@ -1267,6 +1267,13 @@ In this class, there are 2 ways to manage the \nameref{def:Heap}.
 \item \nameref{def:Mark_Sweep}
 \end{enumerate}
 
+\begin{definition}[Reference Counter]\label{def:Reference_Counter}
+  In a \emph{reference counter} garbage collection algorithm, every \nameref{def:Heap_Dynamic_Variable} has a count attached to it, with the number of \nameref{def:Pointer}s pointing to it.
+  So long as the count does not get smaller than 1, the \nameref{def:Heap_Dynamic_Variable} is reachable by the program.
+  If the count reaches 0, then the \nameref{def:Heap_Dynamic_Variable} is deallocated.
+
+
+\end{definition}
 
 \subsection{Type Equivalence}\label{subsec:Type_Equivalence}
 This section does not deal with \nameref{def:Type_Compatibility}, which works for scalar \nameref{def:Data_Type}s, but rather \nameref{def:Type_Equivalence}.
