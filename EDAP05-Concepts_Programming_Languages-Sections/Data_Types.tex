@@ -739,6 +739,21 @@ There are 2 ways to organize multidimensional \nameref{def:Array}s in \nameref{d
   \end{equation*}
 \end{definition}
 
+\begin{definition}[Column Major Order]\label{def:Column_Major_Order}
+  In \emph{column major order}, the elements of an array tat have their last subscript to be the lower bound value of the subscript are stored first, followed by the elements of the second value, and so on.
+
+  For example,
+  \begin{align*}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+  \end{align*}
+  would be stored as
+  \begin{equation*}
+    1, 4, 7, 2, 5, 8, 3, 6, 9
+  \end{equation*}
+\end{definition}
+
 
 \subsection{Associative Arrays}\label{subsec:Associative_Arrays}
 \begin{definition}[Associative Array]\label{def:Associative_Array}
