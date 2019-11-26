@@ -1185,6 +1185,16 @@ Because \nameref{def:Pointer}s in C/C++ are stored as a value, they can have som
 This is how \nameref{def:Array} on the \nameref{def:Heap} are constructed.
 C/C++'s \nameref{def:Pointer}s can point to functions, which is used to pass functions as parameters to other functions.
 
+In C/C++, the \texttt{*} operator denotes a dereferencing operation, and the \texttt{\&} operation denotes the operator for producing the address of a \nameref{def:Variable}.
+
+\begin{minted}[frame=lines,linenos]{c}
+int *ptr; // Declare a pointer that will point to a thing of int type
+int count, init; // Declare some integer variables
+...
+ptr = &init; // Put the memory address of "init" into ptr
+count = *ptr; // Dereference the address in "ptr" and take the value there and assign to count's storage
+\end{minted}
+
 \subsubsection{Reference Types}\label{subsubsec:Pointer-Reference_Types}
 \begin{definition}[Reference]\label{def:Reference}
   A \emph{reference} type \nameref{def:Variable} is similar to a \nameref{def:Pointer}, in that it points to something.
