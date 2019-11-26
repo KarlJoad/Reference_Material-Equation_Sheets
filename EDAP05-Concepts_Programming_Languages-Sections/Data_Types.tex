@@ -1296,6 +1296,15 @@ In this class, there are 2 ways to manage the \nameref{def:Heap}.
 
   In the sweep phase, anything that is still marked as unreachable is deallocated.
 
+  \begin{remark}[Problems]\label{rmk:Mark_Sweep_Problems}
+    \begin{itemize}[noitemsep]
+    \item Space: The heavy recursion while inside the \nameref{def:Heap} requries a lot of \nameref{def:Call_Stack} space.
+    \item Time: Since this is run when the \nameref{def:Heap} is nearly full, it takes a lot of time to handle.
+      \begin{itemize}[noitemsep]
+      \item This leads to the main program being executed to be ``paused''.
+      \end{itemize}
+    \end{itemize}
+  \end{remark}
 \end{definition}
 
 \subsection{Type Equivalence}\label{subsec:Type_Equivalence}
