@@ -653,6 +653,17 @@ Bunch : array (1..5) of Integer := (1 => 17, 3 => 34, others => 0);
 Because of this feature, the \texttt{others} clause initializes all other elements with a ``default'' value.
 
 \subsubsection{Array Operations}\label{subsubsec:Arrays-Operations}
+\begin{definition}[Array Operation]\label{def:Array_Operation}
+  An \emph{array operation} is one that operates on an \nameref{def:Array} as a whole.
+  The most common operations are:
+  \begin{itemize}[noitemsep]
+  \item Assignment
+  \item Concatenation
+  \item Comparison for Equality
+  \item \nameref{subsubsec:Arrays-Slices}
+  \end{itemize}
+\end{definition}
+
 \subsubsection{Rectangular and Jagged Arrays}\label{subsubsec:Arrays-Rectangular_Jagged}
 \subsubsection{Slices}\label{subsubsec:Arrays-Slices}
 \subsubsection{Evaluations}\label{subsubsec:Arrays-Evaluations}
