@@ -1103,6 +1103,14 @@ Both of these add \nameref{subsec:Writability} to the language.
 \end{definition}
 
 \subsubsection{Design Issues}\label{subsubsec:Pointer-Design_Issues}
+\begin{itemize}[noitemsep]
+\item What are the scope and lifetime of a \nameref{def:Pointer}?
+\item What is the lifetime of a \nameref{def:Heap_Dynamic_Variable} (The value a \nameref{def:Pointer} points to)?
+\item Are \nameref{def:Pointer}s restricted as to the type of value to which they can point? (Can they only point to integers?)
+\item Are \nameref{def:Pointer}s used for dynamic storage management, indirect addressing, or both?
+\item Should the language support \nameref{def:Pointer}s, \nameref{def:Reference}s, or both?
+\end{itemize}
+
 \subsubsection{Pointer Operations}\label{subsubsec:Pointer-Operations}
 \subsubsection{Pointer Problems}\label{subsubsec:Pointer-Problems}
 \paragraph{Dangling Pointers}\label{par:Pointer-Dangling_Pointers}
