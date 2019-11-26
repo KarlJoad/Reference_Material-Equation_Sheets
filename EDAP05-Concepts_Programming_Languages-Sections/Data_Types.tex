@@ -1233,6 +1233,19 @@ In most computers today, \nameref{def:Pointer}s and \nameref{def:Reference}s are
 However, this differs in earlier computers.
 
 \paragraph{Solutions to the Dangling-Pointer Problem}\label{par:Pointer-Dangling_Pointer_Solution}
+There are several solutions, including:
+\begin{enumerate}[noitemsep]
+\item Tombstones
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Pointer}s and \nameref{def:Reference}s point to a \emph{tombstone}, which points to the actual value.
+  \item When a \nameref{def:Heap_Dynamic_Variable} is deallocted, the tombstone is set to \texttt{nil}/\texttt{null}, indicating the \nameref{def:Heap_Dynamic_Variable} no longer exists.
+  \item The problem with this is that it is expensive in time and space.
+    \begin{itemize}[noitemsep]
+    \item The tombstones are never deallocted, so they will take up space until execution ends.
+    \item Every access to anything on the \nameref{def:Heap} requires an extra redirection, which may be another clock cycle.
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
 \paragraph{Heap Management}\label{par:Pointer-Heap_Management}
 
 \subsection{Type Equivalence}\label{subsec:Type_Equivalence}
