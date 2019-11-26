@@ -1195,6 +1195,10 @@ ptr = &init; // Put the memory address of "init" into ptr
 count = *ptr; // Dereference the address in "ptr" and take the value there and assign to count's storage
 \end{minted}
 
+\begin{remark*}[\texttt{void*} \nameref*{def:Pointer} Type]
+  The \texttt{void*} type on a \nameref{def:Pointer} means that it will accept a \nameref{def:Pointer} of any \nameref{def:Data_Type}.
+\end{remark*}
+
 \subsubsection{Reference Types}\label{subsubsec:Pointer-Reference_Types}
 \begin{definition}[Reference]\label{def:Reference}
   A \emph{reference} type \nameref{def:Variable} is similar to a \nameref{def:Pointer}, in that it points to something.
