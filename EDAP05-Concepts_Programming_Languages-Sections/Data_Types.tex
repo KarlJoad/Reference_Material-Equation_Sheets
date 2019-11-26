@@ -1177,6 +1177,10 @@ However, Ada does have support for an explicit deallocator, \texttt{Unchecked \t
 The \nameref{def:Lost_Heap_Dynamic_Variable} problem was not solved in Ada.
 
 \subsubsection{Pointers in C/C++}\label{subsubsec:Pointer-C_C++}
+C/C++ do not offer a solution for the \nameref{def:Dangling_Pointer} or \nameref{def:Lost_Heap_Dynamic_Variable} problems.
+They are more like the way assembly languages handle addresses.
+This means they are extremely flexible, but must be used with great care.
+
 \subsubsection{Reference Types}\label{subsubsec:Pointer-Reference_Types}
 \begin{definition}[Reference]\label{def:Reference}
   A \emph{reference} type \nameref{def:Variable} is similar to a \nameref{def:Pointer}, in that it points to something.
