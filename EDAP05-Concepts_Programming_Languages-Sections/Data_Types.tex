@@ -1167,6 +1167,15 @@ Due to the problems that \nameref{def:Pointer}s can introduce, some languages on
 \end{definition}
 
 \subsubsection{Pointers in Ada}\label{subsubsec:Pointer-Ada}
+Ada's \nameref{def:Pointer}s are called \emph{access} types.
+The \nameref{def:Dangling_Pointer} problem is partly solved here, by allowing for implicit deallocation of a \nameref{def:Heap_Dynamic_Variable} at the end of its \nameref{def:Pointer} scope.
+However, few compilers implement this, so this is mostly theory.
+This is mostly handled by the fact that \nameref{def:Heap_Dynamic_Variable}s can only be access by \nameref{def:Variable}s on one type.
+When the end of scope for that type declaration is reached, no \nameref{def:Pointer}s can be left pointing at the \nameref{def:Heap_Dynamic_Variable}.
+However, Ada does have support for an explicit deallocator, \texttt{Unchecked \textunderscore{} Deallocation}.
+
+The \nameref{def:Lost_Heap_Dynamic_Variable} problem was not solved in Ada.
+
 \subsubsection{Pointers in C/C++}\label{subsubsec:Pointer-C_C++}
 \subsubsection{Reference Types}\label{subsubsec:Pointer-Reference_Types}
 \begin{definition}[Reference]\label{def:Reference}
