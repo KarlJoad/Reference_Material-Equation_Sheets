@@ -1124,6 +1124,17 @@ If a \nameref{def:Pointer} shows up in an expression, there are 2 ways to interp
 \item Use the value that the address being stored by the \nameref{def:Pointer} as an operand. Perform a \nameref{def:Pointer_Dereferencing} on the value stored in the \nameref{def:Pointer}.
 \end{enumerate}
 
+\begin{definition}[Dereferencing]\label{def:Pointer_Dereferencing}
+  \emph{Dereferencing} a \nameref{def:Pointer} takes a reference through one level of redirection.
+  This can be implicit or explicit.
+
+  In C/C++, an explicit dereferencing is done with the \nameref{def:Fixity-Prefix} \nameref{def:Arity-Unary} \texttt{*} operator.
+
+  \begin{remark}[\nameref*{def:Pointer} \nameref*{def:Pointer_Dereferencing} a \nameref{def:Record_Data_Type}]\label{rmk:Pointer_Dereference_Record}
+    When a \nameref{def:Pointer} points to a \nameref{def:Record_Data_Type}, the syntax of a reference to the \nameref{def:Record_Data_Type_Field}s in the \nameref{def:Record_Data_Type} varies by language.
+  \end{remark}
+\end{definition}
+
 \subsubsection{Pointer Problems}\label{subsubsec:Pointer-Problems}
 \paragraph{Dangling Pointers}\label{par:Pointer-Dangling_Pointers}
 \paragraph{Lost Heap-Dynamic Variables}\label{par:Pointer-Lost_Heap_Dynamic}
