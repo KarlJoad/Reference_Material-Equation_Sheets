@@ -1135,6 +1135,11 @@ If a \nameref{def:Pointer} shows up in an expression, there are 2 ways to interp
   \end{remark}
 \end{definition}
 
+If a language supports using \nameref{def:Pointer}s to manage the \nameref{def:Heap}, there must be an explicit allocation operation.
+Some languages use a subprogram (\texttt{malloc} in C).
+Object-Oriented languages often use the \texttt{new} \nameref{def:Reserved_Word}/\nameref{def:Keyword}.
+If a language does not support implicit deallocation of \nameref{def:Memory}, a \texttt{delete}/\texttt{free} operator/subprogram must be provided to reclaim the unused \nameref{def:Memory}.
+
 \subsubsection{Pointer Problems}\label{subsubsec:Pointer-Problems}
 \paragraph{Dangling Pointers}\label{par:Pointer-Dangling_Pointers}
 \paragraph{Lost Heap-Dynamic Variables}\label{par:Pointer-Lost_Heap_Dynamic}
