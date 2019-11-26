@@ -703,6 +703,18 @@ To access an element in an \nameref{def:Array}:
   \text{address}(\mathtt{list[k]}) = \text{address}(\mathtt{list}) + (k * \mathtt{elementSize})
 \end{equation}
 
+The compile-time descriptor for a single-dimensioned \nameref{def:Array} is:
+\begin{itemize}[noitemsep]
+\item Array name
+\item Element \nameref{def:Data_Type}
+\item Index \nameref{def:Data_Type}
+\item Index Lower Bound
+\item Index Upper Bound
+\item Array's starting address
+\end{itemize}
+
+If a language uses dynamic range checking on the index, then description must be included with the program during its execution.
+
 
 \subsection{Associative Arrays}\label{subsec:Associative_Arrays}
 \begin{definition}[Associative Array]\label{def:Associative_Array}
