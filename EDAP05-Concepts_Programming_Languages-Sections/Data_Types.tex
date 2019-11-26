@@ -1287,6 +1287,14 @@ In this class, there are 2 ways to manage the \nameref{def:Heap}.
   \end{remark}
 \end{definition}
 
+\begin{definition}[Mark-Sweep]\label{def:Mark_Sweep}
+  The \emph{mark-sweep} garbage collection algorithm starts by assuming that everything is unreachable from the program, and marks it as such.
+  First, it ``unmarks'' the registers, \nameref{def:Call_Stack}, \nameref{def:Global_Variable}s as reachable.
+  Then, it follows all pointers present in the \nameref{def:Call_Stack} to the \nameref{def:Heap}.
+  If the \nameref{def:Heap_Dynamic_Variable} is reachable, then it any \nameref{def:Pointer}s it may have are followed.
+  Anything on the \nameref{def:Heap} that is still reachable after the mark phase is saved.
+
+  In the sweep phase, anything that is still marked as unreachable is deallocated.
 
 \end{definition}
 
