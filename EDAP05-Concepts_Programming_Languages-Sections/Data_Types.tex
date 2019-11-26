@@ -1118,6 +1118,12 @@ There are 2 main operations that most languages support,
 \item \nameref{def:Pointer_Dereferencing}
 \end{enumerate}
 
+If a \nameref{def:Pointer} shows up in an expression, there are 2 ways to interpret it:
+\begin{enumerate}[noitemsep]
+\item Use the address stored by the \nameref{def:Pointer} as an operand
+\item Use the value that the address being stored by the \nameref{def:Pointer} as an operand. Perform a \nameref{def:Pointer_Dereferencing} on the value stored in the \nameref{def:Pointer}.
+\end{enumerate}
+
 \subsubsection{Pointer Problems}\label{subsubsec:Pointer-Problems}
 \paragraph{Dangling Pointers}\label{par:Pointer-Dangling_Pointers}
 \paragraph{Lost Heap-Dynamic Variables}\label{par:Pointer-Lost_Heap_Dynamic}
