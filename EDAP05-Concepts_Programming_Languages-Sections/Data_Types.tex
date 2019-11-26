@@ -1220,6 +1220,11 @@ These allow for the \nameref{def:Actual_Parameter}s to operate as \nameref{def:P
 This can also be achieved with \nameref{def:Pointer}s, but each use requires the \nameref{def:Pointer} be explicitly dereferenced.
 
 \subsubsection{Evaluation}\label{subsubsec:Pointer-Evaluation}
+\nameref{def:Pointer}s are like the \texttt{goto} statement.
+They widen the range of \nameref{def:Memory} cells that can be referenced by a \nameref{def:Variable}.
+They may be dangerous, but they are essential for the lowest levels of programming: device drivers, operating systems, kernels, etc.
+However, it does not make sense for all applications, which is why some other languages explicitly disallow \nameref{def:Pointer}s from being used at all.
+
 \subsubsection{Implementation}\label{subsubsec:Pointer-Implementation}
 \paragraph{Representations of Pointers and References}\label{par:Pointer-Representations}
 \paragraph{Solutions to the Dangling-Pointer Problem}\label{par:Pointer-Dangling_Pointer_Solution}
