@@ -692,6 +692,17 @@ Each language has a different way to \nameref{def:Slice} an \nameref{def:Array},
 The greatest progress has occurred with using ordinal types as subscript types, \nameref{def:Slice}s, and dynamic \nameref{def:Array}s.
 
 \subsubsection{Implementation of Array Types}\label{subsubsec:Arrays-Implementation}
+Implementing \nameref{def:Array}s requires considerable compile-time effort.
+The code to access the elements must be generated at compile-time.
+At runtime, the code must be executed to produce element addresses.
+There is no way to precompute the address to be accessed by a reference such as \texttt{list[k]}.
+The only time any computation can be done on an \nameref{def:Array} at compile-time is if the array is statically bound.
+
+To access an element in an \nameref{def:Array}:
+\begin{equation}\label{eq:Access_Array_Element}
+  \text{address}(\mathtt{list[k]}) = \text{address}(\mathtt{list}) + (k * \mathtt{elementSize})
+\end{equation}
+
 
 \subsection{Associative Arrays}\label{subsec:Associative_Arrays}
 \begin{definition}[Associative Array]\label{def:Associative_Array}
