@@ -634,6 +634,24 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
 \end{definition}
 
 \subsubsection{Array Initialization}\label{subsubsec:Arrays-Initialization}
+Some languages allow the programmer to initialize the \nameref{def:Array} with values when the storage is allocated.
+\begin{minted}[frame=lines,linenos]{fortran}
+Integer, Dimension (3) :: List = (/0, 5, 5/)
+\end{minted}
+However, C/C++, Java, and C\# do not allow programmer-specification length of an \nameref{def:Array} during declaration/initialization.
+\begin{minted}[frame=lines,linenos]{c}
+int list [] = {4, 5, 7, 83};
+\end{minted}
+
+In C and C++, a \nameref{def:Character_String_Type} or string, is a character array with the last element being a null terminator ASCII \texttt{00}.
+
+Ada allows for initialization to specific indices in an array during storage allocation.
+\begin{minted}[frame=lines,linenos]{ada}
+List : array (1..5) of Integer := (1, 4, 5, 7 ,9);
+Bunch : array (1..5) of Integer := (1 => 17, 3 => 34, others => 0);
+\end{minted}
+Because of this feature, the \texttt{others} clause initializes all other elements with a ``default'' value.
+
 \subsubsection{Array Operations}\label{subsubsec:Arrays-Operations}
 \subsubsection{Rectangular and Jagged Arrays}\label{subsubsec:Arrays-Rectangular_Jagged}
 \subsubsection{Slices}\label{subsubsec:Arrays-Slices}
