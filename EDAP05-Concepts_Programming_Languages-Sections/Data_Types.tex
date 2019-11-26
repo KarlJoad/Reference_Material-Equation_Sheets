@@ -1214,6 +1214,11 @@ count = *ptr; // Dereference the address in "ptr" and take the value there and a
   \end{remark}
 \end{definition}
 
+In C/C++, there is a special \nameref{def:Reference} type used for \nameref{def:Formal_Parameter}s in function definitions.
+It is a constant \nameref{def:Pointer} that is always implicitly dereferenced.
+These allow for the \nameref{def:Actual_Parameter}s to operate as \nameref{def:Parameter_Passing-Inout_Mode} parameters.
+This can also be achieved with \nameref{def:Pointer}s, but each use requires the \nameref{def:Pointer} be explicitly dereferenced.
+
 \subsubsection{Evaluation}\label{subsubsec:Pointer-Evaluation}
 \subsubsection{Implementation}\label{subsubsec:Pointer-Implementation}
 \paragraph{Representations of Pointers and References}\label{par:Pointer-Representations}
