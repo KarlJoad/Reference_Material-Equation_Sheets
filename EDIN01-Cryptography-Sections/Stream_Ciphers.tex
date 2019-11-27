@@ -74,6 +74,20 @@ The attack types that are of interest are:
   \end{remark}
 \end{definition}
 
+\subsection{Linear Feedback Shift Registers}\label{subsec:LFSRs}
+\begin{definition}[Linear Feedback Shift Register]\label{def:LFSR}
+  A \emph{linear feedback shift register} is a data storage element.
+  A register has $L$ delay (storage) elements, each of which is capable of storing one element from the field \TextFiniteMathField{F}{q}{}, and a clock signal.
+  When the clock signal is applied, the register's delay elements are shifted one step, and the value shifted into the beginning is calculated as a linear function of the contents of the register.
+
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.50]{./Drawings/EDIN01-Cryptography/Linear_Feedback_Shift_Register.png}
+    \caption{\nameref{def:LFSR}}
+    \label{fig:LSFR}
+  \end{figure}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
