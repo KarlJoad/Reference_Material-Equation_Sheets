@@ -480,6 +480,16 @@ for $t=0, 1, \ldots$
   \end{itemize}
 \end{definition}
 
+\begin{theorem}[Autocorrelation of $m$-Sequence]\label{thm:M_Sequence_Autocorrelation}
+  If $\mathbf{s}$ is an $m$-sequence of length $2^{L}-1$, then
+  \begin{equation}\label{eq:M_Sequence_Autocorrelation}
+    C(\tau) =
+    \begin{cases}
+      2^{L} - 1 & \text{ if } \tau \equiv 0 \bmod n \\
+      -1 & \text{otherwise} \\
+    \end{cases}
+  \end{equation}
+\end{theorem}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
