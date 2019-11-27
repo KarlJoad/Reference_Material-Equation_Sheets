@@ -88,6 +88,27 @@ The attack types that are of interest are:
   \end{figure}
 \end{definition}
 
+\begin{definition}[Shift Register Equation]\label{def:Shift_Register_Equation}
+  The \emph{shift register equation} is a way of describing the coefficients, $c_{1}, c_{2}, \ldots, c_{L} \in \FiniteMathField{F}{q}{}$, and their recurrence relation
+  \begin{equation}\label{eq:Shift_Register_Equation}
+    s_{j} = -c_{1}s_{j-1} - c_{2}s_{j-2} - \cdots - c_{L}s_{j-L}
+  \end{equation}
+  for $j = L, L+1, \ldots$.
+
+  If  $c_{0} = 1$, we can write
+  \begin{equation}\label{eq:Shift_Register_Equation-Summation}
+    \sum\limits_{i=0}^{L} c_{i}s_{j-i} = 0, \text{ for } j = L, L+1, \ldots
+  \end{equation}
+
+  \begin{remark}[Initial State]\label{rmk:Shift_Register_Initial_State-Fibonacci}
+    The first $L$ symbols, $s_{0}, s_{1}, \ldots, s_{L-1}$ form the \emph{initial state}.
+  \end{remark}
+
+  \begin{remark}[Fibonacci Implementation]\label{rmk:Shift_Register-Fibonacci}
+    The \nameref{def:LFSR} setup shown in \Cref{fig:LSFR} is implemented in a \emph{fibonacci}-style.
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
