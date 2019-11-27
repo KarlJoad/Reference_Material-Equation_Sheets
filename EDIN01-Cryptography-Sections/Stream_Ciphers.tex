@@ -440,6 +440,20 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
   and the distributive law holds for $\times$ and $\oplus$.
 \end{theorem}
 
+\subsection{Decimation}\label{subsec:Decimation}
+An \nameref{def:M_Sequence} $\mathbf{s} = s_{0}, s_{1}, s_{2}, \ldots$.
+\begin{itemize}[noitemsep]
+\item Define the sequence $\mathbf{s}'$ obtained through decimation by $k$, defined by the sequence
+  \begin{equation*}
+    \mathbf{s}' = s_{0}, s_{k}, s_{2k}, \ldots
+  \end{equation*}
+\item $\mathbf{s}$ corresponds to a multiplication of $\beta$ by the fixed element $\alpha$. Thus, $\mathbf{s}'$ corresponds to multiplication $\beta$ by the fixed element $\alpha^{k}$, which means the cycle of different states corresponds to
+  \begin{equation*}
+    \beta, \alpha^{k}\beta, \alpha^{2k}\beta, \ldots, \alpha^{(T-1)k}\beta, \left( \alpha^{Tk}\beta = \beta \right)
+  \end{equation*}
+\item The period of $\mathbf{s}'$ is $\ElementOrder \left( \alpha^{k} \right) = \frac{q^{L}-1}{\gcd \left( q^{L}-1, k \right)}$.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
