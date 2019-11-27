@@ -64,6 +64,11 @@ The attack types that are of interest are:
 \begin{definition}[Distinguishing Attack]\label{def:Attack-Distinguishing}
   In a \emph{distinguishing attack}, Eve tries to determine whether a given sequence $\hat{\mathbf{z}} = z_{1}, z_{2}, \ldots, z_{N}$ is likely to have been generated from the considered \nameref{def:Stream_Cipher}, or if it's a truly random sequence.
 
+  Let $D(\mathbf{z})$ be an algorithm that takes in a sequence $\mathbf{z}$ of length $N$, and outputs either ``X'' or ``RANDOM''.
+  With probability $\frac{1}{2}$, the sequence $\mathbf{z}$ is produced by a generator $X$ otherwise, it is a random sequence.
+  The probability that $D(\mathbf{z})$ correctly determines the origin of $\mathbf{z}$ is written $\Prob \bigl( D(\mathbf{z}) \bigr) = \frac{1}{2} + \epsilon$.
+  If $\epsilon$ is not very close to zero, then $D(\mathbf{z})$ is a \emph{distinguisher} for the generator $X$, because it can more often than not distinguish that the sequence is nonrandom.
+
   \begin{remark}
     A \nameref{def:Attack-Distinguishing} is a much weaker attack than a \nameref{def:Attack-Key_Recovery}.
   \end{remark}
