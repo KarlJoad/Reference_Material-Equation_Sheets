@@ -208,6 +208,17 @@ This gives us
   \label{fig:LFSR_Galois}
 \end{figure}
 
+We can check that this form, the \emph{Galois Form} of this \nameref{def:LFSR} is the same as the other.
+\begin{equation*}
+  s_{j} = -c_{1}s_{j-1} - c_{2}s_{j-2} - \cdots - c_{L}s_{j-L}
+\end{equation*}
+when $j \geq L$.
+Also,
+\begin{equation*}
+  p_{0} = s_{0}, p_{1} = s_{1} + c_{1}s_{0}, \ldots
+\end{equation*}
+where $p_{0}, p_{1}, \ldots, p_{L-1}$ is the initial state of the \nameref{def:LFSR} in its Galois Form.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
