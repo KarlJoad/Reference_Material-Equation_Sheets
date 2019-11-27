@@ -225,6 +225,20 @@ where $p_{0}, p_{1}, \ldots, p_{L-1}$ is the initial state of the \nameref{def:L
   For a specific sequence specified as $S(D) = \frac{P(D)}{C(D)}$, the initial state if the first $L$ symbols, whereas the same sequence is produced in \Cref{fig:LFSR_Galois} if the initial state is $p_{0}, p_{1}, \ldots, p_{L-1}$.
 \end{blackbox}
 
+\subsubsection{Properties of \nameref*{subsec:LFSRs}}\label{subsubsec:LFSR_Properties}
+\begin{propertylist}
+\item A sequence $\mathbf{s} = \ldots, s_{0}, s_{1}, \ldots$ is called \emph{periodic} if there is a positive integer $T$ such that $s_{i} = s_{i+T} \: \forall i \geq 0$.
+\item The \emph{period} is the least such positive integer $T$ for which $s_{i} = s_{i+T} \: \forall i \geq 0$
+\item The \nameref{def:LFSR} state runs through different values. The initial state will appear again after visiting a number of states.
+  If $\Degree \bigl( C(D) \bigr) = L$, the period of a sequence is the same as the number of different states visited, before returning to the initial state.
+\item If $C(D)$ is \nameref{def:Irreducible_Polynomial}, the state corresponds to an element in \TextFiniteMathField{F}{q}{L}, call it $\beta$.
+\item The sequence of diferent states that we are entering is
+  \begin{equation*}
+    \beta, \alpha\beta, \alpha^{2}\beta , \ldots, \alpha^{T-1}\beta, \left( \alpha^{T}\beta = \beta \right)
+  \end{equation*}
+  where $T$ is the \nameref{def:Element_Order} of $\alpha$
+\end{propertylist}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
