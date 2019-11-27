@@ -384,6 +384,14 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
   where $T$ is the \nameref{def:Polynomial_Period} of $C(D)$, or the \nameref{def:Element_Order} of $\alpha$ when $\pi(\alpha)=0$.
 \end{propertylist}
 
+\begin{theorem}[Connection Polynomial Multiple]\label{thm:Cycle_Set_Multiple_of_Connection_Polynomial}
+  If $C(D) = {C_{1}(D)}^{n}$, then the \nameref{def:Cycle_Set} of $C(D)$ is
+  \begin{equation}\label{eq:Cycle_Set_Multiple_of_Connection_Polynomial}
+    1(1) \oplus \frac{\left( q^{L_{1}}-1 \right)}{T_{1}} \left( T_{1} \right) \oplus \frac{q^{L_{1}} \left( q^{L_{1}}-1 \right)}{T_{2}} \left( T_{2} \right) \oplus \cdots \oplus \frac{q^{(n-1)L_{1}}\left( q^{L_{1}}-1 \right)}{T_{n}} \left( T_{n} \right)
+  \end{equation}
+  where $\Degree \bigl( C(D) \bigr) = L$ and $T_{j}$ is the \nameref{def:Polynomial_Period} of ${C_{1}(D)}^{j}$.
+\end{theorem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
