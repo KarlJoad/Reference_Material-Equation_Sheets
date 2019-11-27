@@ -177,6 +177,30 @@ The attack types that are of interest are:
   \end{equation*}
 \end{theorem}
 
+\subsection{\nameref*{subsec:LFSRs} Sequences and Extension Fields}\label{LFSR_Sequences_Extension_Fields}
+Let $\pi(x)$ be an \nameref{def:Irreducible_Polynomial} \nameref{def:Polynomial} over \TextFiniteMathField{F}{q}{} and assume its coefficients are
+\begin{equation}\label{eq:Reciprocal_Connection_Polynomial}
+  \pi(x) = x^{L} + c_{1}x^{L-1} + \cdots + c_{L}
+\end{equation}
+This means that $\pi(x)$ is the \emph{reciprocal} \nameref{def:Polynomial} of the \nameref{def:Connection_Polynomial} $C(D)$.
+
+We can construct an \nameref{rmk:Extension_Field} \TextFiniteMathField{F}{q}{L} through $\pi(\alpha) = 0$.
+The term $\beta$ from \TextFiniteMathField{F}{q}{} can be expressed in a \nameref{def:Polynomial} basis as
+\begin{equation}\label{eq:Extension_Field-Beta}
+  \beta = \beta_{0} + \beta_{1}\alpha^{1} + b_{2}\alpha^{2} + \cdots + \beta_{L-1} + \alpha^{L-1}
+\end{equation}
+where $\beta_{0}, \beta_{1}, \ldots, \beta_{L-1} \in \FiniteMathField{F}{q}{}$.
+
+If we multiply \Cref{eq:Extension_Field-Beta} by $\alpha$, we get
+\begin{equation*}
+  \alpha\beta = \beta_{0}\alpha + \beta_{1}\alpha^{2} + \cdots + \beta_{L-1}\alpha^{L}
+\end{equation*}
+Now, we can reduce the $\alpha^{L}$ according to the $\pi(\alpha)=0$ relation we found earlier.
+This gives us
+\begin{equation}\label{eq:LFSR_Galois_Equation}
+  \alpha\beta = -c_{L}\beta_{L-1} + \left( \beta_{0} - c_{L-1}\beta_{L-1} \right) \alpha + \cdots + \left( \beta_{L-2} - c_{1}\beta_{L-1} \right) \alpha^{L-1}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
