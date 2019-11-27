@@ -253,6 +253,14 @@ This is equivalent to
 \end{equation*}
 where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
 
+\begin{definition}[Polynomial Period]\label{def:Polynomial_Period}
+  The \emph{period of a \nameref{def:Polynomial}} $C(D)$ is the least positive integer $T$ such that $C(D) \Divides \left( 1-D^{T} \right)$.
+
+  This is calculated by dividing 1 by $C(D)$ and continuing until you receive a remainder of the form $1\cdot D^{N}$.
+  The remainder \textbf{MUST} have the coefficient of 1.
+  And the value of $T=N$.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
