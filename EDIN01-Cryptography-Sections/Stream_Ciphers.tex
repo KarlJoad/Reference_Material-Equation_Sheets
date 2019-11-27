@@ -466,6 +466,20 @@ for $t=0, 1, \ldots$
   Among the $q^{L}-1$ $L$-grams that can be constructed for $t = 0, 1, \ldots, q^{L}-2$, ever nonzero vector appears exactly once.
 \end{theorem}
 
+\subsubsection{Autocorrelation Function}\label{subsubsec:Autocorrelation_Function}
+\begin{definition}[Autocorrelation Function]\label{def:LFSR_Autocorrelation_Function}
+  The \emph{autocorrelation function} has:
+  \begin{itemize}[noitemsep]
+  \item 2 binary sequences, $\mathbf{x}, \mathbf{y}$ of the same length $n$.
+  \item The autocorrelation $C(\mathbf{x}, \mathbf{y})$ between the 2 sequences is defined as the number of positions of agreements minus the number of disagreements.
+  \item The autocorrelation function $C(\tau)$ is defined to be the correlation between a sequence $\mathbf{x}$ and its $\tau$th cyclic shift, i.e.,
+    \begin{equation}\label{eq:LFSR_Autocorrelation_Function}
+      C(\tau) = \sum\limits_{i=1}^{n} {(-1)}^{x_{i}+x_{i+\tau}}
+    \end{equation}
+    where subscripts are taken modulo $n$ and addition in the exponent is $\mod{2}$ addition.
+  \end{itemize}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
