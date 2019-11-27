@@ -279,6 +279,18 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
   and it is, so we found the right answer.
 \end{example}
 
+\begin{theorem}\label{thm:GCD_Connection_Polynomial_S_Sequence}
+  If $\gcd \bigl( C(D), P(D) \bigr) = 1$, then the \nameref{def:Connection_Polynomial} $C(D)$ and the sequence $\mathbf{s}$ with \nameref{def:D_Transform}
+  \begin{equation*}
+    S(D) = \frac{P(D)}{C(D)}
+  \end{equation*}
+  have the same period, the period of $\mathbf{s}$ is the same as the \nameref{def:Polynomial_Period} $C(D)$.
+\end{theorem}
+\begin{itemize}[noitemsep]
+\item This $C(D)$ gives the shortest \nameref{def:LFSR} generating $\mathbf{s}$.
+\item Any other $C(D)$ generating $\mathbf{s}$ must be a multiple of $C(D)$.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
