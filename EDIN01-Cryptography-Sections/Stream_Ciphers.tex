@@ -313,6 +313,45 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
   \end{itemize}
 \end{theorem}
 
+\begin{example}[Lecture 9, Example 4.7]{Shortest LFSR Sequence}
+  Given the sequence ${[1, 0, 1, 0, 0, 1, 1]}^{\infty}$ in \TextFiniteMathField{F}{2}{}, what is the shortest \nameref{def:LFSR} that can produce this sequence?
+  \tcblower{}
+  Start by finding the general case of this sequence, in a \nameref{def:D_Transform}ed state.
+  \begin{equation*}
+    S(D) = \frac{1+D^{2}+D^{5}+D^{6}}{1+D^{7}}
+  \end{equation*}
+  The numerator is drawn from the given sequence.
+  The denominator is found from the length of the period.
+  However, this is not the shortest \nameref{def:LFSR} possible to generate this sequence.
+
+  If we find a common factor, we can simplify this \nameref{def:LFSR}.
+  \begin{equation*}
+    \gcd(1+D^{2}+D^{5}+D^{6}, 1+D^{7})
+  \end{equation*}
+  We solve this with the \nameref{def:Polynomial_Euclidean_Algorithm}.
+
+  \begin{align*}
+    1+D^{7} &= q(D) \left( 1+D^{2}+D^{5}+D^{6} \right) + r(D) \\
+    &= \left( D+1 \right) \left( 1+D^{2}+D^{5}+D^{6} \right) + \left( D^{5}+D^{3}+D^{2}+D \right) \\
+  \end{align*}
+  Since the remainder is not 0, we continue reducing.
+  \begin{align*}
+    \left( 1+D^{2}+D^{5}+D^{6} \right) &= q(D) \left( D^{5}+D^{3}+D^{2}+D \right) + r(D) \\
+                                       &= \left( D+1 \right) \left( D^{5}+D^{3}+D^{2}+D \right) + \left( D^{4}+D^{2}+D+1 \right) \\
+    \left( D^{5}+D^{3}+D^{2}+D \right) &= q(D) \left( D^{4}+D^{2}+D+1 \right) + r(D) \\
+    &= (D) \left( D^{4}+D^{2}+D+1 \right) + 0 \\
+  \end{align*}
+  So, the $\gcd(1+D^{2}+D^{5}+D^{6}, 1+D^{7}) = D^{4}+D^{2}+D+1$.
+
+  Now we factor that value out of the $S(D)$ fraction, and reduce it out.
+  \begin{align*}
+    S(D) &= \frac{\left( D^{4}+D^{2}+D+1 \right) \left( D^{2}+D+1 \right)}{\left( D^{4}+D^{2}+D+1 \right) \left( D^{3}+D+1\right)} \\
+    &= \frac{\left( D^{2}+D+1 \right)}{\left( D^{3}+D+1\right)}
+  \end{align*}
+
+  Thus, the shortest \nameref{def:LFSR} for the given sequence has a \nameref{def:Connection_Polynomial} of $C(D) = D^{3}+D+1$, with an initial state \nameref{def:D_Transform} equation of $P(D) = D^{2}+D+1$.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
