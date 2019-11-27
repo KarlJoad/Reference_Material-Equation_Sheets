@@ -428,6 +428,18 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
   \end{align*}
 \end{example}
 
+\begin{theorem}[Arbitrary Connection Polynomial]\label{thm:Arbitrary_Connection_Polynomial}
+  For a \nameref{def:Connection_Polynomial} $C(D)$ factoring like
+  \begin{equation*}
+    C(D) = {C_{1}(D)}^{n_{1}} {C_{2}(D)}^{n_{2}} \cdots {C_{m}(D)}^{n_{m}}
+  \end{equation*}
+  $C_{i}(D)$ is \nameref{def:Irreducible_Polynomial}, has a \nameref{def:Cycle_Set} $S_{1} \times S_{2} \times \cdots S_{m}$, where $S_{i}$ is the \nameref{def:Cycle_Set} for $C_{i}^{e_{i}}$, and
+  \begin{equation}\label{eq:Arbitrary_Connection_Polynomial}
+    n_{1} \left( T_{1} \right) \times n_{2} \left( T_{2} \right) = n_{1}n_{2} \gcd(T_{1}, T_{2}) \bigl( \lcm(T_{1}, T_{2}) \bigr)
+  \end{equation}
+  and the distributive law holds for $\times$ and $\oplus$.
+\end{theorem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
