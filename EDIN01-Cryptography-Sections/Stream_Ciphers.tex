@@ -49,6 +49,9 @@ We assume that
 \end{itemize}
 
 \subsection{Attacks}\label{subsec:Stream_Cipher_Attacks}
+An attack is considered successful only if the complexity of performing it is considerably lower than the exhaustive keysearch of complexity $2^{k}$.
+
+The attack types that are of interest are:
 \begin{itemize}[noitemsep]
 \item \emph{\nameref{def:Attack-Key_Recovery}}: Eve tries to recover the \nameref{rmk:Keystream_Secret_Key}, $K$.
 \item \emph{\nameref{def:Attack-Distinguishing}}: Eve tries to determine whether a given sequence $\hat{\mathbf{z}} = z_{1}, z_{2}, \ldots, z_{N}$ is likely to have been generated from the considered \nameref{def:Stream_Cipher}, or if it's a truly random sequence.
