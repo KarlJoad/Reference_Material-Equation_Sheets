@@ -403,6 +403,31 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
   \end{equation}
 \end{theorem}
 
+\begin{example}[Lecture 9, Example 4.9]{Cycle Set of Connection Polynomial}
+  Compute the \nameref{def:Cycle_Set} for the \nameref{def:Connection_Polynomial} $C(D) = {\left( 1+D+D^{2} \right)}^{3}$ in \TextFiniteMathField{F}{2}{}?
+  \tcblower{}
+  The \nameref{def:Connection_Polynomial} here is actually in the form $C(D) = {C_{1}(D)}^{3}$.
+  In this case, $C_{1}(D) = 1+D+D^{2}$, which is both \nameref{def:Irreducible_Polynomial} and \nameref{def:Polynomial_Ring_Properties-Primitive_Element}.
+
+  We can find the \nameref{def:Polynomial_Period} in 3 ways.
+  \begin{enumerate}[noitemsep]
+  \item Because it's $C_{1}(D)$ is a primitive \nameref{def:Polynomial}, $T_{1}=q^{L}-1 = 3$.
+  \item Could perform a \nameref{def:Polynomial_Period}, which yields the same thing.
+  \item Because it's $C_{1}(D)$ is a primitive \nameref{def:Polynomial}, $\pi(\alpha)=0$, and the $\ElementOrder \left( \alpha^{2} \right) = 3$.
+  \end{enumerate}
+
+  Now, $T_{2}$ must be calculated with $T_{2} = 2^{m_{2}} \cdot 3$, where $2^{m_{2}-1} < 2 \leq 2^{m_{2}}$.
+  $m_{2} = 1$, plugging that back in gives $T_{2} = 2$.
+
+  Doing the same for $T_{3}$ yields $T_{3} = 12$.
+
+  Now we combine these into a single line.
+  \begin{align*}
+    1(1) &\oplus \frac{ \left( 2^{2} - 1 \right)}{3} (3) \oplus \frac{ 2^{2} \left( 2^{2} - 1 \right)}{3} (6) \oplus \frac{2^{6} \left( 2^{2} - 1 \right)}{3} (12) \\
+    1(1) &\oplus 1 (3) \oplus 2 (6) \oplus 4 (12)
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
