@@ -123,6 +123,26 @@ The attack types that are of interest are:
   \end{remark}
 \end{definition}
 
+\begin{definition}[D-Transform]\label{def:D_Transform}
+  The \emph{D-Transform} is actually just the $\mathcal{Z}$-Transform, with a different indeterminate variable.
+  The D-transform of a sequence $\mathbf{s} = s_{0}, s_{1}, \ldots$ is defined as
+  \begin{equation}\label{eq:D_Transform_Sequence}
+    S(D) = s_{0} + s_{1}D + s_{2}D^{2}
+  \end{equation}
+  if $s_{i} \in \FiniteMathField{F}{q}{}$.
+
+  The indeterminate $D$ is the ``delay'', and the exponent indicates the number of delays.
+
+  \begin{remark}[Our Assumptions]
+    For this course, we assume that $s_{i} = 0$ for $i < 0$, i.e.\ the signal is causal.
+    The set of all such sequences having the form
+    \begin{equation*}
+      f(D) = \sum\limits_{i=0}^{\infty} f_{i}D^{i}
+    \end{equation*}
+    where $f_{i} \in \FiniteMathField{F}{q}{}$ is denoted \TextFiniteMathField{F}{q}{}[[D]], and is called the \emph{ring of formal power series}.
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
