@@ -353,6 +353,24 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
 \end{example}
 
 \subsection{Cycle Sets}\label{subsec:Cycle_Sets}
+\begin{definition}[Cycle Set]\label{def:Cycle_Set}
+  The \emph{cycle set} for $C(D)$ is the number of cycles of a given length.
+  This is assuming $L = \Degree \bigl( C(D) \bigr)$.
+  It is written
+  \begin{equation}\label{eq:Cycle_Set}
+    n_{1} \left( T_{1} \right) \oplus n_{1} \left( T_{1} \right) \oplus \cdots
+  \end{equation}
+
+  For example, $1(1) \oplus 3(5)$ means there is one cycle of length one, and three cycles of length 5.
+
+  \begin{remark}[Combining]
+    You can combine cycle with the same period by simple addition.
+    \begin{equation}\label{eq:Cycle_Set_Addition}
+      n_{1}(T) \oplus n_{2}(T) =  \left( n_{1} + n_{2} \right) (T)
+    \end{equation}
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
