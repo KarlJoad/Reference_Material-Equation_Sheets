@@ -291,6 +291,28 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
 \item Any other $C(D)$ generating $\mathbf{s}$ must be a multiple of $C(D)$.
 \end{itemize}
 
+\begin{theorem}\label{thm:Adding_D_Transform_Sequence}
+  If the 2 sequences $\mathbf{s}_{A}$ and $\mathbf{s}_{B}$, with period $T_{A}$ and $T_{B}$ have \nameref{def:D_Transform}s
+  \begin{align*}
+    S_{A}(D) &= \frac{P_{A}(D)}{C_{A}(D)} & S_{B}(D) &= \frac{P_{B}(D)}{C_{B}(D)}
+  \end{align*}
+  then the sum of the sequences $\mathbf{s} = \mathbf{s}_{A} = \mathbf{s}_{B}$ has a \nameref{def:D_Transform}
+  \begin{equation}\label{eq:Add_D_Transform_Sequences}
+    S(D) = S_{A}(D) + S_{B}(D)
+  \end{equation}
+  and the shared period is
+  \begin{equation}\label{eq:Period_Add_D_Transform_Sequences}
+    \lcm \left( T_{A}, T_{B} \right)
+  \end{equation}
+
+  This all happens under the assumptions:
+  \begin{itemize}[noitemsep]
+  \item $\gcd \bigl( P_{A}(D), C_{A}(D) \bigr) = 1$
+  \item $\gcd \bigl( P_{B}(D), C_{B}(D) \bigr) = 1$
+  \item $\gcd \bigl( C_{A}(D), C_{B}(D) \bigr) = 1$
+  \end{itemize}
+\end{theorem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
