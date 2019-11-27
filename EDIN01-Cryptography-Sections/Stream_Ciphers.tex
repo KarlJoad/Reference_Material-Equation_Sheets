@@ -219,6 +219,12 @@ Also,
 \end{equation*}
 where $p_{0}, p_{1}, \ldots, p_{L-1}$ is the initial state of the \nameref{def:LFSR} in its Galois Form.
 
+\begin{blackbox}
+  The set of \nameref{def:LFSR} sequences, when $C(D)$ is \nameref{def:Irreducible_Polynomial}, is exactly the set of sequences possible to produce by the implmentation of multiplication of an element $\beta$ by the fixed element $\alpha$ in \TextFiniteMathField{F}{q}{L}.
+  \tcblower{}
+  For a specific sequence specified as $S(D) = \frac{P(D)}{C(D)}$, the initial state if the first $L$ symbols, whereas the same sequence is produced in \Cref{fig:LFSR_Galois} if the initial state is $p_{0}, p_{1}, \ldots, p_{L-1}$.
+\end{blackbox}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
