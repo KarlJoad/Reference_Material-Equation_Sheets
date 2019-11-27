@@ -11,6 +11,19 @@ There are 2 main types of \nameref{def:Symmetric_Encryption} algorithms:
 
 \begin{definition}[Stream Cipher]\label{def:Stream_Cipher}
   \emph{Stream cipher}s encrypt individual characters of the \nameref{def:Plaintext} using an encryption transofrmation that varies with time.
+  The 2 elements that make up a stream cipher are \textbf{memory} and a \textbf{combinatorial function}.
+  \begin{enumerate}[noitemsep]
+  \item Memory
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:LFSR}s
+    \item Tables (Arrays)
+    \end{itemize}
+  \item Combinatorial Function
+    \begin{itemize}[noitemsep]
+    \item Nonlinear Boolean functions, S-boxes
+    \item XOR, Modular addition, cyclic rotations, multiplication
+    \end{itemize}
+  \end{enumerate}
 \end{definition}
 
 \begin{definition}[Keystream]\label{def:Keystream}
