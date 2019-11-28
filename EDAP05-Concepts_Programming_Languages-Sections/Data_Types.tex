@@ -534,6 +534,7 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
 \item \nameref{def:Heap_Dynamic_Array}
 \end{enumerate}
 
+\paragraph{Static Arrays}\label{par:Static_Arrays}
 \begin{definition}[Static Array]\label{def:Static_Array}
   A \emph{static array} is one in which the subscript ranges are statically bound and the storage allocation is static.
   Meaning the entire array, other than the values it contains are created before runtime.
@@ -551,6 +552,7 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
   \end{itemize}
 \end{definition}
 
+\paragraph{Fixed Stack-Dynamic Arrays}\label{par:Fixed_Stack_Dynamic_Arrays}
 \begin{definition}[Fixed Stack-Dynamic Array]\label{def:Fixed_Stack_Dynamic_Array}
   In a \emph{fixed stack-dynamic array}, the subscript ranges are statically bound, but the storage allocation is done at declaration elaboration time during runtime.
 
@@ -567,6 +569,7 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
   \end{itemize}
 \end{definition}
 
+\paragraph{Stack-Dynamic Array}\label{par:Stack_Dynamic_Arrays}
 \begin{definition}[Stack-Dynamic Array]\label{def:Stack_Dynamic_Array}
   In a \emph{stack-dynamic array}, the subscript ranges and storage allocation are done during declaration elaboration time during program execution.
   However, once the subscript ranges are bound and the storage allocatec, they are both fixed throughout the lifetime of the array.
@@ -585,6 +588,7 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
   \end{itemize}
 \end{definition}
 
+\paragraph{Fixed Heap-Dynamic Array}\label{par:Fixed_Heap_Dynamic_Arrays}
 \begin{definition}[Fixed Heap-Dynamic Array]\label{def:Fixed_Heap_Dynamic_Array}
   A \emph{fixed heap-dynamic array} is similar to a \nameref{def:Fixed_Stack_Dynamic_Array}, in that subscript ranges and storage binding are done on demand at runtime, and are fixed throughout the array's lifetime.
   However, the storage is allocated from the heap instead of the stack.
@@ -602,6 +606,7 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
   \end{itemize}
 \end{definition}
 
+\paragraph{Heap-Dynamic Array}\label{par:Heap_Dynamic_Arrays}
 \begin{definition}[Heap-Dynamic Array]\label{def:Heap_Dynamic_Array}
   A \emph{heap-dynamic array} is one in which the binding of subscript ranges and storage allocation is done during program execution, \textbf{and can change any number of times during the array's lifetime}.
 
