@@ -496,6 +496,20 @@ The empty list \texttt{()} is also denoted as \texttt{nil}.
   References to individual array elements are specified using subscript expressions
 \end{definition}
 
+\begin{definition}[Length]\label{def:Array-Length}
+  The \emph{length} of an \nameref{def:Array} is defined to be the number of storage elements present in it.
+  This means that a list that is declared to have 10 elements, but none assigned, has a length of 10.
+
+  \begin{remark}[The Empty Array]\label{rmk:Array-Length-Empty_Array}
+    \emph{The empty array} is defined to have a length of 0.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Sparse]\label{def:Array-Sparse}
+  If an array is \emph{sparse}, it means that not all elements present in an array are filled with user-input data.
+  For example, if you have an array with \nameref{def:Array-Length} 10 in JavaScript, you can add an element to position 50, to create an array that now has \nameref{def:Array-Length} 51, with only 11 elements.
+\end{definition}
+
 \subsubsection{Design Issues}\label{subsubsec:Arrays-Design_Issues}
 \begin{itemize}[noitemsep]
 \item What types are legal for subscripts?
@@ -622,20 +636,6 @@ There are 5 categories of arrays, based on the binding to subscript ranges, the 
     \item Allocation and deallocation may happen several times during a program's execution.
     \end{itemize}
   \end{itemize}
-\end{definition}
-
-\begin{definition}[Length]\label{def:Array-Length}
-  The \emph{length} of an \nameref{def:Array} is defined to be the number of storage elements present in it.
-  This means that a list that is declared to have 10 elements, but none assigned, has a length of 10.
-
-  \begin{remark}[The Empty Array]\label{rmk:Array-Length-Empty_Array}
-    \emph{The empty array} is defined to have a length of 0.
-  \end{remark}
-\end{definition}
-
-\begin{definition}[Sparse]\label{def:Array-Sparse}
-  If an array is \emph{sparse}, it means that not all elements present in an array are filled with user-input data.
-  For example, if you have an array with \nameref{def:Array-Length} 10 in JavaScript, you can add an element to position 50, to create an array that now has \nameref{def:Array-Length} 51, with only 11 elements.
 \end{definition}
 
 \subsubsection{Array Initialization}\label{subsubsec:Arrays-Initialization}
