@@ -126,6 +126,16 @@ Types that are declared to be private are called \nameref{def:Ada_Private_Type}.
   They are declared to be private with the \texttt{private} \nameref{def:Reserved_Word}.
 \end{definition}
 
+An alternative to \nameref{def:Ada_Private_Type}s are \nameref{def:Ada_Limited_Private_Type}s.
+\begin{definition}[Limited Private Type]\label{def:Ada_Limited_Private_Type}
+  \emph{Limited private type}s are an alternative to \nameref{def:Ada_Private_Type}s.
+  These are more restricted, in that the are described in the private section of a \nameref{def:Ada_Package_Specification}.
+  They have \emph{no} built-in operations at all.
+  These are useful when the usual predefined operations of assignment and comparison are not useful.
+
+  They are declared with the \texttt{limited private} \nameref{def:Reserved_Word}.
+\end{definition}
+
 \paragraph{Example}\label{par:Ada_Abstract_Data_Type_Example}
 \paragraph{Evaluation}\label{par:Ada_Abstract_Data_Type_Evaluation}
 
