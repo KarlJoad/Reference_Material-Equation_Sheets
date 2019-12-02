@@ -30,6 +30,35 @@ They only have the operations presented to them by the language designer and imp
 Overall, this improved program \nameref{subsec:Reliability} and portability.
 
 \subsubsection{User-Defined Abstract Data Types}\label{subsubsec:User_Defined_Abstract_Data_Types}
+\begin{definition}[Abstract Data Type]\label{def:Abstract_Data_Type}
+  An \emph{abstract data type} is a \nameref{def:Data_Type} that satisfies the following conditions:
+  \begin{itemize}[noitemsep]
+  \item The representation of objects of the type is hidden from the program units that use that type, so they only direct operations possible on those objects are those provided in the abstract data type's definition. This improves:
+    \begin{itemize}[noitemsep]
+    \item Increases \nameref{subsec:Reliability}
+    \item Clients (Units using an abstract data type) cannot manipulate the underlying representation of objects directly
+    \item Objects can be changed only through the provided operations
+    \item Reduces the range of code and the number of \nameref{def:Variable}s the programmer must be aware of when reading/writing a program
+    \item Reduces the likelihood of naming conflicts
+    \end{itemize}
+  \item The declarations of the type and the protocols of the operations on objects of the abstract data type, which provide the type's interface, are contained in a single syntactic unit. This benefits the language by:
+    \begin{itemize}[noitemsep]
+    \item Organizing the program into logical units that can be compiled separately.
+    \end{itemize}
+  \item The type's interface does not depend on the underlying representation of the objects, or the implementation of the operations.
+    \begin{itemize}[noitemsep]
+    \item For example, if a stack is implemented with a linked list, then needs to be changed to an array-like structure, the underlying representation can be changed without affecting any clients that are using the subprograms and \nameref{def:Variable}s.
+    \item Accessing and modifying data in an abstract data type is done with \emph{getters} and \emph{setters} that allow clients indirect access to the hidden data. There are 3 reasons why this is an improvement:
+      \begin{enumerate}[noitemsep]
+      \item Read-only access can be provided, by having a getter method, but no corresponding setter method.
+      \item Constraints can be included in setters. The setter can enforce the range that a data value can take.
+      \item The actual implementation of the data memvers can be changed without affecting the clients, if getters and setters are the only access.
+      \end{enumerate}
+    \end{itemize}
+  \item Also, other program units are allowed to create \nameref{def:Variable}s of the defined abstract data type.
+  \end{itemize}
+\end{definition}
+
 
 \subsection{Design Issues for Abstract Data Types}\label{subsec:Abstract_Data_Type_Design_Issues}
 
