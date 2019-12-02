@@ -84,6 +84,19 @@ These encapsulation constructs are a more general approach than a pure \nameref{
 Thus, they fulfill more roles, but can still be used to create an \nameref{def:Abstract_Data_Type}..
 
 \paragraph{Encapsulation}\label{par:Ada_Encapsulation}
+\begin{definition}[Package]\label{def:Ada_Package}
+  Ada's encapsulating constructs are called \emph{package}s.
+  A package can have 2 parts, both of which can \textit{also} be called a package.
+  Not all packages have both of these parts.
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Ada_Package_Specification}
+  \item \nameref{def:Ada_Body_Package}
+  \end{enumerate}
+
+  A \nameref{def:Ada_Package_Specification} and its \nameref{def:Ada_Body_Package} can be compiled separately, though the \nameref{def:Ada_Package_Specification} must be compiled first.
+  Client code can also be compiled before teh \nameref{def:Ada_Body_Package} is compiled or written.
+\end{definition}
+
 \paragraph{Information Hiding}\label{par:Ada_Info_Hiding}
 \paragraph{Example}\label{par:Ada_Abstract_Data_Type_Example}
 \paragraph{Evaluation}\label{par:Ada_Abstract_Data_Type_Evaluation}
