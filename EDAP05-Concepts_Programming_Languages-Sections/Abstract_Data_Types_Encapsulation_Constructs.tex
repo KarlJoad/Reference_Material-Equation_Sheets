@@ -107,6 +107,19 @@ Thus, they fulfill more roles, but can still be used to create an \nameref{def:A
 \end{definition}
 
 \paragraph{Information Hiding}\label{par:Ada_Info_Hiding}
+The designer of an Ada \nameref{def:Ada_Package} that defined a \nameref{def:Abstract_Data_Type} can choose the make the entire type entirely visible to clients, or to only provide the interface information.\footnote{Though, if the \nameref{def:Ada_Package} does not hide its contents, it is not truly an \nameref{def:Abstract_Data_Type}.}
+
+There are 2 methods to hide the representation:
+\begin{enumerate}[noitemsep]
+\item Include 2 sections in the \nameref{def:Ada_Package_Specification}, one where the entities are visible to the clients are defined, and one that hides its contents.
+  \begin{itemize}[noitemsep]
+  \item The declaration appears in the visible part of the specification, providing the name of the type and the fact its representation is hidden.
+  \item The representation is part of the \texttt{private} part, which is introduced with that \nameref{def:Reserved_Word}.
+  \end{itemize}
+\item Hide the representation by defining the \nameref{def:Abstract_Data_Type} as a \nameref{def:Pointer} and provide the pointed-to structure's definition in the \nameref{def:Ada_Body_Package}, whose contents are hidden from clients.
+\end{enumerate}
+These 2 methods are so wildly different because of compilation issues that can arise.
+
 \paragraph{Example}\label{par:Ada_Abstract_Data_Type_Example}
 \paragraph{Evaluation}\label{par:Ada_Abstract_Data_Type_Evaluation}
 
