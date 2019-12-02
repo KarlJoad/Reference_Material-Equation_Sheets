@@ -61,6 +61,19 @@ Overall, this improved program \nameref{subsec:Reliability} and portability.
 
 
 \subsection{Design Issues for Abstract Data Types}\label{subsec:Abstract_Data_Type_Design_Issues}
+\begin{itemize}[noitemsep]
+\item The \nameref{def:Abstract_Data_Type} name must be externally visible, to allow for object creation
+\item The \nameref{def:Abstract_Data_Type} representation must be hidden.
+\item There are few built-in operations by a language for \nameref{def:Abstract_Data_Type} operations
+  \begin{itemize}[noitemsep]
+  \item If there are some defined, they are the most basic ones: assignment, comparison.
+  \item Overloading of subprograms should be allowed
+  \end{itemize}
+\item The form of the container for the interface to the \nameref{def:Abstract_Data_Type}.
+\item Whether \nameref{def:Abstract_Data_Type} can be parameterized.
+\item What access controls are provided, and how are such controls specified?
+\item Is the specification of the \nameref{def:Abstract_Data_Type} physically separate from its implementation?
+\end{itemize}
 
 \subsection{Language Examples}\label{subsec:Abstract_Data_Type_Lang_Examples}
 \subsubsection{Abstract Data Types in Ada}\label{subsubsec:Abstract_Data_Types_Ada}
