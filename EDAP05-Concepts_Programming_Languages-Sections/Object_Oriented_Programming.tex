@@ -219,6 +219,27 @@ Many who have attempted to use \nameref{def:OOP_Multiple_Inheritance} have strug
 This also leads to greater dependency and complexity between \nameref{def:OOP_Class}es.
 
 \subsubsection{Allocation and Deallocation of Objects}\label{subsubsec:OOP_Object_Allocation_Deallocation}
+The first question is, where are \nameref{def:OOP_Object}s allocated from?
+\begin{itemize}[noitemsep]
+\item Allocated from anywhere, like \nameref{def:Abstract_Data_Type}s. Means they could be
+  \begin{itemize}[noitemsep]
+  \item Allocated from the call stack
+  \item Allocated from the heap
+  \item Allocated in static memory
+  \end{itemize}
+\item \nameref{def:Heap_Dynamic_Variable} only.
+  \begin{itemize}[noitemsep]
+  \item Uniform design among \nameref{def:OOP_Object}s
+  \item Simpler to access objects through the \nameref{def:Pointer}s/\nameref{def:Reference}s to the \nameref{def:OOP_Object}.
+  \item Is allocation implicit or explicit?
+  \end{itemize}
+\item if \nameref{def:OOP_Object}s are stack-dynamic, then the extra information that a \nameref{def:OOP_Subclass} has might be truncated in \nameref{def:Memory} when copied to a location that held a \nameref{def:OOP_Superclass}. This is called \emph{object slicing}.
+\end{itemize}
+
+Is deallocation implicit or explicit?
+If its implicit, then what is the storage reclamation solution?
+If its explicit, then how do we handle the \nameref{def:Dangling_Pointer} problem?
+
 \subsubsection{Dynamic and Static Binding}\label{subsubsec:OOP_Dynamic_Static_Binding}
 \subsubsection{Nested Classes}\label{subsubsec:OOP_Nested_Classes}
 \subsubsection{Initialization of Objects}\label{subsubsec:OOP_Object_Initialization}
