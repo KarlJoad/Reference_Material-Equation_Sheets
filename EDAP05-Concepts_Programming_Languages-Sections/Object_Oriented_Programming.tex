@@ -186,6 +186,19 @@ There are 3 main schools of thought/implementation when it comes to the implemen
 \end{enumerate}
 
 \subsubsection{Are Subclasses Subtypes?}\label{subsubsec:OOP_Subclasses_Subtypes}
+This question boils down to the question ``Does an `is-a' relationship hold between a \nameref{def:OOP_Subclass} and its \nameref{def:OOP_Superclass}?''
+Or, can we replace every occurrence of the \nameref{def:OOP_Superclass} with the \nameref{def:OOP_Subclass}, and everything would still work?
+
+Most programming languages significantly restrict the ways in which a \nameref{def:OOP_Subclass} can be constructed, to ensure that this holds true.
+The characteristics of \nameref{def:OOP_Subclass}es that are \nameref{def:Subtype}s are:
+\begin{itemize}[noitemsep]
+\item The \nameref{def:OOP_Method}s of the \nameref{def:OOP_Subclass} that \nameref{def:OOP_Override} the \nameref{def:OOP_Superclass}'s are type compatible with their corresponding \nameref{def:OOP_Method}s.
+  This means that if we were to replace any call with its overridden version, the program would still be type-safe.
+\item Every overriding \nameref{def:OOP_Method} must have the same number of \nameref{def:Formal_Parameter}s as the \nameref{def:OOP_Override}n \nameref{def:OOP_Method}.
+\item The \nameref{def:Data_Type}s of the \nameref{def:Formal_Parameter}s are also compatible.
+\item The return types of the \nameref{def:OOP_Method} are also compatible.
+\end{itemize}
+
 \subsubsection{Single and Multiple Inheritance}\label{subsubsec:OOP_Single_Multiple_Inheritance}
 \subsubsection{Allocation and Deallocation of Objects}\label{subsubsec:OOP_Object_Allocation_Deallocation}
 \subsubsection{Dynamic and Static Binding}\label{subsubsec:OOP_Dynamic_Static_Binding}
