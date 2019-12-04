@@ -200,6 +200,24 @@ The characteristics of \nameref{def:OOP_Subclass}es that are \nameref{def:Subtyp
 \end{itemize}
 
 \subsubsection{Single and Multiple Inheritance}\label{subsubsec:OOP_Single_Multiple_Inheritance}
+It might make sense for a \nameref{def:OOP_Class} to inherit from more than 1 \nameref{def:OOP_Superclass}, if it has components of each.
+However, this leads to 2 issues:
+\begin{enumerate}[noitemsep]
+\item Complexity
+  \begin{itemize}[noitemsep]
+  \item If the multiple \nameref{def:OOP_Superclass} defined something with the same name, it must be explicitly resolved.
+  \item What if a \nameref{def:OOP_Subclass} inherit from multiple \nameref{def:OOP_Superclass}es that themselves inherit from the same \nameref{def:OOP_Superclass}? This forms the \emph{diamond inheritance problem}.
+  \end{itemize}
+\item Efficiency
+  \begin{itemize}[noitemsep]
+  \item There needs to be an extra heap access to access the second \nameref{def:OOP_Superclass} of an \nameref{def:OOP_Object}.
+  \end{itemize}
+\end{enumerate}
+
+\nameref{def:OOP_Multiple_Inheritance} can lead to complex program organizations.
+Many who have attempted to use \nameref{def:OOP_Multiple_Inheritance} have struggled to design \nameref{def:OOP_Class}es that benefit from having multiple \nameref{def:OOP_Superclass}es.
+This also leads to greater dependency and complexity between \nameref{def:OOP_Class}es.
+
 \subsubsection{Allocation and Deallocation of Objects}\label{subsubsec:OOP_Object_Allocation_Deallocation}
 \subsubsection{Dynamic and Static Binding}\label{subsubsec:OOP_Dynamic_Static_Binding}
 \subsubsection{Nested Classes}\label{subsubsec:OOP_Nested_Classes}
