@@ -129,7 +129,24 @@ A \nameref{def:OOP_Subclass} can differ from its \nameref{def:OOP_Superclass} in
 \end{definition}
 
 \begin{definition}[Polymorphic]\label{def:OOP_Polymorphic}
-  
+  The reference to a \nameref{def:OOP_Subclass} is \emph{polymorphic} if it could also point to something in the \nameref{def:OOP_Superclass}.
+  Thus, during runtime, the correct reference must be resolved through polymorphism and executed through \nameref{def:OOP_Dynamic_Dispatch}.
+  For example, in Java
+\begin{minted}[frame=lines,linenos]{java}
+public class A {
+  public draw() { ... }
+}
+public class B extends A {
+  @Override
+  public draw() { ... }
+}
+public static void main(String[] args) {
+  A myA = new A();
+  B myB = new B();
+  myA.draw(); // Draws the thing defined by instructions in class A's draw() method
+  myB.draw(); // Draws the thing defined by instructions in class B's draw() method
+  // We need to determine if we should call B's draw() or A's draw in this case
+\end{minted}
 \end{definition}
 
 \begin{definition}[Abstract \nameref*{def:OOP_Method}]\label{def:OOP_Abstract_Method}
