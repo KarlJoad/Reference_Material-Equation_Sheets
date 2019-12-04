@@ -166,6 +166,25 @@ In that case, its functionality can be stripped out, and the \nameref{def:OOP_Cl
 
 \subsection{Design Issues for Object-Oriented Languages}\label{subsec:OOP_Design_Issues}
 \subsubsection{Exclusivity of Objects}\label{subsubsec:OOP_Object_Exclusivity}
+There are 3 main schools of thought/implementation when it comes to the implementation of \nameref{def:OOP_Object}s in an \nameref{def:Object_Oriented_Programming} language.
+\begin{enumerate}[noitemsep]
+\item \textbf{EVERYTHING} is an \nameref{def:OOP_Object}. Basic scalar types, collections, programs, everything is an \nameref{def:OOP_Object}. In the purest version of this model, all \nameref{def:OOP_Class}es are treated the same way.
+  \begin{itemize}[noitemsep]
+  \item The benefits of this are the uniformity and elegance of the language. It is incredibly regular, where everything looks the same and behaves similarly, without exception.
+  \item The disadvantages of this is mainly the cost of executing everything as an \nameref{def:OOP_Object}. There are \nameref{def:OOP_Message}s and the method calls which are slower than simpler, primitive, operations.
+  \end{itemize}
+\item Keep the original, traditional collection of types, but add the object typing model on top.
+  \begin{itemize}[noitemsep]
+  \item The benefits of this is that the language retains its speed of execution on the primitive types.
+  \item The drawbacks of this is the confusing syntax and semantics that can be output by this.
+  \end{itemize}
+\item Use an imperative type structure for the \nameref{def:Primitive_Data_Type}s, but all structured types as objects.
+  \begin{itemize}[noitemsep]
+  \item The benefit of this is the execution speed of operations is relatively similar
+  \item The downsides are the complications that can appear in the language, and the need for \emph{wrapper \nameref{def:OOP_Class}es} that allow these non\nameref{def:OOP_Object} types and \nameref{def:OOP_Object}s to interact.
+  \end{itemize}
+\end{enumerate}
+
 \subsubsection{Are Subclasses Subtypes?}\label{subsubsec:OOP_Subclasses_Subtypes}
 \subsubsection{Single and Multiple Inheritance}\label{subsubsec:OOP_Single_Multiple_Inheritance}
 \subsubsection{Allocation and Deallocation of Objects}\label{subsubsec:OOP_Object_Allocation_Deallocation}
