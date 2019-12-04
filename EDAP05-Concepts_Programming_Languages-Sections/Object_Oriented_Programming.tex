@@ -1,0 +1,155 @@
+\section{Object-Oriented Programming}\label{sec:Object_Oriented_Programming}
+\subsection{Introduction}\label{subsec:OOP_Intro}
+\begin{definition}[Object-Oriented Programming]\label{def:Object_Oriented_Programming}
+  \emph{Object-oriented programming} (\emph{OOP}) is a programming paradigm designed around the manipulation of \nameref{def:Object}s that accurately simulate real-life situations.
+  These languages must provide 3 key language features:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Abstract_Data_Type}
+  \item \nameref{def:OOP_Inheritance}
+  \item Dynamic binding of method calls to methods.
+  \end{enumerate}
+
+  The use of an object-oriented language allows for \nameref{def:Abstract_Data_Type}s to be reused.
+  This allows for programmers to reuse large portions of code and only having to change the parts that are necessary.
+  This increases productivity and increases \nameref{subsec:Reliability}.
+\end{definition}
+
+\subsection{Inheritance}\label{subsec:OOP_Inheritance}
+The use of \nameref{def:OOP_Inheritance} allows for \nameref{def:Abstract_Data_Type}s to be reused between pieces of software.
+This, in turn, means code is reused, but some of it must be specialized.
+Additionally, some of the underlying problem has categories of objects that are related, both as siblings (similar to each other) and as parents and children (having a descendant relationship).
+
+\begin{definition}[Class]\label{def:OOP_Class}
+  A \emph{class} is the \nameref{def:Abstract_Data_Type} of \nameref{def:Object_Oriented_Programming} languages.
+  They are the building blocks of the programming paradigm.
+
+  Classes have 2 kinds of \nameref{def:Variable}s:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:OOP_Class_Variable}
+  \item \nameref{def:OOP_Instance_Variable}
+  \end{enumerate}
+
+  They also have 2 kinds of \nameref{def:OOP_Method}s:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:OOP_Class_Method}
+  \item \nameref{def:OOP_Instance_Method}
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Object]\label{def:OOP_Object}
+  An \emph{object} in an \nameref{def:Object_Oriented_Programming} setting is an instance of a \nameref{def:OOP_Class}.
+\end{definition}
+
+\begin{definition}[Subclass]\label{def:OOP_Subclass}
+  A \nameref{def:OOP_Class} that is derived from another \nameref{def:OOP_Class} is called a \emph{subclass} or \emph{derived class}.
+\end{definition}
+
+\begin{definition}[Superclass]\label{def:OOP_Superclass}
+  A \nameref{def:OOP_Class} from which other \nameref{def:OOP_Class}es are derived is called a \emph{superclass}, or \emph{parent class}.
+\end{definition}
+
+A \nameref{def:OOP_Subclass} can differ from its \nameref{def:OOP_Superclass} in several ways.
+\begin{enumerate}[noitemsep]
+\item The \nameref{def:OOP_Superclass} can define some of its \nameref{def:Variable}s or \nameref{def:OOP_Method}s to have private access, which means they won't be visible to the \nameref{def:OOP_Subclass}.
+\item The \nameref{def:OOP_Subclass} can add \nameref{def:Variable}s and/or \nameref{def:OOP_Method}s to those inherited from the \nameref{def:OOP_Superclass}.
+\item The \nameref{def:OOP_Subclass} can modify the behavior of one or more of its inherited \nameref{def:OOP_Method}s. A modified \nameref{def:OOP_Method} has the same name, and often the same protocol, as the original.
+\end{enumerate}
+
+\begin{definition}[Method]\label{def:OOP_Method}
+  A \emph{method} is a subprogram that defines the operations of/on \nameref{def:OOP_Object}s of a \nameref{def:OOP_Class}.
+\end{definition}
+
+\begin{definition}[Message]
+  The calls to \nameref{def:OOP_Method}s are sometimes called \emph{message}s.
+  Passing a message is different than calling a traditional subprogram.
+  A message is sent to an \nameref{def:OOP_Object} that is a request to execute a \nameref{def:OOP_Method}.
+  These \nameref{def:OOP_Method}s can operate on themselves, or on other \nameref{def:OOP_Object}s.
+\end{definition}
+
+\begin{definition}[Message Interface]\label{def:OOP_Message_Interface}
+  Thus, the entire collection of \nameref{def:OOP_Method}s is called the \emph{message interface}, or \emph{message protocol} of the \nameref{def:OOP_Object}.
+\end{definition}
+
+\begin{definition}[Override]\label{def:OOP_Override}
+  A new \nameref{def:OOP_Subclass}'s \nameref{def:OOP_Method} can \emph{override} a \nameref{def:OOP_Superclass}'s \nameref{def:OOP_Method}.
+  This is then called an \emph{overriden method}.
+
+  Overriding a \nameref{def:OOP_Method} is useful because it allows us to provide an operation in the \nameref{def:OOP_Subclass} that is similar to the one in the \nameref{def:OOP_Superclass}, but specialized for \nameref{def:OOP_Object}s of the \nameref{def:OOP_Subclass}.
+\end{definition}
+
+\begin{definition}[Instance Method]\label{def:OOP_Instance_Method}
+  An \emph{instance \nameref{def:OOP_Method}} is a \nameref{def:OOP_Method} that \textbf{only} operates on instances of the \nameref{def:OOP_Class}.
+\end{definition}
+
+\begin{definition}[Instance Variable]\label{def:OOP_Instance_Variable}
+  An \emph{instance \nameref{def:Variable}} is a unique set of \nameref{def:Variable}s defined by the initializing \nameref{def:OOP_Class}, and stores that \nameref{def:OOP_Object}'s state.
+\end{definition}
+
+\begin{definition}[\nameref*{def:OOP_Class} Variable]\label{def:OOP_Class_Variable}
+  \emph{\nameref{def:OOP_Class} \nameref{def:Variable}}s belong to and operate on the \nameref{def:OOP_Class} itself, rather than just the \nameref{def:OOP_Object}s of a \nameref{def:OOP_Class}.
+  This means there is only \textbf{one} copy for the whole \nameref{def:OOP_Class}, rather than a copy for every instance of this \nameref{def:OOP_Class}.
+
+  For example, a counter of the number of instantiated \nameref{def:OOP_Object}s of that \nameref{def:OOP_Class} would require a class variable.
+\end{definition}
+
+\begin{definition}[\nameref*{def:OOP_Class} Method]\label{def:OOP_Class_Method}
+  A \emph{\nameref{def:OOP_Class} \nameref{def:OOP_Method}} performs operations on the \nameref{def:OOP_Class} as a whole, rather than the individual \nameref{def:OOP_Object}s of that \nameref{def:OOP_Class}.
+  This means there is only \textbf{one} copy for the whole \nameref{def:OOP_Class}, rather than a copy for every instance of this \nameref{def:OOP_Class}.
+\end{definition}
+
+\begin{definition}[Inheritance]\label{def:OOP_Inheritance}
+  \emph{Inheritance} is the act of making a \nameref{def:OOP_Superclass} and deriving (inheriting) a \nameref{def:OOP_Subclass} from it.
+  This creates a new \nameref{def:OOP_Class} as the original, but is slightly different.
+
+  \begin{remark}
+    The ability to reuse code through \nameref{def:OOP_Inheritance} means that dependencies between these \nameref{def:Abstract_Data_Type}s can form.
+    This technically defeats the purpose of \nameref{def:Abstract_Data_Type}s' independence of each other.
+    However, increasing the reusability without introducing dependencies may not be possible.
+    In addition, these dependencies may make solving the issue in the problem domain easier.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Single Inheritance]\label{def:OOP_Single_Inheritance}
+  In \emph{single \nameref{def:OOP_Inheritance}}, a \nameref{def:OOP_Class} can \textbf{only} have 1 parent \nameref{def:OOP_Superclass}.
+  However, any \nameref{def:OOP_Superclass} can have an infinite number of derived, child, \nameref{def:OOP_Subclass}es.
+
+  When a relationship between \nameref{def:OOP_Class}es that use single \nameref{def:OOP_Inheritance} is visualized, a derivation tree is made.
+\end{definition}
+
+\begin{definition}[Multiple Inheritance]\label{def:OOP_Multiple_Inheritance}
+  In \emph{multiple \nameref{def:OOP_Inheritance}}, a \nameref{def:OOP_Class} can have multiple parent \nameref{def:OOP_Superclass}es.
+  Any \nameref{def:OOP_Superclass} can also have an infinite number of derived, child, \nameref{def:OOP_Subclass}es.
+
+  When a relationship between \nameref{def:OOP_Class}es that uses multiple \nameref{def:OOP_Inheritance} it can be visualized as a derivation graph.
+\end{definition}
+
+\subsection{Dynamic Binding}\label{subsec:OOP_Dynamic_Binding}
+\begin{definition}[Dynamic Dispatch]\label{def:OOP_Dynamic_Dispatch}
+  \emph{Dynamic dispatch} is a way to dynamiclly bind \nameref{def:OOP_Message}s to \nameref{def:OOP_Method} definitions.
+\end{definition}
+
+\begin{definition}[Polymorphic]\label{def:OOP_Polymorphic}
+  
+\end{definition}
+
+\begin{definition}[Abstract \nameref*{def:OOP_Method}]\label{def:OOP_Abstract_Method}
+  
+\end{definition}
+
+\begin{definition}[Abstract \nameref*{def:OOP_Class}]\label{def:OOP_Abstract_Class}
+  
+\end{definition}
+
+\subsection{Design Issues for Object-Oriented Languages}\label{subsec:OOP_Design_Issues}
+\subsubsection{Exclusivity of Objects}\label{subsubsec:OOP_Object_Exclusivity}
+\subsubsection{Are Subclasses Subtypes?}\label{subsubsec:OOP_Subclasses_Subtypes}
+\subsubsection{Single and Multiple Inheritance}\label{subsubsec:OOP_Single_Multiple_Inheritance}
+\subsubsection{Allocation and Deallocation of Objects}\label{subsubsec:OOP_Object_Allocation_Deallocation}
+\subsubsection{Dynamic and Static Binding}\label{subsubsec:OOP_Dynamic_Static_Binding}
+\subsubsection{Nested Classes}\label{subsubsec:OOP_Nested_Classes}
+\subsubsection{Initialization of Objects}\label{subsubsec:OOP_Object_Initialization}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
