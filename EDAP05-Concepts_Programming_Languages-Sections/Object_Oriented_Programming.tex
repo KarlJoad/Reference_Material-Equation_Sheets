@@ -248,6 +248,14 @@ The alternative is that the user must specify if the binding is to be dynamic or
 The benefit of static bindings is that they are much faster.
 
 \subsubsection{Nested Classes}\label{subsubsec:OOP_Nested_Classes}
+The primary motivation of nesting \nameref{def:OOP_Class}es is to hide information.
+If a \nameref{def:OOP_Class} is only needed by one other \nameref{def:OOP_Class}, why make the single-use \nameref{def:OOP_Class} public?
+Is nesting of these \nameref{def:OOP_Class}es inside \nameref{def:OOP_Method}s allowed?
+
+The biggest issue with this is visibility.
+Which of the facilities of the nesting \nameref{def:OOP_Class} are visible in the nested \nameref{def:OOP_Class}?
+Which of the facilities of the nested \nameref{def:OOP_Class} are visible in the nesting \nameref{def:OOP_Class}?
+
 \subsubsection{Initialization of Objects}\label{subsubsec:OOP_Object_Initialization}
 
 %%% Local Variables:
