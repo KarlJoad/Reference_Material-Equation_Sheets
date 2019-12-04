@@ -149,12 +149,19 @@ public static void main(String[] args) {
 \end{minted}
 \end{definition}
 
+In some cases, a \nameref{def:OOP_Class} sit so high in the hierarchy that it is never instantiated to an \nameref{def:OOP_Object}.
+In that case, its functionality can be stripped out, and the \nameref{def:OOP_Class} can turn into an \nameref{def:OOP_Abstract_Class}, with \nameref{def:OOP_Abstract_Method}s.
+
 \begin{definition}[Abstract \nameref*{def:OOP_Method}]\label{def:OOP_Abstract_Method}
-  
+  An \emph{abstract \nameref{def:OOP_Method}} (pure virtual \nameref{def:OOP_Method} in C++) is a \nameref{def:OOP_Method} that is missing its body.
+  However, because the \nameref{def:OOP_Method} definition is still present, all \nameref{def:OOP_Subclass}es \textbf{are required} to implement the body/functionality of the abstract \nameref{def:OOP_Method}, turning it into a concrete \nameref{def:OOP_Method}.
 \end{definition}
 
 \begin{definition}[Abstract \nameref*{def:OOP_Class}]\label{def:OOP_Abstract_Class}
+  An \emph{abstract \nameref{def:OOP_Class}} (abstract base \nameref{def:OOP_Class} in C++) is a \nameref{def:OOP_Class} that contains one or more \nameref{def:OOP_Abstract_Method}s.
+  \textbf{These usually cannot be instantiated}.
   
+  Any \nameref{def:OOP_Subclass} of an abstract class must provide implementations of all the inherited \nameref{def:OOP_Abstract_Method}s.
 \end{definition}
 
 \subsection{Design Issues for Object-Oriented Languages}\label{subsec:OOP_Design_Issues}
