@@ -306,7 +306,32 @@ Essentially, using $E \vdash p$ means that $p$ has access to the \nameref{def:Me
   The other operand in the addition is found using the \textcolor{red}{(num)} rule.
   Then the addition occurs, and the derivation completes.
 \end{example}
-  
+
+\subsection{Typing with Natural Semantics}\label{subsec:Natural_Semantics_Typing}
+\begin{definition}[Typing Assertion]\label{def:Typing_Assertion}
+  A \emph{typing assertion} asserts the type of an expression, operator, and/or operand.
+  They are denoted as
+  \begin{equation}\label{eq:Typing_Assertion}
+    expr : \SemanticType{type}
+  \end{equation}
+
+  \Cref{eq:Typing_Assertion} states that an expression $expr$ has the type $\SemanticType{type}$.
+
+  \begin{remark}[Typing Assertions of Literals]\label{rmk:Typing_Assertion_Literals}
+    It is axiomatic for literals to have their corresponding type.
+    For example, $3 : \SemanticType{int}$, $3.14 : \SemanticType{float}$, etc.
+  \end{remark}
+\end{definition}
+
+Using the basic \nameref{def:Typing_Assertion}s, one can apply these same assertions to operators, like \texttt{+}, \texttt{-}, etc.
+This is called a \nameref{def:Typing_Rule}.
+
+\begin{definition}[Typing Rule]\label{def:Typing_Rule}
+  Expressions have \emph{typing rule}s applied to them, which defines the expression in terms of its constiuent expressions.
+  These are extensions of \nameref{def:Typing_Assertion}s, as these are usually recursively derived from the constiuent expressions' types.
+\end{definition}
+
+For example, if we define \texttt{+} to require its two operands be \SemanticType{int} types, then it makes sense for the output of the operation to also be an \SemanticType{int}.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
