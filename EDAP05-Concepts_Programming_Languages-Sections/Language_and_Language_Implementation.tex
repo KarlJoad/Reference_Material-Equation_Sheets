@@ -152,14 +152,18 @@ If you want to view all possible language categories, visit \href{https://en.wik
   Imperative programming focuses on describing how a program operates.
 \end{definition}
 
-\begin{definition}[Functional Programming Language]\label{def:Functional_Programming_Language}
+\begin{restatable}[Functional Programming Language]{definition}{defFunctionalProgrammingLanguage}\label{def:Functional_Programming_Language}
   \emph{Functional programming languages} treat computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
   It is a declarative programming paradigm in that programming is done with expressions or declarations instead of statements.
   In functional code, the output value of a function depends only on its arguments, so calling a function with the same value for an argument always produces the same result.
 
   This is in contrast to \nameref{def:Imperative_Programming_Language}s where, in addition to a function's arguments, global program state can affect a function's resulting value.
-  Eliminating side effects, that is, changes in state that do not depend on the function inputs, can make understanding a program easier, which is one of the key motivations for the development of functional programming. 
-\end{definition}
+  Eliminating side effects, that is, changes in state that do not depend on the function inputs, can make understanding a program easier, which is one of the key motivations for the development of functional programming.
+
+  Because of its close relationship to mathematics, it is much easier to develop mathematical techniques for reasoning about the behavior of programs developed in functional languages.
+  These techniques are important tools for helping us to ensure that programs work properly without having to resort to tedious testing and debugging that can only show the presence of errors, never their absence.
+  Moreover, they provide important tools for documenting the reasoning that went into the formulation of a program, making the code easier to understand and maintain.
+\end{restatable}
 
 \begin{definition}[Logical Programming Language]\label{def:Logical_Programming_Language}
   \emph{Logic programming languages} are a type of programming language which is largely based on formal logic.
