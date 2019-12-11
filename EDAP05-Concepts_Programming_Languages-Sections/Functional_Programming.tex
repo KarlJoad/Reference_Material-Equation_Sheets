@@ -108,6 +108,21 @@ By default, both variables and types have global scope.
 However, \nameref{def:Standard_ML} has introduced methods to limit the scope of things.
 These are described more fully in \Cref{par:Functional-SML-Limit_Scope}.
 
+\paragraph{Variables}\label{par:Functional-SML-Variable_Declarations}
+Variables in \nameref{def:Standard_ML} are slightly different than \nameref{def:Variable}s in \nameref{def:Imperative_Programming_Language}s.
+In \nameref{def:Standard_ML}, variables maintain the same value throughout their life.
+If a variable is rebound, then a whole new memory cell is created for the new value and the old discarded.
+For example,
+\begin{minted}[frame=lines,linenos]{sml}
+val a : int = 5;
+val a = a + 1; (* This creates a whole NEW "a" to use *)
+(* Create 2 new values at once *)
+val a : int = 6 and b : real = 3.14;
+\end{minted}
+
+It is important to note that variables are \emph{bound-by-value} in \nameref{def:Standard_ML}.
+This means that the right-hand side is evaluated first, meaning that the rebinding of \texttt{a} in the previous example is expanded to \mintinline{sml}{val a : int = 5 + 1}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
