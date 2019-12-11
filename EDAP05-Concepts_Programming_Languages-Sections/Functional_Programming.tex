@@ -123,6 +123,17 @@ val a : int = 6 and b : real = 3.14;
 It is important to note that variables are \emph{bound-by-value} in \nameref{def:Standard_ML}.
 This means that the right-hand side is evaluated first, meaning that the rebinding of \texttt{a} in the previous example is expanded to \mintinline{sml}{val a : int = 5 + 1}.
 
+\paragraph{Types}\label{par:Functional-SML-Type_Declarations}
+Aliased \nameref{def:Data_Type}s can be created in \nameref{def:Standard_ML}.
+For example,
+\begin{minted}[frame=lines,linenos]{sml}
+type float = real; (* Creates a new type "float" that has a range the same as the base "real" type *)
+type count = int and average = real; (* Introduces 2 new types at once *)
+
+(* There is one case that does not work, because 2 new types are being introduced AT ONCE. *)
+type float = real and average = float;
+\end{minted}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
