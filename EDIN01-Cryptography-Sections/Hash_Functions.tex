@@ -1,0 +1,132 @@
+\section{Hash Functions}\label{sec:Hash_Functions}
+\begin{definition}[Hash Function]\label{def:Hash_Function}
+  A cryptographic \emph{hash function} $h$ is a function which takes arbitrary length bit strings as input and produces a fixed length bit string as output, the \emph{hash value}.
+  There are a few requirements for hash functions:
+  \begin{enumerate}[noitemsep]
+  \item It must be \nameref{def:One_Way_Function}
+  \item \nameref{def:Preimage_Resistant}
+  \item \nameref{def:Second_Preimage_Resistant}
+  \item \nameref{def:Collision}-resistant
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Preimage Resistant]\label{def:Preimage_Resistant}
+  A \nameref{def:Hash_Function} with an output hash value of $n$ bits, is considered \emph{preimage resistant} if the time complexity for finding the input is $O(2^{n})$.
+\end{definition}
+
+\begin{definition}[Second Preimage Resistant]\label{def:Second_Preimage_Resistant}
+  
+\end{definition}
+
+\begin{definition}[Collision]\label{def:Collision}
+  
+\end{definition}
+
+\subsection{Usages of Hash Functions}\label{subsec:Hash_Functions_Usages}
+There are several reasons to use \nameref{def:Hash_Function}s.
+\begin{itemize}[noitemsep]
+\item \emph{Commitment to messages} by disclosing the hash of a message, then later showing the message. This allows the hash to be checked. However, this requires a few different things.
+  \begin{itemize}[noitemsep]
+  \item If the \nameref{def:Hash_Function} is collision-resistant, you cannot cheat by substituting your original message for another.
+  \end{itemize}
+\item \emph{Verify integrity} of downloaded files
+  \begin{itemize}[noitemsep]
+  \item Torrents use this to make sure you download the right contents. If something goes wrong, only the right small chunk can be redownloaded.
+  \end{itemize}
+\item \emph{Digital signatures} for things that require confirmation of action from the user/requester.
+\item \emph{SSL/TLS} for integrity protection
+\item \emph{Storing passwords} in operating systems (\texttt{/etc/shadow} on *nix machines) and websites.
+  \begin{itemize}[noitemsep]
+  \item You can add salt to change the hash around, usually for webserver passwords. These password databases store the userid, the salt added to the password, and the hashed password. At login time, the password and random number are hashed together again, and compared.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Merkle-Damg\r{a}rd Construction}\label{subsec:Merkle_Damgard_Construction}
+\begin{definition}[Merkle-Damg\r{a}rd Construction]\label{def:Merkle_Damgard_Construction}
+  Since \nameref{def:Hash_Function}s have an essentially infinite domain, due to their arbitrary length input, designing a \nameref{def:Hash_Function} can be quite diffcult.
+  However, if we break the input down into blocks, we can use a \emph{compression function} to map bits from input length $s$ into output hash values of lengths $n$.
+  These compression functions can be chained together to produce a function that acts on an infinite domain.
+  The chaining method most frequently used by \nameref{def:Hash_Function}s is the \emph{Merkle-Damg\r{a}rd Construction}.
+\end{definition}
+
+\begin{theorem}
+  If the compression function $f$ is \nameref{def:Collision}-resistant, then the \nameref{def:Hash_Function} $h$ is also \nameref{def:Collision}-resistant.
+\end{theorem}
+
+\begin{definition}[Length Strengthening]\label{def:Length_Strengthening}
+  The input message is preprocessed by first padding with zero bits to obtain a message which has length a multiple of $l$ bits.
+  Then a final block of $l$ bits is added which encodes the original length of the unpadded message in bits.
+  The construction is limited to hashing messages with length less than $2l$ bits.
+\end{definition}
+
+\subsection{SHA-1}\label{subsec:SHA_1}
+
+\subsection{Security Status of Various Hash Functions}\label{subsec:Hash_Functions_Security_Status}
+In practice, MD5 and SHA-1 are the most common, but are also broken.
+\begin{itemize}[noitemsep]
+\item MD5 is broken in practice
+\item SHA-1 is broken in theory, no efficient implementation has been developed yet.
+\end{itemize}
+
+There are 2 new versions of the SHA family that have not been broken yet.
+\begin{enumerate}[noitemsep]
+\item SHA-2
+\item SHA-3
+  \begin{itemize}[noitemsep]
+  \item Output of an NIST competition in 2012.
+  \end{itemize}
+\end{enumerate}
+
+\subsection{SHA-3}\label{subsec:SHA_3}
+\begin{definition}[SHA-3]\label{def:SHA_3}
+  \emph{SHA-3} uses a sponge construction, where the message blocks are XORed together into the initial bits of the state.
+\end{definition}
+
+\subsection{Message Authentication Codes}\label{subsec:MACs}
+\begin{definition}[Message Authentication Code]\label{def:MAC}
+  A \emph{message authentication code} is a \nameref{def:Hash_Function} that uses a key.
+\end{definition}
+
+There are 2 major designs:
+\begin{enumerate}[noitemsep]
+\item HMAC (Based on \nameref{def:Hash_Function})
+\item CBC-MAC (Based on \nameref{def:Block_Cipher} in CBC-Mode)
+\end{enumerate}
+
+There are 2 na\"{\i}ve implementations of a \nameref{def:MAC}s.
+\begin{enumerate}[noitemsep]
+\item
+  \begin{equation*}
+    \text{MAC}_{k}(m) = h(m \Vert k)
+  \end{equation*}
+\item
+  \begin{equation*}
+    \text{MAC}_{k}(m) = h(m \Vert k)
+  \end{equation*}
+\end{enumerate}
+
+\subsubsection{HMAC}\label{subsubsec:HMAC}
+HMAC is a MAC based on a \nameref{def:Hash_Function}.
+\begin{equation}\label{eq:HMAC}
+  \text{HMAC}_{k}(m) = h((k \XOR) \Vert h((k \XOR ipad) \Vert m))
+\end{equation}
+\begin{itemize}[noitemsep]
+\item opad = $\mathtt{0x5c5c5c} \ldots$
+\item ipad = $\mathtt{0x363636} \ldots$
+\end{itemize}
+
+The implementation in \Cref{eq:HMAC} was developd in 1996, and when used with MD5 and/or SHA-1, it is immune to previous attacks.
+
+\subsubsection{Usages of Message Authentication Codes}\label{subsubsec:MAC_Usages}
+\begin{itemize}[noitemsep]
+\item Authenticate origin of messages
+  \begin{itemize}[noitemsep]
+  \item A symmetric key is shared between the sender and receiver.
+  \item Both the sender and receiver can create and verify a MAC.
+  \end{itemize}
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
+%%% End:
