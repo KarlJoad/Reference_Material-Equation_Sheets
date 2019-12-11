@@ -162,6 +162,15 @@ For example,
 We can apply pattern matching to \nameref{def:Algebraic_Datatype}s as well.
 \inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Algebraic_Datatype-Direction-Pattern_Match.sml}
 
+Another example, slightly more complicated is the construction of a list type, that we will call \texttt{lst}.
+\inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Algebraic_Datatype-lst.sml}
+
+Now say we wanted to simplify the total number of functions possible in our \texttt{lst} code.
+Many of our functions have the same construction and the same recursion.
+We can simplify them down to a \texttt{map} function, which takes a list and a function as \nameref{def:Formal_Parameter}s and applies the function to each element of the given list, returning a new list in the process.
+The code for this \texttt{map} function is shown below.
+\inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Code/lst-map.sml}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
