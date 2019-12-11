@@ -137,6 +137,9 @@ type float = real and average = float;
 \paragraph{Limiting Scope}\label{par:Functional-SML-Limit_Scope}
 
 \subsubsection{Functions in Standard ML}\label{subsubsec:Functional-SML-Functions}
+\textbf{Functions and variables share the same expression namespace!}
+This means that things like this can happen:
+\inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Value_Shadowing.sml}
 
 \subsubsection{Pattern Matching in Standard ML}\label{subsubsec:Functional-SML-Pattern_Matching}
 \begin{definition}[Pattern Matching]\label{def:Pattern_Matching}
