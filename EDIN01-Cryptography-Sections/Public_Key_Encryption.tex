@@ -1,0 +1,139 @@
+\section{Public-Key Encryption}\label{sec:Public_Key_Encryption}
+\begin{definition}[Public-Key Encryption Scheme]
+  A public-key encryption scheme is a set of encryption transformations $\lbrace E_{e} : e \in \Keyspace \rbrace$ and a set of decryption transformations $\lbrace D_{d} : d \in \Keyspace \rbrace$.
+  For each $e \in \Keyspace$ there is a corresponding $d \in \Keyspace$ such that $D_{d} \bigl(E_{e} (M) \bigr) = M,  \forall M$.
+
+  Furthermore, after choosing such a pair $(e, d)$, the \emph{public key} $e$ (or the \emph{public parameter}) is made public, while the associated \emph{secret key} $d$ is kept secret.
+  For the scheme to be secure, it must be computationally infeasible to compute $d$ and/or $E_{e}^{-1}(C)$, knowing the public value $e$.
+
+  \begin{remark}[Construction]
+    These are constructed through multiple \nameref{def:Trapdoor_One_Way_Function}s.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[One-Way Function]\label{def:One_Way_Function}
+  An informal definition of a \emph{one-way function} $f(x)$ is a function from a set $\mathcal{X}$ to a set $\mathcal{Y}$ such that $f(x)$ is easy to compute for all $x \in \mathcal{X}$, but for ``essentially all'' elements $y \in \mathcal{Y}$ it is ``computationally infeasible'' to find any $x \in \mathcal{X}$ such that $f(x) = y$.
+
+  \begin{remark}[``Essentially All'']\label{rmk:One_Way_Function-Essentially_All}
+    There are some special values where \nameref{def:One_Way_Function}s to not behave normally, in that the function becomes computationally feasible to solve.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Trapdoor One-Way Function]\label{def:Trapdoor_One_Way_Function}
+  A \emph{trapdoor one-way function} $f(x)$ is a \nameref{def:One_Way_Function} $f : \mathcal{X} \mapsto \mathcal{Y}$ such that if one knows some specific information $T$, called the \emph{trapdoor information}, then $f(x)$ is computationally easy to invert $f$, i.e., for any $y \in \mathcal{Y}$ it is easy to find a $x \in \mathcal{X}$ such that $f(x) = y$.
+  For anyone without knowledge of the trapdoor information $T$, $f(x)$ is a \nameref{def:One_Way_Function}.
+\end{definition}
+
+\subsection{RSA Public-Key Encryption Scheme}\label{subsec:RSA_Public_Key_Encryption_Scheme}
+\begin{definition}[RSA Public-Key Encryption Scheme]\label{def:RSA_Public_Key_Encryption_Scheme}
+  The \emph{RSA public-key encryption scheme} is defined as follows.
+  Let $n = pq$, where $p$ and $q$ are two large \nameref{def:Prime}s.
+  Let $\Messages = \Ciphertexts = \IntsMod{n}$.
+  Pick a number $e$ that is \nameref{def:Relatively_Prime} to $\phi(n)$ (the \nameref{def:Set_Order} of \TextIntsMod{n}) and calculate a number $d$ such that $ed = 1 \bmod \phi(n)$.
+  The \emph{public key} is the \underline{two numbers} $(n, e)$ and the public encryption transformation $E(M)$ is
+  \begin{equation}\label{eq:RSA_Public_Key_Encryption_Scheme-Encryption}
+    E(M) = M^{e} \bmod n
+  \end{equation}
+
+  and the associated decryption transformation is
+  \begin{equation}
+    \label{eq:RSA_Public_Key_Encryption_Scheme-Decryption}
+    D(C) = C^{d} \bmod n
+  \end{equation}
+\end{definition}
+
+\begin{proof}[RSA Public-Key Encryption Scheme]\label{proof:RSA_Public_Key_Encryption_Scheme}
+  To verify that the \nameref{def:RSA_Public_Key_Encryption_Scheme} returns the plaintext after it was encrypted by the public key, we first assume that $n$, $e$, and $d$ are all properly defined.
+  By extension, this means that $E(M)$ and $D(C)$ are also well-defined.
+
+  We start be substituting the ciphertext, $C$ in \Cref{eq:RSA_Public_Key_Encryption_Scheme-Decryption} with the definition of the cipher text.
+  \begin{equation*}
+    \begin{aligned}
+      D(C) &= C^{d} \bmod n \\
+      &= {(M^{e})}^{d} \bmod n \\
+      &= M^{ed} \bmod n
+    \end{aligned}
+  \end{equation*}
+
+  Now, we note that $ed = 1 \bmod \phi(n)$, which means we can write
+  \begin{equation*}
+    ed = 1 + t \phi(n)
+  \end{equation*}
+  for some integer $t$.
+
+  So, we continue, and use our two equations together.
+  \begin{equation*}
+    \begin{aligned}
+      D(C) &= M^{ed} \bmod n \\
+      &= M^{1 + \phi(n)} \bmod n \\
+      &= M \cdot M^{\phi(n)} \bmod n \\
+    \end{aligned}
+  \end{equation*}
+
+  From Euler's formula, we know $x^{\phi(n)} = 1$ for any $x \in \MultiplicativeGroup{n}$ (From \Cref{def:Multiplicative_Inverse} of \nameref{def:Multiplicative_Inverse}).
+  We also assume that $M$ is invertible, otherwise the entire scheme falls apart, since a non-invertible message means it cannot be decrypted once encrypted.
+  \begin{equation*}
+    \begin{aligned}
+      D(C) &= M \cdot M^{\phi(n)} \bmod n \\
+      &= (M \cdot 1) \bmod n \\
+      &= M \bmod n
+    \end{aligned}
+  \end{equation*}
+\end{proof}
+
+\begin{example}[Lecture 12, Example 3]{RSA Public-Key Encryption Scheme}
+  Let $p = 47$ and $q = 167$.
+  Then, $n = pq = 7849$.
+  Compute $\phi(n)$,
+  \begin{equation*}
+    \begin{aligned}
+      \phi(n) &= \phi(7849) \\
+      &= \phi(47 \cdot 167) \\
+      &= (47 - 1) (167 - 1) \\
+      &= 7636
+    \end{aligned}
+  \end{equation*}
+
+  Now, we choose a value of $e$ such that $e$ and $\phi(n)$ are \nameref{def:Relatively_Prime}, $\gcd(e, \phi(n)) = 1$.
+  We choose $e=25$. (This is just one correct $e$. There are many more.)
+  Since we chose $e$ where $\gcd(e, \phi(n)) = 1$, $e$ is a \nameref{def:Multiplicative_Inverse} in $\IntsMod{\phi(n)} = \IntsMod{7636}$.
+
+  We can use the \nameref{def:Euclidean_Algorithm} and Bezout's lemma to find the inverse.
+  \begin{equation*}
+    d = 2749
+  \end{equation*}
+
+  Thus,
+  \begin{equation*}
+    25 \cdot 2749 = 1 \bmod 7636
+  \end{equation*}
+
+  Since this is true, we publish our public key, $(n, e) = (7636, 25)$.
+  \tcblower{}
+  Now, to send a message, Alice uses \Cref{eq:RSA_Public_Key_Encryption_Scheme-Encryption}.
+  Her message has $M = 2728$.
+  \begin{equation*}
+    \begin{aligned}
+      C &= M^{e} \bmod n \\
+      &= 2728^{25} \bmod 7849 \\
+      &= 2401 \bmod 7849
+    \end{aligned}
+  \end{equation*}
+
+  When Bob receives this ciphertext, he can decrypt it using \Cref{eq:RSA_Public_Key_Encryption_Scheme-Decryption}.
+  \begin{equation*}
+    \begin{aligned}
+      M &= C^{d} \bmod n \\
+      &= 2401^{2749} \bmod 7849 \\
+      &= 2728 \bmod 7849
+    \end{aligned}
+  \end{equation*}
+
+  Thus, Bob gets Alice's original message, and he is likely the only one who was able to decrypt it.
+\end{example}
+
+\subsubsection{Security of the RSA Public-Key Encryption Scheme}\label{subsubsec:RSA_Encryption_Scheme-Security}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
+%%% End:
