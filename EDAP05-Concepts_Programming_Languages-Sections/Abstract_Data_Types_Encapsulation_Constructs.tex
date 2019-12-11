@@ -305,6 +305,11 @@ It can store an arbitrary number of items, and can store any type of item, inclu
 \end{definition}
 
 \begin{definition}[Bivariance]\label{def:Type_Bivariance}
+  Let $\DataType$ be a type constructor with formal type parameters $\DataType_{1}, \ldots , \DataType_{k}$, such that $\SemanticType{T} = \DataType [\DataType_{1}, \ldots, \DataType_{k}]$ is a type.
+  Let $i \in \lbrace 1,\ldots, k \rbrace$.
+
+  If for all $\DataType_{i}' <: \DataType_{i}$ we can always substitute a value of type $\DataType [\DataType_{1}',\ldots, \DataType_{i}', \ldots, \DataType_{k}']$ in a context that expects a value of type $\DataType [\DataType_{1}, \ldots, \DataType_{i}, \ldots, \DataType_{k}]$ without violating type preservation \textbf{AND}, if for all $\DataType_{i}' :> \DataType_{i}$ we can always substitute a value of type $\DataType' [\DataType_{1}', \ldots, \DataType_{i}', \ldots, \DataType_{k}']$ in a context that expects a value of type $\DataType [\DataType_{1}, \ldots, \DataType_{i}, \ldots, \DataType_{k}]$ without violating type preservation then $\DataType_{i}$ is \emph{bivariant} in $\SemanticType{T}$.
+
   \begin{remark}
     If both the input and output allow for the type to be both broadened and narrowed, it is not terribly interesting to study.
     Thus, we will not be studying them in much detail in this class.
