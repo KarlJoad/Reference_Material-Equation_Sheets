@@ -358,15 +358,15 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
   This is assuming $L = \Degree \bigl( C(D) \bigr)$.
   It is written
   \begin{equation}\label{eq:Cycle_Set}
-    n_{1} \left( T_{1} \right) \oplus n_{1} \left( T_{1} \right) \oplus \cdots
+    n_{1} \left( T_{1} \right) \XOR n_{1} \left( T_{1} \right) \XOR \cdots
   \end{equation}
 
-  For example, $1(1) \oplus 3(5)$ means there is one cycle of length one, and three cycles of length 5.
+  For example, $1(1) \XOR 3(5)$ means there is one cycle of length one, and three cycles of length 5.
 
   \begin{remark}[Combining]
     You can combine cycle with the same period by simple addition.
     \begin{equation}\label{eq:Cycle_Set_Addition}
-      n_{1}(T) \oplus n_{2}(T) =  \left( n_{1} + n_{2} \right) (T)
+      n_{1}(T) \XOR n_{2}(T) =  \left( n_{1} + n_{2} \right) (T)
     \end{equation}
   \end{remark}
 \end{definition}
@@ -375,11 +375,11 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
 \begin{propertylist}
 \item If $C(D)$ is a \nameref{def:Polynomial_Ring_Properties-Primitive_Element} of \nameref{def:Polynomial_Degree} $L$ over \TextFiniteMathField{F}{q}{}, then the \nameref{def:Cycle_Set} is\label{prop:Cycle_Set_Properties-Primitive_Polynomial}
   \begin{equation}\label{eq:Primitive_Polynomial_Cycle_Set}
-    1(1) \oplus 1 \left( q^{L}-1 \right)
+    1(1) \XOR 1 \left( q^{L}-1 \right)
   \end{equation}
 \item If $C(D)$ is an \nameref{def:Irreducible_Polynomial} \nameref{def:Polynomial}, then the \nameref{def:Cycle_Set} is\label{prop:Cycle_Set_Properties-Irreducible_Polynomial}
   \begin{equation}\label{eq:Irreducible_Polynomial_Cycle_Set}
-    1(1) \oplus \frac{ \left(q^{L} - 1 \right)}{T} (T)
+    1(1) \XOR \frac{ \left(q^{L} - 1 \right)}{T} (T)
   \end{equation}
   where $T$ is the \nameref{def:Polynomial_Period} of $C(D)$, or the \nameref{def:Element_Order} of $\alpha$ when $\pi(\alpha)=0$.
 \end{propertylist}
@@ -387,7 +387,7 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
 \begin{theorem}[Connection Polynomial Multiple]\label{thm:Cycle_Set_Multiple_of_Connection_Polynomial}
   If $C(D) = {C_{1}(D)}^{n}$, then the \nameref{def:Cycle_Set} of $C(D)$ is
   \begin{equation}\label{eq:Cycle_Set_Multiple_of_Connection_Polynomial}
-    1(1) \oplus \frac{\left( q^{L_{1}}-1 \right)}{T_{1}} \left( T_{1} \right) \oplus \frac{q^{L_{1}} \left( q^{L_{1}}-1 \right)}{T_{2}} \left( T_{2} \right) \oplus \cdots \oplus \frac{q^{(n-1)L_{1}}\left( q^{L_{1}}-1 \right)}{T_{n}} \left( T_{n} \right)
+    1(1) \XOR \frac{\left( q^{L_{1}}-1 \right)}{T_{1}} \left( T_{1} \right) \XOR \frac{q^{L_{1}} \left( q^{L_{1}}-1 \right)}{T_{2}} \left( T_{2} \right) \XOR \cdots \XOR \frac{q^{(n-1)L_{1}}\left( q^{L_{1}}-1 \right)}{T_{n}} \left( T_{n} \right)
   \end{equation}
   where $\Degree \bigl( C(D) \bigr) = L$ and $T_{j}$ is the \nameref{def:Polynomial_Period} of ${C_{1}(D)}^{j}$.
 \end{theorem}
@@ -423,8 +423,8 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
 
   Now we combine these into a single line.
   \begin{align*}
-    1(1) &\oplus \frac{ \left( 2^{2} - 1 \right)}{3} (3) \oplus \frac{ 2^{2} \left( 2^{2} - 1 \right)}{3} (6) \oplus \frac{2^{6} \left( 2^{2} - 1 \right)}{3} (12) \\
-    1(1) &\oplus 1 (3) \oplus 2 (6) \oplus 4 (12)
+    1(1) &\XOR \frac{ \left( 2^{2} - 1 \right)}{3} (3) \XOR \frac{ 2^{2} \left( 2^{2} - 1 \right)}{3} (6) \XOR \frac{2^{6} \left( 2^{2} - 1 \right)}{3} (12) \\
+    1(1) &\XOR 1 (3) \XOR 2 (6) \XOR 4 (12)
   \end{align*}
 \end{example}
 
@@ -437,7 +437,7 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
   \begin{equation}\label{eq:Arbitrary_Connection_Polynomial}
     n_{1} \left( T_{1} \right) \times n_{2} \left( T_{2} \right) = n_{1}n_{2} \gcd(T_{1}, T_{2}) \bigl( \lcm(T_{1}, T_{2}) \bigr)
   \end{equation}
-  and the distributive law holds for $\times$ and $\oplus$.
+  and the distributive law holds for $\times$ and $\XOR$.
 \end{theorem}
 
 \subsection{Decimation}\label{subsec:Decimation}
