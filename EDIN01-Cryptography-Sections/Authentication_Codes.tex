@@ -183,6 +183,13 @@ Define $\Keyspace(m)$ as the set of keys for which a message $m$ is valid.
   $z$ is the \emph{tag} (or \emph{authenticator}) and is taken from the tag alphabet $\MessageTags$.
 \end{definition}
 
+\begin{theorem}[Bounds of Attacks on \nameref*{def:Systematic_Authentication_Code}s]\label{thm:Bounds_Systematic_Authentication_Code}
+  For any \nameref{def:Systematic_Authentication_Code},
+  \begin{equation}\label{eq:Bounds_Systematic_Authentication_Code}
+    \Prob_{S} \geq \Prob_{I}
+  \end{equation}
+\end{theorem}
+
 \subsubsection{Vector Space Construction}\label{subsubsec:Systematic_Authentication_Code-Vector_Space}
 \subsubsection{Polynomial Evaluation Construction}\label{subsubsec:Systematic_Authentication_Code-Polynomial_Evaluation}
 
