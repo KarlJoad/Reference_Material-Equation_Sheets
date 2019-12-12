@@ -211,6 +211,18 @@ For the transmission of the source message $\mathbf{s}$, the sender sends $\math
 \end{equation*}
 $s(k_{2})$ is the application of the source message polynomial where $x$ is replaced with $k_{2}$.
 
+\begin{theorem}[\nameref*{def:Systematic_Authentication_Code} Parameters]\label{thm:Systematic_Authentication_Code Parameters}
+  This \nameref{subsubsec:Systematic_Authentication_Code-Polynomial_Evaluation} given a \nameref{def:Systematic_Authentication_Code} has parameters
+  \begin{equation}\label{eq:Systematic_Authentication_Code Parameters}
+    \begin{aligned}
+      \SetOrder{\SourceMessages} &= q^{n} \\
+      \SetOrder{\Keyspace} &= q^{2} \\
+      \SetOrder{\MessageTags} &= q \\
+      \Prob_{I} &= \frac{1}{q} \\
+      \Prob_{S} &= \frac{k}{q} \\
+    \end{aligned}
+  \end{equation}
+\end{theorem}
 
 %%% Local Variables:
 %%% mode: latex
