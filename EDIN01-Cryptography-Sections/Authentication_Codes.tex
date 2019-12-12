@@ -121,6 +121,16 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
 \end{definition}
 
 \paragraph{Substitution Attacks}\label{par:Attack_Authentication_Code-Substitution}
+\begin{definition}[Substitution Attack]\label{def:Attack_Authentication_Code-Substitution}
+  A \emph{substitution attack} is one in which an attacker observes a valid message sent by the sender, $m$, and replaces it with their message $m'$, where $m \neq n'$.
+  The attacker then hopes that the system recognizes $m'$ as valid.
+
+  The equation to determine the probability of success is shown below.
+  \begin{equation}\label{eq:Attack_Authentication_Code-Substitution-Success}
+    \Prob_{S} = \underset{m \neq m'}{\max_{m,m'}} \Prob(m' \text{ is valid} \Given m \text{ is valid})
+  \end{equation}
+\end{definition}
+
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
 \end{definition}
 
