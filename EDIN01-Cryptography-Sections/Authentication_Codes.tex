@@ -111,6 +111,15 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
 \end{theorem}
 
 \paragraph{Impersonation Attacks}\label{par:Attack_Authentication_Code-Impersonation}
+\begin{definition}[Impersonation Attack]\label{def:Attack_Authentication_Code-Impersonation}
+  An \emph{impersonation attack} is a form of a Man-in-the-Middle attack where the attacker inserts a message $m'$ into the channel, and hope that it is accepted as authentic.
+
+  The equation to determine the probability of success is shown below.
+  \begin{equation}\label{eq:Attack_Authentication_Code-Impersonation-Success}
+    \Prob_{I} = \max_{m'} P(m' \text{ is valid})
+  \end{equation}
+\end{definition}
+
 \paragraph{Substitution Attacks}\label{par:Attack_Authentication_Code-Substitution}
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
 \end{definition}
