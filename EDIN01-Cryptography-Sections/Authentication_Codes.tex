@@ -23,6 +23,20 @@ A \nameref{def:Block_Cipher} is secure for fixed-length messages, but insecure f
 The problem is that the same key $K$ cannot be reused anywhere.
 
 \subsection{Digital Signatures}\label{subsec:Digital_Signatures}
+This is an asymmetric (\nameref{def:Public_Key_Encryption_Scheme}) solution.
+The advantages of this are:
+\begin{itemize}[noitemsep]
+\item No need to distribute/establish a common secret key
+\item Nonrepudiation, if the receiver received an authentic message, the sender cannot deny having sending it
+\end{itemize}
+
+The disadvantages of this are:
+\begin{itemize}[noitemsep]
+\item Signature schemes rely on the hardness of problems, like semiprime integer factoring.
+\item These signature schemes also rely on large numbers.
+\item Both of these factors slow down the process of this technique compared to others.
+\end{itemize}
+
 \subsection{Authentication Codes}\label{subsec:Authentication_Codes}
 \begin{definition}[Authentication Code]\label{def:Authentication_Code}
 \end{definition}
