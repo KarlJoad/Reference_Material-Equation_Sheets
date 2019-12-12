@@ -164,6 +164,13 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
 \end{theorem}
 
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
+\begin{definition}[Systematic Authentication Code]\label{def:Systematic_Authentication_Code}
+  An \nameref{def:Authentication_Code} for which the mapping function $f : \SourceMessages \times \Keyspace \rightarrow \ChannelMessages$ can be written in the form
+  \begin{equation}\label{eq:Systematic_Authentication_Codes}
+    f : \SourceMessages \times \Keyspace \rightarrow \SourceMessages \times \MessageTags : (s, k) \mapsto (s, z)
+  \end{equation}
+  where $s \in \SourceMessages$ and $z \in \MessageTags$ is called a \emph{systematic authentication code} (or \emph{Cartesian authentication code}).
+  $z$ is the \emph{tag} (or \emph{authenticator}) and is taken from the tag alphabet $\MessageTags$.
 \end{definition}
 
 %%% Local Variables:
