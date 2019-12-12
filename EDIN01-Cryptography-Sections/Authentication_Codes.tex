@@ -50,6 +50,27 @@ The disadvantages of this are:
 \end{definition}
 
 \subsubsection{The Unconditionally Secure Model}\label{subsubsec:Authentication_Code_Unconditionally_Secure_Model}
+An unconditionally secure solution is given below.
+\begin{itemize}[noitemsep]
+\item The transmitted information, the \emph{source message} (\nameref{def:Plaintext}) is denoted $s$ and $s \in \SourceMessages$.
+\item The source message is mapped to a \emph{channel message} $m$ where $m \in \ChannelMessages$.
+\item Using the secret key $k$ where $k \in \Keyspace$.
+\end{itemize}
+
+\begin{equation}\label{eq:Unconditional_Authentication_Code}
+  f : \SourceMessages \times \Keyspace \rightarrow \mathcal{M} : (s, k) \mapsto m
+\end{equation}
+\begin{itemize}[noitemsep]
+\item An important property of $f$ is that if $f(s, e) = m$ and $f(s', e) = m$, then $s = s'$ (Injective for each $k \in Keyspace$).
+\item Meaning the receiver must check whether a source message $s$ even exists.
+\item If such an $s$ exists, $m$ is valid.
+\item Otherwise, the message $m$ is not authentic.
+\end{itemize}
+
+\begin{large}
+  \textbf{The mapping $f$, along with $\SourceMessages$, $\ChannelMessages$, and $\Keyspace$ define an \nameref{def:Authentication_Code} (\emph{A-Code}).}
+\end{large}
+
 \subsubsection{Attacks on Authentication Codes}\label{subsubsec:Attacks_Authentication_Codes}
   
 \paragraph{Impersonation Attacks}\label{par:Attack_Authentication_Code-Impersonation}
