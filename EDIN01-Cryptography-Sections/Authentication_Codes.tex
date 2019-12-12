@@ -191,6 +191,13 @@ Define $\Keyspace(m)$ as the set of keys for which a message $m$ is valid.
 \end{theorem}
 
 \subsubsection{Vector Space Construction}\label{subsubsec:Systematic_Authentication_Code-Vector_Space}
+Let $\SetOrder{\SourceMessages} = q^{n}$, $\SetOrder{\MessageTags} = q^{n}$, and $\SetOrder{\Keyspace} = q^{2n}$.
+Decompose the keys as $k = (k_{1}, k_{2})$, where $s, z, k_{1}, k_{2} \in \FiniteMathField{F}{q}{m}$
+For the transmission of a source message $s$, generate a message $m = (s, z)$, where
+\begin{equation*}
+  z = k_{1} + sk_{2}
+\end{equation*}
+
 \subsubsection{Polynomial Evaluation Construction}\label{subsubsec:Systematic_Authentication_Code-Polynomial_Evaluation}
 
 %%% Local Variables:
