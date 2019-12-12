@@ -120,6 +120,14 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   \end{equation}
 \end{definition}
 
+\begin{theorem}[Bounds of \nameref*{def:Attack_Authentication_Code-Impersonation} Success]\label{thm:Attack_Authentication_Code-Impersonation-Success_Bounds}
+  For any \nameref{def:Authentication_Code},
+  \begin{equation}\label{eq:Attack_Authentication_Code-Impersonation-Success_Bound}
+    \Prob_{I} \geq \frac{\SetOrder{\SourceMessages}}{\SetOrder{\ChannelMessages}}
+  \end{equation}
+  where $\SetOrder{\ChannelMessages} >> \SetOrder{\SourceMessages}$.
+\end{theorem}
+
 \paragraph{Substitution Attacks}\label{par:Attack_Authentication_Code-Substitution}
 \begin{definition}[Substitution Attack]\label{def:Attack_Authentication_Code-Substitution}
   A \emph{substitution attack} is one in which an attacker observes a valid message sent by the sender, $m$, and replaces it with their message $m'$, where $m \neq n'$.
@@ -130,6 +138,14 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
     \Prob_{S} = \underset{m \neq m'}{\max_{m,m'}} \Prob(m' \text{ is valid} \Given m \text{ is valid})
   \end{equation}
 \end{definition}
+
+\begin{theorem}[Bounds of \nameref*{def:Attack_Authentication_Code-Substitution} Success]\label{thm:Attack_Authentication_Code-Substitution-Success_Bounds}
+  For any \nameref{def:Authentication_Code},
+  \begin{equation}\label{eq:Attack_Authentication_Code-Substitution-Success_Bound}
+    \Prob_{S} \geq \frac{\SetOrder{\SourceMessages} - 1}{\SetOrder{\ChannelMessages} - 1}
+  \end{equation}
+  where $\SetOrder{\ChannelMessages} >> \SetOrder{\SourceMessages}$.
+\end{theorem}
 
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
 \end{definition}
