@@ -128,6 +128,15 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   where $\SetOrder{\ChannelMessages} >> \SetOrder{\SourceMessages}$.
 \end{theorem}
 
+\begin{theorem}[Simmons' Bound for \nameref*{def:Attack_Authentication_Code-Impersonation}]\label{thm:Impersonation-Simmons_Bound}
+  For any \nameref{def:Authentication_Code},
+  \begin{equation}\label{eq:Impersonation-Simmons_Bound}
+    \Prob_{I} \geq 2^{-\MutualInformation(M; E)}
+  \end{equation}
+
+  Meaning, for good protection $\Prob_{I}$ is small, we must give away a lot of information about they key.
+\end{theorem}
+
 \paragraph{Substitution Attacks}\label{par:Attack_Authentication_Code-Substitution}
 \begin{definition}[Substitution Attack]\label{def:Attack_Authentication_Code-Substitution}
   A \emph{substitution attack} is one in which an attacker observes a valid message sent by the sender, $m$, and replaces it with their message $m'$, where $m \neq n'$.
@@ -145,6 +154,13 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
     \Prob_{S} \geq \frac{\SetOrder{\SourceMessages} - 1}{\SetOrder{\ChannelMessages} - 1}
   \end{equation}
   where $\SetOrder{\ChannelMessages} >> \SetOrder{\SourceMessages}$.
+\end{theorem}
+
+\begin{theorem}[Simmons' Bound for \nameref*{def:Attack_Authentication_Code-Substitution}]\label{thm:Substitution-Simmons_Bound}
+  For any \nameref{def:Authentication_Code},
+  \begin{equation}\label{eq:Substitution-Simmons_Bound}
+    \Prob_{S} \geq 2^{-\Entropy(K \Given M)}, \text{ if } \SetOrder{\SourceMessages} \geq 2
+  \end{equation}
 \end{theorem}
 
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
