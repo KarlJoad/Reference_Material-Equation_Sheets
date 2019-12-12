@@ -144,8 +144,12 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
 
   The equation to determine the probability of success is shown below.
   \begin{equation}\label{eq:Attack_Authentication_Code-Substitution-Success}
-    \Prob_{S} = \underset{m \neq m'}{\max_{m,m'}} \Prob(m' \text{ is valid} \Given m \text{ is valid})
+    \begin{aligned}
+      \Prob_{S} &= \underset{m \neq m'}{\max_{m,m'}} \Prob(m' \text{ is valid} \Given m \text{ is valid}) \\
+      &= \underset{m \neq m'}{\max_{m,m'}} \frac{\SetOrder{\Keyspace(m) \cap \Keyspace(m')}}{\SetOrder{\Keyspace(m)}}
+    \end{aligned}
   \end{equation}
+  which requires that they keys $k \in \Keyspace$ be uniformly distributed.
 \end{definition}
 
 \begin{theorem}[Bounds of \nameref*{def:Attack_Authentication_Code-Substitution} Success]\label{thm:Attack_Authentication_Code-Substitution-Success_Bounds}
