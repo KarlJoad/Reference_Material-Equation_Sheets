@@ -87,6 +87,19 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   \end{equation}
 \end{definition}
 
+\begin{theorem}[Square Root Bound]\label{thm:Prob_Deception_Square_Root_Bound}
+  By first multiplying the Simmons' Bounds on the probabilities of success of each attack, we can find their combined probability.
+  Using \Cref{thm:Impersonation-Simmons_Bound} and \Cref{thm:Substitution-Simmons_Bound} and multiplying:
+  \begin{equation*}
+    \Prob_{I}\Prob_{S} \geq 2^{-\MutualInformation(M; K) - \Entropy(K \Given M)} = 2^{-\Entropy(K)}
+  \end{equation*}
+
+  From $\Entropy(K) \leq \log_{2} \SetOrder{\Keyspace}$ we can find the \emph{square root bound} of the \nameref{def:Probability_of_Deception} \textbf{for any \nameref{def:Authentication_Code}}.
+  \begin{equation}\label{eq:Prob_Deception_Square_Root_Bound}
+    \Prob_{D} \geq \frac{1}{\sqrt{\SetOrder{\Keyspace}}}
+  \end{equation}
+\end{theorem}
+
 \paragraph{Impersonation Attacks}\label{par:Attack_Authentication_Code-Impersonation}
 \paragraph{Substitution Attacks}\label{par:Attack_Authentication_Code-Substitution}
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
