@@ -78,7 +78,15 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
 \item \nameref{par:Attack_Authentication_Code-Substitution}
 \end{enumerate}
 
+\begin{definition}[Probability of Deception]\label{def:Probability_of_Deception}
+  The \emph{probability of deception} is the probability that a non-authentic message is authenticated by the \nameref{def:Authentication_Code} system as a valid message.
+  It is based off probabilities of success of \nameref{def:Attack_Authentication_Code-Impersonation}s and \nameref{def:Attack_Authentication_Code-Substitution}s.
   
+  \begin{equation}\label{eq:Probability_of_Deception}
+    \Prob_{D} = \max(\Prob_{i}, \Prob_{S})
+  \end{equation}
+\end{definition}
+
 \paragraph{Impersonation Attacks}\label{par:Attack_Authentication_Code-Impersonation}
 \paragraph{Substitution Attacks}\label{par:Attack_Authentication_Code-Substitution}
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
