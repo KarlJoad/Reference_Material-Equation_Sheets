@@ -164,6 +164,11 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
 \end{theorem}
 
 \subsubsection{Constructing \nameref*{def:Authentication_Code}s}\label{subsubsec:Authentication_Code-Construction}
+Define $\Keyspace(m)$ as the set of keys for which a message $m$ is valid.
+\begin{equation}\label{eq:Authentication_Code-Keys_Message_Valid}
+  \Keyspace(m) = \lbrace k \in \Keyspace; exists s \in \SourceMessages, f(s, e) = m \rbrace
+\end{equation}
+
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
 \begin{definition}[Systematic Authentication Code]\label{def:Systematic_Authentication_Code}
   An \nameref{def:Authentication_Code} for which the mapping function $f : \SourceMessages \times \Keyspace \rightarrow \ChannelMessages$ can be written in the form
