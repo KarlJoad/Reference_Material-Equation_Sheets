@@ -7,6 +7,12 @@ There are 3 ways we can confirm authenticity with authentication schemes:
 \end{enumerate}
 
 \subsection{\nameref*{subsec:MACs} with Authentication}\label{subsec:MAC_Authentication}
+\nameref{def:MAC}s can be used as an authentication technique that uses \nameref{def:Cryptographic_Primitive}s (\nameref{def:Block_Cipher}s and \nameref{def:Hash_Function}s) to provide authentication.
+
+\begin{remark*}
+  It is assumed that the sender and reciever both share the same key used for the \nameref{def:MAC}.
+\end{remark*}
+
 \subsubsection{Problems with \nameref*{subsec:MACs} and Authentication}\label{subsubsec:MAC_Problems_Authentication}
 \subsubsection{CBC-MAC for Authentication}\label{subsubsec:CBC_MAC_Authentication}
 \subsection{Digital Signatures}\label{subsec:Digital_Signatures}
