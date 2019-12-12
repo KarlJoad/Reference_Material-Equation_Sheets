@@ -18,6 +18,10 @@ There are 3 ways we can confirm authenticity with authentication schemes:
 However, they are able to authenticate many messages without changing the key.
 
 \subsubsection{CBC-MAC for Authentication}\label{subsubsec:CBC_MAC_Authentication}
+CBC-MAC is a \nameref{def:Mode_of_Operation} for \nameref{def:Block_Cipher}s to operate with \nameref{def:MAC}s.
+A \nameref{def:Block_Cipher} is secure for fixed-length messages, but insecure for variable-length messages.
+The problem is that the same key $K$ cannot be reused anywhere.
+
 \subsection{Digital Signatures}\label{subsec:Digital_Signatures}
 \subsection{Authentication Codes}\label{subsec:Authentication_Codes}
 \begin{definition}[Authentication Code]\label{def:Authentication_Code}
