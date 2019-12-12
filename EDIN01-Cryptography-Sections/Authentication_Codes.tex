@@ -199,6 +199,18 @@ For the transmission of a source message $s$, generate a message $m = (s, z)$, w
 \end{equation*}
 
 \subsubsection{Polynomial Evaluation Construction}\label{subsubsec:Systematic_Authentication_Code-Polynomial_Evaluation}
+Let $\SourceMessages = \lbrace \mathbf{s} = (s_{1}, s_{2}, \ldots, s_{n}); s_{i} \in \FiniteMathField{F}{q}{} \rbrace$.
+Define the source message \nameref{def:Polynomial} to be
+\begin{equation*}
+  s(x) = s_{1}x + s_{2}x^{2} + \cdots + s_{n}x^{n}
+\end{equation*}.
+Let $\Keyspace = \lbrace k = (k_{1}, k_{2}); k_{1}, k_{2} \in \FiniteMathField{F}{q}{} \rbrace$ and $\MessageTags = \FiniteMathField{F}{q}{}$.
+For the transmission of the source message $\mathbf{s}$, the sender sends $\mathbf{s}$ together with the tag
+\begin{equation*}
+  z = k_{1} + s(k_{2})
+\end{equation*}
+$s(k_{2})$ is the application of the source message polynomial where $x$ is replaced with $k_{2}$.
+
 
 %%% Local Variables:
 %%% mode: latex
