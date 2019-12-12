@@ -86,6 +86,10 @@ There are 2 new versions of the SHA family that have not been broken yet.
 \subsection{Message Authentication Codes}\label{subsec:MACs}
 \begin{definition}[Message Authentication Code]\label{def:MAC}
   A \emph{message authentication code} is a \nameref{def:Hash_Function} that uses a key.
+
+  \begin{remark}[Relation to \nameref*{def:Block_Cipher}s]\label{rmk:MAC_Block_Cipher_Relation}
+    Many \nameref{def:Block_Cipher}s provide a \nameref{def:Mode_of_Operation} to work with \nameref{def:MAC}s.
+  \end{remark}
 \end{definition}
 
 There are 2 major designs:
