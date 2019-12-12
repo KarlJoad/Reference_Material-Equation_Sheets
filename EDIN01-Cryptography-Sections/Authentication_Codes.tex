@@ -100,6 +100,16 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   \end{equation}
 \end{theorem}
 
+\begin{theorem}[Tightness of the \nameref*{thm:Prob_Deception_Square_Root_Bound}]\label{thm:Prob_Deception_Square_Root_Bound_Tightness}
+  The \nameref{thm:Prob_Deception_Square_Root_Bound} can only be tight if
+  \begin{equation}\label{eq:10}
+    \SetOrder{\SourceMessages} \leq \sqrt{\SetOrder{\Keyspace}} + 1
+  \end{equation}
+
+  Meaning a large source size demands the key be twice as large.
+  This is not very practical.
+\end{theorem}
+
 \paragraph{Impersonation Attacks}\label{par:Attack_Authentication_Code-Impersonation}
 \paragraph{Substitution Attacks}\label{par:Attack_Authentication_Code-Substitution}
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
