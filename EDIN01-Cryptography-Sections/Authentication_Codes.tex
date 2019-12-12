@@ -39,6 +39,14 @@ The disadvantages of this are:
 
 \subsection{Authentication Codes}\label{subsec:Authentication_Codes}
 \begin{definition}[Authentication Code]\label{def:Authentication_Code}
+  An \emph{authentication code} is used to check if the received message was sent by the claimed sender.
+  They are also used to verify that the message was not modified (by a third-party, not random errors) during transmission.
+
+  The authentication code requires there be \emph{secret keys} that are known to the sender and receiver, but not to the enemy.
+
+  There can be several models of authentication codes.
+  In this course, we only look at \nameref{subsubsec:Authentication_Code_Unconditionally_Secure_Model}.
+  The formula defining this type of authentication code is given in \Cref{eq:Unconditional_Authentication_Code}.
 \end{definition}
 
 \subsubsection{The Unconditionally Secure Model}\label{subsubsec:Authentication_Code_Unconditionally_Secure_Model}
