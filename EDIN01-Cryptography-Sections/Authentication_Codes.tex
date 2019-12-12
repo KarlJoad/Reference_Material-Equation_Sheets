@@ -152,6 +152,58 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   which requires that they keys $k \in \Keyspace$ be uniformly distributed.
 \end{definition}
 
+\begin{example}[2010 Final Exam, Question 2B]{Probability of Substitution Attack Success}
+  In an authentication system, Alice would like to send the source state $S$ given as $S = (s_{1}, s_{2}2)$, where $s_{i} \in \FiniteMathField{F}{3}{}$, $i = 1, 2$.
+  The key (encoding rule) $E_{k}$ is given as $E_{k} = (e_{1}, e_{2})$, where $e_{1}, e_{2} \in \FiniteMathField{F}{3}{}$.
+  The transmitted message $M$ is a 3-tuple generated as $M = (s_{1}, s_{2}, t)$, where
+  \begin{equation*}
+    t = e_{1} + s_{1}e_{2} + s_{2}e_{2}^{2}
+  \end{equation*}.
+
+  Find the value of $\Prob_{S}$?
+  HINT:\@
+  \begin{equation*}
+    \Prob_{S} = \underset{M \neq M'}{\max_{M, M'}} \Prob(M' \text{ valid} \Given M \text{ valid})
+  \end{equation*}
+  \tcblower{}
+  To start with, we can expand the equation they give to us.
+  \begin{equation*}
+    \begin{aligned}
+      \Prob_{S} &= \max \left( \frac{\SetOrder{M' \cap M}}{\SetOrder{M}} \right) \\
+      &= \left( \frac{\text{Num keys for which }
+          \begin{cases}
+            t = k_{1} + s_{1}k_{2} + s_{2}k_{2}^{2} \\
+            t' = k_{1} + s'_{1}k_{2} + s'_{2}k_{2}^{2}
+          \end{cases}}
+        {\text{Num keys for which }t = k_{1} + s_{1}k_{2} + s_{2}k_{2}^{2}}\right)
+    \end{aligned}
+  \end{equation*}
+
+  We can start by reducing the denominator.
+  If we fix $k_{2}$, and since $s_{i}$ are not variables but values, for any option of $k_{2}$, we have a system of linear equations that we can solve, which yields $k_{1}$.
+  This means there are 3 possible options for $k_{2}$, and the options for $k_{1}$ become fixed once $k_{2}$ is chosen.
+  \begin{equation*}
+    \Prob_{S} = \frac{\text{Num keys for which }
+      \begin{cases}
+        t = k_{1} + s_{1}k_{2} + s_{2}k_{2}^{2} \\
+        t' = k_{1} + s'_{1}k_{2} + s'_{2}k_{2}^{2}
+      \end{cases}}{3}
+  \end{equation*}
+
+  We reduce the numerator now.
+  To solve the system of linear equations, by performing $t' - t$, then we end up with
+  \begin{equation*}
+    t' - t = k_{1} + (s'_{1} - s_{1}) k_{2} + (s'_{2} - s_{2}) k_{2}^{2}
+  \end{equation*}
+  Now, $k_{2}$ can be varied to anything other than 0, because if we choose $k_{2} = 0$, then we lose our message.
+  This means $k_{2}$ can take on 2 values, and once it takes on a value, $k_{1}$ becomes fixed.
+
+  Thus,
+  \begin{equation*}
+    \Prob_{S} = \frac{2}{3}
+  \end{equation*}
+\end{example}
+
 \begin{theorem}[Bounds of \nameref*{def:Attack_Authentication_Code-Substitution} Success]\label{thm:Attack_Authentication_Code-Substitution-Success_Bounds}
   For any \nameref{def:Authentication_Code},
   \begin{equation}\label{eq:Attack_Authentication_Code-Substitution-Success_Bound}
