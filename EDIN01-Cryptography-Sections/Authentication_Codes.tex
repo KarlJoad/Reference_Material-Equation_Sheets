@@ -163,6 +163,7 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   \end{equation}
 \end{theorem}
 
+\subsubsection{Constructing \nameref*{def:Authentication_Code}s}\label{subsubsec:Authentication_Code-Construction}
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
 \begin{definition}[Systematic Authentication Code]\label{def:Systematic_Authentication_Code}
   An \nameref{def:Authentication_Code} for which the mapping function $f : \SourceMessages \times \Keyspace \rightarrow \ChannelMessages$ can be written in the form
@@ -172,6 +173,9 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   where $s \in \SourceMessages$ and $z \in \MessageTags$ is called a \emph{systematic authentication code} (or \emph{Cartesian authentication code}).
   $z$ is the \emph{tag} (or \emph{authenticator}) and is taken from the tag alphabet $\MessageTags$.
 \end{definition}
+
+\subsubsection{Vector Space Construction}\label{subsubsec:Systematic_Authentication_Code-Vector_Space}
+\subsubsection{Polynomial Evaluation Construction}\label{subsubsec:Systematic_Authentication_Code-Polynomial_Evaluation}
 
 %%% Local Variables:
 %%% mode: latex
