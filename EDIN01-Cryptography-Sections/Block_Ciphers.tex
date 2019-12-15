@@ -1,6 +1,14 @@
 \section{Block Ciphers}\label{sec:Block_Ciphers}
 \begin{definition}[Block Cipher]\label{def:Block_Cipher}
-  \textbf{TODO}
+  A \emph{block cipher} encrypts a fixed-length block of plaintext bits $x$ to a fixed-length block of ciphertext $y$.
+  This transformation is controlled by the secret key $K$, and is written $E_{K}(x) = y$.
+
+  The secret key defines a fixed mapping of the plaintext block $x$ to the ciphertext block $y$.
+  This can sometimes make block ciphers a form of \nameref{subsec:Simple_Substitution_Cipher}.
+
+  Block ciphers are usually implemented with several \nameref{def:Round_Function}s, based on the \nameref{def:Round_Key}.
+\end{definition}
+
 \end{definition}
 
 \subsection{Modes of Operation}\label{subsec:Modes_of_Operation}
