@@ -221,6 +221,19 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
   works, that is, $[47] \Leftrightarrow ([7],[5])$.
 \end{example}
 
+\begin{example}[]{Reverse Chinese Remainder Theorem Mapping 2}
+  Given elements $z_{2} \in \IntsMod{2}$ and $z_{5} \in \IntsMod{5}$, find the corresponding element $z_{10} \in \IntsMod{10}$?
+  \tcblower{}
+  Because the $\gcd(2, 5) = 1$, we can also use the \nameref{def:Extended_Euclidean_Algorithm}.
+  It returns $1 = 1 \cdot 5 - 2 \cdot 2$.
+  Now we need to match the terms up with modulo factors that do not reduce them, i.e.\ any element $z_{5}$ should not be matched with 5, and likewise with $z_{2}$ and 2.
+
+  Thus,
+  \begin{equation*}
+    z_{10} = (z_{2} \cdot 5 - z_{5} \cdot 2) \bmod 10
+  \end{equation*}
+\end{example}
+
 \subsection{\texorpdfstring{Multiplicative Groups, \TextMultiplicativeGroupN{}}{Multiplicative Groups}}\label{Multiplicative_Groups}
 \begin{definition}[Multiplicative Group, \TextMultiplicativeGroupN{}]\label{def:Multiplicative_Group}
   Define the \emph{multiplicative group} of \TextIntsModN{}, denoted \TextMultiplicativeGroupN{} as the set of all elements in \TextIntsModN{} with \nameref{def:Multiplicative_Inverse}s.
