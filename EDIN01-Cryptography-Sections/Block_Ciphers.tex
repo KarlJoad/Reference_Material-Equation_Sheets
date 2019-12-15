@@ -54,6 +54,16 @@ If we want to mathematically illustrate the implementation of a \nameref{def:Blo
 \item $k_{i}$ is the round key used in the $i$th round.
 \end{itemize}
 
+For the same iterative cipher, the decryption function $D_{K}(y)$ is just the application of the \nameref{def:Round_Key}s in reverse order.
+\begin{align*}
+  w_{N} &= y \\
+  w_{N-1} &= h^{-1}(w_{N}, k_{N}) \\
+  w_{N-2} &= h^{-1}(w_{N-1}, k_{N-2}) \\
+        &\vdots \\
+  w_{1} &= h^{-1}(w_{2}, k_{2}) \\
+  w_{0} &= h^{-1}(w_{1}, k_{1}) = x \\
+\end{align*}
+
 \subsection{Modes of Operation}\label{subsec:Modes_of_Operation}
 \begin{definition}[Mode of Operation]\label{def:Mode_of_Operation}
   
