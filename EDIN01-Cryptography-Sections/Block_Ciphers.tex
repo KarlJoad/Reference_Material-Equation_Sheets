@@ -84,6 +84,14 @@ For the same iterative cipher, the decryption function $D_{K}(y)$ is just the ap
   \end{equation}
   where $f(R_{i-1}, k_{i})$ can be any function.
 
+  The decryption function for the Feistel cipher is implemented as
+  \begin{equation}\label{eq:Feistel_Cipher_Round_Function_Decryption}
+    \begin{aligned}
+      L_{i-1} &= R_{i} \XOR f(R_{i-1}, k_{i}) \\
+      R_{i-1} &= L_{i}
+    \end{aligned}
+  \end{equation}
+  and $(L_{0}, R_{0})$ gives back $x$.
 \end{definition}
 
 \subsubsection{SP Network}\label{subsubsec:SP_Network}
