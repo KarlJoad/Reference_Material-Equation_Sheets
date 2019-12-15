@@ -12,6 +12,24 @@
 \begin{definition}[Round Function]\label{def:Round_Function}
   \nameref{def:Block_Cipher}s are usually implemented as iterated ciphers, where a simple encryption function is iteratively applied for $N$ rounds.
   This is called a \emph{round function}.
+  It is commonly denoted
+  \begin{equation}\label{eq:Round_Function}
+    h(w_{i-1}, k_{i})
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $i$ is the current round (current iteration).
+  \item $w$ is the input plaintext block.
+  \item $k$ is the \nameref{def:Round_Key} on the $i$th iteration.
+  \item $h$ is the \nameref{def:Round_Function}.
+  \end{itemize}
+
+  These functions must also be invertible, namely,
+  \begin{equation}\label{eq:Round_Function_Invertible}
+    h^{-1} \bigl( h(w_{i-1}, k_{i}), k_{i} \bigr) = w_{i-1}
+  \end{equation}
+
+  \textbf{These functions must be efficient to compute, and be efficient to compute the inverse round function.}
 \end{definition}
 
 \begin{definition}[Round Key]\label{def:Round_Key}
