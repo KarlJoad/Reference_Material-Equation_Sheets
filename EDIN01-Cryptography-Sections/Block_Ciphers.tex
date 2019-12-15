@@ -37,6 +37,23 @@
   The way in which the round key is derived from $K$ is called the \emph{key schedule}.
 \end{definition}
 
+If we want to mathematically illustrate the implementation of a \nameref{def:Block_Cipher}'s encryption with a iterative cipher, it is defined as:
+\begin{align*}
+  w_{0} &= x \\
+  w_{1} &= h(w_{0}, k_{1}) \\
+  w_{2} &= h(w_{1}, k_{2}) \\
+        &\vdots \\
+  w_{N-1} &= h(w_{N-2}, k_{N-1}) \\
+  w_{N} &= h(w_{N-1}, k_{N}) \\
+\end{align*}
+\begin{itemize}[noitemsep]
+\item $x$ is the plaintext block.
+\item $w_{i}$ are intermediate values in the implementation of the iteration.
+\item $w_{N}$ is the final output from the cipher.
+\item $h(w_{i-1}, k_{i})$ denotes the round function.
+\item $k_{i}$ is the round key used in the $i$th round.
+\end{itemize}
+
 \subsection{Modes of Operation}\label{subsec:Modes_of_Operation}
 \begin{definition}[Mode of Operation]\label{def:Mode_of_Operation}
   
