@@ -9,6 +9,9 @@
   Block ciphers are usually implemented with several \nameref{def:Round_Function}s, based on the \nameref{def:Round_Key}.
 \end{definition}
 
+\begin{definition}[Round Function]\label{def:Round_Function}
+  \nameref{def:Block_Cipher}s are usually implemented as iterated ciphers, where a simple encryption function is iteratively applied for $N$ rounds.
+  This is called a \emph{round function}.
 \end{definition}
 
 \subsection{Modes of Operation}\label{subsec:Modes_of_Operation}
