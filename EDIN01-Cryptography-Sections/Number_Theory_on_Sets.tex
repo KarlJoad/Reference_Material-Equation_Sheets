@@ -204,6 +204,23 @@ The two possible cases of division, i.e.\ possible and impossible, are shown in 
   \end{equation*}
 \end{example}
 
+\begin{example}[]{Reverse Chinese Remainder Theorem Mapping 1}
+  Which element of \TextIntsMod{168} corresponds to the pair $([7],[5]) \in \IntsMod{8} \times \IntsMod{21}$?
+  \tcblower{}
+  If we apply the \nameref{def:Extended_Euclidean_Algorithm} to 8 and 21, we get $1 = 8 \cdot 8 + (-3) \cdot 21$.
+  Note that $8 \cdot 8 = 64$ is congruent to $0 \bmod 8$ and $1 \bmod 21$, and $(-3) \cdot 21 = -63$ is congruent to $1 \bmod 8$ and $0 \bmod 21$.
+  Therefore
+  \begin{align*}
+    5 \cdot 64+7 \cdot (-63) &\equiv 5 \cdot 0+7 \cdot 1 = 7 (\bmod 8) \\
+    5 \cdot 64+7 \cdot (-63) &\equiv 5 \cdot 1+7 \cdot 0 = 5 (\bmod 21)
+  \end{align*}
+  so,
+  \begin{equation*}
+    5 \cdot 64 + 7 \cdot (-63) = -121 \equiv 47 (\bmod 168)
+  \end{equation*}
+  works, that is, $[47] \Leftrightarrow ([7],[5])$.
+\end{example}
+
 \subsection{\texorpdfstring{Multiplicative Groups, \TextMultiplicativeGroupN{}}{Multiplicative Groups}}\label{Multiplicative_Groups}
 \begin{definition}[Multiplicative Group, \TextMultiplicativeGroupN{}]\label{def:Multiplicative_Group}
   Define the \emph{multiplicative group} of \TextIntsModN{}, denoted \TextMultiplicativeGroupN{} as the set of all elements in \TextIntsModN{} with \nameref{def:Multiplicative_Inverse}s.
