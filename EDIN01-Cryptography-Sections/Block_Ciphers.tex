@@ -70,6 +70,20 @@ For the same iterative cipher, the decryption function $D_{K}(y)$ is just the ap
   A \emph{Feistel cipher} is a type of iterated cipher that is easy to implement in both hardware and software.
   However, it is not safe to use anymore.
 
+  The block being run through the \nameref{def:Round_Function} is split in half; a left and right half, denoted
+  \begin{equation}\label{eq:Feistel_Cipher_Block}
+    w_{i} = (L_{i}, R_{i})
+  \end{equation}
+
+  The \nameref{def:Round_Function} $h(L_{i-1}, R_{i-1}, k_{i})$ is implemented as
+  \begin{equation}\label{eq:Feistel_Cipher_Round_Function_Encryption}
+    \begin{aligned}
+      L_{i} &= R_{i-1} \\
+      R_{i} &= L_{i-1} \XOR f(R_{i-1}, k_{i})
+    \end{aligned}
+  \end{equation}
+  where $f(R_{i-1}, k_{i})$ can be any function.
+
 \end{definition}
 
 \subsubsection{SP Network}\label{subsubsec:SP_Network}
