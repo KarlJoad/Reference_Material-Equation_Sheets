@@ -252,6 +252,39 @@ The steps required to operate a block cipher in counter mode are illustrated in 
 \textbf{TODO}
 \begin{definition}[Advanced Encryption Scheme]\label{def:AES}
   \textbf{TODO}
+  The \emph{Advanced Encryption Scheme} (\emph{AES}) cipher is a \nameref{def:SP_Network} \nameref{def:Block_Cipher}.
+  It was originally designed to be fast in both hardware and software.
+  Today, it is faster to perform these calculations in software because CPU architectures support special instructions just for these calculations.
+
+  In AES, the block size is fixed to 128 bits.
+  The key size is variable; either: 128 bits, 192 bits, or 256 bits.
+  These different key sizes correspond to the the number of rounds that happen (10, 12, or 14, respectively).
+
+  AES operates on binary matrices.
+  They are $2 \times 2$ matrices where each element is a byte (8 bits).
+  AES has several steps involved in it.
+  \begin{enumerate}[noitemsep]
+  \item The first round is always a round of \nameref{subsubsec:AES-AddRoundKey}.
+  \item Then, all subsequent rounds perform \emph{one} of these actions
+    \begin{enumerate}[noitemsep]
+    \item \nameref{subsubsec:AES-AddRoundKey}
+    \item \nameref{subsubsec:AES-SubBytes}
+    \item \nameref{subsubsec:AES-ShiftRows}
+    \item \nameref{subsubsec:AES-MixColumns}
+      \begin{itemize}[noitemsep]
+      \item This is \emph{not} run on the last round.
+      \end{itemize}
+    \end{enumerate}
+  \end{enumerate}
+
+  AES has been broken in practice, but not in a practical sense.
+  The best known attacks were on 7 rounds for 128-bit keys, 8 rounds for 192-bit keys, and 9 rounds for 256-bit keys.
+  \textbf{Side-Channel attacks are still possible (cache-timing attacks, differential fault analysis, etc.)}.
+
+  \begin{remark}[Other Cryptographic Primitive's Reliance on \nameref*{def:AES}]\label{rmk:Other_Crypto_Primitive_Reliance_AES}
+    Many other \nameref{def:Cryptographic_Primitive}s rely on the security of \nameref{def:AES}.
+    This means that these derived \nameref{def:Cryptographic_Primitive}s are as secure as \nameref{def:AES}.
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
