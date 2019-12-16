@@ -128,6 +128,17 @@ The functions are defined as:
   \label{algo:SHA_1_Round_1}
 \end{algorithm}
 
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \For{$j=20$ \KwTo{} $39$ }{
+    $t = (A \lll 5) + h(B, C, D) + E + X_{j} + y_{2}$ \;
+    $(A, B, C, D, E) = (t, A, B \lll 30, C, D)$ \;
+  }
+  \caption{SHA-1 Round 2}
+  \label{algo:SHA_1_Round_2}
+\end{algorithm}
+
 
 \subsection{Security Status of Various Hash Functions}\label{subsec:Hash_Functions_Security_Status}
 In practice, MD5 and SHA-1 are the most common, but are also broken.
