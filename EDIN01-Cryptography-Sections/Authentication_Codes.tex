@@ -27,6 +27,12 @@ The problem is that the same key $K$ cannot be reused anywhere.
   A \emph{digitial signature} is a way to sign a message to ensure authenticity and that the sender cannot repudiate the message (say they didn't send it).
   A message signed with a sender’s private key can be verified by anyone who has access to the sender’s public key.
   Thereby proving that the correct original sender signed it and that the message has not been tampered with during message transmission (authenticity and nonrepudiation).
+
+  To generate the signature:
+  \begin{equation}\label{eq:Digital_Signature-Generate}
+    \text{Message} + \text{Alice's Private Key} = \text{Signature}
+  \end{equation}
+
 \end{definition}
 
 This is an asymmetric (\nameref{def:Public_Key_Encryption_Scheme}) solution.
