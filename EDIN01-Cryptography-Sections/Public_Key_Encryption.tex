@@ -205,6 +205,23 @@ The problem with this is that if $m$ is a 1024-bit number, for instance, then $\
 
 So, we have probabilistic theorems for determining primality of numbers.
 
+\subsubsection{Probabilistic Algorithms for Testing Primality}\label{subsubsec:Probabilistic_Algorithms_Testing_Primality}
+\paragraph{Fermat's Little Theorem}\label{par:Fermats_Little_Theorem}
+\begin{theorem}[Fermat's Little Theorem]\label{thm:Fermats_Little_Theorem}
+  Fermat's Little Theorem states that
+  \begin{equation}\label{eq:Fermats_Little_Theorem}
+    a^{m-1} = 1 \bmod m
+  \end{equation}
+  if $m$ is a \nameref{def:Prime} and $a$ such that $1 \leq a \leq m-1$.
+
+  When $m$ is not a \nameref{def:Prime}, we cannot know what we will receive when computing $a^{m-1}$.
+  However, if $a^{m-1} \neq 1 \bmod m$, we know \textbf{for certain} that $m$ is \textbf{not} a \nameref{def:Prime} number.
+\end{theorem}
+
+\begin{remark*}[Error Probability of \nameref{thm:Fermats_Little_Theorem}]
+  The error probability after repeating the test $k$ times would be less than $\frac{1}{2^{k}}$.
+\end{remark*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
