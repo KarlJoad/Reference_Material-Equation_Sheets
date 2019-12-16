@@ -106,6 +106,17 @@ Lastly, the number of bits of the message is appended as a separate, final, bloc
   \label{algo:SHA_1_Overview}
 \end{algorithm}
 
+Each of the rounds in the SHA-1 algorithm is slightly different.
+First, different functions are applied to $B, C, D$ and the round constant is also used in the corresponding round.
+The functions are defined as:
+\begin{align*}
+  \wedge &= \text{AND} \\
+  \vee &= \text{OR} \\
+  f(u, v, w) &= (y \wedge v) \vee ((\neg u) \wedge w) \\
+  g(u, v, w) &= (u \wedge v) \vee (u \wedge w) \vee (v \wedge w) \\
+  h(u, v, w) &= y \XOR v \XOR w
+\end{align*}
+
 
 \subsection{Security Status of Various Hash Functions}\label{subsec:Hash_Functions_Security_Status}
 In practice, MD5 and SHA-1 are the most common, but are also broken.
