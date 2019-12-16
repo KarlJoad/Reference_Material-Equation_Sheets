@@ -111,7 +111,25 @@ For the same iterative cipher, the decryption function $D_{K}(y)$ is just the ap
 
 \subsection{Modes of Operation}\label{subsec:Modes_of_Operation}
 \begin{definition}[Mode of Operation]\label{def:Mode_of_Operation}
+  A \emph{mode of operation} describes how to repeatedly apply a cipher's single-block operation to securely transform amounts of data larger than a block.
+  This is helpful because, by themselves, \nameref{def:Block_Cipher}s can only encrypt/decrypt one block.
+  To accomplish this, the plaintext is split up into blocks, and each block is encrypted.
+  \begin{equation*}
+    x_{1}, x_{2}, \ldots, x_{N}, x_{N+1}, \ldots
+  \end{equation*}
+
+  Let $X_{1} = (x_{1}, x_{2}, \ldots, x_{N})$ be the first block with length $N$.
+  Let $X_{2} = (x_{N+1}, x_{N+2}, \ldots, x_{2N})$ be the second block, also with length $N$.
+  The encryption is then done blockwise
   
+  Most modes require a unique binary sequence, often called an \nameref{def:Initialization_Vector} (IV), for each encryption operation.
+
+  There are 3 modes of operation that are discussed in this course:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{subsubsec:Electronic_Codebook_Mode}
+  \item \nameref{subsubsec:Cipher_Block_Chaining_Mode}
+  \item \nameref{subsubsec:Counter_Mode}
+  \end{enumerate}
 \end{definition}
 
 \subsection{Advanced Encryption Scheme}\label{subsec:AES}
