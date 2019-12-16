@@ -72,7 +72,20 @@ There are several reasons to use \nameref{def:Hash_Function}s.
 \end{definition}
 
 \subsection{SHA-1}\label{subsec:SHA_1}
-\textbf{TODO}
+The internal state of the algorithm is a set of 5 32-bit values.
+\begin{equation*}
+  (H_{1}, H_{2}, H_{3}, H_{4}, H_{5})
+\end{equation*}
+and 4 round constants
+\begin{equation*}
+  y_{1}, y_{2}, y_{3}, y_{4}
+\end{equation*}
+
+\nameref{def:Length_Strengthening} is used, but is slightly modified in the SHA-1 algorithm.
+First, a one bit is appended to the plaintext message, to signal its end.
+Then zeros are padded until the length of the plaintext message is a multiple of 512-bits.
+Lastly, the number of bits of the message is appended as a separate, final, block.
+
 
 \subsection{Security Status of Various Hash Functions}\label{subsec:Hash_Functions_Security_Status}
 In practice, MD5 and SHA-1 are the most common, but are also broken.
