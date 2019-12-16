@@ -187,6 +187,35 @@ Notice how one could still make out the outline of the image in \Cref{subfig:ECB
 This is undesirable, because some information is still leaked to the attacker, even after encryption.
 Obviously, we need something better than ECB Mode.
 
+\subsubsection{Cipher Block Chaining (CBC) Mode}\label{subsubsec:Cipher_Block_Chaining_Mode}
+\begin{definition}[Cipher Block Chaining Mode]\label{def:Cipher_Block_Chaining_Mode}
+  \emph{Cipher Block Chaining Mode} (\emph{CBC Mode}) follows a different rule.
+  \begin{equation}\label{eq:Cipher_Block_Chaining_Mode_Encryption}
+    Y_{i} = E_{K}(Y_{i-1} \XOR X_{i})
+  \end{equation}
+  where $Y_{0}$ is the \nameref{def:Initialization_Vector}.
+\end{definition}
+
+The steps required to operate a block cipher in CBC mode are illustrated in \Crefrange{subfig:CBC_Mode_Steps_Encryption}{subfig:CBC_Mode_Steps_Decryption}.
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}[h!]{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/CBC_Mode-Encryption.png}
+    \caption{\nameref{def:Cipher_Block_Chaining_Mode} Encryption Steps}
+    \label{subfig:CBC_Mode_Steps_Encryption}
+  \end{subfigure}
+  \vline{}
+  \begin{subfigure}[h!]{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/CBC_Mode-Decryption.png}
+    \caption{\nameref{def:Cipher_Block_Chaining_Mode} Decryption Steps}
+    \label{subfig:CBC_Mode_Steps_Decryption}
+  \end{subfigure}
+  \caption{\nameref*{def:Cipher_Block_Chaining_Mode} Steps}
+  \label{fig:Cipher_Block_Chaining_Mode_Steps}
+\end{figure}
+
 \subsection{Advanced Encryption Scheme}\label{subsec:AES}
 \textbf{TODO}
 \begin{definition}[Advanced Encryption Scheme]\label{def:AES}
