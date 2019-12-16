@@ -166,6 +166,37 @@ To easily compute the exponentiation of $M$ with $e$, we apply the \emph{square 
   \end{equation*}
 \end{definition}
 
+\begin{example}[Lecture 14, Example 1]{Square and Multiply Algorithm}
+  Compute $2728^{25}$ in \TextIntsMod{7849} using the \nameref{def:Square_Multiply_Algorithm}?
+  \tcblower{}
+  First, rewrite 25 as a result of products of 2.
+  \begin{align*}
+    25 &= 16 + 8 + 1 \\
+    &= 1 (2^{4}) + 1 (2^{3}) + 0 (2^{2}) + 1 (2^{1}) + 1 (2^{0})
+  \end{align*}
+  This results in
+  \begin{equation*}
+    2728^{25} = 2728^{1} \cdot 2728^{8} \cdot 2728^{16}
+  \end{equation*}
+
+  Now we perform the squarings required until we get to $2728^{16}$.
+  \begin{align*}
+    2728^{2} &= 7441984 \bmod 7849 = 1132 \\
+    2728^{4} &= {(2728^{2})}^{2} = 1132^{2} \bmod 7849 = 2037 \\
+    2728^{8} &= {(2728^{4})}^{2} = 2037^{2} \bmod 7849 = 5097 \\
+    2728^{16} &= {(2728^{8})}^{2} = 5097^{2} \bmod 7849 = 7068
+  \end{align*}
+
+  Now substituting our values in and multiplying through (ensuring we reduce modulo $n$ at the end).
+  \begin{align*}
+    2728^{25} &= 2728^{16+8+1} \\
+              &= (2728 \cdot 5097 \cdot 7068) \bmod 7849 \\
+              &= 2401
+  \end{align*}
+
+  Our answer is $2728^{25} \bmod 7849 = 2401$.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
