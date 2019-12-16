@@ -283,6 +283,10 @@ The algorithm stands as:
 \item Compute the unknown prime $p$ as $p = \gcd(a-1, n)$.
 \end{enumerate}
 
+An important conclusion to draw here is that the \nameref{def:Prime}s $p$ and $q$ must be chosen such that $p-1$ and $q-1$ each contains a large \nameref{def:Prime} in their factorization.
+The usual approach is to generate a random \nameref{def:Prime} $p_{1}$ and test whether $p = 2p_{1} + 1$ is a prime number.
+If so, we choose $p$.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
