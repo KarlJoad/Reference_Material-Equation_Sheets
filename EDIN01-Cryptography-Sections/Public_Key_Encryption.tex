@@ -383,6 +383,21 @@ A \nameref{def:Certificate_Authority}-based system works by establishing a ``web
   \end{remark}
 \end{definition}
 
+\begin{example}[Lecture 15, Example 1]{Diffie Hellman Key Exchange}
+  Given the comain parameters $p = 2147482659$, $g = 2$ and the secret keys chosen by Alice $a = 12345$ and Bob $b = 654323$, compute their shared key?
+  \tcblower{}
+  \begin{align*}
+    &\text{Alice} & &\text{Bob} \\
+    a &= 12345 & b &=654323 \\
+    A &= g^{a} = 2^{12345} \bmod 2147482659 = 428647416 & B &= g^{b} = 2^{654323} \bmod 2147482659 = 450904856 \\
+    K_{A} &= B^{a} \bmod 2147482659 & K_{B} &= A^{b} \bmod 2147482659\\
+    &= 450904856^{12345} \bmod 2147482659 & &= 428647416^{654323} \bmod 2147482659 \\
+    &= 1333327162 & &= 1333327162
+  \end{align*}
+
+  Thus, Alice and Bob have managed to agree on a secret key of $K=1333327162$.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
