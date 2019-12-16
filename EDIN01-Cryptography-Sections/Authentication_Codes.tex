@@ -33,6 +33,11 @@ The problem is that the same key $K$ cannot be reused anywhere.
     \text{Message} + \text{Alice's Private Key} = \text{Signature}
   \end{equation}
 
+  To validate Alice's message's signature, ensuring it is from her,
+  \begin{equation}\label{eq:Digital_Signature-Validate}
+    \text{Message} + \text{Signature} + \text{Alice's Private Key} = \text{YES/NO}
+  \end{equation}
+
 \end{definition}
 
 This is an asymmetric (\nameref{def:Public_Key_Encryption_Scheme}) solution.
