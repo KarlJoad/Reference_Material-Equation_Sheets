@@ -12,14 +12,26 @@
 
 \begin{definition}[Preimage Resistant]\label{def:Preimage_Resistant}
   A \nameref{def:Hash_Function} given an output hash value of $n$ bits, is considered \emph{preimage resistant} if the time complexity for finding the input plaintext is $O(2^{n})$.
+
+  \begin{remark}[Assumption of Preimage Resistance]\label{rmk:Preimage_Resistant_Assumption}
+    Assuming a \nameref{def:Hash_Function} is \nameref{def:Preimage_Resistant} for almost every element of the range of $h$ is a weaker assumption than assuming it is either \nameref{def:Second_Preimage_Resistant} or \nameref{def:Collision_Resistant}.
+  \end{remark}
 \end{definition}
 
 \begin{definition}[Second Preimage Resistant]\label{def:Second_Preimage_Resistant}
   A \nameref{def:Hash_Function} that is \emph{second preimage resistant} is one where given one message, it is difficult to find another message with the same hash value.
+
+  \begin{remark}[Assumption of Second Preimage Resistance]\label{rmk:Second_Preimage_Resistant_Assumption}
+    Assuming a \nameref{def:Hash_Function} is \nameref{def:Second_Preimage_Resistant} is a weaker assumption than assuming it is \nameref{def:Collision_Resistant}.
+  \end{remark}
 \end{definition}
 
 \begin{definition}[Collision Resistant]\label{def:Collision_Resistant}
   A \nameref{def:Hash_Function} is \emph{collision resistant} if it is hard to find 2 plaintext messages with the exact same hash value.
+
+  \begin{remark}[Assumption of Collision Resistance]\label{rmk:Collision_Resistant_Assumption}
+    Assuming a \nameref{def:Hash_Function} is \nameref{def:Collision_Resistant} is the strongest assumption we can make about a well-crafted \nameref{def:Hash_Function}.
+  \end{remark}
 \end{definition}
 
 \subsection{Usages of Hash Functions}\label{subsec:Hash_Functions_Usages}
