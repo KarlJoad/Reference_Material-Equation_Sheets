@@ -117,6 +117,17 @@ The functions are defined as:
   h(u, v, w) &= y \XOR v \XOR w
 \end{align*}
 
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \For{$j=0$ \KwTo{} $19$ }{
+    $t = (A \lll 5) + f(B, C, D) + E + X_{j} + y_{1}$ \;
+    $(A, B, C, D, E) = (t, A, B \lll 30, C, D)$ \;
+  }
+  \caption{SHA-1 Round 1}
+  \label{algo:SHA_1_Round_1}
+\end{algorithm}
+
 
 \subsection{Security Status of Various Hash Functions}\label{subsec:Hash_Functions_Security_Status}
 In practice, MD5 and SHA-1 are the most common, but are also broken.
