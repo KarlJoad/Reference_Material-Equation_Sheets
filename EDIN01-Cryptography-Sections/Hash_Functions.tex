@@ -86,6 +86,26 @@ First, a one bit is appended to the plaintext message, to signal its end.
 Then zeros are padded until the length of the plaintext message is a multiple of 512-bits.
 Lastly, the number of bits of the message is appended as a separate, final, block.
 
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+
+  \Input{$(H_{1}, H_{2}, H_{3}, H_{4}, H_{5})$ and $(y_{1}, y_{2}, y_{3}, y_{4})$}
+  \Output{Concatenation of $(H_{1}, H_{2}, H_{3}, H_{4}, H_{5})$}
+  \BlankLine{}
+
+  $(A, B, C, D, E) = (H_{1}, H_{2}, H_{3}, H_{4}, H_{5})$\;
+  \For{$j=16$ \KwTo{} $79$}{
+    $X_{j} = \bigl( (X_{j-3} \XOR X_{j-8} \XOR X_{j-14} \XOR X_{j-16}) \lll 1 \bigr)$
+  }
+  Execute Round 1 (\Cref{algo:SHA_1_Round_1}) \;
+  Execute Round 2 (\Cref{algo:SHA_1_Round_2}) \;
+  Execute Round 3 (\Cref{algo:SHA_1_Round_3}) \;
+  Execute Round 4 (\Cref{algo:SHA_1_Round_4}) \;
+  \caption{SHA-1 Overview}
+  \label{algo:SHA_1_Overview}
+\end{algorithm}
+
 
 \subsection{Security Status of Various Hash Functions}\label{subsec:Hash_Functions_Security_Status}
 In practice, MD5 and SHA-1 are the most common, but are also broken.
