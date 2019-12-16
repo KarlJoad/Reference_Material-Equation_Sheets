@@ -137,6 +137,56 @@ For the same iterative cipher, the decryption function $D_{K}(y)$ is just the ap
   The IV has to be non-repeating and, for some modes, random as well.
 \end{definition}
 
+\subsubsection{Electronic Codebook (ECB) Mode}\label{subsubsec:Electronic_Codebook_Mode}
+\begin{equation}\label{eq:Electronic_Codebook_Mode_Encryption}
+  C_{I} = E_{K}(X_{i}) \:\: i=1, 2, \ldots
+\end{equation}
+
+The steps required to operate a block cipher in ECB mode are illustrated in \Crefrange{subfig:ECB_Mode_Steps_Encryption}{subfig:ECB_Mode_Steps_Decryption}.
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}[h!]{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/ECB_Mode-Encryption.png}
+    \caption{\nameref{subsubsec:Electronic_Codebook_Mode} Encryption Steps}
+    \label{subfig:ECB_Mode_Steps_Encryption}
+  \end{subfigure}
+  \vline{}
+  \begin{subfigure}[h!]{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/ECB_Mode-Decryption.png}
+    \caption{\nameref{subsubsec:Electronic_Codebook_Mode} Decryption Steps}
+    \label{subfig:ECB_Mode_Steps_Decryption}
+  \end{subfigure}
+  \caption{\nameref*{subsubsec:Electronic_Codebook_Mode} Steps}
+  \label{fig:Electronic_Codebook_Mode_Steps}
+\end{figure}
+
+\paragraph{Problems with \nameref*{subsubsec:Electronic_Codebook_Mode}}\label{par:Problems_Electronic_Codebook_Mode}
+If 2 plaintext blocks are the same, then the 2 corresponding ciphertext blocks are \emph{also} the same.
+For example,
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}[h!]{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.50]{./Drawings/EDIN01-Cryptography/Tux.png}
+    \caption{Original Plaintext}
+    \label{subfig:ECB_Mode_Plaintext_Input}
+  \end{subfigure}
+  \begin{subfigure}[h!]{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/Tux_ECB.jpg}
+    \caption{ECB Mode Encrypted Plaintext}
+    \label{subfig:ECB_Mode_Encrypted_Plaintext}
+  \end{subfigure}
+  \caption{Problem with ECB Mode}
+  \label{fig:Problem_Electronic_Codebook_Mode}
+\end{figure}
+
+Notice how one could still make out the outline of the image in \Cref{subfig:ECB_Mode_Encrypted_Plaintext}.
+This is undesirable, because some information is still leaked to the attacker, even after encryption.
+Obviously, we need something better than ECB Mode.
+
 \subsection{Advanced Encryption Scheme}\label{subsec:AES}
 \textbf{TODO}
 \begin{definition}[Advanced Encryption Scheme]\label{def:AES}
