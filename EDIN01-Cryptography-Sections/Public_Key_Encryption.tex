@@ -277,6 +277,12 @@ All \nameref{def:Public_Key_Encryption_Scheme}s used today rely on the intractab
   So, $p \Divides (a-1)$ and since $p \Divides n$, we also have $p = \gcd(a-1, n)$.
 \end{theorem}
 
+The algorithm stands as:
+\begin{enumerate}[noitemsep]
+\item Compute $a^{2B!} \bmod n$.
+\item Compute the unknown prime $p$ as $p = \gcd(a-1, n)$.
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
