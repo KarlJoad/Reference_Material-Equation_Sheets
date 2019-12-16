@@ -332,6 +332,19 @@ The most common solution to this problem is the use of a \nameref{def:Digital_Ce
   A \emph{certificate authority} or (\emph{CA}) is a third-party that vouches for the validity of the public keys in use by an entity/principal.
 \end{definition}
 
+\subsubsection{Digital Certificates and Certificate Authorities}\label{subsubsec:Digital_Certificate_Certificate_Authorities}
+A \nameref{def:Certificate_Authority}-based system works by establishing a ``web of trust''.
+\begin{enumerate}[noitemsep]
+\item All users have a trusted copy of the public key of the \textbf{\nameref{def:Certificate_Authority}}. For example, these are embedded in your web browser.
+\item The \nameref{def:Certificate_Authority} signs data strings containing the following information.
+  \begin{center}
+    (Alice, $\ldots$, Alice's public key, CA's signature)
+  \end{center}
+  This data string and the associated signature is called a \nameref{def:Digital_Certificate}.
+  The \nameref{def:Certificate_Authority} only signs the data if it believes the public key really belongs to Alice.
+\item When Alice sends her public key, contained in the digital certificate, you now trust that the public key is really Alice's, since you trust the \nameref{def:Certificate_Authority} and you checked their signature too.
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
