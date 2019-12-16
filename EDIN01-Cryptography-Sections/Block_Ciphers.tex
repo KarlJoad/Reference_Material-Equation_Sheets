@@ -294,6 +294,16 @@ The steps required to operate a block cipher in counter mode are illustrated in 
   \label{fig:AES_Structure}
 \end{figure}
 
+\subsubsection{\texttt{AddRoundKey}}\label{subsubsec:AES-AddRoundKey}
+In the \texttt{AddRoundKey} step, each byte of the block is combined with the \nameref{def:Round_Key} using bitwise XOR.\
+\Cref{fig:AES_AddRoundKey} illustrates this step.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.35]{./Drawings/EDIN01-Cryptography/AES-0-AddRoundKey.png}
+  \caption{\nameref{def:AES} \texttt{AddRoundKey}}
+  \label{fig:AES_AddRoundKey}
+\end{figure}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
