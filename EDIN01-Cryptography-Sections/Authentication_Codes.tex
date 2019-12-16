@@ -68,6 +68,13 @@ The 3 types of assumptions about the types of attacks that we can make are:
 \item \emph{Chosen Message Attack}: Eve gets a list of messages of \textbf{her} choice signed.
 \end{enumerate}
 
+The 3 different goals that an adversary could have are:
+\begin{enumerate}[noitemsep]
+\item \emph{Total Break}: The attacker attempts to find the secret signing key used to sign the message.
+\item \emph{Selective Forgery}: The attacker attempts to place a valid signature on a \textbf{given} message that has not been signed before.
+\item \emph{Existential Forgery}: The attacker tries to place a valid signature on \textbf{any} message that has not been signed before.
+\end{enumerate}
+
 \subsection{Authentication Codes}\label{subsec:Authentication_Codes}
 \begin{definition}[Authentication Code]\label{def:Authentication_Code}
   An \emph{authentication code} is used to check if the received message was sent by the claimed sender.
