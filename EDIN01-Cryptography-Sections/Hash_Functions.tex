@@ -6,7 +6,7 @@
   \item It must be \nameref{def:One_Way_Function}
   \item \nameref{def:Preimage_Resistant}
   \item \nameref{def:Second_Preimage_Resistant}
-  \item \nameref{def:Collision}-resistant
+  \item \nameref{def:Collision_Resistant}
   \end{enumerate}
 \end{definition}
 
@@ -18,8 +18,8 @@
   \textbf{TODO}
 \end{definition}
 
-\begin{definition}[Collision]\label{def:Collision}
-  \textbf{TODO}
+\begin{definition}[Collision Resistant]\label{def:Collision_Resistant}
+  A \nameref{def:Hash_Function} is \emph{collision resistant} if it is hard to find 2 plaintext messages with the exact same hash value.
 \end{definition}
 
 \subsection{Usages of Hash Functions}\label{subsec:Hash_Functions_Usages}
@@ -50,7 +50,7 @@ There are several reasons to use \nameref{def:Hash_Function}s.
 \end{definition}
 
 \begin{theorem}
-  If the compression function $f$ is \nameref{def:Collision}-resistant, then the \nameref{def:Hash_Function} $h$ is also \nameref{def:Collision}-resistant.
+  If the compression function $f$ is \nameref{def:Collision_Resistant}, then the \nameref{def:Hash_Function} $h$ is also \nameref{def:Collision_Resistant}.
 \end{theorem}
 
 \begin{definition}[Length Strengthening]\label{def:Length_Strengthening}
