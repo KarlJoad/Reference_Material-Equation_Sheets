@@ -315,6 +315,19 @@ There are 3 basic \nameref{def:Cryptographic_Primitive}s that \nameref{def:Publi
 \item \nameref{subsec:Key_Exchange}: A cryptographic protocol that allows two parties that have no prior knowledge of each other to jointly establish a shared secret key.
 \end{enumerate}
 
+The major problem with using a public key is linking it an entity or principal.
+The most common solution to this problem is the use of a \nameref{def:Digital_Certificate}.
+
+\begin{definition}[Digital Certificate]\label{def:Digital_Certificate}
+  A \emph{digital certificate} is a ``stamp of approval'' that the public key belongs to who the principal says it belongs to.
+  There is a third-party called a \nameref{def:Certificate_Authority} that handles the signing of entity's/principal's public keys to ensure they are authentic.
+
+  A digital certificate has the form of
+  \begin{center}
+    (Alice, $\ldots$, Alice's public key, CA's signature)
+  \end{center}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
