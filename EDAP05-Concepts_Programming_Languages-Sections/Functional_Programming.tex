@@ -174,6 +174,28 @@ We can simplify them down to a \texttt{map} function, which takes a list and a f
 The code for this \texttt{map} function is shown below.
 \inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Code/lst-map.sml}
 
+\subsection{Continuations}\label{subsec:Continuations}
+\begin{definition}[Continuation]\label{def:Continuation}
+  \emph{Continuation}s allow us to abstract in the opposite direction of \nameref{def:Variable}s.
+  They allow us to abstract over the \underline{context in which the values get used}.
+
+  They describe the required input to an expression (variables, values, other expressions, etc.), any computations required by the expression (adding a value, computing another expression, etc.) the command to be executed on a line (the instruction, \texttt{print}, etc.) and then the next statement.
+
+  For example, in the code snippet of \texttt{Mystery} below, there is a continuation on each line where a \nameref{def:Variable} is used in place of a value.
+\begin{minted}[frame=lines,linenos]{pascal}
+VAR x : INTEGER;
+VAR y : INTEGER
+BEGIN
+  ...
+  PRINT x + 1;
+  PRINT y
+END
+\end{minted}
+  So, there are continuations on lines 5 and 6.
+  The one on line 6 is ``take an integer value, \texttt{PRINT} that value, and then \texttt{END} the program''.
+  The continuation on line 5 is ``take an integer value, add 1 to it, \texttt{PRINT} the result, then \texttt{PRINT} y, and finally \texttt{END} the program''.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
