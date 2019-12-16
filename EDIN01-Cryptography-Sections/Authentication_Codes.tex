@@ -60,6 +60,14 @@ The disadvantages of this are:
 \item Both of these factors slow down the process of this technique compared to others.
 \end{itemize}
 
+\subsubsection{Security Assumptions for \nameref*{subsec:Digital_Signatures}}\label{subsubsec:Security_Assumptions_Digital_Signatures}
+The 3 types of assumptions about the types of attacks that we can make are:
+\begin{enumerate}[noitemsep]
+\item \emph{Key-Only Attack}: Eve knows the public key and verification algorithm used.
+\item \emph{Known Message Attack}: Eve knows a list of signed messages.
+\item \emph{Chosen Message Attack}: Eve gets a list of messages of \textbf{her} choice signed.
+\end{enumerate}
+
 \subsection{Authentication Codes}\label{subsec:Authentication_Codes}
 \begin{definition}[Authentication Code]\label{def:Authentication_Code}
   An \emph{authentication code} is used to check if the received message was sent by the claimed sender.
