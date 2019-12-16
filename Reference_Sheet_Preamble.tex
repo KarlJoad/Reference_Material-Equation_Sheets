@@ -30,10 +30,14 @@ citestyle=authoryear]{biblatex} % Must include citation somewhere in document to
 \usepackage{ctable} % Greater control over tables and how they look
 \usepackage{multirow} % Allow us to have a single cell in a table span multiple rows
 \usepackage{titling} % Put document information throughout the document programmatically
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e} % Allows us to write algorithms in a nice style.
 
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 \counterwithin{equation}{section}
+\counterwithin{algocf}{section}
+\crefname{algocf}{algorithm}{algorithms}
+\Crefname{algocf}{Algorithm}{Algorithms}
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4} % Include \paragraph in toc
 \crefname{paragraph}{paragraph}{paragraphs}
