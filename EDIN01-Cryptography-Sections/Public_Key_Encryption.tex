@@ -345,6 +345,19 @@ A \nameref{def:Certificate_Authority}-based system works by establishing a ``web
 \item When Alice sends her public key, contained in the digital certificate, you now trust that the public key is really Alice's, since you trust the \nameref{def:Certificate_Authority} and you checked their signature too.
 \end{enumerate}
 
+\subsection{The Discrete Logarithm Problem}\label{subsec:Discrete_Log_Problem}
+\begin{definition}[Discrete Logarithm Problem]\label{def:Discrete_Log_Problem}
+  Let $(G, *)$ be an \nameref{def:Abelian} \nameref{def:Group}.
+  The \emph{discrete logarithm problem} states that given $g, h \in G$, find an $x$ (if it exists) such that $g^{x} = h$.
+
+  The difficulty of this problem depends on the group $G$ chosen.
+  \begin{itemize}[noitemsep]
+  \item Very Easy: Polynomial Time Algorithm. $(\IntsModN{}, +)$
+  \item Hard: Sub-Exponential Time Algorithm. $(\FiniteMathField{F}{p}{*})$
+  \item Very Hard: Exponential Time Algorithm. Elliptic Curve Groups (Not discussed in this course).
+  \end{itemize}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
