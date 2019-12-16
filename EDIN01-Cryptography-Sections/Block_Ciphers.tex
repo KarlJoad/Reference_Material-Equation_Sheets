@@ -304,6 +304,16 @@ In the \texttt{AddRoundKey} step, each byte of the block is combined with the \n
   \label{fig:AES_AddRoundKey}
 \end{figure}
 
+\subsubsection{\texttt{SubBytes}}\label{subsubsec:AES-SubBytes}
+The \texttt{SubBytes} is a non-linear substitution step where each byte is replaced with another according to a lookup table.
+\Cref{fig:AES_SubBytes} illustrates this step.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.35]{./Drawings/EDIN01-Cryptography/AES-1-SubBytes.png}
+  \caption{\nameref{def:AES} \texttt{SubBytes}}
+  \label{fig:AES_SubBytes}
+\end{figure}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
