@@ -197,6 +197,14 @@ To easily compute the exponentiation of $M$ with $e$, we apply the \emph{square 
   Our answer is $2728^{25} \bmod 7849 = 2401$.
 \end{example}
 
+\subsection{Primality Testing}\label{subsec:Primality_Testing}
+How do we check whether a given number $m$ is a \nameref{def:Prime} number?
+
+The na\"{\i}ve approach said to perform trial divisions such that $x \Divides m$ for all integers $x$ where $2 \leq x \leq \sqrt{m}$.
+The problem with this is that if $m$ is a 1024-bit number, for instance, then $\sqrt{m}$ is 512-bits, and performing $2^{512}$ tests is not possible.
+
+So, we have probabilistic theorems for determining primality of numbers.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
