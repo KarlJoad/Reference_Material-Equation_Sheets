@@ -142,6 +142,30 @@ Namely, that for large semi-prime numbers, it is difficult to find its constiuen
 However, this \textbf{does not} mean that breaking RSA is equivalent to solving a factorization problem.
 It is currently unknown if there is a way to break RSA without factoring the integer $n$.
 
+\subsubsection{Implementation of the \nameref*{subsec:RSA_Public_Key_Encryption_Scheme}}\label{subsubsec:RSA_Encryption_Scheme-Implementation}
+In order to compute $M^{e} \bmod n$ we need $L = \lceil \log_{2} n \rceil$ bits to store a value from \TextIntsMod{n}.
+
+To easily compute the exponentiation of $M$ with $e$, we apply the \emph{square and multiply algorithm}.
+\begin{definition}[Square and Multiply Algorithm]\label{def:Square_Multiply_Algorithm}
+  The \emph{square and multiply algorithm} is a way to efficiently compute exponents.
+  If the expression in question is $M^{e}$, we first rewrite $e$ as a sum of powers of 2.
+  \begin{equation*}
+    e = e_{0} + e_{1} \cdot 2 + e_{2} \cdot 2^{2} + \cdots + e_{L-1} w^{L-1}
+  \end{equation*}
+  where $e_{i} \in \IntsMod{2}$ and $0 \leq i \leq L-1$.
+
+  Next, $L-1$ squarings of $M$ occurs.
+  \begin{equation*}
+    M^{2}, \Bigl( M^{4} = {\left( M^{2} \right)}^{2} \Bigr), \Bigl( M^{4} = {\left( M^{4} \right)}^{2} \Bigr), \ldots
+  \end{equation*}
+  in \TextIntsMod{n} (i.e.\ reducing modulo $n$ every time).
+
+  Lastly, we perform at most $L-1$ multiplications by computing $M^{e}$ as
+  \begin{equation*}
+    M^{e} = M^{e_{0}} \cdot {\left( M^{2} \right)}^{e_{1}} \cdot {\left( M^{4} \right)}^{e_{2}} \cdots {\left( M^{2^{L-1}} \right)}^{e_{L-1}}
+  \end{equation*}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
