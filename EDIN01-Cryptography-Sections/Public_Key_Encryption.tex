@@ -136,8 +136,11 @@
   Thus, Bob gets Alice's original message, and he is likely the only one who was able to decrypt it.
 \end{example}
 
-\subsubsection{Security of the RSA Public-Key Encryption Scheme}\label{subsubsec:RSA_Encryption_Scheme-Security}
-\textbf{TODO}
+\subsubsection{Security of the \nameref*{subsec:RSA_Public_Key_Encryption_Scheme}}\label{subsubsec:RSA_Encryption_Scheme-Security}
+The \nameref{def:RSA_Public_Key_Encryption_Scheme} relies on the factorization problem.
+Namely, that for large semi-prime numbers, it is difficult to find its constiuent \nameref{def:Prime} factors.
+However, this \textbf{does not} mean that breaking RSA is equivalent to solving a factorization problem.
+It is currently unknown if there is a way to break RSA without factoring the integer $n$.
 
 %%% Local Variables:
 %%% mode: latex
