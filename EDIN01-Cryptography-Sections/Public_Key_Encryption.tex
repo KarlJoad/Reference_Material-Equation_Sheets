@@ -247,6 +247,36 @@ So, we have probabilistic theorems for determining primality of numbers.
   \end{equation}
 \end{theorem}
 
+\subsection{Factoring}\label{subsec:Factoring}
+All \nameref{def:Public_Key_Encryption_Scheme}s used today rely on the intractability of factoring large semi-primes.
+
+\subsubsection{\texorpdfstring{Pollard's $(p-1)$-Method}{Pollard's Method}}\label{subsubsec:Pollards_Method}
+\begin{theorem}[\texorpdfstring{Pollard's $(p-1)$-Method}{Pollard's Method}]\label{thm:Pollards_Method}
+  Let $n = pq$ and let $p-1$ factor as
+  \begin{equation*}
+    p-1 = q_{1}q_{2} \cdots q_{k}
+  \end{equation*}
+  where each $q_{i}$ is a \nameref{def:Prime} power.
+
+  There is a condition where each $q_{i} < B$ where $B$ is a predetermined ``bound''.
+  If this condition is valid, then we have
+  \begin{equation*}
+    (p-1) \Divides B!
+  \end{equation*}
+
+  We compute $a = 2^{B!} \bmod n$.
+  Now let $a' = 2^{B!} \bmod p$.
+  Since $p \Divides n$, we must have $a \bmod p = a'$.
+
+  \nameref{thm:Fermats_Little_Theorem} states that
+  \begin{equation*}
+    2^{p-1} = 1 \bmod p
+  \end{equation*}
+  and since $(p-1) \Divides B!$, we also have $a' = 1 \bmod p$, which leads to $a = 1 \bmod p$.
+
+  So, $p \Divides (a-1)$ and since $p \Divides n$, we also have $p = \gcd(a-1, n)$.
+\end{theorem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
