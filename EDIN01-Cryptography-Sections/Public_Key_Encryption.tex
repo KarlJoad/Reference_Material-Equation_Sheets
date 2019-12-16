@@ -5,6 +5,10 @@
 
   Furthermore, after choosing such a pair $(e, d)$, the \emph{public key} $e$ (or the \emph{public parameter}) is made public, while the associated \emph{secret key} $d$ is kept secret.
   For the scheme to be secure, it must be computationally infeasible to compute $d$ and/or $E_{e}^{-1}(C)$, knowing the public value $e$.
+  These types of schemes are built with \nameref{def:One_Way_Function}s and/or \nameref{def:Trapdoor_One_Way_Function}s.
+
+  This means that the encryption key can be public, allowing anyone to send an encrypted message to the receiver.
+  Then, only the receiver can decrypt the message, because the decryption key is kept secret.
 
   \begin{remark}[Construction]
     These are constructed through multiple \nameref{def:Trapdoor_One_Way_Function}s.
