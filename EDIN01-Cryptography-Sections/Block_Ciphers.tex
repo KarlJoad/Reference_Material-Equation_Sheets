@@ -97,6 +97,12 @@ For the same iterative cipher, the decryption function $D_{K}(y)$ is just the ap
 \end{definition}
 
 \subsubsection{SP Network}\label{subsubsec:SP_Network}
+\begin{definition}[SP Network]\label{def:SP_Network}
+  An \emph{SP network} is a iterated \nameref{def:Block_Cipher} that consists of a mix between substitutions (\emph{S}) (\nameref{subsec:Simple_Substitution_Cipher}s) and permutations (\emph{P}) or linear transformations (~\pageref{subsubsec:Transposition_Cipher}s).
+  The \nameref{def:Round_Key} is added to the input to the \nameref{def:Round_Function} in a simple way ($\XOR$).
+
+  An example of these is the AES (Advanced Encryption Scheme) cipher.
+\end{definition}
 
 \subsection{Modes of Operation}\label{subsec:Modes_of_Operation}
 \begin{definition}[Mode of Operation]\label{def:Mode_of_Operation}
