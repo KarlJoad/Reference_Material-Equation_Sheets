@@ -363,6 +363,22 @@ A \nameref{def:Certificate_Authority}-based system works by establishing a ``web
   \emph{Key exchange} is a cryptographic protocol that allows two parties that have no prior knowledge of each other to jointly establish a shared secret key.
 \end{definition}
 
+\subsubsection{Diffie Hellman Key Exchange}\label{subsubsec:Diffie_Hellman_Key_Exchange}
+\begin{definition}[Diffie Hellman Key Exchange]\label{def:Diffie_Hellman_Key_Exchange}
+  The \emph{Diffie Hellman Key Exchange} is a type of \nameref{def:Key_Exchange} that allows 2 parties to agree to a secret key over an insecure channel without having met before.
+
+  Let $G = \FiniteMathField{F}{p}{*}$ and $g \in \FiniteMathField{F}{p}{*}$.
+  The basic message flows for this protocol is:
+  \begin{enumerate}[noitemsep]
+  \item Alice selects a secret $a$, and Bob selects a secret $b$.
+  \item Alice sends $A = g^{a} \bmod p$ to Bob.
+  \item Bob sends $B = g^{b} \bmod p$ to Alice.
+  \item Alice computes $K_{A} = B^{a} \bmod p = g^{b^{a}} = g^{ba}$.
+  \item Bob computes $K_{B} = A^{b} \bmod p= g^{a^{b}} = g^{ab}$.
+  \item If both $K_{A} = K_{B}$, then the secret key has been created for Alice and Bob.
+  \end{enumerate}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
