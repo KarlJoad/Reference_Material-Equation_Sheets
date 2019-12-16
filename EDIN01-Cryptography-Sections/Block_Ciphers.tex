@@ -324,6 +324,16 @@ The \texttt{ShiftRows} step is a transposition step where each row of the state 
   \label{fig:AES_ShiftRows}
 \end{figure}
 
+\subsubsection{\texttt{MixColumns}}\label{subsubsec:AES-MixColumns}
+The \texttt{MixColumns} step is a mixing operation which operates on the columns of the block, combining and evenly distributing the 4 bytes in each column.
+\Cref{fig:AES_MixColumns} illustrates this step.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.35]{./Drawings/EDIN01-Cryptography/AES-3-MixColumns.png}
+  \caption{\nameref{def:AES} \texttt{MixColumns}}
+  \label{fig:AES_MixColumns}
+\end{figure}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
