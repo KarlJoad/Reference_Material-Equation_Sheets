@@ -216,6 +216,38 @@ The steps required to operate a block cipher in CBC mode are illustrated in \Cre
   \label{fig:Cipher_Block_Chaining_Mode_Steps}
 \end{figure}
 
+\subsubsection{Counter Mode}\label{subsubsec:Counter_Mode}
+\begin{definition}[Counter Mode]\label{def:Counter_Mode}
+  \emph{Counter Mode} is another \nameref{def:Mode_of_Operation} that actually turns our \nameref{def:Block_Cipher} into a \nameref{def:Stream_Cipher}.
+  In this \nameref{def:Mode_of_Operation}, the \emph{count} of which block we are working with is encrypted.
+  Then, the encrypted count is XORed with the plaintext message, to produce our ciphertext message.
+
+  The keystream sequence is given by
+  \begin{equation}\label{eq:Counter_Mode_Keystream_Sequence}
+    E_{K}(0), E_{K}(1), E_{K}(2), \ldots
+  \end{equation}
+\end{definition}
+
+The steps required to operate a block cipher in counter mode are illustrated in \Crefrange{subfig:Counter_Mode_Steps_Encryption}{subfig:Counter_Mode_Steps_Decryption}.
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}[h!]{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/Counter_Mode-Encryption.png}
+    \caption{\nameref{def:Counter_Mode} Encryption Steps}
+    \label{subfig:Counter_Mode_Steps_Encryption}
+  \end{subfigure}
+  \vline{}
+  \begin{subfigure}[h!]{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/Counter_Mode-Decryption.png}
+    \caption{\nameref{def:Counter_Mode} Decryption Steps}
+    \label{subfig:Counter_Mode_Steps_Decryption}
+  \end{subfigure}
+  \caption{\nameref*{def:Cipher_Block_Chaining_Mode} Steps}
+  \label{fig:Cipher_Block_Chaining_Mode_Steps}
+\end{figure}
+
 \subsection{Advanced Encryption Scheme}\label{subsec:AES}
 \textbf{TODO}
 \begin{definition}[Advanced Encryption Scheme]\label{def:AES}
