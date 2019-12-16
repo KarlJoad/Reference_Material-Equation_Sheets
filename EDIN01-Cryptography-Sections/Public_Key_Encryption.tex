@@ -148,22 +148,32 @@ In order to compute $M^{e} \bmod n$ we need $L = \lceil \log_{2} n \rceil$ bits 
 To easily compute the exponentiation of $M$ with $e$, we apply the \emph{square and multiply algorithm}.
 \begin{definition}[Square and Multiply Algorithm]\label{def:Square_Multiply_Algorithm}
   The \emph{square and multiply algorithm} is a way to efficiently compute exponents.
-  If the expression in question is $M^{e}$, we first rewrite $e$ as a sum of powers of 2.
-  \begin{equation*}
-    e = e_{0} + e_{1} \cdot 2 + e_{2} \cdot 2^{2} + \cdots + e_{L-1} w^{L-1}
-  \end{equation*}
-  where $e_{i} \in \IntsMod{2}$ and $0 \leq i \leq L-1$.
 
-  Next, $L-1$ squarings of $M$ occurs.
-  \begin{equation*}
-    M^{2}, \Bigl( M^{4} = {\left( M^{2} \right)}^{2} \Bigr), \Bigl( M^{4} = {\left( M^{4} \right)}^{2} \Bigr), \ldots
-  \end{equation*}
-  in \TextIntsMod{n} (i.e.\ reducing modulo $n$ every time).
+  \begin{algorithm}[H]
+    \DontPrintSemicolon{}
+    \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
 
-  Lastly, we perform at most $L-1$ multiplications by computing $M^{e}$ as
-  \begin{equation*}
-    M^{e} = M^{e_{0}} \cdot {\left( M^{2} \right)}^{e_{1}} \cdot {\left( M^{4} \right)}^{e_{2}} \cdots {\left( M^{2^{L-1}} \right)}^{e_{L-1}}
-  \end{equation*}
+    \Input{An integer $M$ raised to some exponent $e$ modulo some number $n$, written $M^{e} \bmod n$.}
+    \Output{The result of the integer exponentiation modulo $n$.}
+    \BlankLine{}
+    Rewrite $e$ as a sum of powers of 2.
+    \begin{equation*}
+      e = e_{0} + e_{1} \cdot 2 + e_{2} \cdot 2^{2} + \cdots + e_{L-1} w^{L-1}
+    \end{equation*}
+    where $e_{i} \in \IntsMod{2}$ and $0 \leq i \leq L-1$. \;
+    Next, $L-1$ squarings of $M$ occurs.
+    \begin{equation*}
+      M^{2}, \Bigl( M^{4} = {\left( M^{2} \right)}^{2} \Bigr), \Bigl( M^{4} = {\left( M^{4} \right)}^{2} \Bigr), \ldots
+    \end{equation*}
+    in \TextIntsMod{n} (i.e.\ reducing modulo $n$ every time). \;
+
+    Lastly, we perform at most $L-1$ multiplications by computing $M^{e}$ as
+    \begin{equation*}
+      M^{e} = M^{e_{0}} \cdot {\left( M^{2} \right)}^{e_{1}} \cdot {\left( M^{4} \right)}^{e_{2}} \cdots {\left( M^{2^{L-1}} \right)}^{e_{L-1}}
+    \end{equation*} \;
+    \caption{Square and Multiply Algorithm}
+    \label{algo:Square_Multiply_Algorithm}
+  \end{algorithm}
 \end{definition}
 
 \begin{example}[Lecture 14, Example 1]{Square and Multiply Algorithm}
