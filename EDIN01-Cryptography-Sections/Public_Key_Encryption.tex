@@ -377,6 +377,10 @@ A \nameref{def:Certificate_Authority}-based system works by establishing a ``web
   \item Bob computes $K_{B} = A^{b} \bmod p= g^{a^{b}} = g^{ab}$.
   \item If both $K_{A} = K_{B}$, then the secret key has been created for Alice and Bob.
   \end{enumerate}
+
+  \begin{remark}[Flaws in \nameref*{def:Diffie_Hellman_Key_Exchange}]\label{rmk:Flaws_Diffie_Hellman_Key_Exchange}
+    While this would work for most cases, the entire \nameref{def:Diffie_Hellman_Key_Exchange} protocol is vulnerable to a \emph{Man-in-the-Middle attack}.
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
