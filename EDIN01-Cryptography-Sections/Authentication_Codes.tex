@@ -38,6 +38,12 @@ The problem is that the same key $K$ cannot be reused anywhere.
     \text{Message} + \text{Signature} + \text{Alice's Private Key} = \text{YES/NO}
   \end{equation}
 
+  There are 3 important properties for security of a digital signature:
+  \begin{propertylist}
+  \item \emph{Message Integrity}: The message was not altered \textbf{DURING} transit.\label{prop:Digital_Signature-Message_Integrity}
+  \item \emph{Message Origin}: The message \textbf{WAS} sent by Alice.\label{prop:Digital_Signature-Message_Origin}
+  \item \emph{Nonrepudiation}: Alice cannot claim she did not send \textbf{THE} message.\label{prop:Digital_Signature-Nonrepudiation}
+  \end{propertylist}
 \end{definition}
 
 This is an asymmetric (\nameref{def:Public_Key_Encryption_Scheme}) solution.
