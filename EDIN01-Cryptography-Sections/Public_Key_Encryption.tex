@@ -234,6 +234,19 @@ So, we have probabilistic theorems for determining primality of numbers.
   \end{remark}
 \end{definition}
 
+\begin{theorem}[Miller-Rabin Test]\label{thm:Miller_Rabin_Test}
+  The Miller-Rabin test states that we choose a random integer as base, $a$.
+  Then write $m -1 = 2^{b} \cdot q$, where $q$ is odd.
+
+  If $a^{q} = 1 \bmod m$ or $a^{2^{c} \cdot q} = -1 \bmod m$ for any $c < b$ then return ``$m$ probably \nameref{def:Prime}'' and go back and choose a new base.
+  Otherwise, return ``$m$ is definitely \textbf{not} \nameref{def:Prime}''.
+
+  One can prove that the probability that $m$ is probably \nameref{def:Prime} with to the below equation.
+  \begin{equation}\label{eq:Miller_Rabin_Test_Success_Probability}
+    \Prob \left( \text{``$m$ probably prime''} \Given \text{``$m$ not prime''} \right) < \frac{1}{4}
+  \end{equation}
+\end{theorem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
