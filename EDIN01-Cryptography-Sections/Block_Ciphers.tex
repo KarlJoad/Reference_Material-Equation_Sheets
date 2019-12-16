@@ -314,6 +314,16 @@ The \texttt{SubBytes} is a non-linear substitution step where each byte is repla
   \label{fig:AES_SubBytes}
 \end{figure}
 
+\subsubsection{\texttt{ShiftRows}}\label{subsubsec:AES-ShiftRows}
+The \texttt{ShiftRows} step is a transposition step where each row of the state is shifted cyclically a certain number of steps.
+\Cref{fig:AES_ShiftRows} illustrates this step.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.35]{./Drawings/EDIN01-Cryptography/AES-2-ShiftRows.png}
+  \caption{\nameref{def:AES} \texttt{ShiftRows}}
+  \label{fig:AES_ShiftRows}
+\end{figure}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDIN01-Cryptography-Reference_Sheet"
