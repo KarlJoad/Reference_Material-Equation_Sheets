@@ -163,7 +163,7 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   \begin{equation}\label{eq:Attack_Authentication_Code-Impersonation-Success_Bound}
     \Prob_{I} \geq \frac{\SetOrder{\SourceMessages}}{\SetOrder{\ChannelMessages}}
   \end{equation}
-  where $\SetOrder{\ChannelMessages} >> \SetOrder{\SourceMessages}$.
+  where $\SetOrder{\ChannelMessages} \gg \SetOrder{\SourceMessages}$.
 \end{theorem}
 
 \begin{theorem}[Simmons' Bound for \nameref*{def:Attack_Authentication_Code-Impersonation}]\label{thm:Impersonation-Simmons_Bound}
@@ -207,7 +207,7 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   To start with, we can expand the equation they give to us.
   \begin{equation*}
     \begin{aligned}
-      \Prob_{S} &= \max \left( \frac{\SetOrder{M' \cap M}}{\SetOrder{M}} \right) \\
+      \Prob_{S} &= \underset{M \neq M'}{\max_{M, M'}} \left( \frac{\SetOrder{M' \cap M}}{\SetOrder{M}} \right) \\
       &= \left( \frac{\text{Num keys for which }
           \begin{cases}
             t = k_{1} + s_{1}k_{2} + s_{2}k_{2}^{2} \\
@@ -221,7 +221,7 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   If we fix $k_{2}$, and since $s_{i}$ are not variables but values, for any option of $k_{2}$, we have a system of linear equations that we can solve, which yields $k_{1}$.
   This means there are 3 possible options for $k_{2}$, and the options for $k_{1}$ become fixed once $k_{2}$ is chosen.
   \begin{equation*}
-    \Prob_{S} = \frac{\text{Num keys for which }
+    \Prob_{S} = \underset{M \neq M'}{\max_{M, M'}} \frac{\text{Num keys for which }
       \begin{cases}
         t = k_{1} + s_{1}k_{2} + s_{2}k_{2}^{2} \\
         t' = k_{1} + s'_{1}k_{2} + s'_{2}k_{2}^{2}
@@ -234,6 +234,7 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
     t' - t = k_{1} + (s'_{1} - s_{1}) k_{2} + (s'_{2} - s_{2}) k_{2}^{2}
   \end{equation*}
   Now, $k_{2}$ can be varied to anything other than 0, because if we choose $k_{2} = 0$, then we lose our message.
+  Additionally, $s'_{1}-s_{1} \neq 0$ and $s'_{2} - s_{2} \neq 0$, since $M \neq M'$.
   This means $k_{2}$ can take on 2 values, and once it takes on a value, $k_{1}$ becomes fixed.
 
   Thus,
@@ -247,7 +248,7 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
   \begin{equation}\label{eq:Attack_Authentication_Code-Substitution-Success_Bound}
     \Prob_{S} \geq \frac{\SetOrder{\SourceMessages} - 1}{\SetOrder{\ChannelMessages} - 1}
   \end{equation}
-  where $\SetOrder{\ChannelMessages} >> \SetOrder{\SourceMessages}$.
+  where $\SetOrder{\ChannelMessages} \gg \SetOrder{\SourceMessages}$.
 \end{theorem}
 
 \begin{theorem}[Simmons' Bound for \nameref*{def:Attack_Authentication_Code-Substitution}]\label{thm:Substitution-Simmons_Bound}
@@ -260,7 +261,7 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
 \subsubsection{Constructing \nameref*{def:Authentication_Code}s}\label{subsubsec:Authentication_Code-Construction}
 Define $\Keyspace(m)$ as the set of keys for which a message $m$ is valid.
 \begin{equation}\label{eq:Authentication_Code-Keys_Message_Valid}
-  \Keyspace(m) = \lbrace k \in \Keyspace; exists s \in \SourceMessages, f(s, e) = m \rbrace
+  \Keyspace(m) = \lbrace k \in \Keyspace; exists \; s \in \SourceMessages, f(s, e) = m \rbrace
 \end{equation}
 
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
