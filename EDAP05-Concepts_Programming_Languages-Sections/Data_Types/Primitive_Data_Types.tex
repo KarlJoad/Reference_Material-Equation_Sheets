@@ -1,0 +1,146 @@
+\subsection{Primitive Data Types}\label{subsec:Primitive_Data_Types}
+\begin{definition}[Primitive Data Type]\label{def:Primitive_Data_Type}
+  \emph{Primitive data type}s are \nameref{def:Data_Type}s that are \textbf{not} defined in terms of other data types.
+  Nearly all programming languages provide these.
+  Some are reflections of hardware, like integers, and others require only little software support for their impmlementation, floating-point numbers for instance.
+\end{definition}
+
+\subsubsection{Numeric Types}\label{subsubsec:Numeric_Primitive_Data_Types}
+This section will discuss the 4 main types of numeric \nameref{def:Data_Type}s present in most programming languages.
+
+\begin{definition}[Numeric Data Type]\label{def:Numeric_Data_Type}
+  \emph{Numeric data type}s are \nameref{def:Data_Type}s that handle numbers.
+\end{definition}
+
+\paragraph{Integer}\label{par:Integer_Numeric_Primitive_Data_Type}
+Integers are the most common \nameref{def:Numeric_Data_Type}.
+Many languages support several sizes.
+Java supports 4: \texttt{byte}, \texttt{short}, \texttt{int}, and \texttt{long}.
+There can be unsigned integers as well.
+
+If there are signed integers, the negative integers are stored in \nameref{def:Memory} in \nameref{def:Integer_Twos_Complement}.
+\begin{definition}[Twos Complement]\label{def:Integer_Twos_Complement}
+  \emph{Twos complement} is a way to store negative integers.
+  To find the twos complement:
+  \begin{enumerate}[noitemsep]
+  \item The magnitude of the integer is found in binary
+  \item The logical complement of that is computed
+  \item One (1) is added to the logical complement
+  \end{enumerate}
+  
+  \begin{remark}
+    Using \nameref{def:Integer_Twos_Complement} is similar to adding by a negative number to an integer instead of performing subtraction.
+  \end{remark}
+\end{definition}
+
+\paragraph{Floating-Point}\label{par:Floating_Point_Numeric_Primitive_Data_Type}
+\begin{definition}[Floating-Point]\label{def:Floating_Point}
+  \emph{Floating-point} \nameref{def:Data_Type}s model real (fractional/rational) numbers.
+  However, these representations are only approximations for many real values.
+  For example, $\pi$ cannot be represented in floating-point notation.
+
+  Most programming languages implement 2 types of floating-point \nameref{def:Data_Type}s.
+  \begin{enumerate}[noitemsep]
+  \item \texttt{float}: The standard size, 32 bits (4 bytes). Represent the real number as a decimal and exponent, like scientific notation.
+    \begin{itemize}[noitemsep]
+    \item The first bit is a \emph{sign bit} (1 for negative)
+    \item The next 8 bits are for the \emph{exponent}, normalized so that a real number raised to $-127$, i.e. $x^{-127}$, has an exponent bit value of 0.
+      \begin{itemize}[noitemsep]
+      \item This does mean that $x^{128}$ would have a bit-valued exponent of $255$.
+      \end{itemize}
+    \item The last 23 bits are for the fraction, called the \emph{mantissa}. This is the fractional portion of the scientific notation, represented in binary, with the first 1 of the bit sequence left off.
+    \end{itemize}
+  \item \texttt{double}: Used in cases where larger/smaller fractions or larger/smaller exponents are needed, 64 bits (8 bytes).
+    \begin{itemize}[noitemsep]
+    \item The first bit is a \emph{sign bit} (1 for negative)
+    \item The next 11 bits are for the \emph{exponent}, normalized so that a real number raised to $-1023$, i.e. $x^{-1023}$, has an exponent bit value of 0.
+      \begin{itemize}[noitemsep]
+      \item This does mean that $x^{1024}$ would have a bit-valued exponent of $2048$.
+      \end{itemize}
+    \item The last 52 bits are for the fraction, called the \emph{mantissa}. This is the fractional portion of the scientific notation, represented in binary, with the first 1 of the bit sequence left off.
+    \end{itemize}
+  \end{enumerate}
+\end{definition}
+
+\nameref{def:Floating_Point} numbers are are specified in IEEE Floating-Point Standard 754.
+
+\begin{definition}[Floating-Point Precision]\label{def:Floating_Point_Precision}
+  \emph{Precision} is the accuracy of the fraction part of the \nameref{def:Floating_Point} number, and how well it represents the real number's value.
+\end{definition}
+
+\begin{definition}[Floating-Point Range]\label{def:Floating_Point_Range}
+  \emph{Range} is a combination of the range of fractions and the range of the exponents.
+\end{definition}
+
+\paragraph{Complex}\label{par:Complex_Numeric_Primitive_Data_Type}
+Some programming languages support complex numbers natively, and they also support complex-number mathematical operations natively.
+The imaginary portion of the number is typically denoted with \texttt{j} or \texttt{J}.
+
+\paragraph{Decimal}\label{par:Decimal_Numeric_Primitive_Data_Type}
+In a computer, decimal numbers are stored in \nameref{def:Binary_Coded_Decimal}.
+There is also special hardware to support hardware-level mathematical operations on these types of numbers.
+If this hardware is not present, the calculations can be simulated in software.
+
+\begin{definition}[Binary Coded Decimal]\label{def:Binary_Coded_Decimal}
+  \emph{Binary Coded Decimal}, or \emph{BCD}, is a way to represent decimal numbers with perfect accuracy, albeit at the expense of some space.
+  There is a one-to-one mapping of the binary representations of these numbers to decimal, and anything greater than 9 is discarded.
+  \begin{table}[h!]
+    \centering
+    \begin{tabular}{cc}
+      \toprule
+      Decimal & \nameref{def:Binary_Coded_Decimal} \\
+      \midrule
+      0 & 0000 \\
+      1 & 0001 \\
+      2 & 0010 \\
+      3 & 0011 \\
+      4 & 0100 \\
+      5 & 0101 \\
+      6 & 0110 \\
+      7 & 0111 \\
+      8 & 1000 \\
+      9 & 1001 \\
+      \midrule
+      X & 1010 \\
+      X & 1011 \\
+      X & 1100 \\
+      X & 1101 \\
+      X & 1110 \\
+      X & 1111 \\
+      \bottomrule
+    \end{tabular}
+    \caption{Binary Coded Decimal}
+    \label{tab:Binary_Coded_Decimal}
+  \end{table}
+
+  \begin{remark}
+    These numbers are usually stored 2 per byte, because each only takes 4 bits.
+  \end{remark}
+\end{definition}
+
+\subsubsection{Boolean Types}\label{subsubsec:Boolean_Primitive_Data_Types}
+\begin{definition}[Boolean Data Type]\label{def:Boolean_Data_Type}
+  \emph{Boolean data type}s only store 2 values: \texttt{true} and \texttt{false}.
+  Some older language implementations did not support these, but most do today.
+  If a language does not support a boolean data type, then 0 is considered false, and 1 is considered true.
+
+  \begin{remark}[Storage in Memory]\label{rmk:Boolean_Storage_in_Memory}
+    Although a single bit can represent a \nameref{def:Boolean_Data_Type}, single bits of \nameref{def:Memory} cannot be efficiently access on many machines.
+    Thus, \nameref{def:Boolean_Data_Type}s are usually stored in a single byte.
+  \end{remark}
+\end{definition}
+
+\subsubsection{Character Types}\label{subsubsec:Character_Primitive_Data_Types}
+Characters are stored in \nameref{def:Memory} as numeric encodings.
+These are usually single characters, \textbf{not multiple characters together (strings)}.
+
+Characters were originally handled by ASCII, but now there are several encodings, with Unicode being more commonly used now.
+Unicode supports all human languages, glyphs, and other characters, like emojis.
+The first 128 characters of Unicode match up with ASCII for intercompatibility.
+
+ASCII required 8 bits, Unicode (UTF-16) uses 16.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:

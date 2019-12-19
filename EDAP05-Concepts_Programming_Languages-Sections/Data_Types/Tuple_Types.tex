@@ -1,0 +1,23 @@
+\subsection{Tuple Types}\label{subsec:Tuple_Types}
+\begin{definition}[Tuple]\label{def:Tuple}
+  A \emph{tuple} is a \nameref{def:Variable_Type} that is similar to a \nameref{def:Record_Data_Type}, except the elements are \textbf{not} named.
+  Instead, they are integer-indexed, like \nameref{def:Array}s.
+
+  \begin{remark}
+    \nameref{def:Tuple}s can be used to return multiple values from a function in languages that do not natively support that.
+  \end{remark}
+
+  \begin{remark}
+    Python natively supports these.
+    These behave similarly to \nameref{def:List}s, but are immutable.
+  \end{remark}
+\end{definition}
+
+\begin{minted}[frame=lines,linenos]{python3}
+myTuple = (3, 5.8, 'apple')
+\end{minted}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:

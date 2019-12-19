@@ -1,0 +1,290 @@
+\subsection{Arrays}\label{subsec:Arrays}
+\begin{definition}[Array]\label{def:Array}
+  An \emph{array} is a homogeneous aggregate of data elements in which an individual element is identified by its position in the aggregate, relative to the first element.
+  The individual elements of an array are of the same \nameref{def:Data_Type}.
+  References to individual array elements are specified using subscript expressions
+\end{definition}
+
+\begin{definition}[Length]\label{def:Array-Length}
+  The \emph{length} of an \nameref{def:Array} is defined to be the number of storage elements present in it.
+  This means that a list that is declared to have 10 elements, but none assigned, has a length of 10.
+
+  \begin{remark}[The Empty Array]\label{rmk:Array-Length-Empty_Array}
+    \emph{The empty array} is defined to have a length of 0.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Sparse]\label{def:Array-Sparse}
+  If an array is \emph{sparse}, it means that not all elements present in an array are filled with user-input data.
+  For example, if you have an array with \nameref{def:Array-Length} 10 in JavaScript, you can add an element to position 50, to create an array that now has \nameref{def:Array-Length} 51, with only 11 elements.
+\end{definition}
+
+\subsubsection{Design Issues}\label{subsubsec:Arrays-Design_Issues}
+\begin{itemize}[noitemsep]
+\item What types are legal for subscripts?
+\item Are subscripting expressions in element references range checked?
+\item When are subscript ranges bound?
+\item When does array allocation take place?
+\item Are jagged and/or rectangular multidimensional arrays allowed, or both?
+\item Can arrays be initialized when they have their storage allocated?
+\item What king of slices are allowed, if any?
+\end{itemize}
+
+\subsubsection{Arrays and Indices}\label{subsubsec:Arrays-Arrays_and_Indices}
+Specific elements in an array are referenced by means of the name of the aggregate and a dynamic selector, known as \emph{subscript}s or \emph{indices}.
+If all of the subscripts used are constants, the selector is static; otherwise, it is dynamic.
+Arrays are sometimes called \emph{finite mapping}s, because they map \nameref{def:Memory} cells to values, with a finite length.
+
+Most languages use brackets, \texttt{[} and \texttt{]}, to denote the array indices.
+However, some languages use parentheses.
+
+The type of the subscripts are usually integers, but Ada also allows any \nameref{def:Ordinal_Type} to be used as a subscript.
+Some languages check the bounds of the array accesses through subscripts, though some don't.
+Some languages allow the index to be a negative integer, in which case, it is the index of that element starting from the end as 0.
+
+\subsubsection{Subscript Bindings}\label{subsubsec:Arrays-Subscript_Bindings}
+The binding of the subscript type to an \nameref{def:Array} variable is usually static, but the value ranges are sometimes dynamic.
+Some languages have an implicit lower bound on the subscript range, usually 0.
+However, some languages allow for negative subscripting, which starts their indexing from the end of the \nameref{def:Array}
+
+\subsubsection{Array Categories}\label{subsubsec:Arrays-Categories}
+There are 5 categories of arrays, based on the binding to subscript ranges, the binding to storage, and from where the storage is allocated.
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Static_Array}
+\item \nameref{def:Fixed_Stack_Dynamic_Array}
+\item \nameref{def:Stack_Dynamic_Array}
+\item \nameref{def:Fixed_Heap_Dynamic_Array}
+\item \nameref{def:Heap_Dynamic_Array}
+\end{enumerate}
+
+\paragraph{Static Arrays}\label{par:Static_Arrays}
+\begin{definition}[Static Array]\label{def:Static_Array}
+  A \emph{static array} is one in which the subscript ranges are statically bound and the storage allocation is static.
+  Meaning the entire array, other than the values it contains are created before runtime.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[nosep,noitemsep]
+  \item Advantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Efficiency, there is no dynamic allocation or deallocation overhead required.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Flexibility, the storage for the array is fixed for the entire execution of the program.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\paragraph{Fixed Stack-Dynamic Arrays}\label{par:Fixed_Stack_Dynamic_Arrays}
+\begin{definition}[Fixed Stack-Dynamic Array]\label{def:Fixed_Stack_Dynamic_Array}
+  In a \emph{fixed stack-dynamic array}, the subscript ranges are statically bound, but the storage allocation is done at declaration elaboration time during runtime.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[nosep,noitemsep]
+  \item Advantages
+    \begin{itemize}[nosep,noitemsep]
+    \item If 2 subprograms both have large arrays, they can use the same space, so long as only a single one is running at a time.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[nosep,noitemsep]
+    \item The time required to allocate and deallocate the array.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\paragraph{Stack-Dynamic Array}\label{par:Stack_Dynamic_Arrays}
+\begin{definition}[Stack-Dynamic Array]\label{def:Stack_Dynamic_Array}
+  In a \emph{stack-dynamic array}, the subscript ranges and storage allocation are done during declaration elaboration time during program execution.
+  However, once the subscript ranges are bound and the storage allocatec, they are both fixed throughout the lifetime of the array.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[nosep,noitemsep]
+  \item Advantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Flexibility, the size of the array doesn't need to be known until just before the array is used.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[nosep,noitemsep]
+    \item The time required to allocate and deallocate the array.
+    \item Determine the subscript ranges and bind them.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\paragraph{Fixed Heap-Dynamic Array}\label{par:Fixed_Heap_Dynamic_Arrays}
+\begin{definition}[Fixed Heap-Dynamic Array]\label{def:Fixed_Heap_Dynamic_Array}
+  A \emph{fixed heap-dynamic array} is similar to a \nameref{def:Fixed_Stack_Dynamic_Array}, in that subscript ranges and storage binding are done on demand at runtime, and are fixed throughout the array's lifetime.
+  However, the storage is allocated from the heap instead of the stack.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[nosep,noitemsep]
+  \item Advantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Flexibility, the array can be any size to fit any problem.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[nosep,noitemsep]
+    \item The allocation and deallocation time is much longer on the heap compared to the stack.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\paragraph{Heap-Dynamic Array}\label{par:Heap_Dynamic_Arrays}
+\begin{definition}[Heap-Dynamic Array]\label{def:Heap_Dynamic_Array}
+  A \emph{heap-dynamic array} is one in which the binding of subscript ranges and storage allocation is done during program execution, \textbf{and can change any number of times during the array's lifetime}.
+
+  The advantages and disadvantages of this are:
+  \begin{itemize}[nosep,noitemsep]
+  \item Advantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Flexibility, arrays can grow and shrink during program execution to fit the needs of the problem.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[nosep,noitemsep]
+    \item Allocation and deallocation take longer on the heap.
+    \item Allocation and deallocation may happen several times during a program's execution.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\subsubsection{Array Initialization}\label{subsubsec:Arrays-Initialization}
+Some languages allow the programmer to initialize the \nameref{def:Array} with values when the storage is allocated.
+\begin{minted}[frame=lines,linenos]{fortran}
+Integer, Dimension (3) :: List = (/0, 5, 5/)
+\end{minted}
+However, C/C++, Java, and C\# do not allow programmer-specification length of an \nameref{def:Array} during declaration/initialization.
+\begin{minted}[frame=lines,linenos]{c}
+int list [] = {4, 5, 7, 83};
+\end{minted}
+
+In C and C++, a \nameref{def:Character_String_Type} or string, is a character array with the last element being a null terminator ASCII \texttt{00}.
+
+Ada allows for initialization to specific indices in an array during storage allocation.
+\begin{minted}[frame=lines,linenos]{ada}
+List : array (1..5) of Integer := (1, 4, 5, 7 ,9);
+Bunch : array (1..5) of Integer := (1 => 17, 3 => 34, others => 0);
+\end{minted}
+Because of this feature, the \texttt{others} clause initializes all other elements with a ``default'' value.
+
+\subsubsection{Array Operations}\label{subsubsec:Arrays-Operations}
+\begin{definition}[Array Operation]\label{def:Array_Operation}
+  An \emph{array operation} is one that operates on an \nameref{def:Array} as a whole.
+  The most common operations are:
+  \begin{itemize}[noitemsep]
+  \item Assignment
+  \item Concatenation
+  \item Comparison for Equality
+  \item \nameref{subsubsec:Arrays-Slices}
+  \end{itemize}
+\end{definition}
+
+Some programming languages offer built-in support for these common operations, but some don't.
+There is also no standard set of symbols used to perform these operations.
+
+\subsubsection{Rectangular and Jagged Arrays}\label{subsubsec:Arrays-Rectangular_Jagged}
+\begin{definition}[Rectangular Array]\label{def:Array-Rectangular}
+  A \emph{rectangular \nameref{def:Array}} is an multidimensional \nameref{def:Array} in which all of the rows have the same number of elements, and all the columns have the same number of elements.
+  Rectangular \nameref{def:Array}s model rectangular tables and square matrices exactly.
+\end{definition}
+
+\begin{definition}[Jagged Array]\label{def:Array-Jagged}
+  A \emph{jagged \nameref{def:Array}} is a multidimensional \nameref{def:Array} in which the lengths of the rows do not need to be the same.
+  This applies to all \nameref{def:Array}s in higher dimensions as well.
+  These are made possible with having an array, where each element is itself, an \nameref{def:Array}.
+\end{definition}
+
+\subsubsection{Slices}\label{subsubsec:Arrays-Slices}
+\begin{definition}[Slice]\label{def:Slice}
+  A \emph{slice} of an \nameref{def:Array} is some substructure of that \nameref{def:Array}.
+  A slice is \textbf{not} a new \nameref{def:Data_Type}, rather, it a mechanism for addressing a portion of an \nameref{def:Array} as a single unit.
+\end{definition}
+
+Each language has a different way to \nameref{def:Slice} an \nameref{def:Array}, and the language's documentation should be looked at to determine how they are done.
+
+\subsubsection{Evaluation}\label{subsubsec:Arrays-Evaluation}
+\nameref{def:Array}s are supported by nearly all programming languages, with APL even being built around doing \nameref{def:Array} processing.
+The greatest progress has occurred with using ordinal types as subscript types, \nameref{def:Slice}s, and dynamic \nameref{def:Array}s.
+
+\subsubsection{Implementation of Array Types}\label{subsubsec:Arrays-Implementation}
+Implementing \nameref{def:Array}s requires considerable compile-time effort.
+The code to access the elements must be generated at compile-time.
+At runtime, the code must be executed to produce element addresses.
+There is no way to precompute the address to be accessed by a reference such as \texttt{list[k]}.
+The only time any computation can be done on an \nameref{def:Array} at compile-time is if the array is statically bound.
+
+To access an element in an \nameref{def:Array}:
+\begin{equation}\label{eq:Access_Array_Element}
+  \text{address}(\mathtt{list[k]}) = \text{address}(\mathtt{list}) + (k * \mathtt{elementSize})
+\end{equation}
+
+The compile-time descriptor for a single-dimensioned \nameref{def:Array} is:
+\begin{itemize}[noitemsep]
+\item Array name
+\item Element \nameref{def:Data_Type}
+\item Index \nameref{def:Data_Type}
+\item Index Lower Bound
+\item Index Upper Bound
+\item Array's starting address
+\end{itemize}
+
+If a language uses dynamic range checking on the index, then description must be included with the program during its execution.
+
+\paragraph{Multidimensional Arrays}\label{par:Array-Multidimensional}
+If true multidimensional \nameref{def:Array}s are being implemented, not just an array of arrays, things get more complicated.
+This is because of the multidimensional nature of the \nameref{def:Array} and the one dimensional nature of \nameref{def:Memory}.
+There are 2 ways to organize multidimensional \nameref{def:Array}s in \nameref{def:Memory}.
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Row_Major_Order}
+\item \nameref{def:Column_Major_Order}
+\end{enumerate}
+
+\begin{definition}[Row Major Order]\label{def:Row_Major_Order}
+  In \emph{row major order}, the elements of the \nameref{def:Array} that have their first subscript to be the lower bound value of the subscript are stored first, folled by the elements of the second value of the first subscript.
+
+  For example,
+  \begin{equation*}
+    \begin{bmatrix}
+      1 & 2 & 3 \\
+      4 & 5 & 6 \\
+      7 & 8 & 9
+    \end{bmatrix}
+  \end{equation*}
+  would be stored as
+  \begin{equation*}
+    1, 2, 3, 4, 5, 6, 7, 8, 9
+  \end{equation*}
+\end{definition}
+
+\begin{definition}[Column Major Order]\label{def:Column_Major_Order}
+  In \emph{column major order}, the elements of an array that have their last subscript to be the lower bound value of the subscript are stored first, followed by the elements of the second value, and so on.
+
+  For example,
+  \begin{equation*}
+    \begin{bmatrix}
+      1 & 2 & 3 \\
+      4 & 5 & 6 \\
+      7 & 8 & 9
+    \end{bmatrix}
+  \end{equation*}
+  would be stored as
+  \begin{equation*}
+    1, 4, 7, 2, 5, 8, 3, 6, 9
+  \end{equation*}
+\end{definition}
+
+The compile-time descriptor for a multidimensional array includes:
+\begin{itemize}[noitemsep]
+\item Multidimensional Array name
+\item Element \nameref{def:Data_Type}
+\item Index \nameref{def:Data_Type}
+\item Number of dimensions
+\item Index Range
+\item $\vdots$
+\item Index range $n-1$
+\item Starting address of the array
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:

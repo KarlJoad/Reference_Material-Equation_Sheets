@@ -1,0 +1,240 @@
+\subsection{Pointer and Reference Types}\label{subsec:Pointer_Reference_Types}
+\nameref{def:Pointer}s and \nameref{def:Reference}s do are not structured types, like an \nameref{def:Array}.
+Nor are they scalar \nameref{def:Variable_Value}s, because they are used to reference some other \nameref{def:Variable}, rather than storing its own data.
+These are called:
+\begin{itemize}[noitemsep]
+\item Reference Types (Not directly related to \nameref{def:Reference}s)
+\item Value types
+\end{itemize}
+Both of these add \nameref{subsec:Writability} to the language.
+
+\begin{definition}[Pointer]\label{def:Pointer}
+  A \emph{pointer} type is one in which the variables have a range of values that consists of \nameref{def:Memory} addresses and a special value, \texttt{nil}/\texttt{null}.
+  The \texttt{nil}/\texttt{null} is not a valid address and is used to indicate that a pointer cannot currently reference a \nameref{def:Memory} cell.
+
+  Pointers have 2 distinct uses:
+  \begin{enumerate}[noitemsep]
+  \item Provide some of the power of indirect addressing
+  \item \nameref{def:Pointer}s provide a way to manage dynamic storage, the \nameref{def:Heap}.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Heap-Dynamic Variable]\label{def:Heap_Dynamic_Variable}
+  \nameref{def:Variable}s dynamically allocated from the \nameref{def:Heap} are called \emph{heap-dynamic variables}.
+  They often do not have identifiers associated with them, thus can only be referenced by \nameref{def:Pointer} or \nameref{def:Reference} type variables.
+  These \nameref{def:Variable}s are technically \nameref{def:Anonymous_Variable}s.
+\end{definition}
+
+\begin{definition}[Anonymous Variable]\label{def:Anonymous_Variable}
+  An \emph{anonymous \nameref{def:Variable}} is one that does not have a name/identifier associated with it.
+\end{definition}
+
+\subsubsection{Design Issues}\label{subsubsec:Pointer-Design_Issues}
+\begin{itemize}[noitemsep]
+\item What are the scope and lifetime of a \nameref{def:Pointer}?
+\item What is the lifetime of a \nameref{def:Heap_Dynamic_Variable} (The value a \nameref{def:Pointer} points to)?
+\item Are \nameref{def:Pointer}s restricted as to the type of value to which they can point? (Can they only point to integers?)
+\item Are \nameref{def:Pointer}s used for dynamic storage management, indirect addressing, or both?
+\item Should the language support \nameref{def:Pointer}s, \nameref{def:Reference}s, or both?
+\end{itemize}
+
+\subsubsection{Pointer Operations}\label{subsubsec:Pointer-Operations}
+There are 2 main operations that most languages support,
+\begin{enumerate}[noitemsep]
+\item Assignment: Set a \nameref{def:Pointer} \nameref{def:Variable} \nameref{def:Variable_Value} to some useful address.
+\item \nameref{def:Pointer_Dereferencing}
+\end{enumerate}
+
+If a \nameref{def:Pointer} shows up in an expression, there are 2 ways to interpret it:
+\begin{enumerate}[noitemsep]
+\item Use the address stored by the \nameref{def:Pointer} as an operand
+\item Use the value that the address being stored by the \nameref{def:Pointer} as an operand. Perform a \nameref{def:Pointer_Dereferencing} on the value stored in the \nameref{def:Pointer}.
+\end{enumerate}
+
+\begin{definition}[Dereferencing]\label{def:Pointer_Dereferencing}
+  \emph{Dereferencing} a \nameref{def:Pointer} takes a reference through one level of redirection.
+  This can be implicit or explicit.
+
+  In C/C++, an explicit dereferencing is done with the \nameref{def:Fixity-Prefix} \nameref{def:Arity-Unary} \texttt{*} operator.
+
+  \begin{remark}[\nameref*{def:Pointer} \nameref*{def:Pointer_Dereferencing} a \nameref{def:Record_Data_Type}]\label{rmk:Pointer_Dereference_Record}
+    When a \nameref{def:Pointer} points to a \nameref{def:Record_Data_Type}, the syntax of a reference to the \nameref{def:Record_Data_Type_Field}s in the \nameref{def:Record_Data_Type} varies by language.
+  \end{remark}
+\end{definition}
+
+If a language supports using \nameref{def:Pointer}s to manage the \nameref{def:Heap}, there must be an explicit allocation operation.
+Some languages use a subprogram (\texttt{malloc} in C).
+Object-Oriented languages often use the \texttt{new} \nameref{def:Reserved_Word}/\nameref{def:Keyword}.
+If a language does not support implicit deallocation of \nameref{def:Memory}, a \texttt{delete}/\texttt{free} operator/subprogram must be provided to reclaim the unused \nameref{def:Memory}.
+
+\subsubsection{Pointer Problems}\label{subsubsec:Pointer-Problems}
+Due to the problems that \nameref{def:Pointer}s can introduce, some languages only support \nameref{def:Reference}s and utilize implicit deallocation.
+
+\paragraph{Dangling Pointers}\label{par:Pointer-Dangling_Pointers}
+\begin{definition}[Dangling Pointer]\label{def:Dangling_Pointer}
+  A \emph{dangling \nameref{def:Pointer}}, or a \emph{dangling \nameref{def:Reference}} is a \nameref{def:Pointer}/\nameref{def:Reference} that contains the address of a \nameref{def:Heap_Dynamic_Variable} that has already be deallocated.
+  These are dangerous for several reasons:
+  \begin{itemize}[noitemsep]
+  \item That \nameref{def:Memory} might be in-use by some other \nameref{def:Heap_Dynamic_Variable}.
+  \item \nameref{def:Type_Checking} might be invalid, if the types of the things stored were different.
+  \item There is potentially no relationship between the value stored in \nameref{def:Memory} and where the \nameref{def:Pointer} points to.
+  \item Possible that location is being temporarily used by the storage management system.
+  \end{itemize}
+\end{definition}
+
+\paragraph{Lost Heap-Dynamic Variables}\label{par:Pointer-Lost_Heap_Dynamic}
+\begin{definition}[Lost \nameref*{def:Heap_Dynamic_Variable}]\label{def:Lost_Heap_Dynamic_Variable}
+  A \emph{lost \nameref{def:Heap_Dynamic_Variable}} is an allocated \nameref{def:Heap_Dynamic_Variable} that is no longer accessible to the user program.
+
+  This is sometimes refered to as \emph{garbage}.
+\end{definition}
+
+\begin{definition}[Memory Leak]\label{def:Memory_Leak}
+  A \emph{memory leak} is a case of when a \nameref{def:Lost_Heap_Dynamic_Variable} does not get collected by the runtime system, or the programmer, causing some \nameref{def:Memory} to be in-use, inaccessible, and potentially program-threatening.
+\end{definition}
+
+\subsubsection{Pointers in Ada}\label{subsubsec:Pointer-Ada}
+Ada's \nameref{def:Pointer}s are called \emph{access} types.
+The \nameref{def:Dangling_Pointer} problem is partly solved here, by allowing for implicit deallocation of a \nameref{def:Heap_Dynamic_Variable} at the end of its \nameref{def:Pointer} scope.
+However, few compilers implement this, so this is mostly theory.
+This is mostly handled by the fact that \nameref{def:Heap_Dynamic_Variable}s can only be access by \nameref{def:Variable}s on one type.
+When the end of scope for that type declaration is reached, no \nameref{def:Pointer}s can be left pointing at the \nameref{def:Heap_Dynamic_Variable}.
+However, Ada does have support for an explicit deallocator, \texttt{Unchecked \textunderscore{} Deallocation}.
+
+The \nameref{def:Lost_Heap_Dynamic_Variable} problem was not solved in Ada.
+
+\subsubsection{Pointers in C/C++}\label{subsubsec:Pointer-C_C++}
+C/C++ do not offer a solution for the \nameref{def:Dangling_Pointer} or \nameref{def:Lost_Heap_Dynamic_Variable} problems.
+They are more like the way assembly languages handle addresses.
+This means they are extremely flexible, but must be used with great care.
+
+Because \nameref{def:Pointer}s in C/C++ are stored as a value, they can have some basic arithmetic done on them.
+This is how \nameref{def:Array} on the \nameref{def:Heap} are constructed.
+C/C++'s \nameref{def:Pointer}s can point to functions, which is used to pass functions as parameters to other functions.
+
+In C/C++, the \texttt{*} operator denotes a dereferencing operation, and the \texttt{\&} operation denotes the operator for producing the address of a \nameref{def:Variable}.
+
+\begin{minted}[frame=lines,linenos]{c}
+int *ptr; // Declare a pointer that will point to a thing of int type
+int count, init; // Declare some integer variables
+...
+ptr = &init; // Put the memory address of "init" into ptr
+count = *ptr; // Dereference the address in "ptr" and take the value there and assign to count's storage
+\end{minted}
+
+\begin{remark*}[\texttt{void*} \nameref*{def:Pointer} Type]
+  The \texttt{void*} type on a \nameref{def:Pointer} means that it will accept a \nameref{def:Pointer} of any \nameref{def:Data_Type}.
+\end{remark*}
+
+\subsubsection{Reference Types}\label{subsubsec:Pointer-Reference_Types}
+\begin{definition}[Reference]\label{def:Reference}
+  A \emph{reference} type \nameref{def:Variable} is similar to a \nameref{def:Pointer}, in that it points to something.
+  The difference comes down to what it points to.
+  A \nameref{def:Pointer} points to an address in \nameref{def:Memory}.
+  A reference refers to an object or value in \nameref{def:Memory}.
+  A reference \textbf{can only refer to one thing}, i.e.\ the \nameref{def:Memory} address it refers to cannot change.
+
+  In C/C++, they are declared with the \texttt{\&} operator.
+
+  \begin{remark}[\nameref*{def:Memory} Address Arithmetic]\label{rmk:Reference-Memory_Address_Arithmetic}
+    Therefore, address arithmetic cannot be done on references.
+  \end{remark}
+\end{definition}
+
+In C/C++, there is a special \nameref{def:Reference} type used for \nameref{def:Formal_Parameter}s in function definitions.
+It is a constant \nameref{def:Pointer} that is always implicitly dereferenced.
+These allow for the \nameref{def:Actual_Parameter}s to operate as \nameref{def:Parameter_Passing-Inout_Mode} parameters.
+This can also be achieved with \nameref{def:Pointer}s, but each use requires the \nameref{def:Pointer} be explicitly dereferenced.
+
+\subsubsection{Evaluation}\label{subsubsec:Pointer-Evaluation}
+\nameref{def:Pointer}s are like the \texttt{goto} statement.
+They widen the range of \nameref{def:Memory} cells that can be referenced by a \nameref{def:Variable}.
+They may be dangerous, but they are essential for the lowest levels of programming: device drivers, operating systems, kernels, etc.
+However, it does not make sense for all applications, which is why some other languages explicitly disallow \nameref{def:Pointer}s from being used at all.
+
+\subsubsection{Implementation}\label{subsubsec:Pointer-Implementation}
+\nameref{def:Pointer}s are usually used in \nameref{def:Heap} management.
+
+\paragraph{Representations of Pointers and References}\label{par:Pointer-Representations}
+In most computers today, \nameref{def:Pointer}s and \nameref{def:Reference}s are single values store in \nameref{def:Memory} cells.
+However, this differs in earlier computers.
+
+\paragraph{Solutions to the Dangling-Pointer Problem}\label{par:Pointer-Dangling_Pointer_Solution}
+There are several solutions, including:
+\begin{enumerate}[noitemsep]
+\item Tombstones
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Pointer}s and \nameref{def:Reference}s point to a \emph{tombstone}, which points to the actual value.
+  \item When a \nameref{def:Heap_Dynamic_Variable} is deallocted, the tombstone is set to \texttt{nil}/\texttt{null}, indicating the \nameref{def:Heap_Dynamic_Variable} no longer exists.
+  \item The problem with this is that it is expensive in time and space.
+    \begin{itemize}[noitemsep]
+    \item The tombstones are never deallocted, so they will take up space until execution ends.
+    \item Every access to anything on the \nameref{def:Heap} requires an extra redirection, which may be another clock cycle.
+    \end{itemize}
+  \end{itemize}
+\item Locks-and-Keys Approach
+  \begin{itemize}[noitemsep]
+  \item The \nameref{def:Pointer}/\nameref{def:Reference} has a (\texttt{key}, \texttt{address}) pair.
+  \item The \nameref{def:Heap_Dynamic_Variable} has a header with a \texttt{lock}.
+  \item During execution, if a \nameref{def:Pointer} is dereferenced, its \texttt{key} is compared to the \texttt{lock}, and if they match, the execution happens.
+    \begin{itemize}[noitemsep]
+    \item If they don't match, then a runtime error is raised.
+    \end{itemize}
+  \item When the \nameref{def:Heap_Dynamic_Variable} is deallocated, the \texttt{lock} value is set to an illegal lock value.
+  \item If a \nameref{def:Pointer} is dereferenced to that particular \texttt{lock}, a runtime error is raised.
+  \end{itemize}
+\end{enumerate}
+
+The best thing to do is not have programmers handle \nameref{def:Heap_Dynamic_Variable}s themselves, and have the runtime system do handle them implicitly.
+
+\paragraph{Heap Management}\label{par:Pointer-Heap_Management}
+In this class, there are 2 ways to manage the \nameref{def:Heap}.
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Reference_Counter}s
+\item \nameref{def:Mark_Sweep}
+\end{enumerate}
+
+\begin{definition}[Reference Counter]\label{def:Reference_Counter}
+  In a \emph{reference counter} garbage collection algorithm, every \nameref{def:Heap_Dynamic_Variable} has a count attached to it, with the number of \nameref{def:Pointer}s pointing to it.
+  So long as the count does not get smaller than 1, the \nameref{def:Heap_Dynamic_Variable} is reachable by the program.
+  If the count reaches 0, then the \nameref{def:Heap_Dynamic_Variable} is deallocated.
+
+  \begin{remark}[Problems]\label{rmk:Reference_Counter_Problems}
+    \begin{itemize}[noitemsep]
+    \item Space: A little extra space is required to keep track of the count
+    \item Time: A little bit of time is required to update the counter everytime a \nameref{def:Pointer} is created/destroyed.
+    \item In a circular structure, the \nameref{def:Pointer} count will never reach zero, so an unreachable structure might not be deallocated.
+    \end{itemize}
+  \end{remark}
+
+  \begin{remark}[Advantages]\label{rmk:Reference_Counter_Advantages}
+    \begin{itemize}[noitemsep]
+    \item It is an incremental algorithm, so there is no time when a large amount of time is required to process the \nameref{def:Heap}.
+    \end{itemize}
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Mark-Sweep]\label{def:Mark_Sweep}
+  The \emph{mark-sweep} garbage collection algorithm starts by assuming that everything is unreachable from the program, and marks it as such.
+  First, it ``unmarks'' the registers, \nameref{def:Call_Stack}, \nameref{def:Global_Variable}s as reachable.
+  Then, it follows all pointers present in the \nameref{def:Call_Stack} to the \nameref{def:Heap}.
+  If the \nameref{def:Heap_Dynamic_Variable} is reachable, then it any \nameref{def:Pointer}s it may have are followed.
+  Anything on the \nameref{def:Heap} that is still reachable after the mark phase is saved.
+
+  In the sweep phase, anything that is still marked as unreachable is deallocated.
+
+  \begin{remark}[Problems]\label{rmk:Mark_Sweep_Problems}
+    \begin{itemize}[noitemsep]
+    \item Space: The heavy recursion while inside the \nameref{def:Heap} requries a lot of \nameref{def:Call_Stack} space.
+    \item Time: Since this is run when the \nameref{def:Heap} is nearly full, it takes a lot of time to handle.
+      \begin{itemize}[noitemsep]
+      \item This leads to the main program being executed to be ``paused''.
+      \end{itemize}
+    \end{itemize}
+  \end{remark}
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
