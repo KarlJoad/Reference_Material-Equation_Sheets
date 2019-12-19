@@ -140,8 +140,8 @@ These have built-in operations for assignment and comparisons for equality/inequ
 Any other operations must be defined in the \nameref{def:Ada_Package_Specification}.
 
 \paragraph{Example}\label{par:Ada_Abstract_Data_Type_Example}
-\inputminted[frame=lines,linenos]{ada}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Class_Example-Stack-Ada-Package.ada}
-\inputminted[frame=lines,linenos]{ada}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Class_Example-Stack-Ada.ada}
+\inputminted[frame=lines,linenos]{ada}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/Class_Example-Stack-Ada-Package.ada}
+\inputminted[frame=lines,linenos]{ada}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/Class_Example-Stack-Ada.ada}
 
 \paragraph{Evaluation}\label{par:Ada_Abstract_Data_Type_Evaluation}
 Ada was the first \textbf{commercial} language that supported \nameref{def:Abstract_Data_Type}s\footnote{There were academic languages (CLU) that supported \nameref{def:Abstract_Data_Type}s before Ada.}.
@@ -152,11 +152,11 @@ Though, their design may seem complicated and repetitious, it is very powerful, 
 \paragraph{Information Hiding}\label{par:C++_Info_Hiding}
 \paragraph{Constructors and Destructors}\label{par:C++_Constructors_Destructors}
 \paragraph{Example}\label{par:C++_Abstract_Data_Type_Example}
-\inputminted[frame=lines,linenos]{c++}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Class_Example-Stack-CPP.cpp}
+\inputminted[frame=lines,linenos]{c++}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/Class_Example-Stack-CPP.cpp}
 
 If a header file is used to help modularize the program, the same program can be written this way.
-\inputminted[frame=lines,linenos]{c++}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Class_Example-Stack-Header-CPP.hpp}
-\inputminted[frame=lines,linenos]{c++}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Class_Example-Stack-Header-CPP.cpp}
+\inputminted[frame=lines,linenos]{c++}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/Class_Example-Stack-Header-CPP.hpp}
+\inputminted[frame=lines,linenos]{c++}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/Class_Example-Stack-Header-CPP.cpp}
 
 \paragraph{Evaluation}\label{par:C++_Abstract_Data_Type_Evaluation}
 C++ supports \nameref{def:Abstract_Data_Type}s with its class construct.
@@ -227,7 +227,7 @@ However, the default access level is actually a \textit{protected} level of acce
 There is also no way to restrict access to a method.
 
 \paragraph{Example}\label{par:Objective_C_Abstract_Data_Type_Example}
-\inputminted[frame=lines,linenos]{objective-c}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Class_Example-Stack-Objective_C.m}
+\inputminted[frame=lines,linenos]{objective-c}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/Class_Example-Stack-Objective_C.m}
 
 \paragraph{Evaluation}\label{par:Objective_C_Abstract_Data_Type_Evaluation}
 Objective-C's classes are also \nameref{def:Data_Type}s.
@@ -244,7 +244,7 @@ All \nameref{def:Object}s are allocated from the \nameref{def:Heap} and accessed
 There is also no need to write destructor methods in Java, because of the implicit garbage collection it uses.
 
 \paragraph{Example}\label{par:Java_Abstract_Data_Type_Example}
-\inputminted[frame=lines,linenos]{java}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Class_Example-Stack-Java.java}
+\inputminted[frame=lines,linenos]{java}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/Class_Example-Stack-Java.java}
 
 \paragraph{Evaluation}\label{par:Java_Abstract_Data_Type_Evaluation}
 Java is different in mostly cosmetic ways to C++.
@@ -274,7 +274,7 @@ The default method access level is \texttt{public}, but it can also be \texttt{p
 
 All data members of an \nameref{def:Abstract_Data_Type} are private, and that \textbf{cannot} be changed.
 \paragraph{Example}\label{par:Ruby_Abstract_Data_Type_Example}
-\inputminted[frame=lines,linenos]{ruby}{./EDAP05-Concepts_Programming_Languages-Sections/Code/Class_Example-Stack-Ruby.rb}
+\inputminted[frame=lines,linenos]{ruby}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/Class_Example-Stack-Ruby.rb}
 
 \paragraph{Evaluation}\label{par:Ruby_Abstract_Data_Type_Evaluation}
 Everything is an \nameref{def:Object} in Ruby, and arrays are arrays of references to \nameref{def:Object}s.
