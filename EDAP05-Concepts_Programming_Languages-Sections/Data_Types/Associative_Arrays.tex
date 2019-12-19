@@ -27,19 +27,7 @@
 \subsubsection{Structure and Operations}\label{subsubsec:Structure_and_Ops_Associative_Arrays}
 The code examples here are done in Perl, but it is similar in most other languages.
 For more specific code, you will have to visit the language's documentation.
-\begin{minted}[frame=lines,linenos]{perl}
-# Defining an associative array
-%salaries = ("Gary" => 75000, "Perry" => 57000, "Mary" => 55750);
-
-# Switch from % for hash to $ for single values in the hash
-# That should be a dollar sign, not a Stirling Pound symbol
-
-# Changing a value in the associative array
-$salaries{"Perry"} = 58850;
-
-# Removing a key-value pair from the associative array
-delete $salaries{"Gary"};
-\end{minted}
+\inputminted[frame=lines,linenos]{perl}{./EDAP05-Concepts_Programming_Languages-Sections/Data_Types/Code/Associative_Array_Structure_Operations.pl}
 
 The size of a Perl \nameref{def:Associative_Array} is dynamic and will grow and shrink as needed.
 
