@@ -102,8 +102,12 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
 
 \begin{definition}[Perfect Secrecy]\label{def:Perfect_Secrecy}
   A cryptosystem has \emph{perfect secrecy} if \Cref{eq:Perfect_Secrecy} is true.
+  Alternatively, \Cref{eq:Perfect_Secrecy_2} is true.
   \begin{equation}\label{eq:Perfect_Secrecy}
     \MutualInformation(M;C) = 0 = H(M) - H(M \Given C)
+  \end{equation}
+  \begin{equation}\label{eq:Perfect_Secrecy_2}
+    \Entropy(K) \geq \Entropy(M_{1}, M_{2}, \ldots, M_{n})
   \end{equation}
 \end{definition}
 
@@ -221,7 +225,10 @@ In the order of \textbf{strongest security} to \textbf{weakest security}:
   \begin{remark}[Cases of \nameref*{def:Entropy_per_Alphabet_Symbol}]\label{rmk:Entropy_per_Alphabet_Symbol-Cases}
     There are 2 cases:
     \begin{enumerate}[noitemsep]
-    \item A memoryless source
+    \item A memoryless source, meaning each message is sent independently or each other.
+      \begin{equation}\label{eq:Entropy_per_Alphabet_Symbol-Memoryless}
+        \Entropy(M) = N \Entropy(\mathbf{M})
+      \end{equation}
     \item A non-memoryless source
     \end{enumerate}
   \end{remark}
