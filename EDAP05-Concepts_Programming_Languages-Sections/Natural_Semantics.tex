@@ -78,26 +78,29 @@ When we want a \nameref{def:Metavariable} to only get a value under certain cond
 For example, say we want $n$ to be a natural number that is used in the grammar of \Cref{eq:DivAdd_Grammar}.
 We can write this condition as:
 \begin{equation}\label{eq:Conditional_Rules}
-  \frac{n \in \NaturalNumbers}{n \EvaluatesTo \mathtt{asNat}(n)}
+  \frac{\SemanticInput{n} \in \NaturalNumbers}{\SemanticInput{n} \EvaluatesTo \mathtt{asNat}(n)}
 \end{equation}
 
 The writers of these semantic grammars favor simplicity, so they might omit the \texttt{asNat} function by arguing ``separating between natural numbers and their textual representation is overly pedantic, as long as there is no ambiguity''.
 They might write the rule in \Cref{eq:Conditional_Rules} as:
 \begin{equation}\label{eq:Conditional_Rules_Simplified}
-  \frac{n \in \NaturalNumbers}{n \EvaluatesTo n}
+  \frac{\SemanticInput{n} \in \NaturalNumbers}{\SemanticInput{n} \EvaluatesTo n}
 \end{equation}
 
 \subsection{Recursion}\label{subsec:Semantics_Recursion}
 If we want to construct the addition in \Cref{eq:DivAdd_Grammar}, then we can write:
 \begin{equation}\label{eq:Semantics_Recursion}
-  \frac{e_{1} \EvaluatesTo n_{1} \:\: e_{2} \EvaluatesTo n_{2}}{e_{1}+e_{2} \EvaluatesTo n_{1}+n_{2}}
+  \frac{\SemanticInput{e_{1}} \EvaluatesTo n_{1} \:\: \SemanticInput{e_{2}} \EvaluatesTo n_{2}}{\SemanticInput{e_{1}}+\SemanticInput{e_{2}} \EvaluatesTo n_{1}+n_{2}}
 \end{equation}
 
 \subsection{Completeness}\label{subsec:Semantic_Completeness}
-A semantic specification is \emph{complete} when all possible cases have been defined, in some way.
+\begin{definition}[Complete]\label{def:Semantic_Completeness}
+  A semantic specification is \emph{complete} when all possible cases have been defined, in some way.
+\end{definition}
+
 For example:
 \begin{equation}\label{eq:Incomplete_Semantic_Rule}
-  \frac{e_{1} \EvaluatesTo n_{1} \:\: e_{2} \EvaluatesTo n_{2}}{e_{1} \:\SemanticInput{\mathtt{div}}\: e_{2} \EvaluatesTo \Bigl\lfloor \frac{n_{1}}{n_{2}} \Bigr\rfloor}
+  \frac{\SemanticInput{e_{1}} \EvaluatesTo n_{1} \:\: \SemanticInput{e_{2}} \EvaluatesTo n_{2}}{\SemanticInput{e_{1}} \: \SemanticInput{\mathtt{div}}\: \SemanticInput{e_{2}} \EvaluatesTo \Bigl\lfloor \frac{n_{1}}{n_{2}} \Bigr\rfloor}
 \end{equation}
 This rule ignores the case when $n_{2} = 0$, which means we divide by 0.
 In mathematics, this is an undefined operation.
@@ -127,12 +130,12 @@ There are 2 ways to solve this problem:
 
   The easiest rule to define is the rule for \SemanticInput{\underline{\texttt{num}}}.
   \begin{equation*}
-    \frac{\SemanticInput{n} \in \SemanticInput{\underline{\mathtt{num}}}}{\SemanticInput{n} \EvaluatesTo \textcolor{Blue4}{n}} \textcolor{red}{(num)}
+    \frac{\SemanticInput{n} \in \SemanticInput{\underline{\mathtt{num}}}}{\SemanticInput{n} \EvaluatesTo \textcolor{Blue4}{n}} \SemanticRuleName{num}
   \end{equation*}
 
   Next, we define the rule for the addition.
   \begin{equation*}
-    \frac{\textcolor{Orange3}{e_{1}} \in \Nonterminal{expr} \: \textcolor{Orange3}{e_{2}} \in \Nonterminal{expr} \: \textcolor{Orange3}{e_{1}} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: \textcolor{Orange3}{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{2}}}{\textcolor{Orange3}{e_{1}} \SemanticInput{\mathtt{+}} \textcolor{Orange3}{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{1} + n_{2}}} \textcolor{red}{(add)}
+    \frac{\OrangeText{e_{1}} \in \Nonterminal{expr} \: \OrangeText{e_{2}} \in \Nonterminal{expr} \: \OrangeText{e_{1}} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: \OrangeText{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{2}}}{\OrangeText{e_{1}} \SemanticInput{\mathtt{+}} \OrangeText{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{1} + n_{2}}} \SemanticRuleName{add}
   \end{equation*}
   \begin{remark*}
     In this case, the expression's rule actually returns the computed number from the expression $n_{1} + n_{2}$, rather than the 2 expressions added together (which would be had if we had written $e_{1} + e_{2}$ instead).
@@ -145,14 +148,14 @@ There are 2 ways to solve this problem:
   Now we have to define the \texttt{max} operation.
   In this case, we need 2 rules to specify the 2 cases, when the left expression is the relative maximum, and when the right expression is the relative maximum.
   \begin{equation*}
-    \frac{e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}} \: \textcolor{Blue4}{n_{1}} \geq \textcolor{Blue4}{n_{2}}}{\SemanticInput{\mathtt{\max}} \: e_{1} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{1}}} \textcolor{red}{(\text{max left})}
+    \frac{\OrangeText{e_{1}} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: \OrangeText{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{2}} \: \textcolor{Blue4}{n_{1}} \geq \textcolor{Blue4}{n_{2}}}{\SemanticInput{\mathtt{\max}} \: \OrangeText{e_{1}} \; \OrangeText{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{1}}} \SemanticRuleName{max-left}
   \end{equation*}
   \begin{equation*}
-    \frac{e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}} \: \textcolor{Blue4}{n_{1}} \leq \textcolor{Blue4}{n_{2}}}{\SemanticInput{\mathtt{\max}} \: e_{1} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}}} \textcolor{red}{(\text{max right})}
+    \frac{\OrangeText{e_{1}} \EvaluatesTo \textcolor{Blue4}{n_{1}} \: \OrangeText{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{2}} \: \textcolor{Blue4}{n_{1}} \leq \textcolor{Blue4}{n_{2}}}{\SemanticInput{\mathtt{\max}} \: \OrangeText{e_{1}} \; \OrangeText{e_{2}} \EvaluatesTo \textcolor{Blue4}{n_{2}}} \SemanticRuleName{max-right}
   \end{equation*}
   \begin{remark*}
     Although the 2 equations for determining the relative maxima both have an equality aspect, in pure mathematics, that's fine.
-    In mathematical terms, if both rules apply, because $e_{1} == e_{2}$, then, both are technically maxima and should be returned.
+    In mathematical terms, if both rules apply, because $\OrangeText{e_{1}} == \OrangeText{e_{2}}$, then, both are technically maxima and should be returned.
 
     However, this will change during implementation, because one of the rules will be checked first, which necessitates that the rules be made mutually exclusive.
   \end{remark*}
@@ -164,26 +167,26 @@ There are 2 ways to solve this problem:
       % Expression 1 derivation
       \dfrac{
         % Expression 1 Left number Derivation
-        \dfrac{\SemanticInput{1} \in \NaturalNumbers}{\SemanticInput{1} \EvaluatesTo \textcolor{Purple2}{n_{1} = 1}} \textcolor{red}{(num)} \:\:
+        \dfrac{\SemanticInput{1} \in \NaturalNumbers}{\SemanticInput{1} \EvaluatesTo \textcolor{Purple2}{n_{1} = 1}} \SemanticRuleName{num} \:\:
         % Expression 1 Right number derivation
-        \dfrac{\SemanticInput{2} \in \NaturalNumbers}{\SemanticInput{2} \EvaluatesTo \textcolor{Purple2}{n_{2} = 2}} \textcolor{red}{(num)}}
+        \dfrac{\SemanticInput{2} \in \NaturalNumbers}{\SemanticInput{2} \EvaluatesTo \textcolor{Purple2}{n_{2} = 2}} \SemanticRuleName{num}}
       % Expression 1 bottom of derivation
-      {\textcolor{Orange3}{e_{1}} = \SemanticInput{1+2} \EvaluatesTo \textcolor{Burlywood4}{n_{1}} = \textcolor{Purple2}{n_{1}} + \textcolor{Purple2}{n_{2}} = \textcolor{Purple2}{1}+\textcolor{Purple2}{2}=\textcolor{Burlywood4}{3}} \textcolor{red}{(add)} \:\:
+      {\OrangeText{e_{1}} = \SemanticInput{1+2} \EvaluatesTo \textcolor{Burlywood4}{n_{1}} = \textcolor{Purple2}{n_{1}} + \textcolor{Purple2}{n_{2}} = \textcolor{Purple2}{1}+\textcolor{Purple2}{2}=\textcolor{Burlywood4}{3}} \SemanticRuleName{add} \:\:
       % Expression 2 derivation
       \dfrac{
         % Expression 2 Left number Derivation
-        \dfrac{\SemanticInput{1} \in \NaturalNumbers}{\SemanticInput{1} \EvaluatesTo \textcolor{Purple2}{n_{1} = 1}} \textcolor{red}{(num)} \:\:
+        \dfrac{\SemanticInput{1} \in \NaturalNumbers}{\SemanticInput{1} \EvaluatesTo \textcolor{Purple2}{n_{1} = 1}} \SemanticRuleName{num} \:\:
         % Expression 2 Right number derivation
-        \dfrac{\SemanticInput{1} \in \NaturalNumbers}{\SemanticInput{1} \EvaluatesTo \textcolor{Purple2}{n_{2} = 1}} \textcolor{red}{(num)}}
+        \dfrac{\SemanticInput{1} \in \NaturalNumbers}{\SemanticInput{1} \EvaluatesTo \textcolor{Purple2}{n_{2} = 1}} \SemanticRuleName{num}}
       % Expression 2 bottom of derivation
-      {\textcolor{Orange3}{e_{2}} = \SemanticInput{1+1} \EvaluatesTo \textcolor{Burlywood4}{n_{2}} = \textcolor{Purple2}{n_{1}} + \textcolor{Purple2}{n_{2}} = \textcolor{Purple2}{1}+\textcolor{Purple2}{1} = \textcolor{Burlywood4}{2}} \textcolor{red}{(add)} \:\:
+      {\OrangeText{e_{2}} = \SemanticInput{1+1} \EvaluatesTo \textcolor{Burlywood4}{n_{2}} = \textcolor{Purple2}{n_{1}} + \textcolor{Purple2}{n_{2}} = \textcolor{Purple2}{1}+\textcolor{Purple2}{1} = \textcolor{Burlywood4}{2}} \SemanticRuleName{add} \:\:
       % Checking n1 geq n2
       \textcolor{Burlywood4}{n_{1}} \geq \textcolor{Burlywood4}{n_{2}} = \textcolor{Burlywood4}{3} \geq \textcolor{Burlywood4}{2}}
     % Bottom of the max rule derivation
-    {\SemanticInput{\mathtt{\max}} \textcolor{Orange3}{\underbrace{(\SemanticInput{1+2}\textcolor{Orange3}{)}}_{\textcolor{Orange3}{e_{1}}}} \textcolor{Orange3}{\underbrace{\textcolor{Orange3}{(\SemanticInput{1+1}\textcolor{Orange3}{)}}}_{\textcolor{Orange3}{e_{2}}}} \EvaluatesTo \textcolor{Burlywood4}{n_{1}} = \textcolor{Blue4}{3}} \textcolor{red}{(\text{max left})}
+    {\SemanticInput{\mathtt{\max}} \OrangeText{\underbrace{(\SemanticInput{1+2}\OrangeText{)}}_{\OrangeText{e_{1}}}} \OrangeText{\underbrace{\OrangeText{(\SemanticInput{1+1}\OrangeText{)}}}_{\OrangeText{e_{2}}}} \EvaluatesTo \textcolor{Burlywood4}{n_{1}} = \textcolor{Blue4}{3}} \SemanticRuleName{max-left}
   \end{equation*}
 
-  We chose the \textcolor{red}{max left} rule only \textbf{after} the values of $\textcolor{Orange3}{e_{1}}$ and $\textcolor{Orange3}{e_{2}}$ were calculated.
+  We chose the \SemanticRuleName{max-left} rule only \textbf{after} the values of $\OrangeText{e_{1}}$ and $\OrangeText{e_{2}}$ were calculated.
 \end{example}
 
 \subsection{Language with Variables}\label{subsec:Language_with_Variables}
@@ -271,39 +274,39 @@ Essentially, using $E \vdash p$ means that $p$ has access to the \nameref{def:Me
   We will also need to add new semantic rules for \SemanticInput{\texttt{id}} and the \texttt{let} statement.
 
   \begin{equation*}
-    \frac{\SemanticInput{i} \in \SemanticInput{\mathtt{\underline{id}}}}{E \vdash \SemanticInput{i} \EvaluatesTo E(\SemanticInput{i})} \textcolor{red}{(id)}
+    \frac{\SemanticInput{i} \in \SemanticInput{\mathtt{\underline{id}}}}{E \vdash \SemanticInput{i} \EvaluatesTo E(\SemanticInput{i})} \SemanticRuleName{id}
   \end{equation*}
   \begin{equation*}
-    \frac{E \vdash e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \:\: E[\SemanticInput{i} \mapsto \textcolor{Blue4}{n_{1}}] \vdash e_{1} \EvaluatesTo e_{2}}{E \vdash \SemanticInput{\text{\texttt{let }}\mathtt{i =}} \; e_{1} \; \SemanticInput{\mathtt{\text{in}}} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}}} \textcolor{red}{(let)}
+    \frac{E \vdash e_{1} \EvaluatesTo \textcolor{Blue4}{n_{1}} \:\: E[\SemanticInput{i} \mapsto \textcolor{Blue4}{n_{1}}] \vdash e_{1} \EvaluatesTo e_{2}}{E \vdash \SemanticInput{\text{\texttt{let }}\mathtt{i =}} \; e_{1} \; \SemanticInput{\mathtt{\text{in}}} \; e_{2} \EvaluatesTo \textcolor{Blue4}{n_{2}}} \SemanticRuleName{let}
   \end{equation*}
 
-  We start by applying the most applicable rule, the \textcolor{red}{(let)} rule.
+  We start by applying the most applicable rule, the \SemanticRuleName{let} rule.
   \begin{equation*}
     \dfrac{
       % The number used in the let-assignment
-      \dfrac{\SemanticInput{2} \in \NaturalNumbers}{E_{\emptyset} \vdash \SemanticInput{2} \EvaluatesTo \textcolor{Blue4}{2}} \textcolor{red}{(num)} \:\:
+      \dfrac{\SemanticInput{2} \in \NaturalNumbers}{E_{\emptyset} \vdash \SemanticInput{2} \EvaluatesTo \textcolor{Blue4}{2}} \SemanticRuleName{num} \:\:
       % The addition operation inside the in-block
       \dfrac{
         % The dereferencing of the ID and grabbing the value mapped to the variable
         \dfrac{\SemanticInput{\mathtt{x}} \in \SemanticInput{\mathtt{\underline{id}}}}
         % The bottom of the dereferencing of the ID
-        {E_{\emptyset} [\SemanticInput{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \SemanticInput{\mathtt{x}} \EvaluatesTo E(\SemanticInput{\mathtt{x}}) \Rightarrow \textcolor{Orange3}{2}} \textcolor{red}{(id)} \:\:
+        {E_{\emptyset} [\SemanticInput{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \SemanticInput{\mathtt{x}} \EvaluatesTo E(\SemanticInput{\mathtt{x}}) \Rightarrow \OrangeText{2}} \SemanticRuleName{id} \:\:
         % The number, 3, added with x in the in-block
         \dfrac{\SemanticInput{3} \in \NaturalNumbers}
         % The bottom of the num derivation
-        {E_{\emptyset} [\SemanticInput{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \SemanticInput{3} \EvaluatesTo \textcolor{Orange3}{3}} \textcolor{red}{(num)}}
+        {E_{\emptyset} [\SemanticInput{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \SemanticInput{3} \EvaluatesTo \OrangeText{3}} \SemanticRuleName{num}}
       % Bottom of the addition derivation
-      {E_{\emptyset}[\SemanticInput{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \SemanticInput{\mathtt{x+3}} \EvaluatesTo \textcolor{Orange3}{2+3} = \textcolor{Burlywood4}{5}} \textcolor{red}{(add)}}
+      {E_{\emptyset}[\SemanticInput{\mathtt{x}} \mapsto \textcolor{Blue4}{2}] \vdash \SemanticInput{\mathtt{x+3}} \EvaluatesTo \OrangeText{2+3} = \textcolor{Burlywood4}{5}} \SemanticRuleName{add}}
     % Bottom portion of let expression
-    {E_{\emptyset} \vdash \SemanticInput{\text{\texttt{let }}} \mathtt{\SemanticInput{x=}\,2} \SemanticInput{\text{\texttt{ in }}} \mathtt{x+3} \EvaluatesTo \textcolor{Burlywood4}{5}} \textcolor{red}{(let)}
+    {E_{\emptyset} \vdash \SemanticInput{\text{\texttt{let }}} \mathtt{\SemanticInput{x=}\,2} \SemanticInput{\text{\texttt{ in }}} \mathtt{x+3} \EvaluatesTo \textcolor{Burlywood4}{5}} \SemanticRuleName{let}
   \end{equation*}
 
-  Once we've applied the \textcolor{red}{(let)} rule, we apply the \textcolor{red}{(num)} rule, because the expression being assigned is just a number.
-  The result of that expression evaluation is piped into the next \textcolor{red}{(add)} derivation.
+  Once we've applied the \SemanticRuleName{let} rule, we apply the \SemanticRuleName{num} rule, because the expression being assigned is just a number.
+  The result of that expression evaluation is piped into the next \SemanticRuleName{add} derivation.
   From there, it is mapped to the input \SemanticInput{\texttt{x}}, and the \texttt{x+3} is calculated.
-  The first thing is to get the value of \SemanticInput{\texttt{x}} from the mapping with the \textcolor{red}{(id)} rule.
+  The first thing is to get the value of \SemanticInput{\texttt{x}} from the mapping with the \SemanticRuleName{id} rule.
   Once the $E(\SemanticInput{\mathtt{x}})$ returns the value of the variable \SemanticInput{\texttt{x}}, we can use it.
-  The other operand in the addition is found using the \textcolor{red}{(num)} rule.
+  The other operand in the addition is found using the \SemanticRuleName{num} rule.
   Then the addition occurs, and the derivation completes.
 \end{example}
 
