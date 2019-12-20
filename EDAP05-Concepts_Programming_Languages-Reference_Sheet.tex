@@ -14,10 +14,15 @@
 % These commands can ONLY be used in math mode
 \newcommand{\Nonterminal}[1]{\langle \text{#1} \rangle} % This command should be used for text
 \newcommand{\MathNonterminal}[1]{\langle #1 \rangle} % This command should be used if there are math things present, subscripts, superscripts, etc.
-\newcommand{\SemanticInput}[1]{\textcolor{Green4}{#1}}
-\newcommand{\SemanticType}[1]{\textcolor{Blue4}{#1}}
-\DeclareMathOperator{\EvaluatesTo}{\Downarrow}
 \newcommand{\DataType}{\SemanticType{\tau}}
+\newcommand{\SemanticRuleName}[1]{\textcolor{Red1}{(\text{\textit{#1}})}}
+\newcommand{\SemanticInput}[1]{\textcolor{Green4}{#1}}
+\newcommand{\SemanticOutput}[1]{\textcolor{Orange4}{#1}}
+\newcommand{\SemanticType}[1]{\textcolor{Blue4}{#1}}
+\newcommand{\SemanticValue}[1]{\textcolor{Yellow4}{#1}}
+\DeclareMathOperator{\EvaluatesTo}{\Downarrow}
+
+\newcommand{\OrangeText}[1]{\textcolor{Orange3}{#1}}
 
 \begin{titlepage}
   \title{EDAP05: Concepts of Programming Languages - Reference Sheet}

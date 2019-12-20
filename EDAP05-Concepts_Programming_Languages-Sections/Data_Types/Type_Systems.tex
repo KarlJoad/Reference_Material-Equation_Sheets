@@ -1,0 +1,197 @@
+\subsection{Type Systems}\label{subsec:Type_Systems}
+\begin{definition}[Type System]\label{def:Type_System}
+  \emph{Type System}s are systems that relate the concepts of \emph{\nameref{def:Data_Type}s}, \emph{\nameref{def:Expression}s}, and \emph{values}.
+  They describe rules for ensuring these concepts are correct.
+
+  There are some properties that type systems should have.
+  \begin{propertylist}
+  \item The type system should allow us to predict the output of computations. Meaning it $e \EvaluatesTo \SemanticValue{v}$, then we can assign types to both $e$ and to the result $\SemanticValue{v}$.
+  \end{propertylist}
+
+  \begin{remark}[Expressions]
+    In this portion of the document, an \nameref{def:Expression} refers to
+    \begin{equation*}
+      e \EvaluatesTo \SemanticValue{v}
+    \end{equation*}
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Data Type]\label{def:Data_Type}
+  A \emph{data type} defines a subset of data values.
+  It also specifies the set of operations possible on those values.
+  The data types present in a language used for a particular problem should closely mirror the objects in the real-world the program is solving.
+
+  They can be mathematically defined as
+  \begin{equation}\label{eq:Data_Type}
+    \SemanticValue{v} : \DataType
+  \end{equation}
+  where $\SemanticValue{v}$ is a value and $\DataType$ is a type.
+
+  \begin{remark}[Has the Type]\label{rmk:Has_the_Type}
+    To say ``$\SemanticValue{v}$ has the type $\DataType$''
+    \begin{equation}\label{eq:Has_the_Type}
+      \SemanticValue{v} \in \DataType
+    \end{equation}
+  \end{remark}
+\end{definition}
+
+User-defined data types allow for:
+\begin{itemize}[noitemsep]
+\item Improved readability with better named \nameref{def:Data_Type}s.
+\item Improved modifiability with programmers having to change just one common data type somewhere for a large change throughout a program.
+\end{itemize}
+
+If we take user-defined \nameref{def:Data_Type}s further, we end up with \emph{abstract data types}.
+These force an interface for a particular data type, which is then visible to the user, and the data and background operations are hidden away.
+
+Because of the wide variety of \nameref{def:Data_Type}s present today, it is more useful to think about \nameref{def:Variable}s in terms of \nameref{def:Descriptor}.
+
+\begin{definition}[Descriptor]\label{def:Descriptor}
+  A \emph{descriptor} is the collection of attributes of a \nameref{def:Variable}.
+  In an implementation, a descriptor is an area of \nameref{def:Memory} that stores the attributes of a \nameref{def:Variable}.
+
+  There are a 2 cases for these:
+  \begin{enumerate}[noitemsep]
+  \item If all attributes are static, then they are known at compile-time, and the \nameref{def:Compiler} can use the symbol table to construct everything.
+  \item If all attributes are dynamic, then the symbol table and all attributes must be stored in \nameref{def:Memory} during program execution.
+  \end{enumerate}
+
+  Descriptors are used for \nameref{def:Type_Checking} and building the code for \nameref{def:Variable_Memory_Allocation} and \nameref{def:Variable_Memory_Deallocation} operations.
+\end{definition}
+
+\begin{definition}[Type Error]\label{def:Type_Error}
+  A \emph{type error} is an attempt to perform an operation that requires an input value of type $\DataType$ with a value $\SemanticValue{v}$ even though $\SemanticValue{v} : \DataType$ does not hold.
+\end{definition}
+
+\begin{definition}[Type Preservation]\label{def:Type_Preservation}
+  A type system has the \emph{type preservation} (or \emph{subject reduction}) property if for any $e \EvaluatesTo \SemanticValue{v}$, $e : \DataType$ implies $\SemanticValue{v} : \DataType$.
+
+  There are 3 properties we want to have a type preserving type system to have:
+  \begin{propertylist}
+  \item \emph{Type Preservation}: The predictions of the type system agree with the evaluation rules.\label{prop:Type_Preservation-Preservation}
+  \item \emph{Progress}: The type system only assigns a type if the evaluation rules will not get ``stuck'' due to a missing semantic rule. This is not the same as guaranteeing that the program itself terminates, meaning but it does guarantee that the language implementation will never run into a situation in which it doesn't know what to do next.\label{prop:Type_Preservation-Progress}
+  \item \emph{Termination}: We want the type system to be \emph{decidable}, that is, we want an automatic mechanism that performs type checking.\label{prop:Type_Preservation-Termination}
+  \end{propertylist}
+\end{definition}
+
+\subsubsection{Strong and Weak Typing}\label{subsubsec:Strong_Weak_Typing}
+\begin{definition}[Strong Type Checking]\label{def:Strong_Type_Checking}
+  \emph{Strong type checking} is a property of a programming language that states that \textbf{any} language implementation finds \textbf{all} \nameref{def:Type_Error}s and prevents the operations that caused the \nameref{def:Type_Error} from taking place.
+
+  A language that has strong type checking is called a \emph{strongly-typed language}.
+  Such languages are:
+  \begin{itemize}[noitemsep]
+  \item Haskell
+  \item Python
+  \item Ruby
+  \item JavaScript (This is somewhat debatable)
+  \end{itemize}
+
+  \begin{remark}[Cost]\label{rmk:Strong_Type_Checking_Cost}
+    \nameref{def:Strong_Type_Checking} improves the \nameref{subsec:Reliability} of a language, at a \nameref{subsec:Cost} to the language's \nameref{subsubsec:Expressivity}, and sometimes also at a \nameref{subsec:Cost} to the language's execution time.
+
+    Usually this improvement to \nameref{subsec:Reliability} is worth it.
+    However, sometimes it is necessary to write directly to memory without regard to the \nameref{def:Data_Type} system.
+    These languages provide ``backdoors'' to do this.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Weak Type Checking]\label{def:Weak_Type_Checking}
+  \emph{Weak type checking} is the absence of \nameref{def:Strong_Type_Checking}.
+  Meaning, that an operation that causes a \nameref{def:Type_Error} does \textbf{NOT} always get prevented.
+  In some languages, like JavaScript, the operation would return some default value and continue processing.
+
+  A language that has weak type checking is called a \emph{weakly-typed language}.
+  Such languages are:
+  \begin{itemize}[noitemsep]
+  \item C
+  \item C++
+  \end{itemize}
+\end{definition}
+
+\subsubsection{When to Type Check}\label{subsubsec:When_Type_Check}
+\begin{definition}[Static Type Checking]\label{def:Static_Type_Checking}
+  Any \nameref{def:Type_Checking} that is performed before runtime (at compile time, as part of the static semantics) is called \emph{static type checking}.
+
+  For example, the following code \textbf{WILL NOT EVEN COMPILE} until the type error is fixed.
+  \inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Language_Critique/Code/Static_Type_Check.scala}
+
+  Languages that perform static type checking are called \emph{statically typed language}s.
+  Such languages are:
+  \begin{itemize}[noitemsep]
+  \item Haskell
+  \item Standard ML
+  \item C, C++, C\#, Objective-C, Java, Kotlin, etc.
+  \end{itemize}
+
+  \begin{remark}[Undecidability of Static Type Checking]\label{rmk:Static_Type_Checking-Undecidability}
+    Not all \nameref{def:Data_Type}s can be checked statically.
+    For example, the subscript used in an array access or division by a variable that may be zero must be checked dynamically.
+
+    This deference is actually \textbf{required} for a language to be strongly-typed.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Dynamic Type Checking]\label{def:Dynamic_Type_Checking}
+  Any \nameref{def:Type_Checking} that is performed at runtime is called \emph{dynamic type checking}.
+
+  For example, the following code \textbf{will} run, but will throw a type error \textbf{DURING RUNTIME}.
+  \inputminted[frame=lines,linenos]{javascript}{./EDAP05-Concepts_Programming_Languages-Sections/Language_Critique/Code/Dynamic_Type_Check.js}
+
+  Languages that perform dynamic type checking are called \emph{dynamically typed language}s.
+  Such languages are:
+  \begin{itemize}[noitemsep]
+  \item Python
+  \item JavaScript
+  \end{itemize}
+\end{definition}
+
+\subsubsection{Type Checking}\label{subsubsec:Type_System_Checking}
+The \nameref{def:Type_System} only allows an \nameref{def:Expression} \textbf{if and only if} it can assign a \nameref{def:Data_Type} to the \nameref{def:Expression}.
+
+\begin{definition}[Well-Typed]\label{def:Well_Typed_Expression}
+  An \nameref{def:Expression} is \emph{well-typed} if and only if we can show $e : \DataType$ for some type $\DataType$.
+\end{definition}
+
+We can use rules similar to operational semantics to derive the type system, much like how we derived what computation meant.
+For example,
+\begin{equation*}
+  \dfrac{e_{1} : \SemanticType{Nat} \;\; e_{2} : \SemanticType{Nat}}{e_{1} + e_{2} : \SemanticType{Nat}} \SemanticRuleName{type-add}
+\end{equation*}
+
+and now the typing of values needs to be defined, because otherwise the \SemanticRuleName{type-add} doesn't know what types it is taking in, only what they are supposed to be for the addition to be defined.
+\begin{equation*}
+  \dfrac{\SemanticValue{v} \in \NaturalNumbers}{\SemanticValue{v} : \SemanticType{Nat}}
+\end{equation*}
+
+So far, we have seen semantic type rules for operations that take in one type and return the same type.
+The same general formulation holds true for operations that take in one type and return another.
+\begin{equation*}
+  \dfrac{\SemanticInput{e_{1}} : \SemanticType{Nat} \;\; \SemanticInput{e_{2}} : \SemanticType{Nat}}{\SemanticInput{e_{1}} = \SemanticInput{e_{2}} : \SemanticType{Bool}}
+\end{equation*}
+
+The above equality operator works for the natural numbers, but it won't work with booleans, so we need to make another semantic type rule about that relationship.
+\begin{equation*}
+  \dfrac{\SemanticInput{e_{1}} : \SemanticType{Bool} \;\; \SemanticInput{e_{2}} : \SemanticType{Bool}}{\SemanticInput{e_{1}} = \SemanticInput{e_{2}} : \SemanticType{Bool}}
+\end{equation*}
+
+\subsubsection{Dynamic Type Checking}\label{subsubsec:Dynamic_Type_Checking}
+Whenever a typing rule depends on the evaluation relation $\EvaluatesTo$, we must defer type checking to runtime.
+Depending on the language, there might be a lot or a little amount of checking.
+Some languages actually defer all type checking to runtime, these are \emph{dynamically typed} languages, like Python and JavaScript.
+
+\subsubsection{Overloading}\label{subsubsec:Overloading}
+\nameref{def:Overload_Operator}s are a form of \nameref{def:Ad_Hoc_Polymorphism}.
+They rely on the typing rules of a language to determine what type of operation to perform.
+For example,
+\begin{equation*}
+  \dfrac{e_{1} \EvaluatesTo \SemanticValue{v_{1}} \;\; e_{2} \EvaluatesTo \SemanticValue{v_{2}} \;\; \SemanticValue{v_{1}} : \SemanticType{Nat} \;\; \SemanticValue{v_{2}} : \SemanticType{Nat} \;\; \SemanticValue{v} = \SemanticValue{v_{1}} + \SemanticValue{v_{2}}}{e_{1} \SemanticInput{+} e_{2} \EvaluatesTo \SemanticValue{v}}\SemanticRuleName{add}
+\end{equation*}
+\begin{equation*}
+  \dfrac{e_{1} \EvaluatesTo \SemanticValue{v_{1}} \;\; e_{2} \EvaluatesTo \SemanticValue{v_{2}} \;\; \SemanticValue{v_{1}} : \SemanticType{String} \;\; \SemanticValue{v_{2}} : \SemanticType{String} \;\; \SemanticValue{v} = \SemanticValue{v_{1}} ++ \SemanticValue{v_{2}}}{e_{1} \SemanticInput{+} e_{2} \EvaluatesTo \SemanticValue{v}}\SemanticRuleName{concat}
+\end{equation*}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
