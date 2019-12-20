@@ -5,10 +5,6 @@ There are 2 main types of \nameref{def:Symmetric_Encryption} algorithms:
 \item \nameref{def:Stream_Cipher}s
 \end{enumerate}
 
-\begin{definition}[Block Cipher]\label{def:Block_Cipher}
-  \emph{Block cipher}s encrypt a block of symbols of a fixed size from the \nameref{def:Plaintext} message using an fixed-size encryption transformation.
-\end{definition}
-
 \begin{definition}[Stream Cipher]\label{def:Stream_Cipher}
   \emph{Stream cipher}s encrypt individual characters of the \nameref{def:Plaintext} using an encryption transofrmation that varies with time.
   The 2 elements that make up a stream cipher are \textbf{memory} and a \textbf{combinatorial function}.
@@ -351,6 +347,47 @@ where $s_{i} \in \FiniteMathField{F}{q}{}, i = 0, 1, \ldots, T-1$
 
   Thus, the shortest \nameref{def:LFSR} for the given sequence has a \nameref{def:Connection_Polynomial} of $C(D) = D^{3}+D+1$, with an initial state \nameref{def:D_Transform} equation of $P(D) = D^{2}+D+1$.
 \end{example}
+
+\subsection{Berlekamp-Massey Algorithm}\label{subsec:Berlekamp_Massey_Algorithm}
+I will present this algorithm in 2 ways, a algorithm table and a flow chart.
+
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+  
+  \Input{A sequence $\mathbf{s} = (s_{0}, s_{1}, \ldots, s_{N-1})$ of length $N$.}
+  \Output{The shortest LFSR $\langle C(D)$, where $L \rangle$ generating $\mathbf{s}$.}
+  \BlankLine{}
+  \textit{Initialization}: $C(D) = 1$, $L=0$, $C^{*}(D) = 1$, $d^{*} = 1$, $m = -1$, and $n=0$. \;
+  \While{$n < N$}{
+    Compute the discrepancy $d$:
+    \begin{equation*}
+      d = s_{n} - \sum\limits_{i=1}^{L} -c_{i}s_{n-i}
+    \end{equation*} \;
+    \If{$d \neq 0$}{
+      $T(D) = C(D)$ \;
+      $C(D) = C(D) - ( d \cdot d^{-1}) \cdot (C^{*}(D))D^{n-m}$\;
+      \If{$L \leq \frac{n}{2}$}{
+        $L = n + 1 - L$ \;
+        $C^{*}(D) = T(D)$ \;
+        $d^{*} = d$ \;
+        $m = n$ \;
+      }
+    }
+    $n = n + 1$
+  }
+  \Return{$\langle C(D), L \rangle$}
+  \caption{Berlekamp-Massey Algorithm}
+  \label{fig:Berlekamp_Massey_Algorithm}
+\end{algorithm}
+
+\begin{figure}[h!]
+  \centering
+  
+  \caption{Berlekamp-Massey Algorithm}
+  \label{fig:Berlekamp_Massey_Algorithm}
+\end{figure}
 
 \subsection{Cycle Sets}\label{subsec:Cycle_Sets}
 \begin{definition}[Cycle Set]\label{def:Cycle_Set}
