@@ -1,26 +1,45 @@
 \section{Advanced Data Types}\label{sec:Advanced_Data_Types}
+\nameref{def:Static_Type_Checking} is favorable because it allows us to catch \nameref{def:Type_Error}s early.
+Overall, this contributes to the robustness and \nameref{subsec:Reliability} of a language.
+We attempt to assign a \nameref{def:Data_Type} to every value and \nameref{def:Expression}.
+This is usually done with static typing rules as automation and explicit use specification.
+
+However, static typing cannot solve all our issues in programming.
+For instance, if we wanted to exclude division by zero, we might require that the divisor be non-zero.
+However, this limits our ability to do computation.
+
+There are 3 main trade-offs that we need to make with \nameref{def:Data_Type}s:
+\begin{enumerate}[noitemsep]
+\item \textbf{Precision}: How accurately can we make types capture the behaviour of a value, \nameref{def:Expression}, \nameref{sec:Subprograms}, or other program concept?
+  This concept ties into the question of Increasing \nameref{subsec:Reliability}.
+\item \textbf{Automation}: How much type-checking can we do while still being certain that the type-checking mechanism will eventually (and, ideally, quickly) finish?
+  This concept ties into the question of Reducing Compile-Time \nameref{subsec:Cost} and more generally Reducing Development \nameref{subsec:Cost}.
+\item \textbf{User-Friendliness}: At what point does writing and reading types become too unwieldy to be practical for users?
+  This concept ties into several of the \nameref{subsec:Readability} and \nameref{subsec:Writability} criteria.
+\end{enumerate}
+
 \begin{definition}[Polymorphism]\label{def:Polymorphism}
-  
-\end{definition}
-
-\subsection{Parametric Polymorphism}\label{subsec:Parametric_Polymorphism}
-\begin{definition}[Parametric Polymorphism]\label{def:Parametric_Polymorphism}
-
-  \begin{remark}[Generics]\label{rmk:Generics}
-    Outside of the \nameref{def:Functional_Programming_Language} world, \nameref{def:Parametric_Polymorphism} is usually refered to as \emph{generics}.
-    Subprograms that make use of these generics are called \emph{generic subprograms}.
-  \end{remark}
-\end{definition}
+  \emph{Polymorphism} is the idea that part of a program can have multiple forms, i.e.\ a single program handles multiple cases of input types.
 
 \subsection{Ad-Hoc Polymorphism}\label{subsec:Ad_Hoc_Polymorphism}
 \begin{definition}[Ad-Hoc Polymorphism]\label{def:Ad_Hoc_Polymorphism}
   
+  There are 3 types of polymorphism that are discussed here:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{subsec:Parametric_Polymorphism}
+  \item \nameref{subsec:Ad_Hoc_Polymorphism}
+  \item \nameref{subsec:Subtype_Polymorphism}
+  \end{enumerate}
 \end{definition}
 
 \subsection{Subtype Polymorphism}\label{subsec:Subtype_Polymorphism}
 \begin{definition}[Subtype Polymorphism]\label{def:Subtype_Polymorphism}
   
+\begin{definition}[Conservative]
+  If a \nameref{def:Type_System} cannot precisely express the possible values a \nameref{def:Data_Type} can take, and forces us to describe the values more generally, this is a \emph{conservative} \nameref{def:Type_System}.
 \end{definition}
+
+\input{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Parametric_Polymorphism}
 
 %%% Local Variables:
 %%% mode: latex
