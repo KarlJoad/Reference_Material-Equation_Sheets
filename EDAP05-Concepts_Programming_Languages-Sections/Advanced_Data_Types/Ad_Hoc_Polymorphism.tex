@@ -1,11 +1,48 @@
 \subsection{Ad-Hoc Polymorphism}\label{subsec:Ad_Hoc_Polymorphism}
 \begin{definition}[Ad-Hoc Polymorphism]\label{def:Ad_Hoc_Polymorphism}
   \emph{Ad-Hoc polymorphism} can be summarized by the following phrase; ``This value has a \nameref{def:Data_Type}, and you don't need to know what it is, but here are a few things you can do with it''.
+
+  Depending on the language, this can be achieved with \nameref{def:Typeclass}es.
 \end{definition}
 
-\begin{definition}[Typeclass]
-  
+To motivate this discussion, we need to refer back to the previous section on \nameref{subsec:Parametric_Polymorphism} and the code block below.
+\inputminted[frame=lines,linenos]{rust}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/Parametric_Polymorphic_Max.rs}
+However, Rust will complain about this code, and suggest that we must add a \nameref{def:Type_Constraint} to bound the \nameref{def:Type_Parameter} \SemanticType{\texttt{T}} by a Rust trait.
+This is because the \nameref{def:Data_Type} \SemanticType{\texttt{T}} could be \textbf{ANY} type present in the programming language/project.
+For example, finding the maximum of a string is an ambiguous operation.
+What does it mean to find the ``maximum string''?
+
+The trait that is used to bound \SemanticType{\texttt{T}} is \SemanticType{\texttt{std::cmp::PartialOrd}}.
+This means that \textbf{ANY} type \SemanticType{\texttt{T}} that we feed into the \texttt{max2} function \textbf{MUST} be bounded by \SemanticType{\texttt{std::cmp::PartialOrd}}, meaning the definition of relational operators (\texttt{<}, \texttt{>}, etc.) is defined.
+Knowing this, we rewrite our \texttt{max2} code as shown below, and attempt to use it on something that does not have its type bounded.
+\inputminted[frame=lines,linenos]{rust}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/Parametric_Polymorphic_Max-Start_Typeclass.rs}
+
+\begin{definition}[Type Constraint]\label{def:Type_Constraint}
+  A \emph{type constraint} is a method of constraining a \nameref{def:Data_Type} to \textbf{ONLY} \nameref{def:Data_Type}s that have certain characteristics about them, functions defined, etc.
+  This is used to bound the possible types that can be used by certain things to ensure that all the operations specifed in a portion of a program are defined for any possible \nameref{def:Data_Type} that can be fed in.
 \end{definition}
+
+\begin{definition}[Typeclass]\label{def:Typeclass}
+  A \emph{typeclass} is a form of a \nameref{def:Type_Constraint}.
+  It was first introduced by the Haskell programming language and has since been introduced to other programming languages as well.
+  The name typeclass is language-agnostic, meaning other languages might call these something else.
+  
+  \begin{remark}[Rust Traits]\label{rmk:Rust_Trait}
+    The Rust programming language calls \nameref{def:Typeclass}es \emph{trait}s.
+    The traits used in Rust \textbf{are not the same} as the ones in Scala.
+    They just so happen to have the same name.
+  \end{remark}
+  
+  \begin{remark}[Typeclass/Class Confusion]
+    \textbf{BE CAREFUL!}
+    \nameref{def:Typeclass}es and \nameref{def:OOP_Class}es are \textbf{NOT} related to each other and are fundamentally different.
+  \end{remark}
+\end{definition}
+
+\subsubsection{User-Defined Typeclasses}\label{subsubsec:User_Defined_Typeclasses}
+Most programming languages that support \nameref{def:Typeclass}es allow for the programmer to specify their own \nameref{def:Typeclass}es for use in their programs to bound their \nameref{def:Data_Type}s.
+In this section, we are going to construct another \texttt{max} function, but this one will use a greater-than operator that we define.
+By creating a new operator for ourselves, we need to bound the possible inputs to the operator to ensure that it works for all the \nameref{def:Data_Type}s we expect to put into it.
 
 %%% Local Variables:
 %%% mode: latex
