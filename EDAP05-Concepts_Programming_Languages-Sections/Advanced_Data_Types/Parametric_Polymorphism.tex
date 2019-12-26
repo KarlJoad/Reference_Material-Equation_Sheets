@@ -4,7 +4,62 @@
 
   \begin{remark}[Generics]\label{rmk:Generics}
     Outside of the \nameref{def:Functional_Programming_Language} world, \nameref{def:Parametric_Polymorphism} is usually refered to as \emph{generics}.
-    Subprograms that make use of these generics are called \emph{generic subprograms}.
+    Subprograms that make use of these generics (\nameref{def:Type_Parameter}s) are called \emph{generic subprograms}.
+  \end{remark}
+\end{definition}
+
+An example of this is a function that creates a list of fixed size where all elements are initialized with a programmer-specified initial value.
+The code shown below is \emph{invalid} Scala code, but illustrates the concept.
+\inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/No_Polymorphism_Initial_List.scala}
+
+This is even more apparent if we write a couple of identity functions.
+These are functions that take their parameter and just return it, and do nothing else.
+Again, written in Scala, they are:
+\inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/No_Polymorphism_Identity_Functions.scala}
+
+The way to solve this is with \nameref{def:Type_Parameter}s.
+\begin{definition}[Type Parameter]\label{def:Type_Parameter}
+  The \emph{type parameter} language mechanism abstracts over types that are already present in the program, so we can use these types without knowing their exact form.
+  In many ways, type parameters mirror traditional subprogram \nameref{subsec:Subprogram_Parameters}.
+
+  There are 2 forms of type parameters:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Formal_Type_Parameter}s
+  \item \nameref{def:Actual_Type_Parameter}s
+  \end{enumerate}
+\end{definition}
+
+Using the definition of a \nameref{def:Type_Parameter} system, we can rewrite the identity functions, in Scala, as:
+\inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/Polymorphism_Identity_Functions.scala}
+
+For those familiar with Java, this \nameref{def:Type_Parameter} system has the syntax
+\inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/Polymorphism_Identity_Functions.java}
+
+\begin{remark*}
+  The code examples of \nameref{def:Parametric_Polymorphism} above make it seem like it is only possible to write these \nameref{def:Subprogram_Definition}s with just one \nameref{def:Formal_Type_Parameter}.
+  However, just like normal subprogram \nameref{subsec:Subprogram_Parameters}, you can pass as many \nameref{def:Actual_Type_Parameter}s as you would like.
+
+  Take this use of a HashMap in Java as an example.
+  \inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/Polymorphism_HashMap.java}
+\end{remark*}
+
+\begin{definition}[Formal Type Parameter]\label{def:Formal_Type_Parameter}
+  A \emph{formal type parameter} are the \nameref{def:Type_Parameter}s present in the \nameref{def:Subprogram_Header}.
+  These are type variables that can be used freely throughout the body in all the places where the \nameref{def:Data_Type} can vary, but should act the same.
+
+  \begin{remark}[Type Parameter]\label{rmk:Type_Parameter}
+    \nameref{def:Formal_Type_Parameter}s are sometimes colloquially referred to as \emph{type parameter}s.
+    In this case, they are related to the definition of \nameref{def:Type_Parameter}s (\Cref{def:Type_Parameter}), but they are only they ``placeholder'' types.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Actual Type Parameter]\label{def:Actual_Type_Parameter}
+  The \emph{actual type parameter} is the actual \nameref{def:Data_Type} provided to a function that uses/requires a \nameref{def:Formal_Type_Parameter}.
+  
+  \begin{remark}[Type Variable]\label{rmk:Type_Variable}
+    \nameref{def:Actual_Type_Parameter}s are sometimes colloquially referred to as \emph{type variable}s.
+    These share a relationship with normal \nameref{def:Variable}s, but they do not necessarily have all the same properties as normal \nameref{def:Variable}s.
+    However, these functions can ``vary'' depending on what the programmer specifies.
   \end{remark}
 \end{definition}
 
