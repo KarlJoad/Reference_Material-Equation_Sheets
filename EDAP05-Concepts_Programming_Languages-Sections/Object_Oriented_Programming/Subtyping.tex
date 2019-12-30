@@ -1,0 +1,17 @@
+\subsection{Subtyping in Object-Oriented Languages}\label{subsec:Subtyping_Object_Oriented_Languages}
+This is a continuation from \Cref{subsec:Subtype_Polymorphism}.
+
+From earlier, the 3 things that \nameref{def:Object_Oriented_Programming} must support are:
+\begin{enumerate}[noitemsep]
+\item Dynamic method binding or \emph{\nameref{def:OOP_Dynamic_Dispatch}}
+\item \nameref{def:OOP_Inheritance}
+\item Support for \nameref{def:Abstract_Data_Type}s
+\end{enumerate}
+
+The subtyping rules for methods follow the subtyping rules for subroutines, so the following overriding between classes C and D is perfectly safe:
+\inputminted[frame=lines,linenos]{java}{./EDAP05-Concepts_Programming_Languages-Sections/Object_Oriented_Programming/Code/MethodSubtyping.java}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
