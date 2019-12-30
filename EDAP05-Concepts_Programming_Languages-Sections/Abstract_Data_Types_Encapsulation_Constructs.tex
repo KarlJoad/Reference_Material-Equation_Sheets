@@ -136,7 +136,14 @@ In a code example, we can write our \nameref{def:ADT_Interface} as a Rust Trait.
 If we have no specification, we could implement \texttt{IntVector} in Python like so;
 \inputminted[frame=lines,linenos]{python3}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/IntVector_No_Spec.py}
 
+However, this is a completely useless \nameref{def:ADT_Implementation}.
+We need a \nameref{def:ADT_Specification} to ensure that the \nameref{def:ADT_Implementation} makes sense.
+\begin{itemize}[noitemsep]
+\item If $\ell = \mathtt{length}(v)$, and we call $\mathtt{append}(v, x)$ once, then afterwards $\mathtt{length}(v) = \ell + 1$.
+\item $\mathtt{get}(\mathtt{create}(\ell), i) = 0$ if $i \in \lbrace 0, 1, \ldots, \ell-1 \rbrace$, otherwise, there is an error.
+\end{itemize}
 
+Using this \nameref{def:ADT_Specification}, we can make an \nameref{def:ADT_Implementation} that behaves the way we expect it to, which will allow the programmer to use the \nameref{def:ADT_Interface} safely, without knowing the actual implementation details.
 
 
 
