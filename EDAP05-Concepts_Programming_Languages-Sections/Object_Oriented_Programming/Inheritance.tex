@@ -145,6 +145,17 @@ If we wanted to define a bounded interface, using interfaces, to implement the \
 \inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Object_Oriented_Programming/Code/Cmp.scala}
 \inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Object_Oriented_Programming/Code/PriorityQueue.scala}
 
+\paragraph{F-Bounded Parametric Polymorphism Using Interfaces}\label{par:OOP_F_Bounded_Parametric_Polymorphism_Interfaces}
+The previous examples are \textit{too} restrictive, in that they require that the object \SemanticType{T} be able to compare itself against \emph{\textbf{any other}} object, when we just want to compare this type against inself, i.e.\ \SemanticType{Integer}s against \SemanticType{Integer}s.
+We can do this by boudning the subtype that \texttt{Cmp} compares against.
+If we rewrite the \texttt{Cmp} trait into the \texttt{GT} trait, using \emph{F-Bounded Polymorphism}, we end up with the code below.
+More precisely, bounding a type parameter by a type that contains the type parameter itself is called \emph{F-bounded polymorphism}.
+\inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Object_Oriented_Programming/Code/GT.scala}
+\inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Object_Oriented_Programming/Code/GTPriorityQueue.scala}
+
+Thus, anything that wishes to implement the \texttt{GTPriorityQueue} must be specified similarly as what is shown below.
+\inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Object_Oriented_Programming/Code/UserRequest.scala}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
