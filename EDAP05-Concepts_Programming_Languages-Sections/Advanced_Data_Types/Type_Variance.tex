@@ -19,6 +19,10 @@ Using a \texttt{\SemanticType{Box}} Scala trait as the basis of our discussion, 
   Let $i \in \lbrace 1,\ldots, k \rbrace$.
 
   If for all $\DataType_{i}' :> \DataType_{i}$ we can always substitute a value of type $\DataType [\DataType_{1}',\ldots, \DataType_{i}', \ldots, \DataType_{k}']$ in a context that expects a value of type $\DataType [\DataType_{1}, \ldots, \DataType_{i}, \ldots, \DataType_{k}]$ without violating type preservation then $\DataType_{i}$ is \emph{contravariant} in $\SemanticType{T}$.
+
+  Using the \SemanticType{Box} example from above, we can create an \emph{contravariant} Scala trait by writing something like this,
+  \inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/ContravariantBox.scala}
+  When we vary the type parameter \SemanticType{T} towards a subtype, the type of \SemanticType{WriteBox[T]} varies in the opposite direction, towards that of a supertype; we say that \SemanticType{T} is \textbf{contravariant}.
 \end{definition}
 
 \begin{definition}[Invariance]\label{def:Type_Invariance}
