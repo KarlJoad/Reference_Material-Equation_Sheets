@@ -1,0 +1,135 @@
+\subsection{Standard ML}\label{subsec:Functional-Standard_ML}
+\begin{definition}[Standard ML]\label{def:Standard_ML}
+  \emph{Standard ML}, \emph{SML}, \emph{Standard Meta Language} is a general-purpose, modular, \nameref{def:Functional_Programming_Language} with compile-time type checking and type inference.
+  It uses \nameref{def:Pass_By_Value} for its evaluation of \nameref{def:Actual_Parameter}s to functions.
+\end{definition}
+
+Computation in Standard ML consists of sequential evaluation of expressions.
+Each expression has 3 characteristics:
+\begin{enumerate}[noitemsep]
+\item It may or may not have a \emph{\nameref{def:Data_Type}}.
+\item It may or may not have a \emph{\nameref{def:Variable_Value}}.
+\item It may or may not have an \emph{effect}. These include:
+  \begin{itemize}[noitemsep]
+  \item Raising an exception
+  \item Modifying memory
+  \item Performing I/O
+  \item Sending a message on a network
+  \end{itemize}
+\end{enumerate}
+
+Every expression is \textbf{required} to have at least one \nameref{def:Data_Type}, making them \emph{well-typed}.
+If an expression does \textbf{not} have a \nameref{def:Data_Type}, it is called \emph{ill-typed}, and cannot be evaluated.
+The \emph{type checker} is in charge of checking the types of all expressions.
+
+Well-typed expressions can be evaluated to determine their value.
+This evaluation can be interrupted by an exception and/or a run-time fault.
+
+\begin{definition}[Soundness]\label{def:Functional_Lang-Soundness}
+  The \emph{soundness} of the \nameref{def:Data_Type} system ensures the accuracy of predictions made by the type checker.
+\end{definition}
+
+\subsubsection{Type Checking}\label{subsubsec:Functional-SML-Type_Checking}
+A type in \nameref{def:Standard_ML} requires 3 things:
+\begin{enumerate}[noitemsep]
+\item A \emph{name} for the type, for later uses.
+\item The \emph{values} that the type can have.
+\item The \emph{operations} that may be performed with this type.
+\end{enumerate}
+
+There are several basic \nameref{def:Data_Type}s in \nameref{def:Standard_ML}.
+\begin{enumerate}[noitemsep]
+\item \texttt{int}, corresponding to integer numbers
+\item \texttt{real}, corresponding to floating-point numbers
+\item \texttt{char}, denoted \texttt{\#``c''}
+\item \texttt{string}, denoted \texttt{``string''}
+\item \texttt{bool}, either \texttt{true} or \texttt{false}
+\end{enumerate}
+
+\subsubsection{\texttt{If}-Statements in Standard ML}\label{subsubsec:Functional-SML-If_Statement}
+The \texttt{if}-statement syntax is shown below.
+\begin{minted}[frame=lines,linenos]{sml}
+if conditionalExp then exp1 else exp2
+\end{minted}
+
+There are a few things to note.
+The \texttt{conditionalExp} must evaluate to an expression of a \texttt{bool} type.
+The expressions \texttt{exp1} and \texttt{exp2} \textbf{MUST} have the same type.
+However, even if both branches have the same type, one branch can still raise raise an exception during runtime.
+
+\subsubsection{Declarations in Standard ML}\label{subsubsec:Functional-SML-Declarations}
+By default, both variables and types have global scope.
+However, \nameref{def:Standard_ML} has introduced methods to limit the scope of things.
+These are described more fully in \Cref{par:Functional-SML-Limit_Scope}.
+
+\paragraph{Variables}\label{par:Functional-SML-Variable_Declarations}
+Variables in \nameref{def:Standard_ML} are slightly different than \nameref{def:Variable}s in \nameref{def:Imperative_Programming_Language}s.
+In \nameref{def:Standard_ML}, variables maintain the same value throughout their life.
+If a variable is rebound, then a whole new memory cell is created for the new value and the old discarded.
+For example,
+\begin{minted}[frame=lines,linenos]{sml}
+val a : int = 5;
+val a = a + 1; (* This creates a whole NEW "a" to use *)
+(* Create 2 new values at once *)
+val a : int = 6 and b : real = 3.14;
+\end{minted}
+
+It is important to note that variables are \emph{bound-by-value} in \nameref{def:Standard_ML}.
+This means that the right-hand side is evaluated first, meaning that the rebinding of \texttt{a} in the previous example is expanded to \mintinline{sml}{val a : int = 5 + 1}.
+
+\paragraph{Types}\label{par:Functional-SML-Type_Declarations}
+Aliased \nameref{def:Data_Type}s can be created in \nameref{def:Standard_ML}.
+For example,
+\begin{minted}[frame=lines,linenos]{sml}
+type float = real; (* Creates a new type "float" that has a range the same as the base "real" type *)
+type count = int and average = real; (* Introduces 2 new types at once *)
+
+(* There is one case that does not work, because 2 new types are being introduced AT ONCE. *)
+type float = real and average = float;
+\end{minted}
+
+\paragraph{Limiting Scope}\label{par:Functional-SML-Limit_Scope}
+\textbf{TODO!!}
+
+\subsubsection{Functions in Standard ML}\label{subsubsec:Functional-SML-Functions}
+\textbf{Functions and variables share the same expression namespace!}
+This means that things like this can happen:
+\inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Functional_Programming/Code/Value_Shadowing.sml}
+
+\subsubsection{Pattern Matching in Standard ML}\label{subsubsec:Functional-SML-Pattern_Matching}
+\begin{definition}[Pattern Matching]\label{def:Pattern_Matching}
+  \textbf{TODO!!}
+\end{definition}
+
+\subsubsection{\nameref*{def:Data_Type} Inferencing}\label{subsubsec:Functional-SML-Data_Type_Inferencing}
+\begin{definition}[\nameref*{def:Data_Type} Inferencing]\label{def:Functional-SML-Data_Type_Inferencing}
+  \textbf{TODO!!}
+\end{definition}
+
+\subsubsection{Algebraic Datatypes}\label{subsubsec:Functional-SML-Algebraic_Datatypes}
+\begin{definition}[Algebraic Datatype]\label{def:Algebraic_Datatype}
+  An \emph{algebraic datatype} can be viewed as a generalization of datatypes already present.
+  Additionally, these can behave like \nameref{def:Enumeration_Type}s or like \nameref{def:Union_Type}s.
+  These can then have \nameref{def:Pattern_Matching} performed on them.
+\end{definition}
+
+A simple \nameref{def:Algebraic_Datatype} can be visualized as a cardinal direction.
+For example,
+\inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Functional_Programming/Code/Algebraic_Datatype-Direction.sml}
+
+We can apply pattern matching to \nameref{def:Algebraic_Datatype}s as well.
+\inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Functional_Programming/Code/Algebraic_Datatype-Direction-Pattern_Match.sml}
+
+Another example, slightly more complicated is the construction of a list type, that we will call \texttt{lst}.
+\inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Functional_Programming/Code/Algebraic_Datatype-lst.sml}
+
+Now say we wanted to simplify the total number of functions possible in our \texttt{lst} code.
+Many of our functions have the same construction and the same recursion.
+We can simplify them down to a \texttt{map} function, which takes a list and a function as \nameref{def:Formal_Parameter}s and applies the function to each element of the given list, returning a new list in the process.
+The code for this \texttt{map} function is shown below.
+\inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Functional_Programming/Code/lst-map.sml}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
