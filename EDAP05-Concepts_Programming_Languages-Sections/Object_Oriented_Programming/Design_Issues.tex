@@ -1,0 +1,104 @@
+\subsection{Design Issues for Object-Oriented Languages}\label{subsec:OOP_Design_Issues}
+\subsubsection{Exclusivity of Objects}\label{subsubsec:OOP_Object_Exclusivity}
+There are 3 main schools of thought/implementation when it comes to the implementation of \nameref{def:OOP_Object}s in an \nameref{def:Object_Oriented_Programming} language.
+\begin{enumerate}[noitemsep]
+\item \textbf{EVERYTHING} is an \nameref{def:OOP_Object}. Basic scalar types, collections, programs, everything is an \nameref{def:OOP_Object}. In the purest version of this model, all \nameref{def:OOP_Class}es are treated the same way.
+  \begin{itemize}[noitemsep]
+  \item The benefits of this are the uniformity and elegance of the language. It is incredibly regular, where everything looks the same and behaves similarly, without exception.
+  \item The disadvantages of this is mainly the cost of executing everything as an \nameref{def:OOP_Object}. There are \nameref{def:OOP_Message}s and the method calls which are slower than simpler, primitive, operations.
+  \end{itemize}
+\item Keep the original, traditional collection of types, but add the object typing model on top.
+  \begin{itemize}[noitemsep]
+  \item The benefits of this is that the language retains its speed of execution on the primitive types.
+  \item The drawbacks of this is the confusing syntax and semantics that can be output by this.
+  \end{itemize}
+\item Use an imperative type structure for the \nameref{def:Primitive_Data_Type}s, but all structured types as objects.
+  \begin{itemize}[noitemsep]
+  \item The benefit of this is the execution speed of operations is relatively similar
+  \item The downsides are the complications that can appear in the language, and the need for \emph{wrapper \nameref{def:OOP_Class}es} that allow these non\nameref{def:OOP_Object} types and \nameref{def:OOP_Object}s to interact.
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Are Subclasses Subtypes?}\label{subsubsec:OOP_Subclasses_Subtypes}
+This question boils down to the question ``Does an `is-a' relationship hold between a \nameref{def:OOP_Subclass} and its \nameref{def:OOP_Superclass}?''
+Or, can we replace every occurrence of the \nameref{def:OOP_Superclass} with the \nameref{def:OOP_Subclass}, and everything would still work?
+
+Most programming languages significantly restrict the ways in which a \nameref{def:OOP_Subclass} can be constructed, to ensure that this holds true.
+The characteristics of \nameref{def:OOP_Subclass}es that are \nameref{def:Subtype}s are:
+\begin{itemize}[noitemsep]
+\item The \nameref{def:OOP_Method}s of the \nameref{def:OOP_Subclass} that \nameref{def:OOP_Override} the \nameref{def:OOP_Superclass}'s are type compatible with their corresponding \nameref{def:OOP_Method}s.
+  This means that if we were to replace any call with its overridden version, the program would still be type-safe.
+\item Every overriding \nameref{def:OOP_Method} must have the same number of \nameref{def:Formal_Parameter}s as the \nameref{def:OOP_Override}n \nameref{def:OOP_Method}.
+\item The \nameref{def:Data_Type}s of the \nameref{def:Formal_Parameter}s are also compatible.
+\item The return types of the \nameref{def:OOP_Method} are also compatible.
+\end{itemize}
+
+\subsubsection{Single and Multiple Inheritance}\label{subsubsec:OOP_Single_Multiple_Inheritance}
+It might make sense for a \nameref{def:OOP_Class} to inherit from more than 1 \nameref{def:OOP_Superclass}, if it has components of each.
+However, this leads to 2 issues:
+\begin{enumerate}[noitemsep]
+\item Complexity
+  \begin{itemize}[noitemsep]
+  \item If the multiple \nameref{def:OOP_Superclass} defined something with the same name, it must be explicitly resolved.
+  \item What if a \nameref{def:OOP_Subclass} inherit from multiple \nameref{def:OOP_Superclass}es that themselves inherit from the same \nameref{def:OOP_Superclass}? This forms the \emph{diamond inheritance problem}.
+  \end{itemize}
+\item Efficiency
+  \begin{itemize}[noitemsep]
+  \item There needs to be an extra heap access to access the second \nameref{def:OOP_Superclass} of an \nameref{def:OOP_Object}.
+  \end{itemize}
+\end{enumerate}
+
+\nameref{def:OOP_Multiple_Inheritance} can lead to complex program organizations.
+Many who have attempted to use \nameref{def:OOP_Multiple_Inheritance} have struggled to design \nameref{def:OOP_Class}es that benefit from having multiple \nameref{def:OOP_Superclass}es.
+This also leads to greater dependency and complexity between \nameref{def:OOP_Class}es.
+
+\subsubsection{Allocation and Deallocation of Objects}\label{subsubsec:OOP_Object_Allocation_Deallocation}
+The first question is, where are \nameref{def:OOP_Object}s allocated from?
+\begin{itemize}[noitemsep]
+\item Allocated from anywhere, like \nameref{def:Abstract_Data_Type}s. Means they could be
+  \begin{itemize}[noitemsep]
+  \item Allocated from the call stack
+  \item Allocated from the heap
+  \item Allocated in static memory
+  \end{itemize}
+\item \nameref{def:Heap_Dynamic_Variable} only.
+  \begin{itemize}[noitemsep]
+  \item Uniform design among \nameref{def:OOP_Object}s
+  \item Simpler to access objects through the \nameref{def:Pointer}s/\nameref{def:Reference}s to the \nameref{def:OOP_Object}.
+  \item Is allocation implicit or explicit?
+  \end{itemize}
+\item if \nameref{def:OOP_Object}s are stack-dynamic, then the extra information that a \nameref{def:OOP_Subclass} has might be truncated in \nameref{def:Memory} when copied to a location that held a \nameref{def:OOP_Superclass}. This is called \emph{object slicing}.
+\end{itemize}
+
+Is deallocation implicit or explicit?
+If its implicit, then what is the storage reclamation solution?
+If its explicit, then how do we handle the \nameref{def:Dangling_Pointer} problem?
+
+\subsubsection{Dynamic and Static Binding}\label{subsubsec:OOP_Dynamic_Static_Binding}
+Dynamic binding of \nameref{def:OOP_Message}s to \nameref{def:OOP_Method}s is essential.
+But the question is, are all of these bindings implicitly dynamic?
+The alternative is that the user must specify if the binding is to be dynamic or static.
+
+The benefit of static bindings is that they are much faster.
+
+\subsubsection{Nested Classes}\label{subsubsec:OOP_Nested_Classes}
+The primary motivation of nesting \nameref{def:OOP_Class}es is to hide information.
+If a \nameref{def:OOP_Class} is only needed by one other \nameref{def:OOP_Class}, why make the single-use \nameref{def:OOP_Class} public?
+Is nesting of these \nameref{def:OOP_Class}es inside \nameref{def:OOP_Method}s allowed?
+
+The biggest issue with this is visibility.
+Which of the facilities of the nesting \nameref{def:OOP_Class} are visible in the nested \nameref{def:OOP_Class}?
+Which of the facilities of the nested \nameref{def:OOP_Class} are visible in the nesting \nameref{def:OOP_Class}?
+
+\subsubsection{Initialization of Objects}\label{subsubsec:OOP_Object_Initialization}
+Are \nameref{def:OOP_Object}s initialized with values when the are first created?
+If so, how are these \nameref{def:OOP_Object}s initialized?
+What values are they initialized with?
+
+This requires us to ask if these \nameref{def:OOP_Object}s must be initialized manually, or through an implicit mechanism.
+If we are instantiating an \nameref{def:OOP_Object} of a \nameref{def:OOP_Subclass}, then we also need to instantiate the necessary materials for the \nameref{def:OOP_Superclass}.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
