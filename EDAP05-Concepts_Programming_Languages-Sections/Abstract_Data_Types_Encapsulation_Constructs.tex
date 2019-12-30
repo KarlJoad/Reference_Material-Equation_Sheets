@@ -122,7 +122,16 @@ Overall, this improved program \nameref{subsec:Reliability} and portability.
   We also need to specify the actions that are required for the \nameref{def:Abstract_Data_Type} in the \nameref{def:ADT_Interface}.
 \end{definition}
 
+For example, if we have an \nameref{def:ADT_Interface} of an \texttt{IntVector}, that supports the following operations:
+\begin{itemize}[noitemsep]
+\item create : \texttt{\SemanticType{int}} $\rightarrow$ \texttt{\SemanticType{IntVector}}
+\item length : \texttt{\SemanticType{IntVector}} $\rightarrow$ \texttt{\SemanticType{int}}
+\item append : \texttt{(\SemanticType{IntVector}, \SemanticType{int})} $\rightarrow$ \texttt{()}
+\item get : \texttt{(\SemanticType{IntVector}, \SemanticType{int})} $\rightarrow$ \texttt{\SemanticType{int}}
+\end{itemize}
 
+In a code example, we can write our \nameref{def:ADT_Interface} as a Rust Trait.
+\inputminted[frame=lines,linenos]{rust}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/IntVector_Interface.rs}
 
 
 
