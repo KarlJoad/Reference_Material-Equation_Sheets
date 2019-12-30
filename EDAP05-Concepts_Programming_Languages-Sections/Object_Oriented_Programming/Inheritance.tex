@@ -129,6 +129,12 @@ These provide a mechanism for defining new types that describe families of opera
 In Java, these types are called interfaces, and traits in Scala.
 Interfaces/traits may be sub-types of other interfaces/traits, and classes may be subtypes of interfaces/traits, but since there are no implementations to inherit from an interface/trait, these two do not act as classes.
 
+\paragraph{Abstract Data Types Using Interfaces}\label{par:OOP_ADTs_Interfaces}
+For any \nameref{def:OOP_Class} that \emph{implements} one of these interfaces/traits, it must provide the implementation details.
+For example we will use the \texttt{IntVector} example from \Cref{subsec:ADT_Design_Issues}, written in Scala and Java.
+\inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Object_Oriented_Programming/Code/IntVector.scala}
+\inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Object_Oriented_Programming/Code/IntVector.java}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
