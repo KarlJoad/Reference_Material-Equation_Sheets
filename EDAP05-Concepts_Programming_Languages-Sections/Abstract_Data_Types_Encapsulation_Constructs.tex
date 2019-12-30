@@ -83,6 +83,23 @@ Overall, this improved program \nameref{subsec:Reliability} and portability.
   \end{remark}
 \end{definition}
 
+\begin{definition}[Implementation]\label{def:ADT_Implementation}
+  An \emph{implementation} is the language/project designer's implementation of the ``contract'' specified by the \nameref{def:ADT_Interface}.
+  For any given problem, there may be a single \nameref{def:ADT_Interface}, but there may be many different possible implementations.
+
+  For example, an integer vector, \texttt{IntVector} that is created with default values in every element would have a single \nameref{def:ADT_Interface}, but we could \emph{implement} the \texttt{IntVector} with several different data structures.
+  We could use:
+  \begin{itemize}[noitemsep]
+  \item An array, for quick random accesses
+  \item A linked list, for efficient memory usage
+  \item A binary tree for relatively efficient lookups and appending of values, ith efficient memory usage.
+  \end{itemize}
+
+  \begin{remark}[Reliance on Specification]\label{rmk:ADT_Implementation_Specification}
+    An \nameref{def:Abstract_Data_Type}'s \nameref{def:ADT_Implementation} must have a specification to ensure that the \nameref{def:Abstract_Data_Type} operates as expected.
+    This is further discussed in \Cref{subsubsec:Specification_Abstract_Datatype}.
+  \end{remark}
+\end{definition}
 
 \subsection{Design Issues for Abstract Data Types}\label{subsec:Abstract_Data_Type_Design_Issues}
 \begin{itemize}[noitemsep]
