@@ -1,0 +1,18 @@
+\subsection{Generic Abstract Datatypes}\label{subsec:Generic_Abstract_Datatypes}
+Just like in the \nameref{subsec:Parametric_Polymorphism}, we can generalize \nameref{def:Abstract_Data_Type}s.
+For our \texttt{IntVector} example, we might want it to be able to store \textbf{any} type of thing.
+So, we parameterize the \SemanticType{Vector} type, as shown below.
+\inputminted[frame=lines,linenos]{rust}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/Generic_Vector.rs}
+
+Now, the generic type \SemanticType{T} is used throughout the entire \nameref{def:Abstract_Data_Type}, and any subsequent instance of this \nameref{def:Abstract_Data_Type} \textbf{must} specify its type too.
+
+Just like in \Cref{subsec:Ad_Hoc_Polymorphism}, we can use \nameref{def:Typeclass}es to constrain our generic type(s).
+For instance, if we wanted to make a \texttt{PriorityQueue}, we would only need to add a single \nameref{def:Typeclass} to our \texttt{\SemanticType{Vector}} code to change it.
+\inputminted[frame=lines,linenos]{rust}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/PriorityQueue.rs}
+
+Now, the compiler will check if all the \nameref{def:Data_Type}s that are fed into the \texttt{PriorityQueue} implement the \nameref{def:Typeclass} \mintinline{rust}{std::cmp::PartialOrd}.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
