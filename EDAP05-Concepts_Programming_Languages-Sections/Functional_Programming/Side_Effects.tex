@@ -1,0 +1,40 @@
+\subsection{\nameref*{def:Function_Side_Effect}s in Functional Languages}\label{subsec:Functional_Function_Side_Effects}
+In a strict definition of \nameref{def:Functional_Programming_Language}s, \nameref{def:Function_Side_Effect}s are not allowed.
+However, \nameref{def:Function_Side_Effect}s include:
+\begin{itemize}[noitemsep]
+\item Writing a file to disk
+\item Sending packets over the network
+\item Writing to standard output
+\end{itemize}
+
+However, if a functional language did not include these, the language is severely hampered in its usability.\footnote{Some functional languages are like this, but they are not widely used, so are not discussed.}
+To get ``around'' this issue, there are 3 ways functional languages can handle these non-pure actions.
+\begin{enumerate}[noitemsep]
+\item The language was \emph{imperative first}.
+  These are languages that:
+  \begin{itemize}[noitemsep]
+  \item Were originally \nameref{def:Imperative_Programming_Language}s, like C, C++, Java
+  \item Can be adapted to behave like functional languages if they are written correctly.
+  \end{itemize}
+\item The language was \emph{functional first}.
+  These are languages that:
+  \begin{itemize}[noitemsep]
+  \item Are by default true \nameref{def:Functional_Programming_Language}s, like Haskell, F\#, the ML-family
+  \item Allow \nameref{def:Function_Side_Effect}s to be contained within the functions themselves, and not outside them.
+  \item Has the compiler track these functions with \nameref{def:Function_Side_Effect}s so they are handled correctly.
+  \end{itemize}
+\item The language is \emph{monadic}.
+  There is only a single language that supports this model right now, Haskell.
+  A monad is:
+  \begin{itemize}[noitemsep]
+  \item An abstraction or generalization over ordered things
+  \item These things may have side-effects, which are tagged.
+  \item Monads allow for an imperative-like state to be introduced to a functional environment. However, the state exists \emph{ONLY} for the monad's function(s) and its/their children.
+  \item Monads may also allow for state to be present throughout a program, but permission to access the state must be passed to functions, like an \nameref{def:Actual_Parameter}.
+  \end{itemize}
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
+%%% End:
