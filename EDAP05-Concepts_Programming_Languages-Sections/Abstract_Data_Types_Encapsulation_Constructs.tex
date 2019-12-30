@@ -13,49 +13,7 @@
 
 \input{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Intro_Data_Abstraction}
 
-\subsection{Design Issues for Abstract Data Types}\label{subsec:Abstract_Data_Type_Design_Issues}
-\begin{itemize}[noitemsep]
-\item The \nameref{def:Abstract_Data_Type} name must be externally visible, to allow for object creation
-\item The \nameref{def:Abstract_Data_Type} representation must be hidden.
-\item There are few built-in operations by a language for \nameref{def:Abstract_Data_Type} operations
-  \begin{itemize}[noitemsep]
-  \item If there are some defined, they are the most basic ones: assignment, comparison.
-  \item Overloading of subprograms should be allowed
-  \end{itemize}
-\item The form of the container for the interface to the \nameref{def:Abstract_Data_Type}.
-\item Whether \nameref{def:Abstract_Data_Type} can be parameterized.
-\item What access controls are provided, and how are such controls specified?
-\item Is the specification of the \nameref{def:Abstract_Data_Type} physically separate from its implementation?
-\end{itemize}
-
-\subsubsection{Specification of Abstract Datatypes}\label{subsubsec:Specification_Abstract_Datatype}
-\begin{definition}[Specification]\label{def:ADT_Specification}
-  We need a \emph{specification} of the \nameref{def:Abstract_Data_Type} to ensure that the it is implemented with the correct functionality and that it operates as expected.
-  We also need to specify the actions that are required for the \nameref{def:Abstract_Data_Type} in the \nameref{def:ADT_Interface}.
-\end{definition}
-
-For example, if we have an \nameref{def:ADT_Interface} of an \texttt{IntVector}, that supports the following operations:
-\begin{itemize}[noitemsep]
-\item create : \texttt{\SemanticType{int}} $\rightarrow$ \texttt{\SemanticType{IntVector}}
-\item length : \texttt{\SemanticType{IntVector}} $\rightarrow$ \texttt{\SemanticType{int}}
-\item append : \texttt{(\SemanticType{IntVector}, \SemanticType{int})} $\rightarrow$ \texttt{()}
-\item get : \texttt{(\SemanticType{IntVector}, \SemanticType{int})} $\rightarrow$ \texttt{\SemanticType{int}}
-\end{itemize}
-
-In a code example, we can write our \nameref{def:ADT_Interface} as a Rust Trait.
-\inputminted[frame=lines,linenos]{rust}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/IntVector_Interface.rs}
-
-If we have no specification, we could implement \texttt{IntVector} in Python like so;
-\inputminted[frame=lines,linenos]{python3}{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Code/IntVector_No_Spec.py}
-
-However, this is a completely useless \nameref{def:ADT_Implementation}.
-We need a \nameref{def:ADT_Specification} to ensure that the \nameref{def:ADT_Implementation} makes sense.
-\begin{itemize}[noitemsep]
-\item If $\ell = \mathtt{length}(v)$, and we call $\mathtt{append}(v, x)$ once, then afterwards $\mathtt{length}(v) = \ell + 1$.
-\item $\mathtt{get}(\mathtt{create}(\ell), i) = 0$ if $i \in \lbrace 0, 1, \ldots, \ell-1 \rbrace$, otherwise, there is an error.
-\end{itemize}
-
-Using this \nameref{def:ADT_Specification}, we can make an \nameref{def:ADT_Implementation} that behaves the way we expect it to, which will allow the programmer to use the \nameref{def:ADT_Interface} safely, without knowing the actual implementation details.
+\input{./EDAP05-Concepts_Programming_Languages-Sections/Abstract_Data_Types/Design_Issues}
 
 \subsection{Generic Abstract Datatypes}\label{subsec:Generic_Abstract_Datatypes}
 Just like in the \nameref{subsec:Parametric_Polymorphism}, we can generalize \nameref{def:Abstract_Data_Type}s.
