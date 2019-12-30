@@ -11,6 +11,11 @@ From earlier, the 3 things that \nameref{def:Object_Oriented_Programming} must s
 The subtyping rules for methods follow the subtyping rules for subroutines, so the following overriding between classes C and D is perfectly safe:
 \inputminted[frame=lines,linenos]{java}{./EDAP05-Concepts_Programming_Languages-Sections/Object_Oriented_Programming/Code/MethodSubtyping.java}
 
+One complication here is the implicit \texttt{self} or \texttt{this} reference (or pointer, in C++).
+This self-reference allows methods to access their own state, so its type is always fixed to be a subtype of the type of the declaring class.
+
+This self-reference is technically a ‘hidden parameter’ to each method, but since a method can only be called on an object whose dynamic type is a subtype of the class in which that method was defined, it is safe for us to use this more precise type information.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
