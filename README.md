@@ -49,7 +49,7 @@ It provides a skeleton framework for each document to be customized with.
 ### `Reference_Sheet_Preamble.tex`
 This is a LaTeX preamble document that is `\input` to every **Reference Sheet**.
   * **Equation Sheets** will get a customized preamble everytime.
-This ensures that the packages that are in each document are the same, and that they will have a similar formatting to them.
+  * This ensures that the packages that are in each document are the same, and that they will have a similar formatting to them.
 
 # Separate Sections
 For most of these, there will be an extra folder named `./Course_Num-Sections`.
