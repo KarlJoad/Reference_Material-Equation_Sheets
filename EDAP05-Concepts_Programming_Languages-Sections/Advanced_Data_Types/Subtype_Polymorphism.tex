@@ -60,6 +60,19 @@ For these, don't think about the size of the actual record, but the possible inf
 \end{equation*}
 
 \subsubsection{Subtyping and Subprograms}\label{subsubsec:Subtyping_and_Subprograms}
+In a given subprogram, with \nameref{def:Formal_Parameter} inputs and some return values, there are a few ways we can use subtyping to change the operation of the subprogram.
+
+If we need a subprogram with type $\SemanticType{T_{2}} \rightarrow \SemanticType{U_{2}}$, we can instead provide a subroutine of type $\SemanticType{T_{1}} \rightarrow \SemanticType{U_{1}}$ if $\SemanticType{T_1}$ is \textbf{less constrained} than $\SemanticType{T_{2}}$ and if $\SemanticType{U_{1}}$ is \textbf{more constrained} than $\SemanticType{U_{2}}$.
+Meaning, for a subprogram, we can put \textbf{supertypes of the parameter's type} into the subprogram and it will still work.
+Similarly, if we return \textbf{subtypes of the return type}, the subprogram will still work.
+
+In other words, if we think of the function in the middle as a funnel whose opening we can widen and whose end we can narrow.
+
+This relationship can be represented by \Cref{eq:Arrow_Rule}, called the \emph{Arrow Rule}.
+\begin{equation}\label{eq:Arrow_Rule}
+  \dfrac{\SemanticType{T_{1}} :> \SemanticType{T_{2}} \:\: \SemanticType{U_{1}} <: \SemanticType{U_{2}}}{\SemanticType{T_{1}} \rightarrow \SemanticType{U_{1}} <: \SemanticType{T_{2}} \rightarrow \SemanticType{U_{2}}}
+\end{equation}
+
 \input{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Type_Variance}
 
 %%% Local Variables:
