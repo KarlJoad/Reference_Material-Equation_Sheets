@@ -73,6 +73,10 @@ This relationship can be represented by \Cref{eq:Arrow_Rule}, called the \emph{A
   \dfrac{\SemanticType{T_{1}} :> \SemanticType{T_{2}} \:\: \SemanticType{U_{1}} <: \SemanticType{U_{2}}}{\SemanticType{T_{1}} \rightarrow \SemanticType{U_{1}} <: \SemanticType{T_{2}} \rightarrow \SemanticType{U_{2}}}
 \end{equation}
 
+\begin{remark*}
+  However, this \textbf{does not} hold true when the data is mutable!!
+\end{remark*}
+
 \input{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Type_Variance}
 
 %%% Local Variables:
