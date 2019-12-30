@@ -29,8 +29,18 @@ Using a \texttt{\SemanticType{Box}} Scala trait as the basis of our discussion, 
   Let $\DataType$ be a type constructor with formal type parameters $\DataType_{1}, \ldots , \DataType_{k}$, such that $\SemanticType{T} = \DataType [\DataType_{1}, \ldots, \DataType_{k}]$ is a type.
   Let $i \in \lbrace 1,\ldots, k \rbrace$.
 
-
   If $\DataType_{i}$ is neither covariant nor contravariant in $\SemanticType{T}$, then $\DataType_{i}$ is \emph{invariant} in $\SemanticType{T}$.
+
+  Using the \SemanticType{Box} example from above, we can create an \emph{invariant} method by writing something like this,
+  \inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/InvariantBox.scala}
+  \begin{itemize}[noitemsep]
+  \item $\mathtt{\SemanticType{A}} :> \mathtt{\SemanticType{B}}$: For example, consider \texttt{A = INTEGER} and \texttt{B = [1 TO 10]}.
+    In this case, \texttt{box.put(b)} is safe, as \texttt{Box[A]} can store any number. However, \texttt{box.get()} might now return the number 99, which does not fit into the variable \texttt{b}.
+    \textbf{Thus, this option is not statically type-safe.}
+  \item $\mathtt{\SemanticType{A}} <: \mathtt{\SemanticType{B}}$: For example, consider \texttt{A = [1 TO 10]} and \texttt{B = INTEGER}.
+    In this case, \texttt{box.get()} works, but \texttt{box.put(b)} does not: \texttt{b} might be 99, which we cannot pass to an operation that only accepts \texttt{A} as parameter.
+    \textbf{Thus, this option is not statically type-safe either.}
+  \end{itemize}
 \end{definition}
 
 \begin{definition}[Bivariance]\label{def:Type_Bivariance}
