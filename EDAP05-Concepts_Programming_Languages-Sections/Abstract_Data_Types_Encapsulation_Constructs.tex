@@ -65,6 +65,24 @@ Overall, this improved program \nameref{subsec:Reliability} and portability.
   \end{itemize}
 \end{definition}
 
+\begin{definition}[Interface]\label{def:ADT_Interface}
+  An \emph{interface} is the programmer-usable ``contract'' that can be used for an \nameref{def:Abstract_Data_Type}.
+  It ensures that all programmers who use this \nameref{def:Abstract_Data_Type} have a common set of operations that behave in a defined manner.
+
+  An example of an interface is C and C++'s header files (\texttt{*.h} for C, and \texttt{*.hpp} for C++).
+
+  \begin{remark}
+    The \nameref{def:ADT_Interface}, usually, does not contain any code.
+    The code that implements the \nameref{def:ADT_Interface} is in the \nameref{def:ADT_Implementation} file.
+    However, in Java, an \nameref{def:Abstract_Data_Type} requires that the method have a \nameref{def:Subprogram_Definition} at the same time as its \nameref{def:Subprogram_Declaration}.
+  \end{remark}
+
+  \begin{remark}[Reliance on Specification]\label{rmk:ADT_Interface_Specification}
+    An \nameref{def:Abstract_Data_Type}'s \nameref{def:ADT_Interface} must have a specification to ensure that the \nameref{def:Abstract_Data_Type} has the expected operations.
+    This is further discussed in \Cref{subsubsec:Specification_Abstract_Datatype}.
+  \end{remark}
+\end{definition}
+
 
 \subsection{Design Issues for Abstract Data Types}\label{subsec:Abstract_Data_Type_Design_Issues}
 \begin{itemize}[noitemsep]
