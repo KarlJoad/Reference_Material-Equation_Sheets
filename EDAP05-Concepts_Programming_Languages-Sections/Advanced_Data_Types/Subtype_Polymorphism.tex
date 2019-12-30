@@ -42,6 +42,23 @@
 \end{definition}
 
 \subsubsection{Subtyping and Records}\label{subsubsec:Subtyping_and_Records}
+Take the following 2 types, written in C, as the example for this section.
+\inputminted[frame=lines,linenos]{c}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/Subtyping_Records.c}
+
+Any function that uses \SemanticType{R1} would also work on any record of type \SemanticType{R2}.
+For these, don't think about the size of the actual record, but the possible information that can be stored and the potential operations they can have.
+\begin{itemize}[noitemsep]
+\item Both records can have their \texttt{x} field accessed and modified, and both of these are they same type themselves, \texttt{int}.
+\item \SemanticType{R2} can have its \texttt{y} field accessed and modified.
+  \begin{itemize}[noitemsep]
+  \item Thus, we can do everything that \SemanticType{R1} can do with \SemanticType{R2}, making \SemanticType{R2} a \nameref{def:Subtype} of \SemanticType{R1}
+  \end{itemize}
+\end{itemize}
+
+\begin{equation*}
+  \mathtt{\SemanticType{R2}} <: \mathtt{\SemanticType{R1}}
+\end{equation*}
+
 \input{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Type_Variance}
 
 %%% Local Variables:
