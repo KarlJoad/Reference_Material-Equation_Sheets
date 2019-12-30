@@ -31,7 +31,13 @@ Overall, this improved program \nameref{subsec:Reliability} and portability.
 
 \subsubsection{User-Defined Abstract Data Types}\label{subsubsec:User_Defined_Abstract_Data_Types}
 \begin{definition}[Abstract Data Type]\label{def:Abstract_Data_Type}
-  An \emph{abstract data type} is a \nameref{def:Data_Type} that satisfies the following conditions:
+  An \emph{abstract data type} has 2 components:
+  \begin{enumerate}[noitemsep]
+  \item The enclosure that ``displays'' what operations are possible on this \nameref{def:Data_Type} is called the \nameref{def:ADT_Interface}.
+  \item The code that implements the functionality specified by the interface is called the \nameref{def:ADT_Implementation}.
+  \end{enumerate}
+
+  An abstract data type is a \nameref{def:Data_Type} that satisfies the following conditions:
   \begin{itemize}[noitemsep]
   \item The representation of objects of the type is hidden from the program units that use that type, so they only direct operations possible on those objects are those provided in the abstract data type's definition. This improves:
     \begin{itemize}[noitemsep]
