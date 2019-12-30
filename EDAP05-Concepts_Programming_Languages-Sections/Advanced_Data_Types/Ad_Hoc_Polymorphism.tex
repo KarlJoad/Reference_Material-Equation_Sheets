@@ -26,6 +26,8 @@ Knowing this, we rewrite our \texttt{max2} code as shown below, and attempt to u
   A \emph{typeclass} is a form of a \nameref{def:Type_Constraint}.
   It was first introduced by the Haskell programming language and has since been introduced to other programming languages as well.
   The name typeclass is language-agnostic, meaning other languages might call these something else.
+
+  For example, the Rust Trait \mintinline{rust}{std::cmp::PartialOrd} requires that the implementing type define the meaning of the greater than, $>$, operator.
   
   \begin{remark}[Rust Traits]\label{rmk:Rust_Trait}
     The Rust programming language calls \nameref{def:Typeclass}es \emph{trait}s.
