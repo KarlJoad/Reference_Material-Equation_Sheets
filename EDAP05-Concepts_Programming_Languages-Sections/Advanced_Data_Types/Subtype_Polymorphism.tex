@@ -3,6 +3,25 @@
   \emph{Subtype polymorphism} can be summarized with the following phrase; ``This value has a \nameref{def:Data_Type}, and while you don't know what exact type it is, this \nameref{def:Data_Type} is a more restricted (or general) version of another \nameref{def:Data_Type} that you \textit{do} know, so therefore there are some things that you can do with it''.
 \end{definition}
 
+\begin{definition}[Subtype]\label{def:Subtype}
+  A \nameref{def:Data_Type} $\SemanticType{T}$ is a \emph{subtype} of type $\SemanticType{U}$, denoted $\SemanticType{T} <: \SemanticType{U}$ or $\SemanticType{U} :> \SemanticType{T}$, if any value $v : \SemanticType{T}$ can be used in any context that requires a value of type $\SemanticType{U}$.
+
+  Some examples of subtypes are:
+  \begin{itemize}[noitemsep]
+  \item $\mathtt{\SemanticType{[2 TO 5]}} <: \mathtt{\SemanticType{[2 TO 6]}}$
+  \item $\mathtt{\SemanticType{[2 TO 5]}} <: \mathtt{\SemanticType{[1 TO 5]}}$
+  \item $\mathtt{\SemanticType{[2 TO 5]}} <: \mathtt{\SemanticType{[1 TO 6]}}$
+  \item $\mathtt{\SemanticType{[2 TO 5]}} <: \mathtt{INTEGER}$
+  \end{itemize}
+
+  This is because the supertype contains all possible values that the subtype can take, and more.
+  These are all based on subset relations, meaning that typing inherits a few properties.
+  \begin{propertylist}
+  \item Subtyping is \emph{reflexive}. Each type \SemanticType{T} is a subtype and supertype of itself, i.e.\ $\mathtt{\SemanticType{T}} <: \mathtt{\SemanticType{T}}$.\label{prop:Subtype_Reflexive}
+  \item Subtyping is \emph{transitive}. Meaning if we know $\mathtt{\SemanticType{T}} <: \mathtt{\SemanticType{U}}$ and $\mathtt{\SemanticType{U}} <: \mathtt{\SemanticType{V}}$, then $\mathtt{\SemanticType{T}} <: \mathtt{\SemanticType{V}}$ is true.\label{prop:Subtype_Transitive}
+  \end{propertylist}
+\end{definition}
+
 \input{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Type_Variance}
 
 %%% Local Variables:
