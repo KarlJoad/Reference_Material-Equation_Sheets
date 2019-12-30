@@ -114,6 +114,14 @@ A \nameref{def:OOP_Subclass} can differ from its \nameref{def:OOP_Superclass} in
   \end{remark}
 \end{definition}
 
+\subsubsection{Top \nameref*{def:OOP_Superclass}}\label{subsubsec:Top_OOP_Superclass}
+To have a class hierarchy in a programming language, there must be a ``top'' \nameref{def:OOP_Superclass} somewhere in the hierarchy, one class from which all subsequent classes derive from.
+
+In Java, there is a single top class \texttt{\SemanticType{java.lang.Object}}.
+
+However, C++ takes the stance of not having any implicit single top \nameref{def:OOP_Superclass}.
+Instead, it can have multiple top \nameref{def:OOP_Superclass}es, and also allows any number of top-level classes without a \nameref{def:OOP_Superclass}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
