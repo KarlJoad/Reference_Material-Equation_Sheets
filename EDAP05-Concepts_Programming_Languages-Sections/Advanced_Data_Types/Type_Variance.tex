@@ -1,5 +1,4 @@
 \subsubsection{Variance of Types}\label{subsubsec:Type_Variance}
-\textbf{TODO!! Give Example of each, with reasoning!}
 Using a \texttt{\SemanticType{Box}} Scala trait as the basis of our discussion, the code is shown below.
 \inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/Box.scala}
 
@@ -68,6 +67,16 @@ The \texttt{+} and \texttt{-} operators are needed to specify \nameref{def:Type_
 \begin{definition}[Use-Site Variance]\label{def:Use_Site_Variance}
   \emph{Use-site variance} means that we decide about the type variable's variance when we declare an instance of our \nameref{def:Abstract_Data_Type}s and \nameref{def:OOP_Class}es.
 \end{definition}
+
+In Java, this is written with either an \texttt{extends} or \texttt{super} \nameref{def:Keyword}.
+Assuming that $\mathtt{\SemanticType{B}} <: \mathtt{\SemanticType{A}}$:
+\inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/Use_Site_Variance.java}
+
+Java will now prevent us from calling any method in \texttt{\SemanticType{covariantBox}} that has the type parameter in a contravariant position, so we can only call \texttt{covariantBox.get()}.
+Analogously, for \texttt{\SemanticType{contravariantBox}}, we can only call the \texttt{put()} operation.
+The \texttt{\SemanticType{invariantBox}} prohibits calls to either \texttt{put()} or \texttt{get()}; but if we had an operation that does not contain the type parameter of the \texttt{Box} type anywhere (e.g., a to-string operation of $type () \rightarrow \SemanticType{String})$, then we could still call that method.
+
+\nameref{def:Use_Site_Variance} requires us to write more complex types, but allows us to re-use the same type definition (and the same implementations) for covariant, contravariant, bivariant, and invariant uses.
 
 %%% Local Variables:
 %%% mode: latex
