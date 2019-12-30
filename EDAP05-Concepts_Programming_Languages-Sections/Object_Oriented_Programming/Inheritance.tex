@@ -122,6 +122,13 @@ In Java, there is a single top class \texttt{\SemanticType{java.lang.Object}}.
 However, C++ takes the stance of not having any implicit single top \nameref{def:OOP_Superclass}.
 Instead, it can have multiple top \nameref{def:OOP_Superclass}es, and also allows any number of top-level classes without a \nameref{def:OOP_Superclass}.
 
+\subsubsection{Interfaces in Java/JVM Languages}\label{subsubsec:Java_Interfaces}
+In Java, one way to create an \nameref{def:Abstract_Data_Type} and \nameref{def:Typeclass}-like system is with its interfaces.
+
+These provide a mechanism for defining new types that describe families of operations that are not classes.
+In Java, these types are called interfaces, and traits in Scala.
+Interfaces/traits may be sub-types of other interfaces/traits, and classes may be subtypes of interfaces/traits, but since there are no implementations to inherit from an interface/trait, these two do not act as classes.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
