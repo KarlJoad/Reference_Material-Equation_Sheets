@@ -78,6 +78,18 @@ This relationship can be represented by \Cref{eq:Arrow_Rule}, called the \emph{A
 \end{remark*}
 
 \subsubsection{Subtyping in Languages}\label{subsubsec:Subtyping_in_Languages}
+\begin{definition}[Structural Subtyping]\label{def:Structural_Subtyping}
+  A type constructor in a language uses \emph{structural subtyping} if two different types \SemanticType{T}, \SemanticType{U} constructed from this type constructor can be in a subtyping relation without being explicitly declared to be in a subtyping relation.
+\end{definition}
+
+\begin{definition}[Nominal Subtyping]\label{def:Nominal_Subtyping}
+  A language uses \emph{nominal subtyping} for a type constructor if two different types \SemanticType{T}, \SemanticType{U} constructed from this type constructor can be in a subtyping relation, but only if they are explicitly declared to be in this relation.
+\end{definition}
+
+\begin{remark*}
+  The advantages and disadvantages of structural and nominal subtyping are analogous to those of structural and nominal type equivalence.
+\end{remark*}
+
 \input{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Type_Variance}
 
 %%% Local Variables:
