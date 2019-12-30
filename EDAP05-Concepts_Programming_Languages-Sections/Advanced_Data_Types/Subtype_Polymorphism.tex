@@ -31,6 +31,16 @@
   \end{remark}
 \end{definition}
 
+\begin{definition}[Narrowing Conversion]\label{def:Narrowing_Conversion}
+  Some languages also allow us to translate a supertype to a subtype, using a \emph{narrowing conversion}.
+
+  \begin{remark}[Explicit]\label{rmk:Narrowing_Conversion_Explicit}
+    The languages that support \nameref{def:Narrowing_Conversion}s make it an explicit command.
+    This instruction may fail, or may lead to information loss, meaning it is not type-safe.
+    So the language designers tend to make it an explicit operation.
+  \end{remark}
+\end{definition}
+
 \input{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Type_Variance}
 
 %%% Local Variables:
