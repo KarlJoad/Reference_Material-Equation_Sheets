@@ -23,6 +23,14 @@
 \end{definition}
 
 \subsubsection{Typing Conversions}\label{subsubsec:Typing_Conversions}
+\begin{definition}[Widening Conversion]\label{def:Widening_Conversion}
+  Whenever we use a value of a \nameref{def:Subtype} in a place that expects a supertype, the language must perform a \emph{widening conversion}.
+
+  \begin{remark}[Implicit]\label{rmk:Widening_Conversion_Implicit}
+    Most languages make this an implicit operation, because no information is lost, making it a type-safe operation.
+  \end{remark}
+\end{definition}
+
 \input{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Type_Variance}
 
 %%% Local Variables:
