@@ -56,7 +56,7 @@ A \nameref{def:OOP_Subclass} can differ from its \nameref{def:OOP_Superclass} in
 
 \begin{definition}[Override]\label{def:OOP_Override}
   A new \nameref{def:OOP_Subclass}'s \nameref{def:OOP_Method} can \emph{override} a \nameref{def:OOP_Superclass}'s \nameref{def:OOP_Method}.
-  This is then called an \emph{overriden method}.
+  This is then called an \emph{overridden method}.
 
   Overriding a \nameref{def:OOP_Method} is useful because it allows us to provide an operation in the \nameref{def:OOP_Subclass} that is similar to the one in the \nameref{def:OOP_Superclass}, but specialized for \nameref{def:OOP_Object}s of the \nameref{def:OOP_Subclass}.
 \end{definition}
@@ -105,6 +105,13 @@ A \nameref{def:OOP_Subclass} can differ from its \nameref{def:OOP_Superclass} in
   Any \nameref{def:OOP_Superclass} can also have an infinite number of derived, child, \nameref{def:OOP_Subclass}es.
 
   When a relationship between \nameref{def:OOP_Class}es that uses multiple \nameref{def:OOP_Inheritance} it can be visualized as a derivation graph.
+
+  \begin{remark}[Diamond Dependency]\label{rmk:Diamond_Dependency}
+    In a language that supports \nameref{def:OOP_Multiple_Inheritance}, a problem can arise when a single class inherits from 2 \nameref{def:OOP_Class}es, which both inherit from one superclass.
+    In the class derivation graph, this ends up creating a diamond shape, hence the name \emph{diamond dependency}.
+    If any superclasses have methods that are overridden, then without an explicit statement to tell the compiler which method to use, it is impossible to decide which to use.
+    The approach C++ takes is that the programmer must specify which superclass' method to use.
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
