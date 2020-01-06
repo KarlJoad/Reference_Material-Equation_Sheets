@@ -1,4 +1,28 @@
 \subsection{Properties of \nameref*{subsec:Groups}}\label{subsec:Properties_of_Groups}
+\begin{propertylist}
+\item Suppose $a^{n} = 1$ for some $n > 0$. We must have $ElementOrder(a) \Divides n$.
+  \begin{enumerate}[noitemsep]
+  \item Write $n = k \cdot \ElementOrder(a) + r$, where $0 \leq r \leq \ElementOrder(a)$.
+  \item Then, $1 = a^{n} = a^{k \cdot \ElementOrder(a) + r} = a^{r}$ and $r = 0$.
+  \end{enumerate}
+\item There is a $k$ such that $a^{k} = 1$ for all $a \in G$.
+  \begin{enumerate}[noitemsep]
+  \item If $G$ is a finite \nameref{def:Group}, all elements must have finite \nameref{def:Element_in_Group_Order}.
+  \item Choose $k$ as the product of the \nameref{def:Element_in_Group_Order} of all different elements in $G$.
+  \item Then, $a^{k} = 1$ for all $a \in G$
+  \end{enumerate}
+\end{propertylist}
+
+\subsubsection{Lagrange's Theorem}\label{subsubsec:Lagranges_Theorem}
+\begin{theorem}[Lagrange's Theorem]\label{thm:Lagranges_Theorem}
+  If $G$ is a finite group and $H$ is a \nameref{def:Subgroup} of $G$, then \TextSetOrder{H} divides \TextSetOrder{G}.
+  In particular if $a \in G$, then the order of $a$ divides \TextSetOrder{G}.
+\end{theorem}
+
+\begin{remark*}
+  If \TextSetOrder{G} is a \nameref{def:Prime} number, then the order of an element $a$ is either 1 or \TextSetOrder{G}.
+  In particular, if \TextSetOrder{G} is a \nameref{def:Prime} number, then $G$ must be \nameref{def:Cyclic}.
+\end{remark*}
 
 %%% Local Variables:
 %%% mode: latex
