@@ -1,4 +1,209 @@
 \subsection{Euler Phi Function}\label{subsec:Euler_Phi_Function}
+\begin{definition}[Euler Phi Function]\label{def:Euler_Phi_Function}
+  For $n \geq 1$, let $\phi(n)$ denote the number of integers in the interval $[1, n]$, which are \nameref{def:Relatively_Prime} to $n$.
+  This function is called the \emph{Euler Phi Function}.
+  \begin{equation}\label{eq:Euler_Phi_Function}
+    \phi(n) = \left( p_{1}^{e_{1}} - p_{1}^{e_{1}-1} \right) \left( p_{2}^{e_{2}} - p_{2}^{e_{2}-1} \right) \cdots \left( p_{k}^{e_{k}} - p_{k}^{e_{k}-1} \right)
+  \end{equation}
+  \begin{remark}
+    The \nameref{def:Euler_Phi_Function} is closely related to \nameref{def:Set_Order}.
+  \end{remark}
+\end{definition}
+
+\begin{theorem}[Euler Phi Function]\label{thm:Euler_Phi_Function}
+  There are a few properties of the \nameref{def:Euler_Phi_Function} that we will treat as true because of this theorem.
+  \begin{propertylist}
+  \item If $p$ is a \nameref{def:Prime}, then $\phi(p) = p - 1$.\label{prop:Euler_Phi_Function_Properties-Prime_Number}
+  \item If $\gcd(a, b) = 1$, then $\phi(ab) = \phi(a) \phi(b)$.\label{prop:Euler_Phi_Function_Properties-Split_Multiplication}
+  \item If $n = p_{1}^{e_{1}} p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$, then
+    \begin{equation*}
+      \phi(n) = \left( p_{1}^{e_{1}} - p_{1}^{e_{1}-1} \right) \left( p_{2}^{e_{2}} - p_{2}^{e_{2}-1} \right) \cdots \left( p_{k}^{e_{k}} - p_{k}^{e_{k}-1} \right)
+    \end{equation*}\label{prop:Euler_Phi_Function_Properties-Product_of_Primes}
+  \end{propertylist}
+\end{theorem}
+
+\begin{example}[Exercise 1, Question 1.2a]{Euler Phi Function}
+  Find the value of $\phi(36)$?
+  \tcblower{}
+  First, we note that 36 is not a \nameref{def:Prime} number, thus we need to find a set of primes that are equal to 36.
+  The divisors of 36 are
+  \begin{equation*}
+    \lbrace \pm 1, \pm 2, \pm 3, \pm 4, \pm 9, \pm 12, \pm 18, \pm 36 \rbrace
+  \end{equation*}
+  And all possible prime numbers present as divisors of 36 are
+  \begin{equation*}
+    \lbrace 2, 3 \rbrace
+  \end{equation*}
+
+  So, there must be some combination of $2^{x}\cdot 3^{y}$ that yields 36.
+  In fact, $2^{2} \cdot 3^{2} = 4 \cdot 9 = 36$.
+  Since 36 can be broken up as a product of 2 \nameref{def:Prime} numbers raised to some power, we can use \Cref{prop:Euler_Phi_Function_Properties-Product_of_Primes} of the \nameref{def:Euler_Phi_Function} to simplify this.
+  But first, we need to separate the two values from each other using \Cref{prop:Euler_Phi_Function_Properties-Split_Multiplication} of the \nameref{def:Euler_Phi_Function} to apply \Cref{prop:Euler_Phi_Function_Properties-Product_of_Primes}.
+
+  We need to check $\gcd \left( 2^{2}, 3 ^{2} \right) = 1$.
+  \begin{align*}
+    \gcd \left( 2^{2}, 3^{2} \right) &= \gcd(4, 9) \\
+    9 &= a4 + b \\
+                                     &= 2 \cdot 4 + 1 \\
+    4 &= a \cdot 1 + b \\
+                                     &= 4 \cdot 1 + 0
+  \end{align*}
+  So, $\gcd \left( 2^{2}, 3^{2} \right) = 1$, so we can use \Cref{prop:Euler_Phi_Function_Properties-Split_Multiplication}.
+  \begin{equation*}
+    \phi \left( 2^{2} \cdot 3^{2} \right) = \phi \left( 2^{2} \right) \phi \left( 3^{2} \right)
+  \end{equation*}
+  And now we can apply \Cref{prop:Euler_Phi_Function_Properties-Product_of_Primes} to find our answer.
+
+  \begin{align*}
+    \phi \left( 2^{2} \right) \phi \left( 3^{2} \right) &= \left( 2^{2} - 2^{2-1} \right) \left( 3^{2} - 3^{2-1} \right) \\
+                                                        &= (4-2)(9-3) \\
+                                                        &= (2)(6) \\
+                                                        &= 12
+  \end{align*}
+  Thus, $\phi(36) = 12$.
+\end{example}
+
+\begin{lemma}[Computing the \nameref{def:GCD}]\label{lemma:Compute_GCD}
+  If $a$ and $b$ are positive integers where $a > b$, then
+  \begin{equation}\label{eq:Compute_GCD}
+    \gcd(a, b) = \gcd(b, a \bmod b)
+  \end{equation}
+  \begin{remark*}
+    This can be repeated to efficiently calculate the $\gcd(a, b)$.
+    This is called the \nameref{def:Euclidean_Algorithm}.
+  \end{remark*}
+\end{lemma}
+
+\begin{definition}[Euclidean Algorithm]\label{def:Euclidean_Algorithm}
+  The \emph{euclidean algorithm} is a way to efficiently calculate the $\gcd(a, b)$.
+  
+  \begin{algorithm}[H]
+    \DontPrintSemicolon{}
+    \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+
+    \Input{Two non-negative integers $a, b$ where $a \geq b$.}
+    \Output{$\gcd(a, b)$.}
+    \BlankLine{}
+    Set $r_{0} \leftarrow a$, $r_{1} \leftarrow b$, $i \leftarrow 1$ \;
+    \While{$r_{i} \neq 0$}{
+      Set $r_{i+1} \leftarrow r_{i-1} \bmod r_{i}$ \;
+      $i \leftarrow i+1$ \;
+    }
+    \Return{$r_{i}$}
+    \caption{Euclidean Algorithm}
+    \label{algo:Euclidean_Algorithm}
+  \end{algorithm}
+\end{definition}
+
+\begin{example}[Exercise 1, Question 1.1a]{Euclidean Algorithm}
+  Find the \nameref{def:GCD} of 222 and 1870?
+
+  \tcblower{}
+
+  \begin{align*}
+    1870 &= a 222 + b \\
+         &= 8 \cdot 222 + 94 \\
+    222 &= a 94 + b \\
+         &= 2 \cdot 94 + 34 \\
+    94 &= a 34 + b \\
+         &= 2 \cdot 34 + 26 \\
+    34 &= a 26 + b \\
+         &= 1 \cdot 26 + 8 \\
+    26 &= a 8 + b \\
+         &= 3 \cdot 8 + 2 \\
+    8 &= a 2 + b \\
+         &= 4 \cdot 2 + 0
+  \end{align*}
+
+  Thus, since $4 \cdot 2 = 8$, 2 is the \nameref{def:GCD} of 222 and 1870.
+\end{example}
+
+\begin{theorem}
+  There exist integers $x, y$ such that $\gcd(a, b)$ can be written as
+  \begin{equation}\label{eq:Extended_Euclidean_Algorithm_Basis}
+    \gcd(a, b) = ax + by
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  \begin{align*}
+    \gcd(a, b) &= r_{i} \\
+               &= r_{i-2} - q_{i-1}r_{i-1} \\
+               &= r_{i-2} - q_{i-1}(r_{i-3} - q_{i-2}r_{i-2}) \\
+               &\vdots \\
+               &= r_{0}x + r_{1}y \\
+               &= ax + by
+  \end{align*}
+  for some integers $x, y \in \AllIntegers$.
+\end{proof}
+
+This means that the \nameref{def:Euclidean_Algorithm} can be extended to return the values of $x$ and $y$ from \Cref{eq:Extended_Euclidean_Algorithm_Basis}.
+
+\begin{definition}[Extended Euclidean Algorithm]\label{def:Extended_Euclidean_Algorithm}
+  The \emph{extended euclidean algorithm} is a way to efficiently calculate the linear pair of integers ($x, y \in \AllIntegers$) that satisfy \Cref{eq:Extended_Euclidean_Algorithm_Basis}.
+  \begin{equation*}
+    \gcd(a, b) = ax + by
+  \end{equation*}
+
+  \begin{algorithm}[H]
+    \DontPrintSemicolon{}
+    \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+
+    \Input{Two non-negative integers $a, b$ where $a \geq b$.}
+    \Output{$d = \gcd(a, b)$ and two integers $x, y$ such that $d = ax + by$.}
+    \BlankLine{}
+
+    \If{$b=0$}{
+      \Return{$a$, $x \leftarrow 1$, $y \leftarrow 0$}
+    }
+    Set $x_{2} \leftarrow 1$, $x_{1} \leftarrow 0$, $y_{2} \leftarrow 0$, and $y_{1} \leftarrow 1$. \;
+    \While{$b > 0$}{
+      $q \leftarrow a \div b$. \;
+      $r \leftarrow a-qb$, $x \leftarrow x_{2} - qx_{1}$, $y \leftarrow y_{2} - qy_{1}$. \;
+      $a \leftarrow b$
+      $b \leftarrow r$
+      $x_{2} \leftarrow x_{1}$, $x_{1} \leftarrow x$, $y_{2} \leftarrow y_{1}$, and $y_{1} \leftarrow y$. \;
+    }
+    Set $d \leftarrow a$, $x \leftarrow x_{2}$, $y \leftarrow y_{2}$. \;
+    \Return{$d, x, y$}
+    \caption{Extended Euclidean Algorithm (Bezout's Theorem)}
+    \label{algo:Extended_Euclidean_Algorithm}
+  \end{algorithm}
+\end{definition}
+
+\begin{example}[Exercise 1, Question 1.1b]{Extended Euclidean Algorithm}
+  Find the integers $x$ and $y$ such that $\gcd(222, 1870) = 222x + 1870y$?
+  \tcblower{}
+  From \Cref{ex:Euclidean Algorithm}, we know $\gcd(222, 1870) = 2$, so we can plug that in.
+  We now know that
+  \begin{equation*}
+    2 = 222x + 1870y
+  \end{equation*}
+
+  Now, we essentially run the \nameref{def:Euclidean_Algorithm} backwards.
+  \begin{align*}
+    2 &= 26 - 3 \cdot 8 \\
+      &= 26 - 3(34 - 1 \cdot 26) = 26 - 3 \cdot 34 + 3 \cdot 26 \\
+      &= 4 \cdot 26 - 3 \cdot 34 \\
+      &= 4(94 - 2 \cdot 34) - 3 \cdot 34 = 4 \cdot 94 - 8 \cdot 34 - 3 \cdot 34\\
+      &= 4 \cdot 94 - 11 \cdot 34 \\
+      &= 4 \cdot 94 - 11(222 - 2 \cdot 94) = 4 \cdot 94 - 11 \cdot 222 + 22 \cdot 94 \\
+      &= 26 \cdot 94 - 22 \cdot 222 \\
+      &= 26(1870 - 8 \cdot 222) - 22 \cdot 222 = 26 \cdot 1870 - 208 \cdot 222 - 11 \cdot 222 \\
+      &= -219 \cdot 222 + 26 \cdot 1870
+  \end{align*}
+  Now we need to check the solution we might have found
+  \begin{align*}
+    -219 \cdot 222 + 26 \cdot 1870 &= 2 \\
+    -48618 + 48620 &= 2 \\
+    2 &= 2
+  \end{align*}
+
+  Thus,
+  \begin{align*}
+    x &= -219 \\
+    y &= 26
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
