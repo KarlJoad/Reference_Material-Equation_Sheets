@@ -2,46 +2,7 @@
 While this section is not technically different than \Cref{sec:Number_Theory}, it is worth it to split these up, since \Cref{sec:Number_Theory} does not deal with sets.
 However, using what we learned in \Cref{sec:Number_Theory}, \nameref{sec:Number_Theory}, it is natural to extend these to sets of numbers.
 
-\subsection{\texorpdfstring{\TextIntsModN{}}{Sets of Integers Modulo n}}\label{subsec:Z_mod_n}
-\begin{definition}[\TextIntsModN{}]\label{def:Z_mod_n}
-  \nameref{subsec:Integer_Modulo_n}, denoted \TextIntsModN{}, is the set of (\nameref{def:Equivalence_Class}es of) integers $\lbrace [0], [1], \ldots , [n-1] \rbrace$.
-  Addition, subtraction, and multiplication are all performed with modulo $n$.
-  \Crefrange{ex:Addition on Integers mod n}{ex:Multiplication on Integers mod n} demonstrate this.
-\end{definition}
-
-\begin{example}[]{Addition on Integers mod n}
-  When dealing with the set of integers \TextIntsMod{15}, what is the sum of 5 and 9?
-  \tcblower{}
-  \begin{equation*}
-    5 \bmod 15 + 9 \bmod 15 = 11 \bmod 15
-  \end{equation*}
-
-  Thus, the answer is 11.
-\end{example}
-
-\begin{example}[]{Subtraction on Integers mod n}
-  When dealing with the set of integers \TextIntsMod{15}, what is 5 minus 9?
-  \tcblower{}
-  \begin{align*}
-    5 \bmod 15 - 9 \bmod 15 &= 5 \bmod 15 + (-9 \bmod 15) \\
-                            &= 5 \bmod 15 + \underbrace{-9 \bmod 15}_{-9 + 15 = 6} \\
-                            &= 5 \bmod 15 + 6 \bmod 15 \\
-                            &= 11 \bmod 15
-  \end{align*}
-
-  Thus, the answer is, again, 11.
-\end{example}
-
-\begin{example}[]{Multiplication on Integers mod n}
-  When dealing with the set of integers \TextIntsMod{15}, what is the product of 5 and 9?
-  \tcblower{}
-  \begin{align*}
-    5 \bmod 15 \cdot 9 \bmod 15 &= 45 \bmod 15 \\
-                                &= 0
-  \end{align*}
-
-  Thus, the answer is 0, because $45 = 3 \cdot 15$.
-\end{example}
+\input{./EDIN01-Cryptography-Sections/Number_Theory_on_Sets/Sets_Integers_Modulo_N}
 
 \subsection{\texorpdfstring{Inverse in \TextIntsModN{}}{Inverse in Integers Modulo n}}\label{subsec:Inverse_Z_mod_n}
 Addition, subtraction, and multiplication can be performed trivially in \TextIntsModN{}, as shown in \Crefrange{ex:Addition on Integers mod n}{ex:Multiplication on Integers mod n}.
