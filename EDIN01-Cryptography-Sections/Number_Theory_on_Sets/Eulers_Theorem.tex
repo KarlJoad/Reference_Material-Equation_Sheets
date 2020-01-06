@@ -1,4 +1,25 @@
 \subsection{Euler's Theorem}\label{subsec:Eulers_Theorem}
+\begin{theorem}[Euler's Theorem]\label{thm:Eulers_Theorem}
+  If $a \in \MultiplicativeGroupN{}$, then
+  \begin{equation}\label{eq:Eulers_Theorem}
+    a^{\phi(n)} \equiv 1 \pmod{n}
+  \end{equation}
+\end{theorem}
+
+\begin{proof}[Euler's Theorem]\label{proof:Eulers_Theorem}
+  Let $\MultiplicativeGroupN{} = \lbrace a_{1}, a_{2}, \ldots, a_{\phi(n)} \rbrace$.
+  Looking at the set of elements $A = \lbrace aa_{1}, aa_{2}, \ldots, aa_{\phi(n)} \rbrace$, it is easy to see that $A = a \MultiplicativeGroupN{}$.
+  So we have 2 ways of writing the product of all of the elements, i.e.
+  \begin{equation*}
+    \prod\limits_{i=1}^{\phi(n)} a a_{i} = \prod\limits_{i=1}^{\phi(n)} a_{i}
+  \end{equation*}
+  
+  This leads to
+  \begin{equation*}
+    \prod\limits_{i=1}^{\phi(n)} a = a^{\phi(n)} = 1
+  \end{equation*}
+  which is the same as what we said in \Cref{eq:Eulers_Theorem}.
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex
