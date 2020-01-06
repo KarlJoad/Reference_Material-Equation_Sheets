@@ -1,4 +1,39 @@
 \subsection{Statistical Properties}\label{subsec:LFSR_Statistical_Properties}
+The importance of \nameref{def:LFSR} sequences and \nameref{def:M_Sequence}s are due to their pseudorandomness properties.
+$\mathbf{s} = s_{0}, s_{1}, \ldots$ is an \nameref{def:M_Sequence}, and an $n$-gram is a subsequence of length $n$,
+\begin{equation*}
+  \left( s_{t}, s_{t+1}, \ldots, s_{t+n-1} \right)
+\end{equation*}
+for $t=0, 1, \ldots$
+
+\begin{theorem}
+  Among the $q^{L}-1$ $L$-grams that can be constructed for $t = 0, 1, \ldots, q^{L}-2$, ever nonzero vector appears exactly once.
+\end{theorem}
+
+\subsubsection{Autocorrelation Function}\label{subsubsec:Autocorrelation_Function}
+\begin{definition}[Autocorrelation Function]\label{def:LFSR_Autocorrelation_Function}
+  The \emph{autocorrelation function} has:
+  \begin{itemize}[noitemsep]
+  \item 2 binary sequences, $\mathbf{x}, \mathbf{y}$ of the same length $n$.
+  \item The autocorrelation $C(\mathbf{x}, \mathbf{y})$ between the 2 sequences is defined as the number of positions of agreements minus the number of disagreements.
+  \item The autocorrelation function $C(\tau)$ is defined to be the correlation between a sequence $\mathbf{x}$ and its $\tau$th cyclic shift, i.e.,
+    \begin{equation}\label{eq:LFSR_Autocorrelation_Function}
+      C(\tau) = \sum\limits_{i=1}^{n} {(-1)}^{x_{i}+x_{i+\tau}}
+    \end{equation}
+    where subscripts are taken modulo $n$ and addition in the exponent is $\mod{2}$ addition.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}[Autocorrelation of $m$-Sequence]\label{thm:M_Sequence_Autocorrelation}
+  If $\mathbf{s}$ is an $m$-sequence of length $2^{L}-1$, then
+  \begin{equation}\label{eq:M_Sequence_Autocorrelation}
+    C(\tau) =
+    \begin{cases}
+      2^{L} - 1 & \text{ if } \tau \equiv 0 \bmod n \\
+      -1 & \text{otherwise} \\
+    \end{cases}
+  \end{equation}
+\end{theorem}
 
 %%% Local Variables:
 %%% mode: latex
