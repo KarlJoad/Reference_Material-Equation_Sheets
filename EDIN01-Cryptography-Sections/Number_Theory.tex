@@ -30,28 +30,8 @@ Before we can start with any of the deeper cryptography stuff, we need to start 
 \input{./EDIN01-Cryptography-Sections/Number_Theory/Euler_Phi_Function}
 
 \input{./EDIN01-Cryptography-Sections/Number_Theory/Integers_Modulo_N}
-\subsection{Equivalence Classes}\label{subsec:Equivalence_Classes}
-\begin{definition}[Equivalence Class]\label{def:Equivalence_Class}
-  \nameref{def:Congruence} modulo $n$ partitions $\AllIntegers$ into $n$ sets, called \emph{equivalence class}es, where each integer belongs to exactly one equivalence class.
 
-  For example, these are all congruent to each other modulo $n$:
-  \begin{subequations}\label{eq:Equivalence_Class}
-    \begin{equation}\label{subeq:Equivalence_Class_Remainder_0}
-      [0] = \lbrace \ldots, -2n, -n,\, 0, n, 2n, \ldots \rbrace
-    \end{equation}
-    \begin{equation}\label{subeq:Equivalence_Class_Remainder_1}
-      [1] = \lbrace \ldots -2n + 1, -n+1,\, 1, n+1, 2n+1 \ldots \rbrace
-    \end{equation}
-    \begin{equation}\label{eq:General_Equivalent_Class_Remainder}
-      [r] = \IntsMod{r} = (x \bmod r) + n\AllIntegers
-    \end{equation}
-  \end{subequations}
-
-  Since all elements in an equivalent class have the same \nameref{def:Integer_Remainder}, $r$, we use $r$ as a \emph{represenatative} for the equivalence class.
-  \begin{remark}
-    In this case, the representatives of the equivalence classes shown in \Crefrange{subeq:Equivalence_Class_Remainder_0}{subeq:Equivalence_Class_Remainder_1} are 0 and 1, respectively, and consist of all integers that are mod 0 or mod 1, respectively.
-  \end{remark}
-\end{definition}
+\input{./EDIN01-Cryptography-Sections/Number_Theory/Equivalence_Classes}
 
 %%% Local Variables:
 %%% mode: latex
