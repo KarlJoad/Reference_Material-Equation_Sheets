@@ -1,4 +1,31 @@
 \subsection{Integer Long Division}\label{subsec:Integer_Long_Division}
+For $a, b \in \AllIntegers$, with $b \geq 1$.
+Then an ordinary long division of $a$ by $b$, i.e. $a \div b$ yields two integers $q$ and $r$ such that
+\begin{equation}\label{eq:Integer_Long_Division}
+  a = qb + r, \text{where } 0 \leq r < b
+\end{equation}
+
+$q$ and $r$ are called the \nameref{def:Integer_Quotient} and \nameref{def:Integer_Remainder}, respectively, and are \textbf{unique}.
+
+\begin{definition}[Quotient]\label{def:Integer_Quotient}
+  The \emph{quotient}, $q$, of $a$ divided by $b$ is denoted $a \DIV b$.
+\end{definition}
+
+\begin{definition}[Remainder]\label{def:Integer_Remainder}
+  The \emph{remainder}, $r$, of $a$ divided by $b$ is denoted $a \bmod b$.
+\end{definition}
+
+\begin{example}[Lecture 1, Example 1]{Integer Long Division}
+  If $a=53$ and $b=9$, what is $a \bmod b$?
+  \tcblower{}
+  \begin{align*}
+    53 &= q9 + r \\
+    q &= 5 \\
+    r &= 8
+  \end{align*}
+
+  Thus, $53 \bmod 9 = 8$.
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
