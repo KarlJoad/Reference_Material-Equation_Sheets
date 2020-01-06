@@ -1,4 +1,74 @@
 \subsection{\texorpdfstring{Multiplicative Groups, \TextMultiplicativeGroupN{}}{Multiplicative Groups}}\label{Multiplicative_Groups}
+\begin{definition}[Multiplicative Group, \TextMultiplicativeGroupN{}]\label{def:Multiplicative_Group}
+  Define the \emph{multiplicative group} of \TextIntsModN{}, denoted \TextMultiplicativeGroupN{} as the set of all elements in \TextIntsModN{} with \nameref{def:Multiplicative_Inverse}s.
+  \begin{equation}\label{eq:Multiplicative_Group}
+    \MultiplicativeGroupN{} = \lbrace a \in \IntsModN{} \vert \gcd(a, b) = 1 \rbrace
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Set Order]\label{def:Set_Order}
+  The \emph{order a set}, for example, \TextMultiplicativeGroupN{}, is the number of elements in \TextMultiplicativeGroupN{} (\TextSetOrder{\MultiplicativeGroupN{}}).
+  From the definition of the \nameref{def:Euler_Phi_Function}
+  \begin{equation}\label{eq:Set_Order_Euler_Phi_Function}
+    \SetOrder{\MultiplicativeGroupN{}} = \phi(n)
+  \end{equation}
+
+  \begin{remark}[Closed Under Multiplication]\label{rmk:Set_Order_Closed_Multiplication}
+    Since the produce of two elements with \nameref{def:Multiplicative_Inverse}s is another element with a \nameref{def:Multiplicative_Inverse}, we say that \TextSetOrder{\MultiplicativeGroupN{}} is \emph{closed under multiplication}.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Element Order]\label{def:Element_Order}
+  The \emph{order of an element} $a \in \MultiplicativeGroupN{}$, denoted $\ElementOrder(a)$ is defined as the least positive integer $t$ ($t \in \AllIntegers$) such that
+  \begin{equation}\label{eq:Element_Order}
+    a^{t} \bmod n = 1
+  \end{equation}
+\end{definition}
+
+\begin{lemma}[Element Order]\label{lemma:Element_Order}
+  Let $a \in \MultiplicativeGroupN{}$.
+  If $a^{s}$ for some $s$, then $\ElementOrder(a) \Divides s$.
+  In particular, $\ElementOrder(a) \Divides \phi(n)$ must be true.
+\end{lemma}
+
+\begin{example}[Exercise 1, Problem 1.6b]{Element Order}
+  Find the $\ElementOrder(5)$ in \TextMultiplicativeGroup{8}?
+  \tcblower{}
+  We need to solve
+  \begin{equation*}
+    a^{t} \bmod n = 1
+  \end{equation*}
+  where $a = 5$ and $n = 8$.
+  \begin{equation*}
+    5^{t} \bmod 8 = 1
+  \end{equation*}
+
+  Now we test values for $t$ until we satisfy the equation.
+  \begin{align*}
+    t &= 1 \rightarrow 5^{1} \bmod 8 = 5 \bmod 8 = 5 \neq 1 \\
+    t &= 2 \rightarrow 5^{2} \bmod 8 = 25 \bmod 8 = 1 = 1
+  \end{align*}
+
+  Since $t=2$ satisfies our equation, the $\ElementOrder(5) = 2$.
+\end{example}
+
+\begin{proof}[Element Order]\label{proof:Element_Order}
+  Let $t = \ElementOrder(a)$.
+  By long division, $s = qt + r$, where $r < t$.
+  Then $a^{s} = a^{qt + r} = a^{qt}a^{r}$ and since $a^{t} = 1$, from \Cref{eq:Element_Order}, we have $a^{s} = a^{r}$ and $a^{r} = 1$.
+  This reduction is shown below:
+  \begin{align*}
+    a^{s} &= a^{qt + r} \\
+          &= a^{qt}a^{r} \\
+          &= {\left( a^{t} \right)}^{q} a^{r} \\
+          &= {\left( 1 \right)}^{q} a^{r} \\
+          &= 1^{q} a^{r} \\
+          &= 1 a^{r} \\
+          &= a^{r}
+  \end{align*}
+
+  But, $r<t$, so we must have $r=0$, and so $\ElementOrder(a) \Divides s$.
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex

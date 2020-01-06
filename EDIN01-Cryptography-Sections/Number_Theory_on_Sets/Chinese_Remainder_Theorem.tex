@@ -1,4 +1,87 @@
 \subsection{Chinese Remainder Theorem}\label{subsec:Chinese_Remainder_Theorem}
+\begin{theorem}[Chinese Remainder Theorem]\label{thm:Chinese_Remainder_Theorem}
+  Let the integers $n_{1}, n_{2}, \ldots, n_{k}$ be pairwise \nameref{def:Relatively_Prime}.
+  Then the system of \nameref{def:Congruence}s
+  \begin{align*}
+    x &\equiv a_{1} \pmod{n_{1}} \\
+    x &\equiv a_{2} \pmod{n_{2}} \\
+      &\vdots \\
+    x &\equiv a_{k} \pmod{n_{k}}
+  \end{align*}
+  has a unique solution modulo $n = n_{1}n_{2} \cdots n_{k}$.
+\end{theorem}
+
+\begin{definition}[Gauss's Algorithm]\label{def:Gauss_Algorithm}
+  The solution $x$ to the system of \nameref{def:Congruence}s promised by the \nameref{thm:Chinese_Remainder_Theorem} can be calculated as
+  \begin{equation}\label{eq:Gauss_Algorithm}
+    x = \Biggl( \sum\limits_{i=1}^{k}a_{i} N_{i} M_{i} \Biggr) \bmod n
+  \end{equation}
+  where $N_{i} = \frac{n}{n_{i}}$ and $M_{i} = N_{i}^{-1} = {\left( \frac{n}{n_{i}} \right)}^{-1} \bmod n_{i}$ ($M_{i}$ is the \nameref{def:Multiplicative_Inverse} of $N_{i} \bmod n_{i}$).
+\end{definition}
+
+\begin{definition}[Chinese Remainder Theorem]\label{def:Chinese_Remainder_Theorem}
+  The \emph{\nameref{thm:Chinese_Remainder_Theorem}} allows us to change the way we represent elements of our set, \TextIntsModN{}.
+  
+  The integers modulo $n$, \TextIntsModN{}, where $n = n_{1}n_{2}$ and $\gcd(n_{1}, n_{2}) = 1$.
+  An element $a \in$ \TextIntsModN{} has a unique representation: $(a \bmod n_{1}, a \bmod n_{2})$.
+  We can denote this mapping by $\gamma : \IntsModN{} \rightarrow \IntsMod{n_{1}} \times \IntsMod{n_{2}}$.
+  \begin{propertylist}
+  \item $\gamma(a) = \gamma(b)$ if and only if $a = b$. \label{prop:Chinese_Remainder_Theorem_Property-Equivalence}
+  \item For all $(a_{1}, a_{2}) \in \IntsMod{n_{1}} \times \IntsMod{n_{2}}$, there exists an $a$ such that $\gamma(a) = (a_{1}, a_{2})$.
+  \item $\gamma(a+b) = \gamma(a) + \gamma(b)$
+  \item $\gamma(ab) = \gamma(a) \gamma(b)$ \label{prop:Chinese_Remainder_Theorem_Property-Multiplication}
+  \end{propertylist}
+  These properties (\Crefrange{prop:Chinese_Remainder_Theorem_Property-Equivalence}{prop:Chinese_Remainder_Theorem_Property-Multiplication}) make $\gamma$ an \emph{\nameref{def:Isomorphism}}.
+
+  \begin{remark}
+    In the case of large integers for cryptography, knowing just one part of the number can ehlp get the other part.
+    However, if the number is very large, 2048 bits for instance, these calculations start becoming \nameref{def:Intractable}.
+  \end{remark}
+\end{definition}
+
+\begin{example}[]{Chinese Remainder Theorem Mapping}
+  Find the mapping of $7$ when in \TextIntsMod{15}?
+  \tcblower{}
+  We need to find a prime factorization for $15$.
+  \begin{equation*}
+    15 = 3^{1} \cdot 5^{1}
+  \end{equation*}
+  So, the 2 modulos we will use are $3$ and $5$.
+  Additionally, since 7 is an element in \TextIntsMod{15} we can simply say,
+  \begin{equation*}
+    7 \Leftrightarrow (7 \bmod 3,\, 7 \bmod 5) = (1, 2)
+  \end{equation*}
+\end{example}
+
+\begin{example}[]{Reverse Chinese Remainder Theorem Mapping 1}
+  Which element of \TextIntsMod{168} corresponds to the pair $([7],[5]) \in \IntsMod{8} \times \IntsMod{21}$?
+  \tcblower{}
+  If we apply the \nameref{def:Extended_Euclidean_Algorithm} to 8 and 21, we get $1 = 8 \cdot 8 + (-3) \cdot 21$.
+  Note that $8 \cdot 8 = 64$ is congruent to $0 \bmod 8$ and $1 \bmod 21$, and $(-3) \cdot 21 = -63$ is congruent to $1 \bmod 8$ and $0 \bmod 21$.
+  Therefore
+  \begin{align*}
+    5 \cdot 64+7 \cdot (-63) &\equiv 5 \cdot 0+7 \cdot 1 = 7 (\bmod 8) \\
+    5 \cdot 64+7 \cdot (-63) &\equiv 5 \cdot 1+7 \cdot 0 = 5 (\bmod 21)
+  \end{align*}
+  so,
+  \begin{equation*}
+    5 \cdot 64 + 7 \cdot (-63) = -121 \equiv 47 (\bmod 168)
+  \end{equation*}
+  works, that is, $[47] \Leftrightarrow ([7],[5])$.
+\end{example}
+
+\begin{example}[]{Reverse Chinese Remainder Theorem Mapping 2}
+  Given elements $z_{2} \in \IntsMod{2}$ and $z_{5} \in \IntsMod{5}$, find the corresponding element $z_{10} \in \IntsMod{10}$?
+  \tcblower{}
+  Because the $\gcd(2, 5) = 1$, we can also use the \nameref{def:Extended_Euclidean_Algorithm}.
+  It returns $1 = 1 \cdot 5 - 2 \cdot 2$.
+  Now we need to match the terms up with modulo factors that do not reduce them, i.e.\ any element $z_{5}$ should not be matched with 5, and likewise with $z_{2}$ and 2.
+
+  Thus,
+  \begin{equation*}
+    z_{10} = (z_{2} \cdot 5 - z_{5} \cdot 2) \bmod 10
+  \end{equation*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
