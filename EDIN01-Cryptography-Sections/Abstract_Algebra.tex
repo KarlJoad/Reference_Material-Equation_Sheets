@@ -12,69 +12,7 @@ These include:
 
 \input{./EDIN01-Cryptography-Sections/Abstract_Algebra/Properties_Groups}
 
-\subsection{Rings}\label{subsec:Rings}
-\begin{definition}[Ring]\label{def:Ring}
-  A \emph{ring} (with unity) consists of a set $R$ with two \nameref{def:Binary_Operation}s.
-  A ring is denoted as $(R, +, *)$., where $+$ and $*$ are \textbf{not} addition and multiplication respectively, but placeholders for the two \nameref{def:Binary_Operation}s.
-  A ring must also satisfy the following conditions:
-  \begin{propertylist}
-  \item $(R, +)$ is an \nameref{def:Abelian} \nameref{def:Group} with an identity element denoted 0.
-  \item $a \cdot (b \cdot c) = (a \cdot b) \cdot c$ for all $a, b, c \in R$ (Associativity).\label{prop:Ring_Properties-Associativity}
-    \begin{equation*}
-      \forall a, b, c \in R \, a \cdot (b \cdot c) = (a \cdot b) \cdot c
-    \end{equation*}
-
-  \item There is a multiplicative identity, denoted 1, with the multiplicative identity not being equal to the identity element of the underlying \nameref{def:Abelian} \nameref{def:Group} ($1 \neq 0$), such that $1 \cdot a = a \cdot 1 = a$ for all $a \in R$ (Multiplicative Identity).\label{prop:Ring_Properties-Multiplicative_Identity}
-    
-  \item $a \cdot (b+c) = (a \cdot b) + (a \cdot c)$ and $(b+c) \cdot a = (b \cdot a) + (c \cdot a)$ for all $a, b, c \in R$ (Distributive).\label{prop:Ring_Properties-Distributivity}
-    \begin{equation*}
-      \begin{aligned}
-        \forall a, b, c \in R \: a \cdot (b+c) &= (a \cdot b) + (a \cdot c) \\
-        \forall a, b, c \in R \: (b+c) \cdot a &= (b \cdot a) + (c \cdot a) \\
-      \end{aligned}
-    \end{equation*}
-  \end{propertylist}
-  
-  A \emph{commutative ring} is a ring where additionally
-  \begin{propertylist}[resume]
-  \item $a \cdot b = b \cdot a$ for all $a, b \in R$ (Commutativity)\label{prop:Ring_Properties-Commutativity}
-    \begin{equation*}
-      \forall a, b \in R \: a \cdot b = b \cdot a
-    \end{equation*}
-  \end{propertylist}
-
-  \begin{remark}[Ring Multiplicative Inverses]\label{rmk:Ring_Multiplicative_Inverses}
-    Note that we haven't said anything about multiplicative inverses yet.
-  \end{remark}
-\end{definition}
-
-\begin{definition}[Invertible Element]\label{def:Invertible_Element}
-  An element $a \in R$ is called an \emph{invertible element} or a \emph{unit} if there is an element $b \in R$ such that
-  \begin{equation}\label{eq:Invertible_Element}
-    a \cdot b = b \cdot a = 1
-  \end{equation}
-
-  \begin{remark}
-    The set of \nameref{def:Invertible_Element}s in a \nameref{def:Ring} $R$ forms a \nameref{def:Group} under multiplication.
-    For example, the \nameref{def:Group} of \nameref{def:Invertible_Element}s of the \nameref{def:Ring} \TextIntsModN{} is \TextMultiplicativeGroupN{}.
-  \end{remark}
-  
-  \begin{remark}[Multiplicative Inverse]\label{rmk:Ring_Multiplicative_Inverse}
-    The \nameref{def:Multiplicative_Inverse} of an element $a \in R$ is denoted by $a^{-1}$, assuming it exists.
-    The division expression $a/b$ should then be interpreted as $a \cdot b^{-1}$.
-  \end{remark}
-\end{definition}
-
-\subsubsection{Examples of \nameref*{subsec:Rings}}\label{subsubsec:Examples_of_Rings}
-\begin{itemize}[noitemsep]
-\item A commutative ring is $(\AllIntegers, +, \cdot)$, where $+$ and $\cdot$ are the susual operations of addition and multiplication.
-\item Finite Ring: \TextIntsModN{} with addition and multiplication modulo $n$
-  \begin{itemize}[noitemsep]
-  \item The additive inverse of $a \in R$ is denoted $-a$. So the subtraction expression $a-b$ should be interpreted as $a + (-b)$.
-  \item The multiplication of $a \cdot b$ is equivalently written $ab$.
-  \item Similarly $a^{2} = aa = a \cdot a$.
-  \end{itemize}
-\end{itemize}
+\input{./EDIN01-Cryptography-Sections/Abstract_Algebra/Rings}
 
 \subsection{Fields}\label{subsec:Fields}
 \begin{definition}[Field]\label{def:Field}
