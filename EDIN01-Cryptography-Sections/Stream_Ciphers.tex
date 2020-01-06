@@ -74,47 +74,7 @@ The attack types that are of interest are:
 
 \input{./EDIN01-Cryptography-Sections/Stream_Ciphers/LFSR_Sequences_Extension_Fields}
 
-
-\subsection{Berlekamp-Massey Algorithm}\label{subsec:Berlekamp_Massey_Algorithm}
-I will present this algorithm in 2 ways, a algorithm table and a flow chart.
-
-\begin{algorithm}[H]
-  \DontPrintSemicolon{}
-  \SetKwInOut{Input}{Input}
-  \SetKwInOut{Output}{Output}
-  
-  \Input{A sequence $\mathbf{s} = (s_{0}, s_{1}, \ldots, s_{N-1})$ of length $N$.}
-  \Output{The shortest LFSR $\langle C(D)$, where $L \rangle$ generating $\mathbf{s}$.}
-  \BlankLine{}
-  \textit{Initialization}: $C(D) = 1$, $L=0$, $C^{*}(D) = 1$, $d^{*} = 1$, $m = -1$, and $n=0$. \;
-  \While{$n < N$}{
-    Compute the discrepancy $d$:
-    \begin{equation*}
-      d = s_{n} - \sum\limits_{i=1}^{L} -c_{i}s_{n-i}
-    \end{equation*} \;
-    \If{$d \neq 0$}{
-      $T(D) = C(D)$ \;
-      $C(D) = C(D) - ( d \cdot d^{-1}) \cdot (C^{*}(D))D^{n-m}$\;
-      \If{$L \leq \frac{n}{2}$}{
-        $L = n + 1 - L$ \;
-        $C^{*}(D) = T(D)$ \;
-        $d^{*} = d$ \;
-        $m = n$ \;
-      }
-    }
-    $n = n + 1$
-  }
-  \Return{$\langle C(D), L \rangle$}
-  \caption{Berlekamp-Massey Algorithm}
-  \label{fig:Berlekamp_Massey_Algorithm}
-\end{algorithm}
-
-\begin{figure}[h!]
-  \centering
-  
-  \caption{Berlekamp-Massey Algorithm}
-  \label{fig:Berlekamp_Massey_Algorithm}
-\end{figure}
+\input{./EDIN01-Cryptography-Sections/Stream_Ciphers/Berlekamp-Massey_Algorithm}
 
 \subsection{Cycle Sets}\label{subsec:Cycle_Sets}
 \begin{definition}[Cycle Set]\label{def:Cycle_Set}
