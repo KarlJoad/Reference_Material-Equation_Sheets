@@ -1,4 +1,14 @@
 \subsection{Fermat's Little Theorem}\label{subsec:Fermats_Little_Theorem}
+\begin{theorem}[Fermat's Little Theorem]\label{thm:Fermats_Little_Theorem}
+  Let $p$ be a \nameref{def:Prime} number.
+  If $\gcd(a, p) = 1$, then
+  \begin{equation}\label{eq:Fermats_Little_Theorem}
+    a^{p-1} \equiv 1 \pmod{p}
+  \end{equation}
+\end{theorem}
+\begin{remark*}
+  This ties in with \nameref{thm:Eulers_Theorem}, because working in \TextIntsModN{}, all exponents can be reduced by modulo $\phi(n)$.
+\end{remark*}
 
 %%% Local Variables:
 %%% mode: latex
