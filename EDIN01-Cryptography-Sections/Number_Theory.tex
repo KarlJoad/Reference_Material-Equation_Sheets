@@ -21,26 +21,7 @@ Before we can start with any of the deeper cryptography stuff, we need to start 
 
 \input{./EDIN01-Cryptography-Sections/Number_Theory/Greatest_Common_Divisor}
 
-
-\subsection{Least Common Multiple}\label{subsec:Least_Common_Multiple}
-\begin{definition}[Least Common Multiple]\label{def:LCM}
-  A non-negative integer $d$ is called the \emph{least common multiple} (\emph{LCM}) of integers $a$ and $b$ if:
-  \begin{enumerate}[noitemsep]
-  \item $a \Divides d$ and $b \Divides d$
-  \item For every integer $c$ such that $a \Divides c$ and $b \Divides c$, we have $d \Divides c$.
-  \end{enumerate}
-
-  The least common multiple is denoted
-  \begin{equation}\label{eq:LCM}
-    \lcm(a, b)
-  \end{equation}
-
-  $\lcm(a, b)$ is the \textbf{smallest positive} integer divisible by both $a$ and $b$.
-
-  \begin{remark}
-    If $a, b \in \PositiveInts$, then $\lcm(a, b) \cdot \gcd(a, b) = a \cdot b$
-  \end{remark}
-\end{definition}
+\input{./EDIN01-Cryptography-Sections/Number_Theory/Least_Common_Multiple}
 
 \subsection{Primality}\label{subsec:Primality}
 \begin{definition}[Relatively Prime]\label{def:Relatively_Prime}
