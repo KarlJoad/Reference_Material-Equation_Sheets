@@ -19,42 +19,8 @@ Before we can start with any of the deeper cryptography stuff, we need to start 
 
 \input{./EDIN01-Cryptography-Sections/Number_Theory/Long_Division}
 
-\subsection{Greatest Common Divisor}\label{subsec:Greatest_Common_Divisor}
-\begin{definition}[Common Divisor]\label{def:Common_Divisor}
-  An integer $c$ is a \emph{common divisor} of $a$ and $b$ if $c \Divides a$ and $c \Divides b$.
-\end{definition}
+\input{./EDIN01-Cryptography-Sections/Number_Theory/Greatest_Common_Divisor}
 
-\begin{definition}[Greatest Common Divisor]\label{def:GCD}
-  A non-negative integer $d$ is called the \emph{greatest common divisor} (\emph{GCD}) of integers $a$ and $b$ if:
-  \begin{enumerate}[noitemsep]
-  \item $d$ is a \nameref{def:Common_Divisor} of $a$ and $b$.
-  \item For every other common divisor $c$ it holds that $c \Divides d$.
-  \end{enumerate}
-
-  The greatest common divisor is denoted
-  \begin{equation}\label{eq:GCD}
-    \gcd(a, b)
-  \end{equation}
-
-  $\gcd(a,b)$ is the \textbf{largest positive} integer dividing both $a$ and $b$ (except for $\gcd(0,0)=0$).
-  
-  \begin{remark}
-    If $a, b \in \PositiveInts$, then $\lcm(a, b) \cdot \gcd(a, b) = a \cdot b$
-  \end{remark}
-\end{definition}
-
-\begin{example}[]{Greatest Common Divisor}
-  What is the $\gcd(18, 24)$?
-
-  \tcblower{}
-
-  Common Divisors = $\lbrace \pm 1, \pm 2, \pm 4, \pm 6 \rbrace$.
-
-  Since we can only allow positive integers,
-  \begin{equation*}
-    \gcd(18, 24) = +6
-  \end{equation*}
-\end{example}
 
 \subsection{Least Common Multiple}\label{subsec:Least_Common_Multiple}
 \begin{definition}[Least Common Multiple]\label{def:LCM}
