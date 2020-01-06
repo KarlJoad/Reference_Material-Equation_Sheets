@@ -13,81 +13,8 @@ However, using what we learned in \Cref{sec:Number_Theory}, \nameref{sec:Number_
 \input{./EDIN01-Cryptography-Sections/Number_Theory_on_Sets/Eulers_Theorem}
 
 \input{./EDIN01-Cryptography-Sections/Number_Theory_on_Sets/Fermats_Little_Theorem}
-\subsection{Generators}\label{subsec:Generators}
-\begin{definition}[Generator]\label{def:Generator}
-  Let $a \in \MultiplicativeGroupN{}$.
-  If the \nameref{def:Element_Order} of $a$ is equal to the \nameref{def:Euler_Phi_Function}, i.e.\ $\ElementOrder(a) = \phi(n)$, then $a$ is said to be a \emph{generator} (or a \emph{primitive element}) of \TextMultiplicativeGroupN{}.
-  \begin{subequations}\label{eq:Generator}
-    \begin{equation}\label{eq:Generator-Equivalent_Element_Euler_Phi_Function}
-      \ElementOrder(a) = \phi(n)
-    \end{equation}
-    \begin{equation}\label{eq:Generator-Equivalent_Element_Set_Orders}
-      \ElementOrder(a) = \SetOrder{\MultiplicativeGroupN{}}
-    \end{equation}
-  \end{subequations}
 
-  Furthermore, if \TextMultiplicativeGroupN{} has a generator, then \TextMultiplicativeGroupN{} is said to be\emph{\nameref{def:Cyclic}}.
-  \begin{remark}
-    It is clear that if $a \in \MultiplicativeGroupN{}$ is a \nameref{def:Generator}, then every element in \TextMultiplicativeGroupN{} can be expressed as $a^{i}$ for some integer $i$ ($i \in \AllIntegers$).
-    So, we can write
-    \begin{equation}\label{eq:Generator_in_Multiplicative_Group}
-      \MultiplicativeGroupN{} = \lbrace a^{i} \vert 0 \leq i \leq \phi(n) - 1 \rbrace
-    \end{equation}
-  \end{remark}
-\end{definition}
-
-\begin{example}[Exercise 1, Problem 1.6c]{Cyclic Group}
-  Is \TextMultiplicativeGroup{8} a \nameref{def:Cyclic} \nameref{def:Group}?
-  \tcblower{}
-    We need to find an $a$ that satisfies $\ElementOrder(a) = \phi(n)$.
-  In this case $n=8$.
-  First, we will calculate $\phi(n)$.
-  \begin{equation*}
-    \phi(n) = \phi(8)
-  \end{equation*}
-  We need to find a \nameref{def:Prime} factorization of $8$.
-  \begin{align*}
-    \phi(8) &= \phi \left( 2^{3} \right) \\
-            &= \left( 2^{3} - 2^{3-1} \right) \\
-            &= \left( 2^{3} - 2^{2} \right) \\
-            &= (8-4) \\
-            &= 4
-  \end{align*}
-  So, $\phi(8) = 4$.
-
-  Now we need to solve
-  \begin{equation*}
-    \ElementOrder (a) = 4
-  \end{equation*}
-
-  All of the terms in \TextMultiplicativeGroup{8} must be \nameref{def:Invertible}, so they \textbf{must} satisfy $\gcd(z, 8) = 1, \, z \in \IntsMod{8}$.
-  All of the terms in \TextIntsMod{8} are:
-  \begin{equation*}
-    \IntsMod{8} = \Bigl\lbrace [0], [1], [2], [3], [4], [5], [6], [7] \Bigr\rbrace
-  \end{equation*}
-  Now we check the \nameref{def:GCD}s for $z \in \IntsMod{8}$.
-  \begin{align*}
-    \gcd(0, 8) &= 8 & \gcd(4, 8) &= 2 \\
-    \gcd(1, 8) &= 1 & \gcd(5, 8) &= 1 \\
-    \gcd(2, 8) &= 2 & \gcd(6, 8) &= 2 \\
-    \gcd(3, 8) &= 1 & \gcd(7, 8) &= 1
-  \end{align*}
-  So,
-  \begin{equation*}
-    \MultiplicativeGroup{8} = \Bigl\lbrace [1], [3], [5], [7] \Bigr\rbrace
-  \end{equation*}
-
-  Now we test $\ElementOrder{a} = 4, \, a \in \MultiplicativeGroup{8}$.
-  \begin{align*}
-    \ElementOrder(1) &= 1 \\
-    \ElementOrder(3) = 3^{t} \bmod 8 = 1 \rightarrow t = 2 \rightarrow \ElementOrder(3) &= 2 \\
-    \ElementOrder(5) &= 2 \\
-    \ElementOrder(7) = 7^{t} \bmod 8 = 1 \rightarrow t = 2 \rightarrow \ElementOrder(7) &= 2
-  \end{align*}
-
-  Since no element from $\ElementOrder (\MultiplicativeGroup{8}) = \phi(8) = 4$, \TextMultiplicativeGroup{8} is \textbf{NOT} \nameref{def:Cyclic}.
-\end{example}
-
+\input{./EDIN01-Cryptography-Sections/Number_Theory_on_Sets/Generators}
 \subsection{Quadratic Residues}\label{subsec:Quadratic_Residues}
 \begin{definition}[Quadratic Residue]\label{def:Quadratic_Residue}
   An element $a \in \MultiplicativeGroupN{}$ is said to be a \emph{quadratic residue} modulo $n$ (or a \emph{square}) if there exists an $x \in \MultiplicativeGroupN{}$ such that $x^{2} = a$.
