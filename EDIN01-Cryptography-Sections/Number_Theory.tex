@@ -23,31 +23,7 @@ Before we can start with any of the deeper cryptography stuff, we need to start 
 
 \input{./EDIN01-Cryptography-Sections/Number_Theory/Least_Common_Multiple}
 
-\subsection{Primality}\label{subsec:Primality}
-\begin{definition}[Relatively Prime]\label{def:Relatively_Prime}
-  $a, b$ are called \emph{relatively prime} if $\gcd(a, b) = 1$.
-\end{definition}
-
-\begin{definition}[Prime]\label{def:Prime}
-  An integer $p \geq 2$ is called \emph{prime} if its only positive divisors are $1$ and $p$.
-  Otherwise, $p$ is called a \emph{\nameref{def:Composite}}.
-\end{definition}
-
-\begin{definition}[Composite]\label{def:Composite}
-  An integer $p \geq 2$ is called \emph{composite} if it has more positive divisors than just $1$ and $p$.
-  Otherwise, $p$ is called a \emph{\nameref{def:Prime}}.
-\end{definition}
-
-\subsubsection{Number of Primes}\label{subsubsec:Number_of_Primes}
-The number of primes $\leq x$ is denoted
-\begin{equation}\label{eq:Number_of_Primes}
-  \pi(x)
-\end{equation}
-\begin{enumerate}[noitemsep]
-\item There are infinitely many primes
-\item $\lim\limits_{x \rightarrow \infty} \frac{\pi(x)}{\frac{x}{\ln(x)}} = 1$
-\item For $x \geq 17$, $\frac{x}{\ln(x)} < \pi(x) < \frac{1.25506x}{\ln(x)}$
-\end{enumerate}
+\input{./EDIN01-Cryptography-Sections/Number_Theory/Primality}
 
 \subsection{Unique Factorization}\label{subsec:Unique_Factorization}
 \begin{theorem}[Unique Factorization Theorem]\label{thm:Unique_Factorization_Theorem}
