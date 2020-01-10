@@ -98,10 +98,10 @@ For the same iterative cipher, the decryption function $D_{K}(y)$ is just the ap
 
 \subsubsection{SP Network}\label{subsubsec:SP_Network}
 \begin{definition}[SP Network]\label{def:SP_Network}
-  An \emph{SP network} is a iterated \nameref{def:Block_Cipher} that consists of a mix between substitutions (\emph{S}) (\nameref{subsec:Simple_Substitution_Cipher}s) and permutations (\emph{P}) or linear transformations (~\pageref{subsubsec:Transposition_Cipher}s).
-  The \nameref{def:Round_Key} is added to the input to the \nameref{def:Round_Function} in a simple way ($\XOR$).
+  An \emph{SP network} is a iterated \nameref{def:Block_Cipher} that consists of a mix between substitutions (\emph{S}) (\nameref{subsec:Simple_Substitution_Cipher}s) and permutations (\emph{P}) or linear transformations (\nameref{subsubsec:Transposition_Cipher}s).
+  The \nameref{def:Round_Key} is added to the input to the \nameref{def:Round_Function} in a simple way (Exclusive-OR, XOR, $\XOR$).
 
-  An example of these is the AES (Advanced Encryption Scheme) cipher.
+  An example of these is the AES (\nameref{def:AES}) cipher.
 \end{definition}
 
 \begin{definition}[S-Box]\label{def:S_Box}
@@ -120,7 +120,7 @@ For the same iterative cipher, the decryption function $D_{K}(y)$ is just the ap
 
   Let $X_{1} = (x_{1}, x_{2}, \ldots, x_{N})$ be the first block with length $N$.
   Let $X_{2} = (x_{N+1}, x_{N+2}, \ldots, x_{2N})$ be the second block, also with length $N$.
-  The encryption is then done blockwise
+  The encryption is then done block-wise
   
   Most modes require a unique binary sequence, often called an \nameref{def:Initialization_Vector} (IV), for each encryption operation.
 
