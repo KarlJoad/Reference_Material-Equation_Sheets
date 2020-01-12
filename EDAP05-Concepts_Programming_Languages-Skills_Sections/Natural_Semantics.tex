@@ -2,14 +2,39 @@
 There are many ways to describe semantics.
 In this course, we focus on natural semantics (also known as Big-Step Operational Semantics).
 
+\subsection{}
+You should be able to read a specification of natural semantics.
+
+\subsection{}
+You should be able to undestand how \textbf{expressions} and \textbf{values} relate to each other.
+
 \begin{enumerate}[noitemsep]
-\item You should be able to read a specification of natural semantics.
-\item You should be able to undestand how \textbf{expressions} and \textbf{values} relate to each other.
-\item Given a natural semantics and a parse tree (or unambiguous expression), you should be able to compute the semantics of the given program.
-\item Given a natural semantics and a BNF grammar, you should be able to tell whether any parts of the semantics are undefined.
-\item Given an understanding of what a state-free expression language is supposed to do, you should be able to write down a simple natural semantics for it.
-\item You should be able to understand the concepts of Environments in the context of natural semantics and be able to utilise it when reading and reasoning about natural semantics.
+\item An expression is built up of values.
+\item An expression can return a value or another expression.
+\item Values must be defined in terms of some mathematical numerical thing. If $\mathtt{v}$ is input as an integer, then $v \in \mathbb{Z}$ is the conditional requirement for $\mathtt{v} \Downarrow v$.
 \end{enumerate}
+
+\subsection{}
+Given a natural semantics and a parse tree (or unambiguous expression), you should be able to compute the semantics of the given program.
+
+\begin{itemize}[noitemsep]
+\item You must use the semantic rules provided, and repreatedly recurse until the semantics of the entire program has been defined.
+\end{itemize}
+
+\subsection{}
+Given a natural semantics and a BNF grammar, you should be able to tell whether any parts of the semantics are undefined.
+
+\begin{itemize}[noitemsep]
+\item The BNF grammar defines what symbols may be used. So if the semantics uses symbols that the BNF does not defined, the semantics are undefined.
+\item If there are operator symbols defined, but the semantics does not use them, then the semantics are undefined.
+\item If an operator's semantics do not recurse enough to handle all cases, then they are undefined.
+\end{itemize}
+
+\subsection{}
+Given an understanding of what a state-free expression language is supposed to do, you should be able to write down a simple natural semantics for it.
+
+\subsection{}
+You should be able to understand the concepts of Environments in the context of natural semantics and be able to utilise it when reading and reasoning about natural semantics.
 
 %%% Local Variables:
 %%% mode: latex
