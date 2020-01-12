@@ -1,10 +1,52 @@
 \section{Language Implementation}\label{sec:Language_Implementation}
 You should be familiar with the following concepts:
-\begin{enumerate}[noitemsep]
-\item Language implementation via \textbf{pure interpretation}, \textbf{compilation}, and \textbf{hybrid implementation}
-\item Language implementation with the help of a \textbf{just-in-time compiler}
-\item The concept of language \textbf{run-time system}
-\end{enumerate}
+\subsection{}
+Language implementation via \textbf{pure interpretation}, \textbf{compilation}, and \textbf{hybrid implementation}.
+\begin{itemize}
+\item Pure Interpretation
+  \begin{itemize}[noitemsep]
+  \item Python
+  \item The program runs on an interpretation layer between the hardware and itself. (VM usually)
+  \item Quicker development with faster feedback on issues
+  \item No compilation (May be possible to compile down to VM-specific code, but not machine code.)
+  \item Slower execution time (Must interpret each command, break down to possible CPU actions, and write the machine code on-the-fly.)
+  \end{itemize}
+
+\item Compilation
+  \begin{itemize}[noitemsep]
+  \item C
+  \item Program runs ON the computer's hardware
+  \item Slower development, must compile for some issues to be found (Type Error). Must run for other issues to be found (Null pointer).
+  \item Compile down to machine code for quick runtime.
+  \item Fast execution. Human-readable code already in machine code, just need to load into memory and begin execution.
+  \end{itemize}
+
+\item Hybrid Implementation
+  \begin{itemize}[noitemsep]
+  \item Java
+  \item Program may start by being interpreted, but parts in use will start to be compiled while running.
+  \item Runs some parts through an interpreter, and some pieces are compiled.
+  \item Theoretically, same kind of fast development as interpreted languages, with the more frequently-used code being compiled for speed.
+  \item Hypothetically, Fast execution for the parts that are compiled.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Language implementation with the help of a \textbf{just-in-time compiler}.
+
+\begin{itemize}[noitemsep]
+\item A Just-In-Time (JIT) compiler starts by having the code run in an interpreted mode.
+\item After some time, the most frequently used portions of code are compiled, to improve performance, and the interpreted parts are replaced by the compiled parts.
+\item Java uses this.
+\end{itemize}
+
+\subsection{}
+The concept of language \textbf{run-time system}.
+
+\begin{itemize}[noitemsep]
+\item These are the systems in place that were put in by the compiler/interpreter to help the program run.
+\item These can include: Error handlers, resource deallocators (Garbage collectors), and type coercers.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
