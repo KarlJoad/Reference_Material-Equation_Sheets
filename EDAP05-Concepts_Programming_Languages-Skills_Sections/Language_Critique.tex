@@ -2,13 +2,87 @@
 The book provides a convenient common framework for arguing about the benefits and disadvantages of language features and programming languages in general.
 Table 1.1 and, more generally, Section 1.3 in the book describe a number of axes along which we can try to understand the effect of language features and the qualities of programming languages.
 
-\begin{enumerate}[noitemsep]
-\item You should be able to recognise and describe all the characteristics listed in Table 1.1, as well as the three basic criteria listed therein.
-\item For some language feature, you should be able to recognise the characteristics and criteria affected by that feature's presence or absence.
-\item For some language feature, you should be able to recognise how the feature's presence or absence affects the language, based on the three criteria from Table 1.1.
-\item For two related language features, you should be able to compare them, based on the three criteria from Table 1.1.
-\item For some language feature, you should be able to recognise and explain how it can affect the Cost considerations for training, compile time, execution time, and cost of poor reliability as outlined in Section 1.3.7.
-\end{enumerate}
+\subsection{}\label{subsec:Criteria}
+You should be able to recognise and describe all the characteristics listed in Table 1.1, as well as the three basic criteria listed therein.
+\begin{itemize}
+\item Readability --- How easy is it to read the program's source code and understand what's happening?
+  \begin{itemize}
+  \item Simplicity --- How ``simple'' is the language?
+    \begin{itemize}[noitemsep]
+    \item Is it like brainfuck and hard to read and write (leading to reliability issues), or like Python that is quite literate (in terms of how similar it can be to English)?
+    \end{itemize}
+
+  \item Orthogonality --- How do the number of features present in a language overlap?
+    \begin{itemize}[noitemsep]
+    \item Operator overloading is one instance where we sacrifice orthogonality for a simpler to read and write (and more reliable) language.
+    \item For example, the addition operator is typically overloaded for integers and floating-point numbers, because in math we use the same operator for both, but have different meanings and required operations in computers.
+    \end{itemize}
+
+  \item Data Types --- How closely do data types that we use in the program match our needs? Do these overlap with things that may be present in the real world (in the case of OOP languages)?
+  \item Syntax Design --- Is the syntax, i.e.\ the way the language must be read and written easy or difficult?
+    \begin{itemize}[noitemsep]
+    \item If it is difficult, is there a reason?
+    \item This may influence the reliability of the language if it is hard to understand how the program is working.
+    \end{itemize}
+  \end{itemize}
+
+\item Writability --- How easy is it to write a program's source code and understand what's happening?
+  This does not just refer to the writer, but also the reader (who may be the same persion or someone else) later.
+  \begin{itemize}
+  \item Support for Abstraction --- Can we take repeated details of our program and make them more general than before?
+    \begin{itemize}[noitemsep]
+    \item For program operations (subprograms), instead of having to embed common operations everywhere in a program that may need to perform this calculation, can we make it a subprogram that can be called repeatedly and operate as before?
+    \item For data, how naturally can we represent more complicated things? For example, a binary tree in C is a \texttt{struct} with 2 pointers and a holding value. In older languages (FORTRAN), it was 3 arrays in parallel.
+    \end{itemize}
+    
+  \item Expressivity --- Using the features built into the language, how easy is it to \textbf{naturally} express the computation that we want to perform?
+    \begin{itemize}[noitemsep]
+    \item How much of the language's code do we need to describe some computation?
+    \end{itemize}
+  \end{itemize}
+
+\item Reliability --- How sure are we (the writer) that our code is actually doing what we want, without error? If there are errors, how can we ensure that they are handled?
+  \begin{itemize}
+  \item Type Checking --- Using the data types from earlier, what kind of checking can we perform to ensure our program operates the way we intend it to?
+    \begin{itemize}[noitemsep]
+    \item Think of SML's type checking, or Rust's type checking for a strongly-typed and statically checked language.
+    \item C/C++ is weakly-typed because of pointers (which can be overwritten in any way, without regards to the type checker), although it is statically checked.
+    \item Python is strongly-typed, but dynamically checked. This is the reason any variable can be any type at any point of execution, but the operations that can be performed on them are limited.
+    \item JavaScript is weakly-typed and dynamically checked. Being weakly-typed means the language allows errors that could be caught to instead ``fly under the radar'', until the thing is used again. Being dynamically checked means that these are only found during runtime of the language.
+    \end{itemize}
+
+  \item Exception Handling --- If an error happens during program execution (a file is not present, network connection lost, etc.) how well can we handle that? How easy is it to read and write a program where these can occur?
+  \item Restricting Aliasing --- Can we restrict the number of things that point to a single memory cell? This is important for type checking and resource deallocation.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+For some language feature, you should be able to recognise the characteristics and criteria (from Table 1.1 (\Cref{subsec:Criteria})) affected by that feature's presence or absence.
+
+\subsection{}
+For some language feature, you should be able to recognise how the feature's presence or absence affects the language, based on the three criteria from Table 1.1 (\Cref{subsec:Criteria}).
+
+\subsection{}
+For two related language features, you should be able to compare them, based on the three criteria from Table 1.1 (\Cref{subsec:Criteria}).
+
+\subsection{}
+For some language feature, you should be able to recognise and explain how it can affect the Cost considerations for training, compile time, execution time, and cost of poor reliability as outlined in Section 1.3.7.
+
+\begin{itemize}[noitemsep]
+\item Training Time --- How long does it take programmers to learn this language?
+\item Compile Time --- How long does it take the compiler to compile the program?
+  \begin{itemize}[noitemsep]
+  \item A slower compiler may catch more errors or generate more optimized machine code
+  \item A faster compiler allows for quicker development and faster programmer feedback.
+  \end{itemize}
+
+\item Execution Time --- When the program is running, how much time does it take to run?
+  \begin{itemize}[noitemsep]
+  \item This can be measured in many ways: CPU time, CPU cycles, human time, etc.
+  \end{itemize}
+
+\item Poor Reliability --- If the program runs, but does so unreliably, it must be fixed. What is the cost of fixing the reliability issues with this/these program(s)?
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
