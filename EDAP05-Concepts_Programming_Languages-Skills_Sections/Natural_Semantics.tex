@@ -33,8 +33,20 @@ Given a natural semantics and a BNF grammar, you should be able to tell whether 
 \subsection{}
 Given an understanding of what a state-free expression language is supposed to do, you should be able to write down a simple natural semantics for it.
 
+\begin{itemize}[noitemsep]
+\item Given a basic state-free expression, like an expression $1 + x$ where $x \in \mathbb{Z}$
+\item Create the necessary rules for such an expression to be able to exist
+\end{itemize}
+
 \subsection{}
 You should be able to understand the concepts of Environments in the context of natural semantics and be able to utilise it when reading and reasoning about natural semantics.
+
+\begin{itemize}[noitemsep]
+\item These behave like a map, where if a meta-language's variable (meta-variable) has been defined, then it stores a value.
+\item They are updated like this: $E[c \mapsto 2]$
+\item They are read (Meta-variable values are retrieved) from like this: $E(c) \Rightarrow 2$
+\item The empty environment is $E_{\emptyset} = \lbrace \rbrace$
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex

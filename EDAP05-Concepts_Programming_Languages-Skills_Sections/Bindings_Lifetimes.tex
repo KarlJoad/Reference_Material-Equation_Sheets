@@ -1,14 +1,197 @@
 \section{Bindings and Lifetimes}\label{sec:Bindings_Lifetimes}
 
-\begin{enumerate}[noitemsep]
-\item You should understand the difference between static and dynamic type binding and be able to take advantage of either property in your programming.
-\item Given a syntax, a compiler and a run-time system for a language, you should be able to determine whether the language is using static or dynamic type binding.
-\item Concepts: static binding, stack-dynamic binding, explicit heap-dynamic binding, and implicit heap-dynamic binding.
-\item Given a syntax, a compiler and a run-time system for a language, you should be able to determine which storage binding(s) the language is using.
-\item Concept: lifetime of a variable
-\item Concepts: allocation and deallocation of a heap-dynamic variable
-\item Concept: binding time, especially the difference between static and dynamic binding times
-\end{enumerate}
+\subsection{}
+You should understand the difference between static and dynamic type binding and be able to take advantage of either property in your programming.
+
+\begin{itemize}
+\item Static Type Binding
+  \begin{itemize}[noitemsep]
+  \item C-Family Languages
+  \item Once things have been given a type, they cannot change their type for their lifetime.
+  \item Once something has reached the end of its lifetime, it is deallocated.
+    \begin{itemize}[noitemsep]
+    \item The name and storage bindings can be reused.
+    \end{itemize}
+  \end{itemize}
+
+\item Dynamic Type Binding
+  \begin{itemize}[noitemsep]
+  \item Python, JavaScript
+  \item Throughout a single thing's lifetime, its type can change as many times as the programmer wants. Only subsequent actions will require the binding to be of a certain type.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Given a syntax, a compiler and a run-time system for a language, you should be able to determine whether the language is using static or dynamic type binding.
+
+\begin{itemize}
+\item Static
+  \begin{itemize}[noitemsep]
+  \item You try to redefine the type binding for a variable.
+  \item For instance, you declare \texttt{x} to be an integer, then later declare \texttt{x} to be a string.
+  \item Java/Rust/SML/Haskell, for examples.
+  \item In a strongly-typed language, this would be a (before runtime) compiler error.
+  \item In a weakly-typed language, this error would occur during runtime, and may actually be passed over completely by giving default values or storing the error in the place of the variable's result.
+  \end{itemize}
+
+\item Dynamic
+  \begin{itemize}[noitemsep]
+  \item You try to redeclare something that is of one type to another and the language allows that.
+  \item Python, for example.
+  \item For instance, you declare \texttt{x} to be of type integer, then later declare \texttt{x} to be of type string.
+  \item The language allows this, and any subsequent operations happens with the new type binding.
+  \item In a strongly-typed language, this would be allowed, but invalid operations would be found during (before runtime) compilation stage.
+  \item In a weakly-typed language, this would be allowed, but may ``fly under the radar'' until you try to use the results of an erroneous operation.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concepts: static binding, stack-dynamic binding, explicit heap-dynamic binding, and implicit heap-dynamic binding.
+\begin{itemize}
+\item Static
+  \begin{itemize}[noitemsep]
+  \item \textbf{Global} and \textbf{Constant} variable bindings are put here.
+  \item \texttt{const int x = 4;}
+  \item The storage binding lasts as long as the program is in execution.
+  \item These can be stored in the actual program binary when it is compiled and saved to disk, because they are unchanging.
+  \end{itemize}
+
+\item Stack-Dynamic
+  \begin{itemize}[noitemsep]
+  \item The typical variable bindings go here.
+  \item \texttt{int x = 4;}
+  \item They are usable within the scope they are declared in.
+  \item Their lifetime is the same as their scope.
+  \end{itemize}
+
+\item Explicit Heap-Dynamic
+  \begin{itemize}[noitemsep]
+  \item The programmer must \textbf{EXPLICITLY} allocate memory from the heap for the storage binding.
+  \item The programmer must \textbf{EXPLICITLY} deallocate memory from the heap when the binding reaches its end of life.
+  \item The lifetime of the variable is determined by the programmer.
+  \item \texttt{int* x = malloc(); *x = 4; free(x);}
+  \item The lifetime of an explicit heap-dynamic variable storage binding is separate from its scope.
+  \end{itemize}
+
+\item Implicit Heap-Dynamic
+  \begin{itemize}[noitemsep]
+  \item The compiler/runtime system determines the lifetime of the binding.
+  \item The compiler/runtime system handles the allocation of memory and deallocation of memory.
+  \item The compiler/runtime creates a garbage collection to ensure things are deallocated when their lifetime is over.
+  \item The lifetime of an explicit heap-dynamic variable storage binding is related to its scope, for the most part, they are the same.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Given a syntax, a compiler and a run-time system for a language, you should be able to determine which storage binding(s) the language is using.
+
+\begin{itemize}
+\item Implicit vs. Explicit Heap-Dynamic:
+  \begin{itemize}[noitemsep]
+  \item There needs to be a keyword/reserved word for explicit heap operations. If none present, not explicit.
+  \item The explicit keyword/reserved word may be given in the grammar, or it is a core function built into the language.
+  \item If none of that, implicit.
+  \end{itemize}
+
+\item Stack-Dynamic vs. Static:
+  \begin{itemize}[noitemsep]
+  \item Static bindings are done \emph{statically}, and last the \emph{life of the \textbf{program}}.
+  \item If the static value is modified INSIDE a subprogram, it is updated \textbf{throughout the rest of the program's} execution.
+  \item Thus, static bindings do not allow for recursion to happen with the static binding's value.
+  \item If the stack-dynamic value is modified inside a subprogram, and this value is not visibly global, the value is not modified.
+  \end{itemize}
+
+\item Stack-Dynamic vs. Heap-Dynamic:
+  \begin{itemize}[noitemsep]
+  \item The difference here is where they are stored.
+  \item This can be hard to tell, you would need to be able to see the memory in which the program is running.
+  \item Larger things (arrays) are usually stored on the Heap, while smaller things (integers) are more likely to be stored on the stack.
+  \item However, the previous rule is \textbf{INCREDIBLY} flexible and is not a certainty. (It also depends on language implementation, to a degree.)
+  \item If there is a way to explicitly allocate memory on the heap, then you can find out much more easily.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: lifetime of a variable.
+
+\begin{itemize}
+\item The lifetime of a variable is the period of time which it has a value binding.
+\item This is distinct from being in-scope.
+  \begin{itemize}[noitemsep]
+  \item In-scope, out of lifetime: An explicit heap-dynamic storage binding, the memory could be freed too early and the value that was there is going to be used later.
+  \item Out-of-Scope, in lifetime: A stack-dynamic variable is used in a program, but is not passed to the subprogram. It is out-of-scope of the subprogram, but still alive in the parent program.
+  \end{itemize}
+\item For stack-dynamic storage bindings, their lifetime and scope are usually the same, but can be different (as seen above).
+\item For static storage bindings, they are alive all the time, but may be out-of-scope or shadowed by other bindings with the same name.
+\end{itemize}
+
+\subsection{}
+Concepts: allocation and deallocation of a heap-dynamic variable.
+
+\begin{itemize}
+\item Allocation
+  \begin{itemize}[noitemsep]
+  \item If implicit, programmer doesn't need to worry about allocation, at worst has to write a constructor.
+  \item If explicit,
+    \begin{itemize}[noitemsep]
+    \item Programmer must tell compiler/runtime system \textbf{how much} memory to allocate.
+    \item Programmer must keep track of the pointer/reference that points to that memory.
+    \item Programmer must make sure that the pointer is used correctly (including pointer arithmetic)
+    \end{itemize}
+  \end{itemize}
+
+\item Deallocation
+  \begin{itemize}[noitemsep]
+  \item If implicit, programmer doesn't need to worry about deallocation, at worst, has to write a destructor. Lets the garbage collector handle it.
+    \begin{itemize}[noitemsep]
+    \item Many garbage collector algorithms.
+      \begin{itemize}[noitemsep]
+      \item Reference counter
+        \begin{enumerate}[noitemsep]
+        \item Keep count of how many pointers point to things in memory.
+        \item If $count \leq 0$, deallocate.
+        \item Cannot handle linked lists or circular structures.
+        \end{enumerate}
+      \item Mark-and-sweep
+        \begin{enumerate}[noitemsep]
+        \item Start by identifing all memory as safe (includes stack-dynamic and static variables).
+        \item Follow all pointers to heap and traverse the heap, marking everything for deletion.
+        \item Once done iterating over pointers and recursively descending, delete everything marked
+        \end{enumerate}
+      \end{itemize}
+    \end{itemize}
+  \item If explicit,
+    \begin{itemize}[noitemsep]
+    \item Programmer must tell compiler/runtime system to deallocate the memory at some specified time.
+    \item Most of these errors are only found during runtime (Rust has special capabilities to figure this out),
+      \begin{itemize}[noitemsep]
+      \item If programmer forgets $\rightarrow$ \textbf{memory-leak}.
+      \item If programmer deallocates twice $\rightarrow$ \textbf{double-free}.
+      \item If programmer deallocates, but still uses it $\rightarrow$ \textbf{corrupted memory}.
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: binding time, especially the difference between static and dynamic binding times.
+
+\begin{itemize}
+\item Static Binding Time
+  \begin{itemize}[noitemsep]
+  \item These are things that are bound when the program is compiled (before it is run).
+  \item Static storage bindings are done statically, during compilation.
+  \item That goes along with their names too.
+  \item The binding of names and types to functions is static.
+  \end{itemize}
+
+\item Dynamic Binding Time
+  \begin{itemize}[noitemsep]
+  \item The binding of storage is dynamic for all categories except static.
+  \item In a dynamically typed language, the type bindings for variables is dynamic.
+  \item In an OOP language, you can dynamically type objects if you declare them with a supertype.
+  \end{itemize}
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
