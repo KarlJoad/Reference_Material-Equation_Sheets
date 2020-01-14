@@ -1,4 +1,84 @@
 \subsection{Referencing Environments}\label{subsec:Referencing_Environments}
+\begin{definition}[Referencing Environment]\label{def:Referencing_Environment}
+  The \emph{referencing environment} of a statement is the collection of all \nameref{def:Variable}s that are visible in the statement.
+\end{definition}
+
+\subsubsection{\nameref*{subsec:Referencing_Environments} in Languages with \nameref*{subsubsec:Static_Scope}}\label{subsubsec:Static_Scope_Referencing_Environment}
+In a language that uses \nameref{subsubsec:Static_Scope}ing, the referencing environment includes all \nameref{def:Local_Variable}s in its \nameref{def:Variable_Scope} and all \nameref{def:Variable}s in the \nameref{def:Variable_Static_Ancestor} scopes that are \nameref{def:Visible_Variable}.
+This also includes all function definitions and \nameref{def:Global_Variable}s up to that point.
+
+The code block below and \Cref{tab:Static_Scope_Referencing_Environment-Execution} illustrate how a \nameref{def:Referencing_Environment} behave in a language that uses \nameref{def:Static_Scoping}.
+
+\begin{minted}[frame=lines,linenos]{python3}
+g = 3  # A global variable
+def sub1():
+    a = 5  # Create a local variable
+    b = 7  # Create another local variable
+    ...    # EXECUTION POINT 1
+    def sub2():
+        global g  # The global variable g is assignable here now
+        c = 9 # Create a new local variable
+        ...  # EXECUTION POINT 2
+        def sub3():
+            nonlocal c:  # Makes the nonlocal variable "c" visible here
+            g = 11;
+            ...  # EXECUTION POINT 3
+\end{minted}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cl}
+    \toprule
+    Execution Point & \multicolumn{1}{c}{Referencing Environment} \\
+    \midrule
+    1 & Locals \texttt{a} and \texttt{b} of \texttt{sub1}, the global \texttt{g}, for reference and not assignment \\
+    2 & Local \texttt{c} of \texttt{sub2}, the global \texttt{g} for reference and assignment (\texttt{global} \nameref{def:Reserved_Word}) \\
+    3 & Local \texttt{g} of \texttt{sub3}, the nonloca \texttt{c} of \texttt{sub2} (\texttt{nonlocal} \nameref{def:Reserved_Word}) \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{def:Referencing_Environment} of a Statically Scoped Program}
+  \label{tab:Static_Scope_Referencing_Environment-Execution}
+\end{table}
+
+\subsubsection{\nameref*{subsec:Referencing_Environments} in Languages with \nameref*{subsubsec:Dynamic_Scope}}\label{subsubsec:Dynamic_Scope_Referencing_Environment}
+In a language that uses \nameref{subsubsec:Dynamic_Scope}ing, the referencing environment includes all the \nameref{def:Local_Variable}s, the \nameref{def:Variable}s of all other \nameref{def:Subprogram_Active} subprograms, and the subprogram names.
+This means that some \nameref{def:Variable}s in \nameref{def:Subprogram_Active} subprograms can be hidden from the referencing environment.
+
+The code block below and \Cref{tab:Dynamic_Scope_Referencing_Environment-Execution} illustrate how a \nameref{def:Referencing_Environment} behave in a language that uses \nameref{def:Dynamic_Scoping}.
+
+\begin{minted}[frame=lines,linenos]{c++}
+void sub1() {
+  int a, b;
+  ...       // EXECUTION POINT 1
+}
+void sub2() {
+  int b, c;
+  ...       // EXECUTION POINT 2
+  sub1();
+}
+void main() {
+  int c, d;
+  ...       // EXECUTION POINT 3
+  sub2();
+}
+\end{minted}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cl}
+    \toprule
+    Execution Point & \multicolumn{1}{c}{Referencing Environment} \\
+    \midrule
+    1 & \texttt{a} and \texttt{b} of \texttt{sub1}, \texttt{c} of \texttt{sub2}, \texttt{d} of \texttt{main} \\
+                    & \texttt{c} of \texttt{main} is hidden by \texttt{sub2} and \texttt{b} of \texttt{sub2} hidden by \texttt{sub1} \\
+    2 & \texttt{b} and \texttt{c} of \texttt{sub2}, \texttt{d} of \texttt{main} \\
+                    & \texttt{c} of \texttt{main} is hidden by \texttt{sub2} \\
+    3 & \texttt{c} and \texttt{d} of \texttt{main} \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{def:Referencing_Environment} of a Dynamically Scoped Program}
+  \label{tab:Dynamic_Scope_Referencing_Environment-Execution}
+\end{table}
 
 %%% Local Variables:
 %%% mode: latex
