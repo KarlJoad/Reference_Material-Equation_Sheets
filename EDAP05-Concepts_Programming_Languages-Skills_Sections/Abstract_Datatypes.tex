@@ -1,10 +1,37 @@
 \section{Abstract Datatypes}\label{sec:Abstract_Datatypes}
 
-\begin{enumerate}[noitemsep]
-\item Concepts: information hiding and encapsulation
-\item Concept: abstract datatypes
-\item Concept: generic abstract datatypes, that is, abstract datatypes that take one or more type parameters
-\end{enumerate}
+\subsection{}
+Concepts: information hiding and encapsulation
+
+\begin{itemize}[noitemsep]
+\item The way in which we implement something shouldn't affect how it is used
+\item If we have a stack, someone should just be able to use the stack.
+\item They don't need to know if the stack is implemented with an array, a linked list, a binary tree, or anything else.
+\item These have related children with subprogram abstraction and data abstraction
+\end{itemize}
+
+\subsection{}
+Concept: abstract datatypes
+
+\begin{itemize}[noitemsep]
+\item This is a way to specify data types that a person doesn't need to know the implementation for.
+\item There are 3 things an abstract datatype requires:
+  \begin{enumerate}[noitemsep]
+    \item The interface is what the programmer will interact with; the face the abstract datatype shows the world.
+    \item The implementation is how the interface was realized, the actual code behind the abstract datatype.
+    \item A reasonable specification of what the expected actions of an operation are, for example, one would expect a \texttt{length} subprogram to return the length of the abstract datatype, not a random number.
+  \end{enumerate}
+\end{itemize}
+
+\subsection{}
+Concept: generic abstract datatypes, that is, abstract datatypes that take one or more type parameters
+
+\begin{itemize}[noitemsep]
+\item These are just abstract datatypes that require a type parameter.
+\item For example, a vector abstract datatype would require a type parameter to know the types of the things its going to be storing.
+\item If the vector was implemented with an array, it could use the bit size of the type to correctly index your information.
+\item This is a combination of parametric polymorphism and abstract datatypes, but can be extended with bounded parametric polymorphism to form interesting structures.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
