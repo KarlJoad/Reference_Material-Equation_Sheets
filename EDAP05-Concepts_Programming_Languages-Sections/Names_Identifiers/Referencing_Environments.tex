@@ -9,21 +9,7 @@ This also includes all function definitions and \nameref{def:Global_Variable}s u
 
 The code block below and \Cref{tab:Static_Scope_Referencing_Environment-Execution} illustrate how a \nameref{def:Referencing_Environment} behave in a language that uses \nameref{def:Static_Scoping}.
 
-\begin{minted}[frame=lines,linenos]{python3}
-g = 3  # A global variable
-def sub1():
-    a = 5  # Create a local variable
-    b = 7  # Create another local variable
-    ...    # EXECUTION POINT 1
-    def sub2():
-        global g  # The global variable g is assignable here now
-        c = 9 # Create a new local variable
-        ...  # EXECUTION POINT 2
-        def sub3():
-            nonlocal c:  # Makes the nonlocal variable "c" visible here
-            g = 11;
-            ...  # EXECUTION POINT 3
-\end{minted}
+\inputminted[frame=lines,linenos]{python3}{./EDAP05-Concepts_Programming_Languages-Sections/Names_Identifiers/Code/Static_Scope_Referencing_Environment.py}
 
 \begin{table}[h!]
   \centering
@@ -46,22 +32,7 @@ This means that some \nameref{def:Variable}s in \nameref{def:Subprogram_Active} 
 
 The code block below and \Cref{tab:Dynamic_Scope_Referencing_Environment-Execution} illustrate how a \nameref{def:Referencing_Environment} behave in a language that uses \nameref{def:Dynamic_Scoping}.
 
-\begin{minted}[frame=lines,linenos]{c++}
-void sub1() {
-  int a, b;
-  ...       // EXECUTION POINT 1
-}
-void sub2() {
-  int b, c;
-  ...       // EXECUTION POINT 2
-  sub1();
-}
-void main() {
-  int c, d;
-  ...       // EXECUTION POINT 3
-  sub2();
-}
-\end{minted}
+\inputminted[frame=lines,linenos]{c++}{./EDAP05-Concepts_Programming_Languages-Sections/Names_Identifiers/Code/Dynamic_Scope_Referencing_Environment.cpp}
 
 \begin{table}[h!]
   \centering
