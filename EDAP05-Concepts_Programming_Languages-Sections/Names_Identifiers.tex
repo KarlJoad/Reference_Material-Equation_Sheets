@@ -586,6 +586,9 @@ def g(y):
   \item Subprograms cannot be nested inside programs (Java)
   \end{enumerate}
 
+  In a brace ($\lbrace \rbrace$)-delimited programming language, like C, if 2 things with the same name are declared at the same nested scoping level, then they are siblings.
+  In the code example below, \texttt{sub1()} and \texttt{sub2()} are functions that are static siblings.
+
   \begin{remark}[Lexical Scoping]\label{rmk:Variable_Lexical_Scoping}
     \nameref{def:Static_Scoping} is sometimes called \emph{lexical scoping}.
   \end{remark}
@@ -600,6 +603,7 @@ Then, each \nameref{def:Variable_Static_Parent} has a list of \nameref{def:Varia
 
 \begin{definition}[Static Ancestor]\label{def:Variable_Static_Ancestor}
   The \emph{static ancestor}s are all the \nameref{def:Variable_Static_Parent}s to that particular program unit/block.
+  The static ancestor for functions would be the \nameref{def:Variable_Scope} that contains both functions.
 \end{definition}
 
 This is illustrated by finding \texttt{x} in \texttt{sub2()} in this JavaScript function.
@@ -617,6 +621,8 @@ function big() {
 }
 \end{minted}
 The \texttt{x} in \texttt{sub2()} refers to the \texttt{x=3} in \texttt{big()}, because \texttt{sub1()} is not a \nameref{def:Variable_Static_Ancestor} of \texttt{sub2()}.
+Even though \texttt{sub1()} calls \texttt{sub2()}, because they share the same nested \nameref{def:Variable_Scope}, the \texttt{x} in \texttt{sub2()} refers to the \mintinline{javascript}{var x = 3;}.
+This is because both \texttt{sub1()} and \texttt{sub2()} are in the same \nameref{def:Variable_Scope}, namely the function \texttt{big()}'s scope.
 However, inside of \texttt{sub1()}, the use of the variable \texttt{x} would refer to the \texttt{x=7} value, and never the \texttt{x=3} value.
 
 In some languages, if a \nameref{def:Variable} is declared in a sub-program unit/block, like in \texttt{sub1()}, then preceding the \nameref{def:Variable} name with the outer program unit/block will give the outer \nameref{def:Variable} \nameref{def:Variable_Value}.
