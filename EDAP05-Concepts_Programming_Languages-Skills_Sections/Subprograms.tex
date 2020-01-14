@@ -1,21 +1,140 @@
 \section{Subprograms and Parameter Passing}\label{sec:Subprograms}
 
-\begin{enumerate}[noitemsep]
-\item Concepts: subprograms, including formal arguments and actual arguments
-\item Concept: local variables in subprograms
-\item Concept: nested subprograms
-\item Concepts: parameter passing modes
-  \begin{enumerate}[noitemsep]
-  \item by value
-  \item by result
-  \item by value-result
-  \item by reference
-  \item by name
-  \item by need
-  \end{enumerate}
-\item Concepts: subprograms as parameters, subprograms as return values, Closures
-\item Concept: activation records
-\end{enumerate}
+\subsection{}
+Concepts: subprograms, including formal arguments and actual arguments
+
+\begin{itemize}
+\item Subprogram:
+  \begin{itemize}[noitemsep]
+  \item A piece of code that has been abstracted away from the main processing.
+  \item This allows for a common operation to be maintained separately from other bodies of code.
+  \item This also allows for easy reuse and easy debugging.
+  \end{itemize}
+
+\item Formal Arguments:
+  \begin{itemize}[noitemsep]
+  \item The arguments that are defined along with the subprogram definition.
+  \item The type of the argument is given, and a name local to this subprogram is also given.
+  \item When passed an Actual Argument, they behave like locally-scoped variables.
+  \end{itemize}
+
+\item Actual Arguments:
+  \begin{itemize}[noitemsep]
+  \item The actual variables that are passed as arguments to the subprogram in the code.
+  \item These are just the expressions that will evaluate to become the values in the subprogram that are refered to by the name the Formal Arguments defined.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: local variables in subprograms
+
+\begin{itemize}[noitemsep]
+\item These are related to the fact that subprograms have their own scope.
+\item These are also related to the fact that subprograms work best when there are stack-dynamic variables.
+\end{itemize}
+
+\subsection{}
+Concept: nested subprograms
+
+\begin{itemize}[noitemsep]
+\item Inside a subprogram is another subprogram.
+\item If a block of code is only needed inside a subprogram subprogram, why make a globally visible subprogram?
+\item This allows us to create a subprogram inside a subprogram, which is only scoped inside the outer subprogram.
+\end{itemize}
+
+\subsection{}
+Concepts: parameter passing modes
+
+\begin{itemize}[noitemsep]
+\item These are ways to pass Actual Arguments to subprograms.
+\end{itemize}
+
+\subsubsection{}
+by value
+
+\begin{itemize}[noitemsep]
+\item This is the basic way to pass things around.
+\item This is an in-mode passing method. Meaning the value is evaluated at the caller location and passed to the subprogram.
+\item For each subprogram, a value is passed to the binding.
+\item Meaning, if a subprogram takes an integer \texttt{3} in, the bit value of \texttt{3} is passed to the subprogram and is stored/used.
+\end{itemize}
+
+\subsubsection{}
+by result
+
+\begin{itemize}[noitemsep]
+\item This is an out-mode passing method. Meaning the Actual Argument receives their value(s) when the subprogram exits.
+\item This is distinctly different than a return value, because the last value that the Formal Argument held is what is returned.
+\end{itemize}
+
+\subsubsection{}
+by value-result
+
+\begin{itemize}[noitemsep]
+\item This uses the principles of both Pass-by-Value and Pass-by-Result.
+\item The values passed to the subprogram are evaluated at the caller's lcoation, then passed to the subprogram.
+\item The subprogram may modify these values.
+\item When the subprogram is done, the last value bound to the Formal Arguments are passed back into these variables and the subprogram returns.
+\end{itemize}
+
+\subsubsection{}
+by reference
+
+\begin{itemize}[noitemsep]
+\item Instead of passing the bit pattern that is the actual value, pass a pointer/reference to the value.
+\item This allows us to pass huge amounts of data without much penalty during subprogram call, but now there is apointer redirection everytime we dereference the Formal Argument.
+\item This means that any change that occurs to the pointer's data will be reflected everywhere else in the program where the memory the pointer points to is valid.
+\end{itemize}
+
+\subsubsection{}
+by name
+
+\begin{itemize}[noitemsep]
+\item Expressions are passed as Actual Arguments to the subprogram.
+\item These expressions are evaluated everytime the Formal Argument is evaluated.
+\item This means that if $1+5$ were passed as an Actual Argument, to a Formal Argument of \texttt{int x}, every time \texttt{x} is used, \texttt{x} is essentially replaced by $1+5$.
+\item If the passed Actual Argument is a function, this means that the function is evaluated several times.
+\item This is not generally used because of this runtime overhead.
+\end{itemize}
+
+\subsubsection{}
+by need
+
+\begin{itemize}[noitemsep]
+\item Similar to Pass-by-Name.
+\item Only used by Haskell right now.
+\item The Formal Parameter's actual expression is evaluated \textbf{AT MOST ONCE}.
+\item The result of this evaluation is cached by the runtime system for the current function.
+\item Every subsequent evaluation of that Formal Parameter will return the cached result instead.
+\end{itemize}
+
+\subsection{}
+Concepts: subprograms as parameters, subprograms as return values, Closures
+
+\begin{itemize}
+\item Closures:
+  \begin{itemize}[noitemsep]
+  \item You have a function and some context in use as a ``variable''
+  \item This context could contain some binding of values to names that are used within the closure.
+  \item The closure acts like a normal function (for all intents and purposes), the main difference is that it will have a function's type signature instead of a more traditional type.
+  \item The ``variable'' can have expressions that match the type signature of the closure passed to it, and it will evaluate them as if they were normal functions.
+  \end{itemize}
+
+\item As Parameters:
+  \begin{itemize}[noitemsep]
+  \item A function that takes a function requires a closure be passed to it.
+  \item These are heavily used in functional programming, where a function only modifies data based on the input data.
+  \end{itemize}
+
+\item As Return Values:
+  \begin{itemize}[noitemsep]
+  \item A function that returns a function is returning a closure.
+  \item These are heavily used in functional programming, where a function only modifies data based on the input data.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: activation records
 
 %%% Local Variables:
 %%% mode: latex
