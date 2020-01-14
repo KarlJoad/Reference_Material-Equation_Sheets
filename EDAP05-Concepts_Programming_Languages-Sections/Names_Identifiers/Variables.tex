@@ -1,4 +1,55 @@
 \subsection{Variables}\label{subsec:Variables}
+\begin{definition}[Variable]\label{def:Variable}
+  A program \emph{variable} is an abstraction of a computer \nameref{def:Memory} cell or a collection of \nameref{def:Memory} cells.
+  A variable can be characterized by a sextuple of attributes:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{subsubsec:Variable_Name}
+  \item \nameref{subsubsec:Variable_Address}
+  \item \nameref{subsubsec:Variable_Value}
+  \item \nameref{subsubsec:Variable_Type}
+  \item \nameref{subsubsec:Storage_Bindings_and_Lifetime}
+  \item \nameref{subsec:Variable_Scope}
+  \end{enumerate}
+\end{definition}
+
+\subsubsection{Name}\label{subsubsec:Variable_Name}
+Most \nameref{def:Variable}s have names.
+These are symbolic references to the value that is actually stored.
+There are various issues that may arise with the name of a variable, which were discussed earlier.
+
+\subsubsection{Address}\label{subsubsec:Variable_Address}
+\begin{definition}[Address]\label{def:Variable_Address}
+  The \emph{address} of a \nameref{def:Variable} is the machine's memory address with which the \nameref{def:Variable} is associated.
+
+  The address of a variable is sometimes called its \emph{L-Value}.
+  This is because the address is required when the name of a variable appears on the left-hand side of an assignment statement.
+
+  \begin{remark}[Alias]
+    An \emph{alias} is having another \nameref{def:Variable} have the same \nameref{def:Variable_Address}, so the 2 \nameref{def:Variable}s point to the same value in \nameref{def:Memory}.
+  \end{remark}
+\end{definition}
+
+For some languages, it is possible for the same \nameref{def:Variable} to be associated with different addresses at different times during the \nameref{def:Variable}'s lifetime.
+
+\subsubsection{Type}\label{subsubsec:Variable_Type}
+\begin{definition}[Type]\label{def:Variable_Type}
+  The \emph{type} of a \nameref{def:Variable} determines the range of values that \nameref{def:Variable} can store.
+  For example, the \texttt{int} type in Java specifies a value range of $-2147483648$ to $2147483647$.
+  It is a 32-bit signed integer.
+\end{definition}
+
+\subsubsection{Value}\label{subsubsec:Variable_Value}
+\begin{definition}[Value]\label{def:Variable_Value}
+  The \emph{value} of a \nameref{def:Variable} is the contents of the \nameref{def:Memory} cell or cells associated with the \nameref{def:Variable}.
+  The value of a variable is sometimes called it \emph{R-Value}.
+  This is because the value of the \nameref{def:Variable} is required on the right-hand side of an assignment statement.
+  To access the \textit{r}-value, the \textit{l}-value must be determined first.
+  
+  \begin{remark}[Abstract Memory Cells]\label{rmk:Abstract_Memory_Cells}
+    While in hardware, the individual sizes of \nameref{def:Memory} are fixed, we can think of \nameref{def:Memory} as having \emph{abstract memory cells}, that can accomodate anything we attempt to put into \nameref{def:Memory}.
+    This means that a single-precision floating point number technically takes up 4 bytes, 32 bits, of \nameref{def:Memory} cells, that number only takes one abstract memory cell.
+  \end{remark}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
