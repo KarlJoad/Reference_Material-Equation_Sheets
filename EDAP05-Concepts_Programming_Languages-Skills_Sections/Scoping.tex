@@ -1,10 +1,78 @@
 \section{Scoping}\label{sec:Scoping}
 
-\begin{enumerate}[noitemsep]
-\item You should understand the difference between static scoping and dynamic scoping and be able to exploit either in your programming.
-\item Given a language implementation, you should be able to write a program to determine whether the language uses static or dynamic scoping.
-\item Concept: referencing Environment
-\end{enumerate}
+\subsection{}
+You should understand the difference between static scoping and dynamic scoping and be able to exploit either in your programming.
+
+\begin{itemize}
+\item Static Scoping
+  \begin{itemize}[noitemsep]
+  \item The scope of the variable is determined by its placement within the program.
+  \item This is done by looking at \textbf{scopes} and their nesting (In block-delimited languages, scopes are usually the same as BLOCKS) and determining parents.
+  \item The benefit of these are:
+    \begin{itemize}[noitemsep]
+    \item Readability:
+      \begin{itemize}[noitemsep]
+      \item Easy to find out exactly what the program is going to do, just by reading the program.
+      \end{itemize}
+    \item Writability:
+      \begin{itemize}[noitemsep]
+      \item By knowing exactly what the program will do with a quick read of the source code, you can more quickly write.
+      \end{itemize}
+    \item Reliability:
+      \begin{itemize}[noitemsep]
+      \item All variables can be determined statically, before the program runs.
+      \item So, if the program compiles these without errors, you are assured that every use of a variable is allowed by the language.
+      \item But, you now have more things to check during static semantic analysis.
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+
+\item Dynamic Scoping
+  \begin{itemize}[noitemsep]
+  \item The scope of the variable is determined by the order in which subprograms were called.
+  \item Although variables may be redefined in a subprogram, the original value is not lost.
+  \item The original value is restored when the scope that changed it ends.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Given a language implementation, you should be able to write a program to determine whether the language uses static or dynamic scoping.
+
+\begin{itemize}[noitemsep]
+\item You need to generate at least 3 scopes, 2 of which are nested in the first and are siblings.
+\item This can be done with subprograms.
+\item One of the child scopes must get to the other scope.
+\item Results from code below:
+  \begin{itemize}[noitemsep]
+  \item Static Scoping: When \texttt{sub1()} prints \texttt{x}, it will print 4. When \texttt{main()} prints \texttt{x}, it will print 4.
+  \item Dynamic Scoping: When \texttt{sub1()} prints \texttt{x}, it will print 6. When \texttt{main()} prints \texttt{x}, it will print 4.
+  \end{itemize}
+\item Because \texttt{sub1()} and \texttt{sub2()} are sibling scopes, when the \texttt{x} in \texttt{sub1()} is looked up in the referencing environment for its value, it looks up to \texttt{main()}.
+\end{itemize}
+
+\begin{minted}[frame=lines]{c}
+int main() {
+  int sub1() {
+    printf("%d", x);
+  }
+  int sub2() {
+    int x = 6;
+    sub1();
+  }
+  int x = 4;
+  sub2();
+  printf("%d", x);
+}
+\end{minted}
+
+\subsection{}
+Concept: referencing Environment.
+
+\begin{itemize}[noitemsep]
+\item This is a \textbf{list of variables to their types, values, and any other information that must be maintained} about the variable.
+\item Functions also go in referencing environments.
+\item This can be thought of as the list of names that are usable at any given point in time, and the environment maps these names to their other information.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
