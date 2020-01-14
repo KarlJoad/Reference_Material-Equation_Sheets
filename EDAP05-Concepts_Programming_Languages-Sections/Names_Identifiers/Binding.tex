@@ -1,4 +1,388 @@
 \subsection{Binding}\label{subsec:Binding}
+\begin{definition}[Binding]\label{def:Binding}
+  A \emph{binding} is an association between an attribute and an entity.
+  This association can be between:
+  \begin{itemize}[noitemsep]
+  \item A variable
+    \begin{itemize}[noitemsep]
+    \item Its type
+    \item Its value
+    \end{itemize}
+  \item An operation
+    \begin{itemize}[noitemsep]
+    \item Its symbol
+    \end{itemize}
+  \end{itemize}
+
+  The time at which a binding occurs is called the \nameref{def:Binding_Time}.
+\end{definition}
+
+\begin{definition}[Binding Time]\label{def:Binding_Time}
+  The time at which \nameref{def:Binding} occurs is called the \emph{binding time}.
+  These include:
+  \begin{itemize}[noitemsep]
+  \item Language Design Time
+    \begin{itemize}[noitemsep]
+    \item Defining \texttt{*} to represent multiplication
+    \end{itemize}
+  \item Language Implementation Time
+    \begin{itemize}[noitemsep]
+    \item Having an \texttt{int} in C be a 32-bit signed integer
+    \end{itemize}
+  \item Compiler Time
+    \begin{itemize}[noitemsep]
+    \item The type of a variable in a Java program
+    \end{itemize}
+  \item Link Time
+    \begin{itemize}[noitemsep]
+    \item A call to a library subprogram is bound to the subprogram code
+    \end{itemize}
+  \item Load Time
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:Variable} bound when loaded into \nameref{def:Memory}
+    \item Could happen at run time too
+    \end{itemize}
+  \item Run Time
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:Variable} bound when loaded into \nameref{def:Memory}
+    \item Could happen at compile time too
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+We need to know the \nameref{def:Binding_Time}s for the attributes of a program to understand the semantics of the programming language.
+
+\subsubsection{Binding of Attributes to \nameref*{def:Variable}s}\label{subsubsec:Binding_Attributes_Variables}
+\begin{definition}[Static]\label{def:Static_Variable_Binding}
+  A \nameref{def:Binding} is \emph{static} if the \nameref{def:Binding} first occurs before run time begins and remains unchanged throughout program execution.
+  An example of this is declaring a \nameref{def:Variable} as an \texttt{int} in C.
+  Throughout the whole C program, that \nameref{def:Variable} can only hold signed 32-bit integers.
+\begin{minted}[frame=lines,linenos]{c}
+int x = 4;
+float x = 4.0; // Error here, x already declared
+x = 4.0 // Error here, x is of int type
+\end{minted}
+\end{definition}
+
+\begin{definition}[Dynamic]\label{def:Dynamic_Variable_Binding}
+  A \nameref{def:Binding} is \emph{dynamic} if the \nameref{def:Binding} occurs during run time, or can change in the course of program execution.
+  An example of this is declaring a \nameref{def:Variable} in Python.
+\begin{minted}[frame=lines,linenos]{python3}
+x = 4
+x = [1, 2, 3]
+x = 'dynamically bound string'
+\end{minted}
+  All three lines have a variable declaration, where the \nameref{def:Binding} occur during the program's execution and changed during it.
+\end{definition}
+
+We are only concerned with the distinction between \nameref{def:Static_Variable_Binding} and \nameref{def:Dynamic_Variable_Binding} \nameref{def:Variable} \nameref{def:Binding}.
+Meaning, we will ignore how hardware may bind and unbind things repeatedly when it is switching and moving things around.
+
+\subsubsection{Type \nameref*{subsec:Binding}s}\label{subsubsec:Type_Bindings}
+Before a \nameref{def:Variable} can be used or referenced in a program, its \nameref{def:Variable_Type} must be declared.
+A \nameref{def:Variable}'s \emph{type} determines the range of values that can be stored in the \nameref{def:Variable}.
+In a more abstract sense, it also determines what kind of operations make sense and are possible to use on these \nameref{def:Variable}s.
+There are 2 important aspects of this \nameref{def:Binding}:
+\begin{enumerate}[noitemsep]
+\item How the \nameref{def:Variable} \nameref{def:Variable_Type} is specified
+\item When the \nameref{def:Binding} takes place
+\end{enumerate}
+
+There are 2 ways to bind \nameref{def:Variable_Type}s to \nameref{def:Variable}s:
+\begin{enumerate}[noitemsep]
+\item \nameref{par:Static_Variable_Type_Binding}
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Explicit_Static_Variable_Type_Binding}
+  \item \nameref{def:Implicit_Static_Variable_Type_Binding}
+  \end{itemize}
+\item \nameref{par:Dynamic_Variable_Type_Binding}
+\end{enumerate}
+
+\paragraph{Static \nameref*{def:Variable_Type} \nameref*{subsec:Binding}}\label{par:Static_Variable_Type_Binding}
+\begin{definition}[Static]\label{def:Static_Variable_Type_Binding}
+  \emph{Static} \nameref{def:Binding} of \nameref{def:Variable}s means that the \nameref{def:Variable_Type} of a \nameref{def:Variable} is given to the program, either \nameref{def:Explicit_Static_Variable_Type_Binding}ly or \nameref{def:Implicit_Static_Variable_Type_Binding}ly before run time begins.
+  Once the \nameref{def:Variable_Type} is declared, it cannot be changed throughout the entire program's execution.
+
+  There are 2 ways to \nameref{def:Static_Variable_Type_Binding}ly bind a \nameref{def:Variable_Type} to a \nameref{def:Variable}:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Explicit_Static_Variable_Type_Binding}ly
+  \item \nameref{def:Implicit_Static_Variable_Type_Binding}ly
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Explicit]\label{def:Explicit_Static_Variable_Type_Binding}
+  An \emph{explicit} \nameref{def:Static_Variable_Type_Binding} \nameref*{def:Variable_Type} \nameref*{def:Binding} is a statement that explicitly sets each \nameref{def:Variable} to its respective \nameref{def:Variable_Type}.
+  These are statements in a program that lists variable names and specifies that they are of a particular \nameref{def:Variable_Type}.
+  For example,
+\begin{minted}[frame=lines,linenos]{c}
+int x = 0;
+float x = 0.0;
+char x = 'x';
+\end{minted}
+\end{definition}
+
+\begin{definition}[Implicit]\label{def:Implicit_Static_Variable_Type_Binding}
+  An \emph{implicit} \nameref{def:Static_Variable_Type_Binding} \nameref*{def:Variable_Type} \nameref*{def:Binding} declaration associates \nameref{def:Variable}s with \nameref{def:Variable_Type}s through default conventions, rather than \nameref{def:Explicit_Static_Variable_Type_Binding} declaration statements.
+  The first appearance of a \nameref{def:Variable} name is its implicit declaration.
+
+  \begin{remark}[Effects on \nameref*{subsec:Reliability}]
+    While \nameref{def:Implicit_Static_Variable_Type_Binding} can be helpful for programmers, they can be quite detrimental to \nameref{subsec:Reliability} because the compilation process cannot determine some type errors and some programmer errors.
+  \end{remark}
+\end{definition}
+
+\nameref{def:Implicit_Static_Variable_Type_Binding} declarations are handled by the language processor (\nameref{def:Compiler} or Interpreter).
+There are several ways to have \nameref{def:Implicit_Static_Variable_Type_Binding} declarations work, some of which are:
+\begin{itemize}[noitemsep]
+\item Naming conventions
+  \begin{itemize}[noitemsep]
+  \item In \textbf{Fortran}, if an identifier starts with
+    \begin{itemize}[noitemsep]
+    \item \texttt{I}, \texttt{J}, \texttt{K}, \texttt{L}, \texttt{M}, or \texttt{N}, or their lowercase versions, it is \nameref{def:Implicit_Static_Variable_Type_Binding}ly declared to be an \texttt{Integer} type.
+    \item Otherwise, it is \nameref{def:Implicit_Static_Variable_Type_Binding}ly declared to be a \texttt{Real} type.
+    \end{itemize}
+  \item In \textbf{Perl}, an identifier must be preceded by a special character denoting the \nameref{def:Variable_Type}. This method forms separate namespaces for each \nameref{def:Variable} \nameref{def:Variable_Type}.
+    \begin{itemize}[noitemsep]
+    \item \texttt{\$}, is a scalar. This holds numbers and strings
+    \item \texttt{@}, is an array.
+    \item \texttt{\%}, is a hash structure.
+    \item The separate namespaces means that all 3 of these variables are considered unique, and potentially unrelated.
+      \begin{itemize}[noitemsep]
+      \item \texttt{\$apple}
+      \item \texttt{@apple}
+      \item \texttt{\%apple}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+  
+\item Context or type inference
+  \begin{itemize}[noitemsep]
+  \item In \textbf{C\#}, a \texttt{var} declaration for a \nameref{def:Variable} must include an initial value, which determines the \nameref{def:Variable_Type} of the \nameref{def:Variable}.
+\begin{minted}[frame=lines,linenos]{csharp}
+var sum = 0;
+var total = 0.0;
+var name = "Fred";
+\end{minted}
+  \item \texttt{sum}, \texttt{total}, and \texttt{name} are an \texttt{int}, \texttt{float}, and \texttt{string}, respectively.
+  \end{itemize}
+\end{itemize}
+
+\begin{remark*}
+  Both \nameref{def:Explicit_Static_Variable_Type_Binding} and \nameref{def:Implicit_Static_Variable_Type_Binding} declarations create \nameref{def:Static_Variable_Binding} \nameref{def:Binding}s to \nameref{def:Variable_Type}s.
+\end{remark*}
+
+\paragraph{Dynamic \nameref*{def:Variable_Type} \nameref*{subsec:Binding}}\label{par:Dynamic_Variable_Type_Binding}
+With \nameref*{par:Dynamic_Variable_Type_Binding}, the \nameref{def:Variable_Type} of a \nameref{def:Variable}:
+\begin{itemize}[noitemsep]
+\item Is not specified by a declaration statement
+\item Cannot be determined by the spelling of the \nameref{def:Variable}'s name
+\end{itemize}
+
+\begin{definition}[Dynamic]\label{def:Dynamic_Variable_Type_Binding}
+  A \emph{dynamic} \nameref{def:Binding} happens when a \nameref{def:Variable} is bound to a \nameref{def:Variable_Type} \textbf{when it is assigned a \nameref{def:Variable_Value}.}
+  Such an assignment might also bind the \nameref{def:Variable} to an \nameref{def:Variable_Address}.
+
+  Any \nameref{def:Variable} can be assigned any \nameref{def:Variable_Type}.
+  A \nameref{def:Variable}'s \nameref{def:Variable_Type} can be changed any number of times during program execution.
+
+  The name of the \nameref{def:Variable} is bound to the \nameref{def:Variable}, then the \nameref{def:Variable} is bound to a \nameref{def:Variable_Type} and given its \nameref{def:Variable_Value}.
+
+  2 programming languages that use this are:
+  \begin{enumerate}[noitemsep]
+  \item Python
+  \item Ruby
+  \end{enumerate}
+
+  \begin{remark}[Benefits of \nameref*{def:Dynamic_Variable_Type_Binding} \nameref*{def:Binding}]\label{rmk:Dynamic_Variable_Type_Bindign-Benefits}
+    The primary benefit of having \nameref{def:Dynamic_Variable_Type_Binding} \nameref{def:Binding} is the programming flexibility it provides.
+  \end{remark}
+
+  \begin{remark}[Drawbacks of \nameref*{def:Dynamic_Variable_Type_Binding} \nameref*{def:Binding}]\label{rmk:Dynamic_Variable_Type_Binding-Drawbacks}
+    The 2 major disadvantages are:
+    \begin{enumerate}[noitemsep]
+    \item Programs are less reliable, because error-detection of the compiler/interpreter is diminished relative to a compiler/interpreter for a language with \nameref{def:Static_Variable_Type_Binding} \nameref{def:Variable_Type} \nameref{def:Binding}s.
+    \item The \nameref{subsec:Cost} is quite high because of the \nameref{def:Type_Checking} that must occur at run time. Also, every variable must have a run-time descriptor to describe the \nameref{def:Variable}'s current \nameref{def:Variable_Type}.
+    \end{enumerate}
+  \end{remark}
+\end{definition}
+
+\begin{remark*}
+  \nameref{def:Dynamic_Variable_Type_Binding} \nameref{def:Variable_Type} \nameref{def:Binding} is usually implemented with \nameref{subsec:Interpretation}.
+  This is because:
+  \begin{itemize}[noitemsep]
+  \item The overall \nameref{subsec:Cost} of \nameref{def:Variable_Type} handing is hidden by the \nameref{subsec:Cost} of the interpreter.
+  \item The \nameref{def:Variable_Type} of an operation's operands must be known to translate the instruction to the correct machine code instruction, which isn't possible with \nameref{def:Dynamic_Variable_Type_Binding} \nameref{def:Variable_Type} \nameref{def:Binding}.
+  \end{itemize}
+\end{remark*}
+
+\subsubsection{Storage \nameref*{subsec:Binding}s and Lifetime}\label{subsubsec:Storage_Bindings_and_Lifetime}
+The \nameref{def:Memory} cell to which a \nameref{def:Variable} is bound must be pulled from the pool of available \nameref{def:Memory}.
+The act of binding the \nameref{def:Variable_Value} to a \nameref{def:Variable} is called \nameref{def:Variable_Memory_Allocation}.
+The act of unbinding is called \nameref{def:Variable_Memory_Deallocation}.
+
+\begin{definition}[Allocation]\label{def:Variable_Memory_Allocation}
+  \emph{Allocation} is the act of binding a \nameref{def:Variable_Value} to a \nameref{def:Memory} cell for a \nameref{def:Variable}.
+\end{definition}
+
+\begin{definition}[Deallocation]\label{def:Variable_Memory_Deallocation}
+  \emph{Deallocation} is the process of placing a \nameref{def:Memory} cell that has been unbound from a variable back into the pool of available \nameref{def:Memory}.
+\end{definition}
+
+\begin{definition}[Lifetime]\label{def:Variable_Lifetime}
+  The \emph{lifetime} of a \nameref{def:Variable} is the time in which the \nameref{def:Variable} is bound to a \nameref{def:Memory} cell.
+  The lifetime of a \nameref{def:Variable} starts when it is bound to a cell and ends when it has been unbound from that cell.
+
+  We will split the discussion of \nameref*{subsubsec:Storage_Bindings_and_Lifetime} of scalar \nameref{def:Variable}s into 4 categories, according to their \nameref{def:Variable_Lifetime}s.
+  \begin{itemize}[noitemsep]
+  \item \nameref{par:Static_Variable_Binding_Lifetime}
+  \item \nameref{par:Stack-Dynamic_Variable_Binding_Lifetime}
+  \item \nameref{par:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}
+  \item \nameref{par:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}
+  \end{itemize}
+\end{definition}
+
+\paragraph{Static Variables}\label{par:Static_Variable_Binding_Lifetime}
+\begin{definition}[Static Variable]\label{def:Static_Variable_Binding_Lifetime}
+  \emph{Static variable}s are those that are bound to \nameref{def:Memory} cells before program execution begins and remain bound until the program terminates.
+  They are placed in the ``static'' section of \nameref{def:Memory}.
+  \nameref{def:Static_Variable_Binding_Lifetime}s can be used as globally accessible \nameref{def:Variable}s, or ensure that subprograms are history-sensitive.
+
+  The pros and cons of \nameref{def:Static_Variable_Binding_Lifetime}s are:
+  \begin{itemize}[noitemsep]
+  \item Pros
+    \begin{itemize}[noitemsep]
+    \item Efficiency. All \nameref{def:Memory} addressing is done with absolute addresses, making things very fast.
+    \item No cost to allocate and deallocate the \nameref{def:Memory} during run-time.
+    \item Programs can be history sensitive.
+    \end{itemize}
+  \item Cons
+    \begin{itemize}[noitemsep]
+    \item Reduced flexibility. If there is a language that only has \nameref{def:Static_Variable_Binding_Lifetime}s, then recursive subprograms are impossible.
+    \item \nameref{def:Memory} cannot be shared between inactive and active subprograms.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\begin{remark*}
+  In C and C++, \texttt{static} can be set on functions, making the \nameref{def:Variable}s declared in the function \nameref{def:Static_Variable_Binding_Lifetime}.
+\end{remark*}
+
+\begin{remark*}
+  In Java, C++, and C\#, \texttt{static} can appear on classes, meaning class \nameref{def:Variable}s are created statically some time before the class is first instantiated.
+\end{remark*}
+
+\paragraph{Stack-Dynamic Variables}\label{par:Stack-Dynamic_Variable_Binding_Lifetime}
+\begin{definition}[Stack-Dynamic Variable]\label{def:Stack-Dynamic_Variable_Binding_Lifetime}
+  \emph{Stack-dynamic variable}s are those whose storage \nameref{def:Binding}s are created when their declaration statements are elaborated.
+  These are allocated from the run-time \nameref{def:Call_Stack}.
+  Thus, when a function on the \nameref{def:Call_Stack} is \texttt{return}ed from, all the variables here lose their value.
+
+  \begin{remark}
+    These are the variables that are most commonly used, and are usually function-local variables
+  \end{remark}
+
+  \begin{remark}
+    In languages that allow for variable declaration anywhere in the function, like Java and C++, the \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s may be bound to storage at the beginning of the block, thus starting the variable's \nameref{def:Variable_Lifetime}.
+    In these cases, the \nameref{def:Variable} becomes visible at the declaration, but the storage \nameref{def:Binding} occurs when the block begins execution.
+    So, it is both in \nameref{def:Variable_Scope} and has begun its \nameref{def:Variable_Lifetime}, but has no useful value.
+  \end{remark}
+
+  The advantages and disadvantages of \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s, compared to \nameref{def:Static_Variable_Binding_Lifetime}s, are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item Allows for recursive subprograms that have local variables
+    \item All subprograms can share the same memory space for their locals, allowing for a smaller memory footprint, by only having some variables bound to storage at once.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item Runtime overhead of \nameref{def:Variable_Memory_Allocation} and \nameref{def:Variable_Memory_Deallocation}.
+    \item Slower accessing of \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s because of indirect addressing.
+    \item Subprograms cannot be history-sensitive with just \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}s.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Elaboration]\label{def:Variable_Storage_Binding_Elaboration}
+  \emph{Elaboration} of a \nameref{def:Variable} declaration refers to the storage \nameref{def:Variable_Memory_Allocation} and \nameref{def:Binding} process indicated by the declaration, which takes place when execution reaches that code.
+
+  This occurs at run time.
+\end{definition}
+
+\paragraph{Explicit Heap-Dynamic Variables}\label{par:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}
+\begin{definition}[Explicit Heap-Dynamic Variable]\label{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}
+  \emph{Explicit heap-dynamic variables} are nameless (abstract) memory cells that are allocated and deallocated by explicit run-time instructions written by the programmer.
+  These \nameref{def:Variable}s are allocated to and deallocated from the \nameref{def:Heap}.
+  They can only be referenced through pointers or reference variables.
+
+  The pointer/reference can only be created and returned by:
+  \begin{itemize}[noitemsep]
+  \item An operator (in C++), \texttt{new}
+  \item A subprogram (in C), \texttt{malloc}
+  \end{itemize}
+
+  Some languages include ways to destroy these pointers/references:
+  \begin{itemize}[noitemsep]
+  \item An operator (in C++), \texttt{delete}
+  \item A subprogram (in C), \texttt{free}
+  \end{itemize}
+
+  The advantages and disadvantages of these types of \nameref{def:Variable}s are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime} are often used to construct dynamic data structures, like linked lists and trees. These are built conveniently using pointers and data.
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item The difficulty of using pointer/reference variables correctly.
+    \item The \nameref{subsec:Cost} of using these pointers/reference variables.
+    \item Complexity of the required storage management implementation (Although, this is a question of \nameref{def:Heap} management, which is costly and complicated and completely separate discussion).
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+An example of an \nameref{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime} is shown below.
+\begin{minted}[frame=lines,linenos]{c++}
+int *intnode; // Create a pointer
+intnode = new int; // Create the heap-dynamic variable
+...
+delete intnode; // Deallocate the heap-dynamic variable to which intnode points
+\end{minted}
+
+The \nameref{def:Heap} is highly disorganized because of the unpredictability of its use.
+There are 2 ways to manage the \nameref{def:Heap}:
+\begin{enumerate}[noitemsep]
+\item Explicit \nameref{def:Variable_Memory_Deallocation}
+  \begin{itemize}[noitemsep]
+  \item The programmer must explicitly free the \nameref{def:Memory} themselves.
+  \item C and C++ require this with their \texttt{free} and \texttt{delete} subprograms/operators, respectively.
+  \end{itemize}
+\item Implicit \nameref{def:Variable_Memory_Deallocation}
+  \begin{itemize}[noitemsep]
+  \item The programming language has facilities, called \emph{garbage collection} that automatically manages the \nameref{def:Heap}.
+  \item There are many algorithms that handle garbage collection, some of which are faster, others slower.
+  \end{itemize}
+\end{enumerate}
+
+\paragraph{Implicit Heap-Dynamic Variables}\label{par:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}
+\begin{definition}[Implicit Heap-Dynamic Variable]\label{def:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}
+  \emph{Implicit heap-dynamic variable}s are bound to \nameref{def:Heap} storage \textbf{only when they are assigned \nameref{def:Variable_Value}s}.
+  In many regards, \nameref{def:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}s and \nameref{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}s are quite similar.
+
+  However, \nameref{def:Implicit_Heap-Dynamic_Variable_Binding_Lifetime}s have \textbf{ALL} their attributes bound \textbf{EVERY} time they are assigned.
+  The advantages and disadvantages of these types of \nameref{def:Variable}s are:
+  \begin{itemize}[noitemsep]
+  \item Advantages
+    \begin{itemize}[noitemsep]
+    \item Highest degree of flexibility, allowing for highly generic code
+    \end{itemize}
+  \item Disadvantages
+    \begin{itemize}[noitemsep]
+    \item Run time overhead of maintaining all the dynamic attributes, which could include subscript types and ranges
+    \item Loss of some error dectection by the compiler/interpreter
+    \end{itemize}
+  \end{itemize}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
