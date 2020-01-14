@@ -1,17 +1,122 @@
 \section{Pointers, References, and Arrays}\label{sec:Pointers}
 
-\begin{enumerate}[noitemsep]
-\item Concepts: pointers and references
-\item Concept: the dangling pointer problem
-\item Concepts: garbage collection in the forms of reference counting and mark-and-sweep collection
-\item Concept: arrays in the forms of
-  \begin{enumerate}
-  \item static arrays
-  \item fixed stack-dynamic arrays
-  \item fixed heap-dynamic arrays
-  \item heap-dynamic arrays
-  \end{enumerate}
-\end{enumerate}
+
+\subsection{}
+Concepts: pointers and references
+
+\begin{itemize}
+\item Pointer:
+  \begin{itemize}[noitemsep]
+  \item Points to a location in memory
+  \item Can be dereferenced to get actual value in memory
+  \item Pointers can be nested
+  \item Pointers can have arithmetic done on them to move them around arbitrarily
+  \end{itemize}
+
+\item Reference:
+  \begin{itemize}[noitemsep]
+  \item Refers to an object or value in memory
+  \item Can be dereferenced to get the actual value
+  \item References cannot be moved by pointer arithmetic
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: the dangling pointer problem
+
+\begin{itemize}[noitemsep]
+\item If there are 2 pointers, but one of them deallocates the memory from the heap, the other one is pointing to garbage.
+\item This is the dangling pointer problem.
+\end{itemize}
+
+\begin{itemize}[noitemsep]
+\item If a pointer goes out of scope and is deallocated, but the memory isn't, that's a memory leak.
+\end{itemize}
+
+\subsection{}
+Concepts: garbage collection in the forms of reference counting and mark-and-sweep collection
+
+\begin{itemize}
+\item This only happens for implicitly heap-allocated programming languages.
+\item Reference Counting:
+  \begin{itemize}[noitemsep]
+  \item The runtime system keeps count of the number of references to a thing in memory
+  \item When the number of references increases, nothing happens.
+  \item When the count gets to 0, the system will deallocate the memory.
+  \item This doesn't work for cyclical structures.
+  \item While incremental, it also introduces a lot of operations between any actual programmer calculations.
+  \end{itemize}
+
+\item Mark-and-Sweep:
+  \begin{itemize}[noitemsep]
+  \item The runtime system will pause program execution occassionally and perform this algorithm.
+    \begin{itemize}[noitemsep]
+    \item Consider all memory invalid/not-in-use.
+    \item Mark all memory in static memory and on the stack as valid.
+    \item Go through pointers on the stack and in static memory and follow them.
+    \item Recursively descend through the pointers, marking that memory as valid.
+    \item Once the entire memory segment has been visited, anything not marked as valid is deallocated.
+    \end{itemize}
+  \item This is done less frequently, but it uses up a lot more system resources.
+  \item It also handles deallocation of circular structures that may still be on the heap because the structure isn't reachable from anywhere else.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: arrays
+
+\begin{itemize}[noitemsep]
+\item Arrays are continuous blocks of memory
+\item The size is calculated based on the number of elements expected to be stored and the size of the elements.
+\item These are quick to access because the index of any element is a fixed distance away from the start of the array.
+\item The head of the array, the thing that is at index 0, is actually a pointer to the memory of index 0.
+\item The \texttt{array[index]} syntax is just a nice way to present \texttt{*(array + (index * sizeOfElement))}
+\end{itemize}
+
+\subsubsection{}
+static arrays
+
+\begin{itemize}[noitemsep]
+\item The array is statically sized
+\item The storage is statically bound
+\item Depending on the compiler, language, and memory setup, the values in storage could be bound statically too
+\item They can only hold one type, to allow for indexing.
+\item This exists inside the static memory of the program
+\item Like static variables, these exist for the duration of a program's execution.
+\end{itemize}
+
+\subsubsection{}
+fixed stack-dynamic arrays
+
+\begin{itemize}[noitemsep]
+\item These are the usual arrays (relatively small-sized)
+\item Placed on the stack in memory
+\item The memory storage is allocated dynamically, during runtime
+\item The index range is bound statically, meaning they are of fixed size
+\item They can only hold one type, to allow for indexing.
+\end{itemize}
+
+\subsubsection{}
+fixed heap-dynamic arrays
+
+\begin{itemize}[noitemsep]
+\item These are the usual arrays (relatively large-sized)
+\item Placed on the heap in memory
+\item The memory storage is allocated dynamically, during runtime
+\item The index range is bound statically, meaning they are of fixed size
+\item They can only hold one type, to allow for indexing.
+\end{itemize}
+
+\subsubsection{}
+heap-dynamic arrays
+
+\begin{itemize}[noitemsep]
+\item These are less commonly found
+\item Placed on the heap in memory
+\item The memory storage is allocated dynamically
+\item The index range is also bound dynamically, meaning they can be of any size
+\item They can only hold one type, to allow for indexing.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex

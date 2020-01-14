@@ -154,9 +154,9 @@ Concepts: allocation and deallocation of a heap-dynamic variable.
         \end{enumerate}
       \item Mark-and-sweep
         \begin{enumerate}[noitemsep]
-        \item Start by identifing all memory as safe (includes stack-dynamic and static variables).
-        \item Follow all pointers to heap and traverse the heap, marking everything for deletion.
-        \item Once done iterating over pointers and recursively descending, delete everything marked
+        \item Start by identifing all memory as dead (includes stack-dynamic and static variables).
+        \item Follow all pointers to heap and traverse the heap, marking everything that was reached as valid.
+        \item Once done iterating over pointers and recursively descending, delete everything not yet marked.
         \end{enumerate}
       \end{itemize}
     \end{itemize}
