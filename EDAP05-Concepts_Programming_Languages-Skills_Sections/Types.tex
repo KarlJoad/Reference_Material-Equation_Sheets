@@ -1,33 +1,422 @@
 \section{Types}\label{sec:Types}
+\subsection{}
+Concepts: the types of integers, floating-point numbers (floats), and decimal numbers (decimals)
 
-\begin{enumerate}[noitemsep]
-\item Concepts: the types of integers, floating-point numbers (floats), and decimal numbers (decimals)
-\item Concept: the type of booleans
-\item Concept: enumeration type
-\item Concepts: character and string types
-\item Concept: subrange types
-\item Concept: record types
-\item Concept: tuple types
-\item Concept: list types
-\item Concept: associative array types
-\item Concept: union types, both free and discriminated
-\item Concept: operator overloading
-\item Concepts: strong typing and weak typing
-\item Concepts: type checking and the differences between dynamic type checking, static type checking.
-\item Concepts: type equivalence, including the difference between nominal and structural type equivalence
-\item Concept: type constructors
-\item Concept: typing rules as part of type systems, and how to read such rules and utilise them in your reasoning about program semantics
-\item Concept: the type preservation property, also known as subject reduction, of type systems
-\item Concepts: type parameters and parametric polymorphism
-\item Concept: function types for subroutines
-\item Concept: type classes
-\item Concept: subtyping
-\item Concept: covariance and contravariance of type parameters, and the arrow rule
-\item Concept: bounded parametric polymorphism
-\item Concept: definition-site variance and use-site variance of type parameters
-\item Concept: Algebraic Datatypes as in Standard ML and their use in pattern-matching
-\item Concept: Automatic Type Inference
-\end{enumerate}
+\begin{itemize}
+\item Integers can either be signed or unsigned.
+  \begin{itemize}[noitemsep]
+  \item They can be various sizes, depending on the processor architecture.
+  \item Signed:
+    \begin{itemize}[noitemsep]
+    \item Represent numbers between $-2^{b-1}$ and $+2^{b-1}-1$
+    \item The first bit is the sign bit
+    \item If the number is negative, it is stored in 2's complement format
+    \end{itemize}
+  \item Unsigned:
+    \begin{itemize}[noitemsep]
+    \item Represent numbers between $0$ and $2^{b}-1$, where $b$ is the number of bits available
+    \end{itemize}
+  \end{itemize}
+
+\item Floating-point can be either 32-bits or 64 bits.
+  \begin{itemize}[noitemsep]
+  \item The first bit is the sign bit
+  \item The last 31 or 63 bits are defined by the respective IEEE standard.
+  \end{itemize}
+
+\item Decimal numbers, for example in banking, should \textbf{NOT} be floating point numbers.
+\item \textbf{THESE ARE NOT ITEROPERABLE BY JUST REINTERPRETTING THE BITS}. The integer 1 and floating-point 1 are represented completely differently in binary.
+\end{itemize}
+
+\subsection{}
+Concept: the type of booleans
+
+\begin{itemize}
+\item 2 Values:
+  \begin{itemize}[noitemsep]
+  \item True
+  \item False
+  \end{itemize}
+
+\item Are the basis to preform logical operations.
+\item Generally used for deciding if an operation should occur.
+\item Returned by the $<$, $>$, $\leq$, $\geq$, $==$, $!=$ operations.
+\end{itemize}
+
+\subsection{}
+Concept: enumeration type.
+
+\begin{itemize}
+\item Type that takes one value at a time from a list given at the types definition.
+\item A colors enumeration type might have red, green, and blue. If a variable is of this enumeration type, at any point in time, you can change the value.
+\item There are 2 ways to represent enumeration types:
+  \begin{enumerate}[noitemsep]
+  \item A fancy way to bind integers to descriptive names.
+    \begin{itemize}[noitemsep]
+    \item From the example above, \texttt{red=0}, \texttt{green=1}, and \texttt{blue=2}.
+    \item This does not allow for good error checking.
+    \item If the language implementation implicitly coerces types, the type of an enumeration might become an integer, allowing for things like \texttt{red + 1} which would evaluate to \texttt{green}.
+    \end{itemize}
+  \item Discrete values.
+    \begin{itemize}[noitemsep]
+    \item In this case, the elements of an enumeration type are distinct things with distinct representations that have type checking done on them.
+    \item There is no way to coerce values in the enumeration type to anything else.
+    \item This allows for strong type checking to be performed on these.
+    \end{itemize}
+  \end{enumerate}
+\end{itemize}
+
+\subsection{}
+Concepts: character and string types
+
+\begin{itemize}
+\item Character
+  \begin{itemize}[noitemsep]
+  \item This heavily depends on the encoding used.
+  \item ASCII uses 8 bits, 1 byte. UTF-8 may use up to 4 bytes, but the first characters are the same as ASCII for interoperability.
+  \item The variable storing the character will usually only be able to store single characters for this reason.
+  \end{itemize}
+
+\item String
+  \begin{itemize}[noitemsep]
+  \item There are 2 ways to store strings:
+    \begin{enumerate}[noitemsep]
+    \item Arrays of characters
+    \item A primitive type with its own binary representation and storage allocation scheme
+    \end{enumerate}
+  \item Are strings statically sized or dynamic?
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: subrange types
+
+\begin{itemize}[noitemsep]
+\item These allow you to select \textbf{JUST} a range of values.
+\item If defined in terms of some other type, it may be type-equivalent.
+\item If you only want to work with numbers from 1 to 10 and statically disallow anything else, you can create a subrange type from 1 to 10. Then, the static system will ensure all values passed are inside that subrange.
+\item A subrange with a larger range is a subtype of one with a smaller range.
+  \begin{itemize}[noitemsep]
+  \item This is because the larger range contains the same information as the smaller range.
+  \item But, it also contains more information than the smaller subrange, thus it is a subtype.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: record types
+
+\begin{itemize}[noitemsep]
+\item Aggregate several types into one.
+\item Similar to a tuple.
+\item \textbf{Name} the things stored inside the record and use those names to access the values. This is what separates a record from a tuple.
+\item A record has memory equal to the size of all types allocated each time.
+\end{itemize}
+
+\subsection{}
+Concept: tuple types
+
+\begin{itemize}[noitemsep]
+\item Aggregate several types into one.
+\item Similar to a record.
+\item The values stored inside are integer-indexed.
+\item A record has memory equal to the size of all types allocated each time.
+\end{itemize}
+
+\subsection{}
+Concept: list types
+
+\begin{itemize}[noitemsep]
+\item A mutable (maybe) and dynamic list of any type.
+\item The list could contain things of the same type and of different types.
+\item These can be infinite and can be lazily evaluated.
+\item Heavily used in functional languages.
+\end{itemize}
+
+\subsection{}
+Concept: associative array types
+
+\begin{itemize}[noitemsep]
+\item There is a key-value pair.
+\item Using the key (usually its hashed), a location is found in the structure and the value is stored.
+\item When trying to access a value, you provide a key.
+\item These are Hashtables/dictionaries in languages.
+\item The issue of storing multiple values in the same spot and having hashes collide are implementation issues.
+\end{itemize}
+
+\subsection{}
+Concept: union types, both free and discriminated
+
+\begin{itemize}
+\item A union type is a type that \textbf{takes one of several types}.
+\item Free:
+  \begin{itemize}[noitemsep]
+  \item The memory that is used for the storage of data is interpreted differently based on the type that is retrieving data from it.
+  \item Thus, type-checking cannot be performed statically, and rarely can it be done dynamically.
+  \item In C, the memory would be retrieved like normal, but interpreted differently based on the type of the caller.
+  \end{itemize}
+
+\item Discriminated:
+  \begin{itemize}[noitemsep]
+  \item When storing values, when one of the storage options is chosen, it also becomes tagged with that type.
+  \item This way, type checking can be performed statically.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: operator overloading
+
+\begin{itemize}[noitemsep]
+\item Done in the natural semantics.
+\item Need to provide typing rules in the semantics
+\item Based on the typing information that is present in the semantic rules, choose which production to follow.
+\item The operation must be defined for the type for it to work.
+\end{itemize}
+
+\subsection{}
+Concepts: strong typing and weak typing
+
+\begin{itemize}
+\item Strong Typing:
+  \begin{itemize}[noitemsep]
+  \item If there is a type error (\textbf{STATIC OR DYNAMIC}), the language prevents this operation.
+  \item Also \textbf{ALL} type errors are found.
+  \end{itemize}
+
+\item Weak Typing:
+  \begin{itemize}[noitemsep]
+  \item If there is a type error (\textbf{STATIC OR DYNAMIC}), the langauge does \textbf{NOT} prevent the operation.
+  \item In some languages, these erroneous operations \textbf{might return some default value}.
+  \item Not all type errors may be found.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concepts: type checking and the differences between dynamic type checking, static type checking.
+
+\begin{itemize}
+\item Type Checking:
+  \begin{itemize}[noitemsep]
+  \item Checking that everything \textbf{HAS} a type
+  \item Checking that all operations and expressions use their correct types
+  \item Ensure that things with certain types are used in the correct way, i.e.\ an integer doesn't have an attemp at array indexing happening.
+  \item If there is an issue with types, an error is raised. This is handled differently for strongly- and weakly-typed languages.
+    \begin{itemize}[noitemsep]
+    \item Strongly: Stop compilation (if static type checking) or stop execution (if dynamic type checking).
+    \item Weakly: Maybe stop compilation (if static [depends on language implementation]) or use a default type value (if dynamic [this is just one solution]).
+    \end{itemize}
+  \end{itemize}
+
+\item Dynamic:
+  \begin{itemize}[noitemsep]
+  \item This type checking occurs during runtime
+  \item Use static and dynamic semantics
+  \end{itemize}
+
+\item Static:
+  \begin{itemize}[noitemsep]
+  \item This type checking occurs before runtime, during compilation
+  \item Use static semantics
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concepts: type equivalence, including the difference between nominal and structural type equivalence
+
+\begin{itemize}
+\item Type Equivalence
+  \begin{itemize}[noitemsep]
+  \item If one type $T$ can be used in place of type $U$, without type coercion, $T$ and $U$ are equivalent types.
+  \end{itemize}
+
+\item Nominal Type Equivalence
+  \begin{itemize}[noitemsep]
+  \item They are equivalent if they are defined in the same declaration or in declarations that use the same data type.
+  \item They have the same compiler/runtime system unique name/id.
+  \end{itemize}
+
+\item Structural Type Equivalence
+  \begin{itemize}[noitemsep]
+  \item There are several steps to check this:
+    \begin{enumerate}[noitemsep]
+    \item If the types have the same type
+    \item Same number of fields (if applicable), and each of the fields is pairwise nominally equivalent.
+    \item If each field is nominally equivalent and are references/pointers perform structural equivalence on them
+    \item You perform these steps until you reach a state where no step above is correct, i.e.\ contradicts some aspect of the type.
+    \end{enumerate}
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: type constructors
+
+\begin{itemize}[noitemsep]
+\item Creates a new type
+\item Does this by generating a unique internal system name for that type.
+\end{itemize}
+
+\subsection{}
+Concept: typing rules as part of type systems, and how to read such rules and utilise them in your reasoning about program semantics
+
+\begin{itemize}[noitemsep]
+\item These behave quite similarly to semantic rules for operators.
+\item These define the types of values and expressions.
+\item For expressions they define:
+  \begin{itemize}[noitemsep]
+  \item Their input type(s)
+  \item Their output types
+  \end{itemize}
+\item These \textbf{DO NOT} define the actual mechanics of the operation, for example, they do not say that the \texttt{+} operator is for addition, but rather the types to input to the \texttt{+} symbol and the resultant type.
+\end{itemize}
+
+\subsection{}
+Concept: the type preservation property, also known as subject reduction, of type systems
+
+\begin{itemize}[noitemsep]
+\item If an operator is adding 2 integers, you expect an integer to return.
+\item More generally, if an expression $e$ is of type $\tau$, and $e \Downarrow v$, then $v$ should also be of type $\tau$.
+\end{itemize}
+
+\subsection{}
+Concepts: type parameters and parametric polymorphism
+
+\begin{itemize}
+\item Type Parameters
+  \begin{itemize}[noitemsep]
+  \item These are parameters that must be passed when working with types, functions, or other operations.
+  \item For many things, you can think of these just like normal parameters, but with types instead of values. 
+  \end{itemize}
+
+\item Parametric Polymorphism
+  \begin{itemize}[noitemsep]
+  \item These are parameters that must be passed to things to construct them for that type, but the general case is the same for each type.
+  \item For example, an array should be able to hold any number of one type.
+  \item The basic operations on this array (\texttt{length}, \texttt{index-access}) are the same between all type cases.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: function types for subroutines
+
+\begin{itemize}[noitemsep]
+\item The arrow, $\rightarrow$, \texttt{-$>$}, is right associative
+\item It states the input types, if there is more than 1, then it specifies them as a tuple
+\item It states the output type.
+\end{itemize}
+
+\subsection{}\label{subsec:Type_Classes}
+Concept: type classes
+
+\begin{itemize}[noitemsep]
+\item For a given type, you can ``add'' it to a class such that it \textbf{must} implement some functionality.
+\item If you create a new type that needs to have the $>$ operation defined, in Rust, you must add it to the \texttt{PartialOrd} type class, then define what the $>$ operator means on your type.
+\item Now, this type can be used anywhere a regular type would be, and you can use it in any case where the type is bound correctly.
+\end{itemize}
+
+\subsection{}
+Concept: subtyping
+
+\begin{itemize}[noitemsep]
+\item If the values on a type encompass \textbf{more} data, i.e.\ all integers, a record with 3 integer fields, etc.\ any type that restricts the range of values for that type is a \textbf{subtype}.
+\item Thus, a record with 3 integer fields is a subtype of a record with 2 integer fields, because the larger record contains all the same information as the other record, but has additional information. Think of these like OOP subclasses.
+\item An subrange with a smaller range is a supertype to one with a larger range.
+\item $T :> U$ means $U$ is a subtype of $T$. The ``arrow'' always points towards the subtype.
+\item Any type is a subtype and supertype of itself.
+\end{itemize}
+
+\subsection{}
+Concept: covariance and contravariance of type parameters, and the arrow rule
+
+\begin{itemize}
+\item Covariance:
+  \begin{itemize}[noitemsep]
+  \item If type is an input to a function, the function would accept more general data.
+  \item If a function takes a subrange from 1 to 10, but you give it 1 to 20, it contains all the same information for the function to run, so it does.
+  \end{itemize}
+
+\item Contravariance:
+  \begin{itemize}[noitemsep]
+  \item If a type is an output from a function, the function is also able to output more specific data.
+  \item If a function returns a subrange from 1 to 10, it can also return a subrange from 1 to 3. So long as the output is not dependent on having a subrange from 1 to 10, the function can output the subrange from 1 to 3 without issue.
+  \end{itemize}
+
+\item Arrow Rule:
+  \begin{equation*}
+    \dfrac{T_{1} :> T_{2} \:\: U_{1} <: U_{2}}{T_{1} \rightarrow U_{1} <: T_{2} \rightarrow U_{2}}
+  \end{equation*}
+  \begin{itemize}[noitemsep]
+  \item $T_{1}$ is a supertype of $T_{2}$
+  \item $U_{1}$ is a subtype of $U_{2}$
+  \item $T_{1} \rightarrow U_{1}$ means we can broaden the type of the input without problems
+  \item $T_{2} \rightarrow U_{2}$ means we can narrow the type of the output without problems
+  \item This means that $T_{1} \rightarrow U_{1}$ is a supertype of $T_{2} \rightarrow U_{2}$ (supertype meaning the same type or an actual supertype)
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: bounded parametric polymorphism
+
+\begin{itemize}[noitemsep]
+\item This is a way to restrict what types can be used as parameters for something.
+\item Using our $>$ and \texttt{PartialOrd} example in Rust from \Cref{subsec:Type_Classes}, if we had a function that sorted our type, we would \textbf{require} that all types used in the function implement this operator and be a part of the \texttt{PartialOrd} type class.
+\item This works for parametric polymorphism in much the same way.
+\end{itemize}
+
+\subsection{}
+Concept: definition-site variance and use-site variance of type parameters
+
+\begin{itemize}
+\item Definition-Site Variance
+  \begin{itemize}[noitemsep]
+  \item When defining the function/subprogram, the programmer specifies how the function can be varied.
+  \end{itemize}
+
+\item Use-Site Variance
+  \begin{itemize}[noitemsep]
+  \item The programmer must define the variance of the type when creating an instance of that type.
+  \item In Java:
+    \begin{itemize}[noitemsep]
+    \item Use-Site Covariance: You can only use functions which return the original type or have no relation to the original type.
+    \item Use-Site Contravariance: You can only use functions which take in the original type, or have no relation to the original type.
+    \item Use-Site Invariance: You can only use functions which have nothing to do with the original type. This can be viewed as if \textbf{both} use-site covariance and use-site contravariance apply.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: Algebraic Datatypes as in Standard ML and their use in pattern-matching
+
+\begin{itemize}
+\item Algebraic Datatypes
+  \begin{itemize}[noitemsep]
+  \item An algebraic datatype is a generalization of datatypes already present.
+  \item They also allow for record-like things to be created
+  \item If used for unions, they form tagged unions
+  \item Each case of an algebraic datatype can have arbitrarily many types present
+  \end{itemize}
+
+\item Pattern-Matching
+  \begin{itemize}[noitemsep]
+  \item There needs to be a case for every case in the algebraic datatype
+  \item There is a variable \texttt{\textunderscore{}} that matches everything
+  \item You can also use this on tuples to match on the type in the index that you are interested in and disregard the other informations.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: Automatic Type Inference
+
+\begin{itemize}[noitemsep]
+\item Many things can be inferred by the information given to a function.
+\item If the type of things are not specified, the system is usually able to figure out the types required by looking at the static semantics of the language.
+\item Sometimes this isn't perfect and some type information \textbf{must} be given for the function/thing to be correctly typed.
+\item If a parameter is used in addition, it can be determined that the parameter is of the same type as the other operand.
+\item The last expression evaluated is the return value from the entire function
+\item If there is no information that is usable, it assigns type variables that behave like regular variables, but for the types a function can take. In SML, denoted \texttt{'a}, \texttt{'a}$\,=\alpha$.
+  \begin{itemize}[noitemsep]
+  \item In the case of a function with these, every instance of the same type variable is replaced by the type used.
+  \item Different type variables, \texttt{'a} and \texttt{'b}, are allowed to be the same.
+  \end{itemize}
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
