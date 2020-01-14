@@ -1,16 +1,185 @@
 \section{Expressions}\label{sec:Expressions}
 
-\begin{enumerate}[noitemsep]
-\item Concept: arithmetic expressions
-\item Concepts: boolean expressions and relational expressions
-\item Concepts: Different forms of object equality, including reference equality and structural equality
-\item Concept: operand evaluation order and how it affects the outcome of programs
-\item Concept: short-circuit evaluation and how it affects the outcome of programs
-\item Concept: referential transparency and side effects
-\item Concept: list comprehensions and their semantics
-\item Concept: type coercion expressions, both explicit and implicit, including narrowing conversions and widening conversions
-\item Concept: conditional expressions
-\end{enumerate}
+\subsection{}
+Concept: arithmetic expressions
+
+\begin{itemize}[noitemsep]
+\item Pretty obvious.
+\item \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/} or \texttt{div}, \texttt{\%}
+\item The first 3 (\texttt{+}, \texttt{-}, and \texttt{*}) will only return integers if they are given integers.
+\item Division is defined by the language designer. There might be separate symbols for integer and real-number division.
+\end{itemize}
+
+\subsection{}
+Concepts: boolean expressions and relational expressions
+
+\begin{itemize}
+\item Logical operators:
+  \begin{itemize}[noitemsep]
+  \item \texttt{||} (OR)
+  \item \texttt{\&\&} (AND)
+  \item \texttt{\textasciitilde} (NOT)
+  \end{itemize}
+
+\item Relational Expressions: All of which return boolean values (True or False)
+  \begin{itemize}[noitemsep]
+  \item \texttt{>}, greater than
+  \item \texttt{<}, less than
+  \item \texttt{>=}, greater than or equal
+  \item \texttt{<=}, less than or equal
+  \item \texttt{==}, equal (equality is differently defined for different types)
+  \item \texttt{!=}, not equal
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concepts: Different forms of object equality, including reference equality and structural equality
+
+\begin{itemize}
+\item Primitive Equivalence
+  \begin{itemize}[noitemsep]
+  \item If the bit patterns of the types are the same
+  \end{itemize}
+
+\item Reference Equivalence
+  \begin{itemize}[noitemsep]
+  \item If 2 things point/refer to the same location in memory
+  \end{itemize}
+
+\item Structural Equivalence
+  \begin{itemize}[noitemsep]
+  \item If the 2 variables have identical structures.
+  \item Involves comparing each type present and recursively checking if they match at some point
+  \item Allows things to have the same structure, but be different, if the user desires..
+  \end{itemize}
+
+\item User-Defined Equivalence
+  \begin{itemize}[noitemsep]
+  \item Requires either a user-defined type, or an overriding of an already present type's equality
+  \item The user defines what equality between 2 instances of their type
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: operand evaluation order and how it affects the outcome of programs
+
+\begin{itemize}
+\item Evaluation Order:
+  \begin{itemize}[noitemsep]
+  \item Do we go from left to right? Right to left? Somewhere from the middle out?
+  \item Only way to check is have one operand change the state somewhere to let us know that it has been evaluated first.
+    \begin{itemize}[noitemsep]
+    \item Could be done with 2 subprograms that print different things, and whichever prints first is evaluated first.
+    \end{itemize}
+  \end{itemize}
+
+\item Outcome, assuming no other major rules change (like assignment):
+  \begin{itemize}[noitemsep]
+  \item This might make some programs slower, because they have to perform heavy recursion before a simple addition, for example.
+  \item Overall, the change is fairly minor. The programmer just has to get used to the syntax and execution direction.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: short-circuit evaluation and how it affects the outcome of programs
+
+\begin{itemize}[noitemsep]
+\item Short-Circuit Evaluation:
+  \begin{itemize}[noitemsep]
+  \item Skip unnecessary boolean evaluations.
+  \item OR
+    \begin{itemize}[noitemsep]
+    \item If the first operand is 1, then logical OR will always evaluate to 1, no matter what the second operand is.
+    \item Why evaluate the second operand if it's not needed to find an answer?
+    \end{itemize}
+  \item AND
+    \begin{itemize}[noitemsep]
+    \item If the first operand is 0, then logical AND will always evaluate to 0, no matter what the second operand is.
+    \item Why evaluate the second operand if it's not needed to find an answer?
+    \end{itemize}
+  \end{itemize}
+
+\item Outcome:
+  \begin{itemize}[noitemsep]
+  \item Obvious, but \textbf{ONE OF THE OPERANDS IS NOT EVALUATED}!
+  \item If we are required to check the second operand, or both operands, short-circuit evaluation defeats that.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: referential transparency and side effects
+
+\begin{itemize}
+\item Referential Transparency:
+  \begin{itemize}[noitemsep]
+  \item This is a thing if any 2 expressions can replace each other in a program, without changing the action.
+  \item For example, if $1+5$ is highly prevalent in a program, $6$ would replace the $1+5$ expression.
+  \end{itemize}
+
+\item Side Effects:
+  \begin{itemize}[noitemsep]
+  \item A function changing the state of a program ``beneath its feet''.
+  \item For example, a function deleting the last element in a list every time it is called, or a function to increment a global counter.
+  \item Printing to the screen, writing to disk, getting a network packet are all stateful effects, so functional languages have facilities to handle them.
+  \item Purely functional languages remove the possiblity of making side-effects.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: list comprehensions and their semantics
+
+\begin{itemize}
+\item List Comprehensions
+  \begin{itemize}[noitemsep]
+  \item Succinctly iterate over a list and apply a function to all values present in the list.
+  \item Some languages (Python) allow for conditionals to be present in the list comprehension as well.
+  \end{itemize}
+
+\item Semantics
+  \begin{itemize}[noitemsep]
+  \item Different semantics depending on the language.
+  \item Python3: \mintinline{python3}{incremented = [x + 1 for x in originalList]}
+  \item Haskell: \mintinline{haskell}{incremented = [x + 1 | x <- originalList]}
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: type coercion expressions, both explicit and implicit, including narrowing conversions and widening conversions
+
+\begin{itemize}
+\item Type Coercion Expressions:
+  \begin{itemize}[noitemsep]
+  \item Explicit
+    \begin{itemize}[noitemsep]
+    \item Requires the programmer to explicitly tell the programming language to convert a value between types.
+    \item This is usually only used on the narrowing conversion, because it is a potentially unsafe operation, some of the original data could be lost.
+    \end{itemize}
+  \item Implicit
+    \begin{itemize}[noitemsep]
+    \item The programmer doesn't have to explicitly tell the language to convert a value between types, but they can.
+    \item This is usually only used on the widening conversion, because it is usually a safe operation, meaning the original data is preserved.
+    \end{itemize}
+  \end{itemize}
+
+\item Conversions:
+  \begin{itemize}[noitemsep]
+  \item Narrowing
+    \begin{itemize}[noitemsep]
+    \item Must be done explicitly, if the language even allows it.
+    \item For example, moving from a floating-point number to an integer. Or, converting between a 64-bit integer to a 32-bit integer.
+    \item This is dangerous because data can be lost by narrowing a type.
+    \end{itemize}
+  \item Widening
+    \begin{itemize}[noitemsep]
+    \item Usually done implicitly.
+    \item For example, converting between an integer and a floating-point number to perform an addition.
+    \item This is a safe operation because the original data is preserved, but the range of possible values has been extended.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: conditional expressions
 
 %%% Local Variables:
 %%% mode: latex
