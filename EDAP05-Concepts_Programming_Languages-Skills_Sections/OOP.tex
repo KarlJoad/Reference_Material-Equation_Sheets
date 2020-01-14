@@ -1,12 +1,61 @@
 \section{Object-Oriented Programming}\label{sec:OOP}
 
-\begin{enumerate}[noitemsep]
-\item Concept: object-oriented language
-\item Concept: dynamic dispatch, also known as dynamic binding of methods
-\item Concept: inheritance
-\item Concept: method overriding
-\item Concept: the combined use of static types and dynamic types in statically typed object-oriented languages
-\end{enumerate}
+\subsection{}
+Concept: object-oriented language
+
+\begin{itemize}[noitemsep]
+\item Requires 3 things:
+  \begin{enumerate}[noitemsep]
+  \item Support for abstract data types
+  \item Inheritance of classes
+  \item The ability to use dynamic dispatch, for dynamically binding methods to objects
+  \end{enumerate}
+\item Most types are usually classes
+\item These classes are abstract datatypes, because they show the world just their interface, but they also have their implementation there too.
+\item These classes can be made generic too (support for parametric polymorphism)
+\item The functions in a class will rely on variance (covariance, contravariance, and invariance) to choose the functions to support.
+\end{itemize}
+
+\subsection{}
+Concept: dynamic dispatch, also known as dynamic binding of methods
+
+\begin{itemize}[noitemsep]
+\item This allows objects to use functions in both their instantiation class and from their parent classes.
+\item The correct one will be chosen by passed Actual Arguments, and which function will be found first.
+\item The search will always start in the object's instantiating class.
+\end{itemize}
+
+\subsection{}
+Concept: inheritance
+
+\begin{itemize}[noitemsep]
+\item Classes can inherit data and functions from a parent class.
+\item This is quite similar to subtyping of normal variable types.
+\item However, this allows for functions to be passed down too.
+\item Some OOP languages support multiple inheritance, where a class can inherit from more than one parent.
+  \begin{itemize}[noitemsep]
+  \item This leads to the diamond problem.
+  \item One class has 2 parent classes that share the same parent, thus forming a diamond in the inheritance graph.
+  \end{itemize}
+\item An OOP language might or might not have a ``top-level'' class that acts as the parent to every subsequent class.
+\end{itemize}
+
+\subsection{}
+Concept: method overriding
+
+\begin{itemize}[noitemsep]
+\item If a subclass requires a modified version of some function from the parent class, the subclass can redefine the function for itself.
+\item Then, if the subclass instantiates some data, it will first look for functions in the subclass's definition, before moving up to the parent(s).
+\item The correct function will be called by an object using dynamic dispatch.
+\end{itemize}
+
+\subsection{}
+Concept: the combined use of static types and dynamic types in statically typed object-oriented languages
+
+\begin{itemize}[noitemsep]
+\item This happens when you write a variable will be of a superclass's type, but you instantiate it with a different type.
+\item Then, the static type will be the superclass's type, but the dynamic type will be the instantiating class's type.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
