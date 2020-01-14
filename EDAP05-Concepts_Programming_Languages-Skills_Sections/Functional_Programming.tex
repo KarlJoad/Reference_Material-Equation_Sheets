@@ -1,16 +1,109 @@
 \section{Functional Programming}\label{sec:Functional_Programming}
 
-\begin{enumerate}[noitemsep]
-\item Concept: local let bindings of variables
-\item Concept: anonymous functions, also known as lambda expressions
-\item Concept: first-class functions
-\item Concepts: pattern matching, including wildcards
-\item Concepts: exhaustiveness and redundancy in pattern matching
-\item Concept: lists as algebraic datatypes
-\item Concept: the map function
-\item Concept: currying
-\item Functional Programming in Standard ML
-\end{enumerate}
+\subsection{}
+Concept: local let bindings of variables
+
+\begin{itemize}[noitemsep]
+\item This allows declarations to occur between the \texttt{let} and \texttt{in} keywords.
+\item These definitions/declarations will shadow any that exist outside of the \texttt{let}-expression.
+\item Between the \texttt{in} and \texttt{end} keywords are expressions.
+\item Any expression that uses a  declaration from inside the first portion will use that value.
+\item After the end of the \texttt{let}-expression, any information from the \texttt{let} portion of the \texttt{let}-expression is discarded.
+\item The \texttt{Let}-expression returns an expression, which may be used inside another \texttt{let}-expression, or used in another expression of any other type.
+\end{itemize}
+
+\subsection{}
+Concept: anonymous functions, also known as lambda expressions
+
+\begin{itemize}[noitemsep]
+\item Since functions are expressions that map input types to output types, they don't necessarily need names.
+\item If a function does not have a name, they are anonymous functions, or lambda expressions.
+\item They \textbf{can} take parameters and use them.
+\item They are subject to the same type checking that all other functions get.
+\end{itemize}
+
+\subsection{}
+Concept: first-class functions
+
+\begin{itemize}[noitemsep]
+\item Functions are treated just like data.
+\item Meaning functions can be assigned to variables (every function is anonymous until it is given a name to bind to).
+\item Functions can be passed into other functions, and returned from other functions, just like traditional data.
+\end{itemize}
+
+\subsection{}
+Concepts: pattern matching, including wildcards
+
+\begin{itemize}[noitemsep]
+\item This is closely related to algebraic data types.
+\item You can pattern match on tuples too.
+\end{itemize}
+
+\subsection{}
+Concepts: exhaustiveness and redundancy in pattern matching
+
+\begin{itemize}
+\item Exhaustiveness
+  \begin{itemize}[noitemsep]
+  \item The pattern match must cover all cases to be exhaustive.
+  \item There is a wildcard operator \texttt{\textunderscore{}} that matches anything, but doesn't preserve its information, meaning you can't use it.
+  \end{itemize}
+
+\item Redundancy
+  \begin{itemize}[noitemsep]
+  \item When multiple patterns match the same thing.
+  \item Cannot have this, otherwise the pattern matching won't know which to choose.
+  \item It might choose the first pattern that it matches with instead.
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: lists as algebraic datatypes
+
+\begin{itemize}[noitemsep]
+\item Think of these like BNF lists.
+\item There is either a ``null'', or a node with another list after it
+\item You can pattern match on this using \texttt{head::list} in SML.
+\item After this, the name \texttt{head} will refer to the first element in the original list.
+\item The \texttt{list} name will refer to the rest of the list after \texttt{head}.
+\end{itemize}
+
+\subsection{}
+Concept: the \texttt{map} function
+
+\begin{itemize}[noitemsep]
+\item In SML \texttt{fn : ('a -> 'b) -> 'a list -> 'b list}
+\item This function takes a function, which performs some action on elements of a list, which returns another function that takes in a list and returns a new list where the function was applied to all element of the original list.
+\end{itemize}
+
+\subsection{}
+Concept: currying
+
+\begin{itemize}[noitemsep]
+\item Like in the \texttt{map} function, the act of taking in parameters that will return functions.
+\item This allows for great generalization in the language.
+\item However, the tradeoff to make is the programmer must determine the first things to be evaluated to create the function.
+\item If the first things to evaluate are chosen correctly, large performance benefits can ensue.
+\item It also allows for functions to be created more generally and slowly become more specfic, as needed.
+\end{itemize}
+
+For example, \texttt{map'} is a non-curried version.
+\texttt{map'} takes in a function and a list \textbf{AT THE SAME TIME}!
+\texttt{map} is a curried version.
+\texttt{map} takes in a function, and returns a function that takes in a list and returns a list.
+
+\begin{minted}[frame=lines,linenos]{sml}
+fun map' (f, nil) = nil
+  | map' (f, h::t) = (f h) :: map' (f,t);
+(* val map' = fn : ('a -> 'b) * 'a list -> 'b list *)
+
+fun map f nil = nil
+  | map f (h::t) = (f h) :: (map f t);       
+(* val myMap = fn : ('a -> 'b) -> 'a list -> 'b list *)
+\end{minted}
+
+\subsection{}
+Functional Programming in Standard ML
 
 %%% Local Variables:
 %%% mode: latex
