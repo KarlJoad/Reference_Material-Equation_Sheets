@@ -1,13 +1,78 @@
 \section{Statements and Control Structures}\label{sec:Statements_Control_Structures}
 
-\begin{enumerate}[noitemsep]
-\item Concept: assignment statements, including compound assignment
-\item Concept: two-way selection statements
-\item Concept: multiple-selection statements
-\item Concept: counter-controlled loops
-\item Concept: logically controlled loops
-\item Concept: datastructure-controlled loops
-\end{enumerate}
+\subsection{}
+Concept: assignment statements, including compound assignment
+
+\begin{itemize}
+\item Assignment:
+  \begin{itemize}[noitemsep]
+  \item The regular assignment.
+  \item Use the storage binding that was set aside and perform a value binding.
+  \end{itemize}
+
+\item Compound Assignment:
+  \begin{itemize}[noitemsep]
+  \item Short-hand to specify an operation on a value and reassign that new value to the variable with the same name used.
+  \item \texttt{count += 1}
+  \end{itemize}
+\end{itemize}
+
+\subsection{}
+Concept: two-way selection statements
+
+\begin{itemize}[noitemsep]
+\item Standard \texttt{if} statement.
+\item If the condition is true, take one path, else take the other path.
+\item When we reach the end of either path, they come back together.
+\end{itemize}
+
+\subsection{}
+Concept: multiple-selection statements
+
+\begin{itemize}[noitemsep]
+\item Standard \texttt{switch} statement or \texttt{if-elseif-else} statement
+\item Based on the condition, choose one path of many.
+\item If the first condition is not met, then choose another.
+\item The different paths usually need to be broken up by a \texttt{break} statement for them to be completely separate.
+\item Without the \texttt{break}, one path might run into another, because the condition is only evaluated once and then checked in a \texttt{switch} statement.
+\item In an \texttt{if-elseif-else} statement, the condition is evaluated as many times as there are \texttt{if} and \texttt{elseif} branches.
+\item At the end of all paths, they come back together.
+\end{itemize}
+
+\subsection{}
+Concept: counter-controlled loops
+
+\begin{itemize}[noitemsep]
+\item \texttt{while}-loops can be used for these, where their condition checks if the count is correct.
+\item \texttt{for}-loops are a construction that eases the writing of counter-controlled loops
+\item The counter can increment at the beginning or at the end of the loop.
+  \begin{itemize}[noitemsep]
+  \item \texttt{for}-loops have this done at the end.
+  \item \texttt{while}-loops can have it done wherever the programmer specifies, so long as it is done.
+  \item If a programmer forgets to manage the counter in a \texttt{while}-loop, an infinite loops occurs.
+  \end{itemize}
+\item Counter-controlled loops are special logic controlled loop, where the condition is checking if a counter has met some threshold.
+\end{itemize}
+
+\subsection{}
+Concept: logically controlled loops
+
+\begin{itemize}[noitemsep]
+\item \texttt{while}-loops are used for these.
+\item The condition is evaluated before entering the loop, and evaluated after each iteration through the loop.
+\item These can be used to create an infinite loop while waiting for some stateful change, like keyboard input, or a network packet.
+\item The condition must evaluate to a boolean value, in old versions of C either 0 or 1.
+\end{itemize}
+
+\subsection{}
+Concept: data structure-controlled loops
+
+\begin{itemize}[noitemsep]
+\item These are colloquially called \texttt{for-each}-loops.
+\item They are used on more complex data structures, like vectors, lists, etc.
+\item They return one item on each iteration of the loop.
+\item The loop ends when the data structure has iterated over each element once.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
