@@ -8,6 +8,19 @@ Concepts: exceptions and exception handlers
   \begin{itemize}[noitemsep]
   \item In SML, exceptions are raised with \texttt{raise \textit{ExceptionName}}
   \item Where \textit{ExceptionName} must be defined by \texttt{exception \textit{ExceptionName}}
+  \item Checked Exceptions:
+    \begin{itemize}[noitemsep]
+    \item These exceptions \textbf{MUST} be handled, or else during static evaluation (compilation) the process stops.
+    \item For example, a file not found exception MUST be handled before compilation is allowed.
+    \end{itemize}
+
+  \item Unchecked Exceptions:
+    \begin{itemize}[noitemsep]
+    \item These exceptions are not checked during static evaluation (compilation).
+    \item They are only found during runtime.
+    \item For example, division by 0 in some languages throws a divide by zero exception.
+    \item The compiler won't check to see if the error isn't handled. If it isn't, then the program may prematurely terminate execution.
+    \end{itemize}
   \end{itemize}
 
 \item Exception Handlers:
