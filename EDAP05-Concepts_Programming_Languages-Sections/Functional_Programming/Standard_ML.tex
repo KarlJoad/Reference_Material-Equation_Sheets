@@ -57,6 +57,11 @@ The \texttt{conditionalExp} must evaluate to an expression of a \texttt{bool} ty
 The expressions \texttt{exp1} and \texttt{exp2} \textbf{MUST} have the same type.
 However, even if both branches have the same type, one branch can still raise raise an exception during runtime.
 
+\begin{remark*}
+  This is a \emph{conditional expression}.
+  This means that the result from the conditional expression could be assigned to a variable as a value.
+\end{remark*}
+
 \subsubsection{Declarations in Standard ML}\label{subsubsec:Functional-SML-Declarations}
 By default, both variables and types have global scope.
 However, \nameref{def:Standard_ML} has introduced methods to limit the scope of things.
@@ -98,7 +103,11 @@ This means that things like this can happen:
 
 \subsubsection{Pattern Matching in Standard ML}\label{subsubsec:Functional-SML-Pattern_Matching}
 \begin{definition}[Pattern Matching]\label{def:Pattern_Matching}
-  \textbf{TODO!!}
+  \emph{Pattern matching} is an \nameref{subsubsec:N_Way_Selection} construct.
+  \textbf{IT IS AN EXPRESSION, MEANING EACH CASE MUST RETURN THE SAME TYPE}.
+  In addition, when pattern matching, the the value(s) that match a particular case can be bound to names.
+  This allows for use use of the matched value to be used for some computation.
+  \inputminted[frame=lines,linenos]{sml}{./EDAP05-Concepts_Programming_Languages-Sections/Functional_Programming/Code/Pattern_Matching.sml}
 \end{definition}
 
 \subsubsection{\nameref*{def:Data_Type} Inferencing}\label{subsubsec:Functional-SML-Data_Type_Inferencing}

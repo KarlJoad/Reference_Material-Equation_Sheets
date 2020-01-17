@@ -1,3 +1,3 @@
-trait Contravariantbox[T] {
+trait ContravariantBox[T] {
   def put(v : T)
 }

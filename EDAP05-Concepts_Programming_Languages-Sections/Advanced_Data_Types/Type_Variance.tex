@@ -11,6 +11,8 @@ Using a \texttt{\SemanticType{Box}} Scala trait as the basis of our discussion, 
   Using the \SemanticType{Box} example from above, we can create an \emph{covariant} Scala trait by writing something like this,
   \inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/CovariantBox.scala}
   When we vary the type parameter \SemanticType{T} towards a subtype, the type of \SemanticType{ReadBox[T]} also varies towards that of a subtype; we say that \SemanticType{T} is \textbf{covariant}.
+
+  Namely, if $\SemanticType{A} <: \SemanticType{B}$ and $C[\SemanticType{\alpha}]$, and $C[A] <: C[B]$, then $\SemanticType{\alpha}$ is covariant.
 \end{definition}
 
 \begin{definition}[Contravariance]\label{def:Type_Contravariance}
@@ -22,6 +24,8 @@ Using a \texttt{\SemanticType{Box}} Scala trait as the basis of our discussion, 
   Using the \SemanticType{Box} example from above, we can create an \emph{contravariant} Scala trait by writing something like this,
   \inputminted[frame=lines,linenos]{scala}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/ContravariantBox.scala}
   When we vary the type parameter \SemanticType{T} towards a subtype, the type of \SemanticType{WriteBox[T]} varies in the opposite direction, towards that of a supertype; we say that \SemanticType{T} is \textbf{contravariant}.
+
+  Namely, if $\SemanticType{A} <: \SemanticType{B}$ and $C[\SemanticType{\alpha}]$, and $C[A] :> C[B]$, then $\SemanticType{\alpha}$ is contravariant.
 \end{definition}
 
 \begin{definition}[Invariance]\label{def:Type_Invariance}
@@ -40,6 +44,8 @@ Using a \texttt{\SemanticType{Box}} Scala trait as the basis of our discussion, 
     In this case, \texttt{box.get()} works, but \texttt{box.put(b)} does not: \texttt{b} might be 99, which we cannot pass to an operation that only accepts \texttt{A} as parameter.
     \textbf{Thus, this option is not statically type-safe either.}
   \end{itemize}
+
+  Namely, if $\SemanticType{A} <: \SemanticType{B}$ and $C[\SemanticType{\alpha}]$, and $C[A] \neq C[B]$, then $\SemanticType{\alpha}$ is invariant.
 \end{definition}
 
 \begin{definition}[Bivariance]\label{def:Type_Bivariance}
@@ -52,6 +58,8 @@ Using a \texttt{\SemanticType{Box}} Scala trait as the basis of our discussion, 
     If both the input and output allow for the type to be both broadened and narrowed, it is not terribly interesting to study.
     Thus, we will not be studying them in much detail in this class.
   \end{remark}
+
+  Namely, if $\SemanticType{A} <: \SemanticType{B}$ and $C[\SemanticType{\alpha}]$, and $C[A] = C[B]$, then $\SemanticType{\alpha}$ is bivariant.
 \end{definition}
 
 \paragraph{Definition-Site Variance}\label{par:Definition_Site_Variance}
@@ -77,6 +85,9 @@ Analogously, for \texttt{\SemanticType{contravariantBox}}, we can only call the 
 The \texttt{\SemanticType{invariantBox}} prohibits calls to either \texttt{put()} or \texttt{get()}; but if we had an operation that does not contain the type parameter of the \texttt{Box} type anywhere (e.g., a to-string operation of $type () \rightarrow \SemanticType{String})$, then we could still call that method.
 
 \nameref{def:Use_Site_Variance} requires us to write more complex types, but allows us to re-use the same type definition (and the same implementations) for covariant, contravariant, bivariant, and invariant uses.
+
+This is shown in the code below.
+\inputminted[frame=lines,linenos]{java}{./EDAP05-Concepts_Programming_Languages-Sections/Advanced_Data_Types/Code/Variant_Java_Class.java}
 
 %%% Local Variables:
 %%% mode: latex

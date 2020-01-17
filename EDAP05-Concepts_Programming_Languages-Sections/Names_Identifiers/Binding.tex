@@ -246,6 +246,14 @@ The act of unbinding is called \nameref{def:Variable_Memory_Deallocation}.
   They are placed in the ``static'' section of \nameref{def:Memory}.
   \nameref{def:Static_Variable_Binding_Lifetime}s can be used as globally accessible \nameref{def:Variable}s, or ensure that subprograms are history-sensitive.
 
+  \begin{remark}[\texttt{static} as a Modifier]
+    The \nameref{def:Keyword} \texttt{static} can be used on variables to tell the compiler/runtime system that the variable should be placed in the \texttt{static} portion of memory.
+    This is similar to making a \nameref{def:Global_Variable}, in that they are both stored in the static portion of memory.
+    However, the use of the \texttt{static} \nameref{def:Keyword} is used when the variable should have a limited scope.
+    For example, consider the code below.
+    \inputminted[frame=lines,linenos]{c}{./EDAP05-Concepts_Programming_Languages-Sections/Names_Identifiers/Code/Scoped_Static_Variable.c}
+  \end{remark}
+
   The pros and cons of \nameref{def:Static_Variable_Binding_Lifetime}s are:
   \begin{itemize}[noitemsep]
   \item Pros
@@ -312,7 +320,9 @@ The act of unbinding is called \nameref{def:Variable_Memory_Deallocation}.
 \begin{definition}[Explicit Heap-Dynamic Variable]\label{def:Explicit_Heap-Dynamic_Variable_Binding_Lifetime}
   \emph{Explicit heap-dynamic variables} are nameless (abstract) memory cells that are allocated and deallocated by explicit run-time instructions written by the programmer.
   These \nameref{def:Variable}s are allocated to and deallocated from the \nameref{def:Heap}.
-  They can only be referenced through pointers or reference variables.
+  They can only be referenced through \nameref{def:Pointer}s or \nameref{def:Reference} variables, meaning whenever a heap value is allocated, 2 variables are created at a time.
+  There is the \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime} \nameref{def:Pointer}/\nameref{def:Reference} and the heap-allocated \emph{anonymous} (meaning the object itself has no \nameref{subsubsec:Variable_Name}) object.
+  \textbf{The only way to reference the heap-object is through the \nameref{def:Pointer}/\nameref{def:Reference} \nameref{def:Stack-Dynamic_Variable_Binding_Lifetime}.}
 
   The pointer/reference can only be created and returned by:
   \begin{itemize}[noitemsep]

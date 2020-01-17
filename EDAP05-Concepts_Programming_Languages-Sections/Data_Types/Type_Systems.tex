@@ -76,7 +76,11 @@ Because of the wide variety of \nameref{def:Data_Type}s present today, it is mor
 
 \subsubsection{Strong and Weak Typing}\label{subsubsec:Strong_Weak_Typing}
 \begin{definition}[Strong Type Checking]\label{def:Strong_Type_Checking}
-  \emph{Strong type checking} is a property of a programming language that states that \textbf{any} language implementation finds \textbf{all} \nameref{def:Type_Error}s and prevents the operations that caused the \nameref{def:Type_Error} from taking place.
+  \emph{Strong type checking} is a property of a programming language if and only if
+  \begin{propertylist}
+  \item All values have a \nameref{def:Data_Type}
+  \item \textbf{Any} \nameref{def:Type_Error}s and prevents the operations that caused the \nameref{def:Type_Error} from taking place, \textbf{BEFORE EXECUTION}
+  \end{propertylist}
 
   A language that has strong type checking is called a \emph{strongly-typed language}.
   Such languages are:
