@@ -3,6 +3,49 @@ This section is meant to quick review and introduce the equations that will be u
 It is not meant to be comprehensive and/or in-depth.
 For more information about the topic of probability and statistics, refer to the \href{file:./Math_374-Reference_Sheet.pdf}{Math 374 - Probability and Statistics} document.
 
+\subsection{Axioms of Probability}\label{subsec:Axioms_of_Probability}
+\begin{definition}[Sample Space]\label{def:Sample_Space}
+  The \emph{sample space} is the set of all possible outcomes in a random experiment.
+  It is denoted with the capital Greek omega.
+
+  \begin{equation}\label{eq:Sample_Space}
+    \Omega
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Event]\label{def:Event}
+  An \emph{event} is a subset of the \nameref{def:Sample_Space} that we are interested in.
+  These are generally denoted with capital letters.
+
+  \begin{equation}\label{eq:Event}
+    A \subseteq \Omega
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Mutually Exclusive]\label{def:Mutually_Exclusive}
+  Any two \nameref{def:Event}s are \emph{mutually exclusive} if the equation below holds.
+
+  \begin{equation}\label{eq:Mutually_Exclusive}
+    \Prob(A \cup B) = \Prob(A) + \Prob(B)
+  \end{equation}
+\end{definition}
+
+Laws that follow from the above definitions (\Crefrange{def:Sample_Space}{def:Mutually_Exclusive}).
+\begin{enumerate}[noitemsep]
+\item The conjugate of the \nameref{def:Event} occurring, i.e.\ the \nameref{def:Event} \textbf{not} occurring is:
+  \begin{equation}\label{eq:Conjugate_Event}
+    \Prob(\bar{A}) = 1 - \Prob(A)
+  \end{equation}
+
+\item The probability of the union of 2 \nameref{def:Event}s is:
+  \begin{equation}\label{eq:Union_Probability}
+    \Prob(A \cap B) = \Prob(A) + \Prob(B) - \Prob(A \cup B)
+  \end{equation}
+  \begin{itemize}[noitemsep]
+  \item If $A$ and $B$ are \nameref{def:Mutually_Exclusive}, then $\Prob(A \cup B) = 0$.
+  \end{itemize}
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
