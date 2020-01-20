@@ -1,0 +1,147 @@
+\subsection{Networking Layer}\label{subsec:Networking_Layer}
+\begin{definition}[Networking Layer]\label{def:Networking_Layer}
+  \textbf{TODO!}
+\end{definition}
+
+\begin{definition}[Routing]\label{def:Routing}
+  \emph{Routing} is the process of determining where to forward packets onto next.
+
+  There are algorithms designed to discover the other participants in the network by analyzing the grpah that is created when each participant is considered a node in this graph.
+\end{definition}
+
+\begin{definition}[Routing Protocol]\label{def:Routing_Protocol}
+  A \emph{routing protocol} is used to construct a \nameref{def:Routing_Table} in each node.
+\end{definition}
+
+\begin{definition}[Routing Table]\label{def:Routing_Table}
+  The \emph{routing table} is a table that contains entries on the shortest distances through the current network graph.
+  This is used to help determine where to next forward packets onto.
+
+  Each node has a routing table that contains the cost to the destination and the next hop for each destination.
+  For a valid routing table, we need to have:
+  \begin{enumerate}[noitemsep]
+  \item Which destination the packets are going to?
+  \item What is the next hop after the destination?
+  \item The ``metric'' or weight of that particular path through the network graph?
+    \begin{itemize}[noitemsep]
+    \item We need this term so we can update the routing table as we discover new routes.
+    \item This way if a new route with a lower cost presents itself, we can replace the higher-cost one with the lower one.
+    \end{itemize}
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Forwarding]\label{def:Forwarding}
+  \emph{Forwarding} is the process of moving a packet from one place to the next based on the \nameref{def:Routing_Table} present in this node and where the packet would like to go next.
+\end{definition}
+
+\subsubsection{Discovering Routing Information}\label{subsubsec:Discovering_Route_Info}
+\paragraph{Dijkstra's Algorithm}\label{par:Dijkstras_Algorithm}
+There are 2 main problems with Dijkstra's Algorithm:
+\begin{enumerate}[noitemsep]
+\item The weights along the edges of the graph cannot be negative.
+\item We \textbf{must} know the entire network's topology before beginning the algorithm.
+  \begin{itemize}[noitemsep]
+  \item Typically, this is not possible on vast networks, like the Internet.
+  \end{itemize}
+\end{enumerate}
+
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \Input{A graph with weights on each edge representing ``distance'' between the nodes.}
+  \Output{The path through the graph with the least weight from some starting node.}
+  \BlankLine{}
+
+  \textbf{TODO!}\;
+  \textbf{From Networking Review Lecture Video 2.} \;
+  
+  \caption{Dijkstra's Algorithm}
+  \label{algo:Dijkstras_Algorithm}
+\end{algorithm}
+
+\paragraph{Bellman-Ford Algorithm}\label{par:Bellman_Ford_Algorithm}
+The Bellman-Ford algorithm works with graphs that have negative weight values on edges.
+It also \textbf{does not} require us to know the entire network's topology before beginning.
+However, it is much slower than \nameref{algo:Dijkstras_Algorithm}.
+
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \Input{A graph with weights on each edge representing ``distance'' between the nodes.}
+  \Output{The path through the graph with the least weight from some starting node.}
+  \BlankLine{}
+
+  \textbf{TODO!} \;
+  \textbf{From Networking Review Lecture Video 2.} \;
+
+  \caption{Bellman-Ford Algorithm}
+  \label{algo:Bellman_Ford_Algorithm}
+\end{algorithm}
+
+\subsubsection{Routing Information}\label{subsubsec:Routing_Info}
+There are 2 ways to collect the routing information necessary to properly route packets through a network.
+These 2 routing tables are:
+\begin{enumerate}[noitemsep]
+\item \nameref{par:Static_Routing_Tables}
+\item \nameref{par:Dynamic_Routing_Tables}
+\end{enumerate}
+
+\paragraph{Static Routing Tables}\label{par:Static_Routing_Tables}
+The static routing tables are manually configured by a user or a program before the system begins routing the information.
+This means that there is not overhead when trying to determine where the packet should next be forwarded to.
+
+\paragraph{Dynamic Routing Tables}\label{par:Dynamic_Routing_Tables}
+To use a dynamic \nameref{def:Routing_Table}, we must use a \nameref{def:Routing_Protocol} to build the table as we go, rather than have a completely finished table when starting.
+These are built using either:
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Distance_Vector_Routing}
+\item \nameref{def:Link_State_Routing}
+\end{enumerate}
+
+\begin{definition}[Distance Vector Routing Protocol]\label{def:Distance_Vector_Routing_Protocol}
+  The \emph{distance vector routing algorithm} is a \nameref{def:Routing_Protocol} that uses \nameref{algo:Bellman_Ford_Algorithm} to construct a \nameref{def:Routing_Table}.
+  \textbf{TODO!}
+\end{definition}
+
+\begin{definition}[Link State Routing Protocol]\label{def:Link_State_Routing_Protocol}
+  The \emph{link state routing protocol} is a \nameref{def:Routing_Protocol} that uses \nameref{algo:Dijkstras_Algorithm} to construct a \nameref{def:Routing_Table}.
+  Thus, we need to know what the whole network looks like.
+  \textbf{TODO!}
+\end{definition}
+
+However, the problem with both \nameref{def:Distance_Vector_Routing_Protocol} and \nameref{def:Link_State_Routing_Protocol} is that they do not scale well.
+However, to help with this, both protocols are contained within a single \nameref{def:Autonomous_System}.
+
+\begin{definition}[Autonomous System]\label{def:Autonomous_System}
+  An \emph{autonomous system} is a smaller network, like a business or home, that performs a \nameref{def:Routing_Protcol} upon itself.
+  It is done this way because both the \nameref{def:Distance_Vector_Routing_Protocol} and \nameref{def:Link_State_Routing_Protocol} do not scale to Internet-sized networks well.
+
+  To combat this, each of the autonomous systems has a speaker node that speaks to the outside world.
+  This speaker node is used in the \nameref{def:Path_Vector_Routing_Protocol}.
+\end{definition}
+
+\begin{definition}[Path Vector Routing Protocol]\label{def:Path_Vector_Routing_Protocol}
+  
+\end{definition}
+
+\subsubsection{IP Addresses}\label{subsubsec:IP_Addresses}
+\begin{definition}[IP Address]\label{def:IP_Address}
+  \textbf{TODO!}
+\end{definition}
+
+\begin{definition}[Subnet]\label{def:Subnet}
+  All hosts that are in the subnet will have \nameref{def:IP_Address}es that match the number of bits that are present in the subnet.
+
+  For example, in \texttt{192.168.2.0/24}, the \texttt{24} means the first 24 bits of the subnet are 1's.
+  So, the first 3 \nameref{def:IP_Address} blocks \texttt{192.168.2} will remain the same for every client in that subnet.
+  \textbf{TODO!}
+\end{definition}
+
+\begin{definition}[Classless Inter-Domain Routing]
+  \textbf{TODO!}
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:

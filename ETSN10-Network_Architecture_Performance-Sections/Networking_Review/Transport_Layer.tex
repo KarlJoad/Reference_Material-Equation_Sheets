@@ -1,0 +1,44 @@
+\subsection{Transport Layer}\label{subsec:Transport_Layer}
+\begin{definition}[Transport Layer]\label{def:Transport_Layer}
+  The \emph{transport layer} is built where the \nameref{def:Network_Layer} has delivered all the data to the end host.
+  This means that only the source and destination hosts have this layer.
+  So, routers and switches do not have this, but your phone, laptop, and the server you're connecting to do.
+  
+  This layer may be responsible for:
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Connection_Oriented_Communication}
+  \item Multiplexing different data flows
+  \item Reliable data delivery
+  \item Data flow control
+  \item Data congestion control
+  \end{itemize}
+  Some implementation of this layer do not handle all of these functions, but all \textbf{must} handle the multiplexing of different data flows.
+
+  There are 2 main transport layers in-use today:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Transmission_Control_Protocol}
+  \item \nameref{def:User_Datagram_Protocol}
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Connection-Oriented Communication]\label{def:Connection_Oriented_Communication}
+  A \emph{connection-oriented communication} system means that a connection must be established before any data is transferred.
+  In addition, this connection must be maintained throughout the transmission of data.
+
+  \begin{remark}[Connectionless Communication]\label{rmk:Connectionless_Communication}
+    In a \emph{connectionless communication} system, hosts can send data at any time without prior connection being made.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Transmission Control Protocol]\label{def:Transmission_Control_Protocol}
+  \textbf{TODO!}
+\end{definition}
+
+\begin{definition}[User Datagram Protocol]\label{def:User_Datagram_Protocol}
+  \textbf{TODO!}
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
