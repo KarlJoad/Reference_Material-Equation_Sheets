@@ -117,6 +117,13 @@ Laws that follow from the above definitions (\Crefrange{def:Sample_Space}{def:Mu
     \end{aligned}
   \end{equation}
 
+  The standard deviation is the square root of the variance.
+  \begin{equation}\label{eq:Discrete_Random_Variable-Standard_Deviation}
+    \begin{aligned}
+      \sigma = \sqrt{\sigma^{2}} &= \sqrt{\sum\limits_{x \in X} {\left( x - \mu \right)}^{2} p_{X}(x)} \\
+      \StdDev[x] = \sqrt{\Variance[x]} &= \sqrt{\sum\limits_{x \in X} {\bigl( x - \ExpectedValue[x] \bigr)}^{2} p_{X}(x)} \\
+    \end{aligned}
+  \end{equation}
 \end{definition}
 %%% Local Variables:
 %%% mode: latex
