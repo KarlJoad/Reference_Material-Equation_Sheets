@@ -1,7 +1,7 @@
 \section{Single Continuous Random Variables} \label{sec:Single Continuous Random Variables}
 	\begin{definition}[Random Variable] \label{def:Random Variable, Full}
 		Consider a random experiment with sample space $S$ and event class $\EventClass$.
-		A \emph{random variable} $X$ is a function from the sample space $S$ to the real line $\RealNums$ with the property the set $A_{b} = \lbrace \zeta: X \vert \zeta \leq b \rbrace$ is in $\EventClass$ for every $b$ in $\RealNums$.
+		A \emph{random variable} $X$ is a function from the sample space $S$ to the real line $\RealNumbers$ with the property the set $A_{b} = \lbrace \zeta: X \vert \zeta \leq b \rbrace$ is in $\EventClass$ for every $b$ in $\RealNumbers$.
 	\end{definition}
 	\begin{definition}[Continuous Random Variable] \label{def:Continuous Random Variable}
 		A \emph{continuous random variable} is a random variable whose \nameref{subsec:Cumulative Distribution Function} is continuous everywhere.
@@ -97,7 +97,7 @@
 		\begin{definition}[Probability Density Function] \label{def:Probability Density Function}
 			The \emph{probability density function (PDF)} of a random variable $X$, if it exists, is defined as the derivative of the CDF of $X$.
 			\begin{equation} \label{eq:Probability Density Function}
-				f_{X} \left( x \right) = \frac{d}{dx} f_{X} \left( x \right)
+				f_{X} \left( x \right) = \frac{d}{dx} F_{X} \left( x \right)
 			\end{equation}
 			\begin{remark} \label{rmk:Probability Density Function}
 				Both discrete and continuous random variables can have PDFs, however, the discrete random variable will have a discontinuous PDF.
@@ -249,7 +249,7 @@
 			$\mu$ is $\ExpectedValue \left[ X \right] $ and $\sigma^{2}$ is how narrow/sharp the bell is.
 			A Gaussian Random Variable has a PDF of:
 			\begin{equation} \label{eq:PDF of Gaussian Random Variable}
-				f_{X} \left( x \right) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{\left( x - \mu \right)^{2}}{2 \sigma^{2}}} \text{, } x \in \RealNums
+				f_{X} \left( x \right) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{\left( x - \mu \right)^{2}}{2 \sigma^{2}}} \text{, } x \in \RealNumbers
 			\end{equation}
 		\end{definition}
 		\begin{definition}[Standard Normal Distribution] \label{def:Standard Normal Distribution}
@@ -385,3 +385,7 @@
 			
 			Solution to Problem 4.100 from Homework 7.
 		\end{example}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Math_374-Reference_Sheet"
+%%% End:
