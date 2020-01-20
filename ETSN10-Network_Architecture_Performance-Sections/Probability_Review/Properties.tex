@@ -1,0 +1,35 @@
+\subsection{Properties of Expected Value}\label{subsec:Properties_Expected_Value}
+\begin{propertylist}
+\item Expected Value obeys the laws of linearity.
+  \begin{equation}\label{eq:Expected_Value-Linearity}
+    \ExpectedValue[aX + b] = a\ExpectedValue[X] + b
+  \end{equation}\label{prop:Expected_Value-Linearity}
+
+\item For any \nameref{def:Random_Variable}s $X, Y$
+  \begin{equation}\label{eq:Expected_Value-Add_Random_Variables}
+    \ExpectedValue[X+Y] = \ExpectedValue[X] + \ExpectedValue[Y]
+  \end{equation}\label{prop:Expected_Value-Add_Random_Variables}
+
+\item For any \nameref{rmk:Independent_Multiple_Random_Variables} $X,Y$,
+  \begin{equation}\label{eq:Expected_Value-Multiply_Random_Variables}
+    \ExpectedValue[XY] = \ExpectedValue[X] \ExpectedValue[Y]
+  \end{equation}\label{prop:Expected_Value-Multiply_Random_Variables}
+\end{propertylist}
+
+\subsection{Properties of Variance}\label{subsec:Properties_Variance}
+\begin{propertylist}
+\item Variance does not obey the laws of linearity.
+  \begin{equation}\label{eq:Variance-Linearity}
+    \Variance[aX + b] = a^{2}\Variance[X]
+  \end{equation}\label{prop:Variance-Linearity}
+
+\item For any \nameref{rmk:Independent_Multiple_Random_Variables} $X,Y$,
+  \begin{equation}\label{eq:Variance-Add_Random_Variables}
+    \Variance[X+Y] = \Variance[X] + \Variance[Y]
+  \end{equation}\label{prop:Variance-Add_Random_Variables}
+\end{propertylist}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
