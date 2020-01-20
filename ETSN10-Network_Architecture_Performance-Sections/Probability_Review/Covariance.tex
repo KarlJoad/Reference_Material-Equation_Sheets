@@ -1,0 +1,30 @@
+\subsection{Covariance}\label{subsec:Covariance}
+\begin{definition}[Covariance]\label{def:Covariance}
+  The \emph{covariance} of two \nameref{def:Random_Variable}s is defined as
+  
+  \begin{equation}\label{eq:Covariance}
+    \begin{aligned}
+      \Covariance[X,Y] &= \ExpectedValue\biggl[ \bigl( X - \ExpectedValue[X] \bigr) \bigl( Y - \ExpectedValue[Y] \bigr) \biggr] \\
+      &= \ExpectedValue[XY] - \ExpectedValue[X] \ExpectedValue[Y]
+    \end{aligned}
+  \end{equation}
+
+  \begin{remark}[Relationship Between Covariance and Variance]\label{rmk:Covariance_Variance_Relationship}
+    Variance is actually a case of \nameref{def:Covariance} of a \nameref{def:Random_Variable} with itself.
+    \begin{equation}\label{eq:Covariance_Variance_Relationship}
+      \Variance[X] = \Covariance[X,X]
+    \end{equation}
+  \end{remark}
+\end{definition}
+
+The \nameref{def:Covariance} of two \nameref{def:Random_Variable}s can have 3 possible values:
+\begin{enumerate}[noitemsep]
+\item Positive: If one \nameref{def:Random_Variable} increases, the other does too.
+\item Negative: If one \nameref{def:Random_Variable} increases, the other decreases.
+\item Zero: If one \nameref{def:Random_Variable} increases, the other does nothing.
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
