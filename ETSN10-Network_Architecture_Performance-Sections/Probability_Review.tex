@@ -189,6 +189,30 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
 \end{example}
 
 \paragraph{Bernoulli Random Variable}\label{par:Bernoulli_Random_Variable}
+\begin{definition}[Bernoulli Random Variable]\label{def:Bernoulli_Random_Variable}
+  The \emph{Bernoulli random variable} is one where \textbf{only one} test occurs, and there are only 2 outcomes.
+
+  The probability of success is denoted
+  \begin{equation}\label{eq:Bernoulli_Random_Variable-Success}
+    p_{X}(\text{success}) = p
+  \end{equation}
+
+  The probability of failure is denoted
+  \begin{equation}\label{eq:Bernoulli_Random_Variable-Failure}
+    p_{X}(\text{failure}) = 1-p
+  \end{equation}
+
+  The mean/expected value is:
+  \begin{equation}\label{eq:Bernoulli_Random_Variable-Expected_Value}
+    \mu = \ExpectedValue[x] = p
+  \end{equation}
+
+  The variance is:
+  \begin{equation}\label{eq:Bernoulli_Random_Variable-Variance}
+    \sigma^{2} = \Variance[x] = (1-p) p
+  \end{equation}
+\end{definition}
+
 \paragraph{Binomial Random Variable}\label{par:Binomial_Random_Variable}
 \paragraph{Geometric Random Variable}\label{par:Geometric_Random_Variable}
 \paragraph{Poisson Random Variable}\label{par:Poisson_Random_Variable}
