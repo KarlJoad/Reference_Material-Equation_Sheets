@@ -214,6 +214,25 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
 \end{definition}
 
 \paragraph{Binomial Random Variable}\label{par:Binomial_Random_Variable}
+\begin{definition}[Binomial Random Variable]\label{def:Binomial_Random_Variable}
+  The \emph{binomial random variable} is one where $n$ trials are run with no stops for a success, where the \nameref{def:Random_Variable} in each run is a \nameref{def:Bernoulli_Random_Variable}.
+
+  The probability of $k$ successes with $n$ trials is
+  \begin{equation}\label{eq:Binomial_Random_Variable-Probability_Success}
+    \binom{n}{k} p^{k} {(1-p)}^{n-k} = \frac{n!}{k! (n-k)!} {(1-p)}^{n-k}
+  \end{equation}
+
+  The mean/expected value after $n$ trials is
+  \begin{equation}\label{eq:Bernoulli_Random_Variable-Expected_Value}
+    \mu = \ExpectedValue[x] = np
+  \end{equation}
+
+  The variance after $n$ trials is
+  \begin{equation}\label{eq:Bernoulli_Random_Variable-Variance}
+    \sigma^{2} = \Variance[x] = np (1-p)
+  \end{equation}
+\end{definition}
+
 \paragraph{Geometric Random Variable}\label{par:Geometric_Random_Variable}
 \paragraph{Poisson Random Variable}\label{par:Poisson_Random_Variable}
 %%% Local Variables:
