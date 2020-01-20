@@ -1,0 +1,41 @@
+\subsection{Multiple Random Variables}\label{subsec:Multiple_Random_Variables}
+\begin{definition}[Joint Probability Function]\label{def:Joint_Probability_Distribution}
+  If $X, Y$ are \nameref{def:Discrete_Random_Variable}s, the probability of the joint event occurring is
+  
+  \begin{equation}\label{eq:Joint_Probability_Event}
+    p_{X,Y}(x,y)
+  \end{equation}
+  where the subscripted $X,Y$ refers to the \nameref{def:Discrete_Random_Variable}s in use and $x,y$ refers to the values being calculated for.
+  
+  \begin{equation}\label{eq:Joint_Probability_Distribution}
+    \Prob(x, y) = \Prob(X=x, Y=y)
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Joint Cumulative Distribution Function]\label{def:Joint_CDF}
+  If $X, Y$ are \nameref{def:Continuous_Random_Variable}s, then their \emph{joint cumulative distribution function} is
+
+  \begin{equation}\label{eq:Joint_CDF}
+    F_{X,Y}(x,y) = \Prob(X \leq x, Y \leq y)
+  \end{equation}
+
+  \begin{remark}[Independent Multiple Random Variables]\label{rmk:Independent_Multiple_Random_Variables}
+    $X, Y$ are independent if and only if
+    \begin{equation}\label{eq:Independent_Multiple_Random_Variables}
+      F_{X,Y}(x, y) = F_{X}(x) F_{Y}(y)
+    \end{equation}
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Joint Probability Density Function]\label{def:Joint_PDF}
+  If $X, Y$ are \nameref{def:Continuous_Random_Variable}s, then their \emph{joint probability density function} is
+
+  \begin{equation}\label{eq:Joint_PDF}
+    f_{X,Y}(x,y) = \frac{\partial^{2}}{\partial x \partial y} F_{X,Y}(x,y) 
+  \end{equation}
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
