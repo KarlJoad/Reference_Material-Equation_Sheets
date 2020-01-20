@@ -109,6 +109,14 @@ Laws that follow from the above definitions (\Crefrange{def:Sample_Space}{def:Mu
     \end{aligned}
   \end{equation}
 
+  The variance of a discrete random variable is how ``off'' a value from the random variable is from the mean/expected value.
+  \begin{equation}\label{eq:Discrete_Random_Variable-Variance}
+    \begin{aligned}
+      \sigma^{2} &= \sum\limits_{x \in X} {\left( x - \mu \right)}^{2} p_{X}(x) \\
+      \Variance[x] &= \sum\limits_{x \in X} {\bigl( x - \ExpectedValue[x] \bigr)}^{2} p_{X}(x) \\
+    \end{aligned}
+  \end{equation}
+
 \end{definition}
 %%% Local Variables:
 %%% mode: latex
