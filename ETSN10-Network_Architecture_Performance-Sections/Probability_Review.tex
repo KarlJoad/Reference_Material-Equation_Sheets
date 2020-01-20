@@ -288,6 +288,14 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
 \subsubsection{Continuous Random Variables}\label{subsubsec:Continuous_Random_Variables}
 \begin{definition}[Continuous Random Variable]\label{def:Continuous_Random_Variable}
   A \emph{Continuous Random Variable} is one whose values are mapped from an \nameref{def:Event}'s outcome to the real numbers ($\RealNumbers$).
+
+  Continuous random variables cannot be calculated at single points, but must be integrated over a range.
+  This is called the Cumulative Distribution Function (CDF).
+  The subscript refers to the random variable we are using, and $x$ is the value being calculated for.
+  \begin{equation}\label{eq:Continuous_Random_Variable-CDF}
+    F_{X}(x) = \Prob(X \leq x)
+  \end{equation}
+
 \end{definition}
 %%% Local Variables:
 %%% mode: latex
