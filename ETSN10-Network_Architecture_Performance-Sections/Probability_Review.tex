@@ -234,6 +234,31 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
 \end{definition}
 
 \paragraph{Geometric Random Variable}\label{par:Geometric_Random_Variable}
+\begin{definition}[Geometric Random Variable]\label{def:Geometric_Random_Variable}
+  The \emph{geometric random variable} is one where $n$ trials are run, where the $n$th trial is a success, meaning there are $n-1$ previous failures.
+  The \nameref{def:Random_Variable} in each run is a \nameref{def:Bernoulli_Random_Variable}.
+
+  This means \textbf{each trial} has a probability of success of
+  \begin{equation}\label{eq:Geometric_Random_Variable-Probability_Success}
+    p_{X}(\text{success}) = p
+  \end{equation}
+
+  And \textbf{each trial} has a probability of failure of
+  \begin{equation}\label{eq:Geometric_Random_Variable-Probability_Failure}
+    p_{X}(\text{failure}) = 1-p
+  \end{equation}
+
+  The mean/expected value is
+  \begin{equation}\label{eq:Geometric_Random_Variable-Expected_Value}
+    \mu = \ExpectedValue[x] = \frac{1}{p}
+  \end{equation}
+
+  The variance is
+  \begin{equation}\label{eq:Geometric_Random_Variable-Variance}
+    \sigma^{2} = \Variance[x] = \frac{1-p}{p^{2}}
+  \end{equation}
+\end{definition}
+
 \paragraph{Poisson Random Variable}\label{par:Poisson_Random_Variable}
 %%% Local Variables:
 %%% mode: latex
