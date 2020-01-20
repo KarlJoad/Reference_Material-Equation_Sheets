@@ -1,0 +1,41 @@
+\subsection{Correlation Coefficient}\label{subsec:Correlation_Coefficient}
+\begin{definition}[Correlation]\label{def:Correlation}
+  The \emph{correlation of $X$ and $Y$} is defined as the $1,1$ moment.
+  \begin{equation}\label{eq:Correlation}
+    \ExpectedValue \left[X^{1}Y^{1} \right]
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Correlation Coefficient]\label{def:Correlation_Coefficient}
+  The \emph{correlation coefficient of $X$ and $Y$} is a measure of the \textbf{LINEAR relationship} between $X$ and $Y$.
+  It does not say anything about nonlinear dependence.
+  It is defined as
+
+  \begin{equation}\label{eq:Correlation_Coefficient}
+    \begin{aligned}
+      \CorrCoeff_{X,Y} &= \frac{\Covariance[X,Y]}{\sigma_{X} \sigma_{Y}} \\
+      &= \frac{\Covariance[X,Y]}{\StdDev[X] \StdDev[Y]} \\
+    \end{aligned}
+  \end{equation}
+
+  \begin{remark}
+    $\CorrCoeff_{X,Y}$ only ranges from $-1 \leq \CorrCoeff_{X,Y} \leq 1$.
+  \end{remark}
+
+  \begin{remark}
+    The closer $\CorrCoeff_{X,Y}$ are to $+1$, the closer $X$ and $Y$ are to having a positive linear relationship.
+    The closer $\CorrCoeff_{X,Y}$ are to $-1$, the closer $X$ and $Y$ are to having a negative linear relationship.
+    The closer $\CorrCoeff_{X,Y}$ are to $0$, the closer $X$ and $Y$ are to being \emph{uncorrelated.}
+  \end{remark}
+\end{definition}
+
+If $\CorrCoeff_{X,Y} = 0$, then
+\begin{itemize}[noitemsep]
+\item If $X,Y$ are \nameref{rmk:Independent_Multiple_Random_Variables}, then they are uncorrelated.
+\item If $X,Y$ are uncorrelated ($\CorrCoeff_{X,Y} = 0$), then they may still \textbf{not} be independent.
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
