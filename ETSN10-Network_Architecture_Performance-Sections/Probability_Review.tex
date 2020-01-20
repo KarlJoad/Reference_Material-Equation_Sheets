@@ -260,6 +260,31 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
 \end{definition}
 
 \paragraph{Poisson Random Variable}\label{par:Poisson_Random_Variable}
+\begin{definition}[Poisson Random Variable]\label{def:Poisson_Random_Variable}
+  The \emph{Poisson random variable} is used to model the number of independent events that occur over a given period of time.
+
+  The Poisson random variable has one parameter,
+  \begin{equation}\label{eq:Poisson_Random_Variable-Lambda_Parameter}
+    \lambda
+  \end{equation}
+  $\lambda$ is the average number of events per unit of time.
+
+  The probability function for the value of $x \in X$ of this random variable is
+  \begin{equation}\label{eq:Poisson_Random_Variable-Probability_Function}
+    p_{X}(x) = e^{-\lambda} \left( \frac{\lambda^{x}}{k!} \right)
+  \end{equation}
+
+  The mean/expected value is
+  \begin{equation}\label{eq:Poisson_Random_Variable-Expected_Value}
+    \mu = \ExpectedValue[x] = \lambda
+  \end{equation}
+
+  The variance is
+  \begin{equation}\label{eq:Poisson_Random_Variable-Variance}
+    \sigma^{2} = \Variance[x] = \lambda
+  \end{equation}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
