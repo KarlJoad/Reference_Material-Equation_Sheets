@@ -105,7 +105,7 @@ Laws that follow from the above definitions (\Crefrange{def:Sample_Space}{def:Mu
   \begin{equation}\label{eq:Discrete_Random_Variable-Expected_Value}
     \begin{aligned}
       \mu = \sum\limits_{x \in X} x p_{X}(x) \\
-      \ExpectedValue[x] = \sum\limits_{x \in X} x p_{X}(x) \\
+      \ExpectedValue[X] = \sum\limits_{x \in X} x p_{X}(x) \\
     \end{aligned}
   \end{equation}
 
@@ -113,7 +113,7 @@ Laws that follow from the above definitions (\Crefrange{def:Sample_Space}{def:Mu
   \begin{equation}\label{eq:Discrete_Random_Variable-Variance}
     \begin{aligned}
       \sigma^{2} &= \sum\limits_{x \in X} {\left( x - \mu \right)}^{2} p_{X}(x) \\
-      \Variance[x] &= \sum\limits_{x \in X} {\bigl( x - \ExpectedValue[x] \bigr)}^{2} p_{X}(x) \\
+      \Variance[X] &= \sum\limits_{x \in X} {\bigl( x - \ExpectedValue[X] \bigr)}^{2} p_{X}(x) \\
     \end{aligned}
   \end{equation}
 
@@ -121,7 +121,7 @@ Laws that follow from the above definitions (\Crefrange{def:Sample_Space}{def:Mu
   \begin{equation}\label{eq:Discrete_Random_Variable-Standard_Deviation}
     \begin{aligned}
       \sigma = \sqrt{\sigma^{2}} &= \sqrt{\sum\limits_{x \in X} {\left( x - \mu \right)}^{2} p_{X}(x)} \\
-      \StdDev[x] = \sqrt{\Variance[x]} &= \sqrt{\sum\limits_{x \in X} {\bigl( x - \ExpectedValue[x] \bigr)}^{2} p_{X}(x)} \\
+      \StdDev[X] = \sqrt{\Variance[X]} &= \sqrt{\sum\limits_{x \in X} {\bigl( x - \ExpectedValue[X] \bigr)}^{2} p_{X}(x)} \\
     \end{aligned}
   \end{equation}
 \end{definition}
@@ -161,7 +161,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   Using \Cref{eq:Discrete_Random_Variable-Expected_Value}, we can find the the expected value/mean.
   \begin{equation*}
     \begin{aligned}
-      \mu = \ExpectedValue[x] &= \sum\limits_{x=1}^{6}x p_{X}(x) \\
+      \mu = \ExpectedValue[X] &= \sum\limits_{x=1}^{6}x p_{X}(x) \\
       &= \frac{1}{6} + \frac{2}{6} + \frac{3}{6} + \frac{4}{6} + \frac{5}{6} + \frac{6}{6} \\
       &= \frac{1+2+3+4+5+6}{6} \\
       &= \frac{21}{6} = 3.5
@@ -171,7 +171,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   Using \Cref{eq:Discrete_Random_Variable-Variance}, we can find the variance.
   \begin{equation*}
     \begin{aligned}
-      \sigma^{2} = \Variance[x] &= \sum\limits_{x=1}^{6} {\bigl(x - \ExpectedValue[x] \bigr)}^{2} p_{X}(x) \\
+      \sigma^{2} = \Variance[X] &= \sum\limits_{x=1}^{6} {\bigl(x - \ExpectedValue[X] \bigr)}^{2} p_{X}(x) \\
       &= \sum\limits_{x=1}^{6} {(x-3.5)}^{2} \left( \frac{1}{6} \right) \\
       &= 2.91667
     \end{aligned}
@@ -180,7 +180,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   Using \Cref{eq:Discrete_Random_Variable-Standard_Deviation}, we can find the standard deviation.
   \begin{equation*}
     \begin{aligned}
-      \sigma = \StdDev[x]&= \sqrt{\sum\limits_{x=1}^{6} {\bigl(x - \ExpectedValue[x] \bigr)}^{2} p_{X}(x)} \\
+      \sigma = \StdDev[X]&= \sqrt{\sum\limits_{x=1}^{6} {\bigl(x - \ExpectedValue[X] \bigr)}^{2} p_{X}(x)} \\
       &= \sqrt{\sum\limits_{x=1}^{6} {(x-3.5)}^{2} \left( \frac{1}{6} \right)} \\
       &= \sqrt{2.91667} \\
       &= 1.70783
@@ -204,12 +204,12 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
 
   The mean/expected value is:
   \begin{equation}\label{eq:Bernoulli_Random_Variable-Expected_Value}
-    \mu = \ExpectedValue[x] = p
+    \mu = \ExpectedValue[X] = p
   \end{equation}
 
   The variance is:
   \begin{equation}\label{eq:Bernoulli_Random_Variable-Variance}
-    \sigma^{2} = \Variance[x] = (1-p) p
+    \sigma^{2} = \Variance[X] = (1-p) p
   \end{equation}
 \end{definition}
 
@@ -224,12 +224,12 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
 
   The mean/expected value after $n$ trials is
   \begin{equation}\label{eq:Bernoulli_Random_Variable-Expected_Value}
-    \mu = \ExpectedValue[x] = np
+    \mu = \ExpectedValue[X] = np
   \end{equation}
 
   The variance after $n$ trials is
   \begin{equation}\label{eq:Bernoulli_Random_Variable-Variance}
-    \sigma^{2} = \Variance[x] = np (1-p)
+    \sigma^{2} = \Variance[X] = np (1-p)
   \end{equation}
 \end{definition}
 
@@ -250,12 +250,12 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
 
   The mean/expected value is
   \begin{equation}\label{eq:Geometric_Random_Variable-Expected_Value}
-    \mu = \ExpectedValue[x] = \frac{1}{p}
+    \mu = \ExpectedValue[X] = \frac{1}{p}
   \end{equation}
 
   The variance is
   \begin{equation}\label{eq:Geometric_Random_Variable-Variance}
-    \sigma^{2} = \Variance[x] = \frac{1-p}{p^{2}}
+    \sigma^{2} = \Variance[X] = \frac{1-p}{p^{2}}
   \end{equation}
 \end{definition}
 
@@ -276,12 +276,12 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
 
   The mean/expected value is
   \begin{equation}\label{eq:Poisson_Random_Variable-Expected_Value}
-    \mu = \ExpectedValue[x] = \lambda
+    \mu = \ExpectedValue[X] = \lambda
   \end{equation}
 
   The variance is
   \begin{equation}\label{eq:Poisson_Random_Variable-Variance}
-    \sigma^{2} = \Variance[x] = \lambda
+    \sigma^{2} = \Variance[X] = \lambda
   \end{equation}
 \end{definition}
 
@@ -310,7 +310,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   \begin{equation}\label{eq:Continuous_Random_Variable-Expected_Value}
     \begin{aligned}
       \mu &= \int\limits_{x \in X} x f_{X}(x) \; dx \\
-      \ExpectedValue[x] &= \int\limits_{x \in X} x f_{X}(x) \; dx \\
+      \ExpectedValue[X] &= \int\limits_{x \in X} x f_{X}(x) \; dx \\
     \end{aligned}
   \end{equation}
 
@@ -318,7 +318,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   \begin{equation}\label{eq:Continuous_Random_Variable-Variance}
     \begin{aligned}
       \sigma^{2} &= \int\limits_{x \in X} {(x - \mu)}^{2} f_{X}(x) \; dx \\
-      \Variance[x] &= \int\limits_{x \in X} {\bigl( x - \ExpectedValue[x] \bigr)}^{2} f_{X}(x) \; dx
+      \Variance[X] &= \int\limits_{x \in X} {\bigl( x - \ExpectedValue[X] \bigr)}^{2} f_{X}(x) \; dx
     \end{aligned}
   \end{equation}
 \end{definition}
@@ -341,7 +341,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   \begin{equation}\label{eq:Negative_Exponential_Random_Variable-Expected_Value}
     \begin{aligned}
       \mu &= \frac{1}{\mu} \\
-      \ExpectedValue[x] &= \frac{1}{\mu} \\
+      \ExpectedValue[X] &= \frac{1}{\mu} \\
     \end{aligned}
   \end{equation}
 
@@ -349,7 +349,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   \begin{equation}\label{eq:Negative_Exponential_Random_Variable-Variance}
     \begin{aligned}
       \sigma^{2} &= {\left( \frac{1}{\mu} \right)}^{2} \\
-      \Variance[x] &= {\left( \frac{1}{\mu} \right)}^{2} \\
+      \Variance[X] &= {\left( \frac{1}{\mu} \right)}^{2} \\
     \end{aligned}
   \end{equation}
 
@@ -357,7 +357,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   \begin{equation}\label{eq:Negative_Exponential_Random_Variable-Standard_Deviation}
     \begin{aligned}
       \sigma = \sqrt{\sigma^{2}} &= \frac{1}{\mu} \\
-      \StdDev[x] = \sqrt{\Variance[x]} &= \frac{1}{\mu} \\
+      \StdDev[X] = \sqrt{\Variance[X]} &= \frac{1}{\mu} \\
     \end{aligned}
   \end{equation}
 \end{definition}
@@ -375,7 +375,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   \begin{equation}\label{eq:Gaussian_Random_Variable-Expected_Value}
     \begin{aligned}
       \mu &= \mu \\
-      \ExpectedValue[x] &= \mu \\
+      \ExpectedValue[X] &= \mu \\
     \end{aligned}
   \end{equation}
 
@@ -383,7 +383,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   \begin{equation}\label{eq:Gaussian_Random_Variable-Variance}
     \begin{aligned}
       \sigma^{2} &= \sigma^{2} \\
-      \Variance[x] &= \sigma^{2} \\
+      \Variance[X] &= \sigma^{2} \\
     \end{aligned}
   \end{equation}
 
@@ -391,7 +391,7 @@ There are 5 different \nameref{def:Discrete_Random_Variable} distributions that 
   \begin{equation}\label{eq:Gaussian_Random_Variable-Standard_Deviation}
     \begin{aligned}
       \sigma = \sqrt{\sigma^{2}} &= \sigma \\
-      \StdDev[x] = \sqrt{\Variance[x]} &= \sigma \\
+      \StdDev[X] = \sqrt{\Variance[X]} &= \sigma \\
     \end{aligned}
   \end{equation}
 \end{definition}
