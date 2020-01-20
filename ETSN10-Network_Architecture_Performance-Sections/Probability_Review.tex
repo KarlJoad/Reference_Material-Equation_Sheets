@@ -55,6 +55,25 @@ Laws that follow from the above definitions (\Crefrange{def:Sample_Space}{def:Mu
   \end{equation}
 \end{definition}
 
+\begin{definition}[Independent]\label{def:Events_Independent}
+  \nameref{def:Event}s are \emph{independent} if the probability of the events' intersection is the same as their probabilities multipled together.
+
+  \begin{equation}\label{eq:Events_Independent}
+    \Prob(A \cap B) = \Prob(A) \Prob(B)
+  \end{equation}
+
+  \begin{remark}[\nameref*{def:Conditional_Probability} and \nameref*{def:Events_Independent} Events]
+    If $A$ and $B$ are \nameref{def:Event}s and are \nameref{def:Events_Independent}, then
+
+    \begin{equation}\label{eq:Conditional_Probability_Events_Independent}
+      \begin{aligned}
+        \Prob(A \Given B) &= \Prob(A) \\
+        \Prob(B \Given A) &= \Prob(B) \\
+      \end{aligned}
+    \end{equation}
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
