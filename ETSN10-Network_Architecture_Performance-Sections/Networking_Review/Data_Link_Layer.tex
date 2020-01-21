@@ -1,4 +1,19 @@
 \subsection{Data-Link Layer}\label{subsec:Data_Link_Layer}
+\begin{definition}[Data-Link Layer]\label{def:Data_Link_Layer}
+  The \emph{data-link layer} is the next layer in the \nameref{def:Networking_Stack}.
+  All devices must implement this layer.
+  The data-link layer is responsible for getting data between two devices that have a \nameref{def:Physical_Layer} connection between them.
+  It is also known as the \emph{Medium Access Control (MAC) layer}.
+  It controls when each device should use the link, and may also include error correction and retransmission.
+
+  Some examples of these are:
+  \begin{itemize}[noitemsep]
+  \item Ethernet
+  \item Point-to-Point Protocol (PPP)
+  \item 802.11 (WiFi)
+  \item Bluetooth
+  \end{itemize}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex

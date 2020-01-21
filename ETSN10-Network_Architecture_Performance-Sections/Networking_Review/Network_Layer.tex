@@ -1,14 +1,125 @@
-\subsection{Networking Layer}\label{subsec:Networking_Layer}
-\begin{definition}[Networking Layer]\label{def:Networking_Layer}
-  \textbf{TODO!}
+\subsection{Network Layer}\label{subsec:Network_Layer}
+\begin{definition}[Network Layer]\label{def:Network_Layer}
+  The \emph{network layer} is the third layer in the \nameref{def:Networking_Stack}.
+  This is the last layer that every device must have.
+  It is responsible for end-to-end data delivery between two devices (hosts) anywhere on the network.
+  It is responsible for routing and forwarding.
+
+  Some examples of this layer are:
+  \begin{itemize}[noitemsep]
+  \item Internet Protocol (IP)
+  \item Internet Control Message Protocol (ICMP)
+  \item \nameref{def:Routing_Protocol}s
+  \end{itemize}
 \end{definition}
 
 \begin{definition}[Routing]\label{def:Routing}
-  \emph{Routing} is the process of determining where to forward packets onto next.
+  \emph{Routing} is the process of determining and selecting the best end-to-end path through a network.
 
   There are algorithms designed to discover the other participants in the network by analyzing the grpah that is created when each participant is considered a node in this graph.
 \end{definition}
 
+\begin{definition}[Forwarding]\label{def:Forwarding}
+  \emph{Forwarding} is the process of selecting the next hop for the given packet.
+\end{definition}
+
+\begin{definition}[Circuit Switching]\label{def:Circuit_Switching}
+  In \emph{circuit switching}, dedicated resources are allocated end-to-end for a particular flow of data.
+  No other flows may use those resources while the connection is maintained.
+  Meaning, that during a connection, there is a single dedicated circuit between the host and the receiver.
+\end{definition}
+
+\begin{definition}[Packet Switching]\label{def:Packet_Switching}
+  In \emph{packet switching}, no resources are allocated to a flow, and each flow’s data is broken up into discrete packets.
+  Each \nameref{def:Packet} is routed and forwarded independently.
+\end{definition}
+
+\begin{definition}[Packet]\label{def:Packet}
+  A connection from one device to another is a stream.
+  However, to effectively implement many things in the \nameref{def:Networking_Stack}, the stream must be broken into several discrete \emph{packets}.
+\end{definition}
+
+\subsubsection{Discovering Routing Information}\label{subsubsec:Discovering_Route_Info}
+\paragraph{Dijkstra's Algorithm}\label{par:Dijkstras_Algorithm}
+\nameref{algo:Dijkstras_Algorithm} starts at the source and builds up the shortest path step-by-step.
+
+There are 2 main problems with \nameref{algo:Dijkstras_Algorithm}:
+\begin{enumerate}[noitemsep]
+\item The weights along the edges of the graph cannot be negative.
+  \begin{itemize}[noitemsep]
+  \item If this were to occur, then we would have an infinite cycle going through the negative edge.
+  \end{itemize}
+\item We \textbf{must} know the entire network's topology before beginning the algorithm.
+  \begin{itemize}[noitemsep]
+  \item Typically, this is not possible on vast networks, like the Internet.
+  \end{itemize}
+\end{enumerate}
+
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \SetKw{OR}{\textbf{OR}}
+  \Input{A graph with weights on each edge representing ``distance'' between the nodes.}
+  \Output{The path through the graph with the least weight from some starting node.}
+  \BlankLine{}
+
+   Assign tentative distance estimate to each node: 0 for the initial node, $\infty$ for all other nodes. \;
+   Mark all nodes except the initial node as unvisited. \;
+   Set the initial node as current node. \;
+   \For{The current node's unvisited neighbours}{
+     Calculate their distance. \;
+     Compare this new distance against the current distance. \;
+     Take whichever distance is smaller and use that as the new value. \;
+     Mark the current node as visited. \;
+     \If{Reached target node \OR{} No more unvisited nodes with distance $< \infty$}{
+       Stop and terminate the algorithm. \;
+     }{
+       Set the unvisited node with the smallest distance as the new current node. \;
+     }
+   }
+  \caption{Dijkstra's Algorithm}
+  \label{algo:Dijkstras_Algorithm}
+\end{algorithm}
+
+\paragraph{Bellman-Ford Algorithm}\label{par:Bellman_Ford_Algorithm}
+The Bellman-Ford algorithm works with graphs that have negative weight values on edges.
+It also \textbf{does not} require us to know the entire network's topology before beginning.
+However, it is much slower than \nameref{algo:Dijkstras_Algorithm}.
+
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \SetKw{AND}{\textbf{AND}}
+  \Input{A graph with weights on each edge representing ``distance'' between the nodes.}
+  \Output{The path through the graph with the least weight from some starting node.}
+  \BlankLine{}
+
+  Set the distance for the source node to 0 and for all other nodes to $\infty$. \;
+  Set the predecessor of all nodes to null. \;
+  \For{$n \in N$ where $N$ is the number of nodes \AND{} $n \leq N-1$}{
+    We repeat $N-1$ times, because $N-1$ is the maximum length of a non-cyclic path. \;
+    \For{Each edge $(u, v)$}{
+      \If{distance to $u$, plus the edge weight $<$ current distance to $v$}{
+        We have discovered a shorter path to $v$. \;
+        Set the distance to $v$ to this new value and the predecessor of $v$ to $u$. \;
+      }
+    }
+  }
+  
+  \For{each edge $(u, v)$}{
+    \If{distance to $u$ plus the edge weight $<$ the distance to $v$}{
+      The graph contains a negative-weight cycle. \;
+      Terminate. \;
+    }{
+      We have found the shortest paths to each node from the source. \;
+      Terminate. \;
+    }
+  }
+  \caption{Bellman-Ford Algorithm}
+  \label{algo:Bellman_Ford_Algorithm}
+\end{algorithm}
+
+\subsubsection{Routing Information}\label{subsubsec:Routing_Info}
 \begin{definition}[Routing Protocol]\label{def:Routing_Protocol}
   A \emph{routing protocol} is used to construct a \nameref{def:Routing_Table} in each node.
 \end{definition}
@@ -30,55 +141,6 @@
   \end{enumerate}
 \end{definition}
 
-\begin{definition}[Forwarding]\label{def:Forwarding}
-  \emph{Forwarding} is the process of moving a packet from one place to the next based on the \nameref{def:Routing_Table} present in this node and where the packet would like to go next.
-\end{definition}
-
-\subsubsection{Discovering Routing Information}\label{subsubsec:Discovering_Route_Info}
-\paragraph{Dijkstra's Algorithm}\label{par:Dijkstras_Algorithm}
-There are 2 main problems with Dijkstra's Algorithm:
-\begin{enumerate}[noitemsep]
-\item The weights along the edges of the graph cannot be negative.
-\item We \textbf{must} know the entire network's topology before beginning the algorithm.
-  \begin{itemize}[noitemsep]
-  \item Typically, this is not possible on vast networks, like the Internet.
-  \end{itemize}
-\end{enumerate}
-
-\begin{algorithm}[H]
-  \DontPrintSemicolon{}
-  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-  \Input{A graph with weights on each edge representing ``distance'' between the nodes.}
-  \Output{The path through the graph with the least weight from some starting node.}
-  \BlankLine{}
-
-  \textbf{TODO!}\;
-  \textbf{From Networking Review Lecture Video 2.} \;
-  
-  \caption{Dijkstra's Algorithm}
-  \label{algo:Dijkstras_Algorithm}
-\end{algorithm}
-
-\paragraph{Bellman-Ford Algorithm}\label{par:Bellman_Ford_Algorithm}
-The Bellman-Ford algorithm works with graphs that have negative weight values on edges.
-It also \textbf{does not} require us to know the entire network's topology before beginning.
-However, it is much slower than \nameref{algo:Dijkstras_Algorithm}.
-
-\begin{algorithm}[H]
-  \DontPrintSemicolon{}
-  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-  \Input{A graph with weights on each edge representing ``distance'' between the nodes.}
-  \Output{The path through the graph with the least weight from some starting node.}
-  \BlankLine{}
-
-  \textbf{TODO!} \;
-  \textbf{From Networking Review Lecture Video 2.} \;
-
-  \caption{Bellman-Ford Algorithm}
-  \label{algo:Bellman_Ford_Algorithm}
-\end{algorithm}
-
-\subsubsection{Routing Information}\label{subsubsec:Routing_Info}
 There are 2 ways to collect the routing information necessary to properly route packets through a network.
 These 2 routing tables are:
 \begin{enumerate}[noitemsep]
@@ -87,58 +149,98 @@ These 2 routing tables are:
 \end{enumerate}
 
 \paragraph{Static Routing Tables}\label{par:Static_Routing_Tables}
-The static routing tables are manually configured by a user or a program before the system begins routing the information.
-This means that there is not overhead when trying to determine where the packet should next be forwarded to.
+\begin{definition}[Static Routing Table]\label{def:Static_Routing_Table}
+  \emph{Static routing table}s are manually configured by a user or a program before the system begins routing the information.
+\end{definition}
+
+This means that there is no overhead to attempt to figure out the network's topology.
+The information needed has already been given to the device's \nameref{def:Routing_Table}, so that step is completed.
 
 \paragraph{Dynamic Routing Tables}\label{par:Dynamic_Routing_Tables}
-To use a dynamic \nameref{def:Routing_Table}, we must use a \nameref{def:Routing_Protocol} to build the table as we go, rather than have a completely finished table when starting.
-These are built using either:
-\begin{enumerate}[noitemsep]
-\item \nameref{def:Distance_Vector_Routing}
-\item \nameref{def:Link_State_Routing}
-\end{enumerate}
+\begin{definition}[Dynamic Routing Table]\label{def:Dynamic_Routing_Table}
+  A \emph{dynamic routing table} is a \nameref{def:Routing_Table} that is built automatically by the device.
+  To do this, a \nameref{def:Routing_Protocol} is used to build the table while the device is running.
+  This is done using either:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Distance_Vector_Routing_Protocol}
+  \item \nameref{def:Link_State_Routing_Protocol}
+  \end{enumerate}
+\end{definition}
 
 \begin{definition}[Distance Vector Routing Protocol]\label{def:Distance_Vector_Routing_Protocol}
   The \emph{distance vector routing algorithm} is a \nameref{def:Routing_Protocol} that uses \nameref{algo:Bellman_Ford_Algorithm} to construct a \nameref{def:Routing_Table}.
-  \textbf{TODO!}
+  
+  Each node only begins with knowledge of their immediate neighbours and the costs to reach them.
+  \begin{itemize}[noitemsep]
+  \item Nodes then send this information (the routing table) to their neighbours.
+  \item If a neighbour sends us a route that is shorter than one we already have, update our table to reflect this.
+  \item After updating, send the new table to our neighbours.
+  \item If a node goes down, discard any lines in the routing table that have it as the next hop and follow the above to find a new route.
+  \end{itemize}
 \end{definition}
 
 \begin{definition}[Link State Routing Protocol]\label{def:Link_State_Routing_Protocol}
   The \emph{link state routing protocol} is a \nameref{def:Routing_Protocol} that uses \nameref{algo:Dijkstras_Algorithm} to construct a \nameref{def:Routing_Table}.
   Thus, we need to know what the whole network looks like.
-  \textbf{TODO!}
+  
+  \begin{itemize}[noitemsep]
+  \item Each node floods the network with the list of nodes it can connect to and the costs to them.
+  \item Every node builds up a picture of the entire network, then can use \nameref{algo:Dijkstras_Algorithm} to determine the shortest path to each destination.
+  \item The \nameref{def:Routing_Table} is then constructed based on the computed shortest paths.
+  \end{itemize}
 \end{definition}
 
 However, the problem with both \nameref{def:Distance_Vector_Routing_Protocol} and \nameref{def:Link_State_Routing_Protocol} is that they do not scale well.
 However, to help with this, both protocols are contained within a single \nameref{def:Autonomous_System}.
 
 \begin{definition}[Autonomous System]\label{def:Autonomous_System}
-  An \emph{autonomous system} is a smaller network, like a business or home, that performs a \nameref{def:Routing_Protcol} upon itself.
+  An \emph{autonomous system} is a smaller network, like a business or home, that performs a \nameref{def:Routing_Protocol} upon itself.
   It is done this way because both the \nameref{def:Distance_Vector_Routing_Protocol} and \nameref{def:Link_State_Routing_Protocol} do not scale to Internet-sized networks well.
 
-  To combat this, each of the autonomous systems has a speaker node that speaks to the outside world.
+  To combat this, each of the autonomous systems has a \nameref{def:Speaker_Node} that speaks to the outside world.
   This speaker node is used in the \nameref{def:Path_Vector_Routing_Protocol}.
 \end{definition}
 
+\begin{definition}[Speaker Node]\label{def:Speaker_Node}
+  A \emph{speaker node} is a specially designated node within a single \nameref{def:Autonomous_System} that communicates \textbf{only with other speaker nodes}.
+  Then, the \nameref{def:Path_Vector_Routing_Protocol} is performed upon all the speaker nodes to construct a wider network graph consisting only of the \nameref{def:Autonomous_System}s that the speaker nodes belong to.
+\end{definition}
+
 \begin{definition}[Path Vector Routing Protocol]\label{def:Path_Vector_Routing_Protocol}
-  
+  Between \nameref{def:Autonomous_System}s, we use a variant of \nameref{def:Distance_Vector_Routing_Protocol} called \emph{path vector routing protocol}.
+  Each \nameref{def:Autonomous_System} has its own \nameref{def:Speaker_Node}.
+  Only the \nameref{def:Speaker_Node}s can communicate across the \nameref{def:Autonomous_System} boundary, and exchange information about which destinations they can reach and the paths to them.
 \end{definition}
 
 \subsubsection{IP Addresses}\label{subsubsec:IP_Addresses}
 \begin{definition}[IP Address]\label{def:IP_Address}
-  \textbf{TODO!}
+  \emph{IP Address}es are the unique end-point routing identifiers used on \nameref{def:Packet}s to deliver their data.
+  A natural analogy is that of apartment numbers on apartment buildings.
+
+  IPv4 uses 32 bits, split up into 4 8-bit chunks.
+  Each chunk is read as its decimal equivalent, for humans.
+  IPv6 uses 128 bits, where every 16 bits are interpreted as a hexadecimal number.
 \end{definition}
 
 \begin{definition}[Subnet]\label{def:Subnet}
   All hosts that are in the subnet will have \nameref{def:IP_Address}es that match the number of bits that are present in the subnet.
+  Keeping with the apartment analogy, the subnet is like the address of the apartment building.
 
-  For example, in \texttt{192.168.2.0/24}, the \texttt{24} means the first 24 bits of the subnet are 1's.
-  So, the first 3 \nameref{def:IP_Address} blocks \texttt{192.168.2} will remain the same for every client in that subnet.
-  \textbf{TODO!}
+  For example, in \texttt{192.168.2.0/24}, the \texttt{24} means the first 24 bits of the subnet are 1's (\texttt{255.255.255.0}).
+  So, the first 24 bits, or 3 \nameref{def:IP_Address} blocks (\texttt{192.168.2}), will remain the same for every client in that subnet.
 \end{definition}
 
-\begin{definition}[Classless Inter-Domain Routing]
-  \textbf{TODO!}
+\begin{definition}[Classless Inter-Domain Routing]\label{def:Classless_Interdomain_Routing}
+  \emph{Classless Inter-Domain Routing} or \emph{CIDR} (pronounced ``cider'') is a hierarchical way to organize \nameref{def:IP_Address}es.
+  
+  This allowed:
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Subnet}s to be of any length.
+  \item Destinations in a router’s routing and forwarding tables may be full \nameref{def:IP_Address}es or \nameref{def:Subnet}s.
+    \begin{itemize}[noitemsep]
+    \item A destination \nameref{def:IP_Address} will then be matched to the most specific destination in the table when making forwarding decisions.
+    \end{itemize}
+  \end{itemize}
 \end{definition}
 
 %%% Local Variables:

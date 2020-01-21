@@ -1,4 +1,30 @@
 \subsection{Networking Stack}\label{subsec:Networking_Stack}
+\begin{definition}[Networking Stack]\label{def:Networking_Stack}
+  The \emph{networking stack} is a set of layers that are built on top of another that are used to implement inter-computer communication.
+  There are 5 layers:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Physical_Layer}
+  \item \nameref{def:Data_Link_Layer}
+  \item \nameref{def:Network_Layer}
+  \item \nameref{def:Transport_Layer}
+  \item \nameref{def:Application_Layer}
+  \end{enumerate}
+
+  Each of these fulfill different roles, allowing for different implementations to be used interchangeably.
+  Additionally, not all points in the network graph require the entire networking stack.
+  For example, a router or switch does not require the \nameref{def:Transport_Layer} or the \nameref{def:Application_Layer}, since the job of this hardware is to just move packets around.
+\end{definition}
+
+Each layer of the networking stack add a header and possibly a footer.
+Information in headers and footers includes source and destination addresses, checksums, packet size, and protocol identifiers.
+
+\begin{definition}[Encapsulation]\label{def:Encapsulation}
+  The process of adding headers and footers is called \emph{encapsulation}.
+\end{definition}
+
+\begin{definition}[Decapsulation]\label{def:Decapsulation}
+  The process of removing the headers and footers of a \nameref{def:Packet} at the other end is called \emph{decapsulation}.
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex

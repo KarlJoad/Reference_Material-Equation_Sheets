@@ -1,13 +1,14 @@
 \subsection{Transport Layer}\label{subsec:Transport_Layer}
 \begin{definition}[Transport Layer]\label{def:Transport_Layer}
   The \emph{transport layer} is built where the \nameref{def:Network_Layer} has delivered all the data to the end host.
+
   This means that only the source and destination hosts have this layer.
   So, routers and switches do not have this, but your phone, laptop, and the server you're connecting to do.
   
   This layer may be responsible for:
   \begin{itemize}[noitemsep]
   \item \nameref{def:Connection_Oriented_Communication}
-  \item Multiplexing different data flows
+  \item \nameref{subsubsec:Multiplexing_Data_Flows}
   \item Reliable data delivery
   \item Data flow control
   \item Data congestion control
@@ -30,13 +31,104 @@
   \end{remark}
 \end{definition}
 
-\begin{definition}[Transmission Control Protocol]\label{def:Transmission_Control_Protocol}
-  \textbf{TODO!}
+\subsubsection{Transport Protocols}\label{subsubsec:Transport_Protocols}
+\begin{definition}[User Datagram Protocol]\label{def:User_Datagram_Protocol}
+  \emph{User Datagraph Protocol (UDP)} is the simplest transport protocol available.
+  It performs multiplexing and error checking, \textbf{but nothing else}.
+
+  When a host wants to send data to another host, it just sends it, making UDP a \nameref{rmk:Connectionless_Communication} protocol.
+  If the data gets lost, too bad.
 \end{definition}
 
-\begin{definition}[User Datagram Protocol]\label{def:User_Datagram_Protocol}
-  \textbf{TODO!}
+\begin{definition}[Transmission Control Protocol]\label{def:Transmission_Control_Protocol}
+  \emph{Transmission Control Protocol (TCP)} is a \nameref{def:Connection_Oriented_Communication} protocol.
+  It performs:
+  \begin{itemize}[noitemsep]
+  \item Multiplexing
+  \item Reliable data delivery
+  \item Error detection
+  \item Ordered data delivery
+  \item Flow control
+  \item Congestion control
+  \end{itemize}
 \end{definition}
+
+\nameref{def:Transmission_Control_Protocol} uses a 3-way hand shake to establish a connection.
+\begin{definition}[Three-Way Handshake]\label{def:TCP_3_Way_Handshake}
+  \nameref{def:Transmission_Control_Protocol} uses a \emph{Three-Way Handshake} to establish a connection.
+  
+  The client sends a \texttt{SYN} message to the recipient.
+  The receiver sends back a \texttt{SYN\textunderscore{}ACK} message to acknowledge the receipt of the original \texttt{SYN} message.
+  The client then sends another \texttt{ACK} to the receiver to acknowledge the receipt of the \texttt{SYN\textunderscore{}ACK} message.
+
+  Because this handshake is asymmetrical, there is a difference between servers and clients.
+  A server must have a \nameref{def:Port} open, and be listening for client connections.
+\end{definition}
+
+\begin{definition}[Four-Way Handshake]\label{def:TCP_4_Way_Handshake}
+  \nameref{def:Transmission_Control_Protocol} uses a \emph{four-way handshake} to close a connection.
+  Each host can close its side of the connection independently.
+\end{definition}
+
+\subsubsection{Multiplexing Data Flows}\label{subsubsec:Multiplexing_Data_Flows}
+\begin{definition}[Port]\label{def:Port}
+  A \emph{port} is a single instance of a data flow.
+  There are many different flows of data.
+  These may be from different applications or different instances of the same application.
+  In both \nameref{def:Transmission_Control_Protocol} and \nameref{def:User_Datagram_Protocol}, flows are given unique \emph{port numbers}.
+
+  Some of these are standard for particular applications, e.g.\ port 80 for HTTP (web), port 25 for SMTP (email).
+  The transport protocol uses the port number to deliver data to the correct application.
+\end{definition}
+
+\subsubsection{Data Delivery}\label{subsubsec:Data_Delivery}
+\paragraph{\nameref*{subsubsec:Data_Delivery} in \nameref*{def:Transmission_Control_Protocol}}\label{par:TCP_Data_Delivery}
+\begin{definition}[Sequence Number]\label{def:Sequence_Number}
+  \nameref{def:Transmission_Control_Protocol} uses \emph{sequence number}s to make sure data is complete and in order when it is delivered.
+  It also includes error detection, and segments with errors are retransmitted.
+\end{definition}
+
+\subsubsection{Flow Control}\label{subsubsec:Flow_Control}
+\begin{definition}[Flow Control]\label{def:Flow_Control}
+  \emph{Flow control} refers to signalling between the sender and receiver to ensure the sender does not send data faster than the receiver can process.
+
+  A receiving host may have limited buffer space for incoming messages and takes time to process each message.
+\end{definition}
+
+\paragraph{\nameref*{subsubsec:Flow_Control} in \nameref*{def:Transmission_Control_Protocol}}\label{par:TCP_Flow_Control}
+\begin{definition}[Sliding Window]
+  \nameref{def:Flow_Control} in \nameref{def:Transmission_Control_Protocol} uses a \emph{sliding window} mechanism.
+\end{definition}
+
+\subsubsection{Congestion Control}\label{subsubsec:Congestion_Control}
+\begin{definition}[Congestion Control]\label{def:Congestion_Control}
+  \emph{Congestion control} refers to mechanisms for detecting and reducing \nameref{def:Congestion}.
+\end{definition}
+
+\begin{definition}[Congestion]\label{def:Congestion}
+  \emph{Congestion} in a network occurs when there is too much data being sent and the network is unable to deliver it all.
+  This can result in data loss or long delays.
+\end{definition}
+
+\paragraph{\nameref*{subsubsec:Congestion_Control} in \nameref*{def:Transmission_Control_Protocol}}\label{par:TCP_Congestion_Control}
+\begin{definition}[Congestion Window]\label{def:Congestion_Window}
+  In \nameref{def:Transmission_Control_Protocol}, lost data is considered a sign of \nameref{def:Congestion} and the sender should reduce its rate.
+  The sender has a \emph{congestion window}, which refers to the maximum number of unacknowledged segments that may be in transit at a time.
+\end{definition}
+
+A \nameref{def:Transmission_Control_Protocol} connection begins in \textbf{slow start}, where the \nameref{def:Congestion_Window} is doubled every round trip.
+When a threshold is reached, it changes to \emph{congestion avoidance}, where the congestion window increases by 1 maximum segment size each time.
+When packet loss is detected, the congestion window is halved.
+
+\begin{equation}\label{eq:TCP_Maximum_Bandwidth}
+  \mathrm{BW}_{Max} = \frac{\mathrm{MSS} \times \sqrt{\frac{3}{2}}}{\mathrm{RTT} \times \sqrt{p}}
+\end{equation}
+\begin{itemize}[noitemsep]
+\item $\mathrm{BW}_{Max}$: Maximum bandwidth.
+\item $\mathrm{MSS}$: Maximum \nameref{def:Transmission_Control_Protocol} \nameref{def:Packet} size.
+\item $\mathrm{RTT}$: Round trip time.
+\item $p$: \nameref{def:Packet} loss probability.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
