@@ -1,0 +1,56 @@
+\subsection{The Poisson Process}\label{subsec:Poisson_Process}
+\begin{definition}[The Poisson Process]\label{def:Poisson_Process}
+  This is a continuous-time, discrete-value \nameref{def:Stochastic_Process}.
+  It is also a \nameref{def:Stationary_Process}.
+  This process in \textbf{memoryless}, the previous time instant's values do not affect this time instant's value.
+
+  This is very commonly used to describe the arrivals into a queueing system or network.
+  There is a parameter $\lambda$ that is the average rate (packets per second, in this case).
+
+  There are 3 different definitions for this process:
+  \begin{enumerate}[noitemsep]
+  \item Behaviour for a very small interval of time.
+    \begin{itemize}[noitemsep]
+    \item Approximately a \nameref{def:Bernoulli_Random_Variable}.
+    \item The time interval is small enough such that only 1 event occurs with probability $\lambda \Delta t + o(\Delta t)$, which becomes $\lambda \Delta t$ for small $\Delta t$.
+    \item 0 events occur with probability $1 -\lambda \Delta t + o(\Delta t)$, which becomes $1 - \lambda \Delta t$ for small $\Delta t$.
+    \item Probabilities between non-overlapping intervals are independent
+    \end{itemize}
+
+  \item Behaviour over a longer period of time.
+    \begin{itemize}[noitemsep]
+    \item Receive multiple events, $k$.
+    \item Probability of $k$ events is $p_{X}(k) = e^{-\lambda} \frac{\lambda^{k}}{k!}$
+    \end{itemize}
+
+  \item Behaviour between events.
+    \begin{itemize}[noitemsep]
+    \item Approximately a \nameref{def:Negative_Exponential_Random_Variable}.
+    \item Time $t$ between events, $p(t) = \lambda e^{-\lambda t}$
+    \end{itemize}
+  \end{enumerate}
+\end{definition}
+
+\begin{proof}[Poisson Process Definition 1/2 Equivalence]\label{proof:Poisson_Process_Defn_1-2}
+  \textbf{TODO!}
+\end{proof}
+
+\begin{proof}[Poisson Process Definition 2/3 Equivalence]\label{proof:Poisson_Process_Defn_2-3}
+  \textbf{TODO!}
+\end{proof}
+
+\begin{proof}[Poisson Process Definition 3/1 Equivalence]\label{proof:Poisson_Process_Defn_3-1}
+  \textbf{TODO!}
+\end{proof}
+
+\subsubsection{Sums of the Poisson Processes}\label{subsubsec:Sums_Poisson_Process}
+The superposition of several different Poisson processes.
+\begin{itemize}[noitemsep]
+\item There are $m$ independent Poisson Processes, with rates $\lambda_{i}$ for $i = 1, 2, \ldots, m$
+\item Sum is also a Poisson Process: $\lambda = \sum\limits_{i=1}^{m} \lambda_{i}$
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
