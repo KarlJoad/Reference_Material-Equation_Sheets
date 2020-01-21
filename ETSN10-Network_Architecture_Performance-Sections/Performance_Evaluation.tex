@@ -1,0 +1,93 @@
+\section{Performance Evaluation}\label{sec:Performance_Evaluation}
+We do this to:
+\begin{itemize}[noitemsep]
+\item Evaluate existing systems
+\item Design new network systems
+\item Predict system behaviours under different conditions
+\end{itemize}
+
+\subsection{Performance Measures}\label{subsec:Performance_Measures}
+How do we measure the performance of a large complex network?
+
+\begin{itemize}[noitemsep]
+\item Data transfer speed
+\item Reliability:
+  \begin{itemize}[noitemsep]
+  \item Guaranteed throughput
+  \item Guarantee of any other performance measurement
+  \item Integrity of data
+  \item Predictability of errors
+  \item Uptime/Downtime/Availability
+  \end{itemize}
+
+\item Security
+\item User satisfaction
+\item Sustainability
+\item Maintainability
+\item Throughput/Goodput
+\item Delay/Latency
+\item Energy Efficiency
+\item Jitter (Delay variance)
+\item Packet Loss
+\end{itemize}
+
+\subsection{Performance Evaluation}\label{subsec:Performance_Evaluation}
+How can we evaluate the performance of a large complex network?
+
+\begin{itemize}[noitemsep]
+\item Analysis: Mathematical modelling, calculations.
+\item Simulation: Software implementation of system model.
+\item Real-World Experimentation: Testing the actual system.
+\end{itemize}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{6cm}p{6cm}p{6cm}}
+    \toprule
+    \multicolumn{1}{c}{\textbf{Analysis}} & \multicolumn{1}{c}{\textbf{Simulation}} & \multicolumn{1}{c}{\textbf{Experimentation}} \\
+    \midrule
+    --- Requires detailed understanding of system properties & + Only requires modelling the environment with a straightforward implementation & ++ No modelling or understanding of how the system required \\
+    \midrule
+    --- Usually requires approximations and simplifying assumptions. & + Possible to implement complex details of system without approximation & ++ Captures complete behaviour of system and environment without approximation. \\
+    \midrule
+    ++ Allows for deep insight for a broad range of scenarios. & + Allows insight to broad range of scenarios. & --- Requires deployment of every scenarios tested and may be difficult to reproduce. \\
+    \midrule
+    + Rare events and boundary cases are included. & + Study of rare events is tricky, but possible. & --- Rare events may be impossible to study. \\
+    \bottomrule
+  \end{tabular}
+  \caption{Performance Evaluation Pros and Cons}
+  \label{tab:Performance_Evaluation_Pros_Cons}
+\end{table}
+
+\subsection{Statistical Data Analysis}\label{subsec:Statistical_Data_Analysis}
+Only analysis produces exact results.
+Simulation and experimentation produce samples from some underlying random distribution.
+This means we need to perform statistical analysis of these resuilts.
+
+\subsubsection{Sampling}\label{subsubsec:Sampling}
+We assume a random variable $Z$ with an unknown probability distribution, but we can assume a distribution to start with.
+We estimate the key distribution metrics:
+\begin{itemize}[noitemsep]
+\item Mean (1st moment)
+\item Variance (2nd moment)
+\item Variance of the variance (3rd moment)
+\end{itemize}
+
+We obtain $n$ \textbf{independent} samples, $z_{1}, z_{2}, \ldots, z_{n}$.
+To estimate the mean/expected value, we use the equation below.
+\begin{equation}\label{eq:Sample_Mean}
+  \bar{z} = \frac{1}{n} \sum\limits_{i=1}^{n}z_{i}
+\end{equation}
+
+Where $\bar{z}$ is also a \nameref{def:Random_Variable}.
+So, we can perform an expected value calculation on $\bar{z}$.
+\begin{equation}\label{eq:Sample_Expected_Value}
+  \ExpectedValue[\bar{z}] = \ExpectedValue \left[ \frac{1}{n} \sum\limits_{i=1}^{n} z_{i} \right] = \frac{1}{n} \sum\limits_{i=1}^{n} \ExpectedValue[z_{i}]
+\end{equation}
+
+So, as $n \rightarrow \infty$, $\ExpectedValue[\bar{z}] \rightarrow \mu$.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
