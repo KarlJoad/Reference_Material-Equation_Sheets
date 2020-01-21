@@ -1,0 +1,34 @@
+\subsection{Stochastic Processes}\label{subsec:Stochastic_Processes}
+\begin{definition}[Stochastic Process]\label{def:Stochastic_Process}
+  A \emph{stochastic process} or random process $\mathbf{x}(t)$ has 2 meanings:
+  \begin{enumerate}[noitemsep]
+  \item For every time instant, $x(t)$ is a \nameref{def:Random_Variable}.
+  \item For every point (sample) in an outcome space $\Omega$, $x(t)$ is a real-valued function of time.
+  \end{enumerate}
+
+  There are 4 different possible types:
+  \begin{enumerate}[noitemsep]
+  \item Discrete-Time and discrete-value
+  \item Discrete-Time and continuous-value
+  \item Continuous-Time and discrete-value
+    \begin{itemize}[noitemsep]
+    \item Packet arrival to destination over time.
+    \end{itemize}
+  \item Continuous-Time and continuous-value
+    \begin{itemize}
+    \item End-to-end delay in a network.
+    \end{itemize}
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Stationary Process]\label{def:Stationary_Process}
+  A \nameref{def:Stochastic_Process} $x(t)$ is called (weakly) stationary if:
+  \begin{itemize}[noitemsep]
+  \item $\ExpectedValue \left[ x(t) \right]$ is a constant, it is independent of $t$.
+  \item The \nameref{def:Correlation} or \nameref{def:Covariance} of the process at 2 points in time $x(t_{1})$ and $x(t_{2})$, is a function of the difference $t_{2}-t_{1}$ \textbf{only}.
+  \end{itemize}
+\end{definition}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
