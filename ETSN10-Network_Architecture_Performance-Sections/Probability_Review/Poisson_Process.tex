@@ -32,15 +32,59 @@
 \end{definition}
 
 \begin{proof}[Poisson Process Definition 1/2 Equivalence]\label{proof:Poisson_Process_Defn_1-2}
-  \textbf{TODO!}
+  Find the probability of $k$ arrivals in time $t$.
+  Divide the period $t$ into $N$ small periods of $\Delta t$ each such that as $N \rightarrow \infty$, $\Delta t \rightarrow 0$.
+
+  Approximate the sum of $N$ independent \nameref{def:Bernoulli_Random_Variable}s with probability $\frac{\lambda t}{N}$ each.
+
+  The probability that $k$ out of $N$ will be 1 and the rest 0 is:
+  \begin{equation*}
+    \frac{N!}{k! (N-k)!} {\left( \lambda \frac{t}{N} \right)}^{k} {\left( 1 - \lambda \frac{t}{N} \right)}^{N-k}
+  \end{equation*}
+
+  When $N$ is large, 3 things happen.
+  \begin{enumerate}[noitemsep]
+  \item \begin{equation}
+      \frac{N!}{(N-k)!} \approx N^{k}
+    \end{equation}
+  \item \begin{equation}
+      {\left( 1 - \lambda \frac{t}{N} \right)}^{N} \approx e^{-\lambda t}
+    \end{equation}
+  \item \begin{equation}
+      {\left( 1 - \lambda \frac{t}{N} \right)}^{-k} \approx 1
+    \end{equation}
+\end{enumerate}
+
+  So, when $N \rightarrow \infty$, we obtain
+  \begin{equation*}
+    \Prob(k \text{ arrivals in time } t) = e^{-\lambda t} \frac{{(\lambda t)}^{k}}{k!}
+  \end{equation*}
 \end{proof}
 
 \begin{proof}[Poisson Process Definition 2/3 Equivalence]\label{proof:Poisson_Process_Defn_2-3}
-  \textbf{TODO!}
+  Since
+  \begin{equation*}
+    \Prob(k \text{ arrivals in time } t) = e^{-\lambda t} \frac{{(\lambda t)}^{k}}{k!}
+  \end{equation*}
+
+  The probability that time between arrivals is more than $t$ is the same as the probability of 0 arrivals during time $t = e^{-\lambda t}$.
+  So, this is exponentially distributed as required.
 \end{proof}
 
 \begin{proof}[Poisson Process Definition 3/1 Equivalence]\label{proof:Poisson_Process_Defn_3-1}
-  \textbf{TODO!}
+  Suppose that the last arrival was time $t$ ago.
+
+  A priori probability that the next arrival comes after more than $t$ from the previous arrival is $e^{-\lambda t}$. \\
+  A priori probability this next arrival is after more than $t + \Delta t = e^{-\lambda (t + \Delta t)}$. \\
+  A priori probability that this next arrival happens within the next $\Delta t = e^{-\lambda t} - e^{-\lambda (t + \Delta t)}$.
+
+  Conditioning this on knowing that there were no other arrivals in the last $t$ time, and using a Taylor expansion:
+  \begin{align*}
+    \frac{e^{-\lambda t} - e^{-\lambda (t + \Delta t)}}{e^{-\lambda t}} &= 1 - e^{-\lambda \Delta t}
+                                                                          &\approx \lambda \Delta t - \frac{{(\lambda \Delta t)}^{2}}{2} + \frac{{(\lambda \Delta t)}^{3}}{6} - \ldots
+  \end{align*}
+
+  Since this result is independent of $t$, this satisfies the requirement of the independence from previously arrived messages.
 \end{proof}
 
 \subsubsection{Sums of the Poisson Processes}\label{subsubsec:Sums_Poisson_Process}
@@ -50,7 +94,13 @@ The superposition of several different Poisson processes.
 \item Sum is also a Poisson Process: $\lambda = \sum\limits_{i=1}^{m} \lambda_{i}$
 \end{itemize}
 
+All of this comes together for the equation below.
+It models the number of things $k$ that have arrived over a certain period of time $t$.
+\begin{equation}\label{eq:Poisson_Probability_Num_Arrived_After_Time}
+  \Prob(\mathbf{x}(t) = k) = e^{-\lambda t} \frac{{(\lambda t)}^{k}}{k!}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
 %%% End:
