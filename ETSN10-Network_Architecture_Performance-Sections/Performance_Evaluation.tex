@@ -3,7 +3,7 @@ We do this to:
 \begin{itemize}[noitemsep]
 \item Evaluate existing systems
 \item Design new network systems
-\item Predict system behaviours under different conditions
+\item Predict system behaviors under different conditions
 \end{itemize}
 
 \subsection{Performance Measures}\label{subsec:Performance_Measures}
@@ -35,7 +35,7 @@ How do we measure the performance of a large complex network?
 How can we evaluate the performance of a large complex network?
 
 \begin{itemize}[noitemsep]
-\item Analysis: Mathematical modelling, calculations.
+\item Analysis: Mathematical modeling, calculations.
 \item Simulation: Software implementation of system model.
 \item Real-World Experimentation: Testing the actual system.
 \end{itemize}
@@ -46,9 +46,9 @@ How can we evaluate the performance of a large complex network?
     \toprule
     \multicolumn{1}{c}{\textbf{Analysis}} & \multicolumn{1}{c}{\textbf{Simulation}} & \multicolumn{1}{c}{\textbf{Experimentation}} \\
     \midrule
-    --- Requires detailed understanding of system properties & + Only requires modelling the environment with a straightforward implementation & ++ No modelling or understanding of how the system required \\
+    --- Requires detailed understanding of system properties & + Only requires modeling the environment with a straightforward implementation & ++ No modeling or understanding of how the system required \\
     \midrule
-    --- Usually requires approximations and simplifying assumptions. & + Possible to implement complex details of system without approximation & ++ Captures complete behaviour of system and environment without approximation. \\
+    --- Usually requires approximations and simplifying assumptions. & + Possible to implement complex details of system without approximation & ++ Captures complete behavior of system and environment without approximation. \\
     \midrule
     ++ Allows for deep insight for a broad range of scenarios. & + Allows insight to broad range of scenarios. & --- Requires deployment of every scenarios tested and may be difficult to reproduce. \\
     \midrule
@@ -62,9 +62,9 @@ How can we evaluate the performance of a large complex network?
 \subsection{Statistical Data Analysis}\label{subsec:Statistical_Data_Analysis}
 Only analysis produces exact results.
 Simulation and experimentation produce samples from some underlying random distribution.
-This means we need to perform statistical analysis of these resuilts.
+This means we need to perform statistical analysis of these results.
 
-\subsubsection{Sampling}\label{subsubsec:Sampling}
+\subsubsection{Sample Mean}\label{subsubsec:Sample_Mean}
 We assume a random variable $Z$ with an unknown probability distribution, but we can assume a distribution to start with.
 We estimate the key distribution metrics:
 \begin{itemize}[noitemsep]
@@ -87,6 +87,80 @@ So, we can perform an expected value calculation on $\bar{z}$.
 
 So, as $n \rightarrow \infty$, $\ExpectedValue[\bar{z}] \rightarrow \mu$.
 
+\subsubsection{Sample Variance}\label{subsubsec:sample_Variance}
+Now that we have found the sample mean (\Cref{eq:Sample_Mean}), we can attempt to find the variance.
+
+We start by estimating the variance:
+\begin{align*}
+  \Variance \bigl[ \ExpectedValue[\bar{z}] \bigr] &= \ExpectedValue \left[ {(\bar{z} - \mu)}^{2} \right] \\
+  {(\bar{z} - \mu)}^{2} &= \frac{1}{n^{2}} {\left( \sum\limits_{i=1}^{n} \left(z_{i} - \mu \right) \right)}^{2} \\
+                                                  &= \frac{1}{n^{2}} \sum\limits_{i=1}^{n} {(z_{i} - \mu)}^{2} + \sum\limits_{i=1}^{n}\sum\limits_{j \neq i} (z_{i} - \mu) (z_{j} - \mu) \\
+  \ExpectedValue \left[ {(\bar{z} - \mu)}^{2} \right] &= \frac{1}{n^{2}} \sum\limits_{i=1}^{n} \ExpectedValue \left[ {(z_{i} - \mu)}^{2} \right] + \sum\limits_{i=1}^{n}\sum\limits_{j \neq i} \ExpectedValue[(z_{i}-\mu)] \ExpectedValue[(z_{j} - \mu)] \\
+                                                  &= \frac{1}{n^{2}} \left( n \sigma^{2} + 0 \right) \\
+                                                  &= \frac{\sigma^{2}}{n}
+\end{align*}
+
+The estimated variance is:
+\begin{equation*}
+  \Variance[\bar{z}] = \frac{\sigma^{2}}{n}  
+\end{equation*}
+meaning that the variance of the sample mean $\bar{z}$ around the population mean $\mu$ decreases as the number of trials $n$ increases.
+
+The sample variance is the variance of the sample data around its mean.
+\begin{equation}\label{eq:Biased_Sample_Variance}
+  \widehat{V} = \frac{1}{n} \sum\limits_{i=1}^{n} {(z_{i} - \bar{z})}^{2}
+\end{equation}
+
+The expected value of the sample variance, $\ExpectedValue[\widehat{V}]$ is
+\begin{equation*}
+  \ExpectedValue[\widehat{V}] = \frac{n-1}{n} \sigma^{2}
+\end{equation*}
+
+This means that the expected value of the variance is actually slightly biased by the $n-1$ numerator.
+To correct for this, we use \nameref{def:Bessels_Correction}.
+\begin{definition}[Bessel's Correction]\label{def:Bessels_Correction}
+  The division of $n-1$ instead of $n$ in \Cref{eq:Unbiased_Sample_Variance} is called \emph{Bessel's Correction}.
+\end{definition}
+
+\begin{definition}[Unbiased Sample Variance]\label{def:Unbiased_Sample_Variance}
+  By using \Cref{def:Bessels_Correction}, instead of the normal $n$ value, we find ourselves with the \emph{unbiased sample variance}.
+  \begin{equation}\label{eq:Unbiased_Sample_Variance}
+    s^{2} = \frac{1}{n-1} \sum\limits_{i=1}^{n} {(z_{i} - \bar{z})}^{2}
+  \end{equation}
+\end{definition}
+
+
+\subsubsection{Confidence Intervals}\label{subsubsec:Confidence_Intervals}
+\begin{definition}[Confidence Interval]\label{def:Confidence_Interval}
+  \emph{Confidence interval}s are a tool to describe how much we can trust the set of results that we gather.
+  Essentially, how confident we are in the results that we gathered.
+  More mathematically, they describe how sure we are (95\%-confident, 99\%-confident, etc.) we are that the data point we gathered is the same as the underlying distribution's value.
+
+  The confidence interval is derived from the \nameref{def:Gaussian_Random_Variable}.
+  Thus, it is only useful if the sample size is large, because of the Central Limit Theorem.
+  It is derived from the below equation:
+  \begin{equation}\label{eq:Confidence_Interval_Entire}
+    \Prob \left( \lvert \bar{z} - \mu \rvert \leq \alpha \frac{\sigma}{\sqrt{n}} \right)
+  \end{equation}
+
+  Some common values of this are:
+  \begin{itemize}[noitemsep]
+  \item $= 0.9$ for $\alpha = 1.645$
+  \item $= 0.95$ for $\alpha = 1.96$
+  \item $= 0.99$ for $\alpha = 2.576$
+  \end{itemize}
+
+  The actual interval is calculated with this equation:
+  \begin{equation}\label{eq:Confidence_Interval_Sigma}
+    \left[ \bar{z} - \alpha \frac{\sigma}{\sqrt{n}}, \bar{z} + \alpha \frac{\sigma}{\sqrt{n}} \right]
+  \end{equation}
+
+  However, because the standard deviation $\sigma$ is not known, we estimate using the square root of the \nameref{def:Unbiased_Sample_Variance} $\sqrt{s^{2}}$ instead.
+  So, the actual confidence interval is:
+  \begin{equation}\label{eq:Confidence_Interval_Sqrt_S}
+    \left[ \bar{z} - \alpha \frac{\sqrt{s^{2}}}{\sqrt{n}}, \bar{z} + \alpha \frac{\sqrt{s^{2}}}{\sqrt{n}} \right]
+  \end{equation}
+\end{definition}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
