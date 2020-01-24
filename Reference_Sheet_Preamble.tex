@@ -70,13 +70,19 @@ citestyle=authoryear]{biblatex} % Must include citation somewhere in document to
 
 % Create a special list that handles properties. It can be broken and restarted
 \newlist{propertylist}{enumerate}{1} % {Name}{Template}{Max Depth}
-\setlist[propertylist, 1]{label=\textbf{(\roman*)}, ref=\textbf{(\roman*)}, noitemsep, nolistsep} % Set options
+% [newlistname, LevelsToApplyTo]{formatting options}
+\setlist[propertylist, 1]{label=\textbf{(\roman*)}, ref=\textbf{(\roman*)}, noitemsep, nolistsep}
 \crefname{propertylisti}{property}{properties}
 \Crefname{propertylisti}{Property}{Properties}
 
 % Create a special list that handles enumerate starting with lower letters. Breakable/Restartable.
 \newlist{boldalphlist}{enumerate}{1} % {Name}{Template}{Max Depth}
+% [newlistname, LevelsToApplyTo]{formatting options}
 \setlist[boldalphlist, 1]{label=\textbf{(\alph*)}, ref=\alph*, noitemsep, nolistsep} % Set options
+
+\newlist{nestednums}{enumerate}{6}
+% [newlistname, LevelsToApplyTo]{formatting options}
+\setlist[nestednums]{noitemsep, label*=\arabic*.}
 
 \tcbuselibrary{breakable} % Allow tcolorboxes to be broken across pages
 % Create a tcolorbox for examples
