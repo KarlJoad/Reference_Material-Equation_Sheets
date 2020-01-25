@@ -1,0 +1,55 @@
+\subsection{Microsoft STRIDE Analysis}\label{subsec:STRIDE_Analysis}
+\begin{definition}[STRIDE Analysis]\label{def:STRIDE_Analysis}
+  \emph{STRIDE} is an acronym standing for
+  \begin{itemize}[noitemsep]
+  \item [S] Spoofing
+  \item [T] Tampering
+  \item [R] Repudiation
+  \item [I] Information Disclosure
+  \item [D] Denial of Service
+  \item [E] Elevation of Privilege
+  \end{itemize}
+
+  It is a model to identify computer security threats in software systems or components of a larger software system.
+  It is general enough to analyze any part of a software system.
+
+  To perform a STRIDE analysis, it is commonly applied with these steps:
+  \begin{enumerate}[noitemsep]
+  \item Identify the main entities in the system
+  \item Identify the interactions between/among the main entities.
+  \item For each entity, perform a STRIDE analysis on the following actions:
+    \begin{itemize}[noitemsep]
+    \item Processes
+    \item External Entities
+    \item Data Flows
+    \item Data Stores
+    \end{itemize}
+  \end{enumerate}
+
+  \begin{remark}[Incomplete Methodology]\label{rmk:STRIDE_Incomplete_Methodology}
+    Like \nameref{def:Attack_Tree}s, \nameref{def:STRIDE_Analysis} is not a complete methodology.
+    It only helps identify typical attacks, but is not a ``complete package''.
+  \end{remark}
+\end{definition}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{1.5cm}p{2.75cm}p{4cm}p{4cm}p{4cm}}
+    \toprule
+    \multicolumn{1}{c}{Threat} & \multicolumn{1}{c}{Property Violated} & \multicolumn{1}{c}{Definition} & \multicolumn{1}{c}{Typical Victims} & \multicolumn{1}{c}{Example} \\
+    \midrule
+    Spoofing & Authentication & Pretending to be something or someone other than yourself & Processes, External Entities, People & Falsely claiming to be a police officer. \\ \midrule
+    Tampering & Integrity & Modifying something on disk, on a network, or in memory & Data stores, data flows, processes & Changing spreadsheet, binary contents, database contents, modifying network packets, or the program running. \\ \midrule
+    Repudiation & Non-Repudiation & Claiming that you didn't do something or were not responsible. & Process & Process: ``I didn't hit the big red button''. \\ \midrule
+    Information Disclosure & Confidentiality & Providing information to someone not authorized to see it & Processes, data stores, data flows & Allow access to file contents/file metadata, network packets, contents of program memory. \\ \midrule
+    Denial of Service & Availability & Deliberately absorbing more resources than needed to provide a service & Processes, data stores, data flows & Program uses all available memory, File fills up disk, too many network connections for real traffic. \\ \midrule
+    Elevation of Privilege & Authorization & Allowing someone to do something they're not authorized to do. & Process & Allow normal user to execute code as administrator. Remote person can run code. \\
+    \bottomrule
+  \end{tabular}
+  \caption{STRIDE Acronym Definitions}
+  \label{tab:STRIDE_Analysis_Definitions}
+\end{table}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EITP20-Secure_Systems_Engineering-Reference_Sheet"
+%%% End:
