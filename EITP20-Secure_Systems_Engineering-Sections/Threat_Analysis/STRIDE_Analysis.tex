@@ -96,6 +96,22 @@
   \label{tab:Spoofing_Threats}
 \end{table}
 
+\paragraph{Spoofing a Process or File on the same Machine}\label{par:Spoofing_Process_File_Same_Machine}
+If an attacker creates a file before the real process, the process might interpret the file as being good data, and should be trusted.
+File permissions during a pipe operation, local procedure, etc.\ can create vulnerabilities.
+
+Spoofing a process or file on a remote machine can work by creating the expected versions, or by pretending to be the expected machine.
+
+\paragraph{Spoofing a Machine}\label{par:Spoofing_Machine}
+Depending on what has been spoofed, ARP, DNS, IP, anything else in the networking stack, the attacks can vary.
+Once the attackers have this setup in place, then they can continue spoofing, or perform a man-in-the-middle attack.
+They could also steal cryptographic keys.
+
+With a spoofed machine, they can perform phishing attacks to steal information using sites that appear to be valid.
+
+\paragraph{Spoofing a Person}\label{par:Spoofing_Person}
+Typically, spoofing a person involves having access to the real person's digital account(s), then pretending to be the real person through another account.
+
 \subsubsection{Tampering}\label{subsubsec:Tampering}
 \begin{definition}[Tampering]\label{def:Tampering}
   \emph{Tampering} is modifying something, typically on disk, on a network, or in memory.
