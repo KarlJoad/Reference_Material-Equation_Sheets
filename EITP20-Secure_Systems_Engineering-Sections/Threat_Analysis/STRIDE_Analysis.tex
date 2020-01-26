@@ -241,6 +241,28 @@ Since many people who perform some action that may need to have repudiation are 
   \label{tab:Information_Disclosure_Threats}
 \end{table}
 
+\paragraph{Information Disclosure from a Process}\label{par:Information_Disclosure_Process}
+A process will disclose information that helps further attacks.
+This can be done by leaking memory addresses, extracting secrets from error messages, or extracting design details from errors messages.
+
+\paragraph{Information Disclosure from a Data Store}\label{par:Information_Disclosure_Data_Store}
+Since data stores store data, they can leak it multiple ways:
+\begin{itemize}[noitemsep]
+\item Failure to properly use security mechanisms
+\item Not setting permisions
+\item Cryptographic keys being found/leaked
+\item Files read over the network are readable over the network
+\item Metadata (filenames, author, etc.) is also important
+\item OS-level leaks when swapping things out
+\item Data extracted from things using OS under attacker control.
+\end{itemize}
+
+\paragraph{Information Disclosure from a Data Flow}\label{par:Information_Disclosure_Data_Flow}
+Data flows are particularly susceptible.
+Data flows on a single machine that is shared among multiple mutually distrustful uses of a system is a main susceptibility.
+Attackers can redirect information to themselves.
+Attackers can gain information even when the traffic is encrypted.
+
 \subsubsection{Denial of Service}\label{subsubsec:Denial_of_Service}
 \begin{definition}[Denial of Service]\label{def:Denial_of_Service}
   \emph{Denial-of-service} attacks consume a resource that is needed to provide a service.
