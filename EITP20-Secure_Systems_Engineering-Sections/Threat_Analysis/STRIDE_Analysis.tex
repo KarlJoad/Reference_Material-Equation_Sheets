@@ -144,6 +144,27 @@ Typically, spoofing a person involves having access to the real person's digital
   \label{tab:Tampering_Threats}
 \end{table}
 
+\paragraph{Tampering with a File}\label{par:Tampering_File}
+Attackers can create/modify files if they have write permission.
+If the code you wrote relies on files other things (people or files) wrote, there's a possibility it was written maliciously.
+
+This can commonly happen when a website has been compromised and is serving malicious JavaScript.
+They can also modify links that the website gives you to be compromised as well.
+This same link manipulation can happen on your local disk as well.
+
+\paragraph{Tampering with Memory}\label{par:Tampering_Memory}
+Attacker can modify your code, if they are running at the same or higher privilege level.
+This is difficult to find and handle, since the bad code is running at the same privilege and under the same user as the good code, and it is near impossible to tell them apart.
+
+If you handle data in a pass-by-reference fashion, the attacker can modify it after security checks have been performed.
+
+\paragraph{Tampering with a Network}\label{par:Tampering_Network}
+There are a variety of tricks for this.
+The attacker can forward some data that is intact and some that is modified.
+
+Other tricks use the radio communication used for wireless data transmission.
+Software-Defined Radio has made this type of attack trivial.
+
 \subsubsection{Repudiation}\label{subsubsec:Repudiation}
 \begin{definition}[Repudiation]\label{def:Repudiation}
   \emph{Repudiation} is claiming you didn't do something, or were not responsible for what happened.
