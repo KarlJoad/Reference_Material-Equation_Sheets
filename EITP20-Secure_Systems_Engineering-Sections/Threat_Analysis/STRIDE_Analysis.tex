@@ -2,12 +2,12 @@
 \begin{definition}[STRIDE Analysis]\label{def:STRIDE_Analysis}
   \emph{STRIDE} is an acronym standing for
   \begin{itemize}[noitemsep]
-  \item [S] Spoofing
-  \item [T] Tampering
-  \item [R] Repudiation
-  \item [I] Information Disclosure
-  \item [D] Denial of Service
-  \item [E] Elevation of Privilege
+  \item [S] \nameref{def:Spoofing}
+  \item [T] \nameref{def:Tampering}
+  \item [R] \nameref{def:Repudiation}
+  \item [I] \nameref{def:Information_Disclosure}
+  \item [D] \nameref{def:Denial_of_Service}
+  \item [E] \nameref{def:Elevation_of_Privilege}
   \end{itemize}
 
   It is a model to identify computer security threats in software systems or components of a larger software system.
@@ -38,17 +38,66 @@
     \toprule
     \multicolumn{1}{c}{Threat} & \multicolumn{1}{c}{Property Violated} & \multicolumn{1}{c}{Definition} & \multicolumn{1}{c}{Typical Victims} & \multicolumn{1}{c}{Example} \\
     \midrule
-    Spoofing & Authentication & Pretending to be something or someone other than yourself & Processes, External Entities, People & Falsely claiming to be a police officer. \\ \midrule
-    Tampering & Integrity & Modifying something on disk, on a network, or in memory & Data stores, data flows, processes & Changing spreadsheet, binary contents, database contents, modifying network packets, or the program running. \\ \midrule
-    Repudiation & Non-Repudiation & Claiming that you didn't do something or were not responsible. & Process & Process: ``I didn't hit the big red button''. \\ \midrule
-    Information Disclosure & Confidentiality & Providing information to someone not authorized to see it & Processes, data stores, data flows & Allow access to file contents/file metadata, network packets, contents of program memory. \\ \midrule
-    Denial of Service & Availability & Deliberately absorbing more resources than needed to provide a service & Processes, data stores, data flows & Program uses all available memory, File fills up disk, too many network connections for real traffic. \\ \midrule
-    Elevation of Privilege & Authorization & Allowing someone to do something they're not authorized to do. & Process & Allow normal user to execute code as administrator. Remote person can run code. \\
+    \nameref{def:Spoofing} & Authentication & Pretending to be something or someone other than yourself & Processes, External Entities, People & Falsely claiming to be a police officer. \\ \midrule
+    \nameref{def:Tampering} & Integrity & Modifying something on disk, on a network, or in memory & Data stores, data flows, processes & Changing spreadsheet, binary contents, database contents, modifying network packets, or the program running. \\ \midrule
+    \nameref{def:Repudiation} & Non-Repudiation & Claiming that you didn't do something or were not responsible. & Process & Process: ``I didn't hit the big red button''. \\ \midrule
+    \nameref{def:Information_Disclosure} & Confidentiality & Providing information to someone not authorized to see it & Processes, data stores, data flows & Allow access to file contents/file metadata, network packets, contents of program memory. \\ \midrule
+    \nameref{def:Denial_of_Service} & Availability & Deliberately absorbing more resources than needed to provide a service & Processes, data stores, data flows & Program uses all available memory, File fills up disk, too many network connections for real traffic. \\ \midrule
+    \nameref{def:Elevation_of_Privilege} & Authorization & Allowing someone to do something they're not authorized to do. & Process & Allow normal user to execute code as administrator. Remote person can run code. \\
     \bottomrule
   \end{tabular}
   \caption{STRIDE Acronym Definitions}
   \label{tab:STRIDE_Analysis_Definitions}
 \end{table}
+\subsubsection{Spoofing}\label{subsubsec:Spoofing}
+\begin{definition}[Spoofing]\label{def:Spoofing}
+  \emph{Spoofing} is pretending to be something or someone other than yourself.
+  \Cref{tab:STRIDE_Analysis_Definitions} gives one example, there are several others.
+
+  \begin{enumerate}[noitemsep]
+  \item Spoofing the identity of an entity across a network.
+    There is not mediating authority that takes reponsibility for telling that something is what it claims to be.
+  \item Spoofing the identity of an entity, even when there is a mediating authority.
+    For example, a modified \texttt{.dll} file is mediated by the operating system to make sure it is the right one.
+    If it's modified, th emediating authority might let it through, even when it has been modified.
+  \item Pretending to be a specific person, for example, Barack Obama.
+  \item Pretending to be in a specific role.
+  \end{enumerate}
+\end{definition}
+
+\subsubsection{Tampering}\label{subsubsec:Tampering}
+\begin{definition}[Tampering]\label{def:Tampering}
+  \emph{Tampering} is modifying something, typically on disk, on a network, or in memory.
+  This can include changing the data in a spreadsheet, changing a binary or config file on dis, modifying a database, etc.
+  On a network, packets can be added, modified, or removed.
+\end{definition}
+
+\subsubsection{Repudiation}\label{subsubsec:Repudiation}
+\begin{definition}[Repudiation]\label{def:Repudiation}
+  \emph{Repudiation} is claiming you didn't do something, or were not responsible for what happened.
+  This can be done honestly or deceptively.
+
+  Typically, this is done above any technical layer, and is instead in the business logic of buying products, for example.
+
+  Repudiation often deals with logs and logging, which tracks everything that happened in order to find who/what was/is responsible.
+\end{definition}
+
+\subsubsection{Information Disclosure}\label{subsubsec:Information_Disclosure}
+\begin{definition}[Information Disclosure]\label{def:Information_Disclosure}
+  \emph{Information disclosure} is about allowing people to see information they are not authorized to see.
+\end{definition}
+
+\subsubsection{Denial of Service}\label{subsubsec:Denial_of_Service}
+\begin{definition}[Denial of Service]\label{def:Denial_of_Service}
+  \emph{Denial-of-service} attacks consume a resource that is needed to provide a service.
+\end{definition}
+
+\subsubsection{Elevation of Privilege}\label{subsubsec:Elevation_of_Privilege}
+\begin{definition}[Elevation of Privilege]\label{def:Elevation_of_Privilege}
+  \emph{Elevation of privilege} is allowing someone to do something they are not authorized to to.
+  For example, allowing a remote user to execute code as an administrator, or allowing a remote person without privileges to run code.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EITP20-Secure_Systems_Engineering-Reference_Sheet"
