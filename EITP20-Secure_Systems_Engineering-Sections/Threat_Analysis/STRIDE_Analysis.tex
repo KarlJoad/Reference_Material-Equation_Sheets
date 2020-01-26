@@ -319,6 +319,21 @@ Amplified attacks are relatively small attacks that have big effects.
   \label{tab:Elevation_of_Privilege_Threats}
 \end{table}
 
+\paragraph{Elevate Privileges by Corrupting a Process}\label{par:Elevation_of_Privilege_Corrupt_Process}
+Corrupting a process can involve:
+\begin{itemize}[noitemsep]
+\item Smashing the stack
+\item Exploiting information on the heap
+\item Other techniques
+\end{itemize}
+
+These attacks allow the attacker to gain influence or control over a program's control flow.
+
+\paragraph{Elevate Privileges through Authorization Failures}\label{par:Elevation_of_Privilege_Authorization_Failure}
+If we don't check authorization on every path through a program, this can be a problem.
+If there are buggy checks, the attacker can take advantage of them.
+If a program relies on other programs, configuration files, or datasets being trustworthy, those are possible targets as well.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EITP20-Secure_Systems_Engineering-Reference_Sheet"
