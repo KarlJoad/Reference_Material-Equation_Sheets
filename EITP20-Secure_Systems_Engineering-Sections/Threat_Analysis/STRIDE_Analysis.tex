@@ -49,6 +49,7 @@
   \caption{STRIDE Acronym Definitions}
   \label{tab:STRIDE_Analysis_Definitions}
 \end{table}
+
 \subsubsection{Spoofing}\label{subsubsec:Spoofing}
 \begin{definition}[Spoofing]\label{def:Spoofing}
   \emph{Spoofing} is pretending to be something or someone other than yourself.
@@ -65,12 +66,67 @@
   \end{enumerate}
 \end{definition}
 
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{5.7cm}p{5.7cm}p{5.7cm}}
+    \toprule
+    Threat Examples & What the Attacker Does & Notes \\
+    \midrule
+    \multirow{3}{5.7cm}{Spoofing a process on the same machine} & Creates a file before the real process & \\ \cline{2-3}
+                    & Renaming/Linking & Creating a trojan \texttt{su} and altering the \texttt{path} \\ \cline{2-3}
+                    & Renaming something & Naming your process \texttt{sshd} \\
+    \midrule
+    \multirow{3}{5.7cm}{Spoofing a file} & Creates a file in the local directory & This can be a library, execcutable, or config file \\ \cline{2-3}
+                    & Creates a link and changes it & Change should happen between link being checked and being accessed \\ \cline{2-3}
+                    & Creates many files in expected directory & Automate file creation to fill the space of files possible \\
+    \midrule
+    \multirow{5}{5.7cm}{Spoofing a machine} & ARP Spoofing & \\ \cline{2-3}
+                    & IP Spoofing & \\ \cline{2-3}
+                    & DNS Spoofing & Forward or Reverse \\ \cline{2-3}
+                    & DNS Compromise & Compromise TLD, registrar, or DNS operator \\ \cline{2-3}
+                    & IP Redirection & At the switch or router level \\
+    \midrule
+    \multirow{2}{5.7cm}{Spoofing a person} & Sets e-mail display name & \\ \cline{2-3}
+                    & Takes over a real account & \\
+    \midrule
+    \multirow{1}{5.7cm}{Spoofing a role} & Declares themselves to be that role & Sometimes opening a special account with a relevant name \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{def:Spoofing} Threats}
+  \label{tab:Spoofing_Threats}
+\end{table}
+
 \subsubsection{Tampering}\label{subsubsec:Tampering}
 \begin{definition}[Tampering]\label{def:Tampering}
   \emph{Tampering} is modifying something, typically on disk, on a network, or in memory.
   This can include changing the data in a spreadsheet, changing a binary or config file on dis, modifying a database, etc.
   On a network, packets can be added, modified, or removed.
 \end{definition}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{5.7cm}p{5.7cm}p{5.7cm}}
+    \toprule
+    Threat Examples & What the Attacker Does & Notes \\
+    \midrule
+    \multirow{6}{5.7cm}{\nameref{par:Tampering_File}} & Modifies a file they own and on which you rely & \\ \cline{2-3}
+                                               & Modifies a file you own & \\ \cline{2-3}
+                                               & Modifies a file on a file server you own & \\ \cline{2-3}
+                                               & Modifies a file on their file server & Loads of fun when you include files from remote domains \\ \cline{2-3}
+                                               & Modifies a file on their file server & XML schemas include remote schemas \\ \cline{2-3}
+    & Modifies links or redirects & \\
+    \midrule
+    \multirow{6}{5.7cm}{\nameref{par:Tampering_Memory}} & Modifies your code & Hard to defend against once attacker is running code as same user. \\ \cline{2-3}
+    & Modifes data they've supplied to your API & Pass by value, not by reference when crossing a trust boundary \\
+    \midrule
+    \multirow{6}{5.7cm}{\nameref{par:Tampering_Network}} & Redirect flow of data to their machine & Often stage 1 of tampering \\ \cline{2-3}
+                                               & Modifies data flowing over entwork & Even easier when the network is wireless (WiFi, 3G, LTE, etc.) \\ \cline{2-3}
+    & Enhances spoofing attacks & \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{def:Tampering} Threats}
+  \label{tab:Tampering_Threats}
+\end{table}
 
 \subsubsection{Repudiation}\label{subsubsec:Repudiation}
 \begin{definition}[Repudiation]\label{def:Repudiation}
@@ -82,21 +138,114 @@
   Repudiation often deals with logs and logging, which tracks everything that happened in order to find who/what was/is responsible.
 \end{definition}
 
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{5.7cm}p{5.7cm}p{5.7cm}}
+    \toprule
+    Threat Examples & What the Attacker Does & Notes \\
+    \midrule
+    \multirow{5}{5.7cm}{Repudiating an action} & Claims to have not clicked & Maybe they really did \\ \cline{2-3}
+                                               & Claims to have received & Maybe they did, but didn't read. Maybe cached. Maybe pre-fetched. \\ \cline{2-3}
+                                               & Claims to have been a fraud victim & \\ \cline{2-3}
+                                               & Uses someone else's account & \\ \cline{2-3}
+                                               & Uses someone else's payment instrument without authorization & \\
+    \midrule
+    \multirow{2}{5.7cm}{Attacking the logs} & Notices you have no logs & \\ \cline{2-3}
+                                               & Puts attacks in logs to confuse logs, log-reading code, or a person & \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{def:Repudiation} Threats}
+  \label{tab:Repudiation_Threats}
+\end{table}
+
 \subsubsection{Information Disclosure}\label{subsubsec:Information_Disclosure}
 \begin{definition}[Information Disclosure]\label{def:Information_Disclosure}
   \emph{Information disclosure} is about allowing people to see information they are not authorized to see.
 \end{definition}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{5.7cm}p{5.7cm}p{5.7cm}}
+    \toprule
+    Threat Examples & What the Attacker Does & Notes \\
+    \midrule
+    \multirow{4}{5.7cm}{Information disclosure against a process} & Extract secrets from error messages & \\ \cline{2-3}
+                    & Reads error messages from username/passwords to entire database tables & \\ \cline{2-3}
+                    & Extract machine secrets from error messages & Makes defense against memory corruption less useful \\ \cline{2-3}
+                    & Extract business/personal secrets from error cases & \\
+    \midrule
+    \multirow{9}{5.7cm}{Information disclosure against data stores} & Takes advantage of inappropriate or missing ACLs & \\ \cline{2-3}
+                    & Takes advantage of bad database permissions & \\ \cline{2-3}
+                    & Finds files protected by obscurity & \\ \cline{2-3}
+                    & Finds cryptographic keys on disk or in memory & \\ \cline{2-3}
+                    & Sees interesting information in metadata & \\ \cline{2-3}
+                    & Reads files as they traverse the network & \\ \cline{2-3}
+                    & Gets data from logs or temp files & \\ \cline{2-3}
+                    & Gets data from swap or other temp storage & \\ \cline{2-3}
+                    & Extracts data by obtaining device, changing OS & \\
+    \midrule
+    \multirow{5}{5.7cm}{Information disclosure against data flows} & Reads data on network & \\ \cline{2-3}
+                    & Redirects traffic to enable reading data on network & \\ \cline{2-3}
+                    & Learn secrets by analyzing traffic & \\ \cline{2-3}
+                    & Learn who's talking to whom by watching DNS & \\ \cline{2-3}
+                    & Learn who's talking to whom by social network info disclosure & \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{def:Information_Disclosure} Threats}
+  \label{tab:Information_Disclosure_Threats}
+\end{table}
 
 \subsubsection{Denial of Service}\label{subsubsec:Denial_of_Service}
 \begin{definition}[Denial of Service]\label{def:Denial_of_Service}
   \emph{Denial-of-service} attacks consume a resource that is needed to provide a service.
 \end{definition}
 
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{5.7cm}p{5.7cm}p{5.7cm}}
+    \toprule
+    Threat Examples & What the Attacker Does & Notes \\
+    \midrule
+    \multirow{4}{5.7cm}{Denial of service against a process} & Absorbs memory & \\ \cline{2-3}
+                    & Absorbs storage & \\ \cline{2-3}
+                    & Absorbs CPU cycles & \\ \cline{2-3}
+                    & Uses process as an amplifier & \\
+    \midrule
+    \multirow{2}{5.7cm}{Denial of service against a data store} & Fills data store up & \\ \cline{2-3}
+                    & Makes enough requests to slow down the system & \\
+    \midrule
+    \multirow{1}{5.7cm}{Denial of service against a data flow} & Consumes network resources & \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{def:Denial_of_Service} Threats}
+  \label{tab:Denial_of_Service_Threats}
+\end{table}
+
 \subsubsection{Elevation of Privilege}\label{subsubsec:Elevation_of_Privilege}
 \begin{definition}[Elevation of Privilege]\label{def:Elevation_of_Privilege}
   \emph{Elevation of privilege} is allowing someone to do something they are not authorized to to.
   For example, allowing a remote user to execute code as an administrator, or allowing a remote person without privileges to run code.
 \end{definition}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{5.7cm}p{5.7cm}p{5.7cm}}
+    \toprule
+    Threat Examples & What the Attacker Does & Notes \\
+    \midrule
+    \multirow{2}{5.7cm}{Elevation of privilege against a process by corrupting the process} & Send inputs that the code doesn't handle properly & These are very common and are usually high impact \\ \cline{2-3}
+                    & Gains access to read/write memory inappropriately & Writing memory is bad, but reading memory allows further attacks. \\
+    \midrule
+    \multirow{1}{5.7cm}{Elevation through missed authorization checks} & & \\
+    \midrule
+    \multirow{1}{5.7cm}{Elevation through buggy authorization checks} & & Centralizing such checks makes bugs easier to manage \\
+    \midrule
+    \multirow{1}{5.7cm}{Elevation through data tampering} & Modifies bits on disk to do things other than what the authorized user intends & \\
+    \bottomrule
+  \end{tabular}
+  \caption{\nameref{def:Elevation_of_Privilege} Threats}
+  \label{tab:Elevation_of_Privilege_Threats}
+\end{table}
 
 %%% Local Variables:
 %%% mode: latex
