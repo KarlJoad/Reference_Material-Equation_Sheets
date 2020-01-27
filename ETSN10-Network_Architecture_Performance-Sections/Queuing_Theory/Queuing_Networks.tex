@@ -1,0 +1,94 @@
+\subsection{Queuing Networks}\label{subsec:Queuing_Networks}
+\begin{definition}[Queuing Network]\label{def:Queuing_Network}
+  A \emph{queuing network} is a network of nodes in which each node is a queue.
+  The output of one queue is connected to the input of another node's queue.
+
+  There are 2 types of queuing networks:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Closed_Queuing_Network}
+  \item \nameref{def:Open_Queuing_Network}
+  \end{enumerate}
+
+  \begin{remark}[Limiting Analysis]\label{rmk:Limiting_Queuing_Networks}
+    We will only consider $M/M/n$ queues here.
+    Analysis of more general queueing networks gets complicated fast.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Closed Queuing Network]\label{def:Closed_Queuing_Network}
+  A \emph{closed queuing network} is one in which packets (customers, tasks, etc.) can never enter or leave the \nameref{def:Queuing_Network}.
+\end{definition}
+
+\begin{definition}[Open Queuing Network]\label{def:Open_Queuing_Network}
+  An \emph{open queuing network} is a \nameref{def:Queuing_Network} that is not closed.
+  This means that an open queuing network is one in which packets (customers, tasks, etc.) may enter a node's queue from outside the \nameref{def:Queuing_Network}, and after processing, may leave the \nameref{def:Queuing_Network} entirely.
+\end{definition}
+
+\begin{theorem}[Burke's Theorem]\label{thm:Burkes_Theorem}
+  The interdeparture times from a Markovian ($M/M/n$) queue are exponentially distributed with the same parameter as the interarrival times.
+  Meaning
+  \begin{equation}\label{Burkes_Theorem}
+    \lambda_{\mathrm{Out}} = \lambda_{\mathrm{In}}
+  \end{equation}
+
+  \begin{remark}
+    This allows us to analyze each queue/node independently.
+    We do not need to consider all the nodes at the same time.
+  \end{remark}
+\end{theorem}
+
+\subsubsection{Jackson Networks}\label{subsubsec:Jackson_Networks}
+\begin{definition}[Jackson Network]\label{def:Jackson_Network}
+  A \emph{Jackson network} is an \nameref{def:Open_Queuing_Network} of $M/M/n$ queues.
+  Each node can receive traffic from other nodes and from outside the network.
+  Traffic from each node can go to other nodes, or leave the network entirely.
+\end{definition}
+
+\begin{itemize}[noitemsep]
+\item $N$: The total number of nodes in a \nameref{def:Jackson_Network}.
+\item $\lambda_{i}$: Total incoming average traffic rate to node $i$.
+\item $gamma_{i}$: Average rate of traffic entering node $i$ from outside the network
+\item $r_{ij}$: Probability a packet leaving node $i$ will then go to node $j$
+  \begin{itemize}[noitemsep]
+  \item Note r need not be 0 – a packet may immediately return to the node it just left
+  \end{itemize}
+\item So the probability that a packet leaves the network after leaving node $i$ is given by
+  \begin{equation}\label{eq:Prob_Packet_LEaves_Network}
+    1 - \sum\limits_{j=1}^{N} r_{ij}
+  \end{equation}
+
+\item You can find the total incoming traffic to node $i$ by summing all incoming streams together.
+  \begin{equation}\label{eq:Total_Incoming-Traffic}
+    \lambda_{i} = \gamma_{i} + \sum\limits_{j=1}^{N} \lambda_{i} r_{ji} \text{, for } i = 1, 2, \ldots, N
+  \end{equation}
+
+\item In general, the whole network will not behave like a \nameref{def:Poisson_Process}.
+\item Jackson, the namesake of the \nameref{def:Jackson_Network}, showed that each individual node behaves as though it were.
+\item The state variable for the entire system of $N$ nodes consists of the vector
+  \begin{equation}\label{eq:Queuing_Network_State_Vector}
+    \langle k_{1}, k_{2}, \ldots, k_{N} \rangle
+  \end{equation}
+  where $k_{i}$ is the number of packets (including those currently in service) at the $i$th node.
+
+\item Let the equilibrium probability associated with a given state be denoted
+  \begin{equation}\label{eq:Queuing_Network_Equilibrium_Probability}
+    \Prob \bigl[ \langle k_{1}, k_{2}, \ldots, k_{N} \rangle \bigr]
+  \end{equation}
+  and the probability of finding $k_{i}$ customers in the $i$th node be
+  \begin{equation*}
+    \Prob_{i}[k_{i}]
+  \end{equation*}
+
+\item The joint probability distribution for all nodes is the product of the distributions for the individual nodes
+  \begin{equation*}
+    \Prob \bigl[ \langle k_{1}, k_{2}, \ldots, k_{N} \rangle \bigr] = \Prob_{1}[k_{1}] \Prob_{2}[k_{2}] \cdots \Prob_{N}[k_{N}]
+  \end{equation*}
+  and each $\Prob_{i}[k_{i}]$ is given by the solution to the classical $M/M/n$ system.
+\item So we can treat each node as an $M/M/n$ queue, even though the input is not necessarily Markovian.
+
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
