@@ -1,0 +1,63 @@
+\subsection{\texorpdfstring{The Finite Buffer $M/M/1/N$ Queue}{Finite Buffer Queue}}\label{subsec:MM1n_Queue}
+The $M/M/1/n$ is a queue with a finite-sized buffer.
+The real question with this is what is the probability the buffer will be full and the next packet will have to be blocked.
+
+\begin{equation}\label{eq:Prob_Packet_Blocked}
+  P_{B} = \Prob[\text{Message is blocked}] = p_{n} = \frac{1-\rho}{1-\rho^{n+1}} \rho^{n}
+\end{equation}
+
+\begin{example}[Lecture 4]{Length of Queue for No Packets Blocked}
+  Assume $\rho = 0.5$, and that we want a system that blocks packets with probability $P_{B} \leq 10^{-3}$.
+  Find $n$, the minimum length of the queue to satisfy these requirements?
+  \tcblower{}
+  Using \Cref{eq:Prob_Packet_Blocked},
+  \begin{align*}
+    \frac{1-\rho}{1-\rho^{n+1}} \rho^{n} &= \frac{1-0.5}{1-0.5^{n+1}} 0.5^{n} \\
+                                         &= \frac{0.5^{n+1}}{1-0.5^{n+1}} \leq 10^{-3} \\
+    0.5^{n+1} &\leq \frac{10^{-3}}{1 + 10^{-3}} \\
+    n + 1 &\geq 9.96 \\
+    n &\geq 8.96
+  \end{align*}
+
+  So, $n$ should be 9.
+\end{example}
+
+\begin{remark*}
+  Note that the solution found in \Cref{ex:Length of Queue for No Packets Blocked} is actually the general solution.
+  Meaning, that solution for $n$ is valid for all $\rho$.
+  This is because the finite buffer copes with overloading by blocking any additional messages from entering the system.
+\end{remark*}
+
+\subsubsection{Applying \nameref*{def:Littles_Law}}\label{subsubsec:Applying_Littles_Law-MM1n}
+To even use \nameref{def:Littles_Law}, we must account for the blocking of messages by only counting the messages that make it into the system.
+
+\begin{equation}\label{eq:Littles_Law-MM1n}
+  \gamma = \lambda (1-P_{B})
+\end{equation}
+
+This means our equations change a little bit.
+\begin{equation}\label{eq:Occupancy-MM1n}
+  \rho = \frac{\lambda}{\mu} \text{, can be $\geq$ 1 r $<1$}
+\end{equation}
+
+
+\begin{subequations}\label{eq:Mean_Packets_in_Whole_System-MM1n}
+  \begin{equation}
+    \begin{aligned}
+      \ExpectedValue[R] &= \gamma \ExpectedValue[T_{R}] \\
+      &= \lambda (1-P_{B}) \ExpectedValue[T_{R}] \\
+    \end{aligned}
+  \end{equation}
+
+  \begin{equation}
+    \begin{aligned}
+      \ExpectedValue[R] &= \sum\limits_{i=0}^{n} i p_{i} \\
+      &= \frac{1-\rho}{1-\rho^{n+1}} \sum\limits_{i=0}^{n}i \rho_{i} \\
+    \end{aligned}
+  \end{equation}
+\end{subequations}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
