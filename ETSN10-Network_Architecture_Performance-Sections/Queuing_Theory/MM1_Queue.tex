@@ -1,0 +1,75 @@
+\subsection{\texorpdfstring{A General $M/M/1$ Queue}{A General Queue}}\label{subsec:General_MM1_Queue}
+If we have a general $M/M/1$ queue, then:
+\begin{itemize}[noitemsep]
+\item We may assume messages arrive at the channel according to \nameref{def:Poisson_Process} at a rate $\lambda$ messages/sec.
+\item We may assume that the message lengths have a \nameref{def:Negative_Exponential_Random_Variable} with a mean of $\dfrac{1}{v}$ bits/message.
+\item The channel transmits messages from its buffer at a constant rate $c$ bits/sec.
+\item The buffer associated with the channel can be considered to be effectively of infinite length.
+\end{itemize}
+
+\begin{definition}[Message Transmission Rate]\label{def:Message_Transmission_Rate}
+  The \emph{message tramisssion rate}, $c$, is the rate at which tasks are moved from the queue/buffer to the server.
+\end{definition}
+
+\begin{definition}[Message Arrival Rate]\label{def:Message_Arrival_Rate}
+  The \emph{message arrival rate}, denoted $\mu$ is defined to be the number of messages that are received per unit time.
+
+  \begin{equation}\label{eq:Message_Arrival_Rate}
+    \mu = c v
+  \end{equation}
+  \begin{itemize}[noitemsep]
+  \item $c$: \nameref{def:Message_Transmission_Rate}
+  \item $v$: Message length
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Occupancy]\label{def:Occupancy}
+  The \emph{occupancy} of a system, denoted $\rho$, is the factor to which the rate of message arrivals is greater than the message transmissions after processing.
+
+  \begin{equation}\label{eq:Occupancy}
+    \rho = \frac{\lambda}{\mu}
+  \end{equation}
+  \begin{itemize}[noitemsep]
+  \item $\lambda$: The message arrival rate.
+  \item $\mu$: The message tramisssion rate after processing.
+  \end{itemize}
+
+  \begin{remark}[Steady-State Solution]
+    The only steady-state solution for infinite-buffer systems occurs when $\rho < 1$.
+    If $\rho \geq 1$, then packets are arriving at the same or greater rate as they are pushed out after processing.
+    Meaning, eventually the queue will fill up.
+  \end{remark}
+\end{definition}
+
+If we want to find the average number of messages in the system, we need to find $\ExpectedValue[R]$.
+\begin{equation}\label{eq:Mean_Packets_in_Whole_System}
+  \ExpectedValue[R] = \frac{\rho}{1-\rho}
+\end{equation}
+
+The average number of packets in \textbf{just} the queue is given by $\ExpectedValue[T_{W}]$.
+\begin{equation}\label{eq:Mean_Packets_in_Queue}
+  \ExpectedValue[T_{W}] = \frac{1}{\mu} \frac{\rho}{1-\rho}
+\end{equation}
+
+The mean delay of a packet due to the system is given by $\ExpectedValue[T_{R}]$.
+\begin{equation}\label{eq:Mean_Packet_Delay}
+  \ExpectedValue[T_{R}] = \frac{1}{\mu} \frac{1}{1-\rho}
+\end{equation}
+
+\begin{definition}[Probability of Delay]\label{def:MM1_Prob_Delay}
+  The \emph{probability of delay for an $M/M/1$ queuing system} for a given amount of time is given by
+  \begin{equation}\label{eq:MM1_Delay}
+    p_{T_{R}}(t) = \mu (1-\rho) e^{-\mu (1-\rho) t}
+  \end{equation}
+
+  The probability the delay is within a given range is given by the equation below.
+  \begin{equation}
+    \label{eq:9}
+    \Prob(T_{R} \leq t) = 1 - e^{-\mu (1-\rho) t}
+  \end{equation}
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
