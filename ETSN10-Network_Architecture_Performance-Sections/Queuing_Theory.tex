@@ -22,6 +22,21 @@ Queuing theory provides a probabilistic analysis of these queues.
   \end{itemize}
 \end{definition}
 
+\begin{example}[Lecture 3]{Application of Little's Law}
+  If 40 customers visit a pub per hour, and these customers spend an average of 15 minutes in the pub, what is the average number of customers in the pub at any given time?
+  \tcblower{}
+  Using \Cref{eq:Littles_Law},
+  \begin{align*}
+    \lambda &= 40 \\
+    T_{r} &= \frac{15}{60} = \frac{1}{4} = 0.25
+  \end{align*}
+
+  Multiplying these together,
+  \begin{equation*}
+    r = 40 * \frac{1}{4} = 10
+  \end{equation*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
