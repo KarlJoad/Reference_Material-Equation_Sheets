@@ -1,0 +1,92 @@
+\subsection{Modeling Circuit Switching}\label{subsec:Model_Circuit_Switching}
+This is easiest to visualize with the old-school telephone communications with human operators physically connecting calls to make a single large continuous circuit.
+
+\begin{itemize}[noitemsep]
+\item The rate of call initiation can be modeled as a \nameref{def:Poisson_Random_Variable}, with an arrival rate of $\lambda$.
+\item The length of the calls can be modeled as a \nameref{def:Negative_Exponential_Random_Variable}, denoted as $h$, $\mu = \dfrac{1}{h}$.
+\item The number of circuits is fixed at $n$.
+\item If all circuits are in use, there is no queue to wait in until one is available.
+\end{itemize}
+
+This makes \nameref{def:Circuit_Switching} a $M/M/n/n$ \nameref{def:Queuing_System} in \nameref{def:Kendalls_Notation}.
+
+\begin{definition}[Offered Traffic]\label{def:Offered_Traffic}
+  \emph{Offered traffic} is the amount of traffic that the end-users are offering the network.
+
+  \begin{equation}\label{eq:Offered_Traffic}
+    A = \lambda h
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Carried Traffic]\label{def:Carried_Traffic}
+  \emph{Carried traffic} is the amount of traffic that the network is currently handling.
+
+  \begin{equation}\label{eq:Carried_Traffic}
+    A_{C} = A (1-P_{B})
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Lost Traffic]\label{def:Lost_Traffic}
+  \emph{Lost traffic} is traffic that is lost because all the resources available have been allocated and no more are available.
+  This cannot be regained later because there is no queue available to handle the things that arrive to the system after all resources have been allocated.
+
+  \begin{equation}\label{eq:Lost_Traffic}
+    L = A - A_{C}
+  \end{equation}
+
+  \begin{remark}[Validity]\label{rmk:Validity_Lost_Traffic}
+    \Cref{eq:Lost_Traffic} is valid for all non-negative exponential distributions.
+    However, it is invalidated if repeats occur at all, or if they are allowed to occur, occur to soon.
+  \end{remark}
+\end{definition}
+
+Let the \nameref{def:Random_Variable} $R$ represent the number of customers currently in the system, meaning $R$ is between $0$ and $n$.
+The service rate for this is now
+\begin{equation*}
+  i \mu \text{, when } R = i
+\end{equation*}
+
+\begin{definition}[Blocking Probability]\label{def:Blocking_Probability-Circuit}
+  The \emph{blocking probability} is the probability that the next thing that comes to the system will be blocked because all resources have already been allocated and there is no queue.
+
+  \begin{equation}\label{eq:Blocking_Probability-Circuit}
+    \begin{aligned}
+      P_{B} &= p_{n} \\
+      &= \frac{\frac{A^{n}}{n!}}{\sum\limits_{i=0}^{n} \frac{A^{j}}{j!}}
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Time Congestion]\label{def:Time_Congestion}
+  \emph{Time congestion} represents the proportion of time that all the circuits are busy.
+  This is only viewed from the system-side, so the end-user will never know about time congestion.
+
+  To find the time congestion, it is simply the expected value of the \nameref{def:Offered_Traffic}, when in state $n$.
+
+  \begin{equation}\label{eq:Time_Congestion}
+    \begin{aligned}
+      \ExpectedValue_{n}[A] &= P_{B} \\
+      &= p_{n} \\
+      &= \frac{\frac{A^{N}}{N!}}{\sum\limits_{j=0}^{n}\frac{A^{j}}{j!}}
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Call Congestion]\label{def:Call_Congestion}
+  \emph{Call congestion} is the proportion of calls that find the system busy.
+  This is viewed from the end-user side.
+\end{definition}
+
+\begin{remark*}
+  For arrivals that follow a \nameref{def:Poisson_Random_Variable}'s distribution, \nameref{def:Time_Congestion} = \nameref{def:Call_Congestion}.
+  This follows according to the \nameref{thm:PASTA_Theorem}.
+\end{remark*}
+
+\begin{theorem}[PASTA Theorem]\label{thm:PASTA_Theorem}
+  
+\end{theorem}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
