@@ -1,0 +1,82 @@
+\subsection{Kendall's Notation}\label{subsec:Kendalls_Notation}
+\begin{definition}[Kendall's Notation]\label{def:Kendalls_Notation}
+  \emph{Kendall's Notation} is a shorthand to specify the characteristics of a \nameref{def:Queuing_System}.
+  There are 6 symbols, where the first 2 are distributions, the next 3 are numbers, and the last is the discipline the server uses to process tasks.
+
+  \begin{equation}\label{eq:Kendalls_Notation}
+    x_{1}/x_{2}/x_{3}/x_{4}/x_{5}/x_{6}
+  \end{equation}
+  \begin{enumerate}[noitemsep]
+  \item $x_{1}$: The arrival distribution (See \Cref{subsubsec:Distros_Kendalls_Notation}).
+  \item $x_{2}$: The server's service distribution (See \Cref{subsubsec:Distros_Kendalls_Notation}).
+  \item $x_{3}$: The number of servers.
+  \item $x_{4}$: The total capacity of the system (Assumed to be $\infty$ if not specified).
+    \begin{itemize}[noitemsep]
+    \item The assumption of $\infty$ is not a bad assumption usually.
+    \item Packets are usually only a couple of kibibytes, whereas main memory is gibibytes.
+    \end{itemize}
+  \item $x_{5}$: The population size (the total possible tasks, assumed to be $\infty$ unless specified).
+  \item $x_{6}$: Service Discipline (FIFO, LIFO, etc.) (FIFO is assumed, unless specified).
+  \end{enumerate}
+
+  \begin{remark}[Shortened Kendall's Notation]\label{rmk:Short_Kendalls_Notation}
+    Typically, only the first 3 terms in \nameref{def:Kendalls_Notation} are used.
+    The last 3 have assumed conditions if they are not specified.
+  \end{remark}
+\end{definition}
+
+\subsubsection{Distributions in Kendall's Notation}\label{subsubsec:Distros_Kendalls_Notation}
+\begin{itemize}[noitemsep]
+\item $M$ --- Exponential, Memoryless, Markovian, Poissonian.
+\item $D$ --- Deterministic, Fixed arrival rate.
+\item $E_{k}$ --- Erlang with a parameter $k$.
+\item $H_{k}$ --- Hyperexponential with a parameter $k$.
+\item $G$ --- General (The distribution can be anything).
+\end{itemize}
+
+Some examples are:
+
+\begin{example}[Lecture 3]{Kendall's Notation 1}
+  What does $M/M/1$ mean in \nameref{def:Kendalls_Notation}?
+  \tcblower{}
+  \begin{itemize}[noitemsep]
+  \item Really $M/M/1/\infty/\infty/FIFO$, since last 3 not specified.
+  \item Exponential arrival distribution
+  \item Exponential service distribution
+  \item 1 server
+  \item Infinite capacity
+  \item Infinite population
+  \item FCFS (FIFO)
+  \end{itemize}
+\end{example}
+
+\begin{example}[Lecture 3]{Kendall's Notation 2}
+  What does $M/M/n$ mean in \nameref{def:Kendalls_Notation}?
+  \tcblower{}
+  \begin{itemize}[noitemsep]
+  \item Really $M/M/n/\infty/\infty/FIFO$, since last 3 notation specified.
+  \item Exponential arrival distribution
+  \item Exponential service
+  \item $n$ servers
+  \item Infinite capacity
+  \item Infinite population
+  \item FCFS (FIFO)
+  \end{itemize}
+\end{example}
+  
+\begin{example}[Lecture 3]{Kendall's Notation 3}
+  What does $G/G/3/20/1500/SPF$ mean in \nameref{def:Kendalls_Notation}?
+  \begin{itemize}[noitemsep]
+  \item General arrival distribution
+  \item General service distribution
+  \item 3 servers
+  \item 17 queue slots ($20-3$)
+  \item 1500 total jobs
+  \item Shortest Packet First
+  \end{itemize}
+\end{example}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
