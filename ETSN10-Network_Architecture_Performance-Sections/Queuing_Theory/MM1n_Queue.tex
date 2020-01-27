@@ -2,15 +2,20 @@
 The $M/M/1/n$ is a queue with a finite-sized buffer.
 The real question with this is what is the probability the buffer will be full and the next packet will have to be blocked.
 
-\begin{equation}\label{eq:Prob_Packet_Blocked}
-  P_{B} = \Prob[\text{Message is blocked}] = p_{n} = \frac{1-\rho}{1-\rho^{n+1}} \rho^{n}
-\end{equation}
+\begin{definition}[Blocking Probability]\label{def:Blocking_Probability-Packets}
+  The \emph{blocking probability} is the probability that the next packet that arrives to the system will be blocked because the queue is full.
+  Instead of making the queue longer to keep track of the packets, the system just denies the packet access to the queue.
+
+  \begin{equation}\label{eq:Blocking_Probability-Packets}
+    P_{B} = \Prob[\text{Message is blocked}] = p_{n} = \frac{1-\rho}{1-\rho^{n+1}} \rho^{n}
+  \end{equation}
+\end{definition}
 
 \begin{example}[Lecture 4]{Length of Queue for No Packets Blocked}
   Assume $\rho = 0.5$, and that we want a system that blocks packets with probability $P_{B} \leq 10^{-3}$.
   Find $n$, the minimum length of the queue to satisfy these requirements?
   \tcblower{}
-  Using \Cref{eq:Prob_Packet_Blocked},
+  Using \Cref{eq:Blocking_Probability-Packets},
   \begin{align*}
     \frac{1-\rho}{1-\rho^{n+1}} \rho^{n} &= \frac{1-0.5}{1-0.5^{n+1}} 0.5^{n} \\
                                          &= \frac{0.5^{n+1}}{1-0.5^{n+1}} \leq 10^{-3} \\
