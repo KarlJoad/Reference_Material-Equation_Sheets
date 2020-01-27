@@ -1,5 +1,27 @@
 \section{Queuing Theory}\label{sec:Queuing_Theory}
-In queuing theory
+In queuing theory, we view a network as a collection as first-in-first-out (FIFO) data structures.
+Queuing theory provides a probabilistic analysis of these queues.
+
+\begin{definition}[Queuing System]\label{def:Queuing_System}
+  In a \emph{queuing system} model, there is a FIFO queue with a task arrival rate of $\lambda$.
+  The server processes these with a service time of $\mu$.
+\end{definition}
+
+\subsection{Little's Law}\label{subsec:Littles_Law}
+\begin{definition}[Little's Law]\label{def:Littles_Law}\label{def:Littles_Formula}
+  \emph{Little's Law} or \emph{Little's Formula} models the mean number of tasks in a queue-based system.
+  This applies to \textbf{any system in equilibrium}, as long as the system does not create or destroy tasks itself.
+
+  \begin{equation}\label{eq:Littles_Law}%\label{eq:Littles_Formula}
+    r = \lambda T_{r}
+  \end{equation}
+  \begin{itemize}[noitemsep]
+  \item $r$ --- The mean number of tasks in a queuing system.
+  \item $\lambda$ --- The average arrival rate of tasks to the system.
+  \item $T_{r}$ --- The mean time for which the task sits in the queue waiting.
+  \end{itemize}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
