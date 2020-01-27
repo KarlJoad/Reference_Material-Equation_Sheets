@@ -1,4 +1,57 @@
 \subsection{State-Dependent Queues}\label{subsec:State_Dependent_Queues}
+\begin{definition}[State-Dependent Queue]\label{def:State_Dependent_Queue}
+  A \emph{state-dependent queue} is a queue that behaves in certain ways depending on the state that it is in.
+  It can cycle endlessly \textbf{between} states, but can never cycle on itself.
+
+  There are 2 variables needed for each state.
+  \begin{enumerate}[noitemsep]
+  \item $\lambda_{i}$: The arrival rate of tasks when the system is in state $i$.
+  \item $\mu_{i}$: The servers' service rate when the system is in state $i$.
+  \end{enumerate}
+
+  In each state, there needs to be a balance between the packets going to the next stage and leaving the current one and vice versa.
+  \begin{equation}\label{eq:State_Dependent_Queue_Balance_Equation}
+    \lambda_{i-1} p_{i-1} = \mu_{i} p_{i} \text{, for } i = 1, 2, \ldots
+  \end{equation}
+
+  The general solution to \Cref{eq:State_Dependent_Queue_Balance_Equation} is:
+  \begin{equation}\label{eq:eq:State_Dependent_Queue_Balance_Equation-Solution}
+    p_{i} = \frac{\lambda_{0} \lambda_{1} \cdots \lambda_{i-1}}{\mu_{1} \mu_{2} \cdots \mu_{i}} p_{0} \text{, for } i = 1, 2, \ldots
+  \end{equation}
+\end{definition}
+
+\subsubsection{\texorpdfstring{A General $M/M/2$ Queue}{Parallel Servers}}\label{subsubsec:General_MM2_Queue}
+A general $M/M/2$ \nameref{def:Queuing_System} can be represented as a \nameref{def:State_Dependent_Queue}.
+
+\begin{align*}
+  \lambda_{i} &= \lambda \text{, for } i = 1, 2, \ldots \\
+  \mu_{i} &= \begin{cases}
+    \mu & i = 1 \\
+    2 \mu & i = 2, 3, \ldots \\
+  \end{cases}
+\end{align*}
+where $i$ is the number of packets in the system, which represents a different state of the system.
+
+Now, let's compare a $M/M/2$ \nameref{def:Queuing_System} against a $M/M/1$ \nameref{def:Queuing_System}.
+\begin{align*}
+  {\ExpectedValue[T_{R}]}_{\text{1 server, } 2\mu \text{ rate}} &= \frac{1}{2 \mu} \frac{1}{1-\rho} \\
+  {\ExpectedValue[T_{R}]}_{\text{2 servers}} &= \frac{1}{\mu} \frac{1}{(1+\rho) (1-\rho)} \\
+  \frac{{\ExpectedValue[T_{R}]}_{\text{1 server, } 2\mu \text{ rate}}}{{\ExpectedValue[T_{R}]}_{\text{2 servers}}} &= \frac{1+\rho}{2} \leq 2
+\end{align*}
+
+The conclusion here is concrete.
+\begin{center}
+  \textbf{\Large A single faster server is always more efficient.}
+\end{center}
+
+If we extend our findings about \nameref{def:State_Dependent_Queue}s to $M/M/\infty$ systems, the general solution becomes a \nameref{def:Poisson_Random_Variable}'s distribution.
+\begin{equation}\label{eq:MMinfty_Balance_Equation-Solution}
+  \begin{aligned}
+    p_{i} &= \frac{\lambda_{i}}{\mu^{i} i!} p_{0} \\
+    &= e^{-\frac{\lambda}{\mu}} \frac{{\left( \frac{\lambda}{\mu} \right)}^{i}}{i!} \\
+    &= e^{-A} \frac{A^{i}}{i!}
+  \end{aligned}
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex
