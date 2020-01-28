@@ -117,6 +117,17 @@ But, there are some other ones possible that improve the \nameref{def:Queuing_Sy
 \end{definition}
 
 \subsubsection{Bit-Round Fair Queuing (BRFQ)}\label{subsubsec:Bit_Round_Fair_Queuing}
+\begin{definition}[Bit-Round Fair Queuing]\label{def:Bit_Round_Fair_Queuing}
+  The \emph{bit-round fair queuing} \nameref{def:Queuing_Discipline} is based off the \nameref{def:Processor_Sharing} discipline and inherits its \nameref{def:Work_Conserving} property.
+  However, instead of sending individual bits, we send whole packets, but choose which to send based on the same calculations as \nameref{def:Processor_Sharing}
+  Each data flow gets approximately $\frac{1}{N}$ of the overall bandwidth in the system, given there are $N$ flows.
+
+  The virtual start and finish times are still computed.
+  However, unlike the \nameref{def:Fair_Queuing} that \nameref{def:Processor_Sharing} is inspired by, the next packet that is sent is the one with the \textbf{earliest finish time}.
+
+  The same equations rae used as in \nameref{def:Processor_Sharing} (\Crefrange{eq:PS_Finish_Time}{eq:PS_Start_Time}).
+\end{definition}
+
 \subsubsection{Generalized Processor Sharing (GPS)}\label{subsubsec:Generalized_Processor_Sharing}
 \subsubsection{Weighted Fair Queuing (WFQ)}\label{subsubsec:Weighted_Fair_Queuing}
 \subsubsection{Class-Based Queuing (CBQ)}\label{subsubsec:Class_Based_Queuing}
