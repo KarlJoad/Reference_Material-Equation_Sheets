@@ -91,6 +91,31 @@ But, there are some other ones possible that improve the \nameref{def:Queuing_Sy
 \end{definition}
 
 \subsubsection{Processor Sharing (PS)}\label{subsubsec:Processor_Sharing}
+\begin{definition}[Processor Sharing]\label{def:Processor_Sharing}
+  A \emph{processor sharing} \nameref{def:Queuing_Discipline} is \nameref{def:Work_Conserving}.
+  However, it is not practical, because it is modeled on sending individual bits rather than whole packets.
+  It is more of a meta-\nameref{def:Queuing_Discipline}, because it forms the basis for \nameref{def:Bit_Round_Fair_Queuing}.
+
+  In this discipline, there are multiple queues, just like in \nameref{def:Fair_Queuing}.
+  One bit from each queue is sent per round of the round-robin.
+  This prevents longer packets from getting an advantage.
+
+  The system needs to figure out the virtual start and finish times for a given packet, $i$, of the $\alpha$ queue.
+  \begin{equation}\label{eq:PS_Finish_Time}
+    F_{i}^{\alpha} = S_{i}^{\alpha} + P_{i}^{\alpha}
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $F_{i}^{\alpha}$: The $\alpha$th queue's $i$th packet's finish time.
+  \item $S_{i}^{\alpha}$: The $\alpha$th queue's $i$th packet's start time, which is defined in \Cref{eq:PS_Start_Time}.
+  \item $P_{i}^{\alpha}$: The $\alpha$th queue's $i$th packet's time to send.
+  \end{itemize}
+
+  \begin{equation}\label{eq:PS_Start_Time}
+    S_{i}^{\alpha} = \max \left( F_{i-1}^{\alpha}, A_{i}^{\alpha} \right)
+  \end{equation}
+\end{definition}
+
 \subsubsection{Bit-Round Fair Queuing (BRFQ)}\label{subsubsec:Bit_Round_Fair_Queuing}
 \subsubsection{Generalized Processor Sharing (GPS)}\label{subsubsec:Generalized_Processor_Sharing}
 \subsubsection{Weighted Fair Queuing (WFQ)}\label{subsubsec:Weighted_Fair_Queuing}
