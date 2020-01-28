@@ -76,6 +76,20 @@ But, there are some other ones possible that improve the \nameref{def:Queuing_Sy
 \end{definition}
 
 \subsubsection{Priority Queuing (PQ)}\label{subsubsec:Priority_Queuing}
+\begin{definition}[Priority Queuing]\label{def:Priority_Queuing}
+  \emph{Priority queuing} is a \nameref{def:Work_Conserving} \nameref{def:Queuing_Discipline}.
+  There are $K$ queues that lead to the server.
+  The $k$th queue is constrained by $1 \leq k \leq K$.
+  The $k+1$th queue has a higher priority than the $k$th queue.
+  The higher priority queue is served first.
+
+  This has a simple implementation with low processing overhead.
+  There needs to be an extra step where the packets are sorted into the correct priority queue, but that is quite efficient now.
+
+  However, there is no fairness among the packets.
+  The lower priority queues can be starved of service time if the higher queues are always full.
+\end{definition}
+
 \subsubsection{Processor Sharing (PS)}\label{subsubsec:Processor_Sharing}
 \subsubsection{Bit-Round Fair Queuing (BRFQ)}\label{subsubsec:Bit_Round_Fair_Queuing}
 \subsubsection{Generalized Processor Sharing (GPS)}\label{subsubsec:Generalized_Processor_Sharing}
