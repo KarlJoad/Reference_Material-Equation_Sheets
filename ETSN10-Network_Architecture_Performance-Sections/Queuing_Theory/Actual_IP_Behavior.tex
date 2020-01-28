@@ -1,0 +1,107 @@
+\subsection{Actual IP Network Behavior}\label{subsec:Actual_IP_Behavior}
+Actual IP traffic doesn't actually follow a \nameref{def:Poisson_Random_Variable}'s distribution very well.
+It has:
+\begin{itemize}[noitemsep]
+\item Self-similarity
+\item Lots of dependency (Current traffic depends on the previous traffic).
+\item Infinite variance.
+\end{itemize}
+
+\begin{definition}[Autocorrelation]\label{def:Autocorrelation}
+  \emph{Autocorrelation} is a function that measures the similarity of a function with itself, typically over a period of time.
+
+  \begin{equation}\label{eq:Autocorrelation}
+    R_{x, x}(t_{1}, t_{2}) = \ExpectedValue[X(t_{1}), X(t_{2})]
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Long-Range Dependence]\label{def:Long_Range_Dependence}
+  A process that has \emph{long-range dependence} has an autocorrelation that decays slowly as the difference between $t_{1}$ and $t_{2}$ tends towards $\infty$.
+  Mathematically, these processes are characterized by an atocorrelation function that decays hyperbolically as $k$ increases.
+  This is represented with \Cref{eq:Non_Summability_Correlation}, the \emph{Non-summability of correlation}.
+
+  \begin{equation}\label{eq:Non_Summability_Correlation}
+    \sum\limits_{k} r(k) = \infty
+  \end{equation}
+
+  \begin{remark}[Uncorrelated]
+    If the result from \Cref{eq:Autocorrelation} is 0 when $t_{2} = t_{1} + \Delta t$, i.e.\ when the time difference is very small, then the function $X(t)$ is no correlation.
+  \end{remark}
+
+  \begin{remark}[Short-Range Correlation]
+    if the result from \Cref{eq:Autocorrelation} decays to 0 very quickly, then the function $X(t)$ has \emph{short-range correlation}.
+  \end{remark}
+\end{definition}
+
+\subsubsection{The Hurst Parameter}\label{subsubsec:The_Hurst_Parameter}
+\begin{definition}[Hurst Parameter]\label{def:Hurst_Parameter}
+  The \emph{Hurst parameter}, denoted $H$, is a measure of the ``burstiness'' of a system.
+  It is also considered a measure of self-similarity.
+
+  $H$ always lies within the range $0.5 < H < 1.0$.
+
+  The expected value of the Hurst parameter is
+  \begin{equation}\label{eq:Hurst_Parameter_Expected_Value}
+    \ExpectedValue[x(t)] = \frac{\ExpectedValue[x(at)]}{a^{H}}
+  \end{equation}
+
+  The variance of the Hurst parameter is
+  \begin{equation}\label{eq:Hurst_Parameter_Variance}
+    \Variance[x(t)] = \frac{\Variance[x(at)]}{a^{2H}}
+  \end{equation}
+
+  The autocorrelation of the Hurst parameter is
+  \begin{equation}\label{eq:Hurst_Parameter_Autocorrelation}
+    R_{x, x}(t, s) = \frac{R_{x, x}(at, as)}{a^{2H}}
+  \end{equation}
+\end{definition}
+
+\subsubsection{Self-Similarity and Autocorrelation}\label{subsubsec:Self_Similarity_Autocorrelation}
+For this section, let $X(t)$ be a \nameref{def:Stochastic_Process} with
+\begin{itemize}[noitemsep]
+\item Constant mean $\mu$
+\item Constant variance $\sigma^{2}$
+\item An autocorrelation function depending only on $k$.
+  \begin{equation*}
+    r(k) = \frac{\ExpectedValue[(X(t)-\mu)(X(t+k) - \mu)]}{\ExpectedValue \left[ {\bigl( X(t) - \mu \bigr)}^{2} \right]}
+  \end{equation*}
+\end{itemize}
+
+Now let $X^{(m)}$ be a new \textbf{aggregate} time series formed by averages of $X$ over non-overlapping blocks in time of size $m$.
+This has some intersting implications.
+\begin{itemize}[noitemsep]
+\item $X$ is exactly self-similar if
+  \begin{itemize}[noitemsep]
+  \item The aggregated processes have the same autocorrelation structure as $X$.
+  \item $r^{(m)}(k) = r(k), k \geq 0$ for all $m = 1, 2, \ldots$
+  \end{itemize}
+
+\item $X$ is asymptotically self-similar if the above holds when $r^{(m)}(k) \sim r(k), m \rightarrow \infty$
+\item The most striking feature of self-similarity is correlation structures of the aggregated process do not degenerate as $m \rightarrow \infty$
+\item This is in contrast to traditional models
+  \begin{itemize}[noitemsep]
+  \item Correlation structures of their aggregated processes degenerate, i.e.\ $r^{(m)}(k) \rightarrow 0$ as $m \rightarrow \infty, k = 1, 2, 3, \ldots$
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Squared Coefficient of Variation}\label{subsubsec:Squared_Coefficient_Variation}
+This is a critical factor in determining the type of \nameref{def:Queuing_System} to use.
+It is a measure of variability of the system.
+
+\begin{equation}\label{eq:Squared_Coefficient_Variation}
+  c^{2} = \frac{\sigma^{2}}{\mu^{2}}
+\end{equation}
+
+The squared coefficient of variation for some common \nameref{def:Queuing_System}s are shown below.
+\begin{itemize}[noitemsep]
+\item $M/M/1 = 1$
+\item $M/D/1 = 0$
+  \begin{itemize}[noitemsep]
+  \item Namely, for any system with a deterministic distribution, the squared coefficient of variation will be 0.
+  \end{itemize}
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
