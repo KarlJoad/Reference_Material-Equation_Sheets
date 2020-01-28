@@ -66,6 +66,15 @@ But, there are some other ones possible that improve the \nameref{def:Queuing_Sy
 \end{definition}
 
 \subsubsection{Fair Queuing (FQ)}\label{subsubsec:Fair_Queuing}
+\begin{definition}[Fair Queuing]\label{def:Fair_Queuing}
+  The \emph{fair queuing} \nameref{def:Queuing_Discipline} is a \nameref{def:Work_Conserving} one.
+  There are multiple queues for each port, one for each source or flow of data to that port.
+  The various queues are serviced in a round-robin fashion, where one packet from a queue is handled in a single cycle, before moving onto the next queue.
+  This achieves load balancing among the different flows, meaning there is no advantage for a particular flow to be greedy.
+
+  However, the drawback with this is that short packets are penalized as only one packet from one queue is sent per round.
+\end{definition}
+
 \subsubsection{Priority Queuing (PQ)}\label{subsubsec:Priority_Queuing}
 \subsubsection{Processor Sharing (PS)}\label{subsubsec:Processor_Sharing}
 \subsubsection{Bit-Round Fair Queuing (BRFQ)}\label{subsubsec:Bit_Round_Fair_Queuing}
