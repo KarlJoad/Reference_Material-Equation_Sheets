@@ -1,0 +1,78 @@
+\subsection{Queuing Disciplines}\label{subsec:Queuing_Disciplines}
+\begin{definition}[Queuing Discipline]\label{def:Queuing_Discipline}
+  A \emph{queuing discipline} is a way to order the packets to send them in a particular order.
+  Depending on how we order, namely how we schedule the packets, we achieve different things.
+  However, the overarching requirement is to minimize delay, improve throughput, increase busy time, and decrease idle time.
+
+  There are 2 types of queuing disciplines:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Work_Conserving}
+  \item \nameref{def:Non_Work_Conserving}
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Work Conserving]\label{def:Work_Conserving}
+  A \emph{work conserving} \nameref{def:Queuing_Discipline} always handles packets right away.
+  Meaning, if there is a packet waiting in the queue and the server is sitting idle, it will always serve the packet.
+
+  This is in contrast to a \nameref{def:Non_Work_Conserving} \nameref{def:Queuing_Discipline}.
+\end{definition}
+
+\begin{definition}[Non-Work Conserving]\label{def:Non_Work_Conserving}
+  A \emph{non-work conserving} \nameref{def:Queuing_Discipline} may not handle packets right away.
+  Meaning, if there is a packet waiting in the queue and the server is sitting idle, the server might not server the packet right away.
+  Packets are switched only at \textbf{the right time towards the right destination}.
+
+  While this type of \nameref{def:Queuing_Discipline} may not make intuitive sense, it has some advantages.
+  \begin{itemize}[noitemsep]
+  \item Reduces jitter
+  \item It \emph{shapes} the traffic, making it predictable by holding traffic back until a certain time.
+  \end{itemize}
+
+  This is contrast to a \nameref{def:Work_Conserving} \nameref{def:Queuing_Discipline}.
+\end{definition}
+
+Traditionally, \nameref{def:FIFO} was used.
+But, there are some other ones possible that improve the \nameref{def:Queuing_System} in various ways.
+
+\subsubsection{First-In First-Out}\label{subsubsec:FIFO}
+\begin{definition}[First-In First-Out]\label{def:FIFO}
+  In a \emph{first-in first-out} \nameref{def:Queuing_Discipline}, the first packet that enters the queue is the first one served.
+  This is a \nameref{def:Work_Conserving} \nameref{def:Queuing_Discipline}.
+  This follows Kleinrock's Conservation Law.
+  \begin{equation}\label{eq:Kleinrocks_Conservation_Law}
+    C = \sum\limits_{n=1}^{N} \rho_{n} q_{n}
+  \end{equation}
+  \begin{itemize}[noitemsep]
+  \item $C$: A constant value of throughput for the system.
+  \item $\rho$: The \nameref{def:Occupancy} for each flow.
+  \item $q$: The mean scheduler delay.
+  \end{itemize}
+  
+  However, there are some problems:
+  \begin{itemize}[noitemsep]
+  \item Small packets are held up by large packets ahead of them in the queue. This leads to:
+    \begin{itemize}[noitemsep]
+    \item Larger average delays for smaller packets.
+    \item Greater throughput for larger packets.
+    \item Flows of greedy packets get better service.
+    \end{itemize}
+  \item Greedy TCP connections crowd out more altruistic connections.
+    \begin{itemize}[noitemsep]
+    \item If one connection does not back off, others may back off more.
+    \item This is a feature of the TCP protocol, because this manages network congestion.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\subsubsection{Fair Queuing (FQ)}\label{subsubsec:Fair_Queuing}
+\subsubsection{Priority Queuing (PQ)}\label{subsubsec:Priority_Queuing}
+\subsubsection{Processor Sharing (PS)}\label{subsubsec:Processor_Sharing}
+\subsubsection{Bit-Round Fair Queuing (BRFQ)}\label{subsubsec:Bit_Round_Fair_Queuing}
+\subsubsection{Generalized Processor Sharing (GPS)}\label{subsubsec:Generalized_Processor_Sharing}
+\subsubsection{Weighted Fair Queuing (WFQ)}\label{subsubsec:Weighted_Fair_Queuing}
+\subsubsection{Class-Based Queuing (CBQ)}\label{subsubsec:Class_Based_Queuing}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
