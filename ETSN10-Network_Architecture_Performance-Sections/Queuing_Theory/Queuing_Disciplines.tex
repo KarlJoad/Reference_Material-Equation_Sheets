@@ -129,6 +129,31 @@ But, there are some other ones possible that improve the \nameref{def:Queuing_Sy
 \end{definition}
 
 \subsubsection{Generalized Processor Sharing (GPS)}\label{subsubsec:Generalized_Processor_Sharing}
+\begin{definition}[Generalized Processor Sharing]\label{def:Generalized_Processor_Sharing}
+  \emph{Generalized processor sharing} is a \nameref{def:Work_Conserving} meta-\nameref{def:Queuing_Discipline}.
+  Like in \nameref{def:Processor_Sharing}, we send some number of bits per round, specified by the weight $w_{\alpha}$.
+  If a queue has a weighting of 5, then $w_{\alpha} = 5$ means 5 bits are sent from the $\alpha$th queue each round.
+  This solves the problem in \nameref{def:Bit_Round_Fair_Queuing} of not being able to handle queues that output different amounts of information during each round.
+  This is used to form the basis of \nameref{def:Weighted_Fair_Queuing}.
+
+  There are slight generalizations that need to be made to \Crefrange{eq:PS_Finish_Time}{eq:PS_Start_Time}.
+  They are shown below.
+  \begin{equation}\label{eq:GPS_Finish_Time}
+    F_{i}^{\alpha} = S_{i}^{\alpha} + \frac{P_{i}^{\alpha}}{w_{\alpha}}
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $F_{i}^{\alpha}$: The $\alpha$th queue's $i$th packet's finish time.
+  \item $S_{i}^{\alpha}$: The $\alpha$th queue's $i$th packet's start time, defined in \Cref{eq:GPS_Start_Time}.
+  \item $P_{i}^{\alpha}$: The $\alpha$th queue's $i$th packet's time to send.
+  \item $w_{\alpha}$: The weight (number of bits sent per round) of the $\alpha$th queue.
+  \end{itemize}
+
+  \begin{equation}\label{eq:GPS_Start_Time}
+    S_{i}^{\alpha} = \max \left( F_{i-1}^{\alpha}, A_{i}^{\alpha} \right)
+  \end{equation}
+\end{definition}
+
 \subsubsection{Weighted Fair Queuing (WFQ)}\label{subsubsec:Weighted_Fair_Queuing}
 \subsubsection{Class-Based Queuing (CBQ)}\label{subsubsec:Class_Based_Queuing}
 %%% Local Variables:
