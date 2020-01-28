@@ -169,6 +169,12 @@ But, there are some other ones possible that improve the \nameref{def:Queuing_Sy
 \end{definition}
 
 \subsubsection{Class-Based Queuing (CBQ)}\label{subsubsec:Class_Based_Queuing}
+\begin{definition}[Class-Based Queuing]\label{def:Class_Based_Queuing}
+  \emph{Class-based queuing} is a meta-\nameref{def:Queuing_Discipline}, that is neither \nameref{def:Work_Conserving} or \nameref{def:Non_Work_Conserving}.
+  It is a method of assigning fractions of overall bandwidth to a set of nodes within a class.
+  Nodes that are within the same class may borrow bandwidth if the allocated node is not using it.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
