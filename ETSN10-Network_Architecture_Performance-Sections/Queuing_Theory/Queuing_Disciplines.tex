@@ -168,6 +168,24 @@ But, there are some other ones possible that improve the \nameref{def:Queuing_Sy
   The maximum buffer/queue size needed is proportional to this delay.
 \end{definition}
 
+\begin{example}[Lecture 5]{WFQ vs. BRFQ}
+  Given the packet reception table below, which arrive at the same time on the same link, find the packet transmission order?
+  \begin{tabular}{ccc}
+    \toprule
+    Packet & Size & Flow \\
+    \midrule
+    1 & 100 & 1 \\
+    2 & 100 & 1 \\
+    3 & 60 & 2 \\
+    4 & 120 & 2 \\
+    5 & 60 & 2 \\
+    \bottomrule
+  \end{tabular}
+
+  You may assume that the link can send one unit of each packet per time instance.
+  \tcblower{}
+\end{example}
+
 \subsubsection{Class-Based Queuing (CBQ)}\label{subsubsec:Class_Based_Queuing}
 \begin{definition}[Class-Based Queuing]\label{def:Class_Based_Queuing}
   \emph{Class-based queuing} is a meta-\nameref{def:Queuing_Discipline}, that is neither \nameref{def:Work_Conserving} or \nameref{def:Non_Work_Conserving}.
