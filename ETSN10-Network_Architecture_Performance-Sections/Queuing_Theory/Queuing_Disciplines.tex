@@ -160,6 +160,14 @@ But, there are some other ones possible that improve the \nameref{def:Queuing_Sy
 \end{definition}
 
 \subsubsection{Weighted Fair Queuing (WFQ)}\label{subsubsec:Weighted_Fair_Queuing}
+\begin{definition}[Weighted Fair Queuing]\label{def:Weighted_Fair_Queuing}
+  \emph{Weighted fair queuing} is a \nameref{def:Work_Conserving} implementation of \nameref{def:Generalized_Processor_Sharing}.
+  It also uses the same packet management strategy as \nameref{def:Bit_Round_Fair_Queuing}, of sending the packet with the \textbf{earliest virtual finish time}.
+
+  By attaching a weight for the number of possible bits to send, we can guarantee a bound on delay.
+  The maximum buffer/queue size needed is proportional to this delay.
+\end{definition}
+
 \subsubsection{Class-Based Queuing (CBQ)}\label{subsubsec:Class_Based_Queuing}
 %%% Local Variables:
 %%% mode: latex
