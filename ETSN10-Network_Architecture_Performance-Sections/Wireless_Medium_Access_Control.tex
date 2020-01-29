@@ -218,7 +218,14 @@ There are 2 main implementations:
   \item However, there may be collision/overlapping timeslot between 2 nodes.
   \end{itemize}
 
+\item Reserved mode
+  \begin{itemize}[noitemsep]
+  \item Data transmission can only happen inside of successfully reserved slots.
+  \item The controlling system will schedule and grant access to these based on some algorithm.
+  \item This means that there can be no collisions between timeslots.
+  \end{itemize}
 \end{enumerate}
+
 \subsubsection{CDMA}\label{subsubsec:CDMA}
 \begin{definition}[Code Division Multiple Access]\label{def:CDMA}
    (\emph{CDMA})
