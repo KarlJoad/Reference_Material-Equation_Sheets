@@ -108,6 +108,14 @@ We can use \nameref{def:OFDM} to do 2 things:
 \item \nameref{par:Transmission_Power_Control}
 \end{enumerate}
 
+\paragraph{Subcarrier Allocation}\label{par:Subcarrier_Allocation}
+If a single node does not need the entire frequency spectrum that we have available, we can can share the channel's subcarrier frequencies between multiple nodes.
+This flexibility means:
+\begin{itemize}[noitemsep]
+\item We can assign different numbers of subcarriers to different nodes depending on the node's throughput requirements.
+\item We can adjust which subcarriers are allocated to account for adverse channel conditions.
+\end{itemize}
+
 \subsubsection{TDMA}\label{subsubsec:TDMA}
 \begin{definition}[Time Division Multiple Access]\label{def:TDMA}
   A \emph{time division multiple access}  (\emph{TDMA}) system assigns a fixed sending frequency to a transmission channel \textbf{for a specific amount of time}.
