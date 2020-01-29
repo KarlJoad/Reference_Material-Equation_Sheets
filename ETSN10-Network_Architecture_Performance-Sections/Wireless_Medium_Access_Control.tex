@@ -251,6 +251,14 @@ These are the:
 \item \nameref{def:Scrambling_Code}
 \end{enumerate}
 
+\begin{definition}[Spreading Code]\label{def:Spreading_Code}
+  The \emph{spreading code} is used at the end of each data stream, so we can figure out which application/data stream the data belongs to.
+  It is only used inside the user's device, and it done before each of the data streams is added together, XORed with the \nameref{def:Scrambling_Code}, and pushed out.
+\end{definition}
+
+\begin{definition}[Scrambling Code]\label{def:Scrambling_Code}
+  The \emph{scrambling code} is used once all the applications/data streams have been XORed with their \nameref{def:Spreading_Code}s and aggregated.
+  This code is then XORed with this output and then sent out to be handled by the receiver.
 \end{definition}
 
 %%% Local Variables:
