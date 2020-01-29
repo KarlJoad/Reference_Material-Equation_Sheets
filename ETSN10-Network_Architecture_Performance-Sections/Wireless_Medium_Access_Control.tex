@@ -116,6 +116,21 @@ This flexibility means:
 \item We can adjust which subcarriers are allocated to account for adverse channel conditions.
 \end{itemize}
 
+\paragraph{Transmission Power Control}\label{par:Transmission_Power_Control}
+In general, the greater the power transmission, the greater the data rate.
+\begin{remark*}
+  This does not hold true for \nameref{def:CDMA} systems.
+  That small difference will be discussed there.
+\end{remark*}
+
+The flexibility that transmission power control gives us is:
+\begin{itemize}[noitemsep]
+\item If a node does not require the highest possible data rate for the current SINR, it can reduce transmission power.
+\item SINR is lowered but the node changes to a different modulation and coding scheme to compensate.
+\item This reduces the data rate, so the transmission power should be chosen to match the required rate.
+\item Adjusting the nodes' transmission rate through transmission power creates a form of \nameref{def:SDMA}. Nodes will cause interference to other nodes in a larger area if the transmission power increases.
+\end{itemize}
+
 \subsubsection{TDMA}\label{subsubsec:TDMA}
 \begin{definition}[Time Division Multiple Access]\label{def:TDMA}
   A \emph{time division multiple access}  (\emph{TDMA}) system assigns a fixed sending frequency to a transmission channel \textbf{for a specific amount of time}.
