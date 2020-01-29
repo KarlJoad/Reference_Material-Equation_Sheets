@@ -83,6 +83,25 @@ Some examples of this are:
 \item Fast Hopping: FHSS (Frequency Hopping Spread Spectrum)
 \end{itemize}
 
+\paragraph{OFDM}\label{par:OFDM}
+\begin{definition}[Orthogonal Frequency Division Multiplexing]\label{def:OFDM}
+  \emph{Orthogonal frequency division multiplexing} or \emph{OFDM} is a way of breaking up the frequency spectrum into orthogonal frequencies into orthogonal subcarriers.
+  An orthogonal subcarrier is a frequency that has a waveform that has a peak where all other subcarriers' waveform is zero.
+  To achieve this, the equation below is used.
+  \begin{equation}\label{eq:Orthogonal_Subcarrier}
+    \Delta f = \frac{k}{T_{U}}
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $k \in \NaturalNumbers$
+  \item $T_{U}$ is the useful symbol duration
+  \end{itemize}
+
+  Because these subcarriers are orthogonal, there do not need to be guard bands between them, allowing for more efficient usage of the transmission spectrum.
+  Also, each symbol is spread over a wider frequency range of many slowly-modulated narrowband signals instead of one rapidly-modulating wideband signal.
+  If this is paired with error detection and correction, the transmission is even more robust.
+\end{definition}
+
 \subsubsection{TDMA}\label{subsubsec:TDMA}
 \begin{definition}[Time Division Multiple Access]\label{def:TDMA}
   A \emph{time division multiple access}  (\emph{TDMA}) system assigns a fixed sending frequency to a transmission channel \textbf{for a specific amount of time}.
