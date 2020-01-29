@@ -131,6 +131,26 @@ The flexibility that transmission power control gives us is:
 \item Adjusting the nodes' transmission rate through transmission power creates a form of \nameref{def:SDMA}. Nodes will cause interference to other nodes in a larger area if the transmission power increases.
 \end{itemize}
 
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cccccc}
+    \toprule
+    \multicolumn{1}{p{1.6cm}}{Data Rate (mbps)} & Modulation & Coding Rate & \multicolumn{1}{p{2.2cm}}{Coded bits per subcarrier} & \multicolumn{1}{p{2.5cm}}{Coded bits per OFDM symbol} & \multicolumn{1}{p{2.5cm}}{Coded bits per OFDM symbol} \\
+    \midrule
+    6 & BPSK & 1/2 & 1 & 48 & 25 \\
+    9 & BPSK & 3/4 & 1 & 48 & 36 \\
+    12 & QPSK & 1/2 & 2 & 96 & 48 \\
+    18 & QPSK & 3/4 & 2 & 96 & 72 \\
+    24 & 16-QAM & 1/2 & 4 & 192 & 96 \\
+    36 & 16-QAM & 3/4 & 4 & 192 & 144 \\
+    48 & 64-QAM & 2/3 & 6 & 288 & 192 \\
+    54 & 64-QAM & 3/4 & 6 & 288 & 216 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Transmission Power Control}
+  \label{tab:Transmission_Power_Control}
+\end{table}
+
 \subsubsection{TDMA}\label{subsubsec:TDMA}
 \begin{definition}[Time Division Multiple Access]\label{def:TDMA}
   A \emph{time division multiple access}  (\emph{TDMA}) system assigns a fixed sending frequency to a transmission channel \textbf{for a specific amount of time}.
