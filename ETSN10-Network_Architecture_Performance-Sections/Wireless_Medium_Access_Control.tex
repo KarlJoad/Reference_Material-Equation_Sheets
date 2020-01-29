@@ -266,6 +266,18 @@ There is a concept of the spreading factor.
   \frac{R_{c}}{R_{i}} = \frac{\frac{1}{R_{i}}}{\frac{1}{R_{c}}}
 \end{equation}
 
+\paragraph{Orthogonal Variable Spreading Factor Codes}\label{par:OVSF_Codes}
+The codes used for \nameref{def:CDMA} are generated in a recursive manner.
+Each generation of codes halves the overall throughput of the system.
+
+\begin{equation}\label{eq:OVSF_Codes}
+  x_{i-1} \rightarrow
+  \begin{cases}
+    (x_{i}, x_{i}) \\
+    (x_{i}, -x_{i}) \\
+  \end{cases}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
