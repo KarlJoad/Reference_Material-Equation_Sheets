@@ -58,6 +58,22 @@ To begin our discussion of \nameref{def:Reservation_Scheme}s, we must talk about
 \subsubsection{FDMA}\label{subsubsec:FDMA}
 \begin{definition}[Frequency Division Multiple Access]\label{def:FDMA}
   In a \emph{frequency division multiple access} (\emph{FDMA}) system, a certain frequency is assigned to a certain transmission channel between the sender and receiver.
+
+  Because of the way FDMA works, it effectively acts like a \nameref{def:Circuit_Switching} system, so we can apply the same equations as \nameref{subsec:Model_Circuit_Switching}.
+  \begin{equation}\label{eq:FDMA_Work_Rate}
+    \eta = \frac{1}{n v} \sum\limits_{i=1}^{N} \rho_{i}
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $v$: The achievable rate, in bits/Hz/s. This includes:
+    \begin{itemize}[noitemsep]
+    \item Guard bands
+    \item Signaling Overheads
+    \end{itemize}
+  \item $N$: The number of nodes
+  \item $\rho$: The utilized rate
+  \item $\eta$: The rate of work
+  \end{itemize}
 \end{definition}
 
 Some examples of this are:
