@@ -1,0 +1,84 @@
+\section{Wireless Medium Access Control}\label{sec:Wireless_MAC}
+We need to separate when devices are transmitting.
+Due to the nature of radio waves, we cannot transmit simultaneously on the same frequency from multiple devices.
+
+\subsection{Reservation Schemes}\label{subsec:Reservation_Scheme}
+To begin our discussion of \nameref{def:Reservation_Scheme}s, we must talk about \nameref{def:ALOHA}.
+
+\begin{definition}[ALOHA]\label{def:ALOHA}
+  \emph{ALOHA} was one of the earliest protocols for wireless data transmission.
+  It used a purely random access scheme, so when you had a packet to send, it was sent.
+  To ensure devices knew if their transmission was successful, an acknoledgement was sent when the next recipient in the chain received the message.
+
+  \begin{remark}
+    It is only mentioned here because it is used as a baseline measurement for other protocols.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Reservation Scheme]\label{def:Reservation_Scheme}
+  A \emph{reservation scheme} is the idea of reserving resources for a node in a wireless network to prevent collisions.
+  The resources that can be reserved include: time, frequency, and others.
+
+  We would like to reserve resources because the system will not lose capacity to collisions.
+  But, if not \textbf{all} the resources are being fully utilized, then the system loses out on throughput.
+
+  Because of the limitations of the radio spectrum and light being a broadcast medium, we have 4 main solutions for supporting multiple devices that was to transmit.
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:SDMA}
+  \item \nameref{def:FDMA}
+  \item \nameref{def:TDMA}
+  \item \nameref{def:CDMA}
+  \end{enumerate}
+\end{definition}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{2cm}|p{3.6cm}p{3.6cm}p{3.6cm}p{3.6cm}}
+    \toprule
+    \multicolumn{1}{c|}{\textbf{Approach}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:SDMA}}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:TDMA}}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:FDMA}}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:CDMA}}} \\
+    \midrule
+    Idea & Segment space into cells/sectors & Segment sending time into mutually disjoint time-slots, demand-driven or pattern-driven. & Segment the frequency band into disjoing sub-bands. & Spread the spectrum according to orthogonal codes. \\ \midrule
+    Terminals & One one terminal can be active in a single cell/sector. & All terminals active for short time periods on the same frequency. & Every terminal has its own frequency, uninterrupted. & All terminals can be active at the same time at the same place, on the same frequency. \\ \midrule
+    Signal Separation & Cell structure, directed antennas. & Synchronization in time domain. & Filtering in frequency domain. & Code plus special receivers. \\ \midrule
+    Advantages & Very simple, increases capacity per unit area. & Established, \textbf{fully digital}, flexible. & Simple, established, robust. & Flexible, less frequency planning needed, soft handover. \\ \midrule
+    Disadvantages & Inflexible, antennas typically fixed. & Guard time needed (multipath propagation), synchronization difficult. & Inflexible, frequencies are a scarce resource and must be decided from beginning. & Complex receivers, needs more complicated power management from senders. \\ \midrule
+    Comments & Only useful in combination with \nameref{subsubsec:TDMA}, \nameref{subsubsec:FDMA}, or \nameref{subsubsec:CDMA}. & Standard in fixed networks. Used together with \nameref{subsubsec:FDMA} and \nameref{subsubsec:SDMA} in mobile networks. & Typically combined with \nameref{subsubsec:TDMA} (frequency hopping patterns) and \nameref{subsubsec:SDMA} (frequency reuse) & Has some problems still. Higher complexity, lower expectations. Needs integration with \nameref{subsubsec:TDMA}/\nameref{subsubsec:FDMA}. \\
+    \bottomrule
+  \end{tabular}
+  \caption{Division Multiple Access Comparison}
+  \label{tab:DMA_Comparison}
+\end{table}
+
+\subsubsection{SDMA}\label{subsubsec:SDMA}
+\begin{definition}[Space Division Multiple Access]\label{def:SDMA}
+  In a \emph{space division multiple access} (\emph{SDMA}) setup, the space is segmented into sectors, then addressed with directed antennas.
+  These tend to follow a distinct cell structure to handle varying number of people.
+\end{definition}
+
+\subsubsection{FDMA}\label{subsubsec:FDMA}
+\begin{definition}[Frequency Division Multiple Access]\label{def:FDMA}
+  In a \emph{frequency division multiple access} (\emph{FDMA}) system, a certain frequency is assigned to a certain transmission channel between the sender and receiver.
+\end{definition}
+
+Some examples of this are:
+\begin{itemize}[noitemsep]
+\item Permanent: Radio broadcasting
+\item Slow Hopping: GSM (2G)
+\item Fast Hopping: FHSS (Frequency Hopping Spread Spectrum)
+\end{itemize}
+
+\subsubsection{TDMA}\label{subsubsec:TDMA}
+\begin{definition}[Time Division Multiple Access]\label{def:TDMA}
+  A \emph{time division multiple access}  (\emph{TDMA}) system assigns a fixed sending frequency to a transmission channel \textbf{for a specific amount of time}.
+\end{definition}
+
+
+\subsubsection{CDMA}\label{subsubsec:CDMA}
+\begin{definition}[Code Division Multiple Access]\label{def:CDMA}
+   (\emph{CDMA})
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
