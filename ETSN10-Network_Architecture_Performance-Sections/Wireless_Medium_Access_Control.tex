@@ -278,6 +278,19 @@ Each generation of codes halves the overall throughput of the system.
   \end{cases}
 \end{equation}
 
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c|p{4cm}p{4cm}}
+    \toprule
+    & \multicolumn{1}{c}{Down Link} & \multicolumn{1}{c}{Up Link} \\
+    \midrule
+    \nameref{def:Scrambling_Code} & Identify cells. Code assigned to each cell. Only 512 codes. Assignment done by system designer. & Identify users. Code assigned to each user. $2^{24}$ codes. Assignment done by algorithm. \\
+    \nameref{def:Spreading_Code} & Identify channels used by a cell. Code assigned to each user. & Identify channels to be used by users. Code assigned to each channel.
+  \end{tabular}
+  \caption{How to use OVSF Codes}
+  \label{tab:Use_OVSF_Codes}
+\end{table}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
