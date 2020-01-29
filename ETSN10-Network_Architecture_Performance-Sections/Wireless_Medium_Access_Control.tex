@@ -235,7 +235,15 @@ If there are unused data-slots, then they can be assigned to other stations that
 
 \subsubsection{CDMA}\label{subsubsec:CDMA}
 \begin{definition}[Code Division Multiple Access]\label{def:CDMA}
-   (\emph{CDMA})
+  A \emph{code division multiple access} (\emph{CDMA}) system works by having all terminals send on the same frequency, likely at the same time.
+  These terminals can use the whole bandwidth of the transmission channel.
+  To differentiate these terminals,
+  \begin{itemize}[noitemsep]
+  \item Each sender has a unique random number, the sender XORs the signal with this pseudorandom number
+  \item The receiver can ``tune'' into this signal if it knows the pseudorandom number, tuning is done via a correlation function
+  \end{itemize}
+\end{definition}
+
 \end{definition}
 
 %%% Local Variables:
