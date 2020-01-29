@@ -291,6 +291,10 @@ Each generation of codes halves the overall throughput of the system.
   \label{tab:Use_OVSF_Codes}
 \end{table}
 
+The codes are not perfectly orthogonal, meaning that some amount of the transmission's value can be viewed as noise (really it's lost information), so each node causes some interference.
+Because of the way this system works and interacts with devices near the receiver, there is a general performance degration that closely follows the \nameref{def:Gaussian_Random_Variable}'s distribution.
+Meaning, there is only a soft performance degradation as the system gains additional users.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
