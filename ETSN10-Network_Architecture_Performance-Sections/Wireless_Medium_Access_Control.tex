@@ -226,6 +226,13 @@ There are 2 main implementations:
   \end{itemize}
 \end{enumerate}
 
+\paragraph{Reservation Time}\label{par:TDMA_Reservation_Time}
+In this scheme, each major time interval is a frame.
+Inside this frame, there are $N$ mini-slots and $x$ data-slots, where $N$ is the number of nodes in the network.
+Each station gets its own mini-slot, and \textbf{must reserve} up to $k$ data slots, so $x \geq Nk$.
+
+If there are unused data-slots, then they can be assigned to other stations that require the additional bandwidth.
+
 \subsubsection{CDMA}\label{subsubsec:CDMA}
 \begin{definition}[Code Division Multiple Access]\label{def:CDMA}
    (\emph{CDMA})
