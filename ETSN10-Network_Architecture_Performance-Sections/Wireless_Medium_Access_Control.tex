@@ -204,7 +204,21 @@ There are 2 reservation algorithms for requesting a timeslot:
 \item \nameref{par:TDMA_Reservation_Time}
 \end{enumerate}
 
+\paragraph{Explicit Reservation}\label{par:TDMA_Explicit_Reservation}
+This scheme is similar to the way \nameref{def:ALOHA} works.
+Each node requests a time slot on-the-fly.
+There are 2 main implementations:
+\begin{enumerate}[noitemsep]
+\item \nameref{def:ALOHA} mode
+  \begin{itemize}[noitemsep]
+  \item This means that time slots are assigned as they are needed.
+  \item However, if multiple nodes was the same timeslot, there may be a competition.
+  \item In addition, multiple timeslots can be reserved at once.
+  \item The controlling system will grant access to anyone that asks for it, without question.
+  \item However, there may be collision/overlapping timeslot between 2 nodes.
+  \end{itemize}
 
+\end{enumerate}
 \subsubsection{CDMA}\label{subsubsec:CDMA}
 \begin{definition}[Code Division Multiple Access]\label{def:CDMA}
    (\emph{CDMA})
