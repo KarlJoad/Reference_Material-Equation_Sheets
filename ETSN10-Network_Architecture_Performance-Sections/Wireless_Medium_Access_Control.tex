@@ -188,6 +188,22 @@ This has the
   \end{itemize}
 \end{definition}
 
+\subsubsection{Demand Assigned Multiple Access}\label{subsubsec:DAMA}
+The use of time reservation can increase the efficiency of a system up to 80\%.
+To do this,
+\begin{itemize}[noitemsep]
+\item A sender \textbf{reserves} a future timeslot.
+\item Sending within this timeslot is possible without any collision.
+\item However, the act of having to reserve something increases the delay.
+\item This is typically used in satellite links.
+\end{itemize}
+
+There are 2 reservation algorithms for requesting a timeslot:
+\begin{enumerate}[noitemsep]
+\item \nameref{par:TDMA_Explicit_Reservation}
+\item \nameref{par:TDMA_Reservation_Time}
+\end{enumerate}
+
 
 \subsubsection{CDMA}\label{subsubsec:CDMA}
 \begin{definition}[Code Division Multiple Access]\label{def:CDMA}
