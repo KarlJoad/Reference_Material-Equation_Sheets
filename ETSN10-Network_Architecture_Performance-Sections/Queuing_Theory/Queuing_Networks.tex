@@ -47,7 +47,7 @@
 \begin{itemize}[noitemsep]
 \item $N$: The total number of nodes in a \nameref{def:Jackson_Network}.
 \item $\lambda_{i}$: Total incoming average traffic rate to node $i$.
-\item $gamma_{i}$: Average rate of traffic entering node $i$ from outside the network
+\item $\gamma_{i}$: Average rate of traffic entering node $i$ from outside the network
 \item $r_{ij}$: Probability a packet leaving node $i$ will then go to node $j$
   \begin{itemize}[noitemsep]
   \item Note r need not be 0 – a packet may immediately return to the node it just left
@@ -59,7 +59,7 @@
 
 \item You can find the total incoming traffic to node $i$ by summing all incoming streams together.
   \begin{equation}\label{eq:Total_Incoming-Traffic}
-    \lambda_{i} = \gamma_{i} + \sum\limits_{j=1}^{N} \lambda_{i} r_{ji} \text{, for } i = 1, 2, \ldots, N
+    \lambda_{i} = \gamma_{i} + \sum\limits_{j=1}^{N} \lambda_{j} r_{ji} \text{, for } i = 1, 2, \ldots, N
   \end{equation}
 
 \item In general, the whole network will not behave like a \nameref{def:Poisson_Process}.
