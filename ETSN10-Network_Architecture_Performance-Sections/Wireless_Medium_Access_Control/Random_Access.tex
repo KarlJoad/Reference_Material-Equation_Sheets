@@ -52,6 +52,32 @@
 The utilization gets so much better because there is \textbf{no chance} of a collision.
 Since each station can only transmit if no other station is transmitting in this time slot, there cannot be collisions part-way through a packet's transmission.
 
+\paragraph{ALOHA Performance}\label{par:ALOHA_Performance}
+Packet generation process is Poisson distributed with $n$ packets generated during time $t$:
+\begin{equation*}
+  \Prob(n, t) = \frac{{\left( \lambda_{p}t \right)}^{n} e^{(-\lambda_{p}t)}}{n!}
+\end{equation*}
+
+The probability zero packets generated during time $t$ is
+\begin{equation*}
+  \Prob(n = 0, t) = \frac{{\left( \lambda_{p}t \right)}^{0} e^{-\lambda_{p}t}}{0!} = e^{-\lambda_{p}t}
+\end{equation*}
+
+The Effective throughput is equal to the Rate multiplied by the probability of success.
+\begin{equation*}
+  T_{\mathrm{Put}} = \lambda_{p}T_{p}e^{(-\lambda_{p}T_{p})}
+\end{equation*}
+
+The maximum for \nameref{par:Pure_ALOHA} is found at:
+\begin{equation*}
+  \frac{\partial}{\partial x} T_{\mathrm{Put}} = 0 \Rightarrow \frac{1}{2e}
+\end{equation*}
+
+In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at:
+\begin{equation*}
+  \frac{\partial}{\partial x} T_{\mathrm{Put}} = 0 \Rightarrow \frac{1}{e}
+\end{equation*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
