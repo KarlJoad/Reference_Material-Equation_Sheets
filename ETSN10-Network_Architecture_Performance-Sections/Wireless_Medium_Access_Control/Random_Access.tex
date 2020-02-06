@@ -388,6 +388,19 @@ The steps to recreate this are as follows:
   \end{enumerate}
 \end{itemize}
 
+\paragraph{Problems with \nameref*{subsubsec:MACA}}\label{par:MACA_Problems}
+It seems like \nameref{def:MACA} could solve all our problems, but there are still some pitfalls.
+
+\begin{itemize}[noitemsep]
+\item RTS/CTS does not guarantee success
+  \begin{itemize}[noitemsep]
+  \item RTS/CTS packets may be lost due to contention
+  \end{itemize}
+
+\item The traffic composition may still yield poor results
+\item External interference may also cause problems
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
