@@ -78,6 +78,21 @@ In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at
   \frac{\partial}{\partial x} T_{\mathrm{Put}} = 0 \Rightarrow \frac{1}{e}
 \end{equation*}
 
+\subsubsection{Carrier Sense Multiple Access}\label{subsubsec:CSMA}
+\begin{definition}[Carrier Sense Multiple Access]\label{def:CSMA}
+  In \emph{Carrier Sense Multiple Access} (\emph{CSMA}), a channel can only transmit its message if the underlying network connection does not have an ongoing transmission.
+  This is sometimes called the polite method or Listen Before Talk network communication because of the Carrier Sense that must occur.
+  \begin{itemize}[noitemsep]
+  \item If the channel is free, it starts to send.
+  \item If the device that wants to send senses the channel is busy, it waits to send.
+    \begin{itemize}[noitemsep]
+    \item The station might be persistent, meaning it might continue to try sensing the network.
+    \end{itemize}
+
+  \item Acknowledgement
+  \end{itemize}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
