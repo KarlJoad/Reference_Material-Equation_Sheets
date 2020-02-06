@@ -7,6 +7,28 @@
   This allows for sharing the same resources among many users, but there may be contention for the resources.
   In addition, because there is not way to arbitrate the delivery of data, there may be packet collisions when multiple transmitters send data, and the receiver cannot decode the data from just one of them.
 \end{definition}
+
+\subsubsection{Fundamentals of ALOHA}\label{subsubsec:ALOHA_Fundamentals}
+\begin{itemize}[noitemsep]
+\item Full duplex communication.
+  \begin{itemize}[noitemsep]
+  \item Up-link (Upload)
+  \item Down-link (Download)
+  \end{itemize}
+
+\item Originally UHF (Ultra-High Frequency) communication
+\item Incoming traffic (to base station):
+  \begin{itemize}[noitemsep]
+  \item 9,600 bps (403.500 MHz)
+  \item Random access (Pure ALOHA)
+  \end{itemize}
+\item Outgoing traffic (from base station):
+  \begin{itemize}[noitemsep]
+  \item 9,600 bps (413.474 MHz)
+  \item Broadcast
+  \end{itemize}
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
