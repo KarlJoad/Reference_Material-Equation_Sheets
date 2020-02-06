@@ -333,6 +333,21 @@ If we define $a = \frac{T_{\mathrm{Prop}}}{T_{\mathrm{Trans}}}$, the the normali
   Then, any node in between them will receive both signals and a collision will occur.
 \end{definition}
 
+The steps to recreate this are as follows:
+\begin{enumerate}[noitemsep]
+\item Suppose ther are 3 transmitters in a line, in this order A, B, C (from left-to-right).
+\item C is already transmitting to B.
+\item A wants to transmit to B.
+  \begin{enumerate}[noitemsep]
+  \item A listens
+  \item But can't hear C. A is too far away.
+  \end{enumerate}
+
+\item A transmits at the same time as C.
+\item B can't decode the data, leading to a collision.
+\item Thus, C is hidden from A.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
