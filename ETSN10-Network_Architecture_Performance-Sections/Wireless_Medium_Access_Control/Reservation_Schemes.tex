@@ -4,7 +4,7 @@ To begin our discussion of \nameref{def:Reservation_Scheme}s, we must talk about
 \begin{definition}[ALOHA]\label{def:ALOHA}
   \emph{ALOHA} was one of the earliest protocols for wireless data transmission.
   It used a purely random access scheme, so when you had a packet to send, it was sent.
-  To ensure devices knew if their transmission was successful, an acknoledgement was sent when the next recipient in the chain received the message.
+  To ensure devices knew if their transmission was successful, an acknowledgment was sent when the next recipient in the chain received the message.
 
   \begin{remark}
     It is only mentioned here because it is used as a baseline measurement for other protocols.
@@ -33,11 +33,11 @@ To begin our discussion of \nameref{def:Reservation_Scheme}s, we must talk about
     \toprule
     \multicolumn{1}{c|}{\textbf{Approach}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:SDMA}}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:TDMA}}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:FDMA}}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:CDMA}}} \\
     \midrule
-    Idea & Segment space into cells/sectors & Segment sending time into mutually disjoint time-slots, demand-driven or pattern-driven. & Segment the frequency band into disjoing sub-bands. & Spread the spectrum according to orthogonal codes. \\ \midrule
+    Idea & Segment space into cells/sectors & Segment sending time into mutually disjoint time-slots, demand-driven or pattern-driven. & Segment the frequency band into disjoint sub-bands. & Spread the spectrum according to orthogonal codes. \\ \midrule
     Terminals & One one terminal can be active in a single cell/sector. & All terminals active for short time periods on the same frequency. & Every terminal has its own frequency, uninterrupted. & All terminals can be active at the same time at the same place, on the same frequency. \\ \midrule
     Signal Separation & Cell structure, directed antennas. & Synchronization in time domain. & Filtering in frequency domain. & Code plus special receivers. \\ \midrule
-    Advantages & Very simple, increases capacity per unit area. & Established, \textbf{fully digital}, flexible. & Simple, established, robust. & Flexible, less frequency planning needed, soft handover. \\ \midrule
-    Disadvantages & Inflexible, antennas typically fixed. & Guard time needed (multipath propagation), synchronization difficult. & Inflexible, frequencies are a scarce resource and must be decided from beginning. & Complex receivers, needs more complicated power management from senders. \\ \midrule
+    Advantages & Very simple, increases capacity per unit area. & Established, \textbf{fully digital}, flexible. & Simple, established, robust. & Flexible, less frequency planning needed, soft hand-over. \\ \midrule
+    Disadvantages & Inflexible, antennas typically fixed. & Guard time needed (multi-path propagation), synchronization difficult. & Inflexible, frequencies are a scarce resource and must be decided from beginning. & Complex receivers, needs more complicated power management from senders. \\ \midrule
     Comments & Only useful in combination with \nameref{subsubsec:TDMA}, \nameref{subsubsec:FDMA}, or \nameref{subsubsec:CDMA}. & Standard in fixed networks. Used together with \nameref{subsubsec:FDMA} and \nameref{subsubsec:SDMA} in mobile networks. & Typically combined with \nameref{subsubsec:TDMA} (frequency hopping patterns) and \nameref{subsubsec:SDMA} (frequency reuse) & Has some problems still. Higher complexity, lower expectations. Needs integration with \nameref{subsubsec:TDMA}/\nameref{subsubsec:FDMA}. \\
     \bottomrule
   \end{tabular}
@@ -107,7 +107,7 @@ To begin our discussion of \nameref{def:Reservation_Scheme}s, we must talk about
   \end{itemize}
 
   Because these subcarriers are orthogonal, there do not need to be guard bands between them, allowing for more efficient usage of the transmission spectrum.
-  Also, each symbol is spread over a wider frequency range of many slowly-modulated narrowband signals instead of one rapidly-modulating wideband signal.
+  Also, each symbol is spread over a wider frequency range of many slowly-modulated narrow-band signals instead of one rapidly-modulating wide-band signal.
   If this is paired with error detection and correction, the transmission is even more robust.
 \end{definition}
 
@@ -197,9 +197,9 @@ This has the
   \end{itemize}
 
   \begin{itemize}[noitemsep]
-  \item Multiple uesers are only allowed to transmit in certain reserved timeslots.
+  \item Multiple users are only allowed to transmit in certain reserved timeslots.
   \item [+:] This is a completely digital system, so it is easy to change and configure.
-  \item [---:] All nodes must keep their time synchronized, which is difficult. Multipath propagation of the transmission wave also complicates things.
+  \item [---:] All nodes must keep their time synchronized, which is difficult. Multi-path propagation of the transmission wave also complicates things.
   \item [Example:] Bluetooth.
   \end{itemize}
 \end{definition}
@@ -315,7 +315,7 @@ Each generation of codes halves the overall throughput of the system.
 \end{table}
 
 The codes are not perfectly orthogonal, meaning that some amount of the transmission's value can be viewed as noise (really it's lost information), so each node causes some interference.
-Because of the way this system works and interacts with devices near the receiver, there is a general performance degration that closely follows the \nameref{def:Gaussian_Random_Variable}'s distribution.
+Because of the way this system works and interacts with devices near the receiver, there is a general performance degradation that closely follows the \nameref{def:Gaussian_Random_Variable}'s distribution.
 Meaning, there is only a soft performance degradation as the system gains additional users.
 
 %%% Local Variables:
