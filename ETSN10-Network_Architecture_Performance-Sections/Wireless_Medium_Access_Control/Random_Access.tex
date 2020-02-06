@@ -371,6 +371,23 @@ The steps to recreate this are as follows:
   \end{enumerate}
 \end{definition}
 
+\nameref{def:MACA} manages to avoid both the \nameref{def:Hidden_Node} and \nameref{def:Exposed_Node} problems at the same time.
+\begin{itemize}[noitemsep]
+\item For both examples below, consider 3 nodes in a line, named A, B, C from left-to-right.
+\item \nameref{def:Hidden_Node}
+  \begin{enumerate}[noitemsep]
+  \item A and C want to send to B.
+  \item A sends RTS first.
+  \item C waits after receiving CTS from B.
+  \end{enumerate}
+
+\item \nameref{def:Exposed_Node}
+  \begin{enumerate}[noitemsep]
+  \item B wants to send to A, C to another terminal.
+  \item Now C does not have to wait for it cannot receive CTS from A.
+  \end{enumerate}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
