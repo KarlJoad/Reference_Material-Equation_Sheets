@@ -134,6 +134,20 @@ In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at
   \item Once the channel is idle, there is a probability $p$ that the device will send.
   \item There is a $1-p$ probability that the deivce will instead wait one time unit before performing carrier sense again.
   \end{enumerate}
+
+  The performance of a $p$-persistent system is:
+  \begin{equation}\label{eq:p_Persistent_Performance}
+    S_{p} = \frac{G e^{-G} (1+pGx)}{G + e^{-G}}
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $G$: Offered Load
+  \item $S$: Throughput
+  \item $x$: Is defined by \Cref{eq:p_Persistent_x_Value}
+    \begin{equation}\label{eq:p_Persistent_x_Value}
+      x = \sum\limits_{k=0}^{\infty} \frac{{(qG)}^{k}}{(1-q^{k+1})!}
+    \end{equation}
+  \end{itemize}
 \end{definition}
 
 \begin{definition}[Persistent]\label{def:Persistent}
