@@ -109,6 +109,30 @@ In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at
   \end{enumerate}
 \end{definition}
 
+\begin{definition}[Non-Persistent]\label{def:Non_Persistent}
+  A \emph{Non-Persistent} system behaves as follows:
+  \begin{enumerate}[noitemsep]
+  \item If the channel is busy, the device will wait a random time before performing another carrier sense on the channel.
+  \item Once the channel is idle, the packet is sent immediately.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[$p$-Persistent]\label{def:p_Persistent}
+  A \emph{$p$-Persistent} system behaves as follows:
+  \begin{enumerate}[noitemsep]
+  \item If the channel is busy, the device will continue to perform carrier sense on the channel.
+  \item Once the channel is idle, there is a probability $p$ that the device will send.
+  \item There is a $1-p$ probability that the deivce will instead wait one time unit before performing carrier sense again.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Persistent]\label{def:Persistent}
+  A \emph{Persistent} system behaves as follows:
+  \begin{enumerate}[noitemsep]
+  \item If the channel is busy, the device will continue to use carrier sense on the channel.
+  \item Once the channel is idle, this device will start sending its packet immediately.
+  \end{enumerate}
+\end{definition}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
