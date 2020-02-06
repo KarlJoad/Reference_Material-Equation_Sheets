@@ -156,7 +156,18 @@ In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at
   \item If the channel is busy, the device will continue to use carrier sense on the channel.
   \item Once the channel is idle, this device will start sending its packet immediately.
   \end{enumerate}
+
+  The performance of a persistent system is:
+  \begin{equation}\label{eq:Persistent_Performance}
+    S_{n} = \frac{G}{1+G}
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $G$: Offered Load
+  \item $S$: Throughput
+  \end{itemize}
 \end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
