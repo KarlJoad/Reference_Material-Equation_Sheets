@@ -303,6 +303,16 @@ If we define $a = \frac{T_{\mathrm{Prop}}}{T_{\mathrm{Trans}}}$, the the normali
   \end{remark}
 \end{definition}
 
+\begin{definition}[Short Inter-Frame Spacing]\label{def:SIFS}
+  \emph{Short Inter-Frame Spacing} (\emph{SIFS}) is the amount of time a receiver must wait after detecting the channel is free before it can send an acknowledgement.
+
+  SIFS must be less than \nameref{def:DIFS}.
+  This means acknowledgements get priority over data.
+
+  \begin{remark}[Amount of SIFS Time]
+    The \nameref{def:SIFS} must be greater than the propagation delay.
+  \end{remark}
+\end{definition}
 
 \subsubsection{Carrier Sense Multiple Access/Collision Avoidance}\label{subsubsec:CSMACA}
 
