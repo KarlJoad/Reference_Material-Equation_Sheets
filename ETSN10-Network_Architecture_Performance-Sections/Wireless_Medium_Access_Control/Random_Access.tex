@@ -169,6 +169,24 @@ In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at
 \end{definition}
 
 \subsubsection{Carrier Sense Multiple Access/Collision Detection}\label{subsubsec:CSMACD}
+\begin{definition}[Carrier Sense Multiple Access/Collision Detection]\label{def:CSMACD}
+  \emph{Carrier Sense Multiple Access/Collision Detection} is a modification of \nameref{def:CSMA}.
+  It functions in much the same way, but:
+  \begin{enumerate}[noitemsep]
+  \item Perform Carrier Sensing
+    \begin{itemize}[noitemsep]
+    \item If the channel is free, send.
+    \end{itemize}
+
+  \item The station listens when sending
+    \begin{itemize}[noitemsep]
+    \item When a station detects a collision, it stops sending
+    \end{itemize}
+
+  \item Retransmissions
+  \end{enumerate}
+\end{definition}
+
 
 \subsubsection{Carrier Sense Multiple Access/Collision Avoidance}\label{subsubsec:CSMACA}
 
