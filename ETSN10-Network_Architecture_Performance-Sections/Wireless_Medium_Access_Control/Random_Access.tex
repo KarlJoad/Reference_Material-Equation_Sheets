@@ -291,6 +291,18 @@ If we define $a = \frac{T_{\mathrm{Prop}}}{T_{\mathrm{Trans}}}$, the the normali
   \end{enumerate}
 \end{definition}
 
+\begin{definition}[Data Inter-Frame Spacing]\label{def:DIFS}
+  \emph{Data Inter-Frame Spacing} (\emph{DIFS}) is the amount of time a node waits, after detecting the channel is free, before sending a new frame.
+
+  \begin{equation}\label{eq:DIFS_Time_Amount}
+    \mathrm{DIFS} = \mathrm{SIFS} + (2 * \text{slot time})
+  \end{equation}
+
+  \begin{remark}[Amount of DIFS Time]
+    The \nameref{def:DIFS} must be greater than the propagation delay.
+  \end{remark}
+\end{definition}
+
 
 \subsubsection{Carrier Sense Multiple Access/Collision Avoidance}\label{subsubsec:CSMACA}
 
