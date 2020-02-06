@@ -236,6 +236,32 @@ If we define $a = \frac{T_{\mathrm{Prop}}}{T_{\mathrm{Trans}}}$, the the normali
   If the propagation delay increases past a certain point, then the system is waiting for so long that it can never find that someone else is transmitting.
 \end{remark*}
 
+\subsubsection{WiFi}\label{subsubsec:WiFi}
+\begin{definition}[WiFi]\label{def:WiFi}
+  \emph{WiFi} is defined by the IEEE 802.11 family of protocols.
+  Many different protocols (with different letters) exist, all of which have different purposes.
+  The current general-purpose version is 802.11ac.
+
+  The 802.11 specification allows different MAC protocols to be used.
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:WiFi_DCF} (DCF)
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:CSMA}-based random access.
+    \end{itemize}
+
+  \item \nameref{def:PCF} (PCF)
+    \begin{itemize}[noitemsep]
+    \item Random access periods followed by non-contention periods with polling.
+    \item Rarely used outside of industry.
+    \end{itemize}
+
+  \item Enhanced Distributed Channel Access (EDCA)
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:WiFi_DCF} with some QoS features added.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
 
 \subsubsection{Carrier Sense Multiple Access/Collision Avoidance}\label{subsubsec:CSMACA}
 
