@@ -187,6 +187,21 @@ In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at
   \end{enumerate}
 \end{definition}
 
+If we use a simplistic model:
+\begin{itemize}[noitemsep]
+\item All stations are the same
+\item No exponential backoff of tranmissions
+\item All packets are the same size
+\item All stations have the same transmission probability
+\item $k$ stations
+\item $p$ Probability of transmission
+\item $A$ Probability 1 station acquires channel in slot
+\end{itemize}
+
+\begin{equation}\label{eq:CSMACD_Performance}
+  A(k, p) = kp{(1-p)}^{k-1}
+\end{equation}
+
 
 \subsubsection{Carrier Sense Multiple Access/Collision Avoidance}\label{subsubsec:CSMACA}
 
