@@ -220,6 +220,11 @@ We define $w$ to be the number of slots $i$ in a row with collisions or an idle 
                     &= \frac{1-A}{A} \:\: \text{Geometric Series}
 \end{align*}
 
+Now if we want to find the utilization of the system, $U$, we apply the equation below.
+\begin{equation}\label{eq:Utilization}
+  U = \frac{T_{\mathrm{Trans}}}{T_{\mathrm{Trans}} + 2T_{\mathrm{Prop}} + T_{\mathrm{Prop}}\left( \frac{1-A}{A} \right)}
+\end{equation}
+
 
 \subsubsection{Carrier Sense Multiple Access/Collision Avoidance}\label{subsubsec:CSMACA}
 
