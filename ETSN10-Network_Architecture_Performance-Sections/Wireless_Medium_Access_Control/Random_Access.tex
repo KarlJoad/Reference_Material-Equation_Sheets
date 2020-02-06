@@ -42,6 +42,16 @@
   If 2 nodes were to experience a collision, and both waited a fixed amount of time, then they would collide a again during their retransmission.
 \end{remark*}
 
+\paragraph{Slotted ALOHA}\label{par:Slotted_ALOHA}
+\begin{itemize}[noitemsep]
+\item Packets may just be transmitted within time slots.
+\item If a station has started to transmit in a time slot, other station who wish to transmit within this time slot can not interfere.
+\item This principle leads to a much better utilization of the channel.
+\end{itemize}
+
+The utilization gets so much better because there is \textbf{no chance} of a collision.
+Since each station can only transmit if no other station is transmitting in this time slot, there cannot be collisions part-way through a packet's transmission.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
