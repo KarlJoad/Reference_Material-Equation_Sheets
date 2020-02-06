@@ -262,6 +262,24 @@ If we define $a = \frac{T_{\mathrm{Prop}}}{T_{\mathrm{Trans}}}$, the the normali
   \end{itemize}
 \end{definition}
 
+\begin{definition}[Distributed Coordination Function]\label{def:WiFi_DCF}
+  The \emph{Distributed Coordination Function} (\emph{DCF}) is similar to a \nameref{def:p_Persistent} \nameref{def:CSMA} system, but with a different backoff method.
+  \begin{itemize}[noitemsep]
+  \item Each node has a contention window (CW).
+  \item When the node detects channel busy, it chooses a (uniform) random number of slots to wait in the range $[1, \mathrm{CW}]$.
+  \item $\mathrm{CW}$ starts at a minimum value $\mathrm{CW}_{\mathrm{Min}}$.
+  \item When a collision is detected, $\mathrm{CW}$ doubles (binary exponential back-off) up to a maximum value of $\mathrm{CW}_{Max}$.
+  \item Whenever a successful transmission occurs, the receivers sends an acknowledgement.
+  \item Lack of acknowledgement indicates a collision.
+  \end{itemize}
+
+  To help the rest of the DCF system run, there are 2 temporal buffers that we used, called \nameref{def:Inter_Frame_Spacing}.
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:DIFS}
+  \item \nameref{def:SIFS}
+  \end{enumerate}
+\end{definition}
+
 
 \subsubsection{Carrier Sense Multiple Access/Collision Avoidance}\label{subsubsec:CSMACA}
 
