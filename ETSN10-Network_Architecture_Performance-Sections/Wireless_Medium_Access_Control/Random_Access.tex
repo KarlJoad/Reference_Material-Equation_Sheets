@@ -115,6 +115,16 @@ In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at
   \item If the channel is busy, the device will wait a random time before performing another carrier sense on the channel.
   \item Once the channel is idle, the packet is sent immediately.
   \end{enumerate}
+
+  The performance of a non-persistent system is:
+  \begin{equation}\label{eq:Non_Persistent_Performance}
+    S_{1} = \frac{G e^{-G} (1+G)}{G + e^{-G}}
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $G$: Offered Load
+  \item $S$: Throughput
+  \end{itemize}
 \end{definition}
 
 \begin{definition}[$p$-Persistent]\label{def:p_Persistent}
