@@ -35,6 +35,28 @@ To perform randomly addressed polling:
 \item Cycle starts again after polling all terminals of the list
 \end{enumerate}
 
+\subsubsection{Point Coordination Function}\label{subsubsec:Point_Coordination_Function}
+\begin{definition}[Point Coordination Function]\label{def:PCF}
+  \emph{Point Coordination Function} or \emph{PCF} is a centralized \nameref{def:Polling} mechanism for WiFi (802.11).
+  The central poller is the current Access Point (AP).
+
+  In this system, there are 2 types of tranmission periods.
+  The first is during the Point Coordinated Function, when the resources on the AP are reserved for users.
+  The second is a pure \nameref{def:Random_Access} period.
+  Here, the rules of a random access sytem are obeyed.
+\end{definition}
+
+\paragraph{Problems with the \nameref*{def:PCF}}\label{par:PCF_Problems}
+The performance of \nameref{def:PCF} can be quite poor, especially when used for voice communications.
+When a PCF system is running, and a poll occurs, the users that have nothing to send return null packets.
+While these packets are empty (contain no information), they are sitll packets that need to be transmitted, thus taking up tranmission time.
+
+Additionally, there is no Quality of Service (QoS) signalling, which can further degrade performance.
+
+There is also no tranmission time limit.
+If a user is polled, and it has something to transmit, the transmission will continue until the user is done.
+This incurs a cost, because other nodes may not have their chance to transmit during the \nameref{def:PCF} window, and must wait for the \nameref{def:Random_Access} window, or must wait until the next round of polling.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
