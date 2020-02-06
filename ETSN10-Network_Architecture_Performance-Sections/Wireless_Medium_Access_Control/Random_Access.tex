@@ -29,6 +29,19 @@
   \end{itemize}
 \end{itemize}
 
+\paragraph{Pure ALOHA}\label{par:Pure_ALOHA}
+\begin{itemize}[noitemsep]
+\item Whenever a station has something to send, it sends.
+\item When a packet is received by the central, an acknowledgment (\texttt{ACK}) is sent back in broadcast.
+\item If the sending station does not receive an \texttt{ACK} within a set time, a collision is assumed.
+\item When a collision occurs, retransmit within a random time slot, 200--1500 ms.
+\end{itemize}
+
+\begin{remark*}
+  We wait a random amount of time before transmitting to prevent retransmission collisions.
+  If 2 nodes were to experience a collision, and both waited a fixed amount of time, then they would collide a again during their retransmission.
+\end{remark*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
