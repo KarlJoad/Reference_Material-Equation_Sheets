@@ -212,6 +212,14 @@ If we allow the number of stations to grow towards infinity, then
   \lim\limits_{k \rightarrow \infty} A(k, p) = \frac{1}{e}
 \end{equation}
 
+If we want to know the number of repeated collisions that occur, then a successful transmission, we can use the derivation below.
+We define $w$ to be the number of slots $i$ in a row with collisions or an idle channel, with a subsequent successful tranmission.
+\begin{align*}
+  \ExpectedValue[w] &= \sum\limits_{i=0}^{\infty} i \Prob[w] \\
+                    &= \sum\limits_{i=0}^{\infty} i {(1-A)}^{i}A \\
+                    &= \frac{1-A}{A} \:\: \text{Geometric Series}
+\end{align*}
+
 
 \subsubsection{Carrier Sense Multiple Access/Collision Avoidance}\label{subsubsec:CSMACA}
 
