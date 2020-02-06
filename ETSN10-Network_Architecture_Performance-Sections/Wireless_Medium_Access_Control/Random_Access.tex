@@ -361,6 +361,16 @@ The steps to recreate this are as follows:
 \item A is exposed to C.
 \end{enumerate}
 
+\subsubsection{Multiple Access with Collision Avoidance}\label{subsubsec:MACA}
+\begin{definition}[Multiple Access with Collision Avoidance]\label{def:MACA}
+  \emph{Multiple Access with Collision Avoidance} (\emph{MACA}) is a method of collision avoidance that uses short signals/packets to arbitrate transmissions and avoid collisions.
+  There are 2 packets,
+  \begin{enumerate}[noitemsep]
+  \item Request To Send (RTS), which is sent by the sender. It requests the right to send a packet and include some additional information, such as how long the transmission will be, the address, etc.
+  \item Clear to Send (CTS), which is sent by the receiver. It responds to the sender that they are allowed to send, and also includes some additional information, such as the time the transmission will take.
+  \end{enumerate}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
