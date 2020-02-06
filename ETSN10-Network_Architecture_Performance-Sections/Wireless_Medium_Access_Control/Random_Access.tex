@@ -225,6 +225,12 @@ Now if we want to find the utilization of the system, $U$, we apply the equation
   U = \frac{T_{\mathrm{Trans}}}{T_{\mathrm{Trans}} + 2T_{\mathrm{Prop}} + T_{\mathrm{Prop}}\left( \frac{1-A}{A} \right)}
 \end{equation}
 
+This is interpreted as transmission time divided by the sum of the transmission time, the total propagation delay, and the contention time.
+If we define $a = \frac{T_{\mathrm{Prop}}}{T_{\mathrm{Trans}}}$, the the normalized utilization is as shown in \Cref{eq:CSMACD_Normalized_Utilization}.
+\begin{equation}\label{eq:CSMACD_Normalized_Utilization}
+  U = \frac{1}{1 + 2a + a \left( \frac{1-A}{A} \right)}
+\end{equation}
+
 
 \subsubsection{Carrier Sense Multiple Access/Collision Avoidance}\label{subsubsec:CSMACA}
 
