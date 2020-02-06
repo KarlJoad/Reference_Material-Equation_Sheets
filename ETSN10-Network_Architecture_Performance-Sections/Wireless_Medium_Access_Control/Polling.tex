@@ -1,0 +1,41 @@
+\subsection{Polling}\label{subsec:Polling}
+\begin{definition}[Polling]\label{def:Polling}
+  \emph{Polling} is the act of having one terminal that can be heard by all others ask for a small amount of information.
+  This ``central'' terminal, e.g.\ a base station can poll all other terminals according to a certain scheme.
+  This is a typical server-client workflow, where the server is the one polling all the clients regularly.
+\end{definition}
+
+We are usually interested in the effective performance of the polling system.
+To calculate this, we can use \Cref{eq:Polling_Effective_Performance}.
+\begin{equation}\label{eq:Polling_Effective_Performance}
+  E = \frac{T_{t}}{T_{t} + T_{\mathrm{Idle}} + T_{\mathrm{Poll}}}
+\end{equation}
+where
+\begin{itemize}[noitemsep]
+\item $T_{t}$: Transmission time of the polling packet.
+\item $T_{\mathrm{Idle}}$: Time waiting to detect no transmission.
+\item $T_{\mathrm{Poll}}$: Time to send the polling message.
+\end{itemize}
+
+\subsubsection{Randomly Addressed Polling}\label{subsubsec:Randomly_Addressed_Polling}
+To perform randomly addressed polling:
+\begin{enumerate}[noitemsep]
+\item Base station signals readiness to all mobile terminals
+\item Terminals ready to send transmit a random number without collision with the help of \nameref{def:CDMA} or \nameref{def:FDMA}
+  \begin{itemize}[noitemsep]
+  \item The random number can be seen as dynamic address
+  \end{itemize}
+
+\item Base station chooses one address for polling from list of all random numbers
+  \begin{itemize}[noitemsep]
+  \item Collision if two terminals choose the same address
+  \end{itemize}
+
+\item Base station acknowledges correct packets and continues polling the next terminal
+\item Cycle starts again after polling all terminals of the list
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
