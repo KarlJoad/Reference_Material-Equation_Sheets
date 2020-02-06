@@ -1,0 +1,324 @@
+\subsection{Reservation Schemes}\label{subsec:Reservation_Scheme}
+To begin our discussion of \nameref{def:Reservation_Scheme}s, we must talk about \nameref{def:ALOHA}.
+
+\begin{definition}[ALOHA]\label{def:ALOHA}
+  \emph{ALOHA} was one of the earliest protocols for wireless data transmission.
+  It used a purely random access scheme, so when you had a packet to send, it was sent.
+  To ensure devices knew if their transmission was successful, an acknoledgement was sent when the next recipient in the chain received the message.
+
+  \begin{remark}
+    It is only mentioned here because it is used as a baseline measurement for other protocols.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Reservation Scheme]\label{def:Reservation_Scheme}
+  A \emph{reservation scheme} is the idea of reserving resources for a node in a wireless network to prevent collisions.
+  The resources that can be reserved include: time, frequency, and others.
+
+  We would like to reserve resources because the system will not lose capacity to collisions.
+  But, if not \textbf{all} the resources are being fully utilized, then the system loses out on throughput.
+
+  Because of the limitations of the radio spectrum and light being a broadcast medium, we have 4 main solutions for supporting multiple devices that was to transmit.
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:SDMA}
+  \item \nameref{def:FDMA}
+  \item \nameref{def:TDMA}
+  \item \nameref{def:CDMA}
+  \end{enumerate}
+\end{definition}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{2cm}|p{3.6cm}p{3.6cm}p{3.6cm}p{3.6cm}}
+    \toprule
+    \multicolumn{1}{c|}{\textbf{Approach}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:SDMA}}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:TDMA}}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:FDMA}}} & \multicolumn{1}{c}{\textbf{\nameref{subsubsec:CDMA}}} \\
+    \midrule
+    Idea & Segment space into cells/sectors & Segment sending time into mutually disjoint time-slots, demand-driven or pattern-driven. & Segment the frequency band into disjoing sub-bands. & Spread the spectrum according to orthogonal codes. \\ \midrule
+    Terminals & One one terminal can be active in a single cell/sector. & All terminals active for short time periods on the same frequency. & Every terminal has its own frequency, uninterrupted. & All terminals can be active at the same time at the same place, on the same frequency. \\ \midrule
+    Signal Separation & Cell structure, directed antennas. & Synchronization in time domain. & Filtering in frequency domain. & Code plus special receivers. \\ \midrule
+    Advantages & Very simple, increases capacity per unit area. & Established, \textbf{fully digital}, flexible. & Simple, established, robust. & Flexible, less frequency planning needed, soft handover. \\ \midrule
+    Disadvantages & Inflexible, antennas typically fixed. & Guard time needed (multipath propagation), synchronization difficult. & Inflexible, frequencies are a scarce resource and must be decided from beginning. & Complex receivers, needs more complicated power management from senders. \\ \midrule
+    Comments & Only useful in combination with \nameref{subsubsec:TDMA}, \nameref{subsubsec:FDMA}, or \nameref{subsubsec:CDMA}. & Standard in fixed networks. Used together with \nameref{subsubsec:FDMA} and \nameref{subsubsec:SDMA} in mobile networks. & Typically combined with \nameref{subsubsec:TDMA} (frequency hopping patterns) and \nameref{subsubsec:SDMA} (frequency reuse) & Has some problems still. Higher complexity, lower expectations. Needs integration with \nameref{subsubsec:TDMA}/\nameref{subsubsec:FDMA}. \\
+    \bottomrule
+  \end{tabular}
+  \caption{Division Multiple Access Comparison}
+  \label{tab:DMA_Comparison}
+\end{table}
+
+\subsubsection{SDMA}\label{subsubsec:SDMA}
+\begin{definition}[Space Division Multiple Access]\label{def:SDMA}
+  In a \emph{space division multiple access} (\emph{SDMA}) setup, the space is segmented into sectors, then addressed with directed antennas.
+  These tend to follow a distinct cell structure to handle varying number of people.
+
+  \begin{itemize}[noitemsep]
+  \item Multiple users are separated by having separate physical spaces allocated to them.
+  \item [+:] This is very simple to implement
+  \item [---:] Relatively fixed setup, meaning it is not easy to move or change.
+  \item [Example:] This scheme is used in most cellular networks.
+\end{itemize}
+
+\end{definition}
+
+\subsubsection{FDMA}\label{subsubsec:FDMA}
+\begin{definition}[Frequency Division Multiple Access]\label{def:FDMA}
+  In a \emph{frequency division multiple access} (\emph{FDMA}) system, a certain frequency is assigned to a certain transmission channel between the sender and receiver.
+
+  Because of the way FDMA works, it effectively acts like a \nameref{def:Circuit_Switching} system, so we can apply the same equations as \nameref{subsec:Model_Circuit_Switching}.
+  \begin{equation}\label{eq:FDMA_Work_Rate}
+    \eta = \frac{1}{n v} \sum\limits_{i=1}^{N} \rho_{i}
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $v$: The achievable rate, in bits/Hz/s. This includes:
+    \begin{itemize}[noitemsep]
+    \item Guard bands
+    \item Signaling Overheads
+    \end{itemize}
+  \item $N$: The number of nodes
+  \item $\rho$: The utilized rate
+  \item $\eta$: The rate of work
+  \end{itemize}
+
+  \begin{itemize}[noitemsep]
+  \item Multiple users are given their own unique frequency.
+  \item [+:] Simple and robust system.
+  \item [---:] The number of possible frequencies are limited, so there may not be enough frequencies for all users.
+  \item [Example:]
+    \begin{itemize}[noitemsep]
+    \item Permanent: Radio broadcasting
+    \item Slow Hopping: GSM (2G)
+    \item Fast Hopping: FHSS (Frequency Hopping Spread Spectrum)
+    \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\paragraph{OFDM}\label{par:OFDM}
+\begin{definition}[Orthogonal Frequency Division Multiplexing]\label{def:OFDM}
+  \emph{Orthogonal frequency division multiplexing} or \emph{OFDM} is a way of breaking up the frequency spectrum into orthogonal frequencies into orthogonal subcarriers.
+  An orthogonal subcarrier is a frequency that has a waveform that has a peak where all other subcarriers' waveform is zero.
+  To achieve this, the equation below is used.
+  \begin{equation}\label{eq:Orthogonal_Subcarrier}
+    \Delta f = \frac{k}{T_{U}}
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $k \in \NaturalNumbers$
+  \item $T_{U}$ is the useful symbol duration
+  \end{itemize}
+
+  Because these subcarriers are orthogonal, there do not need to be guard bands between them, allowing for more efficient usage of the transmission spectrum.
+  Also, each symbol is spread over a wider frequency range of many slowly-modulated narrowband signals instead of one rapidly-modulating wideband signal.
+  If this is paired with error detection and correction, the transmission is even more robust.
+\end{definition}
+
+We can use \nameref{def:OFDM} to do 2 things:
+\begin{enumerate}[noitemsep]
+\item \nameref{par:Subcarrier_Allocation}
+\item \nameref{par:Transmission_Power_Control}
+\end{enumerate}
+
+\paragraph{Subcarrier Allocation}\label{par:Subcarrier_Allocation}
+If a single node does not need the entire frequency spectrum that we have available, we can can share the channel's subcarrier frequencies between multiple nodes.
+This flexibility means:
+\begin{itemize}[noitemsep]
+\item We can assign different numbers of subcarriers to different nodes depending on the node's throughput requirements.
+\item We can adjust which subcarriers are allocated to account for adverse channel conditions.
+\end{itemize}
+
+\paragraph{Transmission Power Control}\label{par:Transmission_Power_Control}
+In general, the greater the power transmission, the greater the data rate.
+\begin{remark*}
+  This does not hold true for \nameref{def:CDMA} systems.
+  That small difference will be discussed there.
+\end{remark*}
+
+The flexibility that transmission power control gives us is:
+\begin{itemize}[noitemsep]
+\item If a node does not require the highest possible data rate for the current SINR, it can reduce transmission power.
+\item SINR is lowered but the node changes to a different modulation and coding scheme to compensate.
+\item This reduces the data rate, so the transmission power should be chosen to match the required rate.
+\item Adjusting the nodes' transmission rate through transmission power creates a form of \nameref{def:SDMA}. Nodes will cause interference to other nodes in a larger area if the transmission power increases.
+\end{itemize}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{cccccc}
+    \toprule
+    \multicolumn{1}{p{1.6cm}}{Data Rate (mbps)} & Modulation & Coding Rate & \multicolumn{1}{p{2.2cm}}{Coded bits per subcarrier} & \multicolumn{1}{p{2.5cm}}{Coded bits per OFDM symbol} & \multicolumn{1}{p{2.5cm}}{Coded bits per OFDM symbol} \\
+    \midrule
+    6 & BPSK & 1/2 & 1 & 48 & 25 \\
+    9 & BPSK & 3/4 & 1 & 48 & 36 \\
+    12 & QPSK & 1/2 & 2 & 96 & 48 \\
+    18 & QPSK & 3/4 & 2 & 96 & 72 \\
+    24 & 16-QAM & 1/2 & 4 & 192 & 96 \\
+    36 & 16-QAM & 3/4 & 4 & 192 & 144 \\
+    48 & 64-QAM & 2/3 & 6 & 288 & 192 \\
+    54 & 64-QAM & 3/4 & 6 & 288 & 216 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Transmission Power Control}
+  \label{tab:Transmission_Power_Control}
+\end{table}
+
+\paragraph{Joint Subcarrier Allocation and Transmission Power Control}\label{par:Joint_Subcarrier_Transmission_Power}
+We can perform both \nameref{par:Subcarrier_Allocation} and \nameref{par:Transmission_Power_Control} at the same time.
+
+This has the
+\begin{itemize}[noitemsep]
+\item Advantages of
+  \begin{itemize}[noitemsep]
+  \item Lots of flexibility with ow we allocate resources.
+  \end{itemize}
+
+\item Disadvantages of
+  \begin{itemize}[noitemsep]
+  \item Being a difficult optimization problem, especially for real-time applications.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{TDMA}\label{subsubsec:TDMA}
+\begin{definition}[Time Division Multiple Access]\label{def:TDMA}
+  A \emph{time division multiple access}  (\emph{TDMA}) system assigns a fixed sending frequency to a transmission channel \textbf{for a specific amount of time}.
+
+  Because of the way FDMA works, it effectively acts like a \nameref{def:Circuit_Switching} system, so we can apply the same equations as \nameref{subsec:Model_Circuit_Switching}.
+  \begin{equation}\label{eq:TDMA_Work_Rate}
+    \eta = \frac{1}{n v} \sum\limits_{i=1}^{N} \rho_{i}
+  \end{equation}
+  where
+  \begin{itemize}[noitemsep]
+  \item $v$: The achievable rate, in bits/Hz/s. This includes:
+    \begin{itemize}[noitemsep]
+    \item Guard bands
+    \item Signaling Overheads
+    \end{itemize}
+  \item $N$: The number of nodes
+  \item $\rho$: The utilized rate
+  \item $\eta$: The rate of work
+  \end{itemize}
+
+  \begin{itemize}[noitemsep]
+  \item Multiple uesers are only allowed to transmit in certain reserved timeslots.
+  \item [+:] This is a completely digital system, so it is easy to change and configure.
+  \item [---:] All nodes must keep their time synchronized, which is difficult. Multipath propagation of the transmission wave also complicates things.
+  \item [Example:] Bluetooth.
+  \end{itemize}
+\end{definition}
+
+\subsubsection{Demand Assigned Multiple Access}\label{subsubsec:DAMA}
+The use of time reservation can increase the efficiency of a system up to 80\%.
+To do this,
+\begin{itemize}[noitemsep]
+\item A sender \textbf{reserves} a future timeslot.
+\item Sending within this timeslot is possible without any collision.
+\item However, the act of having to reserve something increases the delay.
+\item This is typically used in satellite links.
+\end{itemize}
+
+There are 2 reservation algorithms for requesting a timeslot:
+\begin{enumerate}[noitemsep]
+\item \nameref{par:TDMA_Explicit_Reservation}
+\item \nameref{par:TDMA_Reservation_Time}
+\end{enumerate}
+
+\paragraph{Explicit Reservation}\label{par:TDMA_Explicit_Reservation}
+This scheme is similar to the way \nameref{def:ALOHA} works.
+Each node requests a time slot on-the-fly.
+There are 2 main implementations:
+\begin{enumerate}[noitemsep]
+\item \nameref{def:ALOHA} mode
+  \begin{itemize}[noitemsep]
+  \item This means that time slots are assigned as they are needed.
+  \item However, if multiple nodes was the same timeslot, there may be a competition.
+  \item In addition, multiple timeslots can be reserved at once.
+  \item The controlling system will grant access to anyone that asks for it, without question.
+  \item However, there may be collision/overlapping timeslot between 2 nodes.
+  \end{itemize}
+
+\item Reserved mode
+  \begin{itemize}[noitemsep]
+  \item Data transmission can only happen inside of successfully reserved slots.
+  \item The controlling system will schedule and grant access to these based on some algorithm.
+  \item This means that there can be no collisions between timeslots.
+  \end{itemize}
+\end{enumerate}
+
+\paragraph{Reservation Time}\label{par:TDMA_Reservation_Time}
+In this scheme, each major time interval is a frame.
+Inside this frame, there are $N$ mini-slots and $x$ data-slots, where $N$ is the number of nodes in the network.
+Each station gets its own mini-slot, and \textbf{must reserve} up to $k$ data slots, so $x \geq Nk$.
+
+If there are unused data-slots, then they can be assigned to other stations that require the additional bandwidth.
+
+\subsubsection{CDMA}\label{subsubsec:CDMA}
+\begin{definition}[Code Division Multiple Access]\label{def:CDMA}
+  A \emph{code division multiple access} (\emph{CDMA}) system works by having all terminals send on the same frequency, likely at the same time.
+  These terminals can use the whole bandwidth of the transmission channel.
+  To differentiate these terminals,
+  \begin{itemize}[noitemsep]
+  \item Each sender has a unique random number, the sender XORs the signal with this pseudorandom number
+  \item The receiver can ``tune'' into this signal if it knows the pseudorandom number, tuning is done via a correlation function
+  \end{itemize}
+
+  \begin{itemize}[noitemsep]
+  \item Each user in the system gets an (pseudo-) orthogonal code, which is used to encode their data. The receiver can then decode the signal.
+  \item [+:] This is a flexible system, with less management on transmission frequencies required.
+  \item [---:] Complex receivers are required to implement this.
+  \item [Example:] UMTS
+  \end{itemize}
+\end{definition}
+
+To handle multiple data streams inside the same user, there needs to be multiple codes that are used.
+These are the:
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Spreading_Code}
+\item \nameref{def:Scrambling_Code}
+\end{enumerate}
+
+\begin{definition}[Spreading Code]\label{def:Spreading_Code}
+  The \emph{spreading code} is used at the end of each data stream, so we can figure out which application/data stream the data belongs to.
+  It is only used inside the user's device, and it done before each of the data streams is added together, XORed with the \nameref{def:Scrambling_Code}, and pushed out.
+\end{definition}
+
+\begin{definition}[Scrambling Code]\label{def:Scrambling_Code}
+  The \emph{scrambling code} is used once all the applications/data streams have been XORed with their \nameref{def:Spreading_Code}s and aggregated.
+  This code is then XORed with this output and then sent out to be handled by the receiver.
+\end{definition}
+
+There is a concept of the spreading factor.
+\begin{equation}\label{eq:Spreading_Factor}
+  \frac{R_{c}}{R_{i}} = \frac{\frac{1}{R_{i}}}{\frac{1}{R_{c}}}
+\end{equation}
+
+\paragraph{Orthogonal Variable Spreading Factor Codes}\label{par:OVSF_Codes}
+The codes used for \nameref{def:CDMA} are generated in a recursive manner.
+Each generation of codes halves the overall throughput of the system.
+
+\begin{equation}\label{eq:OVSF_Codes}
+  x_{i-1} \rightarrow
+  \begin{cases}
+    (x_{i}, x_{i}) \\
+    (x_{i}, -x_{i}) \\
+  \end{cases}
+\end{equation}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c|p{4cm}p{4cm}}
+    \toprule
+    & \multicolumn{1}{c}{Down Link} & \multicolumn{1}{c}{Up Link} \\
+    \midrule
+    \nameref{def:Scrambling_Code} & Identify cells. Code assigned to each cell. Only 512 codes. Assignment done by system designer. & Identify users. Code assigned to each user. $2^{24}$ codes. Assignment done by algorithm. \\
+    \nameref{def:Spreading_Code} & Identify channels used by a cell. Code assigned to each user. & Identify channels to be used by users. Code assigned to each channel.
+  \end{tabular}
+  \caption{How to use OVSF Codes}
+  \label{tab:Use_OVSF_Codes}
+\end{table}
+
+The codes are not perfectly orthogonal, meaning that some amount of the transmission's value can be viewed as noise (really it's lost information), so each node causes some interference.
+Because of the way this system works and interacts with devices near the receiver, there is a general performance degration that closely follows the \nameref{def:Gaussian_Random_Variable}'s distribution.
+Meaning, there is only a soft performance degradation as the system gains additional users.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
