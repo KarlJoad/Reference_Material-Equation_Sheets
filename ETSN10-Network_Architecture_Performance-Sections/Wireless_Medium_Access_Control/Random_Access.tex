@@ -315,6 +315,19 @@ If we define $a = \frac{T_{\mathrm{Prop}}}{T_{\mathrm{Trans}}}$, the the normali
 \end{definition}
 
 \subsubsection{Carrier Sense Multiple Access/Collision Avoidance}\label{subsubsec:CSMACA}
+\begin{definition}[Carrier Sense Multiple Access/Collision Avoidance]\label{def:CSMACA}
+  In \emph{Carrier Sense Multiple Access/Collision Avoidance} (\emph{CSMA/CA}), the sender would send as soon as the network medium is free.
+  The sender would then listen into the network medium if a collision occurred.
+
+  However, there are some problems with CSMA/CA that occur because of the nature of wireless radio networks.
+  \begin{itemize}[noitemsep]
+  \item Signal strength decreases proportional to the square of the distance (from electromagnetics $\frac{1}{r^{2}}$).
+  \item The sender would apply Carrier Sense and \nameref{def:CSMACD}, but the collisions happen at the receiver.
+  \item It might be the case that a sender cannot “hear” the collision, i.e., \nameref{def:CSMACD} does not work.
+  \item Furthermore, Carrier Sense might not work if, for example, a terminal is “hidden” (\nameref{def:Hidden_Node}).
+  \end{itemize}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
