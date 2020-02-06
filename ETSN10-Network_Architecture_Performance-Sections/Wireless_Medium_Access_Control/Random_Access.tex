@@ -352,6 +352,15 @@ The steps to recreate this are as follows:
   An \emph{exposed node} is one that is in range of a currently transmitting transmitter, but the desired node that would receive the tranmission is out-of-range of this transmission.
 \end{definition}
 
+The steps to recreate this are as follows:
+\begin{enumerate}[noitemsep]
+\item Suppose there are 4 transmitters in line, in this order D, A, B, C (from left-to-right).
+\item A wants to transmit to D.
+\item A listens and detects that B is already transmitting to C.
+\item A waits, even though C is too far away to overhear. This means there is no risk of a collision.
+\item A is exposed to C.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
