@@ -36,6 +36,22 @@ Any of these nodes' broadcasts can affect any of the other nodes.
 You can think of it as if each node has a large sphere extending radially outwards, where multiple nodes can cover the same zone.
 Additionally, this may also mean that some nodes are dependent on other nodes.
 
+\subsubsection{Performance in Interfering Networks}\label{subsubsec:Performance_Interfering_Networks}
+In the work done by \citeauthor{Wireless_Network_Capacity}, it was found there is a closed-form solution for the performance of interfering wireless networks.
+
+Place $n$ nodes on a unit disk.
+Each node as the capacity $W$ bits per second.
+Then, the upper bound on the capacity for the network as $n \rightarrow \infty$ is
+\begin{equation}\label{eq:Wireless_Network_Capacity_Upper_Bound}
+  \frac{W}{\sqrt{n \log(n)}}
+\end{equation}
+
+If the nodes are placed optimally, i.e.\ each node is placed such that its transmission range never crosses another node's range.
+Then the capacity of the network is given in \Cref{eq:Wireless_Network_Capacity_Optimal}
+\begin{equation}\label{eq:Wireless_Network_Capacity_Optimal}
+  \frac{W}{\sqrt{n}}
+\end{equation}
+
 \begin{definition}[Star-of-Stars]\label{def:Star_of_Stars}
   A network with a \emph{star-of-stars} topology is a hierarchical setup, where the leaf nodes in the system are the ones generating data to send.
   The next rows up may generate some data, but mainly serve as aggregators for the lower nodes in the system.
