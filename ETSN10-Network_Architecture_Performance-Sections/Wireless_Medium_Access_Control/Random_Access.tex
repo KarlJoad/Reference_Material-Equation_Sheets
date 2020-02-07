@@ -255,7 +255,7 @@ If we define $a = \frac{T_{\mathrm{Prop}}}{T_{\mathrm{Trans}}}$, the the normali
     \item Rarely used outside of industry.
     \end{itemize}
 
-  \item Enhanced Distributed Channel Access (EDCA)
+  \item \nameref{def:EDCA} (EDCA)
     \begin{itemize}[noitemsep]
     \item \nameref{def:WiFi_DCF} with some QoS features added.
     \end{itemize}
@@ -426,6 +426,24 @@ These should just be viewed as new MAC schemes for the 802.11 family.
   This solves the solves the \nameref{def:PCF} problem with the inability to send QoS needs.
 \end{definition}
 
+\begin{definition}[Enhanced Distributed Channel Access]\label{def:EDCA}
+  The \emph{Enhanced Distributed Channel Access} (\emph{EDCA}) scheme is very different than many others.
+  It can be thought of as a contention-based ``enhanced \nameref{def:DCF}''.
+
+  There are \emph{access categories} (\emph{ACs}), which can be thought of as tranmission queues.
+  Each station has 4 of these access categories.
+  Each AC contends for \nameref{def:Tx_Opportunity} independently of the other ACs.
+
+  Thus, we can provide service differentiation, by varying:
+  \begin{itemize}[noitemsep]
+  \item $\mathrm{CW}_{\mathrm{Min}}[AC]$
+  \item $\mathrm{CW}_{\mathrm{Max}}[AC]$
+  \item $\mathrm{AIFSN}[AC]$
+  \item $\mathrm{TXOP}_{\mathrm{Limit}}[AC]$
+  \end{itemize}
+
+  However, this means there is no deterministic behavior, only statistical.
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
