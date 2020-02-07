@@ -57,6 +57,18 @@ After a transmission, the system goes back to sleep, becoming unreachable by the
 There are 2 reception windows during which the end-point device can receive data.
 If the unit receives its data during the first reception period, then it skips the second one.
 
+\paragraph{Why is LoRa Energy-Efficient?}\label{par:Why_LoRa_Energy_Efficient}
+\begin{itemize}[noitemsep]
+\item Energy efficient physical layer.
+\item End device can sleep except for exactly when it needs to transmit or receive.
+\item Listening is kept to a minimum. It is only done during the 2 receive windows.
+\item Simple protocol with low overhead.
+  \begin{itemize}[noitemsep]
+  \item Contention between devices resolved using \nameref{par:Pure_ALOHA}. When you have a packet, just send it.
+  \item MAC headers are small, at a minimum of 13 bytes.
+  \end{itemize}
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
