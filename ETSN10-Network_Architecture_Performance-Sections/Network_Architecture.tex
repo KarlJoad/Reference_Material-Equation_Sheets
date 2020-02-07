@@ -66,6 +66,29 @@ There are 3 classifications of mobility.
 \item High-Speed: $> 70 \si{\meter/\second}$
 \end{enumerate}
 
+\nameref{def:Mobility} has several effects on a wireless network system.
+\begin{enumerate}[noitemsep]
+\item Physical Layer
+  \begin{itemize}[noitemsep]
+  \item Doppler shift
+  \item Constantly changing channel $\rightarrow$ higher bit-error rate
+  \end{itemize}
+\item Data-Link Layer/MAC
+  \begin{itemize}[noitemsep]
+  \item Which nodes share “links” (and thus can experience collisions) constantly changes.
+  \item \nameref{def:Hidden_Node} and \nameref{def:Exposed_Node} problems!
+  \end{itemize}
+\item Network Layer
+  \begin{itemize}[noitemsep]
+  \item Constantly changing topology $\rightarrow$ need to constantly change end-to-end path through the network.
+  \end{itemize}
+\item Transport/Application Layers
+  \begin{itemize}[noitemsep]
+  \item Not directly affected.
+  \item Delays and errors at lower layers can cause problems though.
+  \end{itemize}
+\end{enumerate}
+
 \begin{definition}[Star-of-Stars]\label{def:Star_of_Stars}
   A network with a \emph{star-of-stars} topology is a hierarchical setup, where the leaf nodes in the system are the ones generating data to send.
   The next rows up may generate some data, but mainly serve as aggregators for the lower nodes in the system.
