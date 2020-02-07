@@ -44,6 +44,19 @@ The biggest energy costs in a network are:
   At the end ``star'' is the Cloud, where the appropriate company collects their data.
 \end{definition}
 
+In LoRa, there are 3 different MACs:
+\begin{enumerate}[noitemsep]
+\item Class A:\@ The baseline MAC
+\item Class B:\@ The beacon MAC
+\item Class C:\@ The continuous MAC
+\end{enumerate}
+
+\paragraph{Reception in the LoRa Protocol}\label{par:LoRa_Reception}
+In a Class A LoRa system, the end device is \textbf{the only one} that can intiate tranmission.
+After a transmission, the system goes back to sleep, becoming unreachable by the network.
+There are 2 reception windows during which the end-point device can receive data.
+If the unit receives its data during the first reception period, then it skips the second one.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
