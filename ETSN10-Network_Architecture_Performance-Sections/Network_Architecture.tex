@@ -146,6 +146,36 @@ Higher data rates also means greater amounts of power required to transmit the m
   Eventually, all connections terminate at one head star node.
 \end{definition}
 
+\subsubsection{Example Centralized Architectures}\label{subsubsec:Centralized_Architectures}
+\begin{enumerate}[noitemsep]
+\item 802.11 a/b/g/n/ac
+\begin{itemize}[noitemsep]
+\item Most common WiFi network type, used in homes, shops, offices, etc.
+\item 2.4 or 5 GHz bands, range $\approx 500 \si{\meter}$
+\item MAC:\@ 802.11 DCF
+\end{itemize}
+
+\item 802.11 ah
+  \begin{itemize}[noitemsep]
+  \item WiFi for Internet of Things
+  \item 800 MHz band, range $\approx 1 \si{\kilo \meter}$
+  \item MAC:\@ 802.11 DCF with some modifications:
+    \begin{itemize}[noitemsep]
+    \item Relay nodes
+    \item Target wake times
+    \item Contention groups
+    \end{itemize}
+  \item Aimed at reducing energy usage and providing coverage to more nodes in a single network
+\end{itemize}
+
+\item LoRa
+  \begin{itemize}[noitemsep]
+  \item Low-Power Wide Area Network (LPWAN) for Internet of Things
+  \item 800 MHz band, range 10s of km
+  \item MAC:\@ ALOHA for the uplink, with receive windows for the downlink
+  \end{itemize}
+\end{enumerate}
+
 \subsection{Internet of Things}\label{subsec:IoT}
 \begin{definition}[Internet of Things]\label{def:IoT}
   The \emph{Internet of Things} (\emph{IoT}) is a type of network where there are small, low-power sensors/devices placed throughout an environment to monitor the condition of the system.
