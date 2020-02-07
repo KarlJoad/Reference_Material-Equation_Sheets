@@ -9,6 +9,23 @@
   \end{itemize}
 \end{definition}
 
+\subsection{Wireless vs. Wired Networks}\label{subsec:Wireless_vs_Wired}
+Wireless and wired (fixed) networks operate under the same underlying network principles.
+However, wireless systems have a very different set of challenges to also contend with, because of the nature of wireless radio communication, and it being a broadcast medium.
+
+The biggest problems for wireless networks that wired networks do not have are:
+\begin{itemize}[noitemsep]
+\item Interference, \Cref{subsec:Wireless_Interference}
+\item Mobility, \Cref{subsec:Wireless_Mobility}
+\item Wireless channels:
+  \begin{itemize}[noitemsep]
+  \item Path loss
+  \item Shadowing
+  \item Fading
+  \item These will not be handled in this course.
+  \end{itemize}
+\end{itemize}
+
 \begin{definition}[Star-of-Stars]\label{def:Star_of_Stars}
   A network with a \emph{star-of-stars} topology is a hierarchical setup, where the leaf nodes in the system are the ones generating data to send.
   The next rows up may generate some data, but mainly serve as aggregators for the lower nodes in the system.
