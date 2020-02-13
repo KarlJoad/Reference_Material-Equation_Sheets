@@ -19,12 +19,12 @@
 \item Originally UHF (Ultra-High Frequency) communication
 \item Incoming traffic (to base station):
   \begin{itemize}[noitemsep]
-  \item 9,600 bps (403.500 MHz)
+  \item 9,600 bps (403.500 \si{\mega{} \hertz{}})
   \item Random access (Pure ALOHA)
   \end{itemize}
 \item Outgoing traffic (from base station):
   \begin{itemize}[noitemsep]
-  \item 9,600 bps (413.474 MHz)
+  \item 9,600 bps (413.474 \si{\mega{} \hertz{}})
   \item Broadcast
   \end{itemize}
 \end{itemize}
@@ -34,7 +34,7 @@
 \item Whenever a station has something to send, it sends.
 \item When a packet is received by the central, an acknowledgment (\texttt{ACK}) is sent back in broadcast.
 \item If the sending station does not receive an \texttt{ACK} within a set time, a collision is assumed.
-\item When a collision occurs, retransmit within a random time slot, 200--1500 ms.
+\item When a collision occurs, retransmit within a random time slot, 200--1500 \si{\milli{} \second{}}.
 \end{itemize}
 
 \begin{remark*}
@@ -443,6 +443,11 @@ These should just be viewed as new MAC schemes for the 802.11 family.
   \end{itemize}
 
   However, this means there is no deterministic behavior, only statistical.
+\end{definition}
+
+\begin{definition}[HCF Controlled Channel Access]
+  \emph{HCF Controlled Channel Access} (\emph{HCCA}) is akin to \nameref{def:PCF} contention free but extended to provide traffic separation whereby the AP hands out a TXOP with different sizes to different flows using Traffic specifications.
+  The scheme still suffers from the overheads associated with the PCF.\@
 \end{definition}
 
 %%% Local Variables:
