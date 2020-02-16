@@ -1,0 +1,203 @@
+\subsection{Mesh Network Routing}\label{subsec:Mesh_Network_Routing}
+\begin{remark*}
+  Most of these can be applied to both \nameref{def:Wireless_Mesh_Network}s and \nameref{def:Ad_Hoc_Network}s.
+  However, some of the details relating to the problems due to \nameref{def:Mobility} will \textbf{NOT} apply to \nameref{def:Wireless_Mesh_Network}s.
+\end{remark*}
+
+\begin{itemize}[noitemsep]
+\item Mobility causes paths to be unstable.
+\item Using “traditional” shortest path algorithms is inefficient.
+  \begin{itemize}[noitemsep]
+  \item Dijkstra
+  \item Bellman-Ford
+  \item etc.
+  \end{itemize}
+
+\item Two main approaches:
+  \begin{enumerate}[noitemsep]
+  \item \textcolor{red}{Proactive}: Continuously update about topology and changes
+    \begin{itemize}[noitemsep]
+    \item Advantage: Low latency
+    \item Disadvantage: Costly updates
+    \end{itemize}
+  \item \textcolor{red}{Reactive}: Only determine routing path when sending data
+    \begin{itemize}[noitemsep]
+    \item Advantage: No constant overhead
+    \item Disadvantage: Delay due to route discovery
+    \end{itemize}
+  \end{enumerate}
+
+\item Some hybrid protocols exist as well, which combine proactive
+  and reactive approaches in different ways.
+\end{itemize}
+
+Because shortest-path routing algorithms are not usable in \nameref{def:Ad_Hoc_Network}s, what can we use?
+We can route based on:
+\begin{itemize}[noitemsep]
+\item Interference
+\item Social Similarity
+\item Location
+\item Residual Energy
+\item Energy Usage
+  \begin{itemize}[noitemsep]
+  \item Multiple hops using little power vs.\@ single high power transmission.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Ad-Hoc On-Demand Distance Vector Routing}\label{subsubsec:ADOV_Routing}
+\begin{definition}[Ad-Hoc On-Demand Distance Vector Routing]\label{def:ADOV_Routing}
+  In \emph{Ad-hoc On-demand Distance Vector routing} (\emph{ADOV}), the sender broadcasts a ``Route Request'' packet, which is flooded throughout the whole network, until it reaches the intended receiver node.
+  Each node maintains a route cache, which uses the node sequence the route request packet has gone through so far.
+  Once the end node has been reached, the correct route state in each node is used to construct the link route.
+
+  This only reacts when routes fail.
+  When they do fail, the nodes go through a 2-step process.
+  \begin{enumerate}[noitemsep]
+  \item Attempt local recovery.
+    \begin{itemize}[noitemsep]
+    \item Nodes monitor neighbors
+    \item Issue error message on detected problem.
+    \end{itemize}
+  \item If local recovery fails, the original sender repeats the route discovery process by sending another ``Route Request'' packet.
+  \end{enumerate}
+
+  The cost of this routing protocol is directly related to the rate of \nameref{def:Mobility} in the network.
+  It realy only works for smaller networks with limited \nameref{def:Mobility}.
+
+  It is currently popular in deployed systems.
+\end{definition}
+
+\subsubsection{Geographic Routing}\label{subsubsec:Geographic_Routing}
+\begin{definition}[Geographic Routing]\label{def:Geographic_Routing}
+  \emph{Geographics Routing} is based on the nodes’ \textbf{physical positions}, rather than network addresses or routing tables.
+  Once the physically shortest route has been found, messages are then routed towards a destination location.
+\end{definition}
+
+However, \nameref{def:Geographic_Routing} has some issues as well.
+\begin{itemize}[noitemsep]
+\item Route discovery is costly in terms of time and energy.
+\item Routing tables quickly become out of date in highly mobile
+  networks.
+\item Addressing a message to a position may be more useful than
+  to a network address.
+  \begin{itemize}[noitemsep]
+  \item Sending an accident or traffic jam notification to upstream vehicles in a VANET
+  \item Sending a request to collect sensor data in a particular region in a WSN
+  \item Tracking something through a WSN (e.g.\@ an animal)
+  \end{itemize}
+\end{itemize}
+
+To make \nameref{def:Geographic_Routing} less costly, we use \nameref{def:Localization}.
+\begin{definition}[Localization]\label{def:Localization}
+  In \emph{localization}, we find out where each of the nodes are in physical space.
+  We can find the absolute locality with GPS, IMU, and many others.
+  If we can use the relative locality, then we can use trilateration.
+  This is done by having each node broadcast a signal and having each node listen for the same kind of signal.
+  This signal is used to locate other beacons by using TDOA.\@
+\end{definition}
+
+\subsubsection{Greedy Forwarding}\label{subsubsec:Greedy_Forwarding}
+\begin{definition}[Greedy Forwarding]\label{def:Greedy_Forwarding}
+  In \emph{greedy forwarding}, we forward this packet to the node \textbf{physically closest} to the destination node.
+  This guaranteed there will be no loops in the traversal of the network graph.
+
+  There are various forms and definitions of what ``closest'' means:
+  \begin{itemize}[noitemsep]
+  \item Distance to target
+  \item Distance along the source-destination line
+  \item Smallest angle to destination (compass routing)
+  \end{itemize}
+
+  \begin{remark}[Greedy Forwarding Failure]\label{rmk:Greedy_Forward_Fail}
+    \nameref{def:Greedy_Forwarding} fails when we we hit a local minimum.
+    This means that the current node has \textbf{no} neighbors that are closer to the destination that this node.
+
+    However, this can be solved with \nameref{def:Face_Routing}.
+  \end{remark}
+\end{definition}
+
+\subsubsection{Face Routing}\label{subsubsec:Face_Routing}
+\begin{definition}[Face Routing]\label{def:Face_Routing}
+  In \emph{face routing}, the route is passed along the faces of a polygon in a set direction.
+  The connection links that make the polygon's faces are based off which nodes are along the line between the source and destination nodes.
+
+  The message we are considering is sent around the faces of the polygons using \nameref{def:Greedy_Forwarding} until it either reaches the destination, or you would be required to cross the source-destination line.
+  If you have to cross the source-destination line, then you change to the next face.
+
+  \begin{remark}[Planar Graphs]\label{rmk:Face_Routing-Planar_Graphs}
+    \nameref{def:Face_Routing} \textbf{requires} that the graph is planar, i.e.\@ there are no crossing links.
+    Planarizing the graph can be done by removing crossing edges, using algorithms like Delauney Triangulation, however, this leads to an increase in hop counts.
+    This makes the sending of the packet less efficient in terms of delay and energy usage.
+  \end{remark}
+
+  \begin{remark}[Localization Errors]\label{rmk:Face_Routing-Localization_Errors}
+    \nameref{def:Face_Routing} is sensitive to \nameref{def:Localization} errors, since it relies on geometric information to choose the next node to forward to.
+  \end{remark}
+\end{definition}
+
+\large{\textbf{We can use BOTH \nameref{def:Greedy_Forwarding} and \nameref{def:Face_Routing}!!}}
+\begin{itemize}[noitemsep]
+\item Use \nameref{def:Greedy_Forwarding} until we reach a dead-end.
+\item Then change to \nameref{def:Face_Routing} to get around the obstacle.
+\item Once we are closer to the destination than the dead-end node, we can resume \nameref{def:Greedy_Forwarding}.
+\item While using \nameref{def:Greedy_Forwarding}, we can employ all links don’t need a planar graph.
+\end{itemize}
+
+\subsubsection{Contention-Based Greedy Forwarding}\label{subsubsec:Contention_Based_Greedy_Forwarding}
+With \nameref{def:Greedy_Forwarding}, we want to select the forwarding node closest to the destination.
+
+One way is to keep track of neighbours’ locations, but this increases overhead and breaks down when we have high mobility.
+
+Instead, the source node can send ``Request To Send'' (RTS), and potential forwarding nodes respond with ``Clear To Send'' (CTS) at a time determined by their distance to the destination.
+
+However:
+\begin{itemize}[noitemsep]
+\item Using this method can increase delay, because you must wait for the timers to expire.
+\item We still need to know neighbours’ locations to do \nameref{def:Face_Routing} when recovering from a dead end.
+\item Can request locations from neighbours when required.
+\end{itemize}
+
+\subsection{Realistic Network Models}\label{subsec:Realistic_Network_Models}
+The unit disk that we have been using to approximate the radio transmission of a node is not a good model of the transmission geometry of the device.
+\begin{itemize}[noitemsep]
+\item The transmission radius is not uniform
+\item Three regions:
+  \begin{enumerate}[noitemsep]
+  \item Good Signal
+  \item Degrading Signal (which falls off at a logarithmic rate).
+  \item No Signal
+\end{enumerate}
+
+\item In the intermediate region (between good and none), we have a link, but it is unreliable.
+\end{itemize}
+
+\begin{itemize}[noitemsep]
+\item Using \nameref{def:Greedy_Forwarding}, we will select a forwarding node that is far from previous node
+  \begin{itemize}[noitemsep]
+  \item Likely to land in the region with poor signal
+  \item This can lead to increased retransmissions
+  \end{itemize}
+
+\item We need to modify our greedy metric to take into account the cost of retransmissions, and balance this against increased hop count as results if we choose a closer node.
+\item Nodes can record the number of successfully received packets $S$ and the total number of transmitted packets $T$ on a given link.
+\item Packet reception rate (PRR):
+  \begin{equation}\label{eq:Packet_Reception_Rate}
+    \mathrm{PRR} = \frac{S}{T}
+  \end{equation}
+  \begin{itemize}[noitemsep]
+  \item $S$: Number of successfully received packets.
+  \item $T$: The total number of transmitted packets.
+  \item $\mathrm{PRR}$: The Packet Reception Rate.
+  \end{itemize}
+\item The PRR can serve as a reception probability for future transmissions.
+\item We can then combine this with the distance gained to select a
+  forwarding node,
+  \begin{itemize}[noitemsep]
+  \item For example, use $\mathrm{PRR} \times \text{distance}$ as forwarding node selection metric, instead of only distance.
+  \end{itemize}
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
