@@ -118,7 +118,7 @@ In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at
 
   The performance of a non-persistent system is:
   \begin{equation}\label{eq:Non_Persistent_Performance}
-    S_{1} = \frac{G e^{-G} (1+G)}{G + e^{-G}}
+    S_{\mathrm{Non}} = \frac{G}{1+G}
   \end{equation}
   where
   \begin{itemize}[noitemsep]
@@ -137,7 +137,7 @@ In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at
 
   The performance of a $p$-persistent system is:
   \begin{equation}\label{eq:p_Persistent_Performance}
-    S_{p} = \frac{G e^{-G} (1+pGx)}{G + e^{-G}}
+    S_{p} = \frac{G e^{-G} (1+pG)}{G + e^{-G}}
   \end{equation}
   where
   \begin{itemize}[noitemsep]
@@ -156,16 +156,6 @@ In \nameref{par:Slotted_ALOHA}, $t = T_{\mathrm{P}}$, so its maximum is found at
   \item If the channel is busy, the device will continue to use carrier sense on the channel.
   \item Once the channel is idle, this device will start sending its packet immediately.
   \end{enumerate}
-
-  The performance of a persistent system is:
-  \begin{equation}\label{eq:Persistent_Performance}
-    S_{n} = \frac{G}{1+G}
-  \end{equation}
-  where
-  \begin{itemize}[noitemsep]
-  \item $G$: Offered Load
-  \item $S$: Throughput
-  \end{itemize}
 \end{definition}
 
 \subsubsection{Carrier Sense Multiple Access/Collision Detection}\label{subsubsec:CSMACD}
