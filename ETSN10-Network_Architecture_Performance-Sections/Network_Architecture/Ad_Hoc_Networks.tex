@@ -53,6 +53,28 @@
 \end{remark*}
 
 \subsubsection{Ad-Hoc Energy Usage}\label{subsubsec:Ad_Hoc_Architectures}
+For most \nameref{def:Ad_Hoc_Network}s, low energy usage is the \textbf{most} important performance requirement.
+Meaning, these networks have few other requirements.
+For example, the system may be allowed to have very large delays, so long as the data eventually reaches the end-point.
+
+Some of the things that consume the most energy in a wireless transmission system are:
+\begin{enumerate}[noitemsep]
+\item Using the radio: both sending and listening
+  \begin{itemize}[noitemsep]
+  \item CSMA costs extra energy because we must listen to the channel
+  \item Collisions and other packet losses cost energy because we must re-transmit
+  \item Protocol overheads:
+    \begin{itemize}[noitemsep]
+    \item Synchronisation (e.g.\@ for TDMA)
+    \item Large packet headers, etc.\@ cost energy because we need to transmit and receive information.
+    \end{itemize}
+  \end{itemize}
+
+\item Keeping the device on: if we can sleep, we can save a lot of
+  energy
+\item Some types of processing, e.g.\@ encryption is often costly --- but not as much as radio transmission
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
