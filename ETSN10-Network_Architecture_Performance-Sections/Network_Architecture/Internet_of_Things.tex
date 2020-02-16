@@ -2,6 +2,22 @@
 \begin{definition}[Internet of Things]\label{def:IoT}
   The \emph{Internet of Things} (\emph{IoT}) is a type of network where there are small, low-power sensors/devices placed throughout an environment to monitor the condition of the system.
   Some of these devices may also cause a change in the environment as they have been programmed to do.
+
+  The Internet of Things has a hierarchical structure, because of the computing power of the devices.
+  Since the actual computational power of any single device in the network is nearly non-existent, the end devices send their data up to the ``fog''.
+  This is the place where some data is aggregated, and shared among other devices in the fog for the same user.
+  From the fog, it goes up to data centers that form the Cloud.
+
+  \begin{itemize}[noitemsep]
+  \item \textbf{Cloud:} Large data centres with resources for computation and storage.
+    Typically hosts computation-heavy functions, databases, user interfaces.
+  \item \textbf{Fog Nodes:} Can be cellular base stations, local data centres, or local servers.
+    Capable of computation and storage, but not as much capacity as in the Cloud.
+    Used to host latency-sensitive parts of applications.
+  \item \textbf{End Devices:} Sensors and actuators.
+    Can be connected to Fog Nodes and backbone network with a range of radio technologies (e.g.\@ cellular, LoRa, WiFi, Bluetooth) or wired connections.
+    These can be routed in networks with a single hop (\nameref{def:Star_of_Stars}) or mesh topology.
+  \end{itemize}
 \end{definition}
 
 %%% Local Variables:
