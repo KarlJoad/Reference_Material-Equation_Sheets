@@ -1,0 +1,30 @@
+\subsection{Interference in Wireless Networks}\label{subsec:Wireless_Interference}
+The biggest difference between wired and wireless networks when it comes to interference is because of the transportation medium.
+In a wired system, discrete connections form isolated links between nodes.
+The properties of any single link do not directly affect the properties of any other node.
+
+However, in wireless networks, each of the nodes is broadcasting into space.
+Any of these nodes' broadcasts can affect any of the other nodes.
+You can think of it as if each node has a large sphere extending radially outwards, where multiple nodes can cover the same zone.
+Additionally, this may also mean that some nodes are dependent on other nodes.
+
+\subsubsection{Performance in Interfering Networks}\label{subsubsec:Performance_Interfering_Networks}
+In the work done by \citeauthor{Wireless_Network_Capacity}, it was found there is a closed-form solution for the performance of interfering wireless networks.
+
+Place $n$ nodes on a unit disk.
+Each node as the capacity $W$ bits per second.
+Then, the upper bound on the capacity for the network as $n \rightarrow \infty$ is
+\begin{equation}\label{eq:Wireless_Network_Capacity_Upper_Bound}
+  \frac{W}{\sqrt{n \log(n)}}
+\end{equation}
+
+If the nodes are placed optimally, i.e.\ each node is placed such that its transmission range never crosses another node's range.
+Then the capacity of the network is given in \Cref{eq:Wireless_Network_Capacity_Optimal}
+\begin{equation}\label{eq:Wireless_Network_Capacity_Optimal}
+  \frac{W}{\sqrt{n}}
+\end{equation}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:

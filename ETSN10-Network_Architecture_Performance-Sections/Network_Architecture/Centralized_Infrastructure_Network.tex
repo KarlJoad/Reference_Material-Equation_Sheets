@@ -1,0 +1,58 @@
+\subsection{Centralized Infrastructure Networks}\label{subsec:Centralized_Infrastructure_Network}
+\begin{definition}[Centralized Infrastructure Network]\label{def:Centralized_Infrastructure_Network}
+  \emph{Centralized Infrastructure Networks} have some fixed nodes which have the connection to the wider Internet.
+  These gateways are the ones that provide access to the Internet.
+  This system works in a hierarchical structure, following a \nameref{def:Star_of_Stars} topology.
+\end{definition}
+
+\begin{definition}[Star-of-Stars]\label{def:Star_of_Stars}
+  A network with a \emph{star-of-stars} topology is a hierarchical setup, where the leaf nodes in the system are the ones generating data to send.
+  The next rows up may generate some data, but mainly serve as aggregators for the lower nodes in the system.
+  Eventually, all connections terminate at one head star node.
+\end{definition}
+
+\subsubsection{Example Centralized Architectures}\label{subsubsec:Centralized_Architectures}
+\begin{enumerate}[noitemsep]
+\item 802.11 a/b/g/n/ac
+\begin{itemize}[noitemsep]
+\item Most common WiFi network type, used in homes, shops, offices, etc.
+\item 2.4 or 5 GHz bands, range $\approx 500 \si{\meter}$
+\item MAC:\@ 802.11 DCF
+\end{itemize}
+
+\item 802.11 ah
+  \begin{itemize}[noitemsep]
+  \item WiFi for Internet of Things
+  \item 800 MHz band, range $\approx 1 \si{\kilo \meter}$
+  \item MAC:\@ 802.11 DCF with some modifications:
+    \begin{itemize}[noitemsep]
+    \item Relay nodes
+    \item Target wake times
+    \item Contention groups
+    \end{itemize}
+  \item Aimed at reducing energy usage and providing coverage to more nodes in a single network
+\end{itemize}
+
+\item LoRa
+  \begin{itemize}[noitemsep]
+  \item Low-Power Wide Area Network (LPWAN) for Internet of Things
+  \item 800 MHz band, range 10s of km
+  \item MAC:\@ ALOHA for the uplink, with receive windows for the downlink
+  \end{itemize}
+\end{enumerate}
+
+\begin{remark*}
+  For the above architectures, standard Internet routing (\nameref{def:Distance_Vector_Routing_Protocol} or \nameref{def:Link_State_Routing_Protocol}) is used.
+  \begin{itemize}[noitemsep]
+  \item Only one wireless hop, so no specialised routing is needed.
+  \end{itemize}
+\end{remark*}
+
+\begin{remark*}
+  Some wireless-aware protocols can be used at higher layers, e.g. Mobile IP, Wireless TCP (WTCP).
+\end{remark*}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:

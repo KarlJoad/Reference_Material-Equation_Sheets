@@ -26,179 +26,23 @@ The biggest problems for wireless networks that wired networks do not have are:
   \end{itemize}
 \end{itemize}
 
-\subsection{Interference in Wireless Networks}\label{subsec:Wireless_Interference}
-The biggest difference between wired and wireless networks when it comes to interference is because of the transportation medium.
-In a wired system, discrete connections form isolated links between nodes.
-The properties of any single link do not directly affect the properties of any other node.
+\input{./ETSN10-Network_Architecture_Performance-Sections/Network_Architecture/Wireless_Network_Interference}
 
-However, in wireless networks, each of the nodes is broadcasting into space.
-Any of these nodes' broadcasts can affect any of the other nodes.
-You can think of it as if each node has a large sphere extending radially outwards, where multiple nodes can cover the same zone.
-Additionally, this may also mean that some nodes are dependent on other nodes.
+\input{./ETSN10-Network_Architecture_Performance-Sections/Network_Architecture/Mobility}
 
-\subsubsection{Performance in Interfering Networks}\label{subsubsec:Performance_Interfering_Networks}
-In the work done by \citeauthor{Wireless_Network_Capacity}, it was found there is a closed-form solution for the performance of interfering wireless networks.
+\input{./ETSN10-Network_Architecture_Performance-Sections/Network_Architecture/Licensed_Unlicensed}
 
-Place $n$ nodes on a unit disk.
-Each node as the capacity $W$ bits per second.
-Then, the upper bound on the capacity for the network as $n \rightarrow \infty$ is
-\begin{equation}\label{eq:Wireless_Network_Capacity_Upper_Bound}
-  \frac{W}{\sqrt{n \log(n)}}
-\end{equation}
+\input{./ETSN10-Network_Architecture_Performance-Sections/Network_Architecture/Data_Rate_vs_Range}
 
-If the nodes are placed optimally, i.e.\ each node is placed such that its transmission range never crosses another node's range.
-Then the capacity of the network is given in \Cref{eq:Wireless_Network_Capacity_Optimal}
-\begin{equation}\label{eq:Wireless_Network_Capacity_Optimal}
-  \frac{W}{\sqrt{n}}
-\end{equation}
+\input{./ETSN10-Network_Architecture_Performance-Sections/Network_Architecture/Centralized_Infrastructure_Network}
 
-\subsection{Mobility}\label{subsec:Wireless_Mobility}
-\begin{definition}[Mobility]\label{def:Mobility}
-  \emph{Mobility} is a unique property of wireless networks.
-  Since the nodes are not fixed in place by anything, they are free to roam/move.
-  This is a big problem, because nodes can enter, leave, and move freely throughout/through the network.
-\end{definition}
+\input{./ETSN10-Network_Architecture_Performance-Sections/Network_Architecture/Infrastructure_Mesh_Network}
 
-There are 3 classifications of mobility.
-\begin{enumerate}[noitemsep]
-\item Pedestrian: $\approx 1.5 \si{\meter/\second}$
-\item Vehicle: $5-33 \si{\meter/second}$
-\item High-Speed: $> 70 \si{\meter/\second}$
-\end{enumerate}
+\input{./ETSN10-Network_Architecture_Performance-Sections/Network_Architecture/Ad_Hoc_Networks}
 
-\nameref{def:Mobility} has several effects on a wireless network system.
-\begin{enumerate}[noitemsep]
-\item Physical Layer
-  \begin{itemize}[noitemsep]
-  \item Doppler shift
-  \item Constantly changing channel $\rightarrow$ higher bit-error rate
-  \end{itemize}
+\input{./ETSN10-Network_Architecture_Performance-Sections/Network_Architecture/Internet_of_Things}
 
-\item Data-Link Layer/MAC
-  \begin{itemize}[noitemsep]
-  \item Which nodes share “links” (and thus can experience collisions) constantly changes.
-  \item \nameref{def:Hidden_Node} and \nameref{def:Exposed_Node} problems!
-  \end{itemize}
-
-\item Network Layer
-  \begin{itemize}[noitemsep]
-  \item Constantly changing topology $\rightarrow$ need to constantly change end-to-end path through the network.
-  \end{itemize}
-
-\item Transport/Application Layers
-  \begin{itemize}[noitemsep]
-  \item Not directly affected.
-  \item Delays and errors at lower layers can cause problems though.
-  \end{itemize}
-\end{enumerate}
-
-\subsection{Licensed vs. Unlicensed Spectrum}\label{subsec:Licensed_vs_Unlicensed}
-There are 2 types of frequencies in use by people and companies today.
-\begin{enumerate}[noitemsep]
-\item \nameref{subsubsec:Licensed_Spectrum}
-\item \nameref{subsubsec:Unlicensed_Spectrum}
-\end{enumerate}
-
-\subsubsection{Licensed Spectrum}\label{subsubsec:Licensed_Spectrum}
-The licensed spectrum requires that users obtain exclusive rights to use that frequency spectrum.
-\begin{itemize}[noitemsep]
-\item Solution for QoS-sensitive applications
-\item Exclusive right to spectrum use
-\item Network engineering possible
-  \begin{itemize}[noitemsep]
-  \item Predictability
-  \item Manageability
-  \end{itemize}
-
-\item Complex and costly systems are generally built around these.
-\item Typically big players take these.
-\end{itemize}
-
-\subsubsection{Unlicensed Spectrum}\label{subsubsec:Unlicensed_Spectrum}
-The unlicensed spectrum does not require that users obtain exclusive rights, but they may require that only certain types of data can be used in that frequency.
-\begin{itemize}[noitemsep]
-\item Inherent best effort systems
-\item ``Some'' QoS support possible
-\item No right to use spectrum
-  \begin{itemize}[noitemsep]
-  \item Competition
-  \item Collaboration
-  \end{itemize}
-
-\item Simple and cheap systems
-\item For small/medium players
-\end{itemize}
-
-\subsection{Data Rate vs. Range}\label{subsec:Data_Rate_vs_Range}
-Higher data rates means lower tranmission range.
-Higher data rates also means greater amounts of power required to transmit the message.
-
-\subsection{Centralized Infrastructure Networks}\label{subsec:Centralized_Infrastructure_Network}
-\begin{definition}[Centralized Infrastructure Network]\label{def:Centralized_Infrastructure_Network}
-  \emph{Centralized Infrastructure Networks} have some fixed nodes which have the connection to the wider Internet.
-  These gateways are the ones that provide access to the Internet.
-  This system works in a hierarchical structure, following a \nameref{def:Star_of_Stars} topology.
-\end{definition}
-
-\begin{definition}[Star-of-Stars]\label{def:Star_of_Stars}
-  A network with a \emph{star-of-stars} topology is a hierarchical setup, where the leaf nodes in the system are the ones generating data to send.
-  The next rows up may generate some data, but mainly serve as aggregators for the lower nodes in the system.
-  Eventually, all connections terminate at one head star node.
-\end{definition}
-
-\subsubsection{Example Centralized Architectures}\label{subsubsec:Centralized_Architectures}
-\begin{enumerate}[noitemsep]
-\item 802.11 a/b/g/n/ac
-\begin{itemize}[noitemsep]
-\item Most common WiFi network type, used in homes, shops, offices, etc.
-\item 2.4 or 5 GHz bands, range $\approx 500 \si{\meter}$
-\item MAC:\@ 802.11 DCF
-\end{itemize}
-
-\item 802.11 ah
-  \begin{itemize}[noitemsep]
-  \item WiFi for Internet of Things
-  \item 800 MHz band, range $\approx 1 \si{\kilo \meter}$
-  \item MAC:\@ 802.11 DCF with some modifications:
-    \begin{itemize}[noitemsep]
-    \item Relay nodes
-    \item Target wake times
-    \item Contention groups
-    \end{itemize}
-  \item Aimed at reducing energy usage and providing coverage to more nodes in a single network
-\end{itemize}
-
-\item LoRa
-  \begin{itemize}[noitemsep]
-  \item Low-Power Wide Area Network (LPWAN) for Internet of Things
-  \item 800 MHz band, range 10s of km
-  \item MAC:\@ ALOHA for the uplink, with receive windows for the downlink
-  \end{itemize}
-\end{enumerate}
-
-\begin{remark*}
-  For the above architectures, standard Internet routing (\nameref{def:Distance_Vector_Routing_Protocol} or \nameref{def:Link_State_Routing_Protocol}) is used.
-  \begin{itemize}[noitemsep]
-  \item Only one wireless hop, so no specialised routing is needed.
-  \end{itemize}
-\end{remark*}
-
-\begin{remark*}
-  Some wireless-aware protocols can be used at higher layers, e.g. Mobile IP, Wireless TCP (WTCP).
-\end{remark*}
-
-\subsection{Infrastructure Mesh Networks}\label{subsec:Infrastructure_Mesh_Networks}
-
-\subsection{Ad-Hoc Networks}\label{subsec:Ad_Hoc_Networks}
-\subsubsection{Uses of Ad-Hoc Networks}\label{subsubsec:Uses_Ad_Hoc_Network}
-\subsubsection{Example Ad-Hoc Architectures}\label{subsubsec:Ad_Hoc_Architectures}
-\subsubsection{Ad-Hoc Energy Usage}\label{subsubsec:Ad_Hoc_Architectures}
-
-\subsection{Internet of Things}\label{subsec:IoT}
-\begin{definition}[Internet of Things]\label{def:IoT}
-  The \emph{Internet of Things} (\emph{IoT}) is a type of network where there are small, low-power sensors/devices placed throughout an environment to monitor the condition of the system.
-  Some of these devices may also cause a change in the environment as they have been programmed to do.
-\end{definition}
+\input{./ETSN10-Network_Architecture_Performance-Sections/Network_Architecture/Cellular_Networks}
 
 %%% Local Variables:
 %%% mode: latex

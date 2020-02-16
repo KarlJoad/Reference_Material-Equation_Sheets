@@ -1,0 +1,44 @@
+\subsection{Mobility}\label{subsec:Wireless_Mobility}
+\begin{definition}[Mobility]\label{def:Mobility}
+  \emph{Mobility} is a unique property of wireless networks.
+  Since the nodes are not fixed in place by anything, they are free to roam/move.
+  This is a big problem, because nodes can enter, leave, and move freely throughout/through the network.
+\end{definition}
+
+There are 3 classifications of mobility.
+\begin{enumerate}[noitemsep]
+\item Pedestrian: $\approx 1.5 \si{\meter/\second}$
+\item Vehicle: $5-33 \si{\meter/second}$
+\item High-Speed: $> 70 \si{\meter/\second}$
+\end{enumerate}
+
+\nameref{def:Mobility} has several effects on a wireless network system.
+\begin{enumerate}[noitemsep]
+\item Physical Layer
+  \begin{itemize}[noitemsep]
+  \item Doppler shift
+  \item Constantly changing channel $\rightarrow$ higher bit-error rate
+  \end{itemize}
+
+\item Data-Link Layer/MAC
+  \begin{itemize}[noitemsep]
+  \item Which nodes share “links” (and thus can experience collisions) constantly changes.
+  \item \nameref{def:Hidden_Node} and \nameref{def:Exposed_Node} problems!
+  \end{itemize}
+
+\item Network Layer
+  \begin{itemize}[noitemsep]
+  \item Constantly changing topology $\rightarrow$ need to constantly change end-to-end path through the network.
+  \end{itemize}
+
+\item Transport/Application Layers
+  \begin{itemize}[noitemsep]
+  \item Not directly affected.
+  \item Delays and errors at lower layers can cause problems though.
+  \end{itemize}
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
+%%% End:
