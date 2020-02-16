@@ -9,6 +9,21 @@ This may require several hops until we reach a node with a connection.
 Throughout this process, we do not have to worry about nodes moving, because they are fixed.
 However, we still need to maintain the routing information, so the packets are sent back to the correct node.
 
+\subsubsection{Example Infrastructure Mesh Architectures}\label{subsubsec:Example_Mesh_Architectures}
+\begin{enumerate}[noitemsep]
+\item 802.11s
+  \begin{itemize}[noitemsep]
+  \item Backbone of static nodes, with mobile nodes connecting to the nearest static node.
+  \item Some or all static nodes typically act as Internet gateways.
+  \item Example use case: metropolitan network
+  \item Builds on top of 802.11 a, b, g, n, or ac: same MAC and physical layers
+  \item A routing protocol tailored to wireless mesh networks is added on top
+    \begin{itemize}[noitemsep]
+    \item Default protocol is Hybrid Wireless Mesh Protocol (HWMP)
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
