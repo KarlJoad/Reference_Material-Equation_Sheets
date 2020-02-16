@@ -43,6 +43,29 @@
   \end{itemize}
 \end{itemize}
 
+\subsubsection{IoT Performance}\label{subsubsec:IoT_Performance}
+The \nameref{def:IoT} is different from previous networks because:
+\begin{itemize}[noitemsep]
+\item Small, resource-constrained, battery-powered devices
+  \begin{itemize}[noitemsep]
+  \item Protocols need to be simple for the end device.
+  \item Energy efficiency is typically the most important performance metric.
+  \end{itemize}
+
+\item Traffic models for IoT:\@ Event-Driven or Periodic.
+  \begin{itemize}[noitemsep]
+  \item For periodic traffic, scheduled access is usually the most appropriate, e.g. TDMA
+  \item For event-driven traffic, random access may be more appropriate, e.g. ALOHA
+  \end{itemize}
+
+\item Many devices in the same network
+  \begin{itemize}[noitemsep]
+  \item If the number of devices is too high, MAC performance starts to degrade.
+  \item With many devices, protocol overhead can become significant.
+  \item Managing, configuring, and monitoring many devices is difficult.
+  \end{itemize}
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
