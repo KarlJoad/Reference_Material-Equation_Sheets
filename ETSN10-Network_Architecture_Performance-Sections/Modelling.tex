@@ -1,4 +1,4 @@
-\section{Modelling}\label{sec:Modelling}
+\section{Modeling}\label{sec:Modeling}
 In our discussion of models, we have commonly referred to the OSI model for TCP/IP networking.
 This is just one model, we have also used the queuing model to measure system performance.
 But, just what is a model?
@@ -40,9 +40,9 @@ The purpose of the model \textbf{MUST} be correctly determined.
 Otherwise, the whole model will not correctly model what you want it to.
 
 \subsection{Analyzing Models}\label{subsec:Model_Analysis}
-Once a model has been constructed and has been running, whatever that may mean in its context, it must be analysized and compared to reality.
+Once a model has been constructed and has been running, whatever that may mean in its context, it must be analyzed and compared to reality.
 \begin{enumerate}[noitemsep]
-\item What is being modelled?
+\item What is being modeled?
 \item What is the purpose for developing a model?
 \item What aspects of reality are needed? What simplifications and assumptions can be made?
 \item What techniques are available to build the model? How can we build it?
@@ -63,7 +63,219 @@ Once a model has been constructed and has been running, whatever that may mean i
 \end{definition}
 
 \subsection{Kleinrock and Tobagi's Model of Packet-Switched Radio Networks}\label{subsec:Kleinrock_Tobagi_Model}
+The Kleinrock and Tobagi model was published in 1975.
+
+\subsubsection{What is Being Modeled?}\label{subsubsec:Kleinrock_Tobagi_Model_What_Modeled}
+\begin{itemize}[noitemsep]
+\item Packet-switched radio systems using various protocols:
+  \begin{itemize}[noitemsep]
+  \item ALOHA
+  \item Slotted ALOHA
+  \item Non-Persistent CSMA
+  \item 1-Persistent CSMA
+  \item $p$-Persistent CSMA
+\end{itemize}
+
+\item Users in line-of-sight and range of each other, communicating over a broadcast radio channel
+\end{itemize}
+
+\subsubsection{What is the Purpose of the Model?}\label{subsubsec:Kleinrock_Tobagi_Model_Purpose}
+\begin{itemize}[noitemsep]
+\item To investigate the throughput and delay characteristics of the various protocols
+\item Find the channel capacity (maximum throughput)
+\end{itemize}
+
+\subsubsection{Assumptions and Simplifications}\label{subsubsec:Kleinrock_Tobagi_Model_Assumptions}
+\begin{itemize}[noitemsep]
+\item Physics: Assume a spherical
+  \begin{itemize}[noitemsep]
+  \item A terminal cannot transmit and receive simultaneously.
+    \begin{itemize}[noitemsep]
+    \item This is actually true for wireless LANs today
+    \item Radios that can transmit and receive simultaneously tend to be more complicated and expensive.
+    \item Own transmission drowns out received transmission
+    \end{itemize}
+  \item The delay incurred by switching from one mode to the other is negligible.
+    \begin{itemize}[noitemsep]
+    \item What do we mean by negligible? How small must the delay be in reality for this assumption to be reasonable?
+    \end{itemize}
+  \item The channel is assumed to be noiseless.
+    \begin{itemize}[noitemsep]
+    \item This is sometimes true (or almost) and sometimes very much untrue.
+    \item This assumption limits the applicability of the model to situations where noise is negligible.
+    \end{itemize}
+  \item The propagation delay is identical for all sender-receiver pairs.
+    \begin{itemize}[noitemsep]
+    \item By taking the largest used propagation delay, we can get
+      pessimistic bounds from the model.
+    \end{itemize}
+  \item The time required to detect the carrier is negligible.
+  \end{itemize}
+
+\item Protocol: This is out of scope of this work, aka Someone Else’s Problem
+  \begin{itemize}[noitemsep]
+  \item Any overlap in two (or more) packets causes destructive interference in both (all) packets and they must be retransmitted.
+    \begin{itemize}[noitemsep]
+    \item The validity of this assumption depends on the error detection and correction schemes used.
+    \item We are therefore examining these protocols in the absence of any such schemes to deal with partial destruction of a packet.
+    \end{itemize}
+  \item The system is synchronised and all transmissions begin at the
+    start of a slot.
+    \begin{itemize}[noitemsep]
+    \item Synchronisation is thus not included in the model, but it
+      needs to be part of any real system that the model can be reasonably
+      applied to.
+    \end{itemize}
+  \item There is a positive acknowledgement scheme, i.e. a message is assumed lost unless an acknowledgement is sent.
+    \begin{itemize}[noitemsep]
+    \item Again, the acknowledgement scheme is not examined in the model, but it needs to be present for the model to be applicable to a real system.
+    \end{itemize}
+
+  \item Acknowledgement packets are always correctly received.
+  \item The processing time required to check a packet is correct and generate an acknowledgement is negligible.
+  \item The average retransmission delay is large compared to the packet transmission time.
+    \begin{itemize}[noitemsep]
+    \item This reduces the number of cases to deal with later. Retransmissions can essentially be treated just like any other packet.
+    \end{itemize}
+  \end{itemize}
+
+\item System inputs and outputs: Play nice
+  \begin{itemize}[noitemsep]
+  \item All packets are of constant length.
+    \begin{itemize}[noitemsep]
+    \item This is not true in reality.
+    \item What do we lose and what do we gain by using this assumption?
+    \end{itemize}
+  \item The traffic source consists of an infinite number of users who collectively form an independent Poisson source.
+    \begin{itemize}[noitemsep]
+    \item This is perhaps the biggest simplification in the whole model, and demonstrably false in reality
+    \item But we gain a huge amount of analytic tractability
+    \item How much does the traffic model affect the results?
+    \end{itemize}
+
+  \item Steady state conditions are assumed to exist.
+    \begin{itemize}[noitemsep]
+    \item Kleinrock and Tobagi note in the paper that the protocols they examine have in fact been shown to be unstable.
+    \item However, the results are nonetheless useful in finite cases where a steady state may indeed be reached.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Model Throughputs}\label{subsubsec:Kleinrock_Tobagi_Model_Throughputs}
+In all of equations of throughputs, they are true for when $a = 0$.
+
+ALOHA
+\begin{equation}\label{eq:ALOHA_Throughput}
+  S = Ge^{-G}
+\end{equation}
+
+Slotted ALOHA
+\begin{equation}\label{eq:Slotted_ALOHA_Throughput}
+  S = G e^{-2G}
+\end{equation}
+
+\nameref{def:Non_Persistent} CSMA
+\begin{equation}\label{eq:Non_Persistent_CSMA_Throughput}
+  S_{N} = \frac{G}{1+G}
+\end{equation}
+
+1-Persistent CSMA
+\begin{equation}\label{eq:1_Persistent_CSMA_Throughput}
+  S_{1} = \frac{G e^{-G} (1+G)}{G + e^{-G}}
+\end{equation}
+
+\nameref{def:p_Persistent} CSMA
+\begin{equation}\label{eq:p_Persistent_CSMA_Throughput}
+  S_{p} = \frac{G e^{-G} (1+G) Gx}{G+e^{-G}}
+\end{equation}
+
+\subsubsection{Model Evaluation}\label{subsubsec:Kleinrock_Tobagi_Model_Eval}
+\begin{itemize}[noitemsep]
+\item Validity: Is the model correct?
+  \begin{itemize}[noitemsep]
+  \item Mathematical proof
+  \item Simulation results
+  \end{itemize}
+
+\item Usefulness: What can we do with the model? Did it achieve
+  its aims?
+  \begin{itemize}[noitemsep]
+  \item The model does indeed produce results for throughput and delay, which can be used in designing packet radio networks.
+  \end{itemize}
+\end{itemize}
+
 \subsection{Bianchi Model of 802.11}\label{subsec:Bianchi_Model}
+This model was published in 2000, after 802.11 was already in use, but not well understood analytically.
+
+\subsubsection{What is Being Modeled}\label{subsubsec:Bianchi_Model_What_Modeled}
+\begin{itemize}[noitemsep]
+\item 802.11 Distributed Co-ordination Function
+  \begin{itemize}[noitemsep]
+  \item Both basic access and with RTS/CTS, as well as a combinainon of the two where packets over a certain length use RTS/CTS.
+  \end{itemize}
+\item Saturation conditions: This means that every node always has
+  a packet ready to send.
+  \begin{itemize}[noitemsep]
+  \item Note that maximum throughput does not occur at saturation!
+  \item Too many packets being sent means we lose a lot of packets to collisions. Throughput occurs when there is a balance between offered load and collision probability.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{What is the Purpose of the Model?}\label{subsubsec:Bianchi_Model_Purpose}
+\begin{itemize}[noitemsep]
+\item Determine the saturation throughput
+  \begin{itemize}[noitemsep]
+  \item Maximum load the system can carry under stable
+    conditions
+  \end{itemize}
+\item Determine the optimal transmission probability each station should adopt for a given network scenario (number of stations)
+\item Produce a model that is both accurate and simple, so that it
+  is easy to use.
+\end{itemize}
+
+\subsubsection{Assumptions and Simplifications}\label{subsubsec:Bianchi_Model_Assumptions}
+\begin{itemize}[noitemsep]
+\item Ideal channel conditions — no hidden terminals
+\item Finite number of terminals
+\item Constant and independent collision probability of a packet transmitted by a station, regardless of previous retransmissions
+\item All packets have a fixed size
+\item Neglect CTS and ACK timeouts after collision
+\item Probability of a collision between more than two packets in the same slot is negligible
+\item Every station always has a packet waiting to be transmitted
+  \begin{itemize}[noitemsep]
+  \item This is the key assumption for this model.
+  \item The assumption of saturation conditions greatly reduces the
+    scope and thus leads to tractable analysis
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Model Evaluation}\label{subsubsec:Bianchi_Model_Eval}
+\begin{itemize}[noitemsep]
+\item Validity
+  \begin{itemize}[noitemsep]
+  \item Model results compared with results from simulation of 802.11 DCF
+  \end{itemize}
+
+\item Usefulness
+  \begin{itemize}[noitemsep]
+  \item Able to produce performance analysis results with comparatively simple analysis
+  \end{itemize}
+\end{itemize}
+
+\subsection{Comparing the Two Models}\label{subsec:Comparing_CSMA_Models}
+\begin{itemize}[noitemsep]
+\item The two models have different purposes, which affects
+  \begin{itemize}[noitemsep]
+  \item Methodolgy
+  \item Assumptions
+  \item Evaluation
+\end{itemize}
+
+\item The \nameref{subsec:Kleinrock_Tobagi_Model} is more complete and general than Bianchi’s: can model a variety of different protocols under a range of conditions
+\item But it is also much more complex and many more assumptions and simplificatinos were required, and they were more drastic than those in the \nameref{subsec:Bianchi_Model}.
+\item Both models used simulations in their evaluation. This means they used models to evaluate other models!
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
