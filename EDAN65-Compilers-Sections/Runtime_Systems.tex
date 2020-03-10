@@ -36,7 +36,7 @@ There are 2 different portions of code:
   These objects are allocated on a first-come first-serve basis.
   When the object is allocated, the amount of memory that the object requires is allocated \textbf{\emph{in a continuous block}}.
   The problem is that if the heap has been extensively used, then there might be enough total memory required to allocate an object, but because it is not in a continuous block, the object cannot be allocated.
-  
+
   This makes deallocation more complex, because when they are deallocated, the program might still view the memory as in-use.
   Additionally, because of the continuous block allocation nature of the heap, it must be organized every once in a while.
   This is called \nameref{def:Garbage_Collection}.
@@ -76,8 +76,8 @@ There are 2 different portions of code:
 
   Additionally, there are 2 registers used as pointers to move around and interact with the stack frame.
   \begin{enumerate}[noitemsep]
-  \item \texttt{FP} is in register \rbp{}. It is the \nameref{def:Frame_Pointer}.
-  \item \texttt{SP} is in register \rsp{}. It is the \nameref{def:Stack_Pointer}.
+  \item \texttt{FP} is in register \rbpRegister{}. It is the \nameref{def:Frame_Pointer}.
+  \item \texttt{SP} is in register \rspRegister{}. It is the \nameref{def:Stack_Pointer}.
   \end{enumerate}
 \end{definition}
 
@@ -90,14 +90,14 @@ There are 2 different portions of code:
   To access any variable in \emph{this} function, you can subtract a byte multiple that you need to access the proper value.
   To access any variable in the calling function, you can add a byte multiple that would correspond to the proper variable.
 
-    In the \texttt{x86\textunderscore{} 64} architecture, instruction set, and convention that we used, the register \rbp{} was the dynamic link.
+    In the \texttt{x86\textunderscore{} 64} architecture, instruction set, and convention that we used, the register \rbpRegister{} was the dynamic link.
   \begin{remark}
     Note: Due to the conventions we used, when accessing arguments passed to the function, we treated them as local variables, just further down in the call stack.
     This also means that we need to skip over the \nameref{def:Return_Address} block in memory.
   \end{remark}
-  
+
   \begin{remark}
-    Because we used the \rbp{} register to store our current \nameref{def:Dynamic_Link}'s address, the dynamic link might also be called the \emph{base pointer}.
+    Because we used the \rbpRegister{} register to store our current \nameref{def:Dynamic_Link}'s address, the dynamic link might also be called the \emph{base pointer}.
   \end{remark}
 \end{definition}
 
@@ -121,14 +121,14 @@ There are 2 different portions of code:
   Once the calculations are completed, these values are deallocated.
   These temporary variables can also point to objects on the \nameref{def:Heap}.
   When the function has finished running, then these values are deallocated, along with all other \nameref{def:Local_Variable}s in use.
-  
+
   For example, since assembly-level addition only allows for 2 operands, but in general, addition can have more than 2 operands in use, there needs to be a way to store the value used in the addition.
   While we can accumulate and use that value in the addition, the values being added together are \emph{not} modified.
 \end{definition}
 
 \begin{definition}[Static Link]\label{def:Static_Link}
   The \emph{static link} is an implicit argument, meaning it \textbf{\emph{ALWAYS}} gets pushed onto the stack as a \nameref{def:Function_Argument}, when appropriate.
-  
+
   Appropriate in this context could mean several things:
   \begin{itemize}[noitemsep]
   \item When an object is alive, and when it is being acted on by a function.
@@ -172,16 +172,16 @@ There are 2 different portions of code:
   \end{remark}
 
   When the values that were passed need to be accessed, and if the memory sizes of things are known at compile time, then we can calculate how far down we need to go in the stack to find the value.
-  This is done by adding a positive value to the \rbp{}
+  This is done by adding a positive value to the \rbpRegister{}
 \end{definition}
 
 \begin{definition}[Return Address]\label{def:Return_Address}
-  The \emph{return address} is used by the \rip{} register.
+  The \emph{return address} is used by the \ripRegister{} register.
   It is calculated and pushed onto the \nameref{def:Stack_Frame} stack when the \texttt{CALL} macro is used.
   It is the thing that allows us to jump around in the code from the \texttt{text} area of our program.
 
   \begin{remark}
-    The \rip{} register is the \emph{register instruction pointer}.
+    The \ripRegister{} register is the \emph{register instruction pointer}.
     It holds the value of the \emph{next} instruction to execute.
     Technically, it is the Program Counter's value.
   \end{remark}
@@ -196,13 +196,13 @@ There are 2 different portions of code:
   The \emph{frame pointer} is a pointer that \textbf{\emph{ALWAYS}} points to the current function's \nameref{def:Dynamic_Link}.
   The frame pointer is commonly abbreviated as \emph{FP}.
   This is the thing that allows us to access \nameref{def:Local_Variable}s, \nameref{def:Function_Argument}s, and everything else inside of the \nameref{def:Stack_Frame}.
-  The value is held in the \rbp{} register.
+  The value is held in the \rbpRegister{} register.
 \end{definition}
 
 \begin{definition}[Stack Pointer]\label{def:Stack_Pointer}
   The \emph{stack pointer} is a pointer that \textbf{\emph{ALWAYS}} points to the top of the current \nameref{def:Stack_Frame}.
   The stack pointer is commonly abbreviated as \emph{SP}.
-  This value is held in the \rsp{} register.
+  This value is held in the \rspRegister{} register.
   This is the pointer that allows us to push and pop onto this function's \nameref{def:Stack_Frame}.
 \end{definition}
 
@@ -219,11 +219,11 @@ There are several steps that must be followed:
 \item Push the \nameref{def:Frame_Pointer}'s current value onto the Stack.
 \item Move the \nameref{def:Stack_Pointer} to the newly pushed \nameref{def:Frame_Pointer}.
 \item Run the code for the called function.
-\item Put the value to be returned in the \rax{} register
+\item Put the value to be returned in the \raxRegister{} register
 \item Move the \nameref{def:Stack_Pointer} to the \nameref{def:Frame_Pointer} to deallocate all the values on the called function's stack
 \item Move the value where the \nameref{def:Frame_Pointer} is into the \nameref{def:Frame_Pointer}, moving the \nameref{def:Frame_Pointer} to the calling function's \nameref{def:Dynamic_Link}.
 \item Pop the called function's \nameref{def:Dynamic_Link} off. (The \nameref{def:Stack_Pointer} is pointing to this value).
-\item Pop the \nameref{def:Return_Address} off and put the value into the \rip{} register. (The \texttt{RETURN} instruction handles this).
+\item Pop the \nameref{def:Return_Address} off and put the value into the \ripRegister{} register. (The \texttt{RETURN} instruction handles this).
 \item Pop the \nameref{def:Function_Argument}s off.
 \item Continue the execution of the calling function.
 \end{enumerate}
