@@ -1,0 +1,69 @@
+\input{Reference_Sheet_Preamble}
+
+% These packages are more specific to certain documents, but will be availabe in the template
+% \usepackage{esint} % Provides us with more types of integral symbols to use
+% \usepackage[outputdir=./TeX_Output]{minted} % Allow us to nicely typeset 300+ programming languages
+% This document must be compiled with the -shell-escape flag if the packages above are uncommented
+
+% \graphicspath{{./Drawings/Course}} % Uncomment this to use pictures in this document
+% \addbibresource{./Bibliographies/CourseNum-Name.bib}
+
+% Math Operators that are useful to abstract the written math away to one spot
+% These are supposed to be document-specific mathematical operators that will make life easier
+% Many fundamental operators are defined in Reference_Sheet_Preamble.tex
+
+\begin{titlepage}
+  \title{EITP20: Secure Systems Engineering --- Final Exam Study Questions}
+  \author{Karl Hallsby}
+  \date{Last Edited: \today} % We want to inform people when this document was last edited
+\end{titlepage}
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\pagenumbering{roman} % i, ii, iii on beginning pages, that don't have content
+\tableofcontents
+\clearpage
+\listoftheorems[ignoreall, show={definition, Definition}]
+\clearpage
+\pagenumbering{arabic} % 1,2,3 on content pages
+
+\section{Lecture 1 --- Threat Analysis}
+\begin{itemize}
+\item Which are the steps involved in the overall design process of a secure system?
+  \begin{itemize}[noitemsep]
+  \item Describe the relationship between the different steps?
+  \end{itemize}
+
+\item In which way do a use-case description assist in the secure system design process?
+\item What is a threat analysis?
+\item What is the main purpose of performing a threat analysis?
+\item Can you give example of threat analysis approaches?
+\item What is the purpose of a security requirements list?
+  \begin{itemize}[noitemsep]
+  \item Can you list input sources for deriving security requirements?
+  \item Which are the duties of the security engineering in the security requirements gathering process?
+  \end{itemize}
+
+\item Can you elaborate on the main differences between security requirements and other system requirements?
+\item Please list at least three different “types” of security architectures?
+  \begin{itemize}[noitemsep]
+  \item Explain the main differences between the different
+    listed types?
+  \end{itemize}
+
+\item Which are the main steps preceeding the actual secuirty design step?
+\item Explain the main design choices that need to be done at the security design process.
+\item List and explain different type of security evaluations that typically are done ”in house”
+\item List and explain different type of security evaluations that typically are done by external experts
+\item What is a pen test and what is the purpose of such test?
+\item What is a protocol analysis tool and what is the purpose of using such tool?
+\item What is the Common Criteria (CC) standard?
+  \begin{itemize}[noitemsep]
+  \item List the 7 evaluation levels defined in CC and explain the main differences between the levels?
+  \item List the three different system documents part of a CC and describe their main purpose.
+  \end{itemize}
+\item What is CISSP?\@
+\end{itemize}
+
+\end{document}
