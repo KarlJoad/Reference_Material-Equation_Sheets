@@ -26,7 +26,7 @@
 \DeclareMathOperator{\DFTRelation}{\overset{\text{DFT}}{\underset{N}{\longleftrightarrow}}}
 
 \begin{titlepage}
-  \title{EITF75: Systems and Signals - Equation Sheet}
+  \title{EITF75: Systems and Signals --- Equation Sheet \\ Lund University}
   \author{Karl Hallsby}
   \date{Last Edited: \today} % We want to inform people when this document was last edited
 \end{titlepage}
@@ -37,7 +37,7 @@
   r_{y,x}(k) = y(n) * x(-n)
 \end{equation}
 
-\section{$\ZTransform$-Transform}
+\section{\texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}\label{sec:Z-Transform}
 \begin{table}[h!]
   \centering
   \renewcommand{\arraystretch}{1.4}
@@ -91,7 +91,7 @@
 \end{table}
 
 \subsection{One-Sided \texorpdfstring{$\ZTransform$-Transform}{Z-Transform}}
-The \emph{one-sided $z$-transform} is the same as the \nameref{def:Z-Transform}, but is only defined at $n$ values greater than or equal to 0.
+The \emph{one-sided $z$-transform} is the same as the \nameref{sec:Z-Transform}, but is only defined at $n$ values greater than or equal to 0.
 \begin{equation}\label{eq:One-Sided Z-Transform}
   X(z) \equiv \sum_{n=0}^{\infty} x(n)z^{-n}
 \end{equation}
@@ -186,7 +186,7 @@ It is important to remember that the modulus (mod) operator yields 0 when the in
   \begin{equation}\label{eq:Input_Output_Decimation}
     f = \frac{F_{S}}{D}
   \end{equation}
-  
+
   Thus, when we perform sampling on the input signal, then there is folding at
   \begin{equation}\label{eq:Decimation_Sampling_Frequency_Change}
     f = \frac{F_{S}}{2D}
