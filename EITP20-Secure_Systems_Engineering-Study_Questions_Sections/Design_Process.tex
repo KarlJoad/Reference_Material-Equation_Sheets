@@ -102,6 +102,18 @@
   \end{parts}
 
 \question{} Can you elaborate on the main differences between security requirements and other system requirements?
+  \begin{solution}
+    Security Requirements have a mixture of \emph{\textbf{BOTH}} functional and non-functional requirements.
+    By having both, it can be dfficult to verify that the original requirements are fulfilled.
+
+    Some of these requirements may be ways to ``handle'' or ``work'' with the system, such as processes, rather than properties of the system.
+    A common example of this is requiring that people can only access data by giving a password, or correctly setting user permissions.
+
+    There is always the possibility that the system may be secure now, but not in the future.
+    This means that the system might not have the expected security properties, even if all the evaluations and tests indicated it did.
+    This means that Security Requirements \textbf{MUST} be continually updated.
+  \end{solution}
+
 \question{} Please list at least three different “types” of security architectures?
   \begin{parts}
   \part{} Explain the main differences between the different listed types?
