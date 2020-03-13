@@ -1,32 +1,32 @@
 \section{Protocol Analysis}\label{sec:Protocol_Analysis}
-\begin{itemize}
-\item What is mutual authentication?
-\item Which attacks are typically applicable to an authentication protocol?
-\item What is a man-in-the-middle attack? How could you prevent it?
-\item What is a replay attack? How could you prevent it?
-\item What is a reflection attack? How could you prevent it?
-\item What is a labeled multiset rewriting rule? What are $l$, $r$, $a$?
-\item What is a state agent fact $St\_R\_s(A, id, \ldots)$ ?
-\item What are In and Out facts? What are Send and Recv action facts? When do you have them?
-\item What is a protocol rule? What is an action fact?
-\item What is fresh rule? What is $Fr()$ fact?
-\item What is infrastructure rule? How do you write the key generation for PKI? How can you generate private/public keys and publish public keys using Fr, Ltk, Out, PK facts?
-\item What is an initialization rule? How do you write the initialization rule for a given protocol (e.g. a public key-based protocol)? What is Create action fact?
-\item What is the meaning of well-formedness? How could you write protocol rules that are well-formed?
-\item How can you write protocol rules for a given protocol?
-\item Assume that you are given a public key-based protocol. How could you write the initialization and protocol rules for it? How could you prepare the protocol and split the roles?
-\item What is protocol instrumentation? What is a claim event $Claim\_claimtype(A,t)$?
-\item What is secrecy?
-\item How is the role instrumentation for secrecy? What is $Claim\_secret(A,M)$? Where do you place the hexagon for secret (M) in role instrumentation for secrecy?
-\item What is a compromised agent? When an agent is honest? What are Honest and Rev action facts?
-\item How can you verify if secrecy claims hold for a given protocol? (See examples in slides 31--34 of lecture 9. See also an exercise here).
-\item What is forward secrecy?
-\item How can you find out that a given protocol provides forward secrecy? (See examples in slides 36--37 of lecture 9).
-\item How is the role instrumentation for authentication? What are $Claim\_commit$ and $Claim\_running$ events? Where do you place Commit and Running hexagons when A wants to agree with B?\@ Where do you place them when B wants to agree with A?\@
-\item How do you model a protocol using Tamarin? How do you write a labeled multiset-rewriting rule in Tamarin?
-\item What are linear and persistent facts in Tamarin? When do you use ! or \textasciitilde{} or \$ in Tamarin?
-\item What does $\langle x, y \rangle$ mean in Tamarin?
-\end{itemize}
+\begin{questions}
+\question{} What is mutual authentication?
+\question{} Which attacks are typically applicable to an authentication protocol?
+\question{} What is a man-in-the-middle attack? How could you prevent it?
+\question{} What is a replay attack? How could you prevent it?
+\question{} What is a reflection attack? How could you prevent it?
+\question{} What is a labeled multiset rewriting rule? What are $l$, $r$, $a$?
+\question{} What is a state agent fact $St\_R\_s(A, id, \ldots)$?
+\question{} What are In and Out facts? What are Send and Recv action facts? When do you have them?
+\question{} What is a protocol rule? What is an action fact?
+\question{} What is fresh rule? What is $Fr()$ fact?
+\question{} What is infrastructure rule? How do you write the key generation for PKI?\@ How can you generate private/public keys and publish public keys using Fr, Ltk, Out, PK facts?
+\question{} What is an initialization rule? How do you write the initialization rule for a given protocol (e.g.\ a public key-based protocol)? What is Create action fact?
+\question{} What is the meaning of well-formedness? How could you write protocol rules that are well-formed?
+\question{} How can you write protocol rules for a given protocol?
+\question{} Assume that you are given a public key-based protocol. How could you write the initialization and protocol rules for it? How could you prepare the protocol and split the roles?
+\question{} What is protocol instrumentation? What is a claim event $Claim\_claimtype(A,t)$?
+\question{} What is secrecy?
+\question{} How is the role instrumentation for secrecy? What is $Claim\_secret(A,M)$? Where do you place the hexagon for secret (M) in role instrumentation for secrecy?
+\question{} What is a compromised agent? When an agent is honest? What are Honest and Rev action facts?
+\question{} How can you verify if secrecy claims hold for a given protocol? (See examples in slides 31--34 of lecture 9. See also an exercise here).
+\question{} What is forward secrecy?
+\question{} How can you find out that a given protocol provides forward secrecy? (See examples in slides 36--37 of lecture 9).
+\question{} How is the role instrumentation for authentication? What are $Claim\_commit$ and $Claim\_running$ events? Where do you place Commit and Running hexagons when A wants to agree with B?\@ Where do you place them when B wants to agree with A?\@
+\question{} How do you model a protocol using Tamarin? How do you write a labeled multiset-rewriting rule in Tamarin?
+\question{} What are linear and persistent facts in Tamarin? When do you use \texttt{!} or \texttt{\textasciitilde{}} or \texttt{\$} in Tamarin?
+\question{} What does $\langle x, y \rangle$ mean in Tamarin?
+\end{questions}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EITP20-Secure_Systems_Engineering-Study_Questions"

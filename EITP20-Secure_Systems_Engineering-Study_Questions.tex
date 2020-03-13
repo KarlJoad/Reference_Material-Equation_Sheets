@@ -1,4 +1,103 @@
-\input{Reference_Sheet_Preamble}
+\documentclass[answers]{exam} % answers ensures that answers are printed for each question.
+\usepackage[margin=.5in]{geometry} % 1/2 inch margins on all pages
+\usepackage[utf8]{inputenc} % Define the input encoding
+\usepackage[USenglish]{babel} % Define language used
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm} % Gives us plain, definition, and remark to use in \theoremstyle{style}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage{graphicx}
+
+\usepackage{hyperref} % Generate hyperlinks to referenced items
+\usepackage[noabbrev,nameinlink]{cleveref} % Fancy cross-references in the document everywhere
+\usepackage{nameref} % Can make references by name to places
+\usepackage{subcaption} % Allows for multiple figures in one Figure environment
+\usepackage{siunitx} % Gives us ways to typeset units for stuff
+\usepackage{csquotes} % Context-sensitive quotation facilities
+\usepackage{enumitem} % Provides [noitemsep, nolistsep] for more compact lists
+\usepackage{chngcntr} % Allows us to tamper with the counter a little more
+\usepackage[x11names]{xcolor} % Gives access to coloring text in environments or just text, MUST be before tikz
+\usepackage{ctable} % Greater control over tables and how they look
+\usepackage{multirow} % Allow us to have a single cell in a table span multiple rows
+
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\counterwithin{equation}{section}
+
+% Create a theorem environment
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+% Create a numbered theorem-like environment for lemmas
+\newtheorem{lemma}{Lemma}[theorem]
+
+% Create a definition environment
+\theoremstyle{definition}
+\newtheorem{definition}{Defn}
+\newtheorem{corollary}{Corollary}[section]
+% \begin{definition}[Term] \label{def:}
+%   Make sure the term is emphasized with \emph{term}.
+%   This ensures that if \emph is changed, it shows up everywhere
+% \end{definition}
+
+% Create a numbered remark environment numbered based on definition
+% NOTE: This version of remark MUST go inside a definition environment
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[definition]
+%\counterwithin{definition}{subsection} % Uncomment to have definitions use section.subsection numbering
+
+% Create an unnumbered remark environment for general use
+% NOTE: This version of remark has NO restrictions on placement
+\newtheorem*{remark*}{Remark}
+
+% Create a special list that handles properties. It can be broken and restarted
+\newlist{propertylist}{enumerate}{1} % {Name}{Template}{Max Depth}
+% [newlistname, LevelsToApplyTo]{formatting options}
+\setlist[propertylist, 1]{label=\textbf{(\roman*)}, ref=\textbf{(\roman*)}, noitemsep, nolistsep}
+\crefname{propertylisti}{property}{properties}
+\Crefname{propertylisti}{Property}{Properties}
+
+% Create a special list that handles enumerate starting with lower letters. Breakable/Restartable.
+\newlist{boldalphlist}{enumerate}{1} % {Name}{Template}{Max Depth}
+% [newlistname, LevelsToApplyTo]{formatting options}
+\setlist[boldalphlist, 1]{label=\textbf{(\alph*)}, ref=\alph*, noitemsep, nolistsep} % Set options
+
+\newlist{nestednums}{enumerate}{6}
+% [newlistname, LevelsToApplyTo]{formatting options}
+\setlist[nestednums]{noitemsep, label*=\arabic*.}
+
+% Redefine the 'end of proof' symbol to be a black square, not blank
+\renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
+
+\renewcommand{\Re}{\operatorname{Re}} % Redefine to use the command, but not the fraktur version
+\renewcommand{\Im}{\operatorname{Im}} % Redefine to use the command, but not the fraktur version
+% Math Operators that are useful to abstract the written math away to one spot
+\DeclareMathOperator{\RealNumbers}{\mathbb{R}}
+\newcommand{\TextRealNumbers}{$\RealNumbers$}
+\DeclareMathOperator{\AllIntegers}{\mathbb{Z}}
+\newcommand{\TextAllIntegers}{$\AllIntegers$}
+\DeclareMathOperator{\PositiveInts}{\mathbb{Z}^{+}}
+\newcommand{\TextPositiveInts}{$\PositiveInts$}
+\DeclareMathOperator{\NegativeInts}{\mathbb{Z}^{-}}
+\newcommand{\TextNegativeInts}{$\NegativeInts$}
+\DeclareMathOperator{\NaturalNumbers}{\mathbb{N}}
+\newcommand{\TextNaturalNumbers}{$\NaturalNumbers$}
+\DeclareMathOperator{\ComplexNumbers}{\mathbb{C}}
+\newcommand{\TextComplexNumbers}{$\ComplexNumbers$}
+\DeclareMathOperator{\RationalNumbers}{\mathbb{Q}}
+\newcommand{\TextRationalNumbers}{$\RationalNumbers$}
+\DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
+\DeclareMathOperator{\Lapl}{\mathcal{L}} % Declare a Laplace symbol to be used
+\DeclareMathOperator{\UnitStep}{\mathcal{U}}
+\DeclareMathOperator{\sinc}{sinc} % sinc(x) = (sin(pi x)/(pi x))
+\DeclareMathOperator{\XOR}{\oplus}
+
+\newcommand{\rbpRegister}{\texttt{\%rbp}}
+\newcommand{\rspRegister}{\texttt{\%rsp}}
+\newcommand{\ripRegister}{\texttt{\%rip}}
+\newcommand{\raxRegister}{\texttt{\%rax}}
+\newcommand{\rbxRegister}{\texttt{\%rbx}}
 
 % These packages are more specific to certain documents, but will be availabe in the template
 % \usepackage{esint} % Provides us with more types of integral symbols to use
