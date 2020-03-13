@@ -126,6 +126,21 @@
 
   \begin{parts}
   \part{} Explain the main differences between the different listed types?
+    \begin{solution}
+      Logical Security Architecture is taking the view of the \textbf{information to be secured} and designing around that.
+      This involves finding the entities/actors in our system, then identifying the functions that the system must fulfill/perform.
+      Next, we identify security domains/levels in the system that are in play.
+      These determine where we need what kind of security and how much we trust each entity and function in each domain.
+
+      Physical Security Architecture is done by representing the \textbf{security data model structures} and showing the ``builder's'' view of the system.
+      Here, we map the security services/functions/entities identified in the logical architecture to physical security mechanisms.
+      Essentially, if we specify that there is supposed to be a unique random number that acts as an ID for something, then we might say that a Hardware Security Module is required to generate those numbers.
+      We do not specify any specific HSM to use, but just state that one must be used to ensure that the numbers are genuinely unique.
+
+      Security Service Management Architecture takes a step back from designing the system for the security of the system in mind, and rather consider the maintainability of the system's security aspects.
+      This is technically done at every layer of the SABSA Security Architecture model, but it is also an explicit job.
+      Here, we determine how maintainable a system is given the security decisions made.
+    \end{solution}
   \end{parts}
 
 \question{} Which are the main steps preceeding the actual secuirty design step?
