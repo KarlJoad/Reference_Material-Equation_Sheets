@@ -131,8 +131,36 @@
     \end{solution}
   \end{parts}
 
-\question{} Describe briefly the different steps performed during a TARA CTSA
-\question{} Spell out the acronyms CAPEC, CWE and CVE
+\question{} Describe briefly the different steps performed during a TARA CTSA.\@
+  \begin{solution}
+    \begin{enumerate}[noitemsep]
+    \item Establish the Assessment Scope.
+      \begin{itemize}[noitemsep]
+      \item Typically this is partly done during the Crown Jewel Analysis.
+      \item This is used to make sure you don't evaluate parts of the existing or new system that you are not concerned aobut.
+      \end{itemize}
+    \item Identify the candidate Tactics, Techniques, and Procedures (TTP).
+      \begin{itemize}[noitemsep]
+      \item Here, you collect \emph{\textbf{ALL}} potential TTPs that could affect your properly scoped system.
+      \end{itemize}
+    \item Eliminate Implausible TTPs.
+      \begin{itemize}[noitemsep]
+      \item If you perform Step 2 correctly, you will have WAY too many TTPs to mitigate for you system to ever work.
+      \item You must use your best judgment to remove the ones that are implausible to occur in your system.
+      \end{itemize}
+    \item Apply some scoring model.
+      \begin{itemize}[noitemsep]
+      \item MITRE has a scoring model provided that can be quite useful.
+      \item These will be the scores that you use in the Threat Matrix to find the best TTPs to design against.
+      \end{itemize}
+    \item Construct a Threat Matrix.
+      \begin{itemize}[noitemsep]
+      \item The scores used in the Threat Matrix are based off the scoring model that is created in the previous step.
+      \item This will show you the which TTPs that remain are the most important to design against.
+      \end{itemize}
+    \end{enumerate}
+  \end{solution}
+
   \begin{parts}
   \part{} What does CAPEC contain and how it is used in a TARA analysis?
   \part{} What does CWE contain and how it is used in a TARA analysis?
