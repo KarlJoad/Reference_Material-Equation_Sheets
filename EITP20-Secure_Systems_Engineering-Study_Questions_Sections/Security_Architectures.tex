@@ -240,7 +240,6 @@
 
 \question{} A physical security architecture when using the SABSA includes making a mapping to physical security mechanisms.
   \begin{parts}
-  \part{} Describe what is meant by an ``Authentication and session'' protection mechanism and give examples
   \part{} Describe what is meant by a ``User interface and naming'' mechanism and give examples
   \part{} Describe what is meant by a ``Authorization and access control'' mechanism and give examples
   \part{} Describe what is meant by a ``Monitoring and incident'' mechanism and give examples
@@ -315,6 +314,27 @@
     \end{solution}
 
   \part{} Describe what is meant by an ``Authentication and Session'' protection mechanism and give examples.
+    \begin{solution}
+      When a registered name wants to access our system, how do we ensure that they are who they say they are and make sure that they have not been compromised?
+      \begin{itemize}[noitemsep]
+      \item Entity Authentication
+        \begin{itemize}[noitemsep]
+        \item Login procedure
+        \item User passwords/tokens
+        \item Authentication protocol
+        \end{itemize}
+      \item Session Authentication
+      \item Message Integrity
+        \begin{itemize}[noitemsep]
+        \item Message Authentication Codes (MACs)
+        \item Hashing
+        \end{itemize}
+      \item Message Confidentiality
+      \item Message Reply Protection
+      \item Non-repudiation
+      \end{itemize}
+    \end{solution}
+
   \end{parts}
 
 \item What must in addition to the security mechanisms be specified in the physical security architecture?
