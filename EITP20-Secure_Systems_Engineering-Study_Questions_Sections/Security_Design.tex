@@ -246,6 +246,13 @@
 
 \question{} How can a Hardware Security Module (HSM) assist in protection of cloud data storage?
 \question{} List a couple of widely used commercial server anti-virus tools
+  \begin{solution}
+    The HSM will store the actual secret key, that it generated.
+    It also encrypts this key, which is then returned to the user, and contains an index to the actual secret key in the HSM.\@
+
+    This allows the customer to authenticate against the HSM, then perform actions using the information the HSM returns.
+  \end{solution}
+
 \question{} How can the security of a Docker container be enhanced beyond using default configurations?
 \question{} How can a Web design be made to make ``clickjacking'' less likely?
 \question{} What is the main difference between key provisioning of a public key system compare to a symmetric key-based systems?
