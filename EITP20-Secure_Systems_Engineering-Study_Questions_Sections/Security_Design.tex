@@ -97,7 +97,6 @@
   \end{solution}
 
   \begin{parts}
-  \part{} Under which circumstances can basic authentication be used
   \part{} How are typically basic authentication treated at the server side and what is the main reason for using this type of storage?
   \part{} Describe the different steps in an HTTP basic authentication.
     \begin{solution}
@@ -108,6 +107,11 @@
       \item The server checks their credentials.
       \item The server either returns \texttt{Error 200: OK} or \texttt{Error 403: Forbidden}.
       \end{enumerate}
+    \end{solution}
+
+  \part{} Under which circumstances can basic authentication be used?
+    \begin{solution}
+      Basic authentication can \textbf{\emph{ONLY}} be used over already-secured TLS channels.
     \end{solution}
 
   \end{parts}
