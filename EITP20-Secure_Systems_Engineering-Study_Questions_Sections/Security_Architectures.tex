@@ -413,11 +413,17 @@
     \end{solution}
   \end{parts}
 
-\item Give example of platform security solution that can be used to build solutions meeting a logical security services and can be used to protect the chosen physical security mechanism?
 \item For the SSO logical security architecture given at the lecture, perform the following:
 \question{} What must in addition to the security mechanisms be specified in the physical security architecture?
   \begin{solution}
     The security of the network and the system's platforms must be considered as well.
+  \end{solution}
+
+\question{} Give examples of a platform security solution that can be used to build solutions meeting a logical security service and can be used to protect the chosen physical security mechanism?
+  \begin{solution}
+    If a logical security service requires secure, unique cryptographic keys be generated, then a platform security solution would be to use a Hardware Security Module to generate them.
+
+    If a logical security service requires something be executed in a hardware-based secure execution environment, then the processor's built-in secure execution environment can be used.
   \end{solution}
 
   \begin{parts}
