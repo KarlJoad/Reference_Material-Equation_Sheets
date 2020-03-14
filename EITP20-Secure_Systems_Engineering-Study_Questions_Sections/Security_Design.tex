@@ -298,8 +298,19 @@
     \end{solution}
   \end{parts}
 
-\question{} List the three main different intrusion detection principles and explain how they work on high level
 \question{} What is syslog and how is it typically used?
+\question{} List the three main different intrusion detection principles and explain how they work on high level.
+  \begin{solution}
+    \begin{enumerate}[noitemsep]
+    \item Signature-Based Detection work by finding signatures of breaches or malicious software.
+      Every piece of software has some unique properties to it, and those can be identifiable.
+    \item Statistical Anomaly-Based Detection works by representing normal data flows as a statistical model.
+      If this normal model does not align with the current statistical properties of the system, then it must be compromised.
+    \item Stateful Protocol Analysis Detection works by having the machine be in one of several states.
+      If the machine does not move to the next state correctly, come from the correct state, etc., it will classify it as a compromised system.
+    \end{enumerate}
+  \end{solution}
+
 \question{} What is the main risks with a debug interface (like JTAG) and how should it be treated in a product design to avoid these risks?
 \question{} Which are the three different most severe attacks threats against smart card designs and which are the typical countermeasures?
 \question{} Give three examples of widely used NIST security standards and what they specify?
