@@ -97,9 +97,19 @@
   \end{solution}
 
   \begin{parts}
-  \part{} Describe the different steps in an HTTP basic authentication
   \part{} Under which circumstances can basic authentication be used
   \part{} How are typically basic authentication treated at the server side and what is the main reason for using this type of storage?
+  \part{} Describe the different steps in an HTTP basic authentication.
+    \begin{solution}
+      \begin{enumerate}[noitemsep]
+      \item The client performs a \texttt{GET} request.
+      \item The server responds with \texttt{Error 401: Unauthorized}, which asks the user to input information.
+      \item The client returns their credentials.
+      \item The server checks their credentials.
+      \item The server either returns \texttt{Error 200: OK} or \texttt{Error 403: Forbidden}.
+      \end{enumerate}
+    \end{solution}
+
   \end{parts}
 
 \question{} Describe the principles behind hardware token based authentication
