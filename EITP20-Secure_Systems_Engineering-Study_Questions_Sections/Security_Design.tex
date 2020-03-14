@@ -138,9 +138,15 @@
 
 \question{} What are the main differences between:
   \begin{parts}
-  \part{} TLS server authentication
   \part{} TLS client certificate authentication
   \part{} TLS pre-share key authentication
+  \part{} TLS server authentication?
+    \begin{solution}
+      In this implementation, the hosting server is the one that performs the authentication.
+      The end-user device only provides credentials in a secure form that the server then verifies.
+      This is done at before every session.
+    \end{solution}
+
   \end{parts}
 
 \question{} Explain the main principle behind an object security scheme
