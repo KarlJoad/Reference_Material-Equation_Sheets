@@ -97,7 +97,6 @@
   \end{solution}
 
   \begin{parts}
-  \part{} How are typically basic authentication treated at the server side and what is the main reason for using this type of storage?
   \part{} Describe the different steps in an HTTP basic authentication.
     \begin{solution}
       \begin{enumerate}[noitemsep]
@@ -114,6 +113,12 @@
       Basic authentication can \textbf{\emph{ONLY}} be used over already-secured TLS channels.
     \end{solution}
 
+  \part{} Typically, how is basic authentication treated at the server side and what is the main reason for using this type of storage?
+    \begin{solution}
+      The main reason is that it is fairly quick to perform and easy to implement.
+      The user inputs their username and password, which is securely transformed, and the server stores the hashed version of the password and a randomly generated number as salt.
+      The database can combine the password and salt, hashing them, and checking in the user database, to verify the password.
+    \end{solution}
   \end{parts}
 
 \question{} Describe the principles behind hardware token based authentication
