@@ -165,7 +165,14 @@
   \end{solution}
 
   \begin{parts}
-  \part{} How does it differs from a session protection scheme like TLS or IPsec?
+  \part{} How does it differ from a session protection scheme like TLS or IPsec?
+    \begin{solution}
+      It is more difficult to verify who is sending the information to whom, but the information is still secure.
+      MACs and hashes do not provide enough power for non-repudiation.
+      MACs and hashes \textbf{must} be combined with Digital Signatures and secure logs to create non-repudiation.
+
+      There is also different types of packets that can be sent to setup the object security scheme.
+    \end{solution}
   \end{parts}
 
 \question{} What does RBAC and ABAC stand for with respect to access control systems?
