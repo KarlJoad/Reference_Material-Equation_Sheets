@@ -1,6 +1,5 @@
 \section{Security Architectures}\label{sec:Security_Architectures}
 \begin{questions}
-\item The Sherwood Applied Business Security Architecture (SABSA) consist of 5 layers and one cross layer.
 \question{} Describe what constitutes a security architecture and give some examples.
   \begin{solution}
     A Security Architecture has graphical and textual representations of a security system.
@@ -8,9 +7,26 @@
     It also has security and system boundaries to delimit different parts of the system that have various properties.
   \end{solution}
 
+\question{} The Sherwood Applied Business Security Architecture (SABSA) consist of 5 layers and one cross layer.
   \begin{parts}
   \part{} Describe the different layer views and list the names of the different layers.
   \part{} Give examples of questions the different SABSA architecture views are supposed to answer
+    \begin{solution}
+      \begin{enumerate}[noitemsep]
+      \item Contextual Security Architecture is the view the business has of the system.
+        It is quite similar to the Security Requirements.
+      \item Conceptual Security Architecture is the highest-level view that an engineer can have of the system.
+        This includes the general breakdown into secure portions of a system.
+      \item Logical Security Architecture is the next level, that deals with data and its logical flows.
+        Here, the way that data and its logical propagation are safeguarded is first developed.
+      \item Physical Security Architecture is the 3rd design level.
+        Here, the specific high-level security requirements and previous security architecture levels are combined to choose what needs to be done to secure the data.
+      \item Component Security Architecture is the lowest level of the SABSA Security Architecture.
+        Here, the actual protocols, standards, and hardware are chosen.
+      \item Security Service Management Architecture is the ``cross layer''.
+        It is concerned with how to maintain the system and its security.
+      \end{enumerate}
+    \end{solution}
   \end{parts}
 
 \item Which are the three different types of security services in a logical security architecture?
