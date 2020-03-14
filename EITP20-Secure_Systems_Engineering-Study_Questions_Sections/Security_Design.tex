@@ -298,7 +298,6 @@
     \end{solution}
   \end{parts}
 
-\question{} What is syslog and how is it typically used?
 \question{} List the three main different intrusion detection principles and explain how they work on high level.
   \begin{solution}
     \begin{enumerate}[noitemsep]
@@ -309,6 +308,14 @@
     \item Stateful Protocol Analysis Detection works by having the machine be in one of several states.
       If the machine does not move to the next state correctly, come from the correct state, etc., it will classify it as a compromised system.
     \end{enumerate}
+  \end{solution}
+
+\question{} What is a syslog and how is it typically used?
+  \begin{solution}
+    A syslog, or System Log is a standardized way to collect information about events and actions taken.
+    It is important to note that a system log format \emph{\textbf{does not}} include any security mechanisms.
+
+    This is specified by \href{https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-92.pdf}{NIST SP 800-92}.
   \end{solution}
 
 \question{} What is the main risks with a debug interface (like JTAG) and how should it be treated in a product design to avoid these risks?
