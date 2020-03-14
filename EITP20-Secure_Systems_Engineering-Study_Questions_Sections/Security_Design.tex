@@ -197,7 +197,15 @@
   \end{solution}
 
   \begin{parts}
-  \part{} Explain the main differences between RBAC and ABAC
+  \part{} Explain the main differences between RBAC and ABAC.\@
+    \begin{solution}
+      RBAC groups users into Roles, which are then given permissions as a whole.
+
+      ABAC keeps users separate, but gives each attributes.
+      Each object is also given a set of attributes.
+      A set of rules is created for each user attribute and object attribute to allow access.
+      These are then combined with the current environment's conditions to make an access decision.
+    \end{solution}
   \end{parts}
 
 \question{} What is the purpose with an access token?
