@@ -176,6 +176,26 @@
   \end{parts}
 
 \question{} What does RBAC and ABAC stand for with respect to access control systems?
+  \begin{solution}
+    \begin{description}[noitemsep]
+    \item[RBAC] Role-Baesd Access Control
+      \begin{itemize}[noitemsep]
+      \item Users are grouped into roles.
+      \item These roles have certain permissions, and can perform their allowed actions only in selected places.
+      \item Roles can have a hierarchical structure, allowing for inheritance schemes to be used.
+      \item Removing access to information can be done on a per-user basis after this too.
+      \end{itemize}
+    \item[ABAC] Attribute-Based Access Control
+      \begin{itemize}[noitemsep]
+      \item Users are given attributes about themselves.
+      \item An Access Control Policy is setup with rules about what attributes can do what.
+      \item Each object being stored has attributes about it, describing what it is, what can be done with it, etc.
+      \item The current environment conditions are also considered, the time for instance.
+      \item These are all combined with into a logical Access Control Mechanism, which grants access/permission to files based on the attributes and rules of a system.
+      \end{itemize}
+    \end{description}
+  \end{solution}
+
   \begin{parts}
   \part{} Explain the main differences between RBAC and ABAC
   \end{parts}
