@@ -222,7 +222,17 @@
     \caption{Smart Card Security System}
     \label{fig:Smart_Card_Security_System}
   \end{figure}
-
+  \begin{solution}
+    \begin{equation}\label{eq:Weighted_Weakest_Link}
+      \begin{aligned}
+        WWL &= \sqrt{WS \times WW} \\
+        WS &= \sum\limits_{k=1}^{n} S_{k}W_{k} \\
+        WW &= \min \left( \frac{S_{1}}{NW_{1}}, \frac{S_{2}}{NW_{2}}, \ldots, \frac{S_{n}}{NW_{n}} \right) \\
+        NW_{k} &= \frac{W_{k}}{\max{W_{1}, W_{2}, \ldots, W_{n}}} \\
+        W_{\mathrm{Total}} &= \sum\limits_{k=1}^{n} W_{k} = 1
+      \end{aligned}
+    \end{equation}
+  \end{solution}
 
 \question{} How can the sensitivity for a certain security component be calculated?
 \question{} What is a CVE database? Which organizations maintain global CVEs?
