@@ -428,7 +428,6 @@
 \question{} For the SSO logical security architecture given at the lecture, perform the following:
   \begin{parts}
   \part{} Identify the main physical security mechanisms needed in the corresponding physical security architecture.
-  \part{} Identify the main platform security components needed to fulfil the architecture
     \begin{solution}
       \begin{itemize}[noitemsep]
       \item Each user must have a unique naming, likely drawn from their legal name.
@@ -446,6 +445,20 @@
       \item Once the user signs in, they should not have to do it again. If the system requires them to ``sign in'' again, then there needs to be a button for SSO.\@
       \item All login attempts should be logged, with user- and device-identifying information recorded too.
       \item There needs to be monitoring to ensure inappropriate IP addresses are banned (Users obviously not from your group).
+      \end{itemize}
+    \end{solution}
+
+  \part{} Identify the main platform security components needed to fulfill the architecture
+    \begin{solution}
+      \begin{itemize}[noitemsep]
+      \item The system must have a user database somewhere.
+      \item The user's passwords are only stored in their final hashed value.
+      \item The servers and databases must have replicas for failover, and backups for complete failure.
+      \item Any actions these servers take must be logged with entity-identifying information.
+      \item Unlikely we need HSMs to generate keys, use built-in cryptographic functions on devices.
+      \item Run the minimum of services required for functioning.
+      \item The servers that run identification should likely run in a hardware-based secure execution environment.
+      \item Each of these servers could be VMs as well, to allow for on-demand scaling and to prevent one issue from propagating.
       \end{itemize}
     \end{solution}
 
