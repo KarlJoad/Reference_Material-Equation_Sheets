@@ -413,7 +413,6 @@
     \end{solution}
   \end{parts}
 
-\item For the SSO logical security architecture given at the lecture, perform the following:
 \question{} What must in addition to the security mechanisms be specified in the physical security architecture?
   \begin{solution}
     The security of the network and the system's platforms must be considered as well.
@@ -426,9 +425,30 @@
     If a logical security service requires something be executed in a hardware-based secure execution environment, then the processor's built-in secure execution environment can be used.
   \end{solution}
 
+\question{} For the SSO logical security architecture given at the lecture, perform the following:
   \begin{parts}
   \part{} Identify the main physical security mechanisms needed in the corresponding physical security architecture.
   \part{} Identify the main platform security components needed to fulfil the architecture
+    \begin{solution}
+      \begin{itemize}[noitemsep]
+      \item Each user must have a unique naming, likely drawn from their legal name.
+      \item Each user must have a device(s) registered to them, which must be tracked.
+      \item Each device will have keys to be able to use the system.
+      \item The user has a password to be able to user the Single-Sign On service.
+      \item The OIDC client must perform an authentication action on the user.
+      \item The OIDC client must then confirm the authenticity of the user with the OIDC provider.
+      \item This must them go to the Hosting Servers to perform the actual computation.
+      \item Each of these servers must have replicas ready to take over.
+      \item Each of these servers must also have data backups, in case of failure.
+      \item They must be stored somewhere separate from the physical location of the user, likely close to the services that the SSO service provides.
+      \item The physical security of this location must be tested.
+      \item The UI for signing in should be as simple as possible.
+      \item Once the user signs in, they should not have to do it again. If the system requires them to ``sign in'' again, then there needs to be a button for SSO.\@
+      \item All login attempts should be logged, with user- and device-identifying information recorded too.
+      \item There needs to be monitoring to ensure inappropriate IP addresses are banned (Users obviously not from your group).
+      \end{itemize}
+    \end{solution}
+
     \begin{subparts}
     \subpart{} Suggest concrete platform security mechanisms to use for the physical realization.
     \end{subparts}
