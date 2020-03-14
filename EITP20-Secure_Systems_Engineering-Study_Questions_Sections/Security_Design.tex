@@ -245,12 +245,22 @@
   \end{parts}
 
 \question{} How can a Hardware Security Module (HSM) assist in protection of cloud data storage?
-\question{} List a couple of widely used commercial server anti-virus tools
   \begin{solution}
     The HSM will store the actual secret key, that it generated.
     It also encrypts this key, which is then returned to the user, and contains an index to the actual secret key in the HSM.\@
 
     This allows the customer to authenticate against the HSM, then perform actions using the information the HSM returns.
+  \end{solution}
+
+\question{} List a couple of widely used commercial server anti-virus tools.
+  \begin{solution}
+    These are mostly used on Microsoft Servers.
+    \begin{itemize}[noitemsep]
+    \item BitDefender
+    \item Comodo
+    \item Avira
+    \item Kaspersky Labs' tool
+    \end{itemize}
   \end{solution}
 
 \question{} How can the security of a Docker container be enhanced beyond using default configurations?
