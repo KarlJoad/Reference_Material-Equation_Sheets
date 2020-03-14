@@ -232,21 +232,50 @@
     \end{solution}
   \end{parts}
 
-\item A physical security architecture when using the SABSA include making a mapping to physical security mechanisms
 \question{} What is a Physical Security Architecture?
   \begin{solution}
     A Physical Security Architecture is the general specification of how to implement the security given by the Logical Security Architecture.
     The expected outcome is a specification of the security solutions offered in the system, including the platform, software, and hardware security functions.
   \end{solution}
 
+\question{} A physical security architecture when using the SABSA includes making a mapping to physical security mechanisms.
   \begin{parts}
-  \part{} Describe what is meant by a ``Naming and registration'' mechanism and give examples
   \part{} Describe what is meant by a ``Storage and runtime'' mechanism and give examples
   \part{} Describe what is meant by a ``Physical security'' mechanism and give examples
   \part{} Describe what is meant by an ``Authentication and session'' protection mechanism and give examples
   \part{} Describe what is meant by a ``User interface and naming'' mechanism and give examples
   \part{} Describe what is meant by a ``Authorization and access control'' mechanism and give examples
   \part{} Describe what is meant by a ``Monitoring and incident'' mechanism and give examples
+  \part{} Describe what is meant by a ``Naming and Registration'' mechanism and give examples.
+    \begin{solution}
+      The Naming and Registration mechanism is concerned with how we identify the entities within our system.
+      Additionally, when they have been given an identifier to recognize by, how we can register them with a system to ensure that when an entity claims to be something with a certain name, we can verify that.
+
+      This typically includes:
+      \begin{itemize}[noitemsep]
+      \item Unique Naming
+        \begin{itemize}[noitemsep]
+        \item Using a common naming standard.
+        \item Using a common naming procedure.
+        \item Using a directory system to separate different names.
+        \end{itemize}
+      \item Entity Registration
+        \begin{itemize}[noitemsep]
+        \item Using a standard registration policy.
+        \item Having a standard registration procedure.
+        \item Using a registration authority system.
+        \end{itemize}
+      \item Public Key Certification
+      \item Directory Services
+        \begin{itemize}[noitemsep]
+        \item Having a directory system.
+        \item Having a directory access protocol.
+        \item Having a directory object and attribute syntax rules.
+        \item Allowing for directory replication.
+        \end{itemize}
+      \end{itemize}
+    \end{solution}
+
   \end{parts}
 
 \item What must in addition to the security mechanisms be specified in the physical security architecture?
