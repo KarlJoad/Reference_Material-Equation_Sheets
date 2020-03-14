@@ -215,6 +215,33 @@
 
   \begin{parts}
   \part{} What does a SAML assertion contain?
+    \begin{solution}
+      \begin{enumerate}[noitemsep]
+      \item AssertionID
+      \item IssueInstant
+      \item Issuer
+      \item MajorVersion
+      \item MinorVersion
+      \item Conditions
+        \begin{itemize}[noitemsep]
+        \item NotBefore
+        \item NotOnOrAfter
+        \item Audience Restriction
+        \end{itemize}
+      \item Authentication Statement
+        \begin{itemize}[noitemsep]
+        \item Subject (User's Identity)
+        \item Authentication Instant
+        \item Authentication Mechanism
+        \end{itemize}
+      \item Attribute Statement
+        \begin{itemize}[noitemsep]
+        \item Subject
+        \item Asserted Attributes
+        \end{itemize}
+      \item Digital Signature
+      \end{enumerate}
+    \end{solution}
   \end{parts}
 
 \question{} How can a Hardware Security Module (HSM) assist in protection of cloud data storage?
