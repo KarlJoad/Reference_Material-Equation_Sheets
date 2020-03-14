@@ -189,16 +189,44 @@
     \end{solution}
   \end{parts}
 
-\item A logical security architecture can be created using a six steps methodology:
 \question{} Draw a picture showing the relations between major different security services from a systems point of view.
   \begin{solution}
     \includegraphics[scale=0.5]{./Drawings/EITP20-Secure_Systems_Engineering/Major_Security_Services_Relations.png}
   \end{solution}
 
+\question{} A logical security architecture can be created using a six steps methodology:
   \begin{parts}
   \part{} Describe each of the different steps
+    \begin{solution}
+      \begin{enumerate}[noitemsep]
+      \item Identify the main entities.
+        Here, the users and the physical components in the system(s) are identified.
+        Who is doing something and what is executing the user's actions?
+      \item Identify the major functions in the system.
+        Each computing entity has some function(s) that it needs to fulfill.
+        What does each hardware entity need to do?
+      \item Identify the security domains and their associations.
+        Each entity and function exists within a security domain, i.e.\ how much they are trusted.
+        In addition, how do these security domains interact with each other?
+      \item Identify security services already meeting the Security Requirements.
+        There may be some properties of the system that already meets the requirements as laid out in the Security Requirements.
+        Identify these.
+        There may also be security services that are required to meed the Security Requirements, identify these too.
+      \item Map security services to the functional entities.
+        Take the security services from the previous step, and match them together with the entities in the system.
+      \item Create a graphical view of the logical architecture.
+        It is easier to see how these security services get mapped to the entities and security domains if it is done in a graphical view and their interactions are shown.
+        Each computing entity should be a box, each flow of communication an arrow, each user shown, and the computers/users should be grouped together into their security domains.
+      \end{enumerate}
+    \end{solution}
+
   \part{} What is the end result?
   \part{} Give an example of a logical security architecture
+    \begin{solution}
+      A general logical view of the system to see what data needs to be secured and how that should be done.
+      This will also specify the security services that should be used, the security domains, the users, the computing entities, among others.
+    \end{solution}
+
   \end{parts}
 
 \item What is a physical security architecture?
