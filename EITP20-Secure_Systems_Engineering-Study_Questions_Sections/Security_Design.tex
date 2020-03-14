@@ -138,7 +138,6 @@
 
 \question{} What are the main differences between:
   \begin{parts}
-  \part{} TLS pre-share key authentication
   \part{} TLS server authentication?
     \begin{solution}
       In this implementation, the hosting server is the one that performs the authentication.
@@ -153,6 +152,10 @@
       However, the PKI must be maintained and customized, which is quite complex, expensive, and difficult on the client-side.
     \end{solution}
 
+  \part{} TLS pre-share key authentication?
+    \begin{solution}
+      The server and client pre-share a key, then perform a challenge-based authentication to ensure that each other say are who they say they are.
+    \end{solution}
   \end{parts}
 
 \question{} Explain the main principle behind an object security scheme
