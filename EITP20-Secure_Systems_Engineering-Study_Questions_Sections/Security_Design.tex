@@ -319,6 +319,12 @@
   \end{solution}
 
 \question{} What is the main risks with a debug interface (like JTAG) and how should it be treated in a product design to avoid these risks?
+  \begin{solution}
+    The debug interface provides more detailed system information than is actually needed to run the application, because it is meant to find issues in the program.
+    Since more information is presented by the JTAG interface, it is possible to learn information that the attacker should not typically be able to access.
+    Additionally, if the debugging interface allows for changes to be made in place, then the execution of the program could be altered.
+  \end{solution}
+
 \question{} Which are the three different most severe attacks threats against smart card designs and which are the typical countermeasures?
 \question{} Give three examples of widely used NIST security standards and what they specify?
 \question{} What does IETF stand for?
