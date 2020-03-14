@@ -10,7 +10,6 @@
 \question{} The Sherwood Applied Business Security Architecture (SABSA) consist of 5 layers and one cross layer.
   \begin{parts}
   \part{} Describe the different layer views and list the names of the different layers.
-  \part{} Give examples of questions the different SABSA architecture views are supposed to answer
     \begin{solution}
       \begin{enumerate}[noitemsep]
       \item Contextual Security Architecture is the view the business has of the system.
@@ -25,6 +24,66 @@
         Here, the actual protocols, standards, and hardware are chosen.
       \item Security Service Management Architecture is the ``cross layer''.
         It is concerned with how to maintain the system and its security.
+      \end{enumerate}
+    \end{solution}
+
+  \part{} Give examples of questions the different SABSA architecture views are supposed to answer.
+    \begin{solution}
+      \begin{enumerate}[noitemsep]
+      \item Contextual Security Architecture
+        \begin{itemize}[noitemsep]
+        \item What does the business need from the system?
+        \item Why do we need to mitigate against these risks and threats?
+        \item How do we protect the processes in this system?
+        \item Who are going to be the ones using the system?
+        \item Where is this system going to be geographically located and where is this product going to be used?
+        \item When does the client require this system and for how long?
+        \end{itemize}
+      \item Conceptual Security Architecture
+        \begin{itemize}[noitemsep]
+        \item What does the client need to have protected?
+        \item Why are these risks that need to be mitigated and do these assets need protection?
+        \item How do we provide protection, in very high-level technical and maanagement security terms/strategies?
+        \item Who are the people/organizations involved in the security management and the assumed trust relationships?
+        \item Where is protection needed in terms of security domains?
+        \item When is the relevant time scope(s) of the system's protection?
+        \end{itemize}
+      \item Logical Security Architecture
+        \begin{itemize}[noitemsep]
+        \item What is the actual information being secured?
+        \item Why shall this security policy be applied to the system?
+        \item How are the actual security services in the system put together?
+        \item Who are the entities in the system and how can they interact?
+        \item Where are the security domains and the relationships between the domains?
+        \item When is the security processing cycle?
+        \end{itemize}
+      \item Physical Security Architecture
+        \begin{itemize}[noitemsep]
+        \item What is the data model and security-related data structures?
+        \item Why are these the rules that drive logical decisions in the system?
+        \item How do these security mechanisms work to provice security and what physical machines or modules are needed?
+        \item Who are the users, the applications they use, and the security interface?
+        \item Where is the required security infrastructure required to provide the security?
+        \item When is the dependency in the system present in the form of execution control structures?
+        \end{itemize}
+      \item Component Security Architecture
+        \begin{itemize}[noitemsep]
+        \item What are the data field specifications, address specifications, etc.
+        \item Why are we using these security standards and best practices?
+        \item How are the entities/modules, tools, etc.\ used and put together?
+        \item Who are the users' identities, privileges, functions, actions, Access Control Lists?
+        \item Where are the computing processes, nodes addresses, and inter-process protocols?
+        \item When are the security step timings and sequencing?
+        \end{itemize}
+      \item Security Service Management Architecture
+        \begin{itemize}[noitemsep]
+        \item What is the operational continuity and information processing of the system?
+        \item Why do we need to minimize operational risks and mitigate failures/disruptions?
+        \item How do we perform these specialized security-related operations?
+        \item Who do we support? All users and their applications?
+        \item Where do we perform maintainance from and on?
+        \item When do we schedule things and execute our time-table of security-related operations?
+        \end{itemize}
       \end{enumerate}
     \end{solution}
   \end{parts}
