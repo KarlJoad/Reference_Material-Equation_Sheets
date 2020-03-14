@@ -193,7 +193,24 @@
 
 \question{} A simple security measurement takes three basic security characteristics into account:
   \begin{parts}
-  \part{} Which three characteristics are then measured and how to you combine the measurements to get an overall measurement of a system?
+  \part{} Which three characteristics are then measured and how do you combine the measurements to get an overall measurement of a system?
+    \begin{solution}
+      \begin{enumerate}[noitemsep]
+      \item Confidentiality
+      \item Integrity
+      \item Availability
+      \end{enumerate}
+
+      Each of these is given a score according to a function that is determined from the weighting of the items in that portion of the evaluation tree.
+      These are combined according to another weighted function to produce a final result.
+
+      \begin{equation}\label{eq:CIA_Functions}
+        \begin{aligned}
+          \langle f_{1}(\text{Confidentiality}), &f_{2}(\text{Integrity}), f_{3}(\text{Availability}) \rangle \\
+          g(f_{1}, f_{2}, f_{3}) &= w_{1} f_{1} + w_{2}f_{2} + w_{3}f_{3} \\
+        \end{aligned}
+      \end{equation}
+    \end{solution}
   \end{parts}
 
 \question{} Consider the smart card security system in \Cref{fig:Smart_Card_Security_System}.
