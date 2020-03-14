@@ -158,7 +158,12 @@
     \end{solution}
   \end{parts}
 
-\question{} Explain the main principle behind an object security scheme
+\question{} Explain the main principle behind an object security scheme.
+  \begin{solution}
+    Instead of ensuring that the communication session between the client and server is secure, we instead secure the things sent between them.
+    This has the benefit of securing the data throughout the entire transport process, including intermediate buffers and storage.
+  \end{solution}
+
   \begin{parts}
   \part{} How does it differs from a session protection scheme like TLS or IPsec?
   \end{parts}
