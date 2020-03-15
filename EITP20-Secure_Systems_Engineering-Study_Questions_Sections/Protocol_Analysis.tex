@@ -239,6 +239,21 @@
   \end{solution}
 
 \question{} How can you verify if secrecy claims hold for a given protocol? (See examples in slides 31--34 of lecture 9. See also an exercise here).
+  \begin{solution}
+    You must run through the protocol and attempt to find any cases where information may be given to the attacker, or find any cases where the secret keys for the agents in the protocol are leaked through the execution of the protocol.
+
+    For the secrecy of something to \emph{not} hold, the data supposed to be secret may not have to be altered.
+    For example, if
+    \begin{align*}
+      A \rightarrow B &: A, {\lbrace N_{A} \rbrace}_{pk(B)} \\
+      B \rightarrow A &: B, {\lbrace N_{A} \rbrace}_{pk(A)} \\
+      Secret(A, N_{A})
+    \end{align*}
+    then an attacker could take the first message $A, {\lbrace N_{A} \rbrace}_{pk(B)}$, replace the $A$ with $\textcolor{red}{K}$, creating $K, {\lbrace N_{A} \rbrace}_{pk(B)}$.
+    Now, $B$ would respond to $K$ with the message $B, {\lbrace N_{A} \rbrace}_{pk(K)}$.
+    This means that the secrecy of $N_{A}$ does not hold for $A$, because $K$ also has it now.
+  \end{solution}
+
 \question{} What is forward secrecy?
 \question{} How can you find out that a given protocol provides forward secrecy? (See examples in slides 36--37 of lecture 9).
 \question{} How is the role instrumentation for authentication? What are $Claim\_commit$ and $Claim\_running$ events? Where do you place Commit and Running hexagons when A wants to agree with B?\@ Where do you place them when B wants to agree with A?\@
