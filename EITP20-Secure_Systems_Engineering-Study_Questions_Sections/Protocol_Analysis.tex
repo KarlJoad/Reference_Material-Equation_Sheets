@@ -52,6 +52,20 @@
   \end{solution}
 
 \question{} What is a labeled multiset rewriting rule? What are $l$, $r$, $a$?
+  \begin{solution}
+    A labeled multiset rewriting rule is a tuple where a set of states on the left are mutated into a set of states on the right.
+    This is done with an action fact that is added to the trace, allowing for tracing of the actions that have already taken place.
+
+    \begin{equation}\label{eq:Labeled_Multiset_Rewriting_Rule}
+      l \overset{a}{\rightarrow} r
+    \end{equation}
+    \begin{description}[noitemsep]
+    \item[$l$] Left side. This is the set of states that the rule must have in order to run.
+    \item[$a$] Action Fact. This is the fact that is recorded in the trace when this multiset rule is executed.
+    \item[$r$] Right side. This is the set of states that the rule puts back into the multiset after execution.
+    \end{description}
+  \end{solution}
+
 \question{} What is a state agent fact $St\_R\_s(A, id, \ldots)$?
 \question{} What are In and Out facts? What are Send and Recv action facts? When do you have them?
 \question{} What is a protocol rule? What is an action fact?
