@@ -144,6 +144,29 @@
   \end{solution}
 
 \question{} What is the meaning of well-formedness? How could you write protocol rules that are well-formed?
+  \begin{solution}
+    Well-formedness is a set of requirements needed to make an executable protocol.
+    To be well-formed, a protocol rule must increment the step count for a role by \emph{just} 1.
+    In addition, all information present on $r$ in \Cref{eq:Labeled_Multiset_Rewriting_Rule} must be derivable from all information given by public valies, the input agent state fact(s), any fresh fact, and any \texttt{In} fact.
+    To be shown mathematically, we need
+    \begin{align*}
+      St\_R\_r(A, id, k_{1}, \ldots, k_{n}) &\in l \\
+      St\_R\_s(A, id, k'_{1}, \ldots, k'_{m}) &\in r \text{ where } m \geq n \\
+    \end{align*}
+    To be well-formed, all terms
+    \begin{equation*}
+      \lbrace k'_{1}, k'_{2}, \ldots, k'_{m} \rbrace \cup \lbrace t \vert \mathtt{Out}(t) \in r \rbrace
+    \end{equation*}
+    are derivable from the terms
+    \begin{equation*}
+      PV \cup \lbrace k_{1}, k_{2}, \ldots, k_{n} \rbrace \cup \lbrace u \vert \mathtt{Fr}(u) \in l \rbrace \cup \lbrace v \vert \mathtt{In}(v) \in l \rbrace
+    \end{equation*}
+    \textbf{AND}
+    \begin{equation*}
+      s = r+1
+    \end{equation*}
+  \end{solution}
+
 \question{} How can you write protocol rules for a given protocol?
 \question{} Assume that you are given a public key-based protocol. How could you write the initialization and protocol rules for it? How could you prepare the protocol and split the roles?
 \question{} What is protocol instrumentation? What is a claim event $Claim\_claimtype(A,t)$?
