@@ -176,6 +176,25 @@
   \end{solution}
 
 \question{} Assume that you are given a public key-based protocol. How could you write the initialization and protocol rules for it? How could you prepare the protocol and split the roles?
+  \begin{solution}
+    \begin{subequations}\label{eq:PK_Protocol_Setup}
+      \begin{equation}\label{subeq:PK_Protocol-Infrastructure_Rule}
+        [Fr(sk)] \overset{SecretKey(X, sk)}{\longrightarrow} [Ltk(X, sk), Pk(X, pk(sk)), Out(pk(sk))]
+      \end{equation}
+      \begin{multline}\label{subeq:PK_Protocol_Initiator_Initialization_Rule}
+        [Fr(idA), Ltk(A, skA), Pk(B, pkB)] \overset{Create(A, idA, I)}{\longrightarrow} \\ [St\_I\_1(A, idA, skA, pkB), Ltk(A, skA), Pk(B, pkB)]
+      \end{multline}
+      \begin{multline}\label{subeq:PK_Protocol_Responder_Initialization_Rule}
+        [Fr(idB), Ltk(B, skB), Pk(A, pkA)] \overset{Create(B, idB, R)}{\longrightarrow} \\ [St\_R\_1(B, idB, skB, pkA), Ltk(B, skB), Pk(A, pkA)]
+      \end{multline}
+    \end{subequations}
+
+    Now, \Cref{subeq:PK_Protocol-Infrastructure_Rule} creates the private keys (sk) and public keys (pk) on demand, whenever a new user is required.
+    Then, the initiator is created in \Cref{subeq:PK_Protocol_Initiator_Initialization_Rule}, who needs the public key of $B$ to move onto the next stages.
+    It is also given an ID of $idA$.
+    Last, \Cref{subeq:PK_Protocol_Responder_Initialization_Rule}, the reponder is created, given their keys, and given the public key of $A$.
+  \end{solution}
+
 \question{} What is protocol instrumentation? What is a claim event $Claim\_claimtype(A,t)$?
 \question{} What is secrecy?
 \question{} How is the role instrumentation for secrecy? What is $Claim\_secret(A,M)$? Where do you place the hexagon for secret (M) in role instrumentation for secrecy?
