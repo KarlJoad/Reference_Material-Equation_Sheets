@@ -207,6 +207,13 @@
   \end{solution}
 
 \question{} What is secrecy?
+  \begin{solution}
+    Secrecy is a claim event in protocol instrumentation for ensuring that some data $t$ cannot be learned by an attacker, even if they get their hands on the message.
+    This does have some constraints, mainly that the secret keys not be leaked, meaning the agents are honest during hte protocol's execution.
+
+    Formally, a term $t$ is \emph{secret} for an agent $A$ in role $R$ if and only if whenever $A$ executes $R$ and \textbf{believes} to be communicating with honest agents $t$ will not be inferable form the adversary's knowledge.
+  \end{solution}
+
 \question{} How is the role instrumentation for secrecy? What is $Claim\_secret(A,M)$? Where do you place the hexagon for secret (M) in role instrumentation for secrecy?
 \question{} What is a compromised agent? When an agent is honest? What are Honest and Rev action facts?
 \question{} How can you verify if secrecy claims hold for a given protocol? (See examples in slides 31--34 of lecture 9. See also an exercise here).
