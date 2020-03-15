@@ -120,6 +120,18 @@
   \end{solution}
 
 \question{} What is infrastructure rule? How do you write the key generation for PKI?\@ How can you generate private/public keys and publish public keys using Fr, Ltk, Out, PK facts?
+  \begin{solution}
+    An infrastructure rule is used to formalize the generation of cryptographic information, typically before the protocol begins execution of communications.
+
+    \begin{equation}\label{eq:PKI_Infrastructure_Rule}
+      [Fr(sk)] \overset{GenPKI(A, sk, pk(sk))}{\longrightarrow} [Ltk(A, sk), Pk(A, pk(sk)), Out(pk(sk))]
+    \end{equation}
+    The generation of the private secret key is essentially a random number, which is modeled by a $Fr(sk)$ fact.
+    The secret key is a long-term key fact about the agent who generated it, and is ``registered'' as the secret key for this agent by the $Ltk()$ fact.
+    The public key is found by running the public key fact/function $Pk()$ which ``registers'' a given public key to the given agent.
+    The public key is then shared through the network by the $Out()$ fact.
+  \end{solution}
+
 \question{} What is an initialization rule? How do you write the initialization rule for a given protocol (e.g.\ a public key-based protocol)? What is Create action fact?
 \question{} What is the meaning of well-formedness? How could you write protocol rules that are well-formed?
 \question{} How can you write protocol rules for a given protocol?
