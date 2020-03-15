@@ -133,6 +133,16 @@
   \end{solution}
 
 \question{} What is an initialization rule? How do you write the initialization rule for a given protocol (e.g.\ a public key-based protocol)? What is Create action fact?
+  \begin{solution}
+    An initialization rule creates an agent/actor for a given role in a protocol.
+    They are typically written like so;
+    \begin{multline}\label{eq:Initialization_Rule}
+      [Fr(idA), Ltk(A, skA), Pk(B, pkB)] \overset{Create(A, idA, R)}{\longrightarrow} \\ [St\_R\_1(A, idA, skA, pkB), Ltk(A, skA), Pk(B, pkB)]
+    \end{multline}
+
+    The Create action fact records the explicit creation of an agent in a given role, with their generated id.
+  \end{solution}
+
 \question{} What is the meaning of well-formedness? How could you write protocol rules that are well-formed?
 \question{} How can you write protocol rules for a given protocol?
 \question{} Assume that you are given a public key-based protocol. How could you write the initialization and protocol rules for it? How could you prepare the protocol and split the roles?
