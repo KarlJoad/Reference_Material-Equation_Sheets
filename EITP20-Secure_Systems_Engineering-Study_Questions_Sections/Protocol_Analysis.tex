@@ -67,7 +67,6 @@
   \end{solution}
 
 \question{} What is a state agent fact $St\_R\_s(A, id, \ldots)$?
-\question{} What are In and Out facts? What are Send and Recv action facts? When do you have them?
   \begin{solution}
     A state agent fact is a fact regarding the state of a single agent in a protocol.
     \begin{equation}\label{eq:State_Agent_Fact}
@@ -82,6 +81,20 @@
     \item[$\ldots$] An agent state fact can have as many additional pieces of information necessary.
       This can be thought of as the information that the host must carry around throughout the protocol in order to let the protocol work.
     \end{description}
+  \end{solution}
+
+\question{} What are \texttt{In} and \texttt{Out} facts? What are \texttt{Send} and \texttt{Recv} action facts? When do you have them?
+  \begin{solution}
+    The \texttt{In} and \texttt{Out} facts are ones that communicate messages through the network.
+    Both of these only take in one (1) piece of information, the message.
+    The \texttt{In} fact can only be used on the $l$ portion of \Cref{eq:Labeled_Multiset_Rewriting_Rule}.
+    The \texttt{Out} fact can only be used on the $r$ portion of \Cref{eq:Labeled_Multiset_Rewriting_Rule}.
+
+    The \texttt{Send} and \texttt{Recv} are action facts the record \emph{who} sent \emph{what}.
+    Additional information could also be recorded, if it is contained within a tuple.
+    These are contained in the $a$ portion of \Cref{eq:Labeled_Multiset_Rewriting_Rule}.
+    \texttt{Send} is used when an actor \texttt{Out}s a message to the network.
+    \texttt{Recv} is used when another actor \texttt{Ins} a message from the network.
   \end{solution}
 
 \question{} What is a protocol rule? What is an action fact?
