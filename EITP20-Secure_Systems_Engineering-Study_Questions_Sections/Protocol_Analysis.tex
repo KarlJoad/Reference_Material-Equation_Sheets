@@ -23,6 +23,17 @@
   \end{solution}
 
 \question{} What is a man-in-the-middle attack? How could you prevent it?
+  \begin{solution}
+    A man-in-the-middle attack is where there are 2 parties that are honestly trying to communicate with each other.
+    However, the messages are not secured in a way that prevents tampering, so the attacker masquerades as the other party, receiving the valid message, forwards it onto the intended recipient after changing the source entity.
+    This way both honest actors are communicating with each other (there may or may not be modifications to the messages), but it is done \emph{through} the man-in-the-middle.
+    This attacker may see the information, may alter it, etc.\ but the bigger problem is that this attack is almost undetectable unless something else is done with the protocol.
+
+    The best way to prevent it would be to find discontinuities in the message flow.
+    So, if a message is supposed to take a certain amount of time from one host to the other, but it takes much longer, i.e.\ through a third host longer, then there may be a MITM attack.
+    This could also be prevented by ensuring the messages are sent with the contents and recipients encrypted and/or protected by other means, preventing a potential MITM from changing information without it being known.
+  \end{solution}
+
 \question{} What is a replay attack? How could you prevent it?
 \question{} What is a reflection attack? How could you prevent it?
 \question{} What is a labeled multiset rewriting rule? What are $l$, $r$, $a$?
