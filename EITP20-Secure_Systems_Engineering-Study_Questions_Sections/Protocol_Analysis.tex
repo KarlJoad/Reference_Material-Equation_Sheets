@@ -6,6 +6,22 @@
   \end{solution}
 
 \question{} Which attacks are typically applicable to an authentication protocol?
+  \begin{solution}
+    \begin{itemize}[noitemsep]
+    \item Impersonation Attacks: One end of the communication pretends to be another principle/actor.
+    \item Man-in-the-Middle Attacks: There is an actor between the 2 valid communicators, potentially alteing messages, $A \leftrightarrow \textcolor{red}{I} \leftrightarrow B$.
+    \item Replay Attacks: Parts of previous messages are reused to form a new one.
+    \item Reflection Attacks: A sender send their information to the intended receiver expecting a response, and the attack send the initiators message right back to them.
+    \item Unknown Key-Share Attacks: Different actors in the system have diffeerent views of their peers.
+    \item Oracle Attacks: Reponses in the protocol's messages are used as encryption and decryption services, essentially using the protocol to the attacker's advantage.
+    \item Type Flaw Attacks: Use the absence of proper message type checking and substitute a message with a different message field.
+    \item Chosen Protocol Attack: A brand new protocol is created to interact with the original protocol, creating a security hole.
+    \item Internal Action Flaws: Perform an attack on the algorithm itself.
+      For example, an Invalid-Curve Attack on an Elliptic Curve algorithm.
+    \item Cryptanalysis: Perform dictionary attacks, attempt to factor numbers, etc. This can be done online or offline.
+    \end{itemize}
+  \end{solution}
+
 \question{} What is a man-in-the-middle attack? How could you prevent it?
 \question{} What is a replay attack? How could you prevent it?
 \question{} What is a reflection attack? How could you prevent it?
