@@ -168,6 +168,13 @@
   \end{solution}
 
 \question{} How can you write protocol rules for a given protocol?
+  \begin{solution}
+    Realistically, any which way you want.
+    But, you want also make it readable for others, so you will want to have a good set of adversary rules that the attacker must follow, a good set of infrastructure rules to model the initial protocol setup, and a good set of protocol rules for the protocol to follow.
+    All the protocols rules must be well-formed to be executed.
+    An agent in each role must have an initialization rule, and each preshared key used should have an infrastructure rule.
+  \end{solution}
+
 \question{} Assume that you are given a public key-based protocol. How could you write the initialization and protocol rules for it? How could you prepare the protocol and split the roles?
 \question{} What is protocol instrumentation? What is a claim event $Claim\_claimtype(A,t)$?
 \question{} What is secrecy?
