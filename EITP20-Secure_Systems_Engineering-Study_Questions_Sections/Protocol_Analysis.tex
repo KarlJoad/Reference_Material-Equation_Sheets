@@ -313,6 +313,14 @@
   \end{solution}
 
 \question{} How do you model a protocol using Tamarin? How do you write a labeled multiset-rewriting rule in Tamarin?
+  \begin{solution}
+    Tamarin uses labeled multiset rewriting rules, like the ones shown in \Cref{eq:Labeled_Multiset_Rewriting_Rule}.
+    To model \Cref{eq:Labeled_Multiset_Rewriting_Rule} in Tamarin, it is written as shown below.
+    \begin{center}
+      \texttt{rule Basic: [l] --[a]-> [r]}
+    \end{center}
+  \end{solution}
+
 \question{} What are linear and persistent facts in Tamarin? When do you use \texttt{!} or \texttt{\textasciitilde{}} or \texttt{\$} in Tamarin?
 \question{} What does $\langle x, y \rangle$ mean in Tamarin?
 \end{questions}
