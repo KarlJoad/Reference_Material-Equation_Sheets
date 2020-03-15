@@ -215,7 +215,6 @@
   \end{solution}
 
 \question{} How is the role instrumentation for secrecy? What is $Claim\_secret(A,M)$? Where do you place the hexagon for secret (M) in role instrumentation for secrecy?
-\question{} What is a compromised agent? When an agent is honest? What are Honest and Rev action facts?
   \begin{solution}
     The role instrumentation for secrecy is shown below.
     \begin{equation}\label{eq:Role_Instrumentation_Secrecy}
@@ -226,6 +225,17 @@
 
     Typically, the hexagon is placed at the end of communications for that agent.
     So, you can make the claim for each agent running in a protocol, but it may not be true everywhere.
+  \end{solution}
+
+\question{} What is a compromised agent? When an agent is honest? What are \texttt{Honest} and \texttt{Rev} action facts?
+  \begin{solution}
+    A compromised agent is one whose secret keys have been leaked to the network.
+
+    An agent being honest means that their secret keys have not been leaked.
+
+    The \texttt{Honest} action fact makes an assertion about the state of another agent's keys and the \texttt{Rev} action fact states whose secret keys have been revealed.
+    \texttt{Honest} is the assertion by one agent that another has \emph{not} leaked their secret keys.
+    The \texttt{Rev} action fact is the act of an agent revealing their secret keys.
   \end{solution}
 
 \question{} How can you verify if secrecy claims hold for a given protocol? (See examples in slides 31--34 of lecture 9. See also an exercise here).
