@@ -264,10 +264,52 @@
   \end{solution}
 
 \question{} How can you find out that a given protocol provides forward secrecy? (See examples in slides 36--37 of lecture 9).
-\question{} How is the role instrumentation for authentication? What are $Claim\_commit$ and $Claim\_running$ events? Where do you place Commit and Running hexagons when A wants to agree with B?\@ Where do you place them when B wants to agree with A?\@
   \begin{solution}
     The only way is to ``run'' the protocol and see if the adversary is able to compromise a session key given they have already compromised one or more agents in the protocol.
     If the adversary can compute a single-use session key given they know one or more long-term private keys, then forward secrecy is not possible.
+  \end{solution}
+
+\question{} How is the role instrumentation for authentication? What are $Claim\_commit$ and $Claim\_running$ events? Where do you place Commit and Running hexagons when $A$ wants to agree with $B$?\@ Where do you place them when $B$ wants to agree with $A$?\@
+  \begin{solution}
+    The role instrumentation for authentication is a bit more complex, because there are multiple types of authentication possible.
+    The placement of the hexagons when $A$ wants to agree with $B$ is the ``running'' portions go on action facts that exist on $B$ and $A$ performs the commit.
+    When $B$ wants to agree with $A$, the ``running'' portions go on $A$'s action facts and $B$ commits to them.
+    Listed from weakest to strongest assertions, there is Aliveness, Weak Agreement, Non-Injective Agreement, and Injective Agreement.
+
+    Aliveness simply says that the agent $a$ running in role $X$ has aliveness with another agent that $a$ \textbf{thinks} is $b$ running in role $Y$ if whenever $a$ completes an execution of the protocol with $b$, then $b$ was previously running the protocol.
+    This is weak because there is no timeframe on when $b$ was last running the protocol, nor on who $b$ really is.
+    \begin{multline}\label{eq:Aliveness}
+      \forall a\; b\; i.\; Claim\_alive(a, b, \langle \rangle)@i \Rightarrow \\
+      (\exists id \; R\; j.\; Create(b, id, R)@j) \vee (\exists X\; r.\; Rev(X)@r \wedge Honest(X)@i)
+    \end{multline}
+
+    Weak Agreement says nearly the same thing as aliveness, but makes the stipulation that when $a$ was executing the protocol with $b$, $b$ was running the protocol at the same time with someone $b$ \textbf{thinks} is $a$.
+    \begin{equation}\label{eq:Weak_Agreement}
+      \begin{aligned}
+        \forall a\; b\; i.\; &Claim\_weakAgreeCommit(a, b, \langle \rangle)@i \Rightarrow \\
+        &(\exists j.\; Claim\_weakAgreeRun(b, a, \langle \rangle)@j) \\
+        &\vee (\exists X\; r.\; Rev(X)@r \wedge Honest(X)@i) \\
+      \end{aligned}
+    \end{equation}
+
+    Non-Injective Agreement guaranteed that $a$ and $b$ were executing the protocol with each other, $a$ was acting as role $X$ and $b$ was acting as role $Y$, and that they both agreed on some message $t$.
+    \begin{equation}\label{eq:NonInjective_Agreement}
+      \begin{aligned}
+        \forall a\; b\; i.\; &Claim\_nonInjCommit(a, b, \langle 'I', 'R', t \rangle)@i \Rightarrow \\
+        &(\exists j.\; Claim\_nonInjRun(b, a, \langle 'I', 'R', t \rangle)@j) \\
+        &\vee (\exists X\; r.\; Rev(X)@r \wedge Honest(X)@i) \\
+      \end{aligned}
+    \end{equation}
+
+    Injective Agreement is the same as Non-Injective Agreement, except for the fact that the execution of the protocol between $a$ and $b$ must be unique, i.e.\ the run we are referring to in $a$ is the \textbf{exact same} run as in $b$.
+    \begin{equation}\label{eq:Injective_Agreement}
+      \begin{aligned}
+        \forall a\; b\; i.\; &Claim\_injCommit(a, b, \langle 'I', 'R', t  \rangle)@i \Rightarrow \\
+        &(\exists j.\; Claim\_injRun(b, a, \langle 'I', 'R', t \rangle)@j \\
+        &\wedge \neg(\exists a_{2}\; b_{2}\; i_{2}.\; Claim\_injCommit(a_{2}, b_{2}, \langle 'I', 'R', t \rangle)@i_{2} \vee \neg(i_{2} = i))) \\
+        &\vee (\exists X\; r.\; Rev(X)@r \wedge Honest(X)@i) \\
+      \end{aligned}
+    \end{equation}
   \end{solution}
 
 \question{} How do you model a protocol using Tamarin? How do you write a labeled multiset-rewriting rule in Tamarin?
