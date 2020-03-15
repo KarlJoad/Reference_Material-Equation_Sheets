@@ -322,6 +322,16 @@
   \end{solution}
 
 \question{} What are linear and persistent facts in Tamarin? When do you use \texttt{!} or \texttt{\textasciitilde{}} or \texttt{\$} in Tamarin?
+  \begin{solution}
+    By default, all facts in Tamarin are linear. This means that when they are used in a protocol rule during execution, they can only be used once on the left-hand side $l$.
+    Persistent facts are ones that can be used any number of times, and they shouldn't be consumed.
+
+    Persistent facts are denoted with the \texttt{!}. \\
+    Fresh information is denoted with the \texttt{\textasciitilde{}}, and should only be used when the agent \textbf{KNOWS} that the value should be fresh. \\
+    The \texttt{\$} denotes the information after it is publicly available.
+    Typically, this is used with agent names, because the ability to identify agents in inherent in the system.
+  \end{solution}
+
 \question{} What does $\langle x, y \rangle$ mean in Tamarin?
 \end{questions}
 %%% Local Variables:
