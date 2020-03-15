@@ -68,6 +68,22 @@
 
 \question{} What is a state agent fact $St\_R\_s(A, id, \ldots)$?
 \question{} What are In and Out facts? What are Send and Recv action facts? When do you have them?
+  \begin{solution}
+    A state agent fact is a fact regarding the state of a single agent in a protocol.
+    \begin{equation}\label{eq:State_Agent_Fact}
+      St\_R\_s(A, id, \ldots)
+    \end{equation}
+    \begin{description}[noitemsep]
+    \item[$R$] The role that this agent plays in the protocol. Are they an initiator or a responder?
+    \item[$s$] What step is this? 1, 2, 76, etc.?
+    \item[$A$] What is this agent's name? This is typically a public piece of information.
+      This also identifies the actual agent throughout the protocol's execution.
+    \item[$id$] This is a unique ID that is given to each agent in the protocol execution to allow for easier tracing.
+    \item[$\ldots$] An agent state fact can have as many additional pieces of information necessary.
+      This can be thought of as the information that the host must carry around throughout the protocol in order to let the protocol work.
+    \end{description}
+  \end{solution}
+
 \question{} What is a protocol rule? What is an action fact?
 \question{} What is fresh rule? What is $Fr()$ fact?
 \question{} What is infrastructure rule? How do you write the key generation for PKI?\@ How can you generate private/public keys and publish public keys using Fr, Ltk, Out, PK facts?
