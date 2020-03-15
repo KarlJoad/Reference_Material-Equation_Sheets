@@ -44,6 +44,13 @@
   \end{solution}
 
 \question{} What is a reflection attack? How could you prevent it?
+  \begin{solution}
+    A reflection attack is one where an attacker takes a message that someone just sent and send the message right back to the original sender.
+    If the sender is expecting a response to their initial message, then the protocol might continue to function, using the original message as the response, compromising the security of the protocol itself.
+
+    This is harder to prevent, but attaching the intended recipient to the message, and having the actual recipient compare them is the only way to prevent these.
+  \end{solution}
+
 \question{} What is a labeled multiset rewriting rule? What are $l$, $r$, $a$?
 \question{} What is a state agent fact $St\_R\_s(A, id, \ldots)$?
 \question{} What are In and Out facts? What are Send and Recv action facts? When do you have them?
