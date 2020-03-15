@@ -255,6 +255,14 @@
   \end{solution}
 
 \question{} What is forward secrecy?
+  \begin{solution}
+    Forward secrecy is the property that the secrecy of a message $t$ is still secret, even while communications are ongoing, \textcolor{green}{except} for if the adversary has \textcolor{red}{previously} compromised an agent that is required to be honest.
+    Formally, this is the set of all traces $tr$ that satisfy
+    \begin{equation}\label{eq:Forward_Secrecy}
+      \forall A \; M\; i.\; (Claim\_secret(A, t)\textcolor{green}{@i}) \Rightarrow \neg(\exists j.\; K(t)@j) \vee (\exists B\; k.\; Rev(B)@k \wedge Honest(B)\textcolor{green}{@i} \wedge \textcolor{red}{k<i})
+    \end{equation}
+  \end{solution}
+
 \question{} How can you find out that a given protocol provides forward secrecy? (See examples in slides 36--37 of lecture 9).
 \question{} How is the role instrumentation for authentication? What are $Claim\_commit$ and $Claim\_running$ events? Where do you place Commit and Running hexagons when A wants to agree with B?\@ Where do you place them when B wants to agree with A?\@
 \question{} How do you model a protocol using Tamarin? How do you write a labeled multiset-rewriting rule in Tamarin?
