@@ -35,6 +35,14 @@
   \end{solution}
 
 \question{} What is a replay attack? How could you prevent it?
+  \begin{solution}
+    A replay attack is where portions of previous messages are reused in new messages.
+    For example, this means that if a session key is transmitted in plaintext in a protocol without any additional verification, then the attacker could reuse an old session key and send it back during another instance of the same protocol running.
+    This will mean the attacker and the honest host will communicate with each other, rather than the host and the server.
+
+    This can usually be prevented by attacking timestamp information, to ensure that the information provided is fresh.
+  \end{solution}
+
 \question{} What is a reflection attack? How could you prevent it?
 \question{} What is a labeled multiset rewriting rule? What are $l$, $r$, $a$?
 \question{} What is a state agent fact $St\_R\_s(A, id, \ldots)$?
