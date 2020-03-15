@@ -216,6 +216,18 @@
 
 \question{} How is the role instrumentation for secrecy? What is $Claim\_secret(A,M)$? Where do you place the hexagon for secret (M) in role instrumentation for secrecy?
 \question{} What is a compromised agent? When an agent is honest? What are Honest and Rev action facts?
+  \begin{solution}
+    The role instrumentation for secrecy is shown below.
+    \begin{equation}\label{eq:Role_Instrumentation_Secrecy}
+      \forall A \; t \; i.\; (Claim\_secret(A, t)@i) \Rightarrow \neg(\exists j.\; K(t)@j) \vee (\exists B \; k. \; Rev(B)@k \wedge Honest(B)@i)
+    \end{equation}
+
+    This means that for all traces $tr$, for all agents $A$, for all data messages $t$, at all times $i$, we can make the claim of secrecy for $A, t$ if: There does not exist a time where the adversary has the message ($\neg \exists j.\; K(t)@j$) \textbf{OR} there exists another agent $B$ at time $k$ whose keys are revealed when they are supposed to be honest.
+
+    Typically, the hexagon is placed at the end of communications for that agent.
+    So, you can make the claim for each agent running in a protocol, but it may not be true everywhere.
+  \end{solution}
+
 \question{} How can you verify if secrecy claims hold for a given protocol? (See examples in slides 31--34 of lecture 9. See also an exercise here).
 \question{} What is forward secrecy?
 \question{} How can you find out that a given protocol provides forward secrecy? (See examples in slides 36--37 of lecture 9).
