@@ -214,7 +214,7 @@
   \end{parts}
 
 \question{} Consider the smart card security system in \Cref{fig:Smart_Card_Security_System}.
-  Assume the side-channel and physical channel break are equal important and the overall smart card security is the minmum strength of the two nodes.
+  Assume the side-channel and physical channel break are equal important and the overall smart card security is the minimum strength of the two nodes.
   Calculate the smart card security score using the weighted weakest link approach.
   \begin{figure}[h!]
     \centering
@@ -226,9 +226,9 @@
     \begin{equation}\label{eq:Weighted_Weakest_Link}
       \begin{aligned}
         WWL &= \sqrt{WS \times WW} \\
-        WS &= \sum\limits_{k=1}^{n} S_{k}W_{k} \\
+        WS(\text{of Parent Node}) &= \sum\limits_{k=1}^{n} S_{k}W_{k} \\
         WW &= \min \left( \frac{S_{1}}{NW_{1}}, \frac{S_{2}}{NW_{2}}, \ldots, \frac{S_{n}}{NW_{n}} \right) \\
-        NW_{k} &= \frac{W_{k}}{\max{W_{1}, W_{2}, \ldots, W_{n}}} \\
+        NW_{k} &= \frac{W_{k}}{\max(W_{1}, W_{2}, \ldots, W_{n})} \\
         W_{\mathrm{Total}} &= \sum\limits_{k=1}^{n} W_{k} = 1
       \end{aligned}
     \end{equation}
