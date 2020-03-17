@@ -4,7 +4,7 @@
 
   This means that only the source and destination hosts have this layer.
   So, routers and switches do not have this, but your phone, laptop, and the server you're connecting to do.
-  
+
   This layer may be responsible for:
   \begin{itemize}[noitemsep]
   \item \nameref{def:Connection_Oriented_Communication}
@@ -56,7 +56,7 @@
 \nameref{def:Transmission_Control_Protocol} uses a 3-way hand shake to establish a connection.
 \begin{definition}[Three-Way Handshake]\label{def:TCP_3_Way_Handshake}
   \nameref{def:Transmission_Control_Protocol} uses a \emph{Three-Way Handshake} to establish a connection.
-  
+
   The client sends a \texttt{SYN} message to the recipient.
   The receiver sends back a \texttt{SYN\textunderscore{}ACK} message to acknowledge the receipt of the original \texttt{SYN} message.
   The client then sends another \texttt{ACK} to the receiver to acknowledge the receipt of the \texttt{SYN\textunderscore{}ACK} message.
@@ -88,29 +88,29 @@
   It also includes error detection, and segments with errors are retransmitted.
 \end{definition}
 
-\subsubsection{Flow Control}\label{subsubsec:Flow_Control}
-\begin{definition}[Flow Control]\label{def:Flow_Control}
+\subsubsection{Flow Control}\label{subsubsec:TCP_Flow_Control}
+\begin{restatable}[Flow Control]{definition}{defFlowControl}\label{def:Flow_Control}
   \emph{Flow control} refers to signalling between the sender and receiver to ensure the sender does not send data faster than the receiver can process.
 
   A receiving host may have limited buffer space for incoming messages and takes time to process each message.
-\end{definition}
+\end{restatable}
 
-\paragraph{\nameref*{subsubsec:Flow_Control} in \nameref*{def:Transmission_Control_Protocol}}\label{par:TCP_Flow_Control}
-\begin{definition}[Sliding Window]
+\paragraph{\nameref*{subsubsec:TCP_Flow_Control} in \nameref*{def:Transmission_Control_Protocol}}\label{par:TCP_Flow_Control}
+\begin{restatable}[Sliding Window]{definition}{defSlidingWindow}\label{def:Sliding_Window}
   \nameref{def:Flow_Control} in \nameref{def:Transmission_Control_Protocol} uses a \emph{sliding window} mechanism.
-\end{definition}
+\end{restatable}
 
-\subsubsection{Congestion Control}\label{subsubsec:Congestion_Control}
-\begin{definition}[Congestion Control]\label{def:Congestion_Control}
+\subsubsection{Congestion Control}\label{subsubsec:TCP_Congestion_Control}
+\begin{restatable}[Congestion Control]{definition}{defCongestionControl}\label{def:Congestion_Control}
   \emph{Congestion control} refers to mechanisms for detecting and reducing \nameref{def:Congestion}.
-\end{definition}
+\end{restatable}
 
-\begin{definition}[Congestion]\label{def:Congestion}
-  \emph{Congestion} in a network occurs when there is too much data being sent and the network is unable to deliver it all.
+\begin{restatable}[Congestion]{definition}{defCongestion}\label{def:Congestion}
+    \emph{Congestion} in a network occurs when there is too much data being sent and the network is unable to deliver it all.
   This can result in data loss or long delays.
-\end{definition}
+\end{restatable}
 
-\paragraph{\nameref*{subsubsec:Congestion_Control} in \nameref*{def:Transmission_Control_Protocol}}\label{par:TCP_Congestion_Control}
+\paragraph{\nameref*{subsubsec:TCP_Congestion_Control} in \nameref*{def:Transmission_Control_Protocol}}\label{par:TCP_Congestion_Control}
 \begin{definition}[Congestion Window]\label{def:Congestion_Window}
   In \nameref{def:Transmission_Control_Protocol}, lost data is considered a sign of \nameref{def:Congestion} and the sender should reduce its rate.
   The sender has a \emph{congestion window}, which refers to the maximum number of unacknowledged segments that may be in transit at a time.
