@@ -102,7 +102,7 @@ We start by estimating the variance:
 
 The estimated variance is:
 \begin{equation*}
-  \Variance[\bar{z}] = \frac{\sigma^{2}}{n}  
+  \Variance[\bar{z}] = \frac{\sigma^{2}}{n}
 \end{equation*}
 meaning that the variance of the sample mean $\bar{z}$ around the population mean $\mu$ decreases as the number of trials $n$ increases.
 
@@ -160,7 +160,14 @@ To correct for this, we use \nameref{def:Bessels_Correction}.
   \begin{equation}\label{eq:Confidence_Interval_Sqrt_S}
     \left[ \bar{z} - \alpha \frac{\sqrt{s^{2}}}{\sqrt{n}}, \bar{z} + \alpha \frac{\sqrt{s^{2}}}{\sqrt{n}} \right]
   \end{equation}
+
+  \begin{remark}[Stricter Definition of Confidence Intervals]\label{rmk:Confidence_Interval_Stricter_Definition}
+    More strictly speaking, the confidence level represents the frequency (i.e.\ the proportion) of possible confidence intervals that contain the true value of the unknown population parameter.
+    In other words, if confidence intervals are constructed using a given confidence level from an infinite number of independent sample statistics, the proportion of those intervals that contain the true value of the parameter will be equal to the confidence level.
+    For example, if the confidence level (CL) is 90\% then in hypothetical indefinite data collection, in 90\% of the samples the interval estimate will contain the true population parameter.
+  \end{remark}
 \end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ETSN10-Network_Architecture_Performance-Reference_Sheet"
