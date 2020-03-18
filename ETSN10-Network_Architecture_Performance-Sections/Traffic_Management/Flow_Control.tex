@@ -2,6 +2,30 @@
 \defFlowControl{}
 \defSlidingWindow{}
 
+\begin{definition}[Traffic Shaping]\label{def:Traffic_Shaping}
+  \emph{Traffic Shaping} is used to make \nameref{def:Stochastic_Process} more deterministic.
+  During the transfer of data, we force compliance (shape the traffic) by controlling the rate at which data is sent out from the node.
+  This can typically be done with \nameref{def:Token_Bucket_System}s, among other options.
+\end{definition}
+
+\nameref{def:Traffic_Shaping} is typically done by determining the total capacity for all flows aggregated together.
+Then, each of the flows is divided into classes that gives each flow certain properties (voice, video, data, etc.).
+
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \Input{Data Flows and their aggregated output capacity}
+  \BlankLine{}
+
+  \For{each flow}{
+    \If{used\_capacity + (new flow) $<$ total\_capacity}{
+      admit\;
+    }\Else{
+      no admission\;
+    }
+  }
+\end{algorithm}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
