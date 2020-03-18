@@ -32,6 +32,18 @@ Then, each of the flows is divided into classes that gives each flow certain pro
   To send anything, you must consume one of your tokens, and these are generated over a regular interval.
 \end{definition}
 
+To find the maximum number of cells that can depart at any given time, we use \Cref{eq:Token_Bucket_Max_Cells}
+\begin{equation}\label{eq:Token_Bucket_Max_Cells}
+  R = \rho T + \beta
+\end{equation}
+where
+\begin{description}[noitemsep]
+\item $R$ is the Maximum number of cells that can depart from the system with a given number of tokens.
+\item $\rho$ is the token generation/arrival rate.
+\item $T$ is the amount of time that passes while cells are departing.
+\item $\beta$ is the capacity of the token bucket.
+\end{description}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
