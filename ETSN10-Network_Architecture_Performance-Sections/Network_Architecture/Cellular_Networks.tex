@@ -99,7 +99,18 @@ To support all of these new features with higher data speeds and lower latency, 
 \end{itemize}
 
 \paragraph{Software Defined Networking}\label{par:SDN}
-\begin{definition}[Software Defined Networking]\label{def:Software_Defined_Networking}
+\begin{definition}[Software Defined Networking]\label{def:Software_Defined_Networking}\label{def:SDN}
+  \emph{Software Defined Networking} (\emph{SDN}) is the concept of centralizing the control of switches and routers in a network.
+  This way there is a single \nameref{def:Control_Plane}, and each router/switch can manage its \nameref{def:Data_Plane}.
+  By centralizing the \nameref{def:Control_Plane}, there is less work required to configure an entire network, and the system can solve issues itself by reconfiguring the shared \nameref{def:Data_Plane}.
+
+  Previously in 4G, the control functions were located at each entity in the core network.
+  In 5G, the control plane and user plane will be separated.
+
+  \begin{remark}[Core 5G Functionality]\label{rmk:SDN_Core_5G}
+    \nameref{def:Software_Defined_Networking} is one of the 3 \textbf{MAJOR} functionalities that is enabling 5G to happen.
+  \end{remark}
+\end{definition}
 
 \end{definition}
 \textbf{TODO!!}
