@@ -75,6 +75,24 @@ One of the most frequently used protocols is \nameref{def:Random_Early_Discard}.
 \end{itemize}
 
 \paragraph{RED Design Goals}\label{par:Random_Early_Discard_Design_Goals}
+\begin{itemize}[noitemsep]
+\item Congestion avoidance
+\item Avoid the \nameref{def:TCP_Global_Synchronization_Problem}
+  \begin{itemize}[noitemsep]
+  \item Current systems inform connections to back off implicitly by dropping packets
+\end{itemize}
+
+\item Avoidance of bias to bursty traffic
+  \begin{itemize}[noitemsep]
+  \item Discard arriving packets will do this
+  \end{itemize}
+
+\item Bound on average queue length
+  \begin{itemize}[noitemsep]
+  \item Hence control on average delay
+  \end{itemize}
+\end{itemize}
+
 \paragraph{RED Algorithm}\label{par:Random_Early_Discard_Algorithm}
 The variables that do not have descriptive names are given below:
 \begin{description}[noitemsep]
