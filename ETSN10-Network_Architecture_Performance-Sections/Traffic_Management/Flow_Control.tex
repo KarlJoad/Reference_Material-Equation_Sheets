@@ -167,6 +167,20 @@ Before we begin with adaptive timers, we should discuss some problems with them.
 \item However, an adaptive timer is still better than a fixed timer!
 \end{itemize}
 
+For this portion of the course, we will use the \emph{Adaptive Retransmission Timer} protocol.
+It is based off the Average Round-Trip Time ($ARTT$), whose formula is shown in \Cref{eq:Average_Round_Trip_Time}.
+\begin{equation}\label{eq:Average_Round_Trip_Time}
+  \begin{aligned}
+    ARTT(k+1) &= \frac{1}{k+1} \sum\limits_{i=1}^{k+1} RTT(i) \\
+    &= \frac{k}{k+1} ARTT(k) + \frac{1}{k+1}RTT(k+1) \\
+  \end{aligned}
+\end{equation}
+\begin{description}[noitemsep]
+\item $k$: The packet ``time'' we are interested in. This is the sending timepoint that we are calculating for.
+\item $RTT$: Round-Trip Time. The amount of time needed for a packet to be sent and the \texttt{ACK} to be received.
+\item $ARTT$: Average Round-Trip Time. The average of $RTT$ up until this point.
+\end{description}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
