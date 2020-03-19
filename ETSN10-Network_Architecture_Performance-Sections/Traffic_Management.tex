@@ -59,6 +59,16 @@ Some that are covered in this course include:
 \item TCP congestion control
 \end{itemize}
 
+\subsubsection{Quality of Service Requirements}\label{subsubsec:QoS_Requirements}
+QoS requirements for a given traffic flow or set of traffic flows can vary.
+Some examples:
+\begin{itemize}[noitemsep]
+\item Real-time voice and video: low delay, high rate (depending on quality)
+\item File transfer: high rate, no packet loss, no bit errors
+\item Industrial control system: low delay (even hard deadlines), high reliability (packet loss and errors)
+\item Sets of flows: fairness, avoiding starvation of lower priority flows
+\end{itemize}
+
 
 \input{./ETSN10-Network_Architecture_Performance-Sections/Traffic_Management/Congestion_Control}
 
