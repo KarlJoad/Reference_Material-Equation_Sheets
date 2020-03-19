@@ -141,6 +141,24 @@ To support all of these new features with higher data speeds and lower latency, 
   \end{itemize}
 \end{definition}
 
+\nameref{def:Software_Defined_Networking} has already been used in fixed networks for a long time.
+However, it is just now starting to break into the wireless network space.
+As mentioned in \Cref{def:Software_Defined_Networking}, the main idea is to separate the \nameref{def:Control_Plane} from the \nameref{def:Data_Plane}.
+\begin{itemize}[noitemsep]
+\item Control plane is centralised.
+  \begin{itemize}[noitemsep]
+  \item Each router only has data plane and northbound interface (NBI).
+\end{itemize}
+\item NBI is used to report back to controller and update forwarding rules.
+\item Can reconfigure the entire network on the fly.
+\item Easy to get a view of what is happening in the whole network.
+  \begin{itemize}[noitemsep]
+  \item Management is easier, generally.
+\end{itemize}
+\item Adds overhead for signalling.
+\item \nameref{def:SDN} avoids the tricky issue of updating rules in such a way that the network is inconsistent.
+\end{itemize}
+
 \begin{figure}[h!tbp]
   \centering
   \includegraphics[scale=0.5]{./Drawings/ETSN10-Network_Architecture_Performance/software-defined-networking.png}
