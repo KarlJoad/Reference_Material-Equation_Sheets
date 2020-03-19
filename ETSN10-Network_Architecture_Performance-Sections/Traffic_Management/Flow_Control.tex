@@ -128,6 +128,21 @@ Specifically, in TCP:\@
 \end{itemize}
 
 \subsubsection{Timers}\label{subsubsec:Packet_Timers}
+To make a set of retransmission policies work, a set of timers is used.
+\begin{itemize}[noitemsep]
+\item A timer is associated with each segment as it is sent, i.e.\ retransmission timer ($RTO$).
+\item If timer expires before segment \texttt{ACK}ed, sender must retransmit.
+\item Key Design Issue:
+  \begin{itemize}[noitemsep]
+  \item Find a suitable value of retransmission timer?
+  \item Too small: many unnecessary retransmissions, wasting network bandwidth.
+  \item Too large: delay in handling lost segment
+  \end{itemize}
+\item The timer should be longer than the Round-Trip Time ($RTT$).
+  The time to send the segment and receive the \texttt{ACK} back.
+\item Lastly, the delay ($D$) is variable, complicating things.
+\end{itemize}
+
 \paragraph{Fixed Timers}\label{par:Fixed_Packet_Timers}
 \paragraph{Adaptive Timers}\label{par:Adaptive_Packet_Timers}
 %%% Local Variables:
