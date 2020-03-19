@@ -64,6 +64,32 @@ Used \nameref{def:CDMA}
   I am including them to make sure there is a good reference for many of these.
 \end{remark*}
 
+5G has 3 main use cases:
+\begin{enumerate}[noitemsep]
+\item Enhanced Mobile Broadband (EMM)
+  \begin{itemize}[noitemsep]
+  \item The most important aspect is data throughput (How many bits can we send out?).
+  \item Quality of Service is also very important, particularly to handle HD video streaming, web browsing, etc.
+  \item Energy efficiency \textbf{at the terminal}. This means a longer device battery life.
+  \item The main user of this use case are people.
+  \end{itemize}
+\item Massive Machine Type Communication (MMTC)
+  \begin{itemize}[noitemsep]
+  \item The most important aspect is the ability to handle \textbf{MANY, MANY} users at once.
+  \item In this case, the data rate is not important, as each device has very little data to send.
+  \item These packets are either periodic or event-driven.
+  \item We also require very low energy usage.
+  \item The main user of this use case are Internet of Things devices.
+  \end{itemize}
+\item Ultra-Reliable Low Latency Communication (URLLC)
+  \begin{itemize}[noitemsep]
+  \item The most important aspect is the ability to guarantee packet delivery (Absolute or statistical).
+  \item There should be bounds on the delay.
+  \item The packets are \textbf{VERY} small, as small as a single bit, and event-driven traffic.
+  \item This is mainly for vehicular networks and industrial communications.
+  \end{itemize}
+\end{enumerate}
+
 \paragraph{Software Defined Networking}\label{par:SDN}
 \begin{definition}[Software Defined Networking]\label{def:Software_Defined_Networking}
 
