@@ -31,6 +31,18 @@ This way, if any are lost, they can be retransmitted.
 \item The control of which $SN$ to send after recieving the $AN$ is determined by the \emph{Window} ($W$).
 \end{itemize}
 
+If an \texttt{ACK} contains
+\begin{align*}
+  AN &= i \\
+  W &= j
+\end{align*}
+then,
+\begin{itemize}[noitemsep]
+\item $SN$s from $SN = i - 1$ are acknowledged.
+\item Permission is granted to send $W = j$ \textbf{more} packets.
+  This means packets $i$ to $i + j - 1$ can be sent.
+\end{itemize}
+
 \paragraph{Flexible Credit Allocation}\label{par:TCP_Flexible_Credit_Allocation}
 \paragraph{Credit Allocation Policy}\label{par:TCP_Credit_Allocation_Policy}
 \paragraph{Effect of Window Size}\label{par:TCP_Window_Size_Effect}
