@@ -2,6 +2,11 @@
 \defFlowControl{}
 \defSlidingWindow{}
 
+\begin{definition}[Credit-Based Scheme]\label{def:Credit_Based_Scheme}
+  In a \emph{credit-based scheme}, the receiver gives the sender ``credit'' that is used when the sender transmits information.
+  Unlike the \nameref{def:Token_Bucket_Scheme}, the sender does not ``get credit'' while it is sending information.
+  Instead, the sender gets its credit all at once, after sending all it can/wants.
+  The rate at which this credit is used is different depending on what is sending, the shape of the network traffic, and other factors.
 \end{definition}
 
 %%% Local Variables:
