@@ -58,6 +58,12 @@ If we want to increase the credit to $k$, i.e.\ $k > j$ when there is no new dat
   W &= k
 \end{align*}
 
+If we want to acknowledge a previous segment $i-1$ that contained $m$ packets ($m < j$) \textbf{WITHOUT} allocating more credit, $B$ issues
+\begin{align*}
+  AN &= i + m \\
+  W &= j - m
+\end{align*}
+
 \paragraph{Credit Allocation Policy}\label{par:TCP_Credit_Allocation_Policy}
 \paragraph{Effect of Window Size}\label{par:TCP_Window_Size_Effect}
 \paragraph{Complicating Factors}\label{par:TCP_Complicating_Factors}
