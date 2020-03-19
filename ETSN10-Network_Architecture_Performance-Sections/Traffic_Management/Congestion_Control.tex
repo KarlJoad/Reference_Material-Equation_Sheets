@@ -42,7 +42,14 @@ There are 2 main approaches to controlling congestion:
 \end{enumerate}
 
 \subsubsection{Packet Discard}\label{subsubsec:Packet_Discard}
+Sometimes, you have to drop/discard packets to keep congestion under control.
+Systems that do this use \nameref{def:Proactive_Packet_Discard}.
+
+\begin{definition}[Proactive Packet Discard]\label{def:Proactive_Packet_Discard}
+  In a \emph{proactive packet discard} system, packets are deliberately discarded before being sent to keep congestion under control.
 \end{definition}
+
+One of the most frequently used protocols is \nameref{def:Random_Early_Discard}.
 
 \subsubsection{Random Early Discard}\label{subsubsec:Random_Early_Discard}
 \paragraph{RED Motivations}\label{par:Random_Early_Discard_Motivations}
