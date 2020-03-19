@@ -252,6 +252,19 @@ The advantage of these different numerologies can be shown best by examples:
 \item An mMTC application such as an IoT sensor network might need many small slots to allocate small amounts of data to each device.
 \end{itemize}
 
+\paragraph{Slot Format}\label{par:Slot_Format}
+In 5G, the format inside of the individual slots is also more flexible.
+\textbf{Each symbol} in a given slot can be allocated to:
+\begin{itemize}[noitemsep]
+\item The uplink
+\item The Downlink
+\item Both (Allocated dynamically as needed)
+\end{itemize}
+
+This is a stark contrast to \nameref{def:LTE}, which requires that every symbol in a slot be the same.
+
+In total 5G defines 61 different slot formats, combinations of uplink, downlink, and flexible symbols.
+
 
 \paragraph{Enabling Technologies for 5G}\label{par:5G_Enabling_Technologies}
 \textbf{TODO!!}
