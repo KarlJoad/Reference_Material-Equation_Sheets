@@ -265,6 +265,14 @@ This is a stark contrast to \nameref{def:LTE}, which requires that every symbol 
 
 In total 5G defines 61 different slot formats, combinations of uplink, downlink, and flexible symbols.
 
+\paragraph{Resource Allocation in 5G}\label{par:5G_Resource_Allocation}
+In 5G NR, resources are allocated in resource blocks ($RB$), similarly to \nameref{def:LTE}.
+The difference is that the number and size of resource blocks in a slot varies.
+
+With a normal cyclic prefix length, the minimum number of $RB$s in a slot is 24, and the maximum is 275.
+Each RB consists of 12 subcarriers and 14 symbols, but the subcarrier spacing and symbol duration depends on the numerology.
+
+So some resource blocks are in effect more “valuable” than others, in terms of their scarcity (how many are in the slot), and capacity (the amount of data that can be sent in one RB).
 
 \paragraph{Enabling Technologies for 5G}\label{par:5G_Enabling_Technologies}
 \textbf{TODO!!}
