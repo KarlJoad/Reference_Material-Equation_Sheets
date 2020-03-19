@@ -23,6 +23,20 @@ There are various ways to organize traffic into different classes that receive d
 \item \nameref{def:Network_Slicing} in \nameref{def:5G}
 \end{itemize}
 
+\subsubsection{Enforce Traffic Profiles}\label{subsubsec:Enforce_Traffic_Profiles}
+For effective traffic management, the network needs a way to force traffic flows to comply with their agreed-upon traffic profiles, e.g.\ maximum data rate.
+\begin{itemize}[noitemsep]
+\item Admission Control: Do not allow flows into the network if there are not adequate resources available.
+\item \nameref{def:Traffic_Shaping}: For example \nameref{def:Token_Bucket_Scheme}
+\item \nameref{def:Flow_Control}: For example a \nameref{def:Credit_Based_Scheme}
+\item Some \nameref{def:Queuing_Discipline}s ensure that a single flow cannot take more than its allowed share of bandwidth.
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Bit_Round_Fair_Queuing}
+  \item \nameref{def:Weighted_Fair_Queuing}
+  \item \nameref{def:Class_Based_Queuing}
+  \end{itemize}
+\end{itemize}
+
 
 \input{./ETSN10-Network_Architecture_Performance-Sections/Traffic_Management/Congestion_Control}
 
