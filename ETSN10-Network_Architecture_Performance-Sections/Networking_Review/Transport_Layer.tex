@@ -100,9 +100,15 @@
   \nameref{def:Flow_Control} in \nameref{def:Transmission_Control_Protocol} uses a \emph{sliding window} mechanism.
 \end{restatable}
 
-\subsubsection{Congestion Control}\label{subsubsec:TCP_Congestion_Control}
+\subsubsection{Congestion Control}\label{subsubsec:Review_Congestion_Control}
 \begin{restatable}[Congestion Control]{definition}{defCongestionControl}\label{def:Congestion_Control}
   \emph{Congestion control} refers to mechanisms for detecting and reducing \nameref{def:Congestion}.
+  The objective of congestion control is to keep traffic levels in the network below the point at which performance drops off.
+  There are 2 main parts:
+  \begin{enumerate}[noitemsep]
+  \item Detect \nameref{def:Congestion} through congestion signalling.
+  \item Reduce \nameref{def:Congestion} by discarding packets.
+  \end{enumerate}
 \end{restatable}
 
 \begin{restatable}[Congestion]{definition}{defCongestion}\label{def:Congestion}
