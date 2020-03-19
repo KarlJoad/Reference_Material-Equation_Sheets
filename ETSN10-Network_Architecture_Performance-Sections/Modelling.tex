@@ -253,7 +253,17 @@ This model was published in 2000, after 802.11 was already in use, but not well 
 \end{itemize}
 
 \subsubsection{Model Construction Methodology}\label{subsubsec:Bianchi_Model_Method}
-\textbf{TODO!!}
+Bianchi uses a two-dimensional Markov chain of $m + 1$ backoff stages in which each stage represents the backoff time counter of a node.
+A transition takes place upon collision and successful transmission, to a ``higher'' stage (e.g., from stage $i - 1$ to stage $i$) and to the lowest stage.
+
+This model adopts a discrete and integer time scale.
+In this time scale, $t$ and $t + 1$ correspond to the beginning of two consecutive slot times.
+Each station decrements its backoff time counter at the beginning of each slot time.
+Note that as the backoff time decrement is stopped when the channel is busy, the time interval between $t$ and $t + 1$ may be much longer than the defined slot time for 802.11, as it may include a packet transmission or a collision.
+
+Each state of this bidimensional Markov process is represented by $\lbrace s(t), b(t) \rbrace$, where $b(t)$ is the stochastic process representing the backoff time counter for a given station and $s(t)$ is the stochastic process representing the backoff stage $(0, 1, \ldots, m)$ of the station at time $t$.
+This model assumes that in each transmission attempt, regardless of the number of retransmissions suffered, each packet collides with constant and independent probability $p$.
+In other words, $p$ is the probability that, in a slot time, at least one of the $N - 1$ remaining stations transmits as well.
 
 \subsubsection{Model Evaluation}\label{subsubsec:Bianchi_Model_Eval}
 \begin{itemize}[noitemsep]
