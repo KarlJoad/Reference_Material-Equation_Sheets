@@ -16,6 +16,31 @@ If a network reaches its saturation point, one main strategy is to discard any i
 \end{itemize}
 
 \subsubsection{Congestion Control Approaches}\label{subsubsec:Congestion_Control_Approaches}
+There are 2 main approaches to controlling congestion:
+\begin{enumerate}[noitemsep]
+\item Explicit Congestion Signalling (Backpressure)
+  \begin{itemize}[noitemsep]
+  \item The destination requests the source to reduce its rate.
+  \item The Choke Packet: ICMP Source Quench
+  \item These can be done in 2 directions:
+    \begin{enumerate}[noitemsep]
+    \item Backward
+    \item Foward
+    \end{enumerate}
+  \item There are several categories that allow for this:
+    \begin{itemize}[noitemsep]
+    \item Binary
+    \item \nameref{def:Credit_Based_Scheme}
+    \item Rate-Based scheme (like \nameref{def:Token_Bucket_Scheme})
+    \end{itemize}
+  \end{itemize}
+
+\item Implicit Congestion Signalling
+  \begin{itemize}[noitemsep]
+  \item The source detects congestion from transmission delays and discarded packets, so it reduces its output.
+  \end{itemize}
+\end{enumerate}
+
 \subsubsection{Packet Discard}\label{subsubsec:Packet_Discard}
 \end{definition}
 
