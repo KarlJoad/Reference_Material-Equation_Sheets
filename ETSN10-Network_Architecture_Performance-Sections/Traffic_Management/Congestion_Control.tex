@@ -4,10 +4,18 @@
 
 \subsubsection{Congestion Control in TCP}\label{subsubsec:Congestion_Control_TCP}
 In \nameref{def:Transmission_Control_Protocol}, there is a problem that occurs because of its greedy backoff procedure.
+If we think back to \nameref{sec:Queuing_Theory}, a data network can be modeled as a network of queues.
+Remember, if $\lambda > \mu$ (arrival rate $>$ transmission rate), the queue size grows without bound and packet delay will go to $\infty$.
 
 \begin{definition}[Global Synchronization Problem]\label{def:TCP_Global_Synchronization_Problem}
   \nameref{def:Transmission_Control_Protocol}'s \emph{global synchronization problem} occurs when a sudden burst of traffic causes simultaneous packet loss across many TCP sessions using a single (congested) link.
   Each of the affected TCP session backs off its send rate at the same time, causing link utilization to go way down.
+If a network reaches its saturation point, one main strategy is to discard any incoming packet if there is no buffer available.
+\begin{itemize}[noitemsep]
+\item Saturated nodes exercise some amount of \nameref{def:Flow_Control} over its neighbors.
+\item This may cause congestion to propagate throughout the network.
+\end{itemize}
+
 \end{definition}
 
 \subsubsection{Random Early Discard}\label{subsubsec:Random_Early_Discard}
