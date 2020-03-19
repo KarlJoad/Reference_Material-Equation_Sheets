@@ -115,6 +115,18 @@ There are several factors that complicate the use of TCP's sliding window scheme
 \end{itemize}
 
 \subsubsection{Retransmission Policies}\label{subsubsec:Retransmission_Policies}
+In TCP, and many other protocols, if a packet is lost, it must be retransmitted.
+Specifically, in TCP:\@
+\begin{itemize}[noitemsep]
+\item TCP relies \textbf{exclusively} on positive \texttt{ACK}s, and retransmits on the \texttt{ACK} timing out.
+\item There is \textbf{NO} explicit negative \texttt{ACK}.
+\item Retransmission is required when:
+  \begin{enumerate}[noitemsep]
+  \item A segment arrives damaged, as indicated by a checksum error, and the receiver discards the packet.
+  \item The segment fails to arrive.
+  \end{enumerate}
+\end{itemize}
+
 \subsubsection{Timers}\label{subsubsec:Packet_Timers}
 \paragraph{Fixed Timers}\label{par:Fixed_Packet_Timers}
 \paragraph{Adaptive Timers}\label{par:Adaptive_Packet_Timers}
