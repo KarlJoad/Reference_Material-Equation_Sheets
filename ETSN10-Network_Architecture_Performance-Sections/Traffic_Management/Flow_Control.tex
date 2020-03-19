@@ -188,6 +188,23 @@ In \Cref{eq:Average_Round_Trip_Time},
 \item We need to give more weight to more recent values, as they are more likely to predict the network's behavior better.
 \end{itemize}
 
+To combat the issues presented by the Average Round-Trip Time ($ARTT$), the \emph{Smoothed Round-Trip Time} ($SRTT$) was created, its formula is shown in \Cref{eq:Smoothed_Round_Trip_Time}.
+\begin{equation}\label{eq:Smoothed_Round_Trip_Time}
+  SRTT(k+1) = \bigl( \alpha \times SRTT(k) \bigr) + \bigl( (1-\alpha) \times RTT(k+1) \bigr)
+\end{equation}
+\begin{description}[noitemsep]
+\item $k$: The packet ``time'' we are interested in. This is the sending timepoint that we are calculating for.
+\item $\alpha$: The weight that we want to attach to more recent events, and disregard that we want to apply to older events.
+  \begin{itemize}[noitemsep]
+  \item The older the observation, the less it is counted in the Smoothed Round-Trip Time.
+  \item $0 < \alpha < 1$
+  \item The closer $\alpha$ is to $0$, the more time points that we consider.
+  \item The closer $\alpha$ is to $1$, the more we rely \textbf{only} on recent transmissions.
+  \end{itemize}
+\item $RTT$: Round-Trip Time. The amount of time needed for a packet to be sent and the \texttt{ACK} to be received.
+\item $SRTT$: Smoothed Round-Trip Time.
+\end{description}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
