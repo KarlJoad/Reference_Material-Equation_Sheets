@@ -205,6 +205,17 @@ To combat the issues presented by the Average Round-Trip Time ($ARTT$), the \emp
 \item $SRTT$: Smoothed Round-Trip Time.
 \end{description}
 
+To effectively use the current $SRTT$, the $RTO$ should be set slightly greater than the current $SRTT$.
+This is shown in \Cref{eq:RTO_Based_SRTT}.
+\begin{equation}\label{eq:RTO_Based_SRTT}
+  RTO(k+1) = \min \Bigl( UB, \max \bigl( LB, \beta \times SRTT(k+1) \bigr) \Bigr)
+\end{equation}
+\begin{description}[noitemsep]
+\item $LB$ Lower Bound. Pre-chosen constant that is fixed.
+\item $UB$ Upper Bound. Pre-chosen constant that is fixed.
+\item $\beta$ Scaling factor used to determine how important the current $SRTT$ is in the choice of $RTO$.
+\end{description}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
