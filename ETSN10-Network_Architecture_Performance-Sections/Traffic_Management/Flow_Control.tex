@@ -16,6 +16,21 @@ Namely, the \textbf{acknowledgement of received data} and the \textbf{granting o
 TCP's flow control is known as a Credit Allocation Scheme, or a \nameref{def:Credit_Based_Scheme}.
 
 \paragraph{TCP Header Fields for Flow Control}\label{par:TCP_Header_Fields_Flow_Control}
+For TCP to perform its \nameref{def:Flow_Control}, it must have a way to track which packets have been received.
+This way, if any are lost, they can be retransmitted.
+
+\begin{itemize}[noitemsep]
+\item This is done with the \emph{Sequence Number} of the packet.
+  \begin{itemize}[noitemsep]
+  \item Throughout this portion of the document, the sequence number will be represented by $SN$ in mathematical calculations.
+  \end{itemize}
+\item When the recipient receives the information successfully, it sends an \emph{Acknowledgement (\texttt{ACK}) Number}.
+  \begin{itemize}[noitemsep]
+  \item Throughout this portion of the document, the acknowledgement number will be represented by $AN$ in mathematical calculations.
+  \end{itemize}
+\item The control of which $SN$ to send after recieving the $AN$ is determined by the \emph{Window} ($W$).
+\end{itemize}
+
 \paragraph{Flexible Credit Allocation}\label{par:TCP_Flexible_Credit_Allocation}
 \paragraph{Credit Allocation Policy}\label{par:TCP_Credit_Allocation_Policy}
 \paragraph{Effect of Window Size}\label{par:TCP_Window_Size_Effect}
