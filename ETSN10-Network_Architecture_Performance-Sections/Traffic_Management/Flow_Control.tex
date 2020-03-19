@@ -65,6 +65,21 @@ If we want to acknowledge a previous segment $i-1$ that contained $m$ packets ($
 \end{align*}
 
 \paragraph{Credit Allocation Policy}\label{par:TCP_Credit_Allocation_Policy}
+The receive needs a policy for how much credit to give the sender.
+There are 2 main approaches:
+\begin{enumerate}[noitemsep]
+\item Conservative Approach: Grant credit up to the limiit of the current buffer's available space.
+  \begin{itemize}[noitemsep]
+  \item This may limit throughput in long-delay situations, because the buffer may be nearly full now, but when the data actually arrives to the receiver the queue may be empty and can handle a lot more.
+  \end{itemize}
+\item Optimistic Approach: Grant credit based on the expectation of freeing space before data arrives.
+  \begin{itemize}[noitemsep]
+  \item This is based on the fact that there is transmission delay, i.e.\ there is a delay from the time a sender sends their information to the time the receiver receives it.
+  \item While the packet is in transmission, the receiver can still process information that is queued, so it grants credit based on its expectation of having free space to handle the packet.
+  \item This is dangerous if the space is \textbf{not} available, because lots of packets are discarded.
+  \end{itemize}
+\end{enumerate}
+
 \paragraph{Effect of Window Size}\label{par:TCP_Window_Size_Effect}
 \paragraph{Complicating Factors}\label{par:TCP_Complicating_Factors}
 \subsubsection{Retransmission Policies}\label{subsubsec:Retransmission_Policies}
