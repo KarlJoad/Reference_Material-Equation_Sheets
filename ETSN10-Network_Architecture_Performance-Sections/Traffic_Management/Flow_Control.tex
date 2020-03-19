@@ -181,6 +181,13 @@ It is based off the Average Round-Trip Time ($ARTT$), whose formula is shown in 
 \item $ARTT$: Average Round-Trip Time. The average of $RTT$ up until this point.
 \end{description}
 
+In \Cref{eq:Average_Round_Trip_Time},
+\begin{itemize}[noitemsep]
+\item Each term is given the same weight ($\frac{1}{k+1}$).
+\item This may \textbf{not} adjust properly to recent changes, as this will more likely reflect future behavior.
+\item We need to give more weight to more recent values, as they are more likely to predict the network's behavior better.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
