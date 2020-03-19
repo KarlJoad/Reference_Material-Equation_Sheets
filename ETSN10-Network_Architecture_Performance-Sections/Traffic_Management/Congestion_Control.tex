@@ -2,7 +2,6 @@
 \defCongestionControl{}
 \defCongestion{}
 
-\subsubsection{Congestion Control in TCP}\label{subsubsec:Congestion_Control_TCP}
 In \nameref{def:Transmission_Control_Protocol}, there is a problem that occurs because of its greedy backoff procedure.
 If we think back to \nameref{sec:Queuing_Theory}, a data network can be modeled as a network of queues.
 Remember, if $\lambda > \mu$ (arrival rate $>$ transmission rate), the queue size grows without bound and packet delay will go to $\infty$.
@@ -16,9 +15,13 @@ If a network reaches its saturation point, one main strategy is to discard any i
 \item This may cause congestion to propagate throughout the network.
 \end{itemize}
 
+\subsubsection{Congestion Control Approaches}\label{subsubsec:Congestion_Control_Approaches}
+\subsubsection{Packet Discard}\label{subsubsec:Packet_Discard}
 \end{definition}
 
 \subsubsection{Random Early Discard}\label{subsubsec:Random_Early_Discard}
+\paragraph{RED Motivations}\label{par:Random_Early_Discard_Motivations}
+\paragraph{RED Design Goals}\label{par:Random_Early_Discard_Design_Goals}
 \paragraph{RED Algorithm}\label{par:Random_Early_Discard_Algorithm}
 The variables that do not have descriptive names are given below:
 \begin{description}[noitemsep]
@@ -88,6 +91,7 @@ The variables that do not have descriptive names are given below:
   \label{algo:Random_Early_Discard}
 \end{algorithm}
 
+\subsubsection{Congestion Control in TCP}\label{subsubsec:Congestion_Control_TCP}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
