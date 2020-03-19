@@ -81,6 +81,27 @@ There are 2 main approaches:
 \end{enumerate}
 
 \paragraph{Effect of Window Size}\label{par:TCP_Window_Size_Effect}
+Because the window size is variable in TCP, there are some effects caused by the size of the window.
+The \emph{Normalized Throughput} is shown in \Cref{eq:TCP_Normalized_Throughput}.
+\begin{equation}\label{eq:TCP_Normalized_Throughput}
+  S =
+  \begin{cases}
+    1 & W \geq 2RD \\
+    \frac{W}{2RD} & W < 2RD \\
+  \end{cases}
+\end{equation}
+\begin{description}[noitemsep]
+\item $W$ is the TCP window size (bytes/sequence numbers/etc.).
+\item $R$ is the data rate (bits/second, bps) at the \textbf{source}.
+\item $D$ is the propagation delay (seconds).
+  \begin{itemize}[noitemsep]
+  \item After the source begins transmitting, it takes $D$ seconds for the first sent packet to arrive at the receiver.
+  \item It also takes $D$ seconds for the acknowledgement of the first packet from the receiver to be returned to the sender.
+  \item The source could transmit at most $2RD$ bits or $\frac{RD}{4}$ bytes.
+    This is called the \textbf{Rate-Delay product}.
+  \end{itemize}
+\end{description}
+
 \paragraph{Complicating Factors}\label{par:TCP_Complicating_Factors}
 \subsubsection{Retransmission Policies}\label{subsubsec:Retransmission_Policies}
 \subsubsection{Timers}\label{subsubsec:Packet_Timers}
