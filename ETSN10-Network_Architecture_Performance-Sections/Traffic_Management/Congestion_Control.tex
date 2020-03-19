@@ -58,6 +58,22 @@ One of the most frequently used protocols is \nameref{def:Random_Early_Discard}.
 \end{definition}
 
 \paragraph{RED Motivations}\label{par:Random_Early_Discard_Motivations}
+\begin{itemize}[noitemsep]
+\item Surges fill buffers and cause discards.
+\item On TCP this is a signal to enter slow start phase, reducing load.
+\item Lost packets need to be resent.
+  \begin{itemize}[noitemsep]
+  \item Adds to load and delay.
+  \item Global synchronization.
+  \item Traffic burst fills queues so packets lost.
+  \item Many TCP connections enter slow start.
+  \item Traffic drops so network under utilized.
+  \item Connections leave slow start at same time causing burst.
+  \end{itemize}
+\item Bigger buffers do not help.
+\item Try to anticipate onset of congestion and tell one connection to slow down.
+\end{itemize}
+
 \paragraph{RED Design Goals}\label{par:Random_Early_Discard_Design_Goals}
 \paragraph{RED Algorithm}\label{par:Random_Early_Discard_Algorithm}
 The variables that do not have descriptive names are given below:
