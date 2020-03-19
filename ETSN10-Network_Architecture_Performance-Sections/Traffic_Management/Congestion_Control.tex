@@ -11,6 +11,27 @@ In \nameref{def:Transmission_Control_Protocol}, there is a problem that occurs b
 \end{definition}
 
 \subsubsection{Random Early Discard}\label{subsubsec:Random_Early_Discard}
+\paragraph{RED Algorithm}\label{par:Random_Early_Discard_Algorithm}
+The variables that do not have descriptive names are given below:
+\begin{description}[noitemsep]
+\item $q\_time$: Start of the queue's idle time.
+\item $w_{\mathrm{queue}}$: Weight of the queue.
+\item $TH_{\mathrm{Min}}$: Minimum threshold for queue.
+\item $TH_{\mathrm{Max}}$: Maximum threshold for queue.
+\item $P_{a}$: Current packet-marking probability.
+\item $P_{b}$: Temporary Probability used for calculations.
+  \begin{itemize}[noitemsep]
+  \item Using $P_{b}$ directly tends to penalize bursty traffic prematurely
+    \begin{itemize}[noitemsep]
+    \item Proportional to $F=(avgQueueSize-TH_{\mathrm{Min}})/(TH_{\mathrm{Max}}-TH_{\mathrm{Min}})$
+    \end{itemize}
+\item $P_{a}$ remains low and then rises quickly when count approaches $1/(F \times P_{\mathrm{Max}})-1$
+\item Result: number of packets allowed to join queue between discards is uniformly distributed in $\left[1, 2, \ldots, \frac{1}{P_{b}} \right]$
+  \end{itemize}
+\item $P_{\mathrm{Max}}$: Maximum value for $P_{b}$.
+\item $f(t)$: A linear function of time $t$.
+\end{description}
+
 \begin{algorithm}[H]
   \DontPrintSemicolon{}
   \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
@@ -58,16 +79,6 @@ In \nameref{def:Transmission_Control_Protocol}, there is a problem that occurs b
   \caption{Random Early Discard (RED)}
   \label{algo:Random_Early_Discard}
 \end{algorithm}
-\begin{description}[noitemsep]
-\item $q\_time$: Start of the queue's idle time.
-\item $w_{\mathrm{queue}}$: Weight of the queue.
-\item $TH_{\mathrm{Min}}$: Minimum threshold for queue.
-\item $TH_{\mathrm{Max}}$: Maximum threshold for queue.
-\item $P_{a}$: Current packet-marking probability.
-\item $P_{b}$: Temporary Probability used for calculations.
-\item $P_{\mathrm{Max}}$: Maximum value for $P_{b}$.
-\item $f(t)$: A linear function of time $t$.
-\end{description}
 
 %%% Local Variables:
 %%% mode: latex
