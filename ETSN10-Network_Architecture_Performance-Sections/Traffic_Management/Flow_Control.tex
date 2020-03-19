@@ -2,59 +2,7 @@
 \defFlowControl{}
 \defSlidingWindow{}
 
-\begin{definition}[Traffic Shaping]\label{def:Traffic_Shaping}
-  \emph{Traffic Shaping} is used to make \nameref{def:Stochastic_Process} more deterministic.
-  During the transfer of data, we force compliance (shape the traffic) by controlling the rate at which data is sent out from the node.
-  This can typically be done with \nameref{def:Token_Bucket_System}s, among other options.
 \end{definition}
-
-\nameref{def:Traffic_Shaping} is typically done by determining the total capacity for all flows aggregated together.
-Then, each of the flows is divided into classes that gives each flow certain properties (voice, video, data, etc.).
-
-\begin{algorithm}[H]
-  \DontPrintSemicolon{}
-  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-  \Input{Data Flows and their aggregated output capacity}
-  \BlankLine{}
-
-  \For{each flow}{
-    \If{used\_capacity + (new flow) $<$ total\_capacity}{
-      admit\;
-    }\Else{
-      no admission\;
-    }
-  }
-\end{algorithm}
-
-\subsubsection{Token Bucket Scheme}\label{subsubsec:Token_Bucket_Scheme}
-\begin{definition}[Token Bucket Scheme]\label{def:Token_Bucket_Scheme}
-  In a \emph{token bucket scheme} the transmission sender gets a set of tokens, each of which corresponds to sending a packet, byte, bit, etc.
-  To send anything, you must consume one of your tokens, and these are generated over a regular interval.
-\end{definition}
-
-To find the maximum number of cells that can depart at any given time, we use \Cref{eq:Token_Bucket_Max_Cells}
-\begin{equation}\label{eq:Token_Bucket_Max_Cells}
-  R = \rho T + \beta
-\end{equation}
-where
-\begin{description}[noitemsep]
-\item $R$ is the Maximum number of cells that can depart from the system with a given number of tokens.
-\item $\rho$ is the token generation/arrival rate.
-\item $T$ is the amount of time that passes while cells are departing.
-\item $\beta$ is the capacity of the token bucket.
-\end{description}
-
-To find the amount of time a transmitter can send a burst of information with a given size of token bucket, generation/arrival rate, and transmission speed, we use \Cref{eq:Token_Bucket_Max_Burst_Time}.
-\begin{equation}\label{eq:Token_Bucket_Max_Burst_Time}
-  T = \frac{\beta}{R_{\mathrm{Max}}-\rho}
-\end{equation}
-where
-\begin{description}[noitemsep]
-\item $T$ is the maximum amount of time a transmitter can send cells.
-\item $\beta$ is the capacity of the token bucket.
-\item $R_{\mathrm{Max}}$ is the maximum cell transmission rate.
-\item $\rho$ is the generation/arrival of new tokens.
-\end{description}
 
 %%% Local Variables:
 %%% mode: latex
