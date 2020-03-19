@@ -10,6 +10,11 @@
 \end{definition}
 
 \subsubsection{TCP Flow Control}\label{subsubsec:TCP_Flow_Control}
+\nameref{def:Transmission_Control_Protocol} uses a form of \nameref{def:Sliding_Window} that differes from windows used in other protocols.
+Namely, the \textbf{acknowledgement of received data} and the \textbf{granting of permission} to send more is \textbf{decoupled}.
+
+TCP's flow control is known as a Credit Allocation Scheme, or a \nameref{def:Credit_Based_Scheme}.
+
 \paragraph{TCP Header Fields for Flow Control}\label{par:TCP_Header_Fields_Flow_Control}
 \paragraph{Flexible Credit Allocation}\label{par:TCP_Flexible_Credit_Allocation}
 \paragraph{Credit Allocation Policy}\label{par:TCP_Credit_Allocation_Policy}
