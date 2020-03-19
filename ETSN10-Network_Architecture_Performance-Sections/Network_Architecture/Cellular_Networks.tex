@@ -186,7 +186,17 @@ Network Function Virtualization is a massive part in why 5G is going to be able 
 
 \paragraph{Network Slicing}\label{par:Network_Slicing}
 \begin{definition}[Network Slicing]\label{def:Network_Slicing}
+  \emph{Network Slicing} is a network architecture that enables the multiplexing of virtualized and independent logical networks on the same physical network infrastructure.
+  Each network slice is an isolated end-to-end network, thus it has its own Quality of Service requirements and management techniques.
+  These slices can be tailored to fulfill diverse requirements as requested by a particular application.
+  \begin{itemize}[noitemsep]
+  \item A mobile broadband slice can handle Quality of Service for video streams.
+  \item A URLLC slice can prioritize alarm packets.
+  \end{itemize}
 
+  \begin{remark}[Core 5G Functionality]\label{rmk:Network_Slicing_Core_5G}
+    \nameref{def:Network_Slicing} is one of the 3 \textbf{MAJOR} functionalities that is enabling 5G to happen.
+  \end{remark}
 \end{definition}
 \textbf{TODO!!}
 
