@@ -112,11 +112,14 @@
 \end{restatable}
 
 \begin{restatable}[Congestion]{definition}{defCongestion}\label{def:Congestion}
-    \emph{Congestion} in a network occurs when there is too much data being sent and the network is unable to deliver it all.
-  This can result in data loss or long delays.
+  \emph{Congestion} in a network occurs when there is too much data being sent and the network is unable to deliver it all.
+  More formally, congestion occurs when the amount of data being transmitted approaches the network's capacity.
+
+  This results in data/packet loss, long delays, and lower throughput.
+  More generally, a congested network has a negative impact on all facets of Quality of Service for all affected flows.
 \end{restatable}
 
-\paragraph{\nameref*{subsubsec:TCP_Congestion_Control} in \nameref*{def:Transmission_Control_Protocol}}\label{par:TCP_Congestion_Control}
+\paragraph{\nameref*{subsubsec:Review_Congestion_Control} in \nameref*{def:Transmission_Control_Protocol}}\label{par:Review_Congestion_Control}
 \begin{definition}[Congestion Window]\label{def:Congestion_Window}
   In \nameref{def:Transmission_Control_Protocol}, lost data is considered a sign of \nameref{def:Congestion} and the sender should reduce its rate.
   The sender has a \emph{congestion window}, which refers to the maximum number of unacknowledged segments that may be in transit at a time.
