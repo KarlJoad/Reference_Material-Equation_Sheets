@@ -167,7 +167,22 @@ As mentioned in \Cref{def:Software_Defined_Networking}, the main idea is to sepa
 \end{figure}
 
 \paragraph{Network Function Virtualization}\label{par:NFV}
-\textbf{TODO!!}
+Network Function Virtualization is a massive part in why 5G is going to be able to scale to handle the traffic that will be placed on it.
+
+\begin{definition}[Network Function Virtualization]\label{def:Network_Function_Virtualization}
+  \emph{Network Function Virtualization} (\emph{NFV}) is the process of taking functions that used to be performed by dedicated physical entities and virtualizing them.
+  This way, there are virtual machines or containers running the same functions as the physical hardware, but multiple instances can run on the same hardware.
+  This also allows for dynamic scaling as the network demands.
+
+  \begin{remark}[\nameref*{def:Software_Defined_Networking} Requirement]\label{rmk:NFV_Rely_SDN}
+    \nameref{def:Network_Function_Virtualization} can only work because of \nameref{def:Software_Defined_Networking}.
+    The only way to be able to move network functions around easily to have the funcctions be software-defined, allowing networks to reconfigure dynamically.
+  \end{remark}
+
+  \begin{remark}[Core 5G Functionality]\label{rmk:NFV_Core_5G}
+    \nameref{def:Network_Function_Virtualization} is one of the 3 \textbf{MAJOR} functionalities that is enabling 5G to happen.
+  \end{remark}
+\end{definition}
 
 \paragraph{Network Slicing}\label{par:Network_Slicing}
 \begin{definition}[Network Slicing]\label{def:Network_Slicing}
