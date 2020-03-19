@@ -103,6 +103,17 @@ The \emph{Normalized Throughput} is shown in \Cref{eq:TCP_Normalized_Throughput}
 \end{description}
 
 \paragraph{Complicating Factors}\label{par:TCP_Complicating_Factors}
+There are several factors that complicate the use of TCP's sliding window scheme to perform \nameref{def:Flow_Control}.
+\begin{itemize}[noitemsep]
+\item Multiple TCP connections are multiplexed over same network interface, reducing available data rate, $R$, and efficiency.
+\item For multi-hop connections, $D$ is the sum of delays across \textbf{each} link \textbf{plus} delays at each router.
+\item If the sender's data rate, $R$, exceeds the data rate on one of the hops, that hop will be a bottleneck.
+\item Lost packets are retransmitted, reducing throughput.
+  \begin{itemize}[noitemsep]
+  \item The size of the impact depends on retransmission policy.
+  \end{itemize}
+\end{itemize}
+
 \subsubsection{Retransmission Policies}\label{subsubsec:Retransmission_Policies}
 \subsubsection{Timers}\label{subsubsec:Packet_Timers}
 \paragraph{Fixed Timers}\label{par:Fixed_Packet_Timers}
