@@ -162,7 +162,76 @@ The Kleinrock and Tobagi model was published in 1975.
 \end{itemize}
 
 \subsubsection{Model Construction Methodology}\label{subsubsec:Kleinrock_Tobagi_Model_Method}
-\textbf{TODO!!}
+\begin{itemize}[noitemsep]
+\item A terminal cannot transmit and receive simultaneously.
+  \begin{itemize}[noitemsep]
+  \item This is actually true for wireless LANs today
+  \item Radios that can transmit and receive simultaneously tend to be more complicated and expensive.
+  \item Own transmission drowns out received transmission
+  \end{itemize}
+\item The delay incurred by switching from one mode to the other is negligible.
+  \begin{itemize}[noitemsep]
+  \item What do we mean by negligible?
+  \item How small must the delay be in reality for this assumption to be reasonable?
+  \end{itemize}
+\item The time required to detect the carrier is negligible.
+\item The channel is assumed to be noiseless.
+  \begin{itemize}[noitemsep]
+  \item This is sometimes true (or almost) and sometimes very much untrue.
+  \item This assumption limits the applicability of the model to situations where noise is negligible.
+  \end{itemize}
+\item The propagation delay is identical for all sender-receiver pairs.
+  \begin{itemize}[noitemsep]
+  \item By taking the largest used propagation delay, we can get pessimistic bounds from the model.
+  \end{itemize}
+\end{itemize}
+
+Simplifications that were made:
+\begin{itemize}[noitemsep]
+\item Any overlap in two (or more) packets causes destructive interference in both (all) packets and they must be retransmitted.
+  \begin{itemize}[noitemsep]
+  \item The validity of this assumption depends on the error detection and correction schemes used.
+  \item We are therefore examining these protocols in the absence of any such schemes to deal with partial destruction of a packet.
+  \end{itemize}
+\item The system is synchronised and all transmissions begin at the start of a slot.
+  \begin{itemize}[noitemsep]
+  \item Synchronisation is thus not included in the model, but it needs to be part of any real system that the model can be reasonably applied to.
+  \end{itemize}
+\item There is a positive acknowledgement scheme, i.e.\ a message
+  is assumed lost unless an acknowledgement is sent.
+  \begin{itemize}[noitemsep]
+  \item Again, the acknowledgement scheme is not examined in the model, but it needs to be present for the model to be applicable to a real system.
+  \end{itemize}
+\item Acknowledgement packets are always correctly received.
+\item The processing time required to check a packet is correct and
+  generate an acknowledgement is negligible.
+\item The average retransmission delay is large compared to the
+  packet transmission time.
+  \begin{itemize}[noitemsep]
+  \item This reduces the number of cases to deal with later.
+  \item Retransmissions can essentially be treated just like any other packet.
+  \end{itemize}
+\end{itemize}
+
+Some simplifying system inputs and outputs:
+\begin{itemize}[noitemsep]
+\item All packets are of constant length.
+  \begin{itemize}[noitemsep]
+  \item This is not true in reality.
+  \item What do we lose and what do we gain by using this assumption?
+  \end{itemize}
+\item The traffic source consists of an infinite number of users who collectively form an independent Poisson source.
+  \begin{itemize}[noitemsep]
+  \item This is perhaps the biggest simplification in the whole model, and demonstrably false in reality.
+  \item But we gain a huge amount of analytic tractability.
+  \item How much does the traffic model affect the results?
+  \end{itemize}
+\item Steady state conditions are assumed to exist.
+  \begin{itemize}[noitemsep]
+  \item Kleinrock and Tobagi note in the paper that the protocols they examine have in fact been shown to be unstable.
+  \item However, the results are nonetheless useful in finite cases where a steady state may indeed be reached.
+  \end{itemize}
+\end{itemize}
 
 \subsubsection{Model Throughputs}\label{subsubsec:Kleinrock_Tobagi_Model_Throughputs}
 In all of equations of throughputs, they are true for when $a = 0$.
