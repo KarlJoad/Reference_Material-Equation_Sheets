@@ -155,6 +155,18 @@ The Retransmission Timer, $RTO$, has a fixed value for all packets.
 This has problems if the network has particularly high variability in delay values.
 
 \paragraph{Adaptive Timers}\label{par:Adaptive_Packet_Timers}
+Before we begin with adaptive timers, we should discuss some problems with them.
+\begin{itemize}[noitemsep]
+\item Peer TCP entity perform cumulative acknowledgements and not \texttt{ACK} immediately.
+\item For retransmitted segments, the sender cannot tell whether a given \texttt{ACK} is sent in response to the original transmission or the retransmission.
+  \begin{itemize}[noitemsep]
+  \item This is because the original packet and the retransmitted one will have the same sequence number, $SN$.
+  \item Since \texttt{ACK}s rely on this number, the acknowledgement number $AN$ will have the same value.
+  \end{itemize}
+\item Network conditions may change suddenly, causing additional problems.
+\item However, an adaptive timer is still better than a fixed timer!
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
