@@ -245,6 +245,13 @@ The combination of these parameters is called numerology.
   Different numerologies cannot be used by the same network slice, but different numerologies can be used by \textbf{different} network slices in the same frame.
 \end{remark*}
 
+The advantage of these different numerologies can be shown best by examples:
+\begin{itemize}[noitemsep]
+\item A URLLC application such as industrial control might need a short slot time to ensure low latency.
+\item An eMBB application such as UHD video streaming might want a large slot capacity (low overhead for large amounts of data transmitted).
+\item An mMTC application such as an IoT sensor network might need many small slots to allocate small amounts of data to each device.
+\end{itemize}
+
 
 \paragraph{Enabling Technologies for 5G}\label{par:5G_Enabling_Technologies}
 \textbf{TODO!!}
