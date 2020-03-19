@@ -10,6 +10,65 @@ In \nameref{def:Transmission_Control_Protocol}, there is a problem that occurs b
   Each of the affected TCP session backs off its send rate at the same time, causing link utilization to go way down.
 \end{definition}
 
+\subsubsection{Random Early Discard}\label{subsubsec:Random_Early_Discard}
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+  \SetKwData{AvgQueueSize}{avgQueueSize}
+  \SetKwData{CountLastDiscard}{CountLastDiscardPacket}
+  \SetKwData{QueueIdleTime}{QueueIdleTime}
+  \SetKwData{CurrentTime}{CurrentTime}
+  \SetKwData{CurrentQueueSize}{CurrentQueueSize}
+  \BlankLine{}
+
+  Initialization: \;
+  \AvgQueueSize$\leftarrow 0$ \;
+  \CountLastDiscard$\leftarrow -1$ \;
+
+  \ForEach{packet arrival}{
+    \textbf{Calculate the average queue size} \;
+    \eIf{queue not empty, $q > 0$}{
+      \AvgQueueSize$\leftarrow (1-w_{\mathrm{queue}})$\AvgQueueSize$+ w_{\mathrm{queue}}$\CurrentQueueSize \;
+    }{
+      $m \leftarrow f($\CurrentTime$- q\_time)$ \;
+      \AvgQueueSize$\leftarrow$\AvgQueueSize$\times (1-w_{q})m$ \;
+    }
+    \textbf{Determine Packet Discard} \;
+    \uIf{\AvgQueueSize$<TH_{\mathrm{Min}}$}{
+      queue packet \;
+      \CountLastDiscard$\leftarrow -1$ \;
+    }\uElseIf{$TH_{\mathrm{Min}} \leq$\AvgQueueSize$\leq TH_{\mathrm{Max}}$}{
+      \CountLastDiscard$\leftarrow$\CountLastDiscard$+1$ \;
+      $P_{b} \leftarrow P_{\mathrm{Max}}($\AvgQueueSize$- TH_{\mathrm{Min}}) / (TH_{\mathrm{Max}} - TH_{\mathrm{Min}})$ \;
+      $P_{a} \leftarrow P_{b} / (1-$\CountLastDiscard$\times P_{b})$ \;
+      \eIf{Probability $P_{a}$}{
+        discard packet \;
+        \CountLastDiscard$\leftarrow 0$ \;
+      }(Probability $1-P_{a}$){
+        queue packet \;
+      }
+    }\Else(\AvgQueueSize$> TH_{\mathrm{Max}}$){
+      discard packet \;
+      \CountLastDiscard$\leftarrow 0$ \;
+    }
+  }
+
+  When the queue becomes empty: \;
+  \QueueIdleTime$\leftarrow$\CurrentTime
+  \caption{Random Early Discard (RED)}
+  \label{algo:Random_Early_Discard}
+\end{algorithm}
+\begin{description}[noitemsep]
+\item $q\_time$: Start of the queue's idle time.
+\item $w_{\mathrm{queue}}$: Weight of the queue.
+\item $TH_{\mathrm{Min}}$: Minimum threshold for queue.
+\item $TH_{\mathrm{Max}}$: Maximum threshold for queue.
+\item $P_{a}$: Current packet-marking probability.
+\item $P_{b}$: Temporary Probability used for calculations.
+\item $P_{\mathrm{Max}}$: Maximum value for $P_{b}$.
+\item $f(t)$: A linear function of time $t$.
+\end{description}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../ETSN10-Network_Architecture_Performance-Reference_Sheet"
