@@ -63,6 +63,14 @@ The challenge here is that our previous notion of \nameref{def:Semantic_Environm
 
 \inputminted[frame=lines,linenos]{pascal}{./EDAP05-Concepts_Programming_Languages-Sections/Functional_Programming/Code/Global_State_Change.pas}
 
+There are two models for modelling this.
+The simpler one turns the environment into a parameter of the evaluation relation, so that you get
+\begin{equation}\label{eq:Simple_Side_Effect_Variable_Update}
+  (e, E) \EvaluatesTo (v, E')
+\end{equation}
+
+However, the model in \Cref{eq:Simple_Side_Effect_Variable_Update} is too weak for real languages like Java or Scala, since those lanugages permit \nameref{def:Aliasing}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
