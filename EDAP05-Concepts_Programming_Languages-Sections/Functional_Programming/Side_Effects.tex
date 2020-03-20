@@ -7,7 +7,7 @@ However, \nameref{def:Function_Side_Effect}s include:
 \item Writing to standard output
 \end{itemize}
 
-However, if a functional language did not include these, the language is severely hampered in its usability.\footnote{Some functional languages are like this, but they are not widely used, so are not discussed.}
+However, if a functional language did not include these, the language is severely hampered in its usability.\footnote{Some functional languages are like this, but they are not widely used, so they are not discussed.}
 To get ``around'' this issue, there are 3 ways functional languages can handle these non-pure actions.
 \begin{enumerate}[noitemsep]
 \item The language was \emph{imperative first}.
@@ -33,6 +33,26 @@ To get ``around'' this issue, there are 3 ways functional languages can handle t
   \item Monads may also allow for state to be present throughout a program, but permission to access the state must be passed to functions, like an \nameref{def:Actual_Parameter}.
   \end{itemize}
 \end{enumerate}
+
+\subsubsection{Building Side Effects into a Language}\label{subsubsec:Building_Side_Effects_to_Language}
+Since inference rules describe \nameref{def:Semantics} in a ``pure'' mathematical way, side effects become additional evaluation results.
+This means our evaluation relation now relates the tuple $(expr, \text{previous state})$ with the tuple $(val, \text{state afterwards})$.
+
+For example, to model printing, you could write
+\begin{equation}\label{eq:Semantic_Side_Effect_Printing}
+  \frac{(e, P) \EvaluatesTo (v, P')}{(\mathtt{PRINT\,} e, P) \EvaluatesTo (v, P'+[v])}
+\end{equation}
+\begin{description}[noitemsep]
+\item $e$, The expression to be evaluated and printed.
+\item $P$, The previous state of the system, in this case, the list of all previously printed numbers.
+\item $v$, The value the expression $e$ evaluates to.
+\item $P'$, The state of the system after printing, in this case, the list of all printed numbers up to this one.
+\item $P'+[v]$, The list of printed numbers up to this point, with the value $v$ appended.
+\end{description}
+
+\begin{remark*}
+  In \Cref{eq:Semantic_Side_Effect_Printing}, $\mathtt{PRINT} x$ would also return the evaluation result of $x$, so $\mathtt{PRINT} (\mathtt{PRINT} 7)$ would print the number 7 twice.
+\end{remark*}
 
 %%% Local Variables:
 %%% mode: latex
