@@ -1,0 +1,52 @@
+\input{Reference_Sheet_Preamble}
+
+% These packages are more specific to certain documents, but will be availabe in the template
+% \usepackage{esint} % Provides us with more types of integral symbols to use
+% \usepackage[outputdir=./TeX_Output]{minted} % Allow us to nicely typeset 300+ programming languages
+% This document must be compiled with the -shell-escape flag if the packages above are uncommented
+
+% \graphicspath{{./Drawings/Course}} % Uncomment this to use pictures in this document
+\addbibresource{./Bibliographies/EDAN40-Functional_Programming.bib}
+
+% Math Operators that are useful to abstract the written math away to one spot
+% These are supposed to be document-specific mathematical operators that will make life easier
+% Many fundamental operators are defined in Reference_Sheet_Preamble.tex
+
+\begin{titlepage}
+  \title{EDAN40/EDAN95: Functional Programming --- Reference Sheet}
+  \author{Karl Hallsby}
+  \date{Last Edited: \today} % We want to inform people when this document was last edited
+\end{titlepage}
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\pagenumbering{roman} % i, ii, iii on beginning pages, that don't have content
+\tableofcontents
+\clearpage
+\listoftheorems[ignoreall, show={definition, Definition}]
+\clearpage
+\pagenumbering{arabic} % 1,2,3 on content pages
+
+\nocite{*}
+
+%====================================APPENDIX====================================
+\appendix
+\counterwithin{definition}{subsection}
+
+\clearpage
+\input{./Appendix-Reference_Material/Complex_Numbers}
+
+\clearpage
+\input{./Appendix-Reference_Material/Trig}
+
+\clearpage
+\input{./Appendix-Reference_Material/Calculus}
+
+\clearpage
+\input{./Appendix-Reference_Material/Laplace_Transform}
+
+% To make this print, you must include a citation somewhere in the document
+\clearpage
+\printbibliography{}
+\end{document}
