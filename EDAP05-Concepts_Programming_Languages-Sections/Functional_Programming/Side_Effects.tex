@@ -54,6 +54,15 @@ For example, to model printing, you could write
   In \Cref{eq:Semantic_Side_Effect_Printing}, $\mathtt{PRINT} x$ would also return the evaluation result of $x$, so $\mathtt{PRINT} (\mathtt{PRINT} 7)$ would print the number 7 twice.
 \end{remark*}
 
+\subsubsection{Modelling Side Effect Updating of Variables}\label{subsubsec:Model_Side_Effect_Variable_Update}
+In most \nameref{def:Imperative_Programming_Language}s, variables can be updated, i.e.\ have their value changed from under them.
+This is different than in \nameref{def:Functional_Programming_Language}s, which technically create a new variable with the same name and assign the new value.
+
+Modelling updateable variables is a bit more tricky but still possible.
+The challenge here is that our previous notion of \nameref{def:Semantic_Environment}s is no longer powerful enough, because a subexpression may change global state, as seen in the \texttt{MYSTERY} code below.
+
+\inputminted[frame=lines,linenos]{pascal}{./EDAP05-Concepts_Programming_Languages-Sections/Functional_Programming/Code/Global_State_Change.pas}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
