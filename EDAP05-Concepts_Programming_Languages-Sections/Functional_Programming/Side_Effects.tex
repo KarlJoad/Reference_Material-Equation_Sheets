@@ -71,6 +71,31 @@ The simpler one turns the environment into a parameter of the evaluation relatio
 
 However, the model in \Cref{eq:Simple_Side_Effect_Variable_Update} is too weak for real languages like Java or Scala, since those lanugages permit \nameref{def:Aliasing}.
 
+The second model can support \nameref{def:Aliasing}.
+To do this, we usually use a two-step look-up process, where the first lookup (with the \nameref{def:Semantic_Environment} $E$) determines a variable's memory address $a$.
+The second step uses a so-called store to translate the address to a value.
+This gives rules like the following:
+\begin{subequations}\label{eq:Strong_Side_Effect_Variable_Update}
+  \begin{equation}\label{subeq:Strong_Side_Effect_Variable_Update-Read_Variable}
+    \frac{E[x] = a \:\: S[a] = v}{E \vdash (x, S) \EvaluatesTo (v, S)} \SemanticRuleName{Read Variable}
+  \end{equation}
+  \begin{equation}\label{subeq:Strong_Side_Effect_Variable_Update-Update_Variable}
+    \frac{E \vdash (x, S) \EvaluatesTo (v, S') \:\: E[x] = a}{E \vdash (x := e, S) \EvaluatesTo (v, S'[a \mapsto v])} \SemanticRuleName{Update Variable}
+  \end{equation}
+  \begin{equation}\label{subeq:Strong_Side_Effect_Variable_Update-Sequence}
+  \frac{E \vdash (S, s_{1}) \EvaluatesTo (v_{1}, S') \:\: E \vdash (S', s_{2}) \EvaluatesTo (v_{2}, S'')}{E \vdash (s_{1}; s_{2}, S) \EvaluatesTo (v_{2}, S'')} \SemanticRuleName{Sequence}
+  \end{equation}
+\end{subequations}
+
+With this kind of model it becomes easy to model \nameref{def:Pass_By_Reference} versus \nameref{def:Pass_By_Value} \nameref{def:Semantics}, or to describe the \texttt{\&} and \texttt{*} operators from C and C++:
+\begin{equation}\label{eq:C_Get_Address}
+  \frac{E[x] = a}{E \vdash (\&x, S) \EvaluatesTo (a, s)} \SemanticRuleName{Get Address}
+\end{equation}
+
+\begin{equation}\label{eq:C_Dereference}
+  \frac{E \vdash (e, S) \EvaluatesTo (a, S') \:\: v = S'[a]}{E \vdash (*e, S) \EvaluatesTo (v, S)} \SemanticRuleName{Dereference Address}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAP05-Concepts_Programming_Languages-Reference_Sheet"
