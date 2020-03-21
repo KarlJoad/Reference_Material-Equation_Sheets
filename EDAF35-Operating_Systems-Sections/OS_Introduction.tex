@@ -1,0 +1,203 @@
+\section{Operating System Introduction}\label{sec:OS_Intro}
+A computer system can be roughly divided into 4 parts.
+\begin{itemize}[noitemsep]
+\item The \nameref{def:Hardware}
+\item The \nameref{def:Operating_System}
+\item The \nameref{def:Application_Program}s
+\item The Users
+\end{itemize}
+
+\begin{definition}[Hardware]\label{def:Hardware}
+  \emph{Hardware} is the physical components of the system and provide the basic computing resources for the system..
+  Hardware includes the \nameref{def:CPU}, \nameref{def:Memory}, and all I/O devices (monitor, keyboard, mouse, etc.).
+\end{definition}
+
+\begin{restatable}[Operating System]{definition}{defOperatingSystem}\label{def:Operating_System}
+  An \emph{operating system} is a large piece of software that controls the \nameref{def:Hardware} and coordinates the many \nameref{def:Application_Program}s various numbers of \nameref{def:User}s may use.
+  It provides the means for proper use of these resources to allow the computer to run.
+
+  By itself, an operating system does nothing useful.
+  It simply provides an \textbf{environment} within which other programs can perform useful work.
+
+  The fundamental goal of computer systems is to execute user programs and to make solving user problems easier.
+  These programs require certain common operations, such as those controlling the I/O devices.
+
+  In addition, there is no universally accepted definition of what is part of the operating system.
+  A simple definition is that it includes everything a vendor ships when you order ``the operating system.''
+  The features included, however, vary greatly across systems.
+  Some systems take up less than a megabyte of space and lack even a full-screen editor, whereas others require gigabytes of space and are based entirely on graphical windowing systems.
+  A more common definition, and the one that we usually follow, is that the operating system is the one program running at all times on the computer—usually called the \nameref{def:Kernel}.
+
+  \begin{remark}[Kernel-Level Non-Kernal Programs]\label{rmk:Kernel_Level_Non_Kernel_Programs}
+    Along with the \nameref{def:Kernel}, there are two other types of programs:
+    \begin{enumerate}[noitemsep]
+    \item System Programs,
+      \begin{itemize}[noitemsep]
+      \item Associated with the \nameref{def:Operating_System} but are not necessarily part of the \nameref{def:Kernel}.
+      \end{itemize}
+    \item Application Programs
+      \begin{itemize}[noitemsep]
+      \item Includes all programs not associated with the operation of the system
+      \end{itemize}
+    \end{enumerate}
+  \end{remark}
+\end{restatable}
+
+\begin{definition}[Kernel]\label{def:Kernel}
+  The kernel is a computer program at the core of a computer's operating system with complete control over everything in the system.
+  It is the ``portion of the operating system code that is always resident in memory''.
+  It facilitates interactions between hardware and software components.
+  On most systems, it is one of the first programs loaded on startup (after the bootloader).
+  It handles input/output requests from software, translating them into data-processing instructions for the central processing unit.
+  It handles memory and its mapping, peripherals like: keyboards, monitors, printers, and speakers.
+  A kernel connects the application software to the hardware of a computer.
+
+  The critical code of the kernel is usually loaded into a separate area of memory, which is protected from access by application programs or other, less critical parts of the operating system.
+  The kernel performs its tasks, such as running processes, managing hardware devices such as the hard disk, and handling interrupts, in this protected kernel space.
+\end{definition}
+
+\begin{definition}[Application Program]\label{def:Application_Program}
+  An \emph{application program} is a tool used by a \nameref{def:User} to solve some problem.
+  This is the main thing a normal person will interact with.
+  These pieces of software can include:
+  \begin{itemize}[noitemsep]
+  \item Text editors
+  \item Compilers
+  \item Web browsers
+  \item Word Processors
+  \item Spreadsheets
+  \item etc.
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[User]\label{def:User}
+  A \emph{user} is the person and/or thing that is running some \nameref{def:Application_Program}s.
+
+  \begin{remark}[Thing Users]\label{rmk:Thing_Users}
+    Not all \nameref{def:User}s are required to be people.
+    The automated tasks a computer may do to provide a seamless experience for the person may be done by other users in the system.
+  \end{remark}
+\end{definition}
+
+\subsection{User View}\label{subsec:User_View}
+The user's view of the computer varies according to the interface they are using.
+
+In modern times, most people are using computers with a monitor that provides a GUI, a keyboard, mouse, and the physical system itself.
+These are designed for one user to use the system at a time, allowing that user to monopolize the system's resources.
+The \nameref{def:Operating_System} is designed for \textbf{ease of use} in this case, with relatively little attention paid to performance and resource utilization.
+
+More old-school, but stil in use, a \nameref{def:User} sits at a terminal connected to a mainframe or a minicomputer.
+Other users are accessing the same computer through other terminals.
+These users share resources and may exchange information.
+The operating system in such cases is designed to maximize resource utilization, to assure that all available CPU time, memory, and I/O are used efficiently and that no individual user takes more than their fair share.
+
+In still other cases, \nameref{def:User}s sit at workstations connected to networks of other workstations and servers.
+These users have dedicated resources at their disposal, but they also share resources such as networking and servers, including file, compute, and print servers.
+Therefore, their operating system is designed to compromise between individual usability and resource utilization.
+
+Lastly, there are \nameref{def:Operating_System}s that are designed to have little to no \nameref{def:User} view.
+These are typically embedded systems with very limited input/output.
+
+\subsection{System View}\label{subsec:System_View}
+From the computer’s point of view, the \nameref{def:Operating_System} is the program that interacts the most with the hardware.
+A computer system has many resources that can be used to solve a problem:
+\begin{itemize}[noitemsep]
+\item CPU time
+\item Memory space
+\item File-storage space
+\item I/O devices
+\item etc.
+\end{itemize}
+
+The operating system acts as the manager of these resources.
+Facing numerous and possibly conflicting requests for resources, the operating system must decide how to allocate them so that it can operate the computer system efficiently and fairly.
+As we have seen, resource allocation is especially important where many \nameref{def:User}s access the same system.
+
+Another, slightly different, view of an operating system emphasizes the need to control the various I/O devices and user programs.
+An operating system is a control program.
+A control program manages the execution of user programs to prevent errors and improper use of the computer.
+It is especially concerned with the operation and control of I/O devices.
+
+\subsection{Computer Organization}\label{subsec:Computer_Organization}
+The initial program, run \textbf{\emph{RIGHT}} when the computer starts is typically kept onboard the computer \nameref{def:Hardware}, on ROMs or EEPROMs.
+
+\begin{definition}[Firmware]\label{def:Firmware}
+  \emph{Firmware} is software that is written for a specific piece of hardware in mind.
+  It is almost always stored in the \nameref{def:Hardware}'s onboard storage.
+  Typically it is stored in ROM~(Read-Only Memory) or EEPROM~(Electrically Erasable Programmable Read-Only Memory).
+  It initializes all aspects of the system, from \nameref{def:CPU} \nameref{def:Register}s to device controllers, to memory contents.
+\end{definition}
+
+A \nameref{def:CPU} will continue its boot process, until it reaches the \texttt{init} phase, where many other system processes or \nameref{def:Daemon}s start.
+Once the computer finishes going through all its \texttt{init} phases, it is ready for use, waiting for some event to occur.
+These events can be a \nameref{def:Hardware} \nameref{def:Interrupt} or a software \nameref{def:System_Call}.
+
+\begin{definition}[Daemon]\label{def:Daemon}
+  In Unix and Unix-like \nameref{def:Operating_System}s, a \emph{daemon} is a process that runs in the ``background'', is started, stopped, and handled by the system, rather than the \nameref{def:User}.
+\end{definition}
+
+\begin{definition}[Interrupt]\label{def:Interrupt}
+  An \emph{interrupt} is a special event that the \nameref{def:CPU} \textbf{MUST} handle.
+  These could be system errors, or just a button on the keyboard was pressed.
+  Hardware may trigger an interrupt at any time by sending a signal to the CPU, usually by way of the system bus.
+
+  When a CPU receives an interrupt, it immediately stops what it is doing and transfers execution to some fixed address.
+  To ensure that this happens as quickly as possible, a \nameref{def:Interrupt_Vector} is created.
+\end{definition}
+
+\begin{definition}[Trap]\label{def:Trap}
+  A \emph{trap} or \emph{exception} is a software-generated \nameref{def:Interrupt} caused by:
+  \begin{itemize}[noitemsep]
+  \item A program execution error (Division-by-zero or Invalid Memory Access).
+  \item A specific request from a user program that an operating-system service be performed (Print to screen).
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Interrupt Vector]\label{def:Interrupt_Vector}
+  The \emph{interrupt vector} is a table/list of addresses that redirect the \nameref{def:CPU} to the location of the instructions for how to handle that particular \nameref{def:Interrupt}.
+  Since only a predefined number of interrupts is possible, a table of pointers to interrupt routines is used to provide the necessary speed.
+  These locations hold the addresses of the interrupt service routines for the various devices.
+  This array, or interrupt vector, of addresses is then indexed by a unique device number, given with the interrupt request, to provide the address of the interrupt service routine for the interrupting device.
+  The interrupt routine is called indirectly through the table, with no intermediate routine needed.
+  Generally, this is stored in low memory (the first hundred or so locations).
+\end{definition}
+
+\subsection{System Calls}\label{subsec:System_Calls}
+\begin{definition}[System Call]\label{def:System_Call}
+  Software may trigger an interrupt by executing a special operation called a \emph{system call}.
+  This can also be called a monitor call.
+
+  System calls provide an interface to the services made available by an \nameref{def:Operating_System}.
+  These calls are generally available as routines written in C and C++.
+  Some of the lowest-level tasks (for example, tasks where hardware must be accessed directly) may have to be written using assembly instructions.
+
+  There are roughly 6 different types of system calls:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{subsubsec:Process_Control}
+  \item \nameref{subsubsec:File_Manipulation}
+  \item \nameref{subsubsec:Device_Manipulation}
+  \item \nameref{subsubsec:Information_Maintenance}
+  \item \nameref{subsubsec:Communications}
+  \item \nameref{subsubsec:Protection}
+  \end{enumerate}
+\end{definition}
+
+\nameref{def:System_Call}s are exposed to the programmer by an \nameref{def:API}.
+\begin{definition}[Application Programming Interface]\label{def:API}
+  An \emph{Application Programming Interface} (\emph{API}) specifies a set of functions that are available to an application programmer.
+  They specify the parameters that are passed to each function and the return values the programmer can expect.
+
+  Typically, API calls perform \nameref{def:System_Call}s in the background, without the programmer knowing about them.
+\end{definition}
+
+\subsubsection{Process Control}\label{subsubsec:Process_Control}
+\subsubsection{File Manipulation}\label{subsubsec:File_Manipulation}
+\subsubsection{Device Manipulation}\label{subsubsec:Device_Manipulation}
+\subsubsection{Information Maintenance}\label{subsubsec:Information_Maintenance}
+\subsubsection{Communications}\label{subsubsec:Communications}
+\subsubsection{Protection}\label{subsubsec:Protection}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
