@@ -100,6 +100,11 @@ The idea of the design is for the \nameref{def:Kernel} to provide core services 
 Linking services dynamically is preferable to adding new features directly to the \nameref{def:Kernel}, which would require recompiling the \nameref{def:Kernel} every time a change was made.
 Thus, for example, we might build CPU scheduling and memory management algorithms directly into the \nameref{def:Kernel} and then add support for different file systems by way of loadable \nameref{def:Kernel_Module}s.
 
+The overall result resembles a \nameref{subsubsec:Layered_Approach} in that each \nameref{def:Kernel} section has defined, protected interfaces.
+However, it is more flexible than a \nameref{subsubsec:Layered_Approach}, because any \nameref{def:Kernel_Module} can call any other \nameref{def:Kernel_Module}.
+The approach is also similar to the \nameref{def:Microkernel} approach in that the primary module has only core functions and knowledge of how to load and communicate with other modules.
+But it is more efficient, because \nameref{def:Kernel_Module}s do not need to invoke \nameref{par:Message_Passing} to communicate.
+
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
 
 %%% Local Variables:
