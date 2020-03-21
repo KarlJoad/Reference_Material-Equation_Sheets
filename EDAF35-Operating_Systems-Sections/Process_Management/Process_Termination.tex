@@ -50,6 +50,10 @@ At this point, we have a \nameref{def:Zombie_Process}.
 After \mintinline{c}{do_exit()} completes, the \nameref{def:Process_Descriptor} for the terminated \nameref{def:Process} still exists, but the \nameref{def:Process} is a \nameref{def:Zombie_Process} and is unable to run.
 By remaining a \nameref{def:Process}, albeit a \nameref{def:Zombie_Process}, this enables the system to obtain information about a child \nameref{def:Process} after it has terminated.
 
+\begin{center}
+  \large{\textbf{Consequently, the acts of cleaning up after a \nameref{def:Process} and removing its \nameref{def:Process_Descriptor} are separate.}}
+\end{center}
+
 
 %%% Local Variables:
 %%% mode: latex
