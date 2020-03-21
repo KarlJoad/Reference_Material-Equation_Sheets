@@ -17,6 +17,13 @@ It was written to provide the most functionality in the least space, so it was n
   Device drivers can be added to the \nameref{def:Kernel} as \nameref{def:Kernel_Module}s.
 \end{definition}
 
+In MS-DOS, the interfaces and levels of functionality are not well separated.
+For instance, application programs are able to access the basic I/O routines to write directly to the display and disk drives.
+Such freedom leaves MS-DOS vulnerable to errant (or malicious) programs, causing entire system crashes when user programs fail.
+
+However, this was partly because MS-DOS was also limited by the hardware of its era.
+Because the Intel~8088 for which it was written provides no dual mode and no hardware protection, the designers of MS-DOS had no choice but to leave the base hardware accessible.
+
 \subsubsection{Microkernels}\label{subsubsec:Microkernels}
 \subsubsection{Kernel Modules}\label{subsubsec:Kernel_Modules}
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
