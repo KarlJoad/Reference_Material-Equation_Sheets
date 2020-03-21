@@ -27,20 +27,23 @@ Regardless of how a process terminates, the bulk of the work is handled by \mint
   \mintinline{c}{do_exit()} never returns.
 \end{enumerate}
 
-At this point:
-\begin{itemize}[noitemsep]
-\item all objects associated with the \nameref{def:Process} (assuming the \nameref{def:Process} was the
-  sole user) are freed.
-\item The \nameref{def:Process} is not runnable (and no longer has an address space in which to run)
-\item The process is in the \mintinline{c}{EXIT_ZOMBIE} exit state.
-\item The only memory it occupies is its \nameref{def:Kernel} stack, the \mintinline{c}{thread_info} structure, and the \mintinline{c}{task_struct} structure.
-\item The \nameref{def:Process} exists solely to provide information to its parent.
-  After the parent retrieves the information, or notifies the \nameref{def:Kernel} that it is uninterested, the remaining memory held by the process is freed and returned to the system for use.
-\end{itemize}
+At this point, we have a \nameref{def:Zombie_Process}.
 
 \begin{definition}[Zombie Process]\label{def:Zombie_Process}
   A \emph{zombie process} in Linux is a process that has been completed, but its entry still remains in the process table due to lack of correspondence between the parent and child \nameref{def:Process}es.
   This happens when the \nameref{def:Process} has been terminated, but the \nameref{def:Process_Descriptor} has \textbf{not} be deallocated yet.
+
+  \begin{itemize}[noitemsep]
+  \item All objects associated with the \nameref{def:Process} are freed.
+    \begin{itemize}[noitemsep]
+    \item This assumes that this \nameref{def:Process} was the only one using these objects, i.e.\ no other \nameref{def:Thread}s/\nameref{def:Process}es were using them.
+    \end{itemize}
+  \item The \nameref{def:Process} is not runnable and no longer has an address space in which to run.
+  \item The process is in the \mintinline{c}{EXIT_ZOMBIE} exit state.
+  \item The only memory it occupies is its \nameref{def:Kernel} stack, the \mintinline{c}{thread_info} structure, and the \mintinline{c}{task_struct} structure.
+  \item The \nameref{def:Process} exists solely to provide information to its parent.
+    After the parent retrieves the information, or notifies the \nameref{def:Kernel} that it is uninterested, the remaining memory held by the process is freed and returned to the system for use.
+  \end{itemize}
 \end{definition}
 
 
