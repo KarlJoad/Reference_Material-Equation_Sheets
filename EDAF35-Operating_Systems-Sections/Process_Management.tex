@@ -41,6 +41,21 @@ On modern \nameref{def:Operating_System}s, \nameref{def:Process}es provide two v
   \end{itemize}
 \end{enumerate}
 
+\subsection{The Process Life Cycle}\label{subsec:Process_Life_Cycle}
+A \nameref{def:Process} begins its life when, the \mintinline{c}{fork()} \nameref{def:System_Call} is called.
+This creates a new \nameref{def:Process} by duplicating an existing one.
+The \nameref{def:Process} that calls \mintinline{c}{fork()} is the \textbf{parent}, whereas the new \nameref{def:Process} is the \textbf{child}.
+The \mintinline{c}{fork()} \nameref{def:System_Call} returns from the kernel twice: once in the \textbf{parent} and once in the newborn \textbf{child}.
+The parent resumes execution and the child starts execution at the same place, where the call to \mintinline{c}{fork()} returns.
+
+Often, immediately after a \texttt{fork} it is desirable to execute a new, different \nameref{def:Program}.
+The \mintinline{c}{exec()} family of function calls creates a new address space and loads a new program into it.
+
+Finally, a program exits via the \mintinline{c}{exit()} \nameref{def:System_Call}.
+This function terminates the \nameref{def:Process} and frees all its resources.
+A parent \nameref{def:Process} can inquire about the status of a terminated child via the \mintinline{c}{wait4()} \nameref{def:System_Call}, which enables a \nameref{def:Process} to wait for the termination of a specific \nameref{def:Process}.
+When a \nameref{def:Process} exits, it is placed into a special zombie state that represents terminated \nameref{def:Process}es until the parent calls \mintinline{c}{wait()} or \mintinline{c}{waitpid()}.
+
 
 %%% Local Variables:
 %%% mode: latex
