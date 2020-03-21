@@ -1,0 +1,52 @@
+\subsection{Operating System Debugging}\label{subsec:OS_Debugging}
+\subsubsection{Failure Analysis}\label{subsubsec:Failure_Analysis}
+If a process fails, most \nameref{def:Operating_System}s write the error information to a log file to alert \nameref{def:User}s that the problem occurred.
+The operating system can also take a \nameref{def:Core_Dump}—— and store it in a file for later analysis.
+
+\begin{definition}[Core Dump]\label{def:Core_Dump}
+  A \emph{core dump} captures the memory of the process right as it fails and writes it to a disk.
+
+  \begin{remark}[Why Core?]\label{rmk:Why_Core_Dump}
+    The reason a \nameref{def:Core_Dump} is named the way it is is because memory was referred to as the ``core'' in the early days of computing.
+  \end{remark}
+\end{definition}
+
+Running programs and \nameref{def:Core_Dump}s can be probed by a debugger, which allows a programmer to explore the code and memory of a process.
+Operating-system kernel debugging is more complex than usual because of:
+\begin{itemize}[noitemsep]
+\item The size of the \nameref{def:Kernel}
+\item The complexity of the \nameref{def:Kernel}
+\item The \nameref{def:Kernel}'s control of the hardware
+\item The lack of user-level debugging tools.
+\end{itemize}
+
+
+\begin{definition}[Crash]\label{def:Crash}
+  A failure in the \nameref{def:Kernel} is called a \emph{crash}.
+\end{definition}
+
+When a \nameref{def:Crash} occurs, error information is saved to a log file, and the memory state is saved to a crash dump.
+
+\begin{definition}[Crash Dump]\label{def:Crash_Dump}
+  When a \nameref{def:Crash} occurs in the \nameref{def:Kernel}, a \emph{crash dump} is generated.
+  This is like a \nameref{def:Core_Dump}, in that the entire contents of that process's \nameref{def:Memory} is written to disk.
+\end{definition}
+
+Operating-system debugging and process debugging frequently use different tools and techniques due to the very different nature of these two tasks.
+
+\subsubsection{Performance Tuning}\label{subsec:Performance_Tuning}
+Performance tuning seeks to improve performance by removing processing bottlenecks.
+To identify bottlenecks, we must be able to monitor system performance.
+Thus, the \nameref{def:Operating_System} must have some means of computing and displaying measures of system behavior.
+In a number of systems, the operating system does this by producing trace listings of system behavior.
+All interesting events are logged with their time and important parameters and are written to a file.
+Later, an analysis program can process the log file to determine system performance and to identify bottlenecks and inefficiencies.
+Traces also can help people to find errors in operating-system behavior.
+
+Another approach to performance tuning uses single-purpose, interactive tools that allow users and administrators to question the state of various system components to look for bottlenecks.
+One such tool employs the UNIX command \texttt{top} to display the resources used on the system, as well as a sorted list of the ``top'' resource-using processes.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
