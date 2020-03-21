@@ -100,6 +100,9 @@ A computer system can be roughly divided into 4 parts.
 \begin{definition}[User]\label{def:User}
   A \emph{user} is the person and/or thing that is running some \nameref{def:Application_Program}s.
 
+  Processes that the user starts run under the user-mode or user-level permissions.
+  This are significantly reduced permissions compared to the \nameref{def:Kernel}-mode permissions the \nameref{def:Operating_System} has.
+
   \begin{remark}[Thing Users]\label{rmk:Thing_Users}
     Not all \nameref{def:User}s are required to be people.
     The automated tasks a computer may do to provide a seamless experience for the person may be done by other users in the system.
