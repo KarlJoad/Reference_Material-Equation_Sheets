@@ -1,5 +1,4 @@
 \subsection{Operating System Structure}\label{subsec:OS_Structure}
-\subsubsection{Layered Kernels}\label{subsubsec:Layered_Kernels}
 A system as large and complex as a modern operating system must be engineered carefully if it is to function properly and be modified easily.
 
 \subsubsection{Monolithic Approach}\label{subsubsec:Monolithic_Approach}
@@ -23,6 +22,13 @@ Such freedom leaves MS-DOS vulnerable to errant (or malicious) programs, causing
 
 However, this was partly because MS-DOS was also limited by the hardware of its era.
 Because the Intel~8088 for which it was written provides no dual mode and no hardware protection, the designers of MS-DOS had no choice but to leave the base hardware accessible.
+
+\subsubsection{Layered Approach}\label{subsubsec:Layered_Approach}
+With proper hardware support, \nameref{def:Operating_System}s can be broken into pieces that are smaller and more appropriate than those allowed by the original MS-DOS and UNIX systems.
+The \nameref{def:Operating_System} can then retain much greater control over the computer and over the applications that make use of that computer.
+Implementers have more freedom in changing the inner workings of the system and in creating modular \nameref{def:Operating_System}s.
+Under a top-down approach, the overall functionality and features are determined and are separated into components.
+Information hiding is also important, because it leaves programmers free to implement the low-level routines as they see fit, provided that the external interface of the routine stays unchanged and that the routine itself performs the advertised task.
 
 \subsubsection{Microkernels}\label{subsubsec:Microkernels}
 \subsubsection{Kernel Modules}\label{subsubsec:Kernel_Modules}
