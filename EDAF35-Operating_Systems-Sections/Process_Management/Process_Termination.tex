@@ -1,4 +1,11 @@
 \subsection{Process Termination}\label{subsec:Process_Termination}
+When a process terminates, the \nameref{def:Kernel} releases the resources owned by the process and notifies the child’s parent of its demise.
+Usually, process destruction is self-induced.
+It occurs when the process calls the \mintinline{c}{exit()} \nameref{def:System_Call}.
+This can be done either explicitly when it is ready to terminate or implicitly on return from the main subroutine of any program (The C compiler places a call to \mintinline{c}{exit()} after \mintinline{c}{main()} returns).
+
+A process can also terminate involuntarily.
+This occurs when the process receives a signal or exception it cannot handle or ignore.
 
 
 %%% Local Variables:
