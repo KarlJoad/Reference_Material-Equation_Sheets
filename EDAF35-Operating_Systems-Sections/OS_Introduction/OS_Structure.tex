@@ -106,6 +106,14 @@ The approach is also similar to the \nameref{def:Microkernel} approach in that t
 But it is more efficient, because \nameref{def:Kernel_Module}s do not need to invoke \nameref{par:Message_Passing} to communicate.
 
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
+In practice, very few \nameref{def:Operating_System}s adopt a single, strictly defined structure.
+Instead, they combine different structures, resulting in hybrid systems that address performance, security, and usability issues.
+For example, both Linux and Solaris use \nameref{def:Monolithic_Kernel}s, because having the \nameref{def:Operating_System} in a single address space provides very efficient performance.
+However, they are also modular, so that new functionality can be dynamically added to the \nameref{def:Kernel}.
+
+Windows uses a \nameref{def:Monolithic_Kernel} as well (again primarily for performance reasons), but it retains some behavior typical of \nameref{def:Microkernel} systems.
+It does this by providing support for separate subsystems (known as operating-system personalities) that run as \nameref{def:User}-mode processes.
+Windows also provide support for dynamically loadable \nameref{def:Kernel_Module}s.
 
 %%% Local Variables:
 %%% mode: latex
