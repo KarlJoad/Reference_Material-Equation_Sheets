@@ -7,6 +7,26 @@ This can be done either explicitly when it is ready to terminate or implicitly o
 A process can also terminate involuntarily.
 This occurs when the process receives a signal or exception it cannot handle or ignore.
 
+Regardless of how a process terminates, the bulk of the work is handled by \mintinline{c}{do_exit()}, defined in \mintinline{c}{kernel/exit.c}, which completes a number of chores:
+\begin{enumerate}
+\item It sets the \mintinline{c}{PF_EXITING} flag in the flags member of the \mintinline{c}{task_struct}.
+\item It calls \mintinline{c}{del_timer_sync()} to remove any kernel timers.
+  Upon return, it is guaranteed that no timer is queued and that no timer handler is running.
+\item If BSD process accounting is enabled, \mintinline{c}{do_exit()} calls \mintinline{c}{acct_update_integrals()} to write out accounting information.
+\item It calls \mintinline{c}{exit_mm()} to release the \mintinline{c}{mm_struct} held by this process.
+  If no other process is using this address space, i.e.\ the address space is not shared, the \nameref{def:Kernel} then destroys it.
+\item It calls \mintinline{c}{exit_sem()}.
+  If the process is queued waiting for an IPC semaphore, it is dequeued here.
+\item It then calls \mintinline{c}{exit_files()} and \mintinline{c}{exit_fs()} to decrement the usage count of objects related to file descriptors and filesystem data, respectively.
+  If either usage counts reach zero, the object is no longer in use by any process, and it is destroyed.
+\item It sets the \nameref{def:Process}’s exit code, stored in the \mintinline{c}{exit_code} member of the \mintinline{c}{task_struct}, to the code provided by \mintinline{c}{exit()} or whatever \nameref{def:Kernel} mechanism forced the termination.
+  The exit code is stored here for optional retrieval by the parent.
+\item It calls \mintinline{c}{exit_notify()} to send signals to the \nameref{def:Process}’s parent, reparents any of the \nameref{def:Process}’s children to another thread in their thread group or the init process, and sets the \nameref{def:Process}’s exit state, stored in \mintinline{c}{exit_state} in the \mintinline{c}{task_struct} structure, to \mintinline{c}{EXIT_ZOMBIE}.
+\item \mintinline{c}{do_exit()} calls \mintinline{c}{schedule()} to switch to a new process.
+  Because the process is now not schedulable, this is the last code the \nameref{def:Process} will ever execute.
+  \mintinline{c}{do_exit()} never returns.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
