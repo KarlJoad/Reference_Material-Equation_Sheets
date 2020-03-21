@@ -34,6 +34,9 @@ A system can be made modular in many ways.
 One method is the layered approach, in which the \nameref{def:Operating_System} is broken into a number of layers.
 The bottom layer (layer 0) is the hardware; the highest (layer N) is the user interface.
 
+A typical operating-system layer, layer $M$ consists of data structures and a set of routines that can be invoked by higher-level layers.
+Layer $M$, in turn, can \textbf{\emph{ONLY}} invoke operations on lower-level layers and itself.
+
 \subsubsection{Microkernels}\label{subsubsec:Microkernels}
 \subsubsection{Kernel Modules}\label{subsubsec:Kernel_Modules}
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
