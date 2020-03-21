@@ -79,6 +79,13 @@ Typically, however, microkernels provide minimal process and memory management, 
 The main function of the \nameref{def:Microkernel} is to provide communication between the client program and the various services that are also running in user space.
 Communication is provided through \nameref{par:Message_Passing}.
 
+One benefit of the \nameref{def:Microkernel} approach is that it makes extending the \nameref{def:Operating_System} easier.
+All new services are added to user space and consequently do not require modification of the \nameref{def:Kernel}.
+When the \nameref{def:Kernel} does have to be modified, the changes tend to be fewer, because the \nameref{def:Microkernel} is smaller.
+The resulting \nameref{def:Operating_System} is easier to port from one hardware design to another.
+The \nameref{def:Microkernel} also provides more security and reliability, since most services are running as \nameref{def:User}— rather than \nameref{def:Kernel}—processes.
+If a service fails, the rest of the \nameref{def:Operating_System} remains untouched.
+
 \subsubsection{Kernel Modules}\label{subsubsec:Kernel_Modules}
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
 
