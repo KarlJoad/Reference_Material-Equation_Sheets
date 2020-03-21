@@ -89,6 +89,13 @@ If a service fails, the rest of the \nameref{def:Operating_System} remains untou
 Unfortunately, the performance of \nameref{def:Microkernel}s can suffer due to increased system-function overhead.
 
 \subsubsection{Kernel Modules}\label{subsubsec:Kernel_Modules}
+In this architecture, the \nameref{def:Kernel} has a set of core components and links in additional services via \nameref{def:Kernel_Module}s, either at boot time or during runtime.
+
+\begin{definition}[Kernel Module]\label{def:Kernel_Module}
+  A \emph{kernel module} is code that can be loaded into the \nameref{def:Kernel} image at will, without requiring users to rebuild the kernel or reboot their computer.
+  The modular design ensures that you do not have to make and/or compile a complete \nameref{def:Monolithic_Kernel} that contains all code necessary for hardware and situations.
+\end{definition}
+
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
 
 %%% Local Variables:
