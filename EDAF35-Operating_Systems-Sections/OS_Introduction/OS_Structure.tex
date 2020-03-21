@@ -30,13 +30,16 @@ Implementers have more freedom in changing the inner workings of the system and 
 Under a top-down approach, the overall functionality and features are determined and are separated into components.
 Information hiding is also important, because it leaves programmers free to implement the low-level routines as they see fit, provided that the external interface of the routine stays unchanged and that the routine itself performs the advertised task.
 
+\paragraph{How to Make Modular Kernels}\label{par:How_Make_Modular_Kernels}
 A system can be made modular in many ways.
 One method is the layered approach, in which the \nameref{def:Operating_System} is broken into a number of layers.
 The bottom layer (layer 0) is the hardware; the highest (layer N) is the user interface.
 
+\paragraph{How to Use Modular Kernels}\label{par:How_Use_Modular_Kernels}
 A typical operating-system layer, layer $M$ consists of data structures and a set of routines that can be invoked by higher-level layers.
 Layer $M$, in turn, can \textbf{\emph{ONLY}} invoke operations on lower-level layers and itself.
 
+\paragraph{Advantages of Modular Kernels}\label{par:Modular_Kernels_Advantages}
 The main advantage of the layered approach is simplicity of construction and debugging.
 The layers are selected so that each uses functions and services of only lower-level layers.
 This approach simplifies debugging and system verification.
@@ -47,6 +50,7 @@ Thus, the design and implementation of the system are simplified.
 Each layer is implemented only with operations provided by lower-level layers.
 A layer does not need to know how these operations are implemented; it needs to know only what these operations do.
 
+\paragraph{Disadvantages of Modular Kernels}\label{par:Modular_Kernels_Disadvantages}
 The major difficulty with the layered approach involves appropriately defining the various layers.
 Because a layer can use only lower-level layers, careful planning is necessary.
 Even with planning, there can be circular dependencies created between layers.
