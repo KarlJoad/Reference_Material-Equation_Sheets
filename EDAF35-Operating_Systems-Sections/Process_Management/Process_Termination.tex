@@ -54,6 +54,23 @@ By remaining a \nameref{def:Process}, albeit a \nameref{def:Zombie_Process}, thi
   \large{\textbf{Consequently, the acts of cleaning up after a \nameref{def:Process} and removing its \nameref{def:Process_Descriptor} are separate.}}
 \end{center}
 
+\textbf{After} the parent has obtained information on its terminated child, or signified to the \nameref{def:Kernel} that it does not care, the child’s \mintinline{c}{task_struct} is deallocated.
+The \mintinline{c}{wait()} family of functions are implemented via a single \nameref{def:System_Call}, \mintinline{c}{wait4()}.
+The standard behavior is to suspend execution of the calling task until one of its children exits, at which time the function returns with the PID of the exited child.
+Additionally, a pointer is provided to the function that on return holds the exit code of the terminated child.
+
+When it is time to finally deallocate the \nameref{def:Process_Descriptor}, \mintinline{c}{release_task()} is invoked.
+It does the following:
+\begin{enumerate}
+\item Calls \mintinline{c}{__exit_signal()}, which calls \mintinline{c}{__unhash_process()}, which in turns calls \mintinline{c}{detach_pid()} to remove the process from the PIDhash and remove the process from the task list.
+\item \mintinline{c}{__exit_signal()} releases any remaining resources used by the now dead process and finalizes statistics and bookkeeping.
+\item If the task was the last member of a thread group, and the leader is a zombie, then \mintinline{c}{release_task()} notifies the zombie leader’s parent.
+\item \mintinline{c}{release_task()} calls \mintinline{c}{put_task_struct()} to free the pages containing the \nameref{def:Process}’s \nameref{def:Kernel} stack and \mintinline{c}{thread_info} structure and deallocate the slab cache containing the \mintinline{c}{task_struct}.
+\end{enumerate}
+
+At this point, the \nameref{def:Process_Descriptor} and all resources belonging solely to the process
+have been freed.
+
 
 %%% Local Variables:
 %%% mode: latex
