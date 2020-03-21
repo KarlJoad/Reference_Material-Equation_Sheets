@@ -21,6 +21,13 @@ The \nameref{def:Thread}s then describe the resources they alone possess.
 \subsubsection{Creating Threads}\label{subsubsec:Creating_Threads}
 \nameref{def:Thread}s are created the same as normal \nameref{def:Process}es, i.e.\ \mintinline{c}{fork()} is used.
 The difference is that the \mintinline{c}{clone()} \nameref{def:System_Call} is passed flags corresponding to the specific resources to be shared.
+\begin{minted}[frame=lines,linenos]{c}
+clone(CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND, 0);
+\end{minted}
+
+The code above results in behavior identical to a normal \mintinline{c}{fork()}, except that the address space, filesystem resources, file descriptors, and signal handlers are shared.
+In other words, the new task and its parent are what are popularly called \nameref{def:Thread}s.
+
 
 %%% Local Variables:
 %%% mode: latex
