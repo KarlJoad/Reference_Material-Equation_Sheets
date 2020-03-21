@@ -96,6 +96,10 @@ In this architecture, the \nameref{def:Kernel} has a set of core components and 
   The modular design ensures that you do not have to make and/or compile a complete \nameref{def:Monolithic_Kernel} that contains all code necessary for hardware and situations.
 \end{definition}
 
+The idea of the design is for the \nameref{def:Kernel} to provide core services while other services are implemented dynamically, as the \nameref{def:Kernel} is running.
+Linking services dynamically is preferable to adding new features directly to the \nameref{def:Kernel}, which would require recompiling the \nameref{def:Kernel} every time a change was made.
+Thus, for example, we might build CPU scheduling and memory management algorithms directly into the \nameref{def:Kernel} and then add support for different file systems by way of loadable \nameref{def:Kernel_Module}s.
+
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
 
 %%% Local Variables:
