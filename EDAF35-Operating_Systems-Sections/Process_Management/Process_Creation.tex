@@ -11,6 +11,19 @@ It differs from the parent only in:
 
 The second function, \mintinline{c}{exec()}, loads a new executable into the address space and begins executing it.
 
+\subsubsection{Copy-on-Write}\label{subsubsec:Process_Copy_on_Write}
+In Linux, \mintinline{c}{fork()} is implemented through the use of copy-on-write pages.
+Copy-on-write (or CoW) is a technique to delay or altogether prevent copying of the data.
+Rather than duplicate the process address space, the parent and the child can share a single read-only copy.
+
+The data, however, is marked in such a way that if it is written to, a duplicate is made and each \nameref{def:Process} receives their own unique copy.
+Consequently, the duplication of resources occurs only when they are written; until then, they are shared read-only.
+This technique delays the copying of each page in the address space until it is actually written to.
+In the case that the pages are never written—for example, if \mintinline{c}{exec()} is called immediately after \mintinline{c}{fork()}—they never need to be copied.
+
+The only overhead incurred by \mintinline{c}{fork()} is the duplication of the parent’s page tables and the creation of a unique \nameref{def:Process_Descriptor} for the child.
+In the common case that a \nameref{def:Process} executes a new executable image immediately after forking, this optimization prevents the wasted copying of large amounts of data.
+
 
 %%% Local Variables:
 %%% mode: latex
