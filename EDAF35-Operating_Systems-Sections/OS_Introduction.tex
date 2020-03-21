@@ -162,76 +162,9 @@ These events can be a \nameref{def:Hardware} \nameref{def:Interrupt} or a softwa
   Generally, this is stored in low memory (the first hundred or so locations).
 \end{definition}
 
-\subsection{System Calls}\label{subsec:System_Calls}
-\begin{definition}[System Call]\label{def:System_Call}
-  Software may trigger an interrupt by executing a special operation called a \emph{system call}.
-  This can also be called a monitor call.
-
-  System calls provide an interface to the services made available by an \nameref{def:Operating_System}.
-  These calls are generally available as routines written in C and C++.
-  Some of the lowest-level tasks (for example, tasks where hardware must be accessed directly) may have to be written using assembly instructions.
-
-  There are roughly 6 different types of system calls:
-  \begin{enumerate}[noitemsep]
-  \item \nameref{subsubsec:Process_Control}
-  \item \nameref{subsubsec:File_Manipulation}
-  \item \nameref{subsubsec:Device_Manipulation}
-  \item \nameref{subsubsec:Information_Maintenance}
-  \item \nameref{subsubsec:Communications}
-  \item \nameref{subsubsec:Protection}
-  \end{enumerate}
 \end{definition}
 
-\begin{table}[h!tbp]
-  \centering
-  \begin{tabular}{lll}
-    \toprule
-    & \textbf{Windows} & \textbf{Unix} \\
-    \midrule
-    \nameref{subsubsec:Process_Control} & \mintinline{cpp}{CreateProcess()} & \mintinline{c}{fork()} \\
-    & \mintinline{cpp}{ExitProcess()} & \mintinline{c}{exit()} \\
-    & \mintinline{cpp}{WaitForSingleObject()} & \mintinline{c}{wait()} \\
-    \midrule
-    \nameref{subsubsec:File_Manipulation} & \mintinline{cpp}{CreateFile()} & \mintinline{c}{open()} \\
-    & \mintinline{cpp}{ReadFile()} & \mintinline{c}{read()} \\
-    & \mintinline{cpp}{WriteFile()} & \mintinline{c}{write()} \\
-    & \mintinline{cpp}{CloseHandle()} & \mintinline{c}{close()} \\
-    \midrule
-    \nameref{subsubsec:Device_Manipulation} & \mintinline{cpp}{SetConsoleMode()} & \mintinline{c}{ioctl()} \\
-    & \mintinline{cpp}{ReadConsole()} & \mintinline{c}{read()} \\
-    & \mintinline{cpp}{WriteConsole()} & \mintinline{c}{write()} \\
-    \midrule
-    \nameref{subsubsec:Information_Maintenance} & \mintinline{cpp}{GetCurrentProcessID()} & \mintinline{c}{getpid()} \\
-    & \mintinline{cpp}{SetTimer()} & \mintinline{c}{alarm()} \\
-    & \mintinline{cpp}{Sleep()} & \mintinline{c}{sleep()} \\
-    \midrule
-    \nameref{subsubsec:Communications} & \mintinline{cpp}{CreatePipe()} & \mintinline{c}{pipe()} \\
-    & \mintinline{cpp}{CreateFileMapping()} & \mintinline{c}{shm_open()} \\
-    & \mintinline{cpp}{MapViewOfFile()} & \mintinline{c}{mmap()} \\
-    \midrule
-    \nameref{subsubsec:Protection} & \mintinline{cpp}{SetFileSecurity()} & \mintinline{c}{chmod()} \\
-    & \mintinline{cpp}{InitializeSecurityDescriptor()} & \mintinline{c}{umask()} \\
-    & \mintinline{cpp}{SetSecurityDescriptorGroup()} & \mintinline{c}{chown()} \\
-    \bottomrule
-  \end{tabular}
-  \caption{System Calls in Unix and Windows}
-  \label{tab:System_Calls_Examples}
-\end{table}
-
-\nameref{def:System_Call}s are exposed to the programmer by an \nameref{def:API}.
-\begin{definition}[Application Programming Interface]\label{def:API}
-  An \emph{Application Programming Interface} (\emph{API}) specifies a set of functions that are available to an application programmer.
-  They specify the parameters that are passed to each function and the return values the programmer can expect.
-
-  Typically, API calls perform \nameref{def:System_Call}s in the background, without the programmer knowing about them.
-\end{definition}
-
-\subsubsection{Process Control}\label{subsubsec:Process_Control}
-\subsubsection{File Manipulation}\label{subsubsec:File_Manipulation}
-\subsubsection{Device Manipulation}\label{subsubsec:Device_Manipulation}
-\subsubsection{Information Maintenance}\label{subsubsec:Information_Maintenance}
-\subsubsection{Communications}\label{subsubsec:Communications}
-\subsubsection{Protection}\label{subsubsec:Protection}
+\input{./EDAF35-Operating_Systems-Sections/OS_Introduction/System_Calls}
 
 %%% Local Variables:
 %%% mode: latex
