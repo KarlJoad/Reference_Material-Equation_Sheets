@@ -78,6 +78,7 @@ Kernel threads are created on system boot by other kernel threads.
 The kernel handles this automatically by forking all new kernel threads off of the \texttt{kthreadd} \nameref{def:Kernel} process.
 The interface for \nameref{def:Kernel_Thread}s is declared in \mintinline{c}{<linux/kthread.h>}.
 
+When started, a \nameref{def:Kernel_Thread} continues to exist until it calls \mintinline{c}{do_exit()} or another part of the kernel calls \mintinline{c}{kthread_stop()}, passing in the address of the \mintinline{c}{task_struct} structure returned by \mintinline{c}{kthread_create()}.
 
 %%% Local Variables:
 %%% mode: latex
