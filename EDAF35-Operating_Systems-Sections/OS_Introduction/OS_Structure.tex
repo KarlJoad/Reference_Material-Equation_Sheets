@@ -37,6 +37,16 @@ The bottom layer (layer 0) is the hardware; the highest (layer N) is the user in
 A typical operating-system layer, layer $M$ consists of data structures and a set of routines that can be invoked by higher-level layers.
 Layer $M$, in turn, can \textbf{\emph{ONLY}} invoke operations on lower-level layers and itself.
 
+The main advantage of the layered approach is simplicity of construction and debugging.
+The layers are selected so that each uses functions and services of only lower-level layers.
+This approach simplifies debugging and system verification.
+The first layer can be debugged without any concern for the rest of the system.
+Once the first layer is debugged, its correct functioning can be assumed while the second layer is debugged, and so on.
+If an error is found during the debugging of a particular layer, the error must be on that layer, because the layers below it are already debugged.
+Thus, the design and implementation of the system are simplified.
+Each layer is implemented only with operations provided by lower-level layers.
+A layer does not need to know how these operations are implemented; it needs to know only what these operations do.
+
 \subsubsection{Microkernels}\label{subsubsec:Microkernels}
 \subsubsection{Kernel Modules}\label{subsubsec:Kernel_Modules}
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
