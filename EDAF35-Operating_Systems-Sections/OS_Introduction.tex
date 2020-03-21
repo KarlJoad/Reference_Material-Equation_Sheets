@@ -171,7 +171,17 @@ Once the computer finishes going through all its \texttt{init} phases, it is rea
 These events can be a \nameref{def:Hardware} \nameref{def:Interrupt} or a software \nameref{def:System_Call}.
 
 \begin{definition}[Daemon]\label{def:Daemon}
-  In Unix and Unix-like \nameref{def:Operating_System}s, a \emph{daemon} is a process that runs in the ``background'', is started, stopped, and handled by the system, rather than the \nameref{def:User}.
+  In UNIX and UNIX-like \nameref{def:Operating_System}s, a \emph{daemon} is a \nameref{def:System_Program} process that runs in the ``background'', is started, stopped, and handled by the system, rather than the \nameref{def:User}.
+  Daemons run constantly, from the time they are started (potentially the computer's boot) to the time they are killed (potentially when the computer shuts down).
+  Typical systems are running dozens, possibly hundreds, of daemons constantly.
+
+  Some examples of daemons are:
+  \begin{itemize}[noitemsep]
+  \item Network daemons to listen for network connections to connect those requests to the correct processes.
+  \item Process schedulers that start processes according to a specified schedule
+  \item System error monitoring services
+  \item Print servers
+  \end{itemize}
 \end{definition}
 
 \begin{definition}[Interrupt]\label{def:Interrupt}
