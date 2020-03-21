@@ -28,6 +28,40 @@ clone(CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND, 0);
 The code above results in behavior identical to a normal \mintinline{c}{fork()}, except that the address space, filesystem resources, file descriptors, and signal handlers are shared.
 In other words, the new task and its parent are what are popularly called \nameref{def:Thread}s.
 
+The flags provided to \mintinline{c}{clone()} help specify the behavior of the new process and detail what resources the parent and child will share.
+\Cref{tab:Clone_Flags} lists the \mintinline{c}{clone()} flags, which are defined in \mintinline{c}{<linux/sched.h>}, and their effect.
+
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Flag} & \textbf{Meaning} \\
+    \midrule
+    \mintinline{c}{CLONE_FILES} & Parent and child share open files. \\
+    \mintinline{c}{CLONE_FS} & Parent and child share filesystem information. \\
+    \mintinline{c}{CLONE_IDLETASK} & Set PID to zero (used only by the idle tasks). \\
+    \mintinline{c}{CLONE_NEWNS} & Create a new namespace for the child. \\
+    \mintinline{c}{CLONE_PARENT} & Child is to have same parent as its parent. \\
+    \mintinline{c}{CLONE_PTRACE} & Continue tracing child. \\
+    \mintinline{c}{CLONE_SETTID} & Write the TID back to user-space. \\
+    \mintinline{c}{CLONE_SETTLS} & Create a new TLS for the child. \\
+    \mintinline{c}{CLONE_SIGHAND} & Parent and child share signal handlers and blocked signals. \\
+    \mintinline{c}{CLONE_SYSVSEM} & Parent and child share SystemV \texttt{SEM\_UNDO} semantics. \\
+    \mintinline{c}{CLONE_THREAD} & Parent and child are in the same thread group. \\
+    \mintinline{c}{CLONE_VFORK} & \mintinline{c}{vfork()} was used and the parent will sleep until the child wakes it. \\
+    \mintinline{c}{CLONE_UNTRACED} & Do not let the tracing process force \mintinline{c}{CLONE_PTRACE} on the child. \\
+    \mintinline{c}{CLONE_STOP} & Start process in the \mintinline{c}{TASK_STOPPED} state. \\
+    \mintinline{c}{CLONE_SETTLS} & Create a new TLS (thread-local storage) for the child. \\
+    \mintinline{c}{CLONE_CHILD_CLEARTID} & Clear the TID in the child. \\
+    \mintinline{c}{CLONE_CHILD_SETTID} & Set the TID in the child. \\
+    \mintinline{c}{CLONE_PARENT_SETTID} & Set the TID in the parent. \\
+    \mintinline{c}{CLONE_VM} & Parent and child share address space. \\
+    \bottomrule
+  \end{tabular}
+  \caption{\mintinline{c}{clone()} Flags}
+  \label{tab:Clone_Flags}
+\end{table}
+
 
 %%% Local Variables:
 %%% mode: latex
