@@ -56,6 +56,8 @@ This function terminates the \nameref{def:Process} and frees all its resources.
 A parent \nameref{def:Process} can inquire about the status of a terminated child via the \mintinline{c}{wait4()} \nameref{def:System_Call}, which enables a \nameref{def:Process} to wait for the termination of a specific \nameref{def:Process}.
 When a \nameref{def:Process} exits, it is placed into a special zombie state that represents terminated \nameref{def:Process}es until the parent calls \mintinline{c}{wait()} or \mintinline{c}{waitpid()}.
 
+\input{./EDAF35-Operating_Systems-Sections/Process_Management/Process_Descriptor_Task_Struct}
+
 
 %%% Local Variables:
 %%% mode: latex
