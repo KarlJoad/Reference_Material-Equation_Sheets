@@ -1,0 +1,43 @@
+\subsection{Operating System Design and Implementation}\label{subsec:OS_Design_Implementation}
+One important principle is the separation of \nameref{def:Policy} from \nameref{def:Mechanism}.
+\begin{definition}[Mechanism]\label{def:Mechanism}
+  A \emph{mechanism} determines how to do something.
+\end{definition}
+
+\begin{definition}[Policy]\label{def:Policy}
+  A \emph{policy} determines \textbf{what} will be done given the \nameref{def:Mechanism} works correctly.
+\end{definition}
+
+The separation of \nameref{def:Policy} and \nameref{def:Mechanism} is important for system flexibility.
+Policies are likely to change across places or over time.
+In the worst case, each change in policy would require a change in the underlying mechanism.
+A general mechanism insensitive to changes in policy would be more desirable.
+A change in policy would then require redefinition of only certain parameters of the system.
+For instance, consider a mechanism for giving priority to certain types of programs over others.
+If the mechanism is properly separated from policy, it can be used either to support a policy decision that I/O-intensive programs should have priority over CPU-intensive ones or to support the opposite policy.
+
+The advantages of using a higher-level language, or at least a systems-implementation language, for implementing operating systems are the same as those gained when the language is used for application programs:
+\begin{itemize}[noitemsep]
+\item The code can be written faster
+\item Is more compact
+\item Is easier to understand and debug
+\end{itemize}
+
+In addition, improvements in compiler technology will improve the generated code for the entire operating system by simple recompilation.
+Finally, an \nameref{def:Operating_System} is far easier to port—to move to some other hardware —
+if it is written in a higher-level language.
+
+\begin{definition}[Port]\label{def:Software_Port}
+  A \emph{port} is the process of moving a piece of software that was written for one piece of \nameref{def:Hardware} to another.
+  In some cases, this only requires a recompilation of the higher-level software.
+  In others, it may require completely rewriting the program.
+
+  \begin{remark}[Port Confusion]\label{rmk:Software_Port_Confusion}
+    It is important to note that the \nameref{def:Software_Port} is \textbf{\emph{NOT}} the same thing as a \nameref{def:Network_Port}.
+  \end{remark}
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
