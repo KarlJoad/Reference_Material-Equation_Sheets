@@ -18,6 +18,9 @@ However, on systems with explicit \nameref{def:Thread} support, one \nameref{def
 The \nameref{def:Process_Descriptor} describes the shared resources, such as an address space or open files.
 The \nameref{def:Thread}s then describe the resources they alone possess.
 
+\subsubsection{Creating Threads}\label{subsubsec:Creating_Threads}
+\nameref{def:Thread}s are created the same as normal \nameref{def:Process}es, i.e.\ \mintinline{c}{fork()} is used.
+The difference is that the \mintinline{c}{clone()} \nameref{def:System_Call} is passed flags corresponding to the specific resources to be shared.
 
 %%% Local Variables:
 %%% mode: latex
