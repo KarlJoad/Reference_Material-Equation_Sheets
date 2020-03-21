@@ -24,6 +24,30 @@ In the case that the pages are never written—for example, if \mintinline{c}{ex
 The only overhead incurred by \mintinline{c}{fork()} is the duplication of the parent’s page tables and the creation of a unique \nameref{def:Process_Descriptor} for the child.
 In the common case that a \nameref{def:Process} executes a new executable image immediately after forking, this optimization prevents the wasted copying of large amounts of data.
 
+\subsubsection{Forking}\label{subsubsec:Forking}
+The bulk of the work in forking is handled by \mintinline{c}{do_fork()}, which is defined in \mintinline{c}{kernel/fork.c}, by calling \mintinline{c}{copy_process()} and then starting the process.
+The interesting work is done by \mintinline{c}{copy_process()}:
+\begin{enumerate}
+\item It calls \mintinline{c}{dup_task_struct()}, which creates a new kernel stack, \mintinline{c}{thread_info} structure, and \mintinline{c}{task_struct} for the new process.
+  The new values are identical to those of the current task.
+  At this point, the child and parent \nameref{def:Process_Descriptor}s are identical.
+\item It then checks that the new child will not exceed the resource limits on the number of processes for the current user.
+\item The child needs to differentiate itself from its parent.
+  Various members of the \nameref{def:Process_Descriptor} are cleared or set to initial values.
+  Members of the \nameref{def:Process_Descriptor} not inherited are primarily statistical information.
+  The bulk of the values in \mintinline{c}{task_struct} remain unchanged.
+\item The child’s state is set to \mintinline{c}{TASK_UNINTERRUPTIBLE} to ensure that it does not yet run.
+\item \mintinline{c}{copy_process()} calls \mintinline{c}{copy_flags()} to update the flags member of the \mintinline{c}{task_struct}.
+  The \mintinline{c}{PF_SUPERPRIV} flag, which denotes whether a task used superuser privileges, is cleared.
+  The \mintinline{c}{PF_FORKNOEXEC} flag, which denotes a process that has not called \mintinline{c}{exec()}, is set.
+\item It calls \mintinline{c}{alloc_pid()} to assign an available PID to the new task.
+\item Depending on the flags passed to \mintinline{c}{clone()}, \mintinline{c}{copy_process()} either duplicates or shares open \nameref{def:File}s, filesystem information, signal handlers, process address space, and namespace.
+  These resources are typically shared between \nameref{def:Thread}s in a given \nameref{def:Process}; otherwise they are unique and copied here.
+\item Finally, \mintinline{c}{copy_process()} cleans up and returns to the caller a pointer to the new child.
+\end{enumerate}
+
+Back in \mintinline{c}{do_fork()}, if \mintinline{c}{copy_process()} returns successfully, the new child is woken up and run.
+Deliberately, the kernel runs the child process first.
 
 %%% Local Variables:
 %%% mode: latex
