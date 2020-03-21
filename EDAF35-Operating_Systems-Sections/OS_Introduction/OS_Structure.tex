@@ -57,6 +57,10 @@ Therefore, this information may need to be swapped in and out of memory, requiri
 A final problem with layered implementations is that they tend to be less efficient than other types.
 
 \subsubsection{Microkernels}\label{subsubsec:Microkernels}
+This method structures the \nameref{def:Operating_System} by removing all nonessential components from the \nameref{def:Kernel} and implementing them as system and user-level programs, resulting in a smaller \nameref{def:Kernel}.
+There is little consensus regarding which services should remain in the kernel and which should be implemented in user space.
+Typically, however, microkernels provide minimal process and memory management, in addition to a communication facility.
+
 \subsubsection{Kernel Modules}\label{subsubsec:Kernel_Modules}
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
 
