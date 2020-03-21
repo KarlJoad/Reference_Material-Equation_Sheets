@@ -1,4 +1,13 @@
 \subsection{Process Creation}\label{subsec:Process_Creation}
+Most operating systems implement a \texttt{spawn} mechanism to create a new process in a new address space, read in an executable, and begin executing it.
+UNIX takes the unusual approach of separating these steps into two distinct functions: \mintinline{c}{fork()} and \mintinline{c}{exec()}.
+The first, \mintinline{c}{fork()}, creates a child process that is a copy of the current task.
+It differs from the parent only in:
+\begin{itemize}[noitemsep]
+\item Its PID (which is unique)
+\item Its PPID (parent’s PID, which is set to the original process)
+\item Certain resources and statistics, such as pending signals, which are not inherited
+\end{itemize}
 
 
 %%% Local Variables:
