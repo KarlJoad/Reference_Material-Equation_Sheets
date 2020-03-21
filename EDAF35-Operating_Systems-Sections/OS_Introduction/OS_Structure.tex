@@ -61,6 +61,21 @@ This method structures the \nameref{def:Operating_System} by removing all noness
 There is little consensus regarding which services should remain in the kernel and which should be implemented in user space.
 Typically, however, microkernels provide minimal process and memory management, in addition to a communication facility.
 
+\begin{definition}[Microkernel]\label{def:Microkernel}
+  A \emph{microkernel} (often abbreviated as $\mu$-kernel) is the near-minimum amount of software that can provide the mechanisms needed to implement an \nameref{def:Operating_System}.
+  These mechanisms include:
+  \begin{itemize}[noitemsep]
+  \item Low-level address space management
+  \item Thread management
+  \item Inter-Process Communication (IPC)
+  \end{itemize}
+
+  If the hardware provides multiple rings or CPU modes, the microkernel may be the only software executing at the most privileged level, which is generally referred to as supervisor or kernel mode.
+  Traditional \nameref{def:Operating_System} functions, such as device drivers, protocol stacks and file systems, are typically removed from the microkernel itself and are instead run in user space.
+
+  In terms of the source code size, microkernels are often smaller than monolithic kernels.
+\end{definition}
+
 \subsubsection{Kernel Modules}\label{subsubsec:Kernel_Modules}
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
 
