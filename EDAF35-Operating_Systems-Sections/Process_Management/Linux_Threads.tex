@@ -10,6 +10,14 @@ The Linux kernel does not provide any special scheduling semantics or data struc
 Instead, a \nameref{def:Thread} is merely a \nameref{def:Process} that shares certain resources with other \nameref{def:Process}es.
 Each \nameref{def:Thread} has a unique \mintinline{c}{task_struct} and appears to the kernel as a normal \nameref{def:Process} which just happen to share resources, such as an address space, with other \nameref{def:Process}es.
 
+For example, assume you have a \nameref{def:Process} that consists of four \nameref{def:Thread}s.
+In Linux, there are simply four \nameref{def:Process}es and thus four normal \mintinline{c}{task_struct} structures.
+The four \nameref{def:Process}es are set up to share certain resources.
+The result is quite elegant.
+However, on systems with explicit \nameref{def:Thread} support, one \nameref{def:Process_Descriptor} might exist that points to the four different \nameref{def:Thread}s.
+The \nameref{def:Process_Descriptor} describes the shared resources, such as an address space or open files.
+The \nameref{def:Thread}s then describe the resources they alone possess.
+
 
 %%% Local Variables:
 %%% mode: latex
