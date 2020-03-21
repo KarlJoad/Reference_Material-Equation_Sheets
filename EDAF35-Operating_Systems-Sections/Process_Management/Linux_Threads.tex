@@ -73,6 +73,11 @@ The kernel accomplishes this via kernel threads, standard processes that exist s
   Kernel threads are schedulable and preemptable, the same as normal \nameref{def:Process}es.
 \end{definition}
 
+Linux delegates several tasks to kernel threads, most notably the \texttt{flush} tasks and the \texttt{ksoftirqd} task.
+Kernel threads are created on system boot by other kernel threads.
+The kernel handles this automatically by forking all new kernel threads off of the \texttt{kthreadd} \nameref{def:Kernel} process.
+The interface for \nameref{def:Kernel_Thread}s is declared in \mintinline{c}{<linux/kthread.h>}.
+
 
 %%% Local Variables:
 %%% mode: latex
