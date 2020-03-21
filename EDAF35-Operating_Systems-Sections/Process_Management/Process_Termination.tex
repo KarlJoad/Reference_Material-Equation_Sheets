@@ -71,6 +71,14 @@ It does the following:
 At this point, the \nameref{def:Process_Descriptor} and all resources belonging solely to the process
 have been freed.
 
+\subsubsection{Parentless Tasks}\label{subsubsec:Parentless_Tasks}
+If a parent exits before its children, some mechanism must exist to reparent any child tasks to a new process, or else parentless terminated processes would forever remain \nameref{def:Zombie_Process}es, wasting system memory.
+The solution is to reparent a task’s children on exit to either another \nameref{def:Process} in the current \nameref{def:Thread} group or, if that fails, the \texttt{init} process.
+
+When a suitable parent for the child(ren) has been found, each child needs to be located and reparented to this \texttt{reaper} parent \nameref{def:Process}.
+
+With the \nameref{def:Process}(es) successfully reparented, there is no risk of stray \nameref{def:Zombie_Process}es.
+The \texttt{init} process routinely calls \mintinline{c}{wait()} on its children, cleaning up any zombies assigned to it.
 
 %%% Local Variables:
 %%% mode: latex
