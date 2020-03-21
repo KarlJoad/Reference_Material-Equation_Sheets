@@ -29,6 +29,18 @@
   \end{remark}
 \end{definition}
 
+On modern \nameref{def:Operating_System}s, \nameref{def:Process}es provide two virtualizations:
+\begin{enumerate}[noitemsep]
+\item a virtualized processor
+  \begin{itemize}[noitemsep]
+  \item The virtual processor gives \emph{this} \nameref{def:Process} the illusion that it alone monopolizes the system, despite possibly sharing the processor among hundreds of other processes.
+\end{itemize}
+\item Virtual memory lets the process allocate and manage memory as if it alone owned all the memory in the system.
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Thread}s share the virtual memory abstraction, whereas each receives its own virtualized processor.
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
