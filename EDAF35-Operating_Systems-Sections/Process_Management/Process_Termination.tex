@@ -46,6 +46,10 @@ At this point, we have a \nameref{def:Zombie_Process}.
   \end{itemize}
 \end{definition}
 
+\subsubsection{Removing a Process Descriptor}\label{subsubsec:Remove_Process_Descriptor}
+After \mintinline{c}{do_exit()} completes, the \nameref{def:Process_Descriptor} for the terminated \nameref{def:Process} still exists, but the \nameref{def:Process} is a \nameref{def:Zombie_Process} and is unable to run.
+By remaining a \nameref{def:Process}, albeit a \nameref{def:Zombie_Process}, this enables the system to obtain information about a child \nameref{def:Process} after it has terminated.
+
 
 %%% Local Variables:
 %%% mode: latex
