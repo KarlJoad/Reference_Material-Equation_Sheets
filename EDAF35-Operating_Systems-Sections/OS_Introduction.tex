@@ -182,6 +182,42 @@ These events can be a \nameref{def:Hardware} \nameref{def:Interrupt} or a softwa
   \end{enumerate}
 \end{definition}
 
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+    & \textbf{Windows} & \textbf{Unix} \\
+    \midrule
+    \nameref{subsubsec:Process_Control} & \mintinline{cpp}{CreateProcess()} & \mintinline{c}{fork()} \\
+    & \mintinline{cpp}{ExitProcess()} & \mintinline{c}{exit()} \\
+    & \mintinline{cpp}{WaitForSingleObject()} & \mintinline{c}{wait()} \\
+    \midrule
+    \nameref{subsubsec:File_Manipulation} & \mintinline{cpp}{CreateFile()} & \mintinline{c}{open()} \\
+    & \mintinline{cpp}{ReadFile()} & \mintinline{c}{read()} \\
+    & \mintinline{cpp}{WriteFile()} & \mintinline{c}{write()} \\
+    & \mintinline{cpp}{CloseHandle()} & \mintinline{c}{close()} \\
+    \midrule
+    \nameref{subsubsec:Device_Manipulation} & \mintinline{cpp}{SetConsoleMode()} & \mintinline{c}{ioctl()} \\
+    & \mintinline{cpp}{ReadConsole()} & \mintinline{c}{read()} \\
+    & \mintinline{cpp}{WriteConsole()} & \mintinline{c}{write()} \\
+    \midrule
+    \nameref{subsubsec:Information_Maintenance} & \mintinline{cpp}{GetCurrentProcessID()} & \mintinline{c}{getpid()} \\
+    & \mintinline{cpp}{SetTimer()} & \mintinline{c}{alarm()} \\
+    & \mintinline{cpp}{Sleep()} & \mintinline{c}{sleep()} \\
+    \midrule
+    \nameref{subsubsec:Communications} & \mintinline{cpp}{CreatePipe()} & \mintinline{c}{pipe()} \\
+    & \mintinline{cpp}{CreateFileMapping()} & \mintinline{c}{shm_open()} \\
+    & \mintinline{cpp}{MapViewOfFile()} & \mintinline{c}{mmap()} \\
+    \midrule
+    \nameref{subsubsec:Protection} & \mintinline{cpp}{SetFileSecurity()} & \mintinline{c}{chmod()} \\
+    & \mintinline{cpp}{InitializeSecurityDescriptor()} & \mintinline{c}{umask()} \\
+    & \mintinline{cpp}{SetSecurityDescriptorGroup()} & \mintinline{c}{chown()} \\
+    \bottomrule
+  \end{tabular}
+  \caption{System Calls in Unix and Windows}
+  \label{tab:System_Calls_Examples}
+\end{table}
+
 \nameref{def:System_Call}s are exposed to the programmer by an \nameref{def:API}.
 \begin{definition}[Application Programming Interface]\label{def:API}
   An \emph{Application Programming Interface} (\emph{API}) specifies a set of functions that are available to an application programmer.
