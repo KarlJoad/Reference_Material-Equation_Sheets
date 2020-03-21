@@ -10,6 +10,16 @@ A computer system can be roughly divided into 4 parts.
 \begin{definition}[Hardware]\label{def:Hardware}
   \emph{Hardware} is the physical components of the system and provide the basic computing resources for the system..
   Hardware includes the \nameref{def:CPU}, \nameref{def:Memory}, and all I/O devices (monitor, keyboard, mouse, etc.).
+
+  \begin{remark}[How to Differentiate]\label{rmk:Hardware_Differentiate}
+    If you are finding it difficult to tell \nameref{def:Hardware}, \nameref{def:Software}, and \nameref{def:Firmware} apart, answer this simple question.
+    Can you hit it with a hammer and break the thing?
+    \begin{description}[noitemsep]
+    \item[Yes] Then it is \nameref{def:Hardware}.
+    \item[No] Then it is \nameref{def:Software}.
+    \item[Yes and No] Then it is \nameref{def:Firmware}.
+    \end{description}
+  \end{remark}
 \end{definition}
 
 \begin{definition}[Software]\label{def:Software}
@@ -17,6 +27,16 @@ A computer system can be roughly divided into 4 parts.
   Technically, it is the electrical signals that represent \texttt{0} or \texttt{1} and makes the \nameref{def:Hardware} act in a specific, desired fashion to produce some result.
 
   On a higher level, this can be though of as computer code.
+
+  \begin{remark}[How to Differentiate]\label{rmk:Software_Differentiate}
+    If you are finding it difficult to tell \nameref{def:Hardware}, \nameref{def:Software}, and \nameref{def:Firmware} apart, answer this simple question.
+    Can you hit it with a hammer and break the thing?
+    \begin{description}[noitemsep]
+    \item[Yes] Then it is \nameref{def:Hardware}.
+    \item[No] Then it is \nameref{def:Software}.
+    \item[Yes and No] Then it is \nameref{def:Firmware}.
+    \end{description}
+  \end{remark}
 \end{definition}
 
 \begin{restatable}[Operating System]{definition}{defOperatingSystem}\label{def:Operating_System}
@@ -134,6 +154,16 @@ The initial program, run \textbf{\emph{RIGHT}} when the computer starts is typic
   It is almost always stored in the \nameref{def:Hardware}'s onboard storage.
   Typically it is stored in ROM~(Read-Only Memory) or EEPROM~(Electrically Erasable Programmable Read-Only Memory).
   It initializes all aspects of the system, from \nameref{def:CPU} \nameref{def:Register}s to device controllers, to memory contents.
+
+  \begin{remark}[How to Differentiate]\label{rmk:Firmware_Differentiate}
+    If you are finding it difficult to tell \nameref{def:Hardware}, \nameref{def:Software}, and \nameref{def:Firmware} apart, answer this simple question.
+    Can you hit it with a hammer and break the thing?
+    \begin{description}[noitemsep]
+    \item[Yes] Then it is \nameref{def:Hardware}.
+    \item[No] Then it is \nameref{def:Software}.
+    \item[Yes and No] Then it is \nameref{def:Firmware}.
+    \end{description}
+  \end{remark}
 \end{definition}
 
 A \nameref{def:CPU} will continue its boot process, until it reaches the \texttt{init} phase, where many other system processes or \nameref{def:Daemon}s start.
