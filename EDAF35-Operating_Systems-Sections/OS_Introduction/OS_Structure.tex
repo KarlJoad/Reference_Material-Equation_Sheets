@@ -47,6 +47,15 @@ Thus, the design and implementation of the system are simplified.
 Each layer is implemented only with operations provided by lower-level layers.
 A layer does not need to know how these operations are implemented; it needs to know only what these operations do.
 
+The major difficulty with the layered approach involves appropriately defining the various layers.
+Because a layer can use only lower-level layers, careful planning is necessary.
+Even with planning, there can be circular dependencies created between layers.
+For example, the backing-store driver would normally be above the CPU scheduler, because the driver may need to wait for I/O and the CPU can be rescheduled during this time.
+However, the CPU scheduler may have more information about all the active processes than can fit in memory.
+Therefore, this information may need to be swapped in and out of memory, requiring the backing-store driver routine to be below the CPU scheduler.
+
+A final problem with layered implementations is that they tend to be less efficient than other types.
+
 \subsubsection{Microkernels}\label{subsubsec:Microkernels}
 \subsubsection{Kernel Modules}\label{subsubsec:Kernel_Modules}
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
