@@ -25,11 +25,11 @@ Operating-system kernel debugging is more complex than usual because of:
   A failure in the \nameref{def:Kernel} is called a \emph{crash}.
 \end{definition}
 
-When a \nameref{def:Crash} occurs, error information is saved to a log file, and the memory state is saved to a crash dump.
+When a \nameref{def:Crash} occurs, error information is saved to a log file, and the memory state is saved to a \nameref{def:Crash_Dump}.
 
 \begin{definition}[Crash Dump]\label{def:Crash_Dump}
   When a \nameref{def:Crash} occurs in the \nameref{def:Kernel}, a \emph{crash dump} is generated.
-  This is like a \nameref{def:Core_Dump}, in that the entire contents of that process's \nameref{def:Memory} is written to disk.
+  This is like a \nameref{def:Core_Dump}, in that the entire contents of that process's \nameref{def:Memory} is written to disk, except the \nameref{def:Crash}ed \nameref{def:Kernel} process is written, instead of a \nameref{def:User} program.
 \end{definition}
 
 Operating-system debugging and process debugging frequently use different tools and techniques due to the very different nature of these two tasks.
