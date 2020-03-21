@@ -1,0 +1,31 @@
+\subsection{System Programs}\label{subsec:System_Programs}
+Another aspect of a modern system is its collection of system programs.
+\begin{definition}[System Program]\label{def:System_Program}
+  \emph{System programs}, also known as \emph{system utilities}, provide a convenient environment for program development and execution.
+  Some of them are simply user interfaces to system calls.
+  Others are considerably more complex.
+  They can be divided into these categories:
+  \begin{description}
+  \item[File Management] These programs create, delete, copy, rename, print, dump, list, and generally manipulate files and directories.
+  \item[Status Information] Some programs simply ask the system for the date, time, amount of available memory or disk space, number of users, or similar status information.
+    Others are more complex, providing detailed performance, logging, and debugging information.
+    Typically, these programs format and print the output to the terminal or other output devices or files or display it in a window of the GUI.\@
+    Some systems also support a registry, which is used to store and retrieve configuration information.
+  \item[File Modification] Several text editors may be available to create and modify the content of files stored on disk or other storage devices.
+    There may also be special commands to search contents of files or perform transformations of the text.
+  \item[Programming-Language Support] Compilers, assemblers, debuggers, and interpreters for common programming languages (such as C, C++, Java, and PERL) are often provided with the operating system or available as a separate download.
+  \item[Program Loading and Execution] Once a program is assembled or compiled, it must be loaded into memory to be executed.
+    Debugging systems for either higher-level languages or machine language are needed as well.
+  \item[Communications] These programs provide the mechanism for creating virtual connections among processes, users, and computer systems.
+    They allow users to send messages to one another’s screens, to browse Web pages, to send e-mail messages, to log in remotely, or to transfer files from one machine to another.
+  \item[Background Services] All general-purpose systems have methods for launching certain \nameref{def:System_Program} processes at boot time.
+    Some of these processes terminate after completing their tasks, while others continue to run until the system is halted.
+    These are typically called \nameref{def:Daemon}s, and systems have dozens of them.
+    In addition, operating systems that run important activities in user context rather than in kernel context may use \nameref{def:Daemon}s to run these activities.
+  \end{description}
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
