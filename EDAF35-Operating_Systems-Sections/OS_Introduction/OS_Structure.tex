@@ -9,6 +9,14 @@ MS-DOS is an example of such a system.
 It was originally designed and implemented by a few people who had no idea that it would become so popular.
 It was written to provide the most functionality in the least space, so it was not carefully divided into modules.
 
+\begin{definition}[Monolithic Kernel]\label{def:Monolithic_Kernel}
+  A \emph{monolithic kernel} is an \nameref{def:Operating_System} architecture where the entire operating system is working in \nameref{def:Kernel} space, and typically uses only its own memory space to run.
+  The monolithic model differs from other operating system architectures (such as the \nameref{def:Microkernel}) in that it alone defines a high-level virtual interface over computer hardware.
+  A set of \nameref{def:System_Call}s implement all \nameref{def:Operating_System} services such as process management, concurrency, and memory management.
+
+  Device drivers can be added to the \nameref{def:Kernel} as \nameref{def:Kernel_Module}s.
+\end{definition}
+
 \subsubsection{Microkernels}\label{subsubsec:Microkernels}
 \subsubsection{Kernel Modules}\label{subsubsec:Kernel_Modules}
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
