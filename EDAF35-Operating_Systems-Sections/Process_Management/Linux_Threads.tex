@@ -66,6 +66,13 @@ The flags provided to \mintinline{c}{clone()} help specify the behavior of the n
 It is often useful for the kernel to perform some operations in the background.
 The kernel accomplishes this via kernel threads, standard processes that exist solely in kernel-space.
 
+\begin{definition}[Kernel Thread]\label{def:Kernel_Thread}
+  \emph{Kernel thread}s are like regular \nameref{def:Thread}s, except that they can only be started by the \nameref{def:Kernel} and its previous kernel threads.
+  Additionally, they do not have an address space (Their \texttt{mm} pointer, which points at their address space, is \mintinline{c}{NULL}.).
+  They operate only in \nameref{def:Kernel}-space and do not context switch into \nameref{def:User}-space.
+  Kernel threads are schedulable and preemptable, the same as normal \nameref{def:Process}es.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
