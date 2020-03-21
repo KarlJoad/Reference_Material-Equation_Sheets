@@ -1,0 +1,59 @@
+\subsection{System Boot}\label{subsec:System_Boot}
+The procedure of starting a computer by loading the \nameref{def:Kernel} is known as booting the system.
+On most computer systems, a small piece of code known as the \nameref{def:Bootloader} is the first thing that runs.
+
+\begin{definition}[Bootloader]\label{def:Bootloader}
+  The \emph{bootloader} (or bootstrap loader) is a bootstrap program that:
+  \begin{enumerate}[noitemsep]
+  \item Locates the kernel
+  \item Loads it into main memory
+  \item Starts its execution
+  \end{enumerate}
+\end{definition}
+
+Some computer systems, such as PCs, use a two-step process in which a simple \nameref{def:Bootloader} fetches a more complex boot program from disk, which in turn loads the \nameref{def:Kernel}.
+
+When a CPU receives a reset event, the instruction register is loaded with a predefined memory location, and execution starts there.
+At that location is the initial \nameref{def:Bootloader} program.
+This program is in the form of read-only memory (ROM), because the RAM is in an unknown state at system startup.
+ROM is convenient because it needs no initialization and cannot easily be infected by a computer virus.
+
+\begin{remark*}
+  A reset event on the CPU can be the computer having just booted, or it has been restarted, or the reset switched was flipped.
+\end{remark*}
+
+The \nameref{def:Bootloader} can perform a variety of tasks.
+Usually, one task is to run diagnostics to determine the state of the machine.
+If the diagnostics pass, the program can continue with the booting steps.
+It also initializes all aspects of the system, from CPU registers to device controllers and the contents of main memory.
+Sooner or later, it starts the \nameref{def:Operating_System}.
+Cellular phones, tablets, and game consoles store the entire operating system in ROM.\@
+Storing the operating system in ROM is suitable only for:
+\begin{itemize}[noitemsep]
+\item Small operating systems
+\item Simple supporting hardware
+\item Ensuring rugged operation
+\end{itemize}
+
+A problem with this approach is that changing the bootstrap code requires changing the ROM hardware chips.
+
+All forms of ROM are also known as \nameref{def:Firmware}.
+A problem with firmware in general is that executing code there is slower than executing code in RAM.\@
+Some systems store the \nameref{def:Operating_System} in firmware and copy it to RAM for fast execution.
+
+A final issue with \nameref{def:Firmware} is that it is relatively expensive, so usually only small amounts are available.
+For large operating systems, or for systems that change frequently, the \nameref{def:Bootloader} is stored in \nameref{def:Firmware}, and the \nameref{def:Operating_System} is on disk.
+In this case, the bootstrap runs diagnostics and has a bit of code that can read a single block at a fixed location (say block zero) from disk into memory and execute the code from that boot block.
+The program stored in the boot block may be sophisticated enough to load the entire operating system into memory and begin its execution.
+
+More typically, it is simple code (as it fits in a single disk block) and knows only the address on disk and length of the remainder of the bootstrap program.
+GRUB is an example of an open-source \nameref{def:Bootloader} program for Linux systems.
+All of the disk-bound bootstrap, and the \nameref{def:Operating_System} that is loaded, can be easily changed by writing new versions to disk.
+A disk that has a boot partition is called a boot disk or system disk.
+Now that the full bootstrap program has been loaded, it can traverse the file system to find the \nameref{def:Operating_System}'s \nameref{def:Kernel}, load it into \nameref{def:Memory}, and start its execution.
+It is only at this point that the system is said to be running.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
