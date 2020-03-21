@@ -4,6 +4,12 @@ They provide multiple executors within the same program in a shared memory addre
 They can also share open files and other resources.
 \nameref{def:Thread}s enable concurrent programming and, on multiple processor systems, true parallelism.
 
+The Linux kernel is unique in that there is no concept of a \nameref{def:Thread}.
+Instead, Linux implements all \nameref{def:Thread}s as standard \nameref{def:Process}es.
+The Linux kernel does not provide any special scheduling semantics or data structures to represent \nameref{def:Thread}s.
+Instead, a \nameref{def:Thread} is merely a \nameref{def:Process} that shares certain resources with other \nameref{def:Process}es.
+Each \nameref{def:Thread} has a unique \mintinline{c}{task_struct} and appears to the kernel as a normal \nameref{def:Process} which just happen to share resources, such as an address space, with other \nameref{def:Process}es.
+
 
 %%% Local Variables:
 %%% mode: latex
