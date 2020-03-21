@@ -1,0 +1,18 @@
+\section{Network}\label{subsec:Network}
+\begin{definition}[Port]\label{def:Network_Port}
+  A \emph{port} is a single instance of a data flow.
+  There are many different flows of data.
+  These may be from different applications or different instances of the same application.
+  In both TCP and UDP, flows are given unique \emph{port numbers}.
+
+  Some of these are standard for particular applications, e.g.\ port 80 for HTTP (web), port 25 for SMTP (email).
+  The transport protocol uses the port number to deliver data to the correct application.
+
+  \begin{remark}[Port Confusion]\label{rmk:Network_Port_Confusion}
+    It is important to note that the \nameref{def:Software_Port} is \textbf{\emph{NOT}} the same thing as a \nameref{def:Network_Port}.
+  \end{remark}
+\end{definition}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
