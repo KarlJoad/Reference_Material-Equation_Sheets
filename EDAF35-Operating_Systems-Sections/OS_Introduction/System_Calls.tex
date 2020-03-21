@@ -144,6 +144,15 @@ In this case, a set of system calls can be shared between both files and \namere
 Sometimes, I/O devices are identified by special file names, directory placement, or file attributes.
 
 \subsubsection{Information Maintenance}\label{subsubsec:Information_Maintenance}
+Many system calls exist simply for the purpose of transferring information between the \nameref{def:User} program and the \nameref{def:Operating_System}.
+For example, most systems have a system call to return the current \mintinline{c}{time()} and \mintinline{c}{date()}.
+Other system calls may return information about the system, such as the number of current users, the version number of the operating system, the amount of free memory or disk space, and so on.
+
+Another set of system calls is helpful in debugging a program.
+Many systems provide system calls to \mintinline{c}{dump()} memory.
+A program \texttt{trace} lists each system call as it is executed.
+In addition, the \nameref{def:Operating_System} keeps information about all its processes, and \nameref{def:System_Call}s are used to access this information.
+
 \subsubsection{Communications}\label{subsubsec:Communications}
 \subsubsection{Protection}\label{subsubsec:Protection}
 
