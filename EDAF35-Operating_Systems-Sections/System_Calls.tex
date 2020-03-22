@@ -65,6 +65,17 @@ There are roughly 6 different types of system calls:
 \item \nameref{subsec:Protection}
 \end{enumerate}
 
+\nameref{def:System_Call}s provide a layer between the hardware and \nameref{def:User}-space \nameref{def:Process}es.
+This layer serves three primary purposes.
+\begin{enumerate}[noitemsep]
+\item It provides an abstracted hardware interface for \nameref{def:User}-space programs.
+  When reading or writing from a file, applications do not have to be concerned with the type of disk, media, or even the type of filesystem on which the file resides.
+\item \nameref{def:System_Call}s ensure system security and stability.
+  With the \nameref{def:Kernel} acting as a middle-man between system resources and \nameref{def:User}-space, the \nameref{def:Kernel} can arbitrate access based on permissions, \nameref{def:User}s, and other criteria.
+  This arbitration prevents applications from incorrectly using hardware, stealing other \nameref{def:Process}es’ resources, or otherwise doing harm to the system.
+\item There is a single common layer between \nameref{def:User}-space and the rest of the system allows for the virtualized system provided to \nameref{def:Process}es.
+\end{enumerate}
+
 \begin{table}[h!tbp]
   \centering
   \begin{tabular}{lll}
