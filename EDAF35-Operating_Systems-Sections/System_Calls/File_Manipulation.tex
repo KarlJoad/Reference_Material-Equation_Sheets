@@ -1,0 +1,23 @@
+\subsection{File Manipulation}\label{subsec:File_Manipulation}
+We first need to be able to \mintinline{c}{create()} and \mintinline{c}{delete()} files.
+Either \nameref{def:System_Call} requires the name of the file and perhaps some of the file’s attributes.
+Once the file is created, we need to \mintinline{c}{open()} it and to use it.
+We may then \mintinline{c}{read()}, \mintinline{c}{write()}, or perform any other \nameref{def:API}-defined action(s).
+Finally, we need to \mintinline{c}{close()} the file, indicating that we are no longer using it.
+
+We may need these same sets of operations for directories if we have a directory structure for organizing files in the file system.
+In addition, for either files or directories, we need to be able to determine the values of various attributes and perhaps to reset them if necessary.
+
+\begin{definition}[File Attribute]\label{def:File_Attribute}
+  A \emph{file attribute} contains metadata about the file.
+  This includes the file's name, type, protection codes, accounting information, and so on.
+\end{definition}
+
+\begin{remark*}
+  If the system programs are callable by other programs, then each can be considered an \nameref{def:API} by other system programs.
+\end{remark*}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
