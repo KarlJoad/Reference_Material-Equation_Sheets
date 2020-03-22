@@ -28,6 +28,11 @@ The expanded code looks like this:
   When a \nameref{def:User}-space process executes a \nameref{def:System_Call}, the syscall number identifies which syscall was executed; the \nameref{def:Process} does not refer to the syscall by name.
 \end{definition}
 
+After a \nameref{def:Syscall_Number} has been assigned, it cannot change, or already-compiled applications will break.
+Likewise, if a \nameref{def:System_Call} is removed, its syscall number cannot be recycled, or previously compiled code would aim to invoke one \nameref{def:System_Call} but would invoke another.
+Linux does provide a ``not implemented'' \nameref{def:System_Call}, \mintinline{c}{sys_ni_syscall()}, which does nothing except \mintinline{c}{return -ENOSYS}, the error corresponding to an invalid \nameref{def:System_Call}.
+This function is used in the rare event that a syscall is removed or otherwise made unavailable.
+
 
 %%% Local Variables:
 %%% mode: latex
