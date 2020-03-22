@@ -1,0 +1,96 @@
+\subsection{Syscall Functions}\label{subsec:Syscall_Functions}
+\subsubsection{Process Control}\label{subsubsec:Process_Control}
+A running program needs to be able to halt its own execution, either normally or abnormally.
+If a \nameref{def:System_Call} is made to terminate the currently running program abnormally, or if the program runs into a problem and causes an error \nameref{def:Trap}, a dump of memory is sometimes taken and an error message generated.
+The dump is written to disk and may be examined by a debugger—a system program designed to aid the programmer in finding and correcting errors, or bugs—to determine the cause of the problem.
+
+Under either normal or abnormal circumstances, the \nameref{def:Operating_System} must transfer control to the invoking command interpreter.
+The command interpreter then reads the next command.
+
+To determine how bad the execution halt was, when the program ceases execution, it will return an exit code.
+By convention, and for no other reason, an exit code of \texttt{0} is considered to be the program completed execution successfully.
+Otherwise, the greater the return value, the greater the severity of the error.
+
+\subsubsection{File Manipulation}\label{subsubsec:File_Manipulation}
+We first need to be able to \mintinline{c}{create()} and \mintinline{c}{delete()} files.
+Either \nameref{def:System_Call} requires the name of the file and perhaps some of the file’s attributes.
+Once the file is created, we need to \mintinline{c}{open()} it and to use it.
+We may then \mintinline{c}{read()}, \mintinline{c}{write()}, or perform any other \nameref{def:API}-defined action(s).
+Finally, we need to \mintinline{c}{close()} the file, indicating that we are no longer using it.
+
+We may need these same sets of operations for directories if we have a directory structure for organizing files in the file system.
+In addition, for either files or directories, we need to be able to determine the values of various attributes and perhaps to reset them if necessary.
+
+\begin{definition}[File Attribute]\label{def:File_Attribute}
+  A \emph{file attribute} contains metadata about the file.
+  This includes the file's name, type, protection codes, accounting information, and so on.
+\end{definition}
+
+\begin{remark*}
+  If the system programs are callable by other programs, then each can be considered an \nameref{def:API} by other system programs.
+\end{remark*}
+
+\subsubsection{Device Manipulation}\label{subsubsec:Device_Manipulation}
+\begin{definition}[Device]\label{def:Device}
+  A \emph{device} in an \nameref{def:Operating_System} is a resource that must be controlled.
+  Some of these devices are physical devices (for example, disk drives), while others can be thought of as abstract or virtual devices (for example, files).
+\end{definition}
+
+A system with multiple \nameref{def:User}s may require us to first \mintinline{c}{request()} a device, to ensure exclusive use of it.
+After we are finished with the device, we \mintinline{c}{release()} it.
+These functions are similar to the \mintinline{c}{open()} and \mintinline{c}{close()} \nameref{def:System_Call}s for files.
+Other \nameref{def:Operating_System}s allow unmanaged access to devices.
+The hazard then is the potential for device contention and perhaps \nameref{def:Deadlock}.
+
+Once the device has been requested (and allocated to us), we can \mintinline{c}{read()}, \mintinline{c}{write()}, just as we can with files.
+In fact, the similarity between I/O devices and files is so great that many \nameref{def:Operating_System}s, including UNIX, merge the two into a combined file–device structure.
+In this case, a set of \nameref{def:System_Call}s can be shared between both files and \nameref{def:Device}s.
+Sometimes, I/O devices are identified by special file names, directory placement, or file attributes.
+
+\subsubsection{Information Maintenance}\label{subsubsec:Information_Maintenance}
+Many \nameref{def:System_Call}s exist simply for the purpose of transferring information between the \nameref{def:User} program and the \nameref{def:Operating_System}.
+For example, most systems have a \nameref{def:System_Call} to return the current \mintinline{c}{time()} and \mintinline{c}{date()}.
+Other \nameref{def:System_Call}s may return information about the system, such as the number of current \nameref{def:User}s, the version number of the \nameref{def:Operating_System}, the amount of free memory or disk space, and so on.
+
+Another set of \nameref{def:System_Call}s is helpful in debugging a program.
+Many systems provide \nameref{def:System_Call}s to \mintinline{c}{dump()} memory.
+A program \texttt{trace} lists each \nameref{def:System_Call} as it is executed.
+In addition, the \nameref{def:Operating_System} keeps information about all its \nameref{def:Process}es, and \nameref{def:System_Call}s are used to access this information.
+
+\subsubsection{Communications}\label{subsubsec:Communications}
+Both of the models discussed are common in \nameref{def:Operating_System}s, and most systems implement both.
+\nameref{par:Message_Passing} is useful for exchanging smaller amounts of data, because no conflicts need to be avoided.
+It is also easier to implement than is shared memory for intercomputer communication.
+\nameref{par:Shared_Memory} allows maximum speed and convenience of communication, since it can be done at memory transfer speeds when it takes place within a computer.
+Problems exist, however, in the areas of protection and synchronization between the \nameref{def:Process}es sharing memory.
+
+\paragraph{Message Passing}\label{par:Message_Passing}
+Messages can be exchanged between the \nameref{def:Process}es either directly or indirectly through a common mailbox.
+Before communication can take place, a connection must be opened.
+The name of the other communicator must be known.
+Each \nameref{def:Process} has a \emph{process name}, and this name is translated into an identifier, PID, by which the \nameref{def:Operating_System} can refer to the \nameref{def:Process}.
+The \mintinline{c}{get_processid()} \nameref{def:System_Call} does this translation.
+The identifiers are then passed to general-purpose \mintinline{c}{open()} and \mintinline{c}{close()} calls provided by the file system or to specific \mintinline{c}{open_connection()} and \mintinline{c}{close_connection()} \nameref{def:System_Call}s, depending on the model of communication.
+The recipient \nameref{def:Process} usually must give its permission for communication to take place with an \mintinline{c}{accept_connection()} call.
+
+Most \nameref{def:Process}es that will be receiving connections are special-purpose \nameref{def:Daemon}s.
+They execute a \mintinline{c}{wait_for_connection()} call and are awakened when a connection is made.
+The source of the communication, known as the client, and the receiving \nameref{def:Daemon}, known as a server, then exchange messages by using \mintinline{c}{read_message()} and \mintinline{c}{write_message()} \nameref{def:System_Call}s.
+The \mintinline{c}{close_connection()} call terminates the communication.
+
+\paragraph{Shared-Memory}\label{par:Shared_Memory}
+In the shared-memory model, \mintinline{c}{shared_memory_create()} and \mintinline{c}{shared_memory_attach()} \nameref{def:System_Call}s are used by \nameref{def:Process}es to create and gain access to regions of memory owned by other \nameref{def:Process}es.
+The \nameref{def:Operating_System} tries to prevent one \nameref{def:Process} from accessing another \nameref{def:Process}’s memory, so shared memory requires that two or more \nameref{def:Process}es agree to remove this restriction.
+They can then exchange information by reading and writing data in the shared areas.
+The form of the data is determined by the \nameref{def:Process}es and is not under the \nameref{def:Operating_System}’s control.
+The \nameref{def:Process}es are also responsible for ensuring that they are not writing to the same location simultaneously.
+
+\subsubsection{Protection}\label{subsubsec:Protection}
+Protection provides a mechanism for controlling access to the resources provided by a computer system.
+Historically, protection was a concern only on multiprogrammed computer systems with several \nameref{def:User}s.
+However, with the advent of networking and the Internet, all computer systems, from servers to mobile handheld devices, must be concerned with protection.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:

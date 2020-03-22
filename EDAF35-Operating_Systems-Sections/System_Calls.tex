@@ -24,7 +24,7 @@
 
 There are roughly 6 different types of system calls:
 \begin{enumerate}[noitemsep]
-\item \nameref{subsec:Process_Control}
+\item \nameref{subsubsec:Process_Control}
   \begin{itemize}[noitemsep]
   \item End, Abort
   \item Load, Execute
@@ -34,35 +34,35 @@ There are roughly 6 different types of system calls:
   \item Wait event, Signal event
   \item Allocate and Free memory
   \end{itemize}
-\item \nameref{subsec:File_Manipulation}
+\item \nameref{subsubsec:File_Manipulation}
   \begin{itemize}[noitemsep]
   \item Create file, Delete file
   \item Open, Close
   \item Read, Write, Reposition
   \item Get file attributes, Set file attributes
   \end{itemize}
-\item \nameref{subsec:Device_Manipulation}
+\item \nameref{subsubsec:Device_Manipulation}
   \begin{itemize}[noitemsep]
   \item Request device, Release device
   \item Read, Write, Reposition
   \item Get device attributes, Set device attributes
   \item Logically attach or detach devices
   \end{itemize}
-\item \nameref{subsec:Information_Maintenance}
+\item \nameref{subsubsec:Information_Maintenance}
   \begin{itemize}[noitemsep]
   \item Get time or date, Set time or date
   \item Get system data, Set system data
   \item Get \Nameref{Def:Process}, File, or Device attributes
   \item Set \Nameref{Def:Process}, File, or Device attributes
   \end{itemize}
-\item \nameref{subsec:Communications}
+\item \nameref{subsubsec:Communications}
   \begin{itemize}[noitemsep]
   \item Create, Delete communication connection
   \item Send, Receive messages
   \item Transfer status information
   \item Attach or Detach remote devices
   \end{itemize}
-\item \nameref{subsec:Protection}
+\item \nameref{subsubsec:Protection}
 \end{enumerate}
 
 \nameref{def:System_Call}s provide a layer between the hardware and \nameref{def:User}-space \nameref{def:Process}es.
@@ -82,28 +82,28 @@ This layer serves three primary purposes.
     \toprule
     & \textbf{Windows} & \textbf{Unix} \\
     \midrule
-    \nameref{subsec:Process_Control} & \mintinline{cpp}{CreateProcess()} & \mintinline{c}{fork()} \\
+    \nameref{subsubsec:Process_Control} & \mintinline{cpp}{CreateProcess()} & \mintinline{c}{fork()} \\
     & \mintinline{cpp}{ExitProcess()} & \mintinline{c}{exit()} \\
     & \mintinline{cpp}{WaitForSingleObject()} & \mintinline{c}{wait()} \\
     \midrule
-    \nameref{subsec:File_Manipulation} & \mintinline{cpp}{CreateFile()} & \mintinline{c}{open()} \\
+    \nameref{subsubsec:File_Manipulation} & \mintinline{cpp}{CreateFile()} & \mintinline{c}{open()} \\
     & \mintinline{cpp}{ReadFile()} & \mintinline{c}{read()} \\
     & \mintinline{cpp}{WriteFile()} & \mintinline{c}{write()} \\
     & \mintinline{cpp}{CloseHandle()} & \mintinline{c}{close()} \\
     \midrule
-    \nameref{subsec:Device_Manipulation} & \mintinline{cpp}{SetConsoleMode()} & \mintinline{c}{ioctl()} \\
+    \nameref{subsubsec:Device_Manipulation} & \mintinline{cpp}{SetConsoleMode()} & \mintinline{c}{ioctl()} \\
     & \mintinline{cpp}{ReadConsole()} & \mintinline{c}{read()} \\
     & \mintinline{cpp}{WriteConsole()} & \mintinline{c}{write()} \\
     \midrule
-    \nameref{subsec:Information_Maintenance} & \mintinline{cpp}{GetCurrentProcessID()} & \mintinline{c}{getpid()} \\
+    \nameref{subsubsec:Information_Maintenance} & \mintinline{cpp}{GetCurrentProcessID()} & \mintinline{c}{getpid()} \\
     & \mintinline{cpp}{SetTimer()} & \mintinline{c}{alarm()} \\
     & \mintinline{cpp}{Sleep()} & \mintinline{c}{sleep()} \\
     \midrule
-    \nameref{subsec:Communications} & \mintinline{cpp}{CreatePipe()} & \mintinline{c}{pipe()} \\
+    \nameref{subsubsec:Communications} & \mintinline{cpp}{CreatePipe()} & \mintinline{c}{pipe()} \\
     & \mintinline{cpp}{CreateFileMapping()} & \mintinline{c}{shm_open()} \\
     & \mintinline{cpp}{MapViewOfFile()} & \mintinline{c}{mmap()} \\
     \midrule
-    \nameref{subsec:Protection} & \mintinline{cpp}{SetFileSecurity()} & \mintinline{c}{chmod()} \\
+    \nameref{subsubsec:Protection} & \mintinline{cpp}{SetFileSecurity()} & \mintinline{c}{chmod()} \\
     & \mintinline{cpp}{InitializeSecurityDescriptor()} & \mintinline{c}{umask()} \\
     & \mintinline{cpp}{SetSecurityDescriptorGroup()} & \mintinline{c}{chown()} \\
     \bottomrule
@@ -143,17 +143,9 @@ The \nameref{def:Kernel} must provide the intended behavior of the \nameref{def:
 
 \input{./EDAF35-Operating_Systems-Sections/System_Calls/How_Syscalls_Defined}
 
-\input{./EDAF35-Operating_Systems-Sections/System_Calls/Process_Control}
 
-\input{./EDAF35-Operating_Systems-Sections/System_Calls/File_Manipulation}
+\input{./EDAF35-Operating_Systems-Sections/System_Calls/Syscall_Functions}
 
-\input{./EDAF35-Operating_Systems-Sections/System_Calls/Device_Manipulation}
-
-\input{./EDAF35-Operating_Systems-Sections/System_Calls/Information_Maintenance}
-
-\input{./EDAF35-Operating_Systems-Sections/System_Calls/Communications}
-
-\input{./EDAF35-Operating_Systems-Sections/System_Calls/Protection}
 
 %%% Local Variables:
 %%% mode: latex

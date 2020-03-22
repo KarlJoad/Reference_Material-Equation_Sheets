@@ -81,7 +81,7 @@ Typically, however, microkernels provide minimal process and memory management, 
 \end{definition}
 
 The main function of the \nameref{def:Microkernel} is to provide communication between the client program and the various services that are also running in user space.
-Communication is provided through \nameref{subsubsec:Message_Passing}.
+Communication is provided through \nameref{par:Message_Passing}.
 
 One benefit of the \nameref{def:Microkernel} approach is that it makes extending the \nameref{def:Operating_System} easier.
 All new services are added to user space and consequently do not require modification of the \nameref{def:Kernel}.
@@ -107,7 +107,7 @@ Thus, for example, we might build CPU scheduling and memory management algorithm
 The overall result resembles a \nameref{subsubsec:Layered_Approach} in that each \nameref{def:Kernel} section has defined, protected interfaces.
 However, it is more flexible than a \nameref{subsubsec:Layered_Approach}, because any \nameref{def:Kernel_Module} can call any other \nameref{def:Kernel_Module}.
 The approach is also similar to the \nameref{def:Microkernel} approach in that the primary module has only core functions and knowledge of how to load and communicate with other modules.
-But it is more efficient, because \nameref{def:Kernel_Module}s do not need to invoke \nameref{subsubsec:Message_Passing} to communicate.
+But it is more efficient, because \nameref{def:Kernel_Module}s do not need to invoke \nameref{par:Message_Passing} to communicate.
 
 \subsubsection{Hybrid Systems}\label{subsubsec:Hybrid_Systems}
 In practice, very few \nameref{def:Operating_System}s adopt a single, strictly defined structure.
