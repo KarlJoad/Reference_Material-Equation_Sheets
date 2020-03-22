@@ -37,6 +37,14 @@ The \nameref{def:Kernel} keeps a mapping of all registered \nameref{def:System_C
 \textbf{This table is architecture-dependent.}
 This table assigns each valid syscall to a unique syscall number.
 
+\subsubsection{Syscall Performance}\label{subsubsec:Syscall_Performance}
+System calls in Linux are very fast.
+This is because of:
+\begin{itemize}[noitemsep]
+\item Linux’s fast context switch times; entering and exiting the kernel is a streamlined and simple affair
+\item The simplicity of the system call handler
+\item The simplicity of the individual system calls themselves
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
