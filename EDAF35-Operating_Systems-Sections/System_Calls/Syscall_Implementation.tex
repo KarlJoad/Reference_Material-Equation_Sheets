@@ -1,0 +1,171 @@
+\subsection{Syscall Implementation}\label{subsec:Syscall_Implementation}
+The actual implementation of a system call in Linux does not need to be concerned with the behavior of the system call handler.
+The hard work lies in designing and implementing the system call; registering it with the kernel is simple.
+
+\subsubsection{Implementing Syscalls}\label{subsubsec:Implementing_Syscalls}
+The first step in implementing a system call is defining its purpose.
+\begin{itemize}[noitemsep]
+\item What will it do?
+  \begin{itemize}[noitemsep]
+  \item The syscall should have exactly one purpose.
+  \item Multiplexing syscalls (a single system call that does wildly different things depending on a flag argument) is discouraged in Linux.
+  \end{itemize}
+
+\item What are the new system call’s arguments, return value, and error codes?
+  \begin{itemize}[noitemsep]
+  \item The system call should have a clean and simple interface with the smallest number of arguments possible.
+  \item The semantics and behavior of a system call are important; they must not change, because existing applications will come to rely on them.
+  \end{itemize}
+
+\item Be forward thinking; consider how the function might change over time.
+\item Can new functionality be added to your system call or will any change require an entirely new function?
+\item Can you easily fix bugs without breaking backward compatibility?
+\item Will you need to add a flag to address forward compatibility?
+  \begin{itemize}[noitemsep]
+  \item Many system calls provide a flag argument to address forward compatibility.
+  \item The flag is not used to multiplex different behavior across a single system call—as mentioned, but to \textbf{enable new} functionality and options without breaking backward compatibility or needing to add a new system call.
+  \end{itemize}
+
+\item Design the system call to be as general as possible.
+  \begin{itemize}[noitemsep]
+  \item Do not assume its use today will be the same as its use tomorrow.
+  \item The purpose of the system call will remain constant but its uses may change.
+  \end{itemize}
+
+\item Is the system call portable?
+  \begin{itemize}[noitemsep]
+  \item Do not make assumptions about an architecture’s word size or endianness.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Parameter Verification}\label{subsubsec:Parameter_Verification}
+System calls must carefully verify all their parameters to ensure that they are valid and legal.
+The system call runs in kernel-space, and if the user can pass invalid input into the kernel without restraint, the system’s security and stability can suffer.
+
+For example, file I/O syscalls must check whether the file descriptor is valid.
+Process-related functions must check whether the provided PID is valid.
+Every parameter must be checked to ensure it is not just valid and legal, but correct.
+Processes must not ask the kernel to access resources to which the process does not have access.
+
+One of the most important checks is the validity of any pointers that the user provides.
+Imagine if a process could pass any pointer into the kernel, unchecked, even passing a pointer to which the kernel-calling process did not have read access!
+Processes could then trick the kernel into copying data for which they did not have access permission, such as data belonging to another process or data mapped unreadable.
+Before following a pointer into user-space, the system must ensure that:
+\begin{itemize}[noitemsep]
+\item The pointer points to a region of memory in user-space.
+  Processes must not be able to trick the kernel into reading data in kernel-space on their behalf.
+\item The pointer points to a region of memory in the process’s address space.
+  The process must not be able to trick the kernel into reading someone else’s data.
+\item The process must not be able to bypass memory access restrictions.
+  If reading, the memory is marked readable.
+  If writing, the memory is marked writable.
+  If executing, the memory is marked executable.
+\end{itemize}
+
+\begin{center}
+  \Large{\textbf{Kernel code must never blindly follow a pointer into user-space!}}
+\end{center}
+
+The kernel provides two methods for performing the requisite checks and the desired copy to and from user-space.
+One of these two methods must always be used.
+\begin{enumerate}[noitemsep]
+\item For writing \textbf{to} user-space, the function \kernelinline{copy_to_user()} is provided.
+  It takes three parameters.
+  \begin{enumerate}[noitemsep]
+  \item The first is a pointer to the destination memory address in the process’s address space.
+  \item The second is a pointer to the source pointer in kernel-space.
+  \item The third is the size, in bytes, of the data to copy.
+\end{enumerate}
+
+\item For reading \textbf{from} user-space, the method \kernelinline{copy_from_user()} is analogous to \kernelinline{copy_to_user()}.
+  It also takes 3 parameters.
+  \begin{enumerate}[noitemsep]
+  \item The first is a pointer to the destination memory address in \nameref{def:Kernel}-space.
+  \item The second is a pointer to the source memory address in the \nameref{def:Process}'s address space.
+  \item The third is the size, in bytes, of the data to read.
+\end{enumerate}
+
+\end{enumerate}
+
+Both of these functions return the number of bytes they failed to copy on error.
+On success, they return zero.
+It is standard for the syscall to return \kernelinline{-EFAULT} in the case of such an error.
+
+Both \kernelinline{copy_to_user()} and \kernelinline{copy_from_user()} may block.
+This occurs if the page containing the user data is not in physical memory but is swapped to disk.
+In that case, the process sleeps until the page fault handler can bring the page from the swap file on disk into physical memory.
+
+A final possible check is for valid permission.
+In older versions of Linux, it only \texttt{root} could perform these actions.
+Now, a finer-grained ``capabilities'' system is in place.
+
+The new system enables specific access checks on specific resources.
+A call to \kernelinline{capable()} with a valid capabilities flag returns nonzero if the caller holds the specified capability and zero otherwise.
+See \kernelinline{<linux/capability.h>} for a list of all capabilities and what rights they entail.
+For example, \kernelinline{capable(CAP_SYS_NICE)} checks whether the \textbf{caller} has the ability to modify nice values of other processes.
+
+\begin{blackbox}
+  \large{\textbf{By default, the superuser possesses all capabilities and nonroot possesses none.}}
+\end{blackbox}
+
+\subsubsection{Final Steps in Binding a Syscall}\label{subsec:Final_Steps_Binding_Syscall}
+After the \nameref{def:System_Call} is written, it is trivial to register it as an official \nameref{def:System_Call}:
+\begin{enumerate}[noitemsep]
+\item 1. Add an entry to the end of the system call table.
+  This needs to be done for each architecture that supports the \nameref{def:System_Call} (which, for most calls, is all the architectures).
+  The position of the syscall in the table, starting at zero, is its \nameref{def:Syscall_Number}.
+  For example, the tenth entry in the list is assigned syscall number nine.
+\item For each supported architecture, define the syscall number in \kernelinline{<asm/unistd.h>}.
+\item Compile the syscall into the \nameref{def:Kernel} image (as opposed to compiling as a module).
+  This can be as simple as putting the \nameref{def:System_Call} in a relevant file in \kernelinline{kernel/}.
+\end{enumerate}
+
+Look at these steps in more detail with a fictional \nameref{def:System_Call}, \kernelinline{foo()}.
+First, we want to append \kernelinline{sys_foo()} to the system call table, and record its \nameref{def:Syscall_Number}.
+This number is the zero-indexed location of the new \kernelinline{sys_foo()} function.
+For most architectures, the table is located in \texttt{entry.S}.
+Although it is not explicitly specified, the \nameref{def:System_Call} is implicitly given the next subsequent syscall number.
+
+For each architecture you want to support, the \nameref{def:System_Call} must be added to the architecture’s system call table.
+Usually you would want to make the \nameref{def:System_Call} available to each architecture, so it must be placed in each architecture's system call table.
+The \nameref{def:System_Call} does not need to receive the same syscall number under each architecture.
+Then, the \nameref{def:Syscall_Number} is added to \kernelinline{<asm/unistd.h>}.
+
+Because the \nameref{def:System_Call} must be compiled into the core \nameref{def:Kernel} image in all configurations, so the \kernelinline{sys_foo()} function must be placed somewhere in \kernelinline{kernel/*.c}.
+You should put it wherever the function is most relevant.
+For example, if the function is related to scheduling, you could define it in \kernelinline{kernel/sched.c}.
+
+\subsubsection{Why \textbf{NOT} Implement a Syscall}\label{subsubsec:Not_Implement_Syscall}
+The previous sections have shown that it is easy to implement a new \nameref{def:System_Call}, but that in no way should encourage you to do so.
+Often, much more viable alternatives to providing a new \nameref{def:System_Call} are available.
+
+Let’s look at the pros, cons, and alternatives.
+The pros of implementing a new interface as a syscall are:
+\begin{itemize}[noitemsep]
+\item They are simple to implement and easy to use.
+\item Their performance on Linux is fast.
+\end{itemize}
+
+The cons:
+\begin{itemize}[noitemsep]
+\item You need a syscall number, which needs to be officially assigned to you.
+\item After the \nameref{def:System_Call} is in a stable series \nameref{def:Kernel}, it is written in stone.
+  The interface cannot change without breaking user-space applications, which Linux explicitly disallows.
+\item Each architecture needs to separately register the \nameref{def:System_Call} and support it.
+\item \nameref{def:System_Call}s are not easily used from scripts and cannot be accessed directly from the filesystem.
+\item Because you need an assigned syscall number, it is hard to maintain and use a \nameref{def:System_Call} outside of the master \nameref{def:Kernel} tree.
+\item For simple exchanges of information, a \nameref{def:System_Call} is overkill.
+\end{itemize}
+
+The alternatives:
+\begin{itemize}[noitemsep]
+\item Implement a device node and \kernelinline{read()} and \kernelinline{write()} to it.
+  Use \kernelinline{ioctl()} to manipulate specific settings or retrieve specific information.
+\item Certain interfaces, such as semaphores, can be represented as file descriptors and manipulated as such.
+\item Add the information as a file to the appropriate location in \texttt{sysfs}.
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
