@@ -82,30 +82,30 @@ This layer serves three primary purposes.
     \toprule
     & \textbf{Windows} & \textbf{Unix} \\
     \midrule
-    \nameref{subsubsec:Process_Control} & \mintinline{cpp}{CreateProcess()} & \mintinline{c}{fork()} \\
-    & \mintinline{cpp}{ExitProcess()} & \mintinline{c}{exit()} \\
-    & \mintinline{cpp}{WaitForSingleObject()} & \mintinline{c}{wait()} \\
+    \nameref{subsubsec:Process_Control} & \mintinline{cpp}{CreateProcess()} & \kernelinline{fork()} \\
+    & \mintinline{cpp}{ExitProcess()} & \kernelinline{exit()} \\
+    & \mintinline{cpp}{WaitForSingleObject()} & \kernelinline{wait()} \\
     \midrule
-    \nameref{subsubsec:File_Manipulation} & \mintinline{cpp}{CreateFile()} & \mintinline{c}{open()} \\
-    & \mintinline{cpp}{ReadFile()} & \mintinline{c}{read()} \\
-    & \mintinline{cpp}{WriteFile()} & \mintinline{c}{write()} \\
-    & \mintinline{cpp}{CloseHandle()} & \mintinline{c}{close()} \\
+    \nameref{subsubsec:File_Manipulation} & \mintinline{cpp}{CreateFile()} & \kernelinline{open()} \\
+    & \mintinline{cpp}{ReadFile()} & \kernelinline{read()} \\
+    & \mintinline{cpp}{WriteFile()} & \kernelinline{write()} \\
+    & \mintinline{cpp}{CloseHandle()} & \kernelinline{close()} \\
     \midrule
-    \nameref{subsubsec:Device_Manipulation} & \mintinline{cpp}{SetConsoleMode()} & \mintinline{c}{ioctl()} \\
-    & \mintinline{cpp}{ReadConsole()} & \mintinline{c}{read()} \\
-    & \mintinline{cpp}{WriteConsole()} & \mintinline{c}{write()} \\
+    \nameref{subsubsec:Device_Manipulation} & \mintinline{cpp}{SetConsoleMode()} & \kernelinline{ioctl()} \\
+    & \mintinline{cpp}{ReadConsole()} & \kernelinline{read()} \\
+    & \mintinline{cpp}{WriteConsole()} & \kernelinline{write()} \\
     \midrule
-    \nameref{subsubsec:Information_Maintenance} & \mintinline{cpp}{GetCurrentProcessID()} & \mintinline{c}{getpid()} \\
-    & \mintinline{cpp}{SetTimer()} & \mintinline{c}{alarm()} \\
-    & \mintinline{cpp}{Sleep()} & \mintinline{c}{sleep()} \\
+    \nameref{subsubsec:Information_Maintenance} & \mintinline{cpp}{GetCurrentProcessID()} & \kernelinline{getpid()} \\
+    & \mintinline{cpp}{SetTimer()} & \kernelinline{alarm()} \\
+    & \mintinline{cpp}{Sleep()} & \kernelinline{sleep()} \\
     \midrule
-    \nameref{subsubsec:Communications} & \mintinline{cpp}{CreatePipe()} & \mintinline{c}{pipe()} \\
-    & \mintinline{cpp}{CreateFileMapping()} & \mintinline{c}{shm_open()} \\
-    & \mintinline{cpp}{MapViewOfFile()} & \mintinline{c}{mmap()} \\
+    \nameref{subsubsec:Communications} & \mintinline{cpp}{CreatePipe()} & \kernelinline{pipe()} \\
+    & \mintinline{cpp}{CreateFileMapping()} & \kernelinline{shm_open()} \\
+    & \mintinline{cpp}{MapViewOfFile()} & \kernelinline{mmap()} \\
     \midrule
-    \nameref{subsubsec:Protection} & \mintinline{cpp}{SetFileSecurity()} & \mintinline{c}{chmod()} \\
-    & \mintinline{cpp}{InitializeSecurityDescriptor()} & \mintinline{c}{umask()} \\
-    & \mintinline{cpp}{SetSecurityDescriptorGroup()} & \mintinline{c}{chown()} \\
+    \nameref{subsubsec:Protection} & \mintinline{cpp}{SetFileSecurity()} & \kernelinline{chmod()} \\
+    & \mintinline{cpp}{InitializeSecurityDescriptor()} & \kernelinline{umask()} \\
+    & \mintinline{cpp}{SetSecurityDescriptorGroup()} & \kernelinline{chown()} \\
     \bottomrule
   \end{tabular}
   \caption{System Calls in Unix and Windows}
@@ -127,17 +127,17 @@ POSIX is composed of a series of standards from the IEEE that aim to provide a p
 
 \subsection{How to Use Syscalls}\label{subsec:How_To_Use_Syscalls}
 \nameref{def:System_Call}s (often called \nameref{rmk:Syscall}s in Linux) are typically accessed via functionsdefined in the standard C library.
-These functions can define an arbitrary number of arguments and might\footnote{Nearly all system calls have a side effect (they result in some change of the system’s state). A few syscalls, such as \mintinline{c}{getpid()}, do not have side effects and just return data from the \nameref{def:Kernel}.} result in one or more side effects, for example writing to a file or copying some data into a provided pointer.
+These functions can define an arbitrary number of arguments and might\footnote{Nearly all system calls have a side effect (they result in some change of the system’s state). A few syscalls, such as \kernelinline{getpid()}, do not have side effects and just return data from the \nameref{def:Kernel}.} result in one or more side effects, for example writing to a file or copying some data into a provided pointer.
 
-\nameref{def:System_Call}s also provide a return value of type \mintinline{c}{long} that signifies success or error.
+\nameref{def:System_Call}s also provide a return value of type \kernelinline{long} that signifies success or error.
 Usually, though not always, a negative return value denotes an error.
 A return value of zero is usually (but again, not always) a sign of success.
 
-The C library, when a \nameref{def:System_Call} returns an error, writes a special error code into the global \mintinline{c}{errno} variable.
-This variable can be translated into human-readable errors via library functions such as \mintinline{c}{perror()}.
+The C library, when a \nameref{def:System_Call} returns an error, writes a special error code into the global \kernelinline{errno} variable.
+This variable can be translated into human-readable errors via library functions such as \kernelinline{perror()}.
 
 Finally, \nameref{def:System_Call}s have well-defined behavior.
-For example, the \nameref{def:System_Call} \mintinline{c}{getpid()} is defined to return an integer that is the current \nameref{def:Process}’s PID.\@
+For example, the \nameref{def:System_Call} \kernelinline{getpid()} is defined to return an integer that is the current \nameref{def:Process}’s PID.\@
 However, the definition of behavior says nothing of the implementation to achieve this behavior.
 The \nameref{def:Kernel} must provide the intended behavior of the \nameref{def:System_Call} but is free to do so with whatever implementation it wants as long as the result is correct.
 

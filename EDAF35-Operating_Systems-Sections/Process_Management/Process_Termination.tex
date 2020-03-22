@@ -1,30 +1,30 @@
 \subsection{Process Termination}\label{subsec:Process_Termination}
 When a process terminates, the \nameref{def:Kernel} releases the resources owned by the process and notifies the child’s parent of its demise.
 Usually, process destruction is self-induced.
-It occurs when the process calls the \mintinline{c}{exit()} \nameref{def:System_Call}.
-This can be done either explicitly when it is ready to terminate or implicitly on return from the main subroutine of any program (The C compiler places a call to \mintinline{c}{exit()} after \mintinline{c}{main()} returns).
+It occurs when the process calls the \kernelinline{exit()} \nameref{def:System_Call}.
+This can be done either explicitly when it is ready to terminate or implicitly on return from the main subroutine of any program (The C compiler places a call to \kernelinline{exit()} after \kernelinline{main()} returns).
 
 A process can also terminate involuntarily.
 This occurs when the process receives a signal or exception it cannot handle or ignore.
 
-Regardless of how a process terminates, the bulk of the work is handled by \mintinline{c}{do_exit()}, defined in \mintinline{c}{kernel/exit.c}, which completes a number of chores:
+Regardless of how a process terminates, the bulk of the work is handled by \kernelinline{do_exit()}, defined in \kernelinline{kernel/exit.c}, which completes a number of chores:
 \begin{enumerate}
-\item It sets the \mintinline{c}{PF_EXITING} flag in the flags member of the \mintinline{c}{task_struct}.
-\item It calls \mintinline{c}{del_timer_sync()} to remove any kernel timers.
+\item It sets the \kernelinline{PF_EXITING} flag in the flags member of the \kernelinline{task_struct}.
+\item It calls \kernelinline{del_timer_sync()} to remove any kernel timers.
   Upon return, it is guaranteed that no timer is queued and that no timer handler is running.
-\item If BSD process accounting is enabled, \mintinline{c}{do_exit()} calls \mintinline{c}{acct_update_integrals()} to write out accounting information.
-\item It calls \mintinline{c}{exit_mm()} to release the \mintinline{c}{mm_struct} held by this process.
+\item If BSD process accounting is enabled, \kernelinline{do_exit()} calls \kernelinline{acct_update_integrals()} to write out accounting information.
+\item It calls \kernelinline{exit_mm()} to release the \kernelinline{mm_struct} held by this process.
   If no other process is using this address space, i.e.\ the address space is not shared, the \nameref{def:Kernel} then destroys it.
-\item It calls \mintinline{c}{exit_sem()}.
+\item It calls \kernelinline{exit_sem()}.
   If the process is queued waiting for an IPC semaphore, it is dequeued here.
-\item It then calls \mintinline{c}{exit_files()} and \mintinline{c}{exit_fs()} to decrement the usage count of objects related to file descriptors and filesystem data, respectively.
+\item It then calls \kernelinline{exit_files()} and \kernelinline{exit_fs()} to decrement the usage count of objects related to file descriptors and filesystem data, respectively.
   If either usage counts reach zero, the object is no longer in use by any process, and it is destroyed.
-\item It sets the \nameref{def:Process}’s exit code, stored in the \mintinline{c}{exit_code} member of the \mintinline{c}{task_struct}, to the code provided by \mintinline{c}{exit()} or whatever \nameref{def:Kernel} mechanism forced the termination.
+\item It sets the \nameref{def:Process}’s exit code, stored in the \kernelinline{exit_code} member of the \kernelinline{task_struct}, to the code provided by \kernelinline{exit()} or whatever \nameref{def:Kernel} mechanism forced the termination.
   The exit code is stored here for optional retrieval by the parent.
-\item It calls \mintinline{c}{exit_notify()} to send signals to the \nameref{def:Process}’s parent, reparents any of the \nameref{def:Process}’s children to another thread in their thread group or the init process, and sets the \nameref{def:Process}’s exit state, stored in \mintinline{c}{exit_state} in the \mintinline{c}{task_struct} structure, to \mintinline{c}{EXIT_ZOMBIE}.
-\item \mintinline{c}{do_exit()} calls \mintinline{c}{schedule()} to switch to a new process.
+\item It calls \kernelinline{exit_notify()} to send signals to the \nameref{def:Process}’s parent, reparents any of the \nameref{def:Process}’s children to another thread in their thread group or the init process, and sets the \nameref{def:Process}’s exit state, stored in \kernelinline{exit_state} in the \kernelinline{task_struct} structure, to \kernelinline{EXIT_ZOMBIE}.
+\item \kernelinline{do_exit()} calls \kernelinline{schedule()} to switch to a new process.
   Because the process is now not schedulable, this is the last code the \nameref{def:Process} will ever execute.
-  \mintinline{c}{do_exit()} never returns.
+  \kernelinline{do_exit()} never returns.
 \end{enumerate}
 
 At this point, we have a \nameref{def:Zombie_Process}.
@@ -39,33 +39,33 @@ At this point, we have a \nameref{def:Zombie_Process}.
     \item This assumes that this \nameref{def:Process} was the only one using these objects, i.e.\ no other \nameref{def:Thread}s/\nameref{def:Process}es were using them.
     \end{itemize}
   \item The \nameref{def:Process} is not runnable and no longer has an address space in which to run.
-  \item The process is in the \mintinline{c}{EXIT_ZOMBIE} exit state.
-  \item The only memory it occupies is its \nameref{def:Kernel} stack, the \mintinline{c}{thread_info} structure, and the \mintinline{c}{task_struct} structure.
+  \item The process is in the \kernelinline{EXIT_ZOMBIE} exit state.
+  \item The only memory it occupies is its \nameref{def:Kernel} stack, the \kernelinline{thread_info} structure, and the \kernelinline{task_struct} structure.
   \item The \nameref{def:Process} exists solely to provide information to its parent.
     After the parent retrieves the information, or notifies the \nameref{def:Kernel} that it is uninterested, the remaining memory held by the process is freed and returned to the system for use.
   \end{itemize}
 \end{definition}
 
 \subsubsection{Removing a Process Descriptor}\label{subsubsec:Remove_Process_Descriptor}
-After \mintinline{c}{do_exit()} completes, the \nameref{def:Process_Descriptor} for the terminated \nameref{def:Process} still exists, but the \nameref{def:Process} is a \nameref{def:Zombie_Process} and is unable to run.
+After \kernelinline{do_exit()} completes, the \nameref{def:Process_Descriptor} for the terminated \nameref{def:Process} still exists, but the \nameref{def:Process} is a \nameref{def:Zombie_Process} and is unable to run.
 By remaining a \nameref{def:Process}, albeit a \nameref{def:Zombie_Process}, this enables the system to obtain information about a child \nameref{def:Process} after it has terminated.
 
 \begin{center}
   \large{\textbf{Consequently, the acts of cleaning up after a \nameref{def:Process} and removing its \nameref{def:Process_Descriptor} are separate.}}
 \end{center}
 
-\textbf{After} the parent has obtained information on its terminated child, or signified to the \nameref{def:Kernel} that it does not care, the child’s \mintinline{c}{task_struct} is deallocated.
-The \mintinline{c}{wait()} family of functions are implemented via a single \nameref{def:System_Call}, \mintinline{c}{wait4()}.
+\textbf{After} the parent has obtained information on its terminated child, or signified to the \nameref{def:Kernel} that it does not care, the child’s \kernelinline{task_struct} is deallocated.
+The \kernelinline{wait()} family of functions are implemented via a single \nameref{def:System_Call}, \kernelinline{wait4()}.
 The standard behavior is to suspend execution of the calling task until one of its children exits, at which time the function returns with the PID of the exited child.
 Additionally, a pointer is provided to the function that on return holds the exit code of the terminated child.
 
-When it is time to finally deallocate the \nameref{def:Process_Descriptor}, \mintinline{c}{release_task()} is invoked.
+When it is time to finally deallocate the \nameref{def:Process_Descriptor}, \kernelinline{release_task()} is invoked.
 It does the following:
 \begin{enumerate}
-\item Calls \mintinline{c}{__exit_signal()}, which calls \mintinline{c}{__unhash_process()}, which in turns calls \mintinline{c}{detach_pid()} to remove the process from the PIDhash and remove the process from the task list.
-\item \mintinline{c}{__exit_signal()} releases any remaining resources used by the now dead process and finalizes statistics and bookkeeping.
-\item If the task was the last member of a thread group, and the leader is a zombie, then \mintinline{c}{release_task()} notifies the zombie leader’s parent.
-\item \mintinline{c}{release_task()} calls \mintinline{c}{put_task_struct()} to free the pages containing the \nameref{def:Process}’s \nameref{def:Kernel} stack and \mintinline{c}{thread_info} structure and deallocate the slab cache containing the \mintinline{c}{task_struct}.
+\item Calls \kernelinline{__exit_signal()}, which calls \kernelinline{__unhash_process()}, which in turns calls \kernelinline{detach_pid()} to remove the process from the PIDhash and remove the process from the task list.
+\item \kernelinline{__exit_signal()} releases any remaining resources used by the now dead process and finalizes statistics and bookkeeping.
+\item If the task was the last member of a thread group, and the leader is a zombie, then \kernelinline{release_task()} notifies the zombie leader’s parent.
+\item \kernelinline{release_task()} calls \kernelinline{put_task_struct()} to free the pages containing the \nameref{def:Process}’s \nameref{def:Kernel} stack and \kernelinline{thread_info} structure and deallocate the slab cache containing the \kernelinline{task_struct}.
 \end{enumerate}
 
 At this point, the \nameref{def:Process_Descriptor} and all resources belonging solely to the process
@@ -78,7 +78,7 @@ The solution is to reparent a task’s children on exit to either another \namer
 When a suitable parent for the child(ren) has been found, each child needs to be located and reparented to this \texttt{reaper} parent \nameref{def:Process}.
 
 With the \nameref{def:Process}(es) successfully reparented, there is no risk of stray \nameref{def:Zombie_Process}es.
-The \texttt{init} process routinely calls \mintinline{c}{wait()} on its children, cleaning up any zombies assigned to it.
+The \texttt{init} process routinely calls \kernelinline{wait()} on its children, cleaning up any zombies assigned to it.
 
 %%% Local Variables:
 %%% mode: latex

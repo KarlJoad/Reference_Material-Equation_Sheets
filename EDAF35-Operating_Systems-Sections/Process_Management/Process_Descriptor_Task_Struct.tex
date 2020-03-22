@@ -1,7 +1,7 @@
 \subsection{The Process Descriptor and Task \texttt{struct}}\label{subsec:Process_Descriptor_Task_Struct}
 \begin{definition}[Task List]\label{def:Task_List}
   The \nameref{def:Kernel} stores the list of \nameref{def:Process}es in a circular doubly-linked list called the \emph{task list}.
-  Each element in the task list is a \nameref{def:Process_Descriptor} of the type \mintinline{c}{struct task_struct}.
+  Each element in the task list is a \nameref{def:Process_Descriptor} of the type \kernelinline{struct task_struct}.
 \end{definition}
 
 \begin{definition}[Process Descriptor]\label{def:Process_Descriptor}
@@ -17,11 +17,11 @@
   \item The \nameref{def:Process}'s id (PID)
   \end{itemize}
 
-  In Linux, the process descriptor is of type \mintinline{c}{struct task_struct}, which is defined in \texttt{<linux/sched.h>}.
+  In Linux, the process descriptor is of type \kernelinline{struct task_struct}, which is defined in \texttt{<linux/sched.h>}.
 \end{definition}
 
 \subsubsection{Allocating the Process Descriptor}\label{subsubsec:Allocate_Process_Descriptor}
-Like in any other programming language, the \mintinline{c}{task_struct} record must be initialized somehow.
+Like in any other programming language, the \kernelinline{task_struct} record must be initialized somehow.
 This is done with the \emph{slab allocator} to provide object reuse and \nameref{def:Cache_Coloring}.
 
 \begin{definition}[Cache Coloring]\label{def:Cache_Coloring}
@@ -32,33 +32,33 @@ This is done with the \emph{slab allocator} to provide object reuse and \nameref
 
 \subsubsection{Storing the Process Descriptor}\label{subsubsec:Storing_Process_Descriptor}
 The system identifies \nameref{def:Process}es by a unique Process Identification Value or PID.\@
-The PID is a numerical value represented by the opaque type\footnote{``An opaque type is a data type whose physical representation is unknown or irrelevant''~\cite[pg.~26]{LKD3}.} \mintinline{c}{pid_t}, which is typically an \mintinline{c}{int}.
-Because of backward compatibility with earlier UNIX and Linux versions, the default maximum value is only 32,768 (that of a \mintinline{c}{(short int)}), although the value can be increased as high as four million (this is controlled in \mintinline{c}{<linux/threads.h>}).
+The PID is a numerical value represented by the opaque type\footnote{``An opaque type is a data type whose physical representation is unknown or irrelevant''~\cite[pg.~26]{LKD3}.} \kernelinline{pid_t}, which is typically an \kernelinline{int}.
+Because of backward compatibility with earlier UNIX and Linux versions, the default maximum value is only 32,768 (that of a \kernelinline{(short int)}), although the value can be increased as high as four million (this is controlled in \kernelinline{<linux/threads.h>}).
 The \nameref{def:Kernel} stores this value as PID inside each \nameref{def:Process_Descriptor}.
 This maximum value is important because it is essentially the maximum number of \nameref{def:Process}es that may exist concurrently on the system.
 
-Inside the \nameref{def:Kernel}, tasks are typically referenced directly by a pointer to their \mintinline{c}{task_struct} structure.
-In fact, most \nameref{def:Kernel} code that deals with \nameref{def:Process}es works directly with \mintinline{c}{struct task_struct}.
+Inside the \nameref{def:Kernel}, tasks are typically referenced directly by a pointer to their \kernelinline{task_struct} structure.
+In fact, most \nameref{def:Kernel} code that deals with \nameref{def:Process}es works directly with \kernelinline{struct task_struct}.
 Consequently, it is useful to be able to quickly look up the \nameref{def:Process_Descriptor} of the currently executing task, which is done via the current macro.
 This macro must be independently implemented by each architecture.
-Some architectures save a pointer to the \mintinline{c}{task_struct} structure of the currently running \nameref{def:Process} in a register, enabling for efficient access.
-Other architectures make use of the fact that \mintinline{c}{struct thread_info} is stored on the \nameref{def:Kernel} stack to calculate the location of \mintinline{c}{thread_info} and subsequently the \mintinline{c}{task_struct}.
+Some architectures save a pointer to the \kernelinline{task_struct} structure of the currently running \nameref{def:Process} in a register, enabling for efficient access.
+Other architectures make use of the fact that \kernelinline{struct thread_info} is stored on the \nameref{def:Kernel} stack to calculate the location of \kernelinline{thread_info} and subsequently the \kernelinline{task_struct}.
 
 \subsubsection{Process State}\label{subsubsec:Process_State}
 The state field of the process descriptor describes the current condition of the process.
 Each process on the system is in exactly one of five different states.
 This value is represented by one of five flags:
 \begin{enumerate}[noitemsep]
-\item \mintinline{c}{TASK_RUNNING}: The process is runnable; it is either currently running or on a runqueue waiting to run.
+\item \kernelinline{TASK_RUNNING}: The process is runnable; it is either currently running or on a runqueue waiting to run.
   This is the only possible state for a \nameref{def:Process} executing in \nameref{def:User}-space; it can also apply to a process in \nameref{def:Kernel}-space that is actively running.
-\item \mintinline{c}{TASK_INTERRUPTIBLE}: The \nameref{def:Process} is sleeping (that is, it is blocked), waiting for some condition to exist.
-  When this condition exists, the \nameref{def:Kernel} sets the \nameref{def:Process}’s state to \mintinline{c}{TASK_RUNNING}.
+\item \kernelinline{TASK_INTERRUPTIBLE}: The \nameref{def:Process} is sleeping (that is, it is blocked), waiting for some condition to exist.
+  When this condition exists, the \nameref{def:Kernel} sets the \nameref{def:Process}’s state to \kernelinline{TASK_RUNNING}.
   The \nameref{def:Process} also awakes prematurely and becomes runnable if it receives a signal.
-\item \mintinline{c}{TASK_UNINTERRUPTIBLE}: This state is identical to \mintinline{c}{TASK_INTERRUPTIBLE} \textbf{except that it does not wake up and become runnable if it receives a signal}.
+\item \kernelinline{TASK_UNINTERRUPTIBLE}: This state is identical to \kernelinline{TASK_INTERRUPTIBLE} \textbf{except that it does not wake up and become runnable if it receives a signal}.
   This is used in situations where the \nameref{def:Process} must wait without interruption or when the event is expected to occur quite quickly.
-  Because the task does not respond to signals in this state, \mintinline{c}{TASK_UNINTERRUPTIBLE} is less often used than \mintinline{c}{TASK_INTERRUPTIBLE}.
-\item \mintinline{c}{__TASK_TRACED}: The \nameref{def:Process} is being traced by another \nameref{def:Process}, such as a debugger, via \texttt{ptrace}.
-\item \mintinline{c}{__TASK_STOPPED}: \nameref{def:Process} execution has stopped; the task is not running nor is it eligible to run.
+  Because the task does not respond to signals in this state, \kernelinline{TASK_UNINTERRUPTIBLE} is less often used than \kernelinline{TASK_INTERRUPTIBLE}.
+\item \kernelinline{__TASK_TRACED}: The \nameref{def:Process} is being traced by another \nameref{def:Process}, such as a debugger, via \texttt{ptrace}.
+\item \kernelinline{__TASK_STOPPED}: \nameref{def:Process} execution has stopped; the task is not running nor is it eligible to run.
   This occurs if the task receives the \texttt{SIGSTOP}, \texttt{SIGTSTP}, \texttt{SIGTTIN}, or \texttt{SIGTTOU} signal or if it receives any signal while it is being debugged.
 \end{enumerate}
 
@@ -100,7 +100,7 @@ Every process on the system has exactly one parent.
 Likewise, every process has zero or more children.
 Processes that are all direct children of the same parent are called siblings.
 The relationship between processes is stored in the process descriptor.
-Each \mintinline{c}{task_struct} has a pointer to the parent’s \mintinline{c}{task_struct}, named \texttt{parent}, and a list of children, named \texttt{children}.
+Each \kernelinline{task_struct} has a pointer to the parent’s \kernelinline{task_struct}, named \texttt{parent}, and a list of children, named \texttt{children}.
 
 %%% Local Variables:
 %%% mode: latex

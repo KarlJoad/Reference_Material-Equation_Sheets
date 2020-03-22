@@ -8,10 +8,10 @@ The Linux kernel is unique in that there is no concept of a \nameref{def:Thread}
 Instead, Linux implements all \nameref{def:Thread}s as standard \nameref{def:Process}es.
 The Linux kernel does not provide any special scheduling semantics or data structures to represent \nameref{def:Thread}s.
 Instead, a \nameref{def:Thread} is merely a \nameref{def:Process} that shares certain resources with other \nameref{def:Process}es.
-Each \nameref{def:Thread} has a unique \mintinline{c}{task_struct} and appears to the kernel as a normal \nameref{def:Process} which just happen to share resources, such as an address space, with other \nameref{def:Process}es.
+Each \nameref{def:Thread} has a unique \kernelinline{task_struct} and appears to the kernel as a normal \nameref{def:Process} which just happen to share resources, such as an address space, with other \nameref{def:Process}es.
 
 For example, assume you have a \nameref{def:Process} that consists of four \nameref{def:Thread}s.
-In Linux, there are simply four \nameref{def:Process}es and thus four normal \mintinline{c}{task_struct} structures.
+In Linux, there are simply four \nameref{def:Process}es and thus four normal \kernelinline{task_struct} structures.
 The four \nameref{def:Process}es are set up to share certain resources.
 The result is quite elegant.
 However, on systems with explicit \nameref{def:Thread} support, one \nameref{def:Process_Descriptor} might exist that points to the four different \nameref{def:Thread}s.
@@ -19,17 +19,17 @@ The \nameref{def:Process_Descriptor} describes the shared resources, such as an 
 The \nameref{def:Thread}s then describe the resources they alone possess.
 
 \subsubsection{Creating Threads}\label{subsubsec:Creating_Threads}
-\nameref{def:Thread}s are created the same as normal \nameref{def:Process}es, i.e.\ \mintinline{c}{fork()} is used.
-The difference is that the \mintinline{c}{clone()} \nameref{def:System_Call} is passed flags corresponding to the specific resources to be shared.
+\nameref{def:Thread}s are created the same as normal \nameref{def:Process}es, i.e.\ \kernelinline{fork()} is used.
+The difference is that the \kernelinline{clone()} \nameref{def:System_Call} is passed flags corresponding to the specific resources to be shared.
 \begin{minted}[frame=lines,linenos]{c}
 clone(CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND, 0);
 \end{minted}
 
-The code above results in behavior identical to a normal \mintinline{c}{fork()}, except that the address space, filesystem resources, file descriptors, and signal handlers are shared.
+The code above results in behavior identical to a normal \kernelinline{fork()}, except that the address space, filesystem resources, file descriptors, and signal handlers are shared.
 In other words, the new task and its parent are what are popularly called \nameref{def:Thread}s.
 
-The flags provided to \mintinline{c}{clone()} help specify the behavior of the new process and detail what resources the parent and child will share.
-\Cref{tab:Clone_Flags} lists the \mintinline{c}{clone()} flags, which are defined in \mintinline{c}{<linux/sched.h>}, and their effect.
+The flags provided to \kernelinline{clone()} help specify the behavior of the new process and detail what resources the parent and child will share.
+\Cref{tab:Clone_Flags} lists the \kernelinline{clone()} flags, which are defined in \kernelinline{<linux/sched.h>}, and their effect.
 
 \begin{table}[h!tbp]
   \centering
@@ -37,28 +37,28 @@ The flags provided to \mintinline{c}{clone()} help specify the behavior of the n
     \toprule
     \textbf{Flag} & \textbf{Meaning} \\
     \midrule
-    \mintinline{c}{CLONE_FILES} & Parent and child share open files. \\
-    \mintinline{c}{CLONE_FS} & Parent and child share filesystem information. \\
-    \mintinline{c}{CLONE_IDLETASK} & Set PID to zero (used only by the idle tasks). \\
-    \mintinline{c}{CLONE_NEWNS} & Create a new namespace for the child. \\
-    \mintinline{c}{CLONE_PARENT} & Child is to have same parent as its parent. \\
-    \mintinline{c}{CLONE_PTRACE} & Continue tracing child. \\
-    \mintinline{c}{CLONE_SETTID} & Write the TID back to user-space. \\
-    \mintinline{c}{CLONE_SETTLS} & Create a new TLS for the child. \\
-    \mintinline{c}{CLONE_SIGHAND} & Parent and child share signal handlers and blocked signals. \\
-    \mintinline{c}{CLONE_SYSVSEM} & Parent and child share SystemV \texttt{SEM\_UNDO} semantics. \\
-    \mintinline{c}{CLONE_THREAD} & Parent and child are in the same thread group. \\
-    \mintinline{c}{CLONE_VFORK} & \mintinline{c}{vfork()} was used and the parent will sleep until the child wakes it. \\
-    \mintinline{c}{CLONE_UNTRACED} & Do not let the tracing process force \mintinline{c}{CLONE_PTRACE} on the child. \\
-    \mintinline{c}{CLONE_STOP} & Start process in the \mintinline{c}{TASK_STOPPED} state. \\
-    \mintinline{c}{CLONE_SETTLS} & Create a new TLS (thread-local storage) for the child. \\
-    \mintinline{c}{CLONE_CHILD_CLEARTID} & Clear the TID in the child. \\
-    \mintinline{c}{CLONE_CHILD_SETTID} & Set the TID in the child. \\
-    \mintinline{c}{CLONE_PARENT_SETTID} & Set the TID in the parent. \\
-    \mintinline{c}{CLONE_VM} & Parent and child share address space. \\
+    \kernelinline{CLONE_FILES} & Parent and child share open files. \\
+    \kernelinline{CLONE_FS} & Parent and child share filesystem information. \\
+    \kernelinline{CLONE_IDLETASK} & Set PID to zero (used only by the idle tasks). \\
+    \kernelinline{CLONE_NEWNS} & Create a new namespace for the child. \\
+    \kernelinline{CLONE_PARENT} & Child is to have same parent as its parent. \\
+    \kernelinline{CLONE_PTRACE} & Continue tracing child. \\
+    \kernelinline{CLONE_SETTID} & Write the TID back to user-space. \\
+    \kernelinline{CLONE_SETTLS} & Create a new TLS for the child. \\
+    \kernelinline{CLONE_SIGHAND} & Parent and child share signal handlers and blocked signals. \\
+    \kernelinline{CLONE_SYSVSEM} & Parent and child share SystemV \texttt{SEM\_UNDO} semantics. \\
+    \kernelinline{CLONE_THREAD} & Parent and child are in the same thread group. \\
+    \kernelinline{CLONE_VFORK} & \kernelinline{vfork()} was used and the parent will sleep until the child wakes it. \\
+    \kernelinline{CLONE_UNTRACED} & Do not let the tracing process force \kernelinline{CLONE_PTRACE} on the child. \\
+    \kernelinline{CLONE_STOP} & Start process in the \kernelinline{TASK_STOPPED} state. \\
+    \kernelinline{CLONE_SETTLS} & Create a new TLS (thread-local storage) for the child. \\
+    \kernelinline{CLONE_CHILD_CLEARTID} & Clear the TID in the child. \\
+    \kernelinline{CLONE_CHILD_SETTID} & Set the TID in the child. \\
+    \kernelinline{CLONE_PARENT_SETTID} & Set the TID in the parent. \\
+    \kernelinline{CLONE_VM} & Parent and child share address space. \\
     \bottomrule
   \end{tabular}
-  \caption{\mintinline{c}{clone()} Flags}
+  \caption{\kernelinline{clone()} Flags}
   \label{tab:Clone_Flags}
 \end{table}
 
@@ -68,7 +68,7 @@ The kernel accomplishes this via kernel threads, standard processes that exist s
 
 \begin{definition}[Kernel Thread]\label{def:Kernel_Thread}
   \emph{Kernel thread}s are like regular \nameref{def:Thread}s, except that they can only be started by the \nameref{def:Kernel} and its previous kernel threads.
-  Additionally, they do not have an address space (Their \texttt{mm} pointer, which points at their address space, is \mintinline{c}{NULL}.).
+  Additionally, they do not have an address space (Their \texttt{mm} pointer, which points at their address space, is \kernelinline{NULL}.).
   They operate only in \nameref{def:Kernel}-space and do not context switch into \nameref{def:User}-space.
   Kernel threads are schedulable and preemptable, the same as normal \nameref{def:Process}es.
 \end{definition}
@@ -76,9 +76,9 @@ The kernel accomplishes this via kernel threads, standard processes that exist s
 Linux delegates several tasks to kernel threads, most notably the \texttt{flush} tasks and the \texttt{ksoftirqd} task.
 Kernel threads are created on system boot by other kernel threads.
 The kernel handles this automatically by forking all new kernel threads off of the \texttt{kthreadd} \nameref{def:Kernel} process.
-The interface for \nameref{def:Kernel_Thread}s is declared in \mintinline{c}{<linux/kthread.h>}.
+The interface for \nameref{def:Kernel_Thread}s is declared in \kernelinline{<linux/kthread.h>}.
 
-When started, a \nameref{def:Kernel_Thread} continues to exist until it calls \mintinline{c}{do_exit()} or another part of the kernel calls \mintinline{c}{kthread_stop()}, passing in the address of the \mintinline{c}{task_struct} structure returned by \mintinline{c}{kthread_create()}.
+When started, a \nameref{def:Kernel_Thread} continues to exist until it calls \kernelinline{do_exit()} or another part of the kernel calls \kernelinline{kthread_stop()}, passing in the address of the \kernelinline{task_struct} structure returned by \kernelinline{kthread_create()}.
 
 %%% Local Variables:
 %%% mode: latex

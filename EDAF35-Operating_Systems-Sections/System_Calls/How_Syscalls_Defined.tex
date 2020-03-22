@@ -1,23 +1,23 @@
 \subsection{How are Syscalls Defined?}\label{subsec:How_Syscalls_Defined}
-In this section, we will be analyzing the \mintinline{c}{getpid()} \nameref{def:System_Call}.
+In this section, we will be analyzing the \kernelinline{getpid()} \nameref{def:System_Call}.
 It is defined to return an \textbf{integer} (to the \nameref{def:User}-space) that represents the current \nameref{def:Process}'s PID.\@
-The implementation of \mintinline{c}{getpid()} is shown below.
-\inputminted[frame=lines,linenos]{c}{./EDAF35-Operating_Systems-Sections/System_Calls/Code/getpid_Implementation.c}
+The implementation of \kernelinline{getpid()} is shown below.
+\kernelsourcefile{./EDAF35-Operating_Systems-Sections/System_Calls/Code/getpid_Implementation.c}
 
-\mintinline{c}{SYSCALL_DEFINE0} is a macro that defines a system call with no parameters (hence the 0).
+\kernelinline{SYSCALL_DEFINE0} is a macro that defines a system call with no parameters (hence the 0).
 The expanded code looks like this:
-\inputminted[frame=lines,linenos]{c}{./EDAF35-Operating_Systems-Sections/System_Calls/Code/getpid_Expanded.c}
+\kernelsourcefile{./EDAF35-Operating_Systems-Sections/System_Calls/Code/getpid_Expanded.c}
 
 \nameref{def:System_Call}s have a strict definition.
 \begin{enumerate}[noitemsep]
 \item The asmlinkage modifier on the function definition is a directive to tell the compiler to look only on the stack for this function’s arguments.
   \textbf{This is a required modifier for all system calls.}
-\item The function returns a \mintinline{c}{long}.
-  For compatibility between 32- and 64-bit systems, system calls defined to return an \mintinline{c}{int} in \nameref{def:User}-space return a \mintinline{c}{long} in the \nameref{def:Kernel}.
-\item The \mintinline{c}{getpid()} \nameref{def:System_Call} is defined as \mintinline{c}{sys_getpid()} in the \nameref{def:Kernel}.
+\item The function returns a \kernelinline{long}.
+  For compatibility between 32- and 64-bit systems, system calls defined to return an \kernelinline{int} in \nameref{def:User}-space return a \kernelinline{long} in the \nameref{def:Kernel}.
+\item The \kernelinline{getpid()} \nameref{def:System_Call} is defined as \kernelinline{sys_getpid()} in the \nameref{def:Kernel}.
   \begin{itemize}[noitemsep]
   \item This is the naming convention taken with all \nameref{def:System_Call}s in Linux.
-  \item \nameref{def:System_Call} \mintinline{c}{bar()} is implemented in the \nameref{def:Kernel} as function \mintinline{c}{sys_bar()}.
+  \item \nameref{def:System_Call} \kernelinline{bar()} is implemented in the \nameref{def:Kernel} as function \kernelinline{sys_bar()}.
   \end{itemize}
 \end{enumerate}
 
@@ -30,10 +30,10 @@ The expanded code looks like this:
 
 After a \nameref{def:Syscall_Number} has been assigned, it cannot change, or already-compiled applications will break.
 Likewise, if a \nameref{def:System_Call} is removed, its syscall number cannot be recycled, or previously compiled code would aim to invoke one \nameref{def:System_Call} but would invoke another.
-Linux does provide a ``not implemented'' \nameref{def:System_Call}, \mintinline{c}{sys_ni_syscall()}, which does nothing except \mintinline{c}{return -ENOSYS}, the error corresponding to an invalid \nameref{def:System_Call}.
+Linux does provide a ``not implemented'' \nameref{def:System_Call}, \kernelinline{sys_ni_syscall()}, which does nothing except \kernelinline{return -ENOSYS}, the error corresponding to an invalid \nameref{def:System_Call}.
 This function is used in the rare event that a syscall is removed or otherwise made unavailable.
 
-The \nameref{def:Kernel} keeps a mapping of all registered \nameref{def:System_Call}s in the \emph{system call table}, stored in \mintinline{c}{sys_call_table}.
+The \nameref{def:Kernel} keeps a mapping of all registered \nameref{def:System_Call}s in the \emph{system call table}, stored in \kernelinline{sys_call_table}.
 \textbf{This table is architecture-dependent.}
 This table assigns each valid syscall to a unique syscall number.
 

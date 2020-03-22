@@ -12,7 +12,7 @@
   A \emph{program} is object code stored on some media, typically as a \nameref{def:File}.
   These contain the instructions that the processor will execute when the program is running as a \nameref{def:Process}.
   These instructions are stored in what is called the \emph{text section} of the program.
-  It also contains statically allocated information, such as \mintinline{c}{static} variables.
+  It also contains statically allocated information, such as \kernelinline{static} variables.
 \end{definition}
 
 \begin{definition}[Thread]\label{def:Thread}
@@ -42,19 +42,19 @@ On modern \nameref{def:Operating_System}s, \nameref{def:Process}es provide two v
 \end{enumerate}
 
 \subsection{The Process Life Cycle}\label{subsec:Process_Life_Cycle}
-A \nameref{def:Process} begins its life when, the \mintinline{c}{fork()} \nameref{def:System_Call} is called.
+A \nameref{def:Process} begins its life when, the \kernelinline{fork()} \nameref{def:System_Call} is called.
 This creates a new \nameref{def:Process} by duplicating an existing one.
-The \nameref{def:Process} that calls \mintinline{c}{fork()} is the \textbf{parent}, whereas the new \nameref{def:Process} is the \textbf{child}.
-The \mintinline{c}{fork()} \nameref{def:System_Call} returns from the kernel twice: once in the \textbf{parent} and once in the newborn \textbf{child}.
-The parent resumes execution and the child starts execution at the same place, where the call to \mintinline{c}{fork()} returns.
+The \nameref{def:Process} that calls \kernelinline{fork()} is the \textbf{parent}, whereas the new \nameref{def:Process} is the \textbf{child}.
+The \kernelinline{fork()} \nameref{def:System_Call} returns from the kernel twice: once in the \textbf{parent} and once in the newborn \textbf{child}.
+The parent resumes execution and the child starts execution at the same place, where the call to \kernelinline{fork()} returns.
 
 Often, immediately after a \texttt{fork} it is desirable to execute a new, different \nameref{def:Program}.
-The \mintinline{c}{exec()} family of function calls creates a new address space and loads a new program into it.
+The \kernelinline{exec()} family of function calls creates a new address space and loads a new program into it.
 
-Finally, a program exits via the \mintinline{c}{exit()} \nameref{def:System_Call}.
+Finally, a program exits via the \kernelinline{exit()} \nameref{def:System_Call}.
 This function terminates the \nameref{def:Process} and frees all its resources.
-A parent \nameref{def:Process} can inquire about the status of a terminated child via the \mintinline{c}{wait4()} \nameref{def:System_Call}, which enables a \nameref{def:Process} to wait for the termination of a specific \nameref{def:Process}.
-When a \nameref{def:Process} exits, it is placed into a special zombie state that represents terminated \nameref{def:Process}es until the parent calls \mintinline{c}{wait()} or \mintinline{c}{waitpid()}.
+A parent \nameref{def:Process} can inquire about the status of a terminated child via the \kernelinline{wait4()} \nameref{def:System_Call}, which enables a \nameref{def:Process} to wait for the termination of a specific \nameref{def:Process}.
+When a \nameref{def:Process} exits, it is placed into a special zombie state that represents terminated \nameref{def:Process}es until the parent calls \kernelinline{wait()} or \kernelinline{waitpid()}.
 
 \input{./EDAF35-Operating_Systems-Sections/Process_Management/Process_Descriptor_Task_Struct}
 
