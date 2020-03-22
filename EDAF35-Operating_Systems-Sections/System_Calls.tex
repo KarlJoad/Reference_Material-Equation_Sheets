@@ -5,51 +5,50 @@
 
   System calls provide an interface to the services made available by an \nameref{def:Operating_System}.
   These calls are generally available as routines written in C and C++.
-  Some of the lowest-level tasks (for example, tasks where hardware must be accessed directly) may have to be written using assembly instructions.
-
-  There are roughly 6 different types of system calls:
-  \begin{enumerate}[noitemsep]
-  \item \nameref{subsec:Process_Control}
-    \begin{itemize}[noitemsep]
-    \item End, Abort
-    \item Load, Execute
-    \item Create process, Terminate process
-    \item Get process attributes, Set process attributes
-    \item Wait for time
-    \item Wait event, Signal event
-    \item Allocate and Free memory
-    \end{itemize}
-  \item \nameref{subsec:File_Manipulation}
-    \begin{itemize}[noitemsep]
-    \item Create file, Delete file
-    \item Open, Close
-    \item Read, Write, Reposition
-    \item Get file attributes, Set file attributes
-    \end{itemize}
-  \item \nameref{subsec:Device_Manipulation}
-    \begin{itemize}[noitemsep]
-    \item Request device, Release device
-    \item Read, Write, Reposition
-    \item Get device attributes, Set device attributes
-    \item Logically attach or detach devices
-    \end{itemize}
-  \item \nameref{subsec:Information_Maintenance}
-    \begin{itemize}[noitemsep]
-    \item Get time or date, Set time or date
-    \item Get system data, Set system data
-    \item Get Process, File, or Device attributes
-    \item Set Process, File, or Device attributes
-    \end{itemize}
-  \item \nameref{subsec:Communications}
-    \begin{itemize}[noitemsep]
-    \item Create, Delete communication connection
-    \item Send, Receive messages
-    \item Transfer status information
-    \item Attach or Detach remote devices
-    \end{itemize}
-  \item \nameref{subsec:Protection}
-  \end{enumerate}
 \end{definition}
+
+There are roughly 6 different types of system calls:
+\begin{enumerate}[noitemsep]
+\item \nameref{subsec:Process_Control}
+  \begin{itemize}[noitemsep]
+  \item End, Abort
+  \item Load, Execute
+  \item Create \nameref{def:Process}, Terminate \nameref{def:Process}
+  \item Get process attributes, Set process attributes
+  \item Wait for time
+  \item Wait event, Signal event
+  \item Allocate and Free memory
+  \end{itemize}
+\item \nameref{subsec:File_Manipulation}
+  \begin{itemize}[noitemsep]
+  \item Create file, Delete file
+  \item Open, Close
+  \item Read, Write, Reposition
+  \item Get file attributes, Set file attributes
+  \end{itemize}
+\item \nameref{subsec:Device_Manipulation}
+  \begin{itemize}[noitemsep]
+  \item Request device, Release device
+  \item Read, Write, Reposition
+  \item Get device attributes, Set device attributes
+  \item Logically attach or detach devices
+  \end{itemize}
+\item \nameref{subsec:Information_Maintenance}
+  \begin{itemize}[noitemsep]
+  \item Get time or date, Set time or date
+  \item Get system data, Set system data
+  \item Get \Nameref{Def:Process}, File, or Device attributes
+  \item Set \Nameref{Def:Process}, File, or Device attributes
+  \end{itemize}
+\item \nameref{subsec:Communications}
+  \begin{itemize}[noitemsep]
+  \item Create, Delete communication connection
+  \item Send, Receive messages
+  \item Transfer status information
+  \item Attach or Detach remote devices
+  \end{itemize}
+\item \nameref{subsec:Protection}
+\end{enumerate}
 
 \begin{table}[h!tbp]
   \centering
