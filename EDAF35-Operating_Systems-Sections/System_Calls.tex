@@ -2,9 +2,21 @@
 \begin{definition}[System Call]\label{def:System_Call}
   Software may trigger an interrupt by executing a special operation called a \emph{system call}.
   This can also be called a monitor call.
+  A system call is a messaging interface between applications and the \nameref{def:Kernel}, with the applications issuing various requests and the \nameref{def:Kernel} fulfilling them or returning an error.
 
   System calls provide an interface to the services made available by an \nameref{def:Operating_System}.
+  These services are a set of interfaces by which \nameref{def:Process}es running in \nameref{def:User}-space can interact with the system.
+  These interfaces give \nameref{def:User}-level applications:
+  \begin{itemize}[noitemsep]
+  \item Controlled access to hardware
+  \item A mechanism with which to create new \nameref{def:Process}es
+  \item A mechanism to communicate with existing ones
+  \item The capability to request other \nameref{def:Operating_System} resources
+  \end{itemize}
+
   These calls are generally available as routines written in C and C++.
+  Some of the lowest-level tasks (for example, tasks where hardware must be accessed directly) may be written using assembly.
+
 \end{definition}
 
 There are roughly 6 different types of system calls:
