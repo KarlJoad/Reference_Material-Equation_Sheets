@@ -125,6 +125,21 @@ The C library implements the main \nameref{def:API} on Unix systems, including t
 The C library is used by all C programs and is easily wrapped by other programming languages for use in their programs.
 POSIX is composed of a series of standards from the IEEE that aim to provide a portable \nameref{def:Operating_System} standard roughly based on UNIX.\@
 
+\subsection{How to Use Syscalls}\label{subsec:How_To_Use_Syscalls}
+\nameref{def:System_Call}s (often called \nameref{rmk:Syscall}s in Linux) are typically accessed via functionsdefined in the standard C library.
+These functions can define an arbitrary number of arguments and might\footnote{Nearly all system calls have a side effect (they result in some change of the system’s state). A few syscalls, such as \mintinline{c}{getpid()}, do not have side effects and just return data from the \nameref{def:Kernel}.} result in one or more side effects, for example writing to a file or copying some data into a provided pointer.
+
+\nameref{def:System_Call}s also provide a return value of type \mintinline{c}{long} that signifies success or error.
+Usually, though not always, a negative return value denotes an error.
+A return value of zero is usually (but again, not always) a sign of success.
+
+The C library, when a \nameref{def:System_Call} returns an error, writes a special error code into the global \mintinline{c}{errno} variable.
+This variable can be translated into human-readable errors via library functions such as \mintinline{c}{perror()}.
+
+Finally, \nameref{def:System_Call}s have well-defined behavior.
+For example, the \nameref{def:System_Call} \mintinline{c}{getpid()} is defined to return an integer that is the current \nameref{def:Process}’s PID.\@
+However, the definition of behavior says nothing of the implementation to achieve this behavior.
+The \nameref{def:Kernel} must provide the intended behavior of the \nameref{def:System_Call} but is free to do so with whatever implementation it wants as long as the result is correct.
 
 \input{./EDAF35-Operating_Systems-Sections/System_Calls/How_Syscalls_Defined}
 
