@@ -1,0 +1,16 @@
+\subsection{Process Control}\label{subsec:Process_Control}
+A running program needs to be able to halt its own execution, either normally or abnormally.
+If a \nameref{def:System_Call} is made to terminate the currently running program abnormally, or if the program runs into a problem and causes an error \nameref{def:Trap}, a dump of memory is sometimes taken and an error message generated.
+The dump is written to disk and may be examined by a debugger—a system program designed to aid the programmer in finding and correcting errors, or bugs—to determine the cause of the problem.
+
+Under either normal or abnormal circumstances, the \nameref{def:Operating_System} must transfer control to the invoking command interpreter.
+The command interpreter then reads the next command.
+
+To determine how bad the execution halt was, when the program ceases execution, it will return an exit code.
+By convention, and for no other reason, an exit code of \texttt{0} is considered to be the program completed execution successfully.
+Otherwise, the greater the return value, the greater the severity of the error.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
