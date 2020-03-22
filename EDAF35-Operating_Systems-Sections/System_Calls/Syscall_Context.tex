@@ -1,0 +1,16 @@
+\subsection{Syscall Context}\label{subsec:Syscall_Context}
+The \nameref{def:Kernel} is in \nameref{def:Process}-context during the execution of a \nameref{def:System_Call}.
+The current pointer points to the current task, which is the \nameref{def:Process} that issued the \nameref{def:System_Call}.
+
+In \nameref{def:Process}-context, the \nameref{def:Kernel} is capable of sleeping (for example, if the system call blocks on a call or explicitly calls \kernelinline{schedule()}) and is fully preemptible.
+The capability to sleep means that system calls can make use of the majority of the \nameref{def:Kernel}’s functionality to simplify its own programming.
+The fact that \nameref{def:Process} context is preemptible implies that, like \nameref{def:User}-space, the current task may be preempted by another task.
+Because the new task may then execute the same \nameref{def:System_Call}, care must be exercised to ensure that the calls are reentrant.
+Of course, this is the same concern that symmetrical multiprocessing introduces.
+
+When the \nameref{def:System_Call} returns, control continues in \kernelinline{system_call()}, which ultimately switches to \nameref{def:User}-space and continues the execution of the \nameref{def:User} process.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
