@@ -33,6 +33,10 @@ Likewise, if a \nameref{def:System_Call} is removed, its syscall number cannot b
 Linux does provide a ``not implemented'' \nameref{def:System_Call}, \mintinline{c}{sys_ni_syscall()}, which does nothing except \mintinline{c}{return -ENOSYS}, the error corresponding to an invalid \nameref{def:System_Call}.
 This function is used in the rare event that a syscall is removed or otherwise made unavailable.
 
+The \nameref{def:Kernel} keeps a mapping of all registered \nameref{def:System_Call}s in the \emph{system call table}, stored in \mintinline{c}{sys_call_table}.
+\textbf{This table is architecture-dependent.}
+This table assigns each valid syscall to a unique syscall number.
+
 
 %%% Local Variables:
 %%% mode: latex
