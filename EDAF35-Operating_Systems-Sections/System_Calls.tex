@@ -120,6 +120,10 @@ This layer serves three primary purposes.
   Typically, API calls perform \nameref{def:System_Call}s in the background, without the programmer knowing about them.
 \end{definition}
 
+The system call interface in Linux, as with most UNIX systems, is provided in part by the C library.
+The C library implements the main \nameref{def:API} on Unix systems, including the standard C library and the system call interface.
+The C library is used by all C programs and is easily wrapped by other programming languages for use in their programs.
+POSIX is composed of a series of standards from the IEEE that aim to provide a portable \nameref{def:Operating_System} standard roughly based on UNIX.\@
 
 
 \input{./EDAF35-Operating_Systems-Sections/System_Calls/How_Syscalls_Defined}
