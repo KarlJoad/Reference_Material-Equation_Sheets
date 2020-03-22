@@ -1,0 +1,28 @@
+\subsection{How are Syscalls Defined?}\label{subsec:How_Syscalls_Defined}
+In this section, we will be analyzing the \mintinline{c}{getpid()} \nameref{def:System_Call}.
+It is defined to return an \textbf{integer} (to the \nameref{def:User}-space) that represents the current \nameref{def:Process}'s PID.\@
+The implementation of \mintinline{c}{getpid()} is shown below.
+\inputminted[frame=lines,linenos]{c}{./EDAF35-Operating_Systems-Sections/System_Calls/Code/getpid_Implementation.c}
+
+\mintinline{c}{SYSCALL_DEFINE0} is a macro that defines a system call with no parameters (hence the 0).
+The expanded code looks like this:
+\inputminted[frame=lines,linenos]{c}{./EDAF35-Operating_Systems-Sections/System_Calls/Code/getpid_Expanded.c}
+
+\nameref{def:System_Call}s have a strict definition.
+\begin{enumerate}[noitemsep]
+\item The asmlinkage modifier on the function definition is a directive to tell the compiler to look only on the stack for this function’s arguments.
+  \textbf{This is a required modifier for all system calls.}
+\item The function returns a \mintinline{c}{long}.
+  For compatibility between 32- and 64-bit systems, system calls defined to return an \mintinline{c}{int} in \nameref{def:User}-space return a \mintinline{c}{long} in the \nameref{def:Kernel}.
+\item The \mintinline{c}{getpid()} \nameref{def:System_Call} is defined as \mintinline{c}{sys_getpid()} in the \nameref{def:Kernel}.
+  \begin{itemize}[noitemsep]
+  \item This is the naming convention taken with all \nameref{def:System_Call}s in Linux.
+  \item \nameref{def:System_Call} \mintinline{c}{bar()} is implemented in the \nameref{def:Kernel} as function \mintinline{c}{sys_bar()}.
+  \end{itemize}
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
