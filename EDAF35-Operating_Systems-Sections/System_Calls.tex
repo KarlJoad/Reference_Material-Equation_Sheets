@@ -123,38 +123,12 @@ This layer serves three primary purposes.
 
 
 
-\subsection{Communications}\label{subsec:Communications}
-Both of the models discussed are common in operating systems, and most systems implement both.
-\nameref{subsubsec:Message_Passing} is useful for exchanging smaller amounts of data, because no conflicts need to be avoided.
-It is also easier to implement than is shared memory for intercomputer communication.
-\nameref{subsubsec:Shared_Memory} allows maximum speed and convenience of communication, since it can be done at memory transfer speeds when it takes place within a computer.
-Problems exist, however, in the areas of protection and synchronization between the processes sharing memory.
-
-\subsubsection{Message Passing}\label{subsubsec:Message_Passing}
-Messages can be exchanged between the processes either directly or indirectly through a common mailbox.
-Before communication can take place, a connection must be opened.
-The name of the other communicator must be known.
-Each process has a process name, and this name is translated into an identifier by which the operating system can refer to the process.
-The \mintinline{c}{get_processid()} system call does this translation.
-The identifiers are then passed to general-purpose \mintinline{c}{open()} and \mintinline{c}{close()} calls provided by the file system or to specific \mintinline{c}{open_connection()} and \mintinline{c}{close_connection()} system calls, depending on the model of communication.
-The recipient process usually must give its permission for communication to take place with an \mintinline{c}{accept_connection()} call.
-
-Most processes that will be receiving connections are special-purpose \nameref{def:Daemon}s.
-They execute a \mintinline{c}{wait_for_connection()} call and are awakened when a connection is made.
-The source of the communication, known as the client, and the receiving \nameref{def:Daemon}, known as a server, then exchange messages by using \mintinline{c}{read_message()} and \mintinline{c}{write_message()} system calls.
-The \mintinline{c}{close_connection()} call terminates the communication.
-
-\subsubsection{Shared-Memory}\label{subsubsec:Shared_Memory}
-In the shared-memory model, \mintinline{c}{shared_memory_create()} and \mintinline{c}{shared_memory_attach()} system calls are used by processes to create and gain access to regions of memory owned by other processes.
-The operating system tries to prevent one process from accessing another process’s memory, so shared memory requires that two or more processes agree to remove this restriction.
-They can then exchange information by reading and writing data in the shared areas.
-The form of the data is determined by the processes and is not under the operating system’s control.
-The processes are also responsible for ensuring that they are not writing to the same location simultaneously.
-
 \subsection{Protection}\label{subsec:Protection}
 Protection provides a mechanism for controlling access to the resources provided by a computer system.
 Historically, protection was a concern only on multiprogrammed computer systems with several \nameref{def:User}s.
 However, with the advent of networking and the Internet, all computer systems, from servers to mobile handheld devices, must be concerned with protection.
+\input{./EDAF35-Operating_Systems-Sections/System_Calls/Communications}
+
 
 %%% Local Variables:
 %%% mode: latex
