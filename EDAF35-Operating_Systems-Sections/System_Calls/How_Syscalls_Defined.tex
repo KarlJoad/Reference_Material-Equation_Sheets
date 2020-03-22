@@ -21,6 +21,13 @@ The expanded code looks like this:
   \end{itemize}
 \end{enumerate}
 
+\subsubsection{Syscall Numbers}\label{subsubsec:Syscall_Numbers}
+\begin{definition}[Syscall Number]\label{def:Syscall_Number}
+  Each system call is assigned a unique \emph{syscall number}.
+  This number is used to reference a specific \nameref{def:System_Call}.
+  When a \nameref{def:User}-space process executes a \nameref{def:System_Call}, the syscall number identifies which syscall was executed; the \nameref{def:Process} does not refer to the syscall by name.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
