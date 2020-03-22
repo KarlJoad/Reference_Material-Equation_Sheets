@@ -1,0 +1,32 @@
+\subsection{Syscall Handler}\label{subsec:Syscall_Handler}
+It is not possible for \nameref{def:User}-space applications to simply execute a \nameref{def:Kernel}-function call to a function existing in \nameref{def:Kernel}-space because the \nameref{def:Kernel} exists in a protected memory space.
+If applications could directly read and write to the \nameref{def:Kernel}’s address space, system security and stability would be nonexistent.
+
+Instead, \nameref{def:User}-space applications must somehow signal to the \nameref{def:Kernel} that they want to execute a \nameref{def:System_Call} and have the system switch to \nameref{def:Kernel} mode, where the \nameref{def:System_Call} can be executed in \nameref{def:Kernel}-space by the \nameref{def:Kernel} on behalf of the application.
+The mechanism to signal the \nameref{def:Kernel} is a \nameref{def:Trap}, a software interrupt.
+Incur a \nameref{def:Trap}, and the system will switch to \nameref{def:Kernel}-mode and execute the exception handler.
+However, in this case, the exception handler is actually the system call handler
+
+\begin{center}
+\large{\textbf{The important thing to note is that, somehow, \nameref{def:User}-space causes an exception or trap to enter the \nameref{def:Kernel}.}}
+\end{center}
+
+\subsubsection{Denoting Correct Syscall}\label{subsubsec:Denote_Correct_Syscall}
+Simply entering \nameref{def:Kernel}-space alone is not sufficient because multiple \nameref{def:System_Call}s exist, all of which enter the \nameref{def:Kernel} in the same manner.
+Thus, the \nameref{def:Syscall_Number} must be passed into the \nameref{def:Kernel}, usually through a \nameref{def:Register}.
+
+\subsubsection{Parameter Passing}\label{subsubsec:Parameter_Passing}
+In addition to the \nameref{def:Syscall_Number}, most \nameref{def:System_Call}s require that one or more parameters be passed to them.
+Somehow, \nameref{def:User}-space must relay the parameters to the \nameref{def:Kernel} during the trap.
+There are 2 main ways to do this.
+\begin{enumerate}[noitemsep]
+\item The easiest way is to store the parameters in registers
+\item If there are not enough registers, or the parameter will not fit in a single register, one is filled with a  pointer to \nameref{def:User}-space memory where all the parameters are stored.
+\end{enumerate}
+
+The return value is sent back to \nameref{def:User}-space also by a register.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
