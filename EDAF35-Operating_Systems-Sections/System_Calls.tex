@@ -122,22 +122,6 @@ This layer serves three primary purposes.
 
 
 
-\subsection{Device Manipulation}\label{subsec:Device_Manipulation}
-\begin{definition}[Device]\label{def:Device}
-  A \emph{device} in an \nameref{def:Operating_System} is a resource that must be controlled.
-  Some of these devices are physical devices (for example, disk drives), while others can be thought of as abstract or virtual devices (for example, files).
-\end{definition}
-
-A system with multiple users may require us to first \mintinline{c}{request()} a device, to ensure exclusive use of it.
-After we are finished with the device, we \mintinline{c}{release()} it.
-These functions are similar to the \mintinline{c}{open()} and \mintinline{c}{close()} system calls for files.
-Other operating systems allow unmanaged access to devices.
-The hazard then is the potential for device contention and perhaps \nameref{def:Deadlock}.
-
-Once the device has been requested (and allocated to us), we can \mintinline{c}{read()}, \mintinline{c}{write()}, just as we can with files.
-In fact, the similarity between I/O devices and files is so great that many operating systems, including UNIX, merge the two into a combined file–device structure.
-In this case, a set of system calls can be shared between both files and \nameref{def:Device}s.
-Sometimes, I/O devices are identified by special file names, directory placement, or file attributes.
 
 \subsection{Information Maintenance}\label{subsec:Information_Maintenance}
 Many system calls exist simply for the purpose of transferring information between the \nameref{def:User} program and the \nameref{def:Operating_System}.
