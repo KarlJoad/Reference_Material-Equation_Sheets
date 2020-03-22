@@ -1,4 +1,4 @@
-\subsection{System Calls}\label{subsec:System_Calls}
+\section{System Calls}\label{sec:System_Calls}
 \begin{definition}[System Call]\label{def:System_Call}
   Software may trigger an interrupt by executing a special operation called a \emph{system call}.
   This can also be called a monitor call.
@@ -9,7 +9,7 @@
 
   There are roughly 6 different types of system calls:
   \begin{enumerate}[noitemsep]
-  \item \nameref{subsubsec:Process_Control}
+  \item \nameref{subsec:Process_Control}
     \begin{itemize}[noitemsep]
     \item End, Abort
     \item Load, Execute
@@ -19,35 +19,35 @@
     \item Wait event, Signal event
     \item Allocate and Free memory
     \end{itemize}
-  \item \nameref{subsubsec:File_Manipulation}
+  \item \nameref{subsec:File_Manipulation}
     \begin{itemize}[noitemsep]
     \item Create file, Delete file
     \item Open, Close
     \item Read, Write, Reposition
     \item Get file attributes, Set file attributes
     \end{itemize}
-  \item \nameref{subsubsec:Device_Manipulation}
+  \item \nameref{subsec:Device_Manipulation}
     \begin{itemize}[noitemsep]
     \item Request device, Release device
     \item Read, Write, Reposition
     \item Get device attributes, Set device attributes
     \item Logically attach or detach devices
     \end{itemize}
-  \item \nameref{subsubsec:Information_Maintenance}
+  \item \nameref{subsec:Information_Maintenance}
     \begin{itemize}[noitemsep]
     \item Get time or date, Set time or date
     \item Get system data, Set system data
     \item Get Process, File, or Device attributes
     \item Set Process, File, or Device attributes
     \end{itemize}
-  \item \nameref{subsubsec:Communications}
+  \item \nameref{subsec:Communications}
     \begin{itemize}[noitemsep]
     \item Create, Delete communication connection
     \item Send, Receive messages
     \item Transfer status information
     \item Attach or Detach remote devices
     \end{itemize}
-  \item \nameref{subsubsec:Protection}
+  \item \nameref{subsec:Protection}
   \end{enumerate}
 \end{definition}
 
@@ -57,28 +57,28 @@
     \toprule
     & \textbf{Windows} & \textbf{Unix} \\
     \midrule
-    \nameref{subsubsec:Process_Control} & \mintinline{cpp}{CreateProcess()} & \mintinline{c}{fork()} \\
+    \nameref{subsec:Process_Control} & \mintinline{cpp}{CreateProcess()} & \mintinline{c}{fork()} \\
     & \mintinline{cpp}{ExitProcess()} & \mintinline{c}{exit()} \\
     & \mintinline{cpp}{WaitForSingleObject()} & \mintinline{c}{wait()} \\
     \midrule
-    \nameref{subsubsec:File_Manipulation} & \mintinline{cpp}{CreateFile()} & \mintinline{c}{open()} \\
+    \nameref{subsec:File_Manipulation} & \mintinline{cpp}{CreateFile()} & \mintinline{c}{open()} \\
     & \mintinline{cpp}{ReadFile()} & \mintinline{c}{read()} \\
     & \mintinline{cpp}{WriteFile()} & \mintinline{c}{write()} \\
     & \mintinline{cpp}{CloseHandle()} & \mintinline{c}{close()} \\
     \midrule
-    \nameref{subsubsec:Device_Manipulation} & \mintinline{cpp}{SetConsoleMode()} & \mintinline{c}{ioctl()} \\
+    \nameref{subsec:Device_Manipulation} & \mintinline{cpp}{SetConsoleMode()} & \mintinline{c}{ioctl()} \\
     & \mintinline{cpp}{ReadConsole()} & \mintinline{c}{read()} \\
     & \mintinline{cpp}{WriteConsole()} & \mintinline{c}{write()} \\
     \midrule
-    \nameref{subsubsec:Information_Maintenance} & \mintinline{cpp}{GetCurrentProcessID()} & \mintinline{c}{getpid()} \\
+    \nameref{subsec:Information_Maintenance} & \mintinline{cpp}{GetCurrentProcessID()} & \mintinline{c}{getpid()} \\
     & \mintinline{cpp}{SetTimer()} & \mintinline{c}{alarm()} \\
     & \mintinline{cpp}{Sleep()} & \mintinline{c}{sleep()} \\
     \midrule
-    \nameref{subsubsec:Communications} & \mintinline{cpp}{CreatePipe()} & \mintinline{c}{pipe()} \\
+    \nameref{subsec:Communications} & \mintinline{cpp}{CreatePipe()} & \mintinline{c}{pipe()} \\
     & \mintinline{cpp}{CreateFileMapping()} & \mintinline{c}{shm_open()} \\
     & \mintinline{cpp}{MapViewOfFile()} & \mintinline{c}{mmap()} \\
     \midrule
-    \nameref{subsubsec:Protection} & \mintinline{cpp}{SetFileSecurity()} & \mintinline{c}{chmod()} \\
+    \nameref{subsec:Protection} & \mintinline{cpp}{SetFileSecurity()} & \mintinline{c}{chmod()} \\
     & \mintinline{cpp}{InitializeSecurityDescriptor()} & \mintinline{c}{umask()} \\
     & \mintinline{cpp}{SetSecurityDescriptorGroup()} & \mintinline{c}{chown()} \\
     \bottomrule
@@ -95,7 +95,7 @@
   Typically, API calls perform \nameref{def:System_Call}s in the background, without the programmer knowing about them.
 \end{definition}
 
-\subsubsection{Process Control}\label{subsubsec:Process_Control}
+\subsection{Process Control}\label{subsec:Process_Control}
 A running program needs to be able to halt its own execution, either normally or abnormally.
 If a system call is made to terminate the currently running program abnormally, or if the program runs into a problem and causes an error \nameref{def:Trap}, a dump of memory is sometimes taken and an error message generated.
 The dump is written to disk and may be examined by a debugger—a system program designed to aid the programmer in finding and correcting errors, or bugs—to determine the cause of the problem.
@@ -107,7 +107,7 @@ To determine how bad the execution halt was, when the program ceases execution, 
 By convention, and for no other reason, an exit code of \texttt{0} is considered to be the program completed execution successfully.
 Otherwise, the greater the return value, the greater the severity of the error.
 
-\subsubsection{File Manipulation}\label{subsubsec:File_Manipulation}
+\subsection{File Manipulation}\label{subsec:File_Manipulation}
 We first need to be able to \mintinline{c}{create()} and \mintinline{c}{delete()} files.
 Either system call requires the name of the file and perhaps some of the file’s attributes.
 Once the file is created, we need to \mintinline{c}{open()} it and to use it.
@@ -126,7 +126,7 @@ In addition, for either files or directories, we need to be able to determine th
   If the system programs are callable by other programs, then each can be considered an \nameref{def:API} by other system programs.
 \end{remark*}
 
-\subsubsection{Device Manipulation}\label{subsubsec:Device_Manipulation}
+\subsection{Device Manipulation}\label{subsec:Device_Manipulation}
 \begin{definition}[Device]\label{def:Device}
   A \emph{device} in an \nameref{def:Operating_System} is a resource that must be controlled.
   Some of these devices are physical devices (for example, disk drives), while others can be thought of as abstract or virtual devices (for example, files).
@@ -143,7 +143,7 @@ In fact, the similarity between I/O devices and files is so great that many oper
 In this case, a set of system calls can be shared between both files and \nameref{def:Device}s.
 Sometimes, I/O devices are identified by special file names, directory placement, or file attributes.
 
-\subsubsection{Information Maintenance}\label{subsubsec:Information_Maintenance}
+\subsection{Information Maintenance}\label{subsec:Information_Maintenance}
 Many system calls exist simply for the purpose of transferring information between the \nameref{def:User} program and the \nameref{def:Operating_System}.
 For example, most systems have a system call to return the current \mintinline{c}{time()} and \mintinline{c}{date()}.
 Other system calls may return information about the system, such as the number of current users, the version number of the operating system, the amount of free memory or disk space, and so on.
@@ -153,14 +153,14 @@ Many systems provide system calls to \mintinline{c}{dump()} memory.
 A program \texttt{trace} lists each system call as it is executed.
 In addition, the \nameref{def:Operating_System} keeps information about all its processes, and \nameref{def:System_Call}s are used to access this information.
 
-\subsubsection{Communications}\label{subsubsec:Communications}
+\subsection{Communications}\label{subsec:Communications}
 Both of the models discussed are common in operating systems, and most systems implement both.
-\nameref{par:Message_Passing} is useful for exchanging smaller amounts of data, because no conflicts need to be avoided.
+\nameref{subsubsec:Message_Passing} is useful for exchanging smaller amounts of data, because no conflicts need to be avoided.
 It is also easier to implement than is shared memory for intercomputer communication.
-\nameref{par:Shared_Memory} allows maximum speed and convenience of communication, since it can be done at memory transfer speeds when it takes place within a computer.
+\nameref{subsubsec:Shared_Memory} allows maximum speed and convenience of communication, since it can be done at memory transfer speeds when it takes place within a computer.
 Problems exist, however, in the areas of protection and synchronization between the processes sharing memory.
 
-\paragraph{Message Passing}\label{par:Message_Passing}
+\subsubsection{Message Passing}\label{subsubsec:Message_Passing}
 Messages can be exchanged between the processes either directly or indirectly through a common mailbox.
 Before communication can take place, a connection must be opened.
 The name of the other communicator must be known.
@@ -174,19 +174,19 @@ They execute a \mintinline{c}{wait_for_connection()} call and are awakened when 
 The source of the communication, known as the client, and the receiving \nameref{def:Daemon}, known as a server, then exchange messages by using \mintinline{c}{read_message()} and \mintinline{c}{write_message()} system calls.
 The \mintinline{c}{close_connection()} call terminates the communication.
 
-\paragraph{Shared-Memory}\label{par:Shared_Memory}
+\subsubsection{Shared-Memory}\label{subsubsec:Shared_Memory}
 In the shared-memory model, \mintinline{c}{shared_memory_create()} and \mintinline{c}{shared_memory_attach()} system calls are used by processes to create and gain access to regions of memory owned by other processes.
 The operating system tries to prevent one process from accessing another process’s memory, so shared memory requires that two or more processes agree to remove this restriction.
 They can then exchange information by reading and writing data in the shared areas.
 The form of the data is determined by the processes and is not under the operating system’s control.
 The processes are also responsible for ensuring that they are not writing to the same location simultaneously.
 
-\subsubsection{Protection}\label{subsubsec:Protection}
+\subsection{Protection}\label{subsec:Protection}
 Protection provides a mechanism for controlling access to the resources provided by a computer system.
 Historically, protection was a concern only on multiprogrammed computer systems with several \nameref{def:User}s.
 However, with the advent of networking and the Internet, all computer systems, from servers to mobile handheld devices, must be concerned with protection.
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% TeX-master: "../EDAF35-Operating_Systems-Reference_Sheet"
 %%% End:
