@@ -1,0 +1,113 @@
+\subsection{Paradigm Differences}\label{subsec:Paradigm_Differences}
+Functional programming is a completely different paradigm of programming than traditional imperative programming.
+One of the biggest differences is that \textbf{side effects are NOT allowed}.
+
+\subsubsection{Side Effects}\label{subsubsec:Side_Effects}
+Side effects are typically defined as being function-local.
+So, we can assign variables, make lists, etc. \textbf{so long as the effects are destroyed upon leaving the function}.
+Additionally, nothing globally usable can/should be changed.
+
+\begin{listing}[h!tbp]
+\begin{minted}[frame=lines,linenos,style=emacs,autogobble=true,breaklines=true]{c}
+public int f(int x) {
+	int t1 = g(x) + g(x);
+	int t2 = 2 * g(x);
+	return t1-t2;
+}
+// We should probably get 0 back.
+// f(x) = t1-t2 = g(x) + g(x) - 2*g(x) = 0
+
+// But, if g(x) is defined like so,
+public int g(int x) {
+	int y = input.nextInt();
+	return y;
+}
+// The two instances of g(x) (g(x) + g(x)) can be different values,
+// This invalidates the result we reached made earlier.
+\end{minted}
+\caption{C-Like Code with Side Effects}
+\label{lst:Side_Effects}
+\end{listing}
+
+\subsubsection{Syntactic Differences}\label{subsubsec:Syntactic_Differences}
+The \texttt{=} symbol has different meanings in \nameref{def:Functional_Programming_Language}s.
+In functional languages, \texttt{=}, is the mathematical definition of equivalence.
+Whereas in \nameref{def:Imperative_Programming_Language}s, \texttt{=} is the assignment of values to memory locations.
+
+Typically, \nameref{def:Functional_Programming_Language}s do not have a way to directly access memory, since that is an inherently stateful change, breaking the rules of ``side-effect free''.
+However, ``variables'' \textbf{do} exist, but they are different.
+\begin{itemize}[noitemsep]
+\item Variables are \textbf{NAMED} expressions, not locations in memory
+\item When ``reassigning'' a variable, the old value that name pointed to is discarded, and a new one created.
+\end{itemize}
+
+\subsubsection{Tendency Towards Recursion}\label{subsubsec:Tendency_Recursion}
+Most \nameref{def:Functional_Programming_Language}s use recursion more than they use iteration.
+This is possible because recursion can express all solutions that iteration can, but that does not hold true the other way around.
+Recursion is also intimately tied to the computability of an \nameref{def:Expression}.
+
+Take the code snippet below as an example.
+It sums all values from a list of arbitrary size by taking the front element of the provided list (\texttt{x}) and adding that to the results of adding the rest of the list (\texttt{xs}) together.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Introduction/Code/sum1.hs}
+\caption{Basic List Summation}
+\label{lst:Recursion_List_Summation}
+\end{listing}
+
+\subsubsection{Higher-Order Functions}\label{subsubsec:Higher_Order_Functions}
+Similarly to what we defined in \Cref{lst:Recursion_List_Summation}, say we want to define the operations:
+\begin{itemize}[noitemsep]
+\item Multiplying all elements together
+\item Finding if any elements are \texttt{True}.
+\item Finding if all the elements are \texttt{True}.
+\end{itemize}
+
+It would look like the code shown below.
+The code from \Cref{lst:Recursion_List_Summation} will be included.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Introduction/Code/Many_Funcs_No_Higher_Order.hs}
+\caption{List Comprehension Functions, No Higher-Order Functions Used}
+\label{lst:Many_Funcs_No_Higher_Order}
+\end{listing}
+
+If you look at each of the functions, you will notice something in common between all of them.
+\begin{itemize}[noitemsep]
+\item There is a default value, depending on the operation, for when the list is empty.
+\item There is an operation applied between the current element and,
+\item The rest of the list is recursively operated upon.
+\end{itemize}
+
+If we instead used a higher-order function, we can define all of those functions with just one higher-order function.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Introduction/Code/Many_Funcs_Higher_Order.hs}
+\caption{List Comprehension Functions, Higher-Order Functions Used}
+\label{lst:Many_Funcs_Higher_Order}
+\end{listing}
+
+\subsubsection{Infinite Data Structures}\label{subsubsec:Infinite_Data_Structures}
+One of the benefits of lazy evaluation, and allowing higher-order functions, is that infinite data structures can be created.
+So, we could have a list of \textbf{all} integers, but we will not run out of memory (probably).
+Because of lazy evaluation, the values from these infinite data structures are computed \textbf{on when needed}.
+
+For example, we find all prime numbers, starting with 2, using the Eratosthenes Sieve method (\Cref{lst:Infinite_Data_Structure}).
+This method states we take \textbf{ALL} integers, starting from 2
+\begin{enumerate}[noitemsep]
+\item Make a list out of them.
+\item Take the first element out.
+\item Remove all multiples of that number.
+\item Put that number into a list of primes.
+\item Repeat from step 2, until you find all the prime numbers you want.
+\end{enumerate}
+
+In Haskell, this looks like:
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Introduction/Code/Eratosthenes_Primes.hs}
+\caption{Infinite Data Structure, All Primes by Eratosthenes Sieve}
+\label{lst:Infinite_Data_Structure}
+\end{listing}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAN40-Functional_Programming-Reference_Sheet"
+%%% End:

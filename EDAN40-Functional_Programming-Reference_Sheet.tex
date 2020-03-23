@@ -2,7 +2,7 @@
 
 % These packages are more specific to certain documents, but will be availabe in the template
 % \usepackage{esint} % Provides us with more types of integral symbols to use
-% \usepackage[outputdir=./TeX_Output]{minted} % Allow us to nicely typeset 300+ programming languages
+\usepackage[outputdir=./TeX_Output]{minted} % Allow us to nicely typeset 300+ programming languages
 % This document must be compiled with the -shell-escape flag if the packages above are uncommented
 
 % \graphicspath{{./Drawings/Course}} % Uncomment this to use pictures in this document
@@ -11,6 +11,33 @@
 % Math Operators that are useful to abstract the written math away to one spot
 % These are supposed to be document-specific mathematical operators that will make life easier
 % Many fundamental operators are defined in Reference_Sheet_Preamble.tex
+
+\usemintedstyle{emacs} % Best for use on white backgrounds. Use for inline-code
+% This macro creates the 2 minted environments for kernel source code with common options
+\def\mintedhaskellargs{
+  frame=lines, % Surround the source code with lines on top and bottom
+  linenos, % We want to show line numbers for each line in the margin
+  % Colors used here are xcolor X11 colors.
+  % style=fruity, % Use the fruity color scheme. Best for use on black backgrounds. Use for code blocks.
+  % bgcolor=black, % Set the background used
+  style=emacs,
+  bgcolor=white,
+  autogobble=true, % Automatically remove shared indentation from files
+  breaklines=true, % Break lines that are too long at convenient locations
+}
+\newcommand{\makenewmintedfiles}[1]{
+  \newminted[haskellsource]{haskell}{#1} % Use with \begin{minted}{kernelsource} code \end{minted}
+
+  \newmintedfile[haskellsourcefile]{haskell}{#1} % Use with \kernelsourcefile[additional-options]{Filename}
+}
+\expandafter\makenewmintedfiles\expandafter{\mintedhaskellargs}
+\newmintinline[haskellinline]{haskell}{% Use with \kernelinline{code}
+  style=emacs,
+  bgcolor=white,
+}
+
+\crefname{lstlisting}{listing}{listings}
+\Crefname{lstlisting}{Listing}{Listings}
 
 \begin{titlepage}
   \title{EDAN40/EDAN95: Functional Programming --- Reference Sheet \\ Lund University}
@@ -25,6 +52,8 @@
 \tableofcontents
 \clearpage
 \listoftheorems[ignoreall, show={definition, Definition}]
+\clearpage
+\listoflistings{}
 \clearpage
 \pagenumbering{arabic} % 1,2,3 on content pages
 

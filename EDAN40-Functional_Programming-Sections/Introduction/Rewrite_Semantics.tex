@@ -1,0 +1,36 @@
+\subsection{Rewrite Semantics}\label{subsec:Rewrite_Semantics}
+One of the key strengths of \nameref{def:Functional_Programming_Language}s is the fact we can easily perform \nameref{def:Rewrite_Semantics} on any given \nameref{def:Expression}.
+
+\begin{definition}[Rewrite Semantics]\label{def:Rewrite_Semantics}
+  \emph{Rewrite semantics} is the process of rewriting and deconstructing an \nameref{def:Expression} into its constiuent parts.
+  Rewrite semantics answers the question ``How do we extract values from functions?''
+\end{definition}
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Introduction/Code/Rewrite_Factorial.hs}
+\caption{\nameref{def:Rewrite_Semantics} of a Factorial Function}
+\label{lst:Rewrite_Semantics}
+\end{listing}
+
+\begin{definition}[Expression]\label{def:Expression}
+  An \emph{expression} is a combination of one or more \nameref{def:Operand}s and operators that the programming language interprets (according to its particular rules of precedence and of association) and computes to produce another value.
+
+  \begin{remark}[Overloading]\label{rmk:Overloading_Expressions}
+    An expression can be overloaded if there is more than one definition for an operator.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Operand]\label{def:Operand}
+  An \emph{operand} is a:
+  \begin{itemize}[noitemsep]
+  \item Constant
+  \item Variable
+  \item Another \nameref{def:Expression}
+  \item Result from function calls
+  \end{itemize}
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAN40-Functional_Programming-Reference_Sheet"
+%%% End:

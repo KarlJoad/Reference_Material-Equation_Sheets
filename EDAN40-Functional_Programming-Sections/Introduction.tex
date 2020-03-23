@@ -1,4 +1,65 @@
 \section{Introduction}\label{sec:Introduction}
+This section is dedicated to giving a small introduction to functional programming.
+Functional Programming is a style of programming, nothing else.
+In this style, the basic method of computation is the evaluation of expressions as arguments to functions, which themselves return expressions.
+
+\begin{quote}
+  ``Functional programming is so called because a program consists entirely of functions. [$\ldots$]
+  These functions are much like ordinary mathematical functions [$\ldots$] defined by ordinary equations'' (John Hughes)
+\end{quote}
+
+If you want to view all possible language categories, visit \href{https://en.wikipedia.org/wiki/Programming_paradigm}{Wikipedia's Programming Paradigms}.
+
+\begin{definition}[Imperative Programming Language]\label{def:Imperative_Programming_Language}
+  \emph{Imperative programming languages} have a programming paradigm that uses statements that change a program's state.
+  An imperative program consists of commands for the computer to perform.
+  Imperative programming focuses on describing how a program operates.
+\end{definition}
+
+\begin{restatable}[Functional Programming Language]{definition}{defFunctionalProgrammingLanguage}\label{def:Functional_Programming_Language}
+  \emph{Functional programming languages} treat computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
+  It is a declarative programming paradigm in that programming is done with expressions or declarations instead of statements.
+  In functional code, the output value of a function depends only on its arguments, so calling a function with the same value for an argument always produces the same result.
+
+  This is in contrast to \nameref{def:Imperative_Programming_Language}s where, in addition to a function's arguments, global program state can affect a function's resulting value.
+  Eliminating side effects, that is, changes in state that do not depend on the function inputs, can make understanding a program easier, which is one of the key motivations for the development of functional programming.
+
+  Because of its close relationship to mathematics, it is much easier to develop mathematical techniques for reasoning about and proving the behavior of programs developed in functional languages.
+  These techniques are important tools for helping us to ensure that programs work properly without having to resort to tedious testing and debugging which can only show the presence of errors, never their absence.
+  Moreover, they provide important tools for documenting the reasoning that went into the formulation of a program, making the code easier to understand and maintain.
+
+  \begin{remark}[Course Language]
+    The languages of use in this course is Haskell.
+    It is a purely functional language that supports impure actions with \nameref{def:Monad}s.
+  \end{remark}
+\end{restatable}
+
+Functional programming is very nice because it allows us to perform certain actions that are quite natural quite easily.
+For example,
+\begin{itemize}[noitemsep]
+\item \nameref{subsubsec:Higher_Order_Functions}
+  \begin{itemize}[noitemsep]
+  \item Functions that take functions as arguments and return functions as expressions
+  \item Used frequently
+  \item Currying
+  \item How to use effectively?
+  \end{itemize}
+
+\item \nameref{subsubsec:Infinite_Data_Structures}
+  \begin{itemize}[noitemsep]
+  \item Nice idea that is easily proven in functional languages
+  \end{itemize}
+
+\item Lazy evaluation (This is a function unique to Haskell)
+  \begin{itemize}[noitemsep]
+  \item Only evaluate expressions \textbf{ONLY WHEN NEEDED}
+  \item This also allow us to deal with idea of infinite data structures
+  \end{itemize}
+\end{itemize}
+
+\input{./EDAN40-Functional_Programming-Sections/Introduction/Rewrite_Semantics}
+
+\input{./EDAN40-Functional_Programming-Sections/Introduction/Paradigm_Differences}
 
 %%% Local Variables:
 %%% mode: latex
