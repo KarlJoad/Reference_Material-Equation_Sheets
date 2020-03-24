@@ -296,6 +296,12 @@ Note that parentheses are still required in the Haskell expression \haskellinlin
 New functions can be defined within a script, a text file comprising a sequence of definitions.
 By convention, Haskell scripts usually have a \texttt{.hs} file extension on their filename.
 
+If you load a script into a REPL environment, the \emph{Prelude.hs} library is already loaded for you, so you can work with that directly.
+To load a file, you use the \texttt{:load} command at the REPL.\@
+Once loaded, you can call all the functions in the script at the REPL line.
+
+If you edit the script, save it, and want your changes to be reflected in the REPL, you must \texttt{:reload} the REPL.\@
+
 
 %%% Local Variables:
 %%% mode: latex
