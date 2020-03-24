@@ -302,6 +302,25 @@ Once loaded, you can call all the functions in the script at the REPL line.
 
 If you edit the script, save it, and want your changes to be reflected in the REPL, you must \texttt{:reload} the REPL.\@
 
+Some basic REPL commands are shown in \Cref{tab:Basic_REPL_Commands}
+
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    Command & Meaning \\
+    \midrule
+    \texttt{:load \emph{name}} or \texttt{:l \emph{name}} & Load script \texttt{\emph{name}} \\
+    \texttt{:reload} or \texttt{:r} & Reload the current scripts \\
+    \texttt{:type \emph{expr}} or \texttt{:t \emph{expr}} & Show the type of \texttt{\emph{expr}} \\
+    \texttt{:?} & Show all possible commands\\
+    \texttt{:quit} or \texttt{:q} & Quit the REPL \\
+    \bottomrule
+  \end{tabular}
+  \caption{Basic REPL Commands}
+  \label{tab:Basic_REPL_Commands}
+\end{table}
+
 
 %%% Local Variables:
 %%% mode: latex
