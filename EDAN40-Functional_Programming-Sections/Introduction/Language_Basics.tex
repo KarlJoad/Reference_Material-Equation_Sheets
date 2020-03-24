@@ -271,6 +271,26 @@ means
 \end{equation*}
 in mathematics.
 
+\Cref{tab:Function_Parens} illustrates the use of parentheses to ensure Haskell functions are interpretted like their mathematical counterparts.
+
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    Mathematics & Haskell \\
+    \midrule
+    $f(x)$ & \haskellinline{f x} \\
+    $f(x, y)$ & \haskellinline{f x y} \\
+    $f \bigl( g(x) \bigr)$ & \haskellinline{f (g x)} \\
+    $f \bigl(x, g(y) \bigr)$ & \haskellinline{f x (g x)} \\
+    $f(x) g(y)$ & \haskellinline{f x * g y} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Parentheses Used with Functions}
+  \label{tab:Function_Parens}
+\end{table}
+
+Note that parentheses are still required in the Haskell expression \haskellinline{f (g x)} above, because \haskellinline{f g x} on its own would be interpreted as the application of the function \texttt{f} to two arguments \texttt{g} and \texttt{x}, whereas the intention is that \texttt{f} is applied to one argument, namely the result of applying the function \texttt{g} to an argument \texttt{x}.
 
 \subsubsection{Haskell Files/Scripts}\label{subsubsec:Haskell_Scripts}
 
