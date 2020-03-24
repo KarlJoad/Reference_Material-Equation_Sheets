@@ -18,10 +18,10 @@ It defines:
 \item Exponentiation
 \end{itemize}
 \begin{listing}[h!tbp]
-\begin{minted}{haskellsource}
+\begin{haskellsource}
 > 2+3
 5
->2-3
+> 2-3
 -1
 > 2*3
 6
@@ -29,7 +29,7 @@ It defines:
 3
 > 2^3
 8
-\end{minted}
+\end{haskellsource}
 \caption{Integer Mathematical Operations}
 \label{lst:Int_Math_Ops}
 \end{listing}
@@ -59,7 +59,7 @@ There are only 2 types of associativity, left and right.
 \item Right Associative:
   \begin{itemize}[noitemsep]
   \item Exponentiation. $2^{3^{4}} = 2^{(3^{4})}$
-  \item Negation. $--2 = -(-2)$
+  \item Negation. $--2 = -(-2) = 2$
   \end{itemize}
 \end{enumerate}
 
@@ -76,6 +76,177 @@ There are only 2 types of associativity, left and right.
 \end{remark*}
 
 \subsubsection{List Operations}\label{subsubsec:List_Ops}
+\emph{Prelude.hs} also defines the basic list operations that we will need.
+To denote a list in Haskell, the elements are comma-delimited inside of square braces.
+For example, the mathematical list (set) of integers 1 to 3 $\lbrace 1, 2, 3 \rbrace$ is written in Haskell like so \haskellinline{[1, 2, 3]}.
+
+Lists are a homogenous data structure.
+It stores several \textbf{elements of the same type}.
+So, we can have a list of integers or a list of characters but we can't have a list with both integers and characters.
+The most common list operations are shown below.
+
+\paragraph{\texorpdfstring{\haskellinline{head}}{\texttt{head}}}\label{par:List_Head_Function}
+Get the \emph{head} of a list. Return the first element of a non-empty list. Remove all elements other than the first element.
+If the list \textbf{is} empty, then an Exception is returned.
+See \Cref{lst:List_Head_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > head [1, 2, 3, 4, 5]
+  1
+\end{haskellsource}
+\caption{Haskell \haskellinline{head} Function}
+\label{lst:List_Head_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{\haskellinline{tail}}{\texttt{tail}}}\label{par:List_Tail_Function}
+Get the \emph{tail} of a list. Return the second through $n$th elements of a non-empty list. Remove the first element.
+If the list \textbf{is} empty, then an Exception is returned.
+See \Cref{lst:List_Tail_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > tail [1, 2, 3, 4, 5]
+  [2, 3, 4, 5]
+\end{haskellsource}
+\caption{Haskell \haskellinline{tail} Function}
+\label{lst:List_Tail_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{\haskellinline{last}}{\texttt{last}}}\label{par:List_Last_Function}
+Get the \emph{last} element in a list.
+See \Cref{lst:List_Last_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > last [1, 2, 3, 4, 5]
+  5
+\end{haskellsource}
+\caption{Haskell \haskellinline{last} Function}
+\label{lst:List_Last_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{\haskellinline{init}}{\texttt{init}}}\label{par:List_Init_Function}
+Get the \emph{init}ial portion of the list, namely all elements except the last one.
+See \Cref{lst:List_Init_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > init [1, 2, 3, 4, 5]
+  [1, 2, 3, 4]
+\end{haskellsource}
+\caption{Haskell \haskellinline{init} Function}
+\label{lst:List_Init_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{Selection, \haskellinline{!!}}{Selection, \texttt{!!}}}\label{par:List_Select_Function}
+Select the $n$th element of a list. Lists in Haskell are zero-indexed.
+See \Cref{lst:List_Select_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > [1, 2, 3, 4, 5] !! 2
+  3
+\end{haskellsource}
+\caption{Haskell \haskellinline{!!} Function}
+\label{lst:List_Select_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{\haskellinline{take}}{\texttt{take}}}\label{par:List_Take_Function}
+\emph{Take} the first $n$ elements of a list.
+See \Cref{lst:List_Take_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > take 3 [1, 2, 3, 4, 5]
+  [1, 2, 3]
+\end{haskellsource}
+\caption{Haskell \haskellinline{take} Function}
+\label{lst:List_Take_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{\haskellinline{drop}}{\texttt{drop}}}\label{par:List_Drop_Function}
+\emph{Drop} the first $n$ elements of a list.
+See \Cref{lst:List_Drop_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > drop 3 [1, 2, 3, 4, 5]
+  [4, 5]
+\end{haskellsource}
+\caption{Haskell \haskellinline{drop} Function}
+\label{lst:List_Drop_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{Appending Lists to Lists, \haskellinline{++}}{Appending Lists to Lists}}\label{par:List_Append_Function}
+Append the second list to the end of the first list.
+See \Cref{lst:List_Append_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > [1, 2, 3, 4] ++ [9, 10, 11, 12]
+  [1, 2, 3, 4, 9, 10, 11, 12]
+\end{haskellsource}
+\caption{Haskell \haskellinline{++} Function}
+\label{lst:List_Append_Function}
+\end{listing}
+
+\begin{remark*}
+  Be careful of this function.
+  It runs in $O(n_{1})$-like time, where $n_{1}$ is the length of the first list.
+\end{remark*}
+
+\paragraph{\texorpdfstring{Constructing Lists, \haskellinline{:}}{\texttt{cons}tructing Lists}}\label{par:List_Cons_Function}
+To construct lists, they need to be composed from single expressions.
+This is done with the \texttt{cons} function.
+See \Cref{lst:List_Cons_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > 8:[1, 2, 3, 4]
+  [8, 1, 2, 3, 4]
+\end{haskellsource}
+\caption{Haskell \haskellinline{:} Function}
+\label{lst:List_Cons_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{\haskellinline{length}}{\texttt{length}}}\label{par:List_Length_Function}
+To get the \emph{length} of a list, use \Cref{lst:List_Length_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > length [1, 2, 3, 4, 5]
+  5
+\end{haskellsource}
+\caption{Haskell \haskellinline{length} Function}
+\label{lst:List_Length_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{\haskellinline{sum}}{\texttt{sum}}}\label{par:List_Sum_Function}
+The \emph{sum} function is used to find the sum of all elements in a list.
+See \Cref{lst:List_Sum_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > sum [1, 2, 3, 4, 5]
+  15
+\end{haskellsource}
+\caption{Haskell \haskellinline{sum} Function}
+\label{lst:List_Sum_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{\haskellinline{product}}{\texttt{product}}}\label{par:List_Product_Function}
+The \emph{product} function is used to find the product of all elements in a list.
+See \Cref{lst:List_Product_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > product [1, 2, 3, 4, 5]
+  120
+\end{haskellsource}
+\caption{Haskell \haskellinline{product} Function}
+\label{lst:List_Product_Function}
+\end{listing}
+
+\paragraph{\texorpdfstring{\haskellinline{reverse}}{\texttt{reverse}}}\label{par:List_Reverse_Function}
+The \emph{reverse} function is used to reverse the order of the elements in a list.
+See \Cref{lst:List_Reverse_Function}.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+  > reverse [1, 2, 3, 4, 5]
+  [5, 4, 3, 2, 1]
+\end{haskellsource}
+\caption{Haskell \haskellinline{reverse} Function}
+\label{lst:List_Reverse_Function}
+\end{listing}
 
 \subsubsection{Function Application}\label{subsubsec:Function_Application}
 
