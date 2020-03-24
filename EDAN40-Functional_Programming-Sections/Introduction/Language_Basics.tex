@@ -249,6 +249,17 @@ See \Cref{lst:List_Reverse_Function}.
 \end{listing}
 
 \subsubsection{Function Application}\label{subsubsec:Function_Application}
+Like in mathematics, functions can be used in expressions, and are treated as first-class objects.
+This means they have the same properties as regular variables, for almost all intents and purposes.
+For example, the equation
+\begin{equation*}
+  f(a,b) + cd
+\end{equation*}
+would be translated to Haskell like so
+\begin{haskellsource}
+  f a b + c * d
+\end{haskellsource}
+
 
 \subsubsection{Haskell Files/Scripts}\label{subsubsec:Haskell_Scripts}
 
