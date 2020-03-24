@@ -83,6 +83,31 @@ A computer system can be roughly divided into 4 parts.
   The kernel performs its tasks, such as running processes, managing hardware devices such as the hard disk, and handling interrupts, in this protected kernel space.
 \end{definition}
 
+In modern systems, we tend to have much more than a single \nameref{def:CPU} core.
+In these multicore/multiprocessor systems, there are 2 ways to organize the way jobs and cores are handled.
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Symmetric_Multiprocessor_System}
+\item \nameref{def:Asymmetric_Multiprocessor_System}
+\end{enumerate}
+
+\begin{definition}[Symmetric Multiprocessor System]\label{def:Symmetric_Multiprocessor_System}
+  In a \emph{symmetric multiprocessor system}, there are multiple \nameref{def:CPU}s working together.
+  What makes this symmetric is that all CPUs are equal, \textbf{there is no single coordinating CPU}.
+  This means that in a 4 CPU system, all 4 CPUs are peers and can work together.
+
+  Any CPU can do anything at any time, no matter what any other core is doing.
+
+  This is in contrast to an \nameref{def:Asymmetric_Multiprocessor_System}.
+\end{definition}
+
+\begin{definition}[Asymmetric Multiprocessor System]\label{def:Asymmetric_Multiprocessor_System}
+  An \emph{asymmetric multiprocessor system} has multiple \nameref{def:CPU}s working together.
+  However, to coordinate all the calculations and operations, \textbf{a single CPU is designated the master CPU}.
+  Then, all the other CPUs are slave/worker CPUs.
+
+  This is in contrast to an \nameref{def:Symmetric_Multiprocessor_System}.
+\end{definition}
+
 \begin{definition}[Application Program]\label{def:Application_Program}
   An \emph{application program} is a tool used by a \nameref{def:User} to solve some problem.
   This is the main thing a normal person will interact with.

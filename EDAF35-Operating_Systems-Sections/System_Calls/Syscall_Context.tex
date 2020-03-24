@@ -6,7 +6,7 @@ In \nameref{def:Process}-context, the \nameref{def:Kernel} is capable of sleepin
 The capability to sleep means that system calls can make use of the majority of the \nameref{def:Kernel}’s functionality to simplify its own programming.
 The fact that \nameref{def:Process} context is preemptible implies that, like \nameref{def:User}-space, the current task may be preempted by another task.
 Because the new task may then execute the same \nameref{def:System_Call}, care must be exercised to ensure that the calls are reentrant.
-Of course, this is the same concern that symmetrical multiprocessing introduces.
+Of course, this is the same concern that \nameref{def:Symmetric_Multiprocessor_System}s introduce.
 
 When the \nameref{def:System_Call} returns, control continues in \kernelinline{system_call()}, which ultimately switches to \nameref{def:User}-space and continues the execution of the \nameref{def:User} process.
 
