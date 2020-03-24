@@ -352,6 +352,22 @@ However types \textbf{\emph{MUST}},
 By convention, list arguments in Haskell usually have the suffix s on their name to indicate that they may contain multiple values.
 For example, a list of numbers might be named \texttt{ns}, a list of arbitrary values might be named \texttt{xs}, and a list of list of characters might be named \texttt{css}.
 
+\subsubsection{Language Keywords}\label{subsubsec:Language_Keywords}
+The following list of words have a special meaning in the Haskell language and cannot be used as names of functions or their arguments.
+
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{ccccccc}
+    \toprule
+    \haskellinline{case} & \haskellinline{class} & \haskellinline{data} & \haskellinline{default} & \haskellinline{deriving} & \haskellinline{do} & \haskellinline{else} \\
+    \haskellinline{if} & \haskellinline{import} & \haskellinline{in} & \haskellinline{infix} & \haskellinline{infixl} & \haskellinline{infixr} & \haskellinline{instance} \\
+    \haskellinline{let} & \haskellinline{module} & \haskellinline{newtype} & \haskellinline{of} & \haskellinline{then} & \haskellinline{type} & \haskellinline{where} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Haskell Language Keywords}
+  \label{tab:Haskell_Keywords}
+\end{table}
+
 
 %%% Local Variables:
 %%% mode: latex
