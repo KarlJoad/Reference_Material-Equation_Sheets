@@ -1,0 +1,88 @@
+\subsection{Language Basics}\label{subsec:Lang_Basics}
+All of the functions and operations presented below come from \textbf{The Standard Prelude}.
+The library file \emph{Prelude.hs} is loaded first by the REPL (Read, Evaluate, Print, Loop) environment that we will use.
+It defines:
+\begin{itemize}[noitemsep]
+\item \nameref{subsubsec:Math_Ops}
+\item \nameref{subsubsec:List_Ops}
+\item And other conveniences for writing Haskell.
+\end{itemize}
+
+\subsubsection{Mathematical Operations}\label{subsubsec:Math_Ops}
+\emph{Prelude.hs} defines the basic mathematical \textbf{integer} functions of:
+\begin{itemize}[noitemsep]
+\item Addition
+\item Subtraction
+\item Multiplication
+\item Division
+\item Exponentiation
+\end{itemize}
+\begin{listing}[h!tbp]
+\begin{minted}{haskellsource}
+> 2+3
+5
+>2-3
+-1
+> 2*3
+6
+>7 `div` 2
+3
+> 2^3
+8
+\end{minted}
+\caption{Integer Mathematical Operations}
+\label{lst:Int_Math_Ops}
+\end{listing}
+
+\paragraph{Precedences}\label{par:Math_Precedences}
+Just like in normal mathematics, there exists a precedence to disambiguate mathematical expressions containing multiple, different operations.
+In order of highest-to-lowest precedence:
+\begin{enumerate}[noitemsep]
+\item Negation
+\item Exponentiation
+\item Multiplication and Division
+\item Addition and Subtraction
+\end{enumerate}
+
+\paragraph{Associativity}\label{par:Math_Associativity}
+Just like in normal mathematics, there are rules associativity rules to disambiguate mathematical expressions containing multiple of the same operations.
+There are only 2 types of associativity, left and right.
+\begin{enumerate}[noitemsep]
+\item Left Associative:
+  \begin{itemize}[noitemsep]
+  \item Everything else.
+  \item Addition. $2+3+4 = (2+3)+4$
+  \item Subtraction. $2-3-4 = (2-3)-4$
+  \item Multiplication. $2*3*4 = (2*3)*4$
+  \item Division. $2 \div 3 \div 4 = (2 \div 3) \div 4$
+  \end{itemize}
+\item Right Associative:
+  \begin{itemize}[noitemsep]
+  \item Exponentiation. $2^{3^{4}} = 2^{(3^{4})}$
+  \item Negation. $--2 = -(-2)$
+  \end{itemize}
+\end{enumerate}
+
+\begin{remark*}[Types of Associativity]
+  Technically, there are 3 types of associativity.
+  \begin{enumerate}[noitemsep]
+  \item Left-Associative
+  \item Right-Associative
+  \item Non-Associative
+  \end{enumerate}
+
+  Non-associativity means that it does not have an implicit associativity rule associated with it.
+  It could also mean it is neither left-, nor right-associative.
+\end{remark*}
+
+\subsubsection{List Operations}\label{subsubsec:List_Ops}
+
+\subsubsection{Function Application}\label{subsubsec:Function_Application}
+
+\subsubsection{Haskell Files/Scripts}\label{subsubsec:Haskell_Scripts}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAN40-Functional_Programming-Reference_Sheet"
+%%% End:
