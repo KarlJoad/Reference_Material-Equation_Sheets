@@ -260,6 +260,17 @@ would be translated to Haskell like so
   f a b + c * d
 \end{haskellsource}
 
+To ensure that functions are handled in Haskell like they are in mathematics, they have the highest precedence in an expression.
+This means that
+\begin{haskellsource}
+  f a + b
+\end{haskellsource}
+means
+\begin{equation*}
+  f(a) + b
+\end{equation*}
+in mathematics.
+
 
 \subsubsection{Haskell Files/Scripts}\label{subsubsec:Haskell_Scripts}
 
