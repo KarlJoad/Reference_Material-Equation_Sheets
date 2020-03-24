@@ -368,6 +368,17 @@ The following list of words have a special meaning in the Haskell language and c
   \label{tab:Haskell_Keywords}
 \end{table}
 
+\subsubsection{The Layout Rule}\label{subsubsec:Layout_Rule}
+\emph{The Layout Rule} states that each definition must begin in precisely the same column.
+This layout rule makes it possible to determine the grouping of definitions from just their indentation.
+
+For example,
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Introduction/Code/Layout_Rule.hs}
+\end{listing}
+
+It is clear from the indentation that \texttt{b} and \texttt{c} are local definitions for use within the body of \texttt{a}.
+
 
 %%% Local Variables:
 %%% mode: latex
