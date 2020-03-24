@@ -122,6 +122,21 @@ In these multicore/multiprocessor systems, there are 2 ways to organize the way 
   \end{itemize}
 \end{definition}
 
+Additionally, we can have multiple ways of working with system \nameref{def:Memory}.
+The 2 main ways are:
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Uniform_Memory_Access}
+\item \nameref{def:Non_Uniform_Memory_Access}
+\end{enumerate}
+
+\begin{definition}[Uniform Memory Access]\label{def:Uniform_Memory_Access}
+  In \emph{Uniform Memory Access} (\emph{UMA}), \textbf{ALL} system \nameref{def:Memory} is accessed the same way by \textbf{ALL} cores.
+\end{definition}
+
+\begin{definition}[Non-Uniform Memory Access]
+  In \emph{Non-Uniform Memory Access} (\emph{NUMA}), some cores have to behave differently to access some \nameref{def:Memory}.
+\end{definition}
+
 \begin{definition}[User]\label{def:User}
   A \emph{user} is the person and/or thing that is running some \nameref{def:Application_Program}s.
 
