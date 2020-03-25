@@ -1,4 +1,61 @@
 \subsection{Help With Recursion}\label{subsec:Help_Recursion}
+Defining \nameref{rmk:Recursive} functions may seem easy, but it can be quite difficult.
+Here, I will include a list of steps that may make it easier to think about and write new recursive functions.
+
+\begin{enumerate}[noitemsep]
+\item Define the type of the function. \Cref{subsubsec:Help_Recursion-Function_Type}
+\item Enumerate the cases. \Cref{subsubsec:Help_Recursion-Enumerate_Cases}
+\item Define the Simple cases, The Base Cases. \Cref{subsubsec:Help_Recursion-Base_Case}
+\item Define the other cases. \Cref{subsubsec:Help_Recursion-Other_Cases}
+\item Generalize and Simplify. \Cref{subsubsec:Help_Recursion-Generalize}
+\end{enumerate}
+
+\subsubsection{Define Function Type}\label{subsubsec:Help_Recursion-Function_Type}
+When first starting your function definition, think about what you want this function to do.
+\begin{itemize}[noitemsep]
+\item What type do you want it to take in?
+\item What type should it output?
+\item What should be returned by the function?
+\end{itemize}
+
+Do not worry about generalizing the types of the function for now, that can come once you've written the thing.
+
+\subsubsection{Enumerate Cases}\label{subsubsec:Help_Recursion-Enumerate_Cases}
+What are the cases you can have?
+You will need to have one or more base cases, to eventually terminate the recursion.
+You also need cases that slowly break your information down into smaller pieces that you can perform some action on.
+
+For example, with lists, there are 2 general cases:
+\begin{enumerate}[noitemsep]
+\item Empty Lists --- Base case
+\item Non-empty Lists --- Other Case(s)
+\end{enumerate}
+
+\subsubsection{Define Simple Cases}\label{subsubsec:Help_Recursion-Base_Case}
+In the simple cases, there is usually an obvious solution to the problem at hand.
+For example, if you are writing the \haskellinline{product} function for lists, the base case would be the empty list.
+In that case, you would simply return 1, because that is the multiplicative identity.
+
+\subsubsection{Define Other Cases}\label{subsubsec:Help_Recursion-Other_Cases}
+Here is where some of the most difficult work can happen.
+When you are \textbf{NOT} in the base case, what do you want to do?
+Additionally, how do you eventually get down to the base case?
+
+\subsubsection{Generalize/Simplify}\label{subsubsec:Help_Recursion-Generalize}
+Once you have finished writing the recursive function, and tested it to make sure it works, you can clean up your work.
+You can start by generalizing the type, if possible.
+For example, if a recursive function is acting on a list, but does not use the information within the list, then the type can be generalized.
+If the function started with a type signature
+\begin{haskellsource}
+[Int] -> Int
+\end{haskellsource}
+but you never use the contents of the list, then you should be able to generalize the function to
+\begin{haskellsource}
+[a] -> Int
+\end{haskellsource}
+
+Additionally, if you should also look at your function to see if a library function can achieve many of the same things as your custom recursion does.
+For example, if you want to apply a function to every element in a list, and you've written your own implementation, switch to the \haskellinline{map} function instead.
 
 %%% Local Variables:
 %%% mode: latex
