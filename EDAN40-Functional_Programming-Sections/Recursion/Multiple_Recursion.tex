@@ -1,4 +1,20 @@
 \subsection{Multiple Recursion}\label{subsec:Multiple_Recursion}
+\begin{definition}[Multiple Recursion]\label{def:Multiple_Recursion}
+  \emph{Multiple recursion} is when a functions is applied more than once in its own definition.
+
+  \begin{remark}[Multiply Recursive]\label{rmk:Multiply_Recursive}
+    A function that uses \nameref{def:Multiple_Recursion} is said to be \emph{multiply recursive}.
+  \end{remark}
+\end{definition}
+
+The first multiply recursive function most people write is a function to calculate the Fibonacci sequence.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Recursion/Code/Fibonacci.hs}
+\caption{Multiple Recursion in Fibonacci's Sequence}
+\label{lst:Multiple_Recursion-Fibonacci}
+\end{listing}
+
+Multiply recursive functions may require more than one base case to terminate the recursion, depending on how the function works.
 
 %%% Local Variables:
 %%% mode: latex
