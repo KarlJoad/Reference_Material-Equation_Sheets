@@ -1,4 +1,20 @@
 \subsection{The \texorpdfstring{\haskellinline{zip}}{texttt{zip}} Function}\label{subsec:Zip_Function}
+The library function \haskellinline{zip} produces a new list by pairing successive elements from two existing lists until either or both are exhausted.
+This means that the list returned by \haskellinline{zip} will always be limited by the shortest list provided.
+The \haskellinline{zip} function is often useful when programming with list comprehensions.
+\begin{align*}
+  listOfXs &= [x_{1}, x_{2}, x_{3}, \ldots] \\
+  listOfYs &= [y_{1}, y_{2}, y_{3}, \ldots] \\
+  \mathtt{zip} listOfXs listOfYs &= [(x_{1}, y_{1}), (x_{2}, y_{2}), \ldots]
+\end{align*}
+
+
+An example here is determining if the elements in a list are sorted, in ascending value.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/List_Comprehensions/Code/Zip_Function.hs}
+\caption{Using the \haskellinline{zip} Function}
+\label{lst:Zip_Function}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
