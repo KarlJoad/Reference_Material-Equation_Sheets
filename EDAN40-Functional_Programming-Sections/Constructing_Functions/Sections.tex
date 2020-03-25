@@ -1,7 +1,7 @@
 \subsection{Sections}\label{subsec:Sections}
 \begin{definition}[Section]\label{def:Section}
   A \emph{section} is a way of writing expressions as infix or prefix with some number of pre-provided arguments.
-  In general, if $\oplus$ is an operator, then expressions of the form ($\oplus$), (x $\oplus$), and ($\oplus$ y) for arguments $x$ and $y$ are called sections, whose meaning as functions can be formalised using lambda expressions as follows:
+  In general, if $\oplus$ is an operator, then expressions of the form ($\oplus$), ($x \oplus$), and ($\oplus y$) for arguments $x$ and $y$ are called sections, whose meaning as functions can be formalised using lambda expressions as follows:
   \begin{subequations}\label{eq:Section}
     \begin{equation}\label{subeq:Section_No_Params}
       (\oplus) = \lambda x \rightarrow (\lambda y \rightarrow x \oplus y)
