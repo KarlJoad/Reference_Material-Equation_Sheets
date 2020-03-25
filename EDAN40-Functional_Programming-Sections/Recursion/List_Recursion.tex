@@ -1,4 +1,22 @@
 \subsection{List Recursion}\label{subsec:List_Recursion}
+Lists, being potentially infinite, and composed of a single element and the rest of the list (see \nameref{par:List_Cons_Function}, \Cref{par:List_Cons_Function}), make for natural targets of \nameref{def:Recursion}.
+
+In every case of list recursion, you need to identify the base case.
+Typically, this is the empty list.
+If you wanted to find the product of a list of numbers, you could use the recursive definition shown in \Cref{lst:List_Recursion-Product}.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Recursion/Code/List_Recursion-Product.hs}
+\caption{Product of a List}
+\label{lst:List_Recursion-Product}
+\end{listing}
+
+In addition, you can use the \texttt{\_} wildcard in your list recursion as well, if you don't actually care what that particular element's value is.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Recursion/Code/List_Recursion-Length.hs}
+\caption{Length of a List}
+\label{lst:List_Recursion-Length}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
