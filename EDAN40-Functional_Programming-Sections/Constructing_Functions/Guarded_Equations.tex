@@ -1,4 +1,36 @@
 \subsection{Guarded Equations}\label{subsec:Guarded_Equations}
+\begin{definition}[Guarded Equation]\label{def:Guarded_Equation}
+  A \emph{guarded equation} is one in which a series of \nameref{def:Guard}s are used to choose between a sequence of results that all have the same type.
+\end{definition}
+
+\begin{definition}[Guard]\label{def:Guard}
+  A \emph{guard} is a conditional predicate that is used to construct \nameref{def:Guarded_Equation}s.
+  The guarding predicate is denoted with a \texttt{|} and is read as ``such that''.
+\end{definition}
+
+Using \nameref{def:Guarded_Equation}s to define functions is an alternative to the use of \nameref{def:Conditional_Expression}s.
+The benefit of using \nameref{def:Guarded_Equation}s is that functions with multiple \nameref{def:Guards} are easier to read.
+
+\begin{blackbox}
+  In \nameref{def:Guarded_Equation}s, just like in \nameref{def:Conditional_Expression}s, all possible options \textbf{MUST} have the same type.
+\end{blackbox}
+
+An example of the same absolute value function from \Cref{lst:Conditional_Expression} is shown in \Cref{lst:Guarded_Equation}.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Constructing_Functions/Code/Guarded_Equations.hs}
+\caption{A Guarded Equation in Haskell}
+\label{lst:Guarded_Equation}
+\end{listing}
+
+The use of \haskellinline{otherwise} in \Cref{lst:Guarded_Equation} denotes a ``default'' case.
+If none of the previous \nameref{def:Guard}s apply to the argument given to the function, then the \haskellinline{otherwise} option is chosen.
+One thing to note is that the \nameref{def:Guard}s are checked in the order they are written.
+So, if \haskellinline{otherwise} appears before the end of the function, it will be matched early.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Constructing_Functions/Code/Guarded_Equations-Early_Match.hs}
+\caption{A Guarded Equation with Early Matching}
+\label{lst:Guarded_Equation_Early_Match}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
