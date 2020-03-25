@@ -1,4 +1,33 @@
 \subsection{Sections}\label{subsec:Sections}
+\begin{definition}[Section]\label{def:Section}
+  A \emph{section} is a way of writing expressions as infix or prefix with some number of pre-provided arguments.
+  In general, if $\oplus$ is an operator, then expressions of the form ($\oplus$), (x $\oplus$), and ($\oplus$ y) for arguments $x$ and $y$ are called sections, whose meaning as functions can be formalised using lambda expressions as follows:
+  \begin{subequations}\label{eq:Section}
+    \begin{equation}\label{subeq:Section_No_Params}
+      (\oplus) = \lambda x \rightarrow (\lambda y \rightarrow x \oplus y)
+    \end{equation}
+    \begin{equation}\label{subeq:Section_First_Param}
+      (x \oplus) = \lambda y \rightarrow x \oplus y
+    \end{equation}
+    \begin{equation}\label{subeq:Section_Second_Param}
+      (\oplus y) = \lambda x \rightarrow x \oplus y
+    \end{equation}
+  \end{subequations}
+\end{definition}
+
+\nameref{def:Section}s have 3 main applications:
+\begin{enumerate}[noitemsep]
+\item They can be used to construct a number of simple but useful functions in a particularly compact way, as shown in the following examples:
+  \begin{itemize}[noitemsep]
+  \item $(+)$ is the addition function $\lambda x \rightarrow (\lambda y \rightarrow x + y )$
+  \item $(1+)$ is the successor function $\lambda y \rightarrow 1 + y$
+  \item $(1/)$ is the reciprocation function $\lambda y \rightarrow 1 / y$
+  \item $(*2)$ is the doubling function $\lambda x \rightarrow x * 2$
+  \item $(/2)$ is the halving function $\lambda x \rightarrow x / 2$
+\end{itemize}
+\item \nameref{def:Section}s are necessary when stating the type of operators, because an operator itself is not a valid expression in Haskell
+\item \nameref{def:Section}s are also necessary when using operators as arguments to other functions.
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
