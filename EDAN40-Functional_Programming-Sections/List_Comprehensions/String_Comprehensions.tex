@@ -1,4 +1,22 @@
-\subsection{String Comprehensions}\label{subsec:List_Comprehensions}
+\subsection{String Comprehensions}\label{subsec:String_Comprehensions}
+\begin{blackbox}
+  \textbf{Strings in Haskell are nothing but lists of characters (there is no null terminator in the list).}
+\end{blackbox}
+
+For example, \haskellinline{``abc''::String} is just an abbreviation for \haskellinline{[`a', `b', `c']::[Char]}.
+Because strings are just special kinds of lists, any polymorphic function on lists can also be used with strings.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/List_Comprehensions/Code/Polymorphic_List_Comprehensions.hs}
+\caption{Polymorphic List Comprehensions Used on Strings}
+\label{lst:Polymorphic_List_Comprehensions_Strings}
+\end{listing}
+
+For the same reason, list comprehensions can also be used to define functions on strings.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/List_Comprehensions/Code/String_List_Comprehensions.hs}
+\caption{List Comprehensions Used on \haskellinline{String}s}
+\label{lst:String_List_Comprehensions}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
