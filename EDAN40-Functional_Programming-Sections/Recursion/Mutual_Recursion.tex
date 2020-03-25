@@ -1,4 +1,19 @@
 \subsection{Mutual Recursion}\label{subsec:Mutual_Recursion}
+\begin{definition}[Mutual Recursion]\label{def:Mutual_Recursion}
+  \emph{Mutual recursion} is when a set of two or more functions are defined in terms of each other.
+
+  \begin{remark}[Mutually Recursive]\label{rmk:Mutually_Recursive}
+    A set of functions that use \nameref{def:Mutual_Recursion} are said to be \emph{mutually recursive}.
+  \end{remark}
+\end{definition}
+
+The easiest mutually recursive functions to visualize are the \haskellinline{odd} and \haskellinline{even} functions.
+As a side note, these functions are not actually implemented this way, for efficiency's sake.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Recursion/Code/Even_Odd.hs}
+\caption{Mutually Recursive \haskellinline{odd} and \haskellinline{even} Functions}
+\label{lst:Mutually_Recursive-Even_Odd}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
