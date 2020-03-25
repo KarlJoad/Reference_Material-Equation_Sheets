@@ -1,4 +1,36 @@
 \section{Recursion}\label{sec:Recursion}
+In Haskell, there is \textbf{no} concept of iteration.
+By extension, this also means that there is no \texttt{while}, \texttt{for}, and/or \texttt{do-while} looping structures.
+Instead of using iteration, \nameref{def:Recursion} is used instead.
+
+\begin{definition}[Recursion]\label{def:Recursion}
+  \emph{Recursion} is the process of defining something in terms of itself, typically in a smaller amount/value.
+  By ``slightly'' reducing the size of the problem through each recursive ``iteration'', the problem domain is smaller.
+  Eventually, the problem domain becomes small enough that the solution is simple.
+  This is called the \emph{base case}.
+  Once the simple solution has been found, then all recursions can start building from that solution.
+
+  \begin{remark}[Recursive]\label{rmk:Recursive}
+    A function that uses recursion is said to be \emph{recursive}.
+  \end{remark}
+\end{definition}
+
+The reason that \nameref{def:Recursion} is used instead of iteration is for multiple reasons.
+\begin{itemize}[noitemsep]
+\item \nameref{def:Recursion} can compute everything iteration can.
+\item \nameref{def:Recursion} is inductively provable.
+\item \nameref{def:Recursion} is side-effect free.
+\item \nameref{def:Recursion} is a natural way to work with algebraic datatypes, lists, and the infinite structures of Functional Programming.
+\end{itemize}
+
+One of the first \nameref{rmk:Recursive} programs most people write is the factorial function.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Recursion/Code/Factorial.hs}
+\caption{Factorial, Recursively Defined}
+\label{lst:Recursive_Factorial}
+\end{listing}
+
+Sometimes library functions simplify the way a function is written, but many function also have simple and natural definitions using \nameref{def:Recursion}.
 
 \input{./EDAN40-Functional_Programming-Sections/Recursion/List_Recursion}
 \input{./EDAN40-Functional_Programming-Sections/Recursion/Multiple_Arguments}
