@@ -1,4 +1,63 @@
 \subsection{Pattern Matching}\label{subsec:Pattern_Matching}
+By using pattern matching, many sequences of results can be chosen quickly and easily.
+
+\begin{blackbox}
+  Like the others, \nameref{def:Conditional_Expression}s, and \nameref{def:Guarded_Equation}s, each option \textbf{MUST} have the same type.
+\end{blackbox}
+
+Patterns are matched in the order they are written.
+So if what was given matches the first pattern, the first option is taken.
+If what was given matches the second pattern, that option is taken, etc.
+
+To define a pattern matching operation, there is \textbf{NO} special symbol required.
+All you have to do is give the function name again, the next pattern to match against, and the action to take (resulting in the same type).
+
+This allows us to define functions in a third way.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Constructing_Functions/Code/Pattern_Match-Single.hs}
+\caption{Basic Pattern Matching in Haskell}
+\label{lst:Pattern_Matching-Single}
+\end{listing}
+
+To make pattern matching even easier, we are given acess to a wildcard pattern, \texttt{\_}, which matches any value.
+By using this, you are also giving up the ability to reference that value in your function.
+The use of pattern matching on more than one parameter and using wildcards to simplify the function is shown in \Cref{lst:Pattern_Matching-Multiple}.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Constructing_Functions/Code/Pattern_Match-Multiple_Wildcard.hs}
+\caption{Pattern Matching with Multiple Parameters and Wildcards}
+\label{lst:Pattern_Matching-Multiple}
+\end{listing}
+
+The same name may not be used for more than one argument in a single pattern.
+Thus, in that third example, we could not use \texttt{b} for both parameters.
+However, a way around that is to use 2 different arguments, and then use a \nameref{def:Guard} to ensure the arguments are the same.
+
+\subsubsection{Tuple Patterns}\label{subsubsec:Tuple_Pattern_Matching}
+A tuple of patterns is itself a pattern, which will match any tuple of the same arity, whose elements all match the corresponding patterns, in order.
+
+The code to select the first, second, and third elements of a triple tuple can be seen in \Cref{lst:Tuple_Pattern_Matching}.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Constructing_Functions/Code/Tuple_Pattern_Match.hs}
+\caption{Tuple Pattern Matching}
+\label{lst:Tuple_Pattern_Matching}
+\end{listing}
+
+\subsubsection{List Patterns}\label{subsubsec:List_Pattern_Matching}
+Similarly to tuple pattern matching, a list of patterns is itself a pattern, which matches any list of the same length whose elements all match the corresponding patterns in order.
+For example, a function test that decides if a list contains precisely two characters beginning with ’z’ can be defined as follows:
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Constructing_Functions/Code/List_Pattern_Match.hs}
+\caption{List Pattern Matching}
+\label{lst:List_Pattern_Matching}
+\end{listing}
+
+\subsubsection{Integer Patterns}\label{subsubsec:Integer_Pattern_Matching}
+As a special case that is sometimes useful, Haskell also allows integer patterns of the form $n + k$, where n is an integer variable and $k > 0$ is an integer constant.
+There are two points to note about $n + k$ patterns.
+\begin{enumerate}[noitemsep]
+\item They only match integers $\geq k$.
+\item For same reason as \texttt{cons}/list patterns, integer patterns must be parenthesised.
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
