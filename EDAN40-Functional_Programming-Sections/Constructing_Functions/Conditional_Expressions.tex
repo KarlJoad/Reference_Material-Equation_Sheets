@@ -1,4 +1,24 @@
 \subsection{Conditional Expressions}\label{subsec:Conditional_Expressions}
+\begin{definition}[Conditional Expression]\label{def:Conditional_Expression}
+  A \emph{conditional expression} is one that chooses a path of execution based on some predicate/condition.
+  In most languages, this is shown with the \texttt{if-then-else} structures.
+\end{definition}
+
+Because in Haskell, we have \nameref{def:Conditional_Expression}s, rather than a conditional statement, there must be a type for the expression.
+To ensure that these conditional expressions can be typechecked:
+\begin{blackbox}
+  \large{\textbf{All possible options MUST have the same type.}}
+\end{blackbox}
+
+So, the first function in \Cref{lst:Example_Conditional_Expression} would \textbf{NOT} be compilable, because of a type error.
+The second would compile.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Constructing_Functions/Code/Conditional_Expression.hs}
+\end{listing}
+
+\begin{blackbox}
+  In addition, \textbf{every} \texttt{if} \textbf{MUST} have a paired \texttt{else}.
+\end{blackbox}
 
 %%% Local Variables:
 %%% mode: latex
