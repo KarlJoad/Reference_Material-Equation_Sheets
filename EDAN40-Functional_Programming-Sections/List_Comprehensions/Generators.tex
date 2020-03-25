@@ -1,4 +1,50 @@
 \subsection{Generators}\label{subsec:Generators}
+In mathematics, the comprehension notation can be used to construct new sets from existing sets.
+For example, to get the set squares from one to five is written like this in mathematics.
+\begin{equation}\label{eq:Generator}
+  \lbrace 1, 4, 9, 16, 25 \rbrace = \bigl\lbrace x^{2} \vert x \in \lbrace 1 \ldots 5 \lbrace \bigr\rbrace
+\end{equation}
+
+\Cref{eq:Generator} would be said to contain all numbers $x^{2}$ where each $x$ is an element of the set $\lbrace 1 \ldots 5 \rbrace$.
+In Haskell, this same thing would be written as
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+> [x^2 | x <- [1..5]]
+[1, 4, 9, 16, 25]
+\end{haskellsource}
+\caption{Haskell List Comprehensions}
+\label{lst:List_Comprehension}
+\end{listing}
+
+\begin{definition}[Generator]\label{def:Generator}
+  A \emph{generator} is an expression that generates all possible values in a set.
+  In the cases above, \haskellinline{x <- [1..5]} is a generator.
+\end{definition}
+
+In addition to the usual usage of \nameref{def:Generator}s to get values out of a list/set, the wildcard symbol \haskellinline{_} can be used too.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/List_Comprehensions/Code/Wildcard_Generator.hs}
+\caption{Wildcard Generator}
+\label{lst:Wildcard_Generator}
+\end{listing}
+
+\subsubsection{Multiple Generators}\label{subsubsec:Multiple_Generators}
+Multiple generators can be defined together using a comma between them.
+See \Cref{lst:Multiple_Generators} below.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/List_Comprehensions/Code/Multiple_Generators.hs}
+\caption{Multiple Generators}
+\label{lst:Multiple_Generators}
+\end{listing}
+
+\subsubsection{Dependent Generators}\label{subsubsec:Dependent_Generators}
+Lastly, more deeply nested \nameref{def:Generator}s can depend on earlier ones.
+In \Cref{lst:Dependent_Generators}, we generate the same lists as in \Cref{lst:Multiple_Generators}, but having the second \nameref{def:Generator} being dependent on the first.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/List_Comprehensions/Code/Dependent_Generators.hs}
+\caption{Dependent Generators}
+\label{lst:Dependent_Generators}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
