@@ -1,4 +1,20 @@
 \subsection{Multiple Arguments}\label{subsec:Multiple_Arguments}
+Just like normal functions, there is no reason why we need to limit ourselves to a single argument on recursive functions.
+This allows us to do things like, define our own \haskellinline{zip} function.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Recursion/Code/Recursive_Zip.hs}
+\caption{Multi-Argument Recursion of Haskell's \haskellinline{zip} Function}
+\label{lst:Multiple_Arguments-Zip}
+\end{listing}
+
+Keep in mind, the more parameters you give the function, the more base cases you \textbf{may} need to add.
+In \Cref{lst:Multiple_Arguments-Zip}, you need 2 base cases, because either of the 2 lists may be empty, indicating we should end our \haskellinline{zip}ping procedure.
+Another good example of multi-argument recursion that requires more than one base case is the \haskellinline{drop} library function (\Cref{par:List_Drop_Function}).
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Recursion/Code/Recursive_Drop.hs}
+\caption{Multi-Argument Recursion of Haskell's \haskellinline{drop} Function}
+\label{lst:Multiple_Arguments-Drop}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
