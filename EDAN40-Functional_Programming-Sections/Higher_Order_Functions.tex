@@ -1,4 +1,30 @@
 \section{Higher-Order Functions}\label{sec:Higher_Order_Functions}
+Higher-order functions allow common programming patters to be encapsulated as functions.
+This is why these are called functional programming languages, because their common abstraction/encapsulation pattern is done with functions.
+
+\begin{definition}[Higher-Order Function]\label{def:Higher_Order_Function}
+  A function that takes a function as an argument \textbf{or} returns a function as a result is a \emph{higher-order function}.
+\end{definition}
+
+In Haskell, functions with multiple arguments are usually defined using the notion of currying.
+That is, the arguments are taken one at a time by exploiting the fact that functions can return functions as results.
+In addition, it is also permissible to define functions that take functions as arguments.
+
+\begin{remark*}
+  It was an important breakthrough to figure out that tradition functions that use tuples to pass in their arguments are equivalent to their curried counterparts.
+\end{remark*}
+
+Because of this unique property in Haskell (Haskell is not the only language that allows this), functions can be partially applied.
+
+\begin{definition}[Partial Application]\label{def:Partial_Application}
+  \emph{Partial application} is when a curried function receives fewer parameters than it needs to fully compute a value.
+  By only providing $m=n-x$ arguments (where $n > x$), the called function returns a function.
+  This returned function can then have its last $m$ parameters applied to compute something.
+
+  \begin{remark}[Partially Applied]\label{rmk:Partially_Applied}
+    Functions that have had \nameref{def:Partial_Application} used on them are said to be \emph{partially applied}.
+  \end{remark}
+\end{definition}
 
 \input{./EDAN40-Functional_Programming-Sections/Higher_Order_Functions/List_Processing}
 \input{./EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Foldr_Function}
