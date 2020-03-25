@@ -1,0 +1,60 @@
+\subsection{Memory Allocation}\label{subsec:Memory_Allocation}
+Because C is a language that does not provide many abstractions, it also requires the programmer to remember and manage their memory usage.
+So, \textbf{YOU} must be the one to manage the memory, there is \textbf{NO} built-in garbage collector for you to use.
+
+Memory allocation is done on the heap of the program's execution space in memory.
+When you allocate memory in your program, you are actually requesting the operating system to give you the memory you want.
+
+\subsubsection{\texttt{malloc}}\label{subsubec:malloc}
+This is the simplest function of all possible memory allocation functions.
+\texttt{malloc}:
+\begin{itemize}
+\item Takes one argument:
+  \begin{enumerate}
+  \item The number of bytes to allocate.
+  \end{enumerate}
+\item Returns a \textbf{POINTER} to the front of the allocated memory.
+\end{itemize}
+
+\texttt{malloc} {\large{\textbf{\emph{DOES NOT}}}} initialize memory, so it will be garbage.
+
+\subsubsection{\texttt{calloc}}\label{subsubsec:calloc}
+This is quite similar to malloc.
+\texttt{calloc}:
+\begin{itemize}
+\item Takes 2 arguments:
+  \begin{enumerate}
+  \item The number of spaces to allocate, for example the number of elements in an array.
+  \item The number of bytes to allocate, for the type being stored.
+  \end{enumerate}
+\item Returns a \textbf{POINTER} to the front of the allocated memory.
+\end{itemize}
+
+\texttt{calloc} {\large{\textbf{\emph{ZEROS}}}} memory, so this does have a slight performance penalty.
+
+\subsubsection{\texttt{realloc}}\label{subsubsec:realloc}
+\texttt{realloc} is used to \textbf{REALLOCATE} an existing memory location.
+\begin{itemize}
+\item Takes 2 arguments:
+  \begin{enumerate}
+  \item The pointer to the memory location previously allocated with either \texttt{malloc} or \texttt{calloc}.
+  \item The amount of memory to reallocate, in bytes.
+  \end{enumerate}
+\item If the \texttt{NULL} pointer is passed to \texttt{realloc}, it will behave exactly like \texttt{malloc}.
+\item Returns a \textbf{POINTER} to the front of the reallocated memory
+\end{itemize}
+
+\subsubsection{\texttt{free}}\label{subsubsec:free}
+\texttt{free} is used to free memory that was previously allocated, removing from the programming space entirely.
+\begin{itemize}
+\item Takes 1 argument:
+  \begin{enumerate}
+  \item A pointer to the memory to be deallocated.
+  \end{enumerate}
+\item Returns \texttt{void}.
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../C_Programming"
+%%% End:
