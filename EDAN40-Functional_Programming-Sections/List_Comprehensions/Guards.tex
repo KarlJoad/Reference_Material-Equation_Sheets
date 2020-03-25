@@ -1,4 +1,15 @@
 \subsection{Guards}\label{subsec:List_Comprehension_Guards}
+If you recall from \Cref{subsec:Guarded_Equations}, we used \nameref{def:Guard}s to create functional equations that were carried out based on the argument provided to the function.
+We can do the same thing here in list comprehensions, and inface you have already seen them in \Cref{subsec:Generators}.
+In a list comprehension, if a guard is \haskellinline{True}, then the current values are retained and put in the new list; if it is \haskellinline{False}, then the value is discarded.
+
+In addition, because of the lazy evaluation of Haskell, many operations that would normally be very expensive are not all to costly.
+Take for example, generating all the primes up to some large value, as seen in \Cref{lst:List_Comprehension_Guards}.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/List_Comprehensions/Code/Guarded_Comprehension.hs}
+\caption{Guarded List Comprehension for Prime Generation}
+\label{lst:List_Comprehension_Guards}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
