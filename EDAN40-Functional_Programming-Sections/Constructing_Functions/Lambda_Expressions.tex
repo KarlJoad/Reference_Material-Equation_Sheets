@@ -1,4 +1,32 @@
 \subsection{Lambda Expressions}\label{subsec:Lambda_Expressions}
+\begin{definition}[Lambda Expression]\label{def:Lambda_Expression}
+  \emph{Lambda expression}s are an alternative to defining functions using equations.
+  Lambda expressions are made using:
+  \begin{itemize}[noitemsep]
+  \item A pattern for each of the arguments.
+  \item A body that specifies how the result can be calculated in terms of the arguments.
+  \item But do not give a name for the function itself.
+  \end{itemize}
+
+  In other words, lambda expressions are nameless functions.
+\end{definition}
+
+The use of \nameref{def:Lambda_Expression}s comes from the invention of \nameref{def:Lambda_Calculus}.
+These are typically represented with the lower-case Greek letter $\lambda$ on paper.
+
+In Haskell, \nameref{def:Lambda_Expression}s are written as seen in \Cref{lst:Lambda_Expression}.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Constructing_Functions/Code/Lambda_Expressions.hs}
+\caption{Lambda Expressions in Haskell}
+\label{lst:Lambda_Expression}
+\end{listing}
+
+\nameref{def:Lambda_Expression}s are useful for several reasons.
+\begin{enumerate}[noitemsep]
+\item They can be used to formalise the meaning of curried function definitions.
+\item They are useful when defining functions that return functions as results by their very nature, rather than as a consequence of currying.
+\item Can be used to avoid having to name a function that is only referenced once.
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
