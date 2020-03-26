@@ -7,9 +7,12 @@ factors n = [x | x <- [1..n], n `mod` x == 0]
  -}
 
 prime :: Int -> Bool
-prime n = factors n == [1,n]
--- Because of lazy evaluation, the False result is returned as soon as ANY
--- factor other than one or the number itself is produced.
+prime n = factors n == [1,n] -- [1,n] is a list equality of 2 elements, 1 and n
+{- Because of lazy evaluation, the False result is returned as soon as ANY
+    factor other than one or the number itself is produced.
+   In addition, if factors n produces more than 2 elements, then the
+    evaluation is automatically False
+ -}
 
 -- Using the 2 above functions, we can now generate all primes up to some value
 primes :: Int -> [Int]

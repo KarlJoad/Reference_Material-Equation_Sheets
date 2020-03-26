@@ -19,6 +19,9 @@ In Haskell, this same thing would be written as
 \begin{definition}[Generator]\label{def:Generator}
   A \emph{generator} is an expression that generates all possible values in a set.
   In the cases above, \haskellinline{x <- [1..5]} is a generator.
+
+  A generator will ``drop down one list level'', so a generator like \haskellinline{xs <- xss} where \haskellinline{xss :: [[T]]} will make \haskellinline{xs :: [T]}.
+  So, you can apply a generator an arbitrary number of times to ``go down list levels''.
 \end{definition}
 
 In addition to the usual usage of \nameref{def:Generator}s to get values out of a list/set, the wildcard symbol \haskellinline{_} can be used too.
@@ -38,7 +41,7 @@ See \Cref{lst:Multiple_Generators} below.
 \end{listing}
 
 \subsubsection{Dependent Generators}\label{subsubsec:Dependent_Generators}
-Lastly, more deeply nested \nameref{def:Generator}s can depend on earlier ones.
+Lastly, more deeply nested (\nameref{def:Generator}s that are further to the right of the \texttt{|}) \nameref{def:Generator}s can depend on earlier ones.
 In \Cref{lst:Dependent_Generators}, we generate the same lists as in \Cref{lst:Multiple_Generators}, but having the second \nameref{def:Generator} being dependent on the first.
 \begin{listing}[h!tbp]
 \haskellsourcefile{./EDAN40-Functional_Programming-Sections/List_Comprehensions/Code/Dependent_Generators.hs}

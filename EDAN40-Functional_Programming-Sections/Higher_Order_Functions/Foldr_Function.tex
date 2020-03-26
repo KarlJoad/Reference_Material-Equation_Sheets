@@ -31,6 +31,13 @@ The general operation of the \haskellinline{foldr} function is shown in \Cref{eq
   foldr (\oplus) v [x_{0}, x_{1}, x_{2}, \ldots, x_{n}] = x_{0} \oplus (x_{1} \oplus (x_{2} \oplus (\cdots (x_{n} \oplus v) \cdots )))
 \end{equation}
 
+The benefits of using the \haskellinline{foldr} function are:
+\begin{enumerate}[noitemsep]
+\item Some recursive functions on lists are simpler to define using \haskellinline{foldr}.
+\item Properties of functions defined using \haskellinline{foldr} can be proved using its algebraic properties, such as \emph{fusion} and \emph{the banana split rule}.
+\item Advanced program optimizations can be made simpler if \haskellinline{foldr} is used instead of explicit recursion.
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAN40-Functional_Programming-Reference_Sheet"
