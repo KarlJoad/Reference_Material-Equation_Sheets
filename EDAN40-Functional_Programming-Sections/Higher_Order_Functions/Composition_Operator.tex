@@ -1,4 +1,32 @@
 \subsection{Composition Operator}\label{subsec:Composition_Operator}
+The composition operator is a \nameref{def:Higher_Order_Function} that returns the composition of 2 functions as a single function.
+This is illustrated by the type signature and definition of the composition operator, \haskellinline{.} in \Cref{lst:Composition_Operator-Signature_Def}.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/Composition_Operator-Def.hs}
+\caption{Type Signature and Definition of the Composition Operator}
+\label{lst:Composition_Operator-Signature_Def}
+\end{listing}
+
+The definition in \Cref{lst:Composition_Operator-Signature_Def} has the x argument shunted to the body of the definition using a lambda expression because, it makes explicit the idea that composition returns a function as its result.
+
+\haskellinline{f.g} (read as ``\texttt{f} composed with \texttt{g}'') is the function that takes an argument \texttt{x}, applies the function \texttt{g} to this argument, and then applies the function \texttt{f} to the result of that.
+This means that these definitions are equivalent:
+\begin{enumerate}[noitemsep]
+\item \haskellinline{(f.g) x}
+\item \haskellinline{f (g x)}
+\end{enumerate}
+
+Composition is associative, meaning \haskellinline{f.(g.h) == (f.g).h => True} for any functions \texttt{f}, \texttt{g}, and \texttt{h} of the appropriate types.
+
+Composition can be used to simplify nested function applications, by reducing parentheses and avoiding the need to explicitly refer to the initial argument.
+However, there is a trade-off here.
+Using the composition operator will likely make your programs more difficult to read to someone who has never seen your code before.
+In the example below, the definitions of oddity are functionally equivalent, but one may be harder to read.
+\begin{haskellsource}
+odd1 n = not (even n)
+odd2 = not.even
+\end{haskellsource}
 
 %%% Local Variables:
 %%% mode: latex
