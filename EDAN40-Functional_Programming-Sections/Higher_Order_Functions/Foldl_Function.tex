@@ -1,4 +1,31 @@
 \subsection{The \texorpdfstring{\haskellinline{foldl}}{\texttt{foldl}} Function}\label{subsec:Foldl_Function}
+In addition to being able to define operations that are assumed to be right-associative, we can write functions that are assumed to be left-associative with the \haskellinline{foldl} function.
+The general basis for which the \haskellinline{foldl} function was written is shown in \Cref{lst:Foldl_Basis}.
+
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+f v [] = v
+f v (x:xs) = f (v ? x) xs
+-- Where ? is some operator
+\end{haskellsource}
+\caption{The Basis of Defining the \haskellinline{foldl} Function}
+\label{lst:Foldl_Basis}
+\end{listing}
+
+The function maps the empty list to the accumulator value v.
+Any non-empty list is mapped to the result of recursively processing the tail using a new accumulator value obtained by applying an operator \texttt{?} to the current value and the head of the list.
+
+Many of the operations that \nameref{subsec:Foldr_Function} defines can also be defined using \haskellinline{foldl}.
+When this is the case, the only way to choose which to use is based on the efficiency of the function itself.
+This is dependent on Haskell's underlying mechanisms, which is discussed later.
+For now, both of them work equally well.
+
+In practice, just as with \haskellinline{foldr} it is best to think of the behaviour of \haskellinline{foldl} in a non-recursive manner.
+It is better to think of \haskellinline{foldl}, in terms of an operator $\oplus$ (Was \texttt{?} earlier. The actual symbol doesn't matter.) that is assumed to associate to the left, as summarised by \Cref{eq:General_foldl_Operation}.
+
+\begin{equation}\label{eq:General_foldl_Operation}
+  foldl (\oplus) v [x_{0}, x_{1}, x_{2}, \ldots, x_{n}] = (\cdots ((v \oplus x_{0}) \oplus x_{1}) \cdots) \oplus x_{n}
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex
