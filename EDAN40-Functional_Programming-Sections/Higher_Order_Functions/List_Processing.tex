@@ -1,4 +1,111 @@
 \subsection{List Processing}\label{subsec:List_Processing}
+The standard \texttt{Prelude.hs} provides many \nameref{def:Higher_Order_Function}s for working with lists in addition to the ones mentioned in \Cref{subsubsec:List_Ops}.
+
+Two of the most commonly used functions, \nameref{subsubsec:Map_Function} and \nameref{subsubsec:Filter_Function} are shown and described below.
+Other \nameref{def:Higher_Order_Function}s are shown later in this section, namely \nameref{subsubsec:All_Function}, \nameref{subsubsec:Any_Function}, \nameref{subsubsec:TakeWhile_Function}, \nameref{subsubsec:DropWhile_Function}.
+
+\subsubsection{\texorpdfstring{\haskellinline{map}}{\texttt{map}}}\label{subsubsec:Map_Function}
+The \haskellinline{map} function applies a function to all elements in a given list.
+The list comprehension below shows one definition of the \haskellinline{map} function.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/Map_List_Comprehension.hs}
+\caption{\haskellinline{map} Defined with a List Comprehension}
+\label{lst:Map_List_Comprehension_Definition}
+\end{listing}
+
+With this definition of \haskellinline{map}, which may not be its actual implementation, we can use it like so.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/Map_Usage-Simple.hs}
+\caption{Simple Usages of the \haskellinline{map} Function}
+\label{lst:Map_Usage-Simple}
+\end{listing}
+
+There are 3 more things to note about \haskellinline{map}:
+\begin{enumerate}[noitemsep]
+\item It is a polymorphic function that can be applied to lists of any type, as are most higher-order functions on lists.
+\item It can be applied to itself to process nested lists.
+  For example, the function map (map (+1)) increments each number in a list of lists of numbers, as shown in \Cref{lst:Map_Usage-Nested_Maps}.
+\item The \haskellinline{map} function can also be defined using recursion, as seen in \Cref{lst:Map_Recursive_Definition}.
+  This is the preferable definition of \haskellinline{map} because it is easier to reason about and extend.
+\end{enumerate}
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/Map_Usage-Nested_Maps.hs}
+\caption{Nested Application of the \haskellinline{map} Function}
+\label{lst:Map_Usage-Nested_Maps}
+\end{listing}
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/Map_Recursive.hs}
+\caption{Recursive Definition of the \haskellinline{map} Function}
+\label{lst:Map_Recursive_Definition}
+\end{listing}
+
+\subsubsection{\texorpdfstring{\haskellinline{filter}}{\texttt{filter}}}\label{subsubsec:Filter_Function}
+The \haskellinline{filter} function selects all elements of a list that satisfy a given predicate/property.
+This predicate is a function that returns a logical value, \haskellinline{True}/\haskellinline{False}.
+Like \nameref{subsubsec:Map_Function}, \haskellinline{filter} is another function with 2 definitions, one based on list comprehensions and one based on recursion.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/Filter_List_Comprehension.hs}
+\caption{\haskellinline{filter} Defined with List Comprehension}
+\label{lst:Filter_List_Comprehension_Definition}
+\end{listing}
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/Filter_Recursive.hs}
+\caption{\haskellinline{filter} Defined with Recursion}
+\label{lst:Filter_Recursive_Definition}
+\end{listing}
+In words, \Cref{lst:Filter_Recursive_Definition} when selecting elements, all elements that satisfy a predicate from the empty list gives the empty list, while for a non-empty list the result depends upon whether the head satisfies the predicate.
+
+Some simple examples of using \haskellinline{filter} are shown in \Cref{lst:Filter_Usage-Simple}.
+\begin{listing}[h!tbp]
+\haskellsourcefile{EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/Filter_Usage-Simple.hs}
+\caption{Simple Usage of the \haskellinline{filter} Function}
+\label{lst:Filter_Usage-Simple}
+\end{listing}
+
+\subsubsection{\texorpdfstring{\haskellinline{all}}{\texttt{all}}}\label{subsubsec:All_Function}
+\haskellinline{all} is a \nameref{def:Higher_Order_Function} that decides of \textbf{ALL} the elements of a list satisfy a given predicate.
+This technically works by taking a list of boolean values and performing the logical AND operation on all elements.
+If any single element is \haskellinline{False}, then the entire calculation becomes \haskellinline{False}.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/All_Usage-Simple.hs}
+\caption{Simple Usage of the \haskellinline{all} Function}
+\label{lst:All_Usage-Simple}
+\end{listing}
+
+\subsubsection{\texorpdfstring{\haskellinline{any}}{\texttt{any}}}\label{subsubsec:Any_Function}
+\haskellinline{any} is a \nameref{def:Higher_Order_Function} that decides of \textbf{ANY} the elements of a list satisfy a given predicate.
+This technically works by taking a list of boolean values and performing the logical OR operation on all elements.
+If any single element is \haskellinline{True}, then the entire calculation becomes \haskellinline{True}.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/Any_Usage-Simple.hs}
+\caption{Simple Usage of the \haskellinline{any} Function}
+\label{lst:Any_Usage-Simple}
+\end{listing}
+
+\subsubsection{\texorpdfstring{\haskellinline{takeWhile}}{\texttt{takeWhile}}}\label{subsubsec:TakeWhile_Function}
+\haskellinline{takeWhile} compares each element in a list against a given predicate.
+The function will continue to take elements from the given list and construct another list \textbf{so long as that predicate remains} \haskellinline{True}.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/takeWhile_Usage-Simple.hs}
+\caption{Simple Usage of the \haskellinline{takeWhile} Function}
+\label{lst:TakeWhile_Usage-Simple}
+\end{listing}
+
+\subsubsection{\texorpdfstring{\haskellinline{dropWhile}}{\texttt{dropWhile}}}\label{subsubsec:DropWhile_Function}
+\haskellinline{dropWhile} compares each element in a list against a given predicate.
+The function will continue to drop elements from the given list \textbf{so long as that predicate remains} \haskellinline{True} and will return whatever is left of the original list after the predicate becomes \haskellinline{False}.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/dropWhile_Usage-Simple.hs}
+\caption{Simple Usage of the \haskellinline{dropWhile} Function}
+\label{lst:DropWhile_Usage-Simple}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
