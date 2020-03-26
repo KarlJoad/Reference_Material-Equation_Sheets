@@ -1,4 +1,35 @@
 \subsection{The \texorpdfstring{\haskellinline{foldr}}{\texttt{foldr}} Function}\label{subsec:Foldr_Function}
+Many functions that have a list as an argument can be defined by the recursion pattern in \Cref{lst:Foldr_Basis}.
+
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+f [] = v
+f (x:xs) = x ? f x
+-- ? is SOME operator that is applied to the ehad of the list and the result of
+-- Recursively processing the tail of the list.
+\end{haskellsource}
+\caption{The Basis for Defining the \haskellinline{foldr} Function}
+\label{lst:Foldr_Basis}
+\end{listing}
+
+\haskellinline{foldr} is an abbreviation for ``fold right''.
+What this really means is that the operator being applied is assumed to be right-associating.
+In practice, however, it is best to think of the behaviour of \haskellinline{foldr f v} in a non-recursive manner.
+Instead, \haskellinline{foldr} replaces every \haskellinline{cons} in a list by the function \texttt{f}, and the empty list at the end by the value \texttt{v}.
+So, for example \haskellinline{foldr (+) 0 [1, 2, 3]} becomes $(1+(2+(3+0)))$ (The 0 is for the empty list).
+
+The definition of \haskellinline{foldr}, like many other \nameref{def:Higher_Order_Function}s, is recursive.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Higher_Order_Functions/Code/foldr_Definition.hs}
+\caption{The Basis for Defining the \haskellinline{foldr} Function}
+\label{lst:Foldr_Basis}
+\end{listing}
+
+The general operation of the \haskellinline{foldr} function is shown in \Cref{eq:General_foldr_Operation}.
+\begin{equation}\label{eq:General_foldr_Operation}
+  foldr (\oplus) v [x_{0}, x_{1}, x_{2}, \ldots, x_{n}] = x_{0} \oplus (x_{1} \oplus (x_{2} \oplus (\cdots (x_{n} \oplus v) \cdots )))
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex
