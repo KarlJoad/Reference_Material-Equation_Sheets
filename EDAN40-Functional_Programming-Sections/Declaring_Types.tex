@@ -1,4 +1,14 @@
 \section{Declaring Types}\label{sec:Declaring_Types}
+\begin{definition}[Type Alias]\label{def:Type_Alias}
+  A \emph{type alias} is the process of creating another name for an already existing \nameref{def:Type}.
+  The langauge system can just ``replace'' each occurrence of a type alias with its definition until it has fully expanded the \nameref{def:Type}s until it has reached its base types.
+  Type aliases can also be nested, allowing for one to define itself \textbf{IN TERMS OF ANOTHER}.
+
+  \begin{remark}[Recursive Types]\label{rmk:Recursive_Type_Alias}
+    \textbf{IT IS NOT POSSIBLE TO CONSTRUCT A RECURSIVE DATA TYPE USING A \nameref{def:Type_Alias}!!}
+    That can only be done with the \haskellinline{data} keyword.
+  \end{remark}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
