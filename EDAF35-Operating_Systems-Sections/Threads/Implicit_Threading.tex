@@ -46,6 +46,13 @@ There are more sophisticated architectures that offer varying benefits.
 Some even allow for the shrinking of the pool as needed, to reduce the footprint of the running \nameref{def:Process}.
 
 \subsubsection{OpenMP}\label{subsubsec:OpenMP}
+OpenMP is a set of compiler directives as well as an API for programs written in C, C++, or FORTRAN that provides support for parallel programming in shared-memory environments.
+OpenMP allows for parallel programming by identifying parallel regions as blocks of code that may run in parallel.
+Application developers insert compiler directives into their code at parallel regions they know can be executed in parallel, and these directives instruct the OpenMP runtime library to execute the region in parallel.
+
+It can create as many threads as are available in a system with the \kernelinline{#pragma omp parallel} directive.
+There are also directives for parallelizing loops, automatically dividing the work among the spawned threads.
+
 \subsubsection{Grand Central Dispatch}\label{subsubsec:Grand_Central_Dispatch}
 %%% Local Variables:
 %%% mode: latex
