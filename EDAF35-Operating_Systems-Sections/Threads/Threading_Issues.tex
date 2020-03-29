@@ -39,6 +39,15 @@ Every \nameref{def:Signal} has a default handler that the \nameref{def:Kernel} r
 However, these actions can be overridden by a user-defined signal handler.
 How a \nameref{def:Process} responds to a signal depends on the process and the type of signal that is received.
 
+Signal handling in single-threaded processes is simple, because the only \nameref{def:Thread} is also the \nameref{def:Process}.
+However, multithreaded programs have some complications because there are multiple \nameref{def:Thread}s for the single \nameref{def:Process}.
+\begin{enumerate}[noitemsep]
+\item Deliver the signal to the thread to which the signal applies.
+\item Deliver the signal to every thread in the process.
+\item Deliver the signal to certain threads in the process.
+\item Assign a specific thread to receive all signals for the process.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
