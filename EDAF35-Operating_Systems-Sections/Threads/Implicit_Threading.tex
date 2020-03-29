@@ -79,6 +79,18 @@ There are 2 types of dispatch queues:
   \item Each process gets its own serial queue, the \emph{main queue}.
   \item Additional serial dipatch queues can be made for local for execution.
   \end{itemize}
+\item Concurrent (\textbf{Can} be executed in parallel).
+  \begin{itemize}[noitemsep]
+  \item Items in this dispatch queue are also removed in a FIFO order, but multiple may be removed at once.
+  \item This allows multiple blocks to execute in parallel.
+  \item There are 3 system-wide dispatch queues, according to priority.
+    \begin{enumerate}[noitemsep]
+    \item Low
+    \item Default
+    \item High
+    \end{enumerate}
+  \item Priority is a relative importance of the blocks.
+  \end{itemize}
 \end{enumerate}
 
 %%% Local Variables:
