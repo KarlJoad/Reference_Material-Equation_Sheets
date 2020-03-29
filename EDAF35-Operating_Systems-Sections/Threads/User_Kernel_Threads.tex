@@ -40,6 +40,11 @@ The number of kernel threads may be specific to either a particular application 
 Whereas the \nameref{subsubsec:Many_To_One_Model} allows the developer to create as many \nameref{def:User_Thread}s as they wishes, it does not result in true concurrency, because the kernel can schedule only one thread at a time.
 The \nameref{subsubsec:One_To_One_Model} allows greater concurrency, but the developer must be mindful of the number of threads within an application.
 
+The many-to-many model suffers from neither of these shortcomings:
+\begin{itemize}[noitemsep]
+\item Developers can create as many user threads as necessary, and the corresponding kernel threads can run in parallel on a multiprocessor.
+\item When a thread performs a blocking system call, the kernel can schedule another thread for execution.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
