@@ -18,6 +18,14 @@ There exist 3 main methods for implementing implicit threading:
 In a \nameref{def:Thread_Pool} system, all (or at least most) of the \nameref{def:Thread}s available for use by a \nameref{def:Process} are created during startup.
 They are then placed in a pool, and wait for work to arrive.
 
+\begin{definition}[Thread Pool]\label{def:Thread_Pool}
+  A \emph{thread pool} system is one where all \nameref{def:Thread}s that can be used by any \nameref{def:Process} on the system is in a pool, hence the name.
+  When a job comes in that would use one (or more) of these threads, they are pulled out of the pool and allowed to execute.
+  When they finish execution, they return to the pool.
+
+  If there are jobs ready, but there are no threads available in the pool, they wait until one is available.
+\end{definition}
+
 \subsubsection{OpenMP}\label{subsubsec:OpenMP}
 \subsubsection{Grand Central Dispatch}\label{subsubsec:Grand_Central_Dispatch}
 %%% Local Variables:
