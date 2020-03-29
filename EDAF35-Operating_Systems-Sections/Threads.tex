@@ -30,6 +30,14 @@
 The use of \nameref{def:Thread}s is even more aparent when the single process/program must perform many similar tasks.
 This is particularly true when one of the threads may block, and it is desired to allow the other threads to proceed without blocking.
 
+\Cref{fig:Thread_Diagram} illustrates what a multithreaded application roughly looks like, visually.
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[scale=0.85]{./Drawings/EDAF35-Operating_Systems/ThreadDiagram.jpg}
+  \caption{Single- vs. Multithread Diagram}
+  \label{fig:Thread_Diagram}
+\end{figure}
+
 The biggest benefits of using multiple \nameref{def:Thread}s are:
 \begin{enumerate}[noitemsep]
 \item \textbf{Responsiveness}.
