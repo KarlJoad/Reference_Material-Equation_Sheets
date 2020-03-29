@@ -119,6 +119,10 @@ To handle these issues, many systems implement \nameref{def:Lightweight_Process}
   Then, each lightweight process is attached to a \nameref{def:Kernel_Thread}, and those kernel threads are scheduled by the \nameref{def:Operating_System} to run on real, physical processors.
 \end{definition}
 
+These \nameref{def:Lightweight_Process}es are used for each of the poetntially \nameref{def:Kernel}-block tasks that may occur.
+When this happens, the \nameref{def:Kernel_Thread} blocks, which blocks the \nameref{def:Lightweight_Process}, which then blocks the \nameref{def:User_Thread}.
+An application can use as many \nameref{def:Lightweight_Process}es as it wants, but if the \nameref{def:Process} only has a limited amount, some of the LWPs may need to be queued.
+
 
 %%% Local Variables:
 %%% mode: latex
