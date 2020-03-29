@@ -44,6 +44,22 @@ There are 2 main ways to create multiple threads.
   \item The parent does not need to know if a child terminates.
   \item Little data sharing between threads.
   \end{itemize}
+\item Synchronous
+  \begin{itemize}[noitemsep]
+  \item The parent creates one or more children, and then waits for all of them to finish executing.
+  \item Called the \textbf{\emph{fork-join}} strategy.
+  \item The child threads perform their work concurrently, but the parent \textbf{MUST} wait for all children to finish.
+  \item Typically a lot of data sharing between threads.
+  \item The program must provide a ``\kernelinline{run}''-like function that is the first thing a new thread executes.
+    \begin{itemize}[noitemsep]
+    \item The actual name of this function varies depending on the \nameref{def:Thread_Library} in use.
+    \end{itemize}
+  \item The programmer must provide a point where the main program waits by having each child thread \kernelinline{join}.
+    \begin{itemize}[noitemsep]
+    \item In the Pthreads and Java libraries, to wait for multiple threads, a \texttt{for} loop is constructed and iterates over all threads, making them \kernelinline{join}.
+    \item The actual name of this function varies depending on the \nameref{def:Thread_Library} in use.
+    \end{itemize}
+  \end{itemize}
 \end{enumerate}
 
 
