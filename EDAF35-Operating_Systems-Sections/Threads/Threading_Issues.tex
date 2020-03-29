@@ -29,6 +29,12 @@ If, however, the separate process does not call \kernelinline{exec()} after fork
   \end{enumerate}
 \end{definition}
 
+When a \nameref{def:Signal} is delivered, it must be handled by either:
+\begin{enumerate}[noitemsep]
+\item The default signal handler
+\item The user-defined signal handler
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
