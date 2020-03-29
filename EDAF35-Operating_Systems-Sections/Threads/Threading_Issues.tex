@@ -81,6 +81,23 @@ There are 2 main ways to cancel a \nameref{def:Thread}:
   \end{itemize}
 \end{enumerate}
 
+To change the way Pthreads handle potential cancellation signals, they can enable and disable various ways to cancel themselves.
+POSIX Pthreads support 3 different types of modes/states for how a \nameref{rmk:Target_Thread} will handle a request.
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{ccc}
+    \toprule
+    Mode & State & Type \\
+    \midrule
+    Off & Disabled & --- \\
+    Deferred & Enabled & Deferred \\
+    Asynchronous & Enabled & Asynchronous \\
+    \bottomrule
+  \end{tabular}
+  \caption{Pthread Cancellation Modes}
+  \label{tab:Pthread_Cancellation_Modes}
+\end{table}
+
 
 %%% Local Variables:
 %%% mode: latex
