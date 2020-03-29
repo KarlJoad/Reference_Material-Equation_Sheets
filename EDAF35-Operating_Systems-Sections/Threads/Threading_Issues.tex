@@ -105,6 +105,11 @@ At this point, a \emph{cleanup handler} is invoked, which frees any resources th
 \nameref{def:Thread}s that belong to a \nameref{def:Process} all share their data.
 However, sometimes a thread will need its own copy of data, called \emph{thread-local storage}.
 
+\begin{blackbox}
+  It is easy to confuse TLS with local variables; however, TLS data is visible throughout a \nameref{def:Thread}'s execution.
+  TLS is similar to \kernelinline{static} data, except each piece of TLS data is unique to each thread.
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
