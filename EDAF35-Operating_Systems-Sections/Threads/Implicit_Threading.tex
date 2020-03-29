@@ -70,6 +70,17 @@ Like in \nameref{subsubsec:OpenMP}, blocks of code that may be parallelized must
 When executing, GCD will schedule blocks for execution by placing them on a dispatch queue.
 When an item from the dispatch queue is removed, it is assigned to a \nameref{def:Thread} from the queue's \nameref{def:Thread_Pool}.
 
+There are 2 types of dispatch queues:
+\begin{enumerate}[noitemsep]
+\item Serial (\textbf{Cannot} be executed in parallel).
+  \begin{itemize}[noitemsep]
+  \item Items are removed in a FIFO order.
+  \item One block \textbf{MUST} finish executing before another can be drawn from the dispatch queue.
+  \item Each process gets its own serial queue, the \emph{main queue}.
+  \item Additional serial dipatch queues can be made for local for execution.
+  \end{itemize}
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
