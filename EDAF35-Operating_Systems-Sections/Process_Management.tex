@@ -15,8 +15,15 @@
   It also contains statically allocated information, such as \kernelinline{static} variables.
 \end{definition}
 
+Occassionally, \nameref{def:Thread}s can be subject to \nameref{def:Preemption}.
 
+\begin{definition}[Preemption]\label{def:Preemption}
+  \emph{Preemption} is the act of temporarily interrupting a task being carried out by a computer system, without requiring its cooperation, and with the intention of resuming the task at a later time.
+  Such changes of the executed task are known as context switches.
+  It is normally carried out by a privileged task or part of the system known as a preemptive scheduler, which has the power to preempt, or interrupt, and later resume, other tasks in the system.
 
+  In any given system design, some operations performed by the system may not be preemptible.
+  This usually applies to \nameref{def:Kernel} functions and service interrupts which, if not permitted to run to completion, would tend to produce race conditions resulting in deadlock.
 \end{definition}
 
 On modern \nameref{def:Operating_System}s, \nameref{def:Process}es provide two virtualizations:
