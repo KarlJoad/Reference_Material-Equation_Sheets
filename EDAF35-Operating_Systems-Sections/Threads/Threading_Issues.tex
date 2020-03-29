@@ -1,6 +1,18 @@
 \subsection{Threading Issues}\label{subsec:Threading_Issues}
 In this section, we will discuss some common issues that arise because of multithreading.
 
+\subsubsection{The \texorpdfstring{\kernelinline{fork()}}{\texttt{fork()}} and \texorpdfstring{\kernelinline{exec()}}{\texttt{exec()}} System Calls}\label{subsubsec:Fork_Exec_System_Calls}
+Since \kernelinline{fork()} creates a separate, but duplicate, child \nameref{def:Process} from its parent, what are the semantics when creating a \nameref{def:Thread} on a UNIX system, since \nameref{def:Thread}s are just another kind of \nameref{def:Process}?
+
+If one thread in a program calls \kernelinline{fork()}, does the new process duplicate all threads, or is the new process single-threaded?
+To answer this, there are two versions of \kernelinline{fork()}, one that duplicates all threads and another that duplicates only the thread that invoked the \kernelinline{fork()} system call.
+
+The \kernelinline{exec()} system call is relatively unchanged; if a thread invokes the \kernelinline{exec()} system call, the program specified in the parameter to \kernelinline{exec()} will \textbf{replace the entire process}, including all threads.
+
+Which version of \kernelinline{fork()} to use depends on the application.
+If \kernelinline{exec()} will be called immediately after forking, then duplicating \textbf{all} threads is unnecessary, as the program specified in the parameters to \kernelinline{exec()} will replace the process anyways, thus duplicating only the calling thread is appropriate.
+If, however, the separate process does not call \kernelinline{exec()} after forking, the separate process should duplicate all threads.
+
 
 %%% Local Variables:
 %%% mode: latex
