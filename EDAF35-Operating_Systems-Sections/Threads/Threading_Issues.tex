@@ -110,6 +110,10 @@ However, sometimes a thread will need its own copy of data, called \emph{thread-
   TLS is similar to \kernelinline{static} data, except each piece of TLS data is unique to each thread.
 \end{blackbox}
 
+\subsubsection{Scheduler Activations}\label{subsubsec:Scheduler_Activations}
+When using the \nameref{subsubsec:Many_To_Many_Model} of \nameref{def:Kernel}-\nameref{def:Thread_Library} communications, there may be some issues.
+To handle these issues, many systems implement \nameref{def:Lightweight_Process}es as an intermediary between the \nameref{def:User} and \nameref{def:Kernel}.
+
 
 %%% Local Variables:
 %%% mode: latex
