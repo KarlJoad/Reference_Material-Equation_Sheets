@@ -35,6 +35,10 @@ When a \nameref{def:Signal} is delivered, it must be handled by either:
 \item The user-defined signal handler
 \end{enumerate}
 
+Every \nameref{def:Signal} has a default handler that the \nameref{def:Kernel} runs to handle the \nameref{def:Signal}.
+However, these actions can be overridden by a user-defined signal handler.
+How a \nameref{def:Process} responds to a signal depends on the process and the type of signal that is received.
+
 
 %%% Local Variables:
 %%% mode: latex
