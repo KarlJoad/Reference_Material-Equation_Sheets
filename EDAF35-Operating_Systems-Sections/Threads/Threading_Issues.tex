@@ -48,6 +48,10 @@ However, multithreaded programs have some complications because there are multip
 \item Assign a specific thread to receive all signals for the process.
 \end{enumerate}
 
+How a \nameref{def:Signal} is delivered depends on the type of signal generated.
+Synchronous signals need to be delivered \textbf{to the \nameref{def:Thread} causing the \nameref{def:Signal}}.
+Some asynchronous signals need to be delievered to all threads in a \nameref{def:Process}.
+
 
 %%% Local Variables:
 %%% mode: latex
