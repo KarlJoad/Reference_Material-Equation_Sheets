@@ -34,6 +34,12 @@ To combat this, most implementations of this model restrict the number of thread
 Most desktop operating systems use this model.
 
 \subsubsection{Many-To-Many Model}\label{subsubsec:Many_To_Many_Model}
+The many-to-many model multiplexes many user-level threads to a smaller or equal number of kernel threads.
+The number of kernel threads may be specific to either a particular application or a particular machine (an application may be allocated more kernel threads on a multiprocessor than on a single processor).
+
+Whereas the \nameref{subsubsec:Many_To_One_Model} allows the developer to create as many \nameref{def:User_Thread}s as they wishes, it does not result in true concurrency, because the kernel can schedule only one thread at a time.
+The \nameref{subsubsec:One_To_One_Model} allows greater concurrency, but the developer must be mindful of the number of threads within an application.
+
 
 %%% Local Variables:
 %%% mode: latex
