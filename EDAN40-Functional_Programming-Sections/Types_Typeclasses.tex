@@ -36,6 +36,15 @@ To ensure that every \nameref{def:Expression} has a \nameref{def:Type} before ex
   \end{remark}
 \end{definition}
 
+Because \nameref{def:Type_Inferencing} is done statically, Haskell programs are both \emph{strongly typed} and \emph{type safe}.
+Meaning all \nameref{def:Type} errors that could occur in a program are found before program execution.
+The use of \nameref{def:Type_Inferencing} is the reason that \textbf{all execution paths must have the same type}.
+
+\begin{remark*}
+  The determination of \nameref{def:Type}s in a program using \nameref{def:Type_Inferencing} where selection statements have different \nameref{def:Type}s is an undecidable problem.
+  Thus, the language designers enforced programmers to write all \nameref{def:Conditional_Expression}, \nameref{def:Guarded_Equation}s and pattern matching paths to have the same \nameref{def:Type}.
+\end{remark*}
+
 
 %%% Local Variables:
 %%% mode: latex
