@@ -56,6 +56,15 @@ On UNIX and UNIX-like systems, a \nameref{def:Thread} can specify what \nameref{
 Thus, the asynchronous signal may be delievered to only the threads that are not blocking that signal.
 In addition, since signals need to be handled \textbf{only once}, they are typically only delivered to the first non-blocking thread found.
 
+\subsubsection{Thread Cancellation}\label{subsubsec:Thread_Cancellation}
+\begin{definition}[Thread Cancellation]\label{def:Thread_Cancellation}
+  \emph{Thread cancellation} means terminating a \nameref{def:Thread} before it has completely finished its execution.
+
+  \begin{remark}[Target Thread]\label{rmk:Target_Thread}
+    The \nameref{def:Thread} that is to be cancelled is often called the \emph{target thread}.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
