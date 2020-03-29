@@ -98,6 +98,9 @@ POSIX Pthreads support 3 different types of modes/states for how a \nameref{rmk:
   \label{tab:Pthread_Cancellation_Modes}
 \end{table}
 
+The default cancellation type is deferred cancellation, when a \nameref{def:Thread} has reaced a cancellation point.
+At this point, a \emph{cleanup handler} is invoked, which frees any resources the \nameref{def:Thread} may have had allocated to it.
+
 
 %%% Local Variables:
 %%% mode: latex
