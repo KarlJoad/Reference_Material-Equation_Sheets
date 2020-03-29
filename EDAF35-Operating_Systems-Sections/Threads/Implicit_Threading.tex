@@ -34,6 +34,17 @@ A \nameref{def:Thread_Pool} offers these benefits:
 \item Separating the task to be performed from the mechanics of creating the task allows us to use different strategies for running the task.
 \end{enumerate}
 
+Additionally, the number of \nameref{def:Thread}s available in the \nameref{def:Thread_Pool} can be set dynamically.
+Some factors that can affect the number of threads in the pool are:
+\begin{enumerate}[noitemsep]
+\item Number of CPUs in the system
+\item Amount of physical memory
+\item Expected number of concurrent job requests
+\end{enumerate}
+
+There are more sophisticated architectures that offer varying benefits.
+Some even allow for the shrinking of the pool as needed, to reduce the footprint of the running \nameref{def:Process}.
+
 \subsubsection{OpenMP}\label{subsubsec:OpenMP}
 \subsubsection{Grand Central Dispatch}\label{subsubsec:Grand_Central_Dispatch}
 %%% Local Variables:
