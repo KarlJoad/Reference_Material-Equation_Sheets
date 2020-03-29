@@ -24,6 +24,15 @@ However, the entire process will block if a thread makes a blocking system call.
 Also, because only one thread can access the kernel at a time, multiple threads are unable to run in parallel on multicore systems.
 
 \subsubsection{One-To-One Model}\label{subsubsec:One_To_One_Model}
+\textbf{This model maps each user thread to an individual kernel thread.}
+It provides more concurrency than the many-to-one model by allowing another thread to run when a thread makes a blocking system call.
+It also allows multiple threads to run in parallel on multiprocessors.
+
+The only drawback to this model is that creating a user thread requires creating the corresponding kernel thread, which is quite expensive.
+The overhead of creating kernel threads can hurt the performance of an application.
+To combat this, most implementations of this model restrict the number of threads supported by the system.
+Most desktop operating systems use this model.
+
 \subsubsection{Many-To-Many Model}\label{subsubsec:Many_To_Many_Model}
 
 %%% Local Variables:
