@@ -65,6 +65,22 @@ In addition, since signals need to be handled \textbf{only once}, they are typic
   \end{remark}
 \end{definition}
 
+There are 2 main ways to cancel a \nameref{def:Thread}:
+\begin{enumerate}[noitemsep]
+\item \textbf{Asynchronous cancellation}
+  \begin{itemize}[noitemsep]
+  \item One thread immediately terminates the \nameref{rmk:Target_Thread}.
+  \item Difficult when resources have been allocated to a cancelled \nameref{def:Thread}.
+  \item Difficult when a thread is updating data that is shared with other threads.
+  \item \nameref{def:Operating_System} will reclaim some, but not all resources from a canceled thread, so a necessary system-wide resource may not be freed.
+  \end{itemize}
+
+\item \textbf{Deferred cancellation}.
+  \begin{itemize}[noitemsep]
+  \item \nameref{rmk:Target_Thread} periodically checks whether it should terminate, allowing it an opportunity to terminate itself in an orderly fashion.
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
