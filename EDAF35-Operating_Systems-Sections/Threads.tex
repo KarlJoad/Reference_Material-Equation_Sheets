@@ -1,4 +1,31 @@
 \section{Threads}\label{sec:Threads}
+\begin{definition}[Thread]\label{def:Thread}
+  \emph{Threads of execution}, often shortened to \emph{threads}, are the objects of activity within the process.
+  Each thread includes:
+  \begin{itemize}[noitemsep]
+  \item Thread ID
+  \item A unique program counter
+  \item Process stack
+  \item Set of processor \nameref{def:Register}s
+  \end{itemize}
+
+  The \nameref{def:Kernel} schedules the individual threads, not \nameref{def:Process}es.
+
+  In traditional UNIX systems, each \nameref{def:Process} consists of one thread.
+  In modern systems, however, multithreaded programs/processes are common.
+  In this case, this \nameref{def:Process}'s threads share:
+  \begin{itemize}[noitemsep]
+  \item The Code Section
+  \item The Data Section
+  \item Operating System resources, such as files and signals.
+  \end{itemize}
+
+  \begin{remark}[Threads in Linux]\label{rmk:Linux_Threads}
+    Linux has a unique implementation of threads; it does not differentiate between \nameref{def:Thread}s and \nameref{def:Process}es.
+    To Linux, a thread is just a special kind of process.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex

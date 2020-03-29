@@ -15,18 +15,8 @@
   It also contains statically allocated information, such as \kernelinline{static} variables.
 \end{definition}
 
-\begin{definition}[Thread]\label{def:Thread}
-  \emph{Threads of execution}, often shortened to \emph{threads}, are the objects of activity within the process.
-  Each thread includes a unique program counter, process stack, and set of processor \nameref{def:Register}s.
-  The \nameref{def:Kernel} schedules individual threads, not processes.
 
-  In traditional UNIX systems, each process consists of one thread.
-  In modern systems, however, multithreaded programs are common.
 
-  \begin{remark}[Threads in Linux]\label{rmk:Linux_Threads}
-    Linux has a unique implementation of threads; it does not differentiate between threads and processes.
-    To Linux, a thread is just a special kind of process.
-  \end{remark}
 \end{definition}
 
 On modern \nameref{def:Operating_System}s, \nameref{def:Process}es provide two virtualizations:
