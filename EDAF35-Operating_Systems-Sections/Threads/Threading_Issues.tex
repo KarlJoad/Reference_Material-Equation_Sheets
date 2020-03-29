@@ -101,6 +101,10 @@ POSIX Pthreads support 3 different types of modes/states for how a \nameref{rmk:
 The default cancellation type is deferred cancellation, when a \nameref{def:Thread} has reaced a cancellation point.
 At this point, a \emph{cleanup handler} is invoked, which frees any resources the \nameref{def:Thread} may have had allocated to it.
 
+\subsubsection{Thread-Local Storage}\label{subsubsec:Thread_Local_Storage}
+\nameref{def:Thread}s that belong to a \nameref{def:Process} all share their data.
+However, sometimes a thread will need its own copy of data, called \emph{thread-local storage}.
+
 
 %%% Local Variables:
 %%% mode: latex
