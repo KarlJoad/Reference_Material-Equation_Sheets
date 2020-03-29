@@ -26,6 +26,14 @@ They are then placed in a pool, and wait for work to arrive.
   If there are jobs ready, but there are no threads available in the pool, they wait until one is available.
 \end{definition}
 
+A \nameref{def:Thread_Pool} offers these benefits:
+\begin{enumerate}[noitemsep]
+\item Servicing a request with an \textbf{existing thread} is faster than waiting \textbf{to create a thread}.
+\item A thread pool limits the number of threads that exist at any one point, preventing performance degradation.
+  This is particularly important on systems that cannot support a large number of concurrent threads.
+\item Separating the task to be performed from the mechanics of creating the task allows us to use different strategies for running the task.
+\end{enumerate}
+
 \subsubsection{OpenMP}\label{subsubsec:OpenMP}
 \subsubsection{Grand Central Dispatch}\label{subsubsec:Grand_Central_Dispatch}
 %%% Local Variables:
