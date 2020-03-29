@@ -60,6 +60,22 @@ To handle the increase in \nameref{def:Process} \nameref{def:Thread} counts, man
 This means multiple threads can be loaded into the CPU for faster switching.
 On desktop Intel CPUs, this is called \textbf{hyperthreading}.
 
+The biggest difficulties in using multiple \nameref{def:Thread}s are:
+\begin{enumerate}[noitemsep]
+\item \textbf{Identifying tasks}.
+  Examine applications to find areas that can be divided into independent tasks that can be run concurrently on individual cores.
+\item \textbf{Balance}.
+  While identifying tasks that can run in parallel, programmers must also ensure that the tasks perform equal work of equal value.
+  In some instances, a certain task may not contribute as much value to the overall process as other tasks.
+\item \textbf{Data splitting}.
+  Just as applications are divided into separate tasks, the data accessed and manipulated by the tasks must be divided to run on separate cores.
+\item \textbf{Data dependency}.
+  The data accessed by the tasks must be examined for dependencies between two or more tasks.
+  When one task depends on data from another, the tasks must be synchronized to accommodate the data dependency.
+\item \textbf{Testing and debugging}.
+  When a program is running in parallel on multiple cores, many different execution paths are possible, making testing and debugging much harder.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
