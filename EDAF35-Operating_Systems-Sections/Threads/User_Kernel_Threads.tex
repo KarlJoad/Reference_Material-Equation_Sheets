@@ -1,5 +1,12 @@
 \subsection{User and Kernel Threads}\label{subsec:User_Kernel_Threads}
 A relationship must exist between \nameref{def:User_Thread}s and \nameref{def:Kernel_Thread}s.
+There are three common ways of establishing such a relationship:
+\begin{enumerate}[noitemsep]
+\item The \nameref{subsubsec:Many_To_One_Model}
+\item The \nameref{subsubsec:One_To_One_Model}
+\item The \nameref{subsubsec:Many_To_Many_Model}
+\end{enumerate}
+
 \begin{definition}[User Thread]\label{def:User_Thread}
   \emph{User thread}s are \nameref{def:Thread}s created by a \nameref{def:User} \nameref{def:Process}.
   They are supported above the kernel and are managed without kernel support.
@@ -10,6 +17,9 @@ A relationship must exist between \nameref{def:User_Thread}s and \nameref{def:Ke
   They are supported and managed directly by the operating system.
 \end{definition}
 
+\subsubsection{Many-To-One Model}\label{subsubsec:Many_To_One_Model}
+\subsubsection{One-To-One Model}\label{subsubsec:One_To_One_Model}
+\subsubsection{Many-To-Many Model}\label{subsubsec:Many_To_Many_Model}
 
 %%% Local Variables:
 %%% mode: latex
