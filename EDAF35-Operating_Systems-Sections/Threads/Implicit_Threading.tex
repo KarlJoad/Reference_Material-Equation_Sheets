@@ -53,6 +53,13 @@ Application developers insert compiler directives into their code at parallel re
 It can create as many threads as are available in a system with the \kernelinline{#pragma omp parallel} directive.
 There are also directives for parallelizing loops, automatically dividing the work among the spawned threads.
 
+This system also allows developers to choose the way the OpenMP library behaves, allowing for several different levels of parallelism.
+These include:
+\begin{itemize}[noitemsep]
+\item Setting the number of threads manually.
+\item Allowing developers to identify whether data is shared between threads or are private to a thread.
+\end{itemize}
+
 \subsubsection{Grand Central Dispatch}\label{subsubsec:Grand_Central_Dispatch}
 %%% Local Variables:
 %%% mode: latex
