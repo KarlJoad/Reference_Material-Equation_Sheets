@@ -12,6 +12,30 @@ Namely, \haskellinline{e :: T} meaning that the \nameref{def:Expression} \texttt
   {\large{\textbf{EVERY \nameref{def:Expression} MUST HAVE A \nameref{def:Type}!}}}
 \end{blackbox}
 
+To ensure that every \nameref{def:Expression} has a \nameref{def:Type} before execution, Haskell (like most other functional languages) uses \nameref{def:Type_Inferencing} to attempt to determine the type of every expression.
+
+\begin{definition}[Type Inferencing]\label{def:Type_Inferencing}
+  \emph{Type inferencing} is the process of solving the system of type equations introduced by expressions and operators/functions used on them to determine the \nameref{def:Type} of every \nameref{def:Expression} in a program.
+
+  When an operator or function is used, it has a type signature.
+  This indicates what \nameref{def:Type}s it takes in and what type(s) it returns.
+  If there are operators/functions with pre-determined type signatures, like addition, then the types of the expressions that are fed into the addition operator need to be something that can be added.
+  After the language system has gone through the whole file/program, a system of equations for the type of every expression can be created.
+  By solving this system of equations, the \nameref{def:Type} of every expression can be determined.
+
+  \begin{remark}[Done Statically]\label{rmk:Type_Inferencing_Static}
+    It is important to note that \nameref{def:Type_Inferencing} is done \textbf{statically}, meaning it is done before the program is even executed.
+    When compiled, the \nameref{def:Type}s are determined during compilation.
+    When loaded into the REPL, the \nameref{def:Type}s are determined when the file is parsed and interpreted.
+  \end{remark}
+
+  \begin{remark}[Doesn't Catch Everything]
+    \nameref{def:Type_Inferencing} does \textbf{NOT} catch all possible errors.
+    Namely, it does not catch runtime errors, such as division-by-zero.
+    However, it does remove a large category of errors that present themselves due to inappropriate typing.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
