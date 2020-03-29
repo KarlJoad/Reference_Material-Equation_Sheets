@@ -35,6 +35,16 @@ So, throughout this section (unless otherwise specified), all information will b
 
 \subsubsection{Synchronous/Asynchronous Threading}\label{subsubsec:Sync_Async_Threading}
 There are 2 main ways to create multiple threads.
+\begin{enumerate}[noitemsep]
+\item Asynchronous
+  \begin{itemize}[noitemsep]
+  \item Once the parent thread creates a child thread, the parent resumes execution.
+  \item The parent and child execute concurrently.
+  \item Each thread is independent.
+  \item The parent does not need to know if a child terminates.
+  \item Little data sharing between threads.
+  \end{itemize}
+\end{enumerate}
 
 
 %%% Local Variables:
