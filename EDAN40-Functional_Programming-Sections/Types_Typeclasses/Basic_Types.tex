@@ -20,6 +20,10 @@ Strings in Haskell are enclosed between double quotes; for example, \haskellinli
 \end{remark*}
 
 \subsubsection{\texorpdfstring{\haskellinline{Int}}{\texttt{Int}}}\label{subsubsec:Int_Type}
+The \haskellinline{Int} \nameref{def:Type} represents fixed-precision integers, analogous to the signed integer system of traditional imperative languages.
+The number of bits (32 or 64) depends on your computer's architecture.
+On a 64-bit computer, 64-bit integers will be used, making the limits of the representable integers $[-2^{63}, 2^{63}-1]$.
+Likewise, on a 32-bit computer, 32-bit integers will be used, setting the limits of the system in the interval $[-2^{31}, 2^{31} - 1]$.
 
 \subsubsection{\texorpdfstring{\haskellinline{Integer}}{\texttt{Integer}}}\label{subsubsec:Integer_Type}
 
