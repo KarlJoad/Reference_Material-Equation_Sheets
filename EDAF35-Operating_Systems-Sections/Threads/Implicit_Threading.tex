@@ -66,6 +66,10 @@ If is a combination of C extensions, an \nameref{def:API}, and a runtime library
 This allows GCD to use POSIX threads and manage the creation/destruction of threads as needed.
 This allows developers to identify sections of code that may be run in parallel.
 
+Like in \nameref{subsubsec:OpenMP}, blocks of code that may be parallelized must be identified by the programmer with the \kernelinline{^{ code; }} syntax.
+When executing, GCD will schedule blocks for execution by placing them on a dispatch queue.
+When an item from the dispatch queue is removed, it is assigned to a \nameref{def:Thread} from the queue's \nameref{def:Thread_Pool}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
