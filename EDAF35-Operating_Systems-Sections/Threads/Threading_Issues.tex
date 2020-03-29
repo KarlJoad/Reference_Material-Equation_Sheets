@@ -114,6 +114,11 @@ However, sometimes a thread will need its own copy of data, called \emph{thread-
 When using the \nameref{subsubsec:Many_To_Many_Model} of \nameref{def:Kernel}-\nameref{def:Thread_Library} communications, there may be some issues.
 To handle these issues, many systems implement \nameref{def:Lightweight_Process}es as an intermediary between the \nameref{def:User} and \nameref{def:Kernel}.
 
+\begin{definition}[Lightweight Process]\label{def:Lightweight_Process}
+  A \emph{lightweight process} (\emph{LWP}) is a virtual processor onto which the application can schedule a \nameref{def:User_Thread} to run.
+  Then, each lightweight process is attached to a \nameref{def:Kernel_Thread}, and those kernel threads are scheduled by the \nameref{def:Operating_System} to run on real, physical processors.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
