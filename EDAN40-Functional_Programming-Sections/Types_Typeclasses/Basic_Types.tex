@@ -26,6 +26,12 @@ On a 64-bit computer, 64-bit integers will be used, making the limits of the rep
 Likewise, on a 32-bit computer, 32-bit integers will be used, setting the limits of the system in the interval $[-2^{31}, 2^{31} - 1]$.
 
 \subsubsection{\texorpdfstring{\haskellinline{Integer}}{\texttt{Integer}}}\label{subsubsec:Integer_Type}
+The \haskellinline{Integer} \nameref{def:Type} represented arbitrary-precision integers.
+These are integers that can be \textbf{any possible value}, limited only by the memory capabilities of your computer.
+Thus, expressions of type \haskellinline{Integer} can be as big as your memory allows.
+
+\haskellinline{Int} and \haskellinline{Integer} are also different in terms of their performance.
+Typically, \haskellinline{Int} will run faster because there is dedicated hardware to perform the computation, whereas \haskellinline{Integer}s will need to be handled in software as a sequence of digits.
 
 \subsubsection{\texorpdfstring{\haskellinline{Float}}{\texttt{Float}}}\label{subsubsec:Float_Type}
 
