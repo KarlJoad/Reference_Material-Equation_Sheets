@@ -1,4 +1,15 @@
 \subsection{User and Kernel Threads}\label{subsec:User_Kernel_Threads}
+A relationship must exist between \nameref{def:User_Thread}s and \nameref{def:Kernel_Thread}s.
+\begin{definition}[User Thread]\label{def:User_Thread}
+  \emph{User thread}s are \nameref{def:Thread}s created by a \nameref{def:User} \nameref{def:Process}.
+  They are supported above the kernel and are managed without kernel support.
+\end{definition}
+
+\begin{definition}[Kernel Thread]\label{def:Kernel_Thread}
+  \emph{Kernel thread}s are \nameref{def:Thread}s created by the \nameref{def:Kernel}.
+  They are supported and managed directly by the operating system.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
