@@ -3,6 +3,16 @@
   A \emph{thread library} is an \nameref{def:API} that allows a programmer to create and manage \nameref{def:Thread}s.
 \end{definition}
 
+There are 2 main ways to implement a \nameref{def:Thread_Library}:
+\begin{enumerate}[noitemsep]
+\item Provide a library entirely in user space with no kernel support.
+  All code and data structures for the library exist in \textbf{user-space}.
+  This means that invoking a library function results in a function call in user space and not a system call.
+\item Implement a kernel-level library supported directly by the operating system.
+  All code and data structures for the library exist in \textbf{kernel-space}.
+  Invoking a library function results in a \nameref{def:System_Call} to the \nameref{def:Kernel}.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
