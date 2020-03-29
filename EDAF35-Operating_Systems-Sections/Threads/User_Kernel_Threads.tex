@@ -18,6 +18,11 @@ There are three common ways of establishing such a relationship:
 \end{definition}
 
 \subsubsection{Many-To-One Model}\label{subsubsec:Many_To_One_Model}
+\textbf{This model maps many user-level threads to a single \nameref{def:Kernel_Thread}.}
+Thread management is done by the thread library in user space, so it is efficient.
+However, the entire process will block if a thread makes a blocking system call.
+Also, because only one thread can access the kernel at a time, multiple threads are unable to run in parallel on multicore systems.
+
 \subsubsection{One-To-One Model}\label{subsubsec:One_To_One_Model}
 \subsubsection{Many-To-Many Model}\label{subsubsec:Many_To_Many_Model}
 
