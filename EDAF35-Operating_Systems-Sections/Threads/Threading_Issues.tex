@@ -119,10 +119,20 @@ To handle these issues, many systems implement \nameref{def:Lightweight_Process}
   Then, each lightweight process is attached to a \nameref{def:Kernel_Thread}, and those kernel threads are scheduled by the \nameref{def:Operating_System} to run on real, physical processors.
 \end{definition}
 
-These \nameref{def:Lightweight_Process}es are used for each of the poetntially \nameref{def:Kernel}-block tasks that may occur.
+These \nameref{def:Lightweight_Process}es are used for each of the potentially \nameref{def:Kernel}-block tasks that may occur.
 When this happens, the \nameref{def:Kernel_Thread} blocks, which blocks the \nameref{def:Lightweight_Process}, which then blocks the \nameref{def:User_Thread}.
 An application can use as many \nameref{def:Lightweight_Process}es as it wants, but if the \nameref{def:Process} only has a limited amount, some of the LWPs may need to be queued.
 
+One way to handle these communications is by using \emph{scheduler activation}.
+The steps for this to work are shown below.
+\begin{enumerate}[noitemsep]
+\item The \nameref{def:Kernel} provides a \nameref{def:Process} with a set of \nameref{def:Lightweight_Process}es, LWPs, virtual processors.
+\item When a \nameref{def:User_Thread} is about to block, the \nameref{def:Kernel} makes an \emph{upcall} ot the LWP informing it that it is about to block, and identifies the \nameref{def:Thread} that will block.
+\item The \nameref{def:Kernel} will then allocate a new LWP to the \nameref{def:Process} to run the \emph{upcall handler} on.
+  This saves the state of the blockeing thread, schedules another thread, and context switches to the other thread.
+\item When the blocking event that the \nameref{def:Thread} was waiting on, the \nameref{def:Kernel} makes another \emph{upcall} to the LWP informing the blocked thread that it may run and unblocks it.
+\item The unblocked \nameref{def:User_Thread} can now be scheduled. It eventually is scheduled to execute and does.
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
