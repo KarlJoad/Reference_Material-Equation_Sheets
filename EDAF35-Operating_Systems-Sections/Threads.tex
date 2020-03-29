@@ -93,8 +93,8 @@ There are 2 distinct types of \nameref{def:Parallelism}, though many application
 \begin{definition}[Data Parallelism]\label{def:Data_Parallelism}
   \emph{Data parallelism} focuses on distributing subsets of the same data across multiple computing cores and performing the same operation on each core.
   For example, summing the contents of an array of size $N$.
-  On a single-core system, one thread would simply sum the elements $[0] \ldots [N − 1]$.
-  On a dual-core system, however, thread A, running on core 0, could sum the elements $[0] \ldots [\frac{N}{2} − 1]$ while thread B, running on core 1, could sum the rest of the elements $[\frac{N}{2}] \ldots [N − 1]$.
+  On a single-core system, one thread would simply sum the elements $[0] \ldots [N-1]$.
+  On a dual-core system, however, thread A, running on core 0, could sum the elements $[0] \ldots [\frac{N}{2}-1]$ while thread B, running on core 1, could sum the rest of the elements $[\frac{N}{2}] \ldots [N-1]$.
 \end{definition}
 
 \begin{definition}[Task Parallelism]\label{def:Task_Parallelism}
