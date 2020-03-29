@@ -9,6 +9,15 @@ The \haskellinline{Char} \nameref{def:Type} contains all the single characters t
 Characters in Haskell must be enclosed beween forward quotes; for example, \haskellinline{'c'}.
 
 \subsubsection{\texorpdfstring{\haskellinline{String}}{\texttt{String}}}\label{subsubsec:String_Type}
+The \haskellinline{String} \nameref{def:Type} is a \nameref{def:Type_Alias} for \haskellinline{[Char]}.
+This means it also includes all the characters available from a typical keyboard, and the control characters, however more than one character can be present.
+Strings in Haskell are enclosed between double quotes; for example, \haskellinline{"string"}.
+
+\begin{remark*}
+  The statement about allowing more than one character be present is a little misleading.
+  Since the \haskellinline{String} \nameref{def:Type} is actually \haskellinline{[Char]}, a list of single characters.
+  Haskell just \textbf{shows} them to us nicely formatted.
+\end{remark*}
 
 \subsubsection{\texorpdfstring{\haskellinline{Int}}{\texttt{Int}}}\label{subsubsec:Int_Type}
 
