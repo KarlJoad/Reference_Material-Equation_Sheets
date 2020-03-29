@@ -13,6 +13,23 @@ There are 2 main ways to implement a \nameref{def:Thread_Library}:
   Invoking a library function results in a \nameref{def:System_Call} to the \nameref{def:Kernel}.
 \end{enumerate}
 
+There are 3 different libraries that are used frequently.
+\begin{enumerate}[noitemsep]
+\item POSIX Pthreads.
+  \begin{itemize}[noitemsep]
+  \item This provides a standard interface for \textbf{how the threads should behave}.
+  \item The actual implementation details are left for the implementor to decide.
+  \item Global variables are shared between threads.
+  \item Brought in by the standard library's \kernelinline{pthread.h} header.
+  \end{itemize}
+\item Windows' Threads.
+  \begin{itemize}[noitemsep]
+  \item Global variables are shared between threads.
+  \item Must include the \kernelinline{windows.h} header.
+  \end{itemize}
+\item Java's Threads.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
