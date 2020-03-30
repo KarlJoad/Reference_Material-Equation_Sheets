@@ -7,6 +7,11 @@ To represent this variability in the \nameref{def:Type} a function may have, we 
 \begin{definition}[Type Variable]\label{def:Type_Variable}
   A \emph{type variable} is like a traditional variable, except instead of representing a variety of values, it represents a variety of \nameref{def:Type}s.
   In Haskell, these are denoted with lowercase letters, typically just a single letter, in the \textbf{TYPE SIGNATURE}.
+  \begin{remark}[Lowercase Letter Distinction]
+    The distinction between \nameref{def:Type_Variable}s and \nameref{def:Expression}s named with lowercase letters is important to make, because a lowercase letter is a type variable only when used in a type signature.
+    If a lowercase letter is used anywhere else, it is considered an expression.
+  \end{remark}
+
   Some examples of functions that use type variables are shown in \Cref{lst:Polymorphic_Function_Examples}.
 \end{definition}
 
