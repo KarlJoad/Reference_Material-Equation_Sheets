@@ -1,4 +1,8 @@
 \subsection{Type Declarations}\label{subsec:Type_Declarations}
+The simplest way to define a new \nameref{def:Type} is to use a new name for an already existing type.
+This is done with the \haskellinline{type} keyword in Haskell.
+This keyword allows us to create \nameref{def:Type_Alias}es, making things easier to deal with.
+
 \begin{definition}[Type Alias]\label{def:Type_Alias}
   A \emph{type alias} is the process of creating another name for an already existing \nameref{def:Type}.
   The langauge system can just ``replace'' each occurrence of a type alias with its definition until it has fully expanded the \nameref{def:Type}s until it has reached its base types.
