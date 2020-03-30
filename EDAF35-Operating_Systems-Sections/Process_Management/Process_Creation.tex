@@ -49,6 +49,9 @@ The interesting work is done by \kernelinline{copy_process()}:
 Back in \kernelinline{do_fork()}, if \kernelinline{copy_process()} returns successfully, the new child is woken up and run.
 Deliberately, the kernel runs the child process first.
 
+\kernelinline{fork()} returns \texttt{0} in the newly created child process, and the PID of the child in the parent.
+Then, \kernelinline{exec()} \textbf{COMPLETELY REPLACES THE PROCESS' MEMORY}, meaning that after an \kernelinline{exec()}, the child is not executing the same program anymore.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
