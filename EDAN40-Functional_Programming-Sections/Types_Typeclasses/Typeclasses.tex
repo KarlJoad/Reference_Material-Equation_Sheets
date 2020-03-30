@@ -67,6 +67,9 @@ For a \nameref{def:Type} to be part of this class, they must provide the methods
 \label{lst:Read_Typeclass_Methods}
 \end{listing}
 
+\textbf{ALL} the basic \nameref{def:Type}s are part of this \nameref{def:Typeclass}, including lists and tuples (if their elements are instances of types in this typeclass).
+The only basic type that is \textbf{NOT} in this \nameref{def:Typeclass} are \nameref{def:Function}s, because there is no general way to show the value of a function.
+
 \subsubsection{\texorpdfstring{\haskellinline{Num}}{\texttt{Num}}}\label{subsubsec:Num_Typeclass}
 \subsubsection{\texorpdfstring{\haskellinline{Integral}}{\texttt{Integral}}}\label{subsubsec:Integral_Typeclass}
 \subsubsection{\texorpdfstring{\haskellinline{Fractional}}{\texttt{Fractional}}}\label{subsubsec:Fractional_Typeclass}
