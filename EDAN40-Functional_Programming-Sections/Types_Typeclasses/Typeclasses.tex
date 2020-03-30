@@ -27,6 +27,8 @@ For a \nameref{def:Type} to be part of this class, they must provide the methods
 \label{lst:Eq_Typeclass_Methods}
 \end{listing}
 
+\textbf{ALL} the basic \nameref{def:Type}s are part of this \nameref{def:Typeclass}, including lists and tuples (if their elements are instances of types in this typeclass).
+The only basic type that is \textbf{NOT} in this \nameref{def:Typeclass} are \nameref{def:Function}s, because there is no general way to compare two functions for equality.
 
 \subsubsection{\texorpdfstring{\haskellinline{Ord}}{\texttt{Ord}}}\label{subsubsec:Ord_Typeclass}
 \subsubsection{\texorpdfstring{\haskellinline{Show}}{\texttt{Show}}}\label{subsubsec:Show_Typeclass}
