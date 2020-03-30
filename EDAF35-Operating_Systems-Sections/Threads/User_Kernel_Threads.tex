@@ -12,10 +12,12 @@ There are three common ways of establishing such a relationship:
   They are supported above the kernel and are managed without kernel support.
 \end{definition}
 
-\begin{definition}[Kernel Thread]\label{def:Kernel_Thread}
-  \emph{Kernel thread}s are \nameref{def:Thread}s created by the \nameref{def:Kernel}.
-  They are supported and managed directly by the operating system.
-\end{definition}
+\begin{restatable}[Kernel Thread]{definition}{defKernelThread}\label{def:Kernel_Thread}
+  \emph{Kernel thread}s are like regular \nameref{def:Thread}s, except that they can only be started by the \nameref{def:Kernel} and its previous kernel threads.
+  Additionally, they do not have an address space (Their \texttt{mm} pointer, which points at their address space, is \kernelinline{NULL}.).
+  They operate only in the \nameref{def:Kernel}-space and do not context switch into \nameref{def:User}-space.
+  Kernel threads are schedulable and preemptable, the same as normal \nameref{def:Process}es.
+\end{restatable}
 
 \subsubsection{Many-To-One Model}\label{subsubsec:Many_To_One_Model}
 \textbf{This model maps many user-level threads to a single \nameref{def:Kernel_Thread}.}
