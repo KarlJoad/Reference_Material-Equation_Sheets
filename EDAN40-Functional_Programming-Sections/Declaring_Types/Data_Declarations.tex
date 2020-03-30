@@ -39,6 +39,12 @@ An extended example of such a declaration and subsequent definition is shown in 
 In this case, \haskellinline{Circle 1.0} is an \nameref{def:Expression} that represents a piece of data.
 It cannot be further simplified to anything.
 
+\subsubsection{Parameterized Data Declarations}\label{subsubsec:Parameterized_Data_Declarations}
+Just like in \Cref{subsubsec:Parameterized_Type_Declarations}, we can parameterize our \haskellinline{data} declarations as well.
+These allow us to express some interesting things.
+One example is the application of potentially error-causing functions without causing an error, and instead checking if a value is present.
+This is demonstrated in \Cref{lst:Data_Declaration-Parameterized}
+
 
 %%% Local Variables:
 %%% mode: latex
