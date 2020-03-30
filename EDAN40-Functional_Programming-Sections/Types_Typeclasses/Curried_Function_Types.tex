@@ -17,6 +17,11 @@ There are some conventions regarding curried functions and their type signatures
 \item Unless a function explicitly takes/returns a tuple as an argument/return value, functions are defined in their curried form.
 \end{itemize}
 
+\subsubsection{The Power of Currying}\label{subsubsec:Power_of_Currying}
+All functions that could be expressed with tuple arguments can also be expressed by using functions that take functions as arguments and return functions as results.
+Some functions that return tuples as results cannot always be converted to return functions, as some tuples is actual data.
+
+Currying functions is important to allow for \nameref{def:Partial_Application}.
 
 %%% Local Variables:
 %%% mode: latex
