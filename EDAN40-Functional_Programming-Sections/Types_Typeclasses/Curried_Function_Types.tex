@@ -1,4 +1,9 @@
 \subsection{Curried Function Types}\label{subsec:Curried_Function_Types}
+\nameref{def:Function}s with multiple arguments can be handled differently, if we are allowed to Curry functions and use \nameref{def:Higher_Order_Function}s.
+If we can use those, then we can have a function take a function as an argument as return a function as a result.
+So, instead of making \texttt{add} take 2 integers at once, we could instead give it just one, and that function will return another that adds the given value to the previously provided one.
+An example is shown in \Cref{lst:Curried_Add_Example}
+
 
 %%% Local Variables:
 %%% mode: latex
