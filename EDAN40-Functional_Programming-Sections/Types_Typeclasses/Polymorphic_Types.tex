@@ -4,6 +4,11 @@ For example, the \haskellinline{length} function will find the length of any pro
 
 To represent this variability in the \nameref{def:Type} a function may have, we use a \nameref{def:Type_Variable}.
 
+\begin{definition}[Type Variable]\label{def:Type_Variable}
+  A \emph{type variable} is like a traditional variable, except instead of representing a variety of values, it represents a variety of \nameref{def:Type}s.
+  In Haskell, these are denoted with lowercase letters, typically just a single letter, in the \textbf{TYPE SIGNATURE}.
+  Some examples of functions that use type variables are shown in \Cref{lst:Polymorphic_Function_Examples}.
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
