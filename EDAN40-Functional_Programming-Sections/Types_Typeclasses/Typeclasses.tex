@@ -96,6 +96,9 @@ Only \haskellinline{Int} and \haskellinline{Integer} are part of the \haskellinl
 Also, the standard prelude list functions use \haskellinline{Int} instead of the \haskellinline{Integral} typeclass for performance reasons.
 
 \subsubsection{\texorpdfstring{\haskellinline{Fractional}}{\texttt{Fractional}}}\label{subsubsec:Fractional_Typeclass}
+The \haskellinline{Fractional} \nameref{def:Typeclass} contains \nameref{def:Type}s whose values are numeric, and are part of the \nameref{subsubsec:Eq_Typeclass} and \nameref{subsubsec:Show_Typeclass} typeclasses \textbf{AND} are non-integral values.
+For a \nameref{def:Type} to be part of this class, they must provide the methods seen in \Cref{lst:Fractional_Typeclass_Methods}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAN40-Functional_Programming-Reference_Sheet"
