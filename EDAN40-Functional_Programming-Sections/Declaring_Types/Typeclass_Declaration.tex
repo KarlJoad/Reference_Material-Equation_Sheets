@@ -33,6 +33,11 @@ This is the case for the \haskellinline{Ord} typeclass, shown in \Cref{lst:Ord_T
 
 This means that for a \nameref{def:Type} to be added to the \haskellinline{Ord} \nameref{def:Typeclass}, it must instantiate the 6 methods defined in \haskellinline{Ord} and the 2 defined in \haskellinline{Eq}.
 
+\subsubsection{Derived Instances}\label{subsubsec:Derived_Instances}
+When creating new \nameref{def:Type}s, they are usually derived from built-in \nameref{def:Type}s, or \nameref{def:Type_Alias}ed ones, which themselves already belong to \nameref{def:Typeclass}es.
+Instead of having to manually add our new \haskellinline{data} \nameref{def:Type} to every typeclass, we can instead derive from them.
+An example involving the definition of the standard library's definition of \haskellinline{Bool} is shown in \Cref{lst:Bool_Derived_Instance}.
+
 
 %%% Local Variables:
 %%% mode: latex
