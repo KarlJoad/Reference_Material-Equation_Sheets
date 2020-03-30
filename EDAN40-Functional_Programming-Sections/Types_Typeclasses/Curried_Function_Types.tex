@@ -10,6 +10,13 @@ An example is shown in \Cref{lst:Curried_Add_Example}
 \label{lst:Curried_Add_Example}
 \end{listing}
 
+There are some conventions regarding curried functions and their type signatures.
+\begin{itemize}[noitemsep]
+\item The arrow in function types are \emph{right associative}.
+\item The application of arguments to a function is done with spacing, and is assumed to associate to the left.
+\item Unless a function explicitly takes/returns a tuple as an argument/return value, functions are defined in their curried form.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
