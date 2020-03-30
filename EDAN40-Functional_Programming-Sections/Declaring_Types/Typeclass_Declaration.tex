@@ -21,6 +21,10 @@ To add a \nameref{def:Type} to a \nameref{def:Typeclass}, the \haskellinline{ins
 Only \nameref{def:Type}s declared with the \haskellinline{data} keyword can be added to \nameref{def:Typeclass}es.
 Ones declared with \haskellinline{type} inherit their typeclass information from their constiuent parts.
 
+\subsubsection{Extending Typeclasses}\label{subsubsec:Extending_Typeclasses}
+Sometimes it makes sense for a \nameref{def:Typeclass} to depend on another.
+This is the case for the \haskellinline{Ord} typeclass, shown in \Cref{lst:Ord_Typeclass_Definition}.
+
 
 %%% Local Variables:
 %%% mode: latex
