@@ -68,6 +68,8 @@ A \nameref{def:Monad} can be seen by the \nameref{def:Typeclass} declaration see
 \label{lst:Monad_Declaration_Definition}
 \end{listing}
 
+That is, a monad is a parameterised type \texttt{m} that supports \haskellinline{return} and \haskellinline{>>=} functions of the specified types.
+The fact that \texttt{m} must be a parameterised type, rather than just a type, is inferred from its use in the types for the two functions.
 
 %%% Local Variables:
 %%% mode: latex
