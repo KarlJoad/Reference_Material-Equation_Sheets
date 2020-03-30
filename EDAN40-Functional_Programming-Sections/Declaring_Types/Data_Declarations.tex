@@ -5,6 +5,16 @@ For example, the \haskellinline{Bool} \nameref{def:Type} is defined in the stand
 data Bool = False | True
 \end{haskellsource}
 
+The \texttt{|} symbol is read as ``or''.
+Each of the new values is a \nameref{def:Type_Constructor}, \texttt{False} and \texttt{True} in this case.
+The first letter of these constructors must be a capital letter, and constructor names must be unique to modules.
+It is important to note that the constructor values, names, and the data type's name are all arbitrary.
+The only way to attach any meaning to one of these constructor types is by defining functions on them.
+For example, the below code is functionally identical to the definition of \haskellinline{Bool}.
+\begin{haskellsource}
+data A = B | C
+\end{haskellsource}
+
 
 %%% Local Variables:
 %%% mode: latex
