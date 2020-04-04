@@ -211,6 +211,20 @@ Typically these systems solve the problem by implementing a \nameref{def:Priorit
   Then, the lower-priority process is returned to its original priority level.
 \end{definition}
 
+\subsubsection{Monitors}\label{subsubsec:Monitors}
+Using \nameref{def:Semaphore}s can be difficult, with some common errors being:
+\begin{itemize}[noitemsep]
+\item Using \kernelinline{signal()} before the \nameref{def:Critical_Section} and \kernelinline{wait()} afterwards.
+  This will may allow multiple requesters to execute their critical sections at times when they shouldn't.
+\item Using \kernelinline{wait()} twice, once before the \nameref{def:Critical_Section} and once after.
+  This will cause a \nameref{def:Deadlock} to occur.
+\item Forgetting either the \kernelinline{wait()} before the \nameref{def:Critical_Section} or the \kernelinline{signal()} after it.
+  Forgetting the \kernelinline{wait()} will violate mutual exclusion.
+  Forgetting the \kernelinline{signal()} will cause a \nameref{def:Deadlock}.
+\end{itemize}
+
+To handle these kinds of issues, the \nameref{def:Monitor}~type was created.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
