@@ -71,6 +71,10 @@ Many of the solutions that will be presented here are based on the idea of \text
   \end{remark}
 \end{definition}
 
+In a single-processor system, we can solve the \nameref{subsubsec:Critical_Section_Problem} by preventing interrupts from being handled.
+This would prevent the currently running instruction from being preempted in any way, and allow it to finish.
+However, this does not really work on a multiprocessor system, because disabling interrupts and their handling on all processors is time consuming.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
