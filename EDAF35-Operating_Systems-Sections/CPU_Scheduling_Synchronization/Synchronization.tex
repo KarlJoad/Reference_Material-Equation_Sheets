@@ -43,6 +43,12 @@ Any solution to this problem \textbf{MUST} satisfy one of the following 3 requir
   There exists a bound on the number of times that other \nameref{def:Process}es are allowed to enter their \nameref{def:Critical_Section}s after a process has made a request to enter its critical section and before that request is granted.
 \end{enumerate}
 
+To handle the \nameref{subsubsec:Critical_Section_Problem}, there are 2 main types of \nameref{def:Kernel}s that present solutions.
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Nonpreemptive_Kernel}s. Not used frequently today.
+\item \nameref{def:Preemptive_Kernel}s. The most common type today.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
