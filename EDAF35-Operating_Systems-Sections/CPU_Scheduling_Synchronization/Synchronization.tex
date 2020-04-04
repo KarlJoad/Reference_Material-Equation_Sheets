@@ -125,6 +125,12 @@ In one variety, the \nameref{def:Spinlock}, the \nameref{def:Process}/\nameref{d
 
 \subsubsection{Semaphores}\label{subsubsec:Semaphores}
 \nameref{def:Semaphore}s are a more general way of approaching resource allocation and mutual exclusion within a system.
+Because of this generality, there are 2 kinds of \nameref{def:Semaphore}s:
+\begin{enumerate}[noitemsep]
+\item \nameref{par:Counting_Semaphore}
+\item \nameref{par:Binary_Semaphore}
+\end{enumerate}
+
 \begin{definition}[Semaphore]\label{def:Semaphore}
   A \emph{semaphore} regulates the number of things (\nameref{def:Process}es or \nameref{def:Thread}s) performing operations on something (Shared Resource).
   Functionally, this is the same as a \nameref{def:Mutex} but allows $x$ \nameref{def:Process}es/\nameref{def:Thread}s to enter or use the resource at a time.
