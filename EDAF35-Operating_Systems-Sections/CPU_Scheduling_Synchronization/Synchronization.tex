@@ -194,6 +194,10 @@ In some implementations of a \nameref{def:Semaphore}, the internal value can bec
 In the strict, classical definition of a \nameref{def:Semaphore}, this internal value \textbf{CANNOT} be negative.
 However, if we allow the negative value, and the \nameref{def:Semaphore} reaches it, it represents the number of things that are waiting on the \nameref{def:Semaphore} to be freed up.
 
+\paragraph{Binary Semaphore}\label{par:Binary_Semaphore}
+A \emph{binary \nameref{def:Semaphore}} only allows the internal value within the system to be zero or one.
+This effectively acts as a \nameref{def:Mutex}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
