@@ -170,6 +170,13 @@ However, we now have issues with \nameref{def:Starvation} and \nameref{def:Deadl
 \item A process might request the same resource twice (without first releasing the resource).
 \end{itemize}
 
+\paragraph{Counting Semaphore}\label{par:Counting_Semaphore}
+A \emph{counting \nameref{def:Semaphore}} allows for the value contained within the \nameref{def:Semaphore} to range over a domain of integer values.
+For example, the integers from 0 to 10, allowing for 10 different users to access the same resource at once.
+
+Once the \nameref{def:Semaphore} count reaches 0, nothing else can use the resource until one of the current users relinquishes control.
+So, the first \nameref{def:Process}/\nameref{def:Thread} that uses \kernelinline{wait()} when the \nameref{def:Semaphore}'s internal value is 0 will be put in either a \nameref{def:Spinlock}-like state, or will be put into a waiting queue.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
