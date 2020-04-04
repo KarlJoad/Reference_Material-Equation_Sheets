@@ -6,6 +6,14 @@ This leads to the development of the \nameref{subsubsec:Critical_Section_Problem
   The \emph{critical section} of a \nameref{def:Process} is a portion where the \nameref{def:Thread} and/or \nameref{def:Process} is changing common variables, updating a table, writing a file, or other global state changes.
 \end{definition}
 
+\subsubsection{Critical Section Problem}\label{subsubsec:Critical_Section_Problem}
+The \emph{Critical Section Problem} is the issue of coordinating multiple \nameref{def:Thread}s about a \nameref{def:Critical_Section} of the code.
+The problem is to design a protocol that the \nameref{def:Process}es/\nameref{def:Thread}s can use to cooperate.
+Each \nameref{def:Process} must request permission to enter its critical section.
+The section of code implementing this request is the entry section.
+The critical section may be followed by an exit section.
+The remaining code is the remainder section.
+
 
 %%% Local Variables:
 %%% mode: latex
