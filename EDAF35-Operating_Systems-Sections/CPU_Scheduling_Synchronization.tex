@@ -12,6 +12,11 @@ Given the way that multiple \nameref{def:Thread}s can be scheduled, namely in an
 This leads to all sorts of problems because of sharing information between multiple users.
 The largest, and likely the most common, error in a multi\nameref{def:Thread}ed program is the \nameref{def:Race_Condition}.
 
+\begin{definition}[Race Condition]\label{def:Race_Condition}
+  A \emph{race condition} is when several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.
+  The only way to prevent a race condition is to ensure that \textbf{only one \nameref{def:Thread} can change the value at a time}.
+\end{definition}
+
 \input{./EDAF35-Operating_Systems-Sections/CPU_Scheduling_Synchronization/Synchronization}
 \begin{definition}[Deadlock]\label{def:Deadlock}
   \emph{Deadlock} is when 2 processes require information from each other to continue running.
