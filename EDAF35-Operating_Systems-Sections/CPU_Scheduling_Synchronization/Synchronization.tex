@@ -206,6 +206,11 @@ The situation becomes more complicated if the lower-priority process is preempte
 It occurs only in systems with more than two priorities.
 Typically these systems solve the problem by implementing a \nameref{def:Priority_Inheritance_Protocol}.
 
+\begin{definition}[Priority-Inheritance Protocol]\label{def:Priority_Inheritance_Protocol}
+  A \emph{priority-inheritance protocol} is one where a lower-priority \nameref{def:Process} that is using resourced needed by a higher-priority process will inherit the higher priority until it is done with the resource.
+  Then, the lower-priority process is returned to its original priority level.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
