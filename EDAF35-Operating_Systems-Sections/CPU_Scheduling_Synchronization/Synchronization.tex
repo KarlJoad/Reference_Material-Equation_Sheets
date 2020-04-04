@@ -158,6 +158,11 @@ A \nameref{def:Semaphore} contains not only its integer value, but also a pointe
 This way the things waiting on the \nameref{def:Semaphore}'s values can be reached.
 However, we now have issues with \nameref{def:Starvation} and \nameref{def:Deadlock}.
 
+\begin{definition}[Starvation]\label{def:Starvation}
+  \emph{Starvation} is when a thing is waiting for a resource indefinitely.
+  For example, if a \nameref{def:Process}/\nameref{def:Thread} is waiting for a \nameref{def:Semaphore} to become available, and these requesters are services in a Last-In First-Out order, its possible the first requester to enter the queue never leaves.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
