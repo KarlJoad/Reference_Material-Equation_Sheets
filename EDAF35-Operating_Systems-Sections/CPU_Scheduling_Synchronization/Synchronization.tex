@@ -141,6 +141,11 @@ In one variety, the \nameref{def:Spinlock}, the \nameref{def:Process}/\nameref{d
     However, this is typically in poor programming taste, because while both function similarly, the \nameref{def:Semaphore} is for signalling the amount of a resource available and the \nameref{def:Mutex} is for signalling if code is capable of execution.
   \end{remark}
 
+  \begin{remark}[Correct Use of Semaphores]\label{rmk:Semaphore_Correct_Usage}
+    The correct use of a \nameref{def:Semaphore} is for signaling from one task to another.
+    A \nameref{def:Mutex} is meant to be taken and released, always in that order, by each task that uses the shared resource it protects.
+    By contrast, tasks that use \nameref{def:Semaphore}s either signal or wait, not both.
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
