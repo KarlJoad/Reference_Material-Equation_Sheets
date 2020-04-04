@@ -1,4 +1,11 @@
 \subsection{Process/Thread Synchronization}\label{subsec:Synchronization}
+The main problem that occurs in multi\nameref{def:Thread}ed programs is that there is a small portion of code that is a \nameref{def:Critical_Section}.
+This leads to the development of the \nameref{subsubsec:Critical_Section_Problem}.
+
+\begin{definition}[Critical Section]\label{def:Critical_Section}
+  The \emph{critical section} of a \nameref{def:Process} is a portion where the \nameref{def:Thread} and/or \nameref{def:Process} is changing common variables, updating a table, writing a file, or other global state changes.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
