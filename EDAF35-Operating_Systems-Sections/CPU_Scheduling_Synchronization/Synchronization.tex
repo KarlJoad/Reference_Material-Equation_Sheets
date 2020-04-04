@@ -75,6 +75,14 @@ In a single-processor system, we can solve the \nameref{subsubsec:Critical_Secti
 This would prevent the currently running instruction from being preempted in any way, and allow it to finish.
 However, this does not really work on a multiprocessor system, because disabling interrupts and their handling on all processors is time consuming.
 
+However, the idea of certain instructions being \nameref{def:Atomic} is an elegant solution to the \nameref{subsubsec:Critical_Section_Problem}.
+So, most computer systems provide special hardware-level instructions that allow us to test and modify the contents of a word, or swap the contents of 2 words \nameref{def:Atomic}ally.
+
+\begin{definition}[Atomic]\label{def:Atomic}
+  An \emph{atomic} operation is one that cannot be interrupted, preempted, or altered in any way.
+  As soon as an atomic operation begins, the system \textbf{MUST} finish handling it before it may do anything else.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
