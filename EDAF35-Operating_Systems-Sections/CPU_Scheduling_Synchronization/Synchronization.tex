@@ -10,9 +10,9 @@ This leads to the development of the \nameref{subsubsec:Critical_Section_Problem
 The \emph{Critical Section Problem} is the issue of coordinating multiple \nameref{def:Thread}s about a \nameref{def:Critical_Section} of the code.
 The problem is to design a protocol that the \nameref{def:Process}es/\nameref{def:Thread}s can use to cooperate.
 Each \nameref{def:Process} must request permission to enter its critical section.
-The section of code implementing this request is the entry section.
-The critical section may be followed by an exit section.
-The remaining code is the remainder section.
+The section of code implementing this request is the \nameref{def:Entry_Section}.
+The critical section may be followed by an \nameref{def:Exit_Section}.
+The remaining code is the \nameref{def:Remainder_Section}.
 
 \begin{definition}[Entry Section]\label{def:Entry_Section}
   The \emph{entry section} of a \nameref{def:Process} is the portion where the request to execute the \nameref{def:Critical_Section} occurs.
