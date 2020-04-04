@@ -3,6 +3,11 @@ The growing importance of multicore systems has brought an increased emphasis on
 In such applications, several threads, which may be sharing data, are running in parallel on different processing cores.
 These \nameref{def:Process}es are called \nameref{def:Cooperating_Process}es.
 
+\begin{definition}[Cooperating Process]\label{def:Cooperating_Process}
+  A \emph{cooperating process} is one that can affect or be affected by other \nameref{def:Process}es executing on a system.
+  They can share a logical address space (code and data), \textbf{\nameref{def:Thread}s}, or can share data through files and/or messages, \textbf{\nameref{subsubsec:Communications}}.
+\end{definition}
+
 \input{./EDAF35-Operating_Systems-Sections/CPU_Scheduling_Synchronization/Synchronization}
 \begin{definition}[Deadlock]\label{def:Deadlock}
   \emph{Deadlock} is when 2 processes require information from each other to continue running.
