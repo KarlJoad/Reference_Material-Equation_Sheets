@@ -20,6 +20,12 @@ The remaining code is the remainder section.
   For a \nameref{def:Semaphore}, it is the process of manipulating the value it currently contains.
 \end{definition}
 
+\begin{definition}[Exit Section]\label{def:Exit_Section}
+  In the \emph{exit section}, the constructs used to ensure coordination in the \nameref{def:Critical_Section} are freed.
+  In the case of a \nameref{def:Mutex}, this is the process of releasing the it.
+  For a \nameref{def:Semaphore}, it is the process of manipulating the value it currently contains in the opposite direction it was initially manipulated by.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
