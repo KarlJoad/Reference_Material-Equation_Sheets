@@ -32,6 +32,17 @@ The remaining code is the \nameref{def:Remainder_Section}.
   It could contain further \nameref{def:Critical_Section}s.
 \end{definition}
 
+Any solution to this problem \textbf{MUST} satisfy one of the following 3 requirements:
+\begin{enumerate}[noitemsep]
+\item \textbf{Mutual Exclusion}.
+  If \nameref{def:Process} $P_{i}$ is executing its \nameref{def:Critical_Section}, then \textbf{no other} processes can execute their critical sections.
+\item \textbf{Progress}.
+  If no \nameref{def:Process} is executing its \nameref{def:Critical_Section}, and some processes wish to enter their critical sections, then only those processes that \textbf{are not executing} in their \nameref{def:Remainder_Section}s can decide which will enter the \nameref{def:Critical_Section} next.
+  Essentially, the only way a process gets a voice in the choice is by not having executed the critical section yet.
+\item \textbf{Bounded Waiting}.
+  There exists a bound on the number of times that other \nameref{def:Process}es are allowed to enter their \nameref{def:Critical_Section}s after a process has made a request to enter its critical section and before that request is granted.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
