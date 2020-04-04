@@ -53,6 +53,11 @@ To handle the \nameref{subsubsec:Critical_Section_Problem}, there are 2 main typ
   A \emph{nonpreemptive kernel} is a \nameref{def:Kernel} that does \textbf{NOT} use \nameref{def:Preemption} on \nameref{def:Process}es or \nameref{def:Thread}s running in kernel-mode.
 \end{definition}
 
+\begin{definition}[Preemptive Kernel]\label{def:Preemptive_Kernel}
+  A \emph{preemptive kernel} is a \nameref{def:Kernel} that uses \nameref{def:Preemption} on \nameref{def:Process}es or \nameref{def:Thread}s running in kernel-mode.
+  This means that we cannot say anything definitive about the state of the \nameref{def:Kernel}'s data structures at a given time, because we cannot say which process/thread is running at that time.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
