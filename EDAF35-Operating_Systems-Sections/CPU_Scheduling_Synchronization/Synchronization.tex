@@ -95,6 +95,11 @@ Thus, the \nameref{def:Read_Write_Lock} was created.
   But, the writer will have to wait until everyone currently reading the value is done reading, otherwise the value in memory will change underneath the readers.
 \end{definition}
 
+\subsubsection{Mutex Locks}\label{subsubsec:Mutex_Locks}
+The hardware-based solutions presented in \Cref{subsubsec:Hardware_Support_Synchronization} are typically not available to application programmers.
+Instead, operating system designers build software tools to handle the \nameref{subsubsec:Critical_Section_Problem}.
+The simplest tool is that of a \nameref{def:Mutex}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
