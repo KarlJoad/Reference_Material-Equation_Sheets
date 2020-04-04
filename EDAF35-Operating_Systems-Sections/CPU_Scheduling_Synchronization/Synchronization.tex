@@ -14,6 +14,12 @@ The section of code implementing this request is the entry section.
 The critical section may be followed by an exit section.
 The remaining code is the remainder section.
 
+\begin{definition}[Entry Section]\label{def:Entry_Section}
+  The \emph{entry section} of a \nameref{def:Process} is the portion where the request to execute the \nameref{def:Critical_Section} occurs.
+  In the case of a \nameref{def:Mutex}, this is the process of aquiring the it.
+  For a \nameref{def:Semaphore}, it is the process of manipulating the value it currently contains.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
