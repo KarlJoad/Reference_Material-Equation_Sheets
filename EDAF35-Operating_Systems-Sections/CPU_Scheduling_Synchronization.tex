@@ -8,6 +8,10 @@ These \nameref{def:Process}es are called \nameref{def:Cooperating_Process}es.
   They can share a logical address space (code and data), \textbf{\nameref{def:Thread}s}, or can share data through files and/or messages, \textbf{\nameref{subsubsec:Communications}}.
 \end{definition}
 
+Given the way that multiple \nameref{def:Thread}s can be scheduled, namely in any order (relatively speaking), as programmers, we cannot be certain about which thread will be scheduled first.
+This leads to all sorts of problems because of sharing information between multiple users.
+The largest, and likely the most common, error in a multi\nameref{def:Thread}ed program is the \nameref{def:Race_Condition}.
+
 \input{./EDAF35-Operating_Systems-Sections/CPU_Scheduling_Synchronization/Synchronization}
 \begin{definition}[Deadlock]\label{def:Deadlock}
   \emph{Deadlock} is when 2 processes require information from each other to continue running.
