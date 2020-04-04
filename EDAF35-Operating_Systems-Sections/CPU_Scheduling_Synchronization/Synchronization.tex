@@ -112,6 +112,9 @@ The simplest tool is that of a \nameref{def:Mutex}.
   When a \nameref{def:Thread} and/or \nameref{def:Process} attempts \texttt{acquire()} the lock, while it is already owned by someone else, it is put in a \texttt{WAITING} state.
 \end{definition}
 
+There are a variety of \nameref{def:Mutex}es, depending on the way the way they are used is implemented.
+In one variety, the \nameref{def:Spinlock}, the \nameref{def:Process}/\nameref{def:Thread} that is attempting to \texttt{acquire} the lock will continuously call the \kernelinline{acquire()} function until it gets the lock.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
