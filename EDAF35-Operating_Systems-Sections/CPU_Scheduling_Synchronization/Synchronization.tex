@@ -245,6 +245,10 @@ To handle these kinds of issues, the \nameref{def:Monitor}~type was created.
 \label{lst:Monitor_Type_Syntax}
 \end{listing}
 
+The use of \texttt{condition}s in the \nameref{def:Monitor} allow for operations that require the use of those conditions to \kernelinline{wait()} and \kernelinline{signal()} them.
+This prevents \nameref{def:Process}es and/or \nameref{def:Thread}s from performing other actions that require those conditions until they are freed.
+The difference with \kernelinline{signal()} in a \nameref{def:Monitor} and a \nameref{def:Semaphore} is that if that condition is already active, \textbf{nothing happens}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
