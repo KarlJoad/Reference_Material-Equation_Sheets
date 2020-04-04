@@ -83,6 +83,18 @@ So, most computer systems provide special hardware-level instructions that allow
   As soon as an atomic operation begins, the system \textbf{MUST} finish handling it before it may do anything else.
 \end{definition}
 
+Some operations on data are possible to do at any given point in time, without affecting the potential outcome.
+One example of this is \textbf{reading} from a location in memory.
+However, if this location can also be written to, we need to limit the number of writers.
+Additionally, if someone is waiting to write, they should get some priority over anything waiting to read.
+Thus, the \nameref{def:Read_Write_Lock} was created.
+
+\begin{definition}[Read/Write Lock]\label{def:Read_Write_Lock}
+  \emph{Read/Write Lock}s allow either an unlimited number of readers \textbf{OR} 1 writer at any given time.
+  Writers will be scheduled to use the lock sooner than readers, so the value is updated first, before anyone reads it again.
+  But, the writer will have to wait until everyone currently reading the value is done reading, otherwise the value in memory will change underneath the readers.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
