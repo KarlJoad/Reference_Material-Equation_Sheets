@@ -225,6 +225,20 @@ Using \nameref{def:Semaphore}s can be difficult, with some common errors being:
 
 To handle these kinds of issues, the \nameref{def:Monitor}~type was created.
 
+\begin{definition}[Monitor]\label{def:Monitor}
+  A \emph{monitor} is an abstract data type that includes:
+  \begin{itemize}[noitemsep]
+  \item Programmer-defined operations that must be executed with mutual exclusion.
+  \item The variables whose values define the state of an instance of that type.
+  \item The bodies of functions that operate on those varables.
+  \end{itemize}
+
+  A monitor ensures that only one \nameref{def:Process} or \nameref{def:Thread} is active in the monitor at any given time.
+  Thus, the programmer \textbf{does not} need to ode the synchronization explicitly.
+
+  The general syntax of a monitor type is shown in \Cref{lst:Monitor_Type_Syntax}.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
