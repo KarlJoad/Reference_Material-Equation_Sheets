@@ -62,6 +62,11 @@ To handle the \nameref{subsubsec:Critical_Section_Problem}, there are 2 main typ
 Software-based solutions to handling multithreading and multiprocessing tends to be better than hardware-based solutions, as they are more flexible.
 Many of the solutions that will be presented here are based on the idea of \textbf{\nameref{def:Lock}ing}.
 
+\begin{definition}[Lock]\label{def:Lock}
+  A \emph{lock} allows \textbf{only one} \nameref{def:Thread} to enter the portion of code that is locked.
+  While a thread holds this lock no other \nameref{def:Thread} can execute on this code portion.
+
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
