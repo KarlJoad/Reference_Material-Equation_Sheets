@@ -183,6 +183,12 @@ Then, the \nameref{def:Scheduler} is called, performing a \nameref{def:Context_S
 Thus, whenever another user of the \nameref{def:Semaphore} \texttt{signal}s, one of the \nameref{def:Process}es/\nameref{def:Thread}s should be awoken from this waiting state, moved to the ready state, and be made schedule-able.
 Which waiting thing is chosen depends on the way the queue is structured, and how things get scheduled, and many other factors.
 
+\begin{blackbox}
+In this system, we don't guarantee immediate execution of the thing requesting the \nameref{def:Semaphore}, only that it can be scheduled.
+\end{blackbox}
+
+How this queue is structured is different between every \nameref{def:Kernel}, but it is typically constructed out of the \nameref{def:Process_Control_Block} or the \nameref{def:Thread} control block.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
