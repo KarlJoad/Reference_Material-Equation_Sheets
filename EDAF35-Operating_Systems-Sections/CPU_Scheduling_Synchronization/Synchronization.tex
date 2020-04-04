@@ -115,6 +115,14 @@ The simplest tool is that of a \nameref{def:Mutex}.
 There are a variety of \nameref{def:Mutex}es, depending on the way the way they are used is implemented.
 In one variety, the \nameref{def:Spinlock}, the \nameref{def:Process}/\nameref{def:Thread} that is attempting to \texttt{acquire} the lock will continuously call the \kernelinline{acquire()} function until it gets the lock.
 
+\begin{definition}[Spinlock]\label{def:Spinlock}
+  A \emph{spinlock} is one way of having a system use a \nameref{def:Mutex} lock.
+  In this implementation, the \nameref{def:Process}/\nameref{def:Thread} that wants to \texttt{acquire} the lock loops continuously, calling \kernelinline{acquire()} until it gets it.
+  This means that there is no \nameref{def:Context_Switch} to another task.
+
+  This means that while a \nameref{def:Process}/\nameref{def:Thread} is not executing anything useful and may be hogging the CPU's cycles, if the lock is freed soon, then no \nameref{def:Context_Switch} back is required.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
