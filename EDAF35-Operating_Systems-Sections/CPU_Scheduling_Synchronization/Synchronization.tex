@@ -198,6 +198,14 @@ However, if we allow the negative value, and the \nameref{def:Semaphore} reaches
 A \emph{binary \nameref{def:Semaphore}} only allows the internal value within the system to be zero or one.
 This effectively acts as a \nameref{def:Mutex}.
 
+\subsubsection{Priority Inversion}\label{subsubsec:Priority_Inversion}
+\emph{Priority Inversion} is a scheduling challenge where a higher-priority process needs to read or modify kernel data that is currently being used by a lower-priority process.
+Since the kernel data is typically protected with a \nameref{def:Lock}, the higher-priority process must wait for a lower-priority one to finish with that resource.
+The situation becomes more complicated if the lower-priority process is preempted in favor of another process with a higher priority.
+
+It occurs only in systems with more than two priorities.
+Typically these systems solve the problem by implementing a \nameref{def:Priority_Inheritance_Protocol}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
