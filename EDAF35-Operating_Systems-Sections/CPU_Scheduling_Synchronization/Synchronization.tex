@@ -252,6 +252,13 @@ The difference with \kernelinline{signal()} in a \nameref{def:Monitor} and a \na
 In \nameref{def:Monitor}s, just like with \nameref{def:Semaphore}s, when something \texttt{wait}s a condition that is already completely used,the requester is put into a queue.
 How the requester is pulled from the queue depends on the setup of the \nameref{def:Monitor}
 
+\nameref{def:Monitor}s have some additional issues to go with them:
+\begin{itemize}[noitemsep]
+\item A process might never release a resource once it has been granted access to the resource.
+\item A process might attempt to release a resource that it never requested.
+\item A process might request the same resource twice (without first releasing the resource).
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
