@@ -177,6 +177,12 @@ For example, the integers from 0 to 10, allowing for 10 different users to acces
 Once the \nameref{def:Semaphore} count reaches 0, nothing else can use the resource until one of the current users relinquishes control.
 So, the first \nameref{def:Process}/\nameref{def:Thread} that uses \kernelinline{wait()} when the \nameref{def:Semaphore}'s internal value is 0 will be put in either a \nameref{def:Spinlock}-like state, or will be put into a waiting queue.
 
+Typically, the \nameref{def:Process}es/\nameref{def:Thread}s that are using the \nameref{def:Semaphore} will be qusing it for quite some time, new requesters are put into a waiting queue/state.
+Then, the \nameref{def:Scheduler} is called, performing a \nameref{def:Context_Switch} to a \nameref{def:Thread}/\nameref{def:Process} that is ready to run, and \nameref{def:Context_Switch}es.
+
+Thus, whenever another user of the \nameref{def:Semaphore} \texttt{signal}s, one of the \nameref{def:Process}es/\nameref{def:Thread}s should be awoken from this waiting state, moved to the ready state, and be made schedule-able.
+Which waiting thing is chosen depends on the way the queue is structured, and how things get scheduled, and many other factors.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
