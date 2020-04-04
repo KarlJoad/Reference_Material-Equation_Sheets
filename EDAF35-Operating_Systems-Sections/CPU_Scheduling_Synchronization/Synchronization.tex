@@ -66,6 +66,9 @@ Many of the solutions that will be presented here are based on the idea of \text
   A \emph{lock} allows \textbf{only one} \nameref{def:Thread} to enter the portion of code that is locked.
   While a thread holds this lock no other \nameref{def:Thread} can execute on this code portion.
 
+  \begin{remark}[Binary Semaphore]\label{rmk:Binary_Semaphore}
+    Locks can be represented as \emph{binary \nameref{def:Semaphore}}s.
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
