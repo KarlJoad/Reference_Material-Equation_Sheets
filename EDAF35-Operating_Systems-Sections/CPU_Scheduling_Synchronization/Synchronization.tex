@@ -249,6 +249,9 @@ The use of \texttt{condition}s in the \nameref{def:Monitor} allow for operations
 This prevents \nameref{def:Process}es and/or \nameref{def:Thread}s from performing other actions that require those conditions until they are freed.
 The difference with \kernelinline{signal()} in a \nameref{def:Monitor} and a \nameref{def:Semaphore} is that if that condition is already active, \textbf{nothing happens}.
 
+In \nameref{def:Monitor}s, just like with \nameref{def:Semaphore}s, when something \texttt{wait}s a condition that is already completely used,the requester is put into a queue.
+How the requester is pulled from the queue depends on the setup of the \nameref{def:Monitor}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
