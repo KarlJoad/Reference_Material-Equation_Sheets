@@ -154,6 +154,10 @@ Because of this generality, there are 2 kinds of \nameref{def:Semaphore}s:
   \end{remark}
 \end{definition}
 
+A \nameref{def:Semaphore} contains not only its integer value, but also a pointer to the list of waiting \nameref{def:Thread}s/\nameref{def:Process}es.
+This way the things waiting on the \nameref{def:Semaphore}'s values can be reached.
+However, we now have issues with \nameref{def:Starvation} and \nameref{def:Deadlock}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
