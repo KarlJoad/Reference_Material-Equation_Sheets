@@ -125,6 +125,18 @@ In one variety, the \nameref{def:Spinlock}, the \nameref{def:Process}/\nameref{d
 
 \subsubsection{Semaphores}\label{subsubsec:Semaphores}
 \nameref{def:Semaphore}s are a more general way of approaching resource allocation and mutual exclusion within a system.
+\begin{definition}[Semaphore]\label{def:Semaphore}
+  A \emph{semaphore} regulates the number of things (\nameref{def:Process}es or \nameref{def:Thread}s) performing operations on something (Shared Resource).
+  Functionally, this is the same as a \nameref{def:Mutex} but allows $x$ \nameref{def:Process}es/\nameref{def:Thread}s to enter or use the resource at a time.
+  This allows for limits on the number of CPU, I/O or RAM intensive tasks running at the same time.
+
+  A semaphore can only be interacted with through 2 operations \kernelinline{wait()} and \kernelinline{signal()}.
+  \kernelinline{wait()} is similar to a \nameref{def:Mutex}'s \kernelinline{acquire()} function and the \kernelinline{signal()} function is similar to the \nameref{def:Mutex}'s \kernelinline{release()} function.
+  Here, if a \nameref{def:Process} or \nameref{def:Thread} \texttt{wait}s, if there is more of the resource, then the requester gets the resource, and the internal count of the semaphore is decremented.
+  If a \nameref{def:Process} or \nameref{def:Thread} \texttt{signal}s, then it is done with the resource, and the requester loses access to the resources, and the internal count of the semaphore is incremented.
+  Again, these manipulations \textbf{MUST} be \nameref{def:Atomic}.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
