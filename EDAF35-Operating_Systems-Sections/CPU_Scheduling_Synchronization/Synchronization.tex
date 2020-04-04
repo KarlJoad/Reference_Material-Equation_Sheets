@@ -58,6 +58,10 @@ To handle the \nameref{subsubsec:Critical_Section_Problem}, there are 2 main typ
   This means that we cannot say anything definitive about the state of the \nameref{def:Kernel}'s data structures at a given time, because we cannot say which process/thread is running at that time.
 \end{definition}
 
+\subsubsection{Hardware Support for Synchronization}\label{subsubsec:Hardware_Support_Synchronization}
+Software-based solutions to handling multithreading and multiprocessing tends to be better than hardware-based solutions, as they are more flexible.
+Many of the solutions that will be presented here are based on the idea of \textbf{\nameref{def:Lock}ing}.
+
 
 %%% Local Variables:
 %%% mode: latex
