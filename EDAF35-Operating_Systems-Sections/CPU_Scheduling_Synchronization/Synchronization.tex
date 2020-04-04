@@ -189,6 +189,11 @@ In this system, we don't guarantee immediate execution of the thing requesting t
 
 How this queue is structured is different between every \nameref{def:Kernel}, but it is typically constructed out of the \nameref{def:Process_Control_Block} or the \nameref{def:Thread} control block.
 
+\subparagraph{Negative Semaphore Values}\label{subpar:Negative_Semaphore_Val}
+In some implementations of a \nameref{def:Semaphore}, the internal value can become negative.
+In the strict, classical definition of a \nameref{def:Semaphore}, this internal value \textbf{CANNOT} be negative.
+However, if we allow the negative value, and the \nameref{def:Semaphore} reaches it, it represents the number of things that are waiting on the \nameref{def:Semaphore} to be freed up.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
