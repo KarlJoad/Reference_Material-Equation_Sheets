@@ -100,6 +100,18 @@ The hardware-based solutions presented in \Cref{subsubsec:Hardware_Support_Synch
 Instead, operating system designers build software tools to handle the \nameref{subsubsec:Critical_Section_Problem}.
 The simplest tool is that of a \nameref{def:Mutex}.
 
+\begin{definition}[Mutex]\label{def:Mutex}
+  A \emph{mutex} (short for \emph{\textbf{mut}ual \textbf{ex}clusion}) is the same as a \nameref{def:Lock}, \textbf{but it can be system wide (shared by multiple processes)}.
+  A mutex lock protects critical regions and prevents race conditions.
+  That is, a process must acquire the lock before entering a critical section; it releases the lock when it exits the critical section.
+
+  The \kernelinline{acquire()} function acquires the lock, preventing any other \nameref{def:Thread} and/or \nameref{def:Process} from using the thing the lock protects.
+  Likewise, the \kernelinline{release()} function releases the lock, allowing another \nameref{def:Thread} and/or \nameref{def:Process} take acquire the lock and use the resource it protects.
+  To perform its function correctly, the lock's \kernelinline{acquire()} and \kernelinline{release()} functions must be \nameref{def:Atomic}.
+
+  When a \nameref{def:Thread} and/or \nameref{def:Process} attempts \texttt{acquire()} the lock, while it is already owned by someone else, it is put in a \texttt{WAITING} state.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
