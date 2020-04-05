@@ -318,6 +318,17 @@ A nonpreemptive scheduler will allow the current \nameref{def:Process} to finish
   In a FCFS system, the average delay would be \SI{13.4}{\milli{} \second{}}.
 \end{example}
 
+A major problem with priority scheduling is the concept of \nameref{def:Starvation}.
+A process that is ready to run, but waiting for the CPU is considered blocked.
+If there is a system where enough high priority \nameref{def:Process}es are created to the point where a lower priority process never gets a chance to execute, the low priority process is said to be starved.
+
+To solve this problem, \nameref{def:Process} \nameref{def:Aging} is used.
+
+\begin{definition}[Aging]\label{def:Aging}
+  \emph{Aging} is a process in a priority-based system that forces a CPU to eventually execute the lowest priority \nameref{def:Process}es by gradually increasing the priority of the \nameref{def:Process}.
+  Eventually, the process would reach a high enough priority to be executed.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
