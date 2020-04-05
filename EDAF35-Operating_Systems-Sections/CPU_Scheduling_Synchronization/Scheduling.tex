@@ -350,6 +350,11 @@ If a task requires more CPU time than a single \nameref{def:Time_Slice} can prov
 If a task requires less CPU time than a single \nameref{def:Time_Slice}, then the next time slice begins when the process terminates.
 This makes the round-robin algorithm preemptive by definition.
 
+To find the amount of time a \nameref{def:Process} will have the CPU, use \Cref{eq:RR_Process_Time}.
+\begin{equation}\label{eq:RR_Process_Time}
+  PT = \frac{1}{n}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
