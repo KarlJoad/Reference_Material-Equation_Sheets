@@ -335,6 +335,12 @@ It is similar to \nameref{par:FCFS_Scheduling}, but preemption is allowed and th
 New tasks are added to the tail of the circular list.
 A small amount of time, called a \nameref{def:Time_Slice} is used, and each \nameref{def:Process} in this circular list is allowed to execute for one of these slices.
 
+\begin{definition}[Time Slice]\label{def:Time_Slice}
+  A \emph{time slice} is a small, indivisible amount of processor time, typically in the range of \SIrange{10}{100}{\milli{} \second{}}.
+  Inside this time slice, a single \nameref{def:Process}/\nameref{def:Thread} is run.
+  When this time slice ends, a new task is executed.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
