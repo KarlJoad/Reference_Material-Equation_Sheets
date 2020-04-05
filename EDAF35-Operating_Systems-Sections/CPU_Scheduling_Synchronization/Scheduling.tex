@@ -209,6 +209,10 @@ This can be either preemptive or nonpreemptive.
 The question comes up when a newly arrived \nameref{def:Process} has a shorter CPU burst than the one currently running.
 If this new process preempts the currently running one, then it is a preemptive SJF scheduler, and is sometimes called \emph{Shortest-Remaining-Time-First scheduling}.
 
+\begin{blackbox}
+  Note that this is the length of the \textbf{next CPU burst}, not the overall length of CPU execution.
+\end{blackbox}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
