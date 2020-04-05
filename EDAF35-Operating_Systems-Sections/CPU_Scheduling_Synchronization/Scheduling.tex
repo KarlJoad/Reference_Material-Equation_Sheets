@@ -339,6 +339,10 @@ A small amount of time, called a \nameref{def:Time_Slice} is used, and each \nam
   A \emph{time slice} is a small, indivisible amount of processor time, typically in the range of \SIrange{10}{100}{\milli{} \second{}}.
   Inside this time slice, a single \nameref{def:Process}/\nameref{def:Thread} is run.
   When this time slice ends, a new task is executed.
+
+  \begin{remark}[Time Quantum]\label{rmk:Time_Quantum}
+    A \nameref{def:Time_Slice} is also called a \emph{Time Quantum}.
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
