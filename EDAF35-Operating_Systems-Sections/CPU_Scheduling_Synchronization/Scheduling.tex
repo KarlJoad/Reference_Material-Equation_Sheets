@@ -111,6 +111,31 @@ This is measured as the \nameref{def:Dispatch_Latency}.
   The \emph{dispatch latency} is the amount of time required by the \nameref{def:Dispatcher} to stop one \nameref{def:Process} and switch to another.
 \end{definition}
 
+\subsubsection{Scheduling Criteria}\label{subsubsec:Scheduling_Criteria}
+The choice of how to schedule tasks for the CPU is completely dependent on the desired outcome of the scheduling algorithm and the desired performance of the system.
+The criteria for most algorithms are:
+\begin{itemize}[noitemsep]
+\item \textbf{CPU utilization}.
+  We want to keep the CPU as busy as possible.
+  In a real system, it utilization should range from 40 percent (for a lightly loaded system) to 90 percent (for a heavily loaded system).
+\item \textbf{Throughput}.
+  If the CPU is busy executing processes, then work is being done.
+  The number of processes that are completed per time unit is called throughput.
+\item \textbf{Turnaround time}.
+  From the point of view of a process, the important criterion is how long it takes to execute that process.
+  The interval from the time of submission of a process to the time of completion is the turnaround time.
+  This includes time spent waiting to get into memory, waiting in the ready queue, executing on the CPU, and doing I/O.
+\item \textbf{Waiting time}.
+  The CPU-scheduling algorithm does not affect the amount of time during which a process executes or does I/O, only the amount of time that a process spends in the ready queue.
+  Waiting time is the sum of the periods spent waiting in the ready queue.
+\item \textbf{Response time}.
+  In an interactive system, turnaround time may not be the best criterion.
+  A process can produce some output early and then continue computing new results while previous results are being output to the user.
+  Thus, another measure is the time from the submission of a request until its response is produced.
+  This measure, called response time, is the time it takes to start responding, not the time it takes to output the response.
+  The turnaround time is generally limited by the speed of the output device.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
