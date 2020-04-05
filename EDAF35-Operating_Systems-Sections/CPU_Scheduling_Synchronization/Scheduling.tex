@@ -393,6 +393,19 @@ This forms the basis for a \nameref{def:Multilevel_Queue} scheduling algorithm.
   Additionally, there is scheduling for which queue will be chosen next.
 \end{definition}
 
+An example \nameref{def:Multilevel_Queue} is shown below.
+In order from the highest priority to lowest, are 5 queues, each containing different processes.
+\begin{enumerate}[noitemsep]
+\item System Processes
+\item Interactive Processes
+\item Interactive Editing Processes
+\item Batch Processes
+\item Student Processes
+\end{enumerate}
+
+In this system, each queue has absolute priority over another, meaning Interactive Processes can execute \textbf{ONLY IF} there are no System Processes left to handle.
+If an Interactive Process is currently executing, and a System Process comes into its queue, the Interactive Process is switched out as soon as possible, and the System Process is switched in.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
