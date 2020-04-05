@@ -375,6 +375,9 @@ If the \nameref{def:Time_Slice} is:
 \item too small, then there will be a large number of \nameref{def:Context_Switch}es.
 \end{itemize}
 
+The duration of a \nameref{def:Time_Slice} should also take the time required for a \nameref{def:Context_Switch} into account.
+A time slice should be large relative to the time required for a context switch.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
