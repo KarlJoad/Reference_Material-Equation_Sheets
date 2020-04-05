@@ -49,6 +49,10 @@ We can categorize these into either \nameref{def:CPU_Bound} programs or \nameref
   The CPU operatiosn take up a majority of the time the \nameref{def:Process} executes.
 \end{itemize}
 
+\subsubsection{CPU Scheduler}\label{subsubsec:CPU_Scheduler}
+Whenever the CPU becomes idle, i.e.\ it has finished the current CPU burst early, or there is an I/O operation, the \nameref{def:Operating_System} must select the next \nameref{def:Process} and/or \nameref{def:Thread} to schedule.
+This is handled by the \nameref{def:Short_Term_Scheduler}.
+
 
 %%% Local Variables:
 %%% mode: latex
