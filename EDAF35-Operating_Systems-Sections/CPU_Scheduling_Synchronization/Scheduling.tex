@@ -147,6 +147,12 @@ Here, we will discuss the different kinds of \nameref{def:Scheduling_Algorithm}s
   The \emph{scheduling algorithm} is responsible for choosing the next \nameref{def:Process}/\nameref{def:Thread} to run from the set of all \texttt{READY} processes.
 \end{definition}
 
+\paragraph{First-Come First-Served Scheduling}\label{par:FCFS_Scheduling}
+In this algorithm, the first task that becomes \texttt{READY} is the first to execute.
+This is easily handled with a FIFO queue.
+The most recent task to appear in the task queue is appended as the tail of the FIFO queue's list, and moves forward until it gets to execute.
+Once it has its chance to execute, this \nameref{def:Process} will execute for its entire period, making this a nonpreemptive scheduling method.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
