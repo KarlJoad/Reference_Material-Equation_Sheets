@@ -153,6 +153,8 @@ This is easily handled with a FIFO queue.
 The most recent task to appear in the task queue is appended as the tail of the FIFO queue's list, and moves forward until it gets to execute.
 Once it has its chance to execute, this \nameref{def:Process} will execute for its entire period, making this a nonpreemptive scheduling method.
 
+The problem with FCFS scheduling is the average waiting time for \nameref{def:Process}es, especially if there is a large difference in the amount of CPU time required by some of the processes.
+This is illustrated visually in \Cref{fig:Gantt_Chart}.
 
 \begin{example}[]{FCFS Calculations}
   Suppose 3 processes arrive at the same time and have these CPU bursts required.
