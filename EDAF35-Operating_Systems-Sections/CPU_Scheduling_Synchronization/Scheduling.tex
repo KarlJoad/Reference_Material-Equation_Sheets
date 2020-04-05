@@ -57,6 +57,9 @@ This is handled by the \nameref{def:Short_Term_Scheduler}.
   The \emph{short-term scheduler} is responsible for scheduling either the next \nameref{def:Process} or \nameref{def:Thread} for execution on the \textbf{CPU} from all the possible ones in memory.
   This is run quite frequently, every couple hundred milliseconds, usually.
 
+  \begin{remark}[CPU Scheduler]\label{rmk:CPU_Scheduler}
+    Because the \nameref{def:Short_Term_Scheduler} only schedules tasks for the CPU, it is also called the \emph{CPU Scheduler}.
+  \end{remark}
 \end{definition}
 %%% Local Variables:
 %%% mode: latex
