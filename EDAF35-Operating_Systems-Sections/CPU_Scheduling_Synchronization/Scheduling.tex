@@ -406,6 +406,8 @@ In order from the highest priority to lowest, are 5 queues, each containing diff
 In this system, each queue has absolute priority over another, meaning Interactive Processes can execute \textbf{ONLY IF} there are no System Processes left to handle.
 If an Interactive Process is currently executing, and a System Process comes into its queue, the Interactive Process is switched out as soon as possible, and the System Process is switched in.
 
+Another possibility is to give a certain amount of processor time to each queue and allow the queue to fill up that time as it sees fit.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
