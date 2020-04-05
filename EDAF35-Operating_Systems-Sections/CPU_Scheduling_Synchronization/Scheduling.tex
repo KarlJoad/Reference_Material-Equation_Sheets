@@ -414,6 +414,11 @@ However, in a \emph{Multilevel Feedback Queue Scheduling} (\emph{MLFQS}) system,
 The separate queues still maintain their different scheduling algorithms, and each queue must be scheduled according to some master controller.
 However, there is also an algorithm to move tasks between the different queues.
 
+In this system, a \nameref{def:Process} is moved between queues based on characteristics of their \nameref{def:CPU_Burst}s.
+If a process uses too much CPU time, it is moved down in priority.
+This allows \nameref{def:IO_Bound} processes get quick access to the CPU and execute quickly.
+Then, when these higher priority queues are empty, a low priority task can execute longer.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
