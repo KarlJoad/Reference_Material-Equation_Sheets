@@ -213,6 +213,35 @@ If this new process preempts the currently running one, then it is a preemptive 
   Note that this is the length of the \textbf{next CPU burst}, not the overall length of CPU execution.
 \end{blackbox}
 
+\begin{example}[]{SJF Calculations}
+  Suppose 4 processes arrive at the same time with their CPU bursts as shown.
+  \begin{center}
+    \begin{tabular}{cc}
+      \toprule
+      Process & Burst Time \\
+      $P_{1}$ & 6 \\
+      $P_{2}$ & 8 \\
+      $P_{3}$ & 7 \\
+      $P_{4}$ & 3 \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \tcblower{}
+  In this case, these processes would be scheduled in this order.
+  \begin{enumerate}[noitemsep]
+  \item $P_{4}$
+  \item $P_{1}$
+  \item $P_{3}$
+  \item $P_{2}$
+  \end{enumerate}
+  With an average delay of
+  \begin{equation*}
+    \frac{0+3+9+16}{4} = \SI{7}{\milli \second}
+  \end{equation*}
+
+  In a FCFS system, the average delay would be \SI{10.25}{\milli{} \second{}}.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
