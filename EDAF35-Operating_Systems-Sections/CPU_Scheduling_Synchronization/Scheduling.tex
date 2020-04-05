@@ -345,6 +345,11 @@ A small amount of time, called a \nameref{def:Time_Slice} is used, and each \nam
   \end{remark}
 \end{definition}
 
+In this scheduling algorithm, no process is allocated the CPU for more than 1 \nameref{def:Time_Slice} in a row (unless it is the only runnable process).
+If a task requires more CPU time than a single \nameref{def:Time_Slice} can provide, then that task is interrupted and is allowed to execute again the next time it is given a \nameref{def:Time_Slice}.
+If a task requires less CPU time than a single \nameref{def:Time_Slice}, then the next time slice begins when the process terminates.
+This makes the round-robin algorithm preemptive by definition.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
