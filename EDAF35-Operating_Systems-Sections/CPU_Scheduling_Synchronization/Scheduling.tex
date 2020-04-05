@@ -378,6 +378,13 @@ If the \nameref{def:Time_Slice} is:
 The duration of a \nameref{def:Time_Slice} should also take the time required for a \nameref{def:Context_Switch} into account.
 A time slice should be large relative to the time required for a context switch.
 
+\paragraph{Multilevel Queue Scheduling}\label{par:Multilevel_Queue_Scheduling}
+Depending on the situation, there are times when \nameref{def:Process}es/\nameref{def:Thread}s are easily grouped.
+For example, foreground and background processes (interactive and batch).
+These groups have different requirements on them, thus having different scheduling needs.
+Additionally, since foreground processes are in direct interaction with the user, they have a ghigher priority than background ones.
+This forms the basis for a \nameref{def:Multilevel_Queue} scheduling algorithm.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
