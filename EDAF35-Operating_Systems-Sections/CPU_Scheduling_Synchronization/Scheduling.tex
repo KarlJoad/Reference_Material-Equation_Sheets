@@ -242,6 +242,10 @@ If this new process preempts the currently running one, then it is a preemptive 
   In a FCFS system, the average delay would be \SI{10.25}{\milli{} \second{}}.
 \end{example}
 
+This is provably optimal, theoretically making it the best algorithm.
+However, it is hard for a \nameref{def:Process} to know the length of its next CPU request.
+There is also no way to know the length of the next CPU burst.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
