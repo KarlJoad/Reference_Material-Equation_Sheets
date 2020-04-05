@@ -92,6 +92,10 @@ If we don't, input might be lost or output overwritten.
 To ensure that these code sections are not accessed concurrently by several processes, they disable interrupts at entry and reenable interrupts at exit.
 The sections of code that disable interrupts do not occur often and typically contain few instructions.
 
+\paragraph{Dispatcher}\label{par:Dispatcher}
+The \nameref{def:Dispatcher} \textbf{MUST} be as fast as possible to minimize the amount of time spent working on switching betweeen \nameref{def:Process}es/\nameref{def:Thread}s.
+This is measured as the \nameref{def:Dispatch_Latency}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
