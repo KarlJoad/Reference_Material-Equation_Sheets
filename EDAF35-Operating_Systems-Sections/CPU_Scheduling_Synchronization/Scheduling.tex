@@ -408,6 +408,12 @@ If an Interactive Process is currently executing, and a System Process comes int
 
 Another possibility is to give a certain amount of processor time to each queue and allow the queue to fill up that time as it sees fit.
 
+\paragraph{Multilevel Feedback Queue Scheduling}\label{par:Multilevel_Feedback_Queue_Scheduling}
+A \nameref{def:Multilevel_Queue} does not allow a \nameref{def:Process}/\nameref{def:Thread} to move between one of the queue groups.
+However, in a \emph{Multilevel Feedback Queue Scheduling} (\emph{MLFQS}) system, they can.
+The separate queues still maintain their different scheduling algorithms, and each queue must be scheduled according to some master controller.
+However, there is also an algorithm to move tasks between the different queues.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
