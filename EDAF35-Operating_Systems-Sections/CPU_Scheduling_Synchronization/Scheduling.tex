@@ -153,6 +153,32 @@ This is easily handled with a FIFO queue.
 The most recent task to appear in the task queue is appended as the tail of the FIFO queue's list, and moves forward until it gets to execute.
 Once it has its chance to execute, this \nameref{def:Process} will execute for its entire period, making this a nonpreemptive scheduling method.
 
+
+\begin{example}[]{FCFS Calculations}
+  Suppose 3 processes arrive at the same time and have these CPU bursts required.
+  \begin{center}
+    \begin{tabular}{cc}
+      \toprule
+      Process & Time Required \\
+      \midrule
+      $P_{1}$ & 24 \\
+      $P_{2}$ & 3 \\
+      $P_{3}$ & 3 \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \tcblower{}
+  In a FCFS system, the average waiting time is
+  \begin{equation*}
+    \frac{0+24+27}{3} = \SI{17}{\milli \second}
+  \end{equation*}
+
+  However, if we were to schedule the short processes first, then the average waiting time would be
+  \begin{equation*}
+    \frac{0+3+6}{3} = \SI{3}{\milli \second}
+  \end{equation*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
