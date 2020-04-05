@@ -41,6 +41,14 @@ This means:
 \item There is a small number of long duration CPU bursts.
 \end{itemize}
 
+We can categorize these into either \nameref{def:CPU_Bound} programs or \nameref{def:IO_Bound} programs.
+\begin{itemize}[noitemsep]
+\item I/O-bound programs have a small number of CPU bursts which have a relatively short duration relative to the I/O operations.
+  The I/O operations take up a majority of the time the \nameref{def:Process} executes.
+\item CPU-bound programs have a large number of CPU bursts, which have a relatively long duration relative to the I/O operations.
+  The CPU operatiosn take up a majority of the time the \nameref{def:Process} executes.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
