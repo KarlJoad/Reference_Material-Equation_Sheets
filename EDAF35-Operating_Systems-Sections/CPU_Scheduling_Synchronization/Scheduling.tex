@@ -277,6 +277,12 @@ The definition of high and low vary from system to system with 0 being the lowes
   This makes a \nameref{def:Process} or \nameref{def:Thread} with a priority of 0 have the highest priority.
 \end{blackbox}
 
+What makes a \nameref{def:Process} have a certain priority depends on if the priority is set internally or externally.
+\begin{itemize}[noitemsep]
+\item Internally-Defined Priorities use a measurable quantity or quantities to compute the priority of a process.
+\item Externally-Defined Priorities are set based on criteria outside the \nameref{def:Operating_System}.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
