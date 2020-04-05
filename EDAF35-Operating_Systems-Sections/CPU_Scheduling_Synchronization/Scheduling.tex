@@ -329,6 +329,12 @@ To solve this problem, \nameref{def:Process} \nameref{def:Aging} is used.
   Eventually, the process would reach a high enough priority to be executed.
 \end{definition}
 
+\paragraph{Round-Robin Scheduling}\label{par:Round_Robin_Scheduling}
+This algorithm is designed for time-sharing systems.
+It is similar to \nameref{par:FCFS_Scheduling}, but preemption is allowed and the process list is circular.
+New tasks are added to the tail of the circular list.
+A small amount of time, called a \nameref{def:Time_Slice} is used, and each \nameref{def:Process} in this circular list is allowed to execute for one of these slices.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
