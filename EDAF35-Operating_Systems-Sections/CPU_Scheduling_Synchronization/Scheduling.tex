@@ -421,6 +421,15 @@ Then, when these higher priority queues are empty, a low priority task can execu
 
 Since this is effectively a \nameref{par:Priority_Scheduling} system, \nameref{def:Aging} must be used to ensure a \nameref{def:Process} does not sit in a lower-level queue for too long.
 
+In general, this scheduling algorithm is defined by the following parameters:
+\begin{itemize}[noitemsep]
+\item The number of queues.
+\item The scheduling algorithm for each queue.
+\item The method used to determine when to upgrade a process to a higher-priority queue.
+\item The method used to determine when to demote a process to a lower-priority queue.
+\item The method used to determine which queue a process will enter when that process needs service.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
