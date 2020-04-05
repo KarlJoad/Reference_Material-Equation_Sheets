@@ -419,6 +419,8 @@ If a process uses too much CPU time, it is moved down in priority.
 This allows \nameref{def:IO_Bound} processes get quick access to the CPU and execute quickly.
 Then, when these higher priority queues are empty, a low priority task can execute longer.
 
+Since this is effectively a \nameref{par:Priority_Scheduling} system, \nameref{def:Aging} must be used to ensure a \nameref{def:Process} does not sit in a lower-level queue for too long.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
