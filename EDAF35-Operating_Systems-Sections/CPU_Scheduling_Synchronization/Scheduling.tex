@@ -27,6 +27,12 @@ To properly schedule a \nameref{def:Process}, its \nameref{def:CPU_Burst}s and \
   In this state, the CPU is performing activity for \textbf{this} \nameref{def:Process}, and \textbf{IS NOT} waiting for an I/O device to perform some action or return information.
 \end{definition}
 
+\begin{definition}[I/O Burst]\label{def:I/O_Burst}
+  An \emph{I/O burst} is one of the states of execution for a \nameref{def:Process}.
+  This is the state when the process is waiting on the I/O device to return the requested information or perform the desired action.
+  In this state, the CPU is doing no activity for \textbf{this} \nameref{def:Process}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
