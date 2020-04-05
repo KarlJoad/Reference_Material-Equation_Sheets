@@ -96,6 +96,17 @@ The sections of code that disable interrupts do not occur often and typically co
 The \nameref{def:Dispatcher} \textbf{MUST} be as fast as possible to minimize the amount of time spent working on switching betweeen \nameref{def:Process}es/\nameref{def:Thread}s.
 This is measured as the \nameref{def:Dispatch_Latency}.
 
+\begin{definition}[Dispatcher]\label{def:Dispatcher}
+  The \emph{dispatcher} is a \nameref{def:Short_Term_Scheduler} function.
+  It is the code responsible for giving control of the CPU to the \nameref{def:Process} that the scheduler selected.
+  This involves:
+  \begin{enumerate}[noitemsep]
+  \item Performing a \nameref{def:Context_Switch}.
+  \item Switching to the appropriate mode, \nameref{def:User}-mode or \nameref{def:Kernel}-mode.
+  \item Jumping to the proper location in the \nameref{def:Process} to continue its execution.
+  \end{enumerate}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
