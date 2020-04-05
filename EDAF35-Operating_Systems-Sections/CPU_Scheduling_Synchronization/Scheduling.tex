@@ -33,6 +33,14 @@ To properly schedule a \nameref{def:Process}, its \nameref{def:CPU_Burst}s and \
   In this state, the CPU is doing no activity for \textbf{this} \nameref{def:Process}.
 \end{definition}
 
+A \nameref{def:Process} alternates between these two bursts, with the final \nameref{def:CPU_Burst} terminating this \nameref{def:Process}'s execution.
+The distribution of length of CPU bursts is an exponential or hyperexponential graph.
+This means:
+\begin{itemize}[noitemsep]
+\item There is a large number of short duration CPU bursts.
+\item There is a small number of long duration CPU bursts.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
