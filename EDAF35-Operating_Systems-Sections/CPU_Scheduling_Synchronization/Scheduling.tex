@@ -385,6 +385,14 @@ These groups have different requirements on them, thus having different scheduli
 Additionally, since foreground processes are in direct interaction with the user, they have a ghigher priority than background ones.
 This forms the basis for a \nameref{def:Multilevel_Queue} scheduling algorithm.
 
+\begin{definition}[Multilevel Queue]\label{def:Multilevel_Queue}
+  A \emph{multilevel queue} is a system that uses multiple queues for different groups of tasks that have different parameters they must adhere to.
+  \nameref{def:Process}es/\nameref{def:Thread}s assigned to one queue are assigned there permanently, based on some property about the process.
+
+  Each queue can have its own scheduling algorithm, ensuring the different demands from the queues are met.
+  Additionally, there is scheduling for which queue will be chosen next.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
