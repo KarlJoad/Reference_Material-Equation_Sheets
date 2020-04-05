@@ -21,6 +21,12 @@ Almost all computer resources are scheduled before use.
 \subsubsection{CPU and I/O Bursts}\label{subsubsec:CPU_IO_Bursts}
 To properly schedule a \nameref{def:Process}, its \nameref{def:CPU_Burst}s and \nameref{def:I/O_Burst}s need to observed.
 
+\begin{definition}[CPU Burst]\label{def:CPU_Burst}
+  A \emph{CPU burst} is one of the states of execution for a \nameref{def:Process}.
+  This is the state when the process is actively using the CPU to perform computations.
+  In this state, the CPU is performing activity for \textbf{this} \nameref{def:Process}, and \textbf{IS NOT} waiting for an I/O device to perform some action or return information.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
