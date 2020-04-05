@@ -368,6 +368,13 @@ To find how long the \nameref{def:Process} will have to wait to get the CPU agai
 \item $q$: The duration of a \nameref{def:Time_Slice}.
 \end{description}
 
+The duration of a \nameref{def:Time_Slice} is a major factor in the relative efficiency of a round-robin algorithm.
+If the \nameref{def:Time_Slice} is:
+\begin{itemize}[noitemsep]
+\item too large, then this becomes a FCFS algorithm.
+\item too small, then there will be a large number of \nameref{def:Context_Switch}es.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
