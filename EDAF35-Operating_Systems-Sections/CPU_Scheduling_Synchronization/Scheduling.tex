@@ -9,6 +9,12 @@ Typically the process waits for the completion of some I/O request.
 In a simple computer system, the CPU then just sits idle.
 All this waiting time is wasted; no useful work is accomplished.
 
+\begin{blackbox}
+  \textbf{On operating systems that support them, \nameref{def:Kernel_Thread}s, not \nameref{def:Process}es are scheduled by the operating system.}
+  However, the terms ``process scheduling'' and ``thread scheduling'' are often used interchangeably.
+  Process scheduling is used when discussing general scheduling concepts and thread scheduling to refer to thread-specific ideas.
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
