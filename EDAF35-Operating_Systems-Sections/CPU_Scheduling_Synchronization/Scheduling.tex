@@ -194,6 +194,14 @@ This is illustrated visually in \Cref{fig:Gantt_Chart}.
   \label{fig:Gantt_Chart}
 \end{figure}
 
+Additionally, if there are a lot of small I/O tasks and just a few large CPU ones, then the \nameref{def:Convoy_Effect} starts.
+
+\begin{definition}[Convoy Effect]\label{def:Convoy_Effect}
+  The \emph{convoy effect} is a result of having few very CPU-intensive tasks that use the CPU fro their entire duration and a lot of small I/O-intensive tasks.
+  There, the \nameref{def:CPU_Bound} task will block the \nameref{def:IO_Bound} tasks.
+  This lowers overall throughput and device utilization.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
