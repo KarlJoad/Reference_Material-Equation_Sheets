@@ -248,6 +248,22 @@ There is also no way to know the length of the next CPU burst.
 
 However, SJF scheduling is used in the long-term scheduler, because time limits can be set on the execution of various tasks, essentially forcibly giving a value to the next CPU burst.
 
+To calculate the length of the next CPU burst, we tend to approximate it as an exponential average of the previous CPU bursts.
+This is shown in \Cref{eq:Exponential_Average}.
+
+\begin{equation}\label{eq:Exponential_Average}
+  \tau_{n+1} = \alpha t_{n} + (1-\alpha) \tau_{n}
+\end{equation}
+\begin{description}[noitemsep]
+\item $\tau_{n+1}$: The predicted value of the next CPU burst.
+\item $t_{n}$: The length of the $n$th CPU burst.
+\item $\alpha$: A value to determine how much we take the past into account. $0 \leq \alpha \leq 1$.
+  \begin{itemize}[noitemsep]
+  \item If $\alpha = 0$, then the most recent CPU burst has no effect, and only the longer past is considered.
+  \item If $\alpha = 1$, then \textbf{ONLY} the most recent CPU has any effect, and the older past is ignored.
+  \end{itemize}
+\end{description}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
