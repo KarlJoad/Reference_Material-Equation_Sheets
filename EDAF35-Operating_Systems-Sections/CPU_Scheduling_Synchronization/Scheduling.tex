@@ -85,6 +85,13 @@ In this system, \nameref{def:Race_Condition}s appear.
 We also need to design the \nameref{def:Kernel} to allow for \nameref{def:Preemption}, such as when the kernel is busy performing a \nameref{def:System_Call} for a \nameref{def:Process}.
 If we don't have to worry about real-time computing, then we can wait for the \nameref{def:System_Call} to finish before moving onto another task.
 
+\paragraph{Interrupt Handling}\label{par:Interrupt_Handling}
+\nameref{def:Interrupt}s can happen \textbf{AT ANY TIME}, which must be accepted at almost all times.
+On multiprocessor systems, it is costly to turn off interrupt handling on all cores, but sometimes it is necessary.
+If we don't, input might be lost or output overwritten.
+To ensure that these code sections are not accessed concurrently by several processes, they disable interrupts at entry and reenable interrupts at exit.
+The sections of code that disable interrupts do not occur often and typically contain few instructions.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
