@@ -71,6 +71,11 @@ There are 4 times when CPU scheduling occurs:
 \item When a process terminates.
 \end{enumerate}
 
+In the case of Times 1 and 4, there are no options in terms of scheduling.
+In the first situation, a \nameref{def:Process} is being made unschedule-able by the \nameref{def:Operating_System}.
+So, another process must be switched in for the one that was made to wait.
+Similarly, when a \nameref{def:Process} terminates, there is no option for how to schedule it, because it's done executing.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
