@@ -351,9 +351,22 @@ If a task requires less CPU time than a single \nameref{def:Time_Slice}, then th
 This makes the round-robin algorithm preemptive by definition.
 
 To find the amount of time a \nameref{def:Process} will have the CPU, use \Cref{eq:RR_Process_Time}.
+To find how long the \nameref{def:Process} will have to wait to get the CPU again, use \Cref{eq:RR_Max_Wait}.
+
 \begin{equation}\label{eq:RR_Process_Time}
   PT = \frac{1}{n}
 \end{equation}
+
+\begin{equation}\label{eq:RR_Max_Wait}
+  W = (n-1)q
+\end{equation}
+
+\begin{description}[noitemsep]
+\item $PT$: The amount of processor time a task will get.
+\item $n$: The number of \nameref{def:Process}es in the \texttt{RUNNING} queue.
+\item $W$: The amount of time a \nameref{def:Process} will have to wait to get the CPU allocated to it again.
+\item $q$: The duration of a \nameref{def:Time_Slice}.
+\end{description}
 
 %%% Local Variables:
 %%% mode: latex
