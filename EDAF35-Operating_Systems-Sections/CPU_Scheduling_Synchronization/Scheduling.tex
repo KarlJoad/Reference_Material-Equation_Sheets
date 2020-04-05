@@ -283,6 +283,10 @@ What makes a \nameref{def:Process} have a certain priority depends on if the pri
 \item Externally-Defined Priorities are set based on criteria outside the \nameref{def:Operating_System}.
 \end{itemize}
 
+Priority scheduling can be nonpreemptive or preemptive.
+Like in SJF, if a process arrives with a higher priority than the one currently running, the scheduler is preemptive if the higher priority process is allows to \nameref{def:Context_Switch} in.
+A nonpreemptive scheduler will allow the current \nameref{def:Process} to finish execution, while the new, higher priority process is put at the front of the job queue.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
