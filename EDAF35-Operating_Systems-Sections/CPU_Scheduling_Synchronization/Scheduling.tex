@@ -53,7 +53,11 @@ We can categorize these into either \nameref{def:CPU_Bound} programs or \nameref
 Whenever the CPU becomes idle, i.e.\ it has finished the current CPU burst early, or there is an I/O operation, the \nameref{def:Operating_System} must select the next \nameref{def:Process} and/or \nameref{def:Thread} to schedule.
 This is handled by the \nameref{def:Short_Term_Scheduler}.
 
+\begin{definition}[Short-Term Scheduler]\label{def:Short_Term_Scheduler}
+  The \emph{short-term scheduler} is responsible for scheduling either the next \nameref{def:Process} or \nameref{def:Thread} for execution on the \textbf{CPU} from all the possible ones in memory.
+  This is run quite frequently, every couple hundred milliseconds, usually.
 
+\end{definition}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
