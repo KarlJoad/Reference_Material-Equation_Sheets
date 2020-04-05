@@ -61,6 +61,16 @@ This is handled by the \nameref{def:Short_Term_Scheduler}.
     Because the \nameref{def:Short_Term_Scheduler} only schedules tasks for the CPU, it is also called the \emph{CPU Scheduler}.
   \end{remark}
 \end{definition}
+
+\paragraph{Preemption and Scheduling}\label{par:Preemption_Scheduling}
+There are 4 times when CPU scheduling occurs:
+\begin{enumerate}[noitemsep]
+\item When a process switches from the \texttt{RUNNING} state to the \texttt{WAITING} state.
+\item When a process switches from the \texttt{RUNNING} state to the \texttt{READY} state (for example, when an interrupt occurs).
+\item When a process switches from the \texttt{WAITING} state to the \texttt{READY} state (for example, at completion of I/O).
+\item When a process terminates.
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
