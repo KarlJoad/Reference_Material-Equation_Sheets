@@ -4,6 +4,11 @@ In a single-processor system, only one process can run at a time.
 Others must wait until the CPU is free and can be rescheduled.
 By switching the CPU among processes, the operating system can maximize CPU utilization.
 
+For example, a \nameref{def:Process} is executed until it must wait.
+Typically the process waits for the completion of some I/O request.
+In a simple computer system, the CPU then just sits idle.
+All this waiting time is wasted; no useful work is accomplished.
+
 
 %%% Local Variables:
 %%% mode: latex
