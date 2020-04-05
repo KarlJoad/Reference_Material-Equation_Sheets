@@ -76,6 +76,9 @@ In the first situation, a \nameref{def:Process} is being made unschedule-able by
 So, another process must be switched in for the one that was made to wait.
 Similarly, when a \nameref{def:Process} terminates, there is no option for how to schedule it, because it's done executing.
 
+A \nameref{def:Nonpreemptive_Kernel} only allows scheduling during Times 1 and 4.
+In this system, once a \nameref{def:Process} gets allocated to the CPU, it keeps the CPU until it terminates, it switches to the \texttt{WAITING} state, or it voluntarily yields control of the CPU.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
