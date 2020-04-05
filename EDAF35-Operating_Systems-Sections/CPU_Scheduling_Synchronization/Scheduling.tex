@@ -269,6 +269,14 @@ Priority scheduling is the idea that each \nameref{def:Process} has a priority a
 The process with the highest priority is scheduled next.
 In fact, the \nameref{par:SJF_Scheduling} is one case of the priority scheduling system.
 
+We discuss scheduling in terms of \textbf{high priority} and \textbf{low priority}, which is represented by a fixed range of integers.
+The definition of high and low vary from system to system with 0 being the lowest on some and highest on another.
+
+\begin{blackbox}
+  In this document, we assume the lower the priority number, the higher the priority.
+  This makes a \nameref{def:Process} or \nameref{def:Thread} with a priority of 0 have the highest priority.
+\end{blackbox}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
