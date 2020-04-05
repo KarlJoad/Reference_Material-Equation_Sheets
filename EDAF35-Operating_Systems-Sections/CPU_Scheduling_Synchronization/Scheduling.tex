@@ -202,6 +202,13 @@ Additionally, if there are a lot of small I/O tasks and just a few large CPU one
   This lowers overall throughput and device utilization.
 \end{definition}
 
+\paragraph{Shortest-Job-First Scheduling}\label{par:SJF_Scheduling}
+Here, the job with the shortest amount of time required for the next CPU burst is scheduled first.
+If 2 \nameref{def:Process}es have the same amount of time required, then the tie is broken with FCFS among those tasks.
+This can be either preemptive or nonpreemptive.
+The question comes up when a newly arrived \nameref{def:Process} has a shorter CPU burst than the one currently running.
+If this new process preempts the currently running one, then it is a preemptive SJF scheduler, and is sometimes called \emph{Shortest-Remaining-Time-First scheduling}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
