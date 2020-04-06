@@ -26,6 +26,36 @@ The main uses of deterministic modeling are in describing \nameref{def:Schedulin
 In cases where we are running the same program repeatedly, we can measure the program’s processing requirements exactly, allowing us to select a \nameref{def:Scheduling_Algorithm}.
 Furthermore, over a set of examples, deterministic modeling may indicate trends that can then be analyzed and proved separately.
 
+\paragraph{Queuing Models}\label{par:Queuing_Models}
+On many systems, the processes that are run vary from day to day, so deterministic modeling is impossible.
+Instead, we can find the the distribution of \nameref{def:CPU_Burst}s and \nameref{def:I/O_Burst}s.
+
+Commonly, this distribution is exponential and is described by its mean.
+Similarly, we can describe the distribution of times when processes arrive in
+the system (the arrival-time distribution). From these two distributions, it is
+possible to compute the average throughput, utilization, waiting time, and so
+on for most algorithms.
+
+The CPU is described as a server with a queue of \texttt{READY} processes.
+The I/O system with its device queues is another instance of these servers.
+Knowing arrival rates and service rates, we can compute utilization, average queue length, average wait time, among other parameters.
+For a more detailed discussion of these topics, refer to \href{file:./ETSN10-Network_Architecture_Performance-Reference_Material.pdf}{ETSN10: Network Architecture and Performance}.
+
+\emph{Little's Formula}, \Cref{eq:Littles_Law}, shown below, is useful because we can calculate a large variety of information from just a few parameters.
+\begin{equation}\label{eq:Littles_Law}
+  n = \lambda \times W
+\end{equation}
+\begin{description}[noitemsep]
+\item $n$: The average queue length, excluding the process currently executing on the CPU.\@
+\item $\lambda$: The average arrival rate of new processes.
+\item $W$: The average amount of time a process waits in the queue.
+\end{description}
+
+Queueing analysis can be useful in comparing scheduling algorithms, but the classes of algorithms and distributions that can be handled is limited.
+The mathematics of complicated algorithms and distributions are difficult to work with, and arrival and service distributions are often defined in mathematically tractable (but unrealistic) ways.
+Generally, it is necessary to make a number of independent assumptions, which may not be accurate.
+This means queuing models are only approximations of real systems, and the accuracy of the computed results are questionable.
+
 
 %%% Local Variables:
 %%% mode: latex
