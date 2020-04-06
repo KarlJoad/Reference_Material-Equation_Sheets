@@ -16,6 +16,12 @@ In \nameref{def:Process_Contention_Scope}, the \nameref{def:Thread_Library} sche
 However, this does not mean that the \nameref{def:User_Thread} are being scheduled for execution.
 For that to happen, the \nameref{def:Kernel} must be involved.
 
+To decide what \nameref{def:Thread}s can execute on the CPU, we broaden our view of contention to \nameref{def:System_Contention_Scope}.
+
+\begin{definition}[System-Contention Scope]\label{def:System_Contention_Scope}
+  \emph{System-Contention Scope} is where \textbf{ALL} of the \nameref{def:Thread}s on the system, from all \nameref{def:Process}es compete with each other for execution.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
