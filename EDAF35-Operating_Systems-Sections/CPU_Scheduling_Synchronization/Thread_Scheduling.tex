@@ -126,6 +126,11 @@ This forms the basis of \nameref{def:Load_Balancing}.
 \nameref{def:Push_Migration} and \nameref{def:Pull_Migration} \textbf{ARE NOT} mutually exclusive.
 In fact, most systems support both.
 
+\begin{definition}[Push Migration]\label{def:Push_Migration}
+  In \emph{push migration}, there is a task inserted into the queue that checks the load on each processor.
+  If it finds a large imabalance, then that processor's tasks are evenly redistributed among all other processors.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
