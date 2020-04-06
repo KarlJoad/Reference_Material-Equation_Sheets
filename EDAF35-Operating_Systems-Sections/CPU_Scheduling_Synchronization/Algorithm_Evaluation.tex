@@ -15,6 +15,17 @@ To do this, there are 4 main ways to do this:
 \item \nameref{par:Implementation}
 \end{enumerate}
 
+\paragraph{Deterministic Modeling}\label{par:Deterministic_Modeling}
+Deterministic modeling is simple and fast.
+It gives us exact numbers, allowing us to compare the algorithms.
+However, it requires \textbf{exact numbers for input}, and its answers apply \emph{only} to those cases.
+
+This method takes a particular predetermined workload and defines the performance of each algorithm for that workload.
+
+The main uses of deterministic modeling are in describing \nameref{def:Scheduling_Algorithm}s and providing examples.
+In cases where we are running the same program repeatedly, we can measure the program’s processing requirements exactly, allowing us to select a \nameref{def:Scheduling_Algorithm}.
+Furthermore, over a set of examples, deterministic modeling may indicate trends that can then be analyzed and proved separately.
+
 
 %%% Local Variables:
 %%% mode: latex
