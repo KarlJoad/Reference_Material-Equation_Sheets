@@ -62,6 +62,12 @@ A deadlock situation can arise if the following \textbf{four conditions hold sim
 \textbf{All four conditions must hold for a deadlock to occur.}
 The circular-wait condition implies the hold-and-wait condition, so the four conditions are not completely independent.
 
+\subsubsection{Resource-Allocation Graph}\label{subsubsec:Resource_Allocation_Graph}
+\nameref{def:Deadlock}s can be described by a directed graph, called a \emph{system resource allocation graph}.
+In \Cref{fig:Resource_Allocation_Graph}, there is a representation of the set of processes $P_{i}$ and resources $R_{i}$.
+If there is an arrow pointing $P_{i} \rightarrow R_{j}$ then Process $i$ is requesting Resource $j$, forming a \emph{Request Edge}.
+If there is an arrow pointing $R_{i} \rightarrow P_{j}$ then Resource $j$ is allocated to Process $j$, forming a \emph{Assignment Edge}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
