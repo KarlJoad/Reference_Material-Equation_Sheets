@@ -1,6 +1,9 @@
 \subsection{Deadlocks}\label{subsec:Deadlocks}
+\nameref{def:Deadlock} is a serious issue in \nameref{rmk:CPU_Scheduler}s because \nameref{def:Process}es lock resources for themselves.
+A good example of a deadlock is ``When two trains approach each other at a crossing, both shall come to a full stop and neither shall start up again until the other has gone.''
+
 \begin{definition}[Deadlock]\label{def:Deadlock}
-  \emph{Deadlock} is when 2 processes require information from each other to continue running.
+  \emph{Deadlock} is when 2 processes require information or resources from each other to continue running.
   If this happens, neither process will provide the other with its required information, so they will both wait for each other, forever.
 \end{definition}
 
