@@ -55,6 +55,9 @@ Tasks to execute may be in 2 types of queues:
 \item A private queue, one for each processor.
 \end{enumerate}
 
+Each processor must select a job from the ready queue and execute it.
+We must ensure that no two processors schedule and execute the same task at the same time, and that processes are not lost from the queue.
+
 
 %%% Local Variables:
 %%% mode: latex
