@@ -99,6 +99,20 @@ There are 2 major ways to achieve this:
 \item \nameref{par:Deadlock_Avoidance-Resource_Allocation_Graph}
 \end{enumerate}
 
+\paragraph{Safe State}\label{par:Deadlock_Avoidance-Safe_State}
+A system is in a safe state only if there exists a safe sequence.
+A sequence of processes $\langle P 1, P 2 , \ldots, P n \rangle$ is a safe sequence for the current allocation state if, for all resource requests that $P_{i}$ makes, they can be satisfied by the currently available resources plus the resources held by all $P_{j}$, where $j < i$.
+If the resources that $P_{i}$ needs are not immediately available, then $P_{i}$ can wait until all $P_{j}$ have finished.
+When $P_{j}$ has finished, $P_{i}$ can obtain all of its needed resources, complete its designated task, return its allocated resources, and terminate.
+When $P_{i}$ terminates, $P_{i+1}$ can obtain its needed resources, and so on.
+If no such sequence exists, then the system state is said to be \emph{unsafe}.
+
+\begin{blackbox}
+  A safe state is not a deadlocked state.
+  Conversely, a deadlocked state is an unsafe state.
+  Not all unsafe states are deadlocks, however.
+\end{blackbox}
+
 \subsubsection{Deadlock Detection}\label{subsubsec:Deadlock_Detection}
 
 %%% Local Variables:
