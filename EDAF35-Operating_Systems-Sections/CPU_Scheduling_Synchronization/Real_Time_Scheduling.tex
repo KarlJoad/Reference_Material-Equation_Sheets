@@ -51,6 +51,14 @@ All algorithms must be roughly based on a priority-based system all of which mus
 Most modern \nameref{def:Operating_System}s offer support for \nameref{def:Soft_Real_Time_System}s with their scheduling priorities.
 Note however, that pure priority-based algorithms only guarantee soft real-time functionality, not hard.
 
+Processes are considered periodic; they require the CPU at constant intervals.
+Once a periodic process has acquired the CPU, it has a fixed processing time $t$, a deadline $d$ by which it must be serviced by the CPU, and a period $p$.
+The relationship of the processing time, the deadline, and the period can be expressed as $0 \leq t \leq d \leq p$.
+The rate of a periodic task is $\frac{1}{p}$.
+Schedulers can take advantage of these characteristics and assign priorities according to a process’s deadline or rate requirements.
+What is different about this algorithm is a process may have to announce its deadline to the scheduler.
+Using an admission-control algorithm, the scheduler either admits the process, guaranteeing that the process will complete on time, or rejects the request if it cannot guarantee that the task will be serviced by its deadline.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
