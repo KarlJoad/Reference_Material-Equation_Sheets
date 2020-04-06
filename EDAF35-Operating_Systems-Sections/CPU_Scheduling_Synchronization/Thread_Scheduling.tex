@@ -88,6 +88,19 @@ This is a very high cost to system productivity, so we attempt to keep a \namere
   \emph{Hard affinity} is where once a \nameref{def:Process}/\nameref{def:Thread} is assigned to a set of processors, it will \textbf{ONLY EXECUTE ON THOSE}.
 \end{definition}
 
+The organization of \nameref{def:Memory} in a system will affect the performance of the \nameref{def:Processor_Affinity} choices made.
+In a \nameref{def:Non_Uniform_Memory_Access} system, not all memory is \textbf{DIRECTLY} available to every processor.
+In this type of system, a \nameref{def:Process}'s affinity should be set according to the memory location it inhabits.
+Otherwise, there will be long delays during memory acccesses.
+This is illustrated in \Cref{fig:NUMA_Multiprocessor_Scheduling}.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[scale=1.00]{./Drawings/EDAF35-Operating_Systems/NUMA_Multiprocessor_Scheduling.jpg}
+  \caption{\nameref*{def:Non_Uniform_Memory_Access}, \nameref*{def:Processor_Affinity}, and \nameref*{rmk:CPU_Scheduler} Choices}
+  \label{fig:NUMA_Multiprocessor_Scheduling}
+\end{figure}
+
 
 %%% Local Variables:
 %%% mode: latex
