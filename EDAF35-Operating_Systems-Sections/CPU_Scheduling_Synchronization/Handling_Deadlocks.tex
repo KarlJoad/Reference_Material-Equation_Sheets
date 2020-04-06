@@ -6,6 +6,12 @@ There are 3 main ways to handle a deadlock:
 \item We can ignore the problem altogether and pretend that deadlocks never occur in the system.
 \end{enumerate}
 
+The third method of handling a \nameref{def:Deadlock} may not make sense, but from a cost perspective, it does.
+Ignoring the possibility of deadlocks is cheaper.
+In many systems, deadlocks occur infrequently (once per year), the extra expense of the methods may not seem worthwhile.
+In addition, methods used to recover from other conditions may be put to use to recover from deadlock.
+In some circumstances, a system is in a frozen state but not in a deadlocked state.
+
 \subsubsection{Deadlock Prevention}\label{subsubsec:Deadlock_Prevention}
 \subsubsection{Deadlock Avoidance}\label{subsubsec:Deadlock_Avoidance}
 \subsubsection{Deadlock Detection}\label{subsubsec:Deadlock_Detection}
