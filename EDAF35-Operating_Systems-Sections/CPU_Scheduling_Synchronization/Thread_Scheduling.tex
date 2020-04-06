@@ -145,6 +145,10 @@ In more recent times, multiple processors are being built onto the same physical
 To the \nameref{def:Operating_System}, they appear as separate CPUs, because each core maintains its own architectural state.
 This allows for multicore processor systems that are faster and consume less power than traditional multiprocessor systems.
 
+The rise of multicore processors has also lead to the rise of hardware threads.
+This is because a \nameref{def:CPU} spends much of its execution time waiting for \nameref{def:Memory} and its contents to become available.
+When a CPU waits for memory to returns its contents, it is called a \nameref{def:Memory_Stall}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
