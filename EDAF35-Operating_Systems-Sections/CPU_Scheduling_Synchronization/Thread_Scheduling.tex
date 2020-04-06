@@ -140,6 +140,11 @@ The benefit of keeping a process running on the same processor is that the proce
 being in that processor’s cache memory.
 Either pulling or pushing a process from one processor to another removes this benefit.
 
+\subsubsection{Multicore Processors}\label{subsubsec:Multicore_Processors}
+In more recent times, multiple processors are being built onto the same physical chip, making a \emph{multicore processor}.
+To the \nameref{def:Operating_System}, they appear as separate CPUs, because each core maintains its own architectural state.
+This allows for multicore processor systems that are faster and consume less power than traditional multiprocessor systems.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
