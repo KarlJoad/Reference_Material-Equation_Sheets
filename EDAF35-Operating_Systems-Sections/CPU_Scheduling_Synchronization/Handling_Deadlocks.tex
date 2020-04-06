@@ -169,6 +169,16 @@ When a detection algorithm determines that a deadlock exists, several alternativ
   \end{enumerate}
 \end{enumerate}
 
+\paragraph{Process Termination}\label{par:Deadlock_Recovery-Process_Termination}
+To eliminate deadlocks by aborting a process, there are two methods.
+In both, the system reclaims all resources previously allocated.
+\begin{enumerate}[noitemsep]
+\item Abort all deadlocked processes.
+  This method clearly will break the deadlock cycle, but at the cost of lost work among all terminated processes.
+\item Abort one process at a time until the deadlock cycle is eliminated.
+  This method incurs considerable overhead, since after each process is aborted, a deadlock-detection algorithm must be invoked to determine whether any processes are still deadlocked.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
