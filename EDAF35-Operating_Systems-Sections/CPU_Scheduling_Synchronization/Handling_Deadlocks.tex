@@ -60,6 +60,25 @@ Meaning, a process can initially request any number of instances of a resource t
 After that, the process can request instances of resource type $R_{j}$ if and only if $F(R_{j}) > F(R_{i})$.
 This could be similarly defined using a more generous comparison; a process can request instances of resource type $R_{j}$ if and only if $F(R_{j}) \geq F(R_{i})$.
 
+This property can be proven, \Cref{proof:Circular_Wait}.
+
+\begin{proof}[Proof by Contradiction of Circular Waiting]\label{proof:Circular_Wait}
+  Let the set of processes involved in the circular wait be $\lbrace P_{0}, P_{1}, \ldots, P_{n} \rbrace$, where $P_{i}$ is waiting for a resource $R_{i}$, which is held by process\footnote{Modulo arithmetic is used on the indexes.} $P_{i+1}$.
+
+  Then, since process $P_{i+1}$ is holding resource $R_{i}$ while requesting resource $R_{i+1}$, we must have
+  \begin{equation*}
+    \forall i. F(R_{i}) < F(R_{i+1})
+  \end{equation*}
+
+  But this condition means
+  \begin{equation*}
+    F(R_{0}) < F(R_{1}) < \cdots < F(R_{n}) < F (R_{0})
+  \end{equation*}
+
+  By transitivity, $F(R_{0}) < F(R_{0})$, which is impossible. \\
+  $\therefore$ there can be no circular wait.
+\end{proof}
+
 \begin{blackbox}
   Keep in mind that developing an ordering, or hierarchy, does not in itself prevent deadlock.
   It is up to application developers to write programs that follow the ordering.
