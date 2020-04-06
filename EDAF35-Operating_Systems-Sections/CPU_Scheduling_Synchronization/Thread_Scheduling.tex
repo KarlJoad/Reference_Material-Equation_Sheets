@@ -161,6 +161,17 @@ These are called \emph{logical processors}.
   Each of these logical processors appears to the \nameref{def:Operating_System} as a separate physical CPU.\@
 \end{blackbox}
 
+The number of processors that the \nameref{def:Operating_System} ``sees'' can be calculated by \Cref{eq:Num_Cores}.
+
+\begin{equation}\label{eq:Num_Cores}
+  C = Pt
+\end{equation}
+\begin{description}[noitemsep]
+\item $C$: The number of cores the \nameref{def:Operating_System} sees.
+\item $P$: The number of processors present in the system.
+\item $t$: The number of hardware threads present in each processor.
+\end{description}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
