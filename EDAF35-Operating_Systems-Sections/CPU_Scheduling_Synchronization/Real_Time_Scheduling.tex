@@ -11,6 +11,16 @@ This depends on whether the \nameref{def:Operating_System} is a \nameref{def:Sof
   These tasks will be serviced by its deadline, otherwise the process will not be executed at all.
 \end{definition}
 
+POSIX also provides support for real-time scheduling through 2 functions with 2 scheduling types.
+\begin{enumerate}[noitemsep]
+\item \kernelinline{pthread_attr_getsched_policy(pthread_attr_t *attr, int *policy)}
+\item \kernelinline{pthread_attr_setsched_policy(pthread_attr_t *attr, int policy)}
+\end{enumerate}
+\begin{enumerate}[noitemsep]
+\item \texttt{SCHED\_FIFO}
+\item \texttt{SCHED\_RR}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
