@@ -131,6 +131,10 @@ In fact, most systems support both.
   If it finds a large imabalance, then that processor's tasks are evenly redistributed among all other processors.
 \end{definition}
 
+\begin{definition}[Pull Migration]\label{def:Pull_Migration}
+  \emph{Pull migration} is where each processor, once it becomes idle, goes to other processors and attempts to pull a waiting task from the other processor's queue.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
