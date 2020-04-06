@@ -59,6 +59,9 @@ A deadlock situation can arise if the following \textbf{four conditions hold sim
   A set $\lbrace P_{0}, P_{1}, \ldots, P_{n} \rbrace$ of waiting processes must exist such that $P_{0}$ is waiting for a resource held by $P_{1}$, $P_{1}$ is waiting for a resource held by $P_{2}$, $\ldots$, $P_{n-1}$ is waiting for a resource held by $P_{n}$, and $P_{n}$ is waiting for a resource held by $P_{0}$.
 \end{enumerate}
 
+\textbf{All four conditions must hold for a deadlock to occur.}
+The circular-wait condition implies the hold-and-wait condition, so the four conditions are not completely independent.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
