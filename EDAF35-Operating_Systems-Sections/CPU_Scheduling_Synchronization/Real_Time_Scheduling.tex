@@ -37,6 +37,11 @@ There are 2 factors that affect \nameref{def:Event_Latency}.
   This includes the amount of time needed to get the currently running instruction to a point where it can be switched.
   Also included is the amount of time needed to perform the switch.
 \item Dispatch Latency the amount of time the scheduler needs to stop one process and start another.
+  There are 2 parts that affect the value of the dispatch latency:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Preemption} of \textbf{ANY} process running tin the kernel.
+  \item Release of resources used by low-priority process for higher-priority processes.
+  \end{enumerate}
 \end{enumerate}
 
 %%% Local Variables:
