@@ -8,6 +8,10 @@
 \subsubsection{User- vs. Kernel-Level Thread Scheduling}\label{subsubsec:User_vs_Kernel_Thread_Scheduling}
 On systems implementing the \nameref{subsubsec:Many_To_One_Model} (\Cref{subsubsec:Many_To_One_Model}) and \nameref{subsubsec:Many_To_Many_Model} (\Cref{subsubsec:Many_To_Many_Model}), the thread library schedules user-level threads to run on an available LWP.\@
 
+\begin{definition}[Process-Contention Scope]\label{def:Process_Contention_Scope}
+  \emph{Process-Contention Scope} is where each of the \nameref{def:Thread}s \textbf{WITHIN A SINGLE \nameref{def:Process}} compete with each other for execution.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
