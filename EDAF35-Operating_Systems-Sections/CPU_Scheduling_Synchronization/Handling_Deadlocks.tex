@@ -1,4 +1,11 @@
 \subsection{Handling Deadlocks}\label{subsec:Handling_Deadlocks}
+There are 3 main ways to handle a deadlock:
+\begin{enumerate}[noitemsep]
+\item We can use a protocol to prevent (\Cref{subsubsec:Deadlock_Prevention}) or avoid (\Cref{subsubsec:Deadlock_Avoidance}) deadlocks, ensuring that the system will never enter a deadlocked state.
+\item We can allow the system to enter a deadlocked state, detect it, and recover (\Cref{subsubsec:Deadlock_Detection}).
+\item We can ignore the problem altogether and pretend that deadlocks never occur in the system.
+\end{enumerate}
+
 \subsubsection{Deadlock Prevention}\label{subsubsec:Deadlock_Prevention}
 \subsubsection{Deadlock Avoidance}\label{subsubsec:Deadlock_Avoidance}
 \subsubsection{Deadlock Detection}\label{subsubsec:Deadlock_Detection}
