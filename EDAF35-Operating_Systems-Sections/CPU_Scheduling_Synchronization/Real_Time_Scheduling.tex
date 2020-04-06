@@ -82,6 +82,10 @@ The worst-case CPU utilization for scheduling $N$ processes is shown in \Cref{eq
   To ensure this works, when a process becomes runnable, it must announce its deadline requirement.
 \end{definition}
 
+Unlike \nameref{def:Rate_Monotonic_Scheduling}, \nameref{def:Earliest_Deadline_First_Scheduling} does not require that processes be periodic, nor must a process require a constant amount of CPU time per burst.
+EDF is theoretically optimal; it can schedule processes so that each process can meet its deadline requirements and CPU utilization will be 100 percent.
+However, it is impossible to achieve this due to the cost of \nameref{def:Context_Switch}ing between \nameref{def:Process}es and \nameref{def:Interrupt} handling.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
