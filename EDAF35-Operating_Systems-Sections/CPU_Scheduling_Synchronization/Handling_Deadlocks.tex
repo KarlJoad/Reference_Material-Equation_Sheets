@@ -132,6 +132,16 @@ In this system, either of these options may be provided.
 \item An algorithm to recover from the deadlock.
 \end{itemize}
 
+\paragraph{Single Instance of a Resource Type}\label{par:Deadlock_Detection-Resource_Single_Instance}
+If all resources have only a single instance, then we can define a deadlock-detection algorithm that uses a variant of the resource-allocation graph, called a wait-for graph.
+We obtain this graph from the resource-allocation graph by removing the resource nodes.
+
+An edge from $P_{i}$ to $P_{j}$ in a wait-for graph implies that process $P_{i}$ is waiting for process $P_{j}$ to release a resource that $P_{i}$ needs.
+More formally,
+\begin{equation*}
+  P_{i} \rightarrow P_{j} = P_{i} \rightarrow R_{q}, R_{q} \rightarrow P_{j}
+\end{equation*}
+
 
 %%% Local Variables:
 %%% mode: latex
