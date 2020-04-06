@@ -44,6 +44,10 @@ There are 2 main approaches to multiprocessor scheduling, without taking the ide
 \item \nameref{def:Symmetric_Multiprocessor_System}
 \end{enumerate}
 
+In an \nameref{def:Asymmetric_Multiprocessor_System}, one of the processors acts as the master server.
+It runs the scheduler, allocating jobs to each of the slave worker processors.
+This reduces the need for data sharing, making coding and debugging such a thing much easier.
+
 
 %%% Local Variables:
 %%% mode: latex
