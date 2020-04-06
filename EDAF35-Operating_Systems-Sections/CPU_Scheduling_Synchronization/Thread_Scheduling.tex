@@ -135,6 +135,11 @@ In fact, most systems support both.
   \emph{Pull migration} is where each processor, once it becomes idle, goes to other processors and attempts to pull a waiting task from the other processor's queue.
 \end{definition}
 
+\nameref{def:Load_Balancing} counteracts the benefits of \nameref{def:Processor_Affinity}.
+The benefit of keeping a process running on the same processor is that the process can take advantage of its data
+being in that processor’s cache memory.
+Either pulling or pushing a process from one processor to another removes this benefit.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
