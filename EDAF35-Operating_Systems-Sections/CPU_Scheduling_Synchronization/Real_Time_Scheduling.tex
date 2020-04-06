@@ -59,6 +59,15 @@ Schedulers can take advantage of these characteristics and assign priorities acc
 What is different about this algorithm is a process may have to announce its deadline to the scheduler.
 Using an admission-control algorithm, the scheduler either admits the process, guaranteeing that the process will complete on time, or rejects the request if it cannot guarantee that the task will be serviced by its deadline.
 
+\paragraph{Rate-Monotonic Scheduling}\label{par:Rate_Monotonic_Scheduling}
+\begin{definition}[Rate-Monotonic Scheduling]\label{def:Rate_Monotonic_Scheduling}
+  \emph{Rate-monotonic scheduling} is a \nameref{def:Scheduling_Algorithm} for periodic tasks that uses a static priority policy with preemption.
+  If a higher-priority process arrives, and a lower priority one is running, it is immediately preempted.
+  The priority is statically calculated based on the inverse of the period of the task.
+  Less frequent (longer period) tasks have a lower priority, and more frequent ones have higher priority.
+  Additionally, the size of the CPU burst is assumed to be constant during every period.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
