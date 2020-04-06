@@ -19,6 +19,24 @@ There are only 2 options for handling \nameref{def:Deadlock}s:
 
 Most \nameref{def:Operating_System}s do \textbf{NOT} provide functionality to identify \nameref{def:Deadlock}s and correct them.
 
+A system consists of a finite number of resources to be distributed among a number of competing processes.
+The resources may be partitioned into several types (or classes), each consisting of some number of identical instances.
+CPU cycles, files, and I/O devices (such as printers and DVD drives) are examples of resource types.
+If a system has two CPUs, then the resource type CPU has two instances.
+Similarly, the resource type printer may have five instances.
+If a process requests an instance of a resource type, the allocation of \textbf{any} instance of the type should satisfy the request.
+If it does not, then the instances are not identical, and the resource type classes have not been defined properly.
+Under the normal mode of operation, a process may utilize a resource in only the following sequence:
+\begin{enumerate}[noitemsep]
+\item Request.
+  The process requests the resource.
+  If the request cannot be granted immediately (for example, if the resource is being used by another process), then the requesting process must wait until it can acquire the resource.
+\item Use.
+  The process can operate on the resource (for example, if the resource is a printer, the process can print on that printer).
+\item Release.
+  The process releases the resource.
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
