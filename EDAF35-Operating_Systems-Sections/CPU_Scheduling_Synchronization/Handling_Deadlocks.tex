@@ -36,6 +36,15 @@ First, resource utilization may be low, since resources may be allocated but unu
 Second, \nameref{def:Starvation} is possible.
 A process that needs several popular resources may have to wait indefinitely, because at least one of the resources that it needs is always allocated to some other process.
 
+\paragraph{No Preemption}\label{par:Deadlock_Prevention-No_Preemption}
+To ensure that no \nameref{def:Preemption} of resources that have already been allocated occurs, we can use the following protocol.
+If a process is holding some resources and requests another resource that cannot be immediately allocated to it (that is, the process must wait), then all resources the process is currently holding are preempted, implicitly releasing them.
+The preempted resources are added to the list of resources for which the process is waiting.
+The process will be restarted only when it can regain its old resources, as well as the new ones that it is requesting.
+
+This protocol is often applied to resources whose state can be easily saved and restored later, such as CPU registers and memory space.
+It cannot generally be applied to such resources as mutex locks and semaphores.
+
 \subsubsection{Deadlock Avoidance}\label{subsubsec:Deadlock_Avoidance}
 \subsubsection{Deadlock Detection}\label{subsubsec:Deadlock_Detection}
 
