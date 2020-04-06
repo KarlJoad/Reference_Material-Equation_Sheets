@@ -178,6 +178,14 @@ There are 2 ways to multithread a processor core:
 \item \nameref{def:Fine_Grained_Multithreading}
 \end{enumerate}
 
+\begin{definition}[Coarse-Grained Multithreading]\label{def:Coarse_Grained_Multithreading}
+  In \emph{coarse-grained multithreading}, a hardware thread will execute until it reaches a long-latency event, such as a \nameref{def:Memory_Stall}.
+  The processor then switches to the other thread and continues execution while waiting for the long-latency event to return.
+
+  This has a high cost, because the entire instruction pipeline must have the first thread's instructions emptied and the new thread's instructions fill the pipeline.
+  This is quite costly.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
