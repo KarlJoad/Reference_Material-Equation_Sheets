@@ -25,6 +25,17 @@ A process never needs to wait for a sharable resource.
 Read-only files are a good example of a sharable resource.
 If several processes attempt to open a read-only file at the same time, they can be granted simultaneous access to the file.
 
+\paragraph{Hold and Wait}\label{par:Deadlock_Prevention-Hold_Wait}
+To ensure that the hold-and-wait condition never occurs in the system, we must guarantee that, whenever a process requests a resource, it does not hold any other resources.
+
+We can implement this provision by requiring that system calls requesting resources for a process precede all other system calls.
+An alternative protocol allows a process to request resources only when it has none.
+
+Both these protocols have two main disadvantages.
+First, resource utilization may be low, since resources may be allocated but unused for a long period.
+Second, \nameref{def:Starvation} is possible.
+A process that needs several popular resources may have to wait indefinitely, because at least one of the resources that it needs is always allocated to some other process.
+
 \subsubsection{Deadlock Avoidance}\label{subsubsec:Deadlock_Avoidance}
 \subsubsection{Deadlock Detection}\label{subsubsec:Deadlock_Detection}
 
