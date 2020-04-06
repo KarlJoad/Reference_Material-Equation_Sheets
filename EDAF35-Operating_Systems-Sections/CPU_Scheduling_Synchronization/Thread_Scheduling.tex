@@ -191,6 +191,15 @@ There are 2 ways to multithread a processor core:
   To ensure this does not take too much time, hardware logic is built-in for thread switching.
 \end{definition}
 
+The use of hardware threads means there is another layer of scheduling required.
+\begin{enumerate}[noitemsep]
+\item The highest layer is scheduling \nameref{def:User_Thread}s onto \nameref{def:Kernel_Thread}s by the \nameref{def:Thread_Library}.
+\item The next layer is the \nameref{def:Operating_System} scheduling \nameref{def:Kernel_Thread}s for execution.
+\item Next is the hardware scheduler for which \textbf{hardware thread} to execute next.
+\end{enumerate}
+
+Each one of these layers can use different scheduling algorithms, to meet performance criteria in each section.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
