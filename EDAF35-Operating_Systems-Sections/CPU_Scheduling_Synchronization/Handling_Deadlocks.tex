@@ -190,6 +190,28 @@ Which one to choose depends on a variety of factors.
 \item Whether the process is interactive or batch.
 \end{itemize}
 
+\paragraph{Resource Preemption}\label{par:Deadlock_recovery-Resource_Preemption}
+In this system, we successively preempt some resources from processes and give these resources to other processes until the deadlock cycle is broken.
+If preemption is required to deal with deadlocks, then three issues need to be addressed:
+\begin{enumerate}[noitemsep]
+\item \textbf{Selecting a victim}.
+  Which resources and which processes are to be preempted?
+  As in process termination, we must determine the order of preemption to minimize cost.
+  Cost factors may include parameters such as:
+  \begin{itemize}[noitemsep]
+  \item Number of resources a deadlocked process is holding
+  \item Amount of time the process has thus far consumed
+  \end{itemize}
+
+\item \textbf{Rollback}.
+  If we preempt a resource from a process, what should be done with that process?
+  It cannot continue with its normal execution; it is missing some needed resource.
+  We must roll back the process to some safe state and restart it from that state.
+  It is more effective to roll back the process only as far as necessary to break the deadlock, however, this method requires the system to keep more information about the state of all running processes.
+  So the process is rolled back to the beginning usually.
+\item \textbf{\nameref{def:Starvation}}.
+  How do we ensure that starvation will not occur?
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
