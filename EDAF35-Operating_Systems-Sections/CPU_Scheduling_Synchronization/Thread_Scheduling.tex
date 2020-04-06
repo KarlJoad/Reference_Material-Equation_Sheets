@@ -106,6 +106,17 @@ Because we have multiple processors available to us, we need to make sure they a
 We do not want to have one processor sitting idle while others have very high loads with long queues.
 This forms the basis of \nameref{def:Load_Balancing}.
 
+\begin{definition}[Load Balancing]\label{def:Load_Balancing}
+  \emph{Load balancing} is the process of making sure that every processor in a system is assigned an even amount of work.
+  This ensures that \textbf{ALL} processors are active at one time, preventing the issue of some processors sitting idle while others have very high loads and long queues.
+
+  There are 2 main ways to provide load balancing:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Push_Migration}
+  \item \nameref{def:Pull_Migration}
+  \end{enumerate}
+
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
