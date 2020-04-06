@@ -67,6 +67,16 @@ Typically, input is generated from a random-number generated that is programmed 
 However, simulations can be expensive, often requiring hours of processor time.
 A more detailed simulation provides more accurate results, but takes more computer time.
 
+\paragraph{Implementation}\label{par:Implementation}
+Even a simulation is of limited accuracy.
+The only completely accurate way to evaluate a \nameref{def:Scheduling_Algorithm} is to code it, put it in the \nameref{def:Operating_System}, and see how it works.
+This approach puts the actual algorithm in the real system for evaluation under real operating conditions.
+The major difficulty with this approach is the high cost.
+
+One of the biggest difficulties is the expense incurred in coding the algorithm and modifying the operating system to support it (along with its required data structures).
+The environment around the algorithm used will change not only in the usual way (New programs written and the types of problems change) but also as a result of the performance of the scheduler.
+If short processes are given priority, then users may break larger processes into sets of smaller processes.
+If interactive processes are given priority over noninteractive processes, then users may switch to interactive use.
 
 %%% Local Variables:
 %%% mode: latex
