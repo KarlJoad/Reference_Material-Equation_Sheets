@@ -89,6 +89,16 @@ This property can be proven, \Cref{proof:Circular_Wait}.
   \emph{Deadlock avoidance} requires the \nameref{def:Operating_System} be gined additional information in advnace about what resources a process will request and possible use within its lifetime.
 \end{definition}
 
+To avoid \nameref{def:Deadlock}s, the \nameref{def:Operating_System} can require additional information about how resources are to be requested.
+With knowledge of the complete sequence of requests and releases for each process, the system can decide for each request whether or not the process should wait in order to avoid a possible future deadlock.
+Each request requires that in making this decision the system consider the resources currently available, the resources currently allocated to each process, and the future requests and releases of each process.
+
+There are 2 major ways to achieve this:
+\begin{enumerate}[noitemsep]
+\item \nameref{par:Deadlock_Avoidance-Safe_State}
+\item \nameref{par:Deadlock_Avoidance-Resource_Allocation_Graph}
+\end{enumerate}
+
 \subsubsection{Deadlock Detection}\label{subsubsec:Deadlock_Detection}
 
 %%% Local Variables:
