@@ -146,6 +146,17 @@ More formally,
 The algorithm employs several time-varying data structures that are similar to those used in the banker’s algorithm.
 I do not heavily invest in working with this variant of this problem.
 
+\paragraph{Usage of Detection Algorithms}\label{par:Deadlock_Detection-Usage}
+There are 2 main questions about when we should invoke these detection algorithms.
+\begin{enumerate}[noitemsep]
+\item How \textbf{often} is a deadlock likely to occur?
+\item How \textbf{many} processes will be affected by deadlock when it happens?
+\end{enumerate}
+
+Resources allocated to deadlocked processes will be idle until the deadlock can be broken.
+If deadlocks occur frequently, then the detection algorithm should be invoked frequently.
+In addition, the number of processes involved in the deadlock cycle may grow.
+
 
 %%% Local Variables:
 %%% mode: latex
