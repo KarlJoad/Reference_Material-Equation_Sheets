@@ -58,6 +58,11 @@ Tasks to execute may be in 2 types of queues:
 Each processor must select a job from the ready queue and execute it.
 We must ensure that no two processors schedule and execute the same task at the same time, and that processes are not lost from the queue.
 
+\begin{blackbox}
+  Throughout this section, and most of this document, we discuss \nameref{def:Symmetric_Multiprocessor_System} (SMP) systems.
+  These are more commonly in use in the desktop space and are more interesting to discuss.
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
