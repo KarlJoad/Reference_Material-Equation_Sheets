@@ -75,6 +75,29 @@ If there is an arrow pointing $R_{i} \rightarrow P_{j}$ then Resource $j$ is all
   \label{fig:Resource_Allocation_Graph}
 \end{figure}
 
+In \Cref{fig:Resource_Allocation_Graph}, there are:
+\begin{itemize}[noitemsep]
+\item The sets $P$, $R$, and $E$:
+  \begin{itemize}[noitemsep]
+  \item $P = \lbrace P_{1}, P_{2}, P_{3} \rbrace$
+  \end{itemize}
+
+\item Resource instances:
+  \begin{itemize}[noitemsep]
+  \item One instance of resource type $R_{1}$
+  \item Two instances of resource type $R_{2}$
+  \item One instance of resource type $R_{3}$
+  \item Three instances of resource type $R_{4}$
+  \end{itemize}
+
+\item Process states:
+  \begin{itemize}[noitemsep]
+  \item Process $P_{1}$ is holding an instance of resource type $R_{2}$ and is waiting for an instance of resource type $R_{1}$.
+  \item Process $P_{2}$ is holding an instance of $R_{1}$ and an instance of $R_{2}$ and is waiting for an instance of $R_{3}$.
+  \item Process $P_{3}$ is holding an instance of $R_{3}$.
+  \end{itemize}
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
