@@ -186,6 +186,11 @@ There are 2 ways to multithread a processor core:
   This is quite costly.
 \end{definition}
 
+\begin{definition}[Fine-Grained Multithreading]\label{def:Fine_Grained_Multithreading}
+  \emph{Fine-grained multithreading} switches between the hardware threads much more frequently and quickly, typically between every other instruction.
+  To ensure this does not take too much time, hardware logic is built-in for thread switching.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
