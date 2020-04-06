@@ -70,6 +70,11 @@ Using an admission-control algorithm, the scheduler either admits the process, g
 
 \nameref{def:Rate_Monotonic_Scheduling} is considered optimal because given a set of processes that cannot be scheduled by this algorithm, no other static-priority algorithm can schedule them either.
 
+The worst-case CPU utilization for scheduling $N$ processes is shown in \Cref{eq:Rate_Monotonic_Worst_Case}
+\begin{equation}\label{eq:Rate_Monotonic_Worst_Case}
+  N \left( 2^{\frac{1}{N}} -1 \right)
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
