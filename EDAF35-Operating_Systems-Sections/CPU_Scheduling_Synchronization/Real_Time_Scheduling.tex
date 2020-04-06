@@ -44,6 +44,13 @@ There are 2 factors that affect \nameref{def:Event_Latency}.
   \end{enumerate}
 \end{enumerate}
 
+\subsubsection{Scheduling}\label{subsubsec:Real_Time_Scheduling}
+In this case, there are not as many choices of \nameref{def:Scheduling_Algorithm} for real-time systems as other systems.
+All algorithms must be roughly based on a priority-based system all of which must support \nameref{def:Preemption}.
+
+Most modern \nameref{def:Operating_System}s offer support for \nameref{def:Soft_Real_Time_System}s with their scheduling priorities.
+Note however, that pure priority-based algorithms only guarantee soft real-time functionality, not hard.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
