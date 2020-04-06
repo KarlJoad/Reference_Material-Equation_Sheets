@@ -179,6 +179,17 @@ In both, the system reclaims all resources previously allocated.
   This method incurs considerable overhead, since after each process is aborted, a deadlock-detection algorithm must be invoked to determine whether any processes are still deadlocked.
 \end{enumerate}
 
+Which one to choose depends on a variety of factors.
+\begin{itemize}[noitemsep]
+\item What the priority of the process is.
+\item How long the process has computed.
+\item How much longer the process will compute before completing its designated task.
+\item How many and what types of resources the process has used.
+\item How many more resources the process needs in order to complete.
+\item How many processes will need to be terminated.
+\item Whether the process is interactive or batch.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
