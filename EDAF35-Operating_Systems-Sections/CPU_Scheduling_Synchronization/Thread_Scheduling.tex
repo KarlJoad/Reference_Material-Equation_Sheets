@@ -68,6 +68,17 @@ We must ensure that no two processors schedule and execute the same task at the 
 However, if such a migration happens, the processor's cache must be invalidated from the origin and the destination cache must be populated.
 This is a very high cost to system productivity, so we attempt to keep a \nameref{def:Process}/\nameref{def:Thread} running on the same processor for as long as possible, this is known as \nameref{def:Processor_Affinity}.
 
+\begin{definition}[Processor Affinity]\label{def:Processor_Affinity}
+  \emph{Processor affinity} is the idea of keeping one \nameref{def:Process}/\nameref{def:Thread} running on the \textbf{same} processor for as long as possible.
+  This prevents relatively costly process migrations from becoming common.
+
+  There are 2 kinds of processor affinity:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Soft_Affinity}
+  \item \nameref{def:Hard_Affinity}
+  \end{enumerate}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
