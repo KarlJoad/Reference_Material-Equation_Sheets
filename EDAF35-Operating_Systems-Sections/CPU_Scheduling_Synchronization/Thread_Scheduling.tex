@@ -79,6 +79,11 @@ This is a very high cost to system productivity, so we attempt to keep a \namere
   \end{enumerate}
 \end{definition}
 
+\begin{definition}[Soft Affinity]\label{def:Soft_Affinity}
+  \emph{Soft affinity} is where \nameref{def:Processor_Affinity} is used, but no guarantees about the migration of a \nameref{def:Process} can be made.
+  The \nameref{def:Operating_System} will attempt to keep a process running on the same processor for as long as possible, but the process can still migrate between processors.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
