@@ -75,6 +75,13 @@ The worst-case CPU utilization for scheduling $N$ processes is shown in \Cref{eq
   N \left( 2^{\frac{1}{N}} -1 \right)
 \end{equation}
 
+\paragraph{Earliest-Deadline-First Scheduling}\label{par:Earliest_Deadline_First_Scheduling}
+\begin{definition}[Earliest-Deadline-First Scheduling]\label{def:Earliest_Deadline_First_Scheduling}
+  \emph{Earliest-Deadline-First scheduling} dynamically assigns priorities based on the deadlines of tasks.
+  The earlier/sooner the deadline, the higher the priority.
+  To ensure this works, when a process becomes runnable, it must announce its deadline requirement.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
