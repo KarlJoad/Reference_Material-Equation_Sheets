@@ -48,6 +48,13 @@ In an \nameref{def:Asymmetric_Multiprocessor_System}, one of the processors acts
 It runs the scheduler, allocating jobs to each of the slave worker processors.
 This reduces the need for data sharing, making coding and debugging such a thing much easier.
 
+The other approach, \nameref{def:Symmetric_Multiprocessor_System}, allows each processor to schedule itself.
+Tasks to execute may be in 2 types of queues:
+\begin{enumerate}[noitemsep]
+\item A common queue for all processors.
+\item A private queue, one for each processor.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
