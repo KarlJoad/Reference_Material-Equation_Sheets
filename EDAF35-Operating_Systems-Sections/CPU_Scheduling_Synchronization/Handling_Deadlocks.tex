@@ -17,6 +17,14 @@ In some circumstances, a system is in a frozen state but not in a deadlocked sta
   \emph{Deadlock prevention} is done by providing a set of methods that ensure any one of the \nameref{subsubsec:Deadlock_Conditions} cannot occur.
 \end{definition}
 
+\paragraph{Mutual Exclusion}\label{par:Deadlock_Prevention-Mutual_Exclusion}
+That is, at least one resource must be nonsharable.
+Sharable resources, in contrast, do not require mutually exclusive access and thus cannot be involved in a deadlock.
+A process never needs to wait for a sharable resource.
+
+Read-only files are a good example of a sharable resource.
+If several processes attempt to open a read-only file at the same time, they can be granted simultaneous access to the file.
+
 \subsubsection{Deadlock Avoidance}\label{subsubsec:Deadlock_Avoidance}
 \subsubsection{Deadlock Detection}\label{subsubsec:Deadlock_Detection}
 
