@@ -45,6 +45,26 @@ The process will be restarted only when it can regain its old resources, as well
 This protocol is often applied to resources whose state can be easily saved and restored later, such as CPU registers and memory space.
 It cannot generally be applied to such resources as mutex locks and semaphores.
 
+\paragraph{Circular Wait}\label{par:Deadlock_Prevention-Circular_Wait}
+One way to ensure that this condition never holds is to impose a total ordering of all resource types and to require that each process requests resources in an increasing order of enumeration.
+Possible side effects of preventing deadlocks are low device utilization and reduced system throughput.
+
+Formally, we define a one-to-one function
+\begin{equation*}
+F: R \rightarrow \NaturalNumbers
+\end{equation*}
+where $R$ is the set of resources and  $\NaturalNumbers$ is the set of natural numbers.
+
+Each process can request resources only in an increasing order of enumeration.
+Meaning, a process can initially request any number of instances of a resource type, $R_{i}$.
+After that, the process can request instances of resource type $R_{j}$ if and only if $F(R_{j}) > F(R_{i})$.
+This could be similarly defined using a more generous comparison; a process can request instances of resource type $R_{j}$ if and only if $F(R_{j}) \geq F(R_{i})$.
+
+\begin{blackbox}
+  Keep in mind that developing an ordering, or hierarchy, does not in itself prevent deadlock.
+  It is up to application developers to write programs that follow the ordering.
+\end{blackbox}
+
 \subsubsection{Deadlock Avoidance}\label{subsubsec:Deadlock_Avoidance}
 \subsubsection{Deadlock Detection}\label{subsubsec:Deadlock_Detection}
 
