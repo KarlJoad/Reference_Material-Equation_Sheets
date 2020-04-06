@@ -63,6 +63,11 @@ We must ensure that no two processors schedule and execute the same task at the 
   These are more commonly in use in the desktop space and are more interesting to discuss.
 \end{blackbox}
 
+\subsubsection{Processor Affinity}\label{subsubsec:Processor_Affinity}
+\nameref{def:Process}es/\nameref{def:Thread}s can migrate between processors, no matter the type of multiprocessor system used.
+However, if such a migration happens, the processor's cache must be invalidated from the origin and the destination cache must be populated.
+This is a very high cost to system productivity, so we attempt to keep a \nameref{def:Process}/\nameref{def:Thread} running on the same processor for as long as possible, this is known as \nameref{def:Processor_Affinity}.
+
 
 %%% Local Variables:
 %%% mode: latex
