@@ -149,6 +149,11 @@ The rise of multicore processors has also lead to the rise of hardware threads.
 This is because a \nameref{def:CPU} spends much of its execution time waiting for \nameref{def:Memory} and its contents to become available.
 When a CPU waits for memory to returns its contents, it is called a \nameref{def:Memory_Stall}.
 
+\begin{definition}[Memory Stall]\label{def:Memory_Stall}
+  A \emph{memory stall} is when a CPU must go to memory to retrieve a value.
+  This could happen because of a cache miss, for instance.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
