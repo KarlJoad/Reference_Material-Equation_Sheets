@@ -45,6 +45,20 @@ If a process requests a resource that is currently allocated to another process,
   A set of \nameref{def:Process}es is in a \nameref{def:Deadlock}ed state when every process in the set is waiting for an event that can be caused only by another process in the set.
 \end{blackbox}
 
+\subsubsection{Conditions for Deadlocks}\label{subsubsec:Deadlock_Conditions}
+A deadlock situation can arise if the following \textbf{four conditions hold simultaneously} in a system:
+\begin{enumerate}[noitemsep]
+\item Mutual exclusion.
+  At least one resource must be held in a nonsharable mode; that is, only one process at a time can use the resource.
+  If another process requests that resource, the requesting process must be delayed until the resource has been released.
+\item Hold and wait.
+  A process must be holding at least one resource and waiting to acquire additional resources that are currently being held by other processes.
+\item No preemption.
+  Resources cannot be preempted, so, a resource can be released voluntarily only by the process holding it, after that process has completed its task.
+\item Circular wait.
+  A set $\lbrace P_{0}, P_{1}, \ldots, P_{n} \rbrace$ of waiting processes must exist such that $P_{0}$ is waiting for a resource held by $P_{1}$, $P_{1}$ is waiting for a resource held by $P_{2}$, $\ldots$, $P_{n-1}$ is waiting for a resource held by $P_{n}$, and $P_{n}$ is waiting for a resource held by $P_{0}$.
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
