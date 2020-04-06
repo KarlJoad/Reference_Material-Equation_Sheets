@@ -157,6 +157,18 @@ Resources allocated to deadlocked processes will be idle until the deadlock can 
 If deadlocks occur frequently, then the detection algorithm should be invoked frequently.
 In addition, the number of processes involved in the deadlock cycle may grow.
 
+\subsubsection{Deadlock Recovery}\label{subsubsec:Deadlock_Recovery}
+When a detection algorithm determines that a deadlock exists, several alternatives are available.
+\begin{enumerate}[noitemsep]
+\item One possibility is to inform the operator that a \nameref{def:Deadlock} has occurred and to let the operator deal with the \nameref{def:Deadlock} manually.
+\item Another possibility is to let the system recover from the \nameref{def:Deadlock} automatically.
+  There are two options for breaking a \nameref{def:Deadlock}.
+  \begin{enumerate}[noitemsep]
+  \item Simply abort one or more processes to break the circular wait.
+  \item Preempt some resources from one or more of the \nameref{def:Deadlock}ed processes.
+  \end{enumerate}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
