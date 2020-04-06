@@ -30,6 +30,14 @@ This is called \nameref{def:Event_Latency}.
   Different events can have different event latency requirements.
 \end{definition}
 
+There are 2 factors that affect \nameref{def:Event_Latency}.
+\begin{enumerate}[noitemsep]
+\item Interrupt Latency.
+  The amount of time from the arrival of an \nameref{def:Interrupt} to the start of the Interrupt Service Routine (ISR).
+  This includes the amount of time needed to get the currently running instruction to a point where it can be switched.
+  Also included is the amount of time needed to perform the switch.
+\item Dispatch Latency the amount of time the scheduler needs to stop one process and start another.
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
