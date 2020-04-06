@@ -116,6 +116,11 @@ This forms the basis of \nameref{def:Load_Balancing}.
   \item \nameref{def:Pull_Migration}
   \end{enumerate}
 
+  \begin{remark}[Common vs. Private Queues]\label{rmk:Load_Balancing_Common_Private_Queues}
+    Like stated earlier in this section, some multiprocessor designs use a common task queue for all processors, and others use private queues for each individual processor.
+    In the case of a common queue, then \nameref{def:Load_Balancing} is unnecessary, because each processor will extract a job from the common queue.
+    \nameref{def:Load_Balancing} is only necessary on systems that use private queues, which most multiprocessors today use to some extent.
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
