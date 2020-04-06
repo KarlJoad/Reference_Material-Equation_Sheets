@@ -113,6 +113,14 @@ If no such sequence exists, then the system state is said to be \emph{unsafe}.
   Not all unsafe states are deadlocks, however.
 \end{blackbox}
 
+\paragraph{Resource Allocation Graph Algorithm}\label{par:Deadlock_Avoidance-Resource_Allocation_Graph}
+If we have a resource-allocation system \textbf{with only one} instance of each resource type, we can use a variant of the resource-allocation graph.
+The resources must be claimed a priori in the system.
+
+We introduce a new type of edge, called a claim edge.
+A claim edge $P_{i} \rightarrow R_{j}$ indicates that process $P_{i}$ may request resource $R_{j}$ at some time in the future.
+Before process $P_{i}$ starts executing, all its claim edges must already appear in the resource-allocation graph.
+
 \subsubsection{Deadlock Detection}\label{subsubsec:Deadlock_Detection}
 
 %%% Local Variables:
