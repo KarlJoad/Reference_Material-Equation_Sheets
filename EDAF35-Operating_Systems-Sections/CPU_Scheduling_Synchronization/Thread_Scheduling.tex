@@ -157,6 +157,10 @@ When a CPU waits for memory to returns its contents, it is called a \nameref{def
 By having multiple hardware threads, when one of the threads has a \nameref{def:Memory_Stall}, the other thread can take over execute while the first waits for the memory to be returned.
 These are called \emph{logical processors}.
 
+\begin{blackbox}
+  Each of these logical processors appears to the \nameref{def:Operating_System} as a separate physical CPU.\@
+\end{blackbox}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
