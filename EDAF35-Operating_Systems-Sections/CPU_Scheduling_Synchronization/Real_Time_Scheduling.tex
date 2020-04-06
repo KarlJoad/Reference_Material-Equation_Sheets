@@ -86,6 +86,13 @@ Unlike \nameref{def:Rate_Monotonic_Scheduling}, \nameref{def:Earliest_Deadline_F
 EDF is theoretically optimal; it can schedule processes so that each process can meet its deadline requirements and CPU utilization will be 100 percent.
 However, it is impossible to achieve this due to the cost of \nameref{def:Context_Switch}ing between \nameref{def:Process}es and \nameref{def:Interrupt} handling.
 
+\paragraph{Proportional Share Scheduling}\label{par:Proportional_Share_Scheduling}
+\begin{definition}[Proportional Share Scheduling]\label{def:Proportional_Share_Scheduling}
+  In \emph{proportional share scheduling}, the CPU execution time is split into $T$ shares of time.
+  Each application receives $N$ shares of that $T$, $\frac{N}{T}$ shares of total processing time.
+  In addition to this, there needs to be an admission-control policy to guarantee that an application is run only if there are enough time slots for the process to execute.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
