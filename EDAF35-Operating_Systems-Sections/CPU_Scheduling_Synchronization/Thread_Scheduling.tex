@@ -12,6 +12,10 @@ On systems implementing the \nameref{subsubsec:Many_To_One_Model} (\Cref{subsubs
   \emph{Process-Contention Scope} is where each of the \nameref{def:Thread}s \textbf{WITHIN A SINGLE \nameref{def:Process}} compete with each other for execution.
 \end{definition}
 
+In \nameref{def:Process_Contention_Scope}, the \nameref{def:Thread_Library} schedules the \nameref{def:User_Thread}s onto available \nameref{def:Lightweight_Process}es, or directly onto \nameref{def:Kernel_Thread}s.
+However, this does not mean that the \nameref{def:User_Thread} are being scheduled for execution.
+For that to happen, the \nameref{def:Kernel} must be involved.
+
 
 %%% Local Variables:
 %%% mode: latex
