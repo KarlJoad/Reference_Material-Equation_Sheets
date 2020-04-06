@@ -98,6 +98,20 @@ In \Cref{fig:Resource_Allocation_Graph}, there are:
   \end{itemize}
 \end{itemize}
 
+Given the definition of a resource-allocation graph, if the graph contains no cycles, then no process in the system is \nameref{def:Deadlock}ed.
+If the graph does contain a cycle, then a \nameref{def:Deadlock} may exist.
+\begin{itemize}[noitemsep]
+\item If each resource type has exactly one instance, then a cycle implies that a \nameref{def:Deadlock} has occurred.
+  \begin{itemize}[noitemsep]
+  \item In this case, a cycle in the graph is both a necessary and a sufficient condition for the existence of \nameref{def:Deadlock}.
+  \end{itemize}
+\item If each resource type has several instances, then a cycle does not necessarily imply that a \nameref{def:Deadlock} has occurred.
+  \begin{itemize}[noitemsep]
+  \item In this case, a cycle in the graph is a necessary but not a sufficient condition for the existence of \nameref{def:Deadlock}.
+  \item This is illustrated by \Crefrange{subfig:Resource_Allocation_Graph-Cycle_Deadlock}{subfig:Resource_Allocation_Graph-Cycle_No_Deadlock}.
+  \end{itemize}
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
