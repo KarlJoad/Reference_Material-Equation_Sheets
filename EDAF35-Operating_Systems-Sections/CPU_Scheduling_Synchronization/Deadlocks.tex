@@ -37,6 +37,14 @@ Under the normal mode of operation, a process may utilize a resource in only the
   The process releases the resource.
 \end{enumerate}
 
+For each use of a \nameref{def:Kernel}-managed resource by a \nameref{def:Process} or \nameref{def:Thread}, the \nameref{def:Operating_System} checks to make sure that the process has requested and has been allocated the resource.
+A system table records whether each resource is free or allocated.
+For each resource that is allocated, the table also records the process to which it is allocated.
+If a process requests a resource that is currently allocated to another process, it can be added to a queue of processes waiting for this resource.
+\begin{blackbox}
+  A set of \nameref{def:Process}es is in a \nameref{def:Deadlock}ed state when every process in the set is waiting for an event that can be caused only by another process in the set.
+\end{blackbox}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
