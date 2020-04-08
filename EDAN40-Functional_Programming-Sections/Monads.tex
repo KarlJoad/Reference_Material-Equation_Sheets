@@ -17,6 +17,10 @@ These side effects and their functionality are handled by \nameref{def:Monad}s i
 
 \begin{definition}[Monad]\label{def:Monad}
   \emph{Monads} are fairly unique to Haskell.
+  They represent a way to support side-effect creating operations in the purely functional language.
+
+  One example of a monad is the \texttt{IO} typeclass.
+  In most type signatures, monadic elements are indicated with an \texttt{m}.
 \end{definition}
 
 %%% Local Variables:
