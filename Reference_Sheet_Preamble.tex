@@ -81,6 +81,11 @@ citestyle=authoryear]{biblatex} % Must include citation somewhere in document to
 % [newlistname, LevelsToApplyTo]{formatting options}
 \setlist[boldalphlist, 1]{label=\textbf{(\alph*)}, ref=\alph*, noitemsep, nolistsep} % Set options
 
+\newlist{nocrefenumerate}{enumerate}{1} % {Name}{Template}{Max Depth}
+% [newlistname, LevelsToApplyTo]{formatting options}
+\setlist[nocrefenumerate, 1]{label=(\arabic*), ref=(\arabic*), noitemsep, nolistsep}
+
+% Create a list that allows for deeper nesting of numbers. By default enumerate only allows depth=4.
 \newlist{nestednums}{enumerate}{6}
 % [newlistname, LevelsToApplyTo]{formatting options}
 \setlist[nestednums]{noitemsep, label*=\arabic*.}
