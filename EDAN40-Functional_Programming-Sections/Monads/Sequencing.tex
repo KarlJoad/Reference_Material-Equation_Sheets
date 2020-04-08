@@ -14,6 +14,20 @@ f >>= g = \world -> case f world of
 
 In words, we apply the action \texttt{f} to the current world, then apply the function \texttt{g} to the result value and the modified world as a second action, yielding the final result.
 
+Using the \texttt{do}-notation allows us to use the ``then'' or ``bind'' operator without having to type it in that fashion.
+In addition, \texttt{do}-notation is syntactic sugar for a special case of a \texttt{where} block.
+An example of using \texttt{do}-notation is shown in \Cref{lst:Do_Notation_Example}.
+
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+getChar :: IO Char
+getChar = do x <- getCh -- Gets character from KBD without echoing to screen
+             putChar x
+             return x
+\end{haskellsource}
+\caption{\texttt{do}-Notation Example}
+\label{lst:Do_Notation_Example}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
