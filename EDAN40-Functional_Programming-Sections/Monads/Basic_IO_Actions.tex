@@ -29,6 +29,17 @@ putChar c = ...
 \end{listing}
 The actual definition for \texttt{putChar} is built-in to the particular Haskell system you are using, and cannot be defined within Haskell itself.
 
+The \texttt{return v} action, (Action~\ref{act:IO_return}) simply returns the result value \texttt{v} without performing any interaction.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+return :: a -> IO a
+return v = \world -> (v, world)
+\end{haskellsource}
+\caption{\texttt{return} Type Signature}
+\label{lst:IO_return_Type}
+\end{listing}
+\texttt{return} provides a bridge from the setting of pure expressions without side effects to that of impure actions with side effects.
+
 
 %%% Local Variables:
 %%% mode: latex
