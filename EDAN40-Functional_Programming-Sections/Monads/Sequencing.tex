@@ -1,4 +1,19 @@
 \subsection{Sequencing}\label{subsec:Sequencing}
+The natural way of combining two actions is to perform one after the other in sequence, with the modified world returned by the first action becoming the current world for the second, by means of a sequencing operator, read as ``then''.
+It is defined in \Cref{lst:Then_Operator_Definition}.
+
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+(>>=) :: m a -> (a -> m b) -> m b
+f >>= g = \world -> case f world of
+                         (v, world') -> g v world'
+\end{haskellsource}
+\caption{\haskellinline{>>=} Operator Definition}
+\label{lst:Then_Operator_Definition}
+\end{listing}
+
+In words, we apply the action \texttt{f} to the current world, then apply the function \texttt{g} to the result value and the modified world as a second action, yielding the final result.
+
 
 %%% Local Variables:
 %%% mode: latex
