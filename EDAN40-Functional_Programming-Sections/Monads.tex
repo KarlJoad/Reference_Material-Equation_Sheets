@@ -28,6 +28,9 @@ We generalise the type for interactive programs to also return a result value, w
 type IO a = World -> (a, World)
 \end{haskellsource}
 
+Expressions of type \haskellinline{IO a} are called actions.
+For example, \haskellinline{IO Char} is the type of actions that return a character, while \haskellinline{IO ()} is the type of actions that return the empty tuple \texttt{()} as a dummy result value.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAN40-Functional_Programming-Reference_Sheet"
