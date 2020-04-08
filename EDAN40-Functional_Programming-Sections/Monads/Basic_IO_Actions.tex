@@ -18,6 +18,17 @@ getChar = ...
 \end{listing}
 The actual definition for \texttt{getChar} is built-in to the particular Haskell system you are using, and cannot be defined within Haskell itself.
 
+The \texttt{putChar c} action, (Action~\ref{act:IO_putChar}) writes the character \texttt{c} to the screen, and returns no result value, represented by the empty tuple.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+putChar :: Char -> IO ()
+putChar c = ...
+\end{haskellsource}
+\caption{\texttt{putChar} Type Signature}
+\label{lst:IO_putChar_Type}
+\end{listing}
+The actual definition for \texttt{putChar} is built-in to the particular Haskell system you are using, and cannot be defined within Haskell itself.
+
 
 %%% Local Variables:
 %%% mode: latex
