@@ -40,6 +40,11 @@ return v = \world -> (v, world)
 \end{listing}
 \texttt{return} provides a bridge from the setting of pure expressions without side effects to that of impure actions with side effects.
 
+\begin{blackbox}
+  \textbf{Once we are impure we are impure for ever, with no possibility for redemption!}
+  As a result, we may suspect that impurity quickly permeates entire programs, but in practice this is usually not the case.
+  For most Haskell programs, the vast majority of functions do not involve interaction, and the relatively small number of those that do are at the outermost level.
+\end{blackbox}
 
 %%% Local Variables:
 %%% mode: latex
