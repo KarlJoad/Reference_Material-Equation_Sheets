@@ -23,6 +23,11 @@ These side effects and their functionality are handled by \nameref{def:Monad}s i
   In most type signatures, monadic elements are indicated with an \texttt{m}.
 \end{definition}
 
+We generalise the type for interactive programs to also return a result value, with the type of such values being a parameter of the \texttt{IO} (in this case) type:
+\begin{haskellsource}
+type IO a = World -> (a, World)
+\end{haskellsource}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAN40-Functional_Programming-Reference_Sheet"
