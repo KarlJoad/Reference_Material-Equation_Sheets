@@ -6,6 +6,18 @@ There are 3 main actions in the \texttt{IO} monadic typeclass that are useful fo
 \item \haskellinline{return}\label{act:IO_return}
 \end{nocrefenumerate}
 
+The \texttt{getChar} action, (Action~\ref{act:IO_getChar}) reads a character from the keyboard, echoes it to the screen, and returns the character as its result value.
+If there are no characters waiting to be read from the keyboard, \texttt{getChar} waits until one is typed.
+\begin{listing}[h!tbp]
+\begin{haskellsource}
+getChar :: IO Char
+getChar = ...
+\end{haskellsource}
+\caption{\texttt{getChar} Type Signature}
+\label{lst:IO_getChar_Type}
+\end{listing}
+The actual definition for \texttt{getChar} is built-in to the particular Haskell system you are using, and cannot be defined within Haskell itself.
+
 
 %%% Local Variables:
 %%% mode: latex
