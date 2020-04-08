@@ -1,4 +1,18 @@
 \subsection{Derived Primitives}\label{subsec:Derived_Primitives}
+We can perform actions on \nameref{def:Monad}s quite similarly to the way we operate on other \nameref{def:Type}s in Haskell.
+We can extend the basic ones and get more complex ones as we go.
+Here, we introduce 3 more monadic functions that use the \texttt{IO} \nameref{def:Monad} to perform many operations that are useful for interaction.
+\begin{enumerate}[noitemsep]
+\item \haskellinline{getLine}\label{act:IO_getLine}
+  The definition of the \texttt{getLine} function is shown in \Cref{lst:IO_getLine_Definition}.
+\end{enumerate}
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Monads/Code/IO_getLine_Definition.hs}
+\caption{\texttt{getLine} Definition}
+\label{lst:IO_getLine_Definition}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
