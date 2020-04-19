@@ -108,15 +108,15 @@ The biggest change in the Core Network was the introduction of 2 different domai
   \begin{itemize}[noitemsep]
   \item Minimum Guaranteed Bitrate (GBR)
     \begin{itemize}[noitemsep]
-    \item Dedicated resources permanently allocated at bearer establishment
-    \item Higher bitrates may be allowed when resources are available
+    \item Dedicated resources permanently allocated at bearer establishment.
+    \item Higher bitrates may be allowed when resources are available.
     \end{itemize}
 
   \item Non-GBR, e.g. FTP, web browsing
     \begin{itemize}[noitemsep]
-    \item Best effort service
-    \item No resources allocated
-    \item QoS class identifier (QCI): priority, packet delay budget, acceptable packet loss rate
+    \item Best effort service.
+    \item No resources allocated, resources only given on demand from what is currently available (not currently consumed by GBR content).
+    \item QoS class identifier (QCI): priority, packet delay budget, acceptable packet loss rate.
     \end{itemize}
   \end{itemize}
 \end{definition}
