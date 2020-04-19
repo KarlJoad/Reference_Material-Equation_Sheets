@@ -77,7 +77,17 @@ A single base station and its subsystems can handle many different \nameref{def:
 \end{definition}
 
 \subsubsection{UMTS (3G)}\label{subsubsec:3G}
-Used \nameref{def:CDMA}
+Really, the biggest difference in UMTS is that it used \nameref{def:CDMA} instead of \nameref{def:TDMA}/\nameref{def:FDMA}.
+This did require a re-engineering of the Radio Access Network (RAN), called \emph{UTRAN} or \emph{UMTS Terrestrial Radio Access Network}.
+However, most of the Core Network (CN) was unchanged from GSM.\@
+
+The biggest change in the Core Network was the introduction of 2 different domains:
+\begin{enumerate}[noitemsep]
+\item Circuit Switched Domain (CSD), for voice data.
+  This information was routed with circuit switching, and the same CN as in GSM.\@
+\item Packet Switched Domain (PSD), for Internet-bound data packets.
+  This information was allowed to be packet switched.
+\end{enumerate}
 
 \subsubsection{LTE (4G)}\label{subsubsec:4G}
 \begin{definition}[LTE]\label{def:LTE}
