@@ -47,6 +47,17 @@ This is how most programs are written and executed.
 If you change something in a C program, you must recompile and reload the program to have the changes take effect.
 
 \subsubsection{Execution-Time Address Binding}\label{subsubsec:Execution_Time_Address_Binding}
+If the process can be moved during its execution from one memory segment to another, then binding must be delayed until run time.
+Special hardware must be available for this scheme to work.
+Most general-purpose operating systems use this method.
+
+There are 4 major items that affect how this works:
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Dynamic_Loading}
+\item \nameref{def:Dynamic_Linking}
+\item \nameref{def:Swapping}
+\item \nameref{def:Paging}
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
