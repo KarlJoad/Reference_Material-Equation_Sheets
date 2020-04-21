@@ -1,6 +1,11 @@
 \section{Main Memory}\label{sec:Main_Memory}
 To truly benefit from \nameref{sec:CPU_Scheduling_Synchronization}, discussed in \Cref{sec:CPU_Scheduling_Synchronization}, we must be able to keep multiple \nameref{def:Process}es in memory at the same time.
 
+In a \nameref{def:CPU}, the only things that can be accessed directly are \nameref{def:Register}s and main memory.
+The CPU can reach the registers within one clock cycle, but accessing main memory takes several clock cycles, because access is done through the memory bus.
+To prevent \nameref{def:Memory_Stall}s, we can use multiple \nameref{def:Thread}s, and we can add additional \nameref{def:Cache}s to the CPU itself.
+This \nameref{def:Hardware} automatically speeds up memory access, without \nameref{def:Operating_System} intervention.
+
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Address_Binding}
 
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Logical_Physical_Virtual_Address_Spaces}
