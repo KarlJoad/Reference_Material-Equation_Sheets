@@ -16,6 +16,15 @@ Not only do we want our memory and its access to be fast, we also want to make s
 For proper system operation we must protect the operating system from access by user processes.
 On multiuser systems, we must additionally protect user processes from one another.
 This protection must be provided by the hardware because the operating system doesn’t usually intervene between the CPU and its memory accesses (because of the resulting performance penalty).
+A \nameref{def:Memory_Management_Unit} implements this production, in hardware, in several different possible ways.
+
+\begin{definition}[Memory Management Unit]\label{def:Memory_Management_Unit}
+  The \emph{Memory Management Unit} (\emph{MMU}) is a piece of hardware built onto a \nameref{def:CPU} (See \Cref{rmk:MMU_Location}).
+  It is the main controller for all main memory accesses made by a CPU.\@
+
+  It handles the run-time mapping from \nameref{def:Virtual_Address}es to \nameref{def:Physical_Address}es.
+\end{definition}
+
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Address_Binding}
 
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Logical_Physical_Virtual_Address_Spaces}
