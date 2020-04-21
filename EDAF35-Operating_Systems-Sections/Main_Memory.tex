@@ -34,6 +34,13 @@ To ensure that everything works, the first thing that needs to be done is to sep
 This protects the processes from each other and is fundamental to having multiple processes loaded in memory for concurrent execution.
 To separate memory spaces, we need the ability to determine the range of legal addresses that the process may access and to ensure that the process can access only these legal addresses.
 
+The simplest version of this protection can be realized by using two registers, usually a \texttt{base} and a \texttt{limit}.
+The base register holds the smallest legal physical memory address; the limit register specifies the size of the range.
+Thus, to find the largest legal physical memory address, we must add the limit register's value to the base register's.
+The only way these registers can be loaded is by using a special, privileged, instruction.
+Since privileged instructions can only be executed in \nameref{def:Kernel}-mode, only the \nameref{def:Operating_System} can load the base and limit registers.
+This allows only the OS to change the value of these registers, and not any \nameref{def:User}-\nameref{def:Process}es.
+
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Address_Binding}
 
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Logical_Physical_Virtual_Address_Spaces}
