@@ -27,6 +27,11 @@ If the addresses that the \nameref{def:Process} will use are known at compile-ti
   In \emph{absolute code}, the memory location of the \nameref{def:Process} is fixed during every execution, and because the \nameref{def:Program} is always the same size, anything that requires a memory can be referenced by this unchanging value.
 \end{definition}
 
+If, at some later time, the starting location changes, then the whole program must be recompiled.
+In the case of assembly languages, this might mean recalculating the absolute memory locations of everything in the program.
+
+These reasons led to the developement of relative addressing in assembly languages and the use of \nameref{subsubsec:Load_Time_Address_Binding}.
+
 \subsubsection{Load-Time Address Binding}\label{subsubsec:Load_Time_Address_Binding}
 \subsubsection{Execution-Time Address Binding}\label{subsubsec:Execution_Time_Address_Binding}
 
