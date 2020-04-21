@@ -33,6 +33,14 @@ In the case of assembly languages, this might mean recalculating the absolute me
 These reasons led to the developement of relative addressing in assembly languages and the use of \nameref{subsubsec:Load_Time_Address_Binding}.
 
 \subsubsection{Load-Time Address Binding}\label{subsubsec:Load_Time_Address_Binding}
+If it is not known at compile time where the process will reside in memory, then the compiler must generate \nameref{def:Relocatable_Code}.
+
+\begin{definition}[Relocatable Code]\label{def:Relocatable_Code}
+  \emph{Relocatable code} uses relative addressing from certain known points.
+  For example, a compiler will know that to access some variable \texttt{x}, the location where \texttt{x} is stored in memory is 14 bytes past the beginning of the function's start of the frame.
+  Thus, if the starting address of the function changes, the code only needs to be reloaded to find a newly changed value.
+\end{definition}
+
 \subsubsection{Execution-Time Address Binding}\label{subsubsec:Execution_Time_Address_Binding}
 
 %%% Local Variables:
