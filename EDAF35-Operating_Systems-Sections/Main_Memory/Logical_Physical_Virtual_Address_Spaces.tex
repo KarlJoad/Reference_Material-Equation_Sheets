@@ -9,6 +9,14 @@ The compile-time and load-time address-binding methods generate identical logica
   The memory-mapping hardware converts logical addresses into \nameref{def:Physical_Address}es.
 \end{definition}
 
+\begin{definition}[Physical Address]\label{def:Physical_Address}
+  The \emph{physical address} is the actual value of a particular byte of memory's address.
+  How the physical address is calculated from the \nameref{def:Logical_Address} is handled by the \nameref{def:Memory_Management_Unit}.
+
+  The user program deals with \nameref{def:Logical_Address}es.
+  The memory-mapping hardware converts logical addresses into physical addresses.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
