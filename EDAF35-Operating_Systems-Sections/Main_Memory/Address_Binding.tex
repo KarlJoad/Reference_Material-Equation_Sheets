@@ -41,6 +41,11 @@ If it is not known at compile time where the process will reside in memory, then
   Thus, if the starting address of the function changes, the code only needs to be reloaded to find a newly changed value.
 \end{definition}
 
+In this case, the final binding of ``stuff'' to memory addresses is delayed until load time.
+If the starting address changes, the user code only needs to be reloaded to incorporate this changed value.
+This is how most programs are written and executed.
+If you change something in a C program, you must recompile and reload the program to have the changes take effect.
+
 \subsubsection{Execution-Time Address Binding}\label{subsubsec:Execution_Time_Address_Binding}
 
 %%% Local Variables:
