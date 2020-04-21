@@ -35,6 +35,12 @@ This way, we only need to swap what is actually used, thereby reducing swap time
 For this method to be effective, the user \textbf{must} keep the system informed of any changes in memory requirements.
 Thus, a process with dynamic memory requirements will need to issue system calls (\kernelinline{request_memory()} and \kernelinline{release_memory()}) informing the \nameref{def:Operating_System} of its changing memory needs.
 
+\nameref{def:Swapping} is constrained by other factors as well.
+\textbf{If we want to swap a process, we must be sure that it is COMPLETELY idle.}
+Of particular concern is any pending I/O.
+A process may be waiting for an I/O operation when we want to swap that process to the \nameref{def:Backing_Store}.
+However, if the I/O is asynchronously accessing user memory for I/O buffers, then the process cannot be swapped.
+
 
 %%% Local Variables:
 %%% mode: latex
