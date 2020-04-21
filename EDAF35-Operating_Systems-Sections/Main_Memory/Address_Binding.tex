@@ -21,6 +21,12 @@ There are 3 major times when \nameref{def:Address_Binding} can occur:
 \end{enumerate}
 
 \subsubsection{Compile-Time Address Binding}\label{subsubsec:Compile_Time_Address_Binding}
+If the addresses that the \nameref{def:Process} will use are known at compile-time, then \nameref{def:Absolute_Code} can be generated.
+
+\begin{definition}[Absolute Code]\label{def:Absolute_Code}
+  In \emph{absolute code}, the memory location of the \nameref{def:Process} is fixed during every execution, and because the \nameref{def:Program} is always the same size, anything that requires a memory can be referenced by this unchanging value.
+\end{definition}
+
 \subsubsection{Load-Time Address Binding}\label{subsubsec:Load_Time_Address_Binding}
 \subsubsection{Execution-Time Address Binding}\label{subsubsec:Execution_Time_Address_Binding}
 
