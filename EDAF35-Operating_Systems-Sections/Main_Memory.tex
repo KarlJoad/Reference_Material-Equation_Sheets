@@ -6,6 +6,12 @@ The CPU can reach the registers within one clock cycle, but accessing main memor
 To prevent \nameref{def:Memory_Stall}s, we can use multiple \nameref{def:Thread}s, and we can add additional \nameref{def:Cache}s to the CPU itself.
 This \nameref{def:Hardware} automatically speeds up memory access, without \nameref{def:Operating_System} intervention.
 
+\begin{definition}[Cache]\label{def:Cache}
+  A \emph{cache} is a very small amount of memory, built onto the \nameref{def:CPU} itself, and acts as a buffer between the CPU and main memory.
+  A cache will have a copy of a small portion of what is in main memory, and the CPU goes to find the next thing, whatever it may be, from the cache first.
+  Because the cache sits on the CPU itself, and does not have to interact with the memory bus, it is significantly faster than accessing main memory, but still slightly slower than accessing a register.
+\end{definition}
+
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Address_Binding}
 
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Logical_Physical_Virtual_Address_Spaces}
