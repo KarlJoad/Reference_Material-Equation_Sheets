@@ -53,6 +53,13 @@ The set of all \nameref{def:Physical_Address}es corresponding to these logical a
   \end{remark}
 \end{definition}
 
+Thus, in the execution-time address-binding scheme, the logical and physical address spaces differ.
+The \nameref{def:Memory_Management_Unit} handles the mapping of the \nameref{def:Virtual_Address_Space}/\nameref{def:Logical_Address_Space} to the \nameref{def:Physical_Address_Space}.
+The \nameref{def:Program} generates only \nameref{def:Logical_Address}es and thinks that the \nameref{def:Process} runs in memory locations from $0$ to $max$.
+
+For example, assume a \nameref{def:Process}'s base register, for the lowest valid memory address is $R$.
+If we wanted to access the 14th byte from the beginning of the \nameref{def:Process}, the CPU would attempt to retrieve $14$, the \nameref{def:Logical_Address}.
+However, on the way to memory, the \nameref{def:Memory_Management_Unit} would intercept this and redirect the access to $R+14$, the \nameref{def:Physical_Address}.
 
 %%% Local Variables:
 %%% mode: latex
