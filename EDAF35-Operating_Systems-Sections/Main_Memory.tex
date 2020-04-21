@@ -23,6 +23,11 @@ A \nameref{def:Memory_Management_Unit} implements this production, in hardware, 
   It is the main controller for all main memory accesses made by a CPU.\@
 
   It handles the run-time mapping from \nameref{def:Virtual_Address}es to \nameref{def:Physical_Address}es.
+
+  \begin{remark}[MMU Location]\label{rmk:MMU_Location}
+    The location of the \nameref{def:Memory_Management_Unit} is \textbf{typically} on the CPU.\@
+    This holds true for modern CPUs, however, older CPUs like the Motorola 68000 series have physically separate MMUs, which can be attached to the motherboard that the CPU sits on.
+  \end{remark}
 \end{definition}
 
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Address_Binding}
