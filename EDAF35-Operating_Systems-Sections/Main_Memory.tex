@@ -12,6 +12,10 @@ This \nameref{def:Hardware} automatically speeds up memory access, without \name
   Because the cache sits on the CPU itself, and does not have to interact with the memory bus, it is significantly faster than accessing main memory, but still slightly slower than accessing a register.
 \end{definition}
 
+Not only do we want our memory and its access to be fast, we also want to make sure that the memory and its contents are used correctly.
+For proper system operation we must protect the operating system from access by user processes.
+On multiuser systems, we must additionally protect user processes from one another.
+This protection must be provided by the hardware because the operating system doesn’t usually intervene between the CPU and its memory accesses (because of the resulting performance penalty).
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Address_Binding}
 
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Logical_Physical_Virtual_Address_Spaces}
