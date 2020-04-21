@@ -1,0 +1,58 @@
+\subsection{Dynamic Linking}\label{subsec:Dynamic_Linking}
+\nameref{def:Operating_System}s provide many useful libraries to allow programmers and their work to use higher-level abstractions to make their programming life easier.
+An example of this is a language library for localization, allowing a programmer to write their input and output statements in one language and it be translated to another automatically.
+
+To achieve this, \nameref{def:Dynamic_Linking} is used, and \nameref{def:Stubs} are generated during the compilation process to inform the running \nameref{def:Process} where to find the necessary information.
+
+\begin{definition}[Dynamic Linking]\label{def:Dynamic_Linking}
+  A \nameref{def:Program} that makes use of \emph{dynamic linking} is compiled like normal.
+  However, the library routines that would be provided by a \emph{dynamically linked library} (\emph{Shared Library}) are left as \nameref{def:Stub}s.
+  When the program begins execution, the \nameref{def:Process} executes like normal, potentially using \nameref{def:Dynamic_Loading} in the meantime.
+  However, once the \nameref{def:Process} reaches a \nameref{def:Stub}, it will: proceed like normal (if the stub is replaced by the actual code), or will fetch and load the routine, replace the stub, and then execute the routine.
+
+  \begin{remark}[Dynamic Linking vs. Dynamic Loading]\label{rmk:Dynamic_Linking_vs_Dynamic_Loading}
+    In \nameref{def:Dynamic_Linking}, a \nameref{def:Program} is compiled down to the machine code, with the \nameref{def:Stub}s in place, which are replaced \textbf{DURING} program execution.
+    This allows us to share a binary library file \textbf{BETWEEN DIFFERENT} \nameref{def:Program}s.
+    Whereas, in \nameref{def:Dynamic_Loading}, the code is brought in from memory from the \textbf{same} \nameref{def:Program} binary image.
+
+    This means that if an \nameref{def:Operating_System} did not support \nameref{def:Dynamic_Linking}, each \nameref{def:Program} that required a certain library must include it.
+    This leads to space inefficiencies on both the disk and in main memory.
+  \end{remark}
+\end{definition}
+
+\begin{definition}[Stub]\label{def:Stub}
+  A \emph{stub} is a small piece of code that indicates how to locate the appropriate memory-resident library routine or how to load the library if the routine is not already present.
+  A stub is included in the \nameref{def:Program}'s binary image \textbf{FOR EACH} library-routine reference.
+
+  When the stub is executed, it checks to see whether the needed routine is already in memory.
+  If it is not, the program loads the routine into memory and replaces the stub with the address of the routine and executes the routine.
+  Then, the next time that routine is reached, the routine is executed directly, incurring no cost for \nameref{def:Dynamic_Linking}.
+\end{definition}
+
+This feature can be extended to handle library updates (such as bug fixes).
+If a library is replaced by a new version, all programs that use that library will automatically use the new version.
+Without \nameref{def:Dynamic_Linking}, all such programs would need to be relinked to gain access to the new library.
+Version information is included in the \nameref{def:Program} and the library so that programs will not accidentally execute new, incompatible versions of libraries.
+Multiple versions of the same library may be loaded into memory, and each program uses its version information to decide which library to use.
+
+Unlike \nameref{def:Dynamic_Loading}, \nameref{def:Dynamic_Linking} and dynamically linked libraries require help from the \nameref{def:Operating_System}.
+If the \nameref{def:Process}es in memory are protected from one another, then the operating system is the only entity that can check all the \nameref{def:Processes}.
+Only the OS can:
+\begin{itemize}[noitemsep]
+\item See if the needed routine is in another process’s memory space.
+\item Allow multiple processes to access the same memory addresses.
+\end{itemize}
+
+\subsubsection{Static vs. Dynamic Linking}\label{subsubsec:Static_vs_Dynamic_Linking}
+As programmers, we are more familiar with \nameref{def:Static_Linking}; where a library is compiled \textbf{INTO} and assembled \textbf{WITH} our code \textbf{INTO} our executable binary image.
+
+\begin{definition}[Static Linking]\label{def:Static_Linking}
+  \emph{Static linking} is the act of running a linker after the compiler has generated \nameref{def:Stub}s for library routines.
+  By running the linker, the library's code is brought into our program before it is assembled.
+  This means that the library (and all the code supporting the library) is compiled \textbf{INTO} our binary image as well.
+\end{definition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
