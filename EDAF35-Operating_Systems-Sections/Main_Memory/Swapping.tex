@@ -7,6 +7,17 @@ This idea forms the basis of \nameref{def:Swapping}.
   \emph{Swapping} is the action of moving a \nameref{def:Process} out of memory to a \nameref{def:Backing_Store}, or vice versa.
 \end{definition}
 
+\begin{definition}[Backing Store]\label{def:Backing_Store}
+  A \emph{backing store} is another form of storage media.
+  There are typically very few requirements on the type of storage media used in a backing store, but it \textbf{MUST} be readily assessible, and be quick (not as fast as RAM, but faster than traditional file system storage).
+  Typically, a fast disk is used as the backing store.
+
+  \begin{remark}[Swap]\label{rmk:Swap}
+    Sometimes the \nameref{def:Backing_Store} is called \emph{the swap}, \emph{swap-area}, \emph{swap partition}, \emph{swapfile}, etc.
+    They all mean the same thing\footnote{Swap Partition and Swapfile have specify the type of the \nameref{def:Backing_Store}}.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
