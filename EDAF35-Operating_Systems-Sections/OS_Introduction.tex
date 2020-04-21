@@ -68,6 +68,9 @@ A computer system can be roughly divided into 4 parts.
       \end{itemize}
     \end{enumerate}
   \end{remark}
+
+  The operating system runs in \nameref{def:Kernel}-mode, meaning it is allowed to interact with every part of the system, without protection.
+  This allows the OS:\@ to load \nameref{def:User} programs into \nameref{def:User}-memory, to dump for errors, to perform I/O, to \nameref{def:Context_Switch} and store the information required for such a thing, and in general, function.
 \end{restatable}
 
 \begin{definition}[Kernel]\label{def:Kernel}
