@@ -6,6 +6,13 @@ Just as in programming languages, there are different possible times when a \nam
   Because these memory locations have unique addresses assigned to them, the ``something'' that was put there is bound to that memory address.
 \end{definition}
 
+For a \nameref{def:Program} to be executed, it must be brought into memory and placed within a \nameref{def:Process}.
+The processes that are waiting for their binary images to be brought to memory from the disk before beginning execution form the \nameref{def:Input_Queue}.
+
+\begin{definition}[Input Queue]\label{def:Input_Queue}
+  The \emph{input queue} is the queue in which \nameref{def:Process}es are placed while they wait for their \nameref{def:Program} binary image to arrive from the disk.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
