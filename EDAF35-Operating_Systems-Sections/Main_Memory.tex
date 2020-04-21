@@ -30,6 +30,10 @@ A \nameref{def:Memory_Management_Unit} implements this production, in hardware, 
   \end{remark}
 \end{definition}
 
+To ensure that everything works, the first thing that needs to be done is to separate each \nameref{def:Process} into its own memory space.
+This protects the processes from each other and is fundamental to having multiple processes loaded in memory for concurrent execution.
+To separate memory spaces, we need the ability to determine the range of legal addresses that the process may access and to ensure that the process can access only these legal addresses.
+
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Address_Binding}
 
 \input{./EDAF35-Operating_Systems-Sections/Main_Memory/Logical_Physical_Virtual_Address_Spaces}
