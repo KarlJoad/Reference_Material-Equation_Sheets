@@ -52,6 +52,12 @@ There are two main solutions to this problem:
   \end{itemize}
 \end{enumerate}
 
+Standard \nameref{def:Swapping} as described above is not used in modern operating systems.
+However, modified versions of swapping, are used on many systems.
+One common variation, is to disable swapping until the amount of free memory (unused memory available for the operating system or processes to use) falls below a threshold amount.
+Swapping is then halted when the amount of free memory increases again.
+Another variation involves swapping portions of processes, rather than the entire process, to decrease swap time.
+Typically, these modified forms of swapping work in conjunction with \nameref{def:Virtual_Memory}.
 
 %%% Local Variables:
 %%% mode: latex
