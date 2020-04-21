@@ -19,6 +19,18 @@ The compile-time and load-time address-binding methods generate identical logica
 
 However, the execution-time address-binding scheme results in differing logical and physical addresses, so we call the \nameref{def:Logical_Address} a \nameref{def:Virtual_Address} instead.
 
+\begin{definition}[Virtual Address]\label{def:Virtual_Address}
+  The CPU generates logical/\emph{virtual address}es.
+  How these virtual addresses look, behave, and correspond to \nameref{def:Physical_Address}es depend on the memory management technique used by the \nameref{def:Memory_Management_Unit}.
+
+  The user program deals with logical/virtual addresses.
+  The memory-mapping hardware converts logical/virtual addresses into \nameref{def:Physical_Address}es.
+
+  \begin{remark}[Use of Logical and Virtual Address]
+    In this document, I use \nameref{def:Logical_Address} and \nameref{def:Virtual_Address} interchangeably.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
