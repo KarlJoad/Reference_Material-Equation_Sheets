@@ -2,7 +2,7 @@
 \nameref{def:Operating_System}s provide many useful libraries to allow programmers and their work to use higher-level abstractions to make their programming life easier.
 An example of this is a language library for localization, allowing a programmer to write their input and output statements in one language and it be translated to another automatically.
 
-To achieve this, \nameref{def:Dynamic_Linking} is used, and \nameref{def:Stubs} are generated during the compilation process to inform the running \nameref{def:Process} where to find the necessary information.
+To achieve this, \nameref{def:Dynamic_Linking} is used, and \nameref{def:Stub}s are generated during the compilation process to inform the running \nameref{def:Process} where to find the necessary information.
 
 \begin{definition}[Dynamic Linking]\label{def:Dynamic_Linking}
   A \nameref{def:Program} that makes use of \emph{dynamic linking} is compiled like normal.
@@ -36,7 +36,7 @@ Version information is included in the \nameref{def:Program} and the library so 
 Multiple versions of the same library may be loaded into memory, and each program uses its version information to decide which library to use.
 
 Unlike \nameref{def:Dynamic_Loading}, \nameref{def:Dynamic_Linking} and dynamically linked libraries require help from the \nameref{def:Operating_System}.
-If the \nameref{def:Process}es in memory are protected from one another, then the operating system is the only entity that can check all the \nameref{def:Processes}.
+If the \nameref{def:Process}es in memory are protected from one another, then the operating system is the only entity that can check all the \nameref{def:Process}es.
 Only the OS can:
 \begin{itemize}[noitemsep]
 \item See if the needed routine is in another process’s memory space.
