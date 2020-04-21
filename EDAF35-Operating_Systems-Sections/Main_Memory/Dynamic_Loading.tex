@@ -1,0 +1,23 @@
+\subsection{Dynamic Loading}\label{subsec:Dynamic_Loading}
+Because of the way we have set up our memory and \nameref{def:Process}es before, a \nameref{def:Process} could only be as big as our physical memory.
+However, we can skirt these issues by using \nameref{def:Dynamic_Loading}.
+
+\begin{definition}[Dynamic Loading]\label{def:Dynamic_Loading}
+  \emph{Dynamic Loading} is used to load routines into memory only when needed.
+  The routines that can by dynamically loaded must be stored on disk in a \nameref{def:Relocatable_Code} format.
+  If the main program that was loaded in and began execution needs a routine, it checks to see if the routine has been loaded.
+  If it has not, the loader loads the desired routine into memory, then updates the \nameref{def:Process}'s address tables to point to the newly retrieved routine.
+\end{definition}
+
+The advantage of \nameref{def:Dynamic_Loading} is that a routine is loaded only when it is needed.
+This is particularly useful when large amounts of code are needed to handle infrequently occurring cases, such as error routines.
+This allows the total program size to be large, but the portion used (and hence loaded) be much smaller.
+
+\nameref{def:Dynamic_Loading} does not require special support from the operating system.
+It is the responsibility of the users to design their programs to take advantage of such a method.
+\nameref{def:Operating_System}s may help the programmer, however, by providing library routines to implement \nameref{def:Dynamic_Loading}.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
+%%% End:
