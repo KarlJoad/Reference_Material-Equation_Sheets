@@ -21,6 +21,15 @@ This idea forms the basis of \nameref{def:Swapping}.
 \nameref{def:Swapping} allows for the total \nameref{def:Physical_Address_Space} of \textbf{ALL} \nameref{def:Process}es to exceed the real physical memory of the system.
 However, the \nameref{def:Context_Switch} time in a swapping system is fairly high.
 
+The system maintains the ready queue consisting of all processes whose memory images are on the backing store or in memory and are ready to run.
+Whenever the CPU scheduler decides to execute a process, it calls the \nameref{def:Dispatcher}.
+The dispatcher checks to see where the next \nameref{def:Process} is.
+\begin{itemize}[noitemsep]
+\item If the process is in memory, the dispatcher will reload registers and transfer control, like normal.
+\item If the process is in the swap, the dispatcher will swap the selected process into memory, reload registers, and transfer control.
+\item If the process is in the swap, \textbf{and} if there is no free memory region, the dispatcher swaps out a process currently in memory and swaps in the desired process, reloads registers, and transfers control.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
