@@ -1,6 +1,14 @@
 \subsection{Logical, Physical, Virtual Address Spaces}\label{subsec:Logical_Physical_Virtual_Address_Space}
 The compile-time and load-time address-binding methods generate identical logical and physical addresses.
 
+\begin{definition}[Logical Address]\label{def:Logical_Address}
+  The CPU generates virtual/\emph{logical address}es.
+  How these logical addresses look, behave, and correspond to \nameref{def:Physical_Address}es depend on the memory management technique used by the \nameref{def:Memory_Management_Unit}.
+
+  The user program deals with logical addresses.
+  The memory-mapping hardware converts logical addresses into \nameref{def:Physical_Address}es.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
