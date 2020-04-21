@@ -41,6 +41,17 @@ Of particular concern is any pending I/O.
 A process may be waiting for an I/O operation when we want to swap that process to the \nameref{def:Backing_Store}.
 However, if the I/O is asynchronously accessing user memory for I/O buffers, then the process cannot be swapped.
 
+There are two main solutions to this problem:
+\begin{enumerate}[noitemsep]
+\item Never swap a process with pending I/O.
+\item Execute I/O operations only into \nameref{def:Operating_System} buffers.
+  \begin{itemize}[noitemsep]
+  \item Transfers between operating-system buffers and process memory only occur when the process is \textbf{swapped in}.
+  \item Double buffering adds overhead.
+  \item Now need to copy the data twice, once into kernel memory, then from kernel memory to user memory, before the user process can access it.
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
