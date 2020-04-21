@@ -30,6 +30,11 @@ The dispatcher checks to see where the next \nameref{def:Process} is.
 \item If the process is in the swap, \textbf{and} if there is no free memory region, the dispatcher swaps out a process currently in memory and swaps in the desired process, reloads registers, and transfers control.
 \end{itemize}
 
+Clearly, it would be useful to know exactly how much memory a \nameref{def:User} \nameref{def:Process} \textbf{is} using, not simply how much it \textbf{might} be using.
+This way, we only need to swap what is actually used, thereby reducing swap time.
+For this method to be effective, the user \textbf{must} keep the system informed of any changes in memory requirements.
+Thus, a process with dynamic memory requirements will need to issue system calls (\kernelinline{request_memory()} and \kernelinline{release_memory()}) informing the \nameref{def:Operating_System} of its changing memory needs.
+
 
 %%% Local Variables:
 %%% mode: latex
