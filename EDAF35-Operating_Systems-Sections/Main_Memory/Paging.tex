@@ -206,6 +206,10 @@ Failure of this test causes an error \nameref{def:Trap} to the \nameref{def:Oper
 \subsubsection{Shared Pages}\label{subsubsec:Shared_Pages}
 An advantage of paging is the possibility of sharing common code.
 This consideration is particularly important in a time-sharing environment.
+If the code is \nameref{def:Reentrant} code (or pure code), the code pages can be shared.
+Each \nameref{def:Process} will then get its own data page.
+Thus, two or more processes can execute the same code at the same time, while maintaining its own data.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
