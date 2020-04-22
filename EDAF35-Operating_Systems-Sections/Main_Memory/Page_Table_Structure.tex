@@ -95,6 +95,8 @@ To use the table, a tuple (\Cref{eq:Inverted_Hash_Table_Tuple}) is created by th
 \item $d$: The offset of the desired location within the frame, i.e.\ in physical memory.
 \end{description}
 
+Although this scheme decreases the amount of memory needed to store each page table, it increases the amount of time needed to search the table because it is sorted by physical address, and lookups occur on virtual addresses, meaning the whole table might need to be searched before a match is found.
+To skirt this issue, a hash table is used, just like in \nameref{subsubsec:Hashed_Page_Tables} to limit the search.
 
 %%% Local Variables:
 %%% mode: latex
