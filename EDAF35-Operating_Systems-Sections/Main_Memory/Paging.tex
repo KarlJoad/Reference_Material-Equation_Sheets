@@ -103,6 +103,12 @@ This information is generally kept in a data structure called a \nameref{def:Fra
   It says whether this frame is in use, and if it is, who is using it.
 \end{definition}
 
+\subsubsection{Hardware Support for Paging}\label{subsubsec:Paging_Hardware_Support}
+Every access to memory must go through the paging map, so efficiency is a major consideration.
+Each \nameref{def:Operating_System} has its own methods for storing \nameref{def:Page_Table}s.
+Some allocate a page table for each \nameref{def:Process}, then a pointer to the page table is stored with the other register values in the \nameref{def:Process_Control_Block}.
+Other operating systems provide only a few page tables, which decreases the overhead involved when processes are \nameref{def:Context_Switch}ed.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
