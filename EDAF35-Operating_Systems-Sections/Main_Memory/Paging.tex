@@ -31,6 +31,10 @@ Like before, the page number is used as an \textbf{INDEX} in the \nameref{def:Pa
 The page table contains the base address of each page in physical memory.
 This base address is combined with the page offset to define the physical memory address that is sent to the memory unit.
 
+The frame size, and thus the page size, are defined by the hardware.
+The size of a page is a power of 2, varying between 512 bytes and $\SI{1}{\gibi\byte}$\footnote{\si{\gibi\byte} is a gibibyte, or \si[prefixes-as-symbols=false]{\gibi} bytes} per page, depending on the computer architecture.
+A power of 2 as a page size makes the translation of a \nameref{def:Logical_Address} into a page number and page offset particularly easy.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
