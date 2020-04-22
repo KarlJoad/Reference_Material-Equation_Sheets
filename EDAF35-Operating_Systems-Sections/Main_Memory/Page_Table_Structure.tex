@@ -58,6 +58,12 @@ The algorithm works as follows:
   \label{algo:Hashed_Page_Table_Usage}
 \end{algorithm}
 
+\paragraph{Clustered Page Tables}\label{par:Clustered_Page_Tables}
+A variation of \nameref{subsubsec:Hashed_Page_Tables} that is useful for 64-bit address spaces, called \emph{clustered page tables}, has been proposed.
+They are similar to their origin, except that each entry in the hash table refers to several pages (such as 16) rather than a single page.
+Therefore, a single clustered \nameref{def:Page_Table} entry can store the mappings for multiple frames.
+Clustered page tables are particularly useful for sparse address spaces, where memory references are noncontiguous \textbf{AND} scattered throughout the address space.
+
 \subsubsection{Inverted Page Tables}\label{subsubsec:Inverted_Page_Tables}
 
 %%% Local Variables:
