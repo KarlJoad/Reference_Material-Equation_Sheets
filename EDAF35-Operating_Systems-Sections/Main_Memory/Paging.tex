@@ -155,6 +155,10 @@ To be able to execute the search within a pipeline step, the TLB is small, typic
 Some TLBs allow certain entries to be wired down, meaning that they cannot be removed from the TLB.\@
 Typically, TLB entries for key kernel code are wired down.
 
+TLBs are a hardware feature and the \nameref{def:Operating_System} designer needs to understand the function and features of \textbf{that} hardware platform's TLBs.
+For optimal operation, \nameref{def:Paging} must be implemented according to the platform’s TLB design.
+Likewise, a change in the TLB design may necessitate a change in the paging implementation of the operating systems that use it.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
