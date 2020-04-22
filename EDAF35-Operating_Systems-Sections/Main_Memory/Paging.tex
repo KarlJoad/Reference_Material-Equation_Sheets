@@ -114,6 +114,16 @@ In the simplest case, the page table is implemented as a set of high-speed, dedi
 The CPU \nameref{def:Dispatcher} reloads these registers, along with all the other registers.
 Instructions to load or modify the page-table registers are privileged so that only the \nameref{def:Operating_System} can change the memory map.
 
+Registers can be used for the \nameref{def:Page_Table} only if the page table is reasonably small.
+However, modern computers, allow the page table to be quite large, making the use of registers to implement the page table not feasible.
+Instead, the page table is kept in main memory, and a \texttt{page-table base register} (\texttt{PTBR}) points to the page table.
+Thus, changing the currently active page table requires changing only this one register, substantially reducing \nameref{def:Context_Switch} time.
+However, now this requires 2 memory access:
+\begin{enumerate}[noitemsep]
+\item Memory Access 1 is needed to enter the \nameref{def:Page_Table} and find the frame entry.
+\item Memory Access 2 is needed to travel to \nameref{def:Physical_Memory} and retrieve the value.
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
