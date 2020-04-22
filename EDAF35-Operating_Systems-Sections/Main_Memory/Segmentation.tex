@@ -13,6 +13,12 @@ If the hardware could provide a memory mechanism that mapped the programmer’s 
   This makes a \nameref{def:Logical_Address_Space} is a collection of segments.
   These addresses specify both the segment name and the offset within the segment.
 
+  \begin{remark}[Memory Locations when using Segmentation]\label{rmk:Segmentation_Memory_Locations}
+    \nameref{def:Segmentation} is a method of breaking up a program into segments that behave as logical units in a program and are each referenced, and thus located, separately.
+    This allows the \nameref{def:Physical_Address_Space} of a process to be noncontiguous.
+
+    However, it makes no attempt to avoid \nameref{def:External_Fragmentation}.
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
