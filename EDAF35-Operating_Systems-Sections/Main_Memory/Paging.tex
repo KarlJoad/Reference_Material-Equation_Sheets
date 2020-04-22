@@ -109,6 +109,11 @@ Each \nameref{def:Operating_System} has its own methods for storing \nameref{def
 Some allocate a page table for each \nameref{def:Process}, then a pointer to the page table is stored with the other register values in the \nameref{def:Process_Control_Block}.
 Other operating systems provide only a few page tables, which decreases the overhead involved when processes are \nameref{def:Context_Switch}ed.
 
+The hardware implementation of the \nameref{def:Page_Table} can be done in several ways.
+In the simplest case, the page table is implemented as a set of high-speed, dedicated registers, making paging-address translation efficient.
+The CPU \nameref{def:Dispatcher} reloads these registers, along with all the other registers.
+Instructions to load or modify the page-table registers are privileged so that only the \nameref{def:Operating_System} can change the memory map.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
