@@ -170,6 +170,7 @@ Otherwise, the TLB could include old entries that contain valid virtual addresse
 
 \subsubsection{Memory Protection}\label{subsubsec:Paging_Memory_Protection}
 The \nameref{def:User} \nameref{def:Process}, by definition, is unable to access memory it does not own.
+The user process has no way of addressing memory outside of its \nameref{def:Page_Table}, since the page table includes \textbf{only} those pages that this process owns.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
