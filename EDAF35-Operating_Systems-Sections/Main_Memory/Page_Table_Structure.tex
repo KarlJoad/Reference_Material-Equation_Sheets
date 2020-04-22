@@ -21,6 +21,12 @@ For example, consider the system with a 32-bit \nameref{def:Logical_Address_Spac
 Fromt he perspective of the CPU, the\nameref{def:Logical_Address} is divided into a page number consisting of 20 bits and a page offset consisting of 12 bits.
 However, because we page the page table, the page number is further divided into a 10-bit outer page number and a 10-bit page offset.
 
+If the memory capacity of the computer increased, and therefore the page count did as well, then this would start becoming problematic again.
+We could divide the outer page table and page it again, giving us a three-level \nameref{def:Paging} scheme.
+If we continued to do this, a machine with a 64-bit \nameref{def:Logical_Address_Space} would require 7 level of paging.
+Remember that each time a \nameref{def:Page_Table} is used, we need another memory lookup and access.
+This makes multiple levels of paging prohibitively slow.
+
 \subsubsection{Hashed Page Tables}\label{subsubsec:Hashed_Page_Tables}
 \subsubsection{Inverted Page Tables}\label{subsubsec:Inverted_Page_Tables}
 
