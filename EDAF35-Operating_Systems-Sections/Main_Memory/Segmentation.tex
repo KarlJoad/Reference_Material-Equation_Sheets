@@ -3,6 +3,17 @@ Dealing with memory in terms of its physical properties is inconvenient to both 
 If the hardware could provide a memory mechanism that mapped the programmer’s view to the actual physical memory, the system would have more freedom to manage memory, while the programmer would have a more natural programming environment.
 \nameref{def:Segmentation} provides such a mechanism.
 
+\begin{definition}[Segmentation]\label{def:Segmentation}
+  \emph{Segmentation} is a memory-management scheme that supports a programmer's view of memory of segments of a program.
+  Each segment has a name and a length.
+  Segments vary in length, and the length of each is intrinsically defined by its purpose in the program.
+  Elements within a segment are identified by their offset from the beginning of the segment
+  Therefore, when a programmer specifies something in the program, it is reached by an address by two quantities: a segment name and an offset.
+
+  This makes a \nameref{def:Logical_Address_Space} is a collection of segments.
+  These addresses specify both the segment name and the offset within the segment.
+
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
