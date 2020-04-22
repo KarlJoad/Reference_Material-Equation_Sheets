@@ -104,6 +104,15 @@ Statistical analysis of \nameref{subpar:First_Fit} reveals that, given $N$ alloc
 Meaning, one-third of memory may be unusable.
 This property is known as the \emph{50-percent rule}.
 
+\begin{definition}[External Fragmentation]\label{def:External_Fragmentation}
+  \emph{External fragmentation} is when there is enough total unused memory to satisfy a request, but the unused memory is \textbf{not} contiguous.
+  If the memory is fragmented into a large number of small holes, then contiguous memory requests cannot be satisfied.
+  As processes are loaded and removed from memory, the free memory space is broken into little pieces.
+
+  This is not necessarily a problem by itself, as much as it is an inefficiency.
+  However, this inefficiency will lead to problems if it is not handled.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
