@@ -97,6 +97,13 @@ To use the table, a tuple (\Cref{eq:Inverted_Hash_Table_Tuple}) is created by th
 
 Although this scheme decreases the amount of memory needed to store each page table, it increases the amount of time needed to search the table because it is sorted by physical address, and lookups occur on virtual addresses, meaning the whole table might need to be searched before a match is found.
 To skirt this issue, a hash table is used, just like in \nameref{subsubsec:Hashed_Page_Tables} to limit the search.
+However, each access to the hashed inverted page table adds another memory reference.
+So one virtual memory reference requires at least two real memory reads:
+\begin{enumerate}[noitemsep]
+\item One for the hashed inverted page table entry.
+\item One for the resulting page table.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
