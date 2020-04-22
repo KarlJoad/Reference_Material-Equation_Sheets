@@ -76,6 +76,10 @@ Searching can start either at the beginning of the set of holes or at the locati
 Stop searching as soon as we find a free hole that is large enough.
 
 \subparagraph{Best-Fit}\label{subpar:Best_Fit}
+Allocate the smallest hole that is big enough, the best fitting hole.
+We must search the entire list, unless the list is ordered by size.
+This strategy produces the smallest leftover hole.
+
 \subparagraph{Worst-Fit}\label{subpar:Worst_Fit}
 
 %%% Local Variables:
