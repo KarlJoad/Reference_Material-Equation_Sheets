@@ -124,6 +124,15 @@ However, now this requires 2 memory access:
 \item Memory Access 2 is needed to travel to \nameref{def:Physical_Memory} and retrieve the value.
 \end{enumerate}
 
+\paragraph{Translation Look-Aside Buffers}\label{par:Translation_Look_Aside_Buffers}
+To accomodate the \nameref{def:Page_Table} existing in memory, a hardware cache is usually provided on the CPU, called a \emph{translation look-aside buffer} (\emph{TLB}).
+The TLB is associative, high-speed memory that contains two part entries: a key and a value.
+When the associative memory is presented an item, the item is compared with all keys \textbf{simultaneously}.
+If the item is found, the corresponding value is returned.
+This search is very fast.
+In modern hardware, a TLB lookup is part of the instruction pipeline, essentially adding no performance penalty.
+To be able to execute the search within a pipeline step, the TLB is small, typically between 32 and 1,024 \nameref{def:Page_Table} entries in size.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
