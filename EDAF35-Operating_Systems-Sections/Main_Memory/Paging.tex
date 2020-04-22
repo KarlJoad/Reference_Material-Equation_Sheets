@@ -159,6 +159,9 @@ TLBs are a hardware feature and the \nameref{def:Operating_System} designer need
 For optimal operation, \nameref{def:Paging} must be implemented according to the platform’s TLB design.
 Likewise, a change in the TLB design may necessitate a change in the paging implementation of the operating systems that use it.
 
+\paragraph{Address-Space Identifiers}\label{par:Address_Space_Identifiers}
+Some TLBs store \emph{address-space identifier}s (\emph{ASID}s) in \textbf{each} TLB entry.
+An ASID uniquely identifies each process and provides address-space protection for that process.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
