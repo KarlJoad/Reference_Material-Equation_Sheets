@@ -113,6 +113,18 @@ This property is known as the \emph{50-percent rule}.
   However, this inefficiency will lead to problems if it is not handled.
 \end{definition}
 
+One solution to the problem of \nameref{def:External_Fragmentation} is \emph{compaction} (like garbage collection for the heap).
+The goal is to shuffle the memory contents so as to place all free memory together in one large block, however it cannot always be used.
+When compaction is possible, we must determine its cost, because it can be quite expensive.
+\begin{itemize}[noitemsep]
+\item If memory locations are static and done at assembly or load time, compaction cannot be done.
+\item If memory locations are dynamic and done at execution time, compaction can be done by relocation.
+  \begin{itemize}[noitemsep]
+  \item Relocation moves the program and data, then changes the \texttt{base}/\texttt{relocation} register to reflect the new base address.
+  \end{itemize}
+\end{itemize}
+The simplest compaction algorithm is to move all processes toward one end of memory; all holes move in the other direction, producing one large hole of available memory.
+
 
 %%% Local Variables:
 %%% mode: latex
