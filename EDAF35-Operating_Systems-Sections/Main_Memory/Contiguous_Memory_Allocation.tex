@@ -54,6 +54,14 @@ The process is then given an appropriate amount of space from memory, taken from
 When a process terminates, it releases its block of memory, which is then placed back in the set of holes.
 If the new hole is adjacent to other holes, these adjacent holes are merged to form one larger hole.
 
+At this point, the system may need to check whether there are processes waiting for memory and whether this newly freed and recombined memory could satisfy the demands of any of these waiting processes.
+The next process to run has its memory requirements considered, \textbf{AND} the free memory available.
+What happens next depending on the \nameref{def:Operating_System}:
+\begin{itemize}[noitemsep]
+\item Wait until a large enough block of memory is available for this process.
+\item Skip through the input queue to find a process that can use the memory (because of smaller requirements).
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
