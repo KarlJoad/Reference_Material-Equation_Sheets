@@ -69,6 +69,18 @@ Usually, each \nameref{def:Process} has an associated page table with one entry 
 However, each \nameref{def:Page_Table} may consist of millions of entries, and there may be many page tables.
 These tables may consume large amounts of physical memory just to keep track of how memory is being used.
 
+To solve this problem, we can use an inverted page table.
+An inverted page table has \textbf{one entry for each frame} of memory.
+Each entry consists of
+\begin{itemize}[noitemsep]
+\item The \nameref{def:Logical_Address} of the page stored in that physical frame
+\item \nameref{par:Address_Space_Identifiers}, information about the \nameref{def:Process} that owns the page.
+  \begin{itemize}[noitemsep]
+  \item The table usually contains several different process address spaces that are mapped to physical memory.
+  \item Ths way the logical page for a particular process is mapped to the correct corresponding physical frame.
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
