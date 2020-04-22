@@ -140,6 +140,13 @@ Suppose that the next process requests $18462$ bytes.
 If we allocate exactly the requested block, we are left with a hole of $18464-18462 = 2$ bytes.
 The difference between these two numbers is \nameref{def:Internal_Fragmentation}.
 
+\begin{definition}[Internal Fragmentation]\label{def:Internal_Fragmentation}
+  \emph{Internal Fragmentation} is the issue of unused memory that is internal to a partition.
+  This means that a \nameref{def:Process} is given more memory than it actually needs, and will not be using all of it.
+
+  Like \nameref{def:External_Fragmentation}, this is not necessarily a problem as much as it is an inefficiency that can lead to problems.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
