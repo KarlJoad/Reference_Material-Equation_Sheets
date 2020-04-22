@@ -83,6 +83,15 @@ This allows the programmer to view memory as one contiguous space, containing on
 However, the user program may be scattered throughout \nameref{def:Physical_Memory}, which also holds other programs.
 The difference between the programmer’s view of memory and the actual physical memory is reconciled by the address-translation hardware in the \nameref{def:Memory_Management_Unit}.
 
+Because the \nameref{def:Operating_System} is managing \nameref{def:Physical_Memory}, it must be aware of the allocation details of physical memory, including:
+\begin{itemize}[noitemsep]
+\item Which frames are allocated.
+\item Which frames are available.
+\item The total number of frames.
+\item etc.
+\end{itemize}
+This information is generally kept in a data structure called a \nameref{def:Frame_Table}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
