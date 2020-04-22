@@ -125,6 +125,14 @@ When compaction is possible, we must determine its cost, because it can be quite
 \end{itemize}
 The simplest compaction algorithm is to move all processes toward one end of memory; all holes move in the other direction, producing one large hole of available memory.
 
+Another solution to the \nameref{def:External_Fragmentation} problem is to permit the logical address space of the processes to be noncontiguous.
+This allows a process to be allocated physical memory \textbf{wherever} memory is available.
+Two complementary techniques (which can also be combined) can solve this problem:
+\begin{enumerate}[noitemsep]
+\item \nameref{subsec:Segmentation} (\Cref{subsec:Segmentation})
+\item \nameref{subsec:Paging} (\Cref{subsec:Paging})
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
