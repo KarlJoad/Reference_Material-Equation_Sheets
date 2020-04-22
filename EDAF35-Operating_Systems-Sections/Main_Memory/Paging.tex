@@ -59,6 +59,11 @@ This consideration suggests that small page sizes are desirable.
 However, overhead is involved in maintaining the \nameref{def:Page_Table} itself, with each page-table entry increasing the overhead.
 Also, disk I/O is more efficient when the amount data being transferred is larger.
 
+Generally, page sizes have grown over time as processes, data sets, and main memory have become larger.
+Today, pages typically are between $\SI{4}{\kibi{}\byte{}}$ and $\SI{8}{\kibi{}\byte{}}$ in size, and some systems support even larger page sizes.
+Some CPUs and kernels now support multiple page sizes.
+Variable on-the-fly page size is still being developed.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
