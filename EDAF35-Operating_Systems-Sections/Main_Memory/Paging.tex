@@ -35,6 +35,14 @@ The frame size, and thus the page size, are defined by the hardware.
 The size of a page is a power of 2, varying between 512 bytes and $\SI{1}{\gibi\byte}$\footnote{\si{\gibi\byte} is a gibibyte, or \si[prefixes-as-symbols=false]{\gibi} bytes} per page, depending on the computer architecture.
 A power of 2 as a page size makes the translation of a \nameref{def:Logical_Address} into a page number and page offset particularly easy.
 
+If the size of the logical address space is $2^{m}$, and a page size is $2^{n}$ bytes, then the high-order $m-n$ \textbf{bits} of a \nameref{def:Logical_Address} designate the page number, and the $n$ low-order \textbf{bits} designate the page offset.
+\begin{equation}\label{eq:Page_Table_Calculations}
+  \begin{aligned}
+    p &= m-n \\
+    d &= n \\
+  \end{aligned}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
