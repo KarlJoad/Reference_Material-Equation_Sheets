@@ -4,7 +4,17 @@ This arises because space must be found on the backing store, when main memory n
 The backing store has the same \nameref{def:Fragmentation} problems discussed in connection with main memory, but access is much slower, so compaction is impossible.
 
 \begin{definition}[Paging]\label{def:Paging}
-  \emph{Paging}
+  \emph{Paging} allows the \nameref{def:Physical_Address_Space} of a \nameref{def:Process} to be noncontiguous.
+  This is achieved breaking up \nameref{def:Physical_Memory} and \nameref{def:Logical_Address_Space} into equally, fixed-size blocks.
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Physical_Memory} is broken up into \emph{frames}.
+  \item \nameref{def:Logical_Address_Space} is broken up into \emph{pages}.
+  \item The \nameref{def:Backing_Store} is also broken up, as a multiple (1 through $n$) of the frame size.
+  \end{itemize}
+
+  Paging avoids the issue of \nameref{def:External_Fragmentation} and solves the problem of fitting memory chunks of varying sizes on the \nameref{def:Backing_Store}.
+  However, \nameref{def:Internal_Fragmentation} is still an issue.
+\end{definition}
 \end{definition}
 %%% Local Variables:
 %%% mode: latex
