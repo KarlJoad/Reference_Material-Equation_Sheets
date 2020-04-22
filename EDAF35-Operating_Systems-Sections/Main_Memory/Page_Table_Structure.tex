@@ -1,4 +1,10 @@
 \subsection{Page Table Structure}\label{subsec:Page_Table_Structure}
+Because of the ever-increasing size of \nameref{def:Page_Table}s, we need to start organizing them more efficiently.
+For example, consider a system with a 32-bit logical address space.
+If the page size in such a system is \SI{4}{\kibi\byte}\footnote{\si{\kibi\byte} is a kibibyte, or \si[prefixes-as-symbols=false]{\kibi} bytes} ($2^{12}$), then a page table may consist of up to 1 million entries ($\frac{2^{32}}{2^{12}}$).
+Assuming that each entry consists of 4 bytes, each process may need up to \SI{4}{\mebi\byte} of physical address space for the page table alone.
+Allocating this page table contiguously is not what we want to do, because if not all the pages are in-use, then we want to be able to use the space that would otherwise be taken up by the page table.
+
 
 %%% Local Variables:
 %%% mode: latex
