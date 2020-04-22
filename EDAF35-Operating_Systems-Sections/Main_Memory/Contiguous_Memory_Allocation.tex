@@ -133,6 +133,13 @@ Two complementary techniques (which can also be combined) can solve this problem
 \item \nameref{subsec:Paging} (\Cref{subsec:Paging})
 \end{enumerate}
 
+\paragraph{Internal Fragmentation}\label{par:Internal_Fragmentation}
+Memory fragmentation can be internal as well as external.
+Consider a multiple-partition allocation scheme with a hole of $18464$ bytes.
+Suppose that the next process requests $18462$ bytes.
+If we allocate exactly the requested block, we are left with a hole of $18464-18462 = 2$ bytes.
+The difference between these two numbers is \nameref{def:Internal_Fragmentation}.
+
 
 %%% Local Variables:
 %%% mode: latex
