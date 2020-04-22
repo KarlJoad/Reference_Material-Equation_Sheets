@@ -194,6 +194,9 @@ One additional bit is generally attached to each entry in the page table: a \emp
 Illegal addresses are trapped by use of the valid–invalid bit.
 The operating system sets this bit for each page to allow or disallow access to the page.
 
+This runs into issues when \nameref{def:Internal_Fragmentation} occurs.
+A \nameref{def:Process} can request a page, but not need all of it, and the permission bit applies to the whole page, it is possible to access a memory address in the page, but is not used by the \nameref{def:Process}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
