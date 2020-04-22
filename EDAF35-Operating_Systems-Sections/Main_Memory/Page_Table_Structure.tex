@@ -65,6 +65,10 @@ Therefore, a single clustered \nameref{def:Page_Table} entry can store the mappi
 Clustered page tables are particularly useful for sparse address spaces, where memory references are noncontiguous \textbf{AND} scattered throughout the address space.
 
 \subsubsection{Inverted Page Tables}\label{subsubsec:Inverted_Page_Tables}
+Usually, each \nameref{def:Process} has an associated page table with one entry for each page that is in use.
+However, each \nameref{def:Page_Table} may consist of millions of entries, and there may be many page tables.
+These tables may consume large amounts of physical memory just to keep track of how memory is being used.
+
 
 %%% Local Variables:
 %%% mode: latex
