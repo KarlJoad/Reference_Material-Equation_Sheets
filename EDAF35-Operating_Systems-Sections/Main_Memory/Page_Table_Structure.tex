@@ -104,6 +104,9 @@ So one virtual memory reference requires at least two real memory reads:
 \item One for the resulting page table.
 \end{enumerate}
 
+One downside of inverted page tables is that \nameref{par:Shared_Memory} is difficult to implement.
+Shared memory is usually implemented as multiple \nameref{def:Logical_Address}es (one for each \nameref{def:Process} sharing the memory) that are mapped to the same \nameref{def:Physical_Address}.
+However, the usual method does not work here, because there is only one entry for every frame, one frame cannot have multiple shared \nameref{def:Logical_Address}es mapped to it.
 
 %%% Local Variables:
 %%% mode: latex
