@@ -71,6 +71,10 @@ In \nameref{def:Operating_System}s, there are 3 common strategies used to alloca
 \end{enumerate}
 
 \subparagraph{First-Fit}\label{subpar:First_Fit}
+Allocate the first hole that is big enough.
+Searching can start either at the beginning of the set of holes or at the location where the previous first-fit search ended.
+Stop searching as soon as we find a free hole that is large enough.
+
 \subparagraph{Best-Fit}\label{subpar:Best_Fit}
 \subparagraph{Worst-Fit}\label{subpar:Worst_Fit}
 
