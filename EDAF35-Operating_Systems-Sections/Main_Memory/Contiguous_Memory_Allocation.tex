@@ -47,6 +47,13 @@ The free memory is called a \emph{hole}.
   Many of the principles from heap and the allocation of stuff to the heap also apply in this case as well.
 \end{blackbox}
 
+As \nameref{def:Process}es are selected from the input queue to run, their memory requirements are considered.
+The system searches the set for a hole that is large enough for this process.
+If the hole is too large, it is split into two parts.
+The process is then given an appropriate amount of space from memory, taken from the pool of free memory; the other is returned to the set of holes.
+When a process terminates, it releases its block of memory, which is then placed back in the set of holes.
+If the new hole is adjacent to other holes, these adjacent holes are merged to form one larger hole.
+
 
 %%% Local Variables:
 %%% mode: latex
