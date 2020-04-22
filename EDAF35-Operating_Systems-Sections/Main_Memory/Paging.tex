@@ -43,6 +43,17 @@ If the size of the logical address space is $2^{m}$, and a page size is $2^{n}$ 
   \end{aligned}
 \end{equation}
 
+Thus, to translate the \nameref{def:Logical_Address} to a \nameref{def:Physical_Address}, \Cref{eq:Paging_Logical_Physical_Address_Conversion} is used.
+
+\begin{equation}\label{eq:Paging_Logical_Physical_Address_Conversion}
+  f = \bigl( i(p) \times s \bigr) + d
+\end{equation}
+\begin{description}[noitemsep]
+\item $f$: Resulting \nameref{def:Physical_Address}.
+\item $i(p)$: Mapped frame number of the given page number $p$ from the \nameref{def:Page_Table}.
+\item $s$: Size of the page/frame.
+\end{description}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
