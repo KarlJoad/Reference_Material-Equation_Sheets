@@ -184,6 +184,13 @@ At the same time the physical address is being computed, the permission bits can
 A violation of the given permissions will cause a hardware \nameref{def:Trap} to the operating system (for memory-protection violation).
 
 \paragraph{Page Valid-Invalid Bit}\label{par:Page_Valid_Invalid_Bit}
+One additional bit is generally attached to each entry in the page table: a \emph{valid–invalid bit}.
+
+\begin{itemize}[noitemsep]
+\item When this bit is set to valid, the associated page is in the \nameref{def:Process}’s \nameref{def:Logical_Address_Space} and is a legal (or valid) page.
+\item When the bit is set to invalid, the page is not in the process’s logical address space.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
