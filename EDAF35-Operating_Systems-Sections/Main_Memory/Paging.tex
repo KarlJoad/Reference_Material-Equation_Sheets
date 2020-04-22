@@ -203,6 +203,9 @@ Some systems provide hardware, in the form of a \emph{page-table length register
 This value is checked against every \nameref{def:Logical_Address} to verify that the address is in the valid range for the process.
 Failure of this test causes an error \nameref{def:Trap} to the \nameref{def:Operating_System}.
 
+\subsubsection{Shared Pages}\label{subsubsec:Shared_Pages}
+An advantage of paging is the possibility of sharing common code.
+This consideration is particularly important in a time-sharing environment.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
