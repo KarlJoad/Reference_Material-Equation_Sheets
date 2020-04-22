@@ -168,6 +168,8 @@ ASIDs also allow the TLB to contain entries for several \textbf{different} proce
 If the TLB does not support separate ASIDs, every time a new page table is selected (context switch), the TLB must be flushed (erased) to ensure that the next executing process does not use the wrong translation information.
 Otherwise, the TLB could include old entries that contain valid virtual addresses but have incorrect or invalid physical addresses left over from the previous process.
 
+\subsubsection{Memory Protection}\label{subsubsec:Paging_Memory_Protection}
+The \nameref{def:User} \nameref{def:Process}, by definition, is unable to access memory it does not own.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
