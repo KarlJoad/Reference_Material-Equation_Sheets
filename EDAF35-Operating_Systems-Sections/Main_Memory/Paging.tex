@@ -227,6 +227,11 @@ Heavily used programs can be shared, such as:
 To be sharable, the code must be \nameref{def:Reentrant}.
 The read-only nature of shared code \textbf{should not} be left to the correctness of the code; the \textbf{\nameref{def:Operating_System} should enforce this property}.
 
+The sharing of memory among \nameref{def:Process}es on a system is similar to the sharing of the address space of a process by multiple \nameref{def:Thread}s.
+Furthermore, \nameref{par:Shared_Memory} can be used as a method of interprocess communication (\Cref{par:Shared_Memory}).
+Some \nameref{def:Operating_System}s implement shared memory using shared pages.
+Organizing memory according to pages provides numerous benefits in addition to allowing several processes to share the same physical pages.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
