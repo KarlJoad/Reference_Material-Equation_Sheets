@@ -38,6 +38,10 @@ Thus, the size of a partition is fixed throughout the execution of the \nameref{
 When a partition is free, a \nameref{def:Process} is selected from the input queue and placed into the free partition.
 When the process terminates, the partition is returned to the pool of available partitions.
 
+\paragraph{Variable-Partition Scheme}\label{par:Variable_Partition_Scheme}
+In the \emph{variable-partition scheme}, all free memory is pooled together.
+The free memory is called a \emph{hole}.
+
 
 %%% Local Variables:
 %%% mode: latex
