@@ -64,6 +64,12 @@ Today, pages typically are between $\SI{4}{\kibi{}\byte{}}$ and $\SI{8}{\kibi{}\
 Some CPUs and kernels now support multiple page sizes.
 Variable on-the-fly page size is still being developed.
 
+A 32-bit CPU uses 32-bit addresses, meaning that a given \nameref{def:Process}'s memory space can only be $2^{32}$ bytes ($\SI{4}{\gibi{}\byte{}}$).
+However, a single 32-bit entry can point to one of $2^{32}$ different physical frames.
+If frame size is 4 KB ($2^{12}$), then a system with 4-byte (32-bit) entries can address $2^{44}$ bytes (or $\SI{16}{\tebi{}\byte{}}$) of physical memory.
+Therefore, paging lets us use physical memory that is larger than what can be addressed by the CPU’s address pointer length.
+This means that the size of physical memory in a paged memory system is different from the maximum logical size of a process.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
