@@ -32,6 +32,12 @@ Within the \nameref{def:User} memory, there are 2 main methods of \nameref{def:P
 
 Both methods use the same idea of dividing all free memory into separate partitions, however the size of these partitions and how they are divided is the differentiating factor.
 
+\paragraph{Multiple-Partition Scheme}\label{par:Multiple_Partition_Scheme}
+In the \emph{multiple-partition scheme}, all free memory is statically divided into equal sized partitions.
+Thus, the size of a partition is fixed throughout the execution of the \nameref{def:Operating_System}.
+When a partition is free, a \nameref{def:Process} is selected from the input queue and placed into the free partition.
+When the process terminates, the partition is returned to the pool of available partitions.
+
 
 %%% Local Variables:
 %%% mode: latex
