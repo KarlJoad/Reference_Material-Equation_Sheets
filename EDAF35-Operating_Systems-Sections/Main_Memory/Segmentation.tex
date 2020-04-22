@@ -33,6 +33,12 @@ For example, a C compiler might create separate segments for:
 \subsubsection{Hardware Support for Segmentation}\label{subsubsec:Segmentation_Hardware_Support}
 The values that the programmer specifies are now 2-dimensional objects, and a memory address is one-dimensional, so the \nameref{def:Memory_Management_Unit} must handle the mapping of these 2D \nameref{def:Logical_Address}es to the 1D \nameref{def:Physical_Address}es.
 
+A logical address consists of two parts: a segment number, $s$, and an offset (displacement) into that segment, $d$.
+To map the logical address pair to the physical address, the \emph{segment table} is used.
+The segment table is essentially an array of \texttt{base}–\texttt{limit} register pairs.
+Each entry in the segment table has a \texttt{segment base} and a \texttt{segment limit}.
+The segment \texttt{base} contains the starting physical address where the segment resides in memory, and the segment \texttt{limit} specifies the length of the segment.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
