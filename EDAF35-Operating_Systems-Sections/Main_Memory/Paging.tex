@@ -171,6 +171,9 @@ Otherwise, the TLB could include old entries that contain valid virtual addresse
 \subsubsection{Memory Protection}\label{subsubsec:Paging_Memory_Protection}
 The \nameref{def:User} \nameref{def:Process}, by definition, is unable to access memory it does not own.
 The user process has no way of addressing memory outside of its \nameref{def:Page_Table}, since the page table includes \textbf{only} those pages that this process owns.
+In addition, the operating system must be aware that user processes operate in \textbf{user space}, and all \nameref{def:Logical_Address}es must be mapped to the proper user memory to produce \nameref{def:Physical_Address}es.
+If a user makes a system call and provides an address as a parameter (a buffer, for instance), that address must be mapped to produce the correct physical address.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
