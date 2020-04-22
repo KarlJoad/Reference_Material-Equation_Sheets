@@ -178,6 +178,11 @@ On top of the ability for \textbf{only} the \nameref{def:Operating_System} to ma
 Normally, these bits are kept in the page table and are associated with each page.
 
 \paragraph{Page Permission Bits}\label{par:Page_Permission_Bits}
+Some bits, the \emph{permission bits}, can define a page's permissions (read–write, read-only, execute-only, etc.) or any combination of these.
+Every memory reference goes through the page table to find the frame number.
+At the same time the physical address is being computed, the permission bits can be checked.
+A violation of the given permissions will cause a hardware \nameref{def:Trap} to the operating system (for memory-protection violation).
+
 \paragraph{Page Valid-Invalid Bit}\label{par:Page_Valid_Invalid_Bit}
 %%% Local Variables:
 %%% mode: latex
