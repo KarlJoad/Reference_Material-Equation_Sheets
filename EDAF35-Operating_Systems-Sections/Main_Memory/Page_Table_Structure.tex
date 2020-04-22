@@ -28,6 +28,15 @@ Remember that each time a \nameref{def:Page_Table} is used, we need another memo
 This makes multiple levels of paging prohibitively slow.
 
 \subsubsection{Hashed Page Tables}\label{subsubsec:Hashed_Page_Tables}
+A hashed page table, is a \nameref{def:Page_Table} where the page number is the hash value.
+Each entry in the hash table contains a linked list of elements that hash to the same location (to handle collisions).
+Each element consists of three fields:
+\begin{enumerate}[noitemsep]
+\item Hashed page number.
+\item Value of the mapped frame.
+\item Pointer to the next element in the linked list (or \texttt{NULL}).
+\end{enumerate}
+
 \subsubsection{Inverted Page Tables}\label{subsubsec:Inverted_Page_Tables}
 
 %%% Local Variables:
