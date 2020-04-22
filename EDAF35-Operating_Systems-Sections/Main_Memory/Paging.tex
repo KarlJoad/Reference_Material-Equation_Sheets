@@ -12,6 +12,10 @@ The backing store has the same \nameref{def:Fragmentation} problems discussed in
   \item The \nameref{def:Backing_Store} is also broken up, as a multiple (1 through $n$) of the frame size.
   \end{itemize}
 
+  The list of pages and their mapping to frames for this \nameref{def:Process} is stored in the \nameref{def:Page_Table}.
+  There is a page table in each process, which is used when this process \nameref{def:Context_Switch}es into the CPU.\@
+  Therefore, paging also increases context switch time.
+
   Paging avoids the issue of \nameref{def:External_Fragmentation} and solves the problem of fitting memory chunks of varying sizes on the \nameref{def:Backing_Store}.
   However, \nameref{def:Internal_Fragmentation} is still an issue.
 \end{definition}
