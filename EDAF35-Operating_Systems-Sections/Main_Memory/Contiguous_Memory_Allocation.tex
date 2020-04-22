@@ -14,6 +14,11 @@ Throughout this document, we assume that the OS inhabits the lowest addresses.
   In short, this means that each \nameref{def:Process} sits in its own contiguous block and is right next to the next process.
 \end{definition}
 
+\subsubsection{Memory Protection}\label{subsubsec:Contiguous_Memory_Protection}
+In \nameref{def:Contiguous_Memory_Allocation}, we can provide memory protection by using concepts from earlier.
+If the \texttt{base} register is considered as the \texttt{relocation} register (because of \nameref{def:Logical_Address} conversion to \nameref{def:Physical_Address}), and use the \texttt{limit} register as before, then we can protect this \nameref{def:Process}.
+Since the \nameref{def:Operating_System} is the only entity that can change the values of the \texttt{relocation} and \texttt{limit} registers, this (currently executing) process and others cannot interfere with each other.
+
 
 %%% Local Variables:
 %%% mode: latex
