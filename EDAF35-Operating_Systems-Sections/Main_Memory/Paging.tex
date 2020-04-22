@@ -162,6 +162,12 @@ Likewise, a change in the TLB design may necessitate a change in the paging impl
 \paragraph{Address-Space Identifiers}\label{par:Address_Space_Identifiers}
 Some TLBs store \emph{address-space identifier}s (\emph{ASID}s) in \textbf{each} TLB entry.
 An ASID uniquely identifies each process and provides address-space protection for that process.
+When the TLB attempts to resolve virtual page numbers, it ensures that the ASID for the currently running \nameref{def:Process} matches the ASID associated with the virtual page.
+\textbf{If the ASIDs do not match}, the attempt is treated as a \textbf{TLB miss}.
+ASIDs also allow the TLB to contain entries for several \textbf{different} processes simultaneously.
+If the TLB does not support separate ASIDs, every time a new page table is selected (context switch), the TLB must be flushed (erased) to ensure that the next executing process does not use the wrong translation information.
+Otherwise, the TLB could include old entries that contain valid virtual addresses but have incorrect or invalid physical addresses left over from the previous process.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
