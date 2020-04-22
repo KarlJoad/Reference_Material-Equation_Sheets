@@ -197,6 +197,12 @@ The operating system sets this bit for each page to allow or disallow access to 
 This runs into issues when \nameref{def:Internal_Fragmentation} occurs.
 A \nameref{def:Process} can request a page, but not need all of it, and the permission bit applies to the whole page, it is possible to access a memory address in the page, but is not used by the \nameref{def:Process}.
 
+\paragraph{Page-Table Length Register}\label{par:Page_Table_Length_Register}
+Because a \nameref{def:Process} may be given a much larger \nameref{def:Logical_Address_Space} than it will use, it would be wasteful to create a \nameref{def:Page_Table} with entries for every possible page.
+Some systems provide hardware, in the form of a \emph{page-table length register} (\emph{PTLR}), to indicate the size of the page table.
+This value is checked against every \nameref{def:Logical_Address} to verify that the address is in the valid range for the process.
+Failure of this test causes an error \nameref{def:Trap} to the \nameref{def:Operating_System}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
