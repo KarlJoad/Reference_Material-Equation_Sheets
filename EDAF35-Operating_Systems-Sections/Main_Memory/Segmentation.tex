@@ -39,6 +39,11 @@ The segment table is essentially an array of \texttt{base}–\texttt{limit} regi
 Each entry in the segment table has a \texttt{segment base} and a \texttt{segment limit}.
 The segment \texttt{base} contains the starting physical address where the segment resides in memory, and the segment \texttt{limit} specifies the length of the segment.
 
+The segment number is used as an \textbf{INDEX} to the segment table.
+The offset $d$ of the logical address must be between 0 and the \texttt{segment limit}.
+If it is not, we trap to the operating system (logical addressing attempt beyond end of segment).
+When an offset is legal, it is added to the \texttt{segment base} to produce the address in \nameref{def:Physical_Memory} of the desired byte.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
