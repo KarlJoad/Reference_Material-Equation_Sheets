@@ -92,6 +92,13 @@ Because the \nameref{def:Operating_System} is managing \nameref{def:Physical_Mem
 \end{itemize}
 This information is generally kept in a data structure called a \nameref{def:Frame_Table}.
 
+\begin{definition}[Frame Table]\label{def:Frame_Table}
+  The \emph{frame table} has one entry for each physical frame, indicating whether it is free or allocated and, if it is allocated, to which page of which process or processes.
+
+  This behaves like an ownership or state table, rather than a lookup table.
+  It says whether this frame is in use, and if it is, who is using it.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
