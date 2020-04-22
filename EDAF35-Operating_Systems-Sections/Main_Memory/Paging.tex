@@ -70,6 +70,12 @@ If frame size is 4 KB ($2^{12}$), then a system with 4-byte (32-bit) entries can
 Therefore, paging lets us use physical memory that is larger than what can be addressed by the CPU’s address pointer length.
 This means that the size of physical memory in a paged memory system is different from the maximum logical size of a process.
 
+When a \nameref{def:Process} arrives in the system to be executed, its size, in pages, is examined.
+Because pages and frames are the same size, if the process requires $n$ pages, at least $n$ frames must be available in memory.
+If the required $n$ frames are available, they are allocated to this arriving process.
+The first page of the process is loaded into one of the allocated frames, and the that frame's number is put in the \nameref{def:Page_Table} for this process for this page.
+The next page is loaded into another frame, its frame number is put into the page table, and so on.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
