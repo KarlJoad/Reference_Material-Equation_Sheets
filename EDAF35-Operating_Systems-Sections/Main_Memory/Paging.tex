@@ -210,6 +210,11 @@ If the code is \nameref{def:Reentrant} code (or pure code), the code pages can b
 Each \nameref{def:Process} will then get its own data page.
 Thus, two or more processes can execute the same code at the same time, while maintaining its own data.
 
+\begin{definition}[Reentrant]\label{def:Reentrant}
+  \emph{Reentrant} means that something can be reentered at any time, and it will behave the same as if it were entered as soon as it were reached.
+  Reentrant code then, is non-self-modifying code: it never changes during execution.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
