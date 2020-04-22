@@ -88,6 +88,17 @@ This strategy produces the largest leftover hole, which may be more useful than 
 \subsubsection{Fragmentation}\label{subsubsec:Contiguous_Memory_Fragmentation}
 When allocating space to \nameref{def:Process}es, we may run into the issue of \nameref{def:Fragmentation}.
 
+\begin{definition}[Fragmentation]\label{def:Fragmentation}
+  \emph{Fragmentation} is when memory that was allocated to a \nameref{def:Process} is \textbf{not} used.
+  Technically, this is an inefficiency, not a problem.
+
+  There are 2 kinds of fragmentation possible:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:External_Fragmentation}
+  \item \nameref{def:Internal_Fragmentation}
+  \end{enumerate}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
