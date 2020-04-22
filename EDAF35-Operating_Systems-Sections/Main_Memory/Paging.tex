@@ -215,6 +215,15 @@ Thus, two or more processes can execute the same code at the same time, while ma
   Reentrant code then, is non-self-modifying code: it never changes during execution.
 \end{definition}
 
+Heavily used programs can be shared, such as:
+\begin{itemize}[noitemsep]
+\item Compilers
+\item Window systems
+\item Run-time libraries (And through \nameref{def:Dynamic_Linking})
+\item Database systems
+\item etc.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
