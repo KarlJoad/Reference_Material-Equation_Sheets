@@ -85,6 +85,16 @@ Each entry consists of
   {\large{\textbf{Thus, only one page table is in the system, and it has only one entry for each page of physical memory.}}}
 \end{blackbox}
 
+To use the table, a tuple (\Cref{eq:Inverted_Hash_Table_Tuple}) is created by the CPU as the \nameref{def:Logical_Address}.
+\begin{equation}\label{eq:Inverted_Hash_Table_Tuple}
+  \langle \mathtt{PID}, p, d \rangle
+\end{equation}
+\begin{description}[noitemsep]
+\item $\mathtt{PID}$: The \nameref{def:Process}~ID.\@
+\item $p$: The page number.
+\item $d$: The offset of the desired location within the frame, i.e.\ in physical memory.
+\end{description}
+
 
 %%% Local Variables:
 %%% mode: latex
