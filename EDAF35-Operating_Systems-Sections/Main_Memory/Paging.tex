@@ -76,6 +76,13 @@ If the required $n$ frames are available, they are allocated to this arriving pr
 The first page of the process is loaded into one of the allocated frames, and the that frame's number is put in the \nameref{def:Page_Table} for this process for this page.
 The next page is loaded into another frame, its frame number is put into the page table, and so on.
 
+\nameref{def:Paging} offers a clear separation between the programmer’s view of memory and the actual hardware.
+The logical addresses that the programmer uses are translated into physical addresses that the hardware uses.
+This mapping is hidden from the programmer and is controlled by the operating system.
+This allows the programmer to view memory as one contiguous space, containing only this one program (which helps create our definition of \nameref{def:Virtual_Memory}).
+However, the user program may be scattered throughout \nameref{def:Physical_Memory}, which also holds other programs.
+The difference between the programmer’s view of memory and the actual physical memory is reconciled by the address-translation hardware in the \nameref{def:Memory_Management_Unit}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
