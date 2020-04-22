@@ -224,6 +224,9 @@ Heavily used programs can be shared, such as:
 \item etc.
 \end{itemize}
 
+To be sharable, the code must be \nameref{def:Reentrant}.
+The read-only nature of shared code \textbf{should not} be left to the correctness of the code; the \textbf{\nameref{def:Operating_System} should enforce this property}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
