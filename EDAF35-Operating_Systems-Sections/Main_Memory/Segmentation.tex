@@ -21,6 +21,15 @@ If the hardware could provide a memory mechanism that mapped the programmer’s 
   \end{remark}
 \end{definition}
 
+For example, a C compiler might create separate segments for:
+\begin{enumerate}[noitemsep]
+\item Code
+\item Global variables
+\item The heap, from which memory is allocated
+\item The stacks used by each thread
+\item The standard C library
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
