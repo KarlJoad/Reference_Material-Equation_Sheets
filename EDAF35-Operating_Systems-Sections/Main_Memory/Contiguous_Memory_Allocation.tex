@@ -8,6 +8,12 @@ We can place the operating system in either low memory or high memory, depending
 Typically, the interrupt vector is in low addresses, so the OS is usually put there too.
 Throughout this document, we assume that the OS inhabits the lowest addresses.
 
+\begin{definition}[Contiguous Memory Allocation]\label{def:Contiguous_Memory_Allocation}
+  In \emph{contiguous memory allocation}, each \nameref{def:Process} is contained in a single contiguous section of memory that is also contiguous with the next process.
+
+  In short, this means that each \nameref{def:Process} sits in its own contiguous block and is right next to the next process.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
