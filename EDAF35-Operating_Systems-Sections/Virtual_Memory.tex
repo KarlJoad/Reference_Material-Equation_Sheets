@@ -1,4 +1,9 @@
 \section{Virtual Memory}\label{sec:Virtual_Memory}
+As our natural definition of Von Neumann computers, the instructions being executed must be in \nameref{def:Physical_Memory}.
+Thus, the first approach to meeting this requirement is to place the entire \nameref{def:Logical_Address_Space} in physical memory.
+This is unfortunate, since it limits the size of a program to the size of physical memory.
+\nameref{def:Dynamic_Loading} can help ease this restriction, but it generally requires special precautions and extra work by the programmer.
+
 \begin{definition}[Virtual Memory]\label{def:Virtual_Memory}
   Virtual memory involves the separation of logical memory as perceived
   by users from physical memory.
