@@ -16,10 +16,22 @@ The ability to execute a program that is only partially in memory has many benef
 \end{itemize}
 
 \begin{definition}[Virtual Memory]\label{def:Virtual_Memory}
-  Virtual memory involves the separation of logical memory as perceived
-  by users from physical memory.
-  This separation allows an extremely large virtual memory to be provided for programmers when only a smaller physical memory is available.
-  Virtual memory makes the task of programming much easier, because the programmer no longer needs to worry about the amount of physical memory available; she can concentrate instead on the problem to be programmed.
+  Virtual memory involves the separation of \nameref{def:Logical_Memory} as perceived by users from \nameref{def:Physical_Memory}.
+  This separation allows:
+  \begin{itemize}[noitemsep]
+  \item Extremely large virtual memory to be provided for programmers when less physical memory is available.
+  \item \nameref{def:Process}es can share files easily.
+  \item \nameref{par:Shared_Memory} can be implemented.
+    \begin{itemize}[noitemsep]
+    \item For example, sharing a library between different processes can be handled just by mapping the virtual memory location into the process's \nameref{def:Virtual_Address_Space}.
+    \item Although each process considers the library to be part of \textbf{its} virtual address space, the frames where the libraries reside in physical memory are shared by all the processes.
+    \item Typically, a library is mapped read-only into the space of each process that is linked with it.
+    \item This is typically implemented with \nameref{subsubsec:Shared_Pages}.
+    \end{itemize}
+  \item An efficient method for \nameref{def:Process} creation.
+\end{itemize}
+
+  Virtual memory makes the task of programming much easier, because the programmer no longer needs to worry about the amount of physical memory available; they can concentrate instead on the problem to be programmed.
 \end{definition}
 
 \begin{definition}[Physical Memory]\label{def:Physical_Memory}
