@@ -53,6 +53,13 @@ The ability to execute a program that is only partially in memory has many benef
 The large blank space between the heap and the stack is part of the virtual address space but will require actual physical pages only if the heap or stack grows.
 Virtual address spaces that include these holes are known as \nameref{def:Sparse_Address_Space}s.
 
+\begin{definition}[Sparse Address Space]\label{def:Sparse_Address_Space}
+  A \emph{sparse address space} is a \nameref{def:Virtual_Address_Space} that is not completely mapped to \nameref{def:Physical_Memory}.
+  Typically, this is done in the case of programs for the memory space between the stack and heap, which is overwhelmingly empty.
+
+  Sparse address spaces are beneficial because these holes can be filled on demand, when the \nameref{def:Process} needs more \nameref{def:Physical_Memory}, or to dynamically link shared objects during program execution.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
