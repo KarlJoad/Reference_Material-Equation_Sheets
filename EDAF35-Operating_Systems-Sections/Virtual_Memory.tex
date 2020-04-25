@@ -50,6 +50,9 @@ The ability to execute a program that is only partially in memory has many benef
   \end{remark}
 \end{definition}
 
+The large blank space between the heap and the stack is part of the virtual address space but will require actual physical pages only if the heap or stack grows.
+Virtual address spaces that include these holes are known as \nameref{def:Sparse_Address_Space}s.
+
 
 %%% Local Variables:
 %%% mode: latex
