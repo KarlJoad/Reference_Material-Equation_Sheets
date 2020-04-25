@@ -4,6 +4,17 @@ Thus, the first approach to meeting this requirement is to place the entire \nam
 This is unfortunate, since it limits the size of a program to the size of physical memory.
 \nameref{def:Dynamic_Loading} can help ease this restriction, but it generally requires special precautions and extra work by the programmer.
 
+However, an examination of real \nameref{def:Program}s shows us that, in many cases, the entire program is not needed.
+Even in those cases where the entire program is needed, it may not all be needed at the same time.
+The ability to execute a program that is only partially in memory has many benefits:
+\begin{itemize}[noitemsep]
+\item Programs are no longer constrained by amount of \nameref{def:Physical_Memory} available.
+  Users able to write programs for an extremely large \nameref{def:Virtual_Address_Space}, simplifying the programming task.
+\item Each user program takes less physical memory, more programs could be run at the same time.
+  This yields a corresponding increase in CPU utilization and throughput but with no increase in response time or turnaround time.
+\item Less I/O needed to load or swap user programs into memory, so each user program would run faster.
+\end{itemize}
+
 \begin{definition}[Virtual Memory]\label{def:Virtual_Memory}
   Virtual memory involves the separation of logical memory as perceived
   by users from physical memory.
