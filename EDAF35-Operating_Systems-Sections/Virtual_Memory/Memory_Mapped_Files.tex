@@ -3,6 +3,11 @@ The sequential read of a \nameref{def:File} on disk using the standard \nameref{
 Each file access requires a system call and disk access.
 To alleviate the pain of this, we could use \nameref{def:Memory_Mapping}.
 
+\begin{definition}[Memory Mapping]\label{def:Memory_Mapping}
+  \emph{Memory mapping} is the process of taking something and mapping it to a page in memory.
+  This allows a page (possibly multiple) in the \nameref{def:Virtual_Address_Space} to be logically associated with a page-sized amount of something.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
