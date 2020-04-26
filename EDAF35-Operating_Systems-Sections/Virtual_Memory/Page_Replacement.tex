@@ -103,6 +103,11 @@ The simplest page-replacement algorithm is a first-in, first-out algorithm.
 A FIFO replacement algorithm associates with each page the time when that page was brought into memory.
 When a page must be replaced, the oldest page is chosen.
 
+It is not really necessary to record the time when a page is brought in.
+Instead, we can use a FIFO queue to hold all pages in memory.
+When a page is brought into memory, we insert it at the tail of the queue.
+When a page is replaced, we replace the page at the head of the queue.
+
 
 %%% Local Variables:
 %%% mode: latex
