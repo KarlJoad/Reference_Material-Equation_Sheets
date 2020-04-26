@@ -4,6 +4,18 @@ Traditionally, this was done by creating a copy of the parent’s address space 
 However, considering that many child processes invoke the \kernelinline{exec()} system call immediately after creation, the copying of the parent’s address space may be unnecessary.
 \nameref{def:Memory_Copy_on_Write} works by allowing the parent and child processes initially to share the same pages allowing the \kernelinline{fork()} system call to bypass the need for \nameref{def:Demand_Paging} by using a technique similar to page sharing (\Cref{subsec:Paging}).
 
+\begin{definition}[Copy-on-Write]\label{def:Memory_Copy_on_Write}
+  \emph{Copy-on-Write} allows the \kernelinline{fork()}ing parent \nameref{def:Process} to share its pages with its newly spawned child process.
+  This bypasses the need for \nameref{def:Demand_Paging}, by essentially allowing pages to be shared (like in \nameref{par:Shared_Memory} schemes).
+  These shared pages are marked as Copy-on-Write pages; only pages that \textbf{can be} modified need be marked as copy-on-write.
+  Pages that cannot be modified (pages containing executable code) can always be shared by the parent and child.
+
+  This allows for rapid process creation and minimizes the number of new pages that must be allocated to the newly created process.
+  The pages marked as copy-on-write pages, mean if \textbf{EITHER} process writes to any of the shared pages, a copy of the shared page is created.
+  The writer has its \nameref{def:Page_Table} changed to point to this one, which is a complete copy (except for the newly written changes).
+  The process that did nothing to the page continues to point to the original page.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
