@@ -190,6 +190,10 @@ There are two reasonably feasible implementations:
   \end{itemize}
 \end{enumerate}
 
+Both implementations of the \nameref{def:LRU_Algorithm} need additional hardware assistance beyond the standard TLB registers.
+For example, updating the clock fields or stack must be done for every memory reference.
+If we were to use an interrupt allowing software to update these data structures, it would signficantly slow every memory reference.
+
 \end{itemize}
 
 
