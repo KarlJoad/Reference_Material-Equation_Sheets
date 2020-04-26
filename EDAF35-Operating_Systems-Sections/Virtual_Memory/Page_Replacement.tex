@@ -11,6 +11,12 @@ This also increases the degree of multiprogramming by running more processes, \n
 
 If we run multiple \nameref{def:Process}es, each of which is multiple pages in size but actually only uses some of them, we can achieve higher CPU utilization and throughput, with physical frames to spare.
 It is possible that each of these processes, for some reason, may suddenly try to use \textbf{all} of their pages \textbf{simulataneously}, resulting in a need for more physical frames than the system has.
+The operating system has several options at this point:
+\begin{enumerate}[noitemsep]
+\item Terminate a user process.
+\item Replace one page in memory with the requested one in swap (\nameref{def:Page_Replacement}).
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
