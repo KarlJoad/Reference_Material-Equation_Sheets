@@ -21,6 +21,15 @@ The steps involved are:
 \item Subsequent reads and writes to the file (within the loaded paged-size amount of the file) are handled as routine memory accesses.
 \end{enumerate}
 
+\subsubsection{Benefits of Memory Mapping}\label{subsubsec:Memory_Mapping_Benefits}
+Manipulating \nameref{def:File}s through memory rather than incurring the overhead of using the \kernelinline{read()} and \kernelinline{write()} system calls simplifies and speeds up file access and usage.
+
+Multiple \nameref{def:Process}es may be allowed to map the same \nameref{def:File} concurrently, to allow sharing of data.
+Writes by any of the processes modify the file's data in \nameref{def:Virtual_Memory} which can be seen by all others that map the same section of the file.
+The \nameref{def:Memory_Mapping} \nameref{def:System_Call}s can also support \nameref{def:Memory_Copy_on_Write} functionality.
+This allows processeses to share a file in read-only mode but to have their own copies of any data they modify.
+to coordinate access to the shared data, the processes involved will use one of the mechanisms for achieving \nameref{def:Mutex}-like behavior.
+
 
 %%% Local Variables:
 %%% mode: latex
