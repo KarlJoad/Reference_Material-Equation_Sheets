@@ -25,6 +25,13 @@ Operating systems typically allocate these pages using a technique known as \nam
   \emph{Zero-fill-on-demand} pages have been zeroed-out before being allocated, thus erasing the previous contents.
 \end{definition}
 
+\subsubsection{\texorpdfstring{\kernelinline{vfork()}}{\texttt{vfork()}}}\label{subsubsec:vfork}
+Several versions of UNIX have a variation of the \kernelinline{fork()} \nameref{def:System_Call}, \kernelinline{vfork()} (virtual memory fork), that operates differently from \kernelinline{fork()} with regards to \nameref{def:Memory_Copy_on_Write}.
+With \kernelinline{vfork()}, the parent \nameref{def:Process} is suspended, and the child process uses the address space of the parent.
+Because \kernelinline{vfork()} does not use copy-on-write, if the child process changes any pages of the parent’s address space, the altered pages will be visible to the parent once it resumes.
+Therefore, \kernelinline{vfork()} must be used with caution to ensure that the child process does not modify the address space of the parent.
+\kernelinline{vfork()} is intended to be used when the child process calls \kernelinline{exec()} immediately after creation.
+Because no copying of pages takes place, \kernelinline{vfork()} is an extremely efficient method of process creation.
 
 %%% Local Variables:
 %%% mode: latex
