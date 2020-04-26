@@ -223,6 +223,17 @@ There are 3 major implementation methods for this algorithm.
 \end{enumerate}
 
 \subparagraph{Additional-Reference-Bits Algorithm}\label{subpar:Additional_Reference_Bits_Algorithm}
+We can gain additional ordering information by recording the reference bits at regular intervals using a $n$-bit number for each page in a table in memory.
+The number of bits (of history) included in the shift register is not fixed, and is based on the hardware available to make updating as fast as possible.
+
+At regular intervals, a timer interrupt transfers control to the \nameref{def:Operating_System}.
+The operating system shifts the \nameref{def:Reference_Bit} for each page into the high-order bit, shifting the other bits right by 1 bit and discarding the low-order bit.
+These shift registers contain the history of page use for the last $n$ time periods.
+
+If we interpret these bit strings as unsigned integers, the page with the lowest number is the LRU page, and it can be replaced.
+Note that the numbers are not guaranteed to be unique.
+We can either replace (swap out) all pages with the smallest value or use the FIFO method to choose among them.
+
 \subparagraph{Second-Chance Algorithm}\label{subpar:Second_Chance_Algorithm}
 \end{itemize}
 
