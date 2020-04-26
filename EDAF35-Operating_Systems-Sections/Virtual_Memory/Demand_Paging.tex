@@ -15,6 +15,13 @@ If we chose to load in parts of a \nameref{def:Program} only when they are neede
 When \nameref{def:Demand_Paging} is combined with \nameref{def:Swapping}, we do not want to swap the whole \nameref{def:Process} into memory if we don't need it.
 Thus, we use a \nameref{def:Lazy_Swapper}.
 
+\begin{definition}[Lazy Swapper]\label{def:Lazy_Swapper}
+  A \emph{lazy swapper}, like a regular swapper, swaps \nameref{def:Process}es into memory from the \nameref{def:Backing_Store}.
+  However, \textbf{it only swaps in pages of the process that will be needed}, and never swaps a page in that will not be used.
+
+  A lazy swapper can be implemented as a \nameref{def:Pager}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
