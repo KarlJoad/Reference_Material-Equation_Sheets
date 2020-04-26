@@ -62,6 +62,10 @@ There are 2 ways for the CPU to interact with these devices:
   \emph{Programmed I/O} (\emph{PIO}) is when the CPU uses polling to watch the control bit, constantly looping to see whether the device is ready.
 \end{definition}
 
+\begin{definition}[Interrupt-Driven]\label{def:Interrupt_Driven}
+  An \emph{interrupt-driven} system is one where the CPU does not poll the control bit, but instead receives an \nameref{def:Interrupt} when the device is ready for the next byte.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
