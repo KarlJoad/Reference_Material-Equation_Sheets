@@ -17,6 +17,10 @@ The \nameref{rmk:CPU_Scheduler} sees the decreasing CPU utilization and increase
 The new \nameref{def:Process} tries to get started by taking frames from running processes, causing more \nameref{def:Page_Fault}s and a longer queue for the paging device (\nameref{def:Backing_Store}).
 As a result, CPU utilization drops even further, and the CPU scheduler tries to increase the degree of multiprogramming even more.
 
+This leads to system throughput plunging.
+The \nameref{def:Page_Fault} rate increases tremendously, increasing the \nameref{def:Effective_Access_Time}.
+No work is getting done, because the processes are spending all their time \nameref{def:Paging}.
+
 
 %%% Local Variables:
 %%% mode: latex
