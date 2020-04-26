@@ -75,6 +75,9 @@ There are 2 main benefits of the slab allocation algorithm:
   Fragmentation is not an issue because each unique \nameref{def:Kernel} data structure has an associated \nameref{def:Slab_Cache}, and each cache is made up of one or more \nameref{def:Slab}s that are divided into chunks the size of the \nameref{def:Slab_Object}s being represented.
   Thus, when the kernel requests memory for an object, the slab allocator returns the exact amount of memory required to represent the object.
 \item Memory requests can be satisfied quickly.
+  The slab allocation scheme is thus particularly effective for managing memory when \nameref{def:Slab_Object}s are frequently allocated and deallocated, as is often the case with requests from the \nameref{def:Kernel}.
+  The act of allocating and releasing memory can be a time-consuming process, however, objects are created in advance allowing for quick allocation from the \nameref{def:Slab_Cache}.
+  Furthermore, when the kernel has finished with an object and releases it, it is marked as \texttt{free} and returned to its cache, thus making it immediately available for subsequent requests from the kernel.
 \end{enumerate}
 
 %%% Local Variables:
