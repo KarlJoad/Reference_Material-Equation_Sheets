@@ -112,6 +112,16 @@ This particular problem can be solved in two different ways.
 \end{enumerate}
 
 \subsubsection{Hardware Required}\label{subsubsec:Demand_Paging_Required_Hardware}
+The hardware to support demand paging is the same as the hardware for \nameref{def:Paging} and \nameref{def:Swapping}:
+\begin{enumerate}[noitemsep]
+\item Page table.
+  This table has the ability to mark an entry invalid through a valid–invalid bit or a special value of protection bits.
+\item Secondary memory.
+  This memory holds those pages that are not present in main memory.
+  The secondary memory is usually a high-speed disk.
+  It is known as the \emph{swap device}, and the section of disk used for this purpose is known as swap space.
+\end{enumerate}
+
 \subsubsection{Performance}\label{subsubsec:Demand_Paging_Performance}
 \subsubsection{Swap Usage}\label{subsubsec:Demand_Paging_Swap_Usage}
 
