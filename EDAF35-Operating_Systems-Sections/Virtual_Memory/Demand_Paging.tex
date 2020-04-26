@@ -75,6 +75,18 @@ The \nameref{def:Paging} hardware (\nameref{def:Memory_Management_Unit}), in tra
   \end{enumerate}
 \end{definition}
 
+Handling a \nameref{def:Page_Fault} in straightforward.
+\begin{enumerate}[noitemsep]
+\item We check an internal table (usually kept with the \nameref{def:Process_Control_Block}) for this \nameref{def:Process} to determine whether the reference was a valid or an invalid memory access.
+\item If the reference was invalid, we terminate the process (attempt to access memory that is not owned by this \nameref{def:Process}).
+  If it was valid and legal, but we have not yet brought in that page, we now page it in.
+\item We find a free physical frame (by taking one from the free-frame list, for example).
+\item We schedule a disk operation to read the desired page into the newly allocated frame.
+\item When the disk read is complete, we modify the page-frame internal table of the \nameref{def:Process} to indicate that the page is now in memory.
+\item \textbf{We restart the instruction that was interrupted by the trap.}
+  The process can now access the page as though it had always been in memory.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
