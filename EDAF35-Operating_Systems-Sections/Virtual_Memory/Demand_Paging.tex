@@ -129,6 +129,19 @@ To illustrate, the \nameref{def:Effective_Access_Time} for demand-paged memory c
 \begin{definition}[Effective Access Time]\label{def:Effective_Access_Time}
   \emph{Effective access time} is the average amount of time required to access a page in a \nameref{def:Demand_Paging} system.
   It accounts for the possibility of a page \textbf{NOT} being in memory and needing to be paged in from the swap and a page being in memory and having a quick, direct access.
+
+  \begin{equation}\label{eq:Effective_Access_Time}
+    \mathrm{EAT} = \bigl( (1-p) \times \mathrm{MAT} \bigr) + (p \times \mathrm{PFT})
+  \end{equation}
+  \begin{description}[noitemsep]
+  \item $\mathrm{EAT}$: Effective Access Time.
+  \item $p$: Probability of a \nameref{def:Page_Fault} ($0 \leq p \leq 1$).
+    \begin{itemize}[noitemsep]
+    \item We expect $p$ to be close to zero (we expect to have few page faults).
+    \end{itemize}
+  \item $\mathrm{MAT}$: Memory Access Time (Typically \SIrange{10}{200}{\nano{} \second{}}).
+  \item $\mathrm{PFT}$: \nameref{def:Page_Fault} Time.
+  \end{description}
 \end{definition}
 
 \subsubsection{Swap Usage}\label{subsubsec:Demand_Paging_Swap_Usage}
