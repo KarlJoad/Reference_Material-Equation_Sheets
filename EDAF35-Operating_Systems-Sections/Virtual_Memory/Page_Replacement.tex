@@ -230,6 +230,9 @@ At regular intervals, a timer interrupt transfers control to the \nameref{def:Op
 The operating system shifts the \nameref{def:Reference_Bit} for each page into the high-order bit, shifting the other bits right by 1 bit and discarding the low-order bit.
 These shift registers contain the history of page use for the last $n$ time periods.
 
+For example, in an \SI{8}{\bit} shift register, if it contains \texttt{00000000}, then the page has not been used for eight time periods.
+A page that is used at least once in each period has a shift register value of \texttt{11111111}.
+
 If we interpret these bit strings as unsigned integers, the page with the lowest number is the LRU page, and it can be replaced.
 Note that the numbers are not guaranteed to be unique.
 We can either replace (swap out) all pages with the smallest value or use the FIFO method to choose among them.
