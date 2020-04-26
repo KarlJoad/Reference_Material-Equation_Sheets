@@ -93,6 +93,11 @@ When we select a page for replacement, we examine its \nameref{def:Modify_Bit}.
 In general, we select a particular replacement algorithm with the lowest \nameref{def:Page_Fault} rate.
 We evaluate an algorithm by running it on a particular string of memory references, called a reference string, and computing the number of page faults.
 
+To determine the number of \nameref{def:Page_Fault}s for a particular reference string and \nameref{def:Page_Replacement} algorithm, we also need to know the number of frames available.
+Obviously, as the number of frames available increases, the number of page faults decreases.
+Adding physical memory increases the number of frames.
+Between the number of frames and the number of page faults, we generally expect a negative-exponential curve.
+
 
 %%% Local Variables:
 %%% mode: latex
