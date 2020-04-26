@@ -49,6 +49,15 @@ For more convenient access to I/O devices, many computer architectures provide m
   The CPU transfers data through these kinds of devices by reading and writing a few device registers, called an I/O port.
 \end{definition}
 
+To send out a long string of bytes through a memory-mapped \textbf{serial} port, the CPU writes one data byte to the data register and sets a bit in the control register to signal that the byte is available.
+The device takes the data byte and then clears the bit in the control register to signal that it is ready for the next byte.
+Then the CPU can transfer the next byte.
+There are 2 ways for the CPU to interact with these devices:
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Programmed_IO}
+\item \nameref{def:Interrupt_Driven}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
