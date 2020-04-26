@@ -310,6 +310,11 @@ A typical example is a database, which has its own memory management and I/O buf
 Applications like this understand their memory use and disk use better than an operating system that is implementing algorithms for general-purpose use.
 If the operating system and the application are buffering I/O, then twice the memory is being used for I/O.
 
+Because of such problems, some \nameref{def:Operating_System}s give certain programs the ability to use a disk partition as a large sequential array of logical blocks, \textbf{without} any file-system data structures.
+This is sometimes called the raw disk, and I/O to this array is termed raw I/O.
+Raw I/O bypasses \textbf{all} file-system services, such as file I/O demand paging, file locking, prefetching, space allocation, file names, and directories.
+Although certain applications are more efficient when implementing their own special-purpose storage services on a raw partition, most applications perform better when they use the regular file-system services.
+
 
 %%% Local Variables:
 %%% mode: latex
