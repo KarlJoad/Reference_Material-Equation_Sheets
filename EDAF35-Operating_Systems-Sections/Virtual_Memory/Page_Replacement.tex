@@ -263,6 +263,8 @@ With these two bits, there are four possible classes:
 \item $(1, 1)$ Recently used and modified. \textbf{Probably will be used again soon and page will be need to be written before it can be replaced}.
 \end{enumerate}
 
+When page replacement is called for, we use the same scheme as in the \nameref{subpar:Second_Chance_Algorithm}.
+Instead of examining whether the page to which we are pointing has the reference bit set to 1, we examine the class to which that page belongs replacing the first page in the lowest nonempty class.
 
 %%% Local Variables:
 %%% mode: latex
