@@ -16,6 +16,11 @@ However, considering that many child processes invoke the \kernelinline{exec()} 
   The process that did nothing to the page continues to point to the original page.
 \end{definition}
 
+To handle the allocation of pages for a \nameref{def:Memory_Copy_on_Write} page, the location that it is allocated from is important.
+Many \nameref{def:Operating_System}s provide a pool of free pages for such requests.
+These free pages are typically allocated when the stack or heap for a \nameref{def:Process} must expand or when there are copy-on-write pages to be managed.
+Operating systems typically allocate these pages using a technique known as \nameref{def:Zero_Fill_on_Demand}.
+
 
 %%% Local Variables:
 %%% mode: latex
