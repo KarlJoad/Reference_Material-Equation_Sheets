@@ -62,6 +62,15 @@ The basic steps to perform a \nameref{def:Page_Replacement} are shown below:
 If no frames in memory are free, two page transfers (move one page out and one in) are required, effectively doubling the \nameref{def:Page_Fault} service time and increases the \nameref{def:Effective_Access_Time} accordingly.
 Reducing this overhead can be done by using a \nameref{def:Modify_Bit} (\nameref{rmk:Dirty_Bit}).
 
+\begin{definition}[Modify Bit]\label{def:Modify_Bit}
+  The \emph{modify bit} is a signalling bit associated with each page or frame has a modify bit associated with it in the hardware.
+  The modify bit for a page is set by the hardware whenever any byte in the page is written, indicating that the page has been modified.
+
+  \begin{remark}[Dirty Bit]\label{rmk:Dirty_Bit}
+    The \nameref{def:Modify_Bit} is sometimes called the \emph{dirty bit}, because if it is set, then the memory can be considered ``dirty'' and must be written before any further changes are made.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
