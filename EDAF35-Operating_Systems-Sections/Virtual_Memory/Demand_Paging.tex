@@ -25,6 +25,11 @@ Thus, we use a \nameref{def:Lazy_Swapper}.
 When a \nameref{def:Process} is to be swapped in, the \nameref{def:Pager} guesses which pages will be used before the process is swapped out again.
 Instead of swapping in a whole process, the pager brings only those pages into memory, avoiding reading pages into memory that will not be used anyway, decreasing the swap time and the amount of physical memory needed.
 
+\begin{definition}[Pager]\label{def:Pager}
+  In a \nameref{def:Demand_Paging} and \nameref{def:Swapping} system, we are not swapping whole \nameref{def:Process}es into and out of the \nameref{def:Backing_Store}; we are swapping individual pages of the process.
+  Thus, the task of moving a process's pages into and out of the backing store is handled by the \emph{pager}, rather than the swapper.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
