@@ -49,6 +49,32 @@ While the \nameref{def:Process} executes and accesses pages that are \emph{memor
 Attempting to access a page marked invalid causes a \nameref{def:Page_Fault}.
 The \nameref{def:Paging} hardware (\nameref{def:Memory_Management_Unit}), in translating the address through the page table, will notice the invalid bit is set, causing a \nameref{def:Trap} to the \nameref{def:Operating_System}.
 
+\begin{definition}[Page Fault]\label{def:Page_Fault}
+  A \emph{page fault} is a hardware \nameref{def:Trap} raised by the \nameref{def:Memory_Management_Unit}.
+  It is caused by a \nameref{def:Process} attempting to access a page that has not been brought into memory by the \nameref{def:Pager}.
+
+  The following sequence executes when a page fault occurs:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Trap} to the operating system.
+  \item Save the user registers and process state.
+  \item Determine that the interrupt was a page fault.
+  \item Check that the page reference was legal and determine the location of the page on the disk.
+  \item Issue a read from the disk to a free physical frame:
+    \begin{enumerate}[noitemsep]
+    \item Wait in a queue for this device until the read request is serviced.
+    \item Wait for the device seek and/or latency time.
+    \item Begin the transfer of the page to a free frame.
+    \end{enumerate}
+  \item While waiting, the CPU can be allocated to some other user (CPU scheduling, optional).
+  \item Receive an interrupt from the disk I/O subsystem (I/O completed).
+  \item Save the registers and process state for the other user (if step 6 is used).
+  \item Determine that the interrupt was from the disk.
+  \item Correct the \nameref{def:Page_Table} and other tables to show that the desired page is now in memory.
+  \item Wait for the CPU to be allocated to this process again.
+  \item Restore the user registers, process state, and new page table. Then resume the interrupted instruction.
+  \end{enumerate}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
