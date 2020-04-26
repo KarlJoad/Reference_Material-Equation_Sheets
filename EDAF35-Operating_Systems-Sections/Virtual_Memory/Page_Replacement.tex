@@ -29,6 +29,18 @@ The operating system has several options at this point:
   \end{itemize}
 \end{enumerate}
 
+\begin{definition}[Page Replacement]\label{def:Page_Replacement}
+  \emph{Page replacement} is the process of replacing a page in memory with one that is \nameref{def:Swapping} in from the swap.
+
+  Page replacement is basic to \nameref{def:Demand_Paging}.
+  It completes the separation between logical memory and \nameref{def:Physical_Memory}.
+  With this mechanism, an enormous \nameref{def:Virtual_Memory} can be provided for programmers on a smaller physical memory.
+  Without demand paging, user addresses are still mapped into physical addresses, and the two sets of addresses can be different, however, all the pages of a process still must be in physical memory.
+  With demand paging, the size of the \nameref{def:Logical_Address_Space} is no longer constrained by physical memory.
+
+  The procedure for performing this replacement is listed in \Cref{subsubsec:Page_Replacement_Procedure}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
