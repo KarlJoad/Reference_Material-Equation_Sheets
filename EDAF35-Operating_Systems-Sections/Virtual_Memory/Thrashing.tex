@@ -11,6 +11,12 @@ Consequently, the process faults repeatedly, replacing pages that it must bring 
   Thus, the cycle continues.
 \end{definition}
 
+\subsubsection{Cause of Thrashing}\label{subsubsec:Thrashing_Cause}
+\nameref{def:Thrashing} results in severe performance problems.
+The \nameref{rmk:CPU_Scheduler} sees the decreasing CPU utilization and increases the degree of multiprogramming as a result.
+The new \nameref{def:Process} tries to get started by taking frames from running processes, causing more \nameref{def:Page_Fault}s and a longer queue for the paging device (\nameref{def:Backing_Store}).
+As a result, CPU utilization drops even further, and the CPU scheduler tries to increase the degree of multiprogramming even more.
+
 
 %%% Local Variables:
 %%% mode: latex
