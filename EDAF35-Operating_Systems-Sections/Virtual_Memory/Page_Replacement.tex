@@ -14,6 +14,13 @@ It is possible that each of these processes, for some reason, may suddenly try t
 The operating system has several options at this point:
 \begin{enumerate}[noitemsep]
 \item Terminate a user process.
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Demand_Paging} is the operating system’s attempt to improve the system’s utilization and throughput.
+  \item Users should not be aware that their processes are running on a paged system—
+  \item Paging should be logically transparent to the user.
+  \item Not the best choice.
+  \end{itemize}
+
 \item Replace one page in memory with the requested one in swap (\nameref{def:Page_Replacement}).
 \end{enumerate}
 
