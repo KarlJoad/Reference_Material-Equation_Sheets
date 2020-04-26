@@ -35,6 +35,11 @@ Writes to the \nameref{def:File} mapped in memory are not necessarily immediate 
 Some systems may choose to update the physical file when the operating system periodically checks whether the page in memory has been modified.
 When the file is closed, all the data is written back to disk and removed from the \nameref{def:Virtual_Memory} of the \nameref{def:Process}.
 
+\subsubsection{Memory Mapped I/O}\label{subsubsec:Memory_Mapped_IO}
+Each I/O controller includes registers to hold commands and the data being transferred.
+Usually, special I/O instructions allow data transfers between these registers and system memory.
+For more convenient access to I/O devices, many computer architectures provide memory-mapped I/O.
+
 
 %%% Local Variables:
 %%% mode: latex
