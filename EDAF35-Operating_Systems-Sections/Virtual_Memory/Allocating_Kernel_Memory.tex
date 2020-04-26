@@ -72,6 +72,8 @@ The object assigned from the cache is marked as \texttt{used}.
 There are 2 main benefits of the slab allocation algorithm:
 \begin{enumerate}[noitemsep]
 \item No memory is wasted due to \nameref{def:Fragmentation}.
+  Fragmentation is not an issue because each unique \nameref{def:Kernel} data structure has an associated \nameref{def:Slab_Cache}, and each cache is made up of one or more \nameref{def:Slab}s that are divided into chunks the size of the \nameref{def:Slab_Object}s being represented.
+  Thus, when the kernel requests memory for an object, the slab allocator returns the exact amount of memory required to represent the object.
 \item Memory requests can be satisfied quickly.
 \end{enumerate}
 
