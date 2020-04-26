@@ -1,4 +1,9 @@
 \subsection{Thrashing}\label{subsec:Thrashing}
+If a \nameref{def:Process} does not have the number of frames (\nameref{def:Physical_Memory}) it needs to support pages in active use, it will quickly page-fault.
+At this point, it must replace some pages.
+However, since all the pages are in active use, the OS will replace a page that will be needed again right away.
+Consequently, the process faults repeatedly, replacing pages that it must bring back in immediately.
+
 
 %%% Local Variables:
 %%% mode: latex
