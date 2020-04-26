@@ -26,6 +26,11 @@ We can limit the effects of \nameref{def:Thrashing} by using a local replacement
 With local replacement, if a \nameref{def:Process} starts thrashing, it cannot steal frames from another, causing the second one to thrash as well.
 However, this does not entirely the problem.
 
+\begin{remark*}
+  The current best practice in implementing a computer system is to include enough \nameref{def:Physical_Memory} to avoid \nameref{def:Thrashing} and \nameref{def:Swapping}.
+  Providing enough memory to keep all working sets in memory concurrently, except under extreme conditions, gives the best user experience.
+\end{remark*}
+
 
 %%% Local Variables:
 %%% mode: latex
