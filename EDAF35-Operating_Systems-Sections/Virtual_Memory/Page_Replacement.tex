@@ -2,6 +2,13 @@
 If a \nameref{def:Process} of ten pages actually uses only half of them, then \nameref{def:Demand_Paging} saves the I/O necessary to load the five pages that are never used.
 This also increases the degree of multiprogramming by running more processes, \nameref{def:Over_Allocating} memory.
 
+\begin{definition}[Over-Allocating]\label{def:Over_Allocating}
+  \emph{Over-allocating} is the process of putting more load on a component in the system than would normally be possible.
+
+  In the context of \nameref{def:Paging} and \nameref{def:Demand_Paging}, this means that main memory has more \nameref{def:Process}es in it than would be normal in normal \nameref{def:Paging} schemes.
+  This is because \textbf{ONLY} the pages that are needed to run these processes are loaded, and nothing more.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
