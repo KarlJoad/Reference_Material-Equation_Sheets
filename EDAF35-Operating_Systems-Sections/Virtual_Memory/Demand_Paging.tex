@@ -87,6 +87,11 @@ Handling a \nameref{def:Page_Fault} in straightforward.
   The process can now access the page as though it had always been in memory.
 \end{enumerate}
 
+A \nameref{def:Page_Fault} may occur at any memory reference.
+A crucial requirement for \nameref{def:Demand_Paging} is the ability to restart any instruction after a page fault.
+We save the state (registers, condition code, instruction counter) of the interrupted \nameref{def:Process} when the page fault occurs.
+This lets us restart the process in exactly the same place and state, except that the desired page is now in memory and is accessible.
+
 
 %%% Local Variables:
 %%% mode: latex
