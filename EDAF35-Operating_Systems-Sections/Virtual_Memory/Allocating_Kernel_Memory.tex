@@ -4,6 +4,16 @@ This list is typically populated using a \nameref{def:Page_Replacement} algorith
 Additionally, \nameref{def:Internal_Fragmentation} may result, as the process will be granted an entire page frame, even if it doesn't need all of it..
 
 \nameref{def:Kernel} memory is often allocated from a free-memory pool \textbf{different} from the list used to satisfy ordinary user-mode processes.
+There are two primary reasons for this:
+\begin{enumerate}[noitemsep]
+\item The \nameref{def:Kernel} requests memory for data structures of varying sizes, some of which are less than a page in size.
+  As a result, the kernel must use memory conservatively and attempt to minimize waste due to \nameref{def:Fragmentation}.
+  Many \nameref{def:Operating_System}s do not subject kernel code or data to the paging system.
+\item Pages allocated to \nameref{def:User}-mode processes do not necessarily have to be in contiguous physical memory.
+  However, certain hardware devices interact directly with physical memory, not the \nameref{def:Virtual_Memory} interface.
+  Consequently, the devices may require memory residing in \textbf{physically} contiguous pages.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
