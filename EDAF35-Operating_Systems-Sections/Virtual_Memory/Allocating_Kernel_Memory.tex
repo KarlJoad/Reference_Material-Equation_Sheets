@@ -1,4 +1,9 @@
 \subsection{Allocating Kernel Memory}\label{subsec:Allocating_Kernel_Memory}
+When a \nameref{def:Process} running in \nameref{def:User} mode requests additional memory, pages are allocated from the list of free page frames maintained by the \nameref{def:Kernel}.
+This list is typically populated using a \nameref{def:Page_Replacement} algorithm and most likely contains free pages scattered throughout physical memory.
+Additionally, \nameref{def:Internal_Fragmentation} may result, as the process will be granted an entire page frame, even if it doesn't need all of it..
+
+\nameref{def:Kernel} memory is often allocated from a free-memory pool \textbf{different} from the list used to satisfy ordinary user-mode processes.
 
 %%% Local Variables:
 %%% mode: latex
