@@ -161,6 +161,37 @@ This approach is the \nameref{def:LRU_Algorithm}.
   \end{remark}
 \end{definition}
 
+The \nameref{def:LRU_Algorithm} is often used as a \nameref{def:Page_Replacement} algorithm and is considered to be good.
+The major problem is how to implement it.
+The LRU page-replacement algorithm may require substantial hardware assistance to determine an order for the frames defined by the time of last use.
+There are two reasonably feasible implementations:
+\begin{enumerate}[noitemsep]
+\item \textbf{Counters}.
+  In this case, we associate with each \nameref{def:Page_Table} entry a Time-of-Use field and add to the CPU a logical clock or counter which is incremented for \textbf{every} memory reference.
+  Whenever a reference to a page is made, the contents of the clock register are copied to the Time-of-Use field in the page-table entry for that page.
+  This way, we always have the ``time'' of the last reference to each page.
+  We replace the page with the smallest time value.
+  \begin{itemize}[noitemsep]
+  \item This scheme requires a search of the page table to find the LRU page and a write to memory (to the time-of-use field in the page table) for each memory access.
+  \item The times must also be maintained when page tables are changed (due to CPU scheduling).
+  \item Overflow of the clock must be considered.
+  \end{itemize}
+
+\item \textbf{Stack}.
+  Another approach to implementing LRU replacement is to keep a stack of page numbers.
+  Whenever a page is referenced, it is put on the top.
+  In this way, the most recently used page is always at the top of the stack and the least recently used page is always at the bottom.
+  Because entries must be removed from the middle of the stack, it is best to implement this approach by using a doubly linked list with a head pointer and a tail pointer.
+  \begin{itemize}[noitemsep]
+  \item Removing a page and putting it on the top of the stack then requires changing six pointers at worst.
+  \item Each update is a little more expensive, but there is no search for a replacement.
+    The tail pointer points to the bottom of the stack, the LRU page.
+  \item This approach is particularly appropriate for software or microcode implementations of LRU replacement.
+  \end{itemize}
+\end{enumerate}
+
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
