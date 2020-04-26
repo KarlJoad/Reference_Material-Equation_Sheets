@@ -44,6 +44,16 @@ There are several components that make up the slab allocation scheme:
   A \emph{slab} is made up of one or more physically contiguous pages.
 \end{definition}
 
+\begin{definition}[Cache]\label{def:Slab_Cache}
+  A \emph{cache} consists of one or more \nameref{def:Slab}s.
+  There is a single cache for each unique kernel data structure.
+
+  The caches do not necessarily keep the \nameref{def:Slab_Object}s in order.
+  They only guarantee that the objects will be in contiguous memory because the \nameref{def:Slab}s they map to are contiguous.
+
+  For example, a separate cache for the data structure representing \nameref{def:Process_Descriptor}s, a separate cache for file objects, a separate cache for \nameref{def:Semaphore}s, and so forth.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
