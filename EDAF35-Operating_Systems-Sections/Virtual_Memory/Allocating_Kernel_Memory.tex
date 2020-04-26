@@ -29,6 +29,9 @@ For example, a request for \SI{11}{\kibi{} \byte{}} is satisfied with a \SI{16}{
 \paragraph{Benefits of the Buddy System}\label{par:Buddy_System_Benefits}
 An advantage of the buddy system is how quickly adjacent buddies can be combined to form larger segments using a technique known as \emph{coalescing}.
 
+\paragraph{Drawbacks of the Buddy System}\label{par:Buddy_System_Drawbacks}
+The drawback to the buddy system is that rounding up to the next highest power of 2 will likely cause \nameref{def:Fragmentation} within allocated segments.
+
 \subsubsection{Slab Allocation}\label{subsubsec:Slab_Allocation}
 
 %%% Local Variables:
