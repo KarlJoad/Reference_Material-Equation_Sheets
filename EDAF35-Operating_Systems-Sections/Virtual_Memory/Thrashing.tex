@@ -60,6 +60,13 @@ The \nameref{def:Locality_Model} states that all programs will exhibit this basi
   \end{remark*}
 \end{blackbox}
 
+This model uses a parameter, $\Delta$, to define the \textbf{working-set window}.
+The idea is to examine the most recent $\Delta$ page references.
+The set of pages in the most recent $\Delta$ page references is the \textbf{working set}.
+If a page is in active use, it will be in the working set.
+If it is no longer being used, it will drop from the working set $\Delta$ time units after its last reference.
+Thus, the working set is an approximation of the program’s locality.
+
 
 %%% Local Variables:
 %%% mode: latex
