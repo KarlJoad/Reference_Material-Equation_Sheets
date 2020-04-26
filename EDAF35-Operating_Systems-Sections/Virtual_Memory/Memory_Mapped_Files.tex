@@ -8,6 +8,19 @@ To alleviate the pain of this, we could use \nameref{def:Memory_Mapping}.
   This allows a page (possibly multiple) in the \nameref{def:Virtual_Address_Space} to be logically associated with a page-sized amount of something.
 \end{definition}
 
+\subsubsection{Basic Mechanism}\label{subsubsec:Basic_Memory_Mapping_Mechanism}
+Memory mapping a file is accomplished by mapping a disk block to a page (or
+pages) in memory.
+The steps involved are:
+\begin{enumerate}[noitemsep]
+\item Initial access to the \nameref{def:File} proceeds through ordinary \nameref{def:Demand_Paging}, resulting in a \nameref{def:Page_Fault}.
+\item A page-sized portion of the file is read from the file system into a physical frame.
+  \begin{itemize}[noitemsep]
+  \item Some systems may read in more than a page-sized chunk of memory at a time
+  \end{itemize}
+\item Subsequent reads and writes to the file (within the loaded paged-size amount of the file) are handled as routine memory accesses.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
