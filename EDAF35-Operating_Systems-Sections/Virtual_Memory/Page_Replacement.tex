@@ -272,6 +272,13 @@ In this algorithm, we give preference to those pages that have been modified in 
 Keep a counter of the number of references that have been made to each page, leading to the following schemes.
 \begin{enumerate}[noitemsep]
 \item The Least Frequently Used (LFU) \nameref{def:Page_Replacement} algorithm.
+  This requires that the page with the \textbf{smallest count} be replaced because it is the least frequently used page.
+  This means that an actively used page should have a large reference count.
+  A problem arises when a page is used heavily once but then is never used again; thus, it has a large count but remains in memory even though it is no longer needed.
+  \begin{itemize}[noitemsep]
+  \item A solution is to shift the counts right by 1 bit at regular intervals, forming an exponentially decaying average usage count.
+  \end{itemize}
+
 \item The Most Frequently Used (MFU) \nameref{def:Page_Replacement} algorithm is based on the argument that the page with the smallest count was probably just brought in and has yet to be used.
 \end{enumerate}
 
