@@ -93,6 +93,7 @@ We save the state (registers, condition code, instruction counter) of the interr
 This lets us restart the process in exactly the same place and state, except that the desired page is now in memory and is accessible.
 
 \subsubsection{Problems with Demand Paging}\label{subsubsec:Demand_Paging_Problems}
+\paragraph{Multiple Page Faults}\label{par:Demand_Paging_Problems-Multiple_Page_Faults}
 Theoretically, some programs could access several new pages of memory with each instruction execution (one page for the instruction and many for data), possibly causing multiple page faults per instruction.
 This situation would result in unacceptable system performance.
 Fortunately, analysis of running processes shows that this behavior is exceedingly unlikely.
