@@ -137,6 +137,11 @@ It was found and is called \nameref{def:Optimal_Page_Replacement_Algorithm}.
   Use of this \nameref{def:Page_Replacement} algorithm guarantees the lowest possible \nameref{def:Page_Fault} rate for a fixed number of frames.
 \end{definition}
 
+Unfortunately, the optimal page-replacement algorithm is difficult, if not impossible, to implement, because it requires \textbf{future} knowledge of the reference string.
+This is a similar situation as with the \nameref{par:SJF_Scheduling} algorithm in \Cref{par:SJF_Scheduling}.
+As a result, the optimal algorithm is used mainly for comparison studies.
+For instance, a new algorithm may not be optimal, but it is within \SI{12.3}{\percent} of optimal at worst and within \SI{4.7}{\percent} on average.
+
 
 %%% Local Variables:
 %%% mode: latex
