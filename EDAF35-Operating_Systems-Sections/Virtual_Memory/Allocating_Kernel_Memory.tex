@@ -60,6 +60,10 @@ There are several components that make up the slab allocation scheme:
   For example, the cache representing \nameref{def:Semaphore}s stores instances of semaphore objects, the cache representing \nameref{def:Process_Descriptor}s stores instances of process descriptor objects, and so forth.
 \end{definition}
 
+The slab-allocation algorithm uses \nameref{def:Slab_Cache}s to store \nameref{def:Kernel} objects.
+When a \nameref{def:Slab_Cache} is created, a number of \nameref{def:Slab_Object}s are allocated to the \nameref{def:Slab_Cache},which are initially marked as \texttt{free}.
+The number of \nameref{def:Slab_Object}s in the \nameref{def:Slab_Cache} depends on the size of the associated \nameref{def:Slab}.
+
 
 %%% Local Variables:
 %%% mode: latex
