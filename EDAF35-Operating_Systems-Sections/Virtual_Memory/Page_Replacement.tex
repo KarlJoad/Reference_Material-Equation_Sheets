@@ -83,6 +83,12 @@ When we select a page for replacement, we examine its \nameref{def:Modify_Bit}.
   \end{itemize}
 \end{itemize}
 
+\begin{remark*}
+  This also applies to read-only pages (for example, pages of binary code).
+  Since such pages cannot be modified, they may be discarded when desired.
+  This can significantly reduce the time required to service a page fault, since it reduces \textbf{I/O time} by one-half if the page has not been modified.
+\end{remark*}
+
 
 %%% Local Variables:
 %%% mode: latex
