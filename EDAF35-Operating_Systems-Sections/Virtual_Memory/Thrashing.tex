@@ -77,6 +77,13 @@ The accuracy of the working set depends on the selection of $\Delta$.
 Using this set, if we can find its size for all the \nameref{def:Process}es in the system, we can calculate the entire system's demand.
 If the demand is greater than the total number of frames, then \nameref{def:Thrashing} will happen.
 
+Once $\Delta$ is selected, use of the working-set model is simple.
+The \nameref{def:Operating_System} monitors the working set of each \nameref{def:Process} and allocates to it enough frames to provide it with its working-set size.
+If there are enough frames left over, another process can be initiated.
+If the sum of the working-set sizes increases, making the demand of the system exceed the total number of available frames, the OS selects a process to suspend.
+The process’s pages are swapped out, and its frames are reallocated to other processes.
+The suspended process can be restarted later.
+
 
 %%% Local Variables:
 %%% mode: latex
