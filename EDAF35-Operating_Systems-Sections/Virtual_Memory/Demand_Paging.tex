@@ -41,6 +41,14 @@ The \nameref{par:Page_Valid_Invalid_Bit} scheme can be used for this purpose.
   \end{itemize}
 \end{itemize}
 
+The page-table entry for a page that is brought into memory is set as usual, but the page-table entry for a page that is not currently in memory is either simply marked invalid or contains the address of the page on disk.
+Marking a page invalid will have no effect if the process never attempts to access that page.
+If we guess right and page in all pages that are actually needed and only those pages, the \nameref{def:Process} will run exactly as though we had brought in all pages.
+
+While the \nameref{def:Process} executes and accesses pages that are \emph{memory resident}, execution proceeds normally.
+Attempting to access a page marked invalid causes a \nameref{def:Page_Fault}.
+The \nameref{def:Paging} hardware (\nameref{def:Memory_Management_Unit}), in translating the address through the page table, will notice the invalid bit is set, causing a \nameref{def:Trap} to the \nameref{def:Operating_System}.
+
 
 %%% Local Variables:
 %%% mode: latex
