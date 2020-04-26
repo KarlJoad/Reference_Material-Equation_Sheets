@@ -109,9 +109,14 @@ When a page is brought into memory, we insert it at the tail of the queue.
 When a page is replaced, we replace the page at the head of the queue.
 
 Notice that, even if we select a page that is being actively used for replacement, everything still works correctly.
-After we replace the active page with a new one, a fault will occur almost immediately to retrieve the active page from the swap.
+After we replace the active page with a new one, a \nameref{def:Page_Fault} will occur almost immediately to retrieve the active page from the swap.
 Then, some other page must be replaced to bring the active page back into memory.
 Thus, a bad replacement choice increases the page-fault rate and slows process execution, but does not cause incorrect execution.
+
+The FIFO \nameref{def:Page_Replacement} algorithm is easy to understand and program.
+However, its performance is not always good.
+Sometimes, the number of faults for more frames is greater than the number of faults for fewer frames.
+This unexpected result is known as \nameref{def:Beladys_Anomaly}.
 
 
 %%% Local Variables:
