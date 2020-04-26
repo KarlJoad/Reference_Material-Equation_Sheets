@@ -22,6 +22,9 @@ Thus, we use a \nameref{def:Lazy_Swapper}.
   A lazy swapper can be implemented as a \nameref{def:Pager}.
 \end{definition}
 
+When a \nameref{def:Process} is to be swapped in, the \nameref{def:Pager} guesses which pages will be used before the process is swapped out again.
+Instead of swapping in a whole process, the pager brings only those pages into memory, avoiding reading pages into memory that will not be used anyway, decreasing the swap time and the amount of physical memory needed.
+
 
 %%% Local Variables:
 %%% mode: latex
