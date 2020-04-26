@@ -4,6 +4,13 @@ At this point, it must replace some pages.
 However, since all the pages are in active use, the OS will replace a page that will be needed again right away.
 Consequently, the process faults repeatedly, replacing pages that it must bring back in immediately.
 
+\begin{definition}[Thrashing]\label{def:Thrashing}
+  \emph{Thrashing} is when a \nameref{def:Process} is spending more time \nameref{def:Paging} than executing.
+  This happens when there are not enough frames in the system to support the number of pages the process needs.
+  The \nameref{def:Page_Replacement} algorithm will replace some pages that the process needs right now, so it must page the first one back in, overwritting another page that is needed.
+  Thus, the cycle continues.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
