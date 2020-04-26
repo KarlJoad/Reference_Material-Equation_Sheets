@@ -152,6 +152,9 @@ The typical times for these steps, with no waiting in queues, is shown in parent
 \item Restart the process (\SIrange{1}{100}{\micro{} \second{}}).
 \end{enumerate}
 
+These only consider the device-service time.
+If a queue of processes is waiting for the device, the device-queueing time must be added further increasing the swap time.
+
 \subsubsection{Swap Usage}\label{subsubsec:Demand_Paging_Swap_Usage}
 
 %%% Local Variables:
