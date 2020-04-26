@@ -265,6 +265,7 @@ With these two bits, there are four possible classes:
 
 When page replacement is called for, we use the same scheme as in the \nameref{subpar:Second_Chance_Algorithm}.
 Instead of examining whether the page to which we are pointing has the reference bit set to 1, we examine the class to which that page belongs replacing the first page in the lowest nonempty class.
+We may have to scan the circular queue several times before we find a page to be replaced.
 
 %%% Local Variables:
 %%% mode: latex
