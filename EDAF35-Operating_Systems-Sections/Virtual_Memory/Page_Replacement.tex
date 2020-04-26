@@ -47,6 +47,18 @@ Some systems allocate a fixed percentage of memory for I/O buffers, others allow
 
 \subsubsection{Replacement Procedure}\label{subsubsec:Page_Replacement_Procedure}
 The basic steps to perform a \nameref{def:Page_Replacement} are shown below:
+\begin{enumerate}[noitemsep]
+\item Find the location of the desired page on the disk.
+\item Find a free frame:
+  \begin{enumerate}[noitemsep]
+  \item If there is a free frame, use it.
+  \item If there is no free frame, use a page-replacement algorithm to select a victim frame.
+  \item Write the victim frame to the disk; change the page and frame tables accordingly.
+  \end{enumerate}
+\item Read the desired page into the newly freed frame; change the page and frame tables.
+\item Continue the user process from where the page fault occurred.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
