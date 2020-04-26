@@ -40,6 +40,15 @@ Each I/O controller includes registers to hold commands and the data being trans
 Usually, special I/O instructions allow data transfers between these registers and system memory.
 For more convenient access to I/O devices, many computer architectures provide memory-mapped I/O.
 
+\begin{definition}[Memory-Mapped I/O]\label{def:Memory_Mapped_IO}
+  \emph{Memory-Mapped I/O} assigns ranges of memory addresses that map to the I/O device's registers.
+  Reads and writes to these memory addresses cause the data to be transferred to and from the device registers automatically.
+  This is appropriate for devices that have fast response times, such as video controllers.
+
+  Memory-mapped I/O is also convenient for other devices, such as the serial and parallel ports.
+  The CPU transfers data through these kinds of devices by reading and writing a few device registers, called an I/O port.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
