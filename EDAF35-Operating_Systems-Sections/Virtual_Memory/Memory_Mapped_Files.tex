@@ -1,4 +1,8 @@
 \subsection{Memory-Mapped Files}\label{subsec:Memory_Mapped_Files}
+The sequential read of a \nameref{def:File} on disk using the standard \nameref{def:System_Call}s \kernelinline{open()}, \kernelinline{read()}, and \kernelinline{write()}.
+Each file access requires a system call and disk access.
+To alleviate the pain of this, we could use \nameref{def:Memory_Mapping}.
+
 
 %%% Local Variables:
 %%% mode: latex
