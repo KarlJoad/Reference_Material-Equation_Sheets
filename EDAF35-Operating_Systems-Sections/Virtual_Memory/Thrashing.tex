@@ -39,6 +39,17 @@ To prevent thrashing, we must provide a process with as many frames as it \textb
 \subsubsection{Working-Set Model}\label{subsubsec:Working_Set_Model}
 The \emph{Working-Set Model} uses the \nameref{def:Locality_Model} of \nameref{def:Process} execution.
 
+\begin{definition}[Locality Model]\label{def:Locality_Model}
+  The \emph{locality model} states, as a \nameref{def:Process} executes, it moves from locality to locality.
+  A locality is a set of pages that are actively used together.
+  A \nameref{def:Program} is generally composed of several different localities, which may overlap.
+
+  For example, when a function is called, it defines a new locality.
+  In this locality, memory references are made to the instructions of the function call, its local variables, and a subset of the global variables.
+  When we exit the function, the process leaves this locality, since the local variables and instructions of the function are no longer in active use.
+  We may return to this locality later.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
