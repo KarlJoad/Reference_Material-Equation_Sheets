@@ -205,6 +205,11 @@ If we were to use an interrupt allowing software to update these data structures
 Few computer systems provide sufficient hardware support for true LRU page replacement.
 Many provide some support, in the form of a \nameref{def:Reference_Bit}.
 
+\begin{definition}[Reference Bit]\label{def:Reference_Bit}
+  A \emph{Reference bit} is another bit that is associated with each entry in the \nameref{def:Page_Table}.
+  The reference bit for a page is set by the hardware whenever that page is referenced (either a read or a write to any byte in the page).
+\end{definition}
+
 \end{itemize}
 
 
