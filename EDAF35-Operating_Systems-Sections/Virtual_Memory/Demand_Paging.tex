@@ -144,6 +144,14 @@ To illustrate, the \nameref{def:Effective_Access_Time} for demand-paged memory c
   \end{description}
 \end{definition}
 
+The \nameref{def:Page_Fault}~Time has 3 major components.
+The typical times for these steps, with no waiting in queues, is shown in parentheses:
+\begin{enumerate}[noitemsep]
+\item Service the page-fault interrupt (\SIrange{1}{100}{\micro{} \second{}}).
+\item Read in the page (\SI{8}{\milli{} \second{}}).
+\item Restart the process (\SIrange{1}{100}{\micro{} \second{}}).
+\end{enumerate}
+
 \subsubsection{Swap Usage}\label{subsubsec:Demand_Paging_Swap_Usage}
 
 %%% Local Variables:
