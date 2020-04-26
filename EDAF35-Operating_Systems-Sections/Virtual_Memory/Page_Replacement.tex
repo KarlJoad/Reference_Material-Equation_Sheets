@@ -147,6 +147,20 @@ If the \nameref{def:Optimal_Page_Replacement_Algorithm} is not feasible, perhaps
 If we assume the recent past as an approximation of the near future, then we can replace the page that has not been used for the longest period of time.
 This approach is the \nameref{def:LRU_Algorithm}.
 
+\begin{definition}[Least Recently Used Algorithm]\label{def:LRU_Algorithm}
+  The \emph{Least Recently Used} (\emph{LRU}) \emph{Algorithm} assumes that the past is a good approximation of the near future.
+  This allows it to replace the page that has not been used for the longest time first, because it is unlikely that the page will be used.
+
+  Like the \nameref{def:Optimal_Page_Replacement_Algorithm}, LRU replacement does not suffer from \nameref{def:Beladys_Anomaly}.
+  Both belong to a class of \nameref{def:Page_Replacement} algorithms, called \nameref{def:Stack_Algorithm}s, that can never exhibit Belady’s anomaly.
+
+  \begin{remark}[OPT and LRU Algorithm Performance]
+    Let $S_{R}$ be the reverse of a reference string $S$.
+    The \nameref{def:Page_Fault} rate for the \nameref{def:Optimal_Page_Replacement_Algorithm} on $S$ is the same as the page-fault rate for the OPT algorithm on $S_{R}$.
+    Likewise, the page-fault rate for the LRU algorithm on $S$ is the same as the page-fault rate for the LRU algorithm on $S_{R}$.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
