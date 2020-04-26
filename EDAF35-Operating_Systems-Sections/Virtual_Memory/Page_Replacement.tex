@@ -142,6 +142,11 @@ This is a similar situation as with the \nameref{par:SJF_Scheduling} algorithm i
 As a result, the optimal algorithm is used mainly for comparison studies.
 For instance, a new algorithm may not be optimal, but it is within \SI{12.3}{\percent} of optimal at worst and within \SI{4.7}{\percent} on average.
 
+\paragraph{Least-Recently-Used (LRU) Page Replacement}\label{par:LRU_Page_Replacement}
+If the \nameref{def:Optimal_Page_Replacement_Algorithm} is not feasible, perhaps an approximation of it is possible.
+If we assume the recent past as an approximation of the near future, then we can replace the page that has not been used for the longest period of time.
+This approach is the \nameref{def:LRU_Algorithm}.
+
 
 %%% Local Variables:
 %%% mode: latex
