@@ -21,6 +21,10 @@ Many \nameref{def:Operating_System}s provide a pool of free pages for such reque
 These free pages are typically allocated when the stack or heap for a \nameref{def:Process} must expand or when there are copy-on-write pages to be managed.
 Operating systems typically allocate these pages using a technique known as \nameref{def:Zero_Fill_on_Demand}.
 
+\begin{definition}[Zero-Fill-on-Demand]\label{def:Zero_Fill_on_Demand}
+  \emph{Zero-fill-on-demand} pages have been zeroed-out before being allocated, thus erasing the previous contents.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
