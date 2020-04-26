@@ -89,6 +89,10 @@ When we select a page for replacement, we examine its \nameref{def:Modify_Bit}.
   This can significantly reduce the time required to service a page fault, since it reduces \textbf{I/O time} by one-half if the page has not been modified.
 \end{remark*}
 
+\subsubsection{Algorithms}\label{subsubsec:Page_Replacement_Algorithms}
+In general, we select a particular replacement algorithm with the lowest \nameref{def:Page_Fault} rate.
+We evaluate an algorithm by running it on a particular string of memory references, called a reference string, and computing the number of page faults.
+
 
 %%% Local Variables:
 %%% mode: latex
