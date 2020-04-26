@@ -98,6 +98,11 @@ Obviously, as the number of frames available increases, the number of page fault
 Adding physical memory increases the number of frames.
 Between the number of frames and the number of page faults, we generally expect a negative-exponential curve.
 
+\paragraph{FIFO Page Replacement}\label{par:FIFO_Page_Replacement}
+The simplest page-replacement algorithm is a first-in, first-out algorithm.
+A FIFO replacement algorithm associates with each page the time when that page was brought into memory.
+When a page must be replaced, the oldest page is chosen.
+
 
 %%% Local Variables:
 %%% mode: latex
