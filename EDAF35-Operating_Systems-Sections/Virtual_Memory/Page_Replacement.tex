@@ -286,6 +286,12 @@ Neither algorithm, MFU or LFU, is common; their implementation is expensive.
 
 \paragraph{Page-Buffering Algorithms}\label{par:Page_Buffering_Algorithms}
 Other procedures are often used in conjunction with another \nameref{def:Page_Replacement} algorithm.
+One of these is that systems will commonly keep a pool of free frames.
+When a \nameref{def:Page_Fault} occurs, the victim frame is chosen according to the page replacement algorithm.
+However, the desired page is read into a free frame \textbf{from the pool} before the victim is written out.
+This allows the \nameref{def:Process} that caused the page fault to restart as soon as possible, without waiting for the victim page to be written out.
+The victim is later written out, adding its newly freed frame to the free-frame pool.
+
 
 %%% Local Variables:
 %%% mode: latex
