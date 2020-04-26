@@ -254,6 +254,15 @@ When all bits are set, the worst case, the pointer cycles through the whole queu
 Second-chance replacement degenerates to \nameref{par:FIFO_Page_Replacement} if all the pages' bits are set.
 
 \subparagraph{Enhanced Second-Chance Algorithm}\label{subpar:Enhanced_Second_Chance_Algorithm}
+We can enhance the \nameref{subpar:Second_Chance_Algorithm} by considering the \nameref{def:Reference_Bit} and the \nameref{def:Modify_Bit} as an ordered pair.
+With these two bits, there are four possible classes:
+\begin{enumerate}[noitemsep]
+\item $(0, 0)$ Neither recently used nor modified. \textbf{Best page to replace}.
+\item $(0, 1)$ Not recently used but modified. \textbf{Not as good}. Page will need to be written before replacement
+\item $(1, 0)$ Recently used but clean. \textbf{Probably will be used again soon}.
+\item $(1, 1)$ Recently used and modified. \textbf{Probably will be used again soon and page will be need to be written before it can be replaced}.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
