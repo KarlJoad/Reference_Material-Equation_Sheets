@@ -41,6 +41,10 @@ The operating system has several options at this point:
   The procedure for performing this replacement is listed in \Cref{subsubsec:Page_Replacement_Procedure}.
 \end{definition}
 
+Buffers for I/O also consume a considerable amount of memory.
+Deciding how much memory to allocate to I/O and how much to program pages is a significant challenge.
+Some systems allocate a fixed percentage of memory for I/O buffers, others allow user processes and the I/O subsystem to compete for all system memory.
+
 
 %%% Local Variables:
 %%% mode: latex
