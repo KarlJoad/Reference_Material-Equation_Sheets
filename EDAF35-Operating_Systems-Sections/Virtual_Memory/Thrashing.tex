@@ -31,6 +31,11 @@ However, this does not entirely the problem.
   Providing enough memory to keep all working sets in memory concurrently, except under extreme conditions, gives the best user experience.
 \end{remark*}
 
+If \nameref{def:Process}es are \nameref{def:Thrashing}, they will be in the queue for the paging device most of the time.
+The average service time for a \nameref{def:Page_Fault} will still increase because of the longer average queue for the paging device.
+Thus, the \nameref{def:Effective_Access_Time} will increase even for a process that is not thrashing.
+To prevent thrashing, we must provide a process with as many frames as it \textbf{NEEDS}.
+
 
 %%% Local Variables:
 %%% mode: latex
