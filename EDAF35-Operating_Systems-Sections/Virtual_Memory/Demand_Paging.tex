@@ -161,6 +161,9 @@ If a queue of processes is waiting for the device, the device-queueing time must
 \end{blackbox}
 
 \subsubsection{Swap Usage}\label{subsubsec:Demand_Paging_Swap_Usage}
+An additional aspect of demand paging is the handling and overall use of swap space.
+Disk I/O to the swap space is generally faster than that to the standard filesystem.
+It is faster because swap space is allocated in much larger blocks, and file lookups and indirect allocation methods are not used.
 
 %%% Local Variables:
 %%% mode: latex
