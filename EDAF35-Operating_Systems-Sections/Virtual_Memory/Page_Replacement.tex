@@ -59,6 +59,9 @@ The basic steps to perform a \nameref{def:Page_Replacement} are shown below:
 \item Continue the user process from where the page fault occurred.
 \end{enumerate}
 
+If no frames in memory are free, two page transfers (move one page out and one in) are required, effectively doubling the \nameref{def:Page_Fault} service time and increases the \nameref{def:Effective_Access_Time} accordingly.
+Reducing this overhead can be done by using a \nameref{def:Modify_Bit} (\nameref{rmk:Dirty_Bit}).
+
 
 %%% Local Variables:
 %%% mode: latex
