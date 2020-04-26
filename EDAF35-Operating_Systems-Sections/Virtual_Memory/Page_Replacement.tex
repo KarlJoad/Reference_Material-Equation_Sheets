@@ -71,6 +71,18 @@ Reducing this overhead can be done by using a \nameref{def:Modify_Bit} (\nameref
   \end{remark}
 \end{definition}
 
+When we select a page for replacement, we examine its \nameref{def:Modify_Bit}.
+\begin{itemize}[noitemsep]
+\item Modify Bit set, we know the page has been modified since the \textbf{last} read-in from the disk.
+  \begin{itemize}[noitemsep]
+  \item Must write the page to the disk.
+  \end{itemize}
+\item Modify Bit not set, the page \textbf{has not been modified} since it was read into memory.
+  \begin{itemize}[noitemsep]
+  \item No need to write the memory page to the disk; an exact replica is already there.
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
