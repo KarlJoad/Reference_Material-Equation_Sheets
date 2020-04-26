@@ -304,6 +304,8 @@ This means we may not need I/O in this case.
 When a \nameref{def:Page_Fault} occurs, we first check whether the desired page is in the free-frame pool.
 If it is not, we must select a free frame and read into it.
 
+\subsubsection{Applications and Page Replacement}\label{subsubsec:Applications_Page_Replacement}
+In certain cases, applications accessing data through the \nameref{def:Operating_System}'s \nameref{def:Virtual_Memory} perform worse than if the OS provided no buffering at all.
 
 %%% Local Variables:
 %%% mode: latex
