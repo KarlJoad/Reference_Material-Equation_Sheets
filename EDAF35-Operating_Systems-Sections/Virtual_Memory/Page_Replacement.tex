@@ -292,6 +292,11 @@ However, the desired page is read into a free frame \textbf{from the pool} befor
 This allows the \nameref{def:Process} that caused the page fault to restart as soon as possible, without waiting for the victim page to be written out.
 The victim is later written out, adding its newly freed frame to the free-frame pool.
 
+Another version of this idea is to maintain a list of modified pages.
+Whenever the paging device is idle, a modified page is selected and is written to the disk.
+That page's \nameref{def:Modify_Bit} is then reset.
+This increases the probability that a page will be clean when it is selected for replacement and will not need to be written out.
+
 
 %%% Local Variables:
 %%% mode: latex
