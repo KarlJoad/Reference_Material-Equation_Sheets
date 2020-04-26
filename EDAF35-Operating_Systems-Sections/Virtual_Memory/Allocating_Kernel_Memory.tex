@@ -64,6 +64,10 @@ The slab-allocation algorithm uses \nameref{def:Slab_Cache}s to store \nameref{d
 When a \nameref{def:Slab_Cache} is created, a number of \nameref{def:Slab_Object}s are allocated to the \nameref{def:Slab_Cache},which are initially marked as \texttt{free}.
 The number of \nameref{def:Slab_Object}s in the \nameref{def:Slab_Cache} depends on the size of the associated \nameref{def:Slab}.
 
+For example, a \SI{12}{\kibi{} \byte{}} slab (made up of three continguous \SI{4}{\kibi{} \byte{}} pages) could store six \SI{2}{\kibi{} \byte{}} objects.
+When a new object for a kernel data structure is needed, the allocator can assign any free object from the cache to satisfy the request.
+The object assigned from the cache is marked as \texttt{used}.
+
 
 %%% Local Variables:
 %%% mode: latex
