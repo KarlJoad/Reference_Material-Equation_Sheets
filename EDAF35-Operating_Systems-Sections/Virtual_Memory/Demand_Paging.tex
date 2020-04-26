@@ -126,6 +126,11 @@ The hardware to support demand paging is the same as the hardware for \nameref{d
 Demand paging can significantly affect the performance of a computer system.
 To illustrate, the \nameref{def:Effective_Access_Time} for demand-paged memory can be computed.
 
+\begin{definition}[Effective Access Time]\label{def:Effective_Access_Time}
+  \emph{Effective access time} is the average amount of time required to access a page in a \nameref{def:Demand_Paging} system.
+  It accounts for the possibility of a page \textbf{NOT} being in memory and needing to be paged in from the swap and a page being in memory and having a quick, direct access.
+\end{definition}
+
 \subsubsection{Swap Usage}\label{subsubsec:Demand_Paging_Swap_Usage}
 
 %%% Local Variables:
