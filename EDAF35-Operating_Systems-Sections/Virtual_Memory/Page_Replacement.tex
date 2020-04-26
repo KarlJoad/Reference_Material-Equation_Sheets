@@ -9,6 +9,8 @@ This also increases the degree of multiprogramming by running more processes, \n
   This is because \textbf{ONLY} the pages that are needed to run these processes are loaded, and nothing more.
 \end{definition}
 
+If we run multiple \nameref{def:Process}es, each of which is multiple pages in size but actually only uses some of them, we can achieve higher CPU utilization and throughput, with physical frames to spare.
+It is possible that each of these processes, for some reason, may suddenly try to use \textbf{all} of their pages \textbf{simulataneously}, resulting in a need for more physical frames than the system has.
 
 %%% Local Variables:
 %%% mode: latex
