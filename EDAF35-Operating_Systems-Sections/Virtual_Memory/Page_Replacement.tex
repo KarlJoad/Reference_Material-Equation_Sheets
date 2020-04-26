@@ -210,6 +210,11 @@ Many provide some support, in the form of a \nameref{def:Reference_Bit}.
   The reference bit for a page is set by the hardware whenever that page is referenced (either a read or a write to any byte in the page).
 \end{definition}
 
+Initially, all bits are cleared by the \nameref{def:Operating_System}.
+As a user \nameref{def:Process} executes, the \nameref{def:Reference_Bit} associated with each page is set by the hardware.
+After some time, we can determine \textbf{which} pages have been used by examining the reference bits, although \textbf{we do not know the order of use}.
+This information is the basis for many \nameref{def:Page_Replacement} algorithms that approximate \nameref{par:LRU_Page_Replacement}.
+
 \end{itemize}
 
 
