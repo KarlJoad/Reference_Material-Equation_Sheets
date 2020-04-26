@@ -5,6 +5,13 @@ Loading the entire program into memory means loading the executable code for \te
 
 If we chose to load in parts of a \nameref{def:Program} only when they are needed, this is \nameref{def:Demand_Paging}.
 
+\begin{definition}[Demand Paging]\label{def:Demand_Paging}
+  \emph{Demand paging} is when individual portions of a \nameref{def:Program} are loaded into memory using \nameref{def:Dynamic_Loading} \textbf{only when they are needed}.
+
+  With demand-paged \nameref{def:Virtual_Memory}, pages are loaded only when they are demanded during program execution.
+  Thus, pages that are never accessed are never loaded into physical memory.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
