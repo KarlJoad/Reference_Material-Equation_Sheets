@@ -1,4 +1,9 @@
 \subsection{Copy-on-Write}\label{subsec:Memory_Copy_on_Write}
+Recall that the \kernelinline{fork()} \nameref{def:System_Call} creates a child \nameref{def:Process} that is a nearly perfect duplicate of its parent.
+Traditionally, this was done by creating a copy of the parent’s address space for the child, thereby \textbf{duplicating} the pages belonging to the parent.
+However, considering that many child processes invoke the \kernelinline{exec()} system call immediately after creation, the copying of the parent’s address space may be unnecessary.
+\nameref{def:Memory_Copy_on_Write} works by allowing the parent and child processes initially to share the same pages allowing the \kernelinline{fork()} system call to bypass the need for \nameref{def:Demand_Paging} by using a technique similar to page sharing (\Cref{subsec:Paging}).
+
 
 %%% Local Variables:
 %%% mode: latex
