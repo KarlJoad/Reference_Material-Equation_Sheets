@@ -26,6 +26,9 @@ Memory is allocated from this segment using a \emph{power-of-2 allocator}, which
 All requests are rounded up to the next appropriate highest power of 2.
 For example, a request for \SI{11}{\kibi{} \byte{}} is satisfied with a \SI{16}{\kibi{} \byte{}} segment.
 
+\paragraph{Benefits of the Buddy System}\label{par:Buddy_System_Benefits}
+An advantage of the buddy system is how quickly adjacent buddies can be combined to form larger segments using a technique known as \emph{coalescing}.
+
 \subsubsection{Slab Allocation}\label{subsubsec:Slab_Allocation}
 
 %%% Local Variables:
