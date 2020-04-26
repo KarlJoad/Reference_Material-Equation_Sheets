@@ -54,6 +54,12 @@ There are several components that make up the slab allocation scheme:
   For example, a separate cache for the data structure representing \nameref{def:Process_Descriptor}s, a separate cache for file objects, a separate cache for \nameref{def:Semaphore}s, and so forth.
 \end{definition}
 
+\begin{definition}[Object]\label{def:Slab_Object}
+  \emph{Objects} that are instantiations of the kernel data structure the \nameref{def:Slab_Cache} represents.
+
+  For example, the cache representing \nameref{def:Semaphore}s stores instances of semaphore objects, the cache representing \nameref{def:Process_Descriptor}s stores instances of process descriptor objects, and so forth.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
