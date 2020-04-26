@@ -30,6 +30,17 @@ Instead of swapping in a whole process, the pager brings only those pages into m
   Thus, the task of moving a process's pages into and out of the backing store is handled by the \emph{pager}, rather than the swapper.
 \end{definition}
 
+With a \nameref{def:Pager}, we need some form of hardware support to distinguish between the pages that are in memory and the pages that are on the disk.
+The \nameref{par:Page_Valid_Invalid_Bit} scheme can be used for this purpose.
+\begin{itemize}[noitemsep]
+\item If this bit is set to ``valid'' the associated page is \textbf{both} legal and in memory.
+\item If the bit is set to ``invalid'' the page either:
+  \begin{itemize}[noitemsep]
+  \item Is not valid, i.e.\ not in the \nameref{def:Logical_Address_Space} of the \nameref{def:Process}.
+  \item Is valid but is currently on the disk.
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
