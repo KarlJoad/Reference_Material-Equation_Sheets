@@ -297,6 +297,13 @@ Whenever the paging device is idle, a modified page is selected and is written t
 That page's \nameref{def:Modify_Bit} is then reset.
 This increases the probability that a page will be clean when it is selected for replacement and will not need to be written out.
 
+Another verion is to keep a history of which page was in each frame inside of a frame-pool.
+This way, if the page is needed after being written to disk, we just need to go to that frame and use the data from there.
+This works because when a frame is written to the disk, the contents are not changed.
+This means we may not need I/O in this case.
+When a \nameref{def:Page_Fault} occurs, we first check whether the desired page is in the free-frame pool.
+If it is not, we must select a free frame and read into it.
+
 
 %%% Local Variables:
 %%% mode: latex
