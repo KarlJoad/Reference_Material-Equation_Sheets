@@ -99,6 +99,10 @@ We can establish upper and lower bounds on the desired \nameref{def:Page_Fault} 
 \item \nameref{def:Page_Fault} rate falls below the lower limit, remove a frame from the process.
 \end{itemize}
 
+Thus, we can directly measure and control the \nameref{def:Page_Fault} rate to prevent \nameref{def:Thrashing}.
+As with the working-set strategy, we may have to swap out a process.
+If the page-fault rate increases and no free frames are available, we must select some process and swap it out to \nameref{def:Backing_Store}.
+The freed frames are then distributed to processes with the highest page-fault rates.
 
 %%% Local Variables:
 %%% mode: latex
