@@ -67,6 +67,13 @@ If a page is in active use, it will be in the working set.
 If it is no longer being used, it will drop from the working set $\Delta$ time units after its last reference.
 Thus, the working set is an approximation of the program’s locality.
 
+The accuracy of the working set depends on the selection of $\Delta$.
+\begin{itemize}[noitemsep]
+\item $\Delta$ is too small, it will not encompass the entire locality.
+\item $\Delta$ is too large, it may overlap several localities.
+\item $\Delta$ is $\infty$, working set is the set of \textbf{ALL} pages touched during the \nameref{def:Process}'s execution.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
