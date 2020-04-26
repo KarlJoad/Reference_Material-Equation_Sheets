@@ -93,6 +93,12 @@ Thus, we want to control the page-fault rate.
 \item Low, the process may have too many frames.
 \end{itemize}
 
+We can establish upper and lower bounds on the desired \nameref{def:Page_Fault} rate.
+\begin{itemize}[noitemsep]
+\item \nameref{def:Page_Fault} rate exceeds the upper limit, allocate the process another frame.
+\item \nameref{def:Page_Fault} rate falls below the lower limit, remove a frame from the process.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
