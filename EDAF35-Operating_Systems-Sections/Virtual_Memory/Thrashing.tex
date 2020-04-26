@@ -21,6 +21,11 @@ This leads to system throughput plunging.
 The \nameref{def:Page_Fault} rate increases tremendously, increasing the \nameref{def:Effective_Access_Time}.
 No work is getting done, because the processes are spending all their time \nameref{def:Paging}.
 
+\subsubsection{Limiting Thrashing}\label{subsubsec:Limiting_Thrashing}
+We can limit the effects of \nameref{def:Thrashing} by using a local replacement algorithm.
+With local replacement, if a \nameref{def:Process} starts thrashing, it cannot steal frames from another, causing the second one to thrash as well.
+However, this does not entirely the problem.
+
 
 %%% Local Variables:
 %%% mode: latex
