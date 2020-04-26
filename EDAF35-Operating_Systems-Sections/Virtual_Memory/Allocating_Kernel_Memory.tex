@@ -68,6 +68,12 @@ For example, a \SI{12}{\kibi{} \byte{}} slab (made up of three continguous \SI{4
 When a new object for a kernel data structure is needed, the allocator can assign any free object from the cache to satisfy the request.
 The object assigned from the cache is marked as \texttt{used}.
 
+\paragraph{Benefits of Slab Allocation}\label{subsubsec:Slab_Allocation_Benefits}
+There are 2 main benefits of the slab allocation algorithm:
+\begin{enumerate}[noitemsep]
+\item No memory is wasted due to \nameref{def:Fragmentation}.
+\item Memory requests can be satisfied quickly.
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
