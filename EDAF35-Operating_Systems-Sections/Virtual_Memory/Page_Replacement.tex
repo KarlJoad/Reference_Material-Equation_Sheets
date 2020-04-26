@@ -194,6 +194,13 @@ Both implementations of the \nameref{def:LRU_Algorithm} need additional hardware
 For example, updating the clock fields or stack must be done for every memory reference.
 If we were to use an interrupt allowing software to update these data structures, it would signficantly slow every memory reference.
 
+\begin{definition}[Stack Algorithm]\label{def:Stack_Algorithm}
+  A \emph{stack algorithm} is an algorithm for which it can be shown that the set of pages in memory for $n$ frames is always a \textbf{subset} of the set of pages that would be in memory with $n+1$ frames.
+
+  For the \nameref{def:LRU_Algorithm}, the set of pages in memory would be the $n$ most recently referenced pages.
+  If the number of frames is increased, the same $n$ pages will still be the most recently referenced and will still be in memory.
+\end{definition}
+
 \end{itemize}
 
 
