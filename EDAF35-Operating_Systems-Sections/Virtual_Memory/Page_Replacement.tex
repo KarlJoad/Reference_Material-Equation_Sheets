@@ -108,6 +108,11 @@ Instead, we can use a FIFO queue to hold all pages in memory.
 When a page is brought into memory, we insert it at the tail of the queue.
 When a page is replaced, we replace the page at the head of the queue.
 
+Notice that, even if we select a page that is being actively used for replacement, everything still works correctly.
+After we replace the active page with a new one, a fault will occur almost immediately to retrieve the active page from the swap.
+Then, some other page must be replaced to bring the active page back into memory.
+Thus, a bad replacement choice increases the page-fault rate and slows process execution, but does not cause incorrect execution.
+
 
 %%% Local Variables:
 %%% mode: latex
