@@ -21,6 +21,10 @@ We discuss 2 systems for allocating memory to \nameref{def:Kernel} \nameref{def:
 \end{enumerate}
 
 \subsubsection{Buddy System}\label{subsubsec:Buddy_System}
+The buddy system allocates memory from a fixed-size segment consisting of \textbf{physically contiguous pages}.
+Memory is allocated from this segment using a \emph{power-of-2 allocator}, which satisfies requests in units sized as a power of 2 (\SIlist{4;8;16}{\kibi{} \byte{}}, and so forth).
+All requests are rounded up to the next appropriate highest power of 2.
+
 \subsubsection{Slab Allocation}\label{subsubsec:Slab_Allocation}
 
 %%% Local Variables:
