@@ -238,6 +238,16 @@ Note that the numbers are not guaranteed to be unique.
 We can either replace (swap out) all pages with the smallest value or use the FIFO method to choose among them.
 
 \subparagraph{Second-Chance Algorithm}\label{subpar:Second_Chance_Algorithm}
+The basic algorithm of second-chance replacement is a \nameref{par:FIFO_Page_Replacement} algorithm.
+When a page has been selected, however, we inspect its \nameref{def:Reference_Bit}.
+\begin{itemize}[noitemsep]
+\item If the \nameref{def:Reference_Bit} is 0, we proceed to replace this page.
+\item If the \nameref{def:Reference_Bit} is set to 1, we give the page a second chance and move on to select the \textbf{next} FIFO page.
+  \begin{itemize}[noitemsep]
+  \item When a page gets a second chance, its \nameref{def:Reference_Bit} is cleared, and its arrival time is reset to the current time.
+  \item Thus, a page that is given a second chance will not be replaced until all other pages have been replaced (or given second chances).
+  \item If a page is used often enough to keep its \nameref{def:Reference_Bit} set, it will never be replaced.
+  \end{itemize}
 \end{itemize}
 
 \subparagraph{Enhanced Second-Chance Algorithm}\label{subpar:Enhanced_Second_Chance_Algorithm}
