@@ -98,6 +98,9 @@ This situation would result in unacceptable system performance.
 Fortunately, analysis of running processes shows that this behavior is exceedingly unlikely.
 Programs tend to have locality of reference giving reasonable performance from demand paging.
 
+The major difficulty arises when one instruction may modify several different locations.
+If a block (source or destination) straddles a page boundary, a page fault might occur after the move is partially done.
+In addition, if the source and destination blocks overlap, the source block may have been modified, in which case we cannot simply restart the instruction.
 \subsubsection{Hardware Required}\label{subsubsec:Demand_Paging_Required_Hardware}
 \subsubsection{Performance}\label{subsubsec:Demand_Paging_Performance}
 \subsubsection{Swap Usage}\label{subsubsec:Demand_Paging_Swap_Usage}
