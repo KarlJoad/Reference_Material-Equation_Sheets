@@ -1,4 +1,9 @@
 \section{Lazy Evaluation}\label{sec:Lazy_Evaluation}
+So far, the basic method of computation in Haskell has been the application of \nameref{def:Function}s to arguments.
+Because these functions are pure, changing the order in which functions are applied does not affect the final result.
+This is not specific to simple examples, but an important general property of function application in Haskell.
+Formally, in Haskell any two different ways of evaluating the same expression will always produce the same final value, provided that they both terminate.
+
 
 %%% Local Variables:
 %%% mode: latex
