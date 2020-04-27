@@ -18,6 +18,15 @@ In this section, we will use the definition of \texttt{ones} below.
 No matter what evaluation strategy you use, name or value, this definition of \texttt{ones} will never terminate.
 However, when we attempt to use it (for example with \haskellinline{head ones}), depending on the evaluation method, we might get an answer.
 
+Using call-by-value evaluation results in non-termination.
+\begin{align*}
+  &= head ones \\
+  &= head (1 : ones) \\
+  &= head (1 : (1 : ones)) \\
+  &= head (1 : (1 : (1 : ones))) \\
+  \vdots
+\end{align*}
+
 
 %%% Local Variables:
 %%% mode: latex
