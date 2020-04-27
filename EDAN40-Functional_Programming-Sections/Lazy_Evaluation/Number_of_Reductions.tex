@@ -1,4 +1,7 @@
 \subsection{Number of Reductions}\label{subsec:Number_of_Reductions}
+Call-by-name evaluation may require more steps than call-by-value evaluation, in particular when an argument is used more than once in the body of a function.
+Generally, we have the following property: arguments are evaluated precisely once using call-by-value evaluation, but may be evaluated many times using call-by-name.
+
 
 %%% Local Variables:
 %%% mode: latex
