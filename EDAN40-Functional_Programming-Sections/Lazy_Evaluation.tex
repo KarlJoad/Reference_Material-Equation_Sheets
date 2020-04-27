@@ -36,6 +36,10 @@ Innermost evaluation can also be characterised in terms of how arguments are pas
 In particular, using this strategy ensures that the argument of a function is always fully evaluated before the function itself is applied.
 That is, arguments are \emph{Passed-By-Value}.
 
+\subsection{Pass-by-Name}\label{subsec:Pass_by_Name}
+Outermost evaluation, dual to innermost evaluation, is to always choose a redex that is outermost, meaning it is contained in no other redex.
+If there is more than one such redex, then we choose the one that begins at the leftmost position.
+
 
 %%% Local Variables:
 %%% mode: latex
