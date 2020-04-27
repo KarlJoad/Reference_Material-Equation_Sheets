@@ -161,6 +161,9 @@ Such pinning of pages in memory is fairly common, and most operating systems hav
 This feature could be abused and could cause stress on the memory-management algorithms.
 Therefore, an application usually requires special privileges to make such a request.
 
+Using a lock bit can be dangerous: the lock bit may get turned on but never turned off.
+Should this situation occur, the locked frame becomes unusable.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
