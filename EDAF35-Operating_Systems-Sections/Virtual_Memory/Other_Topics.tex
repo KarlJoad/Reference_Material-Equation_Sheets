@@ -115,6 +115,11 @@ Instead, they are themselves paged in and out of memory as necessary.
 But now a page fault may cause the virtual memory manager to generate another page fault as it pages in the external page table it needs to locate the virtual page on the \nameref{def:Backing_Store}.
 This special case requires careful handling in the \nameref{def:Kernel} and a delay in the page-lookup processing.
 
+\subsubsection{Program Structure}\label{subsubsec:Program_Structure}
+\nameref{def:Demand_Paging} is designed to be transparent to the \nameref{def:User} \nameref{def:Program}.
+In many cases, the user is completely unaware of the paged nature of memory.
+However, system performance can be improved if the user (or compiler) has an awareness of the underlying demand paging.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
