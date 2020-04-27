@@ -25,6 +25,43 @@ However, a new machine can have different page sizes than its predecessors.
 There is no single best page size.
 Page sizes are almost always powers of 2, generally ranging from \SIrange{4096}{4194304}{\byte{}} ($2^{12}$ to $2^{22}$ byte, \SI{4}{\kibi{} \byte{}} to \SI{4}{\mebi{} \byte{}}).
 
+How do we select a page size?
+\begin{itemize}[noitemsep]
+\item One concern is the size of the page table.
+  \begin{itemize}[noitemsep]
+  \item For a given virtual memory space, decreasing the page size increases the number of pages and hence the size of the page table.
+  \end{itemize}
+
+\item Because each active process must have its own copy of the \nameref{def:Page_Table}, a large page size is desirable.
+
+\item Memory is better utilized with smaller pages.
+  \begin{itemize}[noitemsep]
+  \item To minimize \nameref{def:Internal_Fragmentation}, we need a small page size.
+  \end{itemize}
+
+\item Time required to read or write a page.
+  Minimization of I/O time argues for a larger page size.
+  \begin{itemize}[noitemsep]
+  \item I/O time is composed of seek, latency, and transfer times.
+    Transfer time is proportional to the amount transferred, meaning a small page size.
+  \item Latency and seek time normally dwarf transfer time.
+  \end{itemize}
+
+\item With a smaller page size, total I/O should be reduced, since locality will be improved.
+  \begin{itemize}[noitemsep]
+  \item A smaller page size allows each page to match program locality more accurately.
+\end{itemize}
+
+\item With a smaller page size, then, we have better resolution, allowing us to isolate only the memory that is actually needed.
+  \begin{itemize}[noitemsep]
+  \item With a larger page size, we must allocate and transfer not only what is needed but also anything else that happens to be in the page, whether it is needed or not.
+  \item Thus, a smaller page size should result in less I/O and less total allocated memory.
+\end{itemize}
+\item To minimize the number of page faults, we need to have a large page size.
+
+\item What is the relationship between page size and sector size on the paging device?
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
