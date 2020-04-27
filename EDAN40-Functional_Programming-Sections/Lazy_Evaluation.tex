@@ -32,6 +32,10 @@ The order in which we evaluate these redexes determines what ``Pass-by'' type we
 Innermost evaluation, always chooses the innermost redex, meaning it contains no other redex.
 If there is more than one innermost redex, by convention we choose that which begins at the leftmost position in the expression.
 
+Innermost evaluation can also be characterised in terms of how arguments are passed to \nameref{def:Function}s.
+In particular, using this strategy ensures that the argument of a function is always fully evaluated before the function itself is applied.
+That is, arguments are \emph{Passed-By-Value}.
+
 
 %%% Local Variables:
 %%% mode: latex
