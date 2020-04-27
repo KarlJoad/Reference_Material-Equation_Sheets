@@ -8,6 +8,9 @@ Consider the expression \haskellinline{fst (0, inf)}, where \texttt{fst} is the 
 Call-by-value evaluation with this expression also results in non-termination.
 In contrast, call-by-name evaluation terminates in just one step, by immediately applying the definition of \texttt{fst} avoiding the evaluation of the non-terminating expression.
 
+This shows that call-by-name evaluation may produce a result when call-by-value evaluation fails to terminate.
+In general, we have the following important property: if there exists any evaluation sequence that terminates for a given expression, then call-by-name evaluation will also terminate for this expression, and produce the same final result.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAN40-Functional_Programming-Reference_Sheet"
