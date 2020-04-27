@@ -67,6 +67,13 @@ This behaviour arises because \haskellinline{mult 3} is the leftmost innermost r
 In Haskell, the selection of redexes within lambda expressions is prohibited.
 The rationale for not ``reducing under lambdas'' is that functions are viewed as black boxes that we are not permitted to look inside.
 
+\begin{blackbox}
+  \begin{center}
+    {\large{Formally, the only operation that can be performed on a function is that of applying it to an argument.
+        As such, reduction within the body of a function is only permitted once the function has been applied.}}
+  \end{center}
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
