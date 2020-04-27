@@ -129,6 +129,13 @@ Good selection of data structures and programming structures can increase locali
 Of course, locality of reference is just one measure of the efficiency of the use of a data structure.
 Other heavily weighted factors include search speed, total number of memory references, and total number of pages touched.
 
+At a later stage, the compiler and loader can have a significant effect on \nameref{def:Paging}.
+Separating code and data and generating \nameref{def:Reentrant} code means that code pages can be read-only and hence will never be modified meaning they never have to be paged out to be replaced.
+The loader can avoid placing routines across page boundaries, keeping each routine completely in one page.
+Routines that call each other many times can be packed into the same page.
+This packaging is a variant of the bin-packing problem: try to pack the variable-sized load segments into the fixed-sized pages so that interpage references are minimized.
+This is particularly useful for large page sizes.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
