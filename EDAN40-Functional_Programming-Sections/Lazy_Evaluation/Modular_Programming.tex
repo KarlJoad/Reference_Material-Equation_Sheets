@@ -37,6 +37,15 @@ Lazy evaluation ensures that this program does indeed produce the infinite list 
 If we simply ask for the value of the \texttt{primes} expression, we get an infinite list of primes back.
 By freeing the generation of prime numbers from the constraint of finiteness, we have obtained a modular program on which different control parts can be used in different situations.
 
+\subsubsection{Caveats with Modular Programming}\label{subsubsec:Modular_Programming_Caveats}
+Even though we can modularize our code between control and data, we need to be careful when the data is an infinite structure (list or recursion).
+In \Cref{lst:Infinite_List_Gotchas}, this is described more.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Lazy_Evaluation/Code/Infinite_List_Gotchas.hs}
+\caption{Infinite List Gotchas}
+\label{lst:Infinite_List_Gotchas}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
