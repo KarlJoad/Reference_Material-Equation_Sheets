@@ -2,6 +2,13 @@
 Call-by-name evaluation may require more steps than call-by-value evaluation, in particular when an argument is used more than once in the body of a function.
 Generally, we have the following property: arguments are evaluated precisely once using call-by-value evaluation, but may be evaluated many times using call-by-name.
 
+In this section, we will use the definition of \texttt{square} below.
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Lazy_Evaluation/Code/square.hs}
+\caption{Definition of Squaring an Integer for \Cref{subsec:Termination}}
+\label{lst:Square_Definition}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
