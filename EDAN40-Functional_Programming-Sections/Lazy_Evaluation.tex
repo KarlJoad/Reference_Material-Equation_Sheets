@@ -11,11 +11,11 @@ An \nameref{def:Expression} that has the form of a \nameref{def:Function} applie
   These reductions do not necessarily decrease the size of an \nameref{def:Expression}, but often do.
 \end{definition}
 
-Consider the expression \haskellinline{mult (1+2) (2+3)}.
+Consider the expression \haskellinline{mult (1+2, 2+3)}.
 This expression contains three redexes:
 \begin{enumerate}[noitemsep]
-\item The sub-expression 1 + 2, the \texttt{+} function applied with two arguments.
-\item The sub-expression 2 + 3, the \texttt{+} function applied with two arguments.
+\item The sub-expression $1+2$, the \texttt{+} function applied with two arguments.
+\item The sub-expression $2+3$, the \texttt{+} function applied with two arguments.
 \item The entire expression itself, which has the form of the function \texttt{mult} applied to a pair of arguments.
 \end{enumerate}
 
@@ -57,6 +57,12 @@ For this reason, we say that arguments are \emph{Passed-By-Name}.
   For example, built-in arithmetic operators ($*$ and $+$) cannot be applied until their two arguments have been evaluated to numbers.
   Functions with this property are called \nameref{def:Strict}.
 \end{remark*}
+
+\subsection{Reduction of Lambda Expressions}\label{subsec:Lambda_Expression_Reduction}
+If we write a curried version of \texttt{mult}, \haskellinline{mult x = \y = x * y}.
+The two arguments are now substituted into the body of the function mult one at a time.
+This is the expected behavior of currying, rather than at the same time as in the previous section.
+This behaviour arises because \haskellinline{mult 3} is the leftmost innermost redex in the expression \haskellinline{mult 3 (2+3)}, as opposed to $2+3$ in the expression \haskellinline{mult (3, 2 + 3)}.
 
 
 %%% Local Variables:
