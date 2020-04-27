@@ -144,6 +144,14 @@ Instead, data is copied between \nameref{def:Kernel} memory and user memory, the
 To write a block on tape, we first copy the block to system memory and then write it to tape.
 This extra copying may result in unacceptably high overhead.
 
+Another solution is to allow pages to be locked into memory.
+Here, a \emph{lock bit} is associated with every physical frame.
+If the frame is locked, it and its contents cannot be selected for replacement.
+Locked pages cannot be replaced.
+When the I/O is complete, the pages are unlocked.
+Under this approach, to write a block on tape, we lock into memory the pages containing the block.
+The system can then continue as usual.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
