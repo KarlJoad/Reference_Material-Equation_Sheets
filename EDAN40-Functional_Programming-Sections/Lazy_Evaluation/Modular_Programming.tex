@@ -34,6 +34,9 @@ Lazy evaluation ensures that this program does indeed produce the infinite list 
 \item \texttt{sieve} calls itself recursively with the list it just obtained (with all multiples of \texttt{p} filtered out).
 \end{enumerate}
 
+If we simply ask for the value of the \texttt{primes} expression, we get an infinite list of primes back.
+By freeing the generation of prime numbers from the constraint of finiteness, we have obtained a modular program on which different control parts can be used in different situations.
+
 
 %%% Local Variables:
 %%% mode: latex
