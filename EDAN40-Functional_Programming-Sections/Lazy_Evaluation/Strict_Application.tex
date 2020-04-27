@@ -22,6 +22,15 @@ A curried function application of \haskellinline{f x y} has 3 possible different
 \item \haskellinline{(f $! x) $! y}: Force top-level evaluation of \texttt{x} and \texttt{y}.
 \end{enumerate}
 
+\nameref{def:Strict} application is mainly used to improve the space performance of programs.
+Take the code in \Cref{lst:Lazy_vs_Strict_Function_Application} as an example.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Lazy_Evaluation/Code/Strict_Function_Application.hs}
+\caption{Lazy vs. Strict Function Application}
+\label{lst:Lazy_vs_Strict_Function_Application}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
