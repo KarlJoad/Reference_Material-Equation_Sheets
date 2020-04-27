@@ -11,6 +11,10 @@ This situation results from trying to get the initially executing locality into 
   The strategy is to bring into all the pages that will be needed into memory at one time.
 \end{definition}
 
+In a system using the \nameref{subsubsec:Working_Set_Model}, for example, we could keep with each \nameref{def:Process} a list of the pages in its working set.
+If we must suspend a process, we remember the working set for that process.
+When the process is to be resumed, we automatically bring back into memory its \textbf{entire working set} before restarting the process.
+
 
 %%% Local Variables:
 %%% mode: latex
