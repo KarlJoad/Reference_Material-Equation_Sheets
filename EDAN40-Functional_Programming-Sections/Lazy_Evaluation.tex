@@ -40,6 +40,15 @@ That is, arguments are \emph{Passed-By-Value}.
 Outermost evaluation, dual to innermost evaluation, is to always choose a redex that is outermost, meaning it is contained in no other redex.
 If there is more than one such redex, then we choose the one that begins at the leftmost position.
 
+For example, the expression \haskellinline{mult (1+2) (2+3)} is contained in no other redex and is hence outermost within itself.
+\begin{align*}
+  &= mult(1+2, 2+3) \\
+  &= (1+2) * (2+3) \\
+  &= (3) * (2+3) \\
+  &= 3 * (5) \\
+  &= 15
+\end{align*}
+
 
 %%% Local Variables:
 %%% mode: latex
