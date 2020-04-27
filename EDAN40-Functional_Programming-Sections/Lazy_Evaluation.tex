@@ -4,6 +4,13 @@ Because these functions are pure, changing the order in which functions are appl
 This is not specific to simple examples, but an important general property of function application in Haskell.
 Formally, in Haskell any two different ways of evaluating the same expression will always produce the same final value, provided that they both terminate.
 
+An \nameref{def:Expression} that has the form of a \nameref{def:Function} applied to one or more arguments that can be ``reduced'' by performing the application is called a \nameref{def:Reducible_Expression}
+
+\begin{definition}[Reducible Expression]\label{def:Reducible_Expression}
+  A \emph{reducible expression} or \emph{redex} has the form of a \nameref{def:Function} applied to one or more arguments that can be ``reduced'' by performing the appropriate function application.
+  These reductions do not necessarily decrease the size of an \nameref{def:Expression}, but often do.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
