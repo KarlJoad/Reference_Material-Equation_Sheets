@@ -27,6 +27,14 @@ Using call-by-value evaluation results in non-termination.
   \vdots
 \end{align*}
 
+Using call-by-name evaluation, sharing is not required in this example results in termination in two steps.
+\begin{align*}
+  &= head ones \\
+  &= head (1 : ones) \\
+  &= 1
+\end{align*}
+
+This works because \nameref{def:Lazy_Evaluation} proceeds in a lazy manner as its name suggests, only evaluating arguments as and when strictly necessary to produce results.
 
 %%% Local Variables:
 %%% mode: latex
