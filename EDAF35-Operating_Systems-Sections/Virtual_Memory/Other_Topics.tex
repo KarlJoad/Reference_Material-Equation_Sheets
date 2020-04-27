@@ -120,6 +120,15 @@ This special case requires careful handling in the \nameref{def:Kernel} and a de
 In many cases, the user is completely unaware of the paged nature of memory.
 However, system performance can be improved if the user (or compiler) has an awareness of the underlying demand paging.
 
+Good selection of data structures and programming structures can increase locality and hence lower the \nameref{def:Page_Fault} rate and the number of pages in the working set.
+\begin{itemize}[noitemsep]
+\item A stack has good locality, since access is always made to the top.
+\item A hash table is designed to scatter references, producing bad locality.
+\end{itemize}
+
+Of course, locality of reference is just one measure of the efficiency of the use of a data structure.
+Other heavily weighted factors include search speed, total number of memory references, and total number of pages touched.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
