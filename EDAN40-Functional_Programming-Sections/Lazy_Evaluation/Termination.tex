@@ -5,6 +5,8 @@ Throughout this section, we will use a recursive definition that yields a value 
 In practice, trying to evaluate \texttt{infty} will quickly exhaust the available memory and produce an error message.
 Consider the expression \haskellinline{fst (0, inf)}, where \texttt{fst} is the library function that selects the first component of a pair, defined by \haskellinline{fst (x, y) = x}.
 
+Call-by-value evaluation with this expression also results in non-termination.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAN40-Functional_Programming-Reference_Sheet"
