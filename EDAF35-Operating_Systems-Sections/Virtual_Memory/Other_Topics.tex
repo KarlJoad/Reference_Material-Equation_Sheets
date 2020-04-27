@@ -15,6 +15,10 @@ In a system using the \nameref{subsubsec:Working_Set_Model}, for example, we cou
 If we must suspend a process, we remember the working set for that process.
 When the process is to be resumed, we automatically bring back into memory its \textbf{entire working set} before restarting the process.
 
+\nameref{def:Prepaging} may offer an advantage in some cases.
+The question is whether the cost of using prepaging is less than the cost of servicing the corresponding page faults.
+Prepaging becomes less effective if many of the pages brought back into memory by prepaging will not be used.
+
 
 %%% Local Variables:
 %%% mode: latex
