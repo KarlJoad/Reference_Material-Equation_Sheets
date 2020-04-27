@@ -6,6 +6,11 @@ For example, a list of three ones can be produced by selecting the first three e
 [1, 1, 1]
 \end{haskellsource}
 
+The data is only evaluated as much as required by the control, and these two take it in turn to perform reductions.
+Without \nameref{def:Lazy_Evaluation}, the control and data parts would need to be combined in the form of a single function.
+Allowing us to modularize by separating them into logically distinct parts is an important goal in programming.
+Being able to separate control from data is one of the most important benefits of lazy evaluation.
+
 
 %%% Local Variables:
 %%% mode: latex
