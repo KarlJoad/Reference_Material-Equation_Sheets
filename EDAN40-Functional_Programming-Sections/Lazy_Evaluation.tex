@@ -64,6 +64,9 @@ The two arguments are now substituted into the body of the function mult one at 
 This is the expected behavior of currying, rather than at the same time as in the previous section.
 This behaviour arises because \haskellinline{mult 3} is the leftmost innermost redex in the expression \haskellinline{mult 3 (2+3)}, as opposed to $2+3$ in the expression \haskellinline{mult (3, 2 + 3)}.
 
+In Haskell, the selection of redexes within lambda expressions is prohibited.
+The rationale for not ``reducing under lambdas'' is that functions are viewed as black boxes that we are not permitted to look inside.
+
 
 %%% Local Variables:
 %%% mode: latex
