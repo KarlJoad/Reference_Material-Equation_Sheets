@@ -1,4 +1,13 @@
 \subsection{Strict Application}\label{subsec:Strict_Application}
+Haskell uses \nameref{def:Lazy_Evaluation} by default, but also provides a special \nameref{def:Strict} version of \nameref{def:Function} application, written as \texttt{\$!}, which can be useful.
+
+\begin{definition}[Strict]\label{def:Strict}
+  \emph{Strict} function application, in Haskell, means that the specified argument provided to the \nameref{def:Function} is evaluated with \nameref{subsec:Pass_by_Value}, rather than \nameref{subsec:Pass_by_Name}.
+
+  Formally, an expression of the form \haskellinline{f $! x} is only a \nameref{def:Reducible_Expression} once evaluation of the argument \texttt{x}, which itself uses \nameref{def:Lazy_Evaluation}, has reached the point where it is known that the result is not an undefined value.
+  At that point the expression can be reduced to the normal application \haskellinline{f x}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
