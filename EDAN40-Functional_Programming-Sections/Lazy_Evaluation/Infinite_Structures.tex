@@ -1,4 +1,13 @@
 \subsection{Infinite Structures}\label{subsec:Infinite_Structures}
+The use of \nameref{def:Lazy_Evaluation} allows Haskell to program with infinite structures.
+
+\begin{definition}[Lazy Evaluation]\label{def:Lazy_Evaluation}
+  \emph{Lazy evaluation} is the combination of call-by-name evaluation and the use of pointers to share references to common \nameref{def:Expression}s.
+  Lazy evaluation has the property that it ensures that evaluation terminates as often as possible.
+  Sharing ensures that lazy evaluation never requires more steps than call-by-value evaluation.
+  In addition, using lazy evaluation expressions are only evaluated as much as required by the context in which they are used.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
