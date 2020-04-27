@@ -19,6 +19,13 @@ This expression contains three redexes:
 \item The entire expression itself, which has the form of the function \texttt{mult} applied to a pair of arguments.
 \end{enumerate}
 
+Performing the corresponding reductions gives the expressions:
+\begin{enumerate}[noitemsep]
+\item \haskellinline{mult (3, 2 + 3)}
+\item \haskellinline{mult (1 + 2, 5)}
+\item \haskellinline{(1 + 2) * (2 + 3)}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
