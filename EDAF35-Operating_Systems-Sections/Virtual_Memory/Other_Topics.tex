@@ -106,6 +106,15 @@ The purpose of this form of page management is to reduce the amount of \nameref{
 We accomplish this savings by creating a table that has one entry per page of physical memory, indexed by the pair $\langle \mathtt{PID}, page-number \rangle$.
 However, the inverted page table no longer contains complete information about the \nameref{def:Logical_Address_Space} of a \nameref{def:Process}, and that information is required if a referenced page is not currently in memory.
 
+\nameref{def:Demand_Paging} requires this information to process \nameref{def:Page_Fault}s.
+For the information to be available, an external page table (one per \nameref{def:Process}) must be kept.
+This table looks like the traditional per-process page table and contains information on where each virtual page is located.
+
+Since these tables are referenced only when a \nameref{def:Page_Fault} occurs, they do not need to be available quickly.
+Instead, they are themselves paged in and out of memory as necessary.
+But now a page fault may cause the virtual memory manager to generate another page fault as it pages in the external page table it needs to locate the virtual page on the \nameref{def:Backing_Store}.
+This special case requires careful handling in the \nameref{def:Kernel} and a delay in the page-lookup processing.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
