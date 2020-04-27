@@ -28,6 +28,10 @@ Performing the corresponding reductions gives the expressions:
 
 The order in which we evaluate these redexes determines what ``Pass-by'' type we use.
 
+\subsection{Pass-by-Value}\label{subsec:Pass_by_Value}
+Innermost evaluation, always chooses the innermost redex, meaning it contains no other redex.
+If there is more than one innermost redex, by convention we choose that which begins at the leftmost position in the expression.
+
 
 %%% Local Variables:
 %%% mode: latex
