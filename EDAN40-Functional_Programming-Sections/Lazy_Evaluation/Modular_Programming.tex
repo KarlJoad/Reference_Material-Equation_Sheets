@@ -11,6 +11,15 @@ Without \nameref{def:Lazy_Evaluation}, the control and data parts would need to 
 Allowing us to modularize by separating them into logically distinct parts is an important goal in programming.
 Being able to separate control from data is one of the most important benefits of lazy evaluation.
 
+A good example of this is generating \textbf{ALL} the prime numbers, an inherently infinite task.
+Using the Eratosthenes Sieve method:
+\begin{enumerate}[noitemsep]
+\item Write down the infinite sequence $2, 3, 4, 5, 6, \ldots$
+\item Mark the first number, $p$, in the sequence as prime
+\item Delete all multiples of p from the sequence
+\item Return to the second step
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
