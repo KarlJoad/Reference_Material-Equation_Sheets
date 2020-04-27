@@ -31,6 +31,10 @@ Take the code in \Cref{lst:Lazy_vs_Strict_Function_Application} as an example.
 \label{lst:Lazy_vs_Strict_Function_Application}
 \end{listing}
 
+The \nameref{def:Strict} evaluation requires more steps, due to the additional overhead of using strict application, but now performs each addition as soon as it is introduced, rather than constructing a large summation.
+
+\nameref{def:Strict} application is not a panacea that automatically improves the space behaviour of programs.
+Even for simple examples, the use of strict application requires careful consideration of the behaviour of lazy evaluation.
 
 %%% Local Variables:
 %%% mode: latex
