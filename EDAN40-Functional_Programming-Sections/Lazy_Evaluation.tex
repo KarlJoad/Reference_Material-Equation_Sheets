@@ -52,6 +52,12 @@ For example, the expression \haskellinline{mult (1+2) (2+3)} is contained in no 
 In terms of how arguments are passed to functions, using outermost evaluation allows functions to be applied before their arguments are evaluated.
 For this reason, we say that arguments are \emph{Passed-By-Name}.
 
+\begin{remark*}
+  Many built-in functions require their arguments to be evaluated before being applied, even when using outermost evaluation.
+  For example, built-in arithmetic operators ($*$ and $+$) cannot be applied until their two arguments have been evaluated to numbers.
+  Functions with this property are called \nameref{def:Strict}.
+\end{remark*}
+
 
 %%% Local Variables:
 %%% mode: latex
