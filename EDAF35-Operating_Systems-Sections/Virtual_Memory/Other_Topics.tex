@@ -136,6 +136,9 @@ Routines that call each other many times can be packed into the same page.
 This packaging is a variant of the bin-packing problem: try to pack the variable-sized load segments into the fixed-sized pages so that interpage references are minimized.
 This is particularly useful for large page sizes.
 
+\subsubsection{I/O Interlock and Page Locking}\label{IO:subsubsec_Interlock_Page_Locking}
+When using I/O devices with \nameref{def:Demand_Paging}, we sometimes need to allow some of the pages to be locked in memory.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
