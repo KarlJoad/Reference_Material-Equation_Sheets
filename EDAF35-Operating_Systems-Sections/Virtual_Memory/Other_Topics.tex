@@ -77,6 +77,9 @@ Related to the hit ratio is another metric: the \nameref{def:TLB_Reach}.
   It is the number of entries multiplied by the page size.
 \end{definition}
 
+Ideally, the working set for a \nameref{def:Process} is stored in the TLB.\@
+If it is not, the process will spend a considerable amount of time resolving memory references in the \nameref{def:Page_Table} rather than the TLB.\@
+
 
 %%% Local Variables:
 %%% mode: latex
