@@ -29,6 +29,13 @@ Using call-by-name evaluation, we have:
   &= 9
 \end{align*}
 
+Thus, call-by-name requires one extra reduction step, because \texttt{1+2} must be evaluated twice.
+Fortunately, this problem can be solved easily by using pointers to indicate sharing of expressions during evaluation.
+Rather than physically copying an argument if it is used many times in the body of a function, we simply keep one copy of the argument and make many pointers to it.
+In this manner, any reductions that are performed on the argument are automatically shared between each of the pointers to that argument.
+This works because the evaluation of an \nameref{def:Expression} depends only on the expression itself, not the state of the program.
+
+The use of call-by-name evaluation in conjunction with sharing is called \nameref{def:Lazy_Evaluation}, making Haskell a lazy programming language.
 
 %%% Local Variables:
 %%% mode: latex
