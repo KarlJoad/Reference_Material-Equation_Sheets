@@ -19,6 +19,12 @@ When the process is to be resumed, we automatically bring back into memory its \
 The question is whether the cost of using prepaging is less than the cost of servicing the corresponding page faults.
 Prepaging becomes less effective if many of the pages brought back into memory by prepaging will not be used.
 
+\subsubsection{Page Size}\label{subsubsec:Page_Size}
+The designers of an \nameref{def:Operating_System} for an existing machine rarely have a choice concerning the page size.
+However, a new machine can have different page sizes than its predecessors.
+There is no single best page size.
+Page sizes are almost always powers of 2, generally ranging from \SIrange{4096}{4194304}{\byte{}} ($2^{12}$ to $2^{22}$ byte, \SI{4}{\kibi{} \byte{}} to \SI{4}{\mebi{} \byte{}}).
+
 
 %%% Local Variables:
 %%% mode: latex
