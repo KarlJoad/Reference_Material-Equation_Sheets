@@ -14,6 +14,14 @@ Haskell uses \nameref{def:Lazy_Evaluation} by default, but also provides a speci
 \item For a \nameref{def:List} type, evaluation is performed until the empty list or the cons of two expressions is obtained.
 \end{itemize}
 
+When used with \nameref{subsec:Curried_Function_Types} with multiple arguments, \nameref{def:Strict} application can be used to force top-level evaluation of any combination of arguments.
+A curried function application of \haskellinline{f x y} has 3 possible different behaviors with \texttt{\$!}:
+\begin{enumerate}[noitemsep]
+\item \haskellinline{(f $! x) y}: Force top-level evaluation of \texttt{x}.
+\item \haskellinline{(f x) $! y}: Force top-level evaluation of \texttt{y}.
+\item \haskellinline{(f $! x) $! y}: Force top-level evaluation of \texttt{x} and \texttt{y}.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
