@@ -1,6 +1,11 @@
 \subsection{Other Topics to Consider}\label{subsec:Other_Topics_to_Consider}
 Here, we mention considerations, other than a \nameref{def:Page_Replacement} algorithm and frame allocation policy to choosing how to create our \nameref{def:Paging} system.
 
+\subsubsection{Prepaging}\label{subsubsec:Prepaging}
+An obvious property of pure \nameref{def:Demand_Paging} is the large number of \nameref{def:Page_Fault}s that occur when a \nameref{def:Process} is started or when a swapped out process is restarted.
+This situation results from trying to get the initially executing locality into memory.
+\nameref{def:Prepaging} helps ease this situation.
+
 
 %%% Local Variables:
 %%% mode: latex
