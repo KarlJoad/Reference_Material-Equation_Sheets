@@ -6,6 +6,7 @@ In practice, trying to evaluate \texttt{infty} will quickly exhaust the availabl
 Consider the expression \haskellinline{fst (0, inf)}, where \texttt{fst} is the library function that selects the first component of a pair, defined by \haskellinline{fst (x, y) = x}.
 
 Call-by-value evaluation with this expression also results in non-termination.
+In contrast, call-by-name evaluation terminates in just one step, by immediately applying the definition of \texttt{fst} avoiding the evaluation of the non-terminating expression.
 
 %%% Local Variables:
 %%% mode: latex
