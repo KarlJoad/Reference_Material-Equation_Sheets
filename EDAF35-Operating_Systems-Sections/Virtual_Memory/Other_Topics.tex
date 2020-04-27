@@ -139,6 +139,11 @@ This is particularly useful for large page sizes.
 \subsubsection{I/O Interlock and Page Locking}\label{IO:subsubsec_Interlock_Page_Locking}
 When using I/O devices with \nameref{def:Demand_Paging}, we sometimes need to allow some of the pages to be locked in memory.
 
+One solution is never to execute I/O to \nameref{def:User} memory.
+Instead, data is copied between \nameref{def:Kernel} memory and user memory, then the I/O takes place only between kernel memory and the I/O device.
+To write a block on tape, we first copy the block to system memory and then write it to tape.
+This extra copying may result in unacceptably high overhead.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
