@@ -66,6 +66,12 @@ This problem has no best answer.
 As we have seen, some factors (\nameref{def:Internal_Fragmentation}, locality) argue for a small page size, whereas others (table size, I/O time) argue for a large page size.
 The historical trend is toward larger page sizes.
 
+\subsubsection{TLB Reach}\label{subsubsec:TLB_Reach}
+Recall that the hit ratio for the Translation Lookaside Buffer (\texttt{TLB}) refers to the percentage of virtual address translations that are resolved in the TLB rather than the page table.
+Clearly, the hit ratio is related to the number of entries in the TLB, and the way to increase the hit ratio is by increasing the number of entries in the TLB.\@
+However, the associative memory used to construct the TLB is both expensive and power hungry.
+Related to the hit ratio is another metric: the \nameref{def:TLB_Reach}.
+
 
 %%% Local Variables:
 %%% mode: latex
