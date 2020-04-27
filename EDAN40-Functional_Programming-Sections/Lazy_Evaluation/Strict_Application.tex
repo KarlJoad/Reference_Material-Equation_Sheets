@@ -8,6 +8,12 @@ Haskell uses \nameref{def:Lazy_Evaluation} by default, but also provides a speci
   At that point the expression can be reduced to the normal application \haskellinline{f x}.
 \end{definition}
 
+\begin{itemize}[noitemsep]
+\item If the argument has a basic type, such as \texttt{Int} or \texttt{Bool}, then top-level evaluation is simply complete evaluation.
+\item For a \nameref{def:Tuple} type such as \texttt{(Int, Bool)}, evaluation is performed until a pair of expressions is obtained, but no further.
+\item For a \nameref{def:List} type, evaluation is performed until the empty list or the cons of two expressions is obtained.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
