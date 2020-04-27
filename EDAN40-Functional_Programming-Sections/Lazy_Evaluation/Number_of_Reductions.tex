@@ -9,6 +9,26 @@ In this section, we will use the definition of \texttt{square} below.
 \label{lst:Square_Definition}
 \end{listing}
 
+Below, we evaluate the expression \haskellinline{square (1+2)} according to the definition of \texttt{square} in \Cref{lst:Square_Definition}.
+Each line of derivation performs one reduction.
+
+Using call-by-value evaluation, we have:
+\begin{align*}
+  &= square (1+2) \\
+  &= square 3 \\
+  &= 3 * 3 \\
+  &= 9
+\end{align*}
+
+Using call-by-name evaluation, we have:
+\begin{align*}
+  &= square (1+2) \\
+  &= (1+2) * (1+2) \\
+  &= 3 * (1+2) \\
+  &= 3 * 3 \\
+  &= 9
+\end{align*}
+
 
 %%% Local Variables:
 %%% mode: latex
