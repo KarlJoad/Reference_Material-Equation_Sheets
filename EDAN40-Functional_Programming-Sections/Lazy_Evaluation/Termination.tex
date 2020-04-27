@@ -11,6 +11,8 @@ In contrast, call-by-name evaluation terminates in just one step, by immediately
 This shows that call-by-name evaluation may produce a result when call-by-value evaluation fails to terminate.
 In general, we have the following important property: if there exists any evaluation sequence that terminates for a given expression, then call-by-name evaluation will also terminate for this expression, and produce the same final result.
 
+In summary, call-by-name evaluation is preferable to call-by-value for the purpose of ensuring that evaluation terminates as often as possible.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAN40-Functional_Programming-Reference_Sheet"
