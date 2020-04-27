@@ -26,6 +26,14 @@ Using the Eratosthenes Sieve method:
 \label{lst:Eratosthenes_Primes}
 \end{listing}
 
+Lazy evaluation ensures that this program does indeed produce the infinite list of all prime numbers.
+\begin{enumerate}[noitemsep]
+\item Start with the infinite list \texttt{[2..]}.
+\item Apply the \texttt{sieve} function that retains the first number \texttt{p} as being prime.
+\item Filter all multiples of \texttt{p} from this list.
+\item \texttt{sieve} calls itself recursively with the list it just obtained (with all multiples of \texttt{p} filtered out).
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
