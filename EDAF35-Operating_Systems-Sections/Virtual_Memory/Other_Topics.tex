@@ -80,6 +80,26 @@ Related to the hit ratio is another metric: the \nameref{def:TLB_Reach}.
 Ideally, the working set for a \nameref{def:Process} is stored in the TLB.\@
 If it is not, the process will spend a considerable amount of time resolving memory references in the \nameref{def:Page_Table} rather than the TLB.\@
 
+There are 3 methods to increase the \nameref{def:TLB_Reach}:
+\begin{enumerate}[noitemsep]
+\item Increase the number of entries in the TLB.\@
+
+\item Increase the size of a page.
+  \begin{itemize}[noitemsep]
+  \item For example, increase the page size from \SI{8}{\kibi{} \byte{}} to \SI{32}{\kibi{} \byte{}}, quadruple the \nameref{def:TLB_Reach}.
+  \item However, may to an increase in \nameref{def:Fragmentation}.
+  \end{itemize}
+
+\item Provide multiple page sizes.
+  \begin{itemize}[noitemsep]
+  \item Providing support for multiple page sizes requires the operating system
+    —not hardware —to manage the TLB.\@
+  \item One of the fields in a TLB entry must indicate the size of the page frame corresponding to the TLB entry.
+  \item Managing the TLB in software and not hardware comes at a cost in performance.
+  \item The increased hit ratio and TLB reach offset the performance costs.
+  \item Recent trends indicate a move toward software-managed TLBs and operating-system support for multiple page sizes.
+  \end{itemize}
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
