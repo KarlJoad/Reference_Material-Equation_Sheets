@@ -9,6 +9,11 @@ Each application program must include its own code to interpret an input file as
 This scheme provides maximum flexibility but little support.
 All operating systems must support at least one structure, the executable file, so that the system is able to load and run programs.
 
+\subsubsection{Internal File Structure}\label{subsubsec:Internal_File_Structure}
+Locating an offset within a file can be complicated for the operating system.
+Disk systems typically have a well-defined block size determined by the size of a sector.
+All disk I/O is performed in units of one block (physical record), and all blocks are the same size.
+It is unlikely that the physical record size will exactly match the length of the desired logical record.
 
 %%% Local Variables:
 %%% mode: latex
