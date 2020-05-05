@@ -10,6 +10,13 @@ In addition, most swapping systems only swap \nameref{def:Anonymous_Memory}.
 Since disk access is much slower than memory access, using swap space significantly decreases system performance.
 The main goal for the design and implementation of swap space is to provide the best throughput for the virtual memory system.
 
+Each swap area consists of a series of page-sized slots, which are used to hold swapped pages.
+Associated with each swap area is a \emph{swap map}, which is an array of integer counters, each corresponding to a page slot in the swap area.
+\begin{itemize}[noitemsep]
+\item If the value of a counter is 0, the corresponding page slot is available.
+\item Values greater than 0 indicate that the page slot is occupied by a swapped page, where the value of the counter indicates the number of mappings to the swapped page.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
