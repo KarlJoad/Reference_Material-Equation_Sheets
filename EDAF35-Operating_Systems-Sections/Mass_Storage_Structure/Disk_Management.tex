@@ -38,6 +38,16 @@ Sometimes we want to use a disk partition just as a large sequential array of lo
 This array is called a raw disk, and I/O to this array is termed raw I/O.
 Because there are no structures, and hence no file syste, raw I/O bypasses all file-system services, such as the buffer cache, file locking, prefetching, space allocation, file names, and directories.
 
+\subsubsection{Boot Block}\label{subsubsec:Boot_Block}
+A computer requires a bootstrap program that starts the computer when it is given a power-on command.
+The first part of this involves starting the CPU from a cold, unpowered, state and initializing it and putting the \nameref{def:Kernel} into memory.
+
+The bootstrap program lives in ROM, on the motherboard itself.
+Because it is ROM, the CPU always knows where to find it, and the program stored there is protected from infection.
+This program is just step one of 2 for booting, and is reponsible for finding the code for step 2.
+It looks for and brings in the \nameref{def:Bootloader} from disk.
+At this point, there are no device drivers, because those are provided by the \nameref{def:Kernel}.
+
 
 %%% Local Variables:
 %%% mode: latex
