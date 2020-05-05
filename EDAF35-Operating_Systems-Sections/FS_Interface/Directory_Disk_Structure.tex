@@ -123,6 +123,12 @@ The natural generalization of the \nameref{subsubsec:Two_Level_Directory} is to 
 This generalization allows users to create their own subdirectories and to organize their files accordingly.
 The tree has a root directory, and every file in the system has a unique \nameref{def:Path_Name}.
 
+A directory contains a set of files and/or subdirectories.
+A directory is another file, but treated in a special way.
+All directories have the same internal format.
+One bit in each directory entry defines the entry as a file (0) or as a subdirectory (1), a crude magic number.
+Special \nameref{def:System_Call}s are used to create and delete directories.
+
 
 %%% Local Variables:
 %%% mode: latex
