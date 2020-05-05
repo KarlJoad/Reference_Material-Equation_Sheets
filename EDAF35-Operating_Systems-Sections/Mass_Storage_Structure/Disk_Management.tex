@@ -72,6 +72,10 @@ However, there are 2 common ways to handle this problem:
   The controller can be told to replace each bad sector logically with one of the spare sectors.
 \end{enumerate}
 
+Such a redirection by the controller could invalidate any optimization by the operating system’s disk-scheduling algorithm!
+For this reason, most disks are formatted with a few spare sectors in each cylinder and spare cylinders.
+When a bad block is remapped, the controller uses a spare sector from the same cylinder, if possible.
+
 
 %%% Local Variables:
 %%% mode: latex
