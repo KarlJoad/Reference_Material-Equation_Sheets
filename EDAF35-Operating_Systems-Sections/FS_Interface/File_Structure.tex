@@ -3,6 +3,12 @@ File types can also indicate the internal structure of the file.
 This point brings us to one of the disadvantages of having the operating system support multiple file structures: the resulting size of the operating system is cumbersome.
 If the operating system defines five different file structures, it needs to contain the code to support these file structures.
 
+Some operating systems impose (and support) a minimal number of file structures.
+\textsc{unix} considers each file to be a sequence of bytes; no interpretation of these bits is made by the \textbf{\nameref{def:Operating_System}}.
+Each application program must include its own code to interpret an input file as to the appropriate structure.
+This scheme provides maximum flexibility but little support.
+All operating systems must support at least one structure, the executable file, so that the system is able to load and run programs.
+
 
 %%% Local Variables:
 %%% mode: latex
