@@ -39,6 +39,13 @@ The typically defined ones are:
 These 6 basic operations can be combined for copying a file, renaming a file, appending to a file, etc.
 \kernelinline{create()} and \kernelinline{delete()} are \nameref{def:System_Call}s that work with closed rather than open files.
 
+Because we would need to search the current directory for the file entry associated with the file, we \kernelinline{open()} files to memory first.
+The operating system keeps a table, called the open-file table, containing information about all open files.
+When a file operation is requested, the file is specified via an index into this table, so no searching is required.
+When the file is no longer being actively used, it is closed by the process, and the operating system removes its entry from the open-file table.
+The \kernelinline{open()} system call typically returns a pointer to the entry in the open-file table, called a \emph{file descriptor}.
+This pointer is used in \textbf{all} I/O operations, avoiding further searching and simplifying the \nameref{def:System_Call} interface.
+
 
 %%% Local Variables:
 %%% mode: latex
