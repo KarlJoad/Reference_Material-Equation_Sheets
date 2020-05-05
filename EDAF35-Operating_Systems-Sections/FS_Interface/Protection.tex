@@ -80,6 +80,13 @@ Another approach to the protection problem is to associate a password with each 
   \end{itemize}
 \end{itemize}
 
+\paragraph{Directory Operations}\label{par:Directory_Operation_Protections}
+The directory operations that must be protected are somewhat different from the file operations.
+We want to control the creation and deletion of files in a directory.
+In addition, we probably want to control whether a user can determine the existence of a file in a directory.
+Sometimes, knowledge of the existence and name of a file is significant in itself; thus, listing the contents of a directory must be a protected operation.
+Similarly, if a path name refers to a file in a directory, the user must be allowed access to both the directory and the file.
+In systems where files may have numerous path names (such as acyclic and general graphs), a given user may have different access rights to a particular file, depending on the path name used.
 
 %%% Local Variables:
 %%% mode: latex
