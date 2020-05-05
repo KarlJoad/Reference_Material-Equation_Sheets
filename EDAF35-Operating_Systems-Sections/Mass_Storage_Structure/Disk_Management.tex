@@ -17,6 +17,10 @@ This enables the manufacturer to test the disk and to initialize the mapping fro
   The header and trailer contain information used by the disk controller: a sector number and an error-correcting code.
 \end{definition}
 
+The ECC contains enough information, if only a few bits of data have been corrupted, to enable the controller to identify which bits have changed and calculate what their correct values should be.
+It then reports a recoverable soft error.
+The controller automatically does the ECC processing whenever a sector is read or written.
+
 \begin{definition}[High-Level Formatting]\label{def:High_Level_Formatting}
   \emph{High-Level Formatting} or \emph{Logical Formatting} is the process an operating system goes through to partition the disk into groups of cylinders and put a file system onto these partitions.
   Each partition can be logically viewed as a separate disk, which can have its own file system.
