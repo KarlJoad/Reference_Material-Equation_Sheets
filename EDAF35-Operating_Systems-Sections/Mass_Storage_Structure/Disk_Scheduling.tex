@@ -16,6 +16,9 @@ When performing disk I/O, we need to know a few things:
 \item What the number of sectors to be transferred is.
 \end{itemize}
 
+If the desired disk drive \textbf{and} controller are available, the request can be serviced immediately.
+If the drive or controller is busy, any new requests for service will be placed in the queue of pending requests for that drive.
+
 
 %%% Local Variables:
 %%% mode: latex
