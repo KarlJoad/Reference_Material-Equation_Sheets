@@ -26,6 +26,30 @@ This organization involves the use of directories.
 The directory itself can be organized in many ways.
 The organization must allow us to insert entries, to delete entries, to search for a named entry, and to list all the entries in the directory.
 
+Like a \nameref{def:File}, a \nameref{def:Directory} can be seen as an abstract data type that needs its computations defined before being concrete.
+\begin{itemize}[noitemsep]
+\item \textbf{Search for a file}.
+  We need to be able to search a directory structure to find the entry for a particular file.
+  Since files have symbolic names, and similar names may indicate a relationship among files, we may want to be able to find all files whose names match a particular pattern.
+
+\item \textbf{Create a file}.
+  New files need to be created and added to the directory.
+
+\item \textbf{Delete a file}.
+  When a file is no longer needed, we want to be able to remove it from the directory.
+
+\item \textbf{List a directory}.
+  We need to be able to list the files in a directory and the contents of the directory entry for each file in the list.
+
+\item \textbf{Rename a file}.
+  Because the name of a file represents its contents to its users, we must be able to change the name when the contents or use of the file changes.
+  Renaming a file may also allow its position within the directory structure to be changed.
+
+\item \textbf{Traverse the file system}.
+  We may wish to access every directory and every file within a directory structure.
+  For reliability, it is a good idea to backup the contents and structure of the entire file system at regular intervals.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
