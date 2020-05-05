@@ -34,6 +34,10 @@ If a failure occurs \textbf{during} the writing of a block, the following steps 
   \end{itemize}
 \end{enumerate}
 
+Because waiting for disk writes to complete (synchronous I/O) is time consuming, many storage arrays add NVRAM as a cache.
+Since the storage is nonvolatile, it can be trusted to store the data en route to the disks.
+It is considered part of the stable storage.
+Writes to it are much faster than to magnetic disk, so performance is greatly improved.
 
 %%% Local Variables:
 %%% mode: latex
