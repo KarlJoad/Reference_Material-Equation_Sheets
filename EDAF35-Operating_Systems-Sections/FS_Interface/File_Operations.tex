@@ -86,6 +86,12 @@ Typically, the \nameref{def:Operating_System} uses two internal tables:
   \end{itemize}
 \end{enumerate}
 
+Some \nameref{def:Operating_System}s allows \nameref{def:Process}es to lock an open file, or sections of it.
+\begin{definition}[File Lock]\label{def:File_Lock}
+  A \emph{File lock} allows one \nameref{def:Process} to lock a \nameref{def:File} and prevent other processes from gaining access to it making them useful for files that are shared by several processes.
+  File locks provide functionality similar to \nameref{def:Read_Write_Lock}s.
+
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
