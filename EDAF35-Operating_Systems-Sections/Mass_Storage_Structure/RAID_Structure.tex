@@ -192,6 +192,15 @@ Instead of parity, error-correcting codes are used.
 
 Seen in \Cref{subfig:RAID_6}.
 
+\paragraph{RAID 01}\label{par:RAID_01}
+RAID 01 (read RAID zero-one) refers to a combination of \nameref{par:RAID_0} and \nameref{par:RAID_1}.
+RAID 0 provides the performance, while RAID 1 provides the reliability.
+Generally, this level provides better performance than \nameref{par:RAID_5}.
+Unfortunately, it doubles the number of disks needed for storage, so it is also relatively expensive.
+A set of disks are striped, and then the stripe is mirrored to another, equivalent stripe.
+
+Seen in \Cref{subfig:RAID_01}.
+
 
 %%% Local Variables:
 %%% mode: latex
