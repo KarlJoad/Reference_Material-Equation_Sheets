@@ -165,6 +165,15 @@ An acyclic graph allows directories to share subdirectories and files.
 The same file or subdirectory may be in two different directories.
 The acyclic graph is a further generalization of the tree-structured directory scheme.
 
+A shared file is not the same as two copies of the file.
+\begin{itemize}[noitemsep]
+\item \textbf{Two copies}.
+  Each programmer can view the copy rather than the original.
+  But if one programmer changes the file, the changes will not appear in the other’s copy.
+\item \textbf{Shared File}.
+  Only one file exists, so any changes made by one person are immediately visible to the other.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
