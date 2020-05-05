@@ -21,6 +21,10 @@ The ECC contains enough information, if only a few bits of data have been corrup
 It then reports a recoverable soft error.
 The controller automatically does the ECC processing whenever a sector is read or written.
 
+It is usually possible to choose among a few data sizes, such as 256, 512, and 1,024 bytes.
+Formatting a disk with a larger sector size means that fewer sectors can fit on each track; but it also means that fewer headers and trailers are written on each track and more space is available for user data.
+\nameref{def:Operating_System}s may not support sizes other than a sector size of 512 bytes.
+
 \begin{definition}[High-Level Formatting]\label{def:High_Level_Formatting}
   \emph{High-Level Formatting} or \emph{Logical Formatting} is the process an operating system goes through to partition the disk into groups of cylinders and put a file system onto these partitions.
   Each partition can be logically viewed as a separate disk, which can have its own file system.
