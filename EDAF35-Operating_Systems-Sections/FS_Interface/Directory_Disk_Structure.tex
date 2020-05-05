@@ -213,6 +213,10 @@ Garbage collection involves traversing the entire file system, marking everythin
 Garbage collection is necessary only because of possible cycles in the graph.
 Thus, an \nameref{subsubsec:Acyclic_Graph_Directory} is much easier to work with.
 
+There are algorithms to detect cycles in graphs.
+However, they are computationally expensive, especially when the graph is on disk storage.
+A simpler algorithm in the special case of directories and links is to bypass links during directory traversal.
+Cycles are avoided, and no extra overhead is incurred.
 
 %%% Local Variables:
 %%% mode: latex
