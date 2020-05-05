@@ -34,6 +34,11 @@ With mirroring, a logical volume consists of two physical disks, and every write
 The result is called a mirrored \nameref{def:Volume}.
 Data will be lost only if the second disk fails before the first failed disk is replaced.
 
+However, power failures are a particular source of concern, since they occur far more frequently than natural disasters.
+Even with mirroring of disks, if writes are in progress to the same block in both disks, and power fails before both blocks are fully written, the two blocks can be in an inconsistent state.
+The usual solution is to add a write-cache, typically called solid-state nonvolatile RAM (NVRAM) to the RAID array.
+This write-back cache is protected from data loss during power failures, so the write can be considered complete when it is written to the cache, since even if there is a failure, no data is lost.
+
 
 %%% Local Variables:
 %%% mode: latex
