@@ -39,6 +39,10 @@ Even with mirroring of disks, if writes are in progress to the same block in bot
 The usual solution is to add a write-cache, typically called solid-state nonvolatile RAM (NVRAM) to the RAID array.
 This write-back cache is protected from data loss during power failures, so the write can be considered complete when it is written to the cache, since even if there is a failure, no data is lost.
 
+\subsubsection{Performance via Parallelism}\label{subsubsec:RAID_Performance_Parallelism}
+With disk mirroring, the rate at which \textbf{read} requests can be handled is doubled, since read requests can be sent to either disk (as long as both disks in a pair are functional).
+The \textbf{transfer} and \textbf{write} rate of each read is the same as in a single-disk system.
+
 
 %%% Local Variables:
 %%% mode: latex
