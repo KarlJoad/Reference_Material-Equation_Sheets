@@ -3,6 +3,25 @@ So that the computer system will be convenient to use, the \nameref{def:Operatin
 
 \defFile{}
 
+Files in all \nameref{def:Operating_System}s have attributes that help describe them.
+\begin{itemize}[noitemsep]
+\item \textbf{Name}.
+  The symbolic file name is the only information kept in human-readable form.
+\item \textbf{Identifier}.
+  This unique tag, usually a number, identifies the file within the file system; it is the non-human-readable name for the file.
+\item \textbf{Type}.
+  This information is needed for systems that support different types of files.
+\item \textbf{Location}.
+  This information is a pointer to a device and to the location of the file on that device.
+\item \textbf{Size}.
+  The current size of the file and possibly the maximum allowed size are included in this attribute.
+\item \textbf{Protection}.
+  Access-control information determines who can do reading, writing, executing, etc.
+\item \textbf{Time, date, and user identification}.
+  This information may be kept for creation, last modification, and last use.
+  This data can be useful for protection, security, and usage monitoring.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
