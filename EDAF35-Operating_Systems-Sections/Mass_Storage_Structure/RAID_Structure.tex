@@ -43,6 +43,10 @@ This write-back cache is protected from data loss during power failures, so the 
 With disk mirroring, the rate at which \textbf{read} requests can be handled is doubled, since read requests can be sent to either disk (as long as both disks in a pair are functional).
 The \textbf{transfer} and \textbf{write} rate of each read is the same as in a single-disk system.
 
+With multiple disks, we can improve the transfer rate by striping data across the disks.
+Data striping consists of splitting a unit of data across multiple disks.
+However, this also means that if any single disk were to fail, all data would be unrecoverable.
+
 
 %%% Local Variables:
 %%% mode: latex
