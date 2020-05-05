@@ -136,6 +136,16 @@ RAID level 1 refers to full-disk mirroring.
 
 \Cref{subfig:RAID_1} shows a mirrored organization.
 
+\paragraph{RAID 2}\label{par:RAID_2}
+RAID level 2 is also known as memory-style error-correcting-code (ECC) organization.
+Each byte in a memory system may have a parity bit associated with it that records whether the number of bits in the byte set to 1 is even (parity = 0) or odd (parity = 1).
+If one of the bits in the byte is damaged (including the stored parity bit), the parity of the entire byte changes and thus does not match the stored parity.
+Thus, all single-bit errors are detected by the memory system.
+Error-correcting schemes store two or more extra bits and can reconstruct the data if any single bit is damaged.
+If one of the disks fails, the remaining bits of the byte and the associated error-correction bits can be read from other disks and used to reconstruct the damaged data.
+
+Seen in \Cref{subfig:RAID_2}.
+
 
 %%% Local Variables:
 %%% mode: latex
