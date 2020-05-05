@@ -50,6 +50,16 @@ Like a \nameref{def:File}, a \nameref{def:Directory} can be seen as an abstract 
   For reliability, it is a good idea to backup the contents and structure of the entire file system at regular intervals.
 \end{itemize}
 
+\subsubsection{Single-Level Directory}\label{subsubsec:Single_Level_Directory}
+All files are contained in the same directory, which is easy to support and understand.
+
+However, there are significant limitations.
+\begin{itemize}[noitemsep]
+\item When the number of files increases or when the system has more than one user.
+\item Since all files are in the same directory, they must have unique names.
+\item If two users call their data file the same thing, then the unique-name rule is violated.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
