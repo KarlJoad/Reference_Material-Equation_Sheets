@@ -50,6 +50,42 @@ This pointer is used in \textbf{all} I/O operations, avoiding further searching 
   The process of opening a file can be implicit when the first reference is made, but it is usually explicit.
 \end{remark*}
 
+The implementation of the \kernelinline{open()} and \kernelinline{close()} operations is more complicated in an environment where several processes may open the file simultaneously.
+Typically, the \nameref{def:Operating_System} uses two internal tables:
+\begin{enumerate}[noitemsep]
+\item A per-process table.
+  \begin{itemize}[noitemsep]
+  \item Contains process-dependent information, such as:
+    \begin{itemize}[noitemsep]
+    \item File pointer.
+      On systems that do not include a file offset as part of the \kernelinline{read()} and \kernelinline{write()} \nameref{def:System_Call}s, the system must track the last read/write location with a current-file-position pointer.
+      This pointer is unique to each process operating on the file.
+    \item Access rights.
+      Each process opens a file in an access mode.
+      This information is used to allow or deny subsequent I/O requests.
+    \end{itemize}
+  \item This table tracks \textbf{all} files that any given \nameref{def:Process} has open.
+  \item Stored in this table is information regarding \textbf{this} \nameref{def:Process}’s use of the \nameref{def:File}.
+  \item Each entry in the per-process table \textbf{points} to an entry in the system-wide open-file table.
+  \end{itemize}
+
+\item A system-wide table.
+  \begin{itemize}[noitemsep]
+  \item Contains process-independent information, such as:
+    \begin{itemize}[noitemsep]
+    \item Location of file on disk.
+      Most file operations require the system to modify data within the file.
+      The information needed to locate the file on disk is kept in memory so that the system does not have to read it from disk for each operation.
+    \item Access dates.
+    \item File size.
+    \end{itemize}
+  \item Once a file has been opened by one process, the system-wide table includes an entry for the file.
+  \item When another process executes an \kernelinline{open()} call, the process receives a pointer back to the entry in the system-wide table.
+  \item The table also has an open count associated with each file to indicate how many processes have the file open.
+  \item Each \kernelinline{close()} decreases this open count, and when the open count reaches zero, the file is no longer in use, allowing the removal of that file’s entry from the open-file table.
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
