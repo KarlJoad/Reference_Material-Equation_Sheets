@@ -31,6 +31,9 @@ Formatting a disk with a larger sector size means that fewer sectors can fit on 
   This stores the initial file system data structures, which can include maps of free and allocated storage and an initial empty directory.
 \end{definition}
 
+To increase efficiency, most \nameref{def:File_System}s group blocks together into larger chunks, frequently called clusters.
+Disk I/O is done via blocks, but file system I/O is done via clusters.
+
 
 %%% Local Variables:
 %%% mode: latex
