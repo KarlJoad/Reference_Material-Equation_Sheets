@@ -26,6 +26,12 @@ Choosing the best one is difficult because performance depends heavily on the nu
 For any particular list of requests, we \textbf{can} define an optimal order of retrieval, but the computation needed to find an optimal schedule may not justify the savings over SSTF or SCAN.\@
 Because of the complexity involved with this topic, and the potential cost by choosing the wrong algorithm, the disk-scheduling algorithm should be a separate module of the OS, so it can be replaced if need be.
 
+Requests for disk service can be greatly influenced by the file-allocation method.
+A program reading a contiguously allocated file will generate several requests that are close together on the disk, resulting in limited head movement.
+A linked or indexed file, in contrast, may include blocks that are widely scattered on the disk, resulting in greater head movement.
+The location of directories and index blocks is also important.
+Since every file must be opened to be used, and opening a file requires searching the directory structure, the directories will be accessed frequently.
+
 
 %%% Local Variables:
 %%% mode: latex
