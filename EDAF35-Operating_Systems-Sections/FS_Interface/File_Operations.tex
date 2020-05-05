@@ -46,6 +46,10 @@ When the file is no longer being actively used, it is closed by the process, and
 The \kernelinline{open()} system call typically returns a pointer to the entry in the open-file table, called a \emph{file descriptor}.
 This pointer is used in \textbf{all} I/O operations, avoiding further searching and simplifying the \nameref{def:System_Call} interface.
 
+\begin{remark*}
+  The process of opening a file can be implicit when the first reference is made, but it is usually explicit.
+\end{remark*}
+
 
 %%% Local Variables:
 %%% mode: latex
