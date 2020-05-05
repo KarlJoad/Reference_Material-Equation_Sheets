@@ -32,6 +32,10 @@ A linked or indexed file, in contrast, may include blocks that are widely scatte
 The location of directories and index blocks is also important.
 Since every file must be opened to be used, and opening a file requires searching the directory structure, the directories will be accessed frequently.
 
+\subsubsection{First-Come First-Serve Scheduling}\label{subsubsec:FCFS_Disk_Scheduling}
+This version of \emph{First-Come First-Serve Scheduling} is like all the others discussed earlier.
+The first disk seek request that comes into the queue is handled first, without regard to the distance the head must travel to find the requested data.
+
 
 %%% Local Variables:
 %%% mode: latex
