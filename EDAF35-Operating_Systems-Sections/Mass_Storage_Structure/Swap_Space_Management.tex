@@ -33,6 +33,11 @@ A swap space can reside in one of two places:
 \item It can be in a separate disk partition, a \nameref{par:Swap_Partition}.
 \end{enumerate}
 
+\paragraph{Swap File}\label{par:Swap_File}
+If the swap space is simply a large file within the file system, normal file-system routines can be used to create it, name it, and allocate its space.
+This approach is easy to implement, but inefficient.
+\nameref{def:External_Fragmentation} can greatly increase \nameref{def:Swapping} times by forcing multiple seeks during reading or writing of memory contents.
+
 
 %%% Local Variables:
 %%% mode: latex
