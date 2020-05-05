@@ -28,6 +28,10 @@ Other, higher-level, operations, such as renaming, copying, and editing the file
 For many systems, however, these functions may be implemented by a program that makes lower-level system calls.
 File protection is provided at only the lower level.
 
+\subsubsection{Access Control}\label{subsubsec:Access_Control}
+The most common approach to the protection problem is to make access dependent on the identity of the user.
+Different users may need different types of access to a file or directory.
+The most general scheme to implement identity-dependent access is to associate with each file and directory an access-control list (ACL) specifying user names and the types of access allowed for each user.
 
 %%% Local Variables:
 %%% mode: latex
