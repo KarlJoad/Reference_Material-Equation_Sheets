@@ -91,6 +91,12 @@ Some \nameref{def:Operating_System}s allows \nameref{def:Process}es to lock an o
   A \emph{File lock} allows one \nameref{def:Process} to lock a \nameref{def:File} and prevent other processes from gaining access to it making them useful for files that are shared by several processes.
   File locks provide functionality similar to \nameref{def:Read_Write_Lock}s.
 
+  There are 2 kinds of file locks:
+  \begin{enumerate}[noitemsep]
+  \item A \textbf{Shared Lock} is akin to a reader lock in that several processes can acquire the lock concurrently, but none of the lock holders can modify the file.
+  \item An \textbf{Exclusive Lock} behaves like a writer lock; only one process at a time can acquire such a lock, and it must be released by the owner.
+  \end{enumerate}
+
 \end{definition}
 
 %%% Local Variables:
