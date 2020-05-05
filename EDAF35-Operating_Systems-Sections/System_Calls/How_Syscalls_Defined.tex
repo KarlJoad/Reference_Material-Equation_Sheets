@@ -10,7 +10,7 @@ The expanded code looks like this:
 
 \nameref{def:System_Call}s have a strict definition.
 \begin{enumerate}[noitemsep]
-\item The asmlinkage modifier on the function definition is a directive to tell the compiler to look only on the stack for this function’s arguments.
+\item The \texttt{asm} linkage modifier on the function definition is a directive to tell the compiler to look only on the stack for this function’s arguments.
   \textbf{This is a required modifier for all system calls.}
 \item The function returns a \kernelinline{long}.
   For compatibility between 32- and 64-bit systems, system calls defined to return an \kernelinline{int} in \nameref{def:User}-space return a \kernelinline{long} in the \nameref{def:Kernel}.
