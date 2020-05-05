@@ -23,6 +23,9 @@ The amount of swap space needed on a system can vary depending on the amount of 
 It is safer to overestimate than to underestimate the amount of swap space required, because if a system runs out of swap space it may be forced to abort \nameref{def:Process}es or may crash entirely.
 Overestimation wastes disk space that could otherwise be used for \nameref{def:File}s, but it does no other harm.
 
+Some \nameref{def:Operating_System}s allow the use of multiple swap spaces, including both swap files and swap partitions.
+These are usually placed on separate disks so that the load placed on the I/O system by \nameref{def:Paging} and \nameref{def:Swapping} can be spread over the system’s I/O bandwidth.
+
 
 %%% Local Variables:
 %%% mode: latex
