@@ -2,6 +2,12 @@
 Just like with CPU~\nameref{subsec:Scheduling} and \nameref{sec:Virtual_Memory}, the \nameref{def:Operating_System} attempts to maximize the efficient use of hardware resources.
 For disk drives, this means minimizing access time and maximizing bandwidth.
 
+\begin{definition}[Disk Bandwidth]\label{def:Disk_Bandwidth}
+  The \emph{disk bandwidth} is the total number of bytes transferred, divided by the total time between the first request for service and the completion of the last transfer.
+
+  The service time will include the seek time (time for disk arm to move heads to cylinder) and the rotational latency (time for platter to spin to correct sector).
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
