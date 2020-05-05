@@ -97,6 +97,15 @@ Some \nameref{def:Operating_System}s allows \nameref{def:Process}es to lock an o
   \item An \textbf{Exclusive Lock} behaves like a writer lock; only one process at a time can acquire such a lock, and it must be released by the owner.
   \end{enumerate}
 
+  In addition, there are 2 types of file-locking \textbf{MECHANISM}s:
+  \begin{enumerate}[noitemsep]
+  \item \textbf{Mandatory File-Locking} uses the \nameref{def:Operating_System} to ensure lock integrity.
+    If a lock is mandatory, then once a process acquires an exclusive lock, the operating system will prevent any other process from accessing the locked file.
+  \item \textbf{Advisory File-Locking} requires developers to ensure that locks are appropriately acquired and released.
+    If the lock is advisory, then the operating system will not stop a \nameref{def:Process} from acquiring access to a file.
+    Instead, the process must be written so that it manually acquires the lock before accessing the file.
+  \end{enumerate}
+
 \end{definition}
 
 %%% Local Variables:
