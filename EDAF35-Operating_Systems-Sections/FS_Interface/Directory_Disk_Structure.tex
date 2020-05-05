@@ -101,6 +101,17 @@ To name a particular file uniquely in a two-level directory, we must give both t
   \end{remark}
 \end{definition}
 
+A special instance of this situation occurs with the shared system files.
+Programs provided as part of the system (loaders, assemblers, compilers, utility routines, libraries, etc.) are generally defined as \nameref{def:File}s.
+When the appropriate commands are given, these files are read by the loader and executed.
+Many command interpreters simply treat such a command as the name of a file to load and execute.
+
+The standard solution is to complicate the search procedure slightly.
+A special user directory is defined to contain the system files.
+Whenever a file name is given to be loaded, the operating system first searches the local UFD.\@
+If the file is found, it is used.
+If it is not found, the system automatically searches the special user directory that contains the system files.
+
 
 %%% Local Variables:
 %%% mode: latex
