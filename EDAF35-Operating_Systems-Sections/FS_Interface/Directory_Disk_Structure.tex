@@ -141,6 +141,20 @@ This pointer is copied to a local variable for this user that specifies the user
 From there, other processes can be spawned.
 The current directory of any subprocess is usually the current directory of the parent when it was spawned.
 
+An interesting decision in this setup how to delete a directory.
+\begin{itemize}[noitemsep]
+\item If a directory is empty, its entry in the
+  directory that contains it can simply be deleted.
+\item If the directory is not empty (Some systems will not delete a directory unless it is empty), one of two approaches can be taken.
+  \begin{enumerate}[noitemsep]
+  \item the user must first delete all the files in that directory.
+    If any subdirectories exist, this procedure must be applied recursively to them, so that they can be deleted also.
+    This approach can result in a substantial amount of work.
+  \item An alternative, such as that taken by the \textsc{unix} \texttt{rm} command, is to use an option.
+    When a request is made to delete a directory, all that directory’s files and subdirectories are also to be deleted.
+  \end{enumerate}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
