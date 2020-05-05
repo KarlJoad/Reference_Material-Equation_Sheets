@@ -185,6 +185,13 @@ The data for the $n$th block in an array with $D$ disks is stored on disk $(n \b
 
 Seen in \Cref{subfig:RAID_5}.
 
+\paragraph{RAID 6}\label{par:RAID_6}
+RAID level 6 is similar to \nameref{par:RAID_5} but stores more redundant information to guard against multiple disk failures.
+Instead of parity, error-correcting codes are used.
+2 bits of redundant data are stored for every 4 bits of data allowing the system to tolerate two disk failures.
+
+Seen in \Cref{subfig:RAID_6}.
+
 
 %%% Local Variables:
 %%% mode: latex
