@@ -74,6 +74,9 @@ Instead, the system can either terminate all operations to the lost server or de
 Consistency semantics represent an important criterion for evaluating any file system that supports file sharing.
 These semantics specify how multiple users of a system are to access a shared file simultaneously.
 
+Consistency semantics are directly related to \nameref{def:Process} \nameref{subsec:Synchronization} algorithms.
+However, those complex algorithms tend not to be implemented in the case of file I/O because of the great latencies and slow transfer rates of disks and networks.
+
 
 %%% Local Variables:
 %%% mode: latex
