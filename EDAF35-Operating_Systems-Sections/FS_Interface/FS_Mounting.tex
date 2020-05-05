@@ -6,6 +6,24 @@ Specifically, the directory structure may be built out of multiple \nameref{def:
   A \emph{mount point} is a location within the file structure where the file system will be attached.
 \end{definition}
 
+The general steps to mount a \nameref{def:File_System} are shown below.
+This scheme enables the \nameref{def:Operating_System} to traverse its directory structure, switch among file systems (possibly of various types), as appropriate.
+\begin{enumerate}[noitemsep]
+\item The operating system is given the name of the device and the \nameref{def:Mount_Point}.
+  \begin{itemize}[noitemsep]
+  \item Some operating systems require that a file system type be provided when mounting; others inspect the structures of the device and determine the type of file system.
+  \item Typically, a mount point is an empty directory.
+  \end{itemize}
+
+\item The operating system verifies that the device contains a valid \nameref{def:File_System}.
+  \begin{itemize}[noitemsep]
+  \item It does so by asking the device driver to read the device directory
+and verifying that the directory has the expected format.
+\end{itemize}
+
+\item The operating system notes in its directory structure that a file system is mounted at the specified mount point.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
