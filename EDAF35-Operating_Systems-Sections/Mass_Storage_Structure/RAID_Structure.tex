@@ -65,6 +65,19 @@ The main goals of using striping in the parallel manner are:
 Numerous schemes to provide redundancy at lower cost by using disk striping combined with ``parity'' bits have been proposed.
 These schemes have different cost–performance trade-offs and are classified according to RAID levels.
 
+$P$ indicate error-correcting bits and $C$ indicates a copy of the data.
+\begin{figure}[h!tbp]
+  \centering
+  \begin{subfigure}{1.0\linewidth}
+    \centering
+    \includegraphics[scale=1.00]{./Drawings/EDAF35-Operating_Systems/RAID_0.png}
+    \caption{\nameref{par:RAID_0}: Striped Disks}
+    \label{subfig:RAID_0}
+  \end{subfigure} \\
+  \caption{RAID Levels}
+  \label{fig:RAID_Levels}
+\end{figure}
+
 
 %%% Local Variables:
 %%% mode: latex
