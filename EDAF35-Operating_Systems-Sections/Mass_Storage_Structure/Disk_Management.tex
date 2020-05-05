@@ -14,6 +14,12 @@ There are 2 kinds of formatting:
   The header and trailer contain information used by the disk controller: a sector number and an error-correcting code.
 \end{definition}
 
+\begin{definition}[High-Level Formatting]\label{def:High_Level_Formatting}
+  \emph{High-Level Formatting} or \emph{Logical Formatting} is the process an operating system goes through to partition the disk into groups of cylinders and put a file system onto these partitions.
+  Each partition can be logically viewed as a separate disk, which can have its own file system.
+  This stores the initial file system data structures, which can include maps of free and allocated storage and an initial empty directory.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
