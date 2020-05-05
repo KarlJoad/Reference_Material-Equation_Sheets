@@ -32,6 +32,16 @@ There are 2 main methods for transferring files between computing systems.
   A \emph{Distributed File System} (\emph{DFS}) is where remote directories are visible from a local machine, as if the file storage were directly attached to the computer.
 \end{definition}
 
+\paragraph{Client-Server Model}\label{par:Client_Server_Model}
+The machine containing the files is the server, and the machine seeking access to the files is the client.
+Generally, the server declares that a resource is available to clients and specifies exactly which resource and exactly which clients.
+A server can serve multiple clients, and a client can use multiple servers, depending on the implementation details of a given client–server facility.
+
+Client identification is more difficult.
+A client can be specified by a network name or other identifier, such as an IP address, but these can be spoofed.
+More secure solutions include secure authentication of the client via encrypted keys.
+Unfortunately, with security come many challenges, including ensuring compatibility of the client and server and security of key exchanges.
+
 
 %%% Local Variables:
 %%% mode: latex
