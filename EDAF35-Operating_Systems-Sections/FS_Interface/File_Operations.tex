@@ -36,6 +36,9 @@ The typically defined ones are:
   Rather than forcing the user to delete the file and then recreate it, this function allows all attributes to remain unchanged (except for file length) but lets the file be reset to length zero and its file space released.
 \end{itemize}
 
+These 6 basic operations can be combined for copying a file, renaming a file, appending to a file, etc.
+\kernelinline{create()} and \kernelinline{delete()} are \nameref{def:System_Call}s that work with closed rather than open files.
+
 
 %%% Local Variables:
 %%% mode: latex
