@@ -2,6 +2,14 @@
 File sharing is very desirable for users who want to collaborate and to reduce the effort required to achieve a computing goal.
 Therefore, user-oriented operating systems must accommodate the need to share files in spite of the inherent difficulties.
 
+\subsubsection{Multiple Users}\label{subsubsec:File_Sharing-Multiple_Users}
+Given a directory structure that allows files to be shared by users, the system must mediate the file sharing.
+The system can either allow a user to access the files of other users by default or require that a user specifically grant access to the files.
+To implement sharing and protection, the system must maintain more file and directory attributes than are needed on a single-user system.
+Typically, this involves recording the \nameref{def:File_Owner} and the \nameref{def:File_Group} to determine access.
+
+This is discussed more in \Cref{subsec:File_Protection}.
+
 
 %%% Local Variables:
 %%% mode: latex
