@@ -48,6 +48,15 @@ Several kinds of buses are available, including:
 \item Fiber Channel (FC)
 \end{itemize}
 
+The data transfers on a bus are carried out by special electronic processors called controllers.
+\begin{description}[noitemsep]
+\item[Host Controller:] The controller at the computer end of the bus.
+\item[Disk Controller:] Built into each disk drive.
+\end{description}
+
+To perform a disk I/O operation, the computer places a command into the host controller, typically using memory-mapped I/O ports.
+The host controller then sends the command via messages to the disk controller, and the disk controller operates the disk-drive hardware to carry out the command.
+
 
 %%% Local Variables:
 %%% mode: latex
