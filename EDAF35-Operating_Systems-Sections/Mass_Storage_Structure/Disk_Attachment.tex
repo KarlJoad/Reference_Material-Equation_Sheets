@@ -18,6 +18,12 @@ The I/O commands that initiate data transfers to a host-attached storage device 
 \nameref{def:Network_Attached_Storage} provides a convenient way for all the computers on a LAN to share a pool of storage with the same ease of naming and access enjoyed with local \nameref{def:Host_Attached_Storage}.
 However, it tends to be less efficient and have lower performance than some direct-attached storage options.
 
+\begin{definition}[Network-Attached Storage]\label{def:Network_Attached_Storage}
+  \emph{Network-Attached Storage} (\emph{NAS}) is disk storage that is attached to the local computer by making a connection to a remote host that serves a distributed file system to connectees.
+  The remote procedure calls (RPCs) are carried via TCP or UDP over an IP network.
+  Typically, the client and server lie on the same local-area network (LAN) that carries all data traffic to the clients.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
