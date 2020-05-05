@@ -23,6 +23,19 @@ Similarly, the write operation, appends to the end of the file and advances to t
 The pointers in this file can be reset to the beginning, and on some systems, a program may be able to skip forward or backward $n$ records for some integer $n$—perhaps only for $n = 1$.
 Sequential access is based on a tape model of a file and works as well on sequential-access devices as it does on random-access ones.
 
+\subsubsection{Direct Access}\label{subsubsec:Direct_Access}
+Another method is direct access (or relative access).
+In this method, a file is made up of fixed-length logical records that allow programs to read and write records rapidly in no particular order.
+The direct-access method is based on a disk model of a file.
+
+For direct access, the file is viewed as a numbered sequence of blocks or records.
+There are no restrictions on the order of reading or writing for a direct-access file.
+Direct-access files are of great use for immediate access to large amounts of information.
+
+The block number provided by the user to the operating system is normally a relative block number.
+A relative block number is an index relative to the beginning of the file, starting at 0 for the first block.
+The first relative block of the file is 0, even though the absolute disk address may be 14703 for the first block.
+The use of relative block numbers allows the operating system to decide where the file should be placed (called the \nameref{def:Allocation_Problem}).
 
 %%% Local Variables:
 %%% mode: latex
