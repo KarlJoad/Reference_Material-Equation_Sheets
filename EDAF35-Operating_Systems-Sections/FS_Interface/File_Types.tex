@@ -6,6 +6,10 @@ A common technique for implementing \nameref{def:File} types is to include the t
 The name is split into two parts: the name and the extension, which are separated by a period.
 This way, the user \textbf{and} the operating system can tell from the name alone what the type of a file is.
 
+The system uses the extension to indicate the type of the \nameref{def:File} and the type of operations that can be done on that file.
+Application programs also use extensions to indicate file types in which they are interested.
+These extensions are not always required, so a user may specify a file without the extension, and the application will look for a file with the given name perhaps with the extension it expects.
+Because these extensions are not supported by the operating system, they should be viewed as ``hints'' to the applications that operate on them.
 
 %%% Local Variables:
 %%% mode: latex
