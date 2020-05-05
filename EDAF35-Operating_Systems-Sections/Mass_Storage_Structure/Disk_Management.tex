@@ -48,6 +48,11 @@ This program is just step one of 2 for booting, and is reponsible for finding th
 It looks for and brings in the \nameref{def:Bootloader} from disk.
 At this point, there are no device drivers, because those are provided by the \nameref{def:Kernel}.
 
+The \nameref{def:Bootloader} can be changed easily, as it is on read-write storage.
+It is stored in the boot blocks at a fixed location on the disk.
+Its responsibility is to load the entire \nameref{def:Operating_System} from a non-fixed location on-disk.
+A disk containing the boot blocks/boot partition is a boot disk or system disk.
+
 
 %%% Local Variables:
 %%% mode: latex
