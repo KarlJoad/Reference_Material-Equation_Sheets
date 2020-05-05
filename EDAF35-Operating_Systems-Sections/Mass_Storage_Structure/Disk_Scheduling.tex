@@ -36,6 +36,10 @@ Since every file must be opened to be used, and opening a file requires searchin
 This version of \emph{First-Come First-Serve Scheduling} is like all the others discussed earlier.
 The first disk seek request that comes into the queue is handled first, without regard to the distance the head must travel to find the requested data.
 
+\subsubsection{Shortest-Seek-Time-First Scheduling}\label{subsubsec:SSTF_Disk_Scheduling}
+\emph{Shortest-Seek-Time-First Scheduling} services all the requests close to the current head position before moving the head far away to service other requests.
+This method selects the request with the least seek time from the current head position.
+
 
 %%% Local Variables:
 %%% mode: latex
