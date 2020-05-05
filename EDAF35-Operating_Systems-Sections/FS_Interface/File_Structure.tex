@@ -19,6 +19,10 @@ In this case, the logical record size is 1 byte.
 Logical records may vary in length.
 Packing a number of logical records into physical blocks is a common solution to this problem.
 
+The logical record size, physical block size, and packing technique determine how many logical records are in each physical block.
+The packing can be done either by the user’s application program or by the operating system.
+In either case, the file may be considered a sequence of blocks.
+
 
 %%% Local Variables:
 %%% mode: latex
