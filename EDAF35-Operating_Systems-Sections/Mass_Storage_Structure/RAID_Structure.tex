@@ -47,6 +47,14 @@ With multiple disks, we can improve the transfer rate by striping data across th
 Data striping consists of splitting a unit of data across multiple disks.
 However, this also means that if any single disk were to fail, all data would be unrecoverable.
 
+There are several types of striping that is possible:
+\begin{itemize}[noitemsep]
+\item Bit-level Striping, where each bit of every byte is striped across the disks.
+\item Block-level striping, where blocks of a \nameref{def:File} are striped across the disks.
+\item Sector-level striping.
+\item etc.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
