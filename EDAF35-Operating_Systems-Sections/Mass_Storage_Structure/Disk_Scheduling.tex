@@ -8,6 +8,14 @@ For disk drives, this means minimizing access time and maximizing bandwidth.
   The service time will include the seek time (time for disk arm to move heads to cylinder) and the rotational latency (time for platter to spin to correct sector).
 \end{definition}
 
+When performing disk I/O, we need to know a few things:
+\begin{itemize}[noitemsep]
+\item Whether this operation is input or output.
+\item What the disk address for the transfer is.
+\item What the memory address for the transfer is.
+\item What the number of sectors to be transferred is.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
