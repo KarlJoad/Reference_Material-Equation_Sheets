@@ -89,6 +89,12 @@ The accesses between the \kernelinline{open()} and \kernelinline{close()} operat
   Here, a file has a single image that interleaves all accesses, regardless of their origin.
 \end{itemize}
 
+\paragraph{Immutable-Shared-Files Semantics}\label{par:Immutable_Shared_Files_Consistency_Semantics}
+A unique approach is that of immutable shared files. Once
+a file is declared as shared by its creator, it cannot be modified.
+An immutable file has two key properties: its name may not be reused, and its contents may not be altered.
+Thus, the name of an immutable file signifies that the contents of the file are fixed.
+The implementation of these semantics in a distributed system is simple, because the sharing is disciplined.
 
 %%% Local Variables:
 %%% mode: latex
