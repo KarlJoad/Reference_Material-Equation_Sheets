@@ -111,6 +111,12 @@ Some \nameref{def:Operating_System}s allows \nameref{def:Process}es to lock an o
     Instead, the process must be written so that it manually acquires the lock before accessing the file.
   \end{enumerate}
 
+  \begin{remark}[Problems with File Locks]
+    The use of \nameref{def:File_Lock}s requires the same precautions as \nameref{def:Process} \nameref{subsec:Synchronization}.
+    Mandatory locking means that we must be careful to hold the exclusive file lock only while they are needed.
+    Otherwise, they will prevent other \nameref{def:Process}es from accessing the file as well.
+    Also, some special measures must be taken to ensure that two or more processes do not become involved in a \nameref{def:Deadlock} while trying to acquire file locks.
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
