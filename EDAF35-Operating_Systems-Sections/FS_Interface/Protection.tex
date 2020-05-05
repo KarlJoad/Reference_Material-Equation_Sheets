@@ -3,6 +3,27 @@ When information is stored in a computer system, we want to keep it safe from im
 
 Most systems have evolved to use the concepts of file \nameref{def:File_Owner} and \nameref{def:File_Group}.
 
+\subsubsection{Types of Access}\label{subsubsec:Types_File_Access}
+The need to protect files is a direct result of the ability to access files.
+Systems that do not permit access to the files of other users do not need protection.
+Protection mechanisms provide controlled access by limiting the types of file access that can be made.
+Access is permitted or denied depending on several factors, one of which is the type of access requested.
+Several different types of operations may be controlled:
+\begin{itemize}[noitemsep]
+\item \textbf{Read}.
+ Read from the file.
+\item \textbf{Write}.
+ Write or rewrite the file.
+\item \textbf{Execute}.
+ Load the file into memory and execute it.
+\item \textbf{Append}.
+ Write new information at the end of the file.
+\item \textbf{Delete}.
+ Delete the file and free its space for possible reuse.
+\item \textbf{List}.
+ List the name and attributes of the file.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
