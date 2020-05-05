@@ -42,6 +42,11 @@ This method selects the request with the least seek time from the current head p
 
 This is a variant of \nameref{par:SJF_Scheduling}, and like that algorithm, this one can also experience \nameref{def:Starvation}.
 
+\subsubsection{SCAN Scheduling}\label{subsubsec:SCAN_Disk_Scheduling}
+\emph{SCAN Scheduling} starts the disk arm at one end of the disk and moves toward the other end, servicing requests as it reaches each cylinder, until it gets to the other end of the disk.
+At the other end, the direction of head movement is reversed, and servicing continues on the way back.
+The head continuously scans back and forth across the disk.
+
 
 %%% Local Variables:
 %%% mode: latex
