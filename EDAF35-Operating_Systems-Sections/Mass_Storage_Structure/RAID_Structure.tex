@@ -175,6 +175,16 @@ Small independent writes cannot be performed in parallel.
 
 Seen in \Cref{subfig:RAID_4}.
 
+\paragraph{RAID 5}\label{par:RAID_5}
+RAID level 5, or block-interleaved distributed parity, differs from \nameref{par:RAID_4} in that it spreads data and parity among all $N + 1$ disks.
+For each block, one of the disks stores the parity and the others store data.
+A parity block cannot store parity for blocks in the same disk, because a disk failure would result in loss of data as well as of parity, making the loss recoverable.
+By spreading the parity across all the disks in the set, RAID 5 avoids potential overuse of a single parity disk, which can occur with RAID 4.
+
+The data for the $n$th block in an array with $D$ disks is stored on disk $(n \bmod D) + 1$.
+
+Seen in \Cref{subfig:RAID_5}.
+
 
 %%% Local Variables:
 %%% mode: latex
