@@ -22,6 +22,12 @@ Files in all \nameref{def:Operating_System}s have attributes that help describe 
   This data can be useful for protection, security, and usage monitoring.
 \end{itemize}
 
+The information about all files is kept in the directory structure, which is also on secondary storage.
+An entry in a directory consists of the file’s name and its unique identifier.
+The file's identifier in turn locates the other file attributes.
+It may take more than a kilobyte to record this information for each file.
+Because directories must also be nonvolatile, they must be stored on the device and brought into memory as needed.
+
 
 %%% Local Variables:
 %%% mode: latex
