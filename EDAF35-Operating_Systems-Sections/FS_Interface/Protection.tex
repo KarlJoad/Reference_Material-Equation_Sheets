@@ -32,6 +32,13 @@ File protection is provided at only the lower level.
 The most common approach to the protection problem is to make access dependent on the identity of the user.
 Different users may need different types of access to a file or directory.
 The most general scheme to implement identity-dependent access is to associate with each file and directory an access-control list (ACL) specifying user names and the types of access allowed for each user.
+This allows for complex access methodologies, however:
+\begin{itemize}[noitemsep]
+\item The ACL would get too long if we needed a rule for every possible user on the system.
+\item Constructing such a list may be a tedious and unrewarding task, especially if we do not know in advance the list of users in the system.
+\item The directory entry, previously of fixed size, now must be of variable size, resulting in more complicated space management.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
