@@ -47,6 +47,12 @@ This is a variant of \nameref{par:SJF_Scheduling}, and like that algorithm, this
 At the other end, the direction of head movement is reversed, and servicing continues on the way back.
 The head continuously scans back and forth across the disk.
 
+\paragraph{Circular SCAN Scheduling}\label{par:Circular_SCAN_Disk_Scheduling}
+\emph{Circular SCAN} (\emph{C-SCAN}) \emph{Scheduling} is a variant of \nameref{subsubsec:SCAN_Disk_Scheduling} designed to provide a more uniform wait time.
+Like SCAN, C-SCAN moves the head from one end of the disk to the other, servicing requests along the way.
+When the head reaches the other end, it immediately returns to the beginning of the disk without servicing any requests on the return trip.
+Essentially, this treats the cylinders as a circular list that wraps around from the final cylinder to the first.
+
 
 %%% Local Variables:
 %%% mode: latex
