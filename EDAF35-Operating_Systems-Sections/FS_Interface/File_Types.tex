@@ -2,6 +2,10 @@
 We need to decide whether the operating system should recognize and support \nameref{def:File} types.
 If an operating system recognizes the type of a file, it can then operate on the file in reasonable ways.
 
+A common technique for implementing \nameref{def:File} types is to include the type as part of the file name.
+The name is split into two parts: the name and the extension, which are separated by a period.
+This way, the user \textbf{and} the operating system can tell from the name alone what the type of a file is.
+
 
 %%% Local Variables:
 %%% mode: latex
