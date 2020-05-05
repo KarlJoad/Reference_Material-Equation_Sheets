@@ -12,6 +12,17 @@ This one-dimensional array of logical blocks is mapped onto the sectors of the d
 Sector 0 is the \emph{first sector} of the \emph{first track} on the \emph{outermost cylinder}.
 The mapping proceeds in order through that track, then through the rest of the tracks in that cylinder, and then through the rest of the cylinders from outermost to innermost.
 
+In theory, we can convert a \nameref{def:Logical_Block} number into a disk address that consists of a cylinder number, a track number within that cylinder, and a sector number within that track.
+However, in practice, it is difficult to perform this translation.
+\begin{enumerate}[noitemsep]
+\item Most disks have some defective sectors after manufacturing.
+  \begin{itemize}[noitemsep]
+  \item The mapping hides this by substituting spare sectors from elsewhere on the disk.
+\end{itemize}
+
+\item The number of sectors per track is not a constant on some drives, because of the distance from the center.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
