@@ -23,6 +23,18 @@ Typical disks can transfer several megabytes of data per second, and they have s
   \label{fig:HDD_Mechanism}
 \end{figure}
 
+When the disk is in use, a drive motor spins it at high speed.
+Common drives spin at \SIlist{5400; 7200; 10000; 15000}{\rpm}.
+Disk speed has two parts.
+\begin{enumerate}[noitemsep]
+\item The transfer rate is the rate at which data flow between the drive and the computer.
+\item The positioning time, or random-access time. Itself consisting of 2 parts:
+  \begin{enumerate}[noitemsep]
+  \item Time necessary to move the disk arm to the desired cylinder, called the seek time,
+  \item Time necessary for the desired sector to rotate to the disk head, called the rotational latency.
+  \end{enumerate}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
