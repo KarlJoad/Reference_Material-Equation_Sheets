@@ -58,6 +58,20 @@ Frequently, one or more sectors become defective.
 Most disks even come from the factory with bad blocks.
 Depending on the disk and controller in use, these blocks are handled in a variety of ways.
 
+However, there are 2 common ways to handle this problem:
+\begin{enumerate}[noitemsep]
+\item Manually handling the blocks when they go bad.
+  Any bad blocks that are discovered are flagged as unusable so that the file system does not allocate them.
+  If blocks go bad during normal operation, a special program must be run manually to search for the bad blocks and to lock them away.
+  Data that resided on the bad blocks usually is lost.
+
+\item \textbf{Sector Sparing} or \textbf{Forwarding} has the disk manage these blocks itself.
+  The controller maintains a list of bad blocks on the disk.
+  The list is initialized during the low-level formatting at the factory and is updated over the life of the disk.
+  Low-level formatting also sets aside spare sectors not visible to the operating system.
+  The controller can be told to replace each bad sector logically with one of the spare sectors.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
