@@ -60,6 +60,31 @@ However, there are significant limitations.
 \item If two users call their data file the same thing, then the unique-name rule is violated.
 \end{itemize}
 
+\subsubsection{Two-Level Directory}\label{subsubsec:Two_Level_Directory}
+The standard solution is to create a separate directory for each user.
+In the two-level directory structure, each user has their own User File Directory (UFD).
+The UFDs have similar structures, but each lists only the files of a \textbf{single} user.
+When a user job starts or a user logs in, the system’s Master File Directory (MFD) is searched for that user's UFD.\@
+The MFD is indexed by user name or account number, and each entry points to the UFD for that user.
+
+\begin{itemize}[noitemsep]
+\item When a user refers to a particular file, only their own UFD is searched.
+  Allowing different users to have files with the same name, as long as all the file names within each UFD are unique.
+\item To create a file for a user, the operating system searches only that user’s UFD to ascertain whether another file of that name exists.
+\item To delete a file, the operating system confines its search to the local UFD.\@
+  Preventing the accidental deletion of another user’s file that has the same name.
+\end{itemize}
+
+The user directories themselves must be created and deleted as necessary.
+A special system program can be run with the appropriate user name and account information.
+The program creates a new UFD and adds an entry for it to the MFD.\@
+
+However, this structure effectively isolates one user from another.
+Isolation is a disadvantage when the users want to cooperate on some task and to access one another's files.
+Some systems simply do not allow local user files to be accessed by other users, requiring a dedicated shared space.
+If access is to be permitted, one user must have the ability to name a file in another user’s directory.
+To name a particular file uniquely in a two-level directory, we must give both the user name and the file name.
+
 
 %%% Local Variables:
 %%% mode: latex
