@@ -23,6 +23,19 @@ However, in practice, it is difficult to perform this translation.
 \item The number of sectors per track is not a constant on some drives, because of the distance from the center.
 \end{enumerate}
 
+Handling the issue of the number of sectors is done through one of 2 methods.
+\begin{enumerate}[noitemsep]
+\item \textbf{Constant Linear Velocity} (CLV).
+  The density of bits per track is uniform.
+  The farther a track is from the center of the disk, the greater its length, so the more sectors it can hold.
+  The number of sectors per track decreases from outer tracks to inner ones.
+  The drive increases its rotation speed as the head moves from the outer to the inner tracks to keep the same rate of data moving under the head.
+  This method is used in CD and DVD drives.
+\item \textbf{Constant Angular Velocity} (CAV).
+  The disk rotation speed can stays constant
+  The density of bits decreases from inner tracks to outer tracks to keep the data rate constant.
+  This method is used in traditional hard disks.
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
