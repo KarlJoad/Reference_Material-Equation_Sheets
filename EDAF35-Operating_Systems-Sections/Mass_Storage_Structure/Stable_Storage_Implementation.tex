@@ -3,6 +3,13 @@
   \emph{Stable-Storage} is a secondary storage medium where the data it contains is never lost.
 \end{definition}
 
+To implement such storage, we need:
+\begin{itemize}[noitemsep]
+\item To replicate the required information on multiple storage devices with independent failure modes.
+\item To coordinate the writing of updates in a way that guarantees that a failure during an update will not leave all the copies in a damaged state.
+\item When we are recovering from a failure, we can force all copies to a consistent and correct value, even if another failure occurs during the recovery.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
