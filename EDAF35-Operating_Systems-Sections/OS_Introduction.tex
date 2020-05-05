@@ -262,10 +262,14 @@ These events can be a \nameref{def:Hardware} \nameref{def:Interrupt} or a softwa
 \end{definition}
 
 \subsection{Storage Management}\label{subsec:Storage_Management}
-\begin{definition}[File]\label{def:File}
+\begin{restatable}[File]{definition}{defFile}\label{def:File}
   The \nameref{def:Operating_System} abstracts from the physical properties of its storage devices to define a logical storage unit, the \emph{file}.
+  A file is a named collection of related information that is recorded on secondary storage.
+  In general, a file is a sequence of bits, bytes, lines, or records, the meaning of which is defined by the file's creator and user.
   The operating system maps files onto physical media and accesses these files via the storage devices.
-\end{definition}
+
+  From a user’s perspective, a file is the smallest allotment of logical secondary storage; meaning, data cannot be written to secondary storage unless it is within a file.
+\end{restatable}
 
 \input{./EDAF35-Operating_Systems-Sections/OS_Introduction/System_Programs}
 
