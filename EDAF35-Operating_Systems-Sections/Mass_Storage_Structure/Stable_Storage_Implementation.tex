@@ -21,6 +21,19 @@ When writing to disk in these circumstances, there are 3 possible outcomes:
   The failure occurred before the disk write started, so the previous data values on the disk remain intact.
 \end{enumerate}
 
+If a failure occurs \textbf{during} the writing of a block, the following steps must be followed:
+\begin{enumerate}[noitemsep]
+\item Write the information onto the first physical block.
+\item When the first write completes successfully, write the same information onto the second physical block.
+\item Declare the operation complete only after the second write completes successfully.
+\item During recovery from a failure, each pair of physical blocks is examined.
+  \begin{itemize}[noitemsep]
+  \item If both are the same and no detectable error exists, then no further action is necessary.
+  \item If one block contains a detectable error then we replace its contents with the value of the other block.
+  \item If neither block contains a detectable error, but the blocks differ in content, then we replace the content of the first block with that of the second.
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
