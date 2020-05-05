@@ -1,6 +1,6 @@
 \subsection{Process Creation}\label{subsec:Process_Creation}
 Most operating systems implement a \texttt{spawn} mechanism to create a new process in a new address space, read in an executable, and begin executing it.
-UNIX takes the unusual approach of separating these steps into two distinct functions: \kernelinline{fork()} and \kernelinline{exec()}.
+\textsc{unix} takes the unusual approach of separating these steps into two distinct functions: \kernelinline{fork()} and \kernelinline{exec()}.
 The first, \kernelinline{fork()}, creates a child process that is a copy of the current task.
 It differs from the parent only in:
 \begin{itemize}[noitemsep]

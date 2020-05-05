@@ -33,7 +33,7 @@ This is done with the \emph{slab allocator} to provide object reuse and \nameref
 \subsubsection{Storing the Process Descriptor}\label{subsubsec:Storing_Process_Descriptor}
 The system identifies \nameref{def:Process}es by a unique Process Identification Value or PID.\@
 The PID is a numerical value represented by the opaque type\footnote{``An opaque type is a data type whose physical representation is unknown or irrelevant''~\cite[pg.~26]{LKD3}.} \kernelinline{pid_t}, which is typically an \kernelinline{int}.
-Because of backward compatibility with earlier UNIX and Linux versions, the default maximum value is only 32,768 (that of a \kernelinline{(short int)}), although the value can be increased as high as four million (this is controlled in \kernelinline{<linux/threads.h>}).
+Because of backward compatibility with earlier \textsc{unix} and Linux versions, the default maximum value is only 32,768 (that of a \kernelinline{(short int)}), although the value can be increased as high as four million (this is controlled in \kernelinline{<linux/threads.h>}).
 The \nameref{def:Kernel} stores this value as PID inside each \nameref{def:Process_Descriptor}.
 This maximum value is important because it is essentially the maximum number of \nameref{def:Process}es that may exist concurrently on the system.
 

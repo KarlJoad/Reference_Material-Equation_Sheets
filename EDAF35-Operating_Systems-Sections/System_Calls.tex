@@ -18,7 +18,7 @@
   Some of the lowest-level tasks (for example, tasks where hardware must be accessed directly) may be written using assembly.
 
   \begin{remark}[Syscall]\label{rmk:Syscall}
-    In UNIX and UNIX-like systems, \nameref{def:System_Call} is usually shortened to \emph{syscall}.
+    In \textsc{unix} and \textsc{unix}-like systems, \nameref{def:System_Call} is usually shortened to \emph{syscall}.
   \end{remark}
 \end{definition}
 
@@ -80,7 +80,7 @@ This layer serves three primary purposes.
   \centering
   \begin{tabular}{lll}
     \toprule
-    & \textbf{Windows} & \textbf{Unix} \\
+    & \textbf{Windows} & \textbf{UNIX} \\
     \midrule
     \nameref{subsubsec:Process_Control} & \mintinline{cpp}{CreateProcess()} & \kernelinline{fork()} \\
     & \mintinline{cpp}{ExitProcess()} & \kernelinline{exit()} \\
@@ -108,7 +108,7 @@ This layer serves three primary purposes.
     & \mintinline{cpp}{SetSecurityDescriptorGroup()} & \kernelinline{chown()} \\
     \bottomrule
   \end{tabular}
-  \caption{System Calls in Unix and Windows}
+  \caption{System Calls in \textsc{unix} and Windows}
   \label{tab:System_Calls_Examples}
 \end{table}
 
@@ -120,10 +120,10 @@ This layer serves three primary purposes.
   Typically, API calls perform \nameref{def:System_Call}s in the background, without the programmer knowing about them.
 \end{definition}
 
-The system call interface in Linux, as with most UNIX systems, is provided in part by the C library.
-The C library implements the main \nameref{def:API} on Unix systems, including the standard C library and the system call interface.
+The system call interface in Linux, as with most \textsc{unix} systems, is provided in part by the C library.
+The C library implements the main \nameref{def:API} on \textsc{unix} systems, including the standard C library and the system call interface.
 The C library is used by all C programs and is easily wrapped by other programming languages for use in their programs.
-POSIX is composed of a series of standards from the IEEE that aim to provide a portable \nameref{def:Operating_System} standard roughly based on UNIX.\@
+POSIX is composed of a series of standards from the IEEE that aim to provide a portable \nameref{def:Operating_System} standard roughly based on \textsc{unix}.\@
 
 \subsection{How to Use Syscalls}\label{subsec:How_To_Use_Syscalls}
 \nameref{def:System_Call}s (often called \nameref{rmk:Syscall}s in Linux) are typically accessed via functionsdefined in the standard C library.

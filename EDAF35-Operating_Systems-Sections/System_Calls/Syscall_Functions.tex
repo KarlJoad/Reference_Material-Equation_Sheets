@@ -43,7 +43,7 @@ Other \nameref{def:Operating_System}s allow unmanaged access to devices.
 The hazard then is the potential for device contention and perhaps \nameref{def:Deadlock}.
 
 Once the device has been requested (and allocated to us), we can \kernelinline{read()}, \kernelinline{write()}, just as we can with files.
-In fact, the similarity between I/O devices and files is so great that many \nameref{def:Operating_System}s, including UNIX, merge the two into a combined file–device structure.
+In fact, the similarity between I/O devices and files is so great that many \nameref{def:Operating_System}s, including \textsc{unix}, merge the two into a combined file–device structure.
 In this case, a set of \nameref{def:System_Call}s can be shared between both files and \nameref{def:Device}s.
 Sometimes, I/O devices are identified by special file names, directory placement, or file attributes.
 
