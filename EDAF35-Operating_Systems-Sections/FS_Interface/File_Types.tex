@@ -10,6 +10,9 @@ The system uses the extension to indicate the type of the \nameref{def:File} and
 Application programs also use extensions to indicate file types in which they are interested.
 These extensions are not always required, so a user may specify a file without the extension, and the application will look for a file with the given name perhaps with the extension it expects.
 Because these extensions are not supported by the operating system, they should be viewed as ``hints'' to the applications that operate on them.
+Sometimes, the program that created the file is also stored with the \nameref{def:File_Attribute}s or the file's metadata.
+In that case, the program needed to open the file does not need to be guessed.
+
 
 %%% Local Variables:
 %%% mode: latex
