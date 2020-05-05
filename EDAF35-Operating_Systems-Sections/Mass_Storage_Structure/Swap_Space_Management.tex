@@ -17,6 +17,12 @@ Associated with each swap area is a \emph{swap map}, which is an array of intege
 \item Values greater than 0 indicate that the page slot is occupied by a swapped page, where the value of the counter indicates the number of mappings to the swapped page.
 \end{itemize}
 
+\subsubsection{Swap-Space Usage}\label{subsubsec:Swap_Space_Usage}
+The amount of swap space needed on a system can vary depending on the amount of \nameref{def:Physical_Memory}, the amount of \nameref{def:Virtual_Memory} it is backing, and the way in which the virtual memory is used.
+
+It is safer to overestimate than to underestimate the amount of swap space required, because if a system runs out of swap space it may be forced to abort \nameref{def:Process}es or may crash entirely.
+Overestimation wastes disk space that could otherwise be used for \nameref{def:File}s, but it does no other harm.
+
 
 %%% Local Variables:
 %%% mode: latex
