@@ -40,6 +40,8 @@ The first disk seek request that comes into the queue is handled first, without 
 \emph{Shortest-Seek-Time-First Scheduling} services all the requests close to the current head position before moving the head far away to service other requests.
 This method selects the request with the least seek time from the current head position.
 
+This is a variant of \nameref{par:SJF_Scheduling}, and like that algorithm, this one can also experience \nameref{def:Starvation}.
+
 
 %%% Local Variables:
 %%% mode: latex
