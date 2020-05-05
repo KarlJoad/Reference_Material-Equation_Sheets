@@ -55,6 +55,12 @@ There are several types of striping that is possible:
 \item etc.
 \end{itemize}
 
+The main goals of using striping in the parallel manner are:
+\begin{enumerate}[noitemsep]
+\item Increase the throughput of multiple small accesses (page accesses) by load balancing.
+\item Reduce the response time of large accesses.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
