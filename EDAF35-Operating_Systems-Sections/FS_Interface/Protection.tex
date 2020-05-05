@@ -55,6 +55,16 @@ Thus, the entries in the ACL are usually \nameref{def:File_Owner}, \nameref{def:
   The \emph{universe} attribute are all other possible users in the system that are not already the \nameref{def:File_Owner} or part of the \nameref{def:File_Group}.
 \end{definition}
 
+The most common recent approach is to combine access-control lists with the more general Owner/Group/Universe access-control scheme
+
+For this scheme to work properly, permissions and access lists must be controlled tightly.
+This control can be accomplished in several ways.
+For example, in the \textsc{unix} system, \nameref{def:File_Group}s can be created and modified only by the manager of the facility (or by any superuser).
+
+Another difficulty is assigning precedence when permission and ACLs conflict.
+Solaris gives ACLs precedence (as they are more fine-grained and are not assigned by default).
+This follows the general rule that specificity should have priority.
+
 
 %%% Local Variables:
 %%% mode: latex
