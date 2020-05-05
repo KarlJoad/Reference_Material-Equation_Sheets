@@ -97,6 +97,11 @@ Some \nameref{def:Operating_System}s allows \nameref{def:Process}es to lock an o
   \item An \textbf{Exclusive Lock} behaves like a writer lock; only one process at a time can acquire such a lock, and it must be released by the owner.
   \end{enumerate}
 
+  \begin{remark}[OS Support for File Locks]
+    Not all operating systems provide both types of locks (Shared and Exclusive).
+    Some systems only provide exclusive file locking.
+  \end{remark}
+
   In addition, there are 2 types of file-locking \textbf{MECHANISM}s:
   \begin{enumerate}[noitemsep]
   \item \textbf{Mandatory File-Locking} uses the \nameref{def:Operating_System} to ensure lock integrity.
