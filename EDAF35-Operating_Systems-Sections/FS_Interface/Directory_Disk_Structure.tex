@@ -178,6 +178,12 @@ A common way is to create a new directory entry called a link (soft-link or syml
 A link is effectively a pointer to another file or subdirectory.
 A link may be implemented as an absolute or a relative \nameref{def:Path_Name}.
 
+When a reference to a file is made, we search the directory.
+If the directory entry is marked as a link, then the name of the real file is included in the link information.
+We resolve the link by using that path name to locate the real file.
+Links are effectively indirect pointers.
+The operating system ignores these links when traversing directory trees to preserve the acyclic structure of the system.
+
 
 %%% Local Variables:
 %%% mode: latex
