@@ -16,6 +16,9 @@ All disk I/O is performed in units of one block (physical record), and all block
 It is unlikely that the physical record size will exactly match the length of the desired logical record.
 Because \textsc{unix} defines all files to be streams of bytes, each byte can be individually addressed by its offset from the beginning (or end) of the file.
 In this case, the logical record size is 1 byte.
+Logical records may vary in length.
+Packing a number of logical records into physical blocks is a common solution to this problem.
+
 
 %%% Local Variables:
 %%% mode: latex
