@@ -77,6 +77,9 @@ These semantics specify how multiple users of a system are to access a shared fi
 Consistency semantics are directly related to \nameref{def:Process} \nameref{subsec:Synchronization} algorithms.
 However, those complex algorithms tend not to be implemented in the case of file I/O because of the great latencies and slow transfer rates of disks and networks.
 
+For the following discussion, we assume that a series of file accesses attempted by a user to the same file is always enclosed between the \kernelinline{open()} and \kernelinline{close()} operations.
+The accesses between the \kernelinline{open()} and \kernelinline{close()} operations makes up a file session.
+
 
 %%% Local Variables:
 %%% mode: latex
