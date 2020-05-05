@@ -53,6 +53,9 @@ Like SCAN, C-SCAN moves the head from one end of the disk to the other, servicin
 When the head reaches the other end, it immediately returns to the beginning of the disk without servicing any requests on the return trip.
 Essentially, this treats the cylinders as a circular list that wraps around from the final cylinder to the first.
 
+\subsubsection{LOOK Scheduling}\label{subsubsec:LOOK_Disk_Scheduling}
+\emph{LOOK Scheduling} is a refinement of \nameref{subsubsec:SCAN_Disk_Scheduling} and \nameref{par:Circular_SCAN_Disk_Scheduling}.
+Instead of going to one end of the disk and then going back, the head will only go as far as the last request before going back.
 
 %%% Local Variables:
 %%% mode: latex
