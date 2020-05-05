@@ -24,6 +24,20 @@ and verifying that the directory has the expected format.
 \item The operating system notes in its directory structure that a file system is mounted at the specified mount point.
 \end{enumerate}
 
+Operating systems impose semantics on file system mounting to clarify functionality.
+\begin{itemize}[noitemsep]
+\item What if a \nameref{def:Directory} already contains \nameref{def:File}s?
+  \begin{itemize}[noitemsep]
+  \item A system may disallow a mount over a directory that contains files.
+  \item A system may make the mounted file system available at that directory and obscure the directory’s existing files until the file system is unmounted.
+    When unmounting occurs, the use of the file system and allowing access to the original files in that directory.
+  \end{itemize}
+\item Can a \nameref{def:File_System} be mounted multiple times at more than one \nameref{def:Mount_Point}?
+  \begin{itemize}[noitemsep]
+  \item A system may allow the same file system to be mounted repeatedly, at different mount points.
+  \item A system may only allow one mount per file system.
+  \end{itemize}
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
