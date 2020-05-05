@@ -65,6 +65,21 @@ Another difficulty is assigning precedence when permission and ACLs conflict.
 Solaris gives ACLs precedence (as they are more fine-grained and are not assigned by default).
 This follows the general rule that specificity should have priority.
 
+\subsubsection{Other Protection Approaches}\label{subsubsec:Other_File_Protection_Approaches}
+Another approach to the protection problem is to associate a password with each file.
+\begin{itemize}[noitemsep]
+\item Advantages
+  \begin{itemize}[noitemsep]
+  \item If the passwords are chosen randomly and changed often, this scheme may be effective in limiting access to a file.
+  \end{itemize}
+\item Disadvantages
+  \begin{itemize}[noitemsep]
+  \item First, the number of passwords that a user needs to remember may become large, making the scheme impractical.
+  \item If only one password is used for all the files, then once it is discovered, all files are accessible; protection is on an all-or-none basis.
+  \item Some systems allow a user to associate a password with a directory, rather than with an individual file, to address this problem.
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
