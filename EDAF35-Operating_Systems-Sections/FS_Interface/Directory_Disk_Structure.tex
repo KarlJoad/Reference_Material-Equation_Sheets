@@ -184,6 +184,21 @@ We resolve the link by using that path name to locate the real file.
 Links are effectively indirect pointers.
 The operating system ignores these links when traversing directory trees to preserve the acyclic structure of the system.
 
+An acyclic-graph directory structure is more flexible than a simple tree structure, but it is also more complex.
+Several problems must be considered carefully.
+\begin{itemize}[noitemsep]
+\item A file may now have multiple absolute path names.
+  We do not want to traverse shared structures more than once.
+
+\item When can the space allocated to a shared file be deallocated and reused?
+  One possibility is to just remove the file, potentially leaving dangling pointers to the now-nonexistent file.
+
+  Another is adding a reference count to the original file.
+  Adding a new link or directory entry increments the reference count.
+  Deleting a link or entry decrements the count.
+  When the count is 0, the file can be deleted; there are no remaining references to it.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
