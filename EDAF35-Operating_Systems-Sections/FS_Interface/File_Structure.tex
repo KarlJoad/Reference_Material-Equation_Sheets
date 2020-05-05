@@ -14,6 +14,8 @@ Locating an offset within a file can be complicated for the operating system.
 Disk systems typically have a well-defined block size determined by the size of a sector.
 All disk I/O is performed in units of one block (physical record), and all blocks are the same size.
 It is unlikely that the physical record size will exactly match the length of the desired logical record.
+Because \textsc{unix} defines all files to be streams of bytes, each byte can be individually addressed by its offset from the beginning (or end) of the file.
+In this case, the logical record size is 1 byte.
 
 %%% Local Variables:
 %%% mode: latex
