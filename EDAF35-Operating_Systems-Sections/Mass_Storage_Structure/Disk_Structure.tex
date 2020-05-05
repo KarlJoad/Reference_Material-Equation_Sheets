@@ -8,6 +8,10 @@ Drives are addressed as large one-dimensional arrays of \nameref{def:Logical_Blo
   The size of a logical block is usually 512 bytes, although some disks can use a different \nameref{def:Low_Level_Formatting} to have a different logical block size, such as 1,024 bytes.
 \end{definition}
 
+This one-dimensional array of logical blocks is mapped onto the sectors of the disk sequentially.
+Sector 0 is the \emph{first sector} of the \emph{first track} on the \emph{outermost cylinder}.
+The mapping proceeds in order through that track, then through the rest of the tracks in that cylinder, and then through the rest of the cylinders from outermost to innermost.
+
 
 %%% Local Variables:
 %%% mode: latex
