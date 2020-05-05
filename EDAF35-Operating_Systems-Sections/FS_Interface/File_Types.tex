@@ -13,6 +13,12 @@ Because these extensions are not supported by the operating system, they should 
 Sometimes, the program that created the file is also stored with the \nameref{def:File_Attribute}s or the file's metadata.
 In that case, the program needed to open the file does not need to be guessed.
 
+The \textsc{unix} system uses a crude \emph{magic number} stored at the beginning of some \nameref{def:File}s to indicate roughly the type of the file.
+Not all files have magic numbers, so system features cannot be based solely on this information.
+\textsc{unix} also does not record the name of the creating program.
+\textsc{unix} does allow file-name-extension \textbf{hints}, but they are not enforced or depended upon by the operating system.
+They are meant to aid users in determining what type of contents the file contains.
+Extensions can be used or ignored by a given application, but that is up to the application’s programmer.
 
 %%% Local Variables:
 %%% mode: latex
