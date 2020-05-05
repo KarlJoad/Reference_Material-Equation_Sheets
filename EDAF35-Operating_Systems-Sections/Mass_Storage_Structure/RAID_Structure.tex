@@ -206,6 +206,21 @@ RAID 10 (read RAID one-zero), mirrors disks into pairs, then the resulting mirro
 
 Seen in \Cref{subfig:RAID_10}.
 
+\subsubsection{Choosing a RAID Level}\label{subsubsec:Choosing_RAID_Level}
+Some considerations are:
+\begin{itemize}[noitemsep]
+\item Rebuild performance.
+  If a disk fails, the time needed to rebuild its data can be significant.
+  This may be an important factor if a continuous supply of data is required.
+  Furthermore, rebuild performance influences the mean time to failure.
+  RAID system designers and administrators of storage have to make several other decisions as well.
+
+\item The number of disks in a given RAID set.
+
+\item The number of bits that are protected by each parity bit.
+  If more disks are in an array, data-transfer rates are higher, but the system is more expensive.
+  If more bits are protected by a parity bit, the space overhead due to parity bits is lower, but the chance that a second disk will fail before the first failed disk is repaired is greater, and that will result in data loss.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
