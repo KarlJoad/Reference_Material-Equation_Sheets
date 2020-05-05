@@ -28,6 +28,12 @@ Allowing the failure of one disk to prevent loss of data.
 If we store extra information that is not normally needed but that can be used in the event of failure of a disk to rebuild the lost information, we can greatly improve reliability.
 Thus, even if a disk fails, data are not lost.
 
+The simplest and most expensive approach to introducing redundancy is to duplicate the contents of every disk onto another.
+This technique is called mirroring.
+With mirroring, a logical volume consists of two physical disks, and every write is carried out on both disks simultaneously.
+The result is called a mirrored \nameref{def:Volume}.
+Data will be lost only if the second disk fails before the first failed disk is replaced.
+
 
 %%% Local Variables:
 %%% mode: latex
