@@ -85,6 +85,22 @@ Some systems simply do not allow local user files to be accessed by other users,
 If access is to be permitted, one user must have the ability to name a file in another user’s directory.
 To name a particular file uniquely in a two-level directory, we must give both the user name and the file name.
 
+\begin{definition}[Path Name]\label{def:Path_Name}
+  A \emph{path name} is the list of directories and their names that must traversed before finally arriving at a file.
+  Every file \textbf{MUST} have a path name to be identified.
+  Note that there is no requirement for every file to have a \textbf{UNIQUE} path name.
+
+  For example, \url{/etc/fstab} on \textsc{unix}-based machines.
+
+  There are Absolute Path Names and Relative Path Names.
+  An absolute path name begins at the root and follows a path down to the specified file, giving the directory names on the path.
+  A relative path name defines a path from the current directory.
+
+  \begin{remark}[Path Names with Volumes]
+    Additional syntax is needed to specify the \nameref{def:Volume} of a file.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
