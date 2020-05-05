@@ -1,6 +1,41 @@
 \subsection{File Operations}\label{subsec:File_Operations}
 A file is an abstract data type, as such, to define a file properly, we need to consider the operations that can be performed on files.
 
+The typically defined ones are:
+\begin{itemize}[noitemsep]
+\item \textbf{Creating a file}.
+  Two steps are necessary to create a file.
+  First, space in the file system must be found for the file.
+  Second, an entry for the new file must be made in the directory.
+
+\item \textbf{Writing a file}.
+  To write a file, we make a system call specifying both the name of the file and the information to be written to the file.
+  Given the name of the file, the system searches the directory to find the file’s location.
+  The system must keep a write pointer to the location in the file where the next write is to take place.
+  The write pointer must be updated whenever a write occurs.
+
+\item \textbf{Reading a file}.
+  To read from a file, we use a system call that specifies the name of the file and where (in memory) the next block of the file should be put.
+  Again, the directory is searched for the associated entry, and the system needs to keep a read pointer to the location in the file where the next read is to take place.
+  Once the read has taken place, the read pointer is updated.
+
+  Usually, a shared pointer per-process for reading and writing is used, marking the current operation location.
+  Both the read and write operations use this same pointer, saving space and reducing system complexity.
+
+\item \textbf{Repositioning within a file}.
+  The directory is searched for the appropriate entry, and the appropriate pointer is repositioned to a given value.
+  Repositioning within a file need not involve any actual I/O, if the area of the file is already in memory.
+  This is also known as a file seek.
+
+\item \textbf{Deleting a file}.
+  To delete a file, we search the directory for the named file.
+  Having found the associated directory entry, we release all file space, so that it can be reused by other files, and erase the directory entry.
+
+\item \textbf{Truncating a file}.
+  The user may want to erase the contents of a file but keep its attributes.
+  Rather than forcing the user to delete the file and then recreate it, this function allows all attributes to remain unchanged (except for file length) but lets the file be reset to length zero and its file space released.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
