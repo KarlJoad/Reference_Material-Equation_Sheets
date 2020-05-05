@@ -38,6 +38,16 @@ If the swap space is simply a large file within the file system, normal file-sys
 This approach is easy to implement, but inefficient.
 \nameref{def:External_Fragmentation} can greatly increase \nameref{def:Swapping} times by forcing multiple seeks during reading or writing of memory contents.
 
+\paragraph{Swap Partition}\label{par:Swap_Partition}
+Swap space can be created in a \textbf{separate raw} partition.
+No file system or directory structure is placed in this space.
+Instead, a separate swap-space storage manager is used to allocate and deallocate the blocks from the raw partition.
+
+This manager allows the use of algorithms optimized for speed rather than for storage efficiency, because swap space is accessed much more frequently than file systems.
+\nameref{def:Internal_Fragmentation} may increase, but this trade-off is acceptable because the life of data in the swap space generally is much shorter than that of files in the file system.
+In addition, swap space is reinitialized at boot time, so any fragmentation is short-lived.
+
+However, adding more swap space requires either repartitioning the disk (which involves moving the other file-system partitions or destroying them and restoring them from backup) or adding another swap space elsewhere.
 
 %%% Local Variables:
 %%% mode: latex
