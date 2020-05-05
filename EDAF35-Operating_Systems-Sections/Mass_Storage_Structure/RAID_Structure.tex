@@ -146,6 +146,23 @@ If one of the disks fails, the remaining bits of the byte and the associated err
 
 Seen in \Cref{subfig:RAID_2}.
 
+\paragraph{RAID 3}\label{par:RAID_3}
+RAID level 3, improves on \nameref{par:RAID_2} by taking into account that disk controllers can detect whether a sector has been read correctly, so a single parity bit can be used for error correction as well as for detection.
+RAID level 3 has two advantages over level 1.
+\begin{enumerate}[noitemsep]
+\item The storage overhead is reduced because only one parity disk is needed for several regular
+disks.
+\item Reads/writes of a byte are spread out over multiple disks with $N$-way striping of data, the transfer rate for reading or writing a single block is $N$ times as fast as with \nameref{par:RAID_1}.
+\end{enumerate}
+
+On the negative side:
+\begin{enumerate}[noitemsep]
+\item RAID level 3 supports fewer I/Os per second, since every disk has to participate in every I/O request.
+\item The expense of computing and writing the parity is not minor.
+\end{enumerate}
+
+Seen in \Cref{subfig:RAID_3}.
+
 
 %%% Local Variables:
 %%% mode: latex
