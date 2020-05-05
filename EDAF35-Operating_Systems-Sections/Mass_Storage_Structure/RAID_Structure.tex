@@ -163,6 +163,18 @@ On the negative side:
 
 Seen in \Cref{subfig:RAID_3}.
 
+\paragraph{RAID 4}\label{par:RAID_4}
+RAID level 4 uses block-level striping, as in \nameref{par:RAID_0} and keeps a parity block on a separate dedicated disk for corresponding blocks from $N$ other disks.
+If one of the disks fails, the parity block can be used with the corresponding blocks from the other disks to restore the blocks of the failed disk.
+
+A block read accesses only one disk, allowing other requests to be processed by the other disks.
+Thus, the data-transfer rate for each access is slower, but a higher overall I/O rate.
+The transfer rates for large reads are high, since multiple read accesses can proceed in parallel.
+Large writes also have high transfer rates, since the data and parity can be written in parallel.
+Small independent writes cannot be performed in parallel.
+
+Seen in \Cref{subfig:RAID_4}.
+
 
 %%% Local Variables:
 %%% mode: latex
