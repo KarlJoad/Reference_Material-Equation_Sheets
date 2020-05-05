@@ -70,6 +70,10 @@ For example, what would happen if the remote file system became no longer reacha
 This scenario is rather common, so it would not be appropriate for the client system to act as it would if a local file system were lost.
 Instead, the system can either terminate all operations to the lost server or delay operations until the server is again reachable.
 
+\subsubsection{Consistency Semantics}\label{subsubsec:Consistency_Semantics}
+Consistency semantics represent an important criterion for evaluating any file system that supports file sharing.
+These semantics specify how multiple users of a system are to access a shared file simultaneously.
+
 
 %%% Local Variables:
 %%% mode: latex
