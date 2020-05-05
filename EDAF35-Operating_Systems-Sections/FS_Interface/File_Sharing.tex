@@ -80,6 +80,15 @@ However, those complex algorithms tend not to be implemented in the case of file
 For the following discussion, we assume that a series of file accesses attempted by a user to the same file is always enclosed between the \kernelinline{open()} and \kernelinline{close()} operations.
 The accesses between the \kernelinline{open()} and \kernelinline{close()} operations makes up a file session.
 
+\paragraph{\textsc{unix} Semantics}\label{par:UNIX_Consistency_Semantics}
+\textsc{unix} uses the following consistency semantics:
+\begin{itemize}[noitemsep]
+\item Writes to an open file by a user are visible immediately to other users who have this file open.
+\item \textsc{unix} had a mode of sharing that allows users to share the pointer of current location into the file.
+  Thus, the advancing of the pointer by one user affects all sharing users.
+  Here, a file has a single image that interleaves all accesses, regardless of their origin.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
