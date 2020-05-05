@@ -134,6 +134,13 @@ The current directory should contain most of the files that are of current inter
 When reference is made to a file, the current directory is searched.
 If a file is needed that is not in the current directory, then the user usually must either specify a path name or change the current directory to be the directory holding that file.
 
+The initial current directory of a user’s login shell is designated when the user job starts or the user logs in.
+The operating system searches the accounting file to find an entry for this user.
+In the accounting file is a pointer to (or the name of) the user’s initial directory.
+This pointer is copied to a local variable for this user that specifies the user’s initial current directory.
+From there, other processes can be spawned.
+The current directory of any subprocess is usually the current directory of the parent when it was spawned.
+
 
 %%% Local Variables:
 %%% mode: latex
