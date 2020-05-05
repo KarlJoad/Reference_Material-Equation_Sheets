@@ -10,6 +10,17 @@ To implement such storage, we need:
 \item When we are recovering from a failure, we can force all copies to a consistent and correct value, even if another failure occurs during the recovery.
 \end{itemize}
 
+When writing to disk in these circumstances, there are 3 possible outcomes:
+\begin{enumerate}[noitemsep]
+\item \textbf{Successful Completion}.
+  The data was written correctly on disk.
+\item \textbf{Partial Failure}.
+  A failure occurred during transfer, so only some of the sectors were written with the new data.
+  The sector being written during the failure may have been corrupted.
+\item \textbf{Total Failure}.
+  The failure occurred before the disk write started, so the previous data values on the disk remain intact.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
