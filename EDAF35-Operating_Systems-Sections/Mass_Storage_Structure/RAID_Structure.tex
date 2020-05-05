@@ -3,6 +3,27 @@ Having a large number of disks in a system presents opportunities for improving 
 It also offers the potential for improving the reliability of data storage, because redundant information can be stored on multiple disks.
 Allowing the failure of one disk to prevent loss of data.
 
+\begin{definition}[RAID]\label{def:RAID}
+  \emph{RAID} (\emph{Redundant Array of Independent Disks}) is a collection of disk-organization techniques.
+  These allow multiple physically separate disks to be viewed by the \nameref{def:Operating_System} as a single, larger, logical disk.
+
+  There are 2 main ways to implement support for RAID:\@
+  \begin{enumerate}[noitemsep]
+  \item \textbf{Software RAID}.
+    This relies on the \nameref{def:Kernel} and \nameref{def:Operating_System} handling the disks for RAID functionality.
+    This means that the RAID-ed disks cannot be used for booting, because the RAID modules are only loaded once the kernel is loaded.
+
+  \item \textbf{Hardware RAID}.
+    There are 2 alternatives here.
+    \begin{enumerate}[noitemsep]
+    \item RAID support is built into the hardware.
+    \item RAID support is not built into the hardware, and a separate RAID card must be used.
+    \end{enumerate}
+  \end{enumerate}
+
+  There are a variety of levels to RAID, each of which has different properties.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
