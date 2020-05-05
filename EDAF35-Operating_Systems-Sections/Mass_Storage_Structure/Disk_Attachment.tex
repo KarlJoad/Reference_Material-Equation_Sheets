@@ -27,6 +27,16 @@ However, it tends to be less efficient and have lower performance than some dire
 \subsubsection{Storage-Area Network}\label{subsubsec:Storage_Area_Network}
 \nameref{def:Storage_Area_Network}s require an interconnect between the storage arrays, one that allows for very high-speed communication.
 
+\begin{definition}[Storage-Area Network]\label{def:Storage_Area_Network}
+  \emph{Storage-Area Network}s, (\emph{SAN}s) behave somewhat opposite a \nameref{def:Network_Attached_Storage} system.
+  A SAN is a private network (using storage protocols rather than networking protocols) connecting servers and storage units.
+  The power of a SAN lies in its flexibility.
+  Multiple hosts and multiple storage arrays can attach to the same SAN, and storage can be dynamically allocated to hosts.
+  Here, the data is stored in physically separate machines and all brought together with a network backbone.
+
+  A SAN switch allows or prohibits access between the hosts and the storage.
+  Instead, any service can connect to the SAN and access the data within.
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
