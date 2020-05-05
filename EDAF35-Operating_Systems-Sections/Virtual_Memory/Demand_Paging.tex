@@ -30,6 +30,14 @@ Instead of swapping in a whole process, the pager brings only those pages into m
   Thus, the task of moving a process's pages into and out of the backing store is handled by the \emph{pager}, rather than the swapper.
 \end{definition}
 
+In addition, the \nameref{def:Pager} will only page logical pages that contain \nameref{def:Anonymous_Memory}.
+
+\begin{definition}[Anonymous Memory]\label{def:Anonymous_Memory}
+  \emph{Anonymous Memory} is memory that does not have a \nameref{def:File} backing it.
+  Typically, these include function-local variables, heap-allocated objects, etc.
+  However, the executable code for a \nameref{def:Program} is \textbf{NOT} anonymous, because there is an exact copy on disk.
+\end{definition}
+
 With a \nameref{def:Pager}, we need some form of hardware support to distinguish between the pages that are in memory and the pages that are on the disk.
 The \nameref{par:Page_Valid_Invalid_Bit} scheme can be used for this purpose.
 \begin{itemize}[noitemsep]
