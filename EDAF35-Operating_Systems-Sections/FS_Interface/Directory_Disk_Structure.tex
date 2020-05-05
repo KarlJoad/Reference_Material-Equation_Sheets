@@ -199,6 +199,10 @@ Several problems must be considered carefully.
   When the count is 0, the file can be deleted; there are no remaining references to it.
 \end{itemize}
 
+\subsubsection{General Graph Directory}\label{subsubsec:General_Graph_Directory}
+Simply adding new files and subdirectories to an existing tree-structured directory preserves the tree-structured nature.
+However, if we allow links to directories rather than just to files, the tree (and even acyclic graph) structure is destroyed, resulting in a simple graph structure
+
 
 %%% Local Variables:
 %%% mode: latex
