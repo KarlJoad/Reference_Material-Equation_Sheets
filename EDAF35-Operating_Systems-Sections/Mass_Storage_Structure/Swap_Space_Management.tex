@@ -26,6 +26,13 @@ Overestimation wastes disk space that could otherwise be used for \nameref{def:F
 Some \nameref{def:Operating_System}s allow the use of multiple swap spaces, including both swap files and swap partitions.
 These are usually placed on separate disks so that the load placed on the I/O system by \nameref{def:Paging} and \nameref{def:Swapping} can be spread over the system’s I/O bandwidth.
 
+\subsubsection{Swap-Space Location}\label{subsubsec:Swap_Space_Location}
+A swap space can reside in one of two places:
+\begin{enumerate}[noitemsep]
+\item It can be carved out of the normal file system, a \nameref{par:Swap_File}.
+\item It can be in a separate disk partition, a \nameref{par:Swap_Partition}.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
