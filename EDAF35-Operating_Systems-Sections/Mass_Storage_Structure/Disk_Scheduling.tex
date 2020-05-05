@@ -19,6 +19,13 @@ When performing disk I/O, we need to know a few things:
 If the desired disk drive \textbf{and} controller are available, the request can be serviced immediately.
 If the drive or controller is busy, any new requests for service will be placed in the queue of pending requests for that drive.
 
+Like before, the choice of how to handle pending requests in the queue is handled by the choice of disk-scheduling algorithm.
+Choosing the best one is difficult because performance depends heavily on the number and types of requests.
+\nameref{subsubsec:SSTF_Disk_Scheduling} is common and has a natural appeal because it increases performance over \nameref{subsubsec:FCFS_Disk_Scheduling}.
+\nameref{subsubsec:SCAN_Disk_Scheduling} and \nameref{par:Circular_SCAN_Disk_Scheduling} perform better for systems that place a heavy load on the disk, because they are less likely to cause a starvation problem.
+For any particular list of requests, we \textbf{can} define an optimal order of retrieval, but the computation needed to find an optimal schedule may not justify the savings over SSTF or SCAN.\@
+Because of the complexity involved with this topic, and the potential cost by choosing the wrong algorithm, the disk-scheduling algorithm should be a separate module of the OS, so it can be replaced if need be.
+
 
 %%% Local Variables:
 %%% mode: latex
