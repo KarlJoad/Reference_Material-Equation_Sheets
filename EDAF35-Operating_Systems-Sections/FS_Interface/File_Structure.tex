@@ -23,6 +23,9 @@ The logical record size, physical block size, and packing technique determine ho
 The packing can be done either by the user’s application program or by the operating system.
 In either case, the file may be considered a sequence of blocks.
 
+Because disk space is always allocated in blocks, some portion of the last block of each file is generally wasted.
+The waste incurred to keep everything in units of blocks (instead of bytes) is \nameref{def:Internal_Fragmentation}.
+All \nameref{def:File_System}s suffer from internal fragmentation; the larger the block size, the greater the internal fragmentation.
 
 %%% Local Variables:
 %%% mode: latex
