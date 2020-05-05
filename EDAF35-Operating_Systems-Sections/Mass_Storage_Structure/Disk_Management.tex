@@ -76,6 +76,11 @@ Such a redirection by the controller could invalidate any optimization by the op
 For this reason, most disks are formatted with a few spare sectors in each cylinder and spare cylinders.
 When a bad block is remapped, the controller uses a spare sector from the same cylinder, if possible.
 
+A special kind of sector sparing is \textbf{Sector Slipping}.
+In this case, if a block goes bad, to move the data off the failing sector, each sector is ``slipped''.
+This means that one of last blocks goes onto one of the spares, then each previous block is slipped into the current one.
+Thus, if block $i$ goes bad, and $s$ is the first spare block, then blocks $i+1$ through $s-1$ are slipped one sector towards $s$.
+Once all those blocks are slipped down, the data on block $i$ is slipped to $i+1$ and the known bad block $i$ is marked as unusable.
 
 %%% Local Variables:
 %%% mode: latex
