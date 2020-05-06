@@ -35,6 +35,10 @@ The major difficulties with a hash table are its generally fixed size and the
 dependence of the hash function on that size.
 If we reach the hash table's maximum size and want to add a new file, we would have to rehash the whole table to a larger size.
 
+One solution to this is to use a chained-overflow hash table.
+Each hash entry can be a linked list instead of an individual value, resolving collisions by adding the new entry to the linked list.
+Lookups may be slowed, because searching for a name might require stepping through a linked list of colliding table entries.
+Still, this method is likely to be much faster than a linear search through the entire directory.
 
 %%% Local Variables:
 %%% mode: latex
