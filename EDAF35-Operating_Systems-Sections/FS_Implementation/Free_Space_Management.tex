@@ -41,6 +41,12 @@ Usually, the operating system simply needs a few free blocks so to allocate to a
 The \nameref{par:File_Allocation_Table} method incorporates free-block accounting into the allocation table (which is already cached too).
 No separate method is needed.
 
+\subsubsection{Grouping}\label{subsubsec:Free_Space_Grouping}
+A modification of the \nameref{subsubsec:Free_Space_Linked_List} approach mirrors the use of an \nameref{subsubsec:Indexed_File_Allocation} method.
+In this case, the first free block stores the addresses of the next $n-1$ free blocks.
+The last block contains the address of another free-block index.
+This way, a large number of free blocks can be found quickly.
+
 
 %%% Local Variables:
 %%% mode: latex
