@@ -17,6 +17,9 @@ However, each layer introduces more overhead.
 \subsubsection{Logical File System Module}\label{subsubsec:Logical_FS_Module}
 The logical file system manages \nameref{def:File_Metadata} information.
 
+\begin{definition}[Metadata]\label{def:File_Metadata}
+  \emph{Metadata} includes all of the file-system structure except the actual data (or contents of the files).
+\end{definition}
 
 The logical file system manages the directory structure to provide the file-organization module with the information it needs, when given a symbolic file name.
 It does this by maintaining file structure via \nameref{def:File_Control_Block}s.
