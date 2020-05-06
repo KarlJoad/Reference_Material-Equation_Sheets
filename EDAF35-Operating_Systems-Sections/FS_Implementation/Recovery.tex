@@ -9,6 +9,19 @@ Compounding this is the caching that operating systems do to optimize I/O perfor
 Some changes may go directly to disk, while others may be cached.
 If the cached changes do not reach disk before a crash occurs, more corruption is possible.
 
+\subsubsection{Consistency Checking}\label{subsubsec:Consistency_Checking}
+A file system must first detect the problems and then correct them.
+For detection, a scan of all the \nameref{def:File_Metadata} on each file system can confirm or deny the consistency of the system.
+This scan can take minutes or hours and should occur \textbf{every time} the system boots.
+
+Alternatively, a \nameref{def:File_System} can record its state within the file-system metadata.
+Before any \nameref{def:File_Metadata} change, a status bit is set to indicate that the metadata is in-flux.
+If all changes to the metadata are successful, the file system can clear that bit.
+However, if the status bit remains set, a consistency checker is run.
+
+The consistency checker (\nameref{def:System_Program}s such as \texttt{fsck} in \textsc{unix}) compare the data in the directory structure with the data blocks on disk and \textbf{tries} to fix any inconsistencies it finds.
+The \nameref{subsec:File_Allocation_Methods} and \nameref{subsec:Free_Space_Management} algorithms dictate what types of problems the checker can find and how successful it will be in fixing them.
+
 
 %%% Local Variables:
 %%% mode: latex
