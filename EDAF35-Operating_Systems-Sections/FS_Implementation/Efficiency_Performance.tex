@@ -14,6 +14,11 @@ Some systems also keep a ``last access date'', so that when the file was last re
 The result of keeping this information is, whenever the file is read, a field in the directory must be written.
 This means the directory block must be read into memory, a changed, and written back out to disk, because operations on disks occur only in block (or \nameref{def:Disk_Cluster}) chunks.
 
+Consider how efficiency is affected by the size of the pointers used to access data.
+Most \nameref{def:Operating_System}s use either 32-bit or 64-bit pointers throughout their code.
+Using 32-bit pointers for \nameref{def:File}s limits the size of a file to $2^{32}$, or \SI{4}{\gibi{} \byte{}}.
+Using 64-bit pointers allows very large file sizes, but require double the space to store.
+
 
 %%% Local Variables:
 %%% mode: latex
