@@ -1,4 +1,39 @@
 \subsection{File System Implementation}\label{subsec:FS_Implementation}
+Several on-disk and in-memory structures are used to implement a \nameref{def:File_System}.
+These structures vary depending on the operating system and the file system, but some general principles apply.
+
+\begin{itemize}[noitemsep]
+\item Boot Control Block (per volume, if needed).
+  Contains information needed by the system to boot an operating system from that volume.
+  If the disk does not contain an operating system, this block can be empty.
+  It is typically the first block of a volume.
+  \begin{itemize}[noitemsep]
+  \item In UFS, it is the boot block.
+  \item In NTFS, it is the boot sector.
+  \end{itemize}
+
+\item Volume Control Block (per volume).
+  contains volume (or partition) details, such as:
+  \begin{itemize}[noitemsep]
+  \item Number of blocks in the partition,
+  \item Size of the blocks,
+  \item Free-block count
+  \item Free-block pointers
+  \item Free-\nameref{def:File_Control_Block} count
+  \item FCB pointers
+  \end{itemize}
+  \begin{itemize}[noitemsep]
+  \item In UFS, this is called a superblock.
+  \item In NTFS, it is stored in the master file table.
+  \end{itemize}
+
+\item Directory Structure (per file system) is used to organize the files.
+
+\item Per-file \nameref{def:File_Control_Block}.
+  Contains many details about the file.
+  It has a unique identifier number to allow association with a directory entry.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
