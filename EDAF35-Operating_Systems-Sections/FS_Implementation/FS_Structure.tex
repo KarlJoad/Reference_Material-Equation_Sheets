@@ -8,6 +8,12 @@ The levels are listed below, from highest to lowest.
 \item \nameref{subsubsec:IO_Control_FS_Module}
 \end{itemize}
 
+Each level in the design uses the features of lower levels to create new features for use by higher levels.
+This layered structure is useful for minimizing the duplication of code.
+The I/O control and sometimes the basic file-system code can be used by multiple file systems.
+Each file system can then have its own logical file-system and file-organization modules.
+However, each layer introduces more overhead.
+
 
 %%% Local Variables:
 %%% mode: latex
