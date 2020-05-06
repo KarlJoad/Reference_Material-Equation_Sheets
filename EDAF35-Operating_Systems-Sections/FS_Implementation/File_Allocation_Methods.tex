@@ -157,6 +157,12 @@ In the absence of a \nameref{par:File_Allocation_Table}, linked allocation canno
 The pointers to the blocks are scattered with the blocks themselves all over the disk and must be retrieved in order.
 Linked allocation solves the \nameref{def:External_Fragmentation} and size-declaration problems of \nameref{subsubsec:Contiguous_File_Allocation}.
 
+Each file has its own index block, which is an array of disk-block addresses.
+The $i$th entry in the index block points to the $i$th block of the file.
+The directory contains the address of the index block.
+To find and read the $i$th block, we use the pointer in the $i$th index-block entry.
+This is similar to the \nameref{def:Paging} scheme discussed in \Cref{subsec:Paging}.
+
 
 %%% Local Variables:
 %%% mode: latex
