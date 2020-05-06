@@ -26,6 +26,9 @@ When a seek is performed, the track is read into the disk's cache starting at th
 The disk controller then transfers any sector requests to the operating system.
 Once blocks make it from the disk controller into main memory, the operating system may cache the blocks there.
 
+\paragraph{Unified Virtual Memory}\label{par:Unified_Virtual_Memory}
+Some systems cache file data using a \nameref{def:Page_Cache} to create \emph{Unified Virtual Memory}.
+
 
 %%% Local Variables:
 %%% mode: latex
