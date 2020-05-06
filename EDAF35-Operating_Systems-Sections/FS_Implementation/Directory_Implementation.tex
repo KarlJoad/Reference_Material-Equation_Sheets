@@ -4,6 +4,18 @@ The selection of directory-allocation and directory-management algorithms signif
 \subsubsection{Linear List}\label{subsubsec:Linear_List_Directory}
 The simplest method of implementing a directory is to use a linear list of file names with pointers to the data blocks.
 This method is simple to program but time-consuming to execute.
+\begin{itemize}[noitemsep]
+\item To create a new file, we must first \textbf{search} the directory to be sure that no existing file has the same name.
+  Then, we add a new entry at the end of the directory.
+\item To delete a file, we \textbf{search} the directory for the named file and then release the space allocated to it.
+\item To reuse the directory entry, we can do one of several things:
+  \begin{enumerate}[noitemsep]
+  \item Mark the entry as unused (by assigning it a special name, or by including a used/unused bit).
+  \item Attach it to a list of free directory entries.
+  \item Copy the last entry in the directory into the freed location and to decrease the length of the directory.
+  \end{enumerate}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
