@@ -8,6 +8,12 @@ Thus, even an empty disk has a percentage of its space lost to \texttt{inode}s.
 However, preallocating the \texttt{inode}s improves the \nameref{def:File_System}'s performance.
 This comes from the allocation and free-space algorithms, which try to keep a file’s data blocks near that file’s \texttt{inode} block to reduce seek time.
 
+The \nameref{def:File_Metadata} normally kept in a \nameref{def:File}'s \nameref{def:Directory} (or \nameref{par:Inode}) entry also requires consideration.
+Normally, a ``last write date'' is recorded.
+Some systems also keep a ``last access date'', so that when the file was last read can be determined.
+The result of keeping this information is, whenever the file is read, a field in the directory must be written.
+This means the directory block must be read into memory, a changed, and written back out to disk, because operations on disks occur only in block (or \nameref{def:Disk_Cluster}) chunks.
+
 
 %%% Local Variables:
 %%% mode: latex
