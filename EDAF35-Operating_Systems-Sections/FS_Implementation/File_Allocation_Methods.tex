@@ -169,6 +169,10 @@ When the $i$th block is first written, a block is obtained from the free-space m
 \paragraph{Advantages of Indexed Allocation}\label{par:Indexed_File_Allocation_Advantages}
 Indexed allocation supports direct access, without suffering from \nameref{def:External_Fragmentation}, because any free block on the disk can satisfy a request for more space.
 
+\paragraph{Disadvantages of Indexed Allocation}\label{par:Indexed_File_Allocation_Disadvantages}
+Indexed-allocation schemes suffer from some of the same performance problems as does linked allocation.
+Specifically, the index blocks can be cached in memory, but the data blocks may be spread all over a volume.
+
 
 %%% Local Variables:
 %%% mode: latex
