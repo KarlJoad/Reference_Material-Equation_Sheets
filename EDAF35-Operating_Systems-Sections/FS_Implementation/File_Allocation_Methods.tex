@@ -44,6 +44,11 @@ When the file is created, the total amount of space it will need must be found a
 \item If the total amount of space needed for a file is known in advance, preallocation may be inefficient.
 \end{itemize}
 
+To minimize these drawbacks, some operating systems use a modified contiguous-allocation scheme.
+Here, a contiguous chunk of space is allocated initially.
+Then, if that amount proves not to be large enough, another chunk of contiguous space, known as an \nameref{def:Extent}, is added.
+The location of a file’s blocks is then recorded as a location and a block count, plus a link to the first block of the next extent.
+
 
 %%% Local Variables:
 %%% mode: latex
