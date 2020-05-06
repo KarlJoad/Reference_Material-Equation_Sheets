@@ -9,13 +9,13 @@ Some systems might have multiple criteria at a time, such as:
 
 To do this, there are 4 main ways to do this:
 \begin{enumerate}[noitemsep]
-\item \nameref{par:Deterministic_Modeling}
-\item \nameref{par:Queuing_Models}
-\item \nameref{par:Simulations}
-\item \nameref{par:Implementation}
+\item \nameref{subsubsec:Algorithm_Deterministic_Modeling}
+\item \nameref{subsubsec:Algorithm_Queuing_Models}
+\item \nameref{subsubsec:Algorithm_Simulations}
+\item \nameref{subsubsec:Algorithm_Implementation}
 \end{enumerate}
 
-\paragraph{Deterministic Modeling}\label{par:Deterministic_Modeling}
+\subsubsection{Deterministic Modeling}\label{subsubsec:Algorithm_Deterministic_Modeling}
 Deterministic modeling is simple and fast.
 It gives us exact numbers, allowing us to compare the algorithms.
 However, it requires \textbf{exact numbers for input}, and its answers apply \emph{only} to those cases.
@@ -26,7 +26,7 @@ The main uses of deterministic modeling are in describing \nameref{def:Schedulin
 In cases where we are running the same program repeatedly, we can measure the program’s processing requirements exactly, allowing us to select a \nameref{def:Scheduling_Algorithm}.
 Furthermore, over a set of examples, deterministic modeling may indicate trends that can then be analyzed and proved separately.
 
-\paragraph{Queuing Models}\label{par:Queuing_Models}
+\subsubsection{Queuing Models}\label{subsubsec:Algorithm_Queuing_Models}
 On many systems, the processes that are run vary from day to day, so deterministic modeling is impossible.
 Instead, we can find the the distribution of \nameref{def:CPU_Burst}s and \nameref{def:I/O_Burst}s.
 
@@ -56,7 +56,7 @@ The mathematics of complicated algorithms and distributions are difficult to wor
 Generally, it is necessary to make a number of independent assumptions, which may not be accurate.
 This means queuing models are only approximations of real systems, and the accuracy of the computed results are questionable.
 
-\paragraph{Simulations}\label{par:Simulations}
+\subsubsection{Simulations}\label{subsubsec:Algorithm_Simulations}
 To get a more accurate evaluation of scheduling algorithms, simulations can be used.
 Running simulations involves programming a model of the computer system.
 Software is used to represent major components of the system.
@@ -67,7 +67,7 @@ Typically, input is generated from a random-number generated that is programmed 
 However, simulations can be expensive, often requiring hours of processor time.
 A more detailed simulation provides more accurate results, but takes more computer time.
 
-\paragraph{Implementation}\label{par:Implementation}
+\subsubsection{Implementation}\label{subsubsec:Algorithm_Implementation}
 Even a simulation is of limited accuracy.
 The only completely accurate way to evaluate a \nameref{def:Scheduling_Algorithm} is to code it, put it in the \nameref{def:Operating_System}, and see how it works.
 This approach puts the actual algorithm in the real system for evaluation under real operating conditions.
