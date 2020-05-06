@@ -6,6 +6,14 @@ To create a file, we search the free-space list for the required amount of space
 This space is then removed from the free-space list.
 When a file is deleted, its disk space is added back to the free-space list.
 
+\subsubsection{Bit Vector}\label{subsubsec:Free_Space_Bit_Vector}
+Frequently, the free-space list is implemented as a bit map or bit vector.
+Each block is represented by 1 bit.
+\begin{itemize}[noitemsep]
+\item If block \textbf{free}, the bit is 1.
+\item If block \textbf{allocated}, the bit is 0.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
