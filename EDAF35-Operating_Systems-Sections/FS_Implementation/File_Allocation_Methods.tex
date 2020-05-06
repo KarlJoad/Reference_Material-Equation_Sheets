@@ -77,6 +77,11 @@ A file can continue to grow as long as free blocks are available.
 Consequently, it is never necessary to compact disk space.
 
 \paragraph{Disadvantages of Linked Allocation}\label{par:Linked_File_Allocation_Disadvantages}
+The major problem is that it can be used effectively only for \nameref{subsubsec:Sequential_Access} files.
+To find the $i$th block of a file, we must start at the beginning of that file and follow the pointers until we get to the ith block.
+Each access to a pointer requires a disk read, and some require a disk seek.
+Consequently, it is inefficient to support a \nameref{subsubsec:Direct_Access} capability for linked-allocation files.
+
 
 %%% Local Variables:
 %%% mode: latex
