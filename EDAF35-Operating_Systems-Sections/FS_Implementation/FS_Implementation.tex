@@ -57,6 +57,45 @@ The logical file system knows the format of the directory structures.
 \item Writes it back to the disk.
 \end{enumerate}
 
+\subsubsection{File Opening}\label{subsubsec:File_Opening}
+Now that a file has been created, it can be used for I/O.
+\begin{enumerate}[noitemsep]
+\item First, it must be opened. The \kernelinline{open()} call passes a file name to the logical file system.
+\item The \kernelinline{open()} system call first searches the system-wide open-file table to see if the file is already in use by another process.
+  \begin{itemize}[noitemsep]
+  \item If it is, a per-process open-file table entry is created pointing to the existing system-wide open-file table.
+    \begin{itemize}[noitemsep]
+    \item This algorithm can save substantial overhead.
+    \end{itemize}
+  \item If the file is not already open, the directory structure is searched for the given file name.
+    \begin{itemize}[noitemsep]
+    \item Parts of the directory structure are usually cached in memory to speed directory operations.
+    \end{itemize}
+  \end{itemize}
+
+\item Once the file is found, the FCB is copied into a system-wide open-file table in memory.
+  \begin{itemize}[noitemsep]
+  \item This table tracks the \nameref{def:File_Control_Block} and the number of processes that have the file open.
+  \end{itemize}
+
+\item An entry is made in the per-process open-file table, with a pointer to the entry in the system-wide open-file table and some other fields.
+  \begin{itemize}[noitemsep]
+  \item These other fields may include a pointer to the current location in the file (for the next \kernelinline{read()} or \kernelinline{write()} operation) and the access mode in which the file is open.
+  \item The \kernelinline{open()} call returns a pointer to the appropriate entry in the per-process file-system table.
+  \item All file operations are then performed via this pointer.
+  \item The file name may not be part of the open-file table, as the system has no use for it once the appropriate FCB is located on disk.
+  \item It could be cached, though, to save time on subsequent opens of the same file.
+  \item The name given to the entry varies.
+  \item \textsc{unix} systems refer to it as a file descriptor; Windows refers to it as a file handle.
+  \end{itemize}
+
+\item When a process closes the file, the per-process table entry is removed, and
+  the system-wide entry’s open count is decremented.
+\item When all users that have
+  opened the file close it, any updated \nameref{def:File_Metadata} is copied back to the disk-based
+  directory structure, and the system-wide open-file table entry is removed.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
