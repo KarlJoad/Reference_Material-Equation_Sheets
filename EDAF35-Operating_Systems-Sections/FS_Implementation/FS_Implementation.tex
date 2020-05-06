@@ -120,6 +120,17 @@ It does so by asking the device driver to read the device directory and verifyin
 If the format is invalid, the partition must have its consistency checked and possibly corrected, either with or without user intervention.
 Finally, the operating system notes in its in-memory mount table that a file system is mounted, along with the type of the file system.
 
+\subsubsection{Virtual File Systems}\label{subsubsec:Virtual_File_Systems}
+Most operating systems, use object-oriented techniques to simplify, organize, and modularize the implementation of \nameref{def:File_System}s.
+The use of these methods allows very dissimilar file-system types to be implemented within the same structure, including network file systems.
+Data structures and procedures are used to isolate the basic \nameref{def:System_Call} functionality from the implementation details.
+Thus, the file-system implementation consists of three major layers:
+\begin{enumerate}[noitemsep]
+\item The \nameref{def:File_System} interface, based on the \kernelinline{open()}, \kernelinline{read()}, \kernelinline{write()}, and \kernelinline{close()} calls and on file descriptors.
+\item The \nameref{def:Virtual_File_System} layer.
+\item The layer implementing the actual file-system type or the remote-file-system protocol.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
