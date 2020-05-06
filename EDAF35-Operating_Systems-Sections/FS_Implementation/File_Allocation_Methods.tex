@@ -312,6 +312,16 @@ For these systems, the type of access to be made must be declared when the file 
 
 In this case, the operating system must have appropriate data structures and algorithms to support both allocation methods.
 
+\paragraph{Indexed Allocation Performance}\label{par:Indexed_File_Allocation_Performance}
+If the index block is already in memory,
+then the access can be made directly.
+However, keeping the index block in
+memory requires considerable space.
+
+If this memory space is not available, then we may have to read first the index block and then the desired data block.
+For a multi-level index, multiple index-block reads might be necessary.
+For an extremely large file, accessing a block near the end of the file would require reading in all the index blocks before the needed data block finally could be read.
+Thus, the performance of indexed allocation depends on the index structure, on the size of the file, and on the position of the block desired.
 
 %%% Local Variables:
 %%% mode: latex
