@@ -28,6 +28,11 @@ Keeping it in main memory is possible for smaller disks but not larger ones.
 A \SI{1.3}{\gibi{} \byte{}} disk with 512 byte blocks would need a bit map of over \SI{332}{\kibi{} \byte{}} to track its free blocks.
 \nameref{def:Disk_Cluster}ing the blocks in groups of four (making a cluster 2048 bytes) reduces the bit vector size to around \SI{83}{\kibi{} \byte{}}.
 
+\subsubsection{Linked List}\label{subsubsec:Free_Space_Linked_List}
+Another approach to \nameref{subsec:Free_Space_Management} is to link together all the free disk blocks, keeping a pointer to the first free block in a special location on the disk and caching it in memory.
+This first block contains a pointer to the next free disk block, and so on.
+The user is unable to see these free blocks.
+
 
 %%% Local Variables:
 %%% mode: latex
