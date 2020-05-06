@@ -103,6 +103,13 @@ Since files are linked together by pointers scattered all over the disk, conside
 A bug in the operating-system software or a disk hardware failure might result in picking up the wrong pointer.
 This error could in turn result in linking into the free-space list or into another file.
 
+Some partial solutions are:
+\begin{itemize}[noitemsep]
+\item Use doubly linked lists
+\item Store the file name and relative block number in each block.
+\end{itemize}
+However, these solutions require even more overhead for each file.
+
 
 %%% Local Variables:
 %%% mode: latex
