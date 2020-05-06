@@ -101,7 +101,7 @@ There are 3 methods to increase the \nameref{def:TLB_Reach}:
   \end{itemize}
 \end{enumerate}
 
-\subsubsection{Inverted Page Tables}\label{subsubsec:Inverted_Page_Tables}
+\subsubsection{Inverted Page Tables}\label{subsubsec:Virtual_Memory-Inverted_Page_Tables}
 The purpose of this form of page management is to reduce the amount of \nameref{def:Physical_Memory} needed to track virtual-to-physical address translations, by keeping information about which \nameref{def:Virtual_Memory} page is stored in each physical frame.
 We accomplish this savings by creating a table that has one entry per page of physical memory, indexed by the pair $\langle \mathtt{PID}, page-number \rangle$.
 However, the inverted page table no longer contains complete information about the \nameref{def:Logical_Address_Space} of a \nameref{def:Process}, and that information is required if a referenced page is not currently in memory.
