@@ -151,6 +151,15 @@ For each of which, the VFS defines a set of operations that may be implemented.
 Every object of one of these types contains a pointer to a function table.
 The function table lists the addresses of the actual functions that implement the defined operations for that particular object:
 
+\begin{definition}[vnode]\label{def:Vnode}
+  A \emph{vnode} contains a numerical designator for a network-wide unique file.
+
+  \begin{remark}[vnode vs.\ inode]\label{rmk:Vnode_vs_Inode}
+    \textsc{unix} inodes are unique within only a \textbf{single} \nameref{def:File_System}.
+    This network-wide uniqueness is required for support of network file systems.
+    The kernel maintains one \nameref{def:Vnode} structure for each active node (\nameref{def:File} or \nameref{def:Directory}).
+  \end{remark}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
