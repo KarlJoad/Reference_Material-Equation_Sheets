@@ -173,6 +173,13 @@ Indexed allocation supports direct access, without suffering from \nameref{def:E
 Indexed-allocation schemes suffer from some of the same performance problems as does linked allocation.
 Specifically, the index blocks can be cached in memory, but the data blocks may be spread all over a volume.
 
+Indexed allocation does still suffer from wasted space.
+The pointer overhead of the index block is generally greater than the pointer overhead of linked allocation.
+This is especially true when a file requires fewer blocks than an index block can address.
+This raises the question of how large the index block should be.
+Every file must have an index block, so we want the index block to be as small as possible.
+If the index block is \textbf{too} small, it will not be able to hold enough pointers for a large file.
+
 
 %%% Local Variables:
 %%% mode: latex
