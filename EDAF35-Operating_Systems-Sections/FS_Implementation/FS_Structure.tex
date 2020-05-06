@@ -34,6 +34,15 @@ By knowing the type of file allocation used and the location of the file, the fi
 
 This module also includes the free-space manager, which tracks unallocated blocks and provides these blocks to the file-organization module when requested.
 
+\subsubsection{Basic File System Module}\label{subsubsec:Basic_FS_Module}
+The basic file system only issues generic commands to the appropriate device driver to read and write physical blocks on the disk.
+Each physical block is identified by its numeric disk address (Drive 1, Cylinder 73, Track 2, Sector 10).
+This layer also manages the memory buffers and caches that hold various file-system, directory, and data blocks.
+A block in the buffer is allocated before the transfer of a disk block can occur.
+When the buffer is full, the buffer manager must find more buffer memory or free up buffer space to allow a requested I/O to complete.
+
+Caches are used to hold frequently used file-system metadata to improve performance, so managing their contents is critical for optimum system performance.
+
 
 %%% Local Variables:
 %%% mode: latex
