@@ -22,6 +22,10 @@ However, if the status bit remains set, a consistency checker is run.
 The consistency checker (\nameref{def:System_Program}s such as \texttt{fsck} in \textsc{unix}) compare the data in the directory structure with the data blocks on disk and \textbf{tries} to fix any inconsistencies it finds.
 The \nameref{subsec:File_Allocation_Methods} and \nameref{subsec:Free_Space_Management} algorithms dictate what types of problems the checker can find and how successful it will be in fixing them.
 
+\subsubsection{Journaling}\label{subsubsec:Journaling}
+This is technically called a \emph{Log-Based Transaction-Oriented File System}.
+However, most people today call them journaling file systems, so I went with that.
+
 
 %%% Local Variables:
 %%% mode: latex
