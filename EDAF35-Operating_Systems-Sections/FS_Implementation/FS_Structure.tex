@@ -14,6 +14,13 @@ The I/O control and sometimes the basic file-system code can be used by multiple
 Each file system can then have its own logical file-system and file-organization modules.
 However, each layer introduces more overhead.
 
+\subsubsection{Logical File System Module}\label{subsubsec:Logical_FS_Module}
+The logical file system manages \nameref{def:File_Metadata} information.
+
+
+The logical file system manages the directory structure to provide the file-organization module with the information it needs, when given a symbolic file name.
+It does this by maintaining file structure via \nameref{def:File_Control_Block}s.
+
 
 %%% Local Variables:
 %%% mode: latex
