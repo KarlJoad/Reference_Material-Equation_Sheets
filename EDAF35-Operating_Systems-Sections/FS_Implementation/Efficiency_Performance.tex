@@ -19,6 +19,13 @@ Most \nameref{def:Operating_System}s use either 32-bit or 64-bit pointers throug
 Using 32-bit pointers for \nameref{def:File}s limits the size of a file to $2^{32}$, or \SI{4}{\gibi{} \byte{}}.
 Using 64-bit pointers allows very large file sizes, but require double the space to store.
 
+\subsubsection{Performance}\label{subsubsec:Performance}
+Even after the basic file-system algorithms have been selected, we can still improve performance in several ways.
+Most disk controllers include an on-board cache large enough to store entire tracks at a time.
+When a seek is performed, the track is read into the disk's cache starting at the sector under the disk head (reducing latency time).
+The disk controller then transfers any sector requests to the operating system.
+Once blocks make it from the disk controller into main memory, the operating system may cache the blocks there.
+
 
 %%% Local Variables:
 %%% mode: latex
