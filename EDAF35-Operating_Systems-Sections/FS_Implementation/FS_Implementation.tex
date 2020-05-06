@@ -111,6 +111,15 @@ Execution of the image starts at a predefined location.
 This \nameref{def:Bootloader} in turn knows enough about the \nameref{def:File_System} structure to be able to find and load the \nameref{def:Kernel} and start its execution.
 The bootloader can contain more than just the instructions required to boot a specific \nameref{def:Operating_System}.
 
+\paragraph{The Root Partition}\label{par:Root_Partition}
+The root partition, which contains the \nameref{def:Operating_System} \nameref{def:Kernel} and other system files, is mounted at boot.
+Other volumes can be automatically mounted at boot or manually mounted later.
+
+As part of a successful mount operation, the operating system verifies that the device contains a valid file system.
+It does so by asking the device driver to read the device directory and verifying that the directory has the expected format.
+If the format is invalid, the partition must have its consistency checked and possibly corrected, either with or without user intervention.
+Finally, the operating system notes in its in-memory mount table that a file system is mounted, along with the type of the file system.
+
 
 %%% Local Variables:
 %%% mode: latex
