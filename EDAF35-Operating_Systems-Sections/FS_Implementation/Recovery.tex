@@ -47,6 +47,15 @@ The costly synchronous on-demand random metadata writes are turned into less cos
 Those changes, in turn, are replayed asynchronously via random writes, in the background, to the appropriate structures.
 The overall result is a significant gain in performance of \nameref{def:File_Metadata}-oriented operations, such as file creation and deletion.
 
+\subsubsection{Other Solutions}\label{subsubsec:Other_FS_Recovery_Solutions}
+\textbf{Copy-on-Write} for disks is starting to become a big thing now.
+This is quite similar to memory's \nameref{def:Memory_Copy_on_Write} functionality, just a different storage medium.
+When the updates are made on the disk in a physically separate location, asynchronously.
+Then the pointer to the original block is moved to the new one, synchronously.
+This way, if the data is committed to the disk correctly, the pointer is moved automatically, nearly without fail.
+
+This allows for snapshots to be made.
+
 
 %%% Local Variables:
 %%% mode: latex
