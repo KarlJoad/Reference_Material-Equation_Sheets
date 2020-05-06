@@ -37,6 +37,13 @@ As files are allocated and deleted, the free disk space is broken into little pi
 External fragmentation exists whenever free space is broken into chunks.
 Fixing this problem is only solvable by garbage collection, in this case means moving all data to another disk then copying it back.
 
+Another problem is determining how much space is needed for a file.
+When the file is created, the total amount of space it will need must be found and allocated.
+\begin{itemize}[noitemsep]
+\item If we allocate too little space to a file, we may find that the file cannot be extended.
+\item If the total amount of space needed for a file is known in advance, preallocation may be inefficient.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
