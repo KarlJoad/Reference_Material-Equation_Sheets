@@ -235,6 +235,56 @@ A visualization of the \textsc{unix} \texttt{inode} is shown in \Cref{fig:Inode}
   \label{fig:Inode}
 \end{figure}
 
+As an illustration of the addressing power of the \texttt{inode}, \textbf{IN TERMS OF THE MAXIMUM SIZE OF A FILE IN}, the below equations are useful.
+First, we need to know the number of pointers possible in a single data block, seen in \Cref{eq:Inode_Num_Pointers}.
+\begin{equation}\label{eq:Inode_Num_Pointers}
+  \mathrm{NPB} = \left\lfloor \frac{\text{Block Size}}{\text{Pointer Size}} \right\rfloor
+\end{equation}
+
+Then, we have to find the size of each possible redirection.
+\begin{subequations}\label{eq:Indirect_Pointer_Sizes}
+  \begin{equation}\label{subeq:Direct_Pointer_Size}
+    \mathrm{DBS} = \mathrm{NDB} \times \text{Block Size}
+  \end{equation}
+  \begin{equation}\label{subeq:Single_Indirect_Pointer_Size}
+    \mathrm{SIPS} = \mathrm{NSI} \times \mathrm{NPB} \times \text{Block Size}
+  \end{equation}
+  \begin{equation}\label{subeq:Double_Indirect_Pointer_Size}
+    \begin{aligned}
+      \mathrm{DIPS} &= \mathrm{NDI} \times (\mathrm{NPB} \times \mathrm{NPB}) \times \text{Block Size} \\
+      &= \mathrm{NDI} \times {\mathrm{NPB}}^{2} \times \text{Block Size} \\
+    \end{aligned}
+  \end{equation}
+  \begin{equation}\label{subeq:Triple_Indirect_Pointer_Size}
+    \begin{aligned}
+      \mathrm{TIPS} &= \mathrm{NTI} \times (\mathrm{NPB} \times \mathrm{NPB} \times \mathrm{NPB}) \times \text{Block Size} \\
+      &= \mathrm{NTI} \times {\mathrm{NPB}}^{3} \times \text{Block Size} \\
+    \end{aligned}
+  \end{equation}
+\end{subequations}
+
+\begin{description}[noitemsep]
+\item $\mathrm{SIPS}$: Single Indirection Pointing Size.
+  The maximum size of the blocks that the set of single indirection pointers can point to.
+\item $\mathrm{DIPS}$: Double Indirection Pointing Size.
+  The maximum size of the blocks that the set of double indirection pointers can point to.
+\item $\mathrm{TIPS}$: Triple Indirection Pointing Size.
+  The maximum size of the blocks that the set of triple indirection pointers can point to.
+\item $\mathrm{NDB}$: The number of Direct Pointers in the \texttt{inode}.
+  In the \textsc{unix} definition of \texttt{inode}, this is 12.
+\item $\mathrm{NSB}$: The number of Single Indirection Pointers in the \texttt{inode}.
+  In the \textsc{unix} definition of \texttt{inode}, this is 1 (\textbf{IF NEEDED}, otherwise $\mathrm{NSI} = 0$).
+\item $\mathrm{NDI}$: The number of Double Indirection Pointers in the \texttt{inode}.
+  In the \textsc{unix} definition of \texttt{inode}, this is 1 (\textbf{IF NEEDED}, otherwise $\mathrm{NDI} = 0$).
+\item $\mathrm{NTI}$: The number of Triple Indirection Pointers in the \texttt{inode}.
+  In the \textsc{unix} definition of \texttt{inode}, this is 1 (\textbf{IF NEEDED}, otherwise $\mathrm{NTI} = 0$).
+\end{description}
+
+Lastly, we sum all the equations \Crefrange{subeq:Direct_Pointer_Size}{subeq:Triple_Indirect_Pointer_Size} to get the maximum file size that a \textsc{unix} \texttt{inode} can handle, \Cref{eq:Inode_Max_File_Size}.
+\begin{equation}\label{eq:Inode_Max_File_Size}
+  \mathrm{FS}_{\max} = \mathrm{SIPS} + \mathrm{DIPS} + \mathrm{TIPS}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
