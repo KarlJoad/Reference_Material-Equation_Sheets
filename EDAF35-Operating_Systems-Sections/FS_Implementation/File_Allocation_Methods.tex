@@ -20,10 +20,22 @@ Accessing a file that has been allocated contiguously is easy.
 \end{itemize}
 
 \paragraph{Disadvantages of Contiguous Allocation}\label{par:Contiguous_File_Allocation_Disadvantages}
+However, this allocation methods has some problems.
+One difficulty is finding space for a new file.
+The system chosen to manage free space determines how this task is accomplished.
+This is another case of the \nameref{def:Allocation_Problem}.
+
 \begin{definition}[Allocation Problem]\label{def:Allocation_Problem}
   The \emph{Allocation Problem} involves how to satisfy a request of size $n$ from a list of free holes.
   If the holes are not organized, i.e.\ there are enough blocks but they are not contiguous, then the request cannot be serviced.
 \end{definition}
+
+\nameref{subpar:First_Fit} and \nameref{subpar:Best_Fit} are the most common strategies used to select a free hole from the set of available holes, however, \nameref{subpar:Worst_Fit} is also possible.
+Simulations have shown that both first fit and best fit are more efficient than worst fit in terms of time and storage utilization.
+However, \textbf{all these algorithms} suffer from the problem of \nameref{def:External_Fragmentation}.
+As files are allocated and deleted, the free disk space is broken into little pieces.
+External fragmentation exists whenever free space is broken into chunks.
+Fixing this problem is only solvable by garbage collection, in this case means moving all data to another disk then copying it back.
 
 
 %%% Local Variables:
