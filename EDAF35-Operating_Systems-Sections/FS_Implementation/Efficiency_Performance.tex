@@ -49,6 +49,16 @@ However, not using the unified buffer cache means you are \nameref{def:Double_Ca
   This may happen at the same tiem, or it may happen at different times (if something is moved \textbf{between} caches).
 \end{definition}
 
+\paragraph{Synchronous/Asyncronous I/O}\label{par:Sync_Async_IO}
+Another issue that can affect the performance of I/O is whether writes to the file system occur synchronously or asynchronously.
+\begin{itemize}[noitemsep]
+\item Synchronous writes occur in the order in which the disk subsystem receives them, and the writes are not buffered.
+  Meaning, the calling routine \textbf{must} wait for the data to reach the disk drive before it can proceed.
+\item In an asynchronous write, the data is stored in the cache, and control returns to the caller.
+\end{itemize}
+
+Most writes are asynchronous.
+However, they can be made synchronous with a flag.
 
 %%% Local Variables:
 %%% mode: latex
