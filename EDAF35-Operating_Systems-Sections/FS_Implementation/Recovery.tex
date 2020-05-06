@@ -36,6 +36,11 @@ When a committed transaction is completed, it is removed from the log file.
 The log may be in a separate section of the file system or a separate disk.
 It is more efficient, but more complex, to have it under separate read and write heads, thereby decreasing head contention and seek times.
 
+If the system crashes, the log file will contain zero or more transactions.
+Any transactions it contains were not completed to the file system, so they must now be completed.
+The transactions can be executed from the pointer until the work is complete.
+The only problem occurs when a transaction was stopped before it was committed.
+
 
 %%% Local Variables:
 %%% mode: latex
