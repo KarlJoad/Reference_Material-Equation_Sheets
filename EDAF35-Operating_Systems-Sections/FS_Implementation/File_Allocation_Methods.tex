@@ -180,6 +180,28 @@ This raises the question of how large the index block should be.
 Every file must have an index block, so we want the index block to be as small as possible.
 If the index block is \textbf{too} small, it will not be able to hold enough pointers for a large file.
 
+To handle this, there are 3 common mechanisms:
+\begin{enumerate}[noitemsep]
+\item \textbf{Linked scheme}.
+  \begin{itemize}[noitemsep]
+  \item An index block is normally one disk block.
+    Thus, it can be read and written directly itself.
+  \item To allow for large files, link together several index blocks.
+  \item The last address-sized hole in the index block is \texttt{null} for small files, or is a pointer to another index block, for a large file.
+\end{itemize}
+
+\item \textbf{Multilevel index}.
+  A variant of linked representation uses a first-level index
+block to point to a set of second-level index blocks, which in turn point to
+the file blocks. To access a block, the operating system uses the first-level
+index to find a second-level index block and then uses that block to find the
+desired data block. This approach could be continued to a third or fourth
+level, depending on the desired maximum file size.
+
+\item \textbf{Combined scheme}.
+  This forms the basis of a \textsc{unix} \nameref{par:Inode}.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
