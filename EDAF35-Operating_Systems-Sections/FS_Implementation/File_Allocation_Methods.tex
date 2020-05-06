@@ -7,6 +7,10 @@ The main problem is how to allocate space to these files so that disk space is u
 Contiguous allocation requires that each file occupy a set of contiguous blocks on the disk.
 Disk addresses define a linear ordering on the disk.
 
+Contiguous allocation of a file is defined by the disk address of the first block and length (in blocks).
+If the file is $n$ blocks long and starts at location $b$, then it occupies blocks $b, b+1, \ldots, b+n-1$.
+The directory entry for each file indicates the address of the starting block and the length of the area allocated for this file.
+
 
 %%% Local Variables:
 %%% mode: latex
