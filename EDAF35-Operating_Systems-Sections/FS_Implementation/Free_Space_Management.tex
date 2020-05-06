@@ -47,6 +47,12 @@ In this case, the first free block stores the addresses of the next $n-1$ free b
 The last block contains the address of another free-block index.
 This way, a large number of free blocks can be found quickly.
 
+\subsubsection{Counting}\label{subsubsec:Free_Space_Counting}
+Another method of tracking the free blocks mirrors the \nameref{subsubsec:Contiguous_File_Allocation} method with \nameref{def:Extent}s.
+Generally, several contiguous blocks may be allocated or freed simultaneously, particularly when space is allocated with the contiguous-allocation algorithm or through \nameref{def:Disk_Cluster}ing.
+Rather than keeping a list of $n$ free disk addresses, we can keep the address of the first free block and the number of contiguous blocks that are free that follow the first block.
+Each entry in the free-space list then consists of a disk address and a count.
+These entries can be stored in a balanced tree (or other structure), for efficient lookup, insertion, and deletion.
 
 %%% Local Variables:
 %%% mode: latex
