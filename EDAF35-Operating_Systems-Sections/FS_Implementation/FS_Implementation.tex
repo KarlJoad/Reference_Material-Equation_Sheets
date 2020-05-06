@@ -45,6 +45,18 @@ The data is loaded at mount time, updated during file-system operations, and dis
 \item Buffers hold file-system blocks when they are being read from disk or written to disk.
 \end{itemize}
 
+\subsubsection{File Creation}\label{subsubsec:File_Creation}
+To create a new file, an application program calls the logical file system.
+The logical file system knows the format of the directory structures.
+\begin{enumerate}[noitemsep]
+\item To create a new file, it allocates a new \nameref{def:File_Control_Block}.
+  \begin{itemize}[noitemsep]
+  \item If the file-system implementation creates all FCBs at file-system creation time, an FCB is allocated from the set of free FCBs.
+  \end{itemize}
+\item The system then reads the appropriate directory into memory, updates it with the new file name and FCB
+\item Writes it back to the disk.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
