@@ -131,6 +131,14 @@ Thus, the file-system implementation consists of three major layers:
 \item The layer implementing the actual file-system type or the remote-file-system protocol.
 \end{enumerate}
 
+\begin{definition}[Virtual File System]\label{def:Virtual_File_System}
+  A \emph{Virtual File System} (\emph{VFS}) separates file-system-generic operations from their implementation.
+  The VFS activates file-system-specific operations to handle local requests according to their file-system types.
+
+  Multiple VFS interface may coexist on the same machine, allowing transparent access to different types of file systems mounted locally.
+  It provides a mechanism for uniquely representing a file throughout a network, the \nameref{def:Vnode}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
