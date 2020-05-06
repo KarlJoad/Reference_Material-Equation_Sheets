@@ -62,6 +62,12 @@ Each block contains a pointer to the next block.
 These pointers are not made available to the user.
 Thus, if each block is 512 bytes in size, and a disk address (the pointer) requires 4 bytes, then the user sees blocks of 508 bytes.
 
+To create a new \nameref{def:File}, we simply create a new entry in the \nameref{def:Directory}.
+With linked allocation, each directory entry has a pointer to the first disk block of the file, which is initialized to \texttt{null} (or the end-of-list pointer value), signifying an empty file.
+The size field is also set to 0.
+A subsequent \kernelinline{write()} to the file causes the free-space management system to find a free block, write to this new block, and link it to the end of the file.
+To read a file, we simply read blocks by following the pointers from block to block.
+
 
 %%% Local Variables:
 %%% mode: latex
