@@ -3,6 +3,26 @@ To improve I/O efficiency, I/O transfers between memory and disk are performed i
 Each block has one or more sectors.
 Usually, the sector size is 512 bytes, but can vary from 32 bytes to 4,096 bytes.
 
+\begin{definition}[File System]\label{def:File_System}
+  \emph{File system}s provide efficient and convenient access to the disk by allowing data to be stored, located, and retrieved easily.
+
+  The \emph{file system} (\emph{filesystem}, \emph{FS}) consists of two parts:
+  \begin{enumerate}[noitemsep]
+  \item A collection of \nameref{def:File}s, each storing related data.
+  \item A directory structure, which organizes and provides information about all the files in the system.
+  \end{enumerate}
+
+  A file system has two quite different design problems.
+  \begin{enumerate}[noitemsep]
+  \item How the file system should look to the user.
+    \begin{itemize}[noitemsep]
+    \item This task involves defining a file and its attributes, the operations allowed on a file, and the directory structure for organizing files.
+    \end{itemize}
+
+  \item Creating algorithms and data structures to map the logical file system onto the physical secondary-storage devices.
+  \end{enumerate}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
