@@ -28,6 +28,9 @@ A more sophisticated tree data structure, such as a balanced tree, might help he
 \subsubsection{Hash Table}\label{subsubsec:Hash_Table_Directory}
 A linear list still stores the directory entries, but a hash data structure is also used to find a file.
 The hash table takes a value computed from the file name and returns a pointer to the file name in the linear list.
+Therefore, it can greatly decrease the directory search time.
+Insertion and deletion are also fairly straightforward, although some provision must be made for collisions—situations in which two file names hash to the same location.
+
 
 %%% Local Variables:
 %%% mode: latex
