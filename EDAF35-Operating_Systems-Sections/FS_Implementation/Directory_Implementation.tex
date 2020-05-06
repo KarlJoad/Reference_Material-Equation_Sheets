@@ -31,6 +31,10 @@ The hash table takes a value computed from the file name and returns a pointer t
 Therefore, it can greatly decrease the directory search time.
 Insertion and deletion are also fairly straightforward, although some provision must be made for collisions—situations in which two file names hash to the same location.
 
+The major difficulties with a hash table are its generally fixed size and the
+dependence of the hash function on that size.
+If we reach the hash table's maximum size and want to add a new file, we would have to rehash the whole table to a larger size.
+
 
 %%% Local Variables:
 %%% mode: latex
