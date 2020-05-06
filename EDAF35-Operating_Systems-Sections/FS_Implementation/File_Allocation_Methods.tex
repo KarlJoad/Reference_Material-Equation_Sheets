@@ -151,6 +151,12 @@ The use of the File Allocation Table to find a set of blocks on-disk is shown in
   \label{fig:File_Allocation_Table}
 \end{figure}
 
+\subsubsection{Indexed File Allocation}\label{subsubsec:Indexed_File_Allocation}
+Indexed allocation solves the problem of pure \nameref{subsubsec:Linked_File_Allocation} by bringing all the pointers together into one location: the index block.
+In the absence of a \nameref{par:File_Allocation_Table}, linked allocation cannot support efficient direct access.
+The pointers to the blocks are scattered with the blocks themselves all over the disk and must be retrieved in order.
+Linked allocation solves the \nameref{def:External_Fragmentation} and size-declaration problems of \nameref{subsubsec:Contiguous_File_Allocation}.
+
 
 %%% Local Variables:
 %%% mode: latex
