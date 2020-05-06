@@ -38,6 +38,12 @@ Some systems cache file data using a \nameref{def:Page_Cache} to create \emph{Un
 This can be done with a \nameref{def:Unified_Buffer_Cache} or without one.
 However, not using the unified buffer cache means you are \nameref{def:Double_Caching}.
 
+\begin{definition}[Unified Buffer Cache]\label{def:Unified_Buffer_Cache}
+  A \emph{Unified Buffer Cache} relies on using a \nameref{def:Page_Cache} correctly, if it is used.
+  Here, all I/O, whether done between \nameref{subsubsec:Memory_Mapped_IO} or traditional I/O using \kernelinline{read()} and \kernelinline{write()} goes through the same buffer cache.
+  This prevents the issue of \nameref{def:Double_Caching} and allows for an even more general interface to I/O.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
