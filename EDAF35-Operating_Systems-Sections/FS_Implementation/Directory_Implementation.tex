@@ -25,6 +25,9 @@ However, the requirement that the list be kept sorted may complicate creating an
 An advantage of the sorted list is that a sorted directory listing can be produced without a separate sort step.
 A more sophisticated tree data structure, such as a balanced tree, might help here.
 
+\subsubsection{Hash Table}\label{subsubsec:Hash_Table_Directory}
+A linear list still stores the directory entries, but a hash data structure is also used to find a file.
+The hash table takes a value computed from the file name and returns a pointer to the file name in the linear list.
 
 %%% Local Variables:
 %%% mode: latex
