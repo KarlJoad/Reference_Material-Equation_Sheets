@@ -19,6 +19,12 @@ This method is simple to program but time-consuming to execute.
 The real disadvantage of a linear list of directory entries is that finding a file requires a linear search.
 Directory information is used frequently, and users will notice if access to it is slow.
 
+We can alleviate this problem by using a modification of a linear list.
+A sorted list allows a binary search and decreases the average search time.
+However, the requirement that the list be kept sorted may complicate creating and deleting files, since we may have to move substantial amounts of directory information to maintain a sorted directory.
+An advantage of the sorted list is that a sorted directory listing can be produced without a separate sort step.
+A more sophisticated tree data structure, such as a balanced tree, might help here.
+
 
 %%% Local Variables:
 %%% mode: latex
