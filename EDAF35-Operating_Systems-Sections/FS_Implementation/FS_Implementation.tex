@@ -139,6 +139,15 @@ Thus, the file-system implementation consists of three major layers:
   It provides a mechanism for uniquely representing a file throughout a network, the \nameref{def:Vnode}.
 \end{definition}
 
+The are four main object types defined by the Linux \nameref{def:Virtual_File_System}.
+For each of which, the VFS defines a set of operations that may be implemented.
+\begin{enumerate}[noitemsep]
+\item The \emph{inode object}, which represents an individual file
+\item The \emph{file object}, which represents an open file
+\item The \emph{superblock object}, which represents an entire file system
+\item The \emph{dentry object}, which represents an individual directory entry
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
