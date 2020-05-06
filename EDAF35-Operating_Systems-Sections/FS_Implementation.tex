@@ -1,4 +1,8 @@
 \section{File-System Implementation}\label{sec:FS_Implementation}
+To improve I/O efficiency, I/O transfers between memory and disk are performed in units of blocks.
+Each block has one or more sectors.
+Usually, the sector size is 512 bytes, but can vary from 32 bytes to 4,096 bytes.
+
 
 %%% Local Variables:
 %%% mode: latex
