@@ -28,6 +28,12 @@ It does this by maintaining file structure via \nameref{def:File_Control_Block}s
   A \emph{File-Control Block} (\emph{FCB}) (inode in \textsc{unix}) contains information about the \nameref{def:File}, including ownership, permissions, and location of the file contents.
 \end{definition}
 
+\subsubsection{File Organization Module}\label{subsubsec:File_Organization_FS_Module}
+The file-organization module knows about files and their logical blocks, as well as physical blocks.
+By knowing the type of file allocation used and the location of the file, the file-organization module can translate logical block addresses to physical block addresses for the basic file system to transfer.
+
+This module also includes the free-space manager, which tracks unallocated blocks and provides these blocks to the file-organization module when requested.
+
 
 %%% Local Variables:
 %%% mode: latex
