@@ -95,6 +95,9 @@ Then, the pointers use a much smaller percentage of the file’s disk space.
   Meaning, the average utilization of the disk to other cluster pointers is minimized.
 \end{definition}
 
+Using \nameref{def:Disk_Cluster}s has the cost of increasing \nameref{def:Internal_Fragmentation}, because more space is wasted when a cluster is partially full than when a block is partially full.
+Clusters can be used to improve the disk-access time for many other algorithms as well, so they are used in most file systems.
+
 
 %%% Local Variables:
 %%% mode: latex
