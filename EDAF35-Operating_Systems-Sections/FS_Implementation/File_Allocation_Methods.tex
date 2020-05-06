@@ -163,6 +163,9 @@ The directory contains the address of the index block.
 To find and read the $i$th block, we use the pointer in the $i$th index-block entry.
 This is similar to the \nameref{def:Paging} scheme discussed in \Cref{subsec:Paging}.
 
+When the file is created, all pointers in the index block are set to \texttt{null}.
+When the $i$th block is first written, a block is obtained from the free-space manager, and its address is put in the $i$th index-block entry.
+
 
 %%% Local Variables:
 %%% mode: latex
