@@ -44,6 +44,11 @@ However, not using the unified buffer cache means you are \nameref{def:Double_Ca
   This prevents the issue of \nameref{def:Double_Caching} and allows for an even more general interface to I/O.
 \end{definition}
 
+\begin{definition}[Double Caching]\label{def:Double_Caching}
+  \emph{Double Caching} is the process of caching the same piece of data twice.
+  This may happen at the same tiem, or it may happen at different times (if something is moved \textbf{between} caches).
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
