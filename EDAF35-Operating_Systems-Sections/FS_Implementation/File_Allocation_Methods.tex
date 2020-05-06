@@ -285,6 +285,14 @@ Lastly, we sum all the equations \Crefrange{subeq:Direct_Pointer_Size}{subeq:Tri
   \mathrm{FS}_{\max} = \mathrm{SIPS} + \mathrm{DIPS} + \mathrm{TIPS}
 \end{equation}
 
+\subsubsection{Performance}\label{subsubsec:File_Allocation_Performance}
+The allocation methods that we have discussed vary in their storage efficiency
+and data-block access times. Both are important criteria in selecting the proper
+method or methods for an operating system to implement.
+Before selecting an allocation method, we need to determine how the
+systems will be used. A system with mostly sequential access should not use
+the same method as a system with mostly random access.
+
 
 %%% Local Variables:
 %%% mode: latex
