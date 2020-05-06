@@ -20,6 +20,11 @@ Accessing a file that has been allocated contiguously is easy.
 \end{itemize}
 
 \paragraph{Disadvantages of Contiguous Allocation}\label{par:Contiguous_File_Allocation_Disadvantages}
+\begin{definition}[Allocation Problem]\label{def:Allocation_Problem}
+  The \emph{Allocation Problem} involves how to satisfy a request of size $n$ from a list of free holes.
+  If the holes are not organized, i.e.\ there are enough blocks but they are not contiguous, then the request cannot be serviced.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
