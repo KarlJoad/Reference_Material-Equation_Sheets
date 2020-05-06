@@ -293,6 +293,10 @@ Before selecting an allocation method, we need to determine how the
 systems will be used. A system with mostly sequential access should not use
 the same method as a system with mostly random access.
 
+\paragraph{Contiguous Allocation Performance}\label{par:Contiguous_File_Allocation_Performance}
+For any type of access, contiguous allocation requires only one access to get a disk block.
+We can keep the initial address of the file in memory and can immediately calculate the disk address of the $i$th block and read it.
+
 
 %%% Local Variables:
 %%% mode: latex
