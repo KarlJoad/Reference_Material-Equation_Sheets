@@ -21,6 +21,13 @@ The main advantages are:
 \item The relative \textbf{efficiency} in finding the first free block or $n$ consecutive free blocks on the disk.
 \end{itemize}
 
+\paragraph{Disadvantages of Bit Vector}\label{par:Free_Space_Bit_Vector_Disadvantages}
+Bit vectors are inefficient unless the \textbf{entire} vector is kept in main memory.
+Keeping it in main memory is possible for smaller disks but not larger ones.
+
+A \SI{1.3}{\gibi{} \byte{}} disk with 512 byte blocks would need a bit map of over \SI{332}{\kibi{} \byte{}} to track its free blocks.
+\nameref{def:Disk_Cluster}ing the blocks in groups of four (making a cluster 2048 bytes) reduces the bit vector size to around \SI{83}{\kibi{} \byte{}}.
+
 
 %%% Local Variables:
 %%% mode: latex
