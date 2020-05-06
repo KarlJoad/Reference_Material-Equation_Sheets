@@ -33,6 +33,9 @@ Meanwhile, these log entries are replayed, in the background, across the actual 
 As the changes are made, a pointer is updated to indicate which actions have completed and which are still incomplete.
 When a committed transaction is completed, it is removed from the log file.
 
+The log may be in a separate section of the file system or a separate disk.
+It is more efficient, but more complex, to have it under separate read and write heads, thereby decreasing head contention and seek times.
+
 
 %%% Local Variables:
 %%% mode: latex
