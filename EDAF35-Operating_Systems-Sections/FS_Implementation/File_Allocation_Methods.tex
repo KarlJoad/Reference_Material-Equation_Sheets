@@ -114,6 +114,35 @@ However, these solutions require even more overhead for each file.
 File-Allocation Table (FAT) is a simple and efficient method of disk-space allocation that was used by the \textsc{ms-dos} operating system.
 FAT is still commonly used today in external flash media, like flash drives.
 
+In this system, there are 3 major disk components:
+\begin{enumerate}[noitemsep]
+\item The Directory.
+  \begin{itemize}[noitemsep]
+  \item Contains one entry for every \nameref{def:File} in that directory, including subdirectories.
+  \item Stores the name and the starting block of the file.
+  \item May contain additional information about the file here too.
+  \end{itemize}
+\item The File Allocation Table itself.
+  \begin{itemize}[noitemsep]
+  \item There is one entry in this table for \textbf{EACH} data block on this disk's \nameref{def:File_System}.
+  \item The index of each entry corresponds to that same numbered block in the data blocks.
+  \item Each entry here \textbf{MAY} also contain a pointer to the next data block this file inhabits.
+    \begin{itemize}[noitemsep]
+    \item The maximum size of this pointer determines how big the biggest file may be.
+    \item In the original FAT, this pointer was 12 bytes.
+    \item In the more common FAT32, this pointer is 32 bytes, making the largest possible single file \SI{4}{\gibi{} \byte{}}.
+    \end{itemize}
+  \item The existence of this block in this chain means this file \textbf{USES} these data blocks.
+  \item This table is small enough to be cached in memory for quick file lookups.
+  \end{itemize}
+\item The Data blocks.
+  \begin{itemize}[noitemsep]
+  \item These are just the data blocks.
+  \item They are not cached in any way.
+  \item They are fetched when the \nameref{def:Operating_System} traverses the FAT.\@
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
