@@ -97,6 +97,11 @@ Now that a file has been created, it can be used for I/O.
 \end{enumerate}
 
 \subsubsection{Partitions and Mounting}\label{subsubsec:Partitions_Mounting}
+\paragraph{Raw Partitions}\label{par:Raw_Partitions}
+Each partition can be either ``raw,'' containing no file system, or ``cooked,'' containing a file system.
+A raw disk is used where no file system is appropriate.
+\textsc{unix} swap space can use a raw partition, since it uses its own format on disk and does not use a file system.
+
 
 %%% Local Variables:
 %%% mode: latex
