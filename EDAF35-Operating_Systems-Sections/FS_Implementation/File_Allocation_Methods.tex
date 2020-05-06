@@ -297,6 +297,21 @@ the same method as a system with mostly random access.
 For any type of access, contiguous allocation requires only one access to get a disk block.
 We can keep the initial address of the file in memory and can immediately calculate the disk address of the $i$th block and read it.
 
+\paragraph{Linked Allocation Performance}\label{par:Linked_File_Allocation_Performance}
+For linked allocation, we can also keep the address of the next block in memory and read it directly.
+This method is fine for sequential access.
+For direct access, an access to the $i$th block might require $i$ disk reads.
+
+Some systems support direct-access files by using contiguous allocation \textbf{AND} sequential-access files by using linked allocation.
+For these systems, the type of access to be made must be declared when the file is created.
+
+\begin{itemize}[noitemsep]
+\item A file created for sequential access will be linked and cannot be used for direct access.
+\item A file created for direct access will be contiguous and can support both direct access and sequential access, but its maximum length must be declared when it is created.
+\end{itemize}
+
+In this case, the operating system must have appropriate data structures and algorithms to support both allocation methods.
+
 
 %%% Local Variables:
 %%% mode: latex
