@@ -1,4 +1,9 @@
 \subsection{Recovery}\label{subsec:Recovery}
+Files and directories are kept both in main memory and on disk, and care must be taken to ensure that a system failure does not result in loss of data or in data inconsistency.
+A system crash can cause inconsistencies among on-disk file-system data structures, such as \nameref{def:Directory} structures, free-block pointers, and free \nameref{def:File_Control_Block} pointers.
+Many file systems apply changes to these structures in place.
+These changes can be interrupted by a crash, and inconsistencies among the structures can result.
+
 
 %%% Local Variables:
 %%% mode: latex
