@@ -43,6 +43,11 @@ When the buffer is full, the buffer manager must find more buffer memory or free
 
 Caches are used to hold frequently used file-system metadata to improve performance, so managing their contents is critical for optimum system performance.
 
+\subsubsection{I/O Control Module}\label{subsubsec:IO_Control_FS_Module}
+The I/O control level consists of device drivers and interrupt handlers to transfer information between the main memory and the disk system.
+Its input consists of high-level commands such as ``retrieve block 123.''
+Its output consists of low-level, hardware-specific instructions that are used by the hardware controller, which interfaces the I/O device to the rest of the system.
+The device driver writes specific bit patterns to special locations in the I/O controller’s memory (likely using \nameref{subsubsec:Memory_Mapped_IO}) to tell the controller which device location to act on and what actions to take.
 
 %%% Local Variables:
 %%% mode: latex
