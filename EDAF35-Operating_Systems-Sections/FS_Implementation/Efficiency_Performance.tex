@@ -29,6 +29,12 @@ Once blocks make it from the disk controller into main memory, the operating sys
 \paragraph{Unified Virtual Memory}\label{par:Unified_Virtual_Memory}
 Some systems cache file data using a \nameref{def:Page_Cache} to create \emph{Unified Virtual Memory}.
 
+\begin{definition}[Page Cache]\label{def:Page_Cache}
+  A \emph{page cache} uses virtual memory techniques to cache file data as pages in a \nameref{def:Paging} system.
+  They are cached as pages rather than as file-system blocks, meaning they have a \nameref{def:Virtual_Address_Space}.
+  Caching file data using virtual addresses is far more efficient than caching through physical disk blocks, as accesses interface with \nameref{def:Virtual_Memory} rather than the \nameref{def:File_System}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
