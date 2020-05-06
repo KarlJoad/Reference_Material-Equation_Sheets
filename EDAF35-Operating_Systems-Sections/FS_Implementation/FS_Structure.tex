@@ -24,6 +24,10 @@ The logical file system manages \nameref{def:File_Metadata} information.
 The logical file system manages the directory structure to provide the file-organization module with the information it needs, when given a symbolic file name.
 It does this by maintaining file structure via \nameref{def:File_Control_Block}s.
 
+\begin{definition}[File-Control Block]\label{def:File_Control_Block}
+  A \emph{File-Control Block} (\emph{FCB}) (inode in \textsc{unix}) contains information about the \nameref{def:File}, including ownership, permissions, and location of the file contents.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
