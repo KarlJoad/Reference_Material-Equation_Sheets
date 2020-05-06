@@ -37,6 +37,10 @@ This scheme is not efficient; to traverse the list, we must read each block, whi
 However, traversing the free list is not a frequent action.
 Usually, the operating system simply needs a few free blocks so to allocate to a file.
 
+\paragraph{File Allocation Table}\label{par:FAT_Free_Space}
+The \nameref{par:File_Allocation_Table} method incorporates free-block accounting into the allocation table (which is already cached too).
+No separate method is needed.
+
 
 %%% Local Variables:
 %%% mode: latex
