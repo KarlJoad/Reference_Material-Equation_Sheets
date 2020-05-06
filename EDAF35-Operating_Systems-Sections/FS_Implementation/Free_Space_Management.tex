@@ -33,6 +33,10 @@ Another approach to \nameref{subsec:Free_Space_Management} is to link together a
 This first block contains a pointer to the next free disk block, and so on.
 The user is unable to see these free blocks.
 
+This scheme is not efficient; to traverse the list, we must read each block, which requires substantial I/O time.
+However, traversing the free list is not a frequent action.
+Usually, the operating system simply needs a few free blocks so to allocate to a file.
+
 
 %%% Local Variables:
 %%% mode: latex
