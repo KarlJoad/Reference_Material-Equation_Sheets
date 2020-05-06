@@ -49,6 +49,11 @@ Here, a contiguous chunk of space is allocated initially.
 Then, if that amount proves not to be large enough, another chunk of contiguous space, known as an \nameref{def:Extent}, is added.
 The location of a file’s blocks is then recorded as a location and a block count, plus a link to the first block of the next extent.
 
+\begin{definition}[Extent]\label{def:Extent}
+  An \emph{extent} is used in a \nameref{subsubsec:Contiguous_File_Allocation} scheme, and is just another contiguous block(s) of storage that has been given to a file for use.
+  Extents are allocated on an as-needed basis.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
