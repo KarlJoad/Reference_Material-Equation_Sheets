@@ -4,6 +4,11 @@ A system crash can cause inconsistencies among on-disk file-system data structur
 Many file systems apply changes to these structures in place.
 These changes can be interrupted by a crash, and inconsistencies among the structures can result.
 
+A typical operation, such as creating a file, can involve many structural changes within the \nameref{def:File_System} on-disk.
+Compounding this is the caching that operating systems do to optimize I/O performance.
+Some changes may go directly to disk, while others may be cached.
+If the cached changes do not reach disk before a crash occurs, more corruption is possible.
+
 
 %%% Local Variables:
 %%% mode: latex
