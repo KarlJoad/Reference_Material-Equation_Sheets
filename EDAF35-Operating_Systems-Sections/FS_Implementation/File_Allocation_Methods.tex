@@ -202,6 +202,30 @@ level, depending on the desired maximum file size.
   This forms the basis of a \textsc{unix} \nameref{par:Inode}.
 \end{enumerate}
 
+\paragraph{\textsc{unix} \texttt{inode}}\label{par:Inode}
+The \texttt{inode} is used in \textsc{unix}-based file systems.
+The \texttt{inode} keeps the first 15 pointers of the index block in the \texttt{inode}.
+\begin{itemize}[noitemsep]
+\item The \texttt{inode} does contain a little bit of data within itself.
+\item The first 12 of these pointers point directly to data blocks (they contain addresses of blocks that contain data of the file).
+  Thus, the data for small files does not need a separate index block.
+\item The 13th points to a single indirect block.
+  \begin{itemize}[noitemsep]
+  \item This is an index block containing the addresses of blocks that contain data.
+  \item The redirection index block (the one from dereferencing the single indirect in the \texttt{inode}) can have as many pointer to data blocks as a block allows.
+\end{itemize}
+
+\item The 14th points to a double indirect block, which contains the address of a block that contains the addresses of blocks that contain pointers to the actual data blocks.
+  \begin{itemize}[noitemsep]
+  \item Each of the redirection index blocks (the one from dereferencing an indirection) can have as many pointer to data blocks as a block allows.
+  \end{itemize}
+\item The last pointer contains the address of a triple indirect block.
+  \begin{itemize}[noitemsep]
+  \item Like the other indirect blocks, it must be dereferenced multiple times to get to the actual data.
+  \item Each of the redirection index blocks (the one from dereferencing an indirection) can have as many pointer to data blocks as a block allows.
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
