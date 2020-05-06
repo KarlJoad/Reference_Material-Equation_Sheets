@@ -1,6 +1,13 @@
 \subsection{Efficiency and Performance}\label{subsec:Efficiency_Performance}
 Disks are the major bottleneck in local system performance, since they are the slowest main computer component.
 
+\subsubsection{Efficiency}\label{subsubsec:Efficiency}
+The efficient use of disk space depends on the disk-allocation and directory algorithms.
+For example, \textsc{unix} \nameref{par:Inode}s are preallocated on and spread across the volume.
+Thus, even an empty disk has a percentage of its space lost to \texttt{inode}s.
+However, preallocating the \texttt{inode}s improves the \nameref{def:File_System}'s performance.
+This comes from the allocation and free-space algorithms, which try to keep a file’s data blocks near that file’s \texttt{inode} block to reduce seek time.
+
 
 %%% Local Variables:
 %%% mode: latex
