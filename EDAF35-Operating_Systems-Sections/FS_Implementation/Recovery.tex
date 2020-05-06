@@ -41,6 +41,12 @@ Any transactions it contains were not completed to the file system, so they must
 The transactions can be executed from the pointer until the work is complete.
 The only problem occurs when a transaction was stopped before it was committed.
 
+A side benefit of using logging on \nameref{def:File_Metadata} updates is that the updates proceed much faster than usual.
+The reason is the performance advantage of sequential I/O over random I/O.
+The costly synchronous on-demand random metadata writes are turned into less costly synchronous sequential writes to the journal.
+Those changes, in turn, are replayed asynchronously via random writes, in the background, to the appropriate structures.
+The overall result is a significant gain in performance of \nameref{def:File_Metadata}-oriented operations, such as file creation and deletion.
+
 
 %%% Local Variables:
 %%% mode: latex
