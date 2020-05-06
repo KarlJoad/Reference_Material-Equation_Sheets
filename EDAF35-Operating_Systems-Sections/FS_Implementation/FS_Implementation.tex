@@ -102,6 +102,15 @@ Each partition can be either ``raw,'' containing no file system, or ``cooked,'' 
 A raw disk is used where no file system is appropriate.
 \textsc{unix} swap space can use a raw partition, since it uses its own format on disk and does not use a file system.
 
+\paragraph{Boot Partitions}\label{par:Boot_Partitions}
+Boot information can be stored in a separate partition.
+Again, it has its own format, because at boot time the system does not have the file-system code loaded and cannot interpret the file-system format.
+Rather, boot information is usually a sequential series of blocks, loaded as an image into memory.
+Execution of the image starts at a predefined location.
+
+This \nameref{def:Bootloader} in turn knows enough about the \nameref{def:File_System} structure to be able to find and load the \nameref{def:Kernel} and start its execution.
+The bootloader can contain more than just the instructions required to boot a specific \nameref{def:Operating_System}.
+
 
 %%% Local Variables:
 %%% mode: latex
