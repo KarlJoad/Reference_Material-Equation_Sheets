@@ -26,6 +26,13 @@ The \nameref{subsec:File_Allocation_Methods} and \nameref{subsec:Free_Space_Mana
 This is technically called a \emph{Log-Based Transaction-Oriented File System}.
 However, most people today call them journaling file systems, so I went with that.
 
+All \nameref{def:File_Metadata} changes are written sequentially to a log which is a circular buffer.
+Each set of operations for performing a specific task is a \textbf{transaction}.
+Once the changes are written to this log, they are considered a \textbf{committed transaction}, and the \nameref{def:System_Call} will return to the user process, allowing it to continue execution.
+Meanwhile, these log entries are replayed, in the background, across the actual \nameref{def:File_System} structures.
+As the changes are made, a pointer is updated to indicate which actions have completed and which are still incomplete.
+When a committed transaction is completed, it is removed from the log file.
+
 
 %%% Local Variables:
 %%% mode: latex
