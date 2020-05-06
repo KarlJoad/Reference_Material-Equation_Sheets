@@ -11,6 +11,14 @@ Contiguous allocation of a file is defined by the disk address of the first bloc
 If the file is $n$ blocks long and starts at location $b$, then it occupies blocks $b, b+1, \ldots, b+n-1$.
 The directory entry for each file indicates the address of the starting block and the length of the area allocated for this file.
 
+\paragraph{Advantages of Contiguous Allocation}\label{par:Contiguous_File_Allocation_Advantages}
+Accessing a file that has been allocated contiguously is easy.
+\begin{itemize}[noitemsep]
+\item \textbf{\nameref{subsubsec:Sequential_Access}}.
+  \nameref{def:File_System} remembers the disk address of the last block referenced and reads the next block.
+\item \textbf{\nameref{subsubsec:Direct_Access}} to block $i$ of a file that starts at block $b$, we can immediately access block $b + i$.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
