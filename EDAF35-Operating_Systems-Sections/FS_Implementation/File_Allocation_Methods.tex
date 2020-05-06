@@ -98,6 +98,11 @@ Then, the pointers use a much smaller percentage of the file’s disk space.
 Using \nameref{def:Disk_Cluster}s has the cost of increasing \nameref{def:Internal_Fragmentation}, because more space is wasted when a cluster is partially full than when a block is partially full.
 Clusters can be used to improve the disk-access time for many other algorithms as well, so they are used in most file systems.
 
+Another problem of linked allocation is reliability.
+Since files are linked together by pointers scattered all over the disk, consider what would happen if just a single file pointer were lost or damaged.
+A bug in the operating-system software or a disk hardware failure might result in picking up the wrong pointer.
+This error could in turn result in linking into the free-space list or into another file.
+
 
 %%% Local Variables:
 %%% mode: latex
