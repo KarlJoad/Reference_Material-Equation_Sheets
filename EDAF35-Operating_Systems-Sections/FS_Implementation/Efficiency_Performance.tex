@@ -35,6 +35,9 @@ Some systems cache file data using a \nameref{def:Page_Cache} to create \emph{Un
   Caching file data using virtual addresses is far more efficient than caching through physical disk blocks, as accesses interface with \nameref{def:Virtual_Memory} rather than the \nameref{def:File_System}.
 \end{definition}
 
+This can be done with a \nameref{def:Unified_Buffer_Cache} or without one.
+However, not using the unified buffer cache means you are \nameref{def:Double_Caching}.
+
 
 %%% Local Variables:
 %%% mode: latex
