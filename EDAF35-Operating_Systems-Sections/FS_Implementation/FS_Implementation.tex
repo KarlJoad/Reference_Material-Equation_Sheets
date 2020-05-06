@@ -34,6 +34,17 @@ These structures vary depending on the operating system and the file system, but
   It has a unique identifier number to allow association with a directory entry.
 \end{itemize}
 
+In-memory information is used for both file-system management and performance improvement via caching.
+The data is loaded at mount time, updated during file-system operations, and discarded at dismount.
+\begin{itemize}[noitemsep]
+\item An in-memory mount table contains information about each mounted volume.
+\item An in-memory directory-structure cache holds the directory information of recently accessed directories.
+  (For mount directories, it can contain a pointer to the volume table.)
+\item The system-wide open-file table has a copy of the FCB of each open file, as well as other information.
+\item The per-process open-file table contains a pointer to the appropriate entry in the system-wide open-file table, as well as process-dependent information.
+\item Buffers hold file-system blocks when they are being read from disk or written to disk.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
