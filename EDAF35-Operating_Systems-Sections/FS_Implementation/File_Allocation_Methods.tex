@@ -89,6 +89,12 @@ The usual solution to this problem is to collect blocks into multiples, called \
 For instance, the file system may define a cluster as four blocks and operate on the disk only in cluster units.
 Then, the pointers use a much smaller percentage of the file’s disk space.
 
+\begin{definition}[Cluster]\label{def:Disk_Cluster}
+  A \emph{cluster} is a collection of blocks used in a \nameref{subsubsec:Linked_File_Allocation} scheme.
+  Using a cluster in this scheme allows for more data to be addressed by a single pointer in the cluster.
+  Meaning, the average utilization of the disk to other cluster pointers is minimized.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
