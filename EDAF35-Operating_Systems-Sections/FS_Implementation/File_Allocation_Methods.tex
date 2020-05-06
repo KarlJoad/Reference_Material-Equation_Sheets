@@ -54,6 +54,14 @@ The location of a file’s blocks is then recorded as a location and a block cou
   Extents are allocated on an as-needed basis.
 \end{definition}
 
+\subsubsection{Linked File Allocation}\label{subsubsec:Linked_File_Allocation}
+Linked allocation solves all problems of \nameref{subsubsec:Contiguous_File_Allocation} (\Cref{par:Contiguous_File_Allocation_Disadvantages}).
+With linked allocation, each \nameref{def:File} is a linked list of disk blocks; the disk blocks may be scattered anywhere on the disk.
+The \nameref{def:Directory} contains a pointer to the first and last blocks of each file entry.
+Each block contains a pointer to the next block.
+These pointers are not made available to the user.
+Thus, if each block is 512 bytes in size, and a disk address (the pointer) requires 4 bytes, then the user sees blocks of 508 bytes.
+
 
 %%% Local Variables:
 %%% mode: latex
