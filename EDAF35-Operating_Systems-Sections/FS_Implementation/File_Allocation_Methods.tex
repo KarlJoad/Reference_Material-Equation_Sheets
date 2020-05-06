@@ -82,6 +82,13 @@ To find the $i$th block of a file, we must start at the beginning of that file a
 Each access to a pointer requires a disk read, and some require a disk seek.
 Consequently, it is inefficient to support a \nameref{subsubsec:Direct_Access} capability for linked-allocation files.
 
+Another disadvantage is the space required for the pointers.
+If a pointer requires 4 bytes out of a 512-byte block, then \SI{0.78}{\percent} percent of the disk is being used for pointers, rather than for information.
+Thus, each file requires slightly more blocks than it would otherwise.
+The usual solution to this problem is to collect blocks into multiples, called \nameref{def:Disk_Cluster}s, and to allocate clusters rather than blocks.
+For instance, the file system may define a cluster as four blocks and operate on the disk only in cluster units.
+Then, the pointers use a much smaller percentage of the file’s disk space.
+
 
 %%% Local Variables:
 %%% mode: latex
