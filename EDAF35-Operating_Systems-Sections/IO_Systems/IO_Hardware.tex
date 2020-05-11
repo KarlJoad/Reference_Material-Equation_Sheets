@@ -277,6 +277,11 @@ Many computers avoid burdening the main CPU with PIO by offloading some of this 
   \end{remark}
 \end{definition}
 
+On protected-mode kernels, the operating system generally prevents processes from issuing device commands directly.
+This discipline protects data from access-control violations and also protects the system from erroneous use of device controllers that could cause a system crash.
+The operating system exports functions that a sufficiently privileged process can use to access low-level operations on the underlying hardware.
+On kernels without memory protection, processes can access device controllers directly.
+This direct access can be used to achieve high performance, since it can avoid kernel communication, context switches, and layers of kernel software.
 
 %%% Local Variables:
 %%% mode: latex
