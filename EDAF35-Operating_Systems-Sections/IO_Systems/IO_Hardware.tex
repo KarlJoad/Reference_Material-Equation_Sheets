@@ -102,6 +102,15 @@ The hardware mechanism that enables a device to notify the CPU is called an \nam
 \subsubsection{Interrupts}\label{subsubsec:Interrupts}
 The CPU hardware has a wire called the \nameref{def:Interrupt_Request_Line} that the CPU senses after executing every instruction.
 
+\begin{definition}[Interrupt-Request Line]\label{def:Interrupt_Request_Line}
+  The \emph{interrupt-request line} is a dedicated hardware line or \nameref{def:Hardware_Bus} for sending information about exceptional circumstances to the CPU.\@
+  The CPU checks this line after \textbf{every} instruction.
+
+  If the line does not contain any information, the CPU continues normal execution.
+  If it does contain some information, then the CPU performs a \nameref{def:Context_Switch}.
+  However, instead of switching to another \nameref{def:Process}, the CPU jumps to the \nameref{def:Interrupt_Handler}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
