@@ -206,6 +206,11 @@ This has a variety of uses:
 \subsubsection{Nonblocking and Asynchronous I/O}\label{subsubsec:Nonblocking_Asynchronous_IO}
 Another aspect of the system-call interface relates to the choice between \nameref{def:Blocking_Syscall} I/O and \nameref{def:Nonblocking_Syscall} I/O.
 
+\begin{definition}[Blocking]\label{def:Blocking_Syscall}
+  A \emph{blocking} \nameref{def:System_Call} is one where the execution of the calling \nameref{def:Process} is stopped until the system call is completed.
+  Note that this does not mean that the process will continue as soon as the system call returns, as the process is moved to the waiting queue after making the syscall and moved to the ready queue when it completes.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
