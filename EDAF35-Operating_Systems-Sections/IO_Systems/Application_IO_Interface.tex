@@ -1,4 +1,9 @@
 \subsection{Application I/O Interface}\label{subsec:Application_IO_Interface}
+The \nameref{def:Operating_System} wants to treat all I/O devices in a standard, uniform way.
+Like other complex software-engineering problems, the approach here involves abstraction, encapsulation, and software layering.
+Specifically, we can abstract away the detailed differences in I/O devices by identifying a few general kinds, where each is accessed through a standardized set of functions, its \emph{interface}.
+The implementation differences are encapsulated in \nameref{def:Kernel_Module}s called \nameref{def:Device_Driver}s that internally are custom-tailored to specific devices but that export one of the standard interfaces.
+The software layering used is shown in \Cref{fig:Kernel_IO_Subsystem_Structure}.
 
 
 %%% Local Variables:
