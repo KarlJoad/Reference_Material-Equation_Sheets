@@ -38,6 +38,23 @@ To help alleviate the problems of network-based interrupts:
 
 Like device controllers and DMA controllers found in smaller computers, a channel can process more general and sophisticated programs, so channels can be tuned for particular workloads.
 
+\subsubsection{Improving Efficiency}\label{subsubsec:Improve_IO_Subsystem_Performance}
+\begin{itemize}[noitemsep]
+\item Reduce the number of \nameref{def:Context_Switch}es.
+\item Reduce the number of times that data must be copied in memory while passing between device and application.
+\item Reduce the frequency of \nameref{def:Interrupt}s by using:
+  \begin{itemize}[noitemsep]
+  \item Large transfers.
+  \item Smart controllers.
+  \item Polling (if busy waiting can be minimized).
+  \end{itemize}
+\item Increase concurrency by using DMA-knowledgeable controllers or channels to offload simple data copying from the CPU.\@
+\item Move processing primitives into hardware, to allow their operation in device controllers to be concurrent with CPU and bus operation.
+\item Balance CPU, memory subsystem, bus, and I/O performance.
+  \begin{itemize}[noitemsep]
+  \item An overload in any one area will cause idleness in others.
+  \end{itemize}
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
