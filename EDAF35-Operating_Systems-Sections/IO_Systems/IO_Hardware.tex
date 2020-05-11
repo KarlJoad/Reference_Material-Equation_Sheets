@@ -207,6 +207,40 @@ This instruction has an operand that identifies the desired kernel service.
 When a process executes the trap instruction, the interrupt hardware saves the state of the user code, switches to kernel mode, and dispatches to the kernel routine that implements the requested service.
 The \nameref{def:Trap} is given a relatively low \nameref{def:Interrupt} priority compared with those assigned to device interrupts—executing a system call on behalf of an application is less urgent than servicing a device controller before its FIFO queue overflows and loses data.
 
+\subparagraph{Flow Control}\label{subpar:Flow_Control_Interrupts}
+Interrupts can also be used to manage the flow of control within the kernel.
+Consider the processing required to complete a disk read.
+\begin{enumerate}[noitemsep]
+\item One step is to copy data from kernel space to the user buffer.
+  \begin{itemize}[noitemsep]
+  \item This copying is time consuming but not urgent—it should not block other high-priority interrupt handling.
+  \end{itemize}
+
+\item Another step is to start the next pending I/O for that disk drive.
+  \begin{itemize}[noitemsep]
+  \item This step has higher priority.
+  \item If the disks are to be used efficiently, we need to start the next I/O as soon as the previous one completes.
+  \item A pair of interrupt handlers implements the kernel code that completes a disk read.
+  \end{itemize}
+
+\item The high-priority handler:
+  \begin{enumerate}[noitemsep]
+  \item Records the I/O status.
+  \item Clears the device interrupt.
+  \item Starts the next pending I/O.
+  \item Raises a low-priority interrupt to complete the work.
+  \end{enumerate}
+
+\item Later, when the CPU is not occupied with high-priority work, the low-priority interrupt will be dispatched.
+  \begin{itemize}[noitemsep]
+  \item The corresponding handler completes the user-level I/O by:
+    \begin{enumerate}[noitemsep]
+    \item Copying data from kernel buffers to the application space.
+    \item Calling the scheduler to place the application on the ready queue.
+    \end{enumerate}
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
