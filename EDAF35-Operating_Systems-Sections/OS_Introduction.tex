@@ -238,10 +238,10 @@ These events can be a \nameref{def:Hardware} \nameref{def:Interrupt} or a softwa
 \begin{definition}[Interrupt]\label{def:Interrupt}
   An \emph{interrupt} is a special event that the \nameref{def:CPU} \textbf{MUST} handle.
   These could be system errors, or just a button on the keyboard was pressed.
-  Hardware may trigger an interrupt at any time by sending a signal to the CPU, usually by way of the system bus.
+  Hardware may trigger an interrupt at any time by sending a signal to the CPU, usually by way of the system \nameref{def:Hardware_Bus}.
 
-  When a CPU receives an interrupt, it immediately stops what it is doing and transfers execution to some fixed address.
-  To ensure that this happens as quickly as possible, a \nameref{def:Interrupt_Vector} is created.
+  When a CPU receives an interrupt, it may immediately stop what it is doing and transfer execution to some fixed address.
+  To ensure that this happens as quickly as possible, an \nameref{def:Interrupt_Vector} is created.
 \end{definition}
 
 \begin{definition}[Trap]\label{def:Trap}
