@@ -213,6 +213,16 @@ Another aspect of the system-call interface relates to the choice between \namer
 
 Most \nameref{def:Operating_System}s use \nameref{def:Blocking_Syscall} \nameref{def:System_Call}s for the application interface, because blocking application code is easier to understand than nonblocking application code.
 
+\begin{definition}[Nonblocking]\label{def:Nonblocking_Syscall}
+  A \emph{nonblocking} \nameref{def:System_Call} is one where the calling \nameref{def:Process} gets its requested information immediately, even if it is incomplete.
+
+  \begin{remark}[Confusion between Nonblocking and Asynchronous System Calls]
+    There is confusion between \nameref{def:Nonblocking_Syscall} and asynchronous \nameref{def:System_Call}s.
+    A nonblocking \nameref{def:System_Call} will return the data to the calling \nameref{def:Process} immediately, even if it is incomplete.
+    An asynchronous \nameref{def:System_Call} will schedule the system call to complete some time in the future and will return all of the data requested.
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
