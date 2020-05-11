@@ -43,6 +43,9 @@ Unlike the stream head, which may block if it is unable to copy a message to the
 Drivers must support flow control as well.
 However, if a device’s buffer is full, the device typically resorts to just dropping incoming messages.
 
+The benefit of using STREAMS is that it provides a framework for a modular and incremental approach to writing device drivers and network protocols.
+Modules may be used by different streams and hence by different devices.
+Furthermore, rather than treating character-device I/O as an unstructured byte stream, \textsc{streams} allows support for message boundaries and control information when communicating between modules.
 
 %%% Local Variables:
 %%% mode: latex
