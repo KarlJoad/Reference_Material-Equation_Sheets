@@ -55,6 +55,39 @@ Devices can vary in many dimensions, as seen in \Cref{tab:Characteristics_IO_Dev
   \label{tab:Characteristics_IO_Devices}
 \end{table}
 
+Now, each of the entries in \Cref{tab:Characteristics_IO_Devices} are further explained:
+\begin{itemize}[noitemsep]
+\item Character-stream or block.
+  \begin{itemize}[noitemsep]
+  \item Character-stream device transfers \textbf{bytes} one-by-one.
+  \item A block device transfers a block of bytes as a unit.
+\end{itemize}
+
+\item Sequential or random access.
+  \begin{itemize}[noitemsep]
+  \item Sequential devices transfer data in a fixed order determined by the device
+  \item Random-access devices can instruct the device to seek to any of the available data storage locations.
+\end{itemize}
+
+\item Synchronous or asynchronous.
+  \begin{itemize}[noitemsep]
+  \item Synchronous devices performs data transfers with predictable response times, in coordination with other aspects of the system.
+  \item Asynchronous devices exhibits irregular or unpredictable response times not coordinated with other computer events.
+\end{itemize}
+
+\item Sharable or dedicated.
+  \begin{itemize}[noitemsep]
+  \item A sharable device can be used concurrently by several \nameref{def:Process}es or \nameref{def:Thread}s.
+  \item Dedicated devices cannot be shared by several concurrent \nameref{def:Process}es or \nameref{def:Thread}s.
+\end{itemize}
+
+\item Speed of operation.
+  Device speeds range over a wide range of speeds, from a few bytes per second to several gigabytes per second.
+
+\item Read–write, read only, or write only.
+  Some devices perform both input and output, but others support only one data transfer direction.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
