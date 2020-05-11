@@ -260,10 +260,10 @@ These events can be a \nameref{def:Hardware} \nameref{def:Interrupt} or a softwa
 \end{definition}
 
 \begin{definition}[Interrupt Vector]\label{def:Interrupt_Vector}
-  The \emph{interrupt vector} is a table/list of addresses that redirect the \nameref{def:CPU} to the location of the instructions for how to handle that particular \nameref{def:Interrupt}.
-  Since only a predefined number of interrupts is possible, a table of pointers to interrupt routines is used to provide the necessary speed.
-  These locations hold the addresses of the interrupt service routines for the various devices.
-  This array, or interrupt vector, of addresses is then indexed by a unique device number, given with the interrupt request, to provide the address of the interrupt service routine for the interrupting device.
+  The \emph{interrupt vector} is a table/list of addresses that redirect the \nameref{def:CPU} to the location of the instructions for how to handle that particular \nameref{def:Interrupt}, the \nameref{def:Interrupt_Handler}.
+  Only a predefined number of interrupts is possible, a table of pointers to interrupt routines is used to provide the necessary speed.
+  These locations hold the addresses of the \nameref{def:Interrupt_Handler} routines for the various devices.
+  This array of addresses is indexed by a unique device number, given with the interrupt request, to provide the address of the interrupt service routine for the interrupting device.
   The interrupt routine is called indirectly through the table, with no intermediate routine needed.
   Generally, this is stored in low memory (the first hundred or so locations).
 \end{definition}
