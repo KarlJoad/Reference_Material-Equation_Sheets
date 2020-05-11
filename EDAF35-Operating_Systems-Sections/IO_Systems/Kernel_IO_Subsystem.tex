@@ -1,4 +1,15 @@
 \subsection{Kernel I/O Subsystem}\label{subsec:Kernel_IO_Subsystem}
+Kernels provide many services related to I/O, which build on the hardware and \nameref{def:Device_Driver} infrastructure, including:
+\begin{itemize}[noitemsep]
+\item \nameref{subsubsec:IO_Scheduling}.
+\item \nameref{subsubsec:IO_Buffering}.
+\item \nameref{subsubsec:IO_Caching}.
+\item \nameref{subsubsec:Spooling_Device_Reservation}.
+\item \nameref{subsubsec:IO_Error_Handling}.
+\end{itemize}
+
+The I/O subsystem is also responsible for protecting itself from errant processes and malicious users.
+
 
 %%% Local Variables:
 %%% mode: latex
