@@ -113,6 +113,16 @@ The CPU hardware has a wire called the \nameref{def:Interrupt_Request_Line} that
 
 When the CPU detects that a controller has asserted a signal on the interrupt-request line, the CPU performs a state save and jumps to the \nameref{def:Interrupt_Handler} routine at a fixed address in memory.
 
+\begin{definition}[Interrupt Handler]\label{def:Interrupt_Handler}
+  The \emph{interrupt handler}:
+  \begin{enumerate}[noitemsep]
+  \item Determines the cause of the interrupt.
+  \item Performs the necessary processing.
+  \item Performs a state restore.
+  \item Executes a return from interrupt instruction to return the CPU to the execution state prior to the interrupt.
+  \end{enumerate}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
