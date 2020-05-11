@@ -183,6 +183,26 @@ A call to \kernelinline{select()} returns information about which sockets have a
 The use of \kernelinline{select()} eliminates the polling and busy waiting that would otherwise be necessary for network I/O.
 These functions encapsulate the essential behaviors of networks, greatly facilitating the creation of distributed applications that can use any underlying network hardware and protocol stack.
 
+\subsubsection{Clocks and Timers}\label{subsubsec:Clocks_Timers}
+Most computers have hardware clocks and timers that provide three basic functions:
+\begin{enumerate}[noitemsep]
+\item Give the current time.
+\item Give the elapsed time.
+\item Set a timer to trigger operation $X$ at some later time $T$.
+\end{enumerate}
+
+These functions are used heavily by the operating system, as well as by time-sensitive applications, but, the \nameref{def:System_Call}s implementing these functions are not standardized.
+
+The hardware to measure elapsed time and to trigger operations is called a \textbf{programmable interval timer}.
+It can be set to wait a certain amount of time and then generate an interrupt, and it can be set to do this once or to repeat the process to generate periodic interrupts.
+This has a variety of uses:
+\begin{itemize}[noitemsep]
+\item The scheduler uses this mechanism to generate an interrupt that will preempt a process at the end of its time slice.
+\item The disk I/O subsystem uses it to invoke the periodic flushing of dirty cache buffers to disk.
+\item The network subsystem uses it to cancel operations that are proceeding too slowly because of network congestion or failures.
+\item The operating system may also provide an interface for user processes to use timers.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
