@@ -161,6 +161,12 @@ Most CPUs have two interrupt request lines.
   These are errors that can cause fatal computer execution.
 \end{definition}
 
+\begin{definition}[Maskable Interrupt]\label{def:Maskable_Interrupt}
+  \emph{Maskable interrupts} are \nameref{def:Interrupt}s can be turned off by the CPU before the execution of critical instruction sequences that must not be interrupted.
+  Maskable interrupts are used by device controllers to request service.
+  These are interrupts that should not cause computer failure.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
