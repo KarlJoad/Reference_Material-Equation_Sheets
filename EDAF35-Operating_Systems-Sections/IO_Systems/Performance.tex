@@ -22,6 +22,22 @@ Network traffic can also cause a high context-switch rate (see \Cref{fig:Interco
   \label{fig:Intercomputer_Communications}
 \end{figure}
 
+To help alleviate the problems of network-based interrupts:
+\begin{itemize}[noitemsep]
+\item Reimplemented certain \nameref{def:Daemon}s using in-kernel threads.
+\item Other systems use separate front-end processors for terminal I/O to reduce the interrupt burden on the main CPU.\@
+  \begin{itemize}[noitemsep]
+  \item For instance, a terminal concentrator can multiplex the traffic from hundreds of remote terminals into one port on a large computer.
+  \end{itemize}
+\item An I/O channel is a dedicated, special-purpose CPU found in mainframes and in other high-end systems.
+  \begin{itemize}[noitemsep]
+  \item The job of a channel is to offload I/O work from the main CPU.\@
+  \item The idea is that the channels keep the data flowing smoothly, while the main CPU remains free to process the data.
+  \end{itemize}
+\end{itemize}
+
+Like device controllers and DMA controllers found in smaller computers, a channel can process more general and sophisticated programs, so channels can be tuned for particular workloads.
+
 
 %%% Local Variables:
 %%% mode: latex
