@@ -167,6 +167,11 @@ Most CPUs have two interrupt request lines.
   These are interrupts that should not cause computer failure.
 \end{definition}
 
+The interrupt mechanism accepts an address—a number that selects a specific interrupt-handling routine from a small set.
+In most architectures, this address is an offset in a table called the \nameref{def:Interrupt_Vector}.
+This vector contains the memory addresses of specialized \nameref{def:Interrupt_Handler}s.
+The purpose of a vectored interrupt mechanism is to reduce the need for a single interrupt handler to \textbf{search all possible sources of interrupts} to determine which one needs service.
+
 
 %%% Local Variables:
 %%% mode: latex
