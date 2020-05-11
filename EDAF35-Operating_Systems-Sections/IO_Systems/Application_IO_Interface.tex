@@ -12,6 +12,9 @@ The software layering used is shown in \Cref{fig:Kernel_IO_Subsystem_Structure}.
   \label{fig:Kernel_IO_Subsystem_Structure}
 \end{figure}
 
+This layering methodology is used to hide differences among devices and their controllers from the \nameref{def:Kernel}'s I/O subsystem.
+This is analogous to the I/O system calls encapsulating the behavior of devices in a few generic classes that hide hardware differences from applications.
+
 
 %%% Local Variables:
 %%% mode: latex
