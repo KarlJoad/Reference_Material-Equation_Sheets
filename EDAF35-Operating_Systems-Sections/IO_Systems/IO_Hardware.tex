@@ -245,6 +245,38 @@ Consider the processing required to complete a disk read.
 For devices that do large transfers, such as disk drives, it is wasteful to use a general-purpose processor to watch status bits and feed data into a controller register one byte at a time (\nameref{def:Programmed_IO}/PIO).
 Many computers avoid burdening the main CPU with PIO by offloading some of this work to a special-purpose processor called a \nameref{def:Direct_Memory_Access_Controller}.
 
+\begin{definition}[Direct-Memory-Access Controller]\label{def:Direct_Memory_Access_Controller}
+  A \emph{Direct-Memory-Access controller} (\emph{DMA controller}) is a separate processor on a CPU.\@
+  A simple DMA controller is a standard component in all modern computers
+
+  To initiate a DMA transfer, the CPU writes a DMA command block into memory.
+  This block contains:
+  \begin{enumerate}[noitemsep]
+  \item A pointer to the source of a transfer.
+  \item A pointer to the destination of the transfer.
+  \item A count of the number of bytes to be transferred.
+  \end{enumerate}
+  The CPU gives the address of this command block to the DMA controller, then goes on with other work.
+  The DMA controller proceeds to operate the memory bus directly, placing addresses on the bus to perform transfers without the help of the CPU.\@
+
+  Handshaking between the DMA controller and the device controller is performed via a pair of wires called \texttt{DMA-request} and \texttt{DMA-acknowledge}.
+  The \textbf{device} controller places a signal on the \texttt{DMA-request} wire when a word of data is available for transfer.
+  This signal causes the DMA controller to seize the memory bus, place the desired address on the memory-address wires, and place a signal on the \texttt{DMA-acknowledge} wire.
+  When the device controller receives the \texttt{DMA-acknowledge} signal, it transfers the word of data to memory and removes the \texttt{DMA-request} signal.
+  When the entire transfer is finished, the DMA controller \nameref{def:Interrupt}s the CPU.\@
+
+  \begin{remark}[Cycle Stealing]\label{rmk:Cycle_Stealing}
+    When the \nameref{def:Direct_Memory_Access_Controller} seizes the memory bus, the CPU is momentarily prevented from accessing main memory.
+    The CPU can still access data items in its primary and secondary caches.
+    Although this \emph{cycle stealing} can slow down the CPU computation, offloading the data-transfer work to a DMA controller generally improves the total system performance.
+  \end{remark}
+
+  \begin{remark}[Direct Virtual Memory Access]\label{rmk:Direct_Virtual_Memory_Access}
+    Some computer architectures perform \emph{Direct Virtual Memory Access} (\emph{DVMA}), using virtual addresses that undergo translation to physical addresses.
+    DVMA can perform a transfer between two memory-mapped devices without the intervention of the CPU or the use of main memory.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
