@@ -193,6 +193,12 @@ A threaded kernel architecture is well suited to implement multiple interrupt pr
 \paragraph{Other Uses of Interrupts}\label{par:Other_Interrupt_Uses}
 An operating system has other uses for an efficient hardware and software mechanism that saves a small amount of processor state and then calls a privileged routine in the kernel.
 
+\subparagraph{Paging}\label{subpar:Paging_Interrupts}
+One way to use the interrupt mechanism is for \nameref{def:Virtual_Memory} \nameref{def:Paging}.
+A \nameref{def:Page_Fault} is an exception that raises an \nameref{def:Interrupt}.
+The interrupt suspends the current process and jumps to the page-fault handler in the \nameref{def:Kernel}.
+This handler saves the state of the \nameref{def:Process}, moves the process to the wait queue, performs page-cache management, schedules an I/O operation to fetch the page, schedules another process to resume execution, and then returns from the interrupt.
+
 
 %%% Local Variables:
 %%% mode: latex
