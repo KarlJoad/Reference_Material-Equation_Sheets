@@ -154,6 +154,21 @@ The actual data transfers are performed only when needed to satisfy access to th
 
 The transfers are handled by the same mechanism as that used for \nameref{def:Demand_Paging} \nameref{def:Virtual_Memory} access, making \nameref{subsubsec:Memory_Mapped_IO} efficient.
 
+\subsubsection{Network Devices}\label{subsubsec:Network_Devices}
+The performance and addressing characteristics of network I/O differ significantly from those of disk I/O.
+Thus, most operating systems provide a network I/O interface that is different from the block device interface used for disks.
+One interface available in many operating systems is the network \nameref{def:Socket} interface.
+
+
+This interface requires at least 1 interface function be defined.
+\begin{enumerate}[noitemsep]
+\item \kernelinline{select()}
+\end{enumerate}
+
+A call to \kernelinline{select()} returns information about which sockets have a packet waiting to be received and which sockets have room to accept a packet to be sent.
+The use of \kernelinline{select()} eliminates the polling and busy waiting that would otherwise be necessary for network I/O.
+These functions encapsulate the essential behaviors of networks, greatly facilitating the creation of distributed applications that can use any underlying network hardware and protocol stack.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
