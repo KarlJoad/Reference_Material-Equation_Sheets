@@ -45,6 +45,15 @@ Buffering is done for three reasons.
   \end{itemize}
 \end{enumerate}
 
+\subsubsection{Caching}\label{subsubsec:IO_Caching}
+A cache is a region of fast memory that holds \textbf{copies} of data.
+Access to the cached copy is more efficient than access to the original.
+
+The difference between a buffer and a cache is that a buffer may hold the only existing copy of a data item, whereas a cache holds a copy on faster storage of an item that resides elsewhere.
+However, a section of memory can sometimes be used for both purposes.
+For instance, to preserve copy semantics and to enable efficient scheduling of disk I/O, the operating system uses buffers in main memory to hold disk data.
+These buffers are also used as a cache, to improve the I/O efficiency for files that are shared by applications or that are being written and reread rapidly.
+
 
 %%% Local Variables:
 %%% mode: latex
