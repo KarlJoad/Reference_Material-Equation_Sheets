@@ -36,6 +36,13 @@ Similarly, the user process reads data from the stream head using either the rea
 \item \kernelinline{getmsg()} is used, a message is returned to the process.
 \end{itemize}
 
+\textsc{streams} I/O is \nameref{def:Blocking_Syscall} \textbf{ONLY} for the user, and only when communicating with the stream head.
+Otherwise, it is asynchronous (or \nameref{def:Nonblocking_Syscall}).
+The driver end \textbf{must} respond to \nameref{def:Interrupt}s.
+Unlike the stream head, which may block if it is unable to copy a message to the next queue in line, the driver end \textbf{must} handle all incoming data.
+Drivers must support flow control as well.
+However, if a device’s buffer is full, the device typically resorts to just dropping incoming messages.
+
 
 %%% Local Variables:
 %%% mode: latex
