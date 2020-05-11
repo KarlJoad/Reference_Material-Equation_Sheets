@@ -10,6 +10,29 @@ Kernels provide many services related to I/O, which build on the hardware and \n
 
 The I/O subsystem is also responsible for protecting itself from errant processes and malicious users.
 
+\subsubsection{I/O Scheduling}\label{subsubsec:IO_Scheduling}
+To schedule a set of I/O requests means to determine a good order in which to execute them.
+The order in which applications issue system calls rarely is the best choice.
+Scheduling can improve overall system performance, can share device access fairly among processes, and can reduce the average waiting time for I/O to complete.
+
+Operating-system developers implement scheduling by maintaining a queue of requests for each device.
+When an application issues a \nameref{def:Blocking_Syscall} I/O system call, the request is placed on the queue for \textbf{that} device.
+The I/O scheduler rearranges the order of the queue to improve the overall system efficiency and the average response time experienced by applications.
+The operating system may also try to be fair, so that no one application receives especially poor service, or it may give priority service for delay-sensitive requests.
+
+When a kernel supports \textbf{asynchronous} I/O, it must be able to keep track of many I/O requests at the same time.
+For this purpose, the operating system might attach the wait queue to a device-status table.
+The kernel manages this table, which contains an entry for each I/O device.
+Each entry indicates:
+\begin{itemize}[noitemsep]
+\item The device's type
+\item Address
+\item State (not functioning, idle, or busy)
+  \begin{itemize}[noitemsep]
+  \item If the device is busy with a request, the type of request and other parameters will be stored in the table entry for that device.
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
