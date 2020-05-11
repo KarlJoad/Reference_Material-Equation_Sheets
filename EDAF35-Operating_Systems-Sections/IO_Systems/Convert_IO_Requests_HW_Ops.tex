@@ -26,6 +26,17 @@ Since files are stored on devices, such an interface provides access to the I/O 
   When \textsc{unix} looks up this name in the file-system \nameref{def:Directory} structures, it finds not an \nameref{par:Inode} number but a $\langle \mathtt{major}, \mathtt{minor} \rangle$ \nameref{def:Device_Number}.
 \end{enumerate}
 
+\begin{definition}[Device Number]\label{def:Device_Number}
+  The \emph{device number} is made up of 2 parts, a \texttt{major} and \texttt{minor} number, typically represented as
+  \begin{equation*}
+    \langle \mathtt{major}, \mathtt{minor} \rangle
+  \end{equation*}
+
+  The \texttt{major} device number identifies a device driver that should be called to handle I/O to this device.
+  The \texttt{minor} device number  is passed to the device driver to index into a device table.
+  The corresponding device-table entry gives the port address or the memory-mapped address of the device controller.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
