@@ -211,6 +211,8 @@ Another aspect of the system-call interface relates to the choice between \namer
   Note that this does not mean that the process will continue as soon as the system call returns, as the process is moved to the waiting queue after making the syscall and moved to the ready queue when it completes.
 \end{definition}
 
+Most \nameref{def:Operating_System}s use \nameref{def:Blocking_Syscall} \nameref{def:System_Call}s for the application interface, because blocking application code is easier to understand than nonblocking application code.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
