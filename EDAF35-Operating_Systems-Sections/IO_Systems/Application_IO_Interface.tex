@@ -241,6 +241,9 @@ Frequently, they are not exposed to users or applications but rather are contain
 By default, when an application issues a network send request or a disk write request, the operating system notes the request, buffers the I/O, and returns to the application.
 When possible, to optimize overall system performance, the operating system completes the request.
 
+Note that multiple \nameref{def:Thread}s performing I/O to the same file might not receive consistent data, depending on how the kernel implements its I/O.
+In this situation, the threads may need to use locking protocols.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
