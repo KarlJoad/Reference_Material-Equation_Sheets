@@ -139,6 +139,13 @@ The \nameref{def:Device_Driver} is expected to export the following commands:
 This style of access is convenient for input devices (such as keyboards) that produce data for input ``spontaneously''(at times that cannot necessarily be predicted by the application).
 This access style is also good for output devices such as printers and audio boards, which naturally fit the concept of a linear stream of bytes.
 
+\paragraph{Raw I/O and Block and Character Devices}\label{par:Raw_IO_Block_Char_Devices}
+The operating system itself, as well as special applications, may prefer to access a block device as a simple linear array of blocks.
+This mode of access is called raw I/O.
+To avoid conflicts, raw-device access passes control of the device directly to the application, letting the operating system step out of the way.
+A compromise between raw I/O and file system I/O, that is becoming common, is for the operating system to allow a mode of operation on a file that disables buffering and locking.
+In the \textsc{unix} world, this is called direct I/O.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
