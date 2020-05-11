@@ -33,6 +33,18 @@ Each entry indicates:
   \end{itemize}
 \end{itemize}
 
+\subsubsection{Buffering}\label{subsubsec:IO_Buffering}
+Buffering is done for three reasons.
+\begin{enumerate}[noitemsep]
+\item One reason is to cope with a speed mismatch between the producer and consumer of a data stream.
+\item A second use of buffering is to provide adaptations for devices that have different data-transfer sizes.
+\item A third use of buffering is to support copy semantics for application I/O.
+  \begin{itemize}[noitemsep]
+  \item Copy semantics are such that writing to a disk will not corrupt any data.
+  \item The version of the data written to disk is guaranteed to be the version at the time of the application system call.
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
