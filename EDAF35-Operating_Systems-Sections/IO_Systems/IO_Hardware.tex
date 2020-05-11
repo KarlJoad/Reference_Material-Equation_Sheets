@@ -1,4 +1,21 @@
 \subsection{I/O Hardware}\label{subsec:IO_Hardware}
+The device communicates with the machine via a connection point, a port.
+If devices share a common set of wires, the connection is called a \nameref{def:Hardware_Bus}.
+Buses are used widely in computer architecture and vary in their signaling methods, speed, throughput, and connection methods.
+
+\begin{definition}[Bus]\label{def:Hardware_Bus}
+  A \emph{bus} is a set of wires and a rigidly defined protocol that specifies a set of messages that can be sent on the wires.
+\end{definition}
+
+When device A plugs into device B, and device B plugs into device C, and device C plugs into a port on the computer, this arrangement is called a daisy chain.
+A daisy chain usually operates as a \nameref{def:Hardware_Bus}.
+
+All of these may be controlled by a \nameref{def:Controller}.
+
+\begin{definition}[Controller]\label{def:Controller}
+  A \emph{controller} is a collection of electronics that can operate a port, a \nameref{def:Hardware_Bus}, or a device.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
