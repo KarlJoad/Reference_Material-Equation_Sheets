@@ -84,6 +84,9 @@ The host is \textbf{busy-waiting} or \textbf{polling} in the first step: it is i
 If the controller and device are fast, this is reasonable.
 But if the wait is long enough, the host should switch to another task.
 
+For some devices, the host \textbf{must} service the device quickly, or data will be lost.
+For instance, when data are streaming in on a serial port, the small buffer on the controller will overflow and data will be lost if the host waits too long before returning to read the bytes.
+
 
 %%% Local Variables:
 %%% mode: latex
