@@ -64,6 +64,22 @@ An I/O port typically consists of four registers, called the status, control, da
   \end{itemize}
 \end{enumerate}
 
+\subsubsection{Polling}\label{subsubsec:Polling}
+The controller indicates its state through the \texttt{busy} bit in the \texttt{status} register.
+The controller sets the \texttt{busy} bit when it is busy working and clears it when the controller is ready to accept the next command.
+The host signals its wishes by setting the \texttt{command-ready} bit in the \texttt{command} register when a command is available for the controller to execute.
+
+The repeating loop of polling is described in the following steps:
+\begin{enumerate}[noitemsep]
+\item The host repeatedly reads the \texttt{busy} bit until that bit becomes clear.
+\item The host sets the \texttt{write} bit in the \texttt{command} register and writes a byte into the \texttt{data-out} register.
+\item The host sets the \texttt{command-ready} bit.
+\item When the controller notices that the \texttt{command-ready} bit is set, it sets the busy bit.
+\item The controller reads the \texttt{command} register and sees the \texttt{write} command.
+  It reads the \texttt{data-out} register to get the byte and does the I/O to the device.
+\item The controller clears the \texttt{command-ready} bit, clears the error bit in the status register to indicate that the device I/O succeeded, and clears the \texttt{busy} bit to indicate that it is finished.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
