@@ -185,6 +185,11 @@ When an interrupt is raised, the handlers on the corresponding list are called o
   \end{remark}
 \end{definition}
 
+The interrupt mechanism also implements a system of interrupt priority levels.
+These levels enable the CPU to defer the handling of low-priority interrupts without masking all interrupts and makes it possible for a high-priority interrupt to preempt the execution of a low-priority interrupt.
+
+A threaded kernel architecture is well suited to implement multiple interrupt priorities and to enforce the precedence of interrupt handling over background processing in kernel and application routines.
+
 
 %%% Local Variables:
 %%% mode: latex
