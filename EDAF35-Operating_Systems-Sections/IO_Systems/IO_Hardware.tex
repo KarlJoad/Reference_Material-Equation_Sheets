@@ -199,6 +199,14 @@ A \nameref{def:Page_Fault} is an exception that raises an \nameref{def:Interrupt
 The interrupt suspends the current process and jumps to the page-fault handler in the \nameref{def:Kernel}.
 This handler saves the state of the \nameref{def:Process}, moves the process to the wait queue, performs page-cache management, schedules an I/O operation to fetch the page, schedules another process to resume execution, and then returns from the interrupt.
 
+\subparagraph{System Calls}\label{subpar:System_Call_Interrupts}
+Another example is found in the implementation of system calls.
+Usually, a program uses library calls to issue system calls.
+The library routines check the arguments given by the application, build a data structure to convey the arguments to the kernel, and then execute a special instruction called a software interrupt, or \nameref{def:Trap}.
+This instruction has an operand that identifies the desired kernel service.
+When a process executes the trap instruction, the interrupt hardware saves the state of the user code, switches to kernel mode, and dispatches to the kernel routine that implements the requested service.
+The \nameref{def:Trap} is given a relatively low \nameref{def:Interrupt} priority compared with those assigned to device interrupts—executing a system call on behalf of an application is less urgent than servicing a device controller before its FIFO queue overflows and loses data.
+
 
 %%% Local Variables:
 %%% mode: latex
