@@ -19,6 +19,17 @@ All of these may be controlled by a \nameref{def:Controller}.
 Because some protocols are complex, their \nameref{def:Hardware_Bus} \nameref{def:Controller} is often implemented as a separate circuit board (or a host adapter) that plugs into the computer.
 It typically contains a processor, microcode, and some private memory to enable it to process the protocol messages.
 Some devices have their own built-in controllers.
+They can receive commands in 2 ways (some support both, some do not):
+\begin{enumerate}[noitemsep]
+\item The \nameref{def:Controller} has one or more registers for data and control signals.
+  The processor communicates with the controller by reading and writing bit patterns in these registers.
+  This communication can occur through the use of special I/O instructions that specify the transfer of a byte or word to an I/O port address.
+  The I/O instruction triggers bus lines to select the proper device and to move bits into or out of a device register.
+\item The device \nameref{def:Controller} can support \nameref{subsubsec:Memory_Mapped_IO}.
+  In this case, the device-control registers are mapped into the address space of the processor.
+  The CPU executes I/O requests using the standard data-transfer instructions to read and write the device-control registers at their mapped locations in physical memory.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
