@@ -176,6 +176,15 @@ In practice, however, computers have more devices, thus \nameref{def:Interrupt_H
 A common way to solve this problem is to use \nameref{def:Interrupt_Chaining}.
 When an interrupt is raised, the handlers on the corresponding list are called one by one, until one is found that can service the request.
 
+\begin{definition}[Interrupt Chaining]\label{def:Interrupt_Chaining}
+  \emph{Interrupt chaining} is where each element in the \nameref{def:Interrupt_Vector} points to the head of a list of \nameref{def:Interrupt_Handler}s.
+  This list is searched after being found by indexing the interrupt vector.
+
+  \begin{remark}[Structure Compromise]
+    The use of \nameref{def:Interrupt_Chaining} is a compromise between the overhead of a huge interrupt table and the inefficiency of dispatching to a single interrupt handler.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
