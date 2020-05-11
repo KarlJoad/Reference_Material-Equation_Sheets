@@ -142,6 +142,14 @@ The interrupt mechanism is used to handle a wide variety of exceptions, such as:
 
 The events that trigger interrupts have a common property: they are occurrences that induce the operating system to execute an urgent, self-contained routine.
 
+\paragraph{Interrupts on Modern Hardware}\label{par:Interrupts_Modern_Hardware}
+In modern operating systems, however, we need more sophisticated interrupt-handling features, which are provided by the CPU and interrupt-controller hardware.
+\begin{itemize}[noitemsep]
+\item We need the ability to defer interrupt handling during critical processing.
+\item We need an efficient way to dispatch to the proper interrupt handler for a device without first polling all the devices to see which one raised the interrupt.
+\item We need a priority scheme, so that the operating system can distinguish between high- and low-priority interrupts and can respond with the appropriate degree of urgency.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
