@@ -37,6 +37,10 @@ Since files are stored on devices, such an interface provides access to the I/O 
   The corresponding device-table entry gives the port address or the memory-mapped address of the device controller.
 \end{definition}
 
+Modern operating systems gain significant flexibility from the multiple stages of lookup tables in the path between a request and a physical device controller.
+The mechanisms that pass requests between applications and drivers are general.
+Thus, we can introduce new devices and drivers into a computer without recompiling the kernel.
+
 
 %%% Local Variables:
 %%% mode: latex
