@@ -73,6 +73,16 @@ In the \textsc{unix} operating system, an additional integer variable named \tex
 
 Some hardware can provide highly detailed error information, although many current operating systems are not designed to convey this information to the application.
 
+\subsubsection{I/O Protection}\label{subsubsec:IO_Protection}
+To prevent users from performing illegal I/O, we define all I/O instructions to be privileged instructions requiring \nameref{def:Kernel}-level privileges.
+Thus, users cannot issue I/O instructions directly; they must do it through the operating system.
+To do I/O, a user program executes a system call to request that the operating system perform I/O on its behalf.
+The operating system, executing in monitor mode, checks that the request is valid and, if it is, does the I/O requested.
+The operating system then returns to the user.
+
+In addition, any memory-mapped and I/O port memory locations must be protected from user access by the memory-protection system.
+Note that a kernel cannot simply deny all user access in these cases.
+
 
 %%% Local Variables:
 %%% mode: latex
