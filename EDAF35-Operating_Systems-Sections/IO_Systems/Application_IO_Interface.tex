@@ -223,6 +223,9 @@ Most \nameref{def:Operating_System}s use \nameref{def:Blocking_Syscall} \nameref
   \end{remark}
 \end{definition}
 
+One way an application writer can overlap execution with I/O is to write a multithreaded application.
+Some threads can perform \nameref{def:Blocking_Syscall} system calls, while others continue executing.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
