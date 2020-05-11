@@ -113,6 +113,22 @@ The ioctl() system call has three arguments.
 \item Pointer to an arbitrary data structure in memory that enables the application and driver to communicate any necessary control information or data.
 \end{enumerate}
 
+\subsubsection{Block and Character Devices}\label{subsubsec:Block_Char_Devices}
+The block-device interface captures all the aspects necessary for accessing disk drives and other block-oriented devices.
+The \nameref{def:Device_Driver} is expected to understand the commands:
+\begin{enumerate}[noitemsep]
+\item \kernelinline{read()}
+\item \kernelinline{write()}
+\item \kernelinline{seek()}
+  \begin{itemize}[noitemsep]
+  \item Only if it is a random-access device.
+  \item Specifies which block to transfer next.
+  \end{itemize}
+\end{enumerate}
+
+Applications normally access such these devices through the \nameref{sec:FS_Interface}.
+Thus, these three functions capture the essential behaviors of block-storage devices, insulating applications from low-level differences among those devices.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
