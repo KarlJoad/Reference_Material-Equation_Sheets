@@ -11,6 +11,31 @@ It consists of:
 Each of these components contains a read queue and a write queue.
 Message passing is used to transfer data between queues.
 
+\nameref{def:Kernel_Module}s provide the functionality of \textsc{streams} processing; they are pushed onto a stream by use of the \kernelinline{ioctl()} \nameref{def:System_Call}.
+Because messages are exchanged between queues only in adjacent modules, a queue in one module may overflow an adjacent queue.
+To prevent this from occurring, a queue may support flow control.
+\begin{itemize}[noitemsep]
+\item Without flow control, a queue accepts all messages and immediately sends them on to the queue in the adjacent module without buffering them.
+\item A queue that supports flow control buffers messages and does not accept messages without sufficient buffer space.
+  \begin{itemize}[noitemsep]
+  \item This process involves exchanges of control messages between queues in adjacent modules.
+  \end{itemize}
+\end{itemize}
+
+A user process writes data to a device using either the write() or putmsg() system call.
+\begin{itemize}[noitemsep]
+\item \kernelinline{write()} writes raw data to the stream
+\item \kernelinline{putmsg()} allows the user process to specify a message.
+\end{itemize}
+
+Regardless of the system call used, the stream head copies the data into a message and delivers it to the queue for the next module in line.
+This message passing continues until the message is copied to the driver end and hence the device.
+Similarly, the user process reads data from the stream head using either the read() or getmsg() system call.
+\begin{itemize}[noitemsep]
+\item \kernelinline{read()} returns an unstructured byte stream to the stream head from its adjacent queue.
+\item \kernelinline{getmsg()} is used, a message is returned to the process.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
