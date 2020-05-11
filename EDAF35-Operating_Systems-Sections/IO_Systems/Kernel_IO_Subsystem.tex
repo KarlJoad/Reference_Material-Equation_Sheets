@@ -83,6 +83,20 @@ The operating system then returns to the user.
 In addition, any memory-mapped and I/O port memory locations must be protected from user access by the memory-protection system.
 Note that a kernel cannot simply deny all user access in these cases.
 
+\subsubsection{Kernel Data Structures}\label{subsubsec:Kernel_Data_Structures}
+The kernel needs to keep state information about the use of I/O components.
+It does so through a variety of in-kernel data structures, such as the open-file table structure.
+The kernel uses many similar structures to track network connections, character-device communications, and other I/O activities.
+
+\textsc{unix} provides file-system access to a variety of entities, such as user files, raw devices, and the address spaces of processes.
+Each of these entities supports a \kernelinline{read()} operation, but the semantics differ.
+\begin{itemize}[noitemsep]
+\item To read a user file, the kernel needs to probe the buffer cache before deciding whether to perform a disk I/O.
+\item To read a raw disk, the kernel needs to ensure that the request size is a multiple of tthe disk sector size and is aligned on a sector boundary.
+\item To read a process image, it is merely necessary to copy data from memory
+\end{itemize}
+
+\textsc{unix} encapsulates these differences within a uniform structure by using an object-oriented technique.
 
 %%% Local Variables:
 %%% mode: latex
