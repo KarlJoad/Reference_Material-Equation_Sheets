@@ -4,6 +4,15 @@ These methods form the I/O subsystem of the kernel, which separates the rest of 
 
 To encapsulate the details and oddities of different devices, the kernel of an operating system is structured to use \nameref{def:Device_Driver} modules.
 
+\begin{definition}[Device Driver]\label{def:Device_Driver}
+  \emph{Device Driver}s present a uniform device-access interface to the I/O subsystem.
+  Every device requires a device driver (though certain devices can reuse another device's driver).
+  The device driver hides the device-specific implementation details from the \nameref{def:Operating_System} and I/O subsystem, and only showing a standard, uniform interface.
+  The type of interface exported depends on the nature of the device itself.
+
+  This is analogous to \nameref{def:System_Call}s providing a standard interface between the application and the \nameref{def:Operating_System}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
