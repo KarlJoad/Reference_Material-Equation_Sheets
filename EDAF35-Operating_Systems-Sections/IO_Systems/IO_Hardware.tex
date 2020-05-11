@@ -123,6 +123,14 @@ When the CPU detects that a controller has asserted a signal on the interrupt-re
   \end{enumerate}
 \end{definition}
 
+The basic loop of an \nameref{def:Interrupt}-driven \nameref{def:Operating_System} is:
+\begin{enumerate}[noitemsep]
+\item The device controller \textbf{raises} an interrupt by asserting a signal on the \nameref{def:Interrupt_Request_Line}.
+\item The CPU \textbf{catches} the interrupt and \textbf{dispatches} it to the \nameref{def:Interrupt_Handler}.
+\item The handler \textbf{clears} the interrupt by servicing the device.
+\item The CPU returns to normal execution.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
