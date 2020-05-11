@@ -159,6 +159,20 @@ The performance and addressing characteristics of network I/O differ significant
 Thus, most operating systems provide a network I/O interface that is different from the block device interface used for disks.
 One interface available in many operating systems is the network \nameref{def:Socket} interface.
 
+\begin{definition}[Socket]\label{def:Socket}
+  A \emph{socket} is an \textbf{internal} endpoint for sending or receiving data within a node on a computer network.
+
+  By analogy, the \nameref{def:System_Call}s in the socket interface enable an application to:
+  \begin{itemize}[noitemsep]
+  \item Create a socket
+  \item Connect a local socket to a remote address
+    \begin{itemize}[noitemsep]
+    \item ``Plugs'' this application into a socket created by another application
+    \end{itemize}
+  \item Listen for any remote application to plug into the local socket
+  \item Send and receive packets over the connection.
+  \end{itemize}
+\end{definition}
 
 This interface requires at least 1 interface function be defined.
 \begin{enumerate}[noitemsep]
