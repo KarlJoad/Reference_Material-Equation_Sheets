@@ -172,6 +172,10 @@ In most architectures, this address is an offset in a table called the \nameref{
 This vector contains the memory addresses of specialized \nameref{def:Interrupt_Handler}s.
 The purpose of a vectored interrupt mechanism is to reduce the need for a single interrupt handler to \textbf{search all possible sources of interrupts} to determine which one needs service.
 
+In practice, however, computers have more devices, thus \nameref{def:Interrupt_Handler}s than they have address elements in the \nameref{def:Interrupt_Vector}.
+A common way to solve this problem is to use \nameref{def:Interrupt_Chaining}.
+When an interrupt is raised, the handlers on the corresponding list are called one by one, until one is found that can service the request.
+
 
 %%% Local Variables:
 %%% mode: latex
