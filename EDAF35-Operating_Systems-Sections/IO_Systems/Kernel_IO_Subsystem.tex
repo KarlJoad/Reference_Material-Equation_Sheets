@@ -63,6 +63,16 @@ Each application’s output is spooled to a separate disk file.
 When an application finishes printing, the spooling system queues the corresponding spool file for output to the printer.
 The spooling system copies the queued spool files to the printer one at a time.
 
+\subsubsection{Error Handling}\label{subsubsec:IO_Error_Handling}
+An operating system that uses protected memory can guard against many kinds of hardware and application errors, so that a complete system failure is not the usual result of each minor mechanical malfunction.
+Devices and I/O transfers can fail in many ways, either for transient reasons, as when a network becomes overloaded, or for ``permanent'' reasons, as when a disk controller becomes defective.
+Operating systems can often compensate effectively for transient failures.
+
+As a general rule, an I/O system call will return one bit of information about the status of the call, signifying either success or failure.
+In the \textsc{unix} operating system, an additional integer variable named \texttt{errno} is used to return an error code indicating the general nature of the failure.
+
+Some hardware can provide highly detailed error information, although many current operating systems are not designed to convey this information to the application.
+
 
 %%% Local Variables:
 %%% mode: latex
