@@ -236,6 +236,11 @@ The completion of the I/O at some future time is communicated to the application
 \item A call-back routine that is executed outside the linear control flow of the application.
 \end{itemize}
 
+Asynchronous activities occur throughout modern operating systems.
+Frequently, they are not exposed to users or applications but rather are contained within the operating-system operation.
+By default, when an application issues a network send request or a disk write request, the operating system notes the request, buffers the I/O, and returns to the application.
+When possible, to optimize overall system performance, the operating system completes the request.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
