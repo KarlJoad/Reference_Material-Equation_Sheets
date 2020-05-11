@@ -30,6 +30,14 @@ They can receive commands in 2 ways (some support both, some do not):
   The CPU executes I/O requests using the standard data-transfer instructions to read and write the device-control registers at their mapped locations in physical memory.
 \end{enumerate}
 
+For example, a graphics controller supports both of these methods of control.
+\begin{itemize}[noitemsep]
+\item The graphics controller has I/O ports for basic control operations.
+\item The controller has a large memory-mapped region to hold screen contents.
+  The process sends output to the screen by writing data into the memory-mapped region.
+  The controller generates the screen image based on the contents of this memory.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
