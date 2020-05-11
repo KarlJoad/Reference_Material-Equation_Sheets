@@ -129,6 +129,16 @@ The \nameref{def:Device_Driver} is expected to understand the commands:
 Applications normally access such these devices through the \nameref{sec:FS_Interface}.
 Thus, these three functions capture the essential behaviors of block-storage devices, insulating applications from low-level differences among those devices.
 
+The character-stream interface captures all the aspects necessary for accessing byte-by-byte generating devices.
+The \nameref{def:Device_Driver} is expected to export the following commands:
+\begin{enumerate}[noitemsep]
+\item \kernelinline{get()}
+\item \kernelinline{put()}
+\end{enumerate}
+
+This style of access is convenient for input devices (such as keyboards) that produce data for input ``spontaneously''(at times that cannot necessarily be predicted by the application).
+This access style is also good for output devices such as printers and audio boards, which naturally fit the concept of a linear stream of bytes.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
