@@ -41,6 +41,29 @@ For example, a graphics controller supports both of these methods of control.
 The ease of writing to a \nameref{subsubsec:Memory_Mapped_IO} \nameref{def:Controller} is offset by the disadvantage of being vulnerable to accidental modification by an incorrect pointer to an unintended region of memory.
 Memory protection helps reduce this risk.
 
+\subsubsection{I/O Ports}\label{subsubsec:IO_Ports}
+An I/O port typically consists of four registers, called the status, control, data-in, and data-out registers.
+\begin{enumerate}[noitemsep]
+\item The \textbf{\texttt{data-in} register} is read by the host to get input.
+\item The \textbf{\texttt{data-out} register} is written by the host to send output.
+\item The \textbf{\texttt{status} register} contains bits that can be \textbf{read by the host}.
+  These bits indicate states, such as:
+  \begin{itemize}[noitemsep]
+  \item Whether the current command has completed.
+  \item Whether a byte is available to be read from the data-in register.
+  \item Whether a device error has occurred.
+  \end{itemize}
+
+\item The \textbf{\texttt{control} register} can be \textbf{written by the host} to start a command or to change the mode of a device.
+  For instance:
+  \begin{itemize}[noitemsep]
+  \item One bit in a register of a serial port chooses between full-duplex and half-duplex communication.
+  \item Another bit enables parity checking.
+  \item A third bit sets the word length to different bit lengths.
+  \item Other bits select one of the speeds supported by the serial port.
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
