@@ -26,6 +26,35 @@ They either:
 Thus, we (users) can attach new peripherals to a computer without waiting for the operating system to develop explicit kernel-level support code.
 Unfortunately for hardware manufacturers, each operating system has its own standards for the device-driver interface.
 
+Devices can vary in many dimensions, as seen in \Cref{tab:Characteristics_IO_Devices}.
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{cll}
+    \toprule
+    \textbf{Aspect} & \textbf{Variation} & \textbf{Example} \\
+    \midrule
+    \multirow{2}{*}{Data-Transfer Mode} & Character & Terminal \\
+                    & Block & Disk \\
+    \multirow{2}{*}{Access Method} & Sequential & Modem/Network \\
+                    & Random & Magnetic Disk \\
+    \multirow{2}{*}{Transfer Schedule} & Synchronous & Magnetic Tape \\
+                    & Asynchronous & Keyboard \\
+    \multirow{2}{*}{Sharing} & Dedicated & Magnetic Tape \\
+                    & Sharable & Keyboard \\
+    \multirow{4}{*}{Device Speed} & Latency & \\
+                    & Seek Time & \\
+                    & Transfer Rate & \\
+                    & Delay between Operations & \\
+    \multirow{3}{*}{I/O Direction} & & \\
+                    & Read-only & CD-ROM (After first write) \\
+                    & Write-only & Graphics Controller \\
+                    & Read-write & Disk \\
+    \bottomrule
+  \end{tabular}
+  \caption{Characteristics of I/O Devices}
+  \label{tab:Characteristics_IO_Devices}
+\end{table}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
