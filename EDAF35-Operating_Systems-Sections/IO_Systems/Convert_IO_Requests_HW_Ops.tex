@@ -13,6 +13,19 @@ If the \nameref{def:Path_Name} also specifies the \nameref{def:Volume}, then the
 This separation makes it easy for the operating system to associate extra functionality with each device.
 For instance, it is easy to invoke spooling on any files written to the printer.
 
+If the device name space is incorporated in the regular \nameref{def:File_System} namespace, as it is in \textsc{unix}, the normal file-system name services are provided for free.
+For example, if the file system provides ownership and access control to all file names, then devices also have \nameref{def:File_Owner}s and access control.
+Since files are stored on devices, such an interface provides access to the I/O system at two levels.
+
+\begin{enumerate}[noitemsep]
+\item Names can be used to access the devices themselves or to access the files stored on the devices.
+  Because there is no clear   separation of the device from the path the \nameref{def:Operating_System} has a mount table that associates prefixes of \nameref{def:Path_Name}s with specific device names.
+  To resolve a path name, UNIX looks up the name in the mount table with the longest matching prefix; the corresponding entry in the mount table gives the device name.
+
+\item This device name also has the form of a name in the \nameref{def:File_System} namespace.
+  When \textsc{unix} looks up this name in the file-system \nameref{def:Directory} structures, it finds not an \nameref{par:Inode} number but a $\langle \mathtt{major}, \mathtt{minor} \rangle$ \nameref{def:Device_Number}.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
