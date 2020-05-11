@@ -103,6 +103,16 @@ For the purpose of application access, many of these differences are hidden by t
 \item Some operating systems provide a set of \nameref{def:System_Call}s for graphical display, video, and audio devices.
 \end{itemize}
 
+Most operating systems also have back door that transparently passes arbitrary commands from an application to a device driver.
+In \textsc{unix}, this system call is \kernelinline{ioctl()} (for ``I/O control'').
+The \kernelinline{ioctl()} \nameref{def:System_Call} enables an application to access \textbf{any} functionality that can be implemented by \textbf{any} device driver, \textbf{without} the need to invent a new system call.
+The ioctl() system call has three arguments.
+\begin{enumerate}[noitemsep]
+\item File descriptor that connects the application to the driver by referring to a hardware device managed by that driver.
+\item Integer that selects one of the commands implemented in the driver.
+\item Pointer to an arbitrary data structure in memory that enables the application and driver to communicate any necessary control information or data.
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
