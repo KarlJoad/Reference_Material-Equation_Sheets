@@ -146,6 +146,14 @@ To avoid conflicts, raw-device access passes control of the device directly to t
 A compromise between raw I/O and file system I/O, that is becoming common, is for the operating system to allow a mode of operation on a file that disables buffering and locking.
 In the \textsc{unix} world, this is called direct I/O.
 
+\paragraph{Memory-Mapped Files and Block and Character Devices}\label{par:Memory_Mapped_Files_Block_Char_Devices}
+\nameref{subsec:Memory_Mapped_Files} and their access can be layered on top of block-device drivers.
+Rather than offering read and write operations, a memory-mapped interface provides access to disk storage via an array of bytes in main memory.
+The \nameref{def:System_Call} that maps a \nameref{def:File} into memory returns the \nameref{def:Virtual_Memory} address that contains a \textbf{copy} of the file.
+The actual data transfers are performed only when needed to satisfy access to the memory image.
+
+The transfers are handled by the same mechanism as that used for \nameref{def:Demand_Paging} \nameref{def:Virtual_Memory} access, making \nameref{subsubsec:Memory_Mapped_IO} efficient.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
