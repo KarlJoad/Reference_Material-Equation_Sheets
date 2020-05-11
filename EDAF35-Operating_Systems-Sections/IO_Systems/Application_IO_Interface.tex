@@ -88,6 +88,21 @@ Now, each of the entries in \Cref{tab:Characteristics_IO_Devices} are further ex
   Some devices perform both input and output, but others support only one data transfer direction.
 \end{itemize}
 
+For the purpose of application access, many of these differences are hidden by the operating system, and the devices are grouped into a few conventional types.
+\begin{itemize}[noitemsep]
+\item Block I/O.
+\item Character-stream I/O.
+\item \nameref{subsec:Memory_Mapped_Files} access.
+\item Network sockets.
+\item Operating systems also provide special system calls to access a few additional devices:
+  \begin{itemize}[noitemsep]
+  \item Time-of-day clock.
+  \item Timer.
+\end{itemize}
+
+\item Some operating systems provide a set of \nameref{def:System_Call}s for graphical display, video, and audio devices.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
