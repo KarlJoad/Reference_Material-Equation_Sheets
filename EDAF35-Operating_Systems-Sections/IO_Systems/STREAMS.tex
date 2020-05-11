@@ -1,4 +1,16 @@
 \subsection{STREAMS}\label{subsec:STREAMS}
+\textsc{streams} enable an application to assemble pipelines of driver code dynamically.
+A stream is a full-duplex connection between a device driver and a user-level process.
+It consists of:
+\begin{enumerate}[noitemsep]
+\item a \textbf{stream head} that interfaces with the user process
+\item a \textbf{driver end} that controls the device
+\item zero or more \textbf{stream modules} between the stream head and the driver end
+\end{enumerate}
+
+Each of these components contains a read queue and a write queue.
+Message passing is used to transfer data between queues.
+
 
 %%% Local Variables:
 %%% mode: latex
