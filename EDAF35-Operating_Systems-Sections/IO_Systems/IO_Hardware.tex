@@ -111,6 +111,8 @@ The CPU hardware has a wire called the \nameref{def:Interrupt_Request_Line} that
   However, instead of switching to another \nameref{def:Process}, the CPU jumps to the \nameref{def:Interrupt_Handler}.
 \end{definition}
 
+When the CPU detects that a controller has asserted a signal on the interrupt-request line, the CPU performs a state save and jumps to the \nameref{def:Interrupt_Handler} routine at a fixed address in memory.
+
 
 %%% Local Variables:
 %%% mode: latex
