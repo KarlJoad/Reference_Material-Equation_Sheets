@@ -54,6 +54,15 @@ However, a section of memory can sometimes be used for both purposes.
 For instance, to preserve copy semantics and to enable efficient scheduling of disk I/O, the operating system uses buffers in main memory to hold disk data.
 These buffers are also used as a cache, to improve the I/O efficiency for files that are shared by applications or that are being written and reread rapidly.
 
+\subsubsection{Spooling and Device Reservation}\label{subsubsec:Spooling_Device_Reservation}
+A spool is a buffer that holds output for a device, such as a printer, that cannot
+accept interleaved data streams.
+For example, a printer can serve only one job at a time, but several applications may wish to print their output concurrently, without having their output mixed together.
+The operating system solves this problem by intercepting all output to the printer.
+Each application’s output is spooled to a separate disk file.
+When an application finishes printing, the spooling system queues the corresponding spool file for output to the printer.
+The spooling system copies the queued spool files to the printer one at a time.
+
 
 %%% Local Variables:
 %%% mode: latex
