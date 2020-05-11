@@ -1,4 +1,14 @@
 \subsection{Convert I/O Requests to Hardware Operations}\label{subsec:Convert_IO_Requests_HW_Ops}
+Up to this point, no explanation has been given for how the \nameref{def:Operating_System} connects an application's request to a set of wires or hardware.
+
+In the case of a \nameref{def:File} lookup, there are 2 methods:
+\begin{enumerate}[noitemsep]
+\item The \nameref{def:Path_Name} also specifies the \nameref{def:Volume} or disk that the file is on.
+  Windows/MS-DOS use this.
+\item The device name space is incorporated into the regular \nameref{def:File_System} namespace.
+  \textsc{unix} uses this.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
