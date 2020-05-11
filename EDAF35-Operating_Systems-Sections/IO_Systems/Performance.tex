@@ -11,6 +11,8 @@ I/O is a major factor in system performance.
 
 Coping gracefully with all these demands is one of the major concerns of the OS designer/architect.
 
+Interrupt handling is a relatively expensive task.
+Each interrupt causes the system to perform a state change, to execute the interrupt handler, and then to restore state.
 
 %%% Local Variables:
 %%% mode: latex
