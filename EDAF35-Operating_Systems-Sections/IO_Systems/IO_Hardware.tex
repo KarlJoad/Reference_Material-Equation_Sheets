@@ -133,6 +133,15 @@ The basic loop of an \nameref{def:Interrupt}-driven \nameref{def:Operating_Syste
 
 The loop enables the CPU to respond to asynchronous events.
 
+The interrupt mechanism is used to handle a wide variety of exceptions, such as:
+\begin{itemize}[noitemsep]
+\item Dividing by 0.
+\item Accessing a protected or nonexistent memory address.
+\item Attempting to execute a privileged instruction from user mode.
+\end{itemize}
+
+The events that trigger interrupts have a common property: they are occurrences that induce the operating system to execute an urgent, self-contained routine.
+
 
 %%% Local Variables:
 %%% mode: latex
