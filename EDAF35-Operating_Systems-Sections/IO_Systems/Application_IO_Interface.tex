@@ -244,6 +244,16 @@ When possible, to optimize overall system performance, the operating system comp
 Note that multiple \nameref{def:Thread}s performing I/O to the same file might not receive consistent data, depending on how the kernel implements its I/O.
 In this situation, the threads may need to use locking protocols.
 
+\subsubsection{Vectored I/O}\label{subsubsec:Vectored_IO}
+Some operating systems provide another major variation of I/O via their applications interfaces.
+Vectored I/O allows \textbf{one} system call to perform \textbf{multiple} I/O operations involving \textbf{multiple} locations.
+The same transfer could be caused by several individual invocations of system calls, but this scatter–gather method is useful for a variety of reasons.
+\begin{itemize}[noitemsep]
+\item Multiple separate buffers can have their contents transferred via one system call, avoiding context-switching and system-call overhead.
+\item Without vectored I/O, the data might first need to be transferred to a larger buffer in the right order and then transmitted, which is inefficient.
+\item Some versions of scatter–gather provide atomicity, assuring that all the I/O is done without interruption (and avoiding corruption of data if other threads are also performing I/Oinvolving those buffers).
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
