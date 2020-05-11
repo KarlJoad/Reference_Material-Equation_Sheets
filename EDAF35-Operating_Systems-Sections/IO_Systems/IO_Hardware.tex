@@ -80,6 +80,10 @@ The repeating loop of polling is described in the following steps:
 \item The controller clears the \texttt{command-ready} bit, clears the error bit in the status register to indicate that the device I/O succeeded, and clears the \texttt{busy} bit to indicate that it is finished.
 \end{enumerate}
 
+The host is \textbf{busy-waiting} or \textbf{polling} in the first step: it is in a loop, reading the status register over and over until the busy bit becomes clear.
+If the controller and device are fast, this is reasonable.
+But if the wait is long enough, the host should switch to another task.
+
 
 %%% Local Variables:
 %%% mode: latex
