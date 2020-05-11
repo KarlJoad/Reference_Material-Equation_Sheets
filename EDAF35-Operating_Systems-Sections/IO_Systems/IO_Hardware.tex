@@ -87,6 +87,14 @@ But if the wait is long enough, the host should switch to another task.
 For some devices, the host \textbf{must} service the device quickly, or data will be lost.
 For instance, when data are streaming in on a serial port, the small buffer on the controller will overflow and data will be lost if the host waits too long before returning to read the bytes.
 
+The basic polling operation is instruction-efficient.
+In many computer architectures, just three CPU-instruction cycles are sufficient to poll a device:
+\begin{enumerate}[noitemsep]
+\item Read a device register.
+\item Logical \texttt{AND} to extract a status bit.
+\item Branch if not zero.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
