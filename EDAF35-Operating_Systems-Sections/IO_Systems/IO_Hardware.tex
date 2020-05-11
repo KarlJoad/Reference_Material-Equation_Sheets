@@ -241,6 +241,10 @@ Consider the processing required to complete a disk read.
   \end{itemize}
 \end{enumerate}
 
+\subsubsection{Direct Memory Access}\label{subsubsec:Direct_Memory_Access}
+For devices that do large transfers, such as disk drives, it is wasteful to use a general-purpose processor to watch status bits and feed data into a controller register one byte at a time (\nameref{def:Programmed_IO}/PIO).
+Many computers avoid burdening the main CPU with PIO by offloading some of this work to a special-purpose processor called a \nameref{def:Direct_Memory_Access_Controller}.
+
 
 %%% Local Variables:
 %%% mode: latex
