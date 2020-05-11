@@ -13,6 +13,15 @@ Coping gracefully with all these demands is one of the major concerns of the OS 
 
 Interrupt handling is a relatively expensive task.
 Each interrupt causes the system to perform a state change, to execute the interrupt handler, and then to restore state.
+Network traffic can also cause a high context-switch rate (see \Cref{fig:Intercomputer_Communications}).
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[scale=1.00]{./Drawings/EDAF35-Operating_Systems/Intercomputer_Communications.jpg}
+  \caption{Intercomputer Communications}
+  \label{fig:Intercomputer_Communications}
+\end{figure}
+
 
 %%% Local Variables:
 %%% mode: latex
