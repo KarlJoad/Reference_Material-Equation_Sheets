@@ -15,6 +15,14 @@ The software layering used is shown in \Cref{fig:Kernel_IO_Subsystem_Structure}.
 This layering methodology is used to hide differences among devices and their controllers from the \nameref{def:Kernel}'s I/O subsystem.
 This is analogous to the I/O system calls encapsulating the behavior of devices in a few generic classes that hide hardware differences from applications.
 
+Making the I/O subsystem independent of the hardware simplifies the job of the operating-system developer.
+It also benefits the hardware manufacturers.
+They either:
+\begin{itemize}[noitemsep]
+\item Design new devices to be compatible with an existing host controller interface.
+\item Write device drivers to interface the new hardware to popular operating systems.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
