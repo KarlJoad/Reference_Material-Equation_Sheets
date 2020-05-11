@@ -41,6 +41,26 @@ Modern operating systems gain significant flexibility from the multiple stages o
 The mechanisms that pass requests between applications and drivers are general.
 Thus, we can introduce new devices and drivers into a computer without recompiling the kernel.
 
+\subsubsection{Life Cycle of I/O Request}\label{subsubsec:IO_Request_Life_Cycle}
+Here, we discuss the procedure for a \nameref{def:Blocking_Syscall} I/O request.
+\begin{enumerate}[noitemsep]
+\item A process issues a blocking read() system call to a file descriptor of a file that has been opened previously.
+\item The system-call code in the kernel checks the parameters for correctness.
+\item In the case of input, if the data are already available in the buffer cache, the data are returned to the process, and the I/O request is completed.
+\item Otherwise, a physical I/O must be performed.
+  The process is removed from the run queue and is placed on the wait queue for the device, and the I/O request is scheduled.
+  Eventually, the I/O subsystem sends the request to the device driver.
+\item The device driver allocates kernel buffer space to receive the data and schedules the I/O.
+  Eventually, the driver sends commands to the device controller by writing into the device-control registers.
+\item The device controller operates the device hardware to perform the data transfer.
+\item The driver may poll for status and data, or it may have set the \nameref{def:Direct_Memory_Access_Controller} up to handle the transfer into kernel memory.
+  Assume that the transfer is managed by a DMA controller, generating an \nameref{def:Interrupt} when the transfer completes.
+\item The correct interrupt handler receives the interrupt via the \nameref{def:Interrupt_Vector} table, stores any necessary data, signals the \nameref{def:Device_Driver}, and returns from the \nameref{def:Interrupt}.
+\item The device driver receives the signal, determines which I/O request has completed, determines the request’s status, and signals the kernel I/O subsystem that the request has been completed.
+\item The kernel transfers data or return codes to the address space of the requesting process and moves the process from the wait queue back to the ready queue.
+\item Moving the process to the ready queue unblocks the process.
+  When the scheduler assigns the process to the CPU, the process resumes execution at the completion of the system call.
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
