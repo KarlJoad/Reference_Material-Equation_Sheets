@@ -95,6 +95,10 @@ In many computer architectures, just three CPU-instruction cycles are sufficient
 \item Branch if not zero.
 \end{enumerate}
 
+But polling becomes inefficient when it is attempted repeatedly yet rarely finds a device ready for service, while other useful CPU processing remains undone.
+In those cases, it is more efficient to have the hardware controller notify the CPU when the device becomes ready again, rather than require the CPU to poll for I/O completion.
+The hardware mechanism that enables a device to notify the CPU is called an \nameref{def:Interrupt}.
+
 
 %%% Local Variables:
 %%% mode: latex
