@@ -226,6 +226,16 @@ Most \nameref{def:Operating_System}s use \nameref{def:Blocking_Syscall} \nameref
 One way an application writer can overlap execution with I/O is to write a multithreaded application.
 Some threads can perform \nameref{def:Blocking_Syscall} system calls, while others continue executing.
 
+An alternative to a \nameref{def:Nonblocking_Syscall} system call is an asynchronous system call.
+An asynchronous call returns immediately, without waiting for the I/O to complete.
+The application continues to execute its code.
+The completion of the I/O at some future time is communicated to the application, either:
+\begin{itemize}[noitemsep]
+\item Through the setting of some variable in the address space of the application.
+\item Through the triggering of a signal or software interrupt.
+\item A call-back routine that is executed outside the linear control flow of the application.
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
