@@ -16,6 +16,19 @@ An expression in \nameref{def:Lambda_Calculus} (not to be confused with \nameref
 \Cref{eq:Basic_Lambda_Function} denotes a function that, given an input $x$, computes $E(x)$.
 To apply this function, one substitutes the given input for the variable and evaluates the function body.
 
+For example, the below function is equivalent to \haskellinline{succ} in Haskell.
+
+\begin{equation}\label{eq:Succ_Lambda_Function}
+  \lambda x.(x+1)
+\end{equation}
+
+To apply \Cref{eq:Succ_Lambda_Function}, for example to 7, one performs substitution of the lambda's parameter.
+
+\begin{align*}
+(\lambda x.(x+1))7 &= (7+1) && \text{Replace all occurrences of $x$ in $\lambda x$ with 7.} \\
+                   &= 8 && \text{Apply the summation operation, which we assume to be primitive.} \\
+\end{align*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAN40-Functional_Programming-Reference_Sheet"
