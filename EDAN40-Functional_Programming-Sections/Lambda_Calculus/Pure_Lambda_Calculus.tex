@@ -16,6 +16,17 @@ $ (\lambda x. M)$ & $\lambda$-Abstraction & Function definition ($M$ is a lambda
 \label{tab:Lambda_Terms}
 \end{table}
 
+Note that in the case of $\lambda$-Application, the operation \textbf{IS NOT} associative.
+This means that, in general (there are exceptions), the following relation does \textbf{not} hold.
+\begin{equation*}
+  (MN) P = M(NP)
+\end{equation*}
+
+Additionally, $\lambda$-Application is assumed to be left-associative, meaning
+\begin{equation*}
+  MNP = (MN) P
+\end{equation*}
+
 
 %%% Local Variables:
 %%% mode: latex
