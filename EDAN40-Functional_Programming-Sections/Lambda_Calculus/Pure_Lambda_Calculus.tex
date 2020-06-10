@@ -1,4 +1,21 @@
 \subsection{Pure Lambda Calculus}\label{subsec:Pure_Lambda_Calculus}.
+In pure lambda calculus, there are only 3 things, called \nameref{tab:Lambda_Terms}.
+
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{ccp{15cm}}
+    \toprule
+    Syntax & Name & \multicolumn{1}{c}{Description} \\
+    \midrule
+    $x$ & Variable & A character or string representing a parameter or mathematical/logical value. \\
+$ (\lambda x. M)$ & $\lambda$-Abstraction & Function definition ($M$ is a lambda term). The variable $x$ becomes bound in the expression. \\
+    $(M N)$ & $\lambda$-Application & Applying a function to an argument. M and N are lambda terms. \\
+    \bottomrule
+  \end{tabular}
+\caption{$\lambda$-Terms}
+\label{tab:Lambda_Terms}
+\end{table}
+
 
 %%% Local Variables:
 %%% mode: latex
