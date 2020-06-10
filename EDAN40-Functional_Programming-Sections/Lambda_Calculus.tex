@@ -33,6 +33,25 @@ To apply \Cref{eq:Succ_Lambda_Function}, for example to 7, one performs substitu
   The definition of lambda functions in $\lambda$-calculus makes \textbf{ALL} functions curried.
 \end{remark*}
 
+This is well illustrated in \Cref{eq:Higher_Order_Lambda_Function}.
+\begin{equation}\label{eq:Higher_Order_Lambda_Function}
+  \lambda f. \lambda g. \lambda x. f \bigl( g(x) \bigr)
+\end{equation}
+
+If we want to use this function in \Cref{eq:Higher_Order_Lambda_Function}, by applying \Cref{eq:Succ_Lambda_Function}, we can.
+This process is shown below.
+\begin{align*}
+  \intertext{$y$ and $z$ are identical to $x$ from their parent equation. They have been changed for the reasons of legibility.}
+  \Bigl( \lambda f. \lambda g. \lambda x. f \bigl( g(x) \bigr) \Bigr) \bigl( \lambda y. (y+1) \bigr) \bigl( \lambda z. (z+1) \bigr) &= \Biggl( \lambda g. \lambda x. \biggl( \Bigl( \lambda y. (y+1) \Bigr) \Bigr(g (x) \Bigr) \biggr) \Biggr) \bigl( \lambda z. (z+1) \bigr) \\
+  \shortintertext{Replace all instances of $f$ with the $\lambda y. (y+1)$ function.}
+                                                                                                                                    &= \lambda x. \biggl( \bigl( \lambda y. (y+1) \bigr) \Bigl( \bigl( \lambda z. (z+1) \bigr) x \Bigr) \biggr) \\
+  \intertext{Note that we \textbf{ARE NOT} told the order of application of the functions.}
+  \shortintertext{Apply $x$ to the $\lambda z. (z+1)$ function.}
+                                                                                                                                    &= \lambda x. \Bigl( \bigl( \lambda y. (y+1) \bigr) (x+1) \Bigr) \\
+  \shortintertext{Apply $x+1$ to $\lambda y. (y+1)$.}
+                                                                                                                                    &= \lambda x. \bigl( (x+1) + 1 \bigr) \\
+\end{align*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAN40-Functional_Programming-Reference_Sheet"
