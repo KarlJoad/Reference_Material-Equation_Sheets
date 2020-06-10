@@ -8,6 +8,14 @@ The first programming language to use \nameref{def:Lambda_Calculus}, and thus be
   It was introduced by the mathematician Alonzo Church in the 1930s as part of his research into the foundations of mathematics.
 \end{definition}
 
+An expression in \nameref{def:Lambda_Calculus} (not to be confused with \nameref{def:Lambda_Expression}s) is defined as follows:
+\begin{equation}\label{eq:Basic_Lambda_Function}
+  \lambda x. E(x)
+\end{equation}
+
+\Cref{eq:Basic_Lambda_Function} denotes a function that, given an input $x$, computes $E(x)$.
+To apply this function, one substitutes the given input for the variable and evaluates the function body.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../EDAN40-Functional_Programming-Reference_Sheet"
