@@ -15,7 +15,7 @@ There are 3 techniques for handling this discussed in the textbook:
 \subsubsection{Hierarchical Paging}\label{subsubsec:Hierarchical_Paging}
 One simple solution to this problem is to divide the page table into smaller pieces.
 We can accomplish this division in several ways.
-One way is to use a two-level paging algorithm, in which the page table itself is also paged.
+One way is to use a \textbf{two-level page table}, in which the page table itself is also paged.
 
 For example, consider the system with a 32-bit \nameref{def:Logical_Address_Space} and \SI{4}{\kibi\byte} again.
 Fromt he perspective of the CPU, the\nameref{def:Logical_Address} is divided into a page number consisting of 20 bits and a page offset consisting of 12 bits.
