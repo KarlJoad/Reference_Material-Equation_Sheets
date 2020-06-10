@@ -33,11 +33,11 @@ Each entry in the hash table contains a linked list of elements that hash to the
 Each element consists of three fields:
 \begin{enumerate}[noitemsep]
 \item Hashed page number.
-\item Value of the mapped frame.
+\item Frame number the requested page is mapped to.
 \item Pointer to the next element in the linked list (or \texttt{NULL}).
 \end{enumerate}
 
-The algorithm works as follows:
+The algorithm works as follows:\\
 \begin{algorithm}[H]
   \DontPrintSemicolon{}
   \SetKwData{fieldOne}{Field 1}
@@ -46,12 +46,11 @@ The algorithm works as follows:
   \BlankLine{}
 
   The page number in the \nameref{def:Logical_Address} is hashed into the hash table. \;
-  The virtual page number is compared
-  with field 1 in the first element in the linked list.
-  \If(There is a match){\fieldOne{} == \fieldTwo{}}{
-    Corresponding page frame (\fieldTwo{}) is used to form the desired physical address.
+  The virtual page number is compared with \fieldOne{} in the first element in the linked list. \;
+  \If(There is a matching page){\fieldOne{} == \fieldTwo{}}{
+    Corresponding frame (\fieldTwo{}) is used to form the desired physical address.
   }\Else(There is no match){
-    subsequent entries in the linked list are searched for a matching virtual page number.
+    Subsequent entries in the linked list are searched for a matching virtual page number.
   }
 
   \caption{Hashed Page Table Usage}
