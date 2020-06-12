@@ -79,6 +79,16 @@ When they find a known pattern, they remove the instructions, disinfecting the p
 Some viruses modify themselves as they infect other software to avoid the basic pattern-match approach of antivirus programs. Antivirusb
 programs in turn now look for families of patterns rather than a single pattern to identify a virus.
 
+\subsubsection{Auditing, Accounting, and Logging}\label{subsubsec:Auditing_Accounting_Logging}
+Auditing, accounting, and logging decrease system performance, but they are useful in several areas, including security.
+Logging can be general or specific.
+For example, all \nameref{def:System_Call} executions can be logged for analysis of program behavior.
+More typically, only suspicious events are logged.
+
+Authentication failures and authorization failures can tell us quite a lot about break-in attempts.
+
+Accounting is another potential tool in a security administrator’s kit.
+It can be used to find performance changes, which in turn can reveal security problems.
 
 %%% Local Variables:
 %%% mode: latex
