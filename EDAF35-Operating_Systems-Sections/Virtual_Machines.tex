@@ -1,4 +1,15 @@
 \section{Virtual Machines}\label{sec:Virtual_Machines}
+With a \nameref{def:Virtual_Machine}, guest \nameref{def:Operating_System}s and applications run on a system utilizing \nameref{def:Virtualization}.
+
+\begin{definition}[Virtualization]\label{def:Virtualization}
+  \emph{Virtualization} is the act of abstracting the \nameref{def:Hardware} of a single computer into several different execution environments.
+  Each of these execution environments operates under the illusion that they are the only environment running on its own private computer.
+  These ``computer'' for these environments appears to be native hardware and things in these environments behave as native hardware would but that also protects, manages, and limits them.
+\end{definition}
+
+This concept is similar to the \nameref{subsubsec:Layered_Approach} of \nameref{def:Operating_System} implementation (see \Cref{subsubsec:Layered_Approach}).
+In the case of \nameref{def:Virtualization}, there is a layer that creates a virtual system on which operating systems or applications can run.
+
 
 %%% Local Variables:
 %%% mode: latex
