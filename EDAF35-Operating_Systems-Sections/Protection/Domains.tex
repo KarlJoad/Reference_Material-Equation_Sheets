@@ -123,6 +123,62 @@ Regular \nameref{def:User}s then run a separate program, which sends requests to
 In any of these systems, great care must be taken in writing privileged programs.
 Any oversight can result in a total lack of protection on the system.
 
+\subsubsection{\textsc{multics}-Style Protection Domains and Schemes}\label{subsubsec:MULTICS_Protections}
+In the \textsc{multics} system, the \nameref{def:Protection_Domain}s are organized hierarchically into a ring structure.
+Each ring corresponds to a single domain, see \Cref{fig:MULTICS_Rings} for a visualization.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[scale=1.00]{./Drawings/EDAF35-Operating_Systems/MULTICS_Rings.jpg}
+  \caption{\textsc{multics} Rings}
+  \label{fig:MULTICS_Rings}
+\end{figure}
+
+The rings are numbered from 0 to $N-1$.
+Let $D_{i}$ and $D_{j}$ be any two domain rings.
+If $j < i$, then $D_{i}$ is a subset of $D_{j}$, meaning a \nameref{def:Process} executing in domain $D_{j}$ has more privileges than a process executing in domain $D_{i}$.
+A process executing in domain $D_{0}$ has the most privileges.
+\begin{remark*}
+  If only two rings exist, this scheme is equivalent to the monitor–user mode of execution, where monitor-/\nameref{def:Kernel}-mode corresponds to $D_{0}$ and \nameref{def:User}-mode corresponds to $D_{1}$.
+\end{remark*}
+
+\textsc{multics} has a segmented address space; each segment is a file, and each segment is associated with one of the rings.
+A segment description includes an entry that identifies the ring number that it is associated with.
+In addition, it includes three access bits to control reading, writing, and execution.
+The association between segments and rings is a policy decision.
+
+A \texttt{current-ring-number} counter is associated with each \nameref{def:Process}, identifying the ring in which the process is executing currently.
+Given 3 ring domains $i$, $j$, and $k$, where $j < i$ and $k \geq i$, and the process is executing in ring $i$, the process cannot access a memory segment associated with ring $j$, but \emph{can} access a segment associated with ring $k$.
+In terms of \Cref{fig:MULTICS_Rings}, this means a process can always move outwards from the center to access memory, but never inwards.
+A process in ring $i$ accessing ring $k$'s memory segment when $i \geq k$ is restricted according to the access bits associated with that segment.
+
+Domain switching in \textsc{multics} occurs when a process crosses from one ring to another by calling a procedure in a different ring.
+This switch must be done in a controlled manner; otherwise, a process could start executing in ring $0$, and no protection would be provided.
+To allow controlled domain switching, the ring field of the segment also includes:
+\begin{itemize}[noitemsep]
+\item \textbf{Access bracket}.
+  A pair of integers, $\langle b_{1}, b_{2} \rangle$, where $b_{1} \leq b_{2}$.
+\item \textbf{Limit}.
+  An integer $b_{3}$ such that $b_{3} > b_{2}$.
+\item \textbf{List of gates}.
+  Identifies the entry points (or gates) at which the segments may be called.
+\end{itemize}
+
+If a process executing in ring $i$ calls a procedure (or segment) with access bracket $\langle b_{1}, b_{2} \rangle$, then the call is allowed if $b_{1} \leq i \leq b_{2}$, and the current ring number of the process remains $i$.
+Otherwise, a \nameref{def:Trap} to the \nameref{def:Operating_System} occurs, and the situation is handled.
+\begin{itemize}[noitemsep]
+\item If $i < b_{1}$, then the call is allowed to occur, because we have a transfer to a ring with fewer privileges.
+  If parameters are passed that refer to segments in a lower ring (that is, segments not accessible to the called procedure), then these segments must be copied into an area that can be accessed by the called procedure.
+\item If $i > b_{2}$, then the call is allowed to occur only if $b_{3}$ is greater than or equal to $i$ and the call has been directed to one of the designated entry points in the list of gates.
+  This scheme allows processes with limited access rights to call procedures in lower rings that have more access rights, but only in a carefully controlled manner.
+\end{itemize}
+
+The main disadvantage of the ring structure is that it does not allow us to enforce the \nameref{def:Need_To_Know_Principle}.
+In particular, if an object must be accessible in domain $D_{j}$ but not accessible in domain $D_{i}$, then we must have $j < i$.
+But this requirement means that \textbf{every} segment accessible in $D_{i}$ is also accessible in $D_{j}$.
+
+The \textsc{multics} protection system is generally more complex and less efficient than are those used in current operating systems.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
