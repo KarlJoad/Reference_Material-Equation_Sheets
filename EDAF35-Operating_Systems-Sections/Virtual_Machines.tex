@@ -54,6 +54,25 @@ Furthermore, the ``applications'' are guest \nameref{def:Operating_System}s.
 Is the VMware ESX VMM an operating system that, in turn, runs other operating systems?
 It certainly acts like an operating system.
 
+The implementation of VMMs varies greatly. Options include the following:
+\begin{itemize}[noitemsep]
+\item Hardware-based solutions that provide support for virtual machine creation and management via \nameref{def:Firmware}.
+  These VMMs, which are only found in mainframes, are known as \nameref{def:Type0_Hypervisor}.
+  IBM LPARs and Oracle LDOMs are examples.
+\item \nameref{def:Operating_System}-like software built to provide \nameref{def:Virtualization}, including VMware ESX, Joyent SmartOS, and Citrix XenServer.
+  These VMMs are known as \nameref{def:Type1_Hypervisor}s.
+\item General-purpose \nameref{def:Operating_System}s that provide standard functions \textbf{as well as} \nameref{def:VMM} functions, including Microsoft Windows Server with HyperV and Linux with the KVM feature.
+  Because such systems have a feature set similar to \nameref{def:Type1_Hypervisor}s, they are also considered type 1.
+\item Regular applications that run on standard \nameref{def:Operating_System}s but provide \nameref{def:VMM} features to guest operating systems.
+  These applications, which include VMware, Parallels Desktop, and Oracle VirtualBox, are \nameref{def:Type2_Hypervisor}s.
+\item \nameref{subsubsec:Paravirtualization}, a technique in which the guest \nameref{def:Operating_System} is modified to work in cooperation with the \nameref{def:VMM} to optimize performance.
+\item Programming-environment virtualization, in which \nameref{def:VMM}s do not virtualize real hardware but instead create an optimized virtual system.
+  This technique is used by Oracle Java and Microsoft.Net.
+\item Emulators that allow applications written for one hardware environment to run on a very different hardware environment, such as a different type of CPU.\@
+\item Application containment, which is not virtualization at all but rather provides virtualization-like features by segregating applications from the \nameref{def:Operating_System}.
+  Solaris Zones, BSD Jails, and Docker ``contain'' applications, making them more secure and manageable.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
