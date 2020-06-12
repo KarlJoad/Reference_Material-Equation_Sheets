@@ -36,6 +36,24 @@ Each guest process is provided with a virtual copy of the host.
 Usually, the guest process is an \nameref{def:Operating_System}.
 A single physical machine can run multiple operating systems concurrently, each in its own virtual machine.
 
+With \nameref{def:Virtualization}, the definition of ``\nameref{def:Operating_System}'' once again blurs.
+For example, consider \nameref{def:VMM} software such as VMware ESX.\@
+This virtualization software:
+\begin{itemize}[noitemsep]
+\item Is installed on the hardware
+\item Runs when the hardware boots
+\item Provides services to applications
+  \begin{itemize}[noitemsep]
+  \item CPU scheduling
+  \item Memory Management
+  \item Migration of VMs between systems.
+  \end{itemize}
+\end{itemize}
+
+Furthermore, the ``applications'' are guest \nameref{def:Operating_System}s.
+Is the VMware ESX VMM an operating system that, in turn, runs other operating systems?
+It certainly acts like an operating system.
+
 
 %%% Local Variables:
 %%% mode: latex
