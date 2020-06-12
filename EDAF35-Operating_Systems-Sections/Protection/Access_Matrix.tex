@@ -89,6 +89,11 @@ The \texttt{control} right allows for changing the entries in a row.
 The \texttt{control} right is applicable only to domain objects.
 If \texttt{access($i$, $j$)} includes the \texttt{control} right, then a process executing in domain $D_{i}$ can remove any access right from row $j$.
 
+\subsubsection{Confinement Problem}\label{subsubsec:Confinement_Problem}
+The \texttt{copy} and \texttt{owner} rights provide us with a mechanism to limit the propagation of access rights.
+However, they do not give us the appropriate tools for preventing the propagation (or disclosure) of information.
+The problem of guaranteeing that no information initially held in an object can migrate outside of its execution environment is called the confinement problem.
+This problem is, in general, unsolvable.
 
 %%% Local Variables:
 %%% mode: latex
