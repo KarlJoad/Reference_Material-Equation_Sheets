@@ -91,6 +91,43 @@ As with most penetration attacks, viruses are very specific to architectures, \n
 
 Once a virus reaches a target machine, a program known as a virus dropper inserts the virus into the system.
 The virus dropper is usually a Trojan horse, executed for other reasons but installing the virus as its core activity.
+Once installed, the virus may do any one of a number of things.
+\begin{itemize}[noitemsep]
+\item \textbf{File}.
+  A standard file \nameref{def:Virus} infects a system by appending itself to a file.
+  It changes the start of the program so that execution jumps to its code.
+  After it executes, it returns control to the program so that its execution is not noticed.
+  File viruses are sometimes known as parasitic viruses, as they leave no full files behind and leave the host program still functional.
+\item \textbf{Boot}.
+  A boot \nameref{def:Virus} infects the boot sector of the system, executing every time the system is booted and before the operating system is loaded.
+  It watches for other bootable media and infects them.
+  These viruses are also known as memory viruses, because they do not appear in the file system.
+\item \textbf{Macro}.
+  Most viruses are written in a low-level language, such as assembly or C.
+  Macro viruses are written in a high-level language.
+  These viruses are triggered when a program capable of executing the macro is run.
+\item \textbf{Source code}.
+  A source code \nameref{def:Virus} looks for source code and modifies it to include the virus and to help spread the virus.
+\item \textbf{Polymorphic}.
+  A polymorphic \nameref{def:Virus} changes each time it is installed to avoid detection by antivirus software.
+  The changes do not affect the virus’s functionality but change the virus’s signature.
+  A virus signature is a pattern that can be used to identify a virus, typically a series of bytes that make up the virus code.
+\item \textbf{Encrypted}.
+  An encrypted \nameref{def:Virus} includes decryption code along with the encrypted virus, again to avoid detection.
+  The virus first decrypts and then executes.
+\item \textbf{Stealth}.
+  This \nameref{def:Virus} attempts to avoid detection by modifying parts of the system that could be used to detect it.
+\item \textbf{Tunneling}.
+  This \nameref{def:Virus} attempts to bypass detection by an antivirus scanner by installing itself in the interrupt-handler chain.
+  Similar viruses install themselves in device drivers.
+\item \textbf{Multipartite}.
+  A \nameref{def:Virus} of this type is able to infect multiple parts of a system, including boot sectors, memory, and files.
+  This makes it difficult to detect and contain.
+\item \textbf{Armored}.
+  An armored \nameref{def:Virus} is coded to make it hard for antivirus researchers to unravel and understand.
+  It can also be compressed to avoid detection and disinfection.
+  In addition, virus droppers and other full files that are part of a virus infestation are frequently hidden via file attributes or unviewable file names.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
