@@ -11,6 +11,28 @@ A general model of protection can be viewed abstractly as a matrix, called an \n
   \end{remark}
 \end{definition}
 
+% Not using \toprule \midrule and \bottomrule was deliberate.
+% This is not a table, it is a lookup matrix, and it is easier to read with the extra lines.
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \diagbox{Domain}{Object} & $F_{1}$ & $F_{2}$ & $F_{3}$ & Printer \\
+    \hline
+    $D_{1}$ & Read & & Read & \\
+    \hline
+    $D_{2}$ & & & & Print \\
+    \hline
+    $D_{3}$ & Read & Execute & & \\
+    \hline
+    \multirow{2}{*}{$D_{4}$} & Read & & Read & \\
+                             & Write & & Write & \\
+    \hline
+  \end{tabular}
+  \caption{Basic Access Matrix}
+  \label{tab:Basic_Access_Matrix}
+\end{table}
+
 
 %%% Local Variables:
 %%% mode: latex
