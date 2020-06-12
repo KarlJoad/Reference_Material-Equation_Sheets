@@ -49,6 +49,17 @@ Some systems also age passwords, forcing users to change their passwords at regu
 This method is not foolproof either, because users can easily toggle between two passwords.
 The solution, as implemented on some systems, is to record a password history for each user.
 
+\subsubsection{Securing Passwords}\label{subsubsec:Securing_Passwords}
+One problem with all these approaches is the difficulty of keeping the password secret within the computer.
+How can the system store a password securely yet allow its use for authentication when the user presents her password?
+The \textsc{unix} system uses secure hashing to avoid the necessity of keeping its password list secret.
+Because the list is hashed rather than encrypted, it is impossible for the system to decrypt the stored value and determine the original password.
+When a user presents a password, it is hashed and compared against the stored encoded password.
+Even if the stored encoded password is seen, it cannot be decoded, so the password cannot be determined.
+
+Systems also include a ``salt,'' or recorded random number, in the hashing algorithm.
+The salt value is added to the password to ensure that if two plaintext passwords are the same, they result in different hash values.
+
 
 %%% Local Variables:
 %%% mode: latex
