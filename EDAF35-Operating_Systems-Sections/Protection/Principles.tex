@@ -9,6 +9,12 @@ A key, time-tested principle for protection is the \nameref{def:Principle_Least_
 An \nameref{def:Operating_System} following this principle implements its features, programs, system calls, and data structures so that failure or compromise of a component does the minimum damage.
 The overflow of a buffer in a system \nameref{def:Daemon} might cause the daemon process to fail, but should not allow the execution of code from the daemon process’s stack.
 
+This \nameref{def:Operating_System} also provides \nameref{def:System_Call}s and services that allow applications to be written with fine-grained access controls.
+It provides mechanisms to enable privileges \emph{when} they are needed and to disable them when they are not needed.
+Also, audit trails are created for all privileged function access.
+This allows for tracing all protection and security activities on the system.
+
+Managing users with the \nameref{def:Principle_Least_Privilege} entails creating a separate account for each user, each with just the privileges that the user needs.
 
 %%% Local Variables:
 %%% mode: latex
