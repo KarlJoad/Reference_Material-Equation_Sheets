@@ -39,6 +39,20 @@ The most common forms of security violations include:
   The original Internet worm turned into a DOS attack when a bug failed to delay its rapid spread.
 \end{itemize}
 
+Attackers use several standard methods in their attempts to breach security.
+The most common is \textbf{masquerading} or \textbf{spoofing}, in which one participant in a communication pretends to be someone else (another host or another person).
+By masquerading, attackers breach authentication, the correctness of identification.
+They can then gain access that they would not normally be allowed or escalate their privileges—obtain privileges to which they would not normally be entitled.
+
+Another common attack is to replay a captured exchange of data.
+A replay attack consists of the malicious or fraudulent repeat of a previously valid data transmission.
+Sometimes the replay comprises the entire attack.
+But frequently it is done along with message modification, again to escalate privileges.
+Consider the damage that could be done if a request for authentication had a legitimate user’s information replaced with an unauthorized user’s.
+
+Yet another kind of attack is the man-in-the-middle attack, in which an attacker sits in the data flow of a communication, masquerading as the sender to the receiver, and vice versa.
+In a network communication, a man-in-the-middle attack may be preceded by a session hijacking, in which an active communication session is intercepted.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
