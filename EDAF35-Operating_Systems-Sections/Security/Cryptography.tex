@@ -18,6 +18,35 @@ Thus, they provide a much more trustworthy means of constraining senders and rec
   For a greater in-depth discussion of cryptography and the mathematics, algorithms, and theory behind what is in use, please refer to \href{file:./EDIN01-Cryptography-Reference_Sheet.pdf}{EDIN01, Cryptography}.
 \end{blackbox}
 
+\subsubsection{Encryption}\label{subsubsec:Encryption}
+Encryption is used frequently in many aspects of modern computing. It is used to send
+messages securely across across a network, as well as to protect database data,
+files, and even entire disks from having their contents read by unauthorized
+entities. An encryption algorithm enables the sender of a message to ensure that
+only a computer possessing a certain key can read the message, or ensure that
+the writer of data is the only reader of that data.
+
+An encryption algorithm consists of the following components:
+\begin{itemize}[noitemsep]
+\item A set $\Keyspace$ of keys.
+\item A set $\Messages$ of messages.
+\item A set $\Ciphertexts$ of ciphertexts.
+\item An encrypting function $E : \Keyspace \rightarrow (\Messages \rightarrow \Ciphertexts)$.
+  Meaning that for each $k \in \Keyspace$, $E_{k}$ is a function for generating ciphertexts from plaintext messages.
+  Both $E$ and $E_{k}$ for any $k$ should be efficiently computable functions.
+\item A decrypting function $D : \Keyspace \rightarrow (\Ciphertexts \rightarrow \Messages)$.
+  That is, for each $k \in \Keyspace$, $D_{k}$ is a function for generating plaintext messages from ciphertexts.
+  Both $D$ and $D_{k}$ for any $k$ should be efficiently computable functions.
+\end{itemize}
+
+An encryption algorithm must provide this essential property:
+\begin{blackbox}
+Given a ciphertext $c \in \Ciphertexts$, a computer can compute $m$ such that $E_{k}(m) = c$ only if it possesses $k$.
+\end{blackbox}
+
+Thus, a computer holding $k$ can decrypt ciphertexts to the plaintexts used to produce them, but a computer not holding $k$ cannot decrypt ciphertexts.
+Since ciphertexts are generally exposed (for example, sent on a network), it must be infeasible to derive $k$ from the ciphertexts.
+
 
 %%% Local Variables:
 %%% mode: latex
