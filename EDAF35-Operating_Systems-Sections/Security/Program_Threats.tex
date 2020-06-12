@@ -3,6 +3,20 @@
 Therefore, writing a program that creates a breach of security, or causing a normal process to change its behavior and create a breach, is a common goal of intruders.
 Most nonprogram security events have causing a program threat as a goal.
 
+\subsubsection{Trojan Horse}\label{subsubsec:Trojan_Horse}
+Many systems have mechanisms for allowing programs written by users to be executed by other \nameref{def:User}s.
+If these programs are executed in a domain that provides the \nameref{def:Access_Right}s of the executing user, the other users may misuse these rights.
+For example, a text editing program may include code to search the file to be edited for certain keywords.
+If any are found, the entire file is copied to a special area accessible to the \textbf{creator} of the text editor.
+A code segment that misuses its environment is called a \nameref{def:Trojan_Horse}.
+
+\begin{definition}[Trojan Horse]\label{def:Trojan_Horse}
+  A \emph{trojan horse} or \emph{trojan} is any malware which misleads users of its true intent.
+  Its code segment misuses the execution environment it is given to achieve something other than what is intended.
+\end{definition}
+
+\nameref{def:Trojan_Horse}s also include malware that mimics genuine software, to ensure the user is complacent and inputs secure information without realizing it is stolen/compromised.
+
 
 %%% Local Variables:
 %%% mode: latex
