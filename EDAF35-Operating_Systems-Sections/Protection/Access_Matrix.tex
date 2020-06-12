@@ -43,6 +43,29 @@ This means we must ensure that a process executing in domain $D_{i}$ can access 
 The policy decisions involve which rights should be included in the $(i, j)$th entry.
 We must also decide the domain in which each process executes, which is usually decided by the operating system.
 
+When we switch a process from one domain to another, we are executing a \texttt{switch} operation on the domain (which becomes an object).
+We can control \nameref{def:Domain_Switching} by including domains as objects of the \nameref{def:Access_Matrix} (\Cref{tab:Access_Matrix_Domain_Objects}).
+
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \diagbox{Domain}{Object} & $F_{1}$ & $F_{2}$ & $F_{3}$ & Printer & $D_{1}$ & $D_{2}$ & $D_{3}$ & $D_{4}$ \\
+    \hline
+    $D_{1}$ & Read & & Read & & Switch & & & \\
+    \hline
+    $D_{2}$ & & & Print & & & Switch & Switch & \\
+    \hline
+    $D_{3}$ & & Read & Execute & & & & & \\
+    \hline
+    \multirow{2}{*}{$D_{4}$} & Read & & Read & & Switch & & & \\
+                             & Write & & Write & & Switch & & & \\
+    \hline
+  \end{tabular}
+  \caption{\nameref*{def:Access_Matrix} with Domains as Objects}
+  \label{tab:Access_Matrix_Domain_Objects}
+\end{table}
+
 
 %%% Local Variables:
 %%% mode: latex
