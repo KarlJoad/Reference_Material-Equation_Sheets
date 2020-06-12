@@ -1,4 +1,27 @@
 \subsection{Revoking Access Rights}\label{subsec:Revoking_Access_Rights}
+In a dynamic protection system, we may sometimes need to revoke access rights to objects shared by different users.
+This raises various questions about revocation that must be answered.
+These include:
+\begin{itemize}[noitemsep]
+\item \textbf{Immediate versus delayed}.
+  \begin{itemize}[noitemsep]
+  \item Does revocation occur immediately, or is it delayed?
+  \item If revocation is delayed, can we find out when it will take place?
+  \end{itemize}
+\item \textbf{Selective versus general}.
+  \begin{itemize}[noitemsep]
+  \item When an access right to an object is revoked, does it affect all the users who have an access right to that object, or can we specify a select group of users whose access rights should be revoked?
+  \end{itemize}
+\item \textbf{Partial versus total}.
+  \begin{itemize}[noitemsep]
+  \item Can a subset of the rights associated with an object be revoked, or must we revoke all access rights for this object?
+  \end{itemize}
+\item \textbf{Temporary versus permanent}.
+  \begin{itemize}[noitemsep]
+  \item Can access be revoked permanently (that is, the revoked access right will \textbf{never} again be available), or can access be revoked and later be obtained again?
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
