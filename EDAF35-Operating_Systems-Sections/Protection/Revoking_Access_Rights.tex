@@ -26,6 +26,16 @@ With an \nameref{def:Access_List} scheme, revocation is easy.
 The access list is searched for any \nameref{def:Access_Right}s to be revoked, and they are deleted from the list.
 Revocation can be: immediate or delayed, general or selective, total or partial, and permanent or temporary.
 
+Capabilities present a much more difficult revocation problem.
+Since the capabilities are distributed throughout the system, we must find them before we can revoke them.
+Schemes that implement revocation for capabilities must include the following:
+\begin{itemize}[noitemsep]
+\item \nameref{subsubsec:Capability_Revokation_Reacquisition}
+\item \nameref{subsubsec:Capability_Revokation_Back_Pointers}
+\item \nameref{subsubsec:Capability_Revokation_Indirection}
+\item \nameref{subsubsec:Capability_Revokation_Keys}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
