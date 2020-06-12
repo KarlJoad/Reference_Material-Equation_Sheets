@@ -41,6 +41,16 @@ For instance, the code might check for a specific user ID or password, and it mi
 Trap doors pose a difficult problem because, to detect them, we have to analyze all the source code for all components of a system.
 Given that software systems may consist of millions of lines of code, this analysis is not done frequently.
 
+\subsubsection{Logic Bomb}\label{subsubsec:Logic_Bomb}
+\nameref{def:Logic_Bomb}s is not malware, per-se; rather it is code that is executed \textbf{only} when certain conditions have been met.
+What that code does determines how it is classified.
+
+\begin{definition}[Logic Bomb]\label{def:Logic_Bomb}
+  \emph{Logic bomb}s are programs that creates a security incident \textbf{only} under certain conditions.
+  It would be hard to detect because under normal operations, there would be no security hole.
+  However, when a predefined set of parameters was met, the security hole would be created.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
