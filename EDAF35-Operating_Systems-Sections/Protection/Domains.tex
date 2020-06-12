@@ -89,6 +89,40 @@ A dynamic association between \nameref{def:Process}es and \nameref{def:Protectio
 
 If we cannot change the content of a domain, we can provide the same effect by creating a new domain with the changed content and switching to that new domain when we want to change the domain content.
 
+\subsubsection{\textsc{unix}-Style Protection Domains and Schemes}\label{subsubsec:UNIX_Protections}
+In the \textsc{unix} operating system, a domain is associated with the \nameref{def:User}.
+Switching the domain corresponds to changing the user identification.
+
+This change is accomplished through the \nameref{def:File_System}.
+Each file contains a lot of metadata regarding the attributes of the file, including who owns the file and to which domain (\nameref{def:User}) that files belongs to.
+The first one is the file's owner identification (\texttt{userID}); the second is the \texttt{setuid} bit (the domain bit).
+
+When the \texttt{setuid} bit is on, and a \nameref{def:User} executes that file, the process that is created has its \texttt{userID} set to the owner of the file.
+When the \texttt{setuid} bit is off, the \texttt{userID} does not change.
+For example, when a user $A$ (that is, a user with \texttt{userID} = $A$) starts executing a file owned by $B$, whose associated domain bit is off, the \texttt{userID} of the process is set to $A$.
+When the \texttt{setuid} bit is on, the \texttt{userID} is set to that of the owner of the file: $B$.
+When the process exits, this temporary \texttt{userID} change ends.
+
+Other methods are used to change domains in operating systems in which \texttt{userID}s are used for domain definition.
+This mechanism is used when an otherwise privileged facility needs to be made available to the general user population.
+For instance, it might be desirable to allow users to access a network without letting them write their own networking programs.
+On a \textsc{unix} system, the \texttt{setuid} bit on a networking program would be set, causing the \texttt{userID} to change to another \texttt{userID} that is capable of using the network when the program is run.
+The \texttt{userID} would change to that of a user with network access privilege (such as \texttt{root}).
+One problem with this method is that if a user manages to create a file with \texttt{userID} root and with its \texttt{setuid} bit on, that user can become root and do anything and everything on the system.
+
+An alternative to this method used in some other \nameref{def:Operating_System}s is to place privileged programs in a special \nameref{def:Directory}.
+The operating system is designed to change the \texttt{userID} of any program run from this directory.
+This eliminates the security problem of when intruders create programs to manipulate the \texttt{setuid} feature and hide the programs in the system for later use.
+This method is less flexible than that used in \textsc{unix}, however.
+
+Even more restrictive, and thus more protective, are systems that simply do not allow a change of \texttt{userID}.
+In these \nameref{def:Operating_System}s, special techniques must be used to allow users access to privileged facilities.
+One method, for instance, is to use a \nameref{def:Daemon} process that is started at boot and runs as a special \texttt{userID}.
+Regular \nameref{def:User}s then run a separate program, which sends requests to this process whenever they need to use the facility.
+
+In any of these systems, great care must be taken in writing privileged programs.
+Any oversight can result in a total lack of protection on the system.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
