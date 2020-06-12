@@ -75,6 +75,19 @@ The process attempting access must present a capability for that access.
 Then, the protection system needs only to verify that the capability is valid.
 Revocation of capabilities, however, may be inefficient.
 
+\subsubsection{Lock-Key}\label{subsubsec:Lock_Key_Access}
+The lock–key scheme is a compromise between \nameref{def:Access_List}s and \nameref{def:Capability_List}s.
+Each object has a list of unique bit patterns, called locks.
+Similarly, each domain has a list of unique bit patterns, called keys.
+A \nameref{def:Process} executing in a domain can access an object only if that domain has a key that matches one of the locks of the object.
+
+As with capability lists, the list of keys for a domain must be managed by the operating system on behalf of the domain.
+\nameref{def:User}s are not allowed to examine or modify the list of keys (or locks) directly.
+
+The lock–key mechanism, as mentioned, is a compromise between \nameref{def:Access_List}s and \nameref{def:Capability_List}s.
+The mechanism can be both effective and flexible, depending on the length of the keys.
+The keys can be passed freely from domain to domain.
+In addition, access privileges can be effectively revoked by the simple technique of changing some of the locks associated with the object.
 
 %%% Local Variables:
 %%% mode: latex
