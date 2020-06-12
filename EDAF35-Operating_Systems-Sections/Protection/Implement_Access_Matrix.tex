@@ -10,6 +10,16 @@ Otherwise, a capability is created and attached to the process.
 Subsequent references use the capability to quickly determine access.
 After the last access, the capability is destroyed.
 
+\subsubsection{Global Table}\label{subsubsec:Global_Access_Matrix}
+The simplest implementation of the access matrix is a global table consisting of a set of ordered tuples $\langle \text{domain}, \text{object}, \text{rights-set} \rangle$.
+Whenever an operation $M$ is executed on an object $O_{j}$ within domain $D_{i}$, the global table is searched for a tuple $\langle D_{i}, O_{j}, R_{k} \rangle$, where $M \in R_{k}$.
+If this tuple is found, the operation is allowed to continue; otherwise, an exception (or error) is raised.
+
+This implementation suffers from several drawbacks.
+The table is usually large and thus cannot be kept in main memory, so additional I/O is needed.
+Virtual memory techniques are often used for managing this table (\nameref{def:Memory_Mapping}).
+In addition, it is difficult to take advantage of special groupings of objects or domains.
+
 
 %%% Local Variables:
 %%% mode: latex
