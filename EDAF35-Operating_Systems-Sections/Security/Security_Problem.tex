@@ -56,6 +56,35 @@ In a network communication, a man-in-the-middle attack may be preceded by a sess
 Absolute protection of the system from malicious abuse is not possible, but the cost to the perpetrator can be made sufficiently high to deter most intruders.
 In some cases, such as a denial-of-service attack, it is preferable to prevent the attack but sufficient to detect the attack so that countermeasures can be taken.
 
+To protect a system, we must take security measures at four levels:
+\begin{enumerate}[noitemsep]
+\item \textbf{Physical}.
+  The site or sites containing the computer systems must be physically secured against armed or surreptitious entry by intruders.
+  Both the machine rooms and the terminals/workstations that have access to the machines must be secured.
+\item \textbf{Human}.
+  Authorization must be done carefully to assure that only appropriate users have access to the system.
+  Even authorized users, however, may be ``encouraged'' to let others use their access.
+  They may also be tricked into allowing access via social engineering, such as:
+  \begin{itemize}[noitemsep]
+  \item \textbf{Phishing}.
+    Here, a legitimate-looking e-mail or web page
+    misleads a user into entering confidential information. Another
+
+  \item \textbf{Dumpster Diving}.
+    A general term for attempting to gather information in order to gain unauthorized access to the computer (by looking through trash, finding phone books, or finding notes containing passwords, for example).
+  \item These security problems are management and personnel issues, not problems pertaining to operating systems.
+  \end{itemize}
+\item \textbf{Operating system}.
+  The system must protect itself from accidental or purposeful security breaches.
+  A runaway process could constitute an accidental denial-of-service attack.
+  A query to a service could reveal passwords.
+  A stack overflow could allow the launching of an unauthorized process.
+  The list of possible breaches is almost endless.
+\item \textbf{Network}.
+  Much computer data in modern systems travels over private leased lines, shared lines like the Internet, wireless connections, or dial-up lines.
+  Intercepting these data could be just as harmful as breaking into a computer, and interruption of communications could constitute a remote denial-of-service attack, diminishing users’ use of and trust in the system.
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
