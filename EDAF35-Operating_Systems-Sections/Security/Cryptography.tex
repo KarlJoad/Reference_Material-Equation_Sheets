@@ -163,6 +163,17 @@ But how do we know we can trust the certifier?
 These certificate authorities have their public keys included within web browsers (and other consumers of certificates) before they are distributed.
 The certificate authorities can then vouch for other authorities (digitally signing the public keys of these other authorities), and so on, creating a \textbf{web of trust}.
 
+\subsubsection{Implementation}\label{subsubsec:Implementation_of_Cryptography}
+Network protocols are typically organized in layers, like an onion, with each layer acting as a client of the one below it.
+That is, when one protocol generates a message to send to its protocol peer on another machine, it hands its message to the protocol below it in the network-protocol stack for delivery to its peer on that machine.
+
+Cryptography can be inserted at almost any layer in the OSI model.
+SSL provides security at the transport layer.
+Network-layer security generally has been standardized on IPSec, which defines IP packet formats that allow the insertion of authenticators and the encryption of packet contents.
+IPSec is becoming widely used as the basis for virtual private networks (VPNs), in which all traffic between two IPSec endpoints is encrypted to make a private network out of one that may otherwise be public.
+
+More protocols benefit from protections placed lower in the stack.
+On the other hand, protection at lower layers in the protocol stack may give insufficient protection to higher-layer protocols.
 
 %%% Local Variables:
 %%% mode: latex
