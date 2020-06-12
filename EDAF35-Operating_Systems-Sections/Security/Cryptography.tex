@@ -117,6 +117,14 @@ Since authenticators are generally exposed (for example, sent on a network with 
 Practically, if $V_{k}(m, a) = \mathtt{true}$, then we know that $m$ has not been modified, and that the sender of the message has $k$.
 If we share $k$ with only one entity, then we know that the message originated from $k$.
 
+All authentication algorithms rely on the proper functioning of \nameref{def:Hash_Function}s.
+\begin{definition}[Hash Function]\label{def:Hash_Function}
+  A \emph{hash function} $H(m)$ creates a small, fixed-sized block of data, known as a \emph{message digest} or \emph{hash value}, from a message $m$.
+  Hash functions work by taking a message, splitting it into blocks, and processing the blocks to produce an $n$-bit hash.
+  $H$ must be collision resistant; it must be infeasible to find an $m' \neq m$ such that $H(m) = H(m')$.
+  If $H(m) = H(m')$, we know that $m = m'$; we know that the message has not been modified.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
