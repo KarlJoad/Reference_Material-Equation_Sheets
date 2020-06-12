@@ -68,6 +68,24 @@ The key is input into a pseudo–random-bit generator, which is an algorithm tha
 The output of the generator when fed a key is a keystream.
 A keystream is an infinite set of bits that can be used to encrypt a plaintext stream by simply XORing it with the plaintext.
 
+\paragraph{Asymmetric Encryption}\label{par:Asymmetric_Encryption}
+\begin{definition}[Asymmetric Encryption]\label{def:Asymmetric_Encryption}
+  \emph{Asymmetric encryption} uses algorithms that can take in 2 keys, a public and private key.
+  The public key is available to everyone in the world, and the private one is held by the one who generated the pair.
+\end{definition}
+In an \nameref{def:Asymmetric_Encryption} algorithm, there are different encryption and decryption keys.
+An entity preparing to receive encrypted communication creates two keys and makes one of them (called the public key) available to anyone who wants it.
+The private key (or ``secret key'') must remain secret, as anyone holding that key can decrypt any message created by the matching public key.
+Any sender can use that key to encrypt a communication, but only the key creator can decrypt the communication.
+This scheme, known as public-key encryption, was a breakthrough in cryptography.
+No longer must a key be kept secret and delivered securely.
+Instead, anyone can encrypt a message to the receiving entity, and no matter who else is listening, only that entity can decrypt the message.
+
+Asymmetric cryptography is much more computationally expensive to execute.
+It is much faster for a computer to encode and decode ciphertext using symmetric algorithms than by using asymmetric algorithms.
+However, these algorithms are not used for general-purpose encryption of large amounts of data.
+They are used not only for encryption of small amounts of data but also for \nameref{par:Authentication}, confidentiality, and \nameref{par:Key_Distribution}.
+
 
 %%% Local Variables:
 %%% mode: latex
