@@ -125,6 +125,17 @@ All authentication algorithms rely on the proper functioning of \nameref{def:Has
   If $H(m) = H(m')$, we know that $m = m'$; we know that the message has not been modified.
 \end{definition}
 
+The first main type of authentication algorithm uses symmetric encryption.
+In a message-authentication code (MAC), a cryptographic checksum is generated from the message using a secret key.
+A MAC provides a way to securely authenticate short values.
+If we use it to authenticate $H(m)$ for an $H$ that is collision resistant, then we obtain a way to securely authenticate long messages by hashing them first.
+$k$ is needed to compute both $S_{k}$ and $V_{k}$, so anyone able to compute one can compute the other.
+
+The second main type of authentication algorithm is a digital-signature algorithm, and the authenticators thus produced are called digital signatures.
+Digital signatures are very useful in that they enable anyone to verify the authenticity of the message.
+In a digital-signature algorithm, it is computationally infeasible to derive $k_{s}$ from $k_{v}$.
+Thus, $k_{v}$ is the public key, and $k_{s}$ is the private key.
+
 
 %%% Local Variables:
 %%% mode: latex
