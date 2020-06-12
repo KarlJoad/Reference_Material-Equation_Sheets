@@ -6,6 +6,9 @@ A key, time-tested principle for protection is the \nameref{def:Principle_Least_
   The \emph{principle of least privilege} states that programs, users, and even systems be given just enough privileges to perform their tasks.
 \end{definition}
 
+An \nameref{def:Operating_System} following this principle implements its features, programs, system calls, and data structures so that failure or compromise of a component does the minimum damage.
+The overflow of a buffer in a system \nameref{def:Daemon} might cause the daemon process to fail, but should not allow the execution of code from the daemon process’s stack.
+
 
 %%% Local Variables:
 %%% mode: latex
