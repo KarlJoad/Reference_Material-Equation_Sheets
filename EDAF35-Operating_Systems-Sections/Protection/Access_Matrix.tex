@@ -1,4 +1,16 @@
 \subsection{Access Matrix}\label{subsec:Access_Matrix}
+A general model of protection can be viewed abstractly as a matrix, called an \nameref{def:Access_Matrix}.
+\begin{definition}[Access Matrix]\label{def:Access_Matrix}
+  An \emph{access matrix} is a way to represent the access rights between \nameref{def:Protection_Domain}s and objects.
+  The rows of the access matrix are the domains, and the columns represent objects.
+  Each entry in the matrix consists of a set of \nameref{def:Access_Right}s.
+  The entry \texttt{access($i$,$j$)} defines the set of operations that a process executing in domain $D_{i}$ can invoke on object $O_{j}$.
+
+  \begin{remark}
+    Because the column defines objects explicitly, we can omit the object name from the \nameref{def:Access_Right}.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
