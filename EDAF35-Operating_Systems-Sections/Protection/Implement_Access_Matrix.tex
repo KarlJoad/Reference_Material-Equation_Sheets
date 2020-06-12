@@ -20,6 +20,26 @@ The table is usually large and thus cannot be kept in main memory, so additional
 Virtual memory techniques are often used for managing this table (\nameref{def:Memory_Mapping}).
 In addition, it is difficult to take advantage of special groupings of objects or domains.
 
+\subsubsection{Access Lists}\label{subsubsec:Access_Lists}
+\nameref{def:Access_List}s are created by only working with the columns of a \nameref{def:Access_Matrix}.
+
+\begin{definition}[Access List]\label{def:Access_List}
+  An \emph{access list} is a way for \textbf{objects} to track what domains can perform what actions on that object.
+   The resulting list for each object consists of ordered pairs $\langle \text{domain}, \text{rights-set} \rangle$, which define all domains with a nonempty set of access rights for that object.
+\end{definition}
+
+This can be extended to define an \nameref{def:Access_List} and a default set of \nameref{def:Access_Right}s.
+When an operation $M$ on an object $O_{j}$ is attempted in domain $D_{i}$, we search the access list for object $O_{j}$, looking for an entry $\langle D_{i}, R_{k} \rangle$ with $M \in R_{k}$.
+If the entry is found, we allow the operation; if it is not, we check the default set.
+If $M$ is in the default set, we allow the access.
+Otherwise, access is denied, and an exception condition occurs.
+
+Access lists correspond directly to the needs of users.
+When a user creates an object, they can specify which domains can access the object, as well as what operations are allowed.
+However, access-right information for a particular domain is not localized, making determining the set of access rights for each domain difficult.
+In addition, every access to an object must be checked, requiring a search of the access list.
+In a large system with long access lists, this search can be time consuming.
+
 
 %%% Local Variables:
 %%% mode: latex
