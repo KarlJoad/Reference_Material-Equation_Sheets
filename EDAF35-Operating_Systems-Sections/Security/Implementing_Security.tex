@@ -68,6 +68,17 @@ Automatic IDSs and IDPs today typically settle for one of two less ambitious app
   An example of anomaly detection is monitoring \nameref{def:System_Call}s of a \nameref{def:Daemon} \nameref{def:Process} to detect whether the system call behavior deviates from normal patterns.
 \end{enumerate}
 
+\subsubsection{Virus Protection}\label{subsubsec:Virus_Protection}
+Protection from \nameref{def:Virus}es thus is an important security concern.
+Antivirus programs are often used to provide this protection.
+Some of these programs are effective against only particular known viruses.
+They work by searching all the programs on a system for the specific pattern of instructions known to make up the virus.
+Antivirus programs may have catalogs of thousands of viruses for which they search.
+When they find a known pattern, they remove the instructions, disinfecting the program.
+
+Some viruses modify themselves as they infect other software to avoid the basic pattern-match approach of antivirus programs. Antivirusb
+programs in turn now look for families of patterns rather than a single pattern to identify a virus.
+
 
 %%% Local Variables:
 %%% mode: latex
