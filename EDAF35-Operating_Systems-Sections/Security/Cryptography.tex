@@ -141,6 +141,28 @@ Digital signatures are the core of nonrepudiation, which supplies proof that an 
 A typical example of nonrepudiation involves the filling out of electronic forms as an alternative to the signing of paper contracts.
 Nonrepudiation assures that a person filling out an electronic form cannot deny that he did so.
 
+\paragraph{Key Distribution}\label{par:Key_Distribution}
+The delivery of the symmetric key is a huge challenge.
+Sometimes it is performed out-of-band, for instance, via a paper document or a conversation.
+These methods do not scale well.
+Also consider the key-management challenge.
+Suppose a user wanted to communicate with $N$ other users privately.
+That user would need $N$ keys and, for more security, would need to change those keys frequently.
+
+These are the very reasons for efforts to create asymmetric key algorithms.
+The keys be exchanged in public, but a given user needs only one private key, no matter how many other people they want to communicate with.
+There is still the matter of managing a public key for each recipient of the communication, but since public keys need not be secured, simple storage can be used for that key ring.
+
+The problem of asymmetric public key distribution is one of authentication.
+What we need is proof of who owns a given public key.
+One way to solve that problem involves the use of digital certificates.
+A digital certificate is a public key digitally signed by a trusted party.
+The trusted party receives proof of identification from some entity and certifies that the public key belongs to that entity.
+
+But how do we know we can trust the certifier?
+These certificate authorities have their public keys included within web browsers (and other consumers of certificates) before they are distributed.
+The certificate authorities can then vouch for other authorities (digitally signing the public keys of these other authorities), and so on, creating a \textbf{web of trust}.
+
 
 %%% Local Variables:
 %%% mode: latex
