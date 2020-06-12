@@ -4,6 +4,39 @@ The first step toward improving the security of any aspect of computing is to ha
 Policies vary widely but generally include a statement of what is being secured.
 Without a policy in place, it is impossible for users and administrators to know what is permissible, what is required, and what is not allowed.
 
+\subsubsection{Vulnerability Assessment}\label{subsubsec:Vulnerability_Assessment}
+How can we determine whether a security policy has been correctly implemented?
+The best way is to execute a vulnerability assessment.
+Such assessments can cover broad ground, from social engineering through risk assessment to port scans.
+
+The core activity of most vulnerability assessments is a penetration test, in which the entity is scanned for known vulnerabilities.
+Vulnerability scans typically are done at times when computer use is relatively low, to minimize their impact.
+When appropriate, they are done on test systems rather than production systems.
+
+A scan within an individual system can check a variety of aspects of the
+system:
+\begin{itemize}[noitemsep]
+\item Short or easy-to-guess passwords.
+\item Unauthorized privileged \nameref{def:Program}s, such as \texttt{setuid} programs.
+\item Unauthorized programs in system directories.
+\item Unexpectedly long-running \nameref{def:Process}es.
+\item Improper directory protections on user and system directories.
+\item Improper protections on system data files, such as the password file, device drivers, or the \nameref{def:Operating_System} \nameref{def:Kernel} itself.
+\item Dangerous entries in the program search path.
+\item Changes to system programs detected with checksum values.
+\item Unexpected or hidden network \nameref{def:Daemon}s.
+\end{itemize}
+
+Any problems found by a security scan can be either fixed automatically or reported to the managers of the system.
+
+Networked computers are much more susceptible to security attacks than are standalone systems.
+Unfortunately for system administrators and computer-security professionals, it is frequently impossible to lock a machine in a room and disallow all remote access.
+Vulnerability scans can be applied to networks to address some of the problems with network security.
+The scans search a network for ports that respond to a request.
+If services are enabled that should not be, access to them can be blocked, or they can be disabled.
+The scans then determine the details of the application listening on that port and try to determine if it has any known vulnerabilities.
+Testing those vulnerabilities can determine if the system is misconfigured or lacks needed patches.
+
 
 %%% Local Variables:
 %%% mode: latex
