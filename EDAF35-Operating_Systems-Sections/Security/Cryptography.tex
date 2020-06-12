@@ -47,6 +47,27 @@ Given a ciphertext $c \in \Ciphertexts$, a computer can compute $m$ such that $E
 Thus, a computer holding $k$ can decrypt ciphertexts to the plaintexts used to produce them, but a computer not holding $k$ cannot decrypt ciphertexts.
 Since ciphertexts are generally exposed (for example, sent on a network), it must be infeasible to derive $k$ from the ciphertexts.
 
+\paragraph{Symmetric Encryption}\label{par:Symmetric_Encryption}
+\begin{definition}[Symmetric Encryption]\label{def:Symmetric_Encryption}
+  \emph{Symmetric Encryption} uses algorithms that take in the \textbf{SAME} key for both encryption and decryption.
+  There are 2 types of symmetric encryption algorithms: block ciphers and stream ciphers.
+\end{definition}
+
+In a \nameref{def:Symmetric_Encryption} algorithm, the same key is used to encrypt and to decrypt.
+Therefore, the secrecy of k must be protected.
+Note that the key exchange can take place directly between the two parties or via a trusted third party (such as a certificate authority).
+
+Encryption algorithms that work on a block of bits at a time is known as a block cipher.
+Block ciphers are not in themselves secure encryption schemes.
+With block ciphers, if the same key is used for encrypting messages longer than their required block sizes extended amount of data, the encryption algorithm becomes vulnerable to attack.
+However, there are many modes of encryption that are based on stream ciphers, which can be used to securely encrypt longer messages.
+
+A stream cipher is designed to encrypt and decrypt a stream of bytes or bits rather than a block.
+This is useful when the length of a communication would make a block cipher too slow.
+The key is input into a pseudo–random-bit generator, which is an algorithm that attempts to produce random bits.
+The output of the generator when fed a key is a keystream.
+A keystream is an infinite set of bits that can be used to encrypt a plaintext stream by simply XORing it with the plaintext.
+
 
 %%% Local Variables:
 %%% mode: latex
