@@ -14,6 +14,15 @@ Such changes reduce the system’s \nameref{def:Attack_Surface}.
 It is important to note that masquerading and replay attacks are also commonly launched over networks between systems.
 In general, sharing secrets (to prove identity and as keys to encryption) is required for authentication and encryption, and sharing secrets is easier in environments in which secure sharing methods exist.
 
+\subsubsection{Worms}\label{subsubsec:Worms}
+\begin{definition}[Worm]\label{def:Worm}
+  A \emph{worm} is a process that uses a spawn mechanism to duplicate itself.
+  The spawned copies use up system resources and may lock out all other \nameref{def:Process}es.
+  The copies can also execute arbitrary code, which means they can cause other damage too.
+\end{definition}
+
+On computer networks, worms are particularly potent, since they may reproduce themselves among systems and thus shut down an entire network.
+
 
 %%% Local Variables:
 %%% mode: latex
