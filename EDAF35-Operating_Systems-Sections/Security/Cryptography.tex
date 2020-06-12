@@ -1,4 +1,23 @@
 \subsection{Cryptography}\label{subsec:Cryptography}
+In an isolated computer, the \nameref{def:Operating_System} can reliably determine the sender and recipient of all interprocess communication, since it controls all communication channels in the computer.
+In a network of computers, the situation is quite different.
+A networked computer receives bits ``from the wire'' with no immediate and reliable way of determining what machine or application sent those bits.
+Similarly, the computer sends bits onto the network with no way of knowing who might eventually receive them.
+Additionally, there is no way of knowing if an eavesdropper listened to the communication.
+
+It is generally considered infeasible to build a network of any scale in which the source and destination addresses of packets can be trusted in this sense.
+Therefore, the only alternative is somehow to eliminate the need to trust the network.
+This is the job of cryptography.
+
+Cryptography enables a recipient of a message to verify that the message was created by some computer possessing a certain key.
+Similarly, a sender can encode its message so that only a computer with a certain key can decode the message.
+Keys are designed so that it is not computationally feasible to derive them from the messages they were used to generate or from any other public information.
+Thus, they provide a much more trustworthy means of constraining senders and receivers of messages.
+
+\begin{blackbox}
+  For a greater in-depth discussion of cryptography and the mathematics, algorithms, and theory behind what is in use, please refer to \href{file:./EDIN01-Cryptography-Reference_Sheet.pdf}{EDIN01, Cryptography}.
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
