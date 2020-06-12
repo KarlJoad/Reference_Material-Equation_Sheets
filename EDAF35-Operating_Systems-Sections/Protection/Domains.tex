@@ -32,6 +32,19 @@ This second requirement, is commonly referred to as the \nameref{def:Need_To_Kno
   This is useful in limiting the amount of damage a faulty process can cause in the system.
 \end{definition}
 
+\subsection{Domain Structure}\label{subsubsec:Domain_Structure}
+A \nameref{def:Process} operates within a \nameref{def:Protection_Domain}.
+
+\begin{definition}[Protection Domain]\label{def:Protection_Domain}
+  A \emph{protection domain} specifies the resources that a \nameref{def:Process} may access.
+  Each domain defines a set of objects and \nameref{def:Access_Right}s.
+  A domain is a collection of access rights, each of which is an ordered pair
+
+  \begin{equation}\label{eq:Protection_Domain}
+    \langle \text{object-name}, \text{rights-set} \rangle
+  \end{equation}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
