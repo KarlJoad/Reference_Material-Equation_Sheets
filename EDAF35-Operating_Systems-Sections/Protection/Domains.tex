@@ -22,6 +22,16 @@ Each object has a unique name that differentiates it from all other objects in t
 The operations that are possible depends on the object in question.
 For example, on a CPU, we can perform executions, memory can be read from and written to, etc.
 
+A \nameref{def:Process} should be allowed to access only those resources for which it has authorization.
+Furthermore, at any time, a process should be able to access only those resources that it currently requires to complete its task.
+This second requirement, is commonly referred to as the \nameref{def:Need_To_Know_Principle}.
+
+\begin{definition}[Need-to-Know Principle]\label{def:Need_To_Know_Principle}
+  The \emph{Need-to-Know principle} states that a \nameref{def:Process} should be able to access \textbf{only} those resources that it currently requires to complete its \textbf{current} task.
+
+  This is useful in limiting the amount of damage a faulty process can cause in the system.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
