@@ -37,6 +37,37 @@ If services are enabled that should not be, access to them can be blocked, or th
 The scans then determine the details of the application listening on that port and try to determine if it has any known vulnerabilities.
 Testing those vulnerabilities can determine if the system is misconfigured or lacks needed patches.
 
+\subsubsection{Intrusion Detection}\label{subsubsec:Intrusion_Detection}
+Securing systems and facilities is intimately linked to intrusion detection.
+Intrusion detection strives to detect attempted or successful intrusions into computer systems and to initiate appropriate responses to the intrusions.
+Intrusion detection encompasses a wide array of techniques, including:
+\begin{itemize}[noitemsep]
+\item The time at which detection occurs.
+  Detection can occur in real time (while the intrusion is occurring) or after the fact.
+\item The types of inputs examined to detect intrusive activity.
+  These may include \nameref{def:User}-shell commands, process \nameref{def:System_Call}s, and network packet headers or contents.
+  Some forms of intrusion might be detected only by correlating information from several such sources.
+\item The range of response capabilities.
+  Simple forms of response include alerting an administrator to the potential intrusion or somehow halting the potentially intrusive activity.
+  In a sophisticated form of response, a system might transparently divert an intruder’s activity to a honeypot—a false resource exposed to the attacker.
+  The resource appears real to the attacker and enables the system to monitor and gain information about the attack.
+\end{itemize}
+
+These degrees of freedom in the design space for detecting intrusions have yielded a wide range of solutions, known as intrusion-detection systems~(IDSs) and intrusion-prevention systems~(IDPs).
+IDS systems raise an alarm when an intrusion is detected, while IDP systems act as routers, passing traffic unless an intrusion is detected (at which point that traffic is blocked).
+
+Automatic IDSs and IDPs today typically settle for one of two less ambitious approaches:
+\begin{enumerate}[noitemsep]
+\item Signature-Based Detection.
+  System input or network traffic is examined for specific behavior patterns (signatures) known to indicate attacks.
+  For example, scanning network packets for the string \texttt{/etc/passwd/} targeted for a \textsc{unix} system.
+  Another example is \nameref{def:Virus}-detection software, which scans binaries or network packets for known viruses.
+\item Anomaly Detection.
+  Detect anomalous behavior within computer systems.
+  Of course, not all anomalous system activity indicates an intrusion, but the presumption is that intrusions often induce anomalous behavior.
+  An example of anomaly detection is monitoring \nameref{def:System_Call}s of a \nameref{def:Daemon} \nameref{def:Process} to detect whether the system call behavior deviates from normal patterns.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
