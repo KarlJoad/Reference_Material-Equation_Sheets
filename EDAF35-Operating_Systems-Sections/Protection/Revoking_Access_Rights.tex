@@ -55,6 +55,27 @@ Table entries can then be reused for other capabilities, since both the capabili
 The object for a capability and its table entry must match.
 It does not allow selective revocation.
 
+\subsubsection{Keys}\label{subsubsec:Capability_Revokation_Keys}
+A key is a unique bit pattern that can be associated with a capability.
+This key is defined when the capability is created, and it can be neither modified nor inspected by the \nameref{def:Process} that owns the capability.
+A master key is associated with each object; it can be defined or replaced with the \texttt{set-key} operation.
+When a capability is created, the current value of the master key is associated with the capability.
+When the capability is exercised, its key is compared with the master key.
+If the keys match, the operation is allowed to continue; otherwise, an exception condition is raised.
+
+Revocation replaces the master key with a new value using the \texttt{set-key} operation again.
+This invalidates all previous capabilities for this object.
+This scheme does not allow selective revocation, since only one master key is associated with each object.
+If we associate a list of keys with each object, then selective revocation can be implemented.
+
+Finally, we can group all keys into one global table of keys.
+A capability is valid only if its key matches some key in the global table.
+We implement revocation by removing the matching key from the table.
+With this scheme, a key can be associated with several objects, and several keys can be associated with each object, providing maximum flexibility.
+
+In key-based schemes, the operations of defining keys, inserting them into lists, and deleting them from lists should not be available to all users.
+In particular, it would be reasonable to allow only the owner of an object to set the keys for that object.
+This choice, however, is a policy decision that the protection system can implement but should not define.
 
 %%% Local Variables:
 %%% mode: latex
