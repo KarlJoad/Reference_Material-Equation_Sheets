@@ -36,6 +36,12 @@ Schemes that implement revocation for capabilities must include the following:
 \item \nameref{subsubsec:Capability_Revokation_Keys}
 \end{itemize}
 
+\subsubsection{Reacquisition}\label{subsubsec:Capability_Revokation_Reacquisition}
+Periodically, capabilities are deleted from each domain.
+If a \nameref{def:Process} wants to use a capability, it may find that that capability has been deleted.
+The process may then attempt to reacquire the capability.
+If access has been revoked, the process will not be able to reacquire the capability.
+
 
 %%% Local Variables:
 %%% mode: latex
