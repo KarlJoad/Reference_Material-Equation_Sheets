@@ -1,4 +1,20 @@
 \subsection{Access Control}\label{subsec:Access_Control}
+Similar to how we have \nameref{def:File_Owner}, \nameref{def:File_Group}, and \nameref{def:File_Universe}, we can extend this idea to other aspects in a system.
+This facility revolves around \nameref{def:Privilege}s and is typically called \nameref{def:Role_Based_Access_Control}.
+
+\begin{definition}[Privilege]\label{def:Privilege}
+  A \emph{privilege} is the right to execute a \nameref{def:System_Call} or to use an option within that system call (such as opening a file with write access).
+  Privileges can be assigned to \nameref{def:Process}es, limiting them to the access they need to perform their work.
+  Privileges and \nameref{def:Program}s can also be assigned to roles, forming a \nameref{def:Role_Based_Access_Control} scheme.
+\end{definition}
+
+\begin{definition}[Role-Based Access Control]\label{def:Role_Based_Access_Control}
+  \emph{Role-Based Access Control} (\emph{RBAC}) is a way of allocating \nameref{def:Privilege}s and protections to components in a system based on roles to fulfill.
+  \nameref{def:User}s are assigned roles or can temporarily take on certain roles based on secrets (passwords, etc.).
+  In this way, a user can take a role that enables a \nameref{def:Privilege}, allowing the user to run a program to accomplish a specific task.
+\end{definition}
+
+This decreases the security risk associated with superusers (\texttt{root}) and \texttt{setuid} programs.
 
 %%% Local Variables:
 %%% mode: latex
