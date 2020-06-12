@@ -1,4 +1,27 @@
 \subsection{Domains of Protection}\label{subsec:Domains_of_Protection}
+A computer system is a collection of \nameref{def:Process}es and objects.
+Objects refer to:
+\begin{itemize}[noitemsep]
+\item Hardware Objects
+  \begin{itemize}[noitemsep]
+  \item CPU
+  \item Memory Segments
+  \item Printers
+  \item Disks
+  \item Tape Drives
+  \end{itemize}
+\item Software Objects
+  \begin{itemize}[noitemsep]
+  \item Files
+  \item Programs
+  \item Semaphores
+  \end{itemize}
+\end{itemize}
+
+Each object has a unique name that differentiates it from all other objects in the system, and each can be accessed only through well-defined and meaningful operations.
+The operations that are possible depends on the object in question.
+For example, on a CPU, we can perform executions, memory can be read from and written to, etc.
+
 
 %%% Local Variables:
 %%% mode: latex
