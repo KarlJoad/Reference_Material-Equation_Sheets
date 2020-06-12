@@ -66,6 +66,11 @@ We can control \nameref{def:Domain_Switching} by including domains as objects of
   \label{tab:Access_Matrix_Domain_Objects}
 \end{table}
 
+Similarly, when we change the content of the access matrix, we are performing an operation on an object: the access matrix.
+Again, we can control these changes by including the access matrix itself as an object.
+If we want to be pedantic, we must protect each entry in the \nameref{def:Access_Matrix} because each entry can be modified individually.
+This requires three additional operations: \texttt{copy}, \texttt{owner}, and \texttt{control}.
+
 
 %%% Local Variables:
 %%% mode: latex
