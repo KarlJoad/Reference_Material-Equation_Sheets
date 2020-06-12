@@ -40,6 +40,41 @@ However, access-right information for a particular domain is not localized, maki
 In addition, every access to an object must be checked, requiring a search of the access list.
 In a large system with long access lists, this search can be time consuming.
 
+\subsubsection{Capability Lists}\label{subsubsec:Capability_Lists}
+\nameref{def:Capability_List}s are created by only working with the rows of a \nameref{def:Access_Matrix}.
+
+\begin{definition}[Capability List]\label{def:Capability_List}
+  A \emph{capability list} is a way for \textbf{domains} to track what objects they can access and the actions the domain can perform on that object.
+\end{definition}
+
+To execute operation $M$ on object $O_{j}$, the process executes the operation $M$, specifying the capability (or pointer) for object $O_{j}$ as a parameter.
+Just having the possession of a capability means that access to that object is allowed.
+
+The \nameref{def:Capability_List} is associated with a \nameref{def:Protection_Domain}, but it is never directly accessible to a \nameref{def:Process} executing in that domain.
+The list itself is a protected object, maintained by the \nameref{def:Operating_System} and only indirectly accessed by the user.
+Capability-based protection relies on the fact that the capabilities are never allowed to migrate into any space directly accessible by a user process.
+If all capabilities are secure, the object they protect is also secure against unauthorized access.
+
+To provide protection, we must distinguish capabilities from other kinds of objects, and they must be interpreted for higher-level programs run.
+Capabilities are usually distinguished from other data in one of two ways:
+\begin{enumerate}[noitemsep]
+\item Each object has a tag to denote whether it is a capability or accessible data.
+  The tags themselves must not be directly accessible by an application program.
+  Hardware or firmware support may be used to enforce this restriction.
+  Although only one bit is necessary to distinguish between capabilities and other objects, more bits are often used.
+  This extension allows all objects to be tagged with their types by the hardware.
+  Thus, the hardware can distinguish integers, floating-point numbers, pointers, Booleans, characters, instructions, capabilities, and uninitialized values by their tags.
+\item Alternatively, the address space associated with a \nameref{def:Process} can be split into two parts.
+  One part is accessible to the program and contains the program’s normal data and instructions.
+  The other part, containing the capability list, is accessible only by the operating system.
+  \nameref{subsec:Segmentation} (\Cref{subsec:Segmentation}) is useful to support this approach.
+\end{enumerate}
+
+\nameref{def:Capability_List}s do not correspond directly to the needs of \nameref{def:User}s, but they are useful for localizing information for a given \nameref{def:Process}.
+The process attempting access must present a capability for that access.
+Then, the protection system needs only to verify that the capability is valid.
+Revocation of capabilities, however, may be inefficient.
+
 
 %%% Local Variables:
 %%% mode: latex
