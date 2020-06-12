@@ -65,6 +65,9 @@ A \nameref{def:Protection_Domain} can be defined in many ways.
   The ability to execute an operation on an object is an \emph{access right}.
 \end{definition}
 
+\nameref{def:Protection_Domain}s may share \nameref{def:Access_Right}s.
+For example, if we have three domains: $D_{1}$, $D_{2}$, and $D_{3}$ an an access right $\langle O_{4}, \text{print} \rangle$ that is shared by $D_{2}$ and $D_{3}$, a process executing in either of these domains can print object $O_{4}$.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAF35-Operating_Systems-Reference_Sheet"
