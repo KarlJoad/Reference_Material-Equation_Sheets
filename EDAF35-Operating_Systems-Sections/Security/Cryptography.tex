@@ -86,6 +86,37 @@ It is much faster for a computer to encode and decode ciphertext using symmetric
 However, these algorithms are not used for general-purpose encryption of large amounts of data.
 They are used not only for encryption of small amounts of data but also for \nameref{par:Authentication}, confidentiality, and \nameref{par:Key_Distribution}.
 
+\paragraph{Authentication}\label{par:Authentication}
+Constraining the set of potential senders of a message is called authentication.
+Authentication is thus complementary to encryption.
+Authentication is also useful for proving that a message has not been modified.
+
+Note that this sort of authentication is similar to but distinct from \nameref{subsec:User_Authentication}.
+
+An authentication algorithm using symmetric keys consists of the following components:
+\begin{itemize}[noitemsep]
+\item A set $\Keyspace$ of keys.
+\item A set $\Messages$ of messages.
+\item A set $\Authenticators$ of authenticators.
+\item A function $S : \Keyspace \rightarrow (\Messages \rightarrow \Authenticators)$.
+  That is, for each $k \in \Keyspace$, $S_{k}$ is a function for generating authenticators from messages.
+  Both $S$ and $S_{k}$ for any $k$ should be efficiently computable functions.
+\item A function $V : \Keyspace \rightarrow (\Messages \times \Authenticators \rightarrow \lbrace \mathtt{true}, \mathtt{false} \rbrace)$.
+  That is, for each $k \in \Keyspace$, $V_{k}$ is a function for verifying authenticators on messages.
+  Both $V$ and $V_{k}$ for any $k$ should be efficiently computable functions.
+\end{itemize}
+
+The critical property that an authentication algorithm must possess is this:
+\begin{blackbox}
+  For a message $m$, a computer can generate an authenticator $a \in \Authenticators$ such that $V_{k}(m, a) = \mathtt{true}$ only if it possesses $k$.
+\end{blackbox}
+
+Thus, a computer holding $k$ can generate authenticators on messages so that any computer possessing $k$ can verify them.
+However, a computer not holding $k$ cannot generate authenticators on messages that can be verified using $V_{k}$.
+Since authenticators are generally exposed (for example, sent on a network with the messages themselves), it must not be feasible to derive $k$ from the authenticators.
+Practically, if $V_{k}(m, a) = \mathtt{true}$, then we know that $m$ has not been modified, and that the sender of the message has $k$.
+If we share $k$ with only one entity, then we know that the message originated from $k$.
+
 
 %%% Local Variables:
 %%% mode: latex
