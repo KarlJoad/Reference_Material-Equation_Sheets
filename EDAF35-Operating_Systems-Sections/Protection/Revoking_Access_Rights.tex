@@ -47,6 +47,14 @@ A list of pointers is maintained with each object, pointing to all capabilities 
 When revocation is required, we can follow these pointers, changing the capabilities as necessary.
 This is quite general, but its implementation is costly because of all the pointer traversal.
 
+\subsubsection{Indirection}\label{subsubsec:Capability_Revokation_Indirection}
+Each capability points \textbf{indirectly} through its unique entry in the global table, and that entry points to the object.
+Revocation is done by searching the global table for the desired entry and deleting it.
+Then, when an access is attempted, the capability is found to point to an illegal table entry.
+Table entries can then be reused for other capabilities, since both the capability and the table entry contain the unique name of the object.
+The object for a capability and its table entry must match.
+It does not allow selective revocation.
+
 
 %%% Local Variables:
 %%% mode: latex
