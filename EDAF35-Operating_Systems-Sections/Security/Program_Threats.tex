@@ -80,6 +80,17 @@ Recent versions x86 chips include the \texttt{NX} feature to prevent this type o
 The hardware implementation involves the use of a new bit in the page tables of the CPUs.
 This bit marks the associated page as nonexecutable, so that instructions cannot be read from it and executed.
 
+\subsubsection{Viruses}\label{subsubsec:Viruses}
+\begin{definition}[Virus]\label{def:Virus}
+  A \emph{virus} is a fragment of code embedded in a legitimate program.
+  Viruses are self-replicating and are designed to ``infect'' other programs.
+\end{definition}
+
+\nameref{def:Virus}es can wreak havoc in a system by modifying or destroying files and causing system crashes and program malfunctions.
+As with most penetration attacks, viruses are very specific to architectures, \nameref{def:Operating_System}s, and applications.
+
+Once a virus reaches a target machine, a program known as a virus dropper inserts the virus into the system.
+The virus dropper is usually a Trojan horse, executed for other reasons but installing the virus as its core activity.
 
 %%% Local Variables:
 %%% mode: latex
