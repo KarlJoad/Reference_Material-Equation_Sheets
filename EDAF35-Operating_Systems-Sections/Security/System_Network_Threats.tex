@@ -23,6 +23,21 @@ In general, sharing secrets (to prove identity and as keys to encryption) is req
 
 On computer networks, worms are particularly potent, since they may reproduce themselves among systems and thus shut down an entire network.
 
+\subsubsection{Port Scanning}\label{subsubsec:Port_Scanning}
+Port scanning is not an attack but rather a means for a cracker to detect a system’s vulnerabilities to attack.
+Port scanning typically is automated, involving a tool that attempts to create a TCP/IP connection to a specific port or a range of ports.
+
+One such program is \href{https://www.insecure.org/nmap/}{\texttt{nmap}} is a very versatile open-source utility for network exploration and security auditing.
+When pointed at a target, it will determine what services are running, including application names and versions.
+It can identify the host operating system.
+It can also provide information about defenses, such as what firewalls are defending the target.
+It does not exploit any known bugs.
+
+Because port scans are detectable, they frequently are launched from zombie systems.
+Such systems are previously compromised, independent systems that are serving their original owners while also being used for nefarious purposes.
+Zombies make attackers particularly difficult to prosecute because determining the source of the attack and the person that launched it is challenging.
+This is one of many reasons for securing all systems, including ``inconsequential'' systems, not just systems containing ``valuable'' information or services.
+
 
 %%% Local Variables:
 %%% mode: latex
