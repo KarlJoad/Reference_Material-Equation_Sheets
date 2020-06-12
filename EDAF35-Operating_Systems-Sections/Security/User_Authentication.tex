@@ -60,6 +60,18 @@ Even if the stored encoded password is seen, it cannot be decoded, so the passwo
 Systems also include a ``salt,'' or recorded random number, in the hashing algorithm.
 The salt value is added to the password to ensure that if two plaintext passwords are the same, they result in different hash values.
 
+\subsubsection{One-Time Passwords}\label{subsubsec:One_Time_Passwords}
+To avoid the problems of password sniffing and shoulder surfing, a system can use a set of paired passwords.
+When a session begins, the system randomly selects and presents one part of a password pair; the user must supply the other part.
+In this system, the user is challenged and must respond with the correct answer to that challenge.
+
+This approach can be generalized to the use of an algorithm as a password.
+Such algorithmic passwords are not susceptible to reuse.
+That is, a user can type in a password, and no entity intercepting that password will be able to reuse it.
+
+A one-time password generator that requires input by the user involves two-factor authentication.
+Two different types of components are needed: a one-time password generator that generates the correct response only if the PIN is valid and the PIN itself.
+Two-factor authentication offers far better authentication protection than single-factor authentication because it requires ``something you have'' as well as ``something you know.''
 
 %%% Local Variables:
 %%% mode: latex
