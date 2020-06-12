@@ -33,6 +33,16 @@ A general model of protection can be viewed abstractly as a matrix, called an \n
   \label{tab:Basic_Access_Matrix}
 \end{table}
 
+Using \Cref{tab:Basic_Access_Matrix}, we can determine the \nameref{def:Access_Right}s for various domains on various objects.
+A process executing in domain $D_{1}$ can read files $F_{1}$ and $F_{3}$.
+A process executing in domain $D_{4}$ has the same privileges as one executing in domain $D_{1}$; but in addition, it can also write onto files $F_{1}$ and $F_{3}$.
+
+Access matrices can provide a variety of \textbf{both} mechanisms and policies for system protection.
+The mechanism consists of implementing the access matrix and ensuring that the semantic properties we have outlined hold.
+This means we must ensure that a process executing in domain $D_{i}$ can access only those objects specified in row $i$ as allowed by the access-matrix entries.
+The policy decisions involve which rights should be included in the $(i, j)$th entry.
+We must also decide the domain in which each process executes, which is usually decided by the operating system.
+
 
 %%% Local Variables:
 %%% mode: latex
