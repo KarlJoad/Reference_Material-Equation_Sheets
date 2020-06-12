@@ -42,6 +42,11 @@ If a \nameref{def:Process} wants to use a capability, it may find that that capa
 The process may then attempt to reacquire the capability.
 If access has been revoked, the process will not be able to reacquire the capability.
 
+\subsubsection{Back-pointers}\label{subsubsec:Capability_Revokation_Back_Pointers}
+A list of pointers is maintained with each object, pointing to all capabilities associated with that object.
+When revocation is required, we can follow these pointers, changing the capabilities as necessary.
+This is quite general, but its implementation is costly because of all the pointer traversal.
+
 
 %%% Local Variables:
 %%% mode: latex
