@@ -73,6 +73,16 @@ The implementation of VMMs varies greatly. Options include the following:
   Solaris Zones, BSD Jails, and Docker ``contain'' applications, making them more secure and manageable.
 \end{itemize}
 
+A formal definition of \nameref{def:Virtualization} helped to establish system requirements and a target for functionality.
+The virtualization requirements stated that:
+\begin{enumerate}[noitemsep]
+\item A VMM provides an environment for programs that is essentially identical to the original machine.
+\item Programs running within that environment show only minor performance decreases.
+\item The VMM is in complete control of physical system resources.
+\end{enumerate}
+
+These requirements of fidelity, performance, and safety still guide \nameref{def:Virtualization} efforts today.
+
 
 %%% Local Variables:
 %%% mode: latex
