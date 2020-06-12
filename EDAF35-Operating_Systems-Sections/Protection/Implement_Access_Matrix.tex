@@ -1,4 +1,15 @@
 \subsection{Implementing Access Matrices}\label{subsec:Implement_Access_Matrices}
+In general, an \nameref{def:Access_Matrix} will be sparse, i.e.\ most of the entries in the table will be empty.
+Along with this, traditional sparse data structure techniques are not terribly useful for this.
+These are because of the way the protection facilities are used.
+
+Most systems use a combination of \nameref{def:Access_List}s and \nameref{def:Capability_List}s.
+When a \nameref{def:Process} first tries to access an object, the access list is searched.
+If access is denied, an exception condition occurs.
+Otherwise, a capability is created and attached to the process.
+Subsequent references use the capability to quickly determine access.
+After the last access, the capability is destroyed.
+
 
 %%% Local Variables:
 %%% mode: latex
