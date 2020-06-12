@@ -1,4 +1,22 @@
 \subsection{Firewalling}\label{subsec:Firewalling}
+Now, how can a trusted computer can be connected safely to an untrustworthy network?
+The most common solution is the use of a \nameref{def:Firewall} to separate trusted and untrusted systems.
+
+\begin{definition}[Firewall]\label{def:Firewall}
+  A \emph{firewall} is a computer, appliance, or router that sits between the trusted and the untrusted.
+\end{definition}
+
+A network \nameref{def:Firewall} limits network access between the two security domains and monitors and logs all connections.
+It can also limit connections based on source or destination address, source or destination port, or direction of the connection.
+In fact, a network firewall can separate a network into multiple domains.
+A common implementation has the Internet as the untrusted domain; a semitrusted/semisecure network, called the demilitarized zone (DMZ); and the trusted computers as a third domain.
+
+Of course, a \nameref{def:Firewall} itself must be secure and attack-proof.
+Otherwise, its ability to secure connections can be compromised.
+Furthermore, firewalls do not prevent attacks that tunnel, or travel within protocols or connections that the firewall allows.
+A buffer-overflow attack to a web server will not be stopped by the firewall, for example, because the HTTP connection is allowed; it is the contents of the HTTP connection that house the attack.
+Likewise, denial-of-service attacks can affect firewalls as much as any other machines.
+Another vulnerability of firewalls is spoofing, in which an unauthorized host pretends to be an authorized host by meeting some authorization criterion.
 
 %%% Local Variables:
 %%% mode: latex
