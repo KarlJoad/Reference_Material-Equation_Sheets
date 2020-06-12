@@ -23,6 +23,15 @@ At the base is the \nameref{def:VM_Host}.
   The \emph{host} is the the underlying physical \nameref{def:Hardware} system that runs the virtual machines.
 \end{definition}
 
+The \nameref{def:VM_Host} runs the \nameref{def:Virtual_Machine_Manager}.
+
+\begin{definition}[Virtual Machine Manager]\label{def:Virtual_Machine_Manager}\label{def:Hypervisor}\label{def:VMM}
+  The \emph{Virtual Machine Manager} (\emph{VMM}), also known as a \emph{hypervisor} creates and runs virtual machines by providing an interface that is identical to the host to every guest..
+  \begin{remark}
+    This is true except in the case of \nameref{subsubsec:Paravirtualization}.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
