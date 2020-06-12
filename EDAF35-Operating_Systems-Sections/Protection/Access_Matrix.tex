@@ -71,6 +71,24 @@ Again, we can control these changes by including the access matrix itself as an 
 If we want to be pedantic, we must protect each entry in the \nameref{def:Access_Matrix} because each entry can be modified individually.
 This requires three additional operations: \texttt{copy}, \texttt{owner}, and \texttt{control}.
 
+The \texttt{copy} right has 3 variants.
+\begin{enumerate}[noitemsep]
+\item Allows the access rights to be copied only within the column.
+\item A right is ``copied'' from access(i, j) to access(k, j); it is then removed from access(i, j).
+  This action is a \texttt{transfer} of a right, rather than a copy.
+\item Propagation of the copy right may be limited.
+  That is, when the set of rights $R^{*}$ is copied from \texttt{access($i$, $j$)} to \texttt{access($k$, $j$)},  the rights $R$ is created.
+  A process executing in domain $D_{k}$ cannot further copy the copy of the set of rights, $R$.
+\end{enumerate}
+
+The \texttt{owner} right controls the addition and removal of rights.
+If \texttt{access($i$, $j$)} includes the \texttt{owner} right, then a process executing in domain $D_{i}$ can add and remove any right in any entry in column $j$.
+This means that there are ways to change the entries in a column.
+
+The \texttt{control} right allows for changing the entries in a row.
+The \texttt{control} right is applicable only to domain objects.
+If \texttt{access($i$, $j$)} includes the \texttt{control} right, then a process executing in domain $D_{i}$ can remove any access right from row $j$.
+
 
 %%% Local Variables:
 %%% mode: latex
