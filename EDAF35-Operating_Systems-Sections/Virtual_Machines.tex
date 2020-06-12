@@ -10,6 +10,12 @@ With a \nameref{def:Virtual_Machine}, guest \nameref{def:Operating_System}s and 
 This concept is similar to the \nameref{subsubsec:Layered_Approach} of \nameref{def:Operating_System} implementation (see \Cref{subsubsec:Layered_Approach}).
 In the case of \nameref{def:Virtualization}, there is a layer that creates a virtual system on which operating systems or applications can run.
 
+\begin{definition}[Virtual Machine]\label{def:Virtual_Machine}
+  A \emph{Virtual Machine} (\emph{VM}, not to be confused with \nameref{def:Virtual_Memory}'s VM) is an \nameref{def:Operating_System} that is running inside an execution environment provided by \nameref{def:Virtualization}.
+  The operating system running on this virtualized hardware believes it is running on real hardware, with all of its quirks and problems.
+  This operating system also believes it is the \textbf{only} one running, when there could be several virtual machines running on the same hardware.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
