@@ -51,6 +51,35 @@ What that code does determines how it is classified.
   However, when a predefined set of parameters was met, the security hole would be created.
 \end{definition}
 
+\subsubsection{Stack and Buffer Overflow}\label{subsubsec:Stack_Buffer_Overflow}
+The stack- or buffer-overflow attack is the most common way for an attacker outside the system to gain unauthorized access to the target system.
+An authorized user of the system may also use this exploit for privilege escalation.
+
+Essentially, the attack exploits a bug in a program.
+The bug can be a simple case of poor programming, in which the programmer neglected to code bounds checking on an input field.
+In this case, the attacker sends more data than the program was expecting.
+By using trial and error, or by examining the source code of the attacked program if it is available, the attacker determines the vulnerability and writes a program to do the following:
+\begin{enumerate}[noitemsep]
+\item Overflow an input field, command-line argument, or input buffer until it writes into the stack.
+\item Overwrite the current return address on the stack with the address of the exploit code loaded in step 3.
+\item Write a simple set of code for the next space in the stack that includes the commands that the attacker wishes to execute.
+\end{enumerate}
+
+The result of this attack program’s execution will be a privileged command execution.
+
+When a function is invoked in a typical computer architecture, the local variables defined in the function, the parameters passed to the function, and the address to which control returns once the function exits are stored in a stack frame.
+At the end of a stack frame, there is the return address, which specifies where to return control once the function exits.
+The frame pointer must be fixed on the stack, as the value of the stack pointer can vary during the function call.
+The saved frame pointer allows relative access to parameters and automatic variables.
+
+Given this standard memory layout, an intruder could execute a buffer-overflow attack.
+The goal being to replace the return address in the stack frame so that it points to a code segment containing the attacking program.
+
+One solution to this problem is for the CPU to have a feature that disallows execution of code in a stack section of memory.
+Recent versions x86 chips include the \texttt{NX} feature to prevent this type of attack.
+The hardware implementation involves the use of a new bit in the page tables of the CPUs.
+This bit marks the associated page as nonexecutable, so that instructions cannot be read from it and executed.
+
 
 %%% Local Variables:
 %%% mode: latex
