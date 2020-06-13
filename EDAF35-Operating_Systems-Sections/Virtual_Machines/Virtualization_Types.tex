@@ -93,6 +93,12 @@ In many ways, they treat a guest operating system as just another process, albei
 \nameref{def:Type2_Hypervisor}s are less interesting to \nameref{def:Operating_System}s, because there is very little operating-system involvement in these application-level \nameref{def:Virtual_Machine_Manager}s.
 This type of VMM is simply another process run and managed by the host, and even the \nameref{def:VM_Host} does not know \nameref{def:Virtualization} is happening within the VMM.\@
 
+\begin{definition}[Type 2 Hypervisor]\label{def:Type2_Hypervisor}
+  A \emph{Type 2 Hypervisor} provides \nameref{def:Virtualization} through \nameref{def:Software} as well, however this hypervisor is running as a \nameref{def:User}-level \nameref{def:Process} on top of another \nameref{def:Operating_System}.
+  This leads to heavy levels of abstraction, thus slowing down performance significantly.
+  However, this also allows relatively unprivileged users to create and manage \nameref{def:Virtual_Machine}s on their system.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
