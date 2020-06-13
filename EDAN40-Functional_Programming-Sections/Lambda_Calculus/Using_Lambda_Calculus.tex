@@ -16,6 +16,11 @@ When using \nameref{def:Lambda_Calculus}, there are some things to keep in mind.
   For example, in the expression, $\lambda x. zx$, an $\alpha$-conversion of $x$ to $y$ results in $\lambda y. zy$.
 \end{definition}
 
+\begin{definition}[Beta Reduction]\label{def:Beta_Reduction}
+  \emph{Beta reduction} (\emph{$\beta$-reduction}) is the process of following substitution rules defined by the $\lambda$ functions.
+  For example, performing a $\beta$-reduction on $(\lambda n. n \times 2) 7$ results in the expression $7 \times 2$.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
