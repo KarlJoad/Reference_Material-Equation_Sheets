@@ -18,10 +18,12 @@ These PDFs will have hyperlinks in them, which will allow you to click through t
 *The hyperlinks may show up as colored boxes.*
   * The **red** boxes are hyperlinks to jump through the documents
   * The **blue** boxes are hyperlinks to websites/web locations
-  * The **green** boxes are citation hyperlinks to the bibliography (if one is present)
+  * The **light green** boxes are citation hyperlinks to the bibliography (if one is present)
+  * The **dark green** boxes are links to other PDFs in this repository.
 
 If the PDF does NOT look like it has these boxes, then it is *YOUR* PDF viewer, since I have generated all of the reference guides with the `hyperref` LaTeX package.
 You can try using a different viewer, which may display the boxes.
+
 **However, if you cannot see the boxes, it is likely that your PDF viewer will still correctly handle these hyper links. If you hover your mouse over something you think would be a hyperlink, you might see a finger button to "click" on it.**
 
 # Repository Structure
@@ -48,8 +50,8 @@ It provides a skeleton framework for each document to be customized with.
 
 ### `Reference_Sheet_Preamble.tex`
 This is a LaTeX preamble document that is `\input` to every **Reference Sheet**.
-  * **Equation Sheets** will get a customized preamble everytime.
   * This ensures that the packages that are in each document are the same, and that they will have a similar formatting to them.
+  * **Equation Sheets** will get a customized preamble everytime.
 
 # Separate Sections
 For most of these, there will be an extra folder named `./Course_Num-Sections`.
@@ -63,3 +65,6 @@ They are now `./Course_Num-Short_Course_Name-Sections`.
 Any images/drawings will be placed in `./Drawings/`.
 Each class has its own subdirectory, therefore the same picture might be in several class's `Drawings` directory.
 This is intentional.
+
+In addition, I do not make a distinction between PNGs and JPG/JPEGs, they both work as rasterized pictures.
+However, when possible, I also include the SVG source, so that one can change these images without loss in figure quality.
