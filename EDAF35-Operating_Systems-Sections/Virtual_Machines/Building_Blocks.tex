@@ -82,6 +82,20 @@ If the guest tries to access a virtualized resource, then control is passed to t
 These multimode processors, developed for \nameref{def:Virtualization} provide guest \nameref{def:VCPU} state data structures to load and save guest CPU state automatically during guest context switches.
 In addition, virtual machine control structures (VMCSs) are provided to manage guest and host state, as well as the various guest execution controls, exit controls, and information about why guests exit back to the host.
 
+AMD and Intel have also addressed memory management in the virtual environment.
+With these memory management enhancements, VMMs no longer need to implement software Nested Page Tables (NPTs).
+These CPUs implement nested page tables in hardware to allow the VMM to fully control paging while the CPUs accelerate the translation from virtual to physical addresses.
+The NPTs add a new layer, one representing the guest's view of logical-to-physical address translation.
+The CPU page-table walking function includes this new layer as necessary, walking through the guest table to the VMM table to find the physical address desired.
+This process is illustrated in \Cref{fig:Nested_Page_Tables}.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[scale=1.00]{./Drawings/EDAF35-Operating_Systems/Nested_Page_Tables-Virtualization.png}
+  \caption{Nested Page Tables, for Virtualization}
+  \label{fig:Nested_Page_Tables}
+\end{figure}
+
 
 
 %%% Local Variables:
