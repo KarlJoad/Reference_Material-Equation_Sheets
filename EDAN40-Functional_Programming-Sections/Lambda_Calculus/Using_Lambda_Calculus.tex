@@ -40,6 +40,20 @@ Haskell tends to use \nameref{def:Weak_Head_Normal_Form}, but \nameref{def:Lambd
   This is equivalent to the halting state of a Turing Machine.
 \end{definition}
 
+However, not all terms have a \nameref{def:Normal_Form}.
+These expressions correspond to non-halting computations in a Turing Machine.
+An example is shown in \Cref{eq:No_Normal_Form}.
+\begin{equation}\label{eq:No_Normal_Form}
+  (\lambda x. x x) (\lambda x. x x)
+\end{equation}
+
+\Cref{eq:No_Normal_Form} cannot be reduced to a \nameref{def:Normal_Form} as the following derivation shows.
+I have performed an \nameref{def:Alpha_Conversion} on the second lambda function, to make things clearer.
+I went from $x$ to $y$.
+\begin{align*}
+  \intertext{Apply the $\lambda y$ expression as the variable $x$ in the $\lambda x$ expression.}
+  (\lambda x. x x) (\lambda y. y y) &= (\lambda y. y y) (\lambda y. y y)
+\end{align*}
 
 %%% Local Variables:
 %%% mode: latex
