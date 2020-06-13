@@ -121,6 +121,40 @@ Because of the disk images created physical-to-virtual (P-to-V) conversion can b
 Physical-to-Virtual conversion reads the disk blocks of the physical system's disks and stores them within files that the \nameref{def:VMM} can access.
 It is also possible to go the other way, virtual-to-physical (V-to-P) conversion is a procedure for converting a virtualized guest to a physical system.
 
+\subsubsection{Live Migration}\label{subsubsec:VM_Live_Migration}
+One feature found \nameref{def:Type0_Hypervisor}s and \nameref{def:Type1_Hypervisor}s is the live migration of a running guest from one system to another.
+Live migration is made possible because of the well-defined interfaces between guests and VMMs and the limited state the VMM maintains for the guest.
+The VMM migrates a guest via the following steps:
+\begin{enumerate}[noitemsep]
+\item The source \nameref{def:VMM} establishes a connection with the target VMM and confirms that it is allowed to send a guest.
+\item The target creates a new guest by creating a new \nameref{def:VCPU}, new nested page table, and other state storage.
+\item The source sends all read-only memory pages to the target.
+\item The source sends all read-write pages to the target, marking them as clean on the source.
+\item The source repeats step 4, as during transmission, some pages were probably modified by the guest and are now dirty.
+  These pages need to be sent again and marked again as clean.
+\item When the cycle of steps 4 and 5 becomes very short, the source VMM freezes the guest, sends the VCPU’s final state, sends other state details, sends the final dirty pages, and tells the target to start running the guest.
+  Once the target acknowledges that the guest is running, the source terminates the guest.
+\end{enumerate}
+
+Lastly, here are a few interesting details and limitations concerning live migration.
+First, for network connections to continue uninterrupted, the network infrastructure needs to understand that a MAC address can move between systems.
+Before \nameref{def:Virtualization}, this did not happen, as the MAC address was tied to physical hardware.
+With virtualization, the MAC must be movable for existing networking connections to continue without resetting.
+Modern network switches understand this and route traffic wherever the MAC address is, even accommodating a move.
+
+A limitation of live migration is that no disk information is transferred.
+One reason live migration is possible is that most of the guest’s state is maintained within the guest
+\begin{itemize}[noitemsep]
+\item Open file tables
+\item \nameref{def:System_Call} state
+\item \nameref{def:Kernel} state
+\item etc.
+\end{itemize}
+
+Because disk I/O is so much slower than memory access, and used disk space is usually much larger than used memory, disks associated with the guest cannot be reasonably be moved as part of a live migration.
+Rather, the disk must be remote to the guest, accessed over the network.
+In that case, disk access state is maintained within the guest, and network connections are all that matter to the \nameref{def:VMM}.
+The network connections are maintained during the migration, so remote disk access continues.
 
 %%% Local Variables:
 %%% mode: latex
