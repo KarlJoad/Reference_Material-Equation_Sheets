@@ -79,6 +79,17 @@ At the same time, the guest is using its own memory-management and paging algori
 
 If memory pressure within the entire system decreases, the VMM will tell the balloon process within the guest to unpin and free some or all of the memory, allowing the guest more pages for its use.
 
+\paragraph{Page Hashing and Remapping}\label{par:Hash_VMem_Remap}
+Another common method for reducing memory pressure is for the \nameref{def:VMM} to determine if the same page has been loaded more than once.
+If this is the case, to the VMM reduces the number of copies of the page to one and maps the other users of the page to that one copy.
+This can be done by randomly sampling the guests' memory and creating a hash for each page sampled.
+The hash of every page examined is compared with other hashes already stored in a hash table.
+If there is a match, the pages are compared byte by byte to see if they really are identical.
+If they are, one page is freed, and its logical address is mapped to the other’s physical address.
+
+This technique might seem at first to be ineffective, but consider that guests run \nameref{def:Operating_System}s.
+If multiple guests run the same operating system, then only one copy of the active operating-system pages need be in memory.
+
 
 %%% Local Variables:
 %%% mode: latex
