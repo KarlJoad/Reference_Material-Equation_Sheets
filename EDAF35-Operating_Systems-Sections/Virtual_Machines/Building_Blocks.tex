@@ -7,6 +7,12 @@ This is especially a challenge on dual-mode systems, where the underlying machin
   Note that these building blocks are not required by \nameref{def:Type0_Hypervisor}s.
 \end{remark*}
 
+The ability to virtualize heavily depends on the hardware features provided by the CPU.\@
+If the features are sufficient, then it is possible to write a \nameref{def:VMM} that provides a guest environment.
+Otherwise, \nameref{def:Virtualization} is impossible.
+
+If it is possible to virtualize a system, the \nameref{def:VMM}s use several techniques to implement it, including \nameref{subsubsec:Trap_and_Emulate} and \nameref{subsubsec:Binary_Translation}.
+
 
 %%% Local Variables:
 %%% mode: latex
