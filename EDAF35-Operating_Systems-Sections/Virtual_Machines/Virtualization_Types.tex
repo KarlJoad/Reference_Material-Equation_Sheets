@@ -83,6 +83,12 @@ Because they are operating systems, they must also provide CPU \nameref{subsec:S
 
 An important benefit is the ability to perform \nameref{def:Consolidation}.
 
+\paragraph{Traditional OSs as VMMs}\label{par:Traditional_OS_VMM}
+Some general-purpose \nameref{def:Operating_System}s also provide \nameref{def:VMM} functionality.
+For example, RedHat Enterprise Linux, Windows, or Oracle Solaris can perform its normal duties as well as providing a VMM allowing other operating systems to run as guests.
+Because of their extra duties, these hypervisors typically provide fewer virtualization features than other \nameref{def:Type1_Hypervisor}s.
+In many ways, they treat a guest operating system as just another process, albeit with special handling provided when the guest tries to execute special instructions.
+
 
 %%% Local Variables:
 %%% mode: latex
