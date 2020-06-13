@@ -34,6 +34,24 @@ In virtualized environments, there are more users of memory (the guests and thei
 Further adding to this pressure is that VMMs typically \nameref{def:Overcommit} memory.
 The extra need for efficient memory mean great measures are taken to ensure the optimal use of memory.
 
+Before memory optimization can occur, the VMM must establish how much real memory each guest should use.
+To do that:
+\begin{enumerate}[noitemsep]
+\item \nameref{def:VMM} evaluates the maximum memory size of each guest as dictated when it is configured.
+  \begin{itemize}[noitemsep]
+  \item General-purpose operating systems do not expect the amount of memory in the system to change, so VMMs must maintain the illusion that the guest has that amount of memory.
+  \end{itemize}
+\item \nameref{def:VMM} computes a target real memory allocation for each guest based on the configured memory for that guest and other factors, such as \nameref{def:Overcommit}ment and system load.
+\item Then three low-level mechanisms are used to reclaim memory from the guests.
+  \begin{enumerate}[noitemsep]
+  \item \nameref{par:VMM_Page_Replacement}
+  \item \nameref{par:VM_Mem_Kernel_Module}
+  \item \nameref{par:Hash_VMem_Remap}
+  \end{enumerate}
+\end{enumerate}
+
+The overall effect is to enable guests to behave and perform as if they had the full amount of memory requested although in reality they have less.
+
 
 %%% Local Variables:
 %%% mode: latex
