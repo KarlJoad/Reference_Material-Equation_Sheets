@@ -54,6 +54,12 @@ Either all guests must get their own I/O devices, or the system must provided I/
 In these cases, the \nameref{def:Hypervisor} manages shared access or grants all devices to a control partition.
 In the \textbf{control partition}, a guest operating system provides services (such as networking) via \nameref{def:Daemon}s to other guests, and the hypervisor routes I/O requests appropriately.
 
+Because type 0 virtualization is very close to raw hardware execution, it should be considered separately from the other \nameref{def:Virtualization} methods discussed here.
+A \nameref{def:Type0_Hypervisor} can run multiple guest operating systems (one in each hardware partition).
+All of those guests, because they are running on a subset of the raw hardware, can in turn be \nameref{def:VMM}s.
+Because of that, each can have its own guest operating systems.
+Other types of hypervisors usually cannot provide this virtualization-within-virtualization functionality.
+
 
 %%% Local Variables:
 %%% mode: latex
