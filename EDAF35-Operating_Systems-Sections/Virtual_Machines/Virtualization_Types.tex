@@ -140,6 +140,17 @@ Java programs run within the JVM environment, and the JVM is compiled to be a na
 This arrangement means that Java programs are written once and then can run on any system on which a JVM is available.
 The same can be said for interpreted languages, which run inside programs that read each instruction and interpret it into native operations.
 
+\subsubsection{Emulation}\label{subsubsec:Emulation}
+\nameref{def:Virtualization} is probably the most common method for running applications designed for one \nameref{def:Operating_System} on a different operating system, but on the \textbf{same} CPU.\@
+Emulation is useful when the \nameref{def:VM_Host} system has one system architecture and the guest system was compiled for a different architecture.
+
+Programs can run in an emulator that translates each of the outdated system's instructions into the native instruction set of the new system.
+
+As may be expected, the major challenge of emulation is performance.
+Instruction-set emulation can run an order of magnitude slower than native instructions, because it may take ten instructions on the new system to read, parse, and simulate an instruction from the old system.
+Thus, unless the new machine is ten times faster than the old, the program running on the new machine will run more slowly than it did on its native hardware.
+Another challenge for emulator writers is that it is difficult to create a correct emulator because, in essence, this task involves writing an entire CPU in software.
+
 
 %%% Local Variables:
 %%% mode: latex
