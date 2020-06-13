@@ -108,6 +108,10 @@ In CPUs that provide hardware-assisted DMA, even DMA has a level of indirection.
 
 In this manner DMA transfers are passed through between a guest and a device without VMM interference.
 
+Similarly, interrupts must be delivered to the appropriate guest and must not be visible to other guests.
+By providing an interrupt remapping feature, CPUs with virtualization hardware assistance automatically deliver an interrupt destined for a guest to a core that is currently running a thread of that guest.
+That way, the guest receives interrupts without the VMM's needing to intercede in their delivery.
+Without interrupt remapping, malicious guests can generate interrupts that can be used to gain control of the host system.
 
 %%% Local Variables:
 %%% mode: latex
