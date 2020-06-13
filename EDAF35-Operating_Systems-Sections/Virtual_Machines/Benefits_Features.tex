@@ -22,6 +22,18 @@ The snapshot records a point in time, and the guest can be reset to that point i
 Often, VMMs allow any number snapshots to be taken, so long as storage allows.
 These abilities are used to good advantage in virtual environments.
 
+A \nameref{def:Virtual_Machine} system is a perfect vehicle for low-level development.
+For example, changing an \nameref{def:Operating_System} is a difficult task.
+Operating systems are large and complex programs, and a change in one part may cause obscure bugs to appear in some other part.
+The power of the operating system makes changing it particularly dangerous.
+Because the operating system executes in kernel mode, a wrong change in a pointer could cause an error that would destroy the entire file system.
+
+Another benefits is that system programmers can be given their own \nameref{def:Virtual_Machine}, and development is done on the virtual machine instead of on a physical machine.
+When a deployment happens, normal system operation is disrupted only when a completed and tested change is ready to be put into production.
+Another advantage of virtual machines for developers is that multiple \nameref{def:Operating_System}s can run concurrently on the developer’s workstation.
+This virtualized workstation allows for rapid porting and testing of programs in varying environments.
+In addition, multiple versions of a program can run, each in its own isolated operating system, within one system.
+
 
 %%% Local Variables:
 %%% mode: latex
