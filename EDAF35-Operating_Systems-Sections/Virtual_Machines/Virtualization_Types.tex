@@ -151,6 +151,17 @@ Instruction-set emulation can run an order of magnitude slower than native instr
 Thus, unless the new machine is ten times faster than the old, the program running on the new machine will run more slowly than it did on its native hardware.
 Another challenge for emulator writers is that it is difficult to create a correct emulator because, in essence, this task involves writing an entire CPU in software.
 
+\subsubsection{Application Containment}\label{subsubsec:Application_Containment}
+The goal of virtualization in some instances is to provide a method to segregate applications, manage their performance and resource use, and create an easy way to start, stop, move, and manage them.
+In such cases, full-fledged virtualization may not be needed.
+If the applications are all compiled for the same \nameref{def:Operating_System}, then we do not need complete virtualization to provide these features.
+We can instead use application containment.
+
+In this system, \textbf{only one \nameref{def:Kernel} is installed}, and the hardware is not virtualized.
+Rather, the \nameref{def:Operating_System} and its devices are virtualized, providing \nameref{def:Process}es with a zone that gives the impression that they are the only processes on the system.
+One or more containers can be created, and each can have its own applications, network stacks, network address and ports, user accounts, and so on.
+CPU and memory resources can be divided among the zones and the system-wide processes.
+Each zone in fact can run its own scheduler to optimize the performance of its applications on the allotted resources.
 
 %%% Local Variables:
 %%% mode: latex
