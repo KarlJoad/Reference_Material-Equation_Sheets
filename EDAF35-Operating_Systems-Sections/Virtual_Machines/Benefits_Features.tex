@@ -34,6 +34,22 @@ Another advantage of virtual machines for developers is that multiple \nameref{d
 This virtualized workstation allows for rapid porting and testing of programs in varying environments.
 In addition, multiple versions of a program can run, each in its own isolated operating system, within one system.
 
+A major advantage of \nameref{def:Virtual_Machine}s in production data-center use is system \nameref{def:Consolidation}.
+
+\begin{definition}[Consolidation]\label{def:Consolidation}
+  \emph{Consolidation} involves taking physically separate systems and running them in \nameref{def:Virtual_Machine}s on one system.
+  These physical-to-virtual conversions typically result in a maximization of resource usage, since many separate lightly used systems can be combined to create one more heavily used system.
+\end{definition}
+
+One of the tools that make this possible is templating, where one standard \nameref{def:Virtual_Machine} image, including an
+installed and configured guest \nameref{def:Operating_System} and applications, is saved and used as a source for multiple running VMs.
+Other features include managing the patching of all guests, backing up and restoring the guests, and monitoring their resource use.
+This batch management allows a single system administrator to handle many times the regular amount of physical servers.
+
+Some VMMs include a live migration feature that moves a running guest from one physical server to another without interrupting its operation or active network connections.
+If a server is overloaded, live migration can thus free resources on the source host while not disrupting the guest.
+Similarly, when \nameref{def:VM_Host} \nameref{def:Hardware} must be repaired or upgraded, guests can be migrated to other servers, the evacuated host can be maintained, and then the guests can be migrated back.
+This operation occurs without downtime and without interruption to users.
 
 %%% Local Variables:
 %%% mode: latex
