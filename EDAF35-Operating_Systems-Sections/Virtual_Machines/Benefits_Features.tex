@@ -13,6 +13,15 @@ However, there are 2 approaches handling this problem:
   The network is modeled after physical communication networks but is implemented in software.
 \end{enumerate}
 
+One feature common to most \nameref{def:Virtualization} implementations is the ability to \textbf{suspend}, a running \nameref{def:Virtual_Machine}.
+Most \nameref{def:Operating_System}s provide this basic feature for \nameref{def:Process}es, but in a virtualized system, the guest operating system \textbf{is} a ``process'', which means it can be suspended.
+\nameref{def:VMM}s can go one step further and allow copies and \textbf{snapshots} to be made of the guest.
+The copy can be used to create a new VM or to move a VM from one machine to another with its current state intact.
+The guest can then resume where it was, as if on its original machine, creating a clone.
+The snapshot records a point in time, and the guest can be reset to that point if necessary.
+Often, VMMs allow any number snapshots to be taken, so long as storage allows.
+These abilities are used to good advantage in virtual environments.
+
 
 %%% Local Variables:
 %%% mode: latex
