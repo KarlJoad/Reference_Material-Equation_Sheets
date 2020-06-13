@@ -114,6 +114,11 @@ Instead, the guest and the host work together for a better \nameref{def:Virtuali
 The guest must be modified to run on the paravirtualized virtual hardware.
 The gain for this extra work is more efficient use of resources and a smaller virtualization layer.
 
+Other \nameref{def:VMM}s present virtual devices to guests that \textbf{appear} to be real devices.
+Instead of taking that approach, the paravirtualization presents clean and simple device abstractions that allow efficient I/O, as well as good communication between the guest and the VMM about device I/O.
+For each device used by each guest, there is a circular buffer shared by the guest and the VMM via \nameref{par:Shared_Memory}.
+Read and write data are placed in this buffer.
+
 
 %%% Local Variables:
 %%% mode: latex
