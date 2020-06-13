@@ -22,6 +22,26 @@ One important concept found in most virtualization options is the implementation
   When the guest is \nameref{def:Context_Switch}ed onto a physical CPU by the \nameref{def:VMM}, information from the VCPU is used to load the right context, much as a general-purpose \nameref{def:Operating_System} would use the PCB.\@
 \end{definition}
 
+\subsubsection{Trap-and-Emulate}\label{subsubsec:Trap_and_Emulate}
+On a typical dual-mode system, the virtual machine guest can execute only in user mode (unless extra hardware support is provided).
+The kernel, of course, runs in kernel mode, and it is not safe to allow user-level code to run in kernel mode.
+Just as the physical machine has two modes, however, so must the virtual machine.
+Consequently, we must have a virtual user mode and a virtual kernel mode, both of which run in physical user mode.
+Actions that cause a transfer from user mode to kernel mode on a real machine (such as a \nameref{def:System_Call}, an \nameref{def:Interrupt}, or an attempt to execute a privileged instruction) must also cause a transfer from virtual user-mode to virtual kernel-mode in the \nameref{def:Virtual_Machine}.
+
+When the kernel in the guest attempts to execute a privileged instruction, that is an error (because the system is in both physical user-mode and virtual user-mode) and causes a trap to the \nameref{def:VMM} in the real machine.
+The VMM gains control and executes (or ``emulates'') the action that was attempted by the guest kernel on the part of the guest.
+It then returns control to the \nameref{def:Virtual_Machine}.
+
+With privileged instructions, time becomes an issue.
+All nonprivileged instructions run natively on the \nameref{def:Hardware}, providing the same performance for guests as native applications.
+Privileged instructions create extra overhead, causing the guest to run more slowly than it would natively.
+In addition, the CPU is being multiprogrammed among many \nameref{def:Virtual_Machine}s, which can further slow down the virtual machines in unpredictable ways.
+
+Only the privileged instructions (needed mainly for I/O) must be emulated and hence only these instructions execute more slowly.
+In general, with the evolution of hardware, the performance of trap-and-emulate functionality has been improved, and cases in which it is needed have been reduced.
+For example, many CPUs now have extra modes added to their standard dual-mode operation.
+
 
 %%% Local Variables:
 %%% mode: latex
