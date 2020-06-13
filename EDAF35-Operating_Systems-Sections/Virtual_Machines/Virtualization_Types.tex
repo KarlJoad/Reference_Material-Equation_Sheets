@@ -33,6 +33,17 @@ When the \nameref{def:Virtual_Machine} is no longer needed, it can be deleted.
 When this happens, the \nameref{def:VMM} first frees up any used disk space and then removes the configuration associated with the virtual machine, essentially ``forgetting'' the virtual machine.
 These steps are quite simple compared with building, configuring, running, and removing physical machines.
 
+\subsubsection{Type 0 Hypervisor}\label{subsubsec:Type0_Hypervisor}
+\nameref{def:Type0_Hypervisor}s have existed for many years under many names, including ``partitions'' and ``domains''.
+They are a hardware feature, and that brings its own positives and negatives.
+The feature set of a \nameref{def:Type0_Hypervisor} tends to be smaller than those of the other types because it is implemented in \nameref{def:Hardware}.
+
+\begin{definition}[Type 0 Hypervisor]\label{def:Type0_Hypervisor}
+  A \emph{Type 0 Hypervisor} provides the \nameref{def:Virtualization} required to run \nameref{def:Virtual_Machine}s in \nameref{def:Firmware}.
+  This means that there is \textbf{NO} abstraction required and no abstraction overhead incurred in this method.
+  However, this type of virtualization is also relatively inflexible, as the number of virtual domains that can be created for execution is limited by firmware.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
