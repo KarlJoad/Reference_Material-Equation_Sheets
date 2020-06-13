@@ -89,6 +89,10 @@ For example, RedHat Enterprise Linux, Windows, or Oracle Solaris can perform its
 Because of their extra duties, these hypervisors typically provide fewer virtualization features than other \nameref{def:Type1_Hypervisor}s.
 In many ways, they treat a guest operating system as just another process, albeit with special handling provided when the guest tries to execute special instructions.
 
+\subsubsection{Type 2 Hypervisor}\label{subsubsec:Type2_Hypervisor}
+\nameref{def:Type2_Hypervisor}s are less interesting to \nameref{def:Operating_System}s, because there is very little operating-system involvement in these application-level \nameref{def:Virtual_Machine_Manager}s.
+This type of VMM is simply another process run and managed by the host, and even the \nameref{def:VM_Host} does not know \nameref{def:Virtualization} is happening within the VMM.\@
+
 
 %%% Local Variables:
 %%% mode: latex
