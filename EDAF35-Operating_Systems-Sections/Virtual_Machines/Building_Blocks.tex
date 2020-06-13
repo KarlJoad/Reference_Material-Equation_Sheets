@@ -55,6 +55,20 @@ Other x86 instructions cause similar problems.
 These instructions will be refered to as \textbf{special instructions}.
 As recently as 1998, it seemed that using the trap-and-emulate method to implement \nameref{def:Virtualization} on the x86 was considered impossible because of these special instructions.
 
+Binary translation is fairly simple in concept but complex in implementation.
+The basic steps are as follows:
+\begin{enumerate}[noitemsep]
+\item If the guest VCPU is in user mode, the guest can run its instructions natively on a physical CPU.\@
+\item If the guest VCPU is in kernel mode, then the guest believes that it is running in kernel mode.
+  The \nameref{def:VMM} examines every instruction the guest executes in virtual kernel mode by reading the next few instructions that the guest is going to execute, based on the guest's program counter.
+  Instructions other than special instructions are run natively.
+  Special instructions are translated into a new set of instructions that perform the equivalent task—for example changing the flags in the VCPU.\@
+\end{enumerate}
+
+This basic method of binary translation just described would execute correctly but perform poorly.
+Fortunately, the vast majority of instructions would execute natively.
+Caching of previously translated instructions can provide further increases to performance, particularly if the cache is large enough.
+
 
 %%% Local Variables:
 %%% mode: latex
