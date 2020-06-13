@@ -49,6 +49,11 @@ The \nameref{def:VMM} itself is encoded in the firmware and loaded at boot time.
 In turn, it loads the guest images to run in each partition.
 Each guest believes that it has dedicated hardware, because the hardware assigned to that \nameref{def:Virtual_Machine} \textbf{is} dedicated, simplifying many implementation details.
 
+I/O presents some difficulty, because it is not easy to dedicate I/O devices to guests if there are not enough.
+Either all guests must get their own I/O devices, or the system must provided I/O device sharing.
+In these cases, the \nameref{def:Hypervisor} manages shared access or grants all devices to a control partition.
+In the \textbf{control partition}, a guest operating system provides services (such as networking) via \nameref{def:Daemon}s to other guests, and the hypervisor routes I/O requests appropriately.
+
 
 %%% Local Variables:
 %%% mode: latex
