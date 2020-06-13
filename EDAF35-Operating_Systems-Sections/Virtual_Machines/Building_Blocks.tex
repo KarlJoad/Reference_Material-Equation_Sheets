@@ -13,6 +13,15 @@ Otherwise, \nameref{def:Virtualization} is impossible.
 
 If it is possible to virtualize a system, the \nameref{def:VMM}s use several techniques to implement it, including \nameref{subsubsec:Trap_and_Emulate} and \nameref{subsubsec:Binary_Translation}.
 
+One important concept found in most virtualization options is the implementation of a \nameref{def:Virtual_CPU}.
+
+\begin{definition}[Virtual CPU]\label{def:Virtual_CPU}\label{def:VCPU}
+  The \emph{Virtual CPU} (\emph{VCPU}) does not execute code.
+  Rather, it represents the state of the guest's CPU as the guest machine believes it to be.
+  For each guest, the VMM maintains a VCPU representing that guest's current CPU state, much like a \nameref{def:Process_Control_Block}.
+  When the guest is \nameref{def:Context_Switch}ed onto a physical CPU by the \nameref{def:VMM}, information from the VCPU is used to load the right context, much as a general-purpose \nameref{def:Operating_System} would use the PCB.\@
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
