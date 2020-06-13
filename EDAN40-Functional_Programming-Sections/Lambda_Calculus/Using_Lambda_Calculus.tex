@@ -27,6 +27,12 @@ When using \nameref{def:Lambda_Calculus}, there are some things to keep in mind.
   For example, an $\eta$-reduction on $\lambda x. f x$ would yield $f$.
 \end{definition}
 
+There is a key theorem, the \nameref{thm:Church_Rosser_Theorem} that discusses the order of computation in \nameref{def:Lambda_Calculus}, namely that the order of computation does not matter.
+
+\begin{theorem}[Church-Rosser Theorem]\label{thm:Church_Rosser_Theorem}
+  The order of reductions does not matter, as there will always be some final reduction that is common to any path taken.
+\end{theorem}
+
 
 %%% Local Variables:
 %%% mode: latex
