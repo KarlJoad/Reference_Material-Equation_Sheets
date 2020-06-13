@@ -6,6 +6,12 @@ A system with \nameref{def:Virtualization}, frequently acts like a multiprocesso
 The virtualization software presents one or more \nameref{def:Virtual_CPU}s to each of the \nameref{def:Virtual_Machine}s running on the system and then schedules the use of the physical CPUs among the virtual machines.
 The significant variations among virtualization technologies make it difficult to generalize the effect of virtualization on scheduling.
 
+First, consider the general case of \nameref{def:VMM} scheduling.
+The VMM has a number of physical CPUs available and a number of threads to run on those CPUs.
+The threads can be VMM threads or guest threads.
+The VMM itself needs some CPU cycles for guest management and I/O management and can steal cycles from the guests by scheduling its threads across all of the system CPUs, but the impact of this action is relatively minor.
+Guests are configured with a certain number of \nameref{def:Virtual_CPU}s at creation time, and can be adjusted throughout the life of the VM.\@
+
 
 %%% Local Variables:
 %%% mode: latex
