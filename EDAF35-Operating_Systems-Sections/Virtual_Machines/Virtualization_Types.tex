@@ -106,6 +106,14 @@ This limitation, as well as the extra overhead of running the \nameref{def:Opera
 
 However, this is also a benefit, because \nameref{def:Type2_Hypervisor}s run on a variety of general-purpose \nameref{def:Operating_System}s, and running them requires no changes to the \nameref{def:VM_Host} operating system.
 
+\subsubsection{Paravirtualization}\label{subsubsec:Paravirtualization}
+Paravirtualization presents the guest with a system that is similar but not identical to the guest's preferred system.
+This system does not attempt to ``trick'' the guest \nameref{def:Operating_System} that it has its own system.
+Instead, the guest and the host work together for a better \nameref{def:Virtualization} experience.
+
+The guest must be modified to run on the paravirtualized virtual hardware.
+The gain for this extra work is more efficient use of resources and a smaller virtualization layer.
+
 
 %%% Local Variables:
 %%% mode: latex
