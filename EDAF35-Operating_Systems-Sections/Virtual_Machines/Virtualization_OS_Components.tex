@@ -1,6 +1,11 @@
 \subsection{Virtualization and OS Components}\label{subsec:Virtualization_OS_Components}
 Here, I discuss how the \nameref{def:VMM} provides core \nameref{def:Operating_System} functions like \nameref{subsec:Scheduling}, I/O, and memory management.
 
+\subsubsection{CPU Scheduling}\label{subsubsec:VM_CPU_Scheduling}
+A system with \nameref{def:Virtualization}, frequently acts like a multiprocessor system.
+The virtualization software presents one or more \nameref{def:Virtual_CPU}s to each of the \nameref{def:Virtual_Machine}s running on the system and then schedules the use of the physical CPUs among the virtual machines.
+The significant variations among virtualization technologies make it difficult to generalize the effect of virtualization on scheduling.
+
 
 %%% Local Variables:
 %%% mode: latex
