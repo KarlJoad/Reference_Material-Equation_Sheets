@@ -62,6 +62,23 @@ The VMM knows less about the guest's memory access patterns than the guest does,
 VMMs use this method when other methods are not available or are not providing enough free memory.
 However, it is not the preferred approach.
 
+\paragraph{Guest Pseudo-Device Driver}\label{par:VM_Mem_Kernel_Module}
+A common solution is for the VMM to install in each guest a \nameref{def:Pseudo_Device_Driver} or \nameref{def:Kernel_Module} that it controls.
+
+\begin{definition}[Pseudo-Device Driver]\label{def:Pseudo_Device_Driver}
+  A \emph{pseudo–device driver} uses device-driver interfaces, appearing to the \nameref{def:Kernel} to be a device driver, but does not actually control a device.
+  Rather, it is an easy way to add kernel-mode code without directly modifying the kernel.
+\end{definition}
+
+This balloon memory manager communicates with the VMM and is told to allocate or deallocate memory.
+If told to allocate, it allocates memory and tells the operating system to pin the allocated pages into physical memory.
+The guest sees memory pressure becauses of these pinned pages, decreasing the amount of physical memory it has available to use.
+The guest then may free up other physical memory to be sure it has a sufficient pool of free memory.
+Meanwhile, the VMM, knowing that the pages pinned by the balloon process will never be used, removes those physical pages from the guest and allocates them to another guest.
+At the same time, the guest is using its own memory-management and paging algorithms to manage the available memory, which is the most efficient option.
+
+If memory pressure within the entire system decreases, the VMM will tell the balloon process within the guest to unpin and free some or all of the memory, allowing the guest more pages for its use.
+
 
 %%% Local Variables:
 %%% mode: latex
