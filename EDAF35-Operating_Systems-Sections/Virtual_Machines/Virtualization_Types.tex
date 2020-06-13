@@ -44,6 +44,11 @@ The feature set of a \nameref{def:Type0_Hypervisor} tends to be smaller than tho
   However, this type of virtualization is also relatively inflexible, as the number of virtual domains that can be created for execution is limited by firmware.
 \end{definition}
 
+\nameref{def:Operating_System}s need do nothing special to take advantage of their features.
+The \nameref{def:VMM} itself is encoded in the firmware and loaded at boot time.
+In turn, it loads the guest images to run in each partition.
+Each guest believes that it has dedicated hardware, because the hardware assigned to that \nameref{def:Virtual_Machine} \textbf{is} dedicated, simplifying many implementation details.
+
 
 %%% Local Variables:
 %%% mode: latex
