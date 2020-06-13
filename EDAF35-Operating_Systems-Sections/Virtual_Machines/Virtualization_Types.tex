@@ -130,6 +130,16 @@ The \nameref{def:VMM} requires the guest to use a specific mechanism, a \nameref
 This means that the guest \nameref{def:Operating_System}'s \nameref{def:Kernel} code must be changed from the default code to these paravirtualization-specific methods.
 To optimize performance, paravirtualization allows the guest to queue up multiple page-table changes asynchronously via \nameref{def:Hypercall}s, then check to ensure that the changes are complete before continuing operation.
 
+\subsubsection{Programming-Environment Virtualization}\label{subsubsec:Programming_Lang_Virtualization}
+Another kind of \nameref{def:Virtualization}, based on a different execution model, is the virtualization of programming environments.
+Here, a programming language is designed to run within a custom-built virtualized environment.
+The Java Virtual Machine (JVM) is an example of this.
+
+Instead, we can define a virtual environment, based on \nameref{def:API}s, that provides a set of features that we want to have available for a particular language and programs written in that language.
+Java programs run within the JVM environment, and the JVM is compiled to be a native program on systems on which it runs.
+This arrangement means that Java programs are written once and then can run on any system on which a JVM is available.
+The same can be said for interpreted languages, which run inside programs that read each instruction and interpret it into native operations.
+
 
 %%% Local Variables:
 %%% mode: latex
