@@ -21,6 +21,12 @@ When using \nameref{def:Lambda_Calculus}, there are some things to keep in mind.
   For example, performing a $\beta$-reduction on $(\lambda n. n \times 2) 7$ results in the expression $7 \times 2$.
 \end{definition}
 
+\begin{definition}[Eta Reduction]\label{def:Eta_Reduction}
+  \emph{Eta reduction} (\emph{$\eta$-reduction}) is a reduction of a $\lambda$ function to a single expression when the variable does not appear free.
+  In practice, an $\eta$-reduction is the process of converting a regular function to Point-free form.
+  For example, an $\eta$-reduction on $\lambda x. f x$ would yield $f$.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
