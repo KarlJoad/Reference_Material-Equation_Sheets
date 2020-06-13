@@ -42,6 +42,19 @@ Only the privileged instructions (needed mainly for I/O) must be emulated and he
 In general, with the evolution of hardware, the performance of trap-and-emulate functionality has been improved, and cases in which it is needed have been reduced.
 For example, many CPUs now have extra modes added to their standard dual-mode operation.
 
+\subsubsection{Binary Translation}\label{subsubsec:Binary_Translation}
+Some CPUs do not have a clean separation of privileged and nonprivileged instructions.
+This includes the Intel x86 CPU line, which started in 1978.
+The chip has maintained backward compatibility throughout its lifetime, preventing changes that would have made virtualization easier through many generations.
+
+For example, \texttt{popf} instruction loads the flag register from the contents of the stack.
+If the CPU is in privileged mode, \textbf{all} of the flags are replaced from the stack.
+If the CPU is in user mode, then only some flags are replaced, and others are ignored.
+Because no trap is generated if \texttt{popf} is executed in user mode, the \nameref{subsubsec:Trap_and_Emulate} procedure is rendered useless.
+Other x86 instructions cause similar problems.
+These instructions will be refered to as \textbf{special instructions}.
+As recently as 1998, it seemed that using the trap-and-emulate method to implement \nameref{def:Virtualization} on the x86 was considered impossible because of these special instructions.
+
 
 %%% Local Variables:
 %%% mode: latex
