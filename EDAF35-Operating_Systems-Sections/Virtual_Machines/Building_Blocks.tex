@@ -96,6 +96,17 @@ This process is illustrated in \Cref{fig:Nested_Page_Tables}.
   \label{fig:Nested_Page_Tables}
 \end{figure}
 
+I/O is another area improved by hardware assistance.
+Remember that the standard \nameref{def:Direct_Memory_Access_Controller} accepts a target memory address and a source I/O device and transfers data between the two without \nameref{def:Operating_System} action.
+Without hardware assistance, a guest might try to set up a DMA transfer that affects the memory of the VMM or other guests.
+In CPUs that provide hardware-assisted DMA, even DMA has a level of indirection.
+\begin{enumerate}[noitemsep]
+\item The VMM sets up protection domains to tell the CPU which physical memory belongs to each guest.
+\item Assigns the I/O devices to the protection domains, allowing them direct access to those memory regions and only those regions.
+\item The hardware then transforms the address in a DMA request issued by an I/O device to the host physical memory address associated with the I/O.
+\end{enumerate}
+
+In this manner DMA transfers are passed through between a guest and a device without VMM interference.
 
 
 %%% Local Variables:
