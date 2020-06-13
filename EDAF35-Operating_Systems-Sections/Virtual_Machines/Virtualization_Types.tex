@@ -119,6 +119,17 @@ Instead of taking that approach, the paravirtualization presents clean and simpl
 For each device used by each guest, there is a circular buffer shared by the guest and the VMM via \nameref{par:Shared_Memory}.
 Read and write data are placed in this buffer.
 
+For memory management, paravirtualization does not implement nested page tables.
+Rather, each guest has its own set of page tables, set to read-only.
+The \nameref{def:VMM} requires the guest to use a specific mechanism, a \nameref{def:Hypercall} from the guest to the hypervisor VMM, when a page-table change is needed.
+
+\begin{definition}[Hypercall]\label{def:Hypercall}
+  A \emph{hypercall} is like a traditional \nameref{def:System_Call}, but instead of going to the \nameref{def:Operating_System}, it the request is passed to the \nameref{def:VM_Host}'s \nameref{def:Virtual_Machine_Manager}.
+\end{definition}
+
+This means that the guest \nameref{def:Operating_System}'s \nameref{def:Kernel} code must be changed from the default code to these paravirtualization-specific methods.
+To optimize performance, paravirtualization allows the guest to queue up multiple page-table changes asynchronously via \nameref{def:Hypercall}s, then check to ensure that the changes are complete before continuing operation.
+
 
 %%% Local Variables:
 %%% mode: latex
