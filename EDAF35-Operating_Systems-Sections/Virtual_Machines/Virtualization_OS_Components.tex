@@ -108,6 +108,19 @@ Therefore, a server running a VMM may have dozens of addresses, and the VMM acts
 The guests can be ``directly'' connected to the network by an IP address that is seen by the broader network (this is known as bridging).
 Alternatively, the VMM can provide a network address translation (NAT) address.
 
+\subsubsection{Storage Management}\label{subsubsec:VM_Storage_Management}
+\nameref{def:Type0_Hypervisor}s do tend to allow root disk partitioning, partly because these systems tend to run fewer guests than other systems.
+Alternatively, they may have a disk manager as part of the control partition, and that disk manager provides disk space (including boot disks) to the other partitions.
+
+\nameref{def:Type1_Hypervisor}s store the guest root disk (and configuration information) in one or more files within the file systems provided by the \nameref{def:VMM}.
+\nameref{def:Type2_Hypervisor}s store the same information within the host operating system's file systems.
+Both of these create a disk image, containing all of the contents of the root disk of the guest, containing one file in the VMM.\@
+Aside from the potential performance problems that causes, it is a clever solution, because it simplifies copying and moving guests.
+
+Because of the disk images created physical-to-virtual (P-to-V) conversion can be done.
+Physical-to-Virtual conversion reads the disk blocks of the physical system's disks and stores them within files that the \nameref{def:VMM} can access.
+It is also possible to go the other way, virtual-to-physical (V-to-P) conversion is a procedure for converting a virtualized guest to a physical system.
+
 
 %%% Local Variables:
 %%% mode: latex
