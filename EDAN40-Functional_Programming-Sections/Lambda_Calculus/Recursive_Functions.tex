@@ -31,6 +31,14 @@ Functions $\NaturalNumbers^{k} \rightarrow \NaturalNumbers$ represents all compu
   \end{itemize}
 \end{itemize}
 
+There exists a complete non-primitve totally recursive function called Ackermann's function, shown in \Cref{eq:Ackermanns_Function}.
+\begin{equation}\label{eq:Ackermanns_Function}
+  \begin{aligned}
+    A(0, y) &= y+1 \\
+    A(x+1, 0) &= A(x, 1) \\
+    A(x+1, y+1) = A \bigl( x, A(x+1, y) \bigr) \\
+  \end{aligned}
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex
