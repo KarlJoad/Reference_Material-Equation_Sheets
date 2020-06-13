@@ -28,6 +28,12 @@ Within a \nameref{def:Virtual_Machine}, the guest operating system is at the mer
 
 The net effect of such scheduling layering is that individual virtualized \nameref{def:Operating_System}s receive only a portion of the available CPU cycles, even though they believe they are receiving all of the cycles and that they are scheduling for all of those cycles.
 
+\subsubsection{Memory Management}\label{subsubsec:VM_Memory_Management}
+Efficient memory use in general-purpose operating systems is one of the major keys to performance.
+In virtualized environments, there are more users of memory (the guests and their applications, as well as the VMM), leading to more pressure on memory use.
+Further adding to this pressure is that VMMs typically \nameref{def:Overcommit} memory.
+The extra need for efficient memory mean great measures are taken to ensure the optimal use of memory.
+
 
 %%% Local Variables:
 %%% mode: latex
