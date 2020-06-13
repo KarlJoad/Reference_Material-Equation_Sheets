@@ -52,6 +52,16 @@ To do that:
 
 The overall effect is to enable guests to behave and perform as if they had the full amount of memory requested although in reality they have less.
 
+\paragraph{VMM Page Replacement}\label{par:VMM_Page_Replacement}
+A guest believes it controls memory allocation via its \nameref{def:Page_Table} management, whereas in reality the \nameref{def:VMM} maintains a nested page table that re-translates the guest page table to the real page table.
+The VMM can use this extra level of indirection to optimize the guest’s use of memory without the guest’s knowledge or help.
+One approach is to provide double paging, in which the VMM has its own page-replacement algorithms.
+The VMM can swap pages to the \nameref{def:Backing_Store} pages that the guest believes are in-memory.
+The VMM knows less about the guest's memory access patterns than the guest does, so its paging is less efficient, creating performance problems.
+
+VMMs use this method when other methods are not available or are not providing enough free memory.
+However, it is not the preferred approach.
+
 
 %%% Local Variables:
 %%% mode: latex
