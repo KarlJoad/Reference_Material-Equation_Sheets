@@ -64,6 +64,18 @@ Other types of hypervisors usually cannot provide this virtualization-within-vir
 \nameref{def:Type1_Hypervisor}s are special-purpose \nameref{def:Operating_System}s that run natively on the hardware.
 But rather than providing \nameref{def:System_Call}s and other interfaces for running \nameref{def:Program}s, they create, run, and manage guest operating systems.
 
+\begin{definition}[Type 1 Hypervisor]\label{def:Type1_Hypervisor}
+  A \emph{Type 1 Hypervisor} provides the \nameref{def:Virtualization} required to run a \nameref{def:Virtual_Machine} in \nameref{def:Software}.
+  Here, the physical resources of the system are managed by the software, either a standalone \nameref{def:Hypervisor}, or a traditional \nameref{def:Kernel} with extensions for virtualization.
+  This is the most commonly used type of hypervisor, because of its flexibility.
+  It can run almost any number of guests, and is limited only by its ability to schedule and handle the running guests.
+  In this case, there are overheads incurred from using this system, as there is some abstraction of hardware resources to form a virtual interface.
+
+  \begin{remark}[Nested Virtualization]
+    \nameref{def:Type1_Hypervisor}s \textbf{cannot} be virtually nested inside another \nameref{def:Type1_Hypervisor}.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
