@@ -12,6 +12,11 @@ In terms of $\lambda$-functions, it is expressed like so:
   \end{aligned}
 \end{equation}
 
+Then, we can define the successor function (\texttt{succ}) as seen in \Cref{eq:Church_Numerals_Succ}
+\begin{equation}\label{eq:Church_Numerals_Succ}
+  \lambda m. \lambda f. \lambda x. f (m f x)
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
