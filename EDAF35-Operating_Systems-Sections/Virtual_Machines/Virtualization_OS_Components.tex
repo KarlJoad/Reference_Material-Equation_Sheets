@@ -17,6 +17,12 @@ In this situation, the guests act much like native \nameref{def:Operating_System
 In other situations, there may not be enough CPUs to go around, especially if the CPUs have \nameref{def:Overcommit}ment, where the guests are configured for more CPUs than exist in the system.
 Then, a VMM can use standard \nameref{subsubsec:Scheduling_Algorithms} to make progress on each thread but can also add a fairness aspect to those algorithms.
 
+\begin{definition}[Overcommit]\label{def:Overcommit}
+  \nameref{def:Virtualization} systems allow the created virtual resources to \emph{overcommit} the system's physical resources.
+  For example, a \nameref{def:Virtual_Machine} can be given 2 \nameref{def:Virtual_CPU}s, when there is only 1 physical CPU.\@
+  The same can happen with memory; a guest can be configured have more memory than the host system has.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
