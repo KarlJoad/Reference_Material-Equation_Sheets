@@ -3,6 +3,36 @@ Here, I discuss the ways that virtual environments are created using \nameref{de
 Of course, the hardware on which the virtual machines are running can cause great variation in implementation methods.
 Throughout this discussion, it is safe to assume that \nameref{def:VMM}s take advantage of hardware assistance when possible.
 
+\subsubsection{Virtual Machine Life Cycle}\label{subsubsec:VM_Life_Cycle}
+Whatever the hypervisor type, at the time a virtual machine is created, its creator gives the \nameref{def:VMM} certain parameters.
+These parameters usually include:
+\begin{itemize}[noitemsep]
+\item Number of CPUs.
+\item Amount of memory.
+\item Networking details.
+\item Storage details.
+\end{itemize}
+
+For example, a user might want to create a new guest with:
+\begin{itemize}[noitemsep]
+\item Two \nameref{def:Virtual_CPU}s
+\item \SI{4}{\gibi{} \byte{}} of memory
+\item \SI{10}{\gibi{} \byte{}} of disk space
+\item One network interface that gets its IP address via DHCP
+\item Access to the DVD drive
+\end{itemize}
+
+In the case of a \nameref{def:Type0_Hypervisor}, the resources are usually dedicated in hardware.
+In this situation, if there are not two virtual CPUs available and unallocated, the creation request will fail.
+For other hypervisor types, the resources are dedicated or virtualized, depending on the type.
+Obviously, an IP address cannot be shared, but the \nameref{def:Virtual_CPU}s are usually multiplexed on the physical CPUs.
+Similarly, memory management usually involves allocating more memory to guests than actually exists in physical memory.
+This is more complicated than multiplexing memory like we do the CPU.\@
+
+When the \nameref{def:Virtual_Machine} is no longer needed, it can be deleted.
+When this happens, the \nameref{def:VMM} first frees up any used disk space and then removes the configuration associated with the virtual machine, essentially ``forgetting'' the virtual machine.
+These steps are quite simple compared with building, configuring, running, and removing physical machines.
+
 
 %%% Local Variables:
 %%% mode: latex
