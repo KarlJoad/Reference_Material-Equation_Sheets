@@ -33,6 +33,13 @@ There is a key theorem, the \nameref{thm:Church_Rosser_Theorem} that discusses t
   The order of reductions does not matter, as there will always be some final reduction that is common to any path taken.
 \end{theorem}
 
+Discussed earlier, and now here, is the concept of \nameref{def:Normal_Form}.
+Haskell tends to use \nameref{def:Weak_Head_Normal_Form}, but \nameref{def:Lambda_Calculus} only uses \nameref{def:Normal_Form}.
+\begin{definition}[Normal Form]\label{def:Normal_Form}
+  \emph{Normal form} is an expression that can have no more \nameref{def:Beta_Reduction} apply.
+  This is equivalent to the halting state of a Turing Machine.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
