@@ -17,6 +17,15 @@ Then, we can define the successor function (\texttt{succ}) as seen in \Cref{eq:C
   \lambda m. \lambda f. \lambda x. f (m f x)
 \end{equation}
 
+We \textbf{MUST} define numbers this way for these computations to complete.
+
+If we want to, we can write all of this in Haskell too.
+
+\begin{listing}[h!tbp]
+\haskellsourcefile{./EDAN40-Functional_Programming-Sections/Lambda_Calculus/Code/Church_Numerals.hs}
+\caption{Church Numerals}
+\label{lst:Church_Numerals}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
