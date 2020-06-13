@@ -23,6 +23,11 @@ Then, a VMM can use standard \nameref{subsubsec:Scheduling_Algorithms} to make p
   The same can happen with memory; a guest can be configured have more memory than the host system has.
 \end{definition}
 
+Even given a \nameref{def:Scheduler} that provides fairness, any guest \nameref{def:Operating_System} scheduling algorithm that assumes a certain amount of progress in a given amount of time will be negatively affected by virtualization.
+Within a \nameref{def:Virtual_Machine}, the guest operating system is at the mercy of the \nameref{def:Virtualization} system as to what CPU resources it actually receives.
+
+The net effect of such scheduling layering is that individual virtualized \nameref{def:Operating_System}s receive only a portion of the available CPU cycles, even though they believe they are receiving all of the cycles and that they are scheduling for all of those cycles.
+
 
 %%% Local Variables:
 %%% mode: latex
