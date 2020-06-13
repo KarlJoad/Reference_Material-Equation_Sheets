@@ -90,6 +90,18 @@ If they are, one page is freed, and its logical address is mapped to the otherâ€
 This technique might seem at first to be ineffective, but consider that guests run \nameref{def:Operating_System}s.
 If multiple guests run the same operating system, then only one copy of the active operating-system pages need be in memory.
 
+\subsubsection{I/O}\label{subsubsec:VM_I/O}
+In the area of I/O, \nameref{def:Hypervisor}s have some leeway and can be less concerned with exactly representing the underlying hardware to their guests.
+\nameref{def:Operating_System}s are used to dealing with varying and flexible I/O mechanisms.
+Usually, device drivers can be dynamically loaded and unloaded.
+\nameref{def:Virtualization} takes advantage of such built-in flexibility by providing specific virtualized devices to guest operating systems.
+
+\nameref{def:VMM}s vary greatly in how they provide I/O to their guests.
+I/O in virtual environments is complicated and requires careful VMM design and implementation.
+In addition to direct access, VMMs can provide shared access to devices.
+The VMM must provide protection while sharing the device, assuring that a guest can access only the blocks specified in the guestâ€™s configuration.
+In such instances, the VMM must be part of every I/O, checking it for correctness as well as routing the data to and from the appropriate devices and guests.
+
 
 %%% Local Variables:
 %%% mode: latex
