@@ -1,4 +1,17 @@
 \subsection{Church Numerals}\label{subsec:Church_Numerals}
+Church numerals are a way of defining the integer numbers, including 0 that is completely expressible in \nameref{def:Lambda_Calculus}.
+In terms of $\lambda$-functions, it is expressed like so:
+\begin{equation}\label{eq:Church_Numerals}
+  \begin{aligned}
+    0 &= \lambda f.\lambda x.x \\
+    1 &= \lambda f.\lambda x. fx \\
+    2 &= \lambda f.\lambda x. f(f x) \\
+    3 &= \lambda f.\lambda x. f(f (f x)) \\
+    &\vdots \\
+    n &= \lambda f. \lambda x. f^{n} x \\
+  \end{aligned}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
