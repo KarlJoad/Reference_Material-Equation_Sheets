@@ -102,6 +102,12 @@ In addition to direct access, VMMs can provide shared access to devices.
 The VMM must provide protection while sharing the device, assuring that a guest can access only the blocks specified in the guest’s configuration.
 In such instances, the VMM must be part of every I/O, checking it for correctness as well as routing the data to and from the appropriate devices and guests.
 
+In the area of networking, \nameref{def:VMM}s also have work to do.
+General-purpose \nameref{def:Operating_System}s typically have one IP address.
+Therefore, a server running a VMM may have dozens of addresses, and the VMM acts as a virtual switch to route the network packets to the addressed guest.
+The guests can be ``directly'' connected to the network by an IP address that is seen by the broader network (this is known as bridging).
+Alternatively, the VMM can provide a network address translation (NAT) address.
+
 
 %%% Local Variables:
 %%% mode: latex
