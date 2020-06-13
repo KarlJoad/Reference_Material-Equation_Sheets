@@ -36,6 +36,14 @@ The \nameref{def:Strict} evaluation requires more steps, due to the additional o
 \nameref{def:Strict} application is not a panacea that automatically improves the space behaviour of programs.
 Even for simple examples, the use of strict application requires careful consideration of the behaviour of lazy evaluation.
 
+In general, \nameref{def:Strict} evaluation will attempt to evaluate to \nameref{def:Weak_Head_Normal_Form}.
+
+\begin{definition}[Weak Head Normal Form]\label{def:Weak_Head_Normal_Form}
+  In terms of Haskell, \emph{Weak Head Normal Form} (\emph{WHNF}) is the current ``state'' of an expression.
+  In WHNF, an expression can only have one function applied to it to complete its evaluation.
+  All other sub-terms must be previously evaluated, otherwise it is not WHNF.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../EDAN40-Functional_Programming-Reference_Sheet"
