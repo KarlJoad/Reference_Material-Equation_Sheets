@@ -11,6 +11,11 @@ When using \nameref{def:Lambda_Calculus}, there are some things to keep in mind.
 \item Computations in $\lambda$ calculus is performed by performing successive $\beta$-reductions whenever possible and for as long as possible.
 \end{enumerate}
 
+\begin{definition}[Alpha Conversion]\label{def:Alpha_Conversion}
+  \emph{Alpha conversion} (\emph{$\alpha$-conversion}) is the process of replacing one variable name with another.
+  For example, in the expression, $\lambda x. zx$, an $\alpha$-conversion of $x$ to $y$ results in $\lambda y. zy$.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
