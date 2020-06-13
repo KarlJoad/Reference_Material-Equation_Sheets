@@ -76,6 +76,13 @@ But rather than providing \nameref{def:System_Call}s and other interfaces for ru
   \end{remark}
 \end{definition}
 
+\nameref{def:Type1_Hypervisor}s run in \nameref{def:Kernel}-mode, taking advantage of hardware protection.
+Where the host CPU allows, they use multiple modes to give guest \nameref{def:Operating_System}s their own control and improved performance.
+They implement device drivers for the hardware they run on.
+Because they are operating systems, they must also provide CPU \nameref{subsec:Scheduling}, memory management, I/O management, \nameref{sec:Protection}, and even \nameref{sec:Security}.
+
+An important benefit is the ability to perform \nameref{def:Consolidation}.
+
 
 %%% Local Variables:
 %%% mode: latex
