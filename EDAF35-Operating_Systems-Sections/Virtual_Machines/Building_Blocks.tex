@@ -73,6 +73,15 @@ Caching of previously translated instructions can provide further increases to p
 Without some level of hardware support, virtualization would be impossible.
 The more hardware support available within a system, the more feature-rich and stable the virtual machines can be and the better they can perform.
 
+For example, AMD \nameref{def:Virtualization} technology (AMD-V) defines two additional modes of operation: host and guest.
+This makes these CPUs multimode processors, rather than dual-mode.
+The \nameref{def:VMM} can enable host mode, define the characteristics of each guest \nameref{def:Virtual_Machine}, and then switch the system to guest mode, passing control of the system to a guest operating system that is running in the virtual machine.
+In guest mode, the virtualized operating system thinks it is running on native hardware and sees whatever devices are included in the host's definition of the guest.
+If the guest tries to access a virtualized resource, then control is passed to the VMM to manage that interaction.
+
+These multimode processors, developed for \nameref{def:Virtualization} provide guest \nameref{def:VCPU} state data structures to load and save guest CPU state automatically during guest context switches.
+In addition, virtual machine control structures (VMCSs) are provided to manage guest and host state, as well as the various guest execution controls, exit controls, and information about why guests exit back to the host.
+
 
 
 %%% Local Variables:
