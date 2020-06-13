@@ -1,4 +1,18 @@
 \subsection{Benefits and Features}\label{subsubsec:VM_Benefits_Features}
+Several advantages make \nameref{def:Virtualization} attractive.
+Most of them are related to the ability for several different execution environments (\nameref{def:Operating_System}s) to concurrently share the same \nameref{def:Hardware}.
+
+One important advantage of \nameref{def:Virtualization} is that the host system is protected from the \nameref{def:Virtual_Machine}s, just as the virtual machines are protected from each other.
+A virus inside a guest \nameref{def:Operating_System} might damage that operating system but is unlikely to affect the host or the other guests.
+Because each virtual machine is almost completely isolated from all other virtual machines, there are almost no protection problems.
+This isolation can also be a problem, because it is difficult to share legitimate resources.
+However, there are 2 approaches handling this problem:
+\begin{enumerate}[noitemsep]
+\item Share a \nameref{def:File_System} \nameref{def:Volume} and thus to share files.
+\item Define a virtual network of \nameref{def:Virtual_Machine}s, each of which can send information over the virtual communications network.
+  The network is modeled after physical communication networks but is implemented in software.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
