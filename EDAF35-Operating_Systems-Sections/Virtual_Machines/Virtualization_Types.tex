@@ -99,6 +99,11 @@ This type of VMM is simply another process run and managed by the host, and even
   However, this also allows relatively unprivileged users to create and manage \nameref{def:Virtual_Machine}s on their system.
 \end{definition}
 
+\nameref{def:Type2_Hypervisor}s have limits not associated with some of the other types.
+For example, a user needs administrative privileges to access many of the hardware assistance features of modern CPUs.
+If the VMM is being run by a standard user without additional privileges, the VMM cannot take advantage of these features.
+This limitation, as well as the extra overhead of running the \nameref{def:Operating_System} as well as guest operating systems, type 2 hypervisors tend to have poorer overall performance than type 0 or 1.
+
 
 %%% Local Variables:
 %%% mode: latex
