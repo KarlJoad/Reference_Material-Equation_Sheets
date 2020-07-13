@@ -1,6 +1,4 @@
-\section{Calculus} \label{app:Calculus}
-\subsection{Fundamental Theorems of Calculus} \label{subsec:Fundamental Theorem of Calculus}
-\begin{definition}[First Fundamental Theorem of Calculus] \label{def:1st Fundamental Theorem of Calculus}
+\section{Calculus}\label{app:Calculus}
 \subsection{L'Hopital's Rule}\label{subsec:LHopitals_Rule}
 L'Hopital's Rule can be used to simplify and solve expressions regarding limits that yield irreconcialable results.
 \begin{lemma}[L'Hopital's Rule]\label{lemma:LHopitals_Rule}
@@ -18,40 +16,42 @@ L'Hopital's Rule can be used to simplify and solve expressions regarding limits 
   \end{equation}
 \end{lemma}
 
+\subsection{Fundamental Theorems of Calculus}\label{subsec:Fundamental Theorem of Calculus}
+\begin{definition}[First Fundamental Theorem of Calculus]\label{def:1st Fundamental Theorem of Calculus}
   The \emph{first fundamental theorem of calculus} states that, if $f$ is continuous on the closed interval $\left[ a,b \right]$ and $F$ is the indefinite integral of $f$ on $\left[ a,b \right]$, then
-  
-  \begin{equation} \label{eq:1st Fundamental Theorem of Calculus}
+
+  \begin{equation}\label{eq:1st Fundamental Theorem of Calculus}
     \int_{a}^{b}f \left( x \right) dx = F \left( b \right) - F \left( a \right)
   \end{equation}
 \end{definition}
 
-\begin{definition}[Second Fundamental Theorem of Calculus] \label{def:2nd Fundamental Theorem of Calculus}
+\begin{definition}[Second Fundamental Theorem of Calculus]\label{def:2nd Fundamental Theorem of Calculus}
   The \emph{second fundamental theorem of calculus} holds for $f$ a continuous function on an open interval $I$ and $a$ any point in $I$, and states that if $F$ is defined by
 
   \begin{equation*}
     F \left( x \right) = \int_{a}^{x} f \left( t \right) dt,
   \end{equation*}
   then
-  \begin{equation} \label{eq:2nd Fundamental Theorem of Calculus}
+  \begin{equation}\label{eq:2nd Fundamental Theorem of Calculus}
     \begin{aligned}
       \frac{d}{dx} \int_{a}^{x} f \left( t \right) dt &= f \left( x \right) \\
       F' \left( x \right) &= f \left( x \right) \\
     \end{aligned}
   \end{equation}
 \end{definition}
-	
-\begin{definition}[argmax] \label{def:argmax}
+
+\begin{definition}[argmax]\label{def:argmax}
   The arguments to the \emph{argmax} function are to be maximized by using their derivatives.
   You must take the derivative of the function, find critical points, then determine if that critical point is a global maxima.
   This is denoted as
-  \begin{equation*} \label{eq:argmax}
+  \begin{equation*}\label{eq:argmax}
     \argmax_{x}
   \end{equation*}
 \end{definition}
 
-\subsection{Rules of Calculus} \label{subsec:Rules of Calculus}
-\subsubsection{Chain Rule} \label{subsubsec:Chain Rule}
-\begin{definition}[Chain Rule] \label{def:Chain Rule}
+\subsection{Rules of Calculus}\label{subsec:Rules of Calculus}
+\subsubsection{Chain Rule}\label{subsubsec:Chain Rule}
+\begin{definition}[Chain Rule]\label{def:Chain Rule}
   The \emph{chain rule} is a way to differentiate a function that has 2 functions multiplied together.
 
   If
@@ -59,7 +59,7 @@ L'Hopital's Rule can be used to simplify and solve expressions regarding limits 
     f(x) = g(x) \cdot h(x)
   \end{equation*}
   then,
-  \begin{equation} \label{eq:Chain Rule}
+  \begin{equation}\label{eq:Chain Rule}
     \begin{aligned}
       f'(x) &= g'(x) \cdot h(x) + g(x) \cdot h'(x) \\
       \frac{df(x)}{dx} &= \frac{dg(x)}{dx} \cdot g(x) + g(x) \cdot \frac{dh(x)}{dx} \\
