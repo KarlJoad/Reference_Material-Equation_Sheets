@@ -129,3 +129,15 @@ L'Hopital's Rule can be used to simplify and solve expressions regarding limits 
   \frac{d}{dx} \alpha^{x} = \frac{d\alpha^{x}}{dx} = \alpha^{x} \ln(x)
 \end{equation}
 
+\subsection{Leibnitz's Rule}\label{subsec:Leibnitzs_Rule}
+\begin{lemma}[Leibnitz's Rule]\label{lemma:Leibnitzs_Rule}
+  Given
+  \begin{equation*}
+    g(t) = \int_{a(t)}^{b(t)} f(x, t) \, dx
+  \end{equation*}
+  with $a(t)$ and $b(t)$ differentiable in $t$ and $\frac{\partial f(x, t)}{\partial t}$ continuous in both $t$ and $x$, then
+  \begin{equation}\label{eq:Leibnitzs_Rule}
+    \frac{d}{dt} g(t) = \frac{d g(t)}{dt} = \int_{a(t)}^{b(t)} \frac{\partial f(x, t)}{\partial t} \, dx + f \bigl[ b(t), t \bigr] \, \frac{d b(t)}{dt} - f \bigl[ a(t), t \bigr] \, \frac{d a(t)}{dt}
+  \end{equation}
+\end{lemma}
+
