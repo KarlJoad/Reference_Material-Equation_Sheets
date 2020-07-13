@@ -66,3 +66,66 @@ L'Hopital's Rule can be used to simplify and solve expressions regarding limits 
     \end{aligned}
   \end{equation}
 \end{definition}
+
+\subsection{Useful Integrals}\label{subsec:Useful_Integrals}
+\begin{equation}\label{eq:Cosine_Indefinite_Integral}
+  \int \cos(x) \; dx = \sin(x)
+\end{equation}
+
+\begin{equation}\label{eq:Sine_Indefinite_Integral}
+  \int \sin(x) \; dx = -\cos(x)
+\end{equation}
+
+\begin{equation}\label{eq:x_Cosine_Indefinite_Integral}
+  \int x \cos(x) \; dx = \cos(x) + x \sin(x)
+\end{equation}
+\Cref{eq:x_Cosine_Indefinite_Integral} simplified with Integration by Parts.
+
+\begin{equation}\label{eq:x_Sine_Indefinite_Integral}
+  \int x \sin(x) \; dx = \sin(x) - x \cos(x)
+\end{equation}
+\Cref{eq:x_Sine_Indefinite_Integral} simplified with Integration by Parts.
+
+\begin{equation}\label{eq:x_Squared_Cosine_Indefinite_Integral}
+  \int x^{2} \cos(x) \; dx = 2x \cos(x) + (x^{2} - 2) \sin(x)
+\end{equation}
+\Cref{eq:x_Squared_Cosine_Indefinite_Integral} simplified by using Integration by Parts twice.
+
+\begin{equation}\label{eq:x_Squared_Sine_Indefinite_Integral}
+  \int x^{2} \sin(x) \; dx = 2x \sin(x) - (x^{2} - 2) \cos(x)
+\end{equation}
+\Cref{eq:x_Squared_Sine_Indefinite_Integral} simplified by using Integration by Parts twice.
+
+\begin{equation}\label{eq:Exponential_Cosine_Indefinite_Integral}
+  \int e^{\alpha x} \cos(\beta x) \; dx = \frac{e^{\alpha x} \bigl( \alpha \cos(\beta x) + \beta \sin(\beta x) \bigr)}{\alpha^{2} + \beta^{2}} + C
+\end{equation}
+
+\begin{equation}\label{eq:Exponential_Sine_Indefinite_Integral}
+  \int e^{\alpha x} \sin(\beta x) \; dx = \frac{e^{\alpha x} \bigl( \alpha \sin(\beta x) - \beta \cos(\beta x) \bigr)}{\alpha^{2}+\beta^{2}} + C
+\end{equation}
+
+\begin{equation}\label{eq:Exponential_Indefinite_Integral}
+  \int e^{\alpha x} \; dx = \frac{e^{\alpha x}}{\alpha}
+\end{equation}
+
+\begin{equation}\label{eq:x_Exponential_Indefinite_Integral}
+  \int x e^{\alpha x} \; dx = e^{\alpha x} \left( \frac{x}{\alpha} - \frac{1}{\alpha^{2}} \right)
+\end{equation}
+\Cref{eq:x_Exponential_Indefinite_Integral} simplified with Integration by Parts.
+
+\begin{equation}\label{eq:Inverse_x_Indefinite_Integral}
+  \int \frac{dx}{\alpha + \beta x} = \int \frac{1}{\alpha + \beta x} \; dx = \frac{1}{\beta} \ln (\alpha + \beta x)
+\end{equation}
+
+\begin{equation}\label{eq:Inverse_x_Squared_Indefinite_Integral}
+  \int \frac{dx}{\alpha^{2} + \beta^{2} x^{2}} = \int \frac{1}{\alpha^{2} + \beta^{2} x^{2}} \; dx = \frac{1}{\alpha \beta} \arctan \left( \frac{\beta x}{\alpha} \right)
+\end{equation}
+
+\begin{equation}\label{eq:a_Exponential_Indefinite_Integral}
+  \int \alpha^{x} \; dx = \frac{\alpha^{x}}{\ln(\alpha)}
+\end{equation}
+
+\begin{equation}\label{eq:a_Exponential_Derivative}
+  \frac{d}{dx} \alpha^{x} = \frac{d\alpha^{x}}{dx} = \alpha^{x} \ln(x)
+\end{equation}
+
