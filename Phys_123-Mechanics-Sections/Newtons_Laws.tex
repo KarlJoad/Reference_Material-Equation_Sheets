@@ -2,7 +2,7 @@
 There are 3 fundamental laws of classical mechanics.
 
 \begin{enumerate}[noitemsep, nolistsep]
-  \item An object in motion/at reast stays as such, unless acted upon by an outide force(s).
+  \item An object in motion/at rest stays as such, unless acted upon by an outside force(s).
   \item Force is equal to the change in momentum ($p=mv$) per change in time. For a constant mass, force equals mass times acceleration ($\vec{F} = m \vec{a}$).
   \item For every force there is an equal and opposite force.
 \end{enumerate}
@@ -22,6 +22,8 @@ There are a few forces that are fundamental in our universe.
 \end{remark*}
 
 To solve any force problem, you should construct a free-body diagram.
+This diagram should show a vector for every possible force in the system.
+This way, you can easily deconstruct the vectors, calculate their components, then use them to solve your problem.
 
 \subsection{Newton's Laws in 1-D}\label{subsec:Newtons Laws 1-D}
 \begin{example}[]{Atwood Machine}
@@ -86,10 +88,10 @@ Frictional force is the common culprit for the ``Equal and Opposite Force'' in c
   \begin{equation}\label{eq:Frictional Force}
     \vec{F}_{f} = \mu \vec{N}
   \end{equation}
-  \begin{itemize}[noitemsep, nolistsep]
-    \item $\mu$ - The coefficient of the type of friction you are dealing with (Either the \nameref{def:Coefficient of Static Friction} or \nameref{def:Coefficient of Kinetic Friction})
-    \item $\vec{N}$ - The \nameref{def:Normal Force}
-  \end{itemize}
+  \begin{description}[noitemsep]
+    \item $\mu$: The coefficient of the type of friction you are dealing with (Either the \nameref{def:Coefficient of Static Friction} or \nameref{def:Coefficient of Kinetic Friction})
+    \item $\vec{N}$: The \nameref{def:Normal Force}
+  \end{description}
 \end{definition}
 
 There are 2 types of frictional force:
@@ -107,10 +109,10 @@ There are 2 types of frictional force:
   \begin{equation}\label{eq:Static Friction}
     \vec{F}_{f,s} = \mu_{s} \vec{N}
   \end{equation}
-  \begin{itemize}[noitemsep, nolistsep]
-    \item $\mu_{s}$ - The \nameref{def:Coefficient of Static Friction}
-    \item $\vec{N}$ - The \nameref{def:Normal Force}
-  \end{itemize}
+  \begin{description}[noitemsep]
+    \item $\mu_{s}$: The \nameref{def:Coefficient of Static Friction}
+    \item $\vec{N}$: The \nameref{def:Normal Force}
+  \end{description}
 \end{definition}
 
 \begin{definition}[Coefficient of Static Friction]\label{def:Coefficient of Static Friction}
@@ -124,7 +126,7 @@ There are 2 types of frictional force:
 \end{definition}
 
 \begin{definition}[Kinetic Friction]\label{def:Kinetic Friction}
-  \emph{Kinetic friction} is a frction that arises when an object is in motion.
+  \emph{Kinetic friction} is a friction that arises when an object is in motion.
   This force is weaker than \nameref{def:Static Friction}.
   The value we may use for kinetic friction is drawn from the \nameref{def:Coefficient of Kinetic Friction}.
 
