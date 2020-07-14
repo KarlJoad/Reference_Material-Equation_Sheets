@@ -8,31 +8,158 @@ Each of these is illustrated with an example.
 \end{enumerate}
 
 \begin{example}[]{Car Turning on a Flat Curve}
-  A car of mass $m$ is turning on a flat curve.
-  What is its maximum velocity, $v_{\text{Max}}$?
+  A car of mass $m$ is turning on a flat curve with radius $r = \SI{50}{\meter}$.
+  The \nameref{def:Coefficient of Static Friction} is $\mu_{s} = 0.7$.
+  What is the car's maximum velocity, $v_{\text{Max}}$ before it cannot turn anymore?
+  \tcblower{}
 
-  \tcblower
+  First, we start by finding the net force in the system, considering the \nameref{def:Normal Force} and \nameref{def:Frictional Force} to be positive.
+  \begin{align*}
+    \shortintertext{All Forces Present:}
+    \vec{F}_{Net} &= \vec{N} - m\vec{g} + \vec{F}_{f} \\
+    \shortintertext{Newton's Second Law:}
+    \vec{F}_{Net} &= m\vec{a} \\
+  \end{align*}
 
-  Solution from Dynamics of Circular Motion Notes Page.
+  Now that all forces have been identified, we can set both equations equal to each other and being substituting other expressions in.
+  \begin{align*}
+    \vec{N} - m\vec{g} + \vec{F}_{f} &= m\vec{a} \\
+    \shortintertext{Remember the formula for static friction:}
+    \vec{F}_{f} &= \mu_{s} \vec{N} \\
+  \end{align*}
+
+  With those 2 relations gathered, we now need to consider the \nameref{def:Normal Force}.
+  This \emph{must} be $0$, otherwise the car is starting to float or fall into the ground.
+  \begin{align*}
+    \vec{N} - m\vec{g} &= 0 \\
+    \vec{N} &= m\vec{g} \\
+  \end{align*}
+
+  Now, we can substitute everything back into our main equation.
+  \begin{align*}
+    \vec{N} - m\vec{g} + \vec{F}_{f} &= m\vec{a} \\
+    \shortintertext{Subsitute $F_{f}$:}
+    \vec{N} - m\vec{g} + \mu_{s}\vec{N} &= m\vec{a} \\
+    \shortintertext{Substitute $\vec{N}$:}
+    m\vec{g} - m\vec{g} + \mu_{s} m\vec{g} &= m\vec{a} \\
+    \shortintertext{Reduce:}
+    \mu_{s} m\vec{g} &= m\vec{a} \\
+    \shortintertext{Substitute $\vec{a}$ with \Cref{eq:Relate Acceleration Angular Acceleration}:}
+    \mu_{s} m\vec{g} &= m \frac{v_{Max}^{2}}{r} \\
+    \shortintertext{Simplify:}
+    v_{Max} &= \sqrt{\mu_{s} \vec{g} r} \\
+  \end{align*}
+
+  With this expression, we can solve for the maximum velocity this vehicle can move.
+  The expression $v_{Max} = \sqrt{\mu_{s} \vec{g} r}$ can be thought of as the speed where the \nameref{def:Coefficient of Static Friction} ``breaks.''
+  \begin{equation*}
+    v_{Max} = \sqrt{\mu_{s} \vec{g} r} = \sqrt{0.7 (\SI{9.81}{\meter/\second}) \SI{50}{\meter}} = \SI{18.5}{\meter/\second}
+  \end{equation*}
 \end{example}
 
 \begin{example}[]{Car Turning on Angled Curve with No Friction}
-  A car of mass $m$ is turning on a curve with an angle $\theta$ from the horizontal.
-  What is its maximum velocity, $v_{\text{Max}}$?
+  A car of mass $m$ is turning on a curve $r$ meters from the center, with an angle $\theta$ from the horizontal.
+  If there is no friction, what is its maximum velocity, $v_{\text{Max}}$?
+  \tcblower{}
 
-  \tcblower
+  Here, because there is an angle involved, we need to decompose the vectors into their components.
+  Starting with the vertical component, we find the normalizing force at an angle to the force of gravity.
+  \begin{align*}
+    \vec{N} \cos(\theta) - m\vec{g} &= \vec{0} \\
+    \vec{N} \cos(\theta) &= m\vec{g} \\
+  \end{align*}
 
-  Solution from Dynamics of Circular Motion Notes Page.
+  Now, we need to consider the horizontal components, which is the sliding that happens up or down the curve of the turn.
+  \begin{align*}
+    \vec{N} \sin(\theta) &= m a_{c} \\
+    \intertext{Substitute $a_{c}$ with \Cref{eq:Relate Acceleration Angular Acceleration}:}
+    \vec{N} \sin(\theta) &= m \frac{v_{Max}^{2}}{r} \\
+  \end{align*}
+
+  With both components of the final movement calculated, we single out $\vec{N}$ and set each relation equal to each other.
+  \begin{align*}
+    \shortintertext{Vertical:}
+    \vec{N} &= \frac{m\vec{g}}{\cos(\theta)} \\
+    \shortintertext{Horizontal:}
+    \vec{N} &= \frac{m v_{Max}^{2}}{r \sin(\theta)} \\
+    \shortintertext{Substitute for $\vec{N}$:}
+    \frac{m\vec{g}}{\cos(\theta)} &= \frac{m v_{Max}^{2}}{r \sin(\theta)} \\
+    \shortintertext{Simplify:}
+    v_{Max}^{2} &= \frac{\vec{g} r \sin(\theta)}{\cos(\theta)} \\
+    v_{Max} &= \sqrt{\vec{g} r \tan(\theta)} \\
+  \end{align*}
+
+  Thus, our final expression for this problem is
+  \begin{equation*}
+    v_{Max} = \sqrt{\vec{g} r \tan(\theta)}
+  \end{equation*}
 \end{example}
 
 \begin{example}[]{Car Turning on Angled Curve with Friction}
-  A car of mass $m$ is turning on a curve with an angle $\theta$ from the horizontal.
+  A car of mass $m$ is turning on a curve $r$ meters from the center, with an angle $\theta$ from the horizontal.
   There is friction, with the coefficient of static friction being $\mu_{s}$ and coefficient of kinetic friction being $\mu_{k}$.
-  What is its maximum velocity, $v_{\text{Max}}$?
+  What is its maximum velocity, $v_{Max}$?
+  \tcblower{}
 
-  \tcblower
+  First, we can eliminate the use of $\mu_{k}$.
+  This is because we are not concerned with the vehicle's sliding forward or backward in the direction of travel.
+  Instead we want to know about the car's movement up or down the ramp due to its velocity.
 
-  Solution from Dynamics of Circular Motion Notes Page.
+  Again, just like the previous example, the car is traveling at an angle, so the forces acting on the vehicle must be broken down into their components.
+  Like \Cref{ex:Car Turning on a Flat Curve}:
+  \begin{equation*}
+    \vec{F}_{f} = \mu_{s} \vec{N}
+  \end{equation*}
+
+  Starting with the vertical again:
+  \begin{align*}
+    \vec{N} \cos(\theta) - m\vec{g} + \vec{F}_{f} \sin(\theta) &= 0 \\
+    \shortintertext{Substitute $F_{f}$:}
+    \vec{N} \cos(\theta) - m\vec{g} + \mu_{s} \vec{N} \sin(\theta) &= 0 \\
+    \shortintertext{Reduce and Simplify:}
+    \vec{N} \cos(\theta) + \mu_{s} \vec{N} \sin(\theta) &= m \vec{g} \\
+    \vec{N} \bigl( \cos(\theta) + \mu_{s} \sin(\theta) \bigr) &= m \vec{g} \\
+    \vec{N} &= \frac{m \vec{g}}{\cos(\theta) + \mu_{s} \sin(\theta)} \\
+  \end{align*}
+
+  Now onto the horizontal:
+  \begin{align*}
+    \vec{N} \sin(\theta) - \vec{F}_{f} \cos(\theta) &= m a_{c} \\
+    \intertext{Substitute $a_{c}$ with \Cref{eq:Relate Acceleration Angular Acceleration}:}
+    \vec{N} \sin(\theta) - \vec{F}_{f} \cos(\theta) &= m \frac{v^{2}}{r} \\
+    \shortintertext{Substitute $F_{f}$:}
+    \vec{N} \sin(\theta) - \mu_{s} \vec{N} \cos(\theta) &= m \frac{v^{2}}{r} \\
+    \shortintertext{Reduce and Simplify:}
+    \vec{N} \bigl( \sin(\theta) - \mu_{s} \cos(\theta) \bigr) &= m \frac{v^{2}}{r} \\
+    \vec{N} &= \frac{m v^{2}}{r \bigl( \sin(\theta) - \mu_{s} \cos(\theta) \bigr)} \\
+  \end{align*}
+
+  With both components simplified, we can subsitute one for the other.
+  \begin{align*}
+    \shortintertext{Vertical:}
+    \vec{N} &= \frac{m \vec{g}}{\cos(\theta) + \mu_{s} \sin(\theta)} \\
+    \shortintertext{Horizontal:}
+    \vec{N} &= \frac{m v^{2}}{r \bigl( \sin(\theta) - \mu_{s} \cos(\theta) \bigr)} \\
+    \shortintertext{Substitute:}
+    \frac{m \vec{g}}{\cos(\theta) + \mu_{s} \sin(\theta)} &= \frac{m v^{2}}{r \bigl( \sin(\theta) - \mu_{s} \cos(\theta) \bigr)} \\
+    \shortintertext{Reduce and Simplify for $v_{Max}$:}
+    v_{Max}^{2} &= \frac{\vec{g} r \bigl( \sin(\theta) - \mu_{s} \cos(\theta) \bigr)}{\cos(\theta) + \mu_{s} \sin(\theta)} \\
+    v_{Max} &= \sqrt{\vec{g} r \left( \frac{\sin(\theta) - \mu_{s} \cos(\theta)}{\cos(\theta) + \mu_{s} \sin(\theta)} \right)} \\
+  \end{align*}
+
+  Thus, our final expression for the maximum velocity of a car on a curved turn with friction is:
+  \begin{equation*}
+    v_{Max} = \sqrt{\vec{g} r \left( \frac{\sin(\theta) - \mu_{s} \cos(\theta)}{\cos(\theta) + \mu_{s} \sin(\theta)} \right)}
+  \end{equation*}
+
+  However, one thing to note is the way I chose to interpret $F_{f}$.
+  I chose to point it out of the curve, which is what happens when the car is moving slowly enough.
+  If you were to point the $F_{f}$ vector towards the inside of the curve, you would end up with this instead.
+  \begin{equation*}
+    v_{Max} = \sqrt{\vec{g} r \left( \frac{\sin(\theta) + \mu_{s} \cos(\theta)}{\cos(\theta) - \mu_{s} \sin(\theta)} \right)}
+  \end{equation*}
+
+  Another thing to note is that if we consider $\mu_{s} = 0$, i.e.\ there is no friction, we get the same result back as in \Cref{ex:Car Turning on Angled Curve with No Friction}.
 \end{example}
 
 %%% Local Variables:
