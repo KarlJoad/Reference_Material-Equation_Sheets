@@ -89,6 +89,43 @@ There are 2 theorems that are most useful here:
   \end{equation*}
 \end{theorem}
 
+\subsection{Laplace Transform Pairs}\label{subsec:Laplace_Transform_Pairs}
+\begin{center}
+  \begin{equation*}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{array}[h!tbp]{cc}
+      \toprule
+      \text{Time Domain} & \text{Frequency Domain} \\
+      \midrule
+      x(t) & X(s) \\
+      \delta(t) & 1 \\
+      \delta(t-T_{0}) & e^{-sT_{0}} \\
+      \UnitStep(t) & \frac{1}{s} \\
+      t^{n} \UnitStep(t) & \frac{n!}{s^{n+1}} \\
+      \UnitStep(t-T_{0}) & \frac{e^{-sT_{0}}}{s} \\
+      e^{at} \UnitStep(t) & \frac{1}{s-a} \\
+      t^{n} e^{at} \UnitStep(t) & \frac{n!}{{(s-a)}^{n+1}} \\
+      \cos(bt) \UnitStep(t) & \frac{s}{s^{2} + b^{2}} \\
+      \sin(bt) \UnitStep(t) & \frac{b}{s^{2} + b^{2}} \\
+      e^{-at} \cos(bt) \UnitStep(t) & \frac{s+a}{{(s+a)}^{2} + b^{2}} \\
+      e^{-at} \sin(bt) \UnitStep(t) & \frac{b}{{(s+a)}^{2} + b^{2}} \\
+      \midrule
+      r e^{-at} \cos(bt + \theta) \UnitStep(t) &
+                                                 \begin{cases}
+                                                   a :& \frac{sr \cos(\theta) + ar \cos(\theta) - br \sin(\theta)}{s^{2} + 2as + (a^{2} + b^{2})} \\
+                                                   b :& \frac{1}{2} \left( \frac{r e^{j \theta}}{s+a-jb} + \frac{r e^{-j \theta}}{s+a+jb} \right) \\
+                                                   c :& \frac{As+B}{s^{2} + 2as + c}
+                                                   \begin{cases}
+                                                     r &= \sqrt{\frac{A^{2}c + B^{2} - 2ABa}{c-a^{2}}} \\
+                                                     \theta &= \arctan \left( \frac{Aa - B}{A \sqrt{c-a^{2}}} \right) \\
+                                                   \end{cases}
+                                                 \end{cases} \\
+      e^{-at} \left( A \cos(\sqrt{c-a^{2}}t) + \frac{B-Aa}{\sqrt{c-a^{2}}} \sin(\sqrt{c-a^{2}}t) \right) \UnitStep(t) & \frac{As + B}{s^{2} + 2as + c} \\
+      \bottomrule
+    \end{array}
+  \end{equation*}
+\end{center}
+
 
 %%% Local Variables:
 %%% mode: latex
