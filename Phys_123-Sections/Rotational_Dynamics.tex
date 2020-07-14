@@ -1,13 +1,13 @@
-\section{Rotational Dynamics} \label{sec:Rotational Dynamics}
+\section{Rotational Dynamics}\label{sec:Rotational Dynamics}
 \emph{Rotational dynamics} applies the concepts from \nameref{sec:Newtons Laws}, \nameref{sec:Energy}, \nameref{sec:Systems of Particles}, and \nameref{sec:Momentum} to rotating objects.
 
-\subsection{Moment of Inertia} \label{subsec:Moment of Inertia}
-\begin{definition}[Moment of Inertia] \label{def:Moment of Inertia}
+\subsection{Moment of Inertia}\label{subsec:Moment of Inertia}
+\begin{definition}[Moment of Inertia]\label{def:Moment of Inertia}
   A \emph{moment of inertia} or \emph{moment} is quite similar to \nameref{def:Center of Mass}.
   It is the point on the object where the mass and distance from this point are equal throughout the object.
   It can be thought of as the ``balancing'' point for rotation.
 
-  \begin{equation} \label{eq:Moment of Inertia}
+  \begin{equation}\label{eq:Moment of Inertia}
     I = \sum\limits_{i=1}^{n} m_{i} r_{i}^{2}
   \end{equation}
 
@@ -19,16 +19,16 @@
   \end{remark}
 \end{definition}
 
-\begin{theorem}[Parallel Axis Theorem] \label{thm:Parallel Axis Theorem}
+\begin{theorem}[Parallel Axis Theorem]\label{thm:Parallel Axis Theorem}
   Suppose a body of mass $m$ is made to rotate about an axis $z$ passing throught the body's \nameref{def:Center of Mass}.
   The body has a \nameref{def:Moment of Inertia} $I_{\text{CoM}}$ with respect to this axis.
   The \nameref{thm:Parallel Axis Theorem} states that if the body is made to rotate about a new axis $z'$ which is parallel to the first axis and displaced from it by a distance $d$, then the \nameref{def:Moment of Inertia} $I$ with respect to the new axis is related to $I_{\text{CoM}}$ by
-  \begin{equation} \label{eq:Parallel Axis Theorem}
+  \begin{equation}\label{eq:Parallel Axis Theorem}
     I = I_{\text{CoM}} + md^{2}
   \end{equation}
 \end{theorem}
 
-\subsubsection{Common Moments of Inertia} \label{subsubsec:Common Moments of Inertia}
+\subsubsection{Common Moments of Inertia}\label{subsubsec:Common Moments of Inertia}
 \begin{table}[h!]
   \centering
   \renewcommand{\arraystretch}{1.5}
@@ -46,32 +46,32 @@
   \end{tabular}
 \end{table}
 
-\subsection{Torque} \label{subsec:Torque}
-\begin{definition}[Torque] \label{def:Torque}
+\subsection{Torque}\label{subsec:Torque}
+\begin{definition}[Torque]\label{def:Torque}
   \emph{Torque} is the force that is applied when making an object rotate.
   There are two portions to it.
   The force that is being applied, $\vec{F}$ at some radius $r$ from the point of rotation.
 
   There are 2 equations that can be applied for \nameref{def:Torque}.
 
-  \begin{equation} \label{eq:Torque Cross Product}
+  \begin{equation}\label{eq:Torque Cross Product}
     \vec{\tau} = \vec{r} \cross \vec{F}
   \end{equation}
 
-  \begin{equation} \label{eq:Torque Magnitudes}
+  \begin{equation}\label{eq:Torque Magnitudes}
     \vec{\tau} = \lVert \vec{r} \rVert \lVert \vec{F} \rVert \sin (\theta)
   \end{equation}
 \end{definition}
 
-\subsection{Angular Momentum} \label{subsec:Angular Momentum}
-\begin{definition}[Angular Momentum] \label{def:Angular Momentum}
+\subsection{Angular Momentum}\label{subsec:Angular Momentum}
+\begin{definition}[Angular Momentum]\label{def:Angular Momentum}
   \emph{Angular momentum} is similar to Linear \nameref{def:Momentum}, but we define it in terms of rotation components.
 
-  \begin{equation} \label{eq:Angular Momentum}
+  \begin{equation}\label{eq:Angular Momentum}
     \vec{\ell} = \sum\limits_{i=1}^{n} \vec{r}_{i} \cross \vec{p}_{i}
   \end{equation}
 \end{definition}
 
-\begin{definition}[Conservation of Angular Momentum] \label{def:Conservation of Angular Momentum}
+\begin{definition}[Conservation of Angular Momentum]\label{def:Conservation of Angular Momentum}
   The \emph{conservation of angular momentum} states that if $\vec{\tau}_{\text{Net}} = \vec{0}$, then $\vec{\ell} = \text{Constant}$.
 \end{definition}

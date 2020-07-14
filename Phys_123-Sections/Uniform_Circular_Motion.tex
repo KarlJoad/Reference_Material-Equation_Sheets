@@ -1,5 +1,5 @@
-\section{Uniform Circular Motion} \label{sec:Uniform Circular Motion}
-\begin{definition}[Uniform Circular Motion] \label{def:Uniform Circular Motion}
+\section{Uniform Circular Motion}\label{sec:Uniform Circular Motion}
+\begin{definition}[Uniform Circular Motion]\label{def:Uniform Circular Motion}
   \emph{Uniform circular motion} is when an object of moving in a perpetual circular motion.
   There is no outside source of acceleration changing the state of the system.
   \begin{remark}
@@ -8,18 +8,18 @@
   \end{remark}
 \end{definition}
 
-\subsection{Angular Part of Circular Motion} \label{subsec:Angular Circular Motion}
+\subsection{Angular Part of Circular Motion}\label{subsec:Angular Circular Motion}
 During \nameref{def:Uniform Circular Motion}, your terminology changes a little bit.
-\begin{definition}[Angular Position] \label{def:Angular Position}
+\begin{definition}[Angular Position]\label{def:Angular Position}
   \emph{Angular position} is determined with radians around a circle.
   It is denoted with \[ \vec{\theta} \]
 \end{definition}
 
-\begin{definition}[Angular Velocity] \label{def:Angular Velocity}
+\begin{definition}[Angular Velocity]\label{def:Angular Velocity}
   \emph{Angular velocity} is orthogonal to the flat 2-D plane that the object is traveling in.
   It is the dervative of the \nameref{def:Angular Position}.
 
-  \begin{equation} \label{eq:Angular Velocity}
+  \begin{equation}\label{eq:Angular Velocity}
     \begin{aligned}
       \vec{\omega} &= \frac{d \theta}{dt} \\
       &= \langle 0, 0, \omega \rangle \\
@@ -27,10 +27,10 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
   \end{equation}
 \end{definition}
 
-\begin{definition}[Angular Acceleration] \label{def:Angular Acceleration}
+\begin{definition}[Angular Acceleration]\label{def:Angular Acceleration}
   \emph{Angular acceleration} is the derivative of the \nameref{def:Angular Velocity}.
 
-  \begin{equation} \label{eq:Angular Acceleration}
+  \begin{equation}\label{eq:Angular Acceleration}
     \vec{\alpha} = \frac{d \vec{\omega}}{dt} = \frac{d^{2} \vec{\theta}}{dt}
   \end{equation}
 
@@ -42,22 +42,22 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
   \end{remark}
 \end{definition}
 
-\subsection{Linear Part of Circular Motion} \label{subsec:Linear Circular Motion}
-\begin{definition}[Linear Position] \label{def:Linear Position}
-  \emph{Linear position} relates the position of an object from the cartesian coordinate plane to the polar. 
+\subsection{Linear Part of Circular Motion}\label{subsec:Linear Circular Motion}
+\begin{definition}[Linear Position]\label{def:Linear Position}
+  \emph{Linear position} relates the position of an object from the cartesian coordinate plane to the polar.
   This means that:
 
-  \begin{equation} \label{eq:Linear Position}
+  \begin{equation}\label{eq:Linear Position}
     \begin{aligned}
       x &= r \cos ( \theta ) & y &= r \sin ( \theta )
     \end{aligned}
   \end{equation}
 \end{definition}
 
-\begin{definition}[Linear Velocity] \label{def:Linear Velocity}
+\begin{definition}[Linear Velocity]\label{def:Linear Velocity}
   \emph{Linear velocity} relates the velocity of an object in a line to its \nameref{def:Angular Velocity}.
 
-  \begin{equation} \label{eq:Linear Velocity}
+  \begin{equation}\label{eq:Linear Velocity}
     \begin{aligned}
       \vec{v} &= \frac{d \vec{r}}{dt} \\
       \frac{d \vec{r}}{dt} &= \biggl \langle \frac{dx}{dt}, \frac{dy}{dt}, 0 \biggr \rangle = \biggl \langle \frac{d}{dt} r \cos ( \theta ), \frac{d}{dt} r \sin ( \theta ), 0 \biggr \rangle \\
@@ -67,11 +67,11 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
   \end{equation}
 \end{definition}
 
-\begin{definition}[Linear Acceleration] \label{def:Linear Acceleration}
+\begin{definition}[Linear Acceleration]\label{def:Linear Acceleration}
   \emph{Linear acceleration} is the derivative of \nameref{def:Linear Velocity}.
   It relates the acceleration of an object in a line is relative to its \nameref{def:Angular Acceleration}
 
-  \begin{equation} \label{eq:Linear Acceleration}
+  \begin{equation}\label{eq:Linear Acceleration}
     \begin{aligned}
       \frac{d \vec{a}}{dt} &= \frac{d \vec{v}}{dt} \\
       &= \langle -r \omega^{2} \cos ( \theta ), -r \omega^{2} \sin ( \theta ), 0 \rangle = \omega^{2} \langle -r \cos ( \theta ), -r \sin ( \theta ), 0 \rangle \left( \right) \\
@@ -80,14 +80,14 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
   \end{equation}
 \end{definition}
 
-\subsection{Relation Between the \nameref{subsec:Angular Circular Motion} and the \nameref{subsec:Linear Circular Motion}} \label{subsec:Relations Circular Motion}
+\subsection{Relation Between the \nameref{subsec:Angular Circular Motion} and the \nameref{subsec:Linear Circular Motion}}\label{subsec:Relations Circular Motion}
 There are a few equations that relate both the \nameref{subsec:Angular Circular Motion} and the \nameref{subsec:Linear Circular Motion}.
-\paragraph{Velocity and Angular Velocity} \label{par:Relate Velocity Angular Velocity}
-\begin{equation} \label{eq:Relate Velocity Angular Velocity}
+\paragraph{Velocity and Angular Velocity}\label{par:Relate Velocity Angular Velocity}
+\begin{equation}\label{eq:Relate Velocity Angular Velocity}
   v = \omega r
 \end{equation}
 
-\paragraph{Acceleration and Angular Acceleration} \label{par:Relate Acceleration Angular Acceleration}
+\paragraph{Acceleration and Angular Acceleration}\label{par:Relate Acceleration Angular Acceleration}
 \begin{equation}
   \begin{aligned}
     a &= \omega^{2} r \\
