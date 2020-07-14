@@ -1,10 +1,10 @@
 \section{Uniform Circular Motion}\label{sec:Uniform Circular Motion}
 \begin{definition}[Uniform Circular Motion]\label{def:Uniform Circular Motion}
   \emph{Uniform circular motion} is when an object of moving in a perpetual circular motion.
-  There is no outside source of acceleration changing the state of the system.
+  There is no outside source of acceleration changing the state of the system, meaning the \nameref{def:Angular Velocity} is $0$.
   \begin{remark}
     This does \emph{not} happen in real life.
-    However, it is useful for modelling things under ideal conditions that do happen in real life.
+    However, it is useful for modeling things under ideal conditions that do happen in real life.
   \end{remark}
 \end{definition}
 
@@ -17,7 +17,8 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
 
 \begin{definition}[Angular Velocity]\label{def:Angular Velocity}
   \emph{Angular velocity} is orthogonal to the flat 2-D plane that the object is traveling in.
-  It is the dervative of the \nameref{def:Angular Position}.
+  If you are looking at the thing moving in the circle from above, the angular velocity is either pointing directly at you, or directly away from you.
+  It is the derivative of the \nameref{def:Angular Position}.
 
   \begin{equation}\label{eq:Angular Velocity}
     \begin{aligned}
@@ -44,7 +45,7 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
 
 \subsection{Linear Part of Circular Motion}\label{subsec:Linear Circular Motion}
 \begin{definition}[Linear Position]\label{def:Linear Position}
-  \emph{Linear position} relates the position of an object from the cartesian coordinate plane to the polar.
+  \emph{Linear position} relates the position of an object from the Cartesian coordinate plane to the polar.
   This means that:
 
   \begin{equation}\label{eq:Linear Position}
@@ -69,12 +70,12 @@ During \nameref{def:Uniform Circular Motion}, your terminology changes a little 
 
 \begin{definition}[Linear Acceleration]\label{def:Linear Acceleration}
   \emph{Linear acceleration} is the derivative of \nameref{def:Linear Velocity}.
-  It relates the acceleration of an object in a line is relative to its \nameref{def:Angular Acceleration}
+  It relates the acceleration of an object in a line relative to its \nameref{def:Angular Acceleration}
 
   \begin{equation}\label{eq:Linear Acceleration}
     \begin{aligned}
       \frac{d \vec{a}}{dt} &= \frac{d \vec{v}}{dt} \\
-      &= \langle -r \omega^{2} \cos ( \theta ), -r \omega^{2} \sin ( \theta ), 0 \rangle = \omega^{2} \langle -r \cos ( \theta ), -r \sin ( \theta ), 0 \rangle \left( \right) \\
+      &= \langle -r \omega^{2} \cos(\theta), -r \omega^{2} \sin(\theta), 0 \rangle = \omega^{2} \langle -r \cos(\theta), -r \sin(\theta), 0 \rangle \\
       &= - \omega^{2} \vec{r}
     \end{aligned}
   \end{equation}
@@ -88,7 +89,7 @@ There are a few equations that relate both the \nameref{subsec:Angular Circular 
 \end{equation}
 
 \paragraph{Acceleration and Angular Acceleration}\label{par:Relate Acceleration Angular Acceleration}
-\begin{equation}
+\begin{equation}\label{eq:Relate Acceleration Angular Acceleration}
   \begin{aligned}
     a &= \omega^{2} r \\
     &= \frac{v^{2}}{r} \\
