@@ -1,187 +1,187 @@
-\section{Quantum Mechanics} \label{sec:Quantum Mech}
+\section{Quantum Mechanics}\label{sec:Quantum Mech}
 Quantum mechanics may seem strange or weird, but it really isn't.
-	\begin{definition}[Hamiltonian] \label{def:Hamiltonian}
-		The \emph{hamiltonian} is a function that contains all knowable information about a particle or system in classical mechanics.
-		\begin{equation} \label{eq:Hamiltonian}
-			\text{Hamiltonian} = K+U
-		\end{equation}
-		\begin{itemize}[noitemsep, nolistsep]
-			\item $K$ is the Kinetic Energy of the particle of system of particles.
-			\begin{itemize}[noitemsep, nolistsep]
-				\item $K = \frac{1}{2} mv^{2}$
-				\item This contains the velocity of the system, which includes direction.
-			\end{itemize}
-			\item $U$ is the Potential Energy of the particle or system of particles.
-			\begin{itemize}[noitemsep, nolistsep]
-				\item $U = mg \left( y_{2} - y_{1} \right)$
-				\item Contains the force of the system, its location, etc.
-			\end{itemize}
-		\end{itemize}
-	\end{definition}
+\begin{definition}[Hamiltonian]\label{def:Hamiltonian}
+  The \emph{hamiltonian} is a function that contains all knowable information about a particle or system in classical mechanics.
+  \begin{equation}\label{eq:Hamiltonian}
+    \text{Hamiltonian} = K+U
+  \end{equation}
+  \begin{itemize}[noitemsep, nolistsep]
+  \item $K$ is the Kinetic Energy of the particle of system of particles.
+    \begin{itemize}[noitemsep, nolistsep]
+    \item $K = \frac{1}{2} mv^{2}$
+    \item This contains the velocity of the system, which includes direction.
+    \end{itemize}
+  \item $U$ is the Potential Energy of the particle or system of particles.
+    \begin{itemize}[noitemsep, nolistsep]
+    \item $U = mg \left( y_{2} - y_{1} \right)$
+    \item Contains the force of the system, its location, etc.
+    \end{itemize}
+  \end{itemize}
+\end{definition}
 
-	\subsection{Photoelectric Effect} \label{subsec:Photoelectric Effect}
-		\begin{definition}[Photoelectric Effect] \label{def:Photoelectric Effect}
-			Occurs when light shines on an object.
-			The object will lose electrons $e^{-}$ if the light has a great enough frequency.
-			This \emph{is not} a function of intensity or brightness, only frequency.
-			\begin{equation} \label{eq:Photoelectric Effect}
-				\begin{aligned}
-					K_{\text{Max}} &= hf - \Phi \\
-					K_{\text{Max}} = E - \Phi &\Rightarrow K_{\text{Max}} + \Phi = E \\
-				\end{aligned}
-			\end{equation}
-			\begin{itemize}[noitemsep, nolistsep]
-				\item $K_{\text{Max}} = e V_{\text{Stop}}$ is Kinetic Energy of released electrons (\si{\joule})
-					\begin{itemize}[noitemsep, nolistsep]
-						\item $e$ is charge of electron
-						\item $V_{\text{Stop}}$ is the stopping potential
-					\end{itemize}
-				\item $h$ is Planck's Constant
-				\item $f$ is Frequency of the incident wave (\si{\hertz})
-				\item $\Phi$ is the Work Function (\si{\electronvolt})
-			\end{itemize}
-		\end{definition}
-	The \nameref{eq:Kinetic Energy of Matter Wave} is given in Equation~\eqref{eq:Kinetic Energy of Matter Wave}.
+\subsection{Photoelectric Effect}\label{subsec:Photoelectric Effect}
+\begin{definition}[Photoelectric Effect]\label{def:Photoelectric Effect}
+  Occurs when light shines on an object.
+  The object will lose electrons $e^{-}$ if the light has a great enough frequency.
+  This \emph{is not} a function of intensity or brightness, only frequency.
+  \begin{equation}\label{eq:Photoelectric Effect}
+    \begin{aligned}
+      K_{\text{Max}} &= hf - \Phi \\
+      K_{\text{Max}} = E - \Phi &\Rightarrow K_{\text{Max}} + \Phi = E \\
+    \end{aligned}
+  \end{equation}
+  \begin{itemize}[noitemsep, nolistsep]
+  \item $K_{\text{Max}} = e V_{\text{Stop}}$ is Kinetic Energy of released electrons (\si{\joule})
+    \begin{itemize}[noitemsep, nolistsep]
+    \item $e$ is charge of electron
+    \item $V_{\text{Stop}}$ is the stopping potential
+    \end{itemize}
+  \item $h$ is Planck's Constant
+  \item $f$ is Frequency of the incident wave (\si{\hertz})
+  \item $\Phi$ is the Work Function (\si{\electronvolt})
+  \end{itemize}
+\end{definition}
+The \nameref{eq:Kinetic Energy of Matter Wave} is given in Equation~\eqref{eq:Kinetic Energy of Matter Wave}.
 
-	\subsection{Schr\"{o}dinger's Equation} \label{subsec:Schrodingers Equation}
-		\begin{definition}[de Broglie Wavelength] \label{def:de Broglie Wavelength}
-			The \emph{de Broglie wavelength, $\lambda$}, is the wavelength that is \emph{associated} with a particle.
-			In other words, a particle does \emph{\textbf{not}} have a wavelength, but the equations describing the particle's actions have a wavelength.
-			\begin{equation} \label{eq:de Broglie Wavelength}
-				\lambda = \frac{h}{p}
-			\end{equation}
-			\begin{note} \label{note:de Broglie Wavelength Momentum}
-				As a direction consequence of the \nameref{def:de Broglie Wavelength}, Equation~\eqref{eq:de Broglie Wavelength}:
-				\begin{equation}
-					p = \frac{h}{\lambda}
-				\end{equation}
-				\begin{itemize}[noitemsep, nolistsep]
-					\item $h$ is Planck's Constant
-					\item $\lambda$ is the \nameref{def:de Broglie Wavelength}
-				\end{itemize}
-			For electromagnetic waves, Equation~\eqref{eq:Momentum of Electromagnetic Wave} holds true.
-				\begin{equation} \label{eq:Momentum of Electromagnetic Wave}
-					p = \frac{E}{c}
-				\end{equation}
-			For matter waves, Equation~\eqref{eq:Kinetic Energy of Matter Wave} holds true.
-				\begin{equation} \label{eq:Kinetic Energy of Matter Wave}
-					K = \frac{p^{2}}{2m}
-				\end{equation}
-			\end{note}
-		\end{definition}
-		\begin{definition}[Schr\"{o}dinger's Equation] \label{def:Schrodinger's Equation}
-			\emph{Schr\"{o}dinger's equation} is a 3-dimensional Cartesian, time-independent way to express the equivalent of a \nameref{def:Hamiltonian} for quantum effects, namely in terms of waves (Denoted with $\Psi$ or $\psi$).
-			There are 2 equivalent ways to express \nameref{def:Schrodinger's Equation}.
-			The first way, Equation~\eqref{eq:Schrodinger's Equation, Form 1}, is the most general form.
-			The second way, Equation~\eqref{eq:Schrodinger's Equation, Form 2}, has expanded the nabla operator, $\nabla$.
-			\begin{equation} \label{eq:Schrodinger's Equation, Form 1}
-				\frac{- \hbar^{2}}{2m} \cdot \nabla^{2} \Psi + V\Psi = E\Psi
-			\end{equation}
-			\begin{equation} \label{eq:Schrodinger's Equation, Form 2}
-				\frac{-\hbar}{2m} \left( \frac{\partial^{2} \Psi}{\partial x^{2}} + \frac{\partial^{2} \Psi}{\partial y^{2}} + \frac{\partial^{2} \Psi}{\partial z^{2}} \right) + V\Psi = E\Psi
-			\end{equation}
-			\begin{itemize}[noitemsep, nolistsep]
-				\item $E$ is the \emph{\textbf{total}} energy of the system
-				\item $V$ is the \emph{\textbf{potential energy}} of the system. It may be:
-				\begin{enumerate}[noitemsep, nolistsep]
-					\item Constant
-					\item A function of time and/or space
-				\end{enumerate}
-				\item $\Psi$ is a solution to \nameref{def:Schrodinger's Equation}, and contains all that can be known about the system
-				\item $\frac{-\hbar^{2}}{2m} \cdot \nabla\Psi$ is the \emph{\textbf{kinetic energy}} operator
-				\begin{itemize}[noitemsep, nolistsep]
-					\item $\nabla^{2} = \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}}$ is in the Cartesian coordinate system ($x$, $y$, $z$), and is called ``del squared'', or ``2nd-degree nabla.''
-				\end{itemize}
-				\item For each observable system, there exists a corresponding mathematical operator.
-			\end{itemize}
-			\begin{note} \label{note:Psi Probability Distribution Function of Particle Location}
-				The probability distribution function of the position of a particle in the system can be found according to Equation~\eqref{eq:Psi Probability Distribution Function of Particle Location}.
-				This is the multiplication of $\Psi$ with its complex conjugate, $\Psi^{*}$.
-				\begin{equation} \label{eq:Psi Probability Distribution Function of Particle Location}
-					\text{PDF} = \Psi \cdot \Psi^{*}
-				\end{equation}
-			\end{note}
-		\end{definition}
-		\subsubsection{Properties of Schr\"{o}dinger's Equation} \label{subsubsec:Properties of Schrodingers Equation}
-			Solutions, $\Psi$, to \nameref{def:Schrodinger's Equation} have the following characteristics:
-			\begin{enumerate}[noitemsep, nolistsep]
-				\item They are single-valued
-				\item They are piecewise continuous values
-				\item $\frac{\partial \Psi}{\partial x}$, $\frac{\partial \Psi}{\partial y}$, $\frac{\partial \Psi}{\partial z}$ are all continuous
-				\item $\iiint \Psi \Psi^{*} \partial x \partial y \partial z$ is square integrable, or $\iiint \Psi \Psi^{*} \partial x \partial y \partial z \neq \pm \infty$
-			\end{enumerate}
+\subsection{Schr\"{o}dinger's Equation}\label{subsec:Schrodingers Equation}
+\begin{definition}[de Broglie Wavelength]\label{def:de Broglie Wavelength}
+  The \emph{de Broglie wavelength, $\lambda$}, is the wavelength that is \emph{associated} with a particle.
+  In other words, a particle does \emph{\textbf{not}} have a wavelength, but the equations describing the particle's actions have a wavelength.
+  \begin{equation}\label{eq:de Broglie Wavelength}
+    \lambda = \frac{h}{p}
+  \end{equation}
+  \begin{note}\label{note:de Broglie Wavelength Momentum}
+    As a direction consequence of the \nameref{def:de Broglie Wavelength}, Equation~\eqref{eq:de Broglie Wavelength}:
+    \begin{equation}
+      p = \frac{h}{\lambda}
+    \end{equation}
+    \begin{itemize}[noitemsep, nolistsep]
+    \item $h$ is Planck's Constant
+    \item $\lambda$ is the \nameref{def:de Broglie Wavelength}
+    \end{itemize}
+    For electromagnetic waves, Equation~\eqref{eq:Momentum of Electromagnetic Wave} holds true.
+    \begin{equation}\label{eq:Momentum of Electromagnetic Wave}
+      p = \frac{E}{c}
+    \end{equation}
+    For matter waves, Equation~\eqref{eq:Kinetic Energy of Matter Wave} holds true.
+    \begin{equation}\label{eq:Kinetic Energy of Matter Wave}
+      K = \frac{p^{2}}{2m}
+    \end{equation}
+  \end{note}
+\end{definition}
+\begin{definition}[Schr\"{o}dinger's Equation]\label{def:Schrodinger's Equation}
+  \emph{Schr\"{o}dinger's equation} is a 3-dimensional Cartesian, time-independent way to express the equivalent of a \nameref{def:Hamiltonian} for quantum effects, namely in terms of waves (Denoted with $\Psi$ or $\psi$).
+  There are 2 equivalent ways to express \nameref{def:Schrodinger's Equation}.
+  The first way, Equation~\eqref{eq:Schrodinger's Equation, Form 1}, is the most general form.
+  The second way, Equation~\eqref{eq:Schrodinger's Equation, Form 2}, has expanded the nabla operator, $\nabla$.
+  \begin{equation}\label{eq:Schrodinger's Equation, Form 1}
+    \frac{- \hbar^{2}}{2m} \cdot \nabla^{2} \Psi + V\Psi = E\Psi
+  \end{equation}
+  \begin{equation}\label{eq:Schrodinger's Equation, Form 2}
+    \frac{-\hbar}{2m} \left( \frac{\partial^{2} \Psi}{\partial x^{2}} + \frac{\partial^{2} \Psi}{\partial y^{2}} + \frac{\partial^{2} \Psi}{\partial z^{2}} \right) + V\Psi = E\Psi
+  \end{equation}
+  \begin{itemize}[noitemsep, nolistsep]
+  \item $E$ is the \emph{\textbf{total}} energy of the system
+  \item $V$ is the \emph{\textbf{potential energy}} of the system. It may be:
+    \begin{enumerate}[noitemsep, nolistsep]
+    \item Constant
+    \item A function of time and/or space
+    \end{enumerate}
+  \item $\Psi$ is a solution to \nameref{def:Schrodinger's Equation}, and contains all that can be known about the system
+  \item $\frac{-\hbar^{2}}{2m} \cdot \nabla\Psi$ is the \emph{\textbf{kinetic energy}} operator
+    \begin{itemize}[noitemsep, nolistsep]
+    \item $\nabla^{2} = \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}}$ is in the Cartesian coordinate system ($x$, $y$, $z$), and is called ``del squared'', or ``2nd-degree nabla.''
+    \end{itemize}
+  \item For each observable system, there exists a corresponding mathematical operator.
+  \end{itemize}
+  \begin{note}\label{note:Psi Probability Distribution Function of Particle Location}
+    The probability distribution function of the position of a particle in the system can be found according to Equation~\eqref{eq:Psi Probability Distribution Function of Particle Location}.
+    This is the multiplication of $\Psi$ with its complex conjugate, $\Psi^{*}$.
+    \begin{equation}\label{eq:Psi Probability Distribution Function of Particle Location}
+      \text{PDF} = \Psi \cdot \Psi^{*}
+    \end{equation}
+  \end{note}
+\end{definition}
+\subsubsection{Properties of Schr\"{o}dinger's Equation}\label{subsubsec:Properties of Schrodingers Equation}
+Solutions, $\Psi$, to \nameref{def:Schrodinger's Equation} have the following characteristics:
+\begin{enumerate}[noitemsep, nolistsep]
+\item They are single-valued
+\item They are piecewise continuous values
+\item $\frac{\partial \Psi}{\partial x}$, $\frac{\partial \Psi}{\partial y}$, $\frac{\partial \Psi}{\partial z}$ are all continuous
+\item $\iiint \Psi \Psi^{*} \partial x \partial y \partial z$ is square integrable, or $\iiint \Psi \Psi^{*} \partial x \partial y \partial z \neq \pm \infty$
+\end{enumerate}
 
-		\input{./Phys_224-Modern_Physics-Sections/Proofs/Rough_Justification_Schrodingers_Equation}
+\input{./Phys_224-Modern_Physics-Sections/Proofs/Rough_Justification_Schrodingers_Equation}
 
-		{\Large \emph{\textbf{This means that the 3-Dimensional problem is broken down into 3 1-Dimensional problems!}} Each dimension can be approached exactly the same way as above.}
+{\Large \emph{\textbf{This means that the 3-Dimensional problem is broken down into 3 1-Dimensional problems!}} Each dimension can be approached exactly the same way as above.}
 
-	\subsection{Operators} \label{subsec:Operators}
-		\begin{definition}[Operator] \label{def:Operators}
-			In quantum mechanics, for each observable dynamical variable, there exists a corresponding \emph{operator}, which, if applied to the solution of the \nameref{eq:Schrodinger's Equation, Form 1}, will provide a value for that dynamical variable.
-			\nameref{def:Operators} do something to the function immediately after the operator.
-			An operator is nothing other than shorthand for instruction to do something to a function or number. For example, some common operators are:
-			\begin{enumerate}[noitemsep, nolistsep]
-				\item $+$
-				\item $-$
-				\item $\times$
-				\item $\div$
-				\item $\frac{\partial^{2}}{\partial t^{2}}$
-				\item $\int$
-				\item $\sum$
-				\item $\nabla^{2}$
-			\end{enumerate}
-			Operators have some vector-like properties, but they are not vectors.
-			Further, they do not always always \emph{commute}.
-			Part of the main confusion arising from the public press about quantum mechanics is as statement like ``\textellipsis $A \times B$ is equal to $B \times A$.''
-			This is simply sensationalizing the fact that some operators have commutative properties.
-			One example is:
-			\begin{equation*}
-				y \times \frac{\partial f \left( y \right)}{\partial y} \neq \frac{\partial \left[ x \times f \left( y \right) \right]}{\partial y}
-			\end{equation*}
-			For each classical observable, there exists a corresponding quantum mechanical operator.
-			Some examples of simple quantum mechanical operators are:
-			\begin{itemize}[noitemsep, nolistsep] \label{item:List of Quantum Mechanical Operators}
-				\item Kinetic Energy: $\frac{-\hbar^{2}}{2m} \nabla^{2}$
-				\item Momentum: $\frac{-\hbar}{i} \nabla$
-				\item Potential Energy: $V$ is simply multiplication by $V$
-				\item Angular Momentum: $L_{z} = \mathbf{r} \times \frac{-\hbar}{i} \nabla^{2}$
-			\end{itemize}
-			Further, some, but not all, operators are linear.
-			Fortunately, the quantum mechanics kinetic energy operators, $\nabla^{2} = \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}}$ is a linear operator.
-			This allows us to \emph{reduce a 3-dimensional problem into 3 1-dimensional problems.}
-		\end{definition}
+\subsection{Operators}\label{subsec:Operators}
+\begin{definition}[Operator]\label{def:Operators}
+  In quantum mechanics, for each observable dynamical variable, there exists a corresponding \emph{operator}, which, if applied to the solution of the \nameref{eq:Schrodinger's Equation, Form 1}, will provide a value for that dynamical variable.
+  \nameref{def:Operators} do something to the function immediately after the operator.
+  An operator is nothing other than shorthand for instruction to do something to a function or number. For example, some common operators are:
+  \begin{enumerate}[noitemsep, nolistsep]
+  \item $+$
+  \item $-$
+  \item $\times$
+  \item $\div$
+  \item $\frac{\partial^{2}}{\partial t^{2}}$
+  \item $\int$
+  \item $\sum$
+  \item $\nabla^{2}$
+  \end{enumerate}
+  Operators have some vector-like properties, but they are not vectors.
+  Further, they do not always always \emph{commute}.
+  Part of the main confusion arising from the public press about quantum mechanics is as statement like ``\textellipsis $A \times B$ is equal to $B \times A$.''
+  This is simply sensationalizing the fact that some operators have commutative properties.
+  One example is:
+  \begin{equation*}
+    y \times \frac{\partial f \left( y \right)}{\partial y} \neq \frac{\partial \left[ x \times f \left( y \right) \right]}{\partial y}
+  \end{equation*}
+  For each classical observable, there exists a corresponding quantum mechanical operator.
+  Some examples of simple quantum mechanical operators are:
+  \begin{itemize}[noitemsep, nolistsep]\label{item:List of Quantum Mechanical Operators}
+  \item Kinetic Energy: $\frac{-\hbar^{2}}{2m} \nabla^{2}$
+  \item Momentum: $\frac{-\hbar}{i} \nabla$
+  \item Potential Energy: $V$ is simply multiplication by $V$
+  \item Angular Momentum: $L_{z} = \mathbf{r} \times \frac{-\hbar}{i} \nabla^{2}$
+  \end{itemize}
+  Further, some, but not all, operators are linear.
+  Fortunately, the quantum mechanics kinetic energy operators, $\nabla^{2} = \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}}$ is a linear operator.
+  This allows us to \emph{reduce a 3-dimensional problem into 3 1-dimensional problems.}
+\end{definition}
 
-	\subsection{Eigenvalues} \label{subsec:Eigenvalues}
-		\begin{definition}[Eigenvalue] \label{def:Eigenvalues}
-			Let $\widehat{\mathbf{O}}$ be some quantum mechanical operator.
-			If $O$ and $\Psi$ are \emph{eigenvalues} and eigenfunctions of $\widehat{\mathbf{O}} \Psi = o \Psi$, the result $o$ will always be a precise number.
-			\emph{Eigenvalues} represent the value of precise, exact values of the dynamical variables corresponding to the eigenfunction of the operator.
-		\end{definition}
-	The \emph{\textbf{easy}} way to find the value of a dynamical variable $o$, given the corresponding operator, $\widehat{\mathbf{O}}$ is as follows.
-		\input{./Phys_224-Modern_Physics-Sections/Proofs/Find_Eigenvalue}
+\subsection{Eigenvalues}\label{subsec:Eigenvalues}
+\begin{definition}[Eigenvalue]\label{def:Eigenvalues}
+  Let $\widehat{\mathbf{O}}$ be some quantum mechanical operator.
+  If $O$ and $\Psi$ are \emph{eigenvalues} and eigenfunctions of $\widehat{\mathbf{O}} \Psi = o \Psi$, the result $o$ will always be a precise number.
+  \emph{Eigenvalues} represent the value of precise, exact values of the dynamical variables corresponding to the eigenfunction of the operator.
+\end{definition}
+The \emph{\textbf{easy}} way to find the value of a dynamical variable $o$, given the corresponding operator, $\widehat{\mathbf{O}}$ is as follows.
+\input{./Phys_224-Modern_Physics-Sections/Proofs/Find_Eigenvalue}
 
-	\subsection{Expectation Values} \label{subsec:Expectation Values}
-		\begin{definition}[Expectation Values] \label{def:Expectation Values}
-			If $o$ and $\Psi$ are \textbf{not} eigenvalues and eigenfunctions of $\widehat{\mathbf{O}}$, e.g. $\widehat{\mathbf{O}} \Psi = z \phi$, where $z$ is some number, and $\phi$ is some function not equal to $\Psi$, the result $z$ will be the average of many possible observations. \newline
-			This is usually written as $\langle z \rangle$ and is called an \emph{expectation value}. The expectation value is the expected average value of a number of measurements for a dynamical variable described by the operator $\widehat{\mathbf{O}}$.
-		\end{definition}
+\subsection{Expectation Values}\label{subsec:Expectation Values}
+\begin{definition}[Expectation Values]\label{def:Expectation Values}
+  If $o$ and $\Psi$ are \textbf{not} eigenvalues and eigenfunctions of $\widehat{\mathbf{O}}$, e.g. $\widehat{\mathbf{O}} \Psi = z \phi$, where $z$ is some number, and $\phi$ is some function not equal to $\Psi$, the result $z$ will be the average of many possible observations. \newline
+  This is usually written as $\langle z \rangle$ and is called an \emph{expectation value}. The expectation value is the expected average value of a number of measurements for a dynamical variable described by the operator $\widehat{\mathbf{O}}$.
+\end{definition}
 
-	\subsection{Determine Dynamical Variables in Quantum Mechanics} \label{subsec:Determine Dynamical Variables in Quantum Mechanics}
-		This section has an example where we solve for dynamical variables.
-		\input{./Phys_224-Modern_Physics-Sections/Examples/Determine_Dynamical_Variables}
+\subsection{Determine Dynamical Variables in Quantum Mechanics}\label{subsec:Determine Dynamical Variables in Quantum Mechanics}
+This section has an example where we solve for dynamical variables.
+\input{./Phys_224-Modern_Physics-Sections/Examples/Determine_Dynamical_Variables}
 
-	\subsection{Heisenberg's Uncertainty Principle} \label{subsec:Heisenberg's Uncertainty Principle}
-		\begin{definition} \label{def:Heisenberg's Uncertainty Principle}
-			The \nameref{def:Heisenberg's Uncertainty Principle} states that measured values cannot be assigned to the position vector, $\vec{r}$ and the momentum vector, $\vec{p}$ simultaneously with unlimited precision.
-			\begin{equation} \label{eq:Heisenberg's Uncertainty Principle}
-				\begin{aligned}
-					\delta x \cdot \delta p_{x} &\geq \hbar \\
-					\delta y \cdot \delta p_{y} &\geq \hbar \\
-					\delta z \cdot \delta p_{z} &\geq \hbar \\
-				\end{aligned}
-			\end{equation}
-			\begin{itemize}[noitemsep, nolistsep]
-				\item $\delta x$ and $\delta p_{x}$ represent the uncertainty of the value from the given values of $\vec{r}_{x}x$ and $\vec{p}_{x}$.
-				\item $\hbar$ is defined in Equation~\eqref{eq:hbar Definition}.
-			\end{itemize}
-		\end{definition}
+\subsection{Heisenberg's Uncertainty Principle}\label{subsec:Heisenberg's Uncertainty Principle}
+\begin{definition}\label{def:Heisenberg's Uncertainty Principle}
+  The \nameref{def:Heisenberg's Uncertainty Principle} states that measured values cannot be assigned to the position vector, $\vec{r}$ and the momentum vector, $\vec{p}$ simultaneously with unlimited precision.
+  \begin{equation}\label{eq:Heisenberg's Uncertainty Principle}
+    \begin{aligned}
+      \delta x \cdot \delta p_{x} &\geq \hbar \\
+      \delta y \cdot \delta p_{y} &\geq \hbar \\
+      \delta z \cdot \delta p_{z} &\geq \hbar \\
+    \end{aligned}
+  \end{equation}
+  \begin{itemize}[noitemsep, nolistsep]
+  \item $\delta x$ and $\delta p_{x}$ represent the uncertainty of the value from the given values of $\vec{r}_{x}x$ and $\vec{p}_{x}$.
+  \item $\hbar$ is defined in Equation~\eqref{eq:hbar Definition}.
+  \end{itemize}
+\end{definition}

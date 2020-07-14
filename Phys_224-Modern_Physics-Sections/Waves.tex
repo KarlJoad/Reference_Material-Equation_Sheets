@@ -1,132 +1,132 @@
-\section{Waves} \label{sec:Waves}
+\section{Waves}\label{sec:Waves}
 {\Large Usually of form $y = y_{m} \sin \left( kx \pm \omega t \right)$}
 There are two types of waves:
-	\begin{enumerate}[noitemsep, nolistsep]
-		\item Transverse Waves - Waves where displacement from equilibrium is orthogonal to direction of propagation
-		\begin{itemize}[noitemsep, nolistsep] % Examples of Transverse Waves
-			\item String Waves
-			\item Electromagnetic Waves
-		\end{itemize}
-		\item Longitudinal Waves - Waves where displacement from equilibrium is parallel to direction of propagation
-		\begin{itemize}[noitemsep, nolistsep] % Examples of Longitudinal Waves
-			\item Pressure Waves
-			\item Sound Waves (Which are a type of pressure wave)
-		\end{itemize}
-	\end{enumerate}
+\begin{enumerate}[noitemsep, nolistsep]
+\item Transverse Waves - Waves where displacement from equilibrium is orthogonal to direction of propagation
+  \begin{itemize}[noitemsep, nolistsep] % Examples of Transverse Waves
+  \item String Waves
+  \item Electromagnetic Waves
+  \end{itemize}
+\item Longitudinal Waves - Waves where displacement from equilibrium is parallel to direction of propagation
+  \begin{itemize}[noitemsep, nolistsep] % Examples of Longitudinal Waves
+  \item Pressure Waves
+  \item Sound Waves (Which are a type of pressure wave)
+  \end{itemize}
+\end{enumerate}
 
-	\begin{itemize}[noitemsep]
-		\item $y_{m}$ - Amplitude, $m$
-		\item $k$ - Angular Wave Number, $rad/m$
-			\begin{itemize}[noitemsep, nolistsep]
-				\item $k = \frac{2 \pi}{\lambda}$
-				\item $\lambda$ is wavelength, $m$
-			\end{itemize}
-		\item $\omega$ - Angular Frequency, $rad/s$
-			\begin{itemize}[noitemsep, nolistsep]
-				\item $\omega = 2 \pi f$
-				\item $f$ is frequency, $Hz$
-				\item Sign of this goes the opposite the direction the wave is going
-					\begin{enumerate}[noitemsep]
-						\item Wave going in positive direction $\left( + \right)$, then the sign should be negative $\left( - \right)$
-						\item Wave going in negative direction $\left( - \right)$, then the sign should be positive $\left( + \right)$
-					\end{enumerate}
-			\end{itemize}
-		\item $v = \lambda f$, Wave Velocity, $m/s$
-			\begin{itemize}[noitemsep]
-				\item $v = \frac{\omega}{2 \pi} * \frac{2 \pi}{k} = \frac{\omega}{k}$
-				\item This can be proven with the angular portion of any wave (inside the parentheses of trig function)
-				\begin{align*} % Prove why k = \lambda / 2 \pi
-					kx-\omega t &= \text{Constant} \\
-					\frac{d}{dt} \left[ kx-\omega t \right] &= \frac{d}{dt} \left[ \text{Constant} \right] \\
-					k \frac{dx}{dt} - \omega \frac{dt}{dt} &= 0 \\
-					kv - \omega &= 0 \\
-					kv &= \omega \\
-					v &= \frac{\omega}{k} \\
-				\end{align*}
-				Since $\omega = 2 \pi f$ , then $k = \frac{\lambda}{2 \pi}$ 
-			\end{itemize}
-	\end{itemize}
+\begin{itemize}[noitemsep]
+\item $y_{m}$ - Amplitude, $m$
+\item $k$ - Angular Wave Number, $rad/m$
+  \begin{itemize}[noitemsep, nolistsep]
+  \item $k = \frac{2 \pi}{\lambda}$
+  \item $\lambda$ is wavelength, $m$
+  \end{itemize}
+\item $\omega$ - Angular Frequency, $rad/s$
+  \begin{itemize}[noitemsep, nolistsep]
+  \item $\omega = 2 \pi f$
+  \item $f$ is frequency, $Hz$
+  \item Sign of this goes the opposite the direction the wave is going
+    \begin{enumerate}[noitemsep]
+    \item Wave going in positive direction $\left( + \right)$, then the sign should be negative $\left( - \right)$
+    \item Wave going in negative direction $\left( - \right)$, then the sign should be positive $\left( + \right)$
+    \end{enumerate}
+  \end{itemize}
+\item $v = \lambda f$, Wave Velocity, $m/s$
+  \begin{itemize}[noitemsep]
+  \item $v = \frac{\omega}{2 \pi} * \frac{2 \pi}{k} = \frac{\omega}{k}$
+  \item This can be proven with the angular portion of any wave (inside the parentheses of trig function)
+    \begin{align*} % Prove why k = \lambda / 2 \pi
+      kx-\omega t &= \text{Constant} \\
+      \frac{d}{dt} \left[ kx-\omega t \right] &= \frac{d}{dt} \left[ \text{Constant} \right] \\
+      k \frac{dx}{dt} - \omega \frac{dt}{dt} &= 0 \\
+      kv - \omega &= 0 \\
+      kv &= \omega \\
+      v &= \frac{\omega}{k} \\
+    \end{align*}
+    Since $\omega = 2 \pi f$ , then $k = \frac{\lambda}{2 \pi}$
+  \end{itemize}
+\end{itemize}
 
-	\subsection{Wave Interference} \label{subsec:Wave Interference}
-	Waves are nice, and they just sum when they interfere. Let: 
-	\begin{align}
-		y_{1} \left( x, t \right) &= y \sin \left( kx - \omega t \right) \\
-		y_{2} \left( x, t \right) &= y \sin \left( kx + \omega t + \varphi \right) \\
-		Y \left( x, t \right) &= y\left[ \sin \left( kx - \omega t \right) + \sin \left( kx + \omega t + \varphi \right) \right] \label{eq:Sum of 2 Waves}
-	\end{align}
-	You can usually use Equation~\ref{eq:Sin plus Sin with diff Angles} to simplify Equation~\ref{eq:Sum of 2 Waves}.
+\subsection{Wave Interference}\label{subsec:Wave Interference}
+Waves are nice, and they just sum when they interfere. Let:
+\begin{align}
+  y_{1} \left( x, t \right) &= y \sin \left( kx - \omega t \right) \\
+  y_{2} \left( x, t \right) &= y \sin \left( kx + \omega t + \varphi \right) \\
+  Y \left( x, t \right) &= y\left[ \sin \left( kx - \omega t \right) + \sin \left( kx + \omega t + \varphi \right) \right]\label{eq:Sum of 2 Waves}
+\end{align}
+You can usually use Equation~\ref{eq:Sin plus Sin with diff Angles} to simplify Equation~\ref{eq:Sum of 2 Waves}.
 
-		\subsubsection{Constructive/Destructive Interference} \label{subsubsec:Constructive/Destructive Interference}
-		\begin{align*}		
-			\phi &= 2 \pi \frac{Path Length Diff}{\lambda} = 2 \pi \frac{\Delta \text{PLD}}{\lambda} \\
-			n &= \frac{\phi}{2\pi} = 4 \frac{Path Length Diff}{\lambda}\\
-		\end{align*}
-		\begin{itemize}[noitemsep]
-			\item $Path Length Diff$ - Is the Difference in path lengths that the waves must travel
-			\item $\phi$ - Angular Location of points of Complete Constructive/Destructive Interference
-			\item $n$ - Number of locations where there is Complete Constructive/Destructive Interference
-		\end{itemize}
+\subsubsection{Constructive/Destructive Interference}\label{subsubsec:Constructive/Destructive Interference}
+\begin{align*}
+  \phi &= 2 \pi \frac{Path Length Diff}{\lambda} = 2 \pi \frac{\Delta \text{PLD}}{\lambda} \\
+  n &= \frac{\phi}{2\pi} = 4 \frac{Path Length Diff}{\lambda}\\
+\end{align*}
+\begin{itemize}[noitemsep]
+\item $Path Length Diff$ - Is the Difference in path lengths that the waves must travel
+\item $\phi$ - Angular Location of points of Complete Constructive/Destructive Interference
+\item $n$ - Number of locations where there is Complete Constructive/Destructive Interference
+\end{itemize}
 
-	\subsection{Standing Waves} \label{subsec:Standing Waves}
-	This is actually the superposition of 2 waves, traveling in opposite directions, on a medium that is fixed at both ends, i.e. a taut string held by a wall.
-		\subsubsection*{Location of Nodes and Antinodes} \label{subsubsec:Node/Antinode Location}
-		\begin{itemize}[noitemsep]
-			\item Nodes - $x = n \frac{\lambda}{2}$ for $n = 0, 1, 2, \ldots$
-			\begin{itemize}[noitemsep, nolistsep]
-				\item Always at closed ends of tubes
-			\end{itemize}
-			\item Antinodes - $x = \left( n + \frac{1}{2} \right) \frac{\lambda}{2}$ for $n = 0, 1, 2, \ldots$
-			\begin{itemize}[noitemsep, nolistsep]
-				\item Always at open ends of tubes
-			\end{itemize}
-		\end{itemize}
+\subsection{Standing Waves}\label{subsec:Standing Waves}
+This is actually the superposition of 2 waves, traveling in opposite directions, on a medium that is fixed at both ends, i.e. a taut string held by a wall.
+\subsubsection*{Location of Nodes and Antinodes}\label{subsubsec:Node/Antinode Location}
+\begin{itemize}[noitemsep]
+\item Nodes - $x = n \frac{\lambda}{2}$ for $n = 0, 1, 2, \ldots$
+  \begin{itemize}[noitemsep, nolistsep]
+  \item Always at closed ends of tubes
+  \end{itemize}
+\item Antinodes - $x = \left( n + \frac{1}{2} \right) \frac{\lambda}{2}$ for $n = 0, 1, 2, \ldots$
+  \begin{itemize}[noitemsep, nolistsep]
+  \item Always at open ends of tubes
+  \end{itemize}
+\end{itemize}
 
-		\subsubsection{Resonant Frequencies/Harmonics} \label{subsubsec:Resonant Frequencies/Harmonics}
-		These can also be called harmonics. There is a resonant frequency for every number of nodes/antinodes on tthe standing wave. \newline
-		$f = \frac{v}{\lambda} = n \frac{v}{2L}$
-		\begin{itemize}[noitemsep]
-			\item $L$ is the length of the medium (The String).
-			\item $\lambda$ is the wavelength of the wave formed.
-		\end{itemize}
-		This can be extended to find the base resonant frequency, if you know how many node levels are between the two resonant frequencies given, i.e. they say that the \textbf{NEXT} frequency, means $n+1$. \newline
-		$f_{n+m}-f_{n} = \left( n+m \right) \frac{v}{2L} - n \frac{v}{2L} = m \frac{v}{2L}$
-		
-	\subsection{Reflecting Sound} \label{subsec:Reflecting Sound}
-		\begin{itemize}[noitemsep]
-			\item $D = \left( n + 1 \right)d = vt$
-			\begin{itemize}[noitemsep,nolistsep]
-				\item $n$ is the number of reflections that occurred
-				\item $n+1$ is used when we want the distance the wave covers
-			\end{itemize}
-		\end{itemize}
-	
-	\subsection{Sound in Different Mediums} \label{subsec:Sound in Different Mediums}
-	Frequency is a property of a wave, and \textbf{CANNOT BE ALTERED.} This means that:
-	\begin{align*}
-		v &= \lambda f \\
-		v_{Sound, Material 1} &= \lambda_{Material 1}f_{Unique, Material 1} \\
-		v_{Sound, Material 2} &= \lambda_{Material 2}f_{Unique, Material 2} \\
-		f_{Unique, Material 1} &= f_{Unique, Material 2} \\
-		\frac{v_{Sound, Material 1}}{\lambda_{Material 1}} &= \frac{v_{Sound, Material 2}}{\lambda_{Material 2}} \\
-	\end{align*}
-	
-	\subsection{Doppler Effect} \label{subsec:Doppler Effect}
-	{\Large $f' = f \frac{v \pm v_{D}}{v \pm v_{S}}$}
-	\begin{itemize}[noitemsep]
-		\item Moving \textit{\textbf{TOWARDS}} each other: Frequency Increase
-		\item Moving \textit{\textbf{AWAY}} from each other: Frequency Decrease
-		\item $f$ - Initial Frequency, \si{\hertz}
-		\item $v$ - Sound Speed, \si{\meter / \second}
-		\item $v_{D}$ - Detector Speed, \si{\meter / \second}
-		\item $v_{S}$ - Source Speed, \si{\meter / \second}
-		\item \textbf{For Numerator}:
-			\begin{itemize}[noitemsep,nolistsep]
-				\item If detector is moving towards the source, $+$
-				\item If detector is moving away from the source, $-$
-			\end{itemize}
-		\item \textbf{For Denominator}:
-			\begin{itemize}[noitemsep,nolistsep]
-				\item If source is moving away from detector, $+$
-				\item If source is moving towards the detector, $-$
-			\end{itemize}
-		\end{itemize}
+\subsubsection{Resonant Frequencies/Harmonics}\label{subsubsec:Resonant Frequencies/Harmonics}
+These can also be called harmonics. There is a resonant frequency for every number of nodes/antinodes on tthe standing wave. \newline
+$f = \frac{v}{\lambda} = n \frac{v}{2L}$
+\begin{itemize}[noitemsep]
+\item $L$ is the length of the medium (The String).
+\item $\lambda$ is the wavelength of the wave formed.
+\end{itemize}
+This can be extended to find the base resonant frequency, if you know how many node levels are between the two resonant frequencies given, i.e. they say that the \textbf{NEXT} frequency, means $n+1$. \newline
+$f_{n+m}-f_{n} = \left( n+m \right) \frac{v}{2L} - n \frac{v}{2L} = m \frac{v}{2L}$
+
+\subsection{Reflecting Sound}\label{subsec:Reflecting Sound}
+\begin{itemize}[noitemsep]
+\item $D = \left( n + 1 \right)d = vt$
+  \begin{itemize}[noitemsep,nolistsep]
+  \item $n$ is the number of reflections that occurred
+  \item $n+1$ is used when we want the distance the wave covers
+  \end{itemize}
+\end{itemize}
+
+\subsection{Sound in Different Mediums}\label{subsec:Sound in Different Mediums}
+Frequency is a property of a wave, and \textbf{CANNOT BE ALTERED.} This means that:
+\begin{align*}
+  v &= \lambda f \\
+  v_{Sound, Material 1} &= \lambda_{Material 1}f_{Unique, Material 1} \\
+  v_{Sound, Material 2} &= \lambda_{Material 2}f_{Unique, Material 2} \\
+  f_{Unique, Material 1} &= f_{Unique, Material 2} \\
+  \frac{v_{Sound, Material 1}}{\lambda_{Material 1}} &= \frac{v_{Sound, Material 2}}{\lambda_{Material 2}} \\
+\end{align*}
+
+\subsection{Doppler Effect}\label{subsec:Doppler Effect}
+{\Large $f' = f \frac{v \pm v_{D}}{v \pm v_{S}}$}
+\begin{itemize}[noitemsep]
+\item Moving \textit{\textbf{TOWARDS}} each other: Frequency Increase
+\item Moving \textit{\textbf{AWAY}} from each other: Frequency Decrease
+\item $f$ - Initial Frequency, \si{\hertz}
+\item $v$ - Sound Speed, \si{\meter / \second}
+\item $v_{D}$ - Detector Speed, \si{\meter / \second}
+\item $v_{S}$ - Source Speed, \si{\meter / \second}
+\item \textbf{For Numerator}:
+  \begin{itemize}[noitemsep,nolistsep]
+  \item If detector is moving towards the source, $+$
+  \item If detector is moving away from the source, $-$
+  \end{itemize}
+\item \textbf{For Denominator}:
+  \begin{itemize}[noitemsep,nolistsep]
+  \item If source is moving away from detector, $+$
+  \item If source is moving towards the detector, $-$
+  \end{itemize}
+\end{itemize}
