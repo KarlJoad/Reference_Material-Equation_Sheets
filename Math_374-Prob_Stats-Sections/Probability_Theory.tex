@@ -35,7 +35,7 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 			\item[Axiom III':] If $A_{1}$, $A_{2}$, $\ldots$ is a sequence of events such that $A_{i} \cap A_{j} = \emptyset$ for all $i \neq j$, then $P \left[ \bigcup_{k=1}^{\infty} A_{k} \right] = \sum_{k=1}^{\infty} P \left[ A_{k} \right]$
 		\end{enumerate}
 	\end{definition}
-	
+
 	\subsection{Probability Law Corollaries} \label{subsec:Probability Law Corollary}
 		\begin{enumerate}[label=Axiom~\Roman*:, align=left, noitemsep, nolistsep] % Probability Law Axioms
 			\item $0 \leq P\left[ A \right]$
@@ -64,7 +64,7 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 		\begin{corollary} \label{cor:Subset Probability to Superset}
 			If $A \subset B$, then $P \left[ A \right] \leq P \left[ B \right]$
 		\end{corollary}
-	
+
 	\subsection{Conditional Probability} \label{subsec:Conditional Probability}
 		\begin{definition}[Conditional Probability] \label{def:Conditional Probability}
 			The \emph{conditional probability} of event $A$ \textbf{GIVEN THAT} event $B$ occurred is denoted $P \left[ A \vert B \right]$ and is defined as
@@ -90,7 +90,7 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 				\item What is the probability that the label of the second ball is even?
 				\item What is the probability that the label of the first ball was odd given that the second was even?
 			\end{boldalphlist}
-		
+
 			\tcblower
 			To begin, it is usually best if you create an event tree, like below.
 			\newline
@@ -99,13 +99,13 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 			\end{center}
 			\begin{enumerate}[label=(\alph*)]
 				\item $\Prob \left[ A \Given B \right] = \frac{\Prob \left[ A \cap B \right]}{\Prob \left[ B \right]}$
-				\item 
+				\item
 			\end{enumerate}
 		\end{example}
-	
+
 	\subsection{Event Independence} \label{subsec:Event Independence}
 		\begin{definition}[Independent] \label{def:Event Independence}
-			Two events $A$ and $B$ are \emph{independent} if 
+			Two events $A$ and $B$ are \emph{independent} if
 			\begin{equation} \label{eq:Event Independence}
 				P \left[ A \cap B \right] = P \left[ A \right] * P \left[ B \right], P\left[ A \right] \neq 0, P\left[ B \right] \neq 0
 			\end{equation}
@@ -159,5 +159,5 @@ There are 3 main components to \nameref{sec:Probability Theory}.
 		\end{proof}
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../Math_374-Reference_Sheet"
+%%% TeX-master: "../Math_374-Prob_Stats-Reference_Sheet"
 %%% End:

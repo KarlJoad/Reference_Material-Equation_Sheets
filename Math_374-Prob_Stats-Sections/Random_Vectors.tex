@@ -10,23 +10,23 @@ Random Vectors are usually denoted:
 			However, the 2 random variable equations and definitions must be generalized to $n$ random variables.
 		\end{remark}
 	\end{definition}
-	
+
 	\subsection{Joint CDF of a Random Vector} \label{subsec:Joint CDF of Random Vector}
 	This is just the generalization of \nameref{def:Joint CDF} to $n$ random variables.
 		\begin{equation} \label{eq:Joint CDF of Random Vector}
 			\begin{aligned}
-				F_{\vec{X}} \left( \vec{x} \right) 
+				F_{\vec{X}} \left( \vec{x} \right)
 					&= F_{X_{1}, X_{2}, X_{3}, \ldots, X_{n}} \left( x_{1}, x_{2}, x_{3}, \ldots, x_{n} \right) \\
 					&= P \left[ X_{1} \leq x_{1}, X_{2} \leq x_{2}, X_{3} \leq x_{3}, \ldots, X_{n} \leq x_{n} \right] \\
 			\end{aligned}
 		\end{equation}
-		
+
 	\subsection{Joint PDF of a Random Vector} \label{subsec:Joint PDF of Random Vector}
 	This is just the generalization of \nameref{def:Joint PDF} to $n$ random variables.
 		\begin{equation} \label{eq:Joint PDF of Random Vector}
 			f_{\vec{X}} \left( \vec{x} \right) = \frac{\partial^{n} F_{\vec{X}} \left( \vec{x} \right)}{\partial x_{1} \partial x_{2} \partial x_{3} \cdots \partial x_{n}}
 		\end{equation}
-		
+
 		\subsubsection{Marginal PDF of a Random Vector} \label{subsubsec:Marginal PDF of Random Vector}
 		This is just the generalization of \nameref{def:Marginal PDF} to $n$ random variables.
 		Integrate out the terms that you're not interested in.
@@ -37,7 +37,7 @@ Random Vectors are usually denoted:
 		\begin{equation} \label{eq:Marginal PDF of Random Vector Multiple Variables}
 			f_{X_{1}, X_{3}, X_{4}} \left( x_{1}, x_{3}, x_{4} \right) = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f_{\vec{X}} \left( \vec{x} \right) \partial x_{2} \partial x_{5} \partial x_{6} \cdots \partial x_{n}
 		\end{equation}
-	
+
 	\subsection{Conditional Probability Functions of Random Vectors} \label{subsec:Random Vector Conditional Probability Functions}
 	This section is just an extension of \Cref{subsec:Multiple Variable Conditional Probability Functions}, \nameref{subsec:Multiple Variable Conditional Probability Functions}.
 	There are 3 major cases for these:
@@ -46,7 +46,7 @@ Random Vectors are usually denoted:
 			\item \nameref{subsubsec:Conditional Probability Mixed Random Vectors}
 			\item \nameref{subsubsec:Conditional Probability Continuous Random Vectors}
 		\end{enumerate}
-	
+
 		\begin{remark*} \label{rmk:Define Random Vector Y for Example}
 			\begin{large}
 				For the sections below, let $\vec{Y}= \langle Y_{1},Y_{2},Y_{3} \rangle$ and $\vec{y}= \langle y_{1},y_{2},y_{3} \rangle$.
@@ -54,13 +54,13 @@ Random Vectors are usually denoted:
 			While I am using $\vec{Y}$ and $\vec{y}$, these equations can be further generalized to higher dimensions.
 			All that would be required for this is to keep track of everything.
 		\end{remark*}
-	
+
 		\subsubsection{Discrete Random Vectors} \label{subsubsec:Conditional Probability Discrete Random Vectors}
 			\begin{definition}[Discrete Random Vector Conditional Probability Mass Function] \label{def:Discrete Random Vector-Conditional PMF}
 				The \emph{conditional Probability Mass Function (Conditional PMF)} of $Y_{3}$ given that $Y=y$ is:
 				\begin{equation} \label{eq:Discrete Random Vector-Conditional PMF}
 					p_{Y_{3}} \left( y_{3} \Given y_{1},y_{2} \right)
-					= \frac{P \left[ \lbrace Y_{3}=y_{3} \rbrace \cap \left( \lbrace Y_{1}=y_{1} \rbrace \cap \lbrace Y_{2}=y_{2} \rbrace \right) \right]}{P \left[ \lbrace Y_{1}=y_{1} \rbrace \cap \lbrace Y_{2}=y_{2} \rbrace \right]} 
+					= \frac{P \left[ \lbrace Y_{3}=y_{3} \rbrace \cap \left( \lbrace Y_{1}=y_{1} \rbrace \cap \lbrace Y_{2}=y_{2} \rbrace \right) \right]}{P \left[ \lbrace Y_{1}=y_{1} \rbrace \cap \lbrace Y_{2}=y_{2} \rbrace \right]}
 					= \frac{p_{\vec{Y}} \left( \vec{y} \right)}{p_{Y_{1},Y_{2}} \left( y_{1},y_{2} \right)}
 				\end{equation}
 				\begin{remark}
@@ -89,7 +89,7 @@ Random Vectors are usually denoted:
 					The \nameref{def:Discrete Random Vector-Conditional PMF} of 2 discrete random variables satisfies all \nameref{subsubsec:Properties of Probability Mass Functions}.
 				\end{remark}
 			\end{definition}
-		
+
 		\subsubsection{Mixed Random Vectors} \label{subsubsec:Conditional Probability Mixed Random Vectors}
 		Because of the continuous random variable present in the random vector, we can describe a mixed random vector with either:
 			\begin{enumerate}[noitemsep, nolistsep]
@@ -126,7 +126,7 @@ Random Vectors are usually denoted:
 						The \nameref{def:Mixed Random Vector-Conditional PDF} of mixed random variables satisfies all \nameref{subsubsec:Properties of Probability Density Functions}.
 					\end{remark}
 			\end{definition}
-						
+
 		\subsubsection{Continuous Random Vectors} \label{subsubsec:Conditional Probability Continuous Random Vectors}
 			\begin{definition}[Continuous Random Vector Conditional CDF] \label{def:Continuous Random Vector-Conditional CDF}
 				The \emph{conditional Cumulative Distribution Function (CDF)} of a continuous random vector of $Y$ given $X=x$, where both $Y$ and $X$ are continuous random variables is given below.
@@ -188,7 +188,7 @@ Random Vectors are usually denoted:
 
                           Solution to Example 5.32 from Lecture 23.
 			\end{example}
-		
+
 	\subsection{Mean Vector} \label{subsec:Mean Vector}
 		\begin{definition}[Mean Vector] \label{def:Mean Vector}
 			For $\vec{X} = \langle X_{1},X_{2},\ldots,X_{n} \rangle$, the \emph{mean vector} is defined as the column vector of expected values of the components of $X_{k}$:
@@ -224,7 +224,7 @@ Random Vectors are usually denoted:
 
                   Solution to Problem 6.35, ONLY Mean Vector Part, from Homework 10.
 		\end{example}
-	
+
 	\subsection{Correlation and Covariance Matrix} \label{subsec:Correlation and Correlation Matrix}
 		\begin{definition}[Correlation Matrix]
 			The \emph{correlation matrix} has the second moments of $\bar{X}$ as its entries:
@@ -289,5 +289,5 @@ Random Vectors are usually denoted:
 		\end{example}
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../Math_374-Reference_Sheet"
+%%% TeX-master: "../Math_374-Prob_Stats-Reference_Sheet"
 %%% End:

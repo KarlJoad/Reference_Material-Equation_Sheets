@@ -6,12 +6,12 @@ In applying probability models to real situations, we perform experiments and co
 				\item Mean or Expected value
 				\item Variance
 			\end{itemize}
-		
+
 		\item Is the data set consistent with some model?
 			\begin{itemize}[noitemsep, nolistsep]
 				\item Some assumed distribution, which must be true, otherwise the model is wrong.
 			\end{itemize}
-		
+
 		\item Is the data set consistent with some parameter value of the assumed value?
 	\end{enumerate}
 
@@ -39,7 +39,7 @@ In applying probability models to real situations, we perform experiments and co
 	\begin{definition}[Unit Variance] \label{def:Unit Variance}
 		The \emph{unit variance} means that the standard deviation, $\sigma$ of a sample, as well as the variance, $\sigma^{2}$ will tend towards 1 as the sample size increases to infinity.
 	\end{definition}
-	
+
 	\subsection{Sample Mean} \label{subsec:Sample Mean}
 		\begin{definition}[Sample Mean] \label{def:Sample Mean}
 			The \emph{sample mean} of a sequence is denoted as,
@@ -73,7 +73,7 @@ In applying probability models to real situations, we perform experiments and co
 				The larger $n$ gets, the smaller $\Variance \left[ M_{n} \right]$ gets, and the closer $M_{n}$ gets to $\mu$.
 			\end{remark}
 		\end{definition}
-			
+
 	Also, we can use the \nameref{eq:Chebychev Inequality} to approximate many values. In this case, we change the Chebychev Inequality from \Cref{eq:Chebychev Inequality} to \Cref{eq:Statistics Chebychev Inequality} like so:
 		\begin{equation} \label{eq:Statistics Chebychev Inequality}
 			P \left[ \lvert M_{n} - \ExpectedValue \left[ M_{n} \right] \rvert \geq \varepsilon \right] \leq \frac{\Variance \left[ M_{n} \right]}{\varepsilon^{2}}
@@ -86,7 +86,7 @@ In applying probability models to real situations, we perform experiments and co
 
                   Solution to Problem 7.15 from Homework 11 (Extra Credit).
 		\end{example}
-		
+
 	\subsection{Important Probability and Statistics Theorems} \label{subsec:Important Probability and Statistics Theorems}
 		There are 3 very import theorems that are used quite frequently in both \nameref{sec:Probability Theory} and \nameref{sec:Statistics}.
 		\begin{enumerate}[noitemsep, nolistsep]
@@ -141,7 +141,7 @@ In applying probability models to real situations, we perform experiments and co
 
                   Solution to Problem 7.25 from Homework 11 (Extra Credit).
 		\end{example}
-	
+
 	\subsection{Estimators} \label{subsec:Estimators}
 		\begin{itemize}[noitemsep, nolistsep]
 			\item A \nameref{def:Statistic} is a function of the data $X_{1},X_{2},\ldots,X_{n}$
@@ -160,7 +160,7 @@ In applying probability models to real situations, we perform experiments and co
 				This is the definition of \emph{unbiased}, drawn from the definition of \nameref{def:Bias}
 			\end{remark}
 		\end{definition}
-	
+
 		\subsubsection{Goodness of an Estimator} \label{subsubsec:Estimator Goodness}
 		There are 4 measures we use to determine how good our estimator is.
 			\begin{enumerate}[noitemsep, nolistsep]
@@ -174,7 +174,7 @@ In applying probability models to real situations, we perform experiments and co
 				\item Accuracy is defined as $\Bias [\hat{\theta} ] = \ExpectedValue [\hat{\theta}] - \theta$
 				\item Precision is defined as $\Variance [\hat{\theta}]$
 			\end{itemize}
-		
+
 			\begin{definition}[Bias] \label{def:Bias}
 				\emph{Bias} is defined as:
 				\begin{equation} \label{eq:Accuracy}
@@ -196,7 +196,7 @@ In applying probability models to real situations, we perform experiments and co
 
                           Solution to Problem 8.14, Part a from Homework 11 (Extra Credit).
 			\end{example}
-					
+
 			\begin{definition}[Mean Squared Error] \label{def:Mean Squared Error}
 				The \emph{Mean Squared Error} of an estimator for parameter $\hat{\theta}$ is:
 				\begin{equation} \label{eq:Mean Squared Error}
@@ -214,13 +214,13 @@ In applying probability models to real situations, we perform experiments and co
 
                           Solution to Problem 8.14, Part b from Homework 11 (Extra Credit).
 			\end{example}
-		
+
 			\begin{remark*}
 				When doing statistical analysis, there is something called the \emph{Bias-Variance Tradeoff}.
 				When doing the analysis, if you try to minimize bias, your variance will increase and vice-versa.
 				There is a happy medium, which is not discussed in this class.
 			\end{remark*}
-		
+
 			\begin{definition}[Consistency] \label{def:Consistency}
 				$\hat{\theta}$ is a \emph{consistent estimator} for $\theta$ if $\hat{\Theta}$ converges to $\theta$ in probability.
 				\begin{equation} \label{eq:Consistency}
@@ -239,7 +239,7 @@ In applying probability models to real situations, we perform experiments and co
 
                           Solution to Problem 8.17, Part b from Homework 11 (Extra Credit).
 			\end{example}
-	
+
 	\subsection{How to Find a Good Estimator} \label{subsec:Find Good Estimator}
 	There are several methods, two of which are:
 		\begin{enumerate}[noitemsep, nolistsep]
@@ -250,7 +250,7 @@ In applying probability models to real situations, we perform experiments and co
 				\end{itemize}
 			\item \nameref{def:Maximum Likelihood Estimation}
 		\end{enumerate}
-	
+
 		\subsubsection{Method of Moments} \label{subsubsec:Method of Moments}
                 \begin{example}{Method of Moments}
                   Let the sample $X_{1}, X_{2}, \ldots, X_{n}$ consist of iid version of the random variable $X$. The method of moments involves estimating the moments of $X$ as follows:
@@ -266,7 +266,7 @@ In applying probability models to real situations, we perform experiments and co
 
                   Solution to Problem 8.6 from Homework 11 (Extra Credit).
                 \end{example}
-                		
+
 		\subsubsection{Maximum Likelihood Estimation} \label{subsubsec:Maximum Likelihood Estimation}
 			\begin{definition}[Maximum Likelihood Estimation] \label{def:Maximum Likelihood Estimation}
 				Let $ X_{1},X_{2},\ldots,X_{n} \DrawnIID f \left( x \Given \theta \right) $.
@@ -289,7 +289,7 @@ In applying probability models to real situations, we perform experiments and co
 					\[ \argmax_{\theta \in \Theta} \] is the global maxima of the function. This is further described in \Cref{def:argmax}.
 				\end{remark}
 			\end{definition}
-	
+
 	\subsection{Confidence Intervals} \label{subsec:Confidence Interval}
 	Because certain estimators are not discrete, but continuous, the estimators expected value might not be quite right.
 	This is where \nameref{def:Confidence Interval}s come in.
@@ -321,7 +321,7 @@ In applying probability models to real situations, we perform experiments and co
 
                   Solution in Example 1 from Lecture 28.
 		\end{example}
-	
+
                 \subsection{Hypothesis Testing} \label{subsec:Hypothesis Testing}
                 \begin{definition}[Hypothesis Testing] \label{def:Hypothesis Testing}
                   There are 4 parts to \emph{hypothesis testing}.
@@ -343,7 +343,7 @@ In applying probability models to real situations, we perform experiments and co
                     \end{enumerate}
                   \end{remark}
                 \end{definition}
-                                          
+
 		\begin{example}{Use Hypothesis Testing}
                   Using \nameref{def:Hypothesis Testing}, how can you determine if a coin is fair?
 
@@ -353,5 +353,5 @@ In applying probability models to real situations, we perform experiments and co
 		\end{example}
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../Math_374-Reference_Sheet"
+%%% TeX-master: "../Math_374-Prob_Stats-Reference_Sheet"
 %%% End:

@@ -14,10 +14,10 @@
 				F_{X} \left( x \right) = \Prob \left[ X \leq x \right] \text{ for } -\infty < x < \infty
 			\end{equation}
 		\end{definition}
-	
+
 		\subsubsection{Properties of Cumulative Distribution Functions} \label{subsubsec:Properties of Cumulative Distribution Functions}
 			\begin{propertylist}
-				\item 
+				\item
 					\begin{equation}
 						0 \leq F_{X} \left( x \right) \leq 1
 					\end{equation}
@@ -62,11 +62,11 @@
 					\item $\Prob \left[ X = a \right] = F_{X} \left( a \right) - F_{X} \left( a^{-} \right)$
 					\item $\Prob \left[ X > x \right] = 1 - F_{X} \left( x \right)$
 				\end{propertylist}
-				
+
 				\tcblower
-				
+
 			\end{example}
-		
+
 		\subsubsection{Conditional Cumulative Distribution Function} \label{subsubsec:Conditional Cumulative Distribution Fuction}
 			\begin{definition} [Conditional Cumulative Distribution Function] \label{def:Conditional Cumulative Distribution Function}
 				The \emph{conditional cumulative distribution function (Conditional CDF)} of $X$ given $C$ is defined by:
@@ -87,12 +87,12 @@
 					What is the probability that the receiver makes an error given that a +1 was transmitted? A -1 was tramsitted?
 					\item What is the overall probability of error?
 				\end{boldalphlist}
-				
+
 				\tcblower
-				
+
 				Solution to Problem 4.38 from Homework 7.
 			\end{example}
-		
+
 	\subsection{Probability Density Function (PDF)} \label{subsec:Probability Density Function}
 		\begin{definition}[Probability Density Function] \label{def:Probability Density Function}
 			The \emph{probability density function (PDF)} of a random variable $X$, if it exists, is defined as the derivative of the CDF of $X$.
@@ -117,12 +117,12 @@
 					1-e^{-\left(\frac{x}{\lambda}\right)^{\beta}} & \text{for } x \geq 0
 				\end{cases}
 			\end{equation*}
-			
+
 			\tcblower
-			
+
 			Solution to Problem 4.25 from Homework 6.
 		\end{example}
-	
+
 		\subsubsection{Properties of Probability Density Functions} \label{subsubsec:Properties of Probability Density Functions}
 			These properties apply to PDFs of continuous random variables, and may not hold true for other types of random variables.
 			\begin{propertylist}
@@ -156,15 +156,15 @@
 							\item Find $P \left[ X = 0.5 \right]$. (3 pts)
 							\item Find $P \left[ X > 0.5 \right]$. (7 pts)
 						\end{enumerate}
-						
+
 						\tcblower
-						
+
 						Solution to Final Exam Practice Problem 4.
 					\end{example}
 			\begin{remark*}
 				Any non-negative, piecewise continuous function $g \left( x \right)$ with finite $\int_{-\infty}^{\infty} g \left( x \right) dx = C$ can be used to form a PDF.
 			\end{remark*}
-		
+
 		\subsubsection{Conditional Probability Density Function} \label{subsubsec:Conditional Probability Density Function}
 			\begin{definition}[Conditional Probability Density Function] \label{def:Conditional Probability Density Function}
 				The \emph{conditional probability density function (Conditional PDF)} of $X$ given $C$ is defined by:
@@ -175,7 +175,7 @@
 					The conditional PDF, $f_{X \Given C} \left( x \Given C \right)$ satisfies \emph{\textbf{all}} \nameref{subsubsec:Properties of Probability Density Functions}.
 				\end{remark}
 			\end{definition}
-	
+
 	\subsection{Expected Value of Single Continuous Random Variable} \label{subsec:Expected Value of Single Continuous}
 		\begin{definition}[Expected Value/Mean of Random Variable] \label{def:Expected Value of Single Continuous}
 			The \emph{expected value of a random variable} $X$, denoted $\ExpectedValue \left[ X \right]$ is defined as:
@@ -196,12 +196,12 @@
 		\begin{example}[Problem 4.57]{Conditional Expected Value of Continuous Random Variable}
 			Find the $n$th moment of $U$, the uniform random variable in the unit interval.
 			Repeat for $X$ uniform in $\left[ a,b \right]$.
-			
+
 			\tcblower
-			
+
 			Solution to Problem 4.57 from Homework 7.
 		\end{example}
-	
+
 		\subsubsection{Properties of Expected Value} \label{subsubsec:Properties of Continuous Expected Value}
 			\begin{propertylist}
 				\item The expected value of a function of a random variable.
@@ -221,7 +221,7 @@
 						\ExpectedValue \left[ a_{0} + a_{1}X + a_{2}X^{2} + \ldots + a_{n}X^{n} \right] = a_{0} + a_{1}\ExpectedValue \left[ X \right] + a_{2}\ExpectedValue \left[ X^{2} \right] + \ldots + a_{n}\ExpectedValue \left[ X^{n} \right]
 					\end{equation}
 			\end{propertylist}
-		
+
 	\subsection{Variance of Single Continuous Random Variable} \label{subsec:Variance of Single Continuous}
 		\begin{definition}[Variance of Random Variable] \label{def:Variance of Single Continuous}
 			The \emph{variance} of the random variable $X$ is defined by:
@@ -241,7 +241,7 @@
 				This holds true for \emph{\textbf{all}} types of random variables; discrete, continuous, and mixed.
 			\end{remark}
 		\end{definition}
-	
+
 	\subsection{Gaussian/Normal Random Variable} \label{subsec:Gaussian Random Variable}
 		\begin{definition}[Gaussian/Normal Random Variable] \label{def:Gaussian Random Variable}
 			The \emph{Gaussian or normal random variable} is the classic ``bell curve'' probability distribution.
@@ -259,7 +259,7 @@
 				The CDF of the \nameref{def:Standard Normal Distribution} is denoted with $\Phi$.
 			\end{remark}
 		\end{definition}
-	
+
 	To find the probability of something for a Gaussian Random Variable, you would end up converting it to the \nameref{def:Standard Normal Distribution}.
 	If $X \DrawnFrom N \left( \mu, \sigma^{2} \right)$ and $Y \DrawnFrom N \left( 0,1 \right)$,
 		\begin{equation} \label{eq:Probability of Gaussian Random Variable}
@@ -271,7 +271,7 @@
 				&= \Phi \left( \frac{b-\mu}{\sigma} \right) - \Phi \left( \frac{a-\mu}{\sigma} \right) \\
 			\end{aligned}
 		\end{equation}
-		
+
 		\subsubsection{Q-Function} \label{subsubsec:Q-Function}
 			\begin{definition}[Q-Function] \label{def:Q-Function}
 				The \emph{Q-Function} is primarily used in electrical engineering.
@@ -294,12 +294,12 @@
 					\item Find the 90\%, 95\%, and 99\% percentiles of the exponential random variable with parameter $\lambda$.
 					\item Repeat part a for the Gaussian random variable with parameters $m=0$ and $\sigma^{2}$.
 				\end{boldalphlist}
-				
+
 				\tcblower
-				
+
 				Solution to Problem 4.62 from Homework 7.
 			\end{example}
-	
+
 	\subsection{Markov Inequality} \label{subsec:Markov Inequality}
 		\begin{definition}[Markov Inequality] \label{def:Markov Inequality}
 			Let $X$ be a non-negative random variable with $\ExpectedValue \left[ X \right] < \infty$.
@@ -310,11 +310,11 @@
 		\end{definition}
 		\begin{proof}[Proving the Markov Inequality] \label{proof:Markov Inequality}
 			\begin{equation*}
-				\ExpectedValue \left[ X \right] = \int_{-\infty}^{\infty} x \cdot f_{X} \left( x \right) dx 
+				\ExpectedValue \left[ X \right] = \int_{-\infty}^{\infty} x \cdot f_{X} \left( x \right) dx
 			\end{equation*}
 			Because we defined $X \geq 0$, we change the lower bound to $0$.
 			\begin{equation*}
-				\ExpectedValue \left[ X \right] = \int_{0}^{\infty} x f_{X} \left( x \right) dx 
+				\ExpectedValue \left[ X \right] = \int_{0}^{\infty} x f_{X} \left( x \right) dx
 			\end{equation*}
 			We then split the integral up around some point, $a$.
 			\begin{equation*}
@@ -352,12 +352,12 @@
 				\item $X$ is a Pareto random varaible with $\alpha >1$.
 				\item $X$ is a Rayleigh random variable.
 			\end{boldalphlist}
-			
+
 			\tcblower
-			
+
 			Solution to Problem 4.97 from Homework 7.
 		\end{example}
-	
+
 	\subsection{Chebychev Inequality} \label{subsec:Chebychev Inequality}
 		\begin{definition}[Chebychev Inequality] \label{def:Chebychev Inequality}
 			Let $X$ be a non-negative random variable with $\ExpectedValue \left[ X \right] < \infty$.
@@ -380,12 +380,12 @@
 			Let $Y = \frac{X}{n}$ be the average number of successes per trial.
 			Apply the \nameref{eq:Chebychev Inequality} to the event $\lbrace \lvert Y-p \rvert > a \rbrace$.
 			What happens as $n \rightarrow \infty$?
-		
+
 			\tcblower
-			
+
 			Solution to Problem 4.100 from Homework 7.
 		\end{example}
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../Math_374-Reference_Sheet"
+%%% TeX-master: "../Math_374-Prob_Stats-Reference_Sheet"
 %%% End:

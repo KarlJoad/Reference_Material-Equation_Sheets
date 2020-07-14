@@ -14,7 +14,7 @@
 			\end{equation}
 			Using the coin example from the definition of a~\nameref{def:Discrete Random Variable},
 			\begin{equation}
-				p_{X} \left( x \right) = 
+				p_{X} \left( x \right) =
 				\begin{cases}
 					\frac{1}{8} & x=0 \\
 					\frac{3}{8} & x=1 \\
@@ -32,12 +32,12 @@
 				\item Repeat parts \ref{ex:3.2a}, \ref{ex:3.2b}, and \ref{ex:3.2c} if $Y$ is the number of full or partial pairs of dots in the face showing up.
 				\item Explain why $\Prob \left[ X = 0 \right]$ and $\Prob \left[ Y = 0 \right]$ are not equal.
 			\end{boldalphlist}
-		
+
 		\tcblower
-		
+
 		Solution from Homework 3.
 		\end{example}
-		
+
 		\subsubsection{Properties of Probability Mass Functions} \label{subsubsec:Properties of Probability Mass Functions}
 			\begin{propertylist}%[label=\textbf{(\roman*)}, noitemsep, nolistsep]
 				\item
@@ -56,9 +56,9 @@
 							\item Find $\Prob \left[ X > 4 \right]$.
 							\item Find $\Prob \left[ 6 \leq X \leq 8 \right]$.
 						\end{enumerate}
-					
+
 					\tcblower
-					
+
 						Solution from Homework 4.
 					\end{example}
 			\begin{propertylist}[resume]
@@ -67,7 +67,7 @@
 						P \left[ x \in B \right] = \sum\limits_{x \in B} p_{X} \left( x \right) \text{, where } B \subset S_{X}
 					\end{equation}
 			\end{propertylist}
-		
+
 	\subsection{Expected Value/Mean of Single Discrete Random Variable} \label{subsec:Expected Value of Single Discrete}
 		\begin{definition}[Expected Value/Mean of Single Discrete Random Variable] \label{def:Expected Value of Single Discrete}
 			The \emph{expected value} or \emph{mean} of a single discrete random variable $X$ is defined by
@@ -84,12 +84,12 @@
 		\end{definition}
 		\begin{example}[Problem 3.27]{Expectation of Discrete Random Variable}
 			Find the expectation of $X$ where the PMF of $X$ is \[p_{k} = \frac{\frac{pi^{2}}{6}}{k^{2}}\]. (Note that this PMF is the same as in \Cref{ex:Find Normalizing Constant}).
-			
+
 			\tcblower
-			
+
 			Solution from Homework 4. ONLY THE Expectation PART.
 		\end{example}
-	
+
 		\subsubsection{Properties of Expected Values} \label{subsubsec:Properties of Discrete Expected Value}
 			\begin{definition}[Linearity of Expectation] \label{def:Linearity of Expectation}
 				Let $Y = X_{1} + X_{2}$
@@ -119,7 +119,7 @@
 						\ExpectedValue \left[ g_{1} \left( X \right) + g_{2} \left( X \right) + \ldots + g_{m} \left( X \right) \right] = \sum\limits_{i=1}^{m} \ExpectedValue \left[ g_{i} \left( X \right) \right]
 					\end{equation}
 			\end{propertylist}
-		
+
 		\subsubsection{Moments of Random Variable} \label{subsubsec:Moments of a Random Variable}
 			\begin{definition}[Moment]
 				The \emph{moment} of a random variable, $X$ is defined as the expectation of the random variable raised to the moment.
@@ -131,8 +131,8 @@
 						\ExpectedValue \left[ X^{k} \right] &= \text{kth Moment} \\
 					\end{aligned}
 				\end{equation}
-			\end{definition}					
-	
+			\end{definition}
+
 	\subsection{Variance of Single Discrete Random Variable} \label{subsec:Variance of Single Discrete}
 		\begin{definition}[Variance] \label{def:Variance of Single Discrete}
 			The \emph{variance} of a single discrete random variable $X$ is defined as:
@@ -152,9 +152,9 @@
 		\end{definition}
 		\begin{example}[Problem 3.27]{Variance of Discrete Random Variable}
 			Find the variance of $X$ where the PMF of $X$ is \[p_{k} = \frac{\frac{pi^{2}}{6}}{k^{2}}\]. (Note that this PMF is the same as in \Cref{ex:Find Normalizing Constant}).
-			
+
 			\tcblower
-			
+
 			Solution from Homework 4. ONLY THE Variance PART.
 		\end{example}
 		\begin{definition}[Standard Deviation] \label{def:Standard Deviation}
@@ -163,7 +163,7 @@
 				\sigma_{X} = \sqrt{\Variance \left[ X \right]}
 			\end{equation}
 		\end{definition}
-	
+
 	\subsection{Conditional Probability Mass Function} \label{subsec:Conditional Probability Mass Function}
 		\begin{definition}[Conditional Probability Mass of Function] \label{def:Conditional Probability Mass Function}
 			Let $X$ be a discrete random variable, with PMF $p_{X} \left( x \right)$ and let $C$ be the event with non-zero probability, i.e. $P \left[ C \right] > 0$.
@@ -175,7 +175,7 @@
 				The conditional PMF, $p_{X \Given C} \left( x \Given C \right)$, satisfies \emph{\textbf{all}} properties of \nameref{subsubsec:Properties of Probability Density Functions}.
 			\end{remark}
 		\end{definition}
-	
+
 	\subsection{Conditional Expected Value of Single Discrete Random Variable} \label{subsec:Conditional Expected Value of Single Discrete}
 		\begin{definition}[Conditional Expected Value of Discrete Random Variable] \label{def:Conditional Expected Value of Single Discrete}
 			The \emph{conditional expected value of the discrete random variable} $X$ given $B$ is defined as:
@@ -190,12 +190,12 @@
 				\item Find $\ExpectedValue \left[ X \right]$ by using the results of Parts \ref{ex:3.39a} and \ref{ex:3.39b}. \label{ex:3.39c}
 				\item Find $\ExpectedValue \left[ X^{2} \right]$ and $\Variance \left[ X \right]$ using the approach in parts \ref{ex:3.39b} and \ref{ex:3.39c}.
 			\end{boldalphlist}
-		
+
 			\tcblower
-			
+
 			Solution from Homework 5.
 		\end{example}
-	
+
 	\subsection{Conditional Variance of Single Discrete Random Variable} \label{subsec:Conditional Variance of Single Discrete}
 		\begin{definition}[Conditional Variance of Discrete Random Variable] \label{def:Conditional Variance of Single Discrete}
 			The \emph{conditional variance of a discrete random variable} $X$ given event $B$ as defined as:
@@ -210,5 +210,5 @@
 		\end{definition}
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../Math_374-Reference_Sheet"
+%%% TeX-master: "../Math_374-Prob_Stats-Reference_Sheet"
 %%% End:
