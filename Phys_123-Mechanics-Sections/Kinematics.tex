@@ -7,7 +7,7 @@
 
 \subsection{1-D Kinematics}\label{subsec:1-D Kinematics}
 \begin{definition}[1-D Displacement]\label{def:1-D Displacement}
-  \emph{One dimensional displacement} is calculated based on the change in position of the `thing.'
+  \emph{One dimensional displacement} is calculated based on the change in position of the ``thing.''
   \begin{equation}\label{eq:1-D Displacement}
     s = x_{2} - x_{1}
   \end{equation}
@@ -36,7 +36,7 @@
 \end{definition}
 
 \begin{definition}[Acceleration]\label{def:1-D Acceleration}
-  \emph{One dimesional acceleration} is the change in velocity over time.
+  \emph{One dimensional acceleration} is the change in velocity over time.
   Again, there is average acceleration and instantaneous acceleration.
   Average acceleration is calculated with \Cref{eq:1-D Average Acceleration}
   \begin{equation}\label{eq:1-D Average Acceleration}
@@ -59,22 +59,22 @@ This is a massive simplification, because instead of solving for one equation wi
 \textbf{For the following definitions, I have assumed that we are in a 3-dimensional space $(x, y, z)$.}
 
 \begin{definition}[Multi-Dimensional Position]\label{Multi-D Position}
-  \emph{Position} in multiple dimensions is done by referring to each of the consituent dimensions.
+  \emph{Position} in multiple dimensions is done by referring to each of the constituent dimensions.
 
   \begin{equation}\label{eq:Multi-D Position}
-    \vec{s} = \left( x(t), y(t), z(t) \right)
+    \vec{s} = \bigl\langle x(t), y(t), z(t) \bigr\rangle
   \end{equation}
 \end{definition}
 
 \begin{definition}[Multi-Dimensional Displacement]\label{Multi-D Displacement}
   \emph{Displacement} in multiple dimensions can be broken down into several \nameref{def:1-D Displacement}s.
-  Since \nameref{def:1-D Displacement} is calculated as the differnce between the start and end position, the same is true for th emulti-dimensional case.
+  Since \nameref{def:1-D Displacement} is calculated as the difference between the start and end position, the same is true for the multi-dimensional case.
 
   \begin{equation}\label{eq:Multi-D Displacement}
     \begin{aligned}
       \vec{r} &= \Delta \vec{s} = \vec{s}_{2} - \vec{s}_{1} \\
-      &= \langle x_{2}(t)-x_{1}(t), y_{2}(t)-y_{1}(t), z_{2}(t)-z_{1}(t) \\
-      &= \langle r_{x}(t), r_{y}(t), r_{z}(t)
+      &= \bigl\langle x_{2}(t)-x_{1}(t), y_{2}(t)-y_{1}(t), z_{2}(t)-z_{1}(t) \bigr\rangle \\
+      &= \bigl\langle r_{x}(t), r_{y}(t), r_{z}(t) \bigr\rangle
     \end{aligned}
   \end{equation}
 \end{definition}
@@ -108,7 +108,7 @@ This is a massive simplification, because instead of solving for one equation wi
   A \emph{projectile} is any body given an initial velocity that then follows a path determined by gravity and air resistance.
   \begin{remark}
     However, for most of our calculations, we will neglect air resistance.
-    Air resistance can be a difficult thing to calcultate for, especially in the variable cases that we will have.
+    Air resistance can be a difficult thing to calculate for, especially in the variable cases that we will have.
   \end{remark}
 \end{definition}
 
@@ -120,7 +120,7 @@ There are a few things to keep in mind with projectiles in motion.
   \item The end point (landing point) is the only thing that may change on the x-axis.
   \item The acceleration vector is as follows: $\langle 0, -g \rangle$.
   \item \emph{Trajectory} depends on $\vec{v}_{0}$ and $\vec{a}$ \emph{ONLY}.
-  \item The two components of the projectile's initial velocity are \emph{independent} ($v_{0,x}, v_{0,y}$).
+  \item The two components of the projectile's initial velocity are \emph{independent}, $\langle v_{0,x}, v_{0,y} \rangle$.
 \end{enumerate}
 
 \subsubsection{Projectile Motion Equations}\label{subsubsec:Projectile Motion Eqns}
