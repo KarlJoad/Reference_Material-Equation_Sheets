@@ -126,6 +126,25 @@ There are 2 theorems that are most useful here:
   \end{equation*}
 \end{center}
 
+\subsection{Higher-Order Transforms}\label{subsec:Laplace_Higher_Order_Transforms}
+\begin{center}
+  \begin{equation*}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{array}[h!tbp]{cc}
+      \toprule
+      \text{Time Domain} & \text{Frequency Domain} \\
+      \midrule
+      x(t) & X(s) \\
+      x(t) \sin(\omega_{0} t) & \frac{j}{2} \left( X(s + j \omega_{0}) - X(s - j \omega_{0}) \right) \\
+      x(t) \cos(\omega_{0} t) & \frac{1}{2} \left( X(s + j \omega_{0}) + X(s - j \omega_{0}) \right) \\
+      \midrule
+      t^{n} x(t) & {(-1)}^{n} \frac{d^{n}}{{ds}^{n}} X(s) \: n \in \NaturalNumbers \\
+      \frac{d^{n}}{{dt}^{n}} x(t) & s^{n} X(s) - \sum\limits_{0}^{n-1} s^{n-1-i} \frac{d^{i}}{{dt}^{i}} x(t) \vert_{t=0^{-}} \: n \in \NaturalNumbers \\
+      \bottomrule
+    \end{array}
+  \end{equation*}
+\end{center}
+
 
 %%% Local Variables:
 %%% mode: latex
