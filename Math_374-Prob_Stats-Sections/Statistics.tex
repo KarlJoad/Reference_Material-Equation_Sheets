@@ -1,356 +1,356 @@
-\section{Statistics} \label{sec:Statistics}
+\section{Statistics}\label{sec:Statistics}
 In applying probability models to real situations, we perform experiments and collect data to answer questions such as:
-	\begin{enumerate}[noitemsep, nolistsep]
-		\item What are the values of the parameters of the distribution of a random variable of interest?
-			\begin{itemize}[noitemsep, nolistsep]
-				\item Mean or Expected value
-				\item Variance
-			\end{itemize}
+\begin{enumerate}[noitemsep, nolistsep]
+\item What are the values of the parameters of the distribution of a random variable of interest?
+  \begin{itemize}[noitemsep, nolistsep]
+  \item Mean or Expected value
+  \item Variance
+  \end{itemize}
 
-		\item Is the data set consistent with some model?
-			\begin{itemize}[noitemsep, nolistsep]
-				\item Some assumed distribution, which must be true, otherwise the model is wrong.
-			\end{itemize}
+\item Is the data set consistent with some model?
+  \begin{itemize}[noitemsep, nolistsep]
+  \item Some assumed distribution, which must be true, otherwise the model is wrong.
+  \end{itemize}
 
-		\item Is the data set consistent with some parameter value of the assumed value?
-	\end{enumerate}
+\item Is the data set consistent with some parameter value of the assumed value?
+\end{enumerate}
 
-	\begin{definition}[Random Sample] \label{def:Random Sample}
-		A \emph{random sample} is a set of $n$ \nameref{def:Random Variable, Full} or \nameref{def:Statistic} that are drawn with \nameref{def:Independent and Identically Distributed}.
-		\begin{equation} \label{eq:Random Sample}
-			\mathbf{X}_{n} = \left( X_{1},X_{2},\ldots,X_{n} \right)
-		\end{equation}
-		\begin{remark}
-			This is \emph{similar} to the definition of a \nameref{def:Random Vector}.
-			The difference here is that the values in a \nameref{def:Random Sample} must be \nameref{def:Independent and Identically Distributed} and \emph{may} be related to each other somehow.
-		\end{remark}
-		\begin{remark}[Random Sample Parameters] \label{rmk:Random Sample Parameters}
-			These are an additional variable that is added onto the \nameref{def:Probability Density Function} or \nameref{def:Probability Mass Function}.
-			When we were using these functions in the previous sections, these parameters were either constant or assumed to be constant.
-			When considering these samples in \nameref{sec:Statistics}, you must also account for the \nameref{rmk:Random Sample Parameters}.
-		\end{remark}
-	\end{definition}
-	\begin{definition}[Statistic] \label{def:Statistic}
-		A \emph{statistic} $W (\mathbf{X}_{n})$ is a function of the random sample $X_{1},X_{2},\ldots,X_{n}$.
-		\begin{equation} \label{eq:Statistic}
-			W \left( \mathbf{X}_{n} \right) = g \left( X_{1},X_{2},\ldots,X_{n} \right)
-		\end{equation}
-	\end{definition}
-	\begin{definition}[Unit Variance] \label{def:Unit Variance}
-		The \emph{unit variance} means that the standard deviation, $\sigma$ of a sample, as well as the variance, $\sigma^{2}$ will tend towards 1 as the sample size increases to infinity.
-	\end{definition}
+\begin{definition}[Random Sample]\label{def:Random Sample}
+  A \emph{random sample} is a set of $n$ \nameref{def:Random Variable, Full} or \nameref{def:Statistic} that are drawn with \nameref{def:Independent and Identically Distributed}.
+  \begin{equation}\label{eq:Random Sample}
+    \mathbf{X}_{n} = \left( X_{1},X_{2},\ldots,X_{n} \right)
+  \end{equation}
+  \begin{remark}
+    This is \emph{similar} to the definition of a \nameref{def:Random Vector}.
+    The difference here is that the values in a \nameref{def:Random Sample} must be \nameref{def:Independent and Identically Distributed} and \emph{may} be related to each other somehow.
+  \end{remark}
+  \begin{remark}[Random Sample Parameters]\label{rmk:Random Sample Parameters}
+    These are an additional variable that is added onto the \nameref{def:Probability Density Function} or \nameref{def:Probability Mass Function}.
+    When we were using these functions in the previous sections, these parameters were either constant or assumed to be constant.
+    When considering these samples in \nameref{sec:Statistics}, you must also account for the \nameref{rmk:Random Sample Parameters}.
+  \end{remark}
+\end{definition}
+\begin{definition}[Statistic]\label{def:Statistic}
+  A \emph{statistic} $W (\mathbf{X}_{n})$ is a function of the random sample $X_{1},X_{2},\ldots,X_{n}$.
+  \begin{equation}\label{eq:Statistic}
+    W \left( \mathbf{X}_{n} \right) = g \left( X_{1},X_{2},\ldots,X_{n} \right)
+  \end{equation}
+\end{definition}
+\begin{definition}[Unit Variance]\label{def:Unit Variance}
+  The \emph{unit variance} means that the standard deviation, $\sigma$ of a sample, as well as the variance, $\sigma^{2}$ will tend towards 1 as the sample size increases to infinity.
+\end{definition}
 
-	\subsection{Sample Mean} \label{subsec:Sample Mean}
-		\begin{definition}[Sample Mean] \label{def:Sample Mean}
-			The \emph{sample mean} of a sequence is denoted as,
-			\begin{equation} \label{eq:Sample Mean}
-				\bar{X} = M_{n} = \frac{\sum_{i=1}^{n} X_{i}}{n}
-			\end{equation}
-		\end{definition}
-		\begin{definition}[Expected Value of Sample Mean] \label{def:Expected Value of Sample Mean}
-			The \emph{expected value of the sample mean} is defined as:
-			\begin{equation} \label{eq:Expected Value of Sample Mean}
-				\ExpectedValue \left[ \bar{X} \right]
-				= \ExpectedValue \left[ M_{n} \right]
-				= \frac{\ExpectedValue \left[ S_{n} \right]}{n}
-				= \frac{n \mu}{n}
-				= \mu
-			\end{equation}
-			\begin{remark}
-				The sample mean $M_{n}$ is an \emph{\nameref{def:Unbiased Estimator}} of population mean $\mu$.
-			\end{remark}
-		\end{definition}
-		\begin{definition}[Variance of Sample Mean] \label{def:Variance of Sample Mean}
-			The \emph{variance of the sample mean} is denoted as:
-			\begin{equation} \label{eq:Variance of Sample Mean}
-				\Variance \left[ \bar{X} \right]
-				= \Variance \left[ M_{n} \right]
-				= \Variance \left[ \frac{S_{n}}{n} \right]
-				= \frac{1}{n^{2}} \Variance \left[ S_{n} \right]
-				= \frac{\sigma^{2}}{n}
-			\end{equation}
-			\begin{remark}
-				The larger $n$ gets, the smaller $\Variance \left[ M_{n} \right]$ gets, and the closer $M_{n}$ gets to $\mu$.
-			\end{remark}
-		\end{definition}
+\subsection{Sample Mean}\label{subsec:Sample Mean}
+\begin{definition}[Sample Mean]\label{def:Sample Mean}
+  The \emph{sample mean} of a sequence is denoted as,
+  \begin{equation}\label{eq:Sample Mean}
+    \bar{X} = M_{n} = \frac{\sum_{i=1}^{n} X_{i}}{n}
+  \end{equation}
+\end{definition}
+\begin{definition}[Expected Value of Sample Mean]\label{def:Expected Value of Sample Mean}
+  The \emph{expected value of the sample mean} is defined as:
+  \begin{equation}\label{eq:Expected Value of Sample Mean}
+    \ExpectedValue \left[ \bar{X} \right]
+    = \ExpectedValue \left[ M_{n} \right]
+    = \frac{\ExpectedValue \left[ S_{n} \right]}{n}
+    = \frac{n \mu}{n}
+    = \mu
+  \end{equation}
+  \begin{remark}
+    The sample mean $M_{n}$ is an \emph{\nameref{def:Unbiased Estimator}} of population mean $\mu$.
+  \end{remark}
+\end{definition}
+\begin{definition}[Variance of Sample Mean]\label{def:Variance of Sample Mean}
+  The \emph{variance of the sample mean} is denoted as:
+  \begin{equation}\label{eq:Variance of Sample Mean}
+    \Variance \left[ \bar{X} \right]
+    = \Variance \left[ M_{n} \right]
+    = \Variance \left[ \frac{S_{n}}{n} \right]
+    = \frac{1}{n^{2}} \Variance \left[ S_{n} \right]
+    = \frac{\sigma^{2}}{n}
+  \end{equation}
+  \begin{remark}
+    The larger $n$ gets, the smaller $\Variance \left[ M_{n} \right]$ gets, and the closer $M_{n}$ gets to $\mu$.
+  \end{remark}
+\end{definition}
 
-	Also, we can use the \nameref{eq:Chebychev Inequality} to approximate many values. In this case, we change the Chebychev Inequality from \Cref{eq:Chebychev Inequality} to \Cref{eq:Statistics Chebychev Inequality} like so:
-		\begin{equation} \label{eq:Statistics Chebychev Inequality}
-			P \left[ \lvert M_{n} - \ExpectedValue \left[ M_{n} \right] \rvert \geq \varepsilon \right] \leq \frac{\Variance \left[ M_{n} \right]}{\varepsilon^{2}}
-		\end{equation}
-		\begin{example}[Problem 7.15]{Chebychev Inequality to Bound Probability}
-                  Suppose that the number of particle emissions by a radioactive mass in $t$ seconds is a Poisson random variable with mean $\lambda t$.
-                  Use the Chebychev inequality to obtain a boind for the probability that $\lvert \frac{N \left( t \right)}{t} - \lambda \rvert$ exceeds $\varepsilon$.
+Also, we can use the \nameref{eq:Chebychev Inequality} to approximate many values. In this case, we change the Chebychev Inequality from \Cref{eq:Chebychev Inequality} to \Cref{eq:Statistics Chebychev Inequality} like so:
+\begin{equation}\label{eq:Statistics Chebychev Inequality}
+  P \left[ \lvert M_{n} - \ExpectedValue \left[ M_{n} \right] \rvert \geq \varepsilon \right] \leq \frac{\Variance \left[ M_{n} \right]}{\varepsilon^{2}}
+\end{equation}
+\begin{example}[Problem 7.15]{Chebychev Inequality to Bound Probability}
+  Suppose that the number of particle emissions by a radioactive mass in $t$ seconds is a Poisson random variable with mean $\lambda t$.
+  Use the Chebychev inequality to obtain a boind for the probability that $\lvert \frac{N \left( t \right)}{t} - \lambda \rvert$ exceeds $\varepsilon$.
 
-                  \tcblower
+  \tcblower
 
-                  Solution to Problem 7.15 from Homework 11 (Extra Credit).
-		\end{example}
+  Solution to Problem 7.15 from Homework 11 (Extra Credit).
+\end{example}
 
-	\subsection{Important Probability and Statistics Theorems} \label{subsec:Important Probability and Statistics Theorems}
-		There are 3 very import theorems that are used quite frequently in both \nameref{sec:Probability Theory} and \nameref{sec:Statistics}.
-		\begin{enumerate}[noitemsep, nolistsep]
-			\item \nameref{thm:Weak Law of Large Numbers}
-			\item \nameref{thm:Strong Law of Large Numbers}
-			\item \nameref{thm:Central Limit Theorem}
-		\end{enumerate}
-		\begin{theorem}[Weak Law of Large Numbers] \label{thm:Weak Law of Large Numbers}
-			Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu$, then for $\varepsilon > 0$,
-			\begin{equation} \label{eq:Weak Law of Large Numbers}
-				\lim\limits_{n \rightarrow \infty} P \left[ \lvert M_{n} - \mu \rvert < \varepsilon \right] = 1
-			\end{equation}
-			\begin{remark*}
-				In words this means, for large enough fixed values of $n$, $M_{n}$ is close to $\mu$ with high probability.
-			\end{remark*}
-		\end{theorem}
-		\begin{theorem}[Strong Law of Large Numbers] \label{thm:Strong Law of Large Numbers}
-			Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu$ and finite variance, then
-			\begin{equation} \label{eq:Strong Law of Large Numbers}
-				P \left[ \lim\limits_{n \rightarrow \infty} M_{n} = \mu \right] = 1
-			\end{equation}
-			\begin{remark*}
-				With probability 1, every sequence of sample mean calculations will eventually approach and stay close to the population mean.
-			\end{remark*}
-		\end{theorem}
-		\begin{theorem}[Central Limit Theorem] \label{thm:Central Limit Theorem}
-			Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu < \infty$ and finite variance $\sigma^{2}$ and let
-			\begin{equation*}
-				Z_{n} = \frac{S_{n} - n\mu}{\sigma \sqrt{n}} = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
-			\end{equation*}
-			then,
-			\begin{equation} \label{eq:Central Limit Theorem}
-				\lim\limits_{n \rightarrow \infty} P \left[ Z_{n} \leq z \right] = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{z} e^{-\frac{x^{2}}{2}} dx
-			\end{equation}
-			\begin{itemize} % I preferred the way it looked without noitemsep/nolistsep
-				\item $S_{n}=X_{1}+X_{2}+\ldots+X_{n}$, The sum of the random variables
-				\item $\mu=\ExpectedValue \left[ X_{1} \right]$, The mean for an individual random variable
-				\item $\sigma=\sqrt{\Variance \left[ X_{1} \right]}$, The variance of an individual random variable
-				\item $n$ is the number of trials/recordings/samples/etc.
-				\item $\bar{X} = \frac{1}{n} \sum\limits_{i=1}^{n} X_{i}$, The \nameref{def:Sample Mean}
-			\end{itemize}
-			\begin{remark*}
-				This means that over time, as you gain more and more sample means, they will start to resemble the \nameref{def:Gaussian Random Variable}, or the Normal Random Variable.
-			\end{remark*}
-		\end{theorem}
-		\begin{example}[Problem 7.25]{Central Limit Theorem}
-                  The lifetime of a cheap light bulb is an exponential random variable with mean 36 hours.
-                  Suppose that 16 light bulbs are tested and their lifetimes measured.
-                  Use the \nameref{thm:Central Limit Theorem} to estimate the probability that the sum of the lifetimes is less than 600 hours.
+\subsection{Important Probability and Statistics Theorems}\label{subsec:Important Probability and Statistics Theorems}
+There are 3 very import theorems that are used quite frequently in both \nameref{sec:Probability Theory} and \nameref{sec:Statistics}.
+\begin{enumerate}[noitemsep, nolistsep]
+\item \nameref{thm:Weak Law of Large Numbers}
+\item \nameref{thm:Strong Law of Large Numbers}
+\item \nameref{thm:Central Limit Theorem}
+\end{enumerate}
+\begin{theorem}[Weak Law of Large Numbers]\label{thm:Weak Law of Large Numbers}
+  Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu$, then for $\varepsilon > 0$,
+  \begin{equation}\label{eq:Weak Law of Large Numbers}
+    \lim\limits_{n \rightarrow \infty} P \left[ \lvert M_{n} - \mu \rvert < \varepsilon \right] = 1
+  \end{equation}
+  \begin{remark*}
+    In words this means, for large enough fixed values of $n$, $M_{n}$ is close to $\mu$ with high probability.
+  \end{remark*}
+\end{theorem}
+\begin{theorem}[Strong Law of Large Numbers]\label{thm:Strong Law of Large Numbers}
+  Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu$ and finite variance, then
+  \begin{equation}\label{eq:Strong Law of Large Numbers}
+    P \left[ \lim\limits_{n \rightarrow \infty} M_{n} = \mu \right] = 1
+  \end{equation}
+  \begin{remark*}
+    With probability 1, every sequence of sample mean calculations will eventually approach and stay close to the population mean.
+  \end{remark*}
+\end{theorem}
+\begin{theorem}[Central Limit Theorem]\label{thm:Central Limit Theorem}
+  Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu < \infty$ and finite variance $\sigma^{2}$ and let
+  \begin{equation*}
+    Z_{n} = \frac{S_{n} - n\mu}{\sigma \sqrt{n}} = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
+  \end{equation*}
+  then,
+  \begin{equation}\label{eq:Central Limit Theorem}
+    \lim\limits_{n \rightarrow \infty} P \left[ Z_{n} \leq z \right] = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{z} e^{-\frac{x^{2}}{2}} dx
+  \end{equation}
+  \begin{itemize} % I preferred the way it looked without noitemsep/nolistsep
+  \item $S_{n}=X_{1}+X_{2}+\ldots+X_{n}$, The sum of the random variables
+  \item $\mu=\ExpectedValue \left[ X_{1} \right]$, The mean for an individual random variable
+  \item $\sigma=\sqrt{\Variance \left[ X_{1} \right]}$, The variance of an individual random variable
+  \item $n$ is the number of trials/recordings/samples/etc.
+  \item $\bar{X} = \frac{1}{n} \sum\limits_{i=1}^{n} X_{i}$, The \nameref{def:Sample Mean}
+  \end{itemize}
+  \begin{remark*}
+    This means that over time, as you gain more and more sample means, they will start to resemble the \nameref{def:Gaussian Random Variable}, or the Normal Random Variable.
+  \end{remark*}
+\end{theorem}
+\begin{example}[Problem 7.25]{Central Limit Theorem}
+  The lifetime of a cheap light bulb is an exponential random variable with mean 36 hours.
+  Suppose that 16 light bulbs are tested and their lifetimes measured.
+  Use the \nameref{thm:Central Limit Theorem} to estimate the probability that the sum of the lifetimes is less than 600 hours.
 
-                  \tcblower
+  \tcblower
 
-                  Solution to Problem 7.25 from Homework 11 (Extra Credit).
-		\end{example}
+  Solution to Problem 7.25 from Homework 11 (Extra Credit).
+\end{example}
 
-	\subsection{Estimators} \label{subsec:Estimators}
-		\begin{itemize}[noitemsep, nolistsep]
-			\item A \nameref{def:Statistic} is a function of the data $X_{1},X_{2},\ldots,X_{n}$
-			\item An \emph{estimator} for a parameter, $\theta$, usually denoted $\hat{\theta}$, is also a statistic
-		\end{itemize}
-		\begin{definition}[Unbiased Estimator] \label{def:Unbiased Estimator}
-			In general we say that a \nameref{def:Statistic} $\Theta (X)$ (a function of data $X_{1},X_{2},\ldots,X_{n}$) is an \emph{unbiased estimator} of a parameter $\theta$ if $\ExpectedValue \left[ W \left( \mathbf{X} \right) \right] = \theta$.
-			\begin{remark}[What makes a good estimator of any parameter, $\theta$?]
-				A \emph{good estimator} of any parameter, $\theta$, should:
-				\begin{itemize}[noitemsep, nolistsep]
-					\item Give the correct value of $\theta$
-					\item Not vary too much around $\theta$
-				\end{itemize}
-			\end{remark}
-			\begin{remark}
-				This is the definition of \emph{unbiased}, drawn from the definition of \nameref{def:Bias}
-			\end{remark}
-		\end{definition}
+\subsection{Estimators}\label{subsec:Estimators}
+\begin{itemize}[noitemsep, nolistsep]
+\item A \nameref{def:Statistic} is a function of the data $X_{1},X_{2},\ldots,X_{n}$
+\item An \emph{estimator} for a parameter, $\theta$, usually denoted $\hat{\theta}$, is also a statistic
+\end{itemize}
+\begin{definition}[Unbiased Estimator]\label{def:Unbiased Estimator}
+  In general we say that a \nameref{def:Statistic} $\Theta (X)$ (a function of data $X_{1},X_{2},\ldots,X_{n}$) is an \emph{unbiased estimator} of a parameter $\theta$ if $\ExpectedValue \left[ W \left( \mathbf{X} \right) \right] = \theta$.
+  \begin{remark}[What makes a good estimator of any parameter, $\theta$?]
+    A \emph{good estimator} of any parameter, $\theta$, should:
+    \begin{itemize}[noitemsep, nolistsep]
+    \item Give the correct value of $\theta$
+    \item Not vary too much around $\theta$
+    \end{itemize}
+  \end{remark}
+  \begin{remark}
+    This is the definition of \emph{unbiased}, drawn from the definition of \nameref{def:Bias}
+  \end{remark}
+\end{definition}
 
-		\subsubsection{Goodness of an Estimator} \label{subsubsec:Estimator Goodness}
-		There are 4 measures we use to determine how good our estimator is.
-			\begin{enumerate}[noitemsep, nolistsep]
-				\item \nameref{def:Bias}
-				\item \nameref{def:Variance of Sample Mean}
-				\item \nameref{def:Mean Squared Error}
-				\item \nameref{def:Consistency}
-			\end{enumerate}
-		If our estimator is an \nameref{def:Unbiased Estimator}, then:
-			\begin{itemize}
-				\item Accuracy is defined as $\Bias [\hat{\theta} ] = \ExpectedValue [\hat{\theta}] - \theta$
-				\item Precision is defined as $\Variance [\hat{\theta}]$
-			\end{itemize}
+\subsubsection{Goodness of an Estimator}\label{subsubsec:Estimator Goodness}
+There are 4 measures we use to determine how good our estimator is.
+\begin{enumerate}[noitemsep, nolistsep]
+\item \nameref{def:Bias}
+\item \nameref{def:Variance of Sample Mean}
+\item \nameref{def:Mean Squared Error}
+\item \nameref{def:Consistency}
+\end{enumerate}
+If our estimator is an \nameref{def:Unbiased Estimator}, then:
+\begin{itemize}
+\item Accuracy is defined as $\Bias [\hat{\theta} ] = \ExpectedValue [\hat{\theta}] - \theta$
+\item Precision is defined as $\Variance [\hat{\theta}]$
+\end{itemize}
 
-			\begin{definition}[Bias] \label{def:Bias}
-				\emph{Bias} is defined as:
-				\begin{equation} \label{eq:Accuracy}
-					\Bias [ \hat{\Theta} ] = \ExpectedValue [ \hat{\Theta} ] - \theta
-				\end{equation}
-				\begin{remark} \label{rmk:Unbiased}
-					The estimator $\hat{\Theta}$ is \emph{unbiased} for $\theta$ if
-					\begin{equation} \label{Unbiased}
-						\ExpectedValue [ \hat{\Theta} ] = \theta
-					\end{equation}
-				\end{remark}
-			\end{definition}
-			\begin{example}[Problem 8.14]{Show Bias in Estimator}
-                          The output of a communication system is $Y = \theta + N$, where $\theta$ is an input signal and $N$ is a noise signal that is uniformly distributed in the interval $\left[ 0,2 \right]$.
-                          Suppose the signal is transmitted $n$ times and that the noise terms are iid random variables.
-                          Show that the sample mean of the outputs is a biased estimator for $\theta$.
+\begin{definition}[Bias]\label{def:Bias}
+  \emph{Bias} is defined as:
+  \begin{equation}\label{eq:Accuracy}
+    \Bias [ \hat{\Theta} ] = \ExpectedValue [ \hat{\Theta} ] - \theta
+  \end{equation}
+  \begin{remark}\label{rmk:Unbiased}
+    The estimator $\hat{\Theta}$ is \emph{unbiased} for $\theta$ if
+    \begin{equation}\label{Unbiased}
+      \ExpectedValue [ \hat{\Theta} ] = \theta
+    \end{equation}
+  \end{remark}
+\end{definition}
+\begin{example}[Problem 8.14]{Show Bias in Estimator}
+  The output of a communication system is $Y = \theta + N$, where $\theta$ is an input signal and $N$ is a noise signal that is uniformly distributed in the interval $\left[ 0,2 \right]$.
+  Suppose the signal is transmitted $n$ times and that the noise terms are iid random variables.
+  Show that the sample mean of the outputs is a biased estimator for $\theta$.
 
-                          \tcblower
+  \tcblower
 
-                          Solution to Problem 8.14, Part a from Homework 11 (Extra Credit).
-			\end{example}
+  Solution to Problem 8.14, Part a from Homework 11 (Extra Credit).
+\end{example}
 
-			\begin{definition}[Mean Squared Error] \label{def:Mean Squared Error}
-				The \emph{Mean Squared Error} of an estimator for parameter $\hat{\theta}$ is:
-				\begin{equation} \label{eq:Mean Squared Error}
-					\MeanSqErr [ \hat{\theta} ]
-					= \ExpectedValue \left[ \left( \hat{\Theta} - \theta \right)^{2} \right]
-					= \Variance \left[ \hat{\theta} \right] + \left( \Bias \left[ \hat{\theta} \right] \right)^{2}
-				\end{equation}
-			\end{definition}
-			\begin{example}[Problem 8.14]{Find Mean Square Error of Estimator}
-                          The output of a communication system is $Y = \theta + N$, where $\theta$ is an input signal and $N$ is a noise signal that is uniformly distributed in the interval $\left[ 0,2 \right]$.
-                          Suppose the signal is transmitted $n$ times and that the noise terms are iid random variables.
-                          Find the \nameref{def:Mean Squared Error} of the estimator.
+\begin{definition}[Mean Squared Error]\label{def:Mean Squared Error}
+  The \emph{Mean Squared Error} of an estimator for parameter $\hat{\theta}$ is:
+  \begin{equation}\label{eq:Mean Squared Error}
+    \MeanSqErr [ \hat{\theta} ]
+    = \ExpectedValue \left[ \left( \hat{\Theta} - \theta \right)^{2} \right]
+    = \Variance \left[ \hat{\theta} \right] + \left( \Bias \left[ \hat{\theta} \right] \right)^{2}
+  \end{equation}
+\end{definition}
+\begin{example}[Problem 8.14]{Find Mean Square Error of Estimator}
+  The output of a communication system is $Y = \theta + N$, where $\theta$ is an input signal and $N$ is a noise signal that is uniformly distributed in the interval $\left[ 0,2 \right]$.
+  Suppose the signal is transmitted $n$ times and that the noise terms are iid random variables.
+  Find the \nameref{def:Mean Squared Error} of the estimator.
 
-                          \tcblower
+  \tcblower
 
-                          Solution to Problem 8.14, Part b from Homework 11 (Extra Credit).
-			\end{example}
+  Solution to Problem 8.14, Part b from Homework 11 (Extra Credit).
+\end{example}
 
-			\begin{remark*}
-				When doing statistical analysis, there is something called the \emph{Bias-Variance Tradeoff}.
-				When doing the analysis, if you try to minimize bias, your variance will increase and vice-versa.
-				There is a happy medium, which is not discussed in this class.
-			\end{remark*}
+\begin{remark*}
+  When doing statistical analysis, there is something called the \emph{Bias-Variance Tradeoff}.
+  When doing the analysis, if you try to minimize bias, your variance will increase and vice-versa.
+  There is a happy medium, which is not discussed in this class.
+\end{remark*}
 
-			\begin{definition}[Consistency] \label{def:Consistency}
-				$\hat{\theta}$ is a \emph{consistent estimator} for $\theta$ if $\hat{\Theta}$ converges to $\theta$ in probability.
-				\begin{equation} \label{eq:Consistency}
-					\lim\limits_{n \rightarrow \infty} \Prob \left[ \lvert \hat{\Theta} - \theta \rvert > \varepsilon \right] = 0
-				\end{equation}
-			\end{definition}
-			\begin{example}[Problem 8.17]{Confirm Consistency of Estimator}
-                          To extimate the variance of a Bernoilli random variable $X$, we perform $n$ iid trials and count the number of successes $k$ and obtain the estimate $\hat{p} = \frac{k}{n}$.
-                          We then estimate the variance of $X$ by
-                          \begin{equation*}
-                            \hat{\sigma}^{2} = \hat{p} \left( 1-\hat{p} \right) = \frac{k}{n} \left( 1- \frac{k}{n} \right)
-                          \end{equation*}
-                          Is $\hat{\sigma}^{2}$ a consistent estimator for the variance of $X$?
+\begin{definition}[Consistency]\label{def:Consistency}
+  $\hat{\theta}$ is a \emph{consistent estimator} for $\theta$ if $\hat{\Theta}$ converges to $\theta$ in probability.
+  \begin{equation}\label{eq:Consistency}
+    \lim\limits_{n \rightarrow \infty} \Prob \left[ \lvert \hat{\Theta} - \theta \rvert > \varepsilon \right] = 0
+  \end{equation}
+\end{definition}
+\begin{example}[Problem 8.17]{Confirm Consistency of Estimator}
+  To extimate the variance of a Bernoilli random variable $X$, we perform $n$ iid trials and count the number of successes $k$ and obtain the estimate $\hat{p} = \frac{k}{n}$.
+  We then estimate the variance of $X$ by
+  \begin{equation*}
+    \hat{\sigma}^{2} = \hat{p} \left( 1-\hat{p} \right) = \frac{k}{n} \left( 1- \frac{k}{n} \right)
+  \end{equation*}
+  Is $\hat{\sigma}^{2}$ a consistent estimator for the variance of $X$?
 
-                          \tcblower
+  \tcblower
 
-                          Solution to Problem 8.17, Part b from Homework 11 (Extra Credit).
-			\end{example}
+  Solution to Problem 8.17, Part b from Homework 11 (Extra Credit).
+\end{example}
 
-	\subsection{How to Find a Good Estimator} \label{subsec:Find Good Estimator}
-	There are several methods, two of which are:
-		\begin{enumerate}[noitemsep, nolistsep]
-			\item \nameref{subsubsec:Method of Moments}
-				\begin{itemize}[noitemsep, nolistsep]
-					\item Sample Moments and Population Moments, $\bar{X}_{n} = \mu$
-					\item You needs as many moments as parameters to get enough equations
-				\end{itemize}
-			\item \nameref{def:Maximum Likelihood Estimation}
-		\end{enumerate}
+\subsection{How to Find a Good Estimator}\label{subsec:Find Good Estimator}
+There are several methods, two of which are:
+\begin{enumerate}[noitemsep, nolistsep]
+\item \nameref{subsubsec:Method of Moments}
+  \begin{itemize}[noitemsep, nolistsep]
+  \item Sample Moments and Population Moments, $\bar{X}_{n} = \mu$
+  \item You needs as many moments as parameters to get enough equations
+  \end{itemize}
+\item \nameref{def:Maximum Likelihood Estimation}
+\end{enumerate}
 
-		\subsubsection{Method of Moments} \label{subsubsec:Method of Moments}
-                \begin{example}{Method of Moments}
-                  Let the sample $X_{1}, X_{2}, \ldots, X_{n}$ consist of iid version of the random variable $X$. The method of moments involves estimating the moments of $X$ as follows:
-                  \begin{equation*}
-                    \hat{m}_{k} = \frac{1}{n} \sum\limits_{j=1}^{n} X_{j}^{k}
-                  \end{equation*}
-                  \begin{boldalphlist}
-                  \item Suppose that $X$ is a uniform random variable in the interval $\left[ 0, \theta \right]$. Use $\hat{m}_{1}$ to find an estimator for $\theta$. \label{prob:8.6a}
-                  \item Find the mean and variance of the estimator in part \ref{prob:8.6a}.
-                  \end{boldalphlist}
+\subsubsection{Method of Moments}\label{subsubsec:Method of Moments}
+\begin{example}{Method of Moments}
+  Let the sample $X_{1}, X_{2}, \ldots, X_{n}$ consist of iid version of the random variable $X$. The method of moments involves estimating the moments of $X$ as follows:
+  \begin{equation*}
+    \hat{m}_{k} = \frac{1}{n} \sum\limits_{j=1}^{n} X_{j}^{k}
+  \end{equation*}
+  \begin{boldalphlist}
+  \item Suppose that $X$ is a uniform random variable in the interval $\left[ 0, \theta \right]$. Use $\hat{m}_{1}$ to find an estimator for $\theta$.\label{prob:8.6a}
+  \item Find the mean and variance of the estimator in part \ref{prob:8.6a}.
+  \end{boldalphlist}
 
-                  \tcblower
+  \tcblower
 
-                  Solution to Problem 8.6 from Homework 11 (Extra Credit).
-                \end{example}
+  Solution to Problem 8.6 from Homework 11 (Extra Credit).
+\end{example}
 
-		\subsubsection{Maximum Likelihood Estimation} \label{subsubsec:Maximum Likelihood Estimation}
-			\begin{definition}[Maximum Likelihood Estimation] \label{def:Maximum Likelihood Estimation}
-				Let $ X_{1},X_{2},\ldots,X_{n} \DrawnIID f \left( x \Given \theta \right) $.
-				\begin{equation} \label{eq:Maximum Likelihood Estimation}
-					\hat{\Theta}_{\MaxLikeEstim} = \argmax_{\theta \in \Theta} \Likelihood \left( \theta \Given x_{1},x_{2},\ldots,x_{n} \right)
-				\end{equation}
-				\begin{remark} \label{rmk:Likelihood}
-					Likelihood, denoted $\Likelihood$ is defined as the \nameref{def:Joint PDF} of the \nameref{def:Random Sample} and its \nameref{rmk:Random Sample Parameters}.
-					\begin{equation} \label{eq:Likelihood}
-						\Likelihood \left( \theta \Given x_{1},x_{2},\ldots,x_{n} \right) = f_{X_{1}} \left( x_{1} \Given \theta \right) \cdot f_{X_{2}} \left( x_{2} \Given \theta \right) \cdot \ldots \cdot f_{X_{n}} \left( x_{n} \Given \theta \right)
-					\end{equation}
-				\end{remark}
-				\begin{remark}
-					It is often easier to maximize $\hat{\Theta}_{\MaxLikeEstim}$ over the log-likelihood.
-					\begin{equation*}
-						\hat{\Theta}_{\MaxLikeEstim} = \argmax_{\theta \in \Theta} \log \Likelihood \left( \theta \Given x_{1},x_{2},\ldots,x_{n} \right)
-					\end{equation*}
-				\end{remark}
-				\begin{remark}
-					\[ \argmax_{\theta \in \Theta} \] is the global maxima of the function. This is further described in \Cref{def:argmax}.
-				\end{remark}
-			\end{definition}
+\subsubsection{Maximum Likelihood Estimation}\label{subsubsec:Maximum Likelihood Estimation}
+\begin{definition}[Maximum Likelihood Estimation]\label{def:Maximum Likelihood Estimation}
+  Let $ X_{1},X_{2},\ldots,X_{n} \DrawnIID f \left( x \Given \theta \right) $.
+  \begin{equation}\label{eq:Maximum Likelihood Estimation}
+    \hat{\Theta}_{\MaxLikeEstim} = \argmax_{\theta \in \Theta} \Likelihood \left( \theta \Given x_{1},x_{2},\ldots,x_{n} \right)
+  \end{equation}
+  \begin{remark}\label{rmk:Likelihood}
+    Likelihood, denoted $\Likelihood$ is defined as the \nameref{def:Joint PDF} of the \nameref{def:Random Sample} and its \nameref{rmk:Random Sample Parameters}.
+    \begin{equation}\label{eq:Likelihood}
+      \Likelihood \left( \theta \Given x_{1},x_{2},\ldots,x_{n} \right) = f_{X_{1}} \left( x_{1} \Given \theta \right) \cdot f_{X_{2}} \left( x_{2} \Given \theta \right) \cdot \ldots \cdot f_{X_{n}} \left( x_{n} \Given \theta \right)
+    \end{equation}
+  \end{remark}
+  \begin{remark}
+    It is often easier to maximize $\hat{\Theta}_{\MaxLikeEstim}$ over the log-likelihood.
+    \begin{equation*}
+      \hat{\Theta}_{\MaxLikeEstim} = \argmax_{\theta \in \Theta} \log \Likelihood \left( \theta \Given x_{1},x_{2},\ldots,x_{n} \right)
+    \end{equation*}
+  \end{remark}
+  \begin{remark}
+    \[ \argmax_{\theta \in \Theta} \] is the global maxima of the function. This is further described in \Cref{def:argmax}.
+  \end{remark}
+\end{definition}
 
-	\subsection{Confidence Intervals} \label{subsec:Confidence Interval}
-	Because certain estimators are not discrete, but continuous, the estimators expected value might not be quite right.
-	This is where \nameref{def:Confidence Interval}s come in.
-		\begin{definition}[Confidence Interval] \label{def:Confidence Interval}
-			A \emph{confidence interval} is an interval or set of values that is highly likely to contain the true value of the parameter.
-		\end{definition}
-		\begin{definition}[$1-\alpha$ Confidence Interval] \label{def:1-alpha Confidence Interval}
-			The \emph{$1-\alpha$ confidence interval} is a \nameref{def:Confidence Interval} where we estimate the probability of the parameter, $\theta$, being in the random interval to $1-\alpha$.
-			The problem is, find a random interval $\left[ \ell \left( \mathbf{X} \right), u \left( \mathbf{X} \right) \right]$ such that
-			\begin{equation} \label{eq:1-alpha Confidence Interval}
-				\Prob \left[ \ell \left( \mathbf{X}_{n} \right) , u \left( \mathbf{X}_{n} \right) \right] = 1-\alpha
-			\end{equation}
-			\begin{remark}
-				$\ell \left( \mathbf{X} \right)$ is the \emph{lower bound of the random interval}.
-				$u \left( \mathbf{X} \right)$ is the \emph{upper bound of the random interval}.
-				\textbf{Only ONE of these may be $\infty$ at a time.} Otherwise, you're including the whole sample space, making the confidence interval useless.
-			\end{remark}
-			\begin{remark}
-				If the problem says, with a confidence interval of 95\%, that is the $1-\alpha$ portion; i.e. $1-\alpha = 0.95 \%$.
-			\end{remark}
-		\end{definition}
-		\begin{example}{Confidence Intervals}
-                  Let $X_{1}, X_{2}, \ldots, X_{n} \DrawnIID N \left( \mu, \sigma^{2} \right)$.
-                  The population mean, $\mu$ is unknown.
-                  The population variance, $\sigma^{2}$ is konwn.
-                  What is a 95\% \nameref{def:Confidence Interval} for the population mean, $\mu$?
+\subsection{Confidence Intervals}\label{subsec:Confidence Interval}
+Because certain estimators are not discrete, but continuous, the estimators expected value might not be quite right.
+This is where \nameref{def:Confidence Interval}s come in.
+\begin{definition}[Confidence Interval]\label{def:Confidence Interval}
+  A \emph{confidence interval} is an interval or set of values that is highly likely to contain the true value of the parameter.
+\end{definition}
+\begin{definition}[$1-\alpha$ Confidence Interval]\label{def:1-alpha Confidence Interval}
+  The \emph{$1-\alpha$ confidence interval} is a \nameref{def:Confidence Interval} where we estimate the probability of the parameter, $\theta$, being in the random interval to $1-\alpha$.
+  The problem is, find a random interval $\left[ \ell \left( \mathbf{X} \right), u \left( \mathbf{X} \right) \right]$ such that
+  \begin{equation}\label{eq:1-alpha Confidence Interval}
+    \Prob \left[ \ell \left( \mathbf{X}_{n} \right) , u \left( \mathbf{X}_{n} \right) \right] = 1-\alpha
+  \end{equation}
+  \begin{remark}
+    $\ell \left( \mathbf{X} \right)$ is the \emph{lower bound of the random interval}.
+    $u \left( \mathbf{X} \right)$ is the \emph{upper bound of the random interval}.
+    \textbf{Only ONE of these may be $\infty$ at a time.} Otherwise, you're including the whole sample space, making the confidence interval useless.
+  \end{remark}
+  \begin{remark}
+    If the problem says, with a confidence interval of 95\%, that is the $1-\alpha$ portion; i.e. $1-\alpha = 0.95 \%$.
+  \end{remark}
+\end{definition}
+\begin{example}{Confidence Intervals}
+  Let $X_{1}, X_{2}, \ldots, X_{n} \DrawnIID N \left( \mu, \sigma^{2} \right)$.
+  The population mean, $\mu$ is unknown.
+  The population variance, $\sigma^{2}$ is konwn.
+  What is a 95\% \nameref{def:Confidence Interval} for the population mean, $\mu$?
 
-                  \tcblower
+  \tcblower
 
-                  Solution in Example 1 from Lecture 28.
-		\end{example}
+  Solution in Example 1 from Lecture 28.
+\end{example}
 
-                \subsection{Hypothesis Testing} \label{subsec:Hypothesis Testing}
-                \begin{definition}[Hypothesis Testing] \label{def:Hypothesis Testing}
-                  There are 4 parts to \emph{hypothesis testing}.
-                  \begin{enumerate}[noitemsep, nolistsep]
-                  \item Identify the hypotheses. $H_{0}$ is the \emph{null hypothesis}. It is usually compared against another, complementary hypothesis, $H_{1}$.
-                  \item The Rejection Region, which is evidence against the null hypothesis that we may or may not choose to include. $R \subset \mathcal{X}$, where $\mathcal{X}$ is the sample space.
-                  \item The Decision Rule:
-                    \begin{enumerate}[noitemsep, nolistsep]
-                    \item Reject $H_{0}$ if $X \in R$
-                    \item Accept/Do not reject $H_{0}$ if $X \notin R$
-                    \end{enumerate}
-                  \item The Test Statistic
-                  \end{enumerate}
-                  \begin{remark}
-                    There are 2 errors that can occur in \nameref{def:Hypothesis Testing}.
-                    \begin{enumerate}[label=\textbf{Type \Roman* Error: }, ref=Hypothesis Testing Type \Roman* Error, align=left, noitemsep, nolistsep]
-                    \item Reject $H_{0}$ if $H_{0}$ is true.
-                    \item Accept $H_{0}$ if $H_{0}$ is false.
-                    \end{enumerate}
-                  \end{remark}
-                \end{definition}
+\subsection{Hypothesis Testing}\label{subsec:Hypothesis Testing}
+\begin{definition}[Hypothesis Testing]\label{def:Hypothesis Testing}
+  There are 4 parts to \emph{hypothesis testing}.
+  \begin{enumerate}[noitemsep, nolistsep]
+  \item Identify the hypotheses. $H_{0}$ is the \emph{null hypothesis}. It is usually compared against another, complementary hypothesis, $H_{1}$.
+  \item The Rejection Region, which is evidence against the null hypothesis that we may or may not choose to include. $R \subset \mathcal{X}$, where $\mathcal{X}$ is the sample space.
+  \item The Decision Rule:
+    \begin{enumerate}[noitemsep, nolistsep]
+    \item Reject $H_{0}$ if $X \in R$
+    \item Accept/Do not reject $H_{0}$ if $X \notin R$
+    \end{enumerate}
+  \item The Test Statistic
+  \end{enumerate}
+  \begin{remark}
+    There are 2 errors that can occur in \nameref{def:Hypothesis Testing}.
+    \begin{enumerate}[label=\textbf{Type \Roman* Error: }, ref=Hypothesis Testing Type \Roman* Error, align=left, noitemsep, nolistsep]
+    \item Reject $H_{0}$ if $H_{0}$ is true.
+    \item Accept $H_{0}$ if $H_{0}$ is false.
+    \end{enumerate}
+  \end{remark}
+\end{definition}
 
-		\begin{example}{Use Hypothesis Testing}
-                  Using \nameref{def:Hypothesis Testing}, how can you determine if a coin is fair?
+\begin{example}{Use Hypothesis Testing}
+  Using \nameref{def:Hypothesis Testing}, how can you determine if a coin is fair?
 
-                  \tcblower
+  \tcblower
 
-                  Solution from Example 2 from Lecture 28.
-		\end{example}
+  Solution from Example 2 from Lecture 28.
+\end{example}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../Math_374-Prob_Stats-Reference_Sheet"

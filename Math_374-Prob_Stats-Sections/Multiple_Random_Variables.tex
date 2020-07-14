@@ -1,576 +1,576 @@
-\section{Multiple Random Variables} \label{sec:Multiple Random Variables}
-	\subsection[Joint PMF]{Joint Probability Mass Function} \label{subsec:Joint PMF}
-		\begin{definition}[Joint Probability Mass Function] \label{def:Joint PMF}
-			The \emph{joint probability mass function (joint PMF)} of 2 discrete random variables $X$, $Y$ is defined as:
-			\begin{equation} \label{eq:Joint PMF}
-				p_{X,Y} = P \left[ \lbrace X=x \rbrace \cap \lbrace Y=y \rbrace \right] \text{ for all } x,y \in S_{X,Y}
-			\end{equation}
-			\begin{itemize}[noitemsep, nolistsep]
-				\item This satisfies ALL properties of single random variable PMFs
-			\end{itemize}
-		\end{definition}
-		\begin{example}[Problem 5.1]{Joint PMF}
-			Let $X$ be the maximum and let $Y$ be the minimum of the number of heads obtained when Carlos and Michael each flip a fair coin twice.
-			\begin{boldalphlist}
-				\item Describe the underlying space $S$ of this random experiment and show the mapping from $S$ to $S_{X,Y}$, the range of the pair $\left( X,Y \right)$.
-				\item Find the probability for all values of $\left( X,Y \right)$.
-			\end{boldalphlist}
+\section{Multiple Random Variables}\label{sec:Multiple Random Variables}
+\subsection[Joint PMF]{Joint Probability Mass Function}\label{subsec:Joint PMF}
+\begin{definition}[Joint Probability Mass Function]\label{def:Joint PMF}
+  The \emph{joint probability mass function (joint PMF)} of 2 discrete random variables $X$, $Y$ is defined as:
+  \begin{equation}\label{eq:Joint PMF}
+    p_{X,Y} = P \left[ \lbrace X=x \rbrace \cap \lbrace Y=y \rbrace \right] \text{ for all } x,y \in S_{X,Y}
+  \end{equation}
+  \begin{itemize}[noitemsep, nolistsep]
+  \item This satisfies ALL properties of single random variable PMFs
+  \end{itemize}
+\end{definition}
+\begin{example}[Problem 5.1]{Joint PMF}
+  Let $X$ be the maximum and let $Y$ be the minimum of the number of heads obtained when Carlos and Michael each flip a fair coin twice.
+  \begin{boldalphlist}
+  \item Describe the underlying space $S$ of this random experiment and show the mapping from $S$ to $S_{X,Y}$, the range of the pair $\left( X,Y \right)$.
+  \item Find the probability for all values of $\left( X,Y \right)$.
+  \end{boldalphlist}
 
-			\tcblower
+  \tcblower
 
-			Solution to Problem 5.1, Part a \& Part B.
-		\end{example}
+  Solution to Problem 5.1, Part a \& Part B.
+\end{example}
 
-		\subsubsection[Marginal PMF]{Marginal Probability Mass Function} \label{subsubsec:Marginal PMF}
-			\begin{definition}[Marginal Probability Mass Function] \label{def:Marginal PMF}
-				Given a joint PMF of discrete random variables $X$, $Y$, the \emph{Marginal Probability Mass Function (Marginal PMF)} of $X$ is defined as:
-				\begin{equation} \label{eq:Marginal PMF}
-					p_{X} \left( x_{i} \right) = P \left[ X = x_{i} \right] \text{ for } x_{i} \in S_{X}
-				\end{equation}
-				and is calculated as:
-				\begin{equation} \label{eq:Calculate Marginal PMF}
-					p \left( x_{i} \right) = \sum_{y \in S_{Y}} p_{X,Y} \left( x_{i}, y \right)
-				\end{equation}
-			\end{definition}
-			\begin{example}[Problem 5.11]{Marginal PMFs}
-				\begin{boldalphlist}
-					\item Find the \nameref{def:Marginal PMF}'s for th epairs of random variable with the indicated \nameref{def:Joint PMF}. \\
-						\begin{tabular}{cccc|cccc|cccc}
-							\hline
-							\multicolumn{4}{c|}{i} & \multicolumn{4}{c|}{ii} & \multicolumn{4}{c}{iii} \\ \hline
-							$X/Y$ & -1 & 0 & 1 & $X/Y$ & -1 & 0 & 1 & $X/Y$ & -1 & 0 & 1 \\
-							-1 & $1/6$ & $1/6$ & 0 & -1 & $1/9$ & $1/9$ & $1/9$ & -1 & $1/3$ & 0 & 0 \\
-							0 & 0 & 0 & $1/3$ & 0 & $1/9$ & $1/9$ & $1/9$ & 0 & 0 & $1/3$ & 0 \\
-							1 & $1/6$ & $1/6$ & 0 & 1 & $1/9$ & $1/9$ & $1/9$ & 1 & 0 & 0 & $1/3$ \\
-							\hline
-						\end{tabular} \\ % Extra vertical space here between table and next question
+\subsubsection[Marginal PMF]{Marginal Probability Mass Function}\label{subsubsec:Marginal PMF}
+\begin{definition}[Marginal Probability Mass Function]\label{def:Marginal PMF}
+  Given a joint PMF of discrete random variables $X$, $Y$, the \emph{Marginal Probability Mass Function (Marginal PMF)} of $X$ is defined as:
+  \begin{equation}\label{eq:Marginal PMF}
+    p_{X} \left( x_{i} \right) = P \left[ X = x_{i} \right] \text{ for } x_{i} \in S_{X}
+  \end{equation}
+  and is calculated as:
+  \begin{equation}\label{eq:Calculate Marginal PMF}
+    p \left( x_{i} \right) = \sum_{y \in S_{Y}} p_{X,Y} \left( x_{i}, y \right)
+  \end{equation}
+\end{definition}
+\begin{example}[Problem 5.11]{Marginal PMFs}
+  \begin{boldalphlist}
+  \item Find the \nameref{def:Marginal PMF}'s for th epairs of random variable with the indicated \nameref{def:Joint PMF}. \\
+    \begin{tabular}{cccc|cccc|cccc}
+      \hline
+      \multicolumn{4}{c|}{i} & \multicolumn{4}{c|}{ii} & \multicolumn{4}{c}{iii} \\ \hline
+      $X/Y$ & -1 & 0 & 1 & $X/Y$ & -1 & 0 & 1 & $X/Y$ & -1 & 0 & 1 \\
+      -1 & $1/6$ & $1/6$ & 0 & -1 & $1/9$ & $1/9$ & $1/9$ & -1 & $1/3$ & 0 & 0 \\
+      0 & 0 & 0 & $1/3$ & 0 & $1/9$ & $1/9$ & $1/9$ & 0 & 0 & $1/3$ & 0 \\
+      1 & $1/6$ & $1/6$ & 0 & 1 & $1/9$ & $1/9$ & $1/9$ & 1 & 0 & 0 & $1/3$ \\
+      \hline
+    \end{tabular} \\ % Extra vertical space here between table and next question
 
-					\item Find the probability of the events $A = \lbrace X>0 \rbrace$, $B = \lbrace X \geq Y \rbrace$, and $C = \lbrace X = -Y \rbrace$ for the above Joint PMF's.
-				\end{boldalphlist}
+  \item Find the probability of the events $A = \lbrace X>0 \rbrace$, $B = \lbrace X \geq Y \rbrace$, and $C = \lbrace X = -Y \rbrace$ for the above Joint PMF's.
+  \end{boldalphlist}
 
-				\tcblower
+  \tcblower
 
-				Solution to Problem 5.11, Part i \& Part ii \& Part iii.
-			\end{example}
+  Solution to Problem 5.11, Part i \& Part ii \& Part iii.
+\end{example}
 
-	\subsection[Joint CDF]{Joint Cumulative Distribution Function} \label{subsec:Joint CDF}
-		\begin{definition}[Joint Cumulative Distribution Function] \label{def:Joint CDF}
-			The \emph{Joint Cumulative Distribution Function (Joint CDF)} of $X$ and $Y$ is defined as the probability of the event $ \lbrace X \leq x \rbrace \cap \lbrace Y \leq y \rbrace $
-			\begin{equation} \label{eq:Joint CDF}
-				\begin{aligned}
-					F_{X,Y} \left( x, y \right) &= P \left[ \lbrace X \leq x \rbrace \cap \lbrace Y \leq y \rbrace \right] \text{ for all } \left( x,y \right) \in \mathbb{R}^2 \\
-					&= P \left[ \lbrace X \leq x \rbrace , \lbrace Y \leq y \rbrace \right]
-				\end{aligned}
-			\end{equation}
-		\end{definition}
+\subsection[Joint CDF]{Joint Cumulative Distribution Function}\label{subsec:Joint CDF}
+\begin{definition}[Joint Cumulative Distribution Function]\label{def:Joint CDF}
+  The \emph{Joint Cumulative Distribution Function (Joint CDF)} of $X$ and $Y$ is defined as the probability of the event $ \lbrace X \leq x \rbrace \cap \lbrace Y \leq y \rbrace $
+  \begin{equation}\label{eq:Joint CDF}
+    \begin{aligned}
+      F_{X,Y} \left( x, y \right) &= P \left[ \lbrace X \leq x \rbrace \cap \lbrace Y \leq y \rbrace \right] \text{ for all } \left( x,y \right) \in \mathbb{R}^2 \\
+      &= P \left[ \lbrace X \leq x \rbrace , \lbrace Y \leq y \rbrace \right]
+    \end{aligned}
+  \end{equation}
+\end{definition}
 
-		\subsubsection{Properties of Joint Cumulative Distribution Functions} \label{subsubsec:Properties of Joint Cumulative Distribution Functions}
-			\begin{propertylist}
-				\item $F_{X,Y} \left( x,y \right)$ is non decreasing.
-					\begin{equation} \label{eq:Joint CDF Property 1}
-						F_{X,Y} \left( x_{1},y_{1} \right) \leq F_{X,Y} \left( x_{2},y_{2} \right) \text{ if } x_{1} \leq x_{2} \text{ and } y_{1} \leq y_{2}
-					\end{equation}
-				\item \begin{equation} \label{eq:Joint CDF Property 2}
-						\begin{aligned}
-							\lim\limits_{y \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
-							\lim\limits_{x \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
-							\lim\limits_{\left( x,y \right) \rightarrow \left( \infty, \infty \right)} F_{X,Y} \left( x,y \right) &= 1 \\
-						\end{aligned}
-					\end{equation}
-				\item The Marginal CDFs can be obtained from the Joint CDF by removing restrictions for all but one variable.
-					\begin{equation} \label{eq:Joint CDF Property 3}
-						\begin{aligned}
-							F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
-													   &= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
-													   &= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
-							F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
-						\end{aligned}
-					\end{equation}
-				\item The Joint CDF is continuous from $\infty$ to $-\infty$.
-					\begin{equation} \label{eq:Joint CDF Property 4}
-						\begin{aligned}
-							\lim\limits_{x \rightarrow a^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( a,y \right) \\
-							\lim\limits_{y \rightarrow b^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( x,b \right) \\
-						\end{aligned}
-					\end{equation}
-				\item The probability of the ``rectangle'' $\lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace$
-					\begin{equation} \label{eq:Joint CDF Property 5}
-						\begin{aligned}
-							P \left[ \lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace \right] &= P \left[ \lbrace X \leq x_{2}, Y \leq y_{2} \rbrace \right] - P \left[ \lbrace X \leq x_{1}, Y \leq y_{2} \rbrace \right] - \\
-							&P \left[ \lbrace X \leq x_{2}, Y \leq y_{1} \rbrace \right] + P \left[ \lbrace X \leq x_{1}, Y \leq y_{1} \rbrace \right] \\
-							&= F_{X,Y} \left( x_{2}, y_{2} \right) - F_{X,Y} \left( x_{1}, y_{2} \right) - F_{X,Y} \left( x_{2}, y_{1} \right) + F_{X,Y} \left( x_{1}, y_{1} \right)
-						\end{aligned}
-					\end{equation}
-			\end{propertylist}
+\subsubsection{Properties of Joint Cumulative Distribution Functions}\label{subsubsec:Properties of Joint Cumulative Distribution Functions}
+\begin{propertylist}
+\item $F_{X,Y} \left( x,y \right)$ is non decreasing.
+  \begin{equation}\label{eq:Joint CDF Property 1}
+    F_{X,Y} \left( x_{1},y_{1} \right) \leq F_{X,Y} \left( x_{2},y_{2} \right) \text{ if } x_{1} \leq x_{2} \text{ and } y_{1} \leq y_{2}
+  \end{equation}
+\item \begin{equation}\label{eq:Joint CDF Property 2}
+    \begin{aligned}
+      \lim\limits_{y \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
+      \lim\limits_{x \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
+      \lim\limits_{\left( x,y \right) \rightarrow \left( \infty, \infty \right)} F_{X,Y} \left( x,y \right) &= 1 \\
+    \end{aligned}
+  \end{equation}
+\item The Marginal CDFs can be obtained from the Joint CDF by removing restrictions for all but one variable.
+  \begin{equation}\label{eq:Joint CDF Property 3}
+    \begin{aligned}
+      F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
+      &= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
+      &= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+      F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+    \end{aligned}
+  \end{equation}
+\item The Joint CDF is continuous from $\infty$ to $-\infty$.
+  \begin{equation}\label{eq:Joint CDF Property 4}
+    \begin{aligned}
+      \lim\limits_{x \rightarrow a^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( a,y \right) \\
+      \lim\limits_{y \rightarrow b^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( x,b \right) \\
+    \end{aligned}
+  \end{equation}
+\item The probability of the ``rectangle'' $\lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace$
+  \begin{equation}\label{eq:Joint CDF Property 5}
+    \begin{aligned}
+      P \left[ \lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace \right] &= P \left[ \lbrace X \leq x_{2}, Y \leq y_{2} \rbrace \right] - P \left[ \lbrace X \leq x_{1}, Y \leq y_{2} \rbrace \right] - \\
+      &P \left[ \lbrace X \leq x_{2}, Y \leq y_{1} \rbrace \right] + P \left[ \lbrace X \leq x_{1}, Y \leq y_{1} \rbrace \right] \\
+      &= F_{X,Y} \left( x_{2}, y_{2} \right) - F_{X,Y} \left( x_{1}, y_{2} \right) - F_{X,Y} \left( x_{2}, y_{1} \right) + F_{X,Y} \left( x_{1}, y_{1} \right)
+    \end{aligned}
+  \end{equation}
+\end{propertylist}
 
-		\subsubsection[Marginal CDF]{Marginal Cumulative Distribution Function} \label{subsubsec:Marginal CDF}
-			\begin{definition}[Marginal Cumulative Distribution Function] \label{def:Marginal CDF}
-				We obtain the \emph{Marginal Cumulative Distribution Functions (Marginal CDFs)} by removing the constraint on one of the variables.
-				\begin{equation} \label{eq:Marginal CDF}
-					\begin{aligned}
-						F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
-						&= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
-						&= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
-						F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
-					\end{aligned}
-				\end{equation}
-			\end{definition}
-			\begin{example}[Problem 5.20]{Marginal CDFs}
-				The pair $\left( X,Y \right)$ has Joint CDF given by:
-				\begin{equation*}
-					F_{X,Y} \left( x,y \right) = \begin{cases}
-						\left( 1- \frac{1}{x^{2}} \right) \left( 1- \frac{1}{y^{2}} \right) & \text{for } x>1, y>1 \\
-						0 & \text{elsewhere}
-					\end{cases}
-				\end{equation*}
-				\begin{boldalphlist}
-					\item[\textbf{(b)}] Find the Marginal CDF of $X$ and $Y$.
-				\end{boldalphlist}
+\subsubsection[Marginal CDF]{Marginal Cumulative Distribution Function}\label{subsubsec:Marginal CDF}
+\begin{definition}[Marginal Cumulative Distribution Function]\label{def:Marginal CDF}
+  We obtain the \emph{Marginal Cumulative Distribution Functions (Marginal CDFs)} by removing the constraint on one of the variables.
+  \begin{equation}\label{eq:Marginal CDF}
+    \begin{aligned}
+      F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
+      &= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
+      &= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+      F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+    \end{aligned}
+  \end{equation}
+\end{definition}
+\begin{example}[Problem 5.20]{Marginal CDFs}
+  The pair $\left( X,Y \right)$ has Joint CDF given by:
+  \begin{equation*}
+    F_{X,Y} \left( x,y \right) = \begin{cases}
+      \left( 1- \frac{1}{x^{2}} \right) \left( 1- \frac{1}{y^{2}} \right) & \text{for } x>1, y>1 \\
+      0 & \text{elsewhere}
+    \end{cases}
+  \end{equation*}
+  \begin{boldalphlist}
+  \item[\textbf{(b)}] Find the Marginal CDF of $X$ and $Y$.
+  \end{boldalphlist}
 
-				\tcblower
+  \tcblower
 
-				Solution to Problem 5.20, Part b from Homework 8.
-			\end{example}
+  Solution to Problem 5.20, Part b from Homework 8.
+\end{example}
 
-	\subsection[Joint PDF]{Joint Probability Density Function} \label{subsec:Joint PDF}
-		\begin{definition}[Joint Probability Density Function] \label{def:Joint PDF}
-			We say that $X$, $Y$ are jointly continuous if the probabilities of events involving $X$ and $Y$ can be expressed as an integral of a \emph{Joint Probability Density Function (Joint PDF)}. \newline
-			i.e. There exists some non-negative function $f_{X,Y} \left( x,y \right)$, which we call the joint PDF, that is defined on the real plane such that for every event $B$ which is a subset of the xy plane
-			\begin{equation}\label{eq:Joint PDF}
-				P \left[ \left( X,Y \right) \text{in } B \right] = \iint_{B} f_{X,Y} \left( x,y \right) dx dy
-			\end{equation}
-			\begin{remark}
-				The probability mass of an event is found by integrating the PDF over the region in the xy plane corresponding to your event.
-			\end{remark}
-		\end{definition}
+\subsection[Joint PDF]{Joint Probability Density Function}\label{subsec:Joint PDF}
+\begin{definition}[Joint Probability Density Function]\label{def:Joint PDF}
+  We say that $X$, $Y$ are jointly continuous if the probabilities of events involving $X$ and $Y$ can be expressed as an integral of a \emph{Joint Probability Density Function (Joint PDF)}. \newline
+  i.e. There exists some non-negative function $f_{X,Y} \left( x,y \right)$, which we call the joint PDF, that is defined on the real plane such that for every event $B$ which is a subset of the xy plane
+  \begin{equation}\label{eq:Joint PDF}
+    P \left[ \left( X,Y \right) \text{in } B \right] = \iint_{B} f_{X,Y} \left( x,y \right) dx dy
+  \end{equation}
+  \begin{remark}
+    The probability mass of an event is found by integrating the PDF over the region in the xy plane corresponding to your event.
+  \end{remark}
+\end{definition}
 
 
-		\subsubsection{Properties of Joint Probability Density Functions} \label{subsubsec:Joint PDF Properties}
-			\begin{propertylist}
-				\item
-					\begin{equation}
-						\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{X,Y} \left( x,y \right) = 1
-					\end{equation}
-			\end{propertylist}
-                        \begin{example}[Example 5.16]{Find Normalizing Constant 1}
-                          Let $X$ be the maximum and $Y$ be the minimum of the number of heads obtained with Carlos and Micahel each flip a fair coin twice.
-                          Find the Marginal CDF of $X$ and $Y$?
+\subsubsection{Properties of Joint Probability Density Functions}\label{subsubsec:Joint PDF Properties}
+\begin{propertylist}
+\item
+  \begin{equation}
+    \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{X,Y} \left( x,y \right) = 1
+  \end{equation}
+\end{propertylist}
+\begin{example}[Example 5.16]{Find Normalizing Constant 1}
+  Let $X$ be the maximum and $Y$ be the minimum of the number of heads obtained with Carlos and Micahel each flip a fair coin twice.
+  Find the Marginal CDF of $X$ and $Y$?
 
-                          \tcblower
+  \tcblower
 
-                          Solution to Problem 5.16 from Homework 8.
-                        \end{example}
-				\begin{example}[Problem 5.27]{Find Normalizing Constant 2}
-					Let $X$ and $Y$ have Joint PDF:
-					\begin{equation*}
-						f_{X,Y} \left( x,y \right) = k x \left( 1-x \right) y \text{, } 0<x<1, 0<y<1
-					\end{equation*}
-					\begin{boldalphlist}
-						\item Find $k$.
-					\end{boldalphlist}
+  Solution to Problem 5.16 from Homework 8.
+\end{example}
+\begin{example}[Problem 5.27]{Find Normalizing Constant 2}
+  Let $X$ and $Y$ have Joint PDF:
+  \begin{equation*}
+    f_{X,Y} \left( x,y \right) = k x \left( 1-x \right) y \text{, } 0<x<1, 0<y<1
+  \end{equation*}
+  \begin{boldalphlist}
+  \item Find $k$.
+  \end{boldalphlist}
 
-					\tcblower
+  \tcblower
 
-					Solution to Problem 5.27, Part a from Homework 8.
-				\end{example}
-			\begin{propertylist}[resume]
-				\item
-					\begin{equation}
-						F_{X,Y} \left( x,y \right) = \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y} \left( s,t \right) dt ds
-					\end{equation}
-			\end{propertylist}
-                        \begin{example}[Problem 5.27]{Find Joint CDF}
-                          Let $X$ and $Y$ have the Joint PDF:
-                          \begin{equation*}
-                            f_{X,Y} \left( x,y \right) = k x \left( 1-x \right) y \text{for } 0<x<1, 0<y<1
-                          \end{equation*}
+  Solution to Problem 5.27, Part a from Homework 8.
+\end{example}
+\begin{propertylist}[resume]
+\item
+  \begin{equation}
+    F_{X,Y} \left( x,y \right) = \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y} \left( s,t \right) dt ds
+  \end{equation}
+\end{propertylist}
+\begin{example}[Problem 5.27]{Find Joint CDF}
+  Let $X$ and $Y$ have the Joint PDF:
+  \begin{equation*}
+    f_{X,Y} \left( x,y \right) = k x \left( 1-x \right) y \text{for } 0<x<1, 0<y<1
+  \end{equation*}
 
-                          \begin{boldalphlist}
-                          \item Find $k$.
-                          \item Find the Joint CDF of $\left( X,Y \right)$
-                          \end{boldalphlist}
+  \begin{boldalphlist}
+  \item Find $k$.
+  \item Find the Joint CDF of $\left( X,Y \right)$
+  \end{boldalphlist}
 
-                          \tcblower
+  \tcblower
 
-                          Solution to Problem 5.27, Part b from Homework 8.
-                        \end{example}
-			\begin{propertylist}[resume]
-				\item
-					\begin{equation}
-						f_{X,Y} = \frac{\partial^{2} f_{X,Y} \left( x,y \right)}{\partial x \partial y}
-					\end{equation}
-			\end{propertylist}
+  Solution to Problem 5.27, Part b from Homework 8.
+\end{example}
+\begin{propertylist}[resume]
+\item
+  \begin{equation}
+    f_{X,Y} = \frac{\partial^{2} f_{X,Y} \left( x,y \right)}{\partial x \partial y}
+  \end{equation}
+\end{propertylist}
 
-		\subsubsection{Marginal PDF} \label{subsubsec:Marginal PDF}
-			\begin{definition}[Marginal Probability Density Function] \label{def:Marginal PDF}
-				The \emph{Marginal Probability Density Functions (Marginal PDFs)} $f_{X} \left( x \right)$ and $f_{Y} \left( y \right)$ are obtained by taking the derivative of the marginal CDFs.
-				\begin{equation}
-					\begin{aligned}
-						f_{X} \left( x \right) &= \frac{d}{dx} F_{X} \left( x \right) \\
-						&= \frac{d}{dx} \int_{-\infty}^{x} \left[ \int_{-\infty}^{\infty} f_{X,Y} \left( s,t \right) dt ds \right] \\
-						&= \frac{d}{dx} \int_{-\infty}^{x} \int_{-\infty}^{\infty} f_{X,Y} \left( s,t \right) dt ds \\
-						&\text{Simplified with \nameref{def:2nd Fundamental Theorem of Calculus}} \\
-						&= \int_{-\infty}^{\infty} f_{X,Y} \left( x,t \right) dt \\
-						f_{X} &= \int_{-\infty}^{\infty} f_{X,Y} \left( x,t \right) dt \\
-					\end{aligned}
-				\end{equation}
-			\end{definition}
-			\begin{example}[Problem 5.27]{Find Marginal PDFs}
-                          Let $X$ and $Y$ have the Joint PDF:
-                          \begin{equation*}
-                            f_{X,Y} \left( x,y \right) = k x \left( 1-x \right) y \text{for } 0<x<1, 0<y<1
-                          \end{equation*}
-                          Find the Marginal DF of $X$ and $Y$?
+\subsubsection{Marginal PDF}\label{subsubsec:Marginal PDF}
+\begin{definition}[Marginal Probability Density Function]\label{def:Marginal PDF}
+  The \emph{Marginal Probability Density Functions (Marginal PDFs)} $f_{X} \left( x \right)$ and $f_{Y} \left( y \right)$ are obtained by taking the derivative of the marginal CDFs.
+  \begin{equation}
+    \begin{aligned}
+      f_{X} \left( x \right) &= \frac{d}{dx} F_{X} \left( x \right) \\
+      &= \frac{d}{dx} \int_{-\infty}^{x} \left[ \int_{-\infty}^{\infty} f_{X,Y} \left( s,t \right) dt ds \right] \\
+      &= \frac{d}{dx} \int_{-\infty}^{x} \int_{-\infty}^{\infty} f_{X,Y} \left( s,t \right) dt ds \\
+      &\text{Simplified with \nameref{def:2nd Fundamental Theorem of Calculus}} \\
+      &= \int_{-\infty}^{\infty} f_{X,Y} \left( x,t \right) dt \\
+      f_{X} &= \int_{-\infty}^{\infty} f_{X,Y} \left( x,t \right) dt \\
+    \end{aligned}
+  \end{equation}
+\end{definition}
+\begin{example}[Problem 5.27]{Find Marginal PDFs}
+  Let $X$ and $Y$ have the Joint PDF:
+  \begin{equation*}
+    f_{X,Y} \left( x,y \right) = k x \left( 1-x \right) y \text{for } 0<x<1, 0<y<1
+  \end{equation*}
+  Find the Marginal DF of $X$ and $Y$?
 
-                          \tcblower
+  \tcblower
 
-                          Solution to Problem 5.27, Part c from Homework 8.
-			\end{example}
+  Solution to Problem 5.27, Part c from Homework 8.
+\end{example}
 
-	\subsection{Independence of Multiple Random Variables} \label{subsec:Independence of Multiple Random Variables}
-		\begin{definition}[Independent Random Variables] \label{def:Independence of Multiple Random Variables}
-			\emph{$X$ and $Y$ are independent random variables} if \emph{\textbf{ANY}} event $A_{1}$ defined in terms of $S$ is independent of \emph{\textbf{ANY}} event $A_{2}$ defined in terms of $Y$.
-			\begin{equation} \label{eq:Independence of Multiple Random Variables}
-				P \left[ X \in A_{1}, Y \in A_{2} \right] = P \left[ X \in A_{1} \right] * P \left[ Y \in A_{2} \right]
-			\end{equation}
-		\end{definition}
-	There are 3 ways to phrase this:
-	\begin{enumerate}[noitemsep, nolistsep]
-		\item For discrete random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
-			\begin{equation} \label{eq:Independence of Multiple Discrete Random Variables Using PMF}
-				p_{X,Y} \left( x,y \right) = p_{X} \left( x \right) * p_{Y} \left( y \right)
-			\end{equation}
+\subsection{Independence of Multiple Random Variables}\label{subsec:Independence of Multiple Random Variables}
+\begin{definition}[Independent Random Variables]\label{def:Independence of Multiple Random Variables}
+  \emph{$X$ and $Y$ are independent random variables} if \emph{\textbf{ANY}} event $A_{1}$ defined in terms of $S$ is independent of \emph{\textbf{ANY}} event $A_{2}$ defined in terms of $Y$.
+  \begin{equation}\label{eq:Independence of Multiple Random Variables}
+    P \left[ X \in A_{1}, Y \in A_{2} \right] = P \left[ X \in A_{1} \right] * P \left[ Y \in A_{2} \right]
+  \end{equation}
+\end{definition}
+There are 3 ways to phrase this:
+\begin{enumerate}[noitemsep, nolistsep]
+\item For discrete random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
+  \begin{equation}\label{eq:Independence of Multiple Discrete Random Variables Using PMF}
+    p_{X,Y} \left( x,y \right) = p_{X} \left( x \right) * p_{Y} \left( y \right)
+  \end{equation}
 
-		\item For general random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
-			\begin{equation} \label{eq:Independence of Multiple General Random Variables Using CDF}
-				F_{X,Y} \left( x,y \right) = F_{X} \left( x \right) * F_{Y} \left( y \right)
-			\end{equation}
-	\end{enumerate}
-		\begin{example}[Final Exam Practice, Problem 7]{Confirm Independence by PDF}
-			Let $X$ and $Y$ have joint Probability Density Function (PDF):
-			\begin{equation*}
-				f_{X,Y} \left( x,y \right) = \begin{cases}
-					12x \left( 1-x \right)y & 0 < x < 1, 0 < y < 1 \\
-					0 & \text{otherwise}
-				\end{cases}
-			\end{equation*}
-			Are $X$ and $Y$ independent?
-		\end{example}
-	\begin{enumerate}[resume]
-		\item For (continuous) random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
-			\begin{equation} \label{eq:Independence of Multiple Continuous Random Variables Using PDF}
-				f_{X,Y} \left( x,y \right) = f_{X} \left( x \right) * f_{Y} \left( y \right)
-			\end{equation}
-	\end{enumerate}
-		\begin{example}[Final Exam Practice, Problem 7]{Confirm Independence by CDF}
-			Let $X$ and $Y$ have joint Cumulative Distribution Function (CDF):
-			\begin{equation*}
-				F_{X,Y} \left( x,y \right) = \begin{cases}
-					6y^{2} \left( \frac{x^{2}}{2} - \frac{x^{3}}{3} \right) & 0 < x < 1, 0 < y < 1 \\
-					0 & \text{otherwise}
-				\end{cases}
-			\end{equation*}
-			Are $X$ and $Y$ independent?
-		\end{example}
-	You can prove \nameref{eq:Independence of Multiple Discrete Random Variables Using PMF}, \Cref{eq:Independence of Multiple Discrete Random Variables Using PMF}.
-	\begin{proof}[Independence of Discrete Random Variables with PMF] \label{proof:Independence of Discrete Random Variables with PMF}
+\item For general random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
+  \begin{equation}\label{eq:Independence of Multiple General Random Variables Using CDF}
+    F_{X,Y} \left( x,y \right) = F_{X} \left( x \right) * F_{Y} \left( y \right)
+  \end{equation}
+\end{enumerate}
+\begin{example}[Final Exam Practice, Problem 7]{Confirm Independence by PDF}
+  Let $X$ and $Y$ have joint Probability Density Function (PDF):
+  \begin{equation*}
+    f_{X,Y} \left( x,y \right) = \begin{cases}
+      12x \left( 1-x \right)y & 0 < x < 1, 0 < y < 1 \\
+      0 & \text{otherwise}
+    \end{cases}
+  \end{equation*}
+  Are $X$ and $Y$ independent?
+\end{example}
+\begin{enumerate}[resume]
+\item For (continuous) random variables $X$ and $Y$, $X$ and $Y$ are independent if and only if:
+  \begin{equation}\label{eq:Independence of Multiple Continuous Random Variables Using PDF}
+    f_{X,Y} \left( x,y \right) = f_{X} \left( x \right) * f_{Y} \left( y \right)
+  \end{equation}
+\end{enumerate}
+\begin{example}[Final Exam Practice, Problem 7]{Confirm Independence by CDF}
+  Let $X$ and $Y$ have joint Cumulative Distribution Function (CDF):
+  \begin{equation*}
+    F_{X,Y} \left( x,y \right) = \begin{cases}
+      6y^{2} \left( \frac{x^{2}}{2} - \frac{x^{3}}{3} \right) & 0 < x < 1, 0 < y < 1 \\
+      0 & \text{otherwise}
+    \end{cases}
+  \end{equation*}
+  Are $X$ and $Y$ independent?
+\end{example}
+You can prove \nameref{eq:Independence of Multiple Discrete Random Variables Using PMF}, \Cref{eq:Independence of Multiple Discrete Random Variables Using PMF}.
+\begin{proof}[Independence of Discrete Random Variables with PMF]\label{proof:Independence of Discrete Random Variables with PMF}
 
-	\end{proof}
-	\begin{theorem}[Independence of Random Functions] \label{thm:Independence of Random Functions}
-		If random variables $X$, $Y$ are independent, then $g\left( X \right)$ and $h \left( Y \right)$ are also independent.
-	\end{theorem}
+\end{proof}
+\begin{theorem}[Independence of Random Functions]\label{thm:Independence of Random Functions}
+  If random variables $X$, $Y$ are independent, then $g\left( X \right)$ and $h \left( Y \right)$ are also independent.
+\end{theorem}
 
-	\subsection{Expected Value of Functions with 2 Random Variables} \label{subsec:Expected Value of Functions with 2 Random Variables}
-		\begin{definition}[Expectation of a Function with 2 Random Variables] \label{def:Expectation of a Function with 2 Random Variables}
-			Let $Z$ be a random variable described by the function $Z = g \left( X,Y \right)$.
-			\begin{equation} \label{eq:Expected Value of a Function with 2 Random Variables}
-				\ExpectedValue =
-				\begin{cases}
-					\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g \left( x,y \right) \cdot f_{X,Y} \left( x,y \right) dx dy &
-						\text{if $X$ and $Y$ are jointly continuous} \\
-					\sum\limits_{i \in S_{X}} \sum\limits_{j \in S_{Y}} g \left( x_{i}, y_{j} \right) \cdot p_{X,Y} \left( x,y \right) &
-						\text{if $X$ and $Y$ are both discrete} \\
-				\end{cases}
-			\end{equation}
-			\begin{remark}[Expected Value of Sum of Random Variables] \label{rmk:Expected Value of Sum of Random Variables}
-				You \emph{\textbf{do not}} need to assume independence to say:
-				\begin{equation} \label{eq:Expected Value of Sum of Random Variables}
-					\ExpectedValue \left[ X_{1}+X_{2}+\ldots+X_{n} \right] = \ExpectedValue \left[ X_{1} \right] + \ExpectedValue \left[ X_{2} \right] + \ldots + \ExpectedValue \left[ X_{n} \right]
-				\end{equation}
-			\end{remark}
-			\begin{remark}[Expected Value of Product of Random Variables] \label{rmk:Expected Value of Product of Random Variables}
-				If $X$ and $Y$ are independent, then
-				\begin{equation} \label{eq:Expected Value of Product of Random Variables}
-					\ExpectedValue \left[ g \left( X \right) h \left( Y \right) \right] = \ExpectedValue \left[ g \left( X \right) \right] \cdot \ExpectedValue \left[ h \left( Y \right) \right]
-				\end{equation}
-			\end{remark}
-		\end{definition}
-		\begin{example}[Problem 5.56]{Expectation of Multiple Random Variables}
-                  \begin{boldalphlist}
-                  \item Find $\ExpectedValue \left[ \left( X+Y \right)^{2} \right]$.
-                  \item Find $\Variance \left[ X+Y \right]$.
-                  \item Under what condition is the variance of the sum equal to the sum of the individual variances?
-                  \end{boldalphlist}
+\subsection{Expected Value of Functions with 2 Random Variables}\label{subsec:Expected Value of Functions with 2 Random Variables}
+\begin{definition}[Expectation of a Function with 2 Random Variables]\label{def:Expectation of a Function with 2 Random Variables}
+  Let $Z$ be a random variable described by the function $Z = g \left( X,Y \right)$.
+  \begin{equation}\label{eq:Expected Value of a Function with 2 Random Variables}
+    \ExpectedValue =
+    \begin{cases}
+      \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g \left( x,y \right) \cdot f_{X,Y} \left( x,y \right) dx dy &
+      \text{if $X$ and $Y$ are jointly continuous} \\
+      \sum\limits_{i \in S_{X}} \sum\limits_{j \in S_{Y}} g \left( x_{i}, y_{j} \right) \cdot p_{X,Y} \left( x,y \right) &
+      \text{if $X$ and $Y$ are both discrete} \\
+    \end{cases}
+  \end{equation}
+  \begin{remark}[Expected Value of Sum of Random Variables]\label{rmk:Expected Value of Sum of Random Variables}
+    You \emph{\textbf{do not}} need to assume independence to say:
+    \begin{equation}\label{eq:Expected Value of Sum of Random Variables}
+      \ExpectedValue \left[ X_{1}+X_{2}+\ldots+X_{n} \right] = \ExpectedValue \left[ X_{1} \right] + \ExpectedValue \left[ X_{2} \right] + \ldots + \ExpectedValue \left[ X_{n} \right]
+    \end{equation}
+  \end{remark}
+  \begin{remark}[Expected Value of Product of Random Variables]\label{rmk:Expected Value of Product of Random Variables}
+    If $X$ and $Y$ are independent, then
+    \begin{equation}\label{eq:Expected Value of Product of Random Variables}
+      \ExpectedValue \left[ g \left( X \right) h \left( Y \right) \right] = \ExpectedValue \left[ g \left( X \right) \right] \cdot \ExpectedValue \left[ h \left( Y \right) \right]
+    \end{equation}
+  \end{remark}
+\end{definition}
+\begin{example}[Problem 5.56]{Expectation of Multiple Random Variables}
+  \begin{boldalphlist}
+  \item Find $\ExpectedValue \left[ \left( X+Y \right)^{2} \right]$.
+  \item Find $\Variance \left[ X+Y \right]$.
+  \item Under what condition is the variance of the sum equal to the sum of the individual variances?
+  \end{boldalphlist}
 
-                  \tcblower
+  \tcblower
 
-                  Solution to Problem 5.56, Part a from Homework 9.
-		\end{example}
+  Solution to Problem 5.56, Part a from Homework 9.
+\end{example}
 
-	\subsection{Joint Moments, Correlation, and Covariance} \label{subsec:Joint Moments, Correlation, and Covariance}
-		\subsubsection{Joint Moments} \label{subsubsec:Joint Moments}
-			\begin{definition}[The j,kth Moment] \label{def:jkth Moment}
-				The \emph{j,kth moment of $X$ and $Y$} is:
-				\begin{equation} \label{eq:jkth Moment}
-					\ExpectedValue \left[ X^{j} Y^{k} \right] =
-					\begin{cases}
-						\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x^{j} y^{k} \cdot f_{X,Y} \left( x,y \right) dx dy &
-							\text{if $X$, $Y$ are jointly continuous} \\
-						\sum\limits_{i \in S_{X}} \sum\limits_{\ell \in S_{Y}} x_{i}^{j} y_{l}^{k} \cdot p_{X,Y} \left( x_{i},y_{\ell} \right) &
-							\text{if $X$, $Y$ are discrete} \\
-					\end{cases}
-				\end{equation}
-			\end{definition}
+\subsection{Joint Moments, Correlation, and Covariance}\label{subsec:Joint Moments, Correlation, and Covariance}
+\subsubsection{Joint Moments}\label{subsubsec:Joint Moments}
+\begin{definition}[The j,kth Moment]\label{def:jkth Moment}
+  The \emph{j,kth moment of $X$ and $Y$} is:
+  \begin{equation}\label{eq:jkth Moment}
+    \ExpectedValue \left[ X^{j} Y^{k} \right] =
+    \begin{cases}
+      \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x^{j} y^{k} \cdot f_{X,Y} \left( x,y \right) dx dy &
+      \text{if $X$, $Y$ are jointly continuous} \\
+      \sum\limits_{i \in S_{X}} \sum\limits_{\ell \in S_{Y}} x_{i}^{j} y_{l}^{k} \cdot p_{X,Y} \left( x_{i},y_{\ell} \right) &
+      \text{if $X$, $Y$ are discrete} \\
+    \end{cases}
+  \end{equation}
+\end{definition}
 
-		\subsubsection{Correlation} \label{subsubsec:Correlation}
-			\begin{definition}[Correlation] \label{def:Correlation}
-				The \emph{Correlation of $X$ and $Y$} is defined as the $1,1$ moment, i.e. $\ExpectedValue \left[ X^{1} Y^{1} \right]$.
-				\begin{remark}
-					If $X$, $Y$ are such that $\ExpectedValue \left[ X^{1} Y^{1} \right] = 0$, then we say that $X$, $Y$ are \emph{orthogonal}.
-				\end{remark}
-				\begin{remark}[Uncorrelated] \label{rmk:Uncorrelated}
-					If $X$, $Y$ are such that $\ExpectedValue \left[ XY \right] = \ExpectedValue \left[ X \right] \ExpectedValue \left[ Y \right]$, then $X$ and $Y$ are \emph{uncorrelated}.
-				\end{remark}
-				\begin{remark}
-					If $X$, $Y$ are independent, then they are uncorrelated; but if $X$ and $Y$ are uncorrelated, \emph{\textbf{they are not always independent}}.
-				\end{remark}
-			\end{definition}
-			\begin{example}[Problem 5.65]{Finding Correlation}
-                          Let $X$ and $Y$ have Joint PDF:
-                          \begin{equation*}
-                            f_{X,Y} \left( x,y \right) = k \left( x+y \right)
-                          \end{equation*}
-                          Find the correlation of $X$ and $Y$.
-                          Determine whether $X$ and $Y$ are independent, orthogonal, or uncorrelated.
+\subsubsection{Correlation}\label{subsubsec:Correlation}
+\begin{definition}[Correlation]\label{def:Correlation}
+  The \emph{Correlation of $X$ and $Y$} is defined as the $1,1$ moment, i.e. $\ExpectedValue \left[ X^{1} Y^{1} \right]$.
+  \begin{remark}
+    If $X$, $Y$ are such that $\ExpectedValue \left[ X^{1} Y^{1} \right] = 0$, then we say that $X$, $Y$ are \emph{orthogonal}.
+  \end{remark}
+  \begin{remark}[Uncorrelated]\label{rmk:Uncorrelated}
+    If $X$, $Y$ are such that $\ExpectedValue \left[ XY \right] = \ExpectedValue \left[ X \right] \ExpectedValue \left[ Y \right]$, then $X$ and $Y$ are \emph{uncorrelated}.
+  \end{remark}
+  \begin{remark}
+    If $X$, $Y$ are independent, then they are uncorrelated; but if $X$ and $Y$ are uncorrelated, \emph{\textbf{they are not always independent}}.
+  \end{remark}
+\end{definition}
+\begin{example}[Problem 5.65]{Finding Correlation}
+  Let $X$ and $Y$ have Joint PDF:
+  \begin{equation*}
+    f_{X,Y} \left( x,y \right) = k \left( x+y \right)
+  \end{equation*}
+  Find the correlation of $X$ and $Y$.
+  Determine whether $X$ and $Y$ are independent, orthogonal, or uncorrelated.
 
-                          \tcblower
+  \tcblower
 
-                          Solution to Problem 5.65, Everything except Covariance from Homework 9.
-			\end{example}
-			\begin{definition}[Correlation Coefficient] \label{def:Correlation Coefficient}
-				The \emph{correlation coefficient of $X$, $Y$} is defined as
-				\begin{equation} \label{eq:Correlation Coefficient}
-					\rho_{X,Y} = \frac{\text{Cov} \left[ X,Y \right]}{\sigma_{X} \sigma_{Y}}
-				\end{equation}
-				\begin{remark}
-					$\rho_{X,Y}$ only ranges $-1 \leq \rho_{X,Y} \leq 1$
-				\end{remark}
-				\begin{remark}
-					The closer $\rho_{X,Y}$ is to $+1$, the closer $X$ and $Y$ are to having a positive linear relationship (Positive slope). \newline
-					The closer $\rho_{X,Y}$ is to $-1$, the closer $X$ and $Y$ are to having a negative linear relationship (Negative slope). \newline
-					If $\rho_{X,Y} = 0$, the $\text{Cov}\left[ X,Y \right] = 0$, which means that $X$ and $Y$ are \emph{uncorrelated}.
-				\end{remark}
-			\end{definition}
+  Solution to Problem 5.65, Everything except Covariance from Homework 9.
+\end{example}
+\begin{definition}[Correlation Coefficient]\label{def:Correlation Coefficient}
+  The \emph{correlation coefficient of $X$, $Y$} is defined as
+  \begin{equation}\label{eq:Correlation Coefficient}
+    \rho_{X,Y} = \frac{\text{Cov} \left[ X,Y \right]}{\sigma_{X} \sigma_{Y}}
+  \end{equation}
+  \begin{remark}
+    $\rho_{X,Y}$ only ranges $-1 \leq \rho_{X,Y} \leq 1$
+  \end{remark}
+  \begin{remark}
+    The closer $\rho_{X,Y}$ is to $+1$, the closer $X$ and $Y$ are to having a positive linear relationship (Positive slope). \newline
+    The closer $\rho_{X,Y}$ is to $-1$, the closer $X$ and $Y$ are to having a negative linear relationship (Negative slope). \newline
+    If $\rho_{X,Y} = 0$, the $\text{Cov}\left[ X,Y \right] = 0$, which means that $X$ and $Y$ are \emph{uncorrelated}.
+  \end{remark}
+\end{definition}
 
-		\subsubsection{Covariance} \label{subsubsec:Covariance}
-			\begin{definition}[Covariance] \label{def:Covariance}
-				The \emph{covariance of $X$ and $Y$} is denoted:
-				\begin{equation} \label{eq:Covariance-Form 1}
-					\text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ \left( X - \ExpectedValue \left[ X \right] \right) \left( Y - \ExpectedValue \left[ Y \right] \right)\right]
-				\end{equation}
-				\begin{equation} \label{eq:Covariance-Form 2}
-					\text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ XY \right] - \ExpectedValue \left[ X \right] \ExpectedValue \left[ Y \right]
-				\end{equation}
-			\end{definition}
-			\begin{example}[Problem 5.65]{Finding Covariance}
-                          Let $X$ and $Y$ have Joint PDF:
-                          \begin{equation*}
-                            f_{X,Y} \left( x,y \right) = k \left( x+y \right)
-                          \end{equation*}
-                          Find the covariance of $X$ and $Y$.
-                          Using what you found in \Cref{ex:Finding Correlation}, \nameref{ex:Finding Correlation}, determine whether $X$ and $Y$ are independent, orthogonal, or uncorrelated.
+\subsubsection{Covariance}\label{subsubsec:Covariance}
+\begin{definition}[Covariance]\label{def:Covariance}
+  The \emph{covariance of $X$ and $Y$} is denoted:
+  \begin{equation}\label{eq:Covariance-Form 1}
+    \text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ \left( X - \ExpectedValue \left[ X \right] \right) \left( Y - \ExpectedValue \left[ Y \right] \right)\right]
+  \end{equation}
+  \begin{equation}\label{eq:Covariance-Form 2}
+    \text{Cov} \left[ X,Y \right] = \ExpectedValue \left[ XY \right] - \ExpectedValue \left[ X \right] \ExpectedValue \left[ Y \right]
+  \end{equation}
+\end{definition}
+\begin{example}[Problem 5.65]{Finding Covariance}
+  Let $X$ and $Y$ have Joint PDF:
+  \begin{equation*}
+    f_{X,Y} \left( x,y \right) = k \left( x+y \right)
+  \end{equation*}
+  Find the covariance of $X$ and $Y$.
+  Using what you found in \Cref{ex:Finding Correlation}, \nameref{ex:Finding Correlation}, determine whether $X$ and $Y$ are independent, orthogonal, or uncorrelated.
 
-                          \tcblower
-				Solution to Problem 5.65, the Covariance part from Homework 9.
-			\end{example}
+  \tcblower
+  Solution to Problem 5.65, the Covariance part from Homework 9.
+\end{example}
 
-		\subsection{Conditional Probability Functions} \label{subsec:Multiple Variable Conditional Probability Functions}
-		There are 3 major cases for these:
-			\begin{enumerate}[noitemsep, nolistsep]
-				\item \nameref{subsubsec:2 Discrete Random Variables}
-				\item \nameref{subsubsec:1 Discrete 1 Continuous Random Variables}
-				\item \nameref{subsubsec:2 Continuous Random Variables}
-			\end{enumerate}
+\subsection{Conditional Probability Functions}\label{subsec:Multiple Variable Conditional Probability Functions}
+There are 3 major cases for these:
+\begin{enumerate}[noitemsep, nolistsep]
+\item \nameref{subsubsec:2 Discrete Random Variables}
+\item \nameref{subsubsec:1 Discrete 1 Continuous Random Variables}
+\item \nameref{subsubsec:2 Continuous Random Variables}
+\end{enumerate}
 
-			\subsubsection{2 Discrete Random Variables} \label{subsubsec:2 Discrete Random Variables}
-				\begin{definition}[Conditional Probability Mass Function] \label{def:2 Discrete-Conditional PMF}
-					The \emph{conditional Probability Mass Function (Conditional PMF)} of $Y$ given that $X=x$ is:
-					\begin{equation} \label{eq:2 Discrete-Conditional PMF}
-						p_{Y} \left( y \Given x \right)
-							= \frac{P \left[ \lbrace Y=y \rbrace \cap \lbrace X=x \rbrace \right]}{P \left[ X=x \right]}
-							= \frac{p_{X,Y} \left( x,y \right)}{p_{X} \left( x \right)}
-					\end{equation}
-					\begin{remark}
-						This also implies that
-						\begin{equation} \label{eq:2 Discrete-Joint PMF}
-							p_{X,Y} \left( x,y \right) = p_{Y} \left( y \Given x \right) \cdot p_{X} \left( x \right)
-						\end{equation}
-					\end{remark}
-					\begin{remark}
-						If $X$ and $Y$ are \emph{independent}, then:
-						\begin{equation} \label{eq:2 Discrete-Independent Conditional PMF}
-							p_{X} \left( y \Given x \right)
-							= \frac{p_{X,Y} \left( x,y \right)}{p_{X} \left( x \right)}
-							= \frac{p_{X} \left( x \right) p_{Y} \left( y \right)}{p_{X} \left( x \right)}
-							= p_{Y} \left( y \right)
-						\end{equation}
-					\end{remark}
-					\begin{remark}
-						The \nameref{def:2 Discrete-Conditional PMF} of 2 discrete random variables satisfies all \nameref{subsubsec:Properties of Probability Mass Functions}.
-					\end{remark}
-				\end{definition}
-				\begin{example}[Problem 5.75]{Determine Independence of Multiple Discrete Random Variables}
-                                  Need to find new example for this one.
-				\end{example}
+\subsubsection{2 Discrete Random Variables}\label{subsubsec:2 Discrete Random Variables}
+\begin{definition}[Conditional Probability Mass Function]\label{def:2 Discrete-Conditional PMF}
+  The \emph{conditional Probability Mass Function (Conditional PMF)} of $Y$ given that $X=x$ is:
+  \begin{equation}\label{eq:2 Discrete-Conditional PMF}
+    p_{Y} \left( y \Given x \right)
+    = \frac{P \left[ \lbrace Y=y \rbrace \cap \lbrace X=x \rbrace \right]}{P \left[ X=x \right]}
+    = \frac{p_{X,Y} \left( x,y \right)}{p_{X} \left( x \right)}
+  \end{equation}
+  \begin{remark}
+    This also implies that
+    \begin{equation}\label{eq:2 Discrete-Joint PMF}
+      p_{X,Y} \left( x,y \right) = p_{Y} \left( y \Given x \right) \cdot p_{X} \left( x \right)
+    \end{equation}
+  \end{remark}
+  \begin{remark}
+    If $X$ and $Y$ are \emph{independent}, then:
+    \begin{equation}\label{eq:2 Discrete-Independent Conditional PMF}
+      p_{X} \left( y \Given x \right)
+      = \frac{p_{X,Y} \left( x,y \right)}{p_{X} \left( x \right)}
+      = \frac{p_{X} \left( x \right) p_{Y} \left( y \right)}{p_{X} \left( x \right)}
+      = p_{Y} \left( y \right)
+    \end{equation}
+  \end{remark}
+  \begin{remark}
+    The \nameref{def:2 Discrete-Conditional PMF} of 2 discrete random variables satisfies all \nameref{subsubsec:Properties of Probability Mass Functions}.
+  \end{remark}
+\end{definition}
+\begin{example}[Problem 5.75]{Determine Independence of Multiple Discrete Random Variables}
+  Need to find new example for this one.
+\end{example}
 
-			\subsubsection{1 Discrete and 1 Continuous Random Variable} \label{subsubsec:1 Discrete 1 Continuous Random Variables}
-			For this section, let $X$ be a discrete random variable and $Y$ a continuous random variable.
-				\begin{definition}[Conditional Cumulative Distribution Function] \label{def:1 Discrete 1 Continuous-Conditional CDF}
-					The \emph{conditional Cumulative Distribution Function (Conditional CDF)} of $Y$ given that $X=x$ is:
-					\begin{equation} \label{eq:1 Discrete 1 Continuous-Conditional CDF}
-						F_{Y} \left( y \Given x \right) = P \left[ Y \leq y \Given X=x \right]
-						= \frac{P \left[ \lbrace Y \leq y \rbrace \cap \lbrace X=x \rbrace \right]}{P \left[ X=x \right]}
-					\end{equation}
-					\begin{remark}
-						If $X$ and $Y$ are \emph{independent}, then:
-						\begin{equation} \label{eq:1 Discrete 1 Continuous-Independent Conditional CDF}
-							F_{Y} \left( y \Given x \right)
-							= \frac{F_{X,Y} \left( x,y \right)}{p_{X} \left( x \right)}
-							= \frac{F_{Y} \left( y \right) p_{X} \left( x \right)}{p_{X} \left( x \right)}
-							= F_{Y} \left( y \right)
-						\end{equation}
-						This also means that:
-						\begin{equation*}
-							P \left[ Y \leq y \Given X=x \right]
-							= P \left[ Y \leq y \right] \cdot P \left[ X=x \right]
-						\end{equation*}
-					\end{remark}
-					\begin{remark}
-						The similar relations for independent random variables with their conditional and marginal probability functions does not hold true with this.
-					\end{remark}
-					\begin{remark}
-						The \nameref{def:1 Discrete 1 Continuous-Conditional CDF} of 1 discrete random variable and 1 continuous random variable satisfies all \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
-					\end{remark}
-				\end{definition}
-				\begin{definition}[Conditional Probability Density Function] \label{def:1 Discrete 1 Continuous-Conditional PDF}
-					The \emph{conditional Probability Distribution Function (Conditional PDF)} of $Y$ given $X=x$ is
-					\begin{equation} \label{eq:1 Discrete 1 Continuous-Conditional PDF}
-						f_{Y} \left( y \Given x \right) = \frac{d}{dy} F_{Y} \left( y \Given x \right)
-					\end{equation}
-					This also means,
-					\begin{equation*}
-						P \left[ Y \leq y \Given X=x \right]
-						= \int_{y \in A} f_{Y} \left( y \Given x \right) dy
-					\end{equation*}
-					\begin{remark}
-						The \nameref{def:1 Discrete 1 Continuous-Conditional PDF} of 1 discrete random variable and 1 continuous random variable satisfies all \nameref{subsubsec:Properties of Probability Density Functions}.
-					\end{remark}
-				\end{definition}
+\subsubsection{1 Discrete and 1 Continuous Random Variable}\label{subsubsec:1 Discrete 1 Continuous Random Variables}
+For this section, let $X$ be a discrete random variable and $Y$ a continuous random variable.
+\begin{definition}[Conditional Cumulative Distribution Function]\label{def:1 Discrete 1 Continuous-Conditional CDF}
+  The \emph{conditional Cumulative Distribution Function (Conditional CDF)} of $Y$ given that $X=x$ is:
+  \begin{equation}\label{eq:1 Discrete 1 Continuous-Conditional CDF}
+    F_{Y} \left( y \Given x \right) = P \left[ Y \leq y \Given X=x \right]
+    = \frac{P \left[ \lbrace Y \leq y \rbrace \cap \lbrace X=x \rbrace \right]}{P \left[ X=x \right]}
+  \end{equation}
+  \begin{remark}
+    If $X$ and $Y$ are \emph{independent}, then:
+    \begin{equation}\label{eq:1 Discrete 1 Continuous-Independent Conditional CDF}
+      F_{Y} \left( y \Given x \right)
+      = \frac{F_{X,Y} \left( x,y \right)}{p_{X} \left( x \right)}
+      = \frac{F_{Y} \left( y \right) p_{X} \left( x \right)}{p_{X} \left( x \right)}
+      = F_{Y} \left( y \right)
+    \end{equation}
+    This also means that:
+    \begin{equation*}
+      P \left[ Y \leq y \Given X=x \right]
+      = P \left[ Y \leq y \right] \cdot P \left[ X=x \right]
+    \end{equation*}
+  \end{remark}
+  \begin{remark}
+    The similar relations for independent random variables with their conditional and marginal probability functions does not hold true with this.
+  \end{remark}
+  \begin{remark}
+    The \nameref{def:1 Discrete 1 Continuous-Conditional CDF} of 1 discrete random variable and 1 continuous random variable satisfies all \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
+  \end{remark}
+\end{definition}
+\begin{definition}[Conditional Probability Density Function]\label{def:1 Discrete 1 Continuous-Conditional PDF}
+  The \emph{conditional Probability Distribution Function (Conditional PDF)} of $Y$ given $X=x$ is
+  \begin{equation}\label{eq:1 Discrete 1 Continuous-Conditional PDF}
+    f_{Y} \left( y \Given x \right) = \frac{d}{dy} F_{Y} \left( y \Given x \right)
+  \end{equation}
+  This also means,
+  \begin{equation*}
+    P \left[ Y \leq y \Given X=x \right]
+    = \int_{y \in A} f_{Y} \left( y \Given x \right) dy
+  \end{equation*}
+  \begin{remark}
+    The \nameref{def:1 Discrete 1 Continuous-Conditional PDF} of 1 discrete random variable and 1 continuous random variable satisfies all \nameref{subsubsec:Properties of Probability Density Functions}.
+  \end{remark}
+\end{definition}
 
-			\subsubsection{2 Continuous Random Variables} \label{subsubsec:2 Continuous Random Variables}
-				\begin{definition}[Conditional Cumulative Distribution Function] \label{def:2 Continuous-Conditional CDF}
-					The \emph{conditional Cumulative Distribution Function (Conditional CDF)} of $Y$ given $X=x$ for $X$ and $Y$ continuous random variables is:
-					\begin{equation} \label{eq:2 Continuous-Conditional CDF}
-						F_{Y} \left(y \Given x \right)
-						= \lim\limits_{h\rightarrow 0} F_{Y} \left( y \Given x < X \leq \left( x+h \right) \right)
-						= \frac{\int_{-\infty}^{y} f_{X,Y} \left( x,v \right) dv}{f_{X} \left( x \right)}
-					\end{equation}
-					\begin{remark}
-						The \nameref{def:2 Continuous-Conditional CDF} of 2 continuous random variables satisfies all \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
-					\end{remark}
-					\begin{remark}
-						The similar relations for the conditional and marginal probability functions do not hold up for 2 continuous random variables too well.
-					\end{remark}
-				\end{definition}
+\subsubsection{2 Continuous Random Variables}\label{subsubsec:2 Continuous Random Variables}
+\begin{definition}[Conditional Cumulative Distribution Function]\label{def:2 Continuous-Conditional CDF}
+  The \emph{conditional Cumulative Distribution Function (Conditional CDF)} of $Y$ given $X=x$ for $X$ and $Y$ continuous random variables is:
+  \begin{equation}\label{eq:2 Continuous-Conditional CDF}
+    F_{Y} \left(y \Given x \right)
+    = \lim\limits_{h\rightarrow 0} F_{Y} \left( y \Given x < X \leq \left( x+h \right) \right)
+    = \frac{\int_{-\infty}^{y} f_{X,Y} \left( x,v \right) dv}{f_{X} \left( x \right)}
+  \end{equation}
+  \begin{remark}
+    The \nameref{def:2 Continuous-Conditional CDF} of 2 continuous random variables satisfies all \nameref{subsubsec:Properties of Cumulative Distribution Functions}.
+  \end{remark}
+  \begin{remark}
+    The similar relations for the conditional and marginal probability functions do not hold up for 2 continuous random variables too well.
+  \end{remark}
+\end{definition}
 
-				\begin{definition}[Conditional Probability Density Function] \label{def:2 Continuous-Conditional PDF}
-					The \emph{conditional Probability Density Function (Conditional PDF)} of $Y$ given $X=x$ for $X$ and $Y$ continuous random variables is:
-					\begin{equation} \label{eq:2 Continuous-Conditional PDF}
-						f_{Y} \left( y \Given x \right)
-						= \frac{d}{dy} F_{Y} \left( y \Given x \right)
-						= \frac{f_{X,Y} \left( x,y \right)}{f_{X} \left( x \right)}
-					\end{equation}
-					\begin{remark}
-						If $X$ and $Y$ are independent, then:
-						\begin{equation} \label{eq:2 Continuous-Independent Conditional PDF}
-							f_{X} \left( y \Given x \right)
-							= \frac{f_{X,Y} \left( x,y \right)}{f_{X} \left( x \right)}
-							= \frac{f_{X} \left( x \right) f_{Y} \left( y \right)}{f_{X} \left( x \right)}
-							= f_{Y} \left( y \right)
-						\end{equation}
-					\end{remark}
-					\begin{remark}
-						The \nameref{def:2 Continuous-Conditional PDF} of 2 continuous random variables satisfies all \nameref{subsubsec:Properties of Probability Density Functions}.
-					\end{remark}
-				\end{definition}
+\begin{definition}[Conditional Probability Density Function]\label{def:2 Continuous-Conditional PDF}
+  The \emph{conditional Probability Density Function (Conditional PDF)} of $Y$ given $X=x$ for $X$ and $Y$ continuous random variables is:
+  \begin{equation}\label{eq:2 Continuous-Conditional PDF}
+    f_{Y} \left( y \Given x \right)
+    = \frac{d}{dy} F_{Y} \left( y \Given x \right)
+    = \frac{f_{X,Y} \left( x,y \right)}{f_{X} \left( x \right)}
+  \end{equation}
+  \begin{remark}
+    If $X$ and $Y$ are independent, then:
+    \begin{equation}\label{eq:2 Continuous-Independent Conditional PDF}
+      f_{X} \left( y \Given x \right)
+      = \frac{f_{X,Y} \left( x,y \right)}{f_{X} \left( x \right)}
+      = \frac{f_{X} \left( x \right) f_{Y} \left( y \right)}{f_{X} \left( x \right)}
+      = f_{Y} \left( y \right)
+    \end{equation}
+  \end{remark}
+  \begin{remark}
+    The \nameref{def:2 Continuous-Conditional PDF} of 2 continuous random variables satisfies all \nameref{subsubsec:Properties of Probability Density Functions}.
+  \end{remark}
+\end{definition}
 
-	\subsection{Conditional Expectation of Multiple Random Variables} \label{subsec:Conditional Expectation of Multiple Variables}
-		\begin{definition}[Conditional Expectation] \label{def:Conditional Expectation of Multiple Variables}
-			The \emph{conditional expectation} of $Y$ given $X$ is:
-			\begin{equation} \label{eq:Conditional Expectation of Multiple Variables}
-				\ExpectedValue \left[ Y \Given X=x \right] = \int_{-\infty}^{\infty} y \cdot f_{Y} \left( y \Given x \right) dy
-			\end{equation}
-			\begin{remark}[Special Case]
-				There is a special case when \emph{\textbf{both}} $X$ and $Y$ are discrete random variables.
-				\begin{equation} \label{eq:Conditional Expectation of Multiple Discrete Variables}
-					\ExpectedValue \left[ Y \Given X=x \right] = \sum_{y \in S_{Y}} y \cdot p_{Y} \left( y \Given x \right)
-				\end{equation}
-			\end{remark}
-			\begin{remark}
-				When calculating the \nameref{subsec:Conditional Expectation of Multiple Variables}, and they as for $\ExpectedValue \left[ Y \Given X=x \right]$, that means you \emph{\textbf{must}} consider all possible values that $X$ can take.
-				This can be generalized to the equation below.
-				\begin{equation} \label{eq:General Conditional Expectation of Multiple Variables}
-					\ExpectedValue \left[ Y \Given X=x \right] = \sum_{x \in S_{X}} \left( \sum_{y \in S_{Y}} y \cdot p_{Y} \left( y \Given x \right) \right)
-				\end{equation}
-				This can be described. You must take a single value for $x$, and take it over all $y$'s, then take the next value for $x$, until you have exhausted all values in both $S_{X}$ and $X_{Y}$. \newline
-				This can also be translated into the continuous case, but the discrete case is a little simpler to understand this generality.
-			\end{remark}
-			\begin{remark}
-				$\ExpectedValue \left[ Y \Given X=x \right]$ is a function of $X$, so it can be written as $g \left( x \right) = \ExpectedValue \left[ Y \Given X=x \right]$.
-				Thus, we can also say
-				\begin{equation} \label{eq:Expected Value of Conditional Expected Value of Multiple Variables}
-					\ExpectedValue \left[ g \left( x \right) \right] = \ExpectedValue \left[ \ExpectedValue \left[ Y \Given X \right] \right] = \ExpectedValue \left[ Y \right]
-				\end{equation}
-				\begin{subequations}
-					\begin{align} \label{eq:Joint PDF of Multiple Continuous Random Variables}
-						\ExpectedValue \left[ Y \right]
-						= \ExpectedValue \left[ \ExpectedValue \left[ Y \Given X \right] \right]
-						&= \int_{-\infty}^{\infty} \ExpectedValue \left[ Y \Given x \right] f_{X} \left( x \right) dx
-						= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} y f_{Y} \left( y \Given x \right) dy f_{X} \left( x \right) dx \\
-					 \label{eq:Joint PDF of Multiple Discrete Random Variables}
-						\ExpectedValue \left[ Y \right]
-						= \ExpectedValue \left[ \ExpectedValue \left[ Y \Given X \right] \right]
-						&= \sum_{x \in S_{X}} \ExpectedValue \left[ Y \Given x \right] p_{X} \left( x \right)
-						= \sum_{x_{j} \in S_{X}} \sum_{y_{i} \in S_{Y}} y_{i} p_{Y} \left( y_{i} \Given x_{k} \right) p_{X} \left( x_{j} \right)
-					\end{align}
-				\end{subequations}
-			\end{remark}
-		\end{definition}
-		\begin{proof}[Prove Expectation of Conditional Expected Value] \label{proof:Expected Value of Conditional Expected Value of Multiple Variables}
-		\end{proof}
-		\begin{example}[Problem 5.75]{Finding Conditional Expected Value}
-                  Let $X$ be the maximum and let $Y$ be the minimum of the number of heads obtained when Carlos and Michael each flip a coin twice.
-                  \begin{boldalphlist}
-                  \item Find $p_{Y} \left( y \Given x \right)$ and $p_{x} \left( x \Given y \right)$, assuming fair coins are used. \label{prob:5.75a}
-                  \item Find $p_{Y} \left( y \Given x \right)$ and $p_{x} \left( x \Given y \right)$, assuming Carlos uses a coin with $p = \frac{3}{4}$. \label{prob:5.75b}
-                  \item Find $\ExpectedValue \left[ Y \Given X=x \right]$ and $\ExpectedValue \left[ X \Given Y=y \right]$ in part \ref{prob:5.75a}; then find $\ExpectedValue \left[ X \right]$ and $\ExpectedValue \left[ Y \right]$.
-                  \item Find $\ExpectedValue \left[ Y \Given X=x \right]$ and $\ExpectedValue \left[ X \Given Y=y \right]$ in part \ref{prob:5.75b}; then find $\ExpectedValue \left[ X \right]$ and $\ExpectedValue \left[ Y \right]$.
-                  \end{boldalphlist}
+\subsection{Conditional Expectation of Multiple Random Variables}\label{subsec:Conditional Expectation of Multiple Variables}
+\begin{definition}[Conditional Expectation]\label{def:Conditional Expectation of Multiple Variables}
+  The \emph{conditional expectation} of $Y$ given $X$ is:
+  \begin{equation}\label{eq:Conditional Expectation of Multiple Variables}
+    \ExpectedValue \left[ Y \Given X=x \right] = \int_{-\infty}^{\infty} y \cdot f_{Y} \left( y \Given x \right) dy
+  \end{equation}
+  \begin{remark}[Special Case]
+    There is a special case when \emph{\textbf{both}} $X$ and $Y$ are discrete random variables.
+    \begin{equation}\label{eq:Conditional Expectation of Multiple Discrete Variables}
+      \ExpectedValue \left[ Y \Given X=x \right] = \sum_{y \in S_{Y}} y \cdot p_{Y} \left( y \Given x \right)
+    \end{equation}
+  \end{remark}
+  \begin{remark}
+    When calculating the \nameref{subsec:Conditional Expectation of Multiple Variables}, and they as for $\ExpectedValue \left[ Y \Given X=x \right]$, that means you \emph{\textbf{must}} consider all possible values that $X$ can take.
+    This can be generalized to the equation below.
+    \begin{equation}\label{eq:General Conditional Expectation of Multiple Variables}
+      \ExpectedValue \left[ Y \Given X=x \right] = \sum_{x \in S_{X}} \left( \sum_{y \in S_{Y}} y \cdot p_{Y} \left( y \Given x \right) \right)
+    \end{equation}
+    This can be described. You must take a single value for $x$, and take it over all $y$'s, then take the next value for $x$, until you have exhausted all values in both $S_{X}$ and $X_{Y}$. \newline
+    This can also be translated into the continuous case, but the discrete case is a little simpler to understand this generality.
+  \end{remark}
+  \begin{remark}
+    $\ExpectedValue \left[ Y \Given X=x \right]$ is a function of $X$, so it can be written as $g \left( x \right) = \ExpectedValue \left[ Y \Given X=x \right]$.
+    Thus, we can also say
+    \begin{equation}\label{eq:Expected Value of Conditional Expected Value of Multiple Variables}
+      \ExpectedValue \left[ g \left( x \right) \right] = \ExpectedValue \left[ \ExpectedValue \left[ Y \Given X \right] \right] = \ExpectedValue \left[ Y \right]
+    \end{equation}
+    \begin{subequations}
+      \begin{align}\label{eq:Joint PDF of Multiple Continuous Random Variables}
+        \ExpectedValue \left[ Y \right]
+        = \ExpectedValue \left[ \ExpectedValue \left[ Y \Given X \right] \right]
+        &= \int_{-\infty}^{\infty} \ExpectedValue \left[ Y \Given x \right] f_{X} \left( x \right) dx
+          = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} y f_{Y} \left( y \Given x \right) dy f_{X} \left( x \right) dx \\
+       \label{eq:Joint PDF of Multiple Discrete Random Variables}
+        \ExpectedValue \left[ Y \right]
+        = \ExpectedValue \left[ \ExpectedValue \left[ Y \Given X \right] \right]
+        &= \sum_{x \in S_{X}} \ExpectedValue \left[ Y \Given x \right] p_{X} \left( x \right)
+          = \sum_{x_{j} \in S_{X}} \sum_{y_{i} \in S_{Y}} y_{i} p_{Y} \left( y_{i} \Given x_{k} \right) p_{X} \left( x_{j} \right)
+      \end{align}
+    \end{subequations}
+  \end{remark}
+\end{definition}
+\begin{proof}[Prove Expectation of Conditional Expected Value]\label{proof:Expected Value of Conditional Expected Value of Multiple Variables}
+\end{proof}
+\begin{example}[Problem 5.75]{Finding Conditional Expected Value}
+  Let $X$ be the maximum and let $Y$ be the minimum of the number of heads obtained when Carlos and Michael each flip a coin twice.
+  \begin{boldalphlist}
+  \item Find $p_{Y} \left( y \Given x \right)$ and $p_{x} \left( x \Given y \right)$, assuming fair coins are used.\label{prob:5.75a}
+  \item Find $p_{Y} \left( y \Given x \right)$ and $p_{x} \left( x \Given y \right)$, assuming Carlos uses a coin with $p = \frac{3}{4}$.\label{prob:5.75b}
+  \item Find $\ExpectedValue \left[ Y \Given X=x \right]$ and $\ExpectedValue \left[ X \Given Y=y \right]$ in part \ref{prob:5.75a}; then find $\ExpectedValue \left[ X \right]$ and $\ExpectedValue \left[ Y \right]$.
+  \item Find $\ExpectedValue \left[ Y \Given X=x \right]$ and $\ExpectedValue \left[ X \Given Y=y \right]$ in part \ref{prob:5.75b}; then find $\ExpectedValue \left[ X \right]$ and $\ExpectedValue \left[ Y \right]$.
+  \end{boldalphlist}
 
-                  \tcblower
+  \tcblower
 
-                  Solution to Problem 5.75, Part e from Homework 10.
-		\end{example}
+  Solution to Problem 5.75, Part e from Homework 10.
+\end{example}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../Math_374-Prob_Stats-Reference_Sheet"

@@ -1,72 +1,72 @@
-\section{Counting} \label{sec:Counting}
-	\subsection{Sampling \emph{with} Replacement \emph{with} Order} \label{subsec:Ordered Sampling with Replacement}
-		\begin{definition} \label{def:Ordered Sampling with Replacement}
-			Choose $k$ elements in succession with replacement between selections, from a population of $n$ distinct objects, where $k$ needs to have no relation to $n$.
-			\begin{equation} \label{eq:Ordered Sampling with Replacement}
-				\frac{n}{First} * \frac{n}{Second} * \frac{n}{Third} * \ldots * \frac{n}{kth \text{ Item}} = n^{k}
-			\end{equation}
-		\end{definition}
-		\begin{example}[Problem 2.42]{Sampling with Replacement with Order}
-			A lock has two buttons: a ``0'' button and a ``1'' button.
-			To open a door you need to push the buttons according to a preset 8-bit sequence.
-			How many sequences are there?
-			Suppose you press an arbitrary 8-bit sequence; what is the probability that the door opens? If the first try does not succeed in opening the door, you try another number; what is the probability of success?
+\section{Counting}\label{sec:Counting}
+\subsection{Sampling \emph{with} Replacement \emph{with} Order}\label{subsec:Ordered Sampling with Replacement}
+\begin{definition}\label{def:Ordered Sampling with Replacement}
+  Choose $k$ elements in succession with replacement between selections, from a population of $n$ distinct objects, where $k$ needs to have no relation to $n$.
+  \begin{equation}\label{eq:Ordered Sampling with Replacement}
+    \frac{n}{First} * \frac{n}{Second} * \frac{n}{Third} * \ldots * \frac{n}{kth \text{ Item}} = n^{k}
+  \end{equation}
+\end{definition}
+\begin{example}[Problem 2.42]{Sampling with Replacement with Order}
+  A lock has two buttons: a ``0'' button and a ``1'' button.
+  To open a door you need to push the buttons according to a preset 8-bit sequence.
+  How many sequences are there?
+  Suppose you press an arbitrary 8-bit sequence; what is the probability that the door opens? If the first try does not succeed in opening the door, you try another number; what is the probability of success?
 
-			\tcblower
+  \tcblower
 
-			Solution.
-		\end{example}
+  Solution.
+\end{example}
 
-	\subsection{Sampling \emph{without} Replacement \emph{with} Order} \label{subsec:Ordered Sampling without Replacement}
-		\begin{definition} \label{def:Ordered Sampling without Replacement}
-			Choose $k$ elements in succession without replacement from a population of $n$ distinct objects, where $k \leq n$
-			\begin{equation} \label{eq:Ordered Sampling without Replacement}
-				\frac{n}{First} * \frac{n-1}{Second} * \frac{n-2}{Third} * \ldots * \frac{n-k+1}{kth \text{ Item}}
-			\end{equation}
-		\end{definition}
+\subsection{Sampling \emph{without} Replacement \emph{with} Order}\label{subsec:Ordered Sampling without Replacement}
+\begin{definition}\label{def:Ordered Sampling without Replacement}
+  Choose $k$ elements in succession without replacement from a population of $n$ distinct objects, where $k \leq n$
+  \begin{equation}\label{eq:Ordered Sampling without Replacement}
+    \frac{n}{First} * \frac{n-1}{Second} * \frac{n-2}{Third} * \ldots * \frac{n-k+1}{kth \text{ Item}}
+  \end{equation}
+\end{definition}
 
-		\subsubsection{Permutations} \label{subsubsec:Permutations}
-			\begin{definition}[Permutation] \label{def:Permutation}
-				\emph{Permutations} are special cases of \nameref{subsec:Ordered Sampling without Replacement}, where $k = n$
-				\begin{equation} \label{eq:Permutation}
-					\frac{n}{First} * \frac{n-1}{Second} * \frac{n-2}{Third} * \ldots * \frac{2}{} * \frac{1}{} * \ldots * \frac{n-k-1}{kth \text{ Item}} = n!
-				\end{equation}
-			\end{definition}
-			\begin{example}[Exam 1, Problem 2]{Password Permutations}
-				\begin{enumerate}[noitemsep, nolistsep]
-					\item How many unique case-sensitive passswords, of length 8 characters, can be constructed using number (0-9), lower and upper-case letters (a-z, A-Z), and a set of 15 special characters and no spaces?
-					\item How many unique passwords if the user must also use at least one integer?
-				\end{enumerate}
+\subsubsection{Permutations}\label{subsubsec:Permutations}
+\begin{definition}[Permutation]\label{def:Permutation}
+  \emph{Permutations} are special cases of \nameref{subsec:Ordered Sampling without Replacement}, where $k = n$
+  \begin{equation}\label{eq:Permutation}
+    \frac{n}{First} * \frac{n-1}{Second} * \frac{n-2}{Third} * \ldots * \frac{2}{} * \frac{1}{} * \ldots * \frac{n-k-1}{kth \text{ Item}} = n!
+  \end{equation}
+\end{definition}
+\begin{example}[Exam 1, Problem 2]{Password Permutations}
+  \begin{enumerate}[noitemsep, nolistsep]
+  \item How many unique case-sensitive passswords, of length 8 characters, can be constructed using number (0-9), lower and upper-case letters (a-z, A-Z), and a set of 15 special characters and no spaces?
+  \item How many unique passwords if the user must also use at least one integer?
+  \end{enumerate}
 
-				\tcblower
+  \tcblower
 
-				Solution.
-			\end{example}
+  Solution.
+\end{example}
 
-	\subsection{Sampling \emph{with} Replacement \emph{without} Order} \label{subsec:Unordered Sampling with Replacement}
-		\begin{definition} \label{def:Unordered Sampling without Replacement}
-			Pick $k$ objects from a set of $n$ distinct object with replacement.
-			Record the result without order.
-			The total number of ways to do this is given in \Cref{eq:Unordered Sampling without Replacement}.
-			\begin{equation} \label{eq:Unordered Sampling without Replacement}
-				\binom{n+k-1}{k} = \binom{n+k-1}{n-1}
-			\end{equation}
-		\end{definition}
+\subsection{Sampling \emph{with} Replacement \emph{without} Order}\label{subsec:Unordered Sampling with Replacement}
+\begin{definition}\label{def:Unordered Sampling without Replacement}
+  Pick $k$ objects from a set of $n$ distinct object with replacement.
+  Record the result without order.
+  The total number of ways to do this is given in \Cref{eq:Unordered Sampling without Replacement}.
+  \begin{equation}\label{eq:Unordered Sampling without Replacement}
+    \binom{n+k-1}{k} = \binom{n+k-1}{n-1}
+  \end{equation}
+\end{definition}
 
-	\subsection{Sampling \emph{without} Replacement \emph{without} Ordering} \label{subsec:Unordered Sampling without Replacement}
-		\begin{definition} \label{def:Unordered Sampling with Replacement}
-			Pick $k$ objects from a set of $n$ distinct objects without replacement.
-			Record the results with without order.
-			We call the resulting subset of $k$ selected objects a ``combination of size $k$.''
-			The number of ways to choose $k$ items out of $n$ items is given in \Cref{eq:Unordered Sampling with Replacement}.
-			Also said $n$ choose $k$:
-			\begin{equation} \label{eq:Unordered Sampling with Replacement}
-			\binom{n}{k} = \frac{n * (n-1) * (n-2) * \ldots * (n-k+1)}{k!} = \frac{n!}{k! \left( n-k \right)!}
-			\end{equation}
-		\end{definition}
-		\begin{equation}
-			\binom{n}{k} = \binom{n}{n-k}
-		\end{equation}
+\subsection{Sampling \emph{without} Replacement \emph{without} Ordering}\label{subsec:Unordered Sampling without Replacement}
+\begin{definition}\label{def:Unordered Sampling with Replacement}
+  Pick $k$ objects from a set of $n$ distinct objects without replacement.
+  Record the results with without order.
+  We call the resulting subset of $k$ selected objects a ``combination of size $k$.''
+  The number of ways to choose $k$ items out of $n$ items is given in \Cref{eq:Unordered Sampling with Replacement}.
+  Also said $n$ choose $k$:
+  \begin{equation}\label{eq:Unordered Sampling with Replacement}
+    \binom{n}{k} = \frac{n * (n-1) * (n-2) * \ldots * (n-k+1)}{k!} = \frac{n!}{k! \left( n-k \right)!}
+  \end{equation}
+\end{definition}
+\begin{equation}
+  \binom{n}{k} = \binom{n}{n-k}
+\end{equation}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../Math_374-Prob_Stats-Reference_Sheet"
