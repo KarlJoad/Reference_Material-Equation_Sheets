@@ -1,5 +1,5 @@
-\section{Vectors} \label{sec:Vectors}
-\begin{definition}[Vector] \label{def:Vector}
+\section{Vectors}\label{sec:Vectors}
+\begin{definition}[Vector]\label{def:Vector}
   A \emph{vector} is a way to show both magnitude of displacement and direction of displacement.
   Vectors are drawn as rays.
   \begin{remark}
@@ -7,11 +7,11 @@
   \end{remark}
 \end{definition}
 
-\begin{definition}[Scalar] \label{def:Scalar}
+\begin{definition}[Scalar]\label{def:Scalar}
   A \emph{scalar} is a way to show \emph{\textbf{ONLY}} the magnitude of a displacement, without any direction information.
 \end{definition}
 
-\subsection{Vector Properties} \label{subsec:Vector Properties}
+\subsection{Vector Properties}\label{subsec:Vector Properties}
 \begin{propertylist}
   \item $\vec{A} + \vec{B} = \vec{C}$
   \item $\vec{0} = \langle 0, 0, 0, \ldots, 0 \rangle$
@@ -21,20 +21,20 @@
   \item $\vec{A} + \vec{B} = \vec{B} + \vec{A}$
   \item Magnitude of vector: $\lVert \vec{A} \rVert = \sqrt{A_{x}^{2} + A_{y}^{2} + A_{z}^{2}}$
 \end{propertylist}
-  
-\subsubsection{Getting Components} \label{subsubsec:Vector Components}
+
+\subsubsection{Getting Components}\label{subsubsec:Vector Components}
 Getting the components of a vector involves solving the imaginary pythagorean triangle around the vector.
 
 For a 2-dimensional vector, $\vec{V}$, you have the components $\langle V_{x}, V_{y} \rangle$.
 You find their values with this equation:
-\begin{equation} \label{eq:Vector Components}
+\begin{equation}\label{eq:Vector Components}
   \begin{aligned}
     V_{x} &= V \cos \theta \\
     V_{y} &= V \sin \theta
   \end{aligned}
 \end{equation}
 
-\subsubsection{3D Unit Vectors} \label{subsubsec:3D Unit Vectors}
+\subsubsection{3D Unit Vectors}\label{subsubsec:3D Unit Vectors}
 3-dimensional vectors shouldn't be any too crazy by this point.
 They are just another variable that can be thrown around in the vector.
 However, the three \nameref{subsubsec:3D Unit Vectors} are special.
@@ -47,15 +47,15 @@ You can also use these to describe any lower-dimensional vector as well.
   \end{aligned}
 \end{equation}
 
-\subsubsection{Addition} \label{subsubsec:Vector Addition}
+\subsubsection{Addition}\label{subsubsec:Vector Addition}
 Vectors are additive, and are done from head-to-tail.
 This means that
-\begin{equation} \label{eq:Vector Addition}
-  \vec{A} + \vec{B} = \vec{C}  
+\begin{equation}\label{eq:Vector Addition}
+  \vec{A} + \vec{B} = \vec{C}
 \end{equation}
 
 This means that in 3-dimensional vectors, they are added like this:
-\begin{equation} \label{eq:3D Vector Addition}
+\begin{equation}\label{eq:3D Vector Addition}
   \begin{aligned}
     \vec{A} &= \langle A_{x}, A_{y}, A_{z} \rangle \\
     \vec{B} &= \langle B_{x}, B_{y}, B_{z} \rangle \\
@@ -63,26 +63,26 @@ This means that in 3-dimensional vectors, they are added like this:
   \end{aligned}
 \end{equation}
 
-\subsubsection{Scalar Multiplication} \label{subsubsec:Scalar Vector Multiplication}
+\subsubsection{Scalar Multiplication}\label{subsubsec:Scalar Vector Multiplication}
 When applying multiplication between a scalar and a vector, you perform \nameref{subsubsec:Scalar Vector Multiplication}.
-\begin{equation} \label{eq:Scalar Vector Multiplication}
+\begin{equation}\label{eq:Scalar Vector Multiplication}
   2 \times \vec{V} = 2 \langle V_{x}, V_{y} \rangle = \langle 2V_{x}, 2V_{y}, 2V_{z} \rangle
 \end{equation}
 
 This means that you do \emph{\textbf{NOT}} modify the direction of the vector, you only change its magnitude.
 
-\subsubsection{Scalar (Dot) Product} \label{subsubsec:Dot Product}
+\subsubsection{Scalar (Dot) Product}\label{subsubsec:Dot Product}
 The \nameref{subsubsec:Dot Product} is the first of two ways to multiply 2 vectors.
 The other is the \nameref{subsubsec:Cross Product}.
 There are 2 ways to calculate the \nameref{subsubsec:Dot Product}.
 
 The first involves using the magnitudes of each vector and multiplying those by the cosine of the angle between them.
-\begin{equation} \label{eq:Dot Product Magnitudes}
+\begin{equation}\label{eq:Dot Product Magnitudes}
   \vec{A} \cdot \vec{B} = \lVert \vec{A} \rVert \lVert \vec{B} \rVert \cos \left( \theta \right)
 \end{equation}
 
 The second is done by adding the product of each component of each vector.
-\begin{equation} \label{eq:Dot Product Components}
+\begin{equation}\label{eq:Dot Product Components}
   \vec{A} \cdot \vec{B} = A_{x}B_{x} + A_{y}B_{y} + A_{z}B_{z}
 \end{equation}
 
@@ -90,24 +90,24 @@ The second is done by adding the product of each component of each vector.
   This means that when you apply the \nameref{subsubsec:Dot Product} to 2 vectors, you return a \nameref{def:Scalar}.
 \end{remark*}
 
-\paragraph{Properties of \nameref{subsubsec:Dot Product}} \label{par:Dot Product Properties}
+\paragraph{Properties of \nameref{subsubsec:Dot Product}}\label{par:Dot Product Properties}
 \begin{propertylist}
   \item $( \vec{A} )^{2} = \vec{A} \cdot \vec{A}$
   \item $\vec{A} \cdot \vec{B} = \vec{B} \cdot \vec{A}$
 \end{propertylist}
 
-\subsubsection{Vector (Cross) Product} \label{subsubsec:Cross Product}
+\subsubsection{Vector (Cross) Product}\label{subsubsec:Cross Product}
 The \nameref{subsubsec:Cross Product} is the second of two ways to multiply 2 vectors.
 The other is the \nameref{subsubsec:Dot Product}.
 There are 2 ways to calculate the \nameref{subsubsec:Cross Product}.
 
 The first involves using the magnitudes of each vector and multiplying those by the sine of the angle between them.
-\begin{equation} \label{eq:Cross Product Magnitudes}
+\begin{equation}\label{eq:Cross Product Magnitudes}
   \vec{A} \cross \vec{B} = \lVert \vec{A} \rVert \lVert \vec{B} \rVert \sin \theta
 \end{equation}
 
 The second is done by taking the determinant of a $2 \times 2$ or $3 \times 3$ matrix.
-\begin{equation} \label{eq:Cross Product Determinant}
+\begin{equation}\label{eq:Cross Product Determinant}
   \begin{aligned}
     \vec{A} \cross \vec{B}
     &= \det \begin{bmatrix}
@@ -121,7 +121,7 @@ The second is done by taking the determinant of a $2 \times 2$ or $3 \times 3$ m
       B_{x} & B_{y} & B_{z}
     \end{vmatrix} \\
     &= \left( A_{y}B_{z}-A_{z}B_{y} \right) \hat{\imath} - \left( A_{x}B_{z}-A_{z}B_{x} \right) \hat{\jmath} + \left( A_{x}B_{y} - A_{y}B_{x} \right) \hat{k} \\
-    &= \langle A_{y}B_{z}-A_{z}B_{y}, - \left( A_{x}B_{z}+A_{z}B_{x} \right), A_{x}B_{y}-A_{y}B_{x} \rangle
+    &= \bigl\langle A_{y}B_{z}-A_{z}B_{y}, - \left( A_{x}B_{z}+A_{z}B_{x} \right), A_{x}B_{y}-A_{y}B_{x} \bigr\rangle
   \end{aligned}
 \end{equation}
 
@@ -129,7 +129,7 @@ The second is done by taking the determinant of a $2 \times 2$ or $3 \times 3$ m
   This means that when you apply the \nameref{subsubsec:Cross Product} to 2 vectors, you return a \nameref{def:Vector}.
 \end{remark*}
 
-\paragraph{Properties of \nameref{subsubsec:Cross Product}} \label{par:Cross Product Properties}
+\paragraph{Properties of \nameref{subsubsec:Cross Product}}\label{par:Cross Product Properties}
 \begin{propertylist}
   \item $\vec{A} \cross \vec{A} = \vec{0}$
   \item $\vec{A} \cross \vec{B} = - \left( \vec{B} \cross \vec{A} \right)$
