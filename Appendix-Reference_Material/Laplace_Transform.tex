@@ -61,6 +61,13 @@ Multiplication of two signals in the frequency domain is equivalent to a convolu
   \Lapl \bigl\lbrace x(t) * v(t) \bigr\rbrace = X(s) V(s)
 \end{equation}
 
+\subsubsection{Relation to Fourier Transform}\label{subsubsec:Fourier_Transform_Relation}
+The Fourier transform looks and behaves very similarly to the Laplace transform.
+In fact, if $X(\omega)$ exists, then \Cref{eq:Fourier_Laplace_Transform_Relation} holds.
+\begin{equation}\label{eq:Fourier_Laplace_Transform_Relation}
+  X(s) = X(\omega) \vert_{\omega = \frac{s}{j}}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
