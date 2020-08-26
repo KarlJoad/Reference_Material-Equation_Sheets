@@ -30,6 +30,15 @@ The equivalents of this are:
   \SI{1}{\atm} &= \SI{14.696}{\psi}
 \end{align*}
 
+Using this, we can measure pressure, typically with either \nameref{def:Gage_Pressure} or \nameref{def:Vacuum_Pressure}.
+\begin{definition}[Gage Pressure]\label{def:Gage_Pressure}
+  \emph{Gage pressure} is the \nameref{def:Pressure} that a gage reads after being calibrated to some standard pressure, typically one atmosphere.
+  Thus, the actual pressure of something read by the gage is represented by \Cref{eq:Gage_Pressure} below.
+  \begin{equation}\label{eq:Gage_Pressure}
+    \Pressure_{\mathrm{abs}} = \Pressure_{\mathrm{atm}} + \Pressure_{\mathrm{gage}}
+  \end{equation}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
