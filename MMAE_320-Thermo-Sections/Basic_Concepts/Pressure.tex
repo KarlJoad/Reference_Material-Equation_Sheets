@@ -51,6 +51,12 @@ Using this, we can measure pressure, typically with either \nameref{def:Gage_Pre
 Pressure inside a fluid increases linearly with depth.
 This is seen in \Cref{eq:Pressure_in_Fluid}, where $\Delta z$ is the distance between the two measured points.
 
+\begin{equation}\label{eq:Pressure_in_Fluid}
+  \begin{aligned}
+    \Pressure_{\mathrm{below}} &= \Pressure_{\mathrm{above}} + \Density \Gravity \lvert \Delta z \rvert \\
+    &= \Pressure_{\mathrm{above}} + \SpecificWeight \lvert \Delta z \rvert \\
+  \end{aligned}
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex
