@@ -1,4 +1,43 @@
 \subsection{Cross Product}\label{subsec:Cross_Product}
+\begin{definition}[Cross Product]\label{def:Cross_Product}
+  The \emph{cross product} is a way to find a third, resulting, vector that is orthogonal to the two input vectors.
+  To find the value of the cross product, use the equations below:
+  \begin{equation}\label{eq:Cross_Product}
+    \begin{aligned}
+      \langle a, b, c \rangle \cross \langle x, y, z \rangle &=
+      \begin{vmatrix}
+        \ihat & \jhat & \khat \\
+        a & b & c \\
+        x & y & z
+      \end{vmatrix} \\
+      &=
+      \ihat \begin{vmatrix}
+        b & c \\
+        e & f
+      \end{vmatrix} -
+      \jhat \begin{vmatrix}
+        a & c \\
+        d & f
+      \end{vmatrix} +
+      \khat \begin{vmatrix}
+        a & b \\
+        d & e
+      \end{vmatrix} \\
+      &= (bf - ce)\ihat - (af-cd)\jhat + (ae-bd)\khat \\
+      &= \langle vf-ce, af-cd, ae-bd \rangle \\
+    \end{aligned}
+  \end{equation}
+
+  The value of the cross product can also be found by \Cref{eq:Cross_Product_Magnitude}.
+  \begin{equation}\label{eq:Cross_Product_Magnitude}
+    \vec{u} \cross \vec{v} = \magnitude{\vec{u}} \magnitude{\vec{v}} \sin(\theta)
+  \end{equation}
+
+  \begin{remark}[Cross Product Orthogonality]\label{rmk:Cross_Product_Orthogonality}
+    If $\vec{u} \cross \vec{v} = \vec{0}$, then the orthogonal \nameref{def:Vector} is parallel to some other thing.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
