@@ -198,6 +198,66 @@ This only has 2 options:
   Overall, the pressure change and the velocity of the water made very little impact on the total energy in the system, in comparison to the change in potential energy.
 \end{example}
 
+\begin{example}[Lecture 4, Problem 3.14]{Mechanical Energy of Air}
+  Wind is blowing steadily at $\Velocity = \SI{10}{\meter\per\second}$.
+  Determine the mechanical energy of the air per unit mass and the power generation potential of a wind turbine with $d = \SI{60}{\meter}$ diameter blades at that location?
+  Take $\Density_{\mathrm{air}} = \SI{1.25}{\kilo\gram\per\meter\cubed}$.
+  \tcblower{}
+  \textbf{Concepts and Explore:}
+  \begin{itemize}[noitemsep]
+  \item The air is flowing steadily.
+  \item There is no state change, so $\Change{\InternalEnergy} = 0$.
+  \item There is a change in the blades' velocity, $\Change{\KineticEnergy} \neq 0$.
+  \item There is no change in the potential energy of the air, so $\Change{\PotentialEnergy} = 0$.
+  \item There is no pressure change on the different sides of the turbine, so $\Change{\FlowEnergy} = 0$.
+  \end{itemize}
+
+  \begin{align*}
+    \Power &= \FlowRate{\Mass} \\
+    \FlowRate{\Mass} &= \Density_{\mathrm{air}} \FlowRate{\Volume} \\
+    \FlowRate{\Volume} &= \Velocity \left( \pi {\left( \frac{d}{2} \right)}^{2} \right)
+  \end{align*}
+
+  \textbf{Plan:}
+  \begin{enumerate}[noitemsep]
+  \item Solve for $\Change{\SpecificEnergy}$ using $\KineticEnergy$ only.
+  \item Simplify $\FlowRate{\Mass}$.
+  \item Solve for $\Power = \FlowRate{\Mass} \Change{\SpecificEnergy}$.
+  \end{enumerate}
+
+  \textbf{Solve:}
+  \begin{align*}
+    \Change{\SpecificEnergy} &= \frac{1}{2} {(\SI{10}{\meter\per\second})}^{2} \\
+                             &= \SI{50}{\meter\squared\per\second\squared} \\
+                             &= \SI{50}{\joule\per\kilo\gram}
+  \end{align*}
+
+  \begin{align*}
+    \FlowRate{\Mass} &= \Density_{\mathrm{air}} \Velocity \left( \pi {\left( \frac{d}{2} \right)}^{2} \right) \\
+                     &= \SI{1.25}{\kilo\gram\per\cubic\meter} (\SI{10}{\meter\per\second}) \left( \frac{\pi 60^{2}}{4} \right) \\
+                     &= \SI{35343}{\kilo\gram\per\second}
+  \end{align*}
+
+  \begin{align*}
+    \Power &= \FlowRate{\Mass} \Change{\SpecificEnergy} \\
+           &= \SI{35343}{\kilo\gram\per\second} (\SI{50}{\joule\per\kilo\gram}) \\
+           &= \SI{1767150}{\joule\per\second} \\
+           &= \SI{1767}{\kilo\watt}
+  \end{align*}
+
+  \textbf{Validate:}
+  Since we had a straightforward application of the equations, it is likely that the answers make sense.
+  In addition, we did perform some dimensional analysis to figure out the way the units should be put together, which further reinforces the likelihood of this solution being the right one.
+
+  \textbf{Generalize:}
+  Like \Cref{ex:Power of Water}, the value we received only holds true when the air is flowing steadily.
+  If steady flow were not happening, then the received value will fluctuate.
+
+  Most of the power generated through this turbine is done because of the area of the blades that the air is moving through.
+  This happens despite the very low density of air in this problem.
+
+  When looking through the equations, the velocity the air is moving becomes cubed, meaning a small change in velocity will have drastic changes in the power generated.
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
