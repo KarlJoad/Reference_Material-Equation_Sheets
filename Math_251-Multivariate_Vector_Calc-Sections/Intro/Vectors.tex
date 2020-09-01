@@ -66,6 +66,20 @@ Scalar vector multiplication applies the scalar value to every element in the \n
   c \langle x, y, z \rangle = \langle cx, cy, cz \rangle
 \end{equation}
 
+\subsubsection{Magnitude of Vectors}\label{subsubsec:Vector_Magnitude}
+The magnitude of a vector represents the distance from the origin the end of the vector is.
+The equation for the magnitude of a vector is shown in \Cref{eq:Vector_Magnitude}.
+\begin{equation}\label{eq:Vector_Magnitude}
+  \magnitude{\langle x, y, z \rangle} = \sqrt{x^{2} + y^{2} + z^{2}}
+\end{equation}
+
+A nice property of the magnitude of a vector is the way constants can be simplified, shown below.
+\begin{equation*}
+  \magnitude{\vec{u} + \vec{v}} = \magnitude{u} + \magnitude{v}
+\end{equation*}
+\begin{equation*}
+  \magnitude{c \vec{u}} = \magnitude{c} \magnitude{\vec{u}}
+\end{equation*}
 
 %%% Local Variables:
 %%% mode: latex
