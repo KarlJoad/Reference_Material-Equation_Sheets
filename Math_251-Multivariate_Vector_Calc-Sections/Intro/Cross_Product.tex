@@ -38,6 +38,29 @@
   \end{remark}
 \end{definition}
 
+\begin{example}[Lecture 4]{Take Cross Product}
+  Given the vectors $\vec{u} = \langle 3, 4, 1 \rangle$ and $\vec{v} = \langle 1, -2, -1 \rangle$, find their value when they are taken as a cross product.
+  \tcblower{}
+  The first step is rewrite the \nameref{def:Cross_Product} equation into the typical matrix form.
+  \begin{equation*}
+    \langle 3, 4, 1 \rangle \cross \langle 1, -2, -1 \rangle =
+    \begin{vmatrix}
+      \ihat & \jhat & \khat \\
+      3 & 4 & 1 \\
+      1 & -2 & -1
+    \end{vmatrix}
+  \end{equation*}
+
+  Now, we take the determinant of the $3 \times 3$ matrix, and simplify that.
+  \begin{align*}
+    \langle 3, 4, 1 \rangle \cross \langle 1, -2, -1 \rangle &= (-4 - (-2))\ihat - (-3 - 1)\jhat + (-6 - 4) \khat \\
+                                                             &= (-2)\ihat - (-4)\jhat + (-10)\khat \\
+                                                             &= \langle -2, 4, -10 \rangle
+  \end{align*}
+
+  Thus, our solution is $\langle -2, 4, -10 \rangle$.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
