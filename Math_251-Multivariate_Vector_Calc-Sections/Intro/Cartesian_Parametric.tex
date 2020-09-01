@@ -88,6 +88,19 @@ Lastly, $\vec{p}$ is the location where the plane is when both $\vec{v} = \vec{u
 
 Because we have two vectors, $\vec{v}$ and $\vec{u}$, you can define a new, third vector called the \nameref{def:Normal_Vector}.
 
+\begin{definition}[Normal Vector]\label{def:Normal_Vector}
+  A \emph{normal vector} is a vector that is normal (orthogonal) to the surface it was created from.
+  If we work with \Cref{eq:Parametric_Plane}, then the normal vector can be defined as shown below:
+  \begin{equation}\label{eq:Normal_Vector}
+    \vec{n} = \vec{u} \cross \vec{v}
+  \end{equation}
+
+  \begin{remark}[Component Vectors Dot Product Zero]\label{rmk:Component_Vectors_Dot_Product}
+    If you take the \nameref{def:Normal_Vector} and dot it with any point on the \textbf{plane}, then the resulting value will be zero.
+    This is a logical extension to \Cref{prop:Dot_Product_Magnitude_Angle}, as the normal vector $\vec{n}$ has a \SI{90}{\degree} angle to both component vectors, making $\cos(\SI{90}{\degree}) = 0$.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
