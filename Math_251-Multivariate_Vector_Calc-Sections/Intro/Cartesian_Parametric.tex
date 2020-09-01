@@ -51,6 +51,31 @@ However, if $v_{z} = 0$, then the equation below holds instead:
 \end{aligned}
 \end{equation*}
 
+\begin{example}[Lecture 4]{Convert Vector to Parametric Equation}
+  Given the system of equations below, convert it to a parametric equation for a line?
+  \begin{equation*}
+    \begin{cases}
+      x(t) &= 1 + 2t \\
+      y(t) &= 2 + 2t \\
+      z(t) &= 1 + -1t \\
+    \end{cases}
+  \end{equation*}
+  \tcblower{}
+  Here, they ask us to convert this system of equations to a vectorized and parameterized equation for a line, \Cref{eq:Parametric_Line}.
+  From just inspection, we can see the obvious solution here. \\
+  First, the constants form the vector $\vec{p}$.
+  \begin{equation*}
+    \vec{p} = \langle 1, 2, 1 \rangle
+  \end{equation*}
+
+  Next, the other terms form the scaled vector $t\vec{v}$.
+  \begin{equation*}
+    t\vec{v} = \langle 2t, 2t, -1t \rangle = t \langle 2, 2, -1 \rangle
+  \end{equation*}
+
+  Thus, the parameterized equation for this line is $\vec{r}(t) = \langle 1, 2, 1 \rangle + t \langle 2, 2, -1 \rangle$.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
