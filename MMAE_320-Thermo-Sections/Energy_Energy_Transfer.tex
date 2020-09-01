@@ -142,6 +142,62 @@ This only has 2 options:
 \item \nameref{def:Work} done on the system by the surroundings.
 \end{enumerate}
 
+\begin{example}[Lecture 4, Problem 3.12]{Power of Water}
+  Consider a river flowing towards a lake at an average velocity of $v_{\mathrm{River}} = \SI{3}{\meter\per\second}$ and a volume flow rate of $\FlowRate{\Volume} = \SI{500}{\cubic\meter\per\second}$.
+  The \SI{500}{\cubic\meter\per\second} is at a location \SI{90}{\meter} above the lake's surface.
+  Determine the total mechanical energy in the river water per unit mass and the power generation potential of the entire river?
+  \tcblower{}
+  The question is really asking us to find the \nameref{def:Specific_Energy} and the power generation.
+
+  \textbf{Assumption:} Assume the flow is constant, that we are in steady flow.
+
+  \textbf{Concepts and Explore:}\\
+  There is no state change, likely meaning $\Change{\InternalEnergy} = 0$.
+  The velocity of the water within the lake should be $v_{\mathrm{Lake}} = 0$ ($\Change{\KineticEnergy} \neq 0$).
+  There is a potential energy change, $\Change{\PotentialEnergy} \neq 0$.
+  There is a flow, but the only pressure involved is $\Pressure_{atm}$, and the height difference is so small that the change in pressure is negligible.
+
+  \begin{equation*}
+    \Power = \FlowRate{\Mass} \Change{\SpecificEnergy}
+  \end{equation*}
+
+  To find $\FlowRate{\Mass}$, we can multiply the density of water with the volume flow rate of the river, to find the mass flow rate.
+  \begin{equation*}
+    \FlowRate{\Mass} = \Density_{H_{2}O} \FlowRate{\Volume}
+  \end{equation*}
+
+  \textbf{Plan:}
+  \begin{enumerate}[noitemsep]
+  \item Solve for $\Change{\SpecificEnergy}$ using $\Change{\KineticEnergy} + \Change{\PotentialEnergy}$.
+  \item Solve for mass flow rate, $\FlowRate{\Mass} = \Density_{H_{2}O} \FlowRate{\Volume}$.
+  \item Solve for $\Power = \FlowRate{\Mass} \Change{\SpecificEnergy}$.
+  \end{enumerate}
+
+  \textbf{Solve:}
+  \begin{align*}
+    \Change{\SpecificEnergy} &= \Change{\KineticEnergy} + \Change{\PotentialEnergy} \\
+                             &= \frac{{(\SI{3}{\meter\per\second})}^{2} + {(\SI{0}{\meter\per\second})}^{2}}{2} + \SI{9.81}{\meter\per\second\squared} (\SI{90}{\meter} - \SI{0}{\meter}) \\
+    &= \SI{4.5}{\meter\squared\per\second\squared} + \SI{882}{\meter\squared\per\second\squared} = \SI{886.5}{\joule\per\kilo\gram}
+  \end{align*}
+
+  \begin{align*}
+    \FlowRate{\Mass} &= \Density \FlowRate{\Volume} \\
+                     &= \SI{1000}{\kilo\gram\per\meter\cubed} (\SI{500}{\meter\cubed\per\second}) \\
+                     &= \SI{500000}{\kilo\gram\per\second}
+  \end{align*}
+
+  \begin{align*}
+    \Power &= \FlowRate{\Mass} \Change{\SpecificEnergy} \\
+           &= \SI{886.5}{\joule\per\kilogram} (\SI{500000}{\kilo\gram\per\second}) \\
+           &= \SI{444000000}{\watt} \\
+           &= \SI{444}{\mega\watt}
+  \end{align*}
+
+  \textbf{Generalize:}
+  Most of the energy in this problem came from the water falling in height.
+  Overall, the pressure change and the velocity of the water made very little impact on the total energy in the system, in comparison to the change in potential energy.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
