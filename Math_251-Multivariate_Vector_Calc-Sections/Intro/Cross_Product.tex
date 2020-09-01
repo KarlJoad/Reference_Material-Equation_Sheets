@@ -69,6 +69,48 @@ The \nameref{def:Unit_Vector}s behave like every other vector given to the \name
 \item $\khat \cross \ihat = \jhat$
 \end{enumerate}
 
+\subsubsection{Properties of the Cross Product}\label{subsubsec:Cross_Product_Properties}
+For all of the properties listed below, assume:
+\begin{itemize}[noitemsep]
+\item $\vec{u} = \langle a, b, c \rangle$
+\item $\vec{v} = \langle x, y, z \rangle$
+\item $\vec{w} = \vec{u} \cross \vec{v}$
+\end{itemize}
+
+\begin{propertylist}
+\item
+  \begin{equation*}
+    \text{If } \vec{v} \perp \vec{u} \text{, then } \vec{u} \cdot (\vec{u} \cross \vec{v}) = \vec{0}
+  \end{equation*}
+\item Another way to define the cross product's magnitude.
+  \begin{equation*}
+    \magnitude{\vec{u} \cross \vec{v}} = \magnitude{\vec{u}} \magnitude{\vec{v}} \sin(\theta)
+  \end{equation*}
+\item Scalar multiplication associativity.
+  \begin{equation*}
+    (c \vec{u}) \cross \vec{v} = c(\vec{u} \cross \vec{v})
+  \end{equation*}
+\item Distributivity of the \nameref{def:Cross_Product}.
+  \begin{equation*}
+    \vec{u} \cross (\vec{v} + \vec{w}) = (\vec{u} \cross \vec{v}) + (\vec{u} \cross \vec{w})
+  \end{equation*}
+\item Distributivity of the \nameref{def:Cross_Product}.
+  \begin{equation*}
+    (\vec{u} + \vec{v}) \cross \vec{w} = (\vec{u} \cross \vec{w}) + (\vec{v} \cross \vec{w})
+  \end{equation*}
+\item \nameref{def:Cross_Product} identity.
+  \begin{equation*}
+    \vec{0} \cross \vec{u} = \vec{0}
+  \end{equation*}
+\item Taking the cross product of a vector with itself.
+  \begin{equation*}
+    \ihat \cross \ihat = \vec{0}
+  \end{equation*}
+\item The order of the operands in the \nameref{def:Cross_Product} operation can be reversed, and negated to yield the same value.
+  \begin{equation*}
+    \vec{u} \cross \vec{v} = -(\vec{v} \cross \vec{u})
+  \end{equation*}
+\end{propertylist}
 
 %%% Local Variables:
 %%% mode: latex
