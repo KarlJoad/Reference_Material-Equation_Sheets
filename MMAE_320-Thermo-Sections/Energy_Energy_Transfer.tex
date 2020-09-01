@@ -121,6 +121,15 @@ We are also interested in the \nameref{def:Specific_Energy} of the system.
   \end{equation}
 \end{definition}
 
+The \nameref{def:Specific_Energy} of a system can be used to find the change in energy per unit time, or the \nameref{def:Power}.
+\begin{equation}\label{eq:Energy_Flow_Rate}
+  \begin{aligned}
+    \Change{\FlowRate{\TotalEnergy}} &= \FlowRate{\Mass} \Change{\SpecificEnergy} \\
+    \Power &= \FlowRate{\Mass} \Change{\SpecificEnergy} \\
+  \end{aligned}
+\end{equation}
+where $\FlowRate{\Mass}$ is the mass flow rate, seen by \Cref{eq:Mass_Flow_Rate}
+
 
 %%% Local Variables:
 %%% mode: latex
