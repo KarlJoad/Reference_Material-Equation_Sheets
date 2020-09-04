@@ -1,0 +1,113 @@
+\section{Complex Numbers}\label{sec:Complex_Numbers}
+\begin{definition}[Complex Number]\label{def:Complex_Number}
+  A \emph{complex number} is a hyper real number system.
+  This means that two real numbers, $a, b \in \RealNumbers$, are used to construct the set of complex numbers, denoted $\ComplexNumbers$.
+
+  A complex number is written, in Cartesian form, as shown in \Cref{eq:Complex_Number} below.
+  \begin{equation}\label{eq:Complex_Number}
+    z = a + ib
+  \end{equation}
+  where
+  \begin{equation}\label{eq:Imaginary_Value}
+    i = \sqrt{-1}
+  \end{equation}
+
+  \begin{remark*}[$i$ vs. $j$ for Imaginary Numbers]
+    Complex numbers are generally denoted with either $i$ or $j$.
+    Since this is an appendix section, I will denote complex numbers with $i$, to make it more general.
+    However, electrical engineering regularly makes use of $j$ as the imaginary value.
+    This is because alternating current $i$ is already taken, so $j$ is used as the imaginary value instad.
+  \end{remark*}
+\end{definition}
+
+\subsection{Binary Operations}\label{subsec:Binary_Operations}
+The question here is if we are given 2 complex numbers, how should these binary operations work such that we end up with just one resulting complex number.
+There are only 2 real operations that we need to worry about, and the other 3 can be defined in terms of these two:
+\begin{enumerate}[noitemsep]
+\item \nameref{subsubsec:Complex_Number-Addition}
+\item \nameref{subsubsec:Complex_Number-Multiplication}
+\end{enumerate}
+
+For the sections below, assume:
+\begin{align*}
+  z &= x_{1} + y_{1}i \\
+  w &= x_{2} + y_{2}i
+\end{align*}
+
+\subsubsection{Addition}\label{subsubsec:Complex_Number-Addition}
+The addition operation, still denoted with the $+$ symbol is done pairwise.
+You should treat $i$ like a variable in regular algebra, and not move it around.
+
+\begin{equation}\label{eq:Complex_Number-Addition}
+  z+w \coloneqq (x_{1}+x_{2}) + i(y_{1}+y_{2})
+\end{equation}
+
+\subsubsection{Multiplication}\label{subsubsec:Complex_Number-Multiplication}
+The multiplication operation, like in traditional algebra, usually lacks a multiplication symbol.
+You should treat $i$ like a variable in regular algebra, and not move it around.
+
+\begin{equation}\label{eq:Complex_Number-Addition}
+  \begin{aligned}
+    zw &\coloneqq (x_{1} + iy_{1}) (x_{2} + iy_{2}) \\
+    &\coloneqq (x_{1}x_{2}) + (iy_{1}x_{2}) + (ix_{1}y_{2}) + (i^{2}y_{1}y_{2}) \\
+    &\coloneqq (x_{1}x_{2}) + i(y_{1}x_{2} + x_{1}y_{2}) + (-1 y_{1}y_{2}) \\
+    &\coloneqq (x_{1}x_{2} - y_{1}y_{2}) + i(y_{1}x_{2} + x_{1}y_{2}) \\
+  \end{aligned}
+\end{equation}
+
+\begin{equation} \label{eq:Exponential to Rectangular}
+  A e^{-ix} = A \left[ \cos \left( x \right) + i\sin \left( x \right) \right]
+\end{equation}
+
+\subsection{Complex Conjugates}\label{app:Complex_Conjugates}
+If we have a complex number as shown below,
+\begin{equation*}
+  z = a \pm bi
+\end{equation*}
+
+then, the conjugate is denoted and calculated as shown below.
+\begin{equation}\label{eq:Complex_Conjugates}
+  \overline{z} = a \mp bi
+\end{equation}
+
+\begin{definition}[Complex Conjugate]
+  The conjugate of a complex number is called its \emph{complex conjugate}.
+  The complex conjugate of a complex number is the number with an equal real part and an imaginary part equal in magnitude but opposite in sign.
+\end{definition}
+
+The complex conjugate can also be denoted with an asterisk ($*$).
+This is generally done for complex functions, rather than single variables.
+\begin{equation}\label{eq:Complex_Conjugates_Asterisk}
+  z^{*} = \overline{z}
+\end{equation}
+
+\subsubsection{Complex Conjugates of Exponentials}\label{app:Exponential_Complex_Conjugates}
+\begin{equation}\label{eq:Exponential_Complex_Conjugates-e}
+  \overline{e^{z}} = e^{\overline{z}}
+\end{equation}
+
+\begin{equation}\label{eq:Exponential_Complex_Conjugates-log}
+  \overline{\log(z)} = \log(\overline{z})
+\end{equation}
+
+\subsubsection{Complex Conjugates of Sinusoids}\label{app:Sinusoid_Complex_Conjugates}
+Since sinusoids can be represented by complex exponentials, as shown in \Cref{subsec:Euler Equivalents}, we could calculate their complex conjugate.
+
+\begin{equation}\label{eq:Sinusoid_Complex_Conjugate-Cosine}
+  \begin{aligned}
+    \overline{\cos(x)} &= \cos(x) \\
+    &= \frac{1}{2} \left( e^{ix} + e^{-ix} \right) \\
+  \end{aligned}
+\end{equation}
+
+\begin{equation}\label{eq:Sinusoid_Complex_Conjugate-Sine}
+  \begin{aligned}
+    \overline{\sin(x)} &= \sin(x) \\
+    &= \frac{1}{2i} \left( e^{ix} - e^{-ix} \right) \\
+  \end{aligned}
+\end{equation}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
+%%% End:
