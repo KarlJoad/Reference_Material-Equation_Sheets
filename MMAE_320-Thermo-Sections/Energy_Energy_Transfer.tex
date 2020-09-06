@@ -259,6 +259,28 @@ This only has 2 options:
   When looking through the equations, the velocity the air is moving becomes cubed, meaning a small change in velocity will have drastic changes in the power generated.
 \end{example}
 
+\subsection{Adiabatic Processes}\label{subsec:Adiabatic_Processes}
+\nameref{def:Heat} is a form of energy transfer.
+However, there are two types of processes:
+\begin{enumerate}[noitemsep]
+\item Processes that have \textbf{no} heat transfer (\nameref{def:Adiabatic}), $\Heat = 0$.
+\item Processes that \textbf{have} heat transfer (Non-\nameref{def:Adiabatic}), $\Heat \neq 0$.
+\end{enumerate}
+
+\begin{definition}[Adiabatic]\label{def:Adiabatic}
+  A process is \emph{adiabatic} when there is \textbf{no} transfer of \nameref{def:Heat} whatsoever.
+  This can be achieved by a system that is heavily insulated, preventing a temperature difference from causing a heat transfer.
+  Adiabatic processes yield the expression below:
+  \begin{equation}\label{eq:Adiabatic}
+    \Heat = 0
+  \end{equation}
+
+  \begin{remark}
+    An \nameref{def:Adiabatic} process does \textbf{not} mean that there cannot be work.
+    A process can be both adiabatic and have work done on it, meaning there is still a change in energy in the system.
+  \end{remark}
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
