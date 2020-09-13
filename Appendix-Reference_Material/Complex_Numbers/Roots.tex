@@ -16,6 +16,45 @@ To demonstrate that equation, $z = r \bigl( \cos(\theta) + i \sin(\theta) \bigr)
 \end{equation}
 A $w$ that satisfies \Cref{eq:Complex_Root_Requirement} is an $n$th root of $z$.
 
+\begin{example}[Lecture 2, Example 2]{Roots of a Complex Number}
+  Find the cube roots of $z = -\sqrt{3} + i$?
+  \tcblower{}
+  From \Cref{ex:Find Polar Coordinates from Cartesian Coordinates}, we know that the polar form of $z$ is
+  \begin{equation*}
+    z = 2 \biggl( \cos \left( \frac{5 \pi}{6} + 2 \pi k \right) + i \sin \left( \frac{5 \pi}{6} + 2 \pi k \right) \biggr)
+  \end{equation*}
+
+  Because the question is asking for \textbf{cube} roots, that means there are 3 roots.
+  Using \Cref{eq:Complex_Roots}, we can find the general form of the roots.
+  \begin{align*}
+    z &= 2 \biggl( \cos \left( \frac{5 \pi}{6} + 2 \pi k \right) + i \sin \left( \frac{5 \pi}{6} + 2 \pi k \right) \biggr) \\
+    z^{\frac{1}{3}} &= \sqrt[3]{2} \left( \cos \Biggl( \frac{1}{3} \left( \frac{5 \pi}{6} + 2 \pi k \right) \Biggr) + i \sin \Biggl( \frac{1}{3} \left( \frac{5 \pi}{6} + 2 \pi k \right)  \Biggr) \right) \\
+    &= \sqrt[3]{2} \biggl( \cos \left( \frac{\pi + 12 \pi k}{18} \right) + i \sin \left( \frac{\pi + 12 \pi k}{18} \right) \biggr)
+  \end{align*}
+
+  Now that we have a general equation for \textbf{all} possible cube roots, we need to find all the unique ones.
+  This is because after $k=n$ roots, the roots start to repeat themselves, because the $2 \pi k$ part of the expression becomes effective, making the angle a full rotation.
+  We simply enumerate $k \in \PositiveInts$, so $k = 0, 1, 2, \ldots$.
+  \begin{align*}
+    \shortintertext{k = 0}
+    \sqrt[3]{2} \biggl( \cos \left( \frac{\pi + 12 \pi (0)}{18} \right) + i \sin \left( \frac{\pi + 12 \pi (0)}{18} \right) \biggr) &= \sqrt[3]{2} \biggl( \cos \left( \frac{\pi}{18} \right) + i \sin \left( \frac{\pi}{18} \right) \biggr) \\
+    \shortintertext{k = 1}
+    \sqrt[3]{2} \biggl( \cos \left( \frac{\pi + 12 \pi (1)}{18} \right) + i \sin \left( \frac{\pi + 12 \pi (1)}{18} \right) \biggr) &= \sqrt[3]{2} \biggl( \cos \left( \frac{13 \pi}{18} \right) + i \sin \left( \frac{13 \pi}{18} \right) \biggr) \\
+    \shortintertext{k = 2}
+    \sqrt[3]{2} \biggl( \cos \left( \frac{\pi + 12 \pi (2)}{18} \right) + i \sin \left( \frac{\pi + 12 \pi (2)}{18} \right) \biggr) &= \sqrt[3]{2} \biggl( \cos \left( \frac{25 \pi}{18} \right) + i \sin \left( \frac{25 \pi}{18} \right) \biggr) \\
+    \shortintertext{k = 3}
+    \sqrt[3]{2} \biggl( \cos \left( \frac{\pi + 12 \pi (3)}{18} \right) + i \sin \left( \frac{\pi + 12 \pi (3)}{18} \right) \biggr) &= \sqrt[3]{2} \biggl( \cos \left( \frac{\pi}{18} + \frac{36 \pi}{18} \right) + i \sin \left( \frac{\pi}{18} + \frac{36 \pi}{18} \right) \biggr) \\
+                                                                                                                                    &= \sqrt[3]{2} \biggl( \cos \left( \frac{\pi}{18} + 2 \pi \right) + i \sin \left( \frac{\pi}{18} + 2 \pi \right) \biggr) \\
+                                                                                                                                      &= \sqrt[3]{2} \biggl( \cos \left( \frac{\pi}{18} \right) + i \sin \left( \frac{\pi}{18} \right) \biggr)
+  \end{align*}
+
+  Thus, the 3 cube roots of $z$ are:
+  \begin{align*}
+    z_{1}^{\frac{1}{3}} &= \sqrt[3]{2} \biggl( \cos \left( \frac{\pi}{18} \right) + i \sin \left( \frac{\pi}{18} \right) \biggr) \\
+    z_{2}^{\frac{1}{3}} &= \sqrt[3]{2} \biggl( \cos \left( \frac{13 \pi}{18} \right) + i \sin \left( \frac{13 \pi}{18} \right) \biggr) \\
+    z_{3}^{\frac{1}{3}} &= \sqrt[3]{2} \biggl( \cos \left( \frac{25 \pi}{18} \right) + i \sin \left( \frac{25 \pi}{18} \right) \biggr)
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
