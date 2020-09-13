@@ -76,6 +76,33 @@ First, start by defining some expressions so that we can prove some of these pro
   \end{align*}
 \end{propertylist}
 
+\Cref{prop:Complex_Conjugate_Split} can be proven by just performing a simplification.
+\begin{proof}[Prove \Cref*{prop:Complex_Conjugate_Split}]
+  Let $z$ and $w$ be complex numbers ($z, w \in \ComplexNumbers$) where $z = x_{1} + iy_{1}$ and $w = x_{2} + iy_{2}$.
+  Prove that $\Conjugate{z + w} = \Conjugate{z} + \Conjugate{w}$.
+
+  We start by simplifying the left-hand side of the equation ($\Conjugate{z+w}$).
+  \begin{align*}
+    \Conjugate{z + w} &= \Conjugate{(x_{1} + iy_{1}) + (x_{2} + iy_{2})} \\
+                     &= \Conjugate{(x_{1} + x_{2}) + i(y_{1} + y_{2})} \\
+                     &= (x_{1} + x_{2}) - i(y_{1} + y_{2}) \\
+  \end{align*}
+
+  Now, we simplify the other side ($\Conjugate{z} + \Conjugate{w}$).
+  \begin{align*}
+    \Conjugate{z} + \Conjugate{w} &= \Conjugate{(x_{1} + iy_{1})} + \Conjugate{(x_{2} + iy_{2})} \\
+                                &= (x_{1} - iy_{1}) + (x_{2} - iy_{2}) \\
+                                &= (x_{1} + x_{2}) - i(y_{1} + y_{2})
+  \end{align*}
+
+  We can see that both sides are equivalent, thus the addition portion of \Cref{prop:Complex_Conjugate_Split} is correct.
+
+  \begin{remark*}
+    The proof of the multiplication portion of \Cref{prop:Complex_Conjugate_Split} is left as an exercise to the reader.
+    However, that proof is quite similar to this proof of addition.
+  \end{remark*}
+\end{proof}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: shared
