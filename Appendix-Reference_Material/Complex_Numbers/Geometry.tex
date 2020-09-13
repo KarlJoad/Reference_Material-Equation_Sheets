@@ -39,6 +39,34 @@ This hypotenuse is the distance the point $p$ is from the origin, refered to as 
 \item The \emph{Law of Moduli} states that $\lvert z w \rvert = \lvert z \rvert \lvert w \rvert$.\label{prop:Law_of_Moduli}.
 \end{propertylist}
 
+We can prove \Cref{prop:Law_of_Moduli} using an algebraic identity.
+\begin{proof}[Prove \Cref*{prop:Law_of_Moduli}]
+  Let $z$ and $w$ be complex numbers ($z, w \in \ComplexNumbers$).
+  We are asked to prove
+  \begin{equation*}
+    \lvert z w \rvert = \lvert z \rvert \lvert w \rvert
+  \end{equation*}
+
+  But, it is actually easier to prove
+  \begin{equation*}
+    {\lvert z w \rvert}^{2} = {\lvert z \rvert}^{2} {\lvert w \rvert}^{2}
+  \end{equation*}
+
+  We start by simplifying the ${\lvert z w \rvert}^{2}$ equation above.
+  \begin{align*}
+    {\lvert z w \rvert}^{2} &= {\lvert z \rvert}^{2} {\lvert w \rvert}^{2} \\
+    \intertext{Using the definition of the \nameref{def:Complex_Number_Modulus} of a \nameref{def:Complex_Number} in \Cref{eq:Complex_Number_Modulus}, we can expand the modulus.}
+                            &= (z w) (\Conjugate{z w}) \\
+    \intertext{Using \Cref{prop:Complex_Conjugate_Split} for multiplication allows us to do the next step.}
+                            &= (z w) (\Conjugate{z} \Conjugate{w}) \\
+    \intertext{Using Multiplicative Associativity and Multiplicative Commutativity, we can simplify this further.}
+                            &= (z \Conjugate{z}) (w \Conjugate{w}) \\
+                            &= {\lvert z \rvert}^{2} {\lvert w \rvert}^{2}
+  \end{align*}
+
+  Note how we never needed to define $z$ or $w$, so this is as general a result as possible.
+\end{proof}
+
 
 %%% Local Variables:
 %%% mode: latex
