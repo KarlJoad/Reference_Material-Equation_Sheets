@@ -4,6 +4,25 @@ The traditional real-number natural logarithm $\ln$ needs to be redefined to its
 
 With that denotational change, we can now use $\ln$ for the \nameref{def:Complex_Logarithm}.
 
+\begin{definition}[Complex Logarithm]\label{def:Complex_Logarithm}
+  The \emph{complex logarithm} is defined in \Cref{eq:Complex_Logarithm}.
+  The only requirement for this equation to hold true is that $w \neq 0$.
+
+  \begin{equation}\label{eq:Complex_Logarithm}
+    \begin{aligned}
+      e^{z} &= w \\
+      z &= \ln(w) \\
+      &= \log_{e} \Modulus{w} + i \arg(w)
+    \end{aligned}
+  \end{equation}
+
+  \begin{remark}
+    The \nameref{def:Complex_Logarithm} is different than it's purely-real cousin because we allow negative numbers to be input.
+    This means it is more general, but we must lose the precision of the purely-real logarithm.
+    This means that each nonzero number has infinitely many logarithms.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
