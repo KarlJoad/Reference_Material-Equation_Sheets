@@ -46,6 +46,38 @@ In the case of \Cref{eq:Complex_Exponential}, $z$ can be presented in either Car
   \end{align*}
 \end{example}
 
+\begin{example}[Lecture 3]{Simplify Complex Exponential Exponent}
+  Given $z = e^{-e^{-i}}$, what is this expression in polar form, what is its \nameref{def:Complex_Number_Modulus}, its \nameref{def:Complex_Number_Argument}, and its \nameref{def:Principal_Argument}?
+  \tcblower{}
+  We start by simplifying the exponent of the base exponential, i.e.\ $e^{-i}$.
+  \begin{align*}
+    e^{-i} &= e^{0 - i} \\
+           &= e^{0} \bigl( \cos(-1) + i \sin(-1) \bigr) \\
+           &= 1 \bigl( \cos(-1) + i \sin(-1) \bigr)
+  \end{align*}
+
+  Now, with that exponent simplified, we can solve the main question.
+  \begin{align*}
+    e^{-e^{-i}} &= e^{-1 \bigl( \cos(-1) + i \sin(-1) \bigr)} \\
+                &= e^{-1 \bigl( \cos(1) - i \sin(1) \bigr)} \\
+    &= e^{-\cos(1) + i \sin(1)} \\
+    \intertext{If we refer back to \Cref{eq:Complex_Exponential}, then it becomes obvious what $x$ and $y$ are.}
+    x &= -\cos(1) \\
+    y &= \sin(1) \\
+    e^{-e^{-i}} &= e^{-\cos(1)} \Bigl( \cos \bigl( \sin(1) \bigr) + i \sin \bigl( \sin(1) \bigr) \Bigr)
+  \end{align*}
+
+  Now that we have ``simplified'' this exponential, we can solve the other 3 questions by \textbf{observation}.
+  \begin{align*}
+    \Modulus{e^{-e^{-i}}} &= \Modulus{e^{-\cos(1)} \Bigl( \cos \bigl( \sin(1) \bigr) + i \sin \bigl( \sin(1) \bigr) \Bigr)} \\
+                          &= e^{-\cos(1)} \\
+    \arg \left( e^{-e^{-i}} \right) &= \arg \left( e^{-\cos(1)} \Bigl( \cos \bigl( \sin(1) \bigr) + i \sin \bigl( \sin(1) \bigr) \Bigr) \right) \\
+                          &= \sin(1) + 2 \pi k \\
+    \PrincipalArg \left( e^{-e^{-i}} \right) &= \PrincipalArg \left( e^{-\cos(1)} \Bigl( \cos \bigl( \sin(1) \bigr) + i \sin \bigl( \sin(1) \bigr) \Bigr) \right) \\
+                          &= \sin(1)
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
