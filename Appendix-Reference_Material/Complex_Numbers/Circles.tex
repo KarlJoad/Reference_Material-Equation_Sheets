@@ -5,6 +5,28 @@ We need to define both a center and a radius, just like with regular purely real
   \lvert z - a \rvert = r
 \end{equation}
 
+\begin{example}[Lecture 2, Example 1]{Convert to Circle}
+  Given the expression below, find the location of the center of the circle and the radius of the circle?
+  \begin{equation*}
+    \lvert 5 iz + 10 \rvert = 7
+  \end{equation*}
+  \tcblower{}
+  This is just a matter of simplification and moving terms around.
+  \begin{align*}
+    \lvert 5 iz + 10 \rvert &= 7 \\
+    \lvert 5i (z + \frac{10}{5i}) \rvert &= 7 \\
+    \lvert 5i (z + \frac{2}{i}) \rvert &= 7 \\
+    \lvert 5i (z + \frac{2}{i} \frac{-i}{-i}) \rvert &= 7 \\
+    \lvert 5i (z - 2i) \rvert &= 7 \\
+    \intertext{Now using the Law of Moduli (\Cref{prop:Law_of_Moduli}) $\lvert a b \rvert = \lvert a \rvert \lvert b \rvert$, we can simplify out the extra imaginary term.}
+    \lvert 5i \rvert \lvert z-2i \rvert &= 7 \\
+    5 \lvert z - 2i \rvert &= 7 \\
+    \lvert z - 2i \rvert = \frac{7}{5}
+  \end{align*}
+
+  Thus, the circle formed by the equation $\lvert 5 iz + 10 \rvert = 7$ is actually $\lvert z - 2i \rvert = \frac{7}{5}$, with a center at $a = 2i$ and a radius of $\frac{7}{5}$.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
