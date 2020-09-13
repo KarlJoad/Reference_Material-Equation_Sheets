@@ -84,6 +84,17 @@ For division, the radii are divided by each other, and the angles are subtracted
   \frac{r_{1} \bigl( \cos(\theta) + i \sin(\theta) \bigr)}{r_{2} \bigl( \cos(\phi) + i \sin(\phi) \bigr)} = \frac{r_{1}}{r_{2}} \bigl( \cos(\theta - \phi) + i \sin(\theta - \phi) \bigr)
 \end{equation}
 
+\paragraph{Exponentiation}\label{par:Polar_Form_Exponentiation}
+Because exponentiation is defined to be repeated multiplication, \Cref{par:Polar_Form_Multiplication} applies.
+That this generalization is true was proven by de Moiver, and is called \nameref{def:de_Moivers_Law}.
+
+\begin{definition}[de Moiver's Law]\label{def:de_Moivers_Law}
+  Given a complex number $z$, $z \in \ComplexNumbers$ and a rational number $n$, $n \in \RationalNumbers$, the exponentiation of $z^{n}$ is defined as \Cref{eq:Polar_Form_Exponentiation}.
+
+  \begin{equation}\label{eq:Polar_Form_Exponentiation}
+    z^{n} = r^{n} \bigl( \cos(n \theta) + i \sin(n \theta) \bigr)
+  \end{equation}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
