@@ -1,4 +1,37 @@
 \subsection{Binary Operations}\label{subsec:Binary_Operations}
+The question here is if we are given 2 complex numbers, how should these binary operations work such that we end up with just one resulting complex number.
+There are only 2 real operations that we need to worry about, and the other 3 can be defined in terms of these two:
+\begin{enumerate}[noitemsep]
+\item \nameref{subsubsec:Complex_Number-Addition}
+\item \nameref{subsubsec:Complex_Number-Multiplication}
+\end{enumerate}
+
+For the sections below, assume:
+\begin{align*}
+  z &= x_{1} + iy_{1} \\
+  w &= x_{2} + iy_{2}
+\end{align*}
+
+\subsubsection{Addition}\label{subsubsec:Complex_Number-Addition}
+The addition operation, still denoted with the $+$ symbol is done pairwise.
+You should treat $i$ like a variable in regular algebra, and not move it around.
+
+\begin{equation}\label{eq:Complex_Number-Addition}
+  z+w \coloneqq (x_{1}+x_{2}) + i(y_{1}+y_{2})
+\end{equation}
+
+\subsubsection{Multiplication}\label{subsubsec:Complex_Number-Multiplication}
+The multiplication operation, like in traditional algebra, usually lacks a multiplication symbol.
+You should treat $i$ like a variable in regular algebra, and not move it around.
+
+\begin{equation}\label{eq:Complex_Number-Addition}
+  \begin{aligned}
+    zw &\coloneqq (x_{1} + iy_{1}) (x_{2} + iy_{2}) \\
+    &= (x_{1}x_{2}) + (iy_{1}x_{2}) + (ix_{1}y_{2}) + (i^{2}y_{1}y_{2}) \\
+    &= (x_{1}x_{2}) + i(y_{1}x_{2} + x_{1}y_{2}) + (-1 y_{1}y_{2}) \\
+    &= (x_{1}x_{2} - y_{1}y_{2}) + i(y_{1}x_{2} + x_{1}y_{2}) \\
+  \end{aligned}
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex
