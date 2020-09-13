@@ -4,6 +4,16 @@ The definition of an exponential with a \nameref{def:Complex_Number} as its expo
   e^{z} = e^{x + iy} = e^{x} \bigl( \cos(y) + i \sin(y) \bigr)
 \end{equation}
 
+If instead of $e$ as the base, we have some value $a$, then we have \Cref{eq:Complex_Exponential_Diff_Base}.
+\begin{equation}\label{eq:Complex_Exponential_Diff_Base}
+  \begin{aligned}
+    a^{z} &= e^{z \ln(a)} \\
+    &= e^{\Real{z \ln(a)}} \Bigl( \cos \bigl(\Imag{z \ln(a)} \bigr) + i \sin \bigl(\Imag{z \ln(a)} \bigl) \Bigr)
+  \end{aligned}
+\end{equation}
+
+In the case of \Cref{eq:Complex_Exponential}, $z$ can be presented in either Cartesian or polar form, they are equivalent.
+
 
 %%% Local Variables:
 %%% mode: latex
