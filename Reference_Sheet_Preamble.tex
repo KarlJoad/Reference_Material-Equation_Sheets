@@ -138,31 +138,44 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 }
 
 % Redefine the 'end of proof' symbol to be a black square, not blank
-\renewcommand\qedsymbol{$\blacksquare$} % Change proofs to have black square at end
+\renewcommand{\qedsymbol}{$\blacksquare$} % Change proofs to have black square at end
 
+% Common Mathematical Functions
+\newcommand{\Abs}[1]{\ensuremath{\lvert #1 \rvert}}
+
+% Complex Numbers functions
 \renewcommand{\Re}{\operatorname{Re}} % Redefine to use the command, but not the fraktur version
 \renewcommand{\Im}{\operatorname{Im}} % Redefine to use the command, but not the fraktur version
+\newcommand{\Real}[1]{\ensuremath{\Re \lbrace #1 \rbrace}}
+\newcommand{\Imag}[1]{\ensuremath{\Im \lbrace #1 \rbrace}}
+\newcommand{\Conjugate}[1]{\ensuremath{\overline{#1}}}
+\newcommand{\Modulus}[1]{\ensuremath{\lvert #1 \rvert}}
+\DeclareMathOperator{\PrincipalArg}{\ensuremath{Arg}}
+
 % Math Operators that are useful to abstract the written math away to one spot
-\DeclareMathOperator{\RealNumbers}{\mathbb{R}}
-\newcommand{\TextRealNumbers}{$\RealNumbers$}
-\DeclareMathOperator{\AllIntegers}{\mathbb{Z}}
-\newcommand{\TextAllIntegers}{$\AllIntegers$}
-\DeclareMathOperator{\PositiveInts}{\mathbb{Z}^{+}}
-\newcommand{\TextPositiveInts}{$\PositiveInts$}
-\DeclareMathOperator{\NegativeInts}{\mathbb{Z}^{-}}
-\newcommand{\TextNegativeInts}{$\NegativeInts$}
-\DeclareMathOperator{\NaturalNumbers}{\mathbb{N}}
-\newcommand{\TextNaturalNumbers}{$\NaturalNumbers$}
-\DeclareMathOperator{\ComplexNumbers}{\mathbb{C}}
-\newcommand{\TextComplexNumbers}{$\ComplexNumbers$}
-\DeclareMathOperator{\RationalNumbers}{\mathbb{Q}}
-\newcommand{\TextRationalNumbers}{$\RationalNumbers$}
+% Number Sets
+\DeclareMathOperator{\RealNumbers}{\ensuremath{\mathbb{R}}}
+\DeclareMathOperator{\AllIntegers}{\ensuremath{\mathbb{Z}}}
+\DeclareMathOperator{\PositiveInts}{\ensuremath{\mathbb{Z}^{+}}}
+\DeclareMathOperator{\NegativeInts}{\ensuremath{\mathbb{Z}^{-}}}
+\DeclareMathOperator{\NaturalNumbers}{\ensuremath{\mathbb{N}}}
+\DeclareMathOperator{\ComplexNumbers}{\ensuremath{mathbb{C}}}
+\DeclareMathOperator{\RationalNumbers}{\ensuremath{mathbb{Q}}}
+
+% Calculus operators
 \DeclareMathOperator*{\argmax}{argmax} % Thin Space and subscripts are UNDER in display
-\DeclareMathOperator{\Lapl}{\mathcal{L}} % Declare a Laplace symbol to be used
+
+% Signal and System Functions
 \DeclareMathOperator{\UnitStep}{\mathcal{U}}
 \DeclareMathOperator{\sinc}{sinc} % sinc(x) = (sin(pi x)/(pi x))
+
+% Transformations
+\DeclareMathOperator{\Lapl}{\mathcal{L}} % Declare a Laplace symbol to be used
+
+% Logical Operators
 \DeclareMathOperator{\XOR}{\oplus}
 
+% x86 CPU Registers
 \newcommand{\rbpRegister}{\texttt{\%rbp}}
 \newcommand{\rspRegister}{\texttt{\%rsp}}
 \newcommand{\ripRegister}{\texttt{\%rip}}
