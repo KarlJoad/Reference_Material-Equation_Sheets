@@ -134,6 +134,44 @@ If you are also asked to find the Cartesian form of the output equation, you mus
   \end{remark*}
 \end{example}
 
+\begin{example}[Lecture 4]{Plot Complex Trigonometric Function}
+  Find the Cartesian equation of the \nameref{def:Image} of the line $x=4$ under the map $f(z) = \sin(z)$?
+  Provide the Cartesian equation of the \nameref{def:Image}?
+  \tcblower{}
+  Using the \nameref{subsubsec:Complex_Angle_Sum_Difference_Identities} for $\sin$ (\Cref{eq:Sin_Angle_Sum_Difference}), we can put $\sin$ into Cartesian form and simplify.
+  \begin{align*}
+    \sin(x + iy) &= \bigl( \sin(x) \cosh(y) \bigr) + i \bigl( \cos(x) \sinh(y) \bigr) \\
+    f(z = x + iy \vert x=4 ) &= \sin(z) \\
+                 &= \bigl( \sin(4) \cosh(y) \bigr) + i \bigl( \cos(4) \sinh(y) \bigr) \\
+    \shortintertext{Use the definition of the output functions.}
+    U(y) &= \sin(4) \cosh(y) \\
+    V(y) &= \cos(4) \sinh(y)
+  \end{align*}
+
+  How to perform this \nameref{def:Pre_Image} to \nameref{def:Image} plotting:
+  \begin{enumerate}[noitemsep]
+  \item Start by plotting $x=4$ in the $xy$-plane ($z$-plane).
+  \item Then, start plugging values of $x=4, y$ into $U(x, y)$ and $V(x, y)$.
+  \item Graph the \nameref{def:Image}'s results.
+  \end{enumerate}
+
+  If you notice, the \nameref{def:Image} that is created is a hyperbola.
+  However, only one of the 2 arcs that is created is the correct one, as we lose information when we move between parametric and Cartesian forms.
+  We can figure this out by looking at $U(x=4, y) = \sin(4) \cosh(y)$.
+  \begin{enumerate}[noitemsep]
+  \item We know $\sin(4) < 0$, as $4 > \pi$.
+  \item In addition, $\cosh \nless 0$, by definition.
+  \item Thus, if $(\sin(4) < 0) (\cosh \nless 0) = U(x=4, y) < 0$.
+  \item Therefore, the only part of the hyperbola that should be kept is the one where $U < 0$.
+  \end{enumerate}
+
+  To get the Cartesian equation for this shape, we need to have a relation between $\cosh$ and $\sinh$; fortunately, we have one.
+  The Pythagorean theorem for hyperbolic trigonometry would work perfectly, so we can substitue for $\cosh$ and $\sinh$.
+  \begin{align*}
+    \cosh^{2}(\theta) - \sinh^{2}(\theta) &= 1 \\
+    \frac{U(y)}{\sin(4)} - \frac{V(y)}{\cos(4)} &= 1
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
