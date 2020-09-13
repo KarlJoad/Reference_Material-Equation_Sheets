@@ -9,6 +9,24 @@ There are 2 types of arguments that we can talk about for a \nameref{def:Complex
   The \emph{argument} of a \nameref{def:Complex_Number} refers to \textbf{all} possible angles that can satisfy the angle requirement of a \nameref{def:Complex_Number}.
 \end{definition}
 
+\begin{example}[Lecture 3, Example 1]{Argument of Complex Number}
+  If $z = -1 - i$, then what is its \textbf{\nameref{def:Complex_Number_Argument}}?
+  \tcblower{}
+  You can plot this value on the \nameref{def:Argand_Plane} and find the angle graphically/geometrically, or you can ``cheat'' and use $\tan^{-1}$ (so long as you correct for the proper quadrant).
+  I will ``cheat'', as I cannot plot easily.
+  \begin{align*}
+    z &= -1 - i \\
+    \arg(z) &= \tan(\theta) = \frac{-i}{-1} \\
+      &= \frac{\pi}{4} \\
+    \shortintertext{Remember to correct for the proper quadrant. We are in quadrant IV.}
+      &= \frac{5 \pi}{4} \\
+    \intertext{Now, we have to account for \textbf{all} possible angles that form this angle.}
+    \arg(z) &= \frac{5 \pi}{4} + 2 \pi k
+  \end{align*}
+
+  Thus, the argument of $z = -1 - i$ is $\arg(z) = \frac{5 \pi}{4} + 2 \pi k$.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
