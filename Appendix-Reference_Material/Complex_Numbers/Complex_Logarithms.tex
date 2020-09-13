@@ -23,6 +23,25 @@ With that denotational change, we can now use $\ln$ for the \nameref{def:Complex
   \end{remark}
 \end{definition}
 
+\begin{example}[Lecture 3]{All Complex Logarithms of Simple Expression}
+  What are \textbf{all} \nameref{def:Complex_Logarithm}s of $z = -1$?
+  \tcblower{}
+  We can apply the definition of a \nameref{def:Complex_Logarithm} (\Cref{eq:Complex_Logarithm}) directly.
+  \begin{align*}
+    \ln(z) &= \log_{e} \Modulus{z} + i \arg(z) \\
+           &= \log_{e} \Modulus{-1} + i \arg(-1) \\
+           &= \log_{e} (1) + i (\pi + 2 \pi k) \\
+           &= 0 + i (\pi + 2 \pi k) \\
+           &= i (\pi + 2 \pi k)
+  \end{align*}
+
+  Thus, all logarithms of $z = -1$ are defined by the expression $i (\pi + 2 \pi k)$, $k = 0, 1, \ldots$.
+
+  \begin{remark*}
+    You can see the loss of specificity in the \nameref{def:Complex_Logarithm} because the variable $k$ is still present in the final answer.
+  \end{remark*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
