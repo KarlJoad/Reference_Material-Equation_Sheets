@@ -32,6 +32,21 @@ There are 2 types of arguments that we can talk about for a \nameref{def:Complex
   By convention, the principal Argument of a complex number $z$ is defined to be bounded like so: $-\pi < \PrincipalArg(z) \leq \pi$.
 \end{definition}
 
+\begin{example}[Lecture 3, Example 1]{Principal Argument of Complex Number}
+  If $z = -1 - i$, then what is its \textbf{\nameref{def:Principal_Argument}}?
+  \tcblower{}
+  You can plot this value on the \nameref{def:Argand_Plane} and find the angle graphically/geometrically, or you can ``cheat'' and use $\tan^{-1}$ (so long as you correct for the proper quadrant).
+  I will ``cheat'', as I cannot plot easily.
+  \begin{align*}
+    z &= -1 - i \\
+    \arg(z) &= \tan(\theta) = \frac{-i}{-1} \\
+      &= \frac{\pi}{4} \\
+    \shortintertext{Remember to correct for the proper quadrant. We are in quadrant IV.}
+      &= \frac{5 \pi}{4} \\
+  \end{align*}
+
+  Thus, the \nameref{def:Principal_Argument} of $z = -1 - i$ is $\PrincipalArg(z) = \frac{5 \pi}{4}$.
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
