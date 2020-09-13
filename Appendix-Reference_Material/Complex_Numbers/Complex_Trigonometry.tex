@@ -9,6 +9,36 @@ These equations are based on Euler's relationship, \Cref{subsec:Euler Equivalent
   \sin(z) = \frac{e^{iz} - e^{-iz}}{2i}
 \end{equation}
 
+\begin{example}[Lecture 3]{Simplify Complex Sinusoid}
+  Solve for $z$ in the equation $\cos(z) = 5$?
+  \tcblower{}
+  We start by using the defintion of complex cosine \Cref{eq:Complex_Cosine}.
+  \begin{align*}
+    \cos(z) &= 5 \\
+    \frac{e^{iz} + e^{-iz}}{2} &= 5 \\
+    e^{iz} + e^{-iz} &= 10 \\
+    e^{iz} \left( e^{iz} + e^{-iz} \right) &= e^{iz} (10) \\
+    {e^{iz}}^{2} + 1 &= 10e^{iz} \\
+    {e^{iz}}^{2} -10e^{iz} + 1 = 0 \\
+    \shortintertext{Solve this quadratic equation by using the Quadratic Equation.}
+    e^{iz} &= \frac{-(-10) \pm \sqrt{{(-10)}^{2} - 4(1)(1)}}{2(1)} \\
+            &= \frac{10 \pm \sqrt{100 - 4}}{2} \\
+            &= \frac{10 \pm \sqrt{96}}{2} \\
+            &= \frac{10 \pm 4 \sqrt{6}}{2} \\
+            &= 5 \pm 2 \sqrt{6} \\
+    \intertext{Use the definition of complex logarithms to simplify the exponential.}
+    iz &= \ln(5 \pm 2 \sqrt{6}) \\
+            &= \log_{e} \Modulus{5 \pm 2 \sqrt {6}} + i \arg(5 \pm 2 \sqrt{6}) \\
+            &= \log_{e} \Modulus{5 \pm 2 \sqrt {6}} + i (0 + 2\pi k) \\
+            &= \log_{e} \Modulus{5 \pm 2 \sqrt {6}} + 2\pi k i \\
+    z &= \frac{1}{i} \left( \log_{e} \Modulus{5 \pm 2 \sqrt {6}} + 2\pi k i \right) \\
+            &= \frac{-i}{-i} \frac{1}{i} \left( \log_{e} \Modulus{5 \pm 2 \sqrt {6}} \right) + 2\pi k \\
+    &= 2\pi k - i\log_{e} \Modulus{5 \pm 2 \sqrt{6}}
+  \end{align*}
+
+  Thus, $z = 2\pi k - i\log_{e} \Modulus{5 \pm 2 \sqrt{6}}$.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
