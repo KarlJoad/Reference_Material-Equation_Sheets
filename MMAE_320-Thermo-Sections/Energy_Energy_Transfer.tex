@@ -312,6 +312,29 @@ However, there are two types of processes:
   \end{remark}
 \end{definition}
 
+\subsection{Energy Efficiency}\label{subsec:Energy_Efficiency}
+Typically, we are concerned with how efficient a \nameref{def:Process} is at using the \nameref{def:Energy} it is provided to achieve a certain goal.
+This is typically defined as \Cref{eq:Energy_Efficiency}.
+
+\begin{equation}\label{eq:Energy_Efficiency}
+  \Efficiency = \frac{\text{Desired Output}}{\text{Required Input}} \times 100
+\end{equation}
+
+\subsubsection{Combustion}\label{subsubsec:Energy_Efficiency-Combustion}
+\begin{equation}\label{eq:Energy_Efficiency-Combustion}
+  \Efficiency_{\mathrm{Combustion}} = \frac{\FlowRate{\Heat}_{\mathrm{Released}}}{\frac{\FlowRate{\Heat}_{\mathrm{Available}}}{\Mass} \FlowRate{\Mass}}
+\end{equation}
+
+\subsubsection{Pumps}\label{subsubsec:Energy_Efficiency-Pumps}
+\begin{equation}\label{eq:Energy_Efficiency-Pumps}
+  \Efficiency_{\mathrm{Pump}} = \frac{\text{Energy Increase of Fluid}}{\text{Energy Input}}
+\end{equation}
+
+\subsubsection{Turbines}\label{subsubsec:Energy_Efficiency-Turbines}
+\begin{equation}\label{eq:Energy_Efficiency-Turbines}
+  \Efficiency_{\mathrm{Turbine}} = \frac{\text{Mechanical Energy Output}}{\text{Total Energy Decrease of Fluid}}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
