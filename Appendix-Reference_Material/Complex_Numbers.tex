@@ -1,39 +1,24 @@
-\section{Complex Numbers}\label{app:Complex Numbers}
-Complex numbers are numbers that have both a real part and an imaginary part.
-\begin{equation}\label{eq:Complex_Number}
-  z = a \pm bi
-\end{equation}
+\section{Complex Numbers}\label{sec:Complex_Numbers}
+\begin{definition}[Complex Number]\label{def:Complex_Number}
+  A \emph{complex number} is a hyper real number system.
+  This means that two real numbers, $a, b \in \RealNumbers$, are used to construct the set of complex numbers, denoted $\ComplexNumbers$.
 
-where
-\begin{equation}\label{eq:Imaginary_Value}
-  i = \sqrt{-1}
-\end{equation}
+  A complex number is written, in Cartesian form, as shown in \Cref{eq:Complex_Number} below.
+  \begin{equation}\label{eq:Complex_Number}
+    z = a \pm ib
+  \end{equation}
+  where
+  \begin{equation}\label{eq:Imaginary_Value}
+    i = \sqrt{-1}
+  \end{equation}
 
-\begin{remark*}[$i$ vs. $j$ for Imaginary Numbers]
-  Complex numbers are generally denoted with either $i$ or $j$.
-  Since this is an appendix section, I will denote complex numbers with $i$, to make it more general.
-  However, electrical engineering regularly makes use of $j$ as the imaginary value.
-  This is because alternating current $i$ is already taken, so $j$ is used as the imaginary value instad.
-\end{remark*}
+  \begin{remark*}[$i$ vs. $j$ for Imaginary Numbers]
+    Complex numbers are generally denoted with either $i$ or $j$.
+    Electrical engineering regularly makes use of $j$ as the imaginary value.
+    This is because alternating current $i$ is already taken, so $j$ is used as the imaginary value instad.
+  \end{remark*}
+\end{definition}
 
-\begin{equation} \label{eq:Exponential to Rectangular}
-  A e^{-ix} = A \left[ \cos \left( x \right) + i\sin \left( x \right) \right]
-\end{equation}
-
-\subsection{Complex Conjugates}\label{app:Complex_Conjugates}
-If we have a complex number as shown below,
-\begin{equation*}
-  z = a \pm bi
-\end{equation*}
-
-then, the conjugate is denoted and calculated as shown below.
-\begin{equation}\label{eq:Complex_Conjugates}
-  \overline{z} = a \mp bi
-\end{equation}
-
-\begin{definition}[Complex Conjugate]
-  The conjugate of a complex number is called its \emph{complex conjugate}.
-  The complex conjugate of a complex number is the number with an equal real part and an imaginary part equal in magnitude but opposite in sign.
 \end{definition}
 
 The complex conjugate can also be denoted with an asterisk ($*$).
