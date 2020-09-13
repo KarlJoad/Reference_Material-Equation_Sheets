@@ -33,6 +33,31 @@ The functions $U(x, y)$ and $V(x, y)$ are functions that yield real-values $u, v
 This means that $u, v$ can also be graphed on an \nameref{def:Argand_Plane}.
 By our definition of $U(x, y)$ and $V(x, y)$, $U(x, y), V(x, y)$ are parametric functions.
 
+\begin{example}[Lecture 4]{Find Output Functions}
+  Given the \nameref{def:Mapping} $z \mapsto z^{2}$, where $z = x + iy$, find the output functions for each term $U(x, y)$ and $V(x, y)$?
+  \tcblower{}
+  I will choose to represent the mapping $z \mapsto z^{2}$ with the complex function $f(z) = z^{2}$.
+  \begin{align*}
+    z &\mapsto z^{2} \\
+    f(z) &= z^{2} \\
+    \shortintertext{Apply the definition of $z$.}
+      &= {(x + iy)}^{2} \\
+      &= x^{2} + 2xyi + i^{2}y^{2} \\
+      &= x^{2} + 2xyi + (-1)y^{2} \\
+      &= \left( x^{2} - y^{2} \right) + 2xyi \\
+  \end{align*}
+
+  By out definition of $U(x, y)$ and $V(x, y)$ in \Cref{eq:Output_Value_Function}, we can finish solving this.
+  \begin{align*}
+    f(z) &= U(x, y) + iV(x, y) \\
+    f(z) &= \left( x^{2} - y^{2} \right) + 2xyi \\
+    U(x, y) &= x^{2} - y^{2} \\
+    V(x, y) &= 2xy
+  \end{align*}
+
+  Thus, our output functions are $U(x, y) = x^{2} - y^{2}$ and $V(x, y) = 2xy$.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
