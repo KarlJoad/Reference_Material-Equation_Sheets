@@ -87,6 +87,53 @@ If asked to graph the complex function/\nameref{def:Mapping}, you must find the 
 Because the output equations are in terms of, possibly 2, other variables, they are parametric equations.
 If you are also asked to find the Cartesian form of the output equation, you must simplify the other terms away.
 
+\begin{example}[Lecture 4]{Plot Simple Complex Function}
+  Find the \nameref{def:Image} of the line $y=4$ on the map $f(z) = z^{2}$?
+  Provide the Cartesian equation of the \nameref{def:Image} and the orientation of the image points as the \nameref{def:Pre_Image} points move $y=4$ from $-\infty$ towards $\infty$?
+  \tcblower{}
+  We found the parametric output functions $U(x, y)$ and $V(x, y)$ in \Cref{ex:Find Output Functions}, so we will use those here.
+
+  How to perform this \nameref{def:Pre_Image} to \nameref{def:Image} plotting:
+  \begin{enumerate}[noitemsep]
+  \item Start by plotting $y=4$ in the $xy$-plane ($z$-plane).
+  \item Then, start plugging values of $x, y=4$ into $U(x, y)$ and $V(x, y)$.
+  \item Start with $x < 0$ and move towards $x>0$, as that will follow the orientation of the line provided in the question.
+  \item Graph the \nameref{def:Image}'s results.
+  \item Indicate the orientation of the image on its graph.
+  \end{enumerate}
+
+  To find the Cartesian form of the parametric output equations, we can start by eliminating $y$ from the parameters, as $y$ was specified to be a constant $y=4$.
+  \begin{align*}
+    U(x, y) &= x^{2} - y^{2} \\
+    V(x, y) &= 2xy \\
+    U(x, y=4) &= x^{2} - 4^{2} \\
+    V(x, y=4) &= 2x (4) \\
+    U(x) &= x^{2}- 16 \\
+    V(x) &= 8x
+  \end{align*}
+
+  Now that $y$ has been eliminated, I will simplify $V(x)$ such that $x$ is in terms of $V$.
+  \begin{align*}
+    V(x) &= 8x \\
+    x &= \frac{V}{8}
+  \end{align*}
+
+  Now that a value for $x$ has been found, we can plug that value back into $U(x)$, and simplify.
+  \begin{align*}
+    x &= \frac{V}{8} \\
+    U \left( x=\frac{V}{8} \right) &= {\left( \frac{V}{8} \right)}^{2} - 16 \\
+    U + 16 &= \frac{V^{2}}{64} \\
+    V^{2} &= 64 (U + 16) \\
+    V &= \sqrt{64 (U+16)}
+  \end{align*}
+
+  Thus, the Cartesian equation of the \nameref{def:Image} is a parabola whose defining equation is $V = \sqrt{64 (U+16)}$.
+
+  \begin{remark*}
+    I could have chosen to solve for $U$ in terms of $V$, but that would have required the addition of $\pm$ in many places due to the early application of the square root.
+  \end{remark*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
