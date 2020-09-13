@@ -42,6 +42,38 @@ With that denotational change, we can now use $\ln$ for the \nameref{def:Complex
   \end{remark*}
 \end{example}
 
+\begin{example}[Lecture 3]{All Complex Logarithms of Complex Logarithm}
+  What are \textbf{all} the \nameref{def:Complex_Logarithm}s of $z = \ln(1)$?
+  \tcblower{}
+  We start by simplifying $z$, before finding $\ln(z)$.
+  We can make use of \Cref{eq:Complex_Logarithm}, to simplify this value.
+  \begin{align*}
+    \ln(w) &= \log_{e} \Modulus{w} + i \arg(w) \\
+    \ln(1) &= \log_{e} \Modulus{1} + i \arg(1) \\
+           &= \log_{e} 1 + i (0 + 2 \pi k) \\
+           &= 0 + 2 \pi k i \\
+           &= 2\pi k i
+  \end{align*}
+
+  Now that we have simplified $z$, we can solve for $\ln(z)$.
+  \begin{align*}
+    \ln(z) &= \ln(2\pi k i) \\
+           &= \log_{e} \Modulus{2\pi k i} + i \arg(2\pi k i) \\
+           &= \log_{e} (2\pi \Abs{k}) + \left( i
+             \begin{cases}
+               \frac{\pi}{2} + 2\pi m & k > 0 \\
+               \frac{-\pi}{2} + 2\pi m & k < 0 \\
+             \end{cases} \right)
+    \shortintertext{The $\Abs{k}$ is the \textbf{absolute value} of $k$, because $k$ is an integer.}
+  \end{align*}
+
+  Thus, our solution of $\ln \bigl( \ln(1) \bigr) = \log_{e} (2\pi \Abs{k}) + \left( i
+             \begin{cases}
+               \frac{\pi}{2} + 2\pi m & k > 0 \\
+               \frac{-\pi}{2} + 2\pi m & k < 0 \\
+             \end{cases} \right)$.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
