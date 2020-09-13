@@ -40,6 +40,24 @@ Thus,
 \end{equation}
 which is interesting because, in comparison to the input values, the output is completely real.
 
+The other interesting \nameref{def:Complex_Conjugate} is dividing a \nameref{def:Complex_Number} by its conjugate.
+\begin{align*}
+  \frac{z}{\Conjugate{z}} &= \frac{x + iy}{x - iy} \\
+  \intertext{We want to have this end up in a form of $a + ib$, so we multiply the entire fraction by $z$, to cause the denominator to be completely real.}
+  z \left( \frac{z}{\Conjugate{z}} \right) &= \frac{z^{2}}{z \Conjugate{z}} \\
+  \intertext{Using our solution from \Cref{eq:Complex_Number_Mult_Conjugate}:}
+                         &= \frac{{(x + iy)}^{2}}{x^{2}+y^{2}} \\
+                         &= \frac{x^{2} + 2xyi + i^{2}y^{2}}{x^{2}+y^{2}} \\
+  \intertext{By breaking up the fraction's numerator, we can more easily recognize this to be teh Cartesian form of the \nameref{def:Complex_Number}.}
+                         &= \frac{\left( x^{2} - y^{2} \right) + 2xyi}{x^{2}+y^{2}} \\
+                         &= \frac{x^{2}-y^{2}}{x^{2}+y^{2}} + \frac{2xyi}{x^{2}+y^{2}} \\
+\end{align*}
+
+This is an interesting development because, unlike the multiplication of a \nameref{def:Complex_Number} by its \nameref{def:Complex_Conjugate}, the division of these two values does \textbf{not} yield a purely real number.
+\begin{equation}\label{eq:Complex_Number_Div_Conjugate}
+  \frac{z}{\Conjugate{z}} = \frac{x^{2}-y^{2}}{x^{2}+y^{2}} + \frac{2xyi}{x^{2}+y^{2}}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: shared
