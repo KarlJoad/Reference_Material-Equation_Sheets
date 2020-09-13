@@ -128,7 +128,7 @@ The \nameref{def:Specific_Energy} of a system can be used to find the change in 
     \Power &= \FlowRate{\Mass} \Change{\SpecificEnergy} \\
   \end{aligned}
 \end{equation}
-where $\FlowRate{\Mass}$ is the mass flow rate, seen by \Cref{eq:Mass_Flow_Rate}
+where $\FlowRate{\Mass}$ is the mass flowrate, seen by \Cref{eq:Mass_Flow_Rate}
 
 \begin{equation}\label{eq:Mass_Flow_Rate}
   \FlowRate{\Mass} = \frac{\Mass}{\Time}
@@ -272,22 +272,44 @@ However, there are two types of processes:
   This can be achieved by a system that is heavily insulated, preventing a temperature difference from causing a heat transfer.
   Adiabatic processes yield the expression below:
   \begin{equation}\label{eq:Adiabatic}
-    \Heat = 0
+    \Change{Heat} = 0
   \end{equation}
 
   \begin{remark}
-    An \nameref{def:Adiabatic} process does \textbf{not} mean that there cannot be work.
+    An \nameref{def:Adiabatic} process does \textbf{not} say anything about \nameref{def:Work} in the \nameref{def:System}.
     A process can be both adiabatic and have work done on it, meaning there is still a change in energy in the system.
   \end{remark}
 \end{definition}
 
-\begin{definition}[1st Law of Thermodynamics]\label{def:1_Law_Thermo}
+\begin{definition}[1st Law of Thermodynamics]\label{def:1st_Law_Thermo}
   The \emph{1st law of thermodynamics} states that the total energy of a system \textbf{cannot} be created or destroyed during a \nameref{def:Process}; it can only change \textbf{forms}.
+  Thus, the total change in energy of all energy forms must sum to zero.
 
-  Symbolically, this is represented as \Cref{eq:1_Law_Thermo}.
-  \begin{equation}\label{eq:1_Law_Thermo}
-    \Change{\Energy} = 0
+  Symbolically, this is represented as \Cref{eq:1st_Law_Thermo}.
+  \begin{equation}\label{eq:1st_Law_Thermo}
+    \Change{\TotalEnergy} = 0
   \end{equation}
+
+  If this law were to be violated in a problem, that means there is an energy form that is not being measured.
+
+  Using \Cref{eq:Change_Total_Energy}, we can ``derive'' a new equation that is useful.
+  \begin{equation*}
+    \begin{aligned}
+      \Change{\TotalEnergy} &= \Change{\Heat} + \Change{\Work_{\mathrm{Mech}}} \\
+      \TotalEnergy_{\mathrm{In}} - \TotalEnergy_{\mathrm{Out}} &= (\Work_{\mathrm{In}} - \Work_{\mathrm{Out}}) + (\Heat_{\mathrm{In}} - \Heat_{\mathrm{Out}}) \\
+    \end{aligned}
+  \end{equation*}
+  \begin{description}[noitemsep]
+  \item $\Change{\Heat}$ is equivalent to $\Change{\InternalEnergy}$.
+  \item $\Change{\Work_{\mathrm{Mech}}}$ is equivalent to $\Change{\KineticEnergy} + \Change{\PotentialEnergy} + \Change{\FlowEnergy}$.
+  \end{description}
+
+  \begin{remark}[Change Energy Flowrate]\label{rmk:1st_Law_Thermo_Change_Energy_Flowrate}
+    By the definition of the \nameref{def:1st_Law_Thermo}, the change in energy flowrate (energy per unit time) is also defined to be zero, because the amount of energy in the system is constant.
+    \begin{equation}\label{eq:1st_Law_Thermo_Energy_Flowrate}
+      \Change{\FlowRate{\TotalEnergy}} = 0
+    \end{equation}
+  \end{remark}
 \end{definition}
 
 %%% Local Variables:
