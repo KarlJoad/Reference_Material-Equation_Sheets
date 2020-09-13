@@ -67,6 +67,19 @@ We can prove \Cref{prop:Law_of_Moduli} using an algebraic identity.
   Note how we never needed to define $z$ or $w$, so this is as general a result as possible.
 \end{proof}
 
+\paragraph{Algebraic Effects of the Modulus' \Cref*{prop:Law_of_Moduli}}\label{par:Law_of_Moduli-Algebraic_Effects}
+For this section, let $z = x_{1} + iy_{1}$ and $w = x_{2} + iy_{2}$.
+Now,
+\begin{align*}
+  z w &= (x_{1}x_{2} - y_{1}y_{2}) + i(x_{1}y_{2} + x_{2}y_{1}) \\
+  {\lvert z w \rvert}^{2} &= {(x_{1}x_{2} - y_{1}y_{2})}^{2} + {(x_{1}y_{2} + x_{2}y_{1})}^{2} \\
+      &= \left( x_{1}^{2} + x_{2}^{2} \right) \left( x_{2}^{2} + y_{2}^{2} \right) \\
+      &= {\lvert z \rvert}^{2} {\lvert w \rvert}^{2}
+\end{align*}
+
+However, the Law of Moduli (\Cref{prop:Law_of_Moduli}) does \textbf{not} hold for a hyper complex number system one that uses 2 or more imaginaries, i.e.\ $z = a + iy + jz$.
+But, the Law of Moduli (\Cref{prop:Law_of_Moduli}) \textbf{does} hold for hyper complex number system that uses 3 imaginaries, $a = z + iy + jz + k \ell$.
+
 
 %%% Local Variables:
 %%% mode: latex
