@@ -14,6 +14,38 @@ If instead of $e$ as the base, we have some value $a$, then we have \Cref{eq:Com
 
 In the case of \Cref{eq:Complex_Exponential}, $z$ can be presented in either Cartesian or polar form, they are equivalent.
 
+\begin{example}[Lecture 3]{Simplify Simple Complex Exponential}
+  Simplify the expression below, then find its \nameref{def:Complex_Number_Modulus}, \nameref{def:Complex_Number_Argument}, and its \nameref{def:Principal_Argument}?
+  \begin{equation*}
+    e^{-1 + i\sqrt{3}}
+  \end{equation*}
+  \tcblower{}
+  If we look at the exponent on the exponential, we see
+  \begin{equation*}
+    z = -1 + i\sqrt{3}
+  \end{equation*}
+  which means
+  \begin{align*}
+    x &= -1 \\
+    y &= \sqrt{3}
+  \end{align*}
+
+  With this information, we can simplify the expression \textbf{just} by observation, with no calculations required.
+  \begin{equation*}
+    e^{-1 + i\sqrt{3}} = e^{-1} \bigl( \cos(\sqrt{3}) + i \sin(\sqrt{3}) \bigr)
+  \end{equation*}
+
+  Now, we can solve the other 3 parts of this example \textbf{by observation}.
+  \begin{align*}
+    \Modulus{e^{-1 + i\sqrt{3}}} &= \Modulus{e^{-1} \bigl( \cos(\sqrt{3}) + i \sin(\sqrt{3}) \bigr)} \\
+                                 &= e^{-1} \\
+    \arg \left( e^{-1 + i\sqrt{3}} \right) &= \arg \left( e^{-1} \bigl( \cos(\sqrt{3}) + i \sin(\sqrt{3}) \bigr) \right) \\
+                                 &= \sqrt{3} + 2 \pi k \\
+    \PrincipalArg \left( e^{-1 + i\sqrt{3}} \right) &= \PrincipalArg \left( e^{-1} \bigl( \cos(\sqrt{3}) + i \sin(\sqrt{3}) \bigr) \right) \\
+                                 &= \sqrt{3}
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
