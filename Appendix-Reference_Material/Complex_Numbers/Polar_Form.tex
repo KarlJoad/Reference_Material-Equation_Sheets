@@ -17,6 +17,37 @@ Thus,
   \theta &= \arg(z) \\
 \end{align*}
 
+\begin{example}[Lecture 2, Example 1]{Find Polar Coordinates from Cartesian Coordinates}
+  Find the complex number's $z = -\sqrt{3} + i$ polar coordinates?
+  \tcblower{}
+  We start by finding the radius of $z$ (modulus of $z$).
+  \begin{align*}
+    r &= \lvert z \rvert \\
+      &= \sqrt{\Real{z}^{2} + \Imag{z}^{2}} \\
+      &= \sqrt{{(-\sqrt{3})}^{2} + 1^{2}} \\
+      &= \sqrt{3 + 1} \\
+      &= \sqrt{4} \\
+      &= 2
+  \end{align*}
+  Thus, the point is $2$ units away from the origin, the radius is 2 $r=2$.
+
+  Now, we need to find the angle, the argument, of the \nameref{def:Complex_Number}.
+  \begin{align*}
+    \cos(\theta) &= \frac{-\sqrt{3}}{2} \\
+    \theta &= \cos^{-1} \left( \frac{-\sqrt{3}}{2} \right) \\
+                 &= \frac{5 \pi}{6} \\
+  \end{align*}
+
+  Now that we have one angle for the point, we also need to consider the possibility that there have been an unknown amount of rotations around the entire plane, meaning there have been $2 \pi k$, where $k = 0, 1, \ldots$.
+
+  We now have all the information required to reconstruct this point using polar coordinates:
+  \begin{align*}
+    r &= 2 \\
+    \theta &= \frac{5 \pi}{6} \\
+    \arg(z) &= \frac{5 \pi}{6} + 2\pi k
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
