@@ -49,6 +49,34 @@ Because the definitions of sine and cosine are unsatisfactory in their Euler def
   \sin(x + iy) = \bigl( \sin(x) \cosh(y) \bigr) + i \bigl( \cos(x) \sinh(y) \bigr)
 \end{equation}
 
+\begin{example}[Lecture 3]{Simplify Trigonometric Exponential}
+  Simpify $z = e^{\cos(2 + 3i)}$, and find $z$'s \nameref{def:Complex_Number_Modulus}, \nameref{def:Complex_Number_Argument}, and \nameref{def:Principal_Argument}?
+  \tcblower{}
+  We start by simplifying the $\cos$ using \Cref{eq:Cos_Angle_Sum_Difference}.
+  \begin{align*}
+    \cos(x + iy) &= \bigl( \cos(x) \cosh(y) \bigr) - i \bigl( \sin(x) \sinh(y) \bigr) \\
+    \cos(2 + 3i) &= \bigl( \cos(2) \cosh(3) \bigr) - i \bigl( \sin(2) \sinh(3) \bigr) \\
+  \end{align*}
+
+  Now that we have put the $\cos$ into a Cartesian form, one that is usable with \Cref{eq:Complex_Exponential}, we can solve this.
+  \begin{align*}
+    e^{z} &= e^{x + iy} = e^{x} \bigl( \cos(y) + i \sin(y) \bigr) \\
+    x &= \cos(2) \cosh(3) \\
+    y &= -\sin(2) \sinh(3) \\
+    e^{\cos(2) \cosh(3) - i \sin(2) \sinh(3)} &= e^{\cos(2) \cosh(3)} \Bigl( \cos \bigl( -\sin(2) \sinh(3) \bigr) + i \sin \bigl( -\sin(2) \sinh(3) \bigr) \Bigr)
+  \end{align*}
+
+  Now that we have simplified $z$, we can solve for the modulus, argument, and principal argument \textbf{by observation}.
+  \begin{align*}
+    \Modulus{z} &= \Modulus{e^{\cos(2) \cosh(3)} \Bigl( \cos \bigl( -\sin(2) \sinh(3) \bigr) + i \sin \bigl( -\sin(2) \sinh(3) \bigr) \Bigr)} \\
+                &= e^{\cos(2) \cosh(3)} \\
+    \arg(z) &= \arg(e^{\cos(2) \cosh(3)} \Bigl( \cos \bigl( -\sin(2) \sinh(3) \bigr) + i \sin \bigl( -\sin(2) \sinh(3) \bigr) \Bigr)) \\
+                &= -\sin(2) \sinh(3) + 2\pi k \\
+    \PrincipalArg(z) &= \PrincipalArg(e^{\cos(2) \cosh(3)} \Bigl( \cos \bigl( -\sin(2) \sinh(3) \bigr) + i \sin \bigl( -\sin(2) \sinh(3) \bigr) \Bigr)) \\
+                &= -\sin(2) \sinh(3) \\
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
