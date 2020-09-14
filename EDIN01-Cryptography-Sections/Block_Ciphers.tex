@@ -121,7 +121,7 @@ For the same iterative cipher, the decryption function $D_{K}(y)$ is just the ap
   Let $X_{1} = (x_{1}, x_{2}, \ldots, x_{N})$ be the first block with length $N$.
   Let $X_{2} = (x_{N+1}, x_{N+2}, \ldots, x_{2N})$ be the second block, also with length $N$.
   The encryption is then done block-wise
-  
+
   Most modes require a unique binary sequence, often called an \nameref{def:Initialization_Vector} (IV), for each encryption operation.
 
   There are 3 modes of operation that are discussed in this course:
@@ -147,14 +147,14 @@ The steps required to operate a block cipher in ECB mode are illustrated in \Cre
   \centering
   \begin{subfigure}[h!]{0.45\linewidth}
     \centering
-    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/ECB_Mode-Encryption.png}
+    \includegraphics[scale=0.55]{./ECB_Mode-Encryption.png}
     \caption{\nameref{subsubsec:Electronic_Codebook_Mode} Encryption Steps}
     \label{subfig:ECB_Mode_Steps_Encryption}
   \end{subfigure}
   \vline{}
   \begin{subfigure}[h!]{0.45\linewidth}
     \centering
-    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/ECB_Mode-Decryption.png}
+    \includegraphics[scale=0.55]{./ECB_Mode-Decryption.png}
     \caption{\nameref{subsubsec:Electronic_Codebook_Mode} Decryption Steps}
     \label{subfig:ECB_Mode_Steps_Decryption}
   \end{subfigure}
@@ -169,13 +169,13 @@ For example,
   \centering
   \begin{subfigure}[h!]{0.45\linewidth}
     \centering
-    \includegraphics[scale=0.50]{./Drawings/EDIN01-Cryptography/Tux.png}
+    \includegraphics[scale=0.50]{./Tux.png}
     \caption{Original Plaintext}
     \label{subfig:ECB_Mode_Plaintext_Input}
   \end{subfigure}
   \begin{subfigure}[h!]{0.45\linewidth}
     \centering
-    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/Tux_ECB.jpg}
+    \includegraphics[scale=0.55]{./Tux_ECB.jpg}
     \caption{ECB Mode Encrypted Plaintext}
     \label{subfig:ECB_Mode_Encrypted_Plaintext}
   \end{subfigure}
@@ -201,14 +201,14 @@ The steps required to operate a block cipher in CBC mode are illustrated in \Cre
   \centering
   \begin{subfigure}[h!]{0.45\linewidth}
     \centering
-    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/CBC_Mode-Encryption.png}
+    \includegraphics[scale=0.55]{./CBC_Mode-Encryption.png}
     \caption{\nameref{def:Cipher_Block_Chaining_Mode} Encryption Steps}
     \label{subfig:CBC_Mode_Steps_Encryption}
   \end{subfigure}
   \vline{}
   \begin{subfigure}[h!]{0.45\linewidth}
     \centering
-    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/CBC_Mode-Decryption.png}
+    \includegraphics[scale=0.55]{./CBC_Mode-Decryption.png}
     \caption{\nameref{def:Cipher_Block_Chaining_Mode} Decryption Steps}
     \label{subfig:CBC_Mode_Steps_Decryption}
   \end{subfigure}
@@ -233,14 +233,14 @@ The steps required to operate a block cipher in counter mode are illustrated in 
   \centering
   \begin{subfigure}[h!]{0.45\linewidth}
     \centering
-    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/Counter_Mode-Encryption.png}
+    \includegraphics[scale=0.55]{./Counter_Mode-Encryption.png}
     \caption{\nameref{def:Counter_Mode} Encryption Steps}
     \label{subfig:Counter_Mode_Steps_Encryption}
   \end{subfigure}
   \vline{}
   \begin{subfigure}[h!]{0.45\linewidth}
     \centering
-    \includegraphics[scale=0.55]{./Drawings/EDIN01-Cryptography/Counter_Mode-Decryption.png}
+    \includegraphics[scale=0.55]{./Counter_Mode-Decryption.png}
     \caption{\nameref{def:Counter_Mode} Decryption Steps}
     \label{subfig:Counter_Mode_Steps_Decryption}
   \end{subfigure}
@@ -287,7 +287,7 @@ The steps required to operate a block cipher in counter mode are illustrated in 
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics[scale=0.35]{./Drawings/EDIN01-Cryptography/AES_Structure.jpg}
+  \includegraphics[scale=0.35]{./AES_Structure.jpg}
   \caption{\nameref{def:AES} Structure}
   \label{fig:AES_Structure}
 \end{figure}
@@ -297,7 +297,7 @@ In the \texttt{AddRoundKey} step, each byte of the block is combined with the \n
 \Cref{fig:AES_AddRoundKey} illustrates this step.
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.35]{./Drawings/EDIN01-Cryptography/AES-0-AddRoundKey.png}
+  \includegraphics[scale=0.35]{./AES-0-AddRoundKey.png}
   \caption{\nameref{def:AES} \texttt{AddRoundKey}}
   \label{fig:AES_AddRoundKey}
 \end{figure}
@@ -307,7 +307,7 @@ The \texttt{SubBytes} is a non-linear substitution step where each byte is repla
 \Cref{fig:AES_SubBytes} illustrates this step.
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.35]{./Drawings/EDIN01-Cryptography/AES-1-SubBytes.png}
+  \includegraphics[scale=0.35]{./AES-1-SubBytes.png}
   \caption{\nameref{def:AES} \texttt{SubBytes}}
   \label{fig:AES_SubBytes}
 \end{figure}
@@ -317,7 +317,7 @@ The \texttt{ShiftRows} step is a transposition step where each row of the state 
 \Cref{fig:AES_ShiftRows} illustrates this step.
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.35]{./Drawings/EDIN01-Cryptography/AES-2-ShiftRows.png}
+  \includegraphics[scale=0.35]{./AES-2-ShiftRows.png}
   \caption{\nameref{def:AES} \texttt{ShiftRows}}
   \label{fig:AES_ShiftRows}
 \end{figure}
@@ -327,7 +327,7 @@ The \texttt{MixColumns} step is a mixing operation which operates on the columns
 \Cref{fig:AES_MixColumns} illustrates this step.
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.35]{./Drawings/EDIN01-Cryptography/AES-3-MixColumns.png}
+  \includegraphics[scale=0.35]{./AES-3-MixColumns.png}
   \caption{\nameref{def:AES} \texttt{MixColumns}}
   \label{fig:AES_MixColumns}
 \end{figure}
