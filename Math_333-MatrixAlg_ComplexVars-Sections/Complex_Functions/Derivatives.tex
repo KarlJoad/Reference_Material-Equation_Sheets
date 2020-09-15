@@ -102,6 +102,22 @@ This includes:
 \subsubsection{Cauchy-Riemann Equations}\label{subsubsec:Cauchy_Riemann_Equations}
 Because we know the \nameref{def:Complex_Derivative} of a \nameref{def:Complex_Function} \textbf{can} exist, and that $f(z) = U(x, y) + i V(x, y)$, we need to know just how special $U(x, y)$ and $V(x, y)$ really are.
 
+The Cauchy-Riemann Equations (\Cref{eq:Cauchy_Riemann_Equations}) \textbf{MUST} hold true for $f'(z)$ to exist.
+\begin{subequations}\label{eq:Cauchy_Riemann_Equations}
+  \begin{equation}\label{subeq:Cauchy_Riemann_Equation-UxVy}
+    \begin{aligned}
+      \frac{\partial U}{\partial x} (a) &= \frac{\partial V}{\partial y} (a) \\
+      U_{x} (a) &= V_{y} (a)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}\label{subeq:Cauchy_Riemann_Equation-UyVx}
+    \begin{aligned}
+      \frac{\partial U}{\partial y} (a) &= -\frac{\partial V}{\partial x} (a) \\
+      U_{y} (a) &= V_{x} (a)
+    \end{aligned}
+  \end{equation}
+\end{subequations}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
