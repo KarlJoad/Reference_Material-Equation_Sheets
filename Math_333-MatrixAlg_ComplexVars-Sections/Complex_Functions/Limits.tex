@@ -40,6 +40,12 @@ Thus, for a \nameref{def:Complex_Limit} of a \nameref{def:Complex_Function} to e
 \item \textbf{ALL} path \nameref{def:Complex_Limit}s \textbf{MUST} evaluate to the same value.
 \end{propertylist}
 
+\subsubsection{Limits of Complex Functions that Do Not Exist}\label{subsubsec:Complex_Limit_DNE}
+For a \nameref{def:Complex_Limit} of a \nameref{def:Complex_Function} to \textbf{not} exist, as $z \to a$, then there are at least 2 paths $\Path_{1}, \Path_{2}$ that approach $a$ such that
+\begin{equation}\label{eq:Complex_Limit_DNE}
+  \lim\limits_{\substack{z \to a \\ z \text{ on } \Path_{1}}} f(z) \neq \lim\limits_{\substack{z \to a \\ z \text{ on } \Path_{2}}} f(z)
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
