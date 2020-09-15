@@ -42,6 +42,53 @@
   Thus, $f'(a) = 2a$.
 \end{example}
 
+\begin{example}[Lecture 5]{Non-Existence of Derivative}
+  Given $f(z)$, $a = 2i$, show that $f'(2i)$ does not exist?
+  \begin{equation*}
+    f(z) = \Conjugate{z}
+  \end{equation*}
+  \tcblower{}
+  We start by applying the definition of a \nameref{def:Complex_Derivative} of a \nameref{def:Complex_Function}.
+  \begin{align*}
+    f'(a) &= \lim\limits_{z \to 2i} \frac{f(z) - f(a)}{z - a} \\
+          &= \lim\limits_{z \to 2i} \frac{\Conjugate{z} - \Conjugate{a}}{z - a} \\
+    f'(2i) &= \lim\limits_{z \to 2i} \frac{\Conjugate{z} - (-2i)}{z - a} \\w
+          &= \lim\limits_{z \to 2i} \frac{\Conjugate{z} + 2i}{z - 2i} \\
+  \end{align*}
+
+  Now, we can fall back to the definition of the non-existence of a \nameref{def:Complex_Limit} of a \nameref{def:Complex_Function}.
+  If the value of the function approaching the point $a$ by two different paths ($\Path_{1}, \Path_{2}$) have two different values, the limit does not exist.
+  If we choose our paths to be:
+  \begin{align*}
+    \Path_{1} &\coloneqq x = 0 \\
+    \Path_{2} &\coloneqq y = x + 2i
+  \end{align*}
+
+  Now solving the limit above using Path 1 ($\Path_{1}$):
+  \begin{align*}
+    f'(2i) &= \lim\limits_{\substack{z \to 2i \\ z \text{ on } \Path_{1}}} \frac{\Conjugate{z} + 2i}{z - 2i} \\
+           &= \lim\limits_{\substack{x = 0 \\ y \to 2}} \frac{-yi + 2i}{yi - 2i} \\
+           &= \lim\limits_{y \to 2} \frac{-i (y-2)}{i (y-2)} \\
+           &= -1
+  \end{align*}
+
+  Now solve the above limit using Path 2 ($\Path_{2}$):
+  \begin{align*}
+    f'(2i) &= \lim\limits_{\substack{z \to 2i \\ z \text{ on } \Path_{2}}} \frac{\Conjugate{z} + 2i}{z - 2i} \\
+           &= \lim\limits_{\substack{x \to 0 \\ y = 2}} \frac{x-2i+2i}{x+2i-2i} \\
+           &= \lim\limits_{\substack{x \to 0}} \frac{x}{x} \\
+           &= 1
+  \end{align*}
+
+  Now, like the definition of a \nameref{def:Complex_Limit} of a \nameref{def:Complex_Function} states:
+  \begin{align*}
+    \lim\limits_{\substack{z \to a \\ z \text{ on } \Path_{1}}} \frac{\Conjugate{z} + 2i}{z - 2i} &\neq \lim\limits_{\substack{z \to a \\ z \text{ on } \Path_{2}}} \frac{\Conjugate{z} + 2i}{z - 2i} \\
+    \lim\limits_{z \to a} \frac{f(z) - f(a)}{z - a} &= \DNE
+  \end{align*}
+
+  Thus, because the backing \nameref{def:Complex_Limit} does not exist, the entire \nameref{def:Complex_Derivative} does not exist.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
