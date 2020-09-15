@@ -130,6 +130,29 @@ If the equations above both hold true, and the \nameref{def:Complex_Function} $f
   If the \nameref{subsubsec:Cauchy_Riemann_Equations} do not exist at $z = a$, then $f(z)$ has \textbf{NO} \nameref{def:Complex_Derivative} at $z = a$.
 \end{remark*}
 
+\begin{example}[Lecture 5]{Existence of Derivative using Cauchy-Riemann Equations}
+  Given the function $f(z)$, find its \nameref{def:Complex_Derivative}?
+  \begin{equation*}
+    f(z) = \Conjugate{z} = x - iy
+  \end{equation*}
+  \tcblower{}
+  First, we identify the functions $U(x, y)$ and $V(x, y$).
+  \begin{align*}
+    U(x, y) &= x \\
+    V(x, y) &= -y
+  \end{align*}
+
+  Now we start by checking \Cref{subeq:Cauchy_Riemann_Equation-UxVy}.
+  \begin{align*}
+    \frac{\partial U}{\partial x} &= 1 \\
+    \frac{\partial V}{\partial y} &= -1 \\
+    \frac{\partial U}{\partial x} &\neq \frac{\partial V}{\partial y} \\
+    U_{x} &\neq V_{y}
+  \end{align*}
+
+  Because the \nameref{subsubsec:Cauchy_Riemann_Equations} are \textbf{not} satisified, $f(z) = \Conjugate{z}$ has \textbf{NO} \nameref{def:Complex_Derivative} at any point $z$.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
