@@ -324,6 +324,41 @@ The class of equations that satisfy \Cref{eq:U_V_Harmonic_Relation} are called \
   \emph{Harmonic} functions are real-valued functions that are twice continuously differentiable function $f: U \to R$, where $U$ is an open subset of $\RealNumbers^{n}$, that satisfies~\nameref{subsec:Laplaces_Equation} (\Cref{eq:Laplaces_Equation}).
 \end{definition}
 
+\begin{example}[Lecture 5]{Prove Function Terms are Harmonic}
+  Given $f(z)$, verify $U(x, y)$ is \nameref{def:Harmonic}?
+  \begin{equation*}
+    f(z) = z^{3}
+  \end{equation*}
+  \tcblower{}
+  We start by needing to find $U(x, y)$ and $V(x, y)$.
+  \begin{align*}
+    f(z) &= z^{3} \\
+         &= z^{2} z \\
+         &= \left( x^{2} - y^{2} + 2xyi \right) (x + iy) \\
+         &= x^{3} - xy^{2} + ix^{2}y - iy^{3} - 2xy^{2} + 2x^{2}yi \\
+         &= x^{3} - 3xy^{2} + i \left( 3x^{2}y - y^{3} \right) \\
+    U(x, y) &= x^{3} - 3xy^{2} \\
+    V(x, y) &= 3x^{2}y - y^{3}
+  \end{align*}
+
+  Now that we have $U(x, y)$, we can find the partial derivatives.
+  \begin{align*}
+    \frac{\partial U}{\partial x} &= 3x^{2} - 3y^{2} \\
+    \frac{\partial^{2} U}{{\partial x}^{2}} &= 6x \\
+    \frac{\partial U}{\partial y} &= -6xy \\
+    \frac{\partial^{2} U}{{\partial y}^{2}} &= -6x \\
+  \end{align*}
+
+  Now, we use \Cref{subeq:U_V_Harmonic_Relation-U} to check the validity of the \nameref{def:Harmonic} relation.
+  \begin{align*}
+    \frac{\partial^{2} U}{{\partial x}^{2}} + \frac{\partial^{2} U}{{\partial y}^{2}} &= 0 \\
+    6x + -6x &= 0 \\
+    0 &\overset{\checkmark}{=} 0
+  \end{align*}
+
+  Thus, $U(x, y) = x^{3} - 3xy^{2}$ \textbf{is} \nameref{def:Harmonic}.
+  Similarly, $V(x, y) = 3x^{2}y - y^{3}$ is also harmonic.
+\end{example}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
