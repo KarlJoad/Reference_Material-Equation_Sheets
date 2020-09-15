@@ -23,6 +23,24 @@
   The radius $r$ is unspecified, meaning that we must choose its value.
 \end{definition}
 
+\begin{example}[Lecture 5]{Derivative of Complex Function}
+  Given $f(z)$, what is its \nameref{def:Complex_Derivative} at a point $a$, $f'(a)$?
+  \begin{equation*}
+    f(z) = z^{2}
+  \end{equation*}
+  \tcblower{}
+  As this problem is simple, we can just apply \Cref{eq:Complex_Derivative} directly.
+  \begin{align*}
+    f'(a) &= \lim\limits_{z \to a} \frac{f(z) - f(a)}{z - a} \\
+          &= \lim\limits_{z \to a} \frac{z^{2} - a^{2}}{z - a} \\
+          &= \lim\limits_{z \to a} \frac{(z-a) (z+a)}{z - a} \\
+          &= \lim\limits_{z \to a} (z+a) \\
+          &= (a + a) \\
+          &= 2a
+  \end{align*}
+
+  Thus, $f'(a) = 2a$.
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
