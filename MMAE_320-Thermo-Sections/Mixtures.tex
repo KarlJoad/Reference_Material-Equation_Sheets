@@ -55,6 +55,19 @@ Now, \Cref{eq:Single_Phase_Average_Total_Volume} only finds the volume for a sin
   \AvgSpecificVol \Mass_{Total} = \Mass_{Liquid} \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol
 \end{equation}
 
+In fact, \Cref{eq:Average_Total_Volume} can be re-expressed using \nameref{def:Quality}, which gives us \Cref{eq:Average_Specific_Volume_Using_Quality}.
+\begin{align*}
+  \AvgSpecificVol \Mass_{Total} &= \Mass_{Liquid} \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \\
+  \AvgSpecificVol \Mass_{Total} &= (\Mass_{Total} - \Mass_{Gas}) \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \\
+  \AvgSpecificVol &= \frac{1}{\Mass_{Total}} \bigl( (\Mass_{Total} - \Mass_{Gas}) \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \bigr) \\
+                                &= \left( 1 - \frac{\Mass_{Gas}}{\Mass_{Total}} \right) \SaturatedFluidVol + \frac{\Mass_{Gas}}{\Mass_{Total}} \SaturatedVaporVol \\
+  \Quality &= \frac{\Mass_{Gas}}{\Mass_{Total}} \\
+  \AvgSpecificVol &= (1 - \Quality) \SaturatedFluidVol + \Quality \SaturatedVaporVol \\
+  &= \SaturatedFluidVol + \Quality (\SaturatedVaporVol - \SaturatedFluidVol)
+\end{align*}
+
+The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} once pressure and temperature have been established.
+
 
 %%% Local Variables:
 %%% mode: latex
