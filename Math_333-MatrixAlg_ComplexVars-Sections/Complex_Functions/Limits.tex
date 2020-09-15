@@ -46,6 +46,54 @@ For a \nameref{def:Complex_Limit} of a \nameref{def:Complex_Function} to \textbf
   \lim\limits_{\substack{z \to a \\ z \text{ on } \Path_{1}}} f(z) \neq \lim\limits_{\substack{z \to a \\ z \text{ on } \Path_{2}}} f(z)
 \end{equation}
 
+\begin{example}[Lecture 5]{Limit of a Complex Function that DNE}
+  Give the function $f(z)$ defined below, show that its \nameref{def:Complex_Limit} as $z \to 0$ Does Not Exist ($\DNE$)?
+  \begin{equation*}
+    f(z) = \frac{xy}{x^{2} + y^{2}}
+  \end{equation*}
+  \tcblower{}
+  We start by referring to the definition of the lack of existence of a \nameref{def:Complex_Limit} of a \nameref{def:Complex_Function}.
+  Namely, we must find at least 2 paths $\Path_{1}, \Path_{2}$ such that evaluating the limit will yield two different values.
+  I choose:
+  \begin{align*}
+    \Path_{1} &\coloneqq y = 0 \\
+    \Path_{2} &\coloneqq y = 2x
+  \end{align*}
+
+  Now we evaluate the expression below, using each path.
+  \begin{equation*}
+    \lim\limits_{\substack{z \to 0 \\ z \text{ on } \Path}} f(z)
+  \end{equation*}
+
+  Following Path 1, $\Path_{1}$:
+  \begin{align*}
+    \lim\limits_{\substack{z \to 0 \\ z \text{ on } \Path_{1}}} f(z) &= \lim\limits_{\substack{z \to 0 \\ z \text{ on } \Path_{1}}} \frac{xy}{x^{2}+y^{2}} \\
+                                                                     &= \lim\limits_{\substack{x \to 0 \\ y = 0}} \frac{xy}{x^{2}+y^{2}} \\
+                                                                     &= \lim\limits_{x \to 0} \frac{0}{x^{2}+0} \\
+                                                                     &= 0
+  \end{align*}
+
+  Following Path 2, $\Path_{2}$:
+  \begin{align*}
+    \lim\limits_{\substack{z \to 0 \\ z \text{ on } \Path_{2}}} f(z) &= \lim\limits_{\substack{z \to 0 \\ z \text{ on } \Path_{2}}} \frac{xy}{x^{2}+y^{2}} \\
+                                                                     &= \lim\limits_{\substack{x \to 0 \\ y = 2x}} \frac{xy}{x^{2}+y^{2}} \\
+                                                                     &= \lim\limits_{x \to 0} \frac{2x^{2}}{5x^{2}} \\
+                                                                     &= \frac{2}{5}
+  \end{align*}
+
+  Thus,
+  \begin{align*}
+    \lim\limits_{\substack{z \to 0 \\ z \text{ on } \Path_{1}}} f(z) &= 0 \\
+    \lim\limits_{\substack{z \to 0 \\ z \text{ on } \Path_{2}}} f(z) &= \frac{2}{5} \\
+    \lim\limits_{\substack{z \to 0 \\ z \text{ on } \Path_{1}}} f(z) &\neq \lim\limits_{\substack{z \to 0 \\ z \text{ on } \Path_{2}}} f(z)
+  \end{align*}
+
+  Because there exist two different paths that yield different results from the \nameref{def:Complex_Limit} of the provided function $f(z)$,
+  \begin{equation*}
+    \lim\limits_{z \to 0} f(z) = \DNE
+  \end{equation*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
