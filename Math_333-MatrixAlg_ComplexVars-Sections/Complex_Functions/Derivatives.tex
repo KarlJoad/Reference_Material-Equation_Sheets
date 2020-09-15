@@ -214,6 +214,44 @@ In the polar form, the Cauchy-Riemann Equations are seen as \Cref{eq:Cauchy_Riem
   Thus, $f'(z) = 2x + 2yi$.
 \end{example}
 
+\begin{example}[Lecture 5]{Differentiate Complex Trig using Cauchy-Riemann Equations}
+  Given the function $f(z) = \cos(z)$, verify that $f'(z) = -\sin(z)$?
+  \tcblower{}
+  Start by identifying $U(x, y)$ and $V(x, y)$.
+  \begin{align*}
+    f(z) &= \cos(z) \\
+    \cos(z) &= \cos(x + iy) \\
+         &= \cos(x) \cosh(y) - i \sin(x) \sinh(y) \\
+    U(x, y) &= \cos(x) \cosh(y) \\
+    V(x, y) &= -\sin(x) \sinh(y) \\
+  \end{align*}
+
+  Now use \Cref{eq:Cauchy_Riemann_Equations-Cartesian}.
+  \begin{align*}
+    \frac{\partial U}{\partial x} &= -\sin(x) \cosh(y) & \frac{\partial V}{\partial y} &= -\sin(x) \cosh(y) \\
+    \frac{\partial U}{\partial y} &= \cos(x) \sinh(y) & \frac{\partial V}{\partial x} &= -\cos(x) \sinh(y)
+  \end{align*}
+  \begin{align*}
+    \frac{\partial U}{\partial x} = -\sin(x)& \cosh(y) = \frac{\partial V}{\partial y} \\
+    \frac{\partial U}{\partial y} = \cos(x)&\sinh(y) = -\frac{\partial V}{\partial x}
+  \end{align*}
+
+  Thus, the \nameref{subsubsec:Cauchy_Riemann_Equations} are satisified.
+  In addition, the 4 partial derivatives are continuous at all points.
+
+  Therefore, $f(z) = \cos(z)$ \textbf{has} a derivative at all points.
+  According to \Cref{eq:Complex_Function_Derivative-Cauchy_Riemann_Equation_Solution}, the solution is:
+  \begin{align*}
+    f'(z) &= \frac{\partial U}{\partial x} + i \frac{\partial V}{\partial x} \\
+          &= -\sin(x) \cosh(y) + i \bigl( -\cos(x) \sinh(y) \bigr) \\
+    \shortintertext{Factor out the negative.}
+          &= - \bigl( \sin(x) \cosh(y) + i \cos(x) \sinh(y) \bigr) \\
+    \shortintertext{By the definition of $\sin(z)$ in Cartesian form, we can simplify everything in the parentheses.}
+          &= -\sin(x + iy) \\
+          &= -\sin(z)
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
