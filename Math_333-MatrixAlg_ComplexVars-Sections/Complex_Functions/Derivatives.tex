@@ -157,6 +157,40 @@ If the equations above both hold true, and the \nameref{def:Complex_Function} $f
   There \textit{are} functions where the \nameref{subsubsec:Cauchy_Riemann_Equations} hold at a point $a$, but the function does \textbf{NOT} have a \nameref{def:Complex_Derivative} at that point.
 \end{remark*}
 
+\begin{example}[Lecture 5]{Differentiate Complex Function using Cauchy-Riemann Equations}
+  Given the function $f(z)$, use the \nameref{subsubsec:Cauchy_Riemann_Equations} to find $f'(z)$?
+  \begin{equation*}
+    f(z) = z^{2} = \left( x^{2} - y^{2} \right) + 2xyi
+  \end{equation*}
+  \tcblower{}
+  We identify $U(x, y)$ and $V(x, y)$ first.
+  \begin{align*}
+    U(x, y) &= x^{2} - y^{2} \\
+    V(x, y) &= 2xyi
+  \end{align*}
+
+  Start with \Cref{subeq:Cauchy_Riemann_Equation-UxVy}.
+  \begin{align*}
+    \frac{\partial U}{\partial x} &= 2x & \frac{\partial V}{\partial y} &= 2x \\
+    \frac{\partial U}{\partial y} &= -2y & \frac{\partial V}{\partial x} &= 2y \\
+  \end{align*}
+  \begin{align*}
+    \frac{\partial U}{\partial x} = &2x = \frac{\partial V}{\partial y} \\
+    \frac{\partial U}{\partial y} = -&2y = -\frac{\partial V}{\partial x} \\
+  \end{align*}
+
+  $U_{x}, V_{y}, U_{y}, V_{x}$ are polynomials.
+  Hence, they are continuous.
+  Hence $f$ has a derivative at all points.
+  Because this function passes the requirements placed on $f(z)$ by the \nameref{subsubsec:Cauchy_Riemann_Equations}, we can find the \nameref{def:Complex_Derivative} of $f(z)$.
+  \begin{align*}
+    f'(z) &= \frac{\partial U}{\partial x} + i \frac{\partial V}{\partial x} \\
+          &= 2x + 2yi
+  \end{align*}
+
+  Thus, $f'(z) = 2x + 2yi$.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
