@@ -287,6 +287,39 @@ In the polar form, the Cauchy-Riemann Equations are seen as \Cref{eq:Cauchy_Riem
 \end{theorem}
 
 \subsubsection{Specialties of $U$, $V$, and their Interdependency}\label{subsubsec:Special_U_V_Interdependency}
+We start by using \Cref{eq:Cauchy_Riemann_Equations-Cartesian}.
+\begin{align*}
+  \frac{\partial U}{\partial x} &= \frac{\partial V}{\partial y} \\
+  \frac{\partial U}{\partial y} &= -\frac{\partial V}{\partial x}
+\end{align*}
+
+Now, if we take the partial derivative of $U_{x} = V_{y}$ with respect to $y$
+\begin{align*}
+  \frac{\partial}{\partial y} \left( \frac{\partial U}{\partial x} \right) &= \frac{\partial}{\partial y} \left( \frac{\partial V}{\partial y} \right) \\
+  \frac{\partial^{2} U}{\partial y \partial x} &= \frac{\partial^{2} V}{{\partial y}^{2}}
+\end{align*}
+
+If we take the partial derivative of $U_{y} = -V_{x}$ with respect to $x$
+\begin{align*}
+  \frac{\partial}{\partial x} \left( \frac{\partial U}{\partial y} \right) &= \frac{\partial}{\partial x} \left( -\frac{\partial V}{\partial x} \right) \\
+  \frac{\partial^{2} U}{\partial x \partial y} &= -\frac{\partial^{2} V}{{\partial x}^{2}}
+\end{align*}
+
+For the class of functions we are concerned with, the order of differentiation does not matter, meaning $\frac{\partial^{2}}{\partial x \partial y} = \frac{\partial^{2}}{\partial y \partial x}$.
+
+Now, if we add $\frac{\partial^{2} U}{\partial y \partial x} = \frac{\partial^{2} V}{{\partial y}^{2}}$ and $\frac{\partial^{2} U}{\partial x \partial y} = -\frac{\partial^{2} V}{{\partial x}^{2}}$, then:
+
+\begin{subequations}\label{eq:U_V_Harmonic_Relation}
+  \begin{equation}\label{subeq:U_V_Harmonic_Relation-V}
+    \frac{\partial^{2} V}{{\partial y}^{2}} + \frac{\partial^{2} V}{{\partial x}^{2}} = 0
+  \end{equation}
+  \begin{equation}\label{subeq:U_V_Harmonic_Relation-U}
+    \frac{\partial^{2} U}{{\partial x}^{2}} + \frac{\partial^{2} U}{{\partial y}^{2}} = 0
+  \end{equation}
+\end{subequations}
+
+The class of equations that satisfy \Cref{eq:U_V_Harmonic_Relation} are called \nameref{def:Harmonic} functions.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
