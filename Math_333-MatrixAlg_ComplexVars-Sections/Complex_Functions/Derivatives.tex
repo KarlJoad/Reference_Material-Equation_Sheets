@@ -120,17 +120,6 @@ In the Cartesian form, these equations are seen as \Cref{eq:Cauchy_Riemann_Equat
   \end{equation}
 \end{subequations}
 
-If the equations above both hold true, and the \nameref{def:Complex_Function} $f(z)$ is differentiable, then:
-\begin{equation}\label{eq:Complex_Function_Derivative-Cauchy_Riemann_Equation_Solution}
-  \begin{aligned}
-    f'(z) &= \frac{\partial U}{\partial x} + i \frac{\partial V}{\partial x} \\
-    f'(z) &= \frac{\partial V}{\partial y} - i \frac{\partial U}{\partial y}
-  \end{aligned}
-\end{equation}
-
-\begin{remark*}
-  If the \nameref{subsubsec:Cauchy_Riemann_Equations} do not exist at $z = a$, then $f(z)$ has \textbf{NO} \nameref{def:Complex_Derivative} at $z = a$.
-\end{remark*}
 In the polar form, the Cauchy-Riemann Equations are seen as \Cref{eq:Cauchy_Riemann_Equations-Polar}:
 \begin{subequations}\label{eq:Cauchy_Riemann_Equations-Polar}
   \begin{equation}\label{subeq:Cauchy_Riemann_Equations-UrVt}
@@ -169,6 +158,18 @@ In the polar form, the Cauchy-Riemann Equations are seen as \Cref{eq:Cauchy_Riem
 
   Because the \nameref{subsubsec:Cauchy_Riemann_Equations} are \textbf{not} satisified, $f(z) = \Conjugate{z}$ has \textbf{NO} \nameref{def:Complex_Derivative} at any point $z$.
 \end{example}
+
+\begin{theorem}\label{thm:Cauchy_Riemann_Complex_Function_Derivative}
+  Suppose $f$ is a \nameref{def:Complex_Function} defined in the \nameref{def:Neighborhood} $\Modulus{z-a} < r$ for some $r$.
+  Suppose the \nameref{subsubsec:Cauchy_Riemann_Equations} hold at a point, $a$, and that the 4 partial derivatives $U_{x}$, $U_{y}$, $V_{x}$, and $V_{y}$ exist and are \underline{continuous} at $z=a$.
+  Then the \nameref{def:Complex_Derivative} of $f$ at $z=a$ is defined to be:
+  \begin{equation}\label{eq:Complex_Function_Derivative-Cauchy_Riemann_Equation_Solution}
+    \begin{aligned}
+      f'(z) &= \frac{\partial U}{\partial x} + i \frac{\partial V}{\partial x} \\
+      f'(a) &= \frac{\partial V}{\partial y}(a) - i \frac{\partial U}{\partial y}(a)
+    \end{aligned}
+  \end{equation}
+\end{theorem}
 
 \begin{remark*}
   There \textit{are} functions where the \nameref{subsubsec:Cauchy_Riemann_Equations} hold at a point $a$, but the function does \textbf{NOT} have a \nameref{def:Complex_Derivative} at that point.
