@@ -1,4 +1,23 @@
 \subsection{Derivatives}\label{subsec:Derivatives}
+\begin{definition}[Derivative]\label{def:Complex_Derivative}
+  The \emph{derivative} of a \nameref{def:Complex_Function}, like many other operations, must have its definitions slightly redefined to account for the extra dimension provided by the \nameref{def:Argand_Plane}.
+
+  The \textbf{domain} of a derivative of a \nameref{def:Complex_Function} $f(z)$ requires that $f$ be defined in a \nameref{def:Neighborhood} of the point $a$.
+  Once this is satisified, then \Cref{eq:Complex_Derivative} is used to find the actual value.
+  \begin{equation}\label{eq:Complex_Derivative}
+    f'(a) = \lim\limits_{z \to a} \frac{f(z) - f(a)}{z - a}
+  \end{equation}
+
+  \begin{remark}[Path Existence]\label{rmk:Complex_Derivative_Path_Existence}
+    Because the \nameref{def:Complex_Derivative} of a \nameref{def:Complex_Function} is defined with a \nameref{def:Complex_Limit}, \textbf{ALL} paths must exist and have the same value.
+  \end{remark}
+
+  \begin{remark}[Uses]\label{rmk:Complex_Derivative_Uses}
+    The definition of a \nameref{def:Complex_Derivative} is rarely used to calculate anything.
+    Instead, it is used to prove the non-existence of a derivative of a complex function.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
