@@ -269,6 +269,23 @@ In the polar form, the Cauchy-Riemann Equations are seen as \Cref{eq:Cauchy_Riem
   \end{description}
 \end{definition}
 
+\begin{theorem}
+  Define a function $f$ like so:
+  \begin{equation*}
+    f(z) = U(x, y) + i V(x, y)
+  \end{equation*}
+
+  If the function $f$ is \nameref{def:Analytic} on $\Omega$, then $f$ has a derivative at all points in $\Omega$, meaning
+  \begin{align*}
+    \frac{\partial U}{\partial x} &= \frac{\partial V}{\partial y} \\
+    \frac{\partial U}{\partial y} &= -\frac{\partial V}{\partial x}
+  \end{align*}
+
+  This means that the \nameref{subsubsec:Cauchy_Riemann_Equations} hold, and the partial derivatives are valid.
+
+  Then, according to our work in \Cref{subsubsec:Special_U_V_Interdependency}, $U(x, y)$ and $V(x, y)$ are \nameref{def:Harmonic}.
+\end{theorem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
