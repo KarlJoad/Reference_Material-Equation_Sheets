@@ -18,13 +18,13 @@
 				Mutliply by s in Frequency, Derivative in Time & $\frac{d^{n}}{dt^{n}} x(t)$ & $s^{n}X(s) - \sum_{i=0}^{n-1} s^{n-1-i} \frac{d^{i}}{dt^{i}} x(t) \vert_{t=0^{-}}$ \\ \hline
 				Integration & $\int_{0}^{t} x \left( \lambda \right) d\lambda$ & $\frac{1}{s} X(s)$ \\ \hline
 				Multiply in Frequency, Convolution in Time & $x(t) * v(t)$ & $X(s)V(s)$ \\ \hline
-				Initial Value Theorem & \multicolumn{2}{c|}{$x \left( 0^{+} \right) = \lim\limits_{s \rightarrow \infty} sX(s)$} \\ \hline
-				Final Value Theorem & \multicolumn{2}{c|}{$\lim\limits_{t \rightarrow \infty} x(t) = \lim\limits_{s\rightarrow 0} sX(s)$} \\ \hline
+				Initial Value Theorem & \multicolumn{2}{c|}{$x \left( 0^{+} \right) = \lim\limits_{s \to \infty} sX(s)$} \\ \hline
+				Final Value Theorem & \multicolumn{2}{c|}{$\lim\limits_{t \to \infty} x(t) = \lim\limits_{s\to 0} sX(s)$} \\ \hline
 				Relation to Fourier Transform & \multicolumn{2}{c|}{If $X(\omega)$ exists, then $X(s) = X(\omega)|_{\omega = \frac{s}{j}}$} \\ \hline
 			\end{tabular}
 		\end{table}
 		\vspace{-5mm}
-		
+
 	\subsection*{Laplace Transform Pairs} \label{subsec:Laplace Transform Pairs}
 		\begin{align*}
 			\Lapl \lbrace x (t) \rbrace &= X(s) & \Lapl \lbrace \delta (t) \rbrace &= 1 & \Lapl \lbrace \delta \left( t-T_{0} \right) \rbrace &= e^{-stT_{0}} & \Lapl \lbrace \UnitStep (t) \rbrace &= \frac{1}{s} \\

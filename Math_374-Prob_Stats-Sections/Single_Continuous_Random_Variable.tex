@@ -23,11 +23,11 @@
   \end{equation}
 \item If you include the whole sample space, you should end up with $1$.
   \begin{equation}
-    \lim\limits_{x \rightarrow \infty} F_{X} \left( x \right) = 1
+    \lim\limits_{x \to \infty} F_{X} \left( x \right) = 1
   \end{equation}
 \item If you exclude the whole sample space, you should end up with $0$.
   \begin{equation}
-    \lim\limits_{x \rightarrow -\infty} F_{X} \left( x \right) = 0
+    \lim\limits_{x \to -\infty} F_{X} \left( x \right) = 0
   \end{equation}
 \item $F_{X} \left( x \right)$ is non-decreasing.
   \begin{equation}
@@ -35,7 +35,7 @@
   \end{equation}
 \item The CDF is continuous from the right.
   \begin{equation}
-    F_{X} \left( b \right) = \lim\limits_{h \rightarrow 0} F_{X} \left( b+h \right) \text{ where } h>0
+    F_{X} \left( b \right) = \lim\limits_{h \to 0} F_{X} \left( b+h \right) \text{ where } h>0
   \end{equation}
 \item
   \begin{equation}
@@ -54,10 +54,10 @@
   Let $C$ be an event for which $\Prob \left[ C \right] > 0$. Show that $F_{X} \left( X \Given C \right)$ satisfies the 8 properties of a Cumulative Distribution Function.
   \begin{propertylist}
   \item $0 \leq F_{X} \left( x \right) \leq 1$
-  \item $\lim \limits_{x \rightarrow \infty} F_{X} \left( x \right) = 1$
-  \item $\lim \limits_{x \rightarrow -\infty} F_{X} \left( x \right) = 0$
+  \item $\lim \limits_{x \to \infty} F_{X} \left( x \right) = 1$
+  \item $\lim \limits_{x \to -\infty} F_{X} \left( x \right) = 0$
   \item For $a < b$, $F_{X} \left( a \right) \leq F_{X} \left( b \right)$
-  \item $h>0$, $F_{X} \left( b \right) = \lim\limits_{h \rightarrow 0^{+}} F_{X} \left( b+h \right) = F_{X} \left( b^{+} \right)$
+  \item $h>0$, $F_{X} \left( b \right) = \lim\limits_{h \to 0^{+}} F_{X} \left( b+h \right) = F_{X} \left( b^{+} \right)$
   \item $\Prob \left[ a < X \leq b \right] = F_{X} \left( b \right) - F_{X} \left( a \right)$
   \item $\Prob \left[ X = a \right] = F_{X} \left( a \right) - F_{X} \left( a^{-} \right)$
   \item $\Prob \left[ X > x \right] = 1 - F_{X} \left( x \right)$
@@ -379,7 +379,7 @@ If $X \DrawnFrom N \left( \mu, \sigma^{2} \right)$ and $Y \DrawnFrom N \left( 0,
   Let $X$ be the number of successes in $n$ Bernoulli trials were the probability of success is $p$.
   Let $Y = \frac{X}{n}$ be the average number of successes per trial.
   Apply the \nameref{eq:Chebychev Inequality} to the event $\lbrace \lvert Y-p \rvert > a \rbrace$.
-  What happens as $n \rightarrow \infty$?
+  What happens as $n \to \infty$?
 
   \tcblower
 

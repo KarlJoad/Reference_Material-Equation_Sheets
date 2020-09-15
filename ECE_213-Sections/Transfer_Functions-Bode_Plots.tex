@@ -8,7 +8,7 @@
 			\item $H \left( \omega \right) = \frac{I_{Out}}{V_{In}}$
 		\end{itemize}
 	\end{itemize}
-	We replace {\large $s = \omega j \rightarrow \omega = \frac{s}{j}$}. \newline
+	We replace {\large $s = \omega j \to \omega = \frac{s}{j}$}. \newline
 	When we have the transfer function, and plug in the equivalency $s = \omega j$, we end up with something like:
 	\begin{equation*}
 		H\left( s \right) = \frac{k \left(s + z_{1} \right) \left(s + z_{2} \right) \left(s + z_{3} \right) \cdots}{\left(s + p_{1} \right) \left(s + p_{2} \right) \left(s + p_{3} \right) \cdots}
@@ -32,33 +32,33 @@
 			$K$ & $20 \log_{10} K$ & $0 \degree$ \\ \hline
 			$\left( j \omega \right)^{N}$ & $ 20N \text{dB/decade}$ (Passes through 1 and continues) & $90N \degree$ \\ \hline
 			$\frac{1}{\left( j \omega \right)^{N}}$ & $-20N \text{dB/decade}$ (Passes through 1 and continues) & $-90N \degree$ \\ \hline
-			
+
 			$\left( 1 + \frac{j \omega}{z} \right)^{N}$ &
 				$\begin{cases}
 					0 & x \leq z \\
 					20N \text{dB/decade} \\
-				\end{cases}$ 
+				\end{cases}$
 				&
 				$\begin{cases}
 					0 & < \frac{z}{10} \\
 					\frac{1}{2} \left( 90N \right) \degree & =z \\
 					90N \degree & \geq 10z \\
-				\end{cases}$ 
+				\end{cases}$
 				\\ \hline
-				
-				$\frac{1}{\left( 1 + j \omega / p \right)^{N}}$ & 
+
+				$\frac{1}{\left( 1 + j \omega / p \right)^{N}}$ &
 					$\begin{cases}
 							0 & x \leq z \\
 							-20N \text{dB/decade} \\
-						\end{cases}$ 
-					& 
+						\end{cases}$
+					&
 					$\begin{cases}
 						0 & < \frac{z}{10} \\
 						\frac{1}{2} \left( -90N \right) \degree & =z \\
 						-90N \degree & \geq 10z \\
-					\end{cases}$ 
+					\end{cases}$
 					\\ \hline
-				
+
 				$\left[ 1 + \frac{2 j \omega \zeta}{\omega_{n}} + \left( \frac{j \omega}{\omega_{n}} \right)^{2} \right]^{N}$ & $\begin{cases}
 					0 & \leq \omega_{n} \\
 					40N \text{dB/decade} & > \omega_{n} \\
@@ -70,7 +70,7 @@
 					180N \degree & \geq 10 \omega_{n} \\
 				\end{cases}$
 				\\ \hline
-				
+
 				$\frac{1}{\left[ 1 + \frac{2 j \omega \zeta}{\omega_{k}} + \left( j \omega / \omega_{k} \right)^{2} \right]^{N}}$ & $\begin{cases}
 					0 & \leq \omega_{k} \\
 					-40N \text{dB/decade} & > \omega_{k} \\
@@ -79,7 +79,7 @@
 				$\begin{cases}
 					0 & \leq \frac{\omega_{n}}{10} \\
 					\frac{1}{2} \left( -180 N \right) \degree & = \omega_{k} \\
-					-180N \degree & \geq 10 \omega_{k} \\	
+					-180N \degree & \geq 10 \omega_{k} \\
 				\end{cases}$
 				\\ \hline
 		\end{tabular}

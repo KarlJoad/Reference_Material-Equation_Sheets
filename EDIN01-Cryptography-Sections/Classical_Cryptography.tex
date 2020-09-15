@@ -6,7 +6,7 @@
   \item $\Ciphertexts$ is a finite set of possible \emph{\nameref{def:Ciphertext}}
   \item $\Keyspace$, the \emph{\nameref{def:Keyspace}}, is a finite set of all possible keys
   \item For each $K \in \Keyspace$, there is an \emph{\nameref{def:Encryption_Rule}} $e_{K}\in \EncryptionRules$ and a corresponding \emph{\nameref{def:Decryption_Rule}} $d_{K} \in \DecryptionRules$.
-    Each $e_{K} : \Plaintexts \rightarrow \Ciphertexts$ and $d_{K} : \Ciphertexts \rightarrow \Plaintexts$ are functions such that $d_{K} \left( e_{K}(x) \right) = x$ for every \nameref{def:Plaintext} element $x \in \Plaintexts$.
+    Each $e_{K} : \Plaintexts \mapsto \Ciphertexts$ and $d_{K} : \Ciphertexts \mapsto \Plaintexts$ are functions such that $d_{K} \left( e_{K}(x) \right) = x$ for every \nameref{def:Plaintext} element $x \in \Plaintexts$.
   \end{enumerate}
 \end{definition}
 
@@ -82,14 +82,14 @@ A convention is to give the various parties in play names:
   \emph{Keyspace}, denoted $\Keyspace$.
   Each \emph{key} in the keyspace describes a certain function
   \begin{equation}\label{eq:Keyspace}
-    e_{K} : \Plaintexts^{n} \rightarrow \Ciphertexts^{n'}
+    e_{K} : \Plaintexts^{n} \mapsto \Ciphertexts^{n'}
   \end{equation}
 \end{definition}
 
 \begin{definition}[Encryption Rule]\label{def:Encryption_Rule}
   The \emph{encryption rule} is an element $e_{K}$ from the set of all encryption rules, $\EncryptionRules$.
   \begin{equation}\label{eq:Encryption_Rule}
-    e_{K} : \Plaintexts \rightarrow \Ciphertexts \text{where } e_{K} \in \EncryptionRules
+    e_{K} : \Plaintexts \mapsto \Ciphertexts \text{where } e_{K} \in \EncryptionRules
   \end{equation}
   Namely, the encryption rule element is used to map the \nameref{def:Plaintext} pieces of information that Alice wants to send to a corresponding \nameref{def:Ciphertext} that she can send to Bob.
 
@@ -101,7 +101,7 @@ A convention is to give the various parties in play names:
 \begin{definition}[Decryption Rule]\label{def:Decryption_Rule}
   The \emph{decryption rule} is an element $d_{K}$ from the set of all decryption rules, $\DecryptionRules$.
   \begin{equation}\label{eq:Decryption_Rule}
-    d_{K} : \Ciphertexts \rightarrow \Plaintexts \text{where } d_{K} \in \DecryptionRules
+    d_{K} : \Ciphertexts \mapsto \Plaintexts \text{where } d_{K} \in \DecryptionRules
   \end{equation}
   Namely, the decryption rule element is used to map the \nameref{def:Ciphertext} pieces of information that Alice sent to a corresponding \nameref{def:Plaintext} that Bob can use.
 
@@ -267,8 +267,8 @@ There are 2 main ways to do this.
 \begin{definition}[Measure of Roughness]\label{def:Measure_of_Roughness}
   \begin{equation}\label{eq:Measure_of_Roughness}
     \begin{aligned}
-      \mathrm{MR} &= \sum\limits_{i=a\Rightarrow1}^{z\Rightarrow26} {\left( p_{i} - \frac{1}{26} \right)}^{2} \\
-      &= \sum\limits_{i=a\Rightarrow1}^{z\Rightarrow26} {\left( p_{i} \right)}^{2} - \frac{1}{26} \\
+      \mathrm{MR} &= \sum\limits_{i=a \to 1}^{z \to 26} {\left( p_{i} - \frac{1}{26} \right)}^{2} \\
+      &= \sum\limits_{i=a \to 1}^{z \to 26} {\left( p_{i} \right)}^{2} - \frac{1}{26} \\
     \end{aligned}
   \end{equation}
 \end{definition}
@@ -276,7 +276,7 @@ There are 2 main ways to do this.
 \begin{definition}[Index of Coincidence]\label{def:Index_of_Coincidence}
   The \emph{index of coincidence} uses values found in the \nameref{def:Measure_of_Roughness}.
   \begin{equation}\label{eq:Index_of_Coincidence}
-    \mathrm{IC} = \frac{\sum\limits_{i=a\Rightarrow1}^{z\Rightarrow26} f_{i} \left( f_{1} - 1 \right)}{n(n-1)}
+    \mathrm{IC} = \frac{\sum\limits_{i=a\to1}^{z\to26} f_{i} \left( f_{1} - 1 \right)}{n(n-1)}
   \end{equation}
 
   However, it does \emph{not} return the period of \nameref{subsubsec:The_Vigenere_Cipher}.

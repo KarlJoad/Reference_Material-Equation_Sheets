@@ -97,7 +97,7 @@ There are 3 very import theorems that are used quite frequently in both \nameref
 \begin{theorem}[Weak Law of Large Numbers]\label{thm:Weak Law of Large Numbers}
   Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu$, then for $\varepsilon > 0$,
   \begin{equation}\label{eq:Weak Law of Large Numbers}
-    \lim\limits_{n \rightarrow \infty} P \left[ \lvert M_{n} - \mu \rvert < \varepsilon \right] = 1
+    \lim\limits_{n \to \infty} P \left[ \lvert M_{n} - \mu \rvert < \varepsilon \right] = 1
   \end{equation}
   \begin{remark*}
     In words this means, for large enough fixed values of $n$, $M_{n}$ is close to $\mu$ with high probability.
@@ -106,7 +106,7 @@ There are 3 very import theorems that are used quite frequently in both \nameref
 \begin{theorem}[Strong Law of Large Numbers]\label{thm:Strong Law of Large Numbers}
   Let $X_{1},X_{2},\ldots,X_{n}$ be a sequence of \nameref{def:Independent and Identically Distributed} random variables form a population with mean $\ExpectedValue \left[ X \right] = \mu$ and finite variance, then
   \begin{equation}\label{eq:Strong Law of Large Numbers}
-    P \left[ \lim\limits_{n \rightarrow \infty} M_{n} = \mu \right] = 1
+    P \left[ \lim\limits_{n \to \infty} M_{n} = \mu \right] = 1
   \end{equation}
   \begin{remark*}
     With probability 1, every sequence of sample mean calculations will eventually approach and stay close to the population mean.
@@ -119,7 +119,7 @@ There are 3 very import theorems that are used quite frequently in both \nameref
   \end{equation*}
   then,
   \begin{equation}\label{eq:Central Limit Theorem}
-    \lim\limits_{n \rightarrow \infty} P \left[ Z_{n} \leq z \right] = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{z} e^{-\frac{x^{2}}{2}} dx
+    \lim\limits_{n \to \infty} P \left[ Z_{n} \leq z \right] = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{z} e^{-\frac{x^{2}}{2}} dx
   \end{equation}
   \begin{itemize} % I preferred the way it looked without noitemsep/nolistsep
   \item $S_{n}=X_{1}+X_{2}+\ldots+X_{n}$, The sum of the random variables
@@ -224,7 +224,7 @@ If our estimator is an \nameref{def:Unbiased Estimator}, then:
 \begin{definition}[Consistency]\label{def:Consistency}
   $\hat{\theta}$ is a \emph{consistent estimator} for $\theta$ if $\hat{\Theta}$ converges to $\theta$ in probability.
   \begin{equation}\label{eq:Consistency}
-    \lim\limits_{n \rightarrow \infty} \Prob \left[ \lvert \hat{\Theta} - \theta \rvert > \varepsilon \right] = 0
+    \lim\limits_{n \to \infty} \Prob \left[ \lvert \hat{\Theta} - \theta \rvert > \varepsilon \right] = 0
   \end{equation}
 \end{definition}
 \begin{example}[Problem 8.17]{Confirm Consistency of Estimator}

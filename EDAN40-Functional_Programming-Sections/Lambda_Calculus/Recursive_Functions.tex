@@ -1,19 +1,19 @@
 \subsection{Recursive Functions}\label{subsec:Recursive_Functions}
 The type of a function that takes in a finite number of arguments, $k$ (called the function's arity) is denoted $\NaturalNumbers^{k}$, where $\NaturalNumbers$ is the set of all natural numbers.
 
-Functions $\NaturalNumbers^{k} \rightarrow \NaturalNumbers$ represents all computable functions.
+Functions $\NaturalNumbers^{k} \mapsto \NaturalNumbers$ represents all computable functions.
 \begin{enumerate}[noitemsep]
-\item \emph{Succcessor:} The function $s : \NaturalNumbers \rightarrow \NaturalNumbers$ given by the definition $s(x) = x + 1$ is computable.
-\item \emph{Zero:} The function $z : \NaturalNumbers^{0} \rightarrow \NaturalNumbers$ given by the definition $z() = 0$ is computable.
-\item \emph{Projections:} The functions $\pi_{n}^{k} : \NaturalNumbers^{k} \rightarrow \NaturalNumbers$ given by the definition $\pi_{n}^{k}(x_{1, \ldots, x_{k}}) = x_{n}$ for $1 \leq n \leq k$.
-\item \emph{Composition:} If the function $f : \NaturalNumbers^{k} \rightarrow \NaturalNumbers$ and functions $g_{1}, \ldots, g_{k} : \NaturalNumbers^{n} \rightarrow \NaturalNumbers$ are computable, then so is the function $f \circ (g_{1}, \ldots, g_{k}) : \NaturalNumbers^{n} \rightarrow \NaturalNumbers$ such that when given the input $\hat{x} = x_{1}, \ldots, x_{n}$ it returns $f(g_{1}(\hat{x}), \ldots g_{k}(\hat{x}))$.
-\item \emph{Primitive Recursion:} If $h_{i} : \NaturalNumbers^{n-1} \rightarrow \NaturalNumbers$ and $g_{i} : \NaturalNumbers^{n+k} \rightarrow \NaturalNumbers$ are computable, for $1 \leq i \leq k$, then so are the functions $f_{i} : \NaturalNumbers^{n} \rightarrow \NaturalNumbers$ for $1 \leq i \leq k$ defined by the mutual induction as follows:
+\item \emph{Succcessor:} The function $s : \NaturalNumbers \mapsto \NaturalNumbers$ given by the definition $s(x) = x + 1$ is computable.
+\item \emph{Zero:} The function $z : \NaturalNumbers^{0} \mapsto \NaturalNumbers$ given by the definition $z() = 0$ is computable.
+\item \emph{Projections:} The functions $\pi_{n}^{k} : \NaturalNumbers^{k} \mapsto \NaturalNumbers$ given by the definition $\pi_{n}^{k}(x_{1, \ldots, x_{k}}) = x_{n}$ for $1 \leq n \leq k$.
+\item \emph{Composition:} If the function $f : \NaturalNumbers^{k} \mapsto \NaturalNumbers$ and functions $g_{1}, \ldots, g_{k} : \NaturalNumbers^{n} \mapsto \NaturalNumbers$ are computable, then so is the function $f \circ (g_{1}, \ldots, g_{k}) : \NaturalNumbers^{n} \mapsto \NaturalNumbers$ such that when given the input $\hat{x} = x_{1}, \ldots, x_{n}$ it returns $f(g_{1}(\hat{x}), \ldots g_{k}(\hat{x}))$.
+\item \emph{Primitive Recursion:} If $h_{i} : \NaturalNumbers^{n-1} \mapsto \NaturalNumbers$ and $g_{i} : \NaturalNumbers^{n+k} \mapsto \NaturalNumbers$ are computable, for $1 \leq i \leq k$, then so are the functions $f_{i} : \NaturalNumbers^{n} \mapsto \NaturalNumbers$ for $1 \leq i \leq k$ defined by the mutual induction as follows:
   \begin{align*}
     f_{i}(0, \hat{x}) &\overset{df}{=} h_{i}(\hat{x}) \\
     f_{i}(x+1, \hat{x}) &\overset{df}{=} g_{i} \bigl( x, \hat{x}, f_{1}(x, \hat{x}), \ldots, f_{k}(x, \hat{x}) \bigr)
   \end{align*}
   where $\hat{x} = x_{2}, \ldots, x_{n}$.
-\item \emph{Unbounded Minimization:} If $g : \NaturalNumbers^{n+1} \rightarrow \NaturalNumbers$ is computable, then so is the function $f : \NaturalNumbers^{n} \rightarrow \NaturalNumbers$ that when given input $\hat{x} = x_{1}, \ldots, x_{n}$ gives the least $y$ such that $g(y, \hat{x})$ is defined for all $z \leq y$ and $g(y, \hat{x}) = 0$, if such a $y$ exists otherwise, it is undefined.
+\item \emph{Unbounded Minimization:} If $g : \NaturalNumbers^{n+1} \mapsto \NaturalNumbers$ is computable, then so is the function $f : \NaturalNumbers^{n} \mapsto \NaturalNumbers$ that when given input $\hat{x} = x_{1}, \ldots, x_{n}$ gives the least $y$ such that $g(y, \hat{x})$ is defined for all $z \leq y$ and $g(y, \hat{x}) = 0$, if such a $y$ exists otherwise, it is undefined.
   We denote this by
   \begin{equation*}
     f(\hat{x}) = \mu y. (g (y, \hat{x}) = 0)

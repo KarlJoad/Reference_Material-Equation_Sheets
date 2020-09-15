@@ -96,7 +96,7 @@ An unconditionally secure solution is given below.
 \end{itemize}
 
 \begin{equation}\label{eq:Unconditional_Authentication_Code}
-  f : \SourceMessages \times \Keyspace \rightarrow \mathcal{M} : (s, k) \mapsto m
+  f : \SourceMessages \times \Keyspace \mapsto \mathcal{M} : (s, k) \mapsto m
 \end{equation}
 \begin{itemize}[noitemsep]
 \item An important property of $f$ is that if $f(s, e) = m$ and $f(s', e) = m$, then $s = s'$ (Injective for each $k \in Keyspace$).
@@ -119,7 +119,7 @@ There are only 2 reasonable attacks on \nameref{def:Authentication_Code}s possib
 \begin{definition}[Probability of Deception]\label{def:Probability_of_Deception}
   The \emph{probability of deception} is the probability that a non-authentic message is authenticated by the \nameref{def:Authentication_Code} system as a valid message.
   It is based off probabilities of success of \nameref{def:Attack_Authentication_Code-Impersonation}s and \nameref{def:Attack_Authentication_Code-Substitution}s.
-  
+
   \begin{equation}\label{eq:Probability_of_Deception}
     \Prob_{D} = \max(\Prob_{i}, \Prob_{S})
   \end{equation}
@@ -266,9 +266,9 @@ Define $\Keyspace(m)$ as the set of keys for which a message $m$ is valid.
 
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
 \begin{definition}[Systematic Authentication Code]\label{def:Systematic_Authentication_Code}
-  An \nameref{def:Authentication_Code} for which the mapping function $f : \SourceMessages \times \Keyspace \rightarrow \ChannelMessages$ can be written in the form
+  An \nameref{def:Authentication_Code} for which the mapping function $f : \SourceMessages \times \Keyspace \mapsto \ChannelMessages$ can be written in the form
   \begin{equation}\label{eq:Systematic_Authentication_Codes}
-    f : \SourceMessages \times \Keyspace \rightarrow \SourceMessages \times \MessageTags : (s, k) \mapsto (s, z)
+    f : \SourceMessages \times \Keyspace \mapsto \SourceMessages \times \MessageTags : (s, k) \mapsto (s, z)
   \end{equation}
   where $s \in \SourceMessages$ and $z \in \MessageTags$ is called a \emph{systematic authentication code} (or \emph{Cartesian authentication code}).
   $z$ is the \emph{tag} (or \emph{authenticator}) and is taken from the tag alphabet $\MessageTags$.

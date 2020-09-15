@@ -150,7 +150,7 @@ In order to apply some mathematical methods to discrete-time signals, we must ch
 \begin{definition}[Power Signal]\label{def:Power Signal}
   The average power of a discrete time signal $x(n)$ is defined as
   \begin{equation}\label{eq:Power Signal}
-    P = \lim_{N \rightarrow \infty} \frac{1}{2N+1} \sum_{n=-N}^{N} \lvert x(n) \rvert ^{2}
+    P = \lim_{N \to \infty} \frac{1}{2N+1} \sum_{n=-N}^{N} \lvert x(n) \rvert ^{2}
   \end{equation}
 
   This means that there are 2 potential outcomes:
@@ -241,7 +241,7 @@ A linear system is one that satisfies the \textit{superposition principle}.
 \begin{definition}[Multiplicative Property]\label{def:Linear-Multiplicative_Property}
   The \emph{multiplicative} or \emph{scaling property} is one requirement of a \nameref{def:Linear} system and is part of the definition of the superposition principle.
   If the input is scaled, the output is scaled by a proportional amount.
-  
+
   \begin{equation}\label{eq:Linear-Multiplicative_Property}
     \begin{aligned}
       \SignalOperator \left[ a_{1}x_{1}(n) \right] &= a_{1} \SignalOperator \left[ x_{1}(n) \right] \\

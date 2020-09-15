@@ -132,13 +132,13 @@ Because of the continuous random variable present in the random vector, we can d
   The \emph{conditional Cumulative Distribution Function (CDF)} of a continuous random vector of $Y$ given $X=x$, where both $Y$ and $X$ are continuous random variables is given below.
   \begin{equation}
     \begin{aligned}
-      F_{Y} \left( y \Given x \right) &= \lim\limits_{h \rightarrow 0} F_{Y} \left( y \Given x < X \leq x+h \right) \\
+      F_{Y} \left( y \Given x \right) &= \lim\limits_{h \to 0} F_{Y} \left( y \Given x < X \leq x+h \right) \\
       &= \frac{\int_{-\infty}^{y} f_{X,Y} \left( x,v \right) dv}{f_{X} \left( x \right)} \\
     \end{aligned}
   \end{equation}
   \begin{remark}
     Since $X$ is a continuous random variable, $\Prob \left[ X=x \right] =0$.
-    So, we must use limits to get an infinitely close approximation, so: $\lim \limits_{h \rightarrow 0} \Prob \left[ x < X \leq x+h \right]$.
+    So, we must use limits to get an infinitely close approximation, so: $\lim \limits_{h \to 0} \Prob \left[ x < X \leq x+h \right]$.
   \end{remark}
   \begin{remark}
     The \nameref{def:Continuous Random Vector-Conditional CDF} satisfies all \nameref{subsubsec:Properties of Cumulative Distribution Functions}.

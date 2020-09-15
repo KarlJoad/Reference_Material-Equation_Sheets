@@ -72,9 +72,9 @@
   \end{equation}
 \item \begin{equation}\label{eq:Joint CDF Property 2}
     \begin{aligned}
-      \lim\limits_{y \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
-      \lim\limits_{x \rightarrow -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
-      \lim\limits_{\left( x,y \right) \rightarrow \left( \infty, \infty \right)} F_{X,Y} \left( x,y \right) &= 1 \\
+      \lim\limits_{y \to -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
+      \lim\limits_{x \to -\infty} F_{X,Y} \left( x,y \right) &= 0 \\
+      \lim\limits_{\left( x,y \right) \to \left( \infty, \infty \right)} F_{X,Y} \left( x,y \right) &= 1 \\
     \end{aligned}
   \end{equation}
 \item The Marginal CDFs can be obtained from the Joint CDF by removing restrictions for all but one variable.
@@ -82,15 +82,15 @@
     \begin{aligned}
       F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
       &= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
-      &= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
-      F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+      &= \lim\limits_{y \to \infty} F_{X,Y} \left( x,y \right) \\
+      F_{Y} \left( y \right) &= \lim\limits_{x \to \infty} F_{X,Y} \left( x,y \right) \\
     \end{aligned}
   \end{equation}
 \item The Joint CDF is continuous from $\infty$ to $-\infty$.
   \begin{equation}\label{eq:Joint CDF Property 4}
     \begin{aligned}
-      \lim\limits_{x \rightarrow a^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( a,y \right) \\
-      \lim\limits_{y \rightarrow b^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( x,b \right) \\
+      \lim\limits_{x \to a^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( a,y \right) \\
+      \lim\limits_{y \to b^{+}} F_{X,Y} \left( x,y \right) &= F_{X,Y} \left( x,b \right) \\
     \end{aligned}
   \end{equation}
 \item The probability of the ``rectangle'' $\lbrace x_{1} \leq X \leq x_{2}, y_{1} \leq Y \leq y_{2} \rbrace$
@@ -110,8 +110,8 @@
     \begin{aligned}
       F_{X} \left( x \right) &= P \left[ \lbrace X \leq x \rbrace, \lbrace Y \text{ is anything} \rbrace \right] \\
       &= P \left[ \lbrace X \leq x \rbrace, \lbrace -\infty \leq y \leq \infty \rbrace \right] \\
-      &= \lim\limits_{y \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
-      F_{Y} \left( y \right) &= \lim\limits_{x \rightarrow \infty} F_{X,Y} \left( x,y \right) \\
+      &= \lim\limits_{y \to \infty} F_{X,Y} \left( x,y \right) \\
+      F_{Y} \left( y \right) &= \lim\limits_{x \to \infty} F_{X,Y} \left( x,y \right) \\
     \end{aligned}
   \end{equation}
 \end{definition}
@@ -482,7 +482,7 @@ For this section, let $X$ be a discrete random variable and $Y$ a continuous ran
   The \emph{conditional Cumulative Distribution Function (Conditional CDF)} of $Y$ given $X=x$ for $X$ and $Y$ continuous random variables is:
   \begin{equation}\label{eq:2 Continuous-Conditional CDF}
     F_{Y} \left(y \Given x \right)
-    = \lim\limits_{h\rightarrow 0} F_{Y} \left( y \Given x < X \leq \left( x+h \right) \right)
+    = \lim\limits_{h\to 0} F_{Y} \left( y \Given x < X \leq \left( x+h \right) \right)
     = \frac{\int_{-\infty}^{y} f_{X,Y} \left( x,v \right) dv}{f_{X} \left( x \right)}
   \end{equation}
   \begin{remark}
