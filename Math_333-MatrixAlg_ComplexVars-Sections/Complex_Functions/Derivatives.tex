@@ -103,8 +103,9 @@ This includes:
 \subsubsection{Cauchy-Riemann Equations}\label{subsubsec:Cauchy_Riemann_Equations}
 Because we know the \nameref{def:Complex_Derivative} of a \nameref{def:Complex_Function} \textbf{can} exist, and that $f(z) = U(x, y) + i V(x, y)$, we need to know just how special $U(x, y)$ and $V(x, y)$ really are.
 
-The Cauchy-Riemann Equations (\Cref{eq:Cauchy_Riemann_Equations}) \textbf{MUST} hold true for $f'(z)$ to exist.
-\begin{subequations}\label{eq:Cauchy_Riemann_Equations}
+If $f$ has a derivative at $z = a$, then the Cauchy-Riemann Equations \textbf{MUST} also hold true for $f'(z)$ to exist.
+In the Cartesian form, these equations are seen as \Cref{eq:Cauchy_Riemann_Equations-Cartesian}.
+\begin{subequations}\label{eq:Cauchy_Riemann_Equations-Cartesian}
   \begin{equation}\label{subeq:Cauchy_Riemann_Equation-UxVy}
     \begin{aligned}
       \frac{\partial U}{\partial x} (a) &= \frac{\partial V}{\partial y} (a) \\
@@ -114,7 +115,7 @@ The Cauchy-Riemann Equations (\Cref{eq:Cauchy_Riemann_Equations}) \textbf{MUST} 
   \begin{equation}\label{subeq:Cauchy_Riemann_Equation-UyVx}
     \begin{aligned}
       \frac{\partial U}{\partial y} (a) &= -\frac{\partial V}{\partial x} (a) \\
-      U_{y} (a) &= V_{x} (a)
+      U_{y} (a) &= -V_{x} (a)
     \end{aligned}
   \end{equation}
 \end{subequations}
@@ -130,6 +131,21 @@ If the equations above both hold true, and the \nameref{def:Complex_Function} $f
 \begin{remark*}
   If the \nameref{subsubsec:Cauchy_Riemann_Equations} do not exist at $z = a$, then $f(z)$ has \textbf{NO} \nameref{def:Complex_Derivative} at $z = a$.
 \end{remark*}
+In the polar form, the Cauchy-Riemann Equations are seen as \Cref{eq:Cauchy_Riemann_Equations-Polar}:
+\begin{subequations}\label{eq:Cauchy_Riemann_Equations-Polar}
+  \begin{equation}\label{subeq:Cauchy_Riemann_Equations-UrVt}
+    \begin{aligned}
+      \frac{\partial U}{\partial r} (a) &= \frac{1}{r} \frac{\partial V}{\partial \theta} (a)\\
+      U_{r} (a) &= \frac{1}{r} V_{\theta} (a)
+    \end{aligned}
+  \end{equation}
+  \begin{equation}\label{subeq:Cauchy_Riemann_Equations-UtVr}
+    \begin{aligned}
+      \frac{\partial V}{\partial r} (a) &= \frac{-1}{r} \frac{\partial U}{\partial \theta} (a) \\
+      V_{r} (a) &= \frac{-1}{r} V_{\theta} (a)
+    \end{aligned}
+  \end{equation}
+\end{subequations}
 
 \begin{example}[Lecture 5]{Existence of Derivative using Cauchy-Riemann Equations}
   Given the function $f(z)$, find its \nameref{def:Complex_Derivative}?
