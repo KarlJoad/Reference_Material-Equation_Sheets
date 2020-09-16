@@ -119,6 +119,63 @@ There are several notable points on the graph in \Cref{fig:Phase_Change}:
   This means that the water is in its liquid state, and is not in its \nameref{def:Saturated_Mixture} state yet.
 \end{example}
 
+\begin{example}[Problem 4.23]{What's My State}
+  Given certain intensive properties of the \nameref{def:Pure_Substance}, water, fill in the table?
+  \begin{enumerate}[noitemsep]
+  \item $\Temp = \SI{50}{\degreeCelsius}$ and a volume of $\Volume = \SI{4.16}{\meter\cubed\per\kilo\gram}$.
+  \item $\Pressure = \SI{200}{\kilo\pascal}$ and the water is in the \nameref{def:Saturated_Vapor} phase.
+  \item $\Temp = \SI{250}{\degreeCelsius}$, $\Pressure = \SI{400}{\kilo\pascal}$, and $\Volume = \SI{0.595}{\meter\cubed\per\kilo\gram}$.
+  \item $\Temp = \SI{110}{\degreeCelsius}$, $\Pressure = \SI{600}{\kilo\pascal}$.
+  \end{enumerate}
+  \tcblower{}
+  \begin{center}
+    \begin{tabular}{ccccc}
+      \toprule
+      & Temperature $\si{\degreeCelsius}$ & Pressure $\si{\kilo\pascal}$ & Volume $\si{\meter\cubed\per\kilo\gram}$ & Phase \\
+      \midrule
+      1 & 50 & 12.352 & 4.16 & Mixture \\
+      2 & 120.21 & 200 & 0.88578 & \nameref{def:Saturated_Vapor} \\
+      3 & 250 & 400 & 0.595 & Superheated Vapor/Steam \\
+      4 & 110 & 600 & 0.001052 & \nameref{def:Compressed_Liquid} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  \begin{enumerate}[noitemsep]
+  \item Phase 1:
+    \begin{enumerate}[noitemsep]
+    \item We need to look at Table A.4 for phase 1's saturated pressure, and find it $\SaturatedPressure$.
+    \item Now, looking at the values of $\SaturatedFluidVol$ and $\SaturatedVaporVol$ for water at $\Temp = \SI{50}{\degreeCelsius}$, we see the value we're given is somewhere between those.
+      Thus, this is a mixture of a \nameref{def:Saturated_Liquid} and a \nameref{def:Saturated_Vapor}.
+    \end{enumerate}
+  \item Phase 2:
+    \begin{enumerate}[noitemsep]
+    \item We were told a pressure, so we should use Table A.5.
+    \item Look in Table A.5 and find $\Pressure = \SI{200}{\kilo\pascal}$, and get the saturation temperature, $\SaturatedTemp$.
+    \item They told us it was a \nameref{def:Saturated_Vapor}, so we know the value is somewhere on the saturated vapor line, meaning the volume is the same as $\SaturatedVaporVol$.
+    \end{enumerate}
+  \item Phase 3:
+    \begin{enumerate}[noitemsep]
+    \item Because we are given both pressure and temperature, either Table A.4 or Table A.5 is applicable.
+    \item However, neither table seems to make much sense, as on the temperature table, the pressure is too low, and on the pressure table, the temperature is too low.
+    \item On both tables, our volume is significantly greater than even the $\SaturatedVaporVol$.
+    \item Because $\Volume > \SaturatedVaporVol$, we go to Table A.6 for superheated water.
+    \item Using Table A.6, we see that $\SaturatedVaporVol$ in the table matches the volume given to us.
+    \item This means the water is now in its superheated vapor phase.
+    \end{enumerate}
+  \item Phase 4:
+    \begin{enumerate}[noitemsep]
+    \item You can start by using Table A.4 or Table A.5, but I will start with Table A.4.
+    \item Find \SI{110}{\degreeCelsius} in the table.
+    \item Once there, you'll notice their $\SaturatedPressure$ is \textbf{much} lower than what we were given, so we move to the next table.
+    \item So, we move to Table A.5, and the temperature in the table is lower than what we were given, so we move onto the next table.
+    \item This means that the temperature is lower than is needed to start boiling the water at \SI{600}{\kilo\pascal} and the pressure is too high for the water to start boiling at \SI{110}{\degreeCelsius}.
+    \item This means that it must be a \nameref{def:Compressed_Liquid}.
+    \item But, we said to treat \nameref{def:Compressed_Liquid}s as \nameref{def:Saturated_Liquid} at temperature $\Temp$, so use Table A.4 instead.
+    \end{enumerate}
+  \end{enumerate}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
