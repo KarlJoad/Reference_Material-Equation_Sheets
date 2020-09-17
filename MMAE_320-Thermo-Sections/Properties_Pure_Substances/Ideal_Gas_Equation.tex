@@ -1,0 +1,65 @@
+\subsection{Ideal Gas Equation}\label{subsec:Ideal_Gas_Equation}
+The Ideal Gas Equation is used when:
+\begin{itemize}[noitemsep]
+\item We have dry air.
+\item Air is \textbf{not} good under high pressures, like in turbines.
+\item Not good on for liquid water.
+\item Can occasionally be used for steam, when the pressure is $\Pressure \leq \SI{10}{\kilo\pascal}$.
+\item Not good for steam at high temperatures or pressures.
+\item Good for the noble gases, and hydrogen.
+\end{itemize}
+
+\begin{equation}\label{eq:Ideal_Gas_Equation}
+  \Pressure \SpecificVolume = \GasConstant \Temp
+\end{equation}
+where
+\begin{description}[noitemsep]
+\item $\Pressure$: The \textbf{absolute} pressure.
+\item $\SpecificVolume$: The \nameref{def:Specific_Volume}.
+\item $\GasConstant$: Gas constant, specified in terms of gases and units.
+\item $\Temp$: \textbf{Absolute} temperature (\si{\kelvin} or \si{\rankine}).
+\end{description}
+
+There is an alternative to \Cref{eq:Ideal_Gas_Equation}, \Cref{eq:Ideal_Gas_Equation-Mass}.
+\begin{equation}\label{eq:Ideal_Gas_Equation-Mass}
+  \Pressure \Volume = \Mass \GasConstant \Temp
+\end{equation}
+
+\begin{example}[Problem 4.79]{Ideal Gas in Tire}
+  The air in a tire has its temperature and pressure measured, as the pressure inside the tire depends on the temperature of the air in the tire.
+  Initially, at $\Temp_{i} = \SI{25}{\degreeCelsius}$ the pressure is $\Pressure_{i, \text{Gage}} = \SI{210}{\kilo\pascal}$.
+  The volume of the tire is $\Volume = \SI{0.025}{\meter\cubed}$.
+  Determine the air pressure in the tire when the tmeperature is $\Temp_{f} = \SI{50}{\degreeCelsius}$?
+  Also determine the amount of air that must be let out to restore the original pressure at the new temperature, assuming $\Pressure_{atm} = \SI{100}{\kilo\pascal}$?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  \begin{itemize}[noitemsep]
+  \item The tire warms up when driven.
+    \begin{equation*}
+      \Temp_{i} = \SI{25}{\degreeCelsius} \to \Temp_{f} = \SI{50}{\degreeCelsius}
+    \end{equation*}
+  \item Air is an ideal gas.
+  \item The pressure of the outside air is $\Pressure_{atm} = \SI{100}{\kilo\pascal}$
+  \item We are given an initial volume, but no final volume.
+  \item We are given a gage pressure, which is the atmospheric pressure plus the pressure in the tire.
+    \begin{equation*}
+      \Pressure_{\text{gage}} = \Pressure_{abs} - \Pressure_{atm}
+    \end{equation*}
+  \end{itemize}
+
+  \textbf{Explore:} \\
+  The \nameref{subsec:Ideal_Gas_Equation} needs both $\Pressure_{abs}$ and $\Temp_{abs}$.
+  We should use \Cref{eq:Ideal_Gas_Equation-Mass}, because we need to know how much air to let out.
+  \begin{equation*}
+    \Pressure \Volume = \Mass \GasConstant \Temp
+  \end{equation*}
+  The volume is either unchanged, or changes very little.
+  \begin{equation*}
+    {\left( \frac{\Pressure \Volume}{\Temp} \right)}_{i} = {\left( \frac{\Pressure \Volume}{\Temp} \right)}_{f}
+  \end{equation*}
+\end{example}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
+%%% End:
