@@ -171,6 +171,18 @@ In the polar form, the Cauchy-Riemann Equations are seen as \Cref{eq:Cauchy_Riem
   \end{equation}
 \end{theorem}
 
+\begin{theorem}\label{thm:Cauchy_Riemann_Complex_Function_Derivative-Polar}
+  Suppose $f$ is a \nameref{def:Complex_Function} defined in the \nameref{def:Neighborhood} $\Modulus{z-a} < r$ for some $r$.
+  Suppose the polar form of the \nameref{subsubsec:Cauchy_Riemann_Equations} (\Cref{eq:Cauchy_Riemann_Equations-Polar}) hold at a point, $a$, and that the 4 partial derivatives $U_{r}$, $U_{\theta}$, $V_{r}$, and $V_{\theta}$ exist and are \underline{continuous} at $z=a$.
+  Then the \nameref{def:Complex_Derivative} of $f$ at $z=a$ is defined to be:
+  \begin{equation}\label{eq:Complex_Function_Derivative-Cauchy_Riemann_Equation_Solution}
+    \begin{aligned}
+      f'(z) &= e^{-i \theta} \left( \frac{\partial U}{\partial r} + i \frac{\partial V}{\partial r} \right) \\
+      f'(a) &= e^{-i \theta} \left( \frac{\partial V}{\partial \theta}(a) - i \frac{\partial U}{\partial \theta}(a) \right)
+    \end{aligned}
+  \end{equation}
+\end{theorem}
+
 \begin{remark*}
   If the \nameref{subsubsec:Cauchy_Riemann_Equations} fail to hold at $z = a$, then $f(z)$ fails to have a \nameref{def:Complex_Derivative} at $z = a$.
 \end{remark*}
