@@ -18,6 +18,29 @@ I will choose $\Path$ in this document, to match up with the use of $\Path$ in \
   \end{equation}
 \end{definition}
 
+\begin{example}[Lecture 7]{Calculate the Integral on any Path}
+  Given the line segment $\ell = [-4+5i, 3-2i]$, and an arbitrary point $z$ defined by the function $z(t)$.
+  Evaluate $\int_{\ell} \Real{z} dz$?
+  \tcblower{}
+  Start by parameterizing the path.
+  I will use the general form of finding a parameterized function for $z(t)$ from \Cref{eq:Parameterizing_Path}.
+  \begin{align*}
+    z(t) &= a(1-t) + bt \:\: 0 \leq t \leq 1 \\
+         &= (-4+5i)(1-t) + (3-2i)t \:\: 0 \leq t \leq 1
+  \end{align*}
+
+  Now, we can evaluate the integral.
+  \begin{align*}
+    \int_{\ell} \Real{z} dz &= \int_{0}^{1} \bigl( -4(1-t) + 3t \bigr) z'(t) dt \\
+                            &= \int_{0}^{1} (7t - 4) z'(t) dt \\
+                            &= \int_{0}^{1} (7t - 4) \bigl( (-4+5i)(-t) + (3-2i) \bigr) dt \\
+                            &= \int_{0}^{1} (7t - 4) (7 - 7i) dt \\
+                            &= (7-7i) \int_{0}^{1} (7t-4) dt \\
+                            &= (7-7i) \left( \Bigl( \frac{7}{2}t^{2}-4t \Bigr) \vert_{t=0}^{t=1} \right) \\
+                            &= \frac{-7}{2}(1-i)
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
