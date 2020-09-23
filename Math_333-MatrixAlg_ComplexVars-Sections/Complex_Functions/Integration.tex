@@ -7,6 +7,17 @@ We will be integrating these functions along one of their many \nameref{def:Path
 These paths are typically denoted with either $C$, $\Gamma$, or $\gamma$.
 I will choose $\Path$ in this document, to match up with the use of $\Path$ in \nameref{def:Complex_Limit}s.
 
+\begin{definition}[Integration on Paths]\label{def:Integration_on_Paths}
+  Let $f$ be a continuous function on the image of the \nameref{def:Path}.
+  We denote this integral similarly to how we denote it regularly.
+  \begin{equation}\label{eq:Integration_on_Paths}
+    \begin{aligned}
+      \int_{\Path} f &= \int_{\Path} f(z) dz \\
+      &= \int_{a}^{b} f\bigl( z(t) \bigr) z'(t) dt
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
