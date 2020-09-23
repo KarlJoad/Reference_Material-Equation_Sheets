@@ -24,7 +24,7 @@
 \end{definition}
 
 \begin{definition}[Trapdoor One-Way Function]\label{def:Trapdoor_One_Way_Function}
-  A \emph{trapdoor one-way function} $f(x)$ is a \nameref{def:One_Way_Function} $f : \mathcal{X} \mapsto \mathcal{Y}$ such that if one knows some specific information $T$, called the \emph{trapdoor information}, then $f(x)$ is computationally easy to invert $f$, i.e., for any $y \in \mathcal{Y}$ it is easy to find a $x \in \mathcal{X}$ such that $f(x) = y$.
+  A \emph{trapdoor one-way function} $f(x)$ is a \nameref{def:One_Way_Function} $f : \mathcal{X} \to \mathcal{Y}$ such that if one knows some specific information $T$, called the \emph{trapdoor information}, then $f(x)$ is computationally easy to invert $f$, i.e., for any $y \in \mathcal{Y}$ it is easy to find a $x \in \mathcal{X}$ such that $f(x) = y$.
   For anyone without knowledge of the trapdoor information $T$, $f(x)$ is a \nameref{def:One_Way_Function}.
 \end{definition}
 

@@ -31,10 +31,10 @@ An encryption algorithm consists of the following components:
 \item A set $\Keyspace$ of keys.
 \item A set $\Messages$ of messages.
 \item A set $\Ciphertexts$ of ciphertexts.
-\item An encrypting function $E : \Keyspace \mapsto (\Messages \mapsto \Ciphertexts)$.
+\item An encrypting function $E : \Keyspace \to (\Messages \to \Ciphertexts)$.
   Meaning that for each $k \in \Keyspace$, $E_{k}$ is a function for generating ciphertexts from plaintext messages.
   Both $E$ and $E_{k}$ for any $k$ should be efficiently computable functions.
-\item A decrypting function $D : \Keyspace \mapsto (\Ciphertexts \mapsto \Messages)$.
+\item A decrypting function $D : \Keyspace \to (\Ciphertexts \to \Messages)$.
   That is, for each $k \in \Keyspace$, $D_{k}$ is a function for generating plaintext messages from ciphertexts.
   Both $D$ and $D_{k}$ for any $k$ should be efficiently computable functions.
 \end{itemize}
@@ -98,10 +98,10 @@ An authentication algorithm using symmetric keys consists of the following compo
 \item A set $\Keyspace$ of keys.
 \item A set $\Messages$ of messages.
 \item A set $\Authenticators$ of authenticators.
-\item A function $S : \Keyspace \mapsto (\Messages \mapsto \Authenticators)$.
+\item A function $S : \Keyspace \to (\Messages \to \Authenticators)$.
   That is, for each $k \in \Keyspace$, $S_{k}$ is a function for generating authenticators from messages.
   Both $S$ and $S_{k}$ for any $k$ should be efficiently computable functions.
-\item A function $V : \Keyspace \mapsto (\Messages \times \Authenticators \mapsto \lbrace \mathtt{true}, \mathtt{false} \rbrace)$.
+\item A function $V : \Keyspace \to (\Messages \times \Authenticators \to \lbrace \mathtt{true}, \mathtt{false} \rbrace)$.
   That is, for each $k \in \Keyspace$, $V_{k}$ is a function for verifying authenticators on messages.
   Both $V$ and $V_{k}$ for any $k$ should be efficiently computable functions.
 \end{itemize}

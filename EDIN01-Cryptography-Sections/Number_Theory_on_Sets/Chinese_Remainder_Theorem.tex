@@ -24,7 +24,7 @@
 
   The integers modulo $n$, \TextIntsModN{}, where $n = n_{1}n_{2}$ and $\gcd(n_{1}, n_{2}) = 1$.
   An element $a \in$ \TextIntsModN{} has a unique representation: $(a \bmod n_{1}, a \bmod n_{2})$.
-  We can denote this mapping by $\gamma : \IntsModN{} \mapsto \IntsMod{n_{1}} \times \IntsMod{n_{2}}$.
+  We can denote this mapping by $\gamma : \IntsModN{} \to \IntsMod{n_{1}} \times \IntsMod{n_{2}}$.
   \begin{propertylist}
   \item $\gamma(a) = \gamma(b)$ if and only if $a = b$. \label{prop:Chinese_Remainder_Theorem_Property-Equivalence}
   \item For all $(a_{1}, a_{2}) \in \IntsMod{n_{1}} \times \IntsMod{n_{2}}$, there exists an $a$ such that $\gamma(a) = (a_{1}, a_{2})$.

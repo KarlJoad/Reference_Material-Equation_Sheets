@@ -6,7 +6,7 @@
   \item $\Ciphertexts$ is a finite set of possible \emph{\nameref{def:Ciphertext}}
   \item $\Keyspace$, the \emph{\nameref{def:Keyspace}}, is a finite set of all possible keys
   \item For each $K \in \Keyspace$, there is an \emph{\nameref{def:Encryption_Rule}} $e_{K}\in \EncryptionRules$ and a corresponding \emph{\nameref{def:Decryption_Rule}} $d_{K} \in \DecryptionRules$.
-    Each $e_{K} : \Plaintexts \mapsto \Ciphertexts$ and $d_{K} : \Ciphertexts \mapsto \Plaintexts$ are functions such that $d_{K} \left( e_{K}(x) \right) = x$ for every \nameref{def:Plaintext} element $x \in \Plaintexts$.
+    Each $e_{K} : \Plaintexts \to \Ciphertexts$ and $d_{K} : \Ciphertexts \to \Plaintexts$ are functions such that $d_{K} \left( e_{K}(x) \right) = x$ for every \nameref{def:Plaintext} element $x \in \Plaintexts$.
   \end{enumerate}
 \end{definition}
 
@@ -82,14 +82,14 @@ A convention is to give the various parties in play names:
   \emph{Keyspace}, denoted $\Keyspace$.
   Each \emph{key} in the keyspace describes a certain function
   \begin{equation}\label{eq:Keyspace}
-    e_{K} : \Plaintexts^{n} \mapsto \Ciphertexts^{n'}
+    e_{K} : \Plaintexts^{n} \to \Ciphertexts^{n'}
   \end{equation}
 \end{definition}
 
 \begin{definition}[Encryption Rule]\label{def:Encryption_Rule}
   The \emph{encryption rule} is an element $e_{K}$ from the set of all encryption rules, $\EncryptionRules$.
   \begin{equation}\label{eq:Encryption_Rule}
-    e_{K} : \Plaintexts \mapsto \Ciphertexts \text{where } e_{K} \in \EncryptionRules
+    e_{K} : \Plaintexts \to \Ciphertexts \text{where } e_{K} \in \EncryptionRules
   \end{equation}
   Namely, the encryption rule element is used to map the \nameref{def:Plaintext} pieces of information that Alice wants to send to a corresponding \nameref{def:Ciphertext} that she can send to Bob.
 
@@ -101,7 +101,7 @@ A convention is to give the various parties in play names:
 \begin{definition}[Decryption Rule]\label{def:Decryption_Rule}
   The \emph{decryption rule} is an element $d_{K}$ from the set of all decryption rules, $\DecryptionRules$.
   \begin{equation}\label{eq:Decryption_Rule}
-    d_{K} : \Ciphertexts \mapsto \Plaintexts \text{where } d_{K} \in \DecryptionRules
+    d_{K} : \Ciphertexts \to \Plaintexts \text{where } d_{K} \in \DecryptionRules
   \end{equation}
   Namely, the decryption rule element is used to map the \nameref{def:Ciphertext} pieces of information that Alice sent to a corresponding \nameref{def:Plaintext} that Bob can use.
 

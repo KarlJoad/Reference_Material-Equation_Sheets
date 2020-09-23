@@ -96,7 +96,7 @@ An unconditionally secure solution is given below.
 \end{itemize}
 
 \begin{equation}\label{eq:Unconditional_Authentication_Code}
-  f : \SourceMessages \times \Keyspace \mapsto \mathcal{M} : (s, k) \mapsto m
+  f : \SourceMessages \times \Keyspace \to \mathcal{M} : (s, k) \to m
 \end{equation}
 \begin{itemize}[noitemsep]
 \item An important property of $f$ is that if $f(s, e) = m$ and $f(s', e) = m$, then $s = s'$ (Injective for each $k \in Keyspace$).
@@ -266,9 +266,9 @@ Define $\Keyspace(m)$ as the set of keys for which a message $m$ is valid.
 
 \subsection{Systematic Authentication Codes}\label{subsec:Systematic_Authentication_Codes}
 \begin{definition}[Systematic Authentication Code]\label{def:Systematic_Authentication_Code}
-  An \nameref{def:Authentication_Code} for which the mapping function $f : \SourceMessages \times \Keyspace \mapsto \ChannelMessages$ can be written in the form
+  An \nameref{def:Authentication_Code} for which the mapping function $f : \SourceMessages \times \Keyspace \to \ChannelMessages$ can be written in the form
   \begin{equation}\label{eq:Systematic_Authentication_Codes}
-    f : \SourceMessages \times \Keyspace \mapsto \SourceMessages \times \MessageTags : (s, k) \mapsto (s, z)
+    f : \SourceMessages \times \Keyspace \to \SourceMessages \times \MessageTags : (s, k) \to (s, z)
   \end{equation}
   where $s \in \SourceMessages$ and $z \in \MessageTags$ is called a \emph{systematic authentication code} (or \emph{Cartesian authentication code}).
   $z$ is the \emph{tag} (or \emph{authenticator}) and is taken from the tag alphabet $\MessageTags$.
