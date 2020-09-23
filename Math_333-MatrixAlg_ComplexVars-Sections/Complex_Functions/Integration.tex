@@ -60,6 +60,32 @@ I will choose $\Path$ in this document, to match up with the use of $\Path$ in \
 
 If we look at \Cref{eq:Complex_Antiderivative}, we notice that the right-hand side ($F(B) - F(A)$) is independent of the \nameref{def:Path}.
 
+\begin{example}[Lecture 7]{Antiderivatives}
+  Evaluate the integral $\int_{\Path} z \sin \left( z^{2} \right) dz$ where $\Path$ is equal to the union of the line segment that stretches from the origin to $(1, 2)$, \textbf{with} the lower half of the circle whose center is at $a = 3+2i$ with radius $r = 2$.
+  \tcblower{}
+  Using \Cref{thm:Complex_Antiderivative}, we know that we don't have to actually evaluate this integral.
+  Instead, we can find the beginning and end points of the \nameref{def:Path}, and just take the difference of those.
+  So, $A = 0+0i$, and $B = 5+2i$.
+  $z \sin \left( z^{2} \right)$ is \nameref{def:Analytic} on $\ComplexNumbers$.
+  Therefore, we are guaranteed the derivative's existence.
+  This also means that \textbf{an} antiderivative exists.
+  \begin{equation*}
+    F(z) = \frac{-1}{2} \cos \left( z^{2} \right)
+  \end{equation*}
+
+  Remember that there would be a constant term at the end of the antiderivative, but because we will be using this function and subtracting it from another value, the constants would just cancel each other out.
+
+  Using \Cref{eq:Complex_Antiderivative}, we can now solve this directly.
+  \begin{align*}
+    \int_{\Path} f &= \int_{\Path} z \sin \left( z^{2} \right) dz \\
+                   &= F(B) - F(A) \\
+                   &= \frac{-1}{2} \cos \left( {(5+2i)}^{2} \right) - \frac{-1}{2} \cos \left( {(0+0i)}^{2} \right) \\
+                   &= \frac{-1}{2} \left( \cos \left( {(5+2i)}^{2} \right) - \cos(0) \right) \\
+                   &= \frac{-1}{2} \left( \cos \left( {(5+2i)}^{2} \right) \right) + \frac{1}{2} \\
+  \end{align*}
+
+  The last step would be to use the \nameref{subsec:Angle Sum and Difference Identities} to simplify the remaining $\cos$ into a normal, Cartesian, form.
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
