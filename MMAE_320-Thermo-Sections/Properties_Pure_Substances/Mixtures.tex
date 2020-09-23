@@ -46,24 +46,24 @@ This \nameref{def:Process} has a \nameref{def:Quality}.
   \end{equation}
 \end{definition}
 
-From \Cref{eq:Average_Specific_Volume}, it is clear that to get the total volume of \textbf{one phase of the system}, we use \Cref{eq:Single_Phase_Average_Total_Volume}
-\begin{equation}\label{eq:Single_Phase_Average_Total_Volume}
-  \AvgSpecificVol \Mass_{Phase} = \Volume_{Phase}
+From \Cref{eq:Specific_Volume}, it is clear that to get the total volume of \textbf{one phase of the system}, we use \Cref{eq:Single_Phase_Total_Volume}
+\begin{equation}\label{eq:Single_Phase_Total_Volume}
+  \SpecificVolume \Mass_{Phase} = \Volume_{Phase}
 \end{equation}
 
-Now, \Cref{eq:Single_Phase_Average_Total_Volume} only finds the volume for a single phase in the system, but because volume is additive, we can use \Cref{eq:Average_Total_Volume}.
-\begin{equation}\label{eq:Average_Total_Volume}
-  \AvgSpecificVol \Mass_{Total} = \Mass_{Liquid} \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol
+Now, \Cref{eq:Single_Phase_Total_Volume} only finds the volume for a single phase in the system, but because volume is additive, we can use \Cref{eq:Total_Volume}.
+\begin{equation}\label{eq:Total_Volume}
+  \SpecificVolume \Mass_{Total} = \Mass_{Liquid} \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol
 \end{equation}
 
-In fact, \Cref{eq:Average_Total_Volume} can be re-expressed using \nameref{def:Quality}, which gives us \Cref{eq:Average_Specific_Volume_Using_Quality}.
+In fact, \Cref{eq:Total_Volume} can be re-expressed using \nameref{def:Quality}, which gives us \Cref{eq:Specific_Volume_Using_Quality}.
 \begin{align*}
-  \AvgSpecificVol \Mass_{Total} &= \Mass_{Liquid} \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \\
-  \AvgSpecificVol \Mass_{Total} &= (\Mass_{Total} - \Mass_{Gas}) \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \\
-  \AvgSpecificVol &= \frac{1}{\Mass_{Total}} \bigl( (\Mass_{Total} - \Mass_{Gas}) \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \bigr) \\
+  \SpecificVolume \Mass_{Total} &= \Mass_{Liquid} \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \\
+  \SpecificVolume \Mass_{Total} &= (\Mass_{Total} - \Mass_{Gas}) \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \\
+  \SpecificVolume &= \frac{1}{\Mass_{Total}} \bigl( (\Mass_{Total} - \Mass_{Gas}) \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \bigr) \\
                                 &= \left( 1 - \frac{\Mass_{Gas}}{\Mass_{Total}} \right) \SaturatedFluidVol + \frac{\Mass_{Gas}}{\Mass_{Total}} \SaturatedVaporVol \\
   \Quality &= \frac{\Mass_{Gas}}{\Mass_{Total}} \\
-  \AvgSpecificVol &= (1 - \Quality) \SaturatedFluidVol + \Quality \SaturatedVaporVol \\
+  \SpecificVolume &= (1 - \Quality) \SaturatedFluidVol + \Quality \SaturatedVaporVol \\
   &= \SaturatedFluidVol + \Quality (\SaturatedVaporVol - \SaturatedFluidVol)
 \end{align*}
 
@@ -110,23 +110,23 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
     \Mass_{Gas} &= \SI{1.5}{\kilo\gram} \\
   \end{align*}
 
-  Now that we know the mass of the vaporized liquid, we can use \Cref{eq:Average_Specific_Volume_Using_Quality} to solve for the total volume.
+  Now that we know the mass of the vaporized liquid, we can use \Cref{eq:Specific_Volume_Using_Quality} to solve for the total volume.
   \begin{align*}
-    \AvgSpecificVol &= \SaturatedFluidVol + \Quality(\SaturatedVaporVol - \SaturatedFluidVol) \\
+    \SpecificVolume &= \SaturatedFluidVol + \Quality(\SaturatedVaporVol - \SaturatedFluidVol) \\
     \intertext{The value for $\SaturatedFluidVol$ remains constant throughout this entire \nameref{def:Process}, so we can reuse that value. The value for $\SaturatedVaporVol$ is found in Table A.4 from the textbook.}
                     &= \SI{0.001043}{\meter\cubed\per\kilo\gram} + \frac{1}{2} (\SI{1.6720}{\meter\cubed\per\kilo\gram} - \SI{0.001043}{\meter\cubed\per\kilo\gram}) \\
                     &= \SI{0.8365}{\meter\cubed\per\kilo\gram}
   \end{align*}
 
-  Now that we have the \nameref{def:Average_Specific_Volume} of the system, we can find the total volume of the system.
+  Now that we have the \nameref{def:Specific_Volume} of the system, we can find the total volume of the system.
   \begin{align*}
-    \Volume_{Total} &= \AvgSpecificVol \Mass_{Total} \\
+    \Volume_{Total} &= \SpecificVolume \Mass_{Total} \\
                     &= \SI{0.8365}{\meter\cubed\per\kilo\gram} (\SI{3}{\kilo\gram}) \\
                     &= \SI{2509}{\liter}
   \end{align*}
 
   Remember that $\Volume_{Total}$ contains the volume for \textbf{both} the steam \textbf{and} the water.
-  If we are curious about the separate values for each, then we can solve for the individual terms in \Cref{eq:Single_Phase_Average_Total_Volume}.
+  If we are curious about the separate values for each, then we can solve for the individual terms in \Cref{eq:Single_Phase_Total_Volume}.
   \begin{align*}
     \Volume_{Water} &= \Mass_{Water} \SaturatedFluidVol \\
                     &= \SI{1.5}{\kilo\gram} (\SI{0.001043}{\meter\cubed\per\kilo\gram}) \\
@@ -144,7 +144,7 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
 
   For this last part, $\Quality = 1$, meaning that \textbf{all} the water has become steam.
   Thus, $\Mass_{Water} = \SI{0}{\kilo\gram}$ and $\Mass_{Steam} = \SI{3}{\kilo\gram}$.
-  Because we also know $\SaturatedVaporVol = \SI{1.6720}{\meter\cubed\per\kilo\gram}$, we can easily just solve for \Cref{eq:Single_Phase_Average_Total_Volume} as the total volume.
+  Because we also know $\SaturatedVaporVol = \SI{1.6720}{\meter\cubed\per\kilo\gram}$, we can easily just solve for \Cref{eq:Single_Phase_Total_Volume} as the total volume.
   \begin{align*}
     \Volume_{Total} &= \Volume_{Steam} \\
     \Volume_{Steam} &= \SaturatedVaporVol \Mass_{Steam} \\
@@ -290,7 +290,7 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
 
   \textbf{Explore:} \\
   We want to get 2 of those 3 those \nameref{def:Intensive_Property} ($\Pressure$, $\Temp$, or $\SpecificVolume$).
-   We can find the $\SpecVol_{i}$ for the initial point in time, because we know the volume of the vessel initially and the mass is constant.
+   We can find the $\SpecificVolume_{i}$ for the initial point in time, because we know the volume of the vessel initially and the mass is constant.
   We also know the initial temperature, so we have all the \nameref{def:Intensive_Property}s that we need to solve for the initial state.
 
   \textbf{Plan:} \\
@@ -334,10 +334,10 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
   \end{center}
 
   If we use the pressure we got from Table A.6E $\Pressure = \SI{180}{\psia}$, and look that value up in Table A.5E, we see that $\SaturatedTemp = \SI{373.07}{\degreeF}$ to even boil the water.
-  This likely means that the water is a \nameref{def:Compressed_Liquid}, and because of our rule, $\SpecVol_{f} = \SI{0.01613}{\feet\cubed\per\lbm}$.
-  Therefore, by multiplying $\SpecVol_{f}$ by the mass of the water, we can find the volume it is consuming.
+  This likely means that the water is a \nameref{def:Compressed_Liquid}, and because of our rule, $\SpecificVolume_{f} = \SI{0.01613}{\feet\cubed\per\lbm}$.
+  Therefore, by multiplying $\SpecificVolume_{f}$ by the mass of the water, we can find the volume it is consuming.
   \begin{align*}
-    \Volume_{f} &= \SpecVol_{f} m \\
+    \Volume_{f} &= \SpecificVolume_{f} m \\
                 &= \SI{0.01613}{\feet\cubed\per\lbm} (\SI{1}{\lbm}) \\
                 &= \SI{0.01613}{\feet\cubed}
   \end{align*}
