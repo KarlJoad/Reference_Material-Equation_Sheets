@@ -294,6 +294,10 @@ In the polar form, the Cauchy-Riemann Equations are seen as \Cref{eq:Cauchy_Riem
   This means that $f$ has a derivative at all points in the \nameref{def:Open_Connected_Set}.
 \end{definition}
 
+However, our definition of an \nameref{def:Analytic} function is unsatisfactory, because we don't know what an analytic function looks like.
+\Cref{thm:Motivate_UV_Harmonic} shows and then motivates what kind of functions $U(x, y)$ and $V(x, y)$ must be, and how they are related to one another.
+
+\begin{theorem}\label{thm:Motivate_UV_Harmonic}
   Define a function $f$ like so:
   \begin{equation*}
     f(z) = U(x, y) + i V(x, y)
@@ -383,6 +387,7 @@ The class of equations that satisfy \Cref{eq:U_V_Harmonic_Relation} are called \
   Thus, $U(x, y) = x^{3} - 3xy^{2}$ \textbf{is} \nameref{def:Harmonic}.
   Similarly, $V(x, y) = 3x^{2}y - y^{3}$ is also harmonic.
 \end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
