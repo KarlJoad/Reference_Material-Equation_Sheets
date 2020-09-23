@@ -23,23 +23,24 @@ This \nameref{def:Process} has a \nameref{def:Quality}.
   This is like \nameref{subsec:Energy_Efficiency}, $\Efficiency$.
 \end{definition}
 
-\begin{definition}[Average Specific Volume]\label{def:Average_Specific_Volume}
-  \emph{Average specfic volume} defines the total volume of a system when it is existing in 2 different phases.
-  If we are interested in the average specific volume of the \nameref{def:Mixture}, we have \Cref{eq:Average_Specific_Volume}.
-  \begin{equation}\label{eq:Average_Specific_Volume}
-    \AvgSpecificVol = \frac{\SaturatedVaporVol}{\SaturatedFluidVol}
+\begin{definition}[Specific Volume]\label{def:Specific_Volume}
+  \emph{Specific volume} is the volume per unit mass of a substance.
+  This is typically well-defined for \nameref{def:Saturated_Mixture}s, because the system is in 2 different phases.
+  If we are interested in the specific volume of the \nameref{def:Mixture}, we have \Cref{eq:Specific_Volume}.
+  \begin{equation}\label{eq:Specific_Volume}
+    \SpecificVolume = \frac{\SaturatedVaporVol}{\SaturatedFluidVol}
   \end{equation}
 
   \begin{description}[noitemsep]
-  \item $\AvgSpecificVol$: The Average Specific Volume at any point in time during a \nameref{def:Process}.
+  \item $\SpecificVolume$: The Specific Volume at any point in time during a \nameref{def:Process}.
   \item $\SaturatedVaporVol$: The \nameref{def:Saturated_Liquid} volume.
   \item $\SaturatedFluidVol$: The \nameref{def:Saturated_Vapor} volume.
   \end{description}
 
-  \begin{equation}\label{eq:Average_Specific_Volume_Using_Quality}
+  \begin{equation}\label{eq:Specific_Volume_Using_Quality}
     \begin{aligned}
       \Quality &= \frac{\Volume_{Gas}}{\Volume_{Total}} \\
-      \AvgSpecificVol &= (1 - \Quality) \SaturatedFluidVol + \Quality \SaturatedVaporVol \\
+      \SpecificVolume &= (1 - \Quality) \SaturatedFluidVol + \Quality \SaturatedVaporVol \\
       &= \SaturatedFluidVol + \Quality (\SaturatedVaporVol - \SaturatedFluidVol)
     \end{aligned}
   \end{equation}
