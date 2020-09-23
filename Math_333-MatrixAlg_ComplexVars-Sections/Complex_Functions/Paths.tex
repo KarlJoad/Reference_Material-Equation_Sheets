@@ -7,6 +7,23 @@ However, in general, they are not.
   However, when we say we are interested in the path of an image, we are not really talking about the static image we see, but rather \textbf{HOW} we got that image, what function generated it, etc.
 \end{definition}
 
+In general, if we are given a \nameref{def:Path}, we can find the any point on the path by parameterizing the beginning and end of the path.
+This is the function $z: [a, b] \to \ComplexNumbers$ where $z = z(t)$ where $a \leq t \leq b$.
+
+\begin{example}[Lecture 6, Example 2]{Parameterize a Path}
+  Given a line segment $[0, 2+3i]$ in the $\ComplexNumbers$ plane, what is the parameterized function that creates \textbf{every} point for the segment?
+  \tcblower{}
+  Technically, there are infinitely many solutions.
+  Just a few are presented below:
+  \begin{align*}
+    z(t) &= (2 + 3i)t \:\: 0 \leq t \leq 1 \\
+    z(t) &= (2 + 3i)2t \:\: 0 \leq t \leq \frac{1}{2} \\
+    z(t) &= (2 + 3i)(1-t) \:\: 0 \leq t \leq 1 \\
+    \shortintertext{If $z = x + iy$:}
+    y &= \frac{3}{2} x \:\: 0 \leq x \leq 2
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
