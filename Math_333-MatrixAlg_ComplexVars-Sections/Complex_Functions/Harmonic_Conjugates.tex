@@ -17,6 +17,70 @@ Now that we have shown and proven that a function can be \nameref{def:Harmonic} 
   Such a $V(x, y)$ would be called the harmonic conjugate of $U(x, y)$.
 \end{theorem}
 
+\begin{example}[Lecture 6, Example 1]{Verify Harmonicity and Find Harmonic Conjugates}
+  Given $U(x, y) = x^{4} - 6x^{2}y^{2} + y^{4}$ is defined on the $\ComplexNumbers$ plane, verify that $U(x, y)$ is \nameref{def:Harmonic}?
+  Find \textbf{all} \nameref{thm:Harmonic_Conjugate}s of $U(x, y)$?
+  \tcblower{}
+  First, we can verify that a function is \nameref{def:Harmonic} by checking that it satisfies \nameref{subsec:Laplaces_Equation}, (\Cref{eq:Laplaces_Equation}).
+  \begin{equation*}
+    \frac{\partial^{2} U}{{\partial x}^{2}} + \frac{\partial^{2} U}{{\partial y}^{2}} = 0
+  \end{equation*}
+
+  So, we start by taking the partial derivatives of $U(x, y)$.
+  \begin{align*}
+    \frac{\partial U}{\partial x} &= 4x^{3} - 12xy^{2} & \frac{\partial U}{\partial y} &= -12x^{2}y + 4y^{3} \\
+    \frac{\partial^{2} U}{{\partial x}^{2}} &= 12x^{2} - 12y^{2} & \frac{\partial^{2} U}{{\partial y}^{2}} &= -12x^{2} + 12y^{2} \\
+  \end{align*}
+
+  Now, plugging these into \Cref{eq:Laplaces_Equation}:
+  \begin{align*}
+    0 &= \frac{\partial^{2} U}{{\partial x}^{2}} + \frac{\partial^{2} U}{{\partial y}^{2}} \\
+      &= 12x^{2} - 12y^{2} + \left( -12x^{2} + 12y^{2} \right) \\
+      &= \left( 12x^{2} - 12x^{2} \right) + \left( 12y^{2} - 12y^{2} \right) \\
+      &\overset{\checkmark}{=} 0
+  \end{align*}
+
+  $\therefore U(x, y)$ satisfies \nameref{subsec:Laplaces_Equation}, and thus, is \nameref{def:Harmonic}. \\
+
+  Now, we want $f = U + iV$ to be \nameref{def:Analytic}, so what is $V$?
+  For $f$ to be analytic, the \nameref{subsubsec:Cauchy_Riemann_Equations} \textbf{must} hold.
+  \begin{align*}
+    \frac{\partial U}{\partial x} &= \frac{\partial V}{\partial y} \\
+    \frac{\partial U}{\partial y} &= - \frac{\partial V}{\partial x} \\
+    4x^{3} - 12xy^{2} &= V_{y} \\
+    12x^{2}y - 4y^{3} &= V_{x}
+  \end{align*}
+
+  Now, we want to find just $V$, so we integrate $V_{y}$ with respect to $y$.
+  \begin{align*}
+    V(x, y) &= \int V_{y} \partial y \\
+            &= \int 4x^{3} - 12xy^{2} \partial y \\
+            &= 4x^{3}y - 4xy^{3} + C(x) \\
+  \end{align*}
+
+  Now, we need to solve for $C(x)$, a potential constant within the $x$ domain.
+  \begin{align*}
+    \frac{\partial}{\partial x} V(x, y) &= 12x^{2}y - 4y^{3} + \frac{dC}{dx} \\
+    \intertext{Using the value for $V_{x}$ we found earlier, we can set each of these equal to each other.}
+    12x^{2}y - 4y^{3} &= 12x^{2}y - 4y^{3} + \frac{dC}{dx} \\
+    \frac{dC}{dx} &= 0
+  \end{align*}
+
+  Because we said $C(x)$ was a function solely in $x$, if $\frac{dC}{dx} = 0$, then $C(x)$ \textbf{MUST} be equal to only a constant.
+  Thus, $C(x) = C$.
+  So, all possible \nameref{thm:Harmonic_Conjugate}s of $U(x, y)$ are represented by a complete $V(x, y)$, shown below.
+  \begin{equation*}
+    V(x, y) = 4x^{3}y - 4xy^{3} + C
+  \end{equation*}
+
+  Therefore, $f$, according to our definition, is:
+  \begin{align*}
+    f &= U(x, y) + iV(x, y) \\
+      &= x^{4} - 6x^{2}y^{2} + y^{2} + i \left( 4x^{3}y - 4xy^{3} + C \right) \\
+      &= x^{4} + 4x^{3}yi - 6x^{2}y^{2} - 4xy^{3}i + y^{4} \\
+      &= {(x + iy)}^{4} + iC
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
