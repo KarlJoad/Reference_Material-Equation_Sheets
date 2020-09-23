@@ -34,6 +34,34 @@ The general form for \nameref{def:Parameterizing_Path} a \nameref{def:Path} is s
   \end{equation}
 \end{definition}
 
+\begin{example}[Lecture 6, Example 4]{Parameterize a Circle}
+  Given the circle centered at point $a$, where $a \in \ComplexNumbers$ with a radius $r > 0$, find a parameterized equation?
+  \tcblower{}
+  Start by stating the definition of a circle in the complex plane.
+  \begin{equation*}
+    \Modulus{z-a} = r
+  \end{equation*}
+
+  By thinking about this a little, we can see that we can generate every point on the circle's edge by keeping $r$ constant and varying only $\theta = \arg(z)$, the argument of the circle.
+  Now, to simplify things, we will also write some of the subsequent equations in polar form.
+  \begin{align*}
+    z - a &= r \bigl( \cos(\theta) + i \sin(\theta) \bigr) \\
+    \shortintertext{\Cref{eq:Euler Complex} can simplify this further.}
+          &= r e^{i \theta} \:\: 0 \leq \theta \leq 2\pi
+  \end{align*}
+
+  Thus, we have parameterized the equation for a circle, in 2 forms:
+  \begin{enumerate}[noitemsep]
+  \item Parameterization of a circle in Counter Clockwise Direction (CCD)
+    \begin{equation*}
+      z - a = r e^{i \theta} \:\: 0 \leq \theta \leq 2\pi
+    \end{equation*}
+  \item Parameterization of a circle in Clockwise Direction (CD)
+    \begin{equation*}
+      z - a = r e^{-i \theta} \:\: 0 \leq \theta \leq 2\pi
+    \end{equation*}
+  \end{enumerate}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
