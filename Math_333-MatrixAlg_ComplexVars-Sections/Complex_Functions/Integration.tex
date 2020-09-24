@@ -119,6 +119,44 @@ Refer to \Cref{subsubsec:Analytic_NonAnalytic} if you need a short list of \name
 \item If the function is \textbf{NOT} \nameref{def:Analytic}, then you must use \nameref{def:Integration_on_Paths}.
 \end{itemize}
 
+\begin{example}[Lecture 7, Problem 5]{Choose Method of Integration}
+  Given a \nameref{def:Path} $C$ being the unit circle in the counter-clockwise direction, evaluate the expression below?
+  \begin{equation*}
+    \int_{C} \frac{1}{z} dz
+  \end{equation*}
+  \tcblower{}
+  In this case, our $\Omega = \ComplexNumbers$.
+  If we start by looking at our given expression to integrate, $\frac{1}{z}$, we quickly notice that this is \textbf{NOT} \nameref{def:Analytic}, because there is a hole at $z = 0$, which conflicts with $\Omega$'s requirement to be \nameref{def:Simply_Connected}.
+
+  This leads to us \textbf{NOT} being able to use \nameref{subsubsec:Antiderivatives}.
+  So, we have to perform an \nameref{def:Integration_on_Paths}.
+
+  We start by \nameref{def:Parameterizing_Path} the \nameref{def:Path}.
+  Using \Cref{subeq:Circle_Parameterized_CCD}, we can easily get the parameterization.
+  \begin{align*}
+    z(\theta) &= a + re^{i \theta} \:\: 0 \leq \theta \leq 2 \pi \\
+    r &= 1 \\
+    a &= 0 \\
+    z(\theta) &= e^{i \theta}
+  \end{align*}
+
+  Using our result for $z(\theta)$, we can find $z'(\theta)$.
+  \begin{align*}
+    z(\theta) &= e^{i \theta} \\
+    z'(\theta) &= i e^{i \theta}
+  \end{align*}
+
+  Now, we integrate according to \Cref{eq:Integration_on_Paths}.
+  \begin{align*}
+    \int_{C} \frac{1}{z} dz &= \int_{0}^{2 \pi} \frac{1}{z(\theta)} z'(\theta) d\theta \\
+                            &= \int_{0}^{2 \pi} \frac{1}{e^{i \theta}} \left( i e^{i \theta} \right) d\theta \\
+                            &= \int_{0}^{2 \pi} i d\theta \\
+                            &= i \int_{0}^{2 \pi} d\theta \\
+                            &= i {[\theta]}_{\theta = 0}^{\theta = 2 \pi} \\
+                            &= 2 \pi i
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
