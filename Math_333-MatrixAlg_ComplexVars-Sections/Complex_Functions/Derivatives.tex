@@ -388,6 +388,28 @@ The class of equations that satisfy \Cref{eq:U_V_Harmonic_Relation} are called \
   Similarly, $V(x, y) = 3x^{2}y - y^{3}$ is also harmonic.
 \end{example}
 
+\subsubsection{Analytic vs. Non-Analytic}\label{subsubsec:Analytic_NonAnalytic}
+A \nameref{def:Complex_Function} can either be \nameref{def:Analytic} or non-analytic.
+
+\paragraph{Analytic}\label{par:Analytic_Function_Examples}
+The functions below are \textbf{usually} \nameref{def:Analytic}, although, if the region $\Omega$ is defined in particular ways, they may not be.
+\begin{itemize}[noitemsep]
+\item Polynomials, $4z^{3} + 2z^{2} + z + 45$
+\item Rational Functions, $\frac{z^{2} + 9}{z+1}$
+\item Circular Functions, $\cos(z)$, $\sin(z^{2})$
+\item Exponential Functions, $e^{z}$
+\end{itemize}
+
+\paragraph{Non-Analytic}\label{par:NonAnalytic_Function_Examples}
+The \nameref{def:Complex_Function}s below are non-\nameref{def:Analytic}, some of them very much not so.
+If a function is non-analytic, then it will not satisfy the \nameref{subsubsec:Cauchy_Riemann_Equations}.
+These include:
+\begin{itemize}[noitemsep]
+\item The real operator, $\Re$
+\item The imaginary operator, $\Im$
+\item The magnitude function, ${\Modulus{z}}^{2}$
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
