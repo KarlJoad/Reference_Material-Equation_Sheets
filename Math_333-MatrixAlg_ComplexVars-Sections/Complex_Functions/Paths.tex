@@ -47,20 +47,19 @@ The general form for \nameref{def:Parameterizing_Path} a \nameref{def:Path} is s
   \begin{align*}
     z - a &= r \bigl( \cos(\theta) + i \sin(\theta) \bigr) \\
     \shortintertext{\Cref{eq:Euler Complex} can simplify this further.}
-          &= r e^{i \theta} \:\: 0 \leq \theta \leq 2\pi
+          &= a + r e^{i \theta} \:\: 0 \leq \theta \leq 2\pi
   \end{align*}
 
-  Thus, we have parameterized the equation for a circle, in 2 forms:
-  \begin{enumerate}[noitemsep]
-  \item Parameterization of a circle in Counter Clockwise Direction (CCD)
-    \begin{equation*}
-      z - a = r e^{i \theta} \:\: 0 \leq \theta \leq 2\pi
-    \end{equation*}
-  \item Parameterization of a circle in Clockwise Direction (CD)
-    \begin{equation*}
-      z - a = r e^{-i \theta} \:\: 0 \leq \theta \leq 2\pi
-    \end{equation*}
-  \end{enumerate}
+  Thus, we have parameterized the equation for a circle, in 2 forms: \Cref{subeq:Circle_Parameterized_CCD} and \Cref{subeq:Circle_Parameterized_CD}.
+Parameterization of a circle in Counter Clockwise Direction (CCD)
+\begin{subequations}\label{eq:Circles_Parameterized}
+  \begin{equation}\label{subeq:Circle_Parameterized_CCD}
+    z = a + r e^{i \theta} \:\: 0 \leq \theta \leq 2\pi
+  \end{equation}
+  \begin{equation}\label{subeq:Circle_Parameterized_CD}
+    z = a + r e^{-i \theta} \:\: 0 \leq \theta \leq 2\pi
+  \end{equation}
+\end{subequations}
 \end{example}
 
 %%% Local Variables:
