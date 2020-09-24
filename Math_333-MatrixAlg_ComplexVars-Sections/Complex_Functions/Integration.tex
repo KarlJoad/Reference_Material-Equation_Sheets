@@ -67,7 +67,21 @@ I will choose $\Path$ in this document, to match up with the use of $\Path$ in \
   \end{remark*}
 \end{theorem}
 
-If we look at \Cref{eq:Complex_Antiderivative}, we notice that the right-hand side ($F(B) - F(A)$) is independent of the \nameref{def:Path}.
+\subsubsection{Using Antiderivatives}\label{subsubsec:Using_Antiderivatives}
+To use antiderivatives to evaluate integrals, we use the steps below:
+\begin{enumerate}[noitemsep]
+\item Have a \nameref{def:Simply_Connected}, \nameref{def:Open}, \nameref{def:Connected} region, $\Omega$.
+\item Show that $C$ is a \nameref{def:Path}/curve fully inside the region $\Omega$.
+\item Show that $f$ is \nameref{def:Analytic} on $\Omega$.
+  \begin{itemize}[noitemsep]
+  \item This is the big condition and the hard one to prove.
+  \end{itemize}
+\item Evaluate $\int_{C} f = {[F]}_{A}^{B} = F(B) - F(A)$.
+  \begin{itemize}[noitemsep]
+  \item Notice that the right-hand side ($F(B) - F(A)$) is \textbf{independent} of the \nameref{def:Path}.
+  \item Only the starting and end points matter.
+  \end{itemize}
+\end{enumerate}
 
 \begin{example}[Lecture 7]{Antiderivatives}
   Evaluate the integral $\int_{\Path} z \sin \left( z^{2} \right) dz$ where $\Path$ is equal to the union of the line segment that stretches from the origin to $(1, 2)$, \textbf{with} the lower half of the circle whose center is at $a = 3+2i$ with radius $r = 2$.
