@@ -47,14 +47,17 @@ I will choose $\Path$ in this document, to match up with the use of $\Path$ in \
   \end{align*}
 \end{example}
 
+\subsubsection{Antiderivatives}\label{subsubsec:Antiderivatives}
 \begin{theorem}[Complex Antiderivative]\label{thm:Complex_Antiderivative}
-  Let $\Omega$ be a \nameref{def:Simply} \nameref{def:Connected} region and $f: \Omega \to \ComplexNumbers$ is an \nameref{def:Analytic} \nameref{def:Complex_Function} on $\Omega$.
+  Let $\Omega$ be a \nameref{def:Simply_Connected}, \nameref{def:Connected}, and \nameref{def:Open} region.
+  Let $f$ be an \nameref{def:Analytic} \nameref{def:Complex_Function} defined on $\Omega$, $f: \Omega \to \ComplexNumbers$ on $\Omega$.
+
   Then, there exists another \nameref{def:Analytic} function ($\exists F: \Omega \to \ComplexNumbers$) such that the derivative of the new function is equal to the original function.
   \begin{equation*}
     F' = f
   \end{equation*}
 
-  Thus, $F$ is an antiderivatives of $f$.
+  Thus, $F$ is \textbf{an} antiderivatives of $f$.
   \begin{equation}\label{eq:Complex_Antiderivative}
     \int_{\Path} f = F(B) - F(A)
   \end{equation}
