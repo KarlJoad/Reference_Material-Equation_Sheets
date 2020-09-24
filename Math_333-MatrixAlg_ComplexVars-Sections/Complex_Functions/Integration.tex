@@ -157,6 +157,19 @@ Refer to \Cref{subsubsec:Analytic_NonAnalytic} if you need a short list of \name
   \end{align*}
 \end{example}
 
+\subsubsection{Cauchy's Integral Theorem}\label{subsubsec:Cauchys_Integral_Theorem}
+\begin{theorem}[Cauchy's Integral Theorem]\label{thm:Cauchys_Integral_Theorem}
+  Let $\Omega$ be a \nameref{def:Simply_Connected} and \nameref{def:Open} set.
+  Let $f$ be an \nameref{def:Analytic} function in $\Omega$.
+  Let $C$ be a curve/\nameref{def:Path} \textbf{INSIDE} $\Omega$, described in a counter-clockwise direction, be \nameref{def:Closed_Path} and a \nameref{def:Simple_Path}.
+  Let $a$ be a point in the interior of $C$.
+
+  Then, the below equation holds true.
+  \begin{equation}\label{eq:Cauchys_Integral_Theorem}
+    \int_{C} \frac{f(z)}{{(z-a)}^{n}} dz = 2 \pi i \left( \frac{1}{(n-1)!} \right) \frac{ d^{n-1} f(a)}{{dz}^{n-1}}
+  \end{equation}
+\end{theorem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
