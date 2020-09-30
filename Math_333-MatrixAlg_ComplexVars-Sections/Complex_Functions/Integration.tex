@@ -258,6 +258,41 @@ In fact, this is exactly what we will do!
   \end{align*}
 \end{example}
 
+And now, for completion's sake, we have an example using a sinusoid.
+\begin{example}[Lecture 8, Example 2]{Using Cauchy's Integreal Theorem with a Sinusoid}
+  Given a rectangle $R$ with vertices $A=(3, 1), B=(-2, 1), C=(-2, -1), D=(3, -1)$ inscribed on the complex plane, evaluate the integral?
+  \begin{equation*}
+    \int_{R} \frac{\sin(z)}{{(z-2)}^{2} (z+3)} dz
+  \end{equation*}
+  \tcblower{}
+  We know that $z+3$ cannot be the denominator for \nameref{thm:Cauchys_Integral_Theorem}, because $a=-3$ is \textbf{not} inside the rectangle $R$ ($a=-3 \notin R$).
+  \begin{equation*}
+    \int_{R} \frac{\sin(z)}{{(z-2)}^{2} (z+3)} dz = \int_{R} \frac{\frac{\sin(z)}{z+3}}{{(z-2)}^{2}} dz
+  \end{equation*}
+
+  Because $R$ is already described in the counterclockwise direction, there is nothing more we have to do,, other than realize that we can apply \nameref{thm:Cauchys_Integral_Theorem}.
+  \begin{align*}
+    \int_{R} \frac{\sin(z)}{{(z-2)}^{2} (z+3)} dz &= \int_{R} \frac{\frac{\sin(z)}{z+3}}{{(z-2)}^{2}} dz \\
+                                                  &= 2 \pi i \left( \frac{1}{(2-1)!} \right) \frac{d^{2-1}f(a)}{{dz}^{2-1}} \\
+                                                  &= 2 \pi i (1) f'(a) \\
+  \end{align*}
+
+  This time, we need to find $f'(z)$ before we can finish our evaluation.
+  \begin{align*}
+    f(z) &= \frac{\sin(z)}{z+3} \\
+    f'(z) &= \frac{d}{dz} \frac{\sin(z)}{z+3} \\
+    \shortintertext{Use the Quotient Rule.}
+         &= \frac{\cos(z) (z+3) + \sin(z) (1)}{{(z+3)}^{2}}
+  \end{align*}
+
+  Now, we finish.
+  \begin{align*}
+    \int_{R} \frac{\sin(z)}{{(z-2)}^{2} (z+3)} dz &= 2 \pi i (1) f'(z=2) \\
+                                                  &= 2 \pi i \left( \frac{\cos(2) (2+3) + \sin(2) (1)}{{(2+3)}^{2}} \right) \\
+                                                  &= 2 \pi i \left( \frac{5 \cos(2) + \sin(2)}{25} \right)
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
