@@ -52,6 +52,16 @@ There is a theorem for this, \Cref{thm:Radius_of_Convergence}, called the \namer
   \end{align*}
 \end{example}
 
+\begin{theorem}
+  If the \nameref{def:Complex_Power_Series} $\sum_{n=0}^{\infty} a_{n} {(z-a)}^{n}$ has a \nameref{thm:Region_of_Convergence} $RoC > 0$, we can define $f(z)$ to be the summation of all the terms in the series, $f(z) = \sum_{n = 0}^{\infty} a_{n} {(z-a)}^{n}$, $\Modulus{z-a} < R$.
+
+  Then, $f$ is \nameref{def:Analytic} in $\Modulus{z-a} < R$ and $f'(z)$ is term-by-term differentiable.
+  \begin{align*}
+    f(z) &= a_{0} + a_{1} (z-a) + a_{2} {(z-a)}^{2} + a_{3} {(z-a)}^{3} \cdots \\
+    f'(z) &= 0 + a_{1} + 2 a_{2} (z-a) + 3 a_{3} {(z-a)}^{2} + \cdots \\
+         &= \sum_{n=1}^{\infty} n a_{n} {(z-a)}^{n-1}, \, \forall z, \, \Modulus{z-a} < R
+  \end{align*}
+\end{theorem}
 
 %%% Local Variables:
 %%% mode: latex
