@@ -219,6 +219,45 @@ In fact, this is exactly what we will do!
   Likewise, we were also able to flib the integral's bounds and change teh direction of integration, which is also used here.
 \end{remark*}
 
+\begin{example}[Lecture 8, Example 1]{Cauchy's Integral Theorem on a Non-Simple Path}
+  Let $C$ be the union of two loops, which cross at $z=0$, forming a figure-8 on the real-axis.
+  The right-hand portion is oriented in the counterclockwise direction, and the left-hand portion is oriented in the clockwise direction.
+  Then, evaluate the following expression?
+  \begin{equation*}
+    \int_{C} \frac{2z + 3}{(z-1) (z+2)} dz
+  \end{equation*}
+  \tcblower{}
+  The first step here is to ``break'' the union into two separate loops that we can then use \nameref{thm:Cauchys_Integral_Theorem} on.
+  Let $C_{1}$ be the right-hand portion and $C_{2}$ be the left-hand side.
+  \begin{equation*}
+    \int_{C} \frac{2z + 3}{(z-1) (z+2)} dz = \int_{C_{1}} \frac{2z + 3}{(z-1) (z+2)} dz + \int_{C_{2}} \frac{2z + 3}{(z-1) (z+2)} dz
+  \end{equation*}
+
+  We were told that $C_{2}$ is oriented in the clockwise direction, but \nameref{thm:Cauchys_Integral_Theorem} states we must have the path be in the counterclockwise direction.
+  This is easily solved by just negating the entire $C_{2}$ integral.
+  This is a natural extension of the idea of ``flipping the bounds'' of a regular Riemann integral.
+  \begin{equation*}
+    \int_{C} \frac{2z + 3}{(z-1) (z+2)} dz = \int_{C_{1}} \frac{2z + 3}{(z-1) (z+2)} dz - \int_{C_{2}\text{, CCD}} \frac{2z + 3}{(z-1) (z+2)} dz
+  \end{equation*}
+
+  Now, we need to determine what $f(z)$ from \Cref{thm:Cauchys_Integral_Theorem} is in both parts of the loops.
+  In this case, $a_{1}=1$ inside $C_{1}$ and $a_{2}=-2$ in $C_{2}$.
+  That means those 2 values must end up in the denominator of their respective integral.
+  \begin{equation*}
+    \int_{C} \frac{2z + 3}{(z-1) (z+2)} dz = \int_{C_{1}} \frac{\frac{2z + 3}{z+2}}{z-1} dz - \int_{C_{2}\text{, CCD}} \frac{\frac{2z + 3}{z-1}}{z+2} dz
+  \end{equation*}
+
+  Now that both integrals are on \nameref{def:Simple_Path} paths, are inside $\Omega = \ComplexNumbers$, and have $a$ inside them, we can use \Cref{thm:Cauchys_Integral_Theorem}.
+  \begin{align*}
+    \int_{C} \frac{2z + 3}{(z-1) (z+2)} dz &= \int_{C_{1}} \frac{\frac{2z + 3}{z+2}}{z-1} dz - \int_{C_{2}\text{, CCD}} \frac{\frac{2z + 3}{z-1}}{z+2} dz \\
+                                           &= 2 \pi i \left( \frac{1}{(1-1)!} \right) \frac{d^{1-1}f(a_{1})}{{dz}^{1-1}} - 2 \pi i \left( \frac{1}{(1-1)!} \right) \frac{d^{1-1}f(a_{2})}{{dz}^{1-1}} \\
+                                           &= 2 \pi i (1) f(a_{1}) - 2 \pi i (1) f(a_{2}) \\
+                                           &= 2 \pi i \left( \frac{2 + 3}{1 + 2} \right) - 2 \pi i \left( \frac{-4 + 3}{-2 - 1} \right) \\
+                                           &= 2 \pi i \left( \frac{5}{3} \right) - 2 \pi i \left( \frac{-1}{-3} \right) \\
+                                           &= 2 \pi i \left( \frac{5}{3} \right) - 2 \pi i \left( \frac{1}{3} \right)
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
