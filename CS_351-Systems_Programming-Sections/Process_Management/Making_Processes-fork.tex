@@ -101,6 +101,21 @@ Hello from child
   This lock is what makes the output text appear in order.
 \end{itemize}
 
+\subsubsection{\texttt{fork} Fails}\label{subsubsec:fork_Fails}
+\cinline{fork}, like most other \nameref{def:Syscall}s will return \texttt{-1} on a failure.
+The global variable \texttt{errno} is populated with the cause of the failure
+To access \texttt{errno}, refer to \Cref{lst:errno}.
+
+\begin{listing}[h!tbp]
+\begin{csource}
+#include <errno.h>
+
+extern int errno;
+\end{csource}
+\caption{Using \texttt{errno} to get Error Return Codes}
+\label{lst:errno}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
