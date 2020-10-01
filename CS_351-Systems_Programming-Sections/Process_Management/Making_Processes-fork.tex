@@ -59,6 +59,48 @@ The reason that we don't have garbage being printed out to the screen is because
 \Cref{lst:fork_Usage-2} will print \texttt{Hello World!} four times, but in no particular order.
 The main parent \nameref{def:Process} has 2 children, and the parent's \textbf{first} child makes another child.
 
+\subsubsection{Using Processes}\label{subsubsec:Using_Processes}
+There is usually a split in the logical control flow between the parent and child, making them take different actions.
+This is possible because the parent and child \nameref{def:Process}es receive different return values.
+A simple example of this is shown in \Cref{lst:Using_fork-1}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./CS_351-Systems_Programming-Sections/Process_Management/Code/use-fork-1.c}
+\caption{Using \texttt{fork()}, Performing Separate Actions}
+\label{lst:Using_fork-1}
+\end{listing}
+
+The results from \Cref{lst:Using_fork-1} executing is that both print statements are executed.
+But, you are not guaranteed the order in which they execute.
+Some orders that exist are:
+\begin{itemize}[noitemsep]
+\item Child prints first, seen in \Cref{lst:fork-1-Child_First}.
+  \begin{listing}[h!tbp]
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+Hello from child
+Hello from parent
+\end{minted}
+\caption{Post-\cinline{fork}, Child Finishes First}
+\label{lst:fork-1-Child_First}
+  \end{listing}
+
+\item Parent prints first, seen in \Cref{lst:fork-1-Parent_First}.
+  \begin{listing}[h!tbp]
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+Hello from parent
+Hello from child
+\end{minted}
+\caption{Post-\cinline{fork}, Parent Finishes First}
+\label{lst:fork-1-Parent_First}
+  \end{listing}
+
+\item Child and parent print at the same time.
+  But, there is a lock for the screen, blocking multiple \nameref{def:Process}es from printing out at the same time.
+  This lock is what makes the output text appear in order.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
