@@ -42,6 +42,18 @@ However, this means:
 \item An idle process (for example, waiting for user input) will underutilize the CPU
 \end{itemize}
 
+For the operating system to simulate this seamless logical control flow, we use all of the information used to make a \nameref{def:Process}, and need a \nameref{def:Process_Control_Block}.
+\begin{definition}[Process Control Block]\label{def:Process_Control_Block}
+  The \emph{Process Control Block} (\emph{PCB}) contains additional metadata about a \nameref{def:Process}.
+  This includes:
+  \begin{itemize}[noitemsep]
+  \item Process ID (\texttt{PID})
+  \item CPU Usage
+  \item Memory Usage
+  \item Pending \nameref{def:Syscall}s
+  \end{itemize}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
