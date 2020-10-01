@@ -4,6 +4,18 @@ This is our \textit{only} method of creating new processes.
 The child process is nearly an \textbf{exact} duplicate of the parent process, where only some process metadata in the \nameref{def:Process_Control_Block} is different.
 The function prototype for \cinline{fork} is shown in \Cref{lst:PID_Definition_fork_Declaration}.
 
+After a \cinline{fork}, the parent and child share the same:
+\begin{itemize}[noitemsep]
+\item \nameref{def:Register}s:
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Program_Counter} \texttt{PC}.
+    The child starts \textbf{at the same place in the program as the parent}.
+  \item \nameref{def:Stack_Pointer}, \texttt{SP}
+  \item \nameref{def:Frame_Pointer}, \texttt{FP}
+  \end{itemize}
+\item Open Files
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
