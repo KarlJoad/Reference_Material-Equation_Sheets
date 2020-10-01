@@ -1,4 +1,9 @@
 \subsection{Making Processes, \texttt{fork}}\label{subsec:Making_Processes-fork}
+\texttt{fork} creates a \textbf{copy} of the current \nameref{def:Process}.
+This is our \textit{only} method of creating new processes.
+The child process is nearly an \textbf{exact} duplicate of the parent process, where only some process metadata in the \nameref{def:Process_Control_Block} is different.
+The function prototype for \cinline{fork} is shown in \Cref{lst:PID_Definition_fork_Declaration}.
+
 
 %%% Local Variables:
 %%% mode: latex
