@@ -192,6 +192,13 @@ In addition, there may be a \nameref{def:Context_Switch} after this action.
 \item[Recoverable]: \textbf{May} be a \nameref{def:Context_Switch}, depending on the \nameref{def:Process_Scheduler}.
 \end{description}
 
+\paragraph{Aborts}\label{par:Aborts}
+\begin{definition}[Abort]\label{def:Abort}
+  An \emph{abort} is an \textbf{unintentional} and \textbf{unrecoverable} error.
+  The \nameref{def:Process} is terminated by the operating system.
+  If too many errors accumulate, the OS might terminate itself.
+\end{definition}
+
 \subsubsection{Asynchronous Exceptions}\label{subsubsec:Asynchronous_Exceptions}
 \begin{definition}[Asynchronous Exception]\label{def:Asynchronous_Exception}
   An \emph{asynchronous exception}, typically called an \emph{interrupt} is one caused by events \textbf{external} to the current \nameref{def:Process}.
