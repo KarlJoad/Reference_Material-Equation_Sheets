@@ -79,6 +79,10 @@ It can be useful to send a signal to multiple processes at once, in which case, 
   If this is done, any subsequent child processes started by this one will inherit that new \texttt{pgid}.
 \end{remark*}
 
+\subsubsection{Registering Signal Handlers}\label{subsubsec:Register_Signal_Handlers}
+Before we run our program, many \nameref{def:Signal_Handler}s are registered to handle certain \nameref{def:Signal}s in certain ways.
+However, we can choose to override them, or define new ones, if we so choose.
+
 
 %%% Local Variables:
 %%% mode: latex
