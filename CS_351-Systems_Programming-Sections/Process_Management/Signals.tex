@@ -1,4 +1,17 @@
 \subsection{Signals}\label{subsec:Signals}
+One way to pass information between \nameref{def:Process}es that are not constantly, directly communicating is through the use of \nameref{def:Signal}s.
+
+\begin{definition}[Signal]\label{def:Signal}
+  \emph{Signal}s are messages delivered by the kernel to the user \nameref{def:Process}es.
+  These can occur in the cases of:
+  \begin{itemize}[noitemsep]
+  \item In response to OS events (segfault)
+  \item The request of another process
+  \end{itemize}
+
+  Signals are delivered by a \nameref{def:Signal_Handler} function in the \textbf{receiving process}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
