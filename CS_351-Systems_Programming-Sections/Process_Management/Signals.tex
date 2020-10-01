@@ -22,6 +22,43 @@ An example of how \nameref{def:Signal}s can be used is shown in \Cref{lst:Using_
 
 It can be useful to send a signal to multiple processes at once, in which case, the signal can be sent to a \nameref{def:Process_Group}.
 
+\subsubsection{Signal Lifecycle}\label{subsubsec:Signal_Lifecycle}
+\begin{enumerate}[noitemsep]
+\item Sending a signal to a process or a \nameref{def:Process_Group}.
+  \begin{itemize}[noitemsep]
+  \item The \cinline{void kill(pid_t pid, int sig)} function is an example of a function that sends a \nameref{def:Signal}.
+  \item Give the process with \texttt{pid} the \nameref{def:Signal} \texttt{sig}.
+  \item There is a list of signals with names and values.
+    The actual list is \textbf{MUCH} longer, but a few are shown below.
+    \begin{description}[noitemsep]
+    \item[\cinline{1} \cinline{SIGHUP}:] Terminate process, Terminal line hangup
+    \item[\cinline{2} \cinline{SIGINT}:] Terminate process, Interrupt program.
+    \item[\cinline{3} \cinline{SIGQUIT}:] Create core image/dump, quits program.
+    \end{description}
+  \end{itemize}
+
+\item Registering a \nameref{def:Signal_Handler} for a given \nameref{def:Signal}.
+  \begin{itemize}[noitemsep]
+  \item Some \nameref{def:Signal}s cannot be caught by the \nameref{def:Process}.
+  \item The function \cinline{sig_t signal(int sig, sig_t func)} registers a function (\texttt{func}) to a particular signal (\texttt{sig}).
+  \item Children inherit their parent's signal handlers after a \texttt{fork}.
+  \item Children lose their parent's signal handlers when they \texttt{exec} to another \nameref{def:Program}.
+  \end{itemize}
+
+\item Delivering a \nameref{def:Signal} to a \nameref{def:Process} (done by kernel).
+  \begin{itemize}[noitemsep]
+  \item 2 bitmaps per \nameref{def:Process}
+    \begin{enumerate}[noitemsep]
+    \item Pending
+    \item Blocked
+    \end{enumerate}
+  \item Some \nameref{def:Signal}s cannot be delivered/blocked (\texttt{SIGKILL}, and others)
+  \item Newly \texttt{fork}-ed child inherits the parent's blocked bitmap, but pending vector is empty.
+  \end{itemize}
+
+\item Designing a \nameref{def:Signal_Handler}.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
