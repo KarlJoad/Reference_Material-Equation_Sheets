@@ -22,6 +22,16 @@
   The program is read into memory, and then is used to start a \nameref{def:Process} that runs that program.
 \end{definition}
 
+\nameref{def:Process}es require both a \textbf{predictable} and \textbf{logical} control flow.
+This means:
+\begin{itemize}[noitemsep]
+\item The \nameref{def:Process} must start somewhere, typically defined to be \texttt{main}.
+\item Nothing can disrupt a program mid-execution.
+  \begin{itemize}[noitemsep]
+  \item This is further discussed in \Cref{subsec:Prevent_Process_Disruption}.
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
