@@ -46,6 +46,15 @@ All processes become \nameref{def:Zombie_Process} eventually, awaiting to be \na
   \end{remark}
 \end{definition}
 
+If the parent \nameref{def:Process} did \textbf{NOT} \nameref{def:Reap} its children, the only way to remove these \nameref{def:Zombie_Process}es is by \textbf{killing} the parent processes.
+Note that this is \textbf{not} the same as terminating the process.
+
+\begin{definition}[Reap]\label{def:Reap}
+  To \emph{reap} a \nameref{def:Process} is to clean up after the process.
+  This means closing any files, freeing any resources used, then reading the \texttt{exit} code from the child (the one being reaped), and freeing the process itself.
+
+  Typically, this is done with the \cinline{wait} \nameref{def:Syscall}.
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
