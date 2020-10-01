@@ -88,6 +88,20 @@ However, we can choose to override them, or define new ones, if we so choose.
   These can be used to override some default handlers, but there are some handler functions, like the one for \texttt{SIGTERM} that are not allowed to be changed.
 \end{definition}
 
+An example of the registration of a \nameref{def:Signal_Handler} is shown in \Cref{lst:Register_Signal_Handler}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./CS_351-Systems_Programming-Sections/Process_Management/Code/use-signals.c}
+\caption{Registering \nameref{def:Signal_Handler}s}
+\label{lst:Register_Signal_Handler}
+
+Results:
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+^CRelaying SIGINT to child
+Child Dying
+\end{minted}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
