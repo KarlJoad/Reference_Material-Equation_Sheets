@@ -26,6 +26,20 @@ All of these execute a \textbf{new \nameref{def:Program}} within the \textbf{cur
 When called, \texttt{exec} \textbf{never returns}, because it immediately starts the execution of the new program.
 This is because the binary image is replaced in-place.
 
+How to use \cinline{exec} is shown in \Cref{lst:exec_Usage}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./CS_351-Systems_Programming-Sections/Process_Management/Code/exec-usage.c}
+\caption{\texttt{exec()} Usage}
+\label{lst:exec_Usage}
+
+Results:
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+hello world
+\end{minted}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
