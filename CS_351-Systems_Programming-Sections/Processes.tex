@@ -72,6 +72,29 @@ This allows the operating system to schedule processes according to some algorit
   \end{itemize}
 \end{definition}
 
+\subsection{Required Hardware}\label{subsec:Required_Hardware}
+Interrupting the execution of a \nameref{def:Process} requires some hardware support to be possible and efficient.
+We need 3 things:
+\begin{enumerate}[noitemsep]
+\item A hardware mechanism to periodically interrupt the current \nameref{def:Process} to change execution to the operating system.
+  \begin{itemize}[noitemsep]
+  \item This is usually the \emph{periodic clock interrupt}.
+  \end{itemize}
+\item An operating system procedure to decide which processes to run, and in which order.
+  \begin{itemize}[noitemsep]
+  \item This is the operating system's \nameref{def:Process_Scheduler}.
+  \end{itemize}
+\item A routine for seamlessly switching between processes.
+  \begin{itemize}[noitemsep]
+  \item This is called a \nameref{def:Context_Switch}.
+  \item Relatively speaking, these are expensive to perform.
+  \item \textbf{These are external to a \nameref{def:Process}'s logical control flow}.
+  \item This forms part of the process of \nameref{def:Exceptional_Control_Flow}.
+  \item A \nameref{def:Context_Switch} makes no guarantee about if and/or when this \nameref{def:Process} will start running again.
+  \item A \nameref{def:Context_Switch} is the only way to invoke \nameref{def:Syscall}s.
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
