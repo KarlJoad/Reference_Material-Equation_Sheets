@@ -10,6 +10,30 @@
 % \graphicspath{{./Drawings/Course}} % Uncomment this to use pictures in this document
 % \addbibresource{./Bibliographies/CourseNum-Name.bib}
 
+\usemintedstyle{emacs} % Best for use on white backgrounds. Use for inline-code
+% This macro creates the 2 minted environments for kernel source code with common options
+\def\mintedkernelargs{
+  frame=lines, % Surround the source code with lines on top and bottom
+  linenos, % We want to show line numbers for each line in the margin
+  % Colors used here are xcolor X11 colors.
+  % style=fruity, % Use the fruity color scheme. Best for use on black backgrounds. Use for code blocks.
+  % bgcolor=black, % Set the background used
+  style=emacs,
+  bgcolor=white,
+  autogobble=true, % Automatically remove shared indentation from files
+  breaklines=true, % Break lines that are too long at convenient locations
+}
+\newcommand{\makenewmintedfiles}[1]{
+  \newminted[csource]{c}{#1} % Use with \begin{csource} code \end{csource}
+
+  \newmintedfile[csourcefile]{c}{#1} % Use with \csourcefile[additional-options]{Filename}
+}
+\expandafter\makenewmintedfiles\expandafter{\mintedkernelargs}
+\newmintinline[cinline]{c}{% Use with \cinline{code}
+  style=emacs,
+  bgcolor=white,
+}
+
 % Math Operators that are useful to abstract the written math away to one spot
 % These are supposed to be document-specific mathematical operators that will make life easier
 % Many fundamental operators are defined in Reference_Sheet_Preamble.tex
