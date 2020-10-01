@@ -22,6 +22,10 @@ The variations in the families are denoted by the last letters in the function.
 Each of these can be mixed to some extent.
 The only constant between all of these is that the first argument, the name of the file to execute.
 
+All of these execute a \textbf{new \nameref{def:Program}} within the \textbf{current \nameref{def:Process} context}, meaning \textbf{NO} new \texttt{PID} is given.
+When called, \texttt{exec} \textbf{never returns}, because it immediately starts the execution of the new program.
+This is because the binary image is replaced in-place.
+
 
 %%% Local Variables:
 %%% mode: latex
