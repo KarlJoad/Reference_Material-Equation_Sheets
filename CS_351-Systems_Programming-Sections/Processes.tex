@@ -123,6 +123,12 @@ This is, partly, the setup most modern operating systems take today.
 However, priority scheduling creates new issues that must be dealt with.
 One of these is \nameref{def:Starvation}.
 
+\begin{definition}[Starvation]\label{def:Starvation}
+  \emph{Starvation} is when something that needs a resource to function does not receive this resource.
+\end{definition}
+
+In this case, a lower-priority \nameref{def:Process} can experience \nameref{def:Starvation} if only higher-priority processes are present, and continually steal CPU execution time.
+
 
 %%% Local Variables:
 %%% mode: latex
