@@ -16,6 +16,21 @@ After a \cinline{fork}, the parent and child share the same:
 \item Open Files
 \end{itemize}
 
+\begin{listing}[h!tbp]
+\begin{minted}[frame=lines,linenos]{c}
+#include <unistd.h>
+
+/* typedef int pid_t */
+
+pid_t fork();
+/* Makes a system call to trap to the OS.
+ * This requests the OS to create a new process.
+ * This is mostly a duplicate of the original. */
+\end{minted}
+\caption{\texttt{pid} Definition and \texttt{fork()} Declaration}
+\label{lst:PID_Definition_fork_Declaration}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
