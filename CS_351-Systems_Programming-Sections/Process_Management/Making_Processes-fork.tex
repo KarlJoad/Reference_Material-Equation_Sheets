@@ -47,6 +47,15 @@ pid_t fork();
 \Cref{lst:fork_Usage-1} code will print \texttt{Hello World!} twice, but in no particular order.
 The reason that we don't have garbage being printed out to the screen is because the \texttt{STDOUT} stream has a lock associated with it, only allowing one \nameref{def:Process} to use the screen at a time.
 
+\begin{listing}[h!tbp]
+\csourcefile{./CS_351-Systems_Programming-Sections/Process_Management/Code/fork-2.c}
+\caption{\texttt{fork()} Usage}
+\label{lst:fork_Usage-2}
+\end{listing}
+
+\Cref{lst:fork_Usage-2} will print \texttt{Hello World!} four times, but in no particular order.
+The main parent \nameref{def:Process} has 2 children, and the parent's \textbf{first} child makes another child.
+
 
 %%% Local Variables:
 %%% mode: latex
