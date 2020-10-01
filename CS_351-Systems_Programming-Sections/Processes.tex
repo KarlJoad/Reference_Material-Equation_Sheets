@@ -105,6 +105,16 @@ Every time the \nameref{def:Process_Scheduler} schedules a new \nameref{def:Proc
 
 \nameref{def:Context_Switch}es form a core part of the \nameref{def:Exceptional_Control_Flow}.
 
+\subsection{Process Scheduling}\label{subsec:Process_Scheduling}
+Process scheduling is the process by which a process is put ``scheduled'' onto a particular CPU, according to some criteria.
+There are any number of scheduling algorithms, each of which optimizes for certain cases, and may yield a different order of process execution.
+\begin{definition}[Process Scheduler]\label{def:Process_Scheduler}
+  The \emph{process scheduler} is an operating system component that chooses which \nameref{def:Process} to run next.
+  It chooses this according to some algorithm, each of which might change the order of process execution.
+\end{definition}
+
+One such \nameref{def:Process_Scheduler} is the \nameref{subsubsec:Priority_Scheduling} algorithm.
+
 
 %%% Local Variables:
 %%% mode: latex
