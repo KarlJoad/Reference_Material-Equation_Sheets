@@ -83,6 +83,11 @@ It can be useful to send a signal to multiple processes at once, in which case, 
 Before we run our program, many \nameref{def:Signal_Handler}s are registered to handle certain \nameref{def:Signal}s in certain ways.
 However, we can choose to override them, or define new ones, if we so choose.
 
+\begin{definition}[Signal Handler]\label{def:Signal_Handler}
+  A \emph{signal handler} is a function that has been registered to handle one particular signal.
+  These can be used to override some default handlers, but there are some handler functions, like the one for \texttt{SIGTERM} that are not allowed to be changed.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
