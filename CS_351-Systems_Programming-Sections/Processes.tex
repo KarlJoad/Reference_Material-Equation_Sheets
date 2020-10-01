@@ -32,6 +32,16 @@ This means:
   \end{itemize}
 \end{itemize}
 
+\subsection{Prevent Process Disruption}\label{subsec:Prevent_Process_Disruption}
+The easiest way to prevent a \nameref{def:Process} from having its control flow being interrupted is for the process to ``own'' the CPU for the entire duration of the process's execution.
+However, this means:
+\begin{itemize}[noitemsep]
+\item No other process can run on this core
+\item This prevents efficient multi-\nameref{def:Process}/multitasking systems
+\item Malicious or poorly written program can ``take over'' the CPU
+\item An idle process (for example, waiting for user input) will underutilize the CPU
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
