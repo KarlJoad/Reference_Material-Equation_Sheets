@@ -24,6 +24,14 @@ The \cinline{wait} \nameref{def:Syscall}:
 
 If \texttt{wait} is called by a \nameref{def:Process} with no children, \texttt{wait} returns \texttt{-1} and populates \texttt{errno} with an appropriate error code.
 
+How to use \cinline{wait} is shown in \Cref{lst:wait_Usage}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./CS_351-Systems_Programming-Sections/Process_Management/Code/wait-usage.c}
+\caption{\texttt{wait()} Usage}
+\label{lst:wait_Usage}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
