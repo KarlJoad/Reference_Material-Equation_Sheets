@@ -38,6 +38,15 @@ pid_t fork();
   A returned value of \texttt{0} indicates success; it is a sentinel value.
 \end{itemize}
 
+\begin{listing}[h!tbp]
+\csourcefile{./CS_351-Systems_Programming-Sections/Process_Management/Code/fork-1.c}
+\caption{\texttt{fork()} Usage}
+\label{lst:fork_Usage-1}
+\end{listing}
+
+\Cref{lst:fork_Usage-1} code will print \texttt{Hello World!} twice, but in no particular order.
+The reason that we don't have garbage being printed out to the screen is because the \texttt{STDOUT} stream has a lock associated with it, only allowing one \nameref{def:Process} to use the screen at a time.
+
 
 %%% Local Variables:
 %%% mode: latex
