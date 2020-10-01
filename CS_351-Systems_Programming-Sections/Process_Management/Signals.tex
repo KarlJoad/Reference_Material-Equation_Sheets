@@ -73,6 +73,12 @@ It can be useful to send a signal to multiple processes at once, in which case, 
   \end{propertylist}
 \end{definition}
 
+\begin{remark*}
+  For most \nameref{def:Process}es started from a shell, they inherit the shell's \nameref{def:Process_Group} ID.\@
+  This can be changed through the \cinline{setpgrp} function.
+  If this is done, any subsequent child processes started by this one will inherit that new \texttt{pgid}.
+\end{remark*}
+
 
 %%% Local Variables:
 %%% mode: latex
