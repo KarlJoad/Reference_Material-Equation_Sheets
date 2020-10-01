@@ -1,4 +1,17 @@
 \subsection{Terminating Processes, \texttt{exit}}\label{subsec:Terminating_Processes-exit}
+There are several possible ways for a \nameref{def:Process} to terminate.
+
+\begin{itemize}[noitemsep]
+\item The simplest way to terminate a \nameref{def:Process} is for the main process to \texttt{return}.
+  If we are being pedantic, the compiler actually implicitly inserts an \texttt{exit} in this case, making all possible exits from a process use \texttt{exit}.
+
+\item The \texttt{exit} \nameref{def:Syscall}.
+  \begin{itemize}[noitemsep]
+  \item This exits immediately
+  \item This may prevent a normal \texttt{return}
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
