@@ -11,6 +11,14 @@ All of these are front-ends to \texttt{exec}.
 \item \cinline{execve}
 \end{enumerate}
 
+The variations in the families are denoted by the last letters in the function.
+\begin{description}[noitemsep]
+\item[\texttt{l}:] Arguments passed as list of strings to \cinline{main()}.
+\item[\texttt{v}:] Arguments passed as array of strings to \cinline{main()}.
+\item[\texttt{p}:] Path(s) to search for running program.
+\item[\texttt{e}:] Environment (Environment variables and other state) specified by the caller.
+\end{description}
+
 
 %%% Local Variables:
 %%% mode: latex
