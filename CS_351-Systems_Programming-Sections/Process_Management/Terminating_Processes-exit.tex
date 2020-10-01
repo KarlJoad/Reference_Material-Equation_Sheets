@@ -26,6 +26,26 @@ In addition, these handlers are inherited by child \nameref{def:Process}es.
 \subsubsection{Zombie Processes}\label{subsubsec:Zombie_Processes}
 All processes become \nameref{def:Zombie_Process} eventually, awaiting to be \nameref{def:Reap}ed.
 
+\begin{definition}[Zombie Process]\label{def:Zombie_Process}
+  A \emph{zombie process} is one that is ``dead'', because it finished its execution, but is still tracked by the OS, because the parent has not used/\nameref{def:Reap}ed/\texttt{wait}-ed them yet.\@
+  This means:
+  \begin{itemize}[noitemsep]
+  \item The \texttt{PID} remains in-use.
+  \item The child \nameref{def:Process}'s \texttt{exit} status can be queried.
+   \end{itemize}
+
+   \textbf{ALL} terminating/terminated processes turn into zombies.
+
+   \begin{remark}[Processes Responsible for Reaping]\label{rmk:Process_Responsible_Reaping}
+     All processes are responsible for \nameref{def:Reap}ing their own (immediate) children.
+     If a program has 2 forks, the child of the child is \textbf{not} reaped by the original parent.
+   \end{remark}
+
+   \begin{remark}[Orphaned Process]\label{rmk:Orphaned_Process}
+    If a \nameref{def:Process} is completely \emph{orphaned}, it transfers ownership to \texttt{PID = 1}, which will then \nameref{def:Reap} it.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
