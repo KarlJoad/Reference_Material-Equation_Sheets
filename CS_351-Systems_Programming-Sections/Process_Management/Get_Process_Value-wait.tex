@@ -22,6 +22,8 @@ The \cinline{wait} \nameref{def:Syscall}:
 \item Returns the reaped child's \texttt{PID} and exit status via pointer (if non-\texttt{NULL})
 \end{enumerate}
 
+If \texttt{wait} is called by a \nameref{def:Process} with no children, \texttt{wait} returns \texttt{-1} and populates \texttt{errno} with an appropriate error code.
+
 
 %%% Local Variables:
 %%% mode: latex
