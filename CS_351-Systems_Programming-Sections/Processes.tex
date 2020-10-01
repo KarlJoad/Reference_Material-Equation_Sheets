@@ -148,6 +148,12 @@ From there, the exception would be handled (if possible), and then the operating
 While the execution of the \nameref{def:Process} was non-sequential, the process \textbf{is not aware} of this fact.
 {\large\textbf{ALL}} of the process's state is saved \textbf{before} the context switch, so that when the process is switched back in, it continues executing from the \textbf{same} spot as before.
 
+There are 2 kinds of exceptions in operating systems today:
+\begin{enumerate}[noitemsep]
+\item \nameref{subsubsec:Synchronous_Exceptions}
+\item \nameref{subsubsec:Asynchronous_Exceptions}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
