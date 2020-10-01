@@ -38,6 +38,9 @@ pid_t fork();
   A returned value of \texttt{0} indicates success; it is a sentinel value.
 \end{itemize}
 
+\cinline{pid_t} is a system-wide unique Process IDentifier (\texttt{PID}).
+It is \texttt{typedef}-ed from an integer, so normal integer arithmetic and rules apply.
+
 \begin{listing}[h!tbp]
 \csourcefile{./CS_351-Systems_Programming-Sections/Process_Management/Code/fork-1.c}
 \caption{\texttt{fork()} Usage}
