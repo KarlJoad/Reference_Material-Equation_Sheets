@@ -10,15 +10,15 @@ We start our discussion of complex series by talking about \nameref{def:Complex_
 \end{definition}
 
 Because our \nameref{def:Complex_Power_Series} are infinite, we now have to ask about its convergence.
-There is a theorem for this, \Cref{thm:Radius_of_Convergence}, called the \nameref{thm:Radius_of_Convergence}.
+There is a theorem for this, \Cref{thm:Region_of_Convergence}, called the \nameref{thm:Region_of_Convergence}.
 
-\begin{theorem}[Radius of Convergence]\label{thm:Radius_of_Convergence}
+\begin{theorem}[Region of Convergence]\label{thm:Region_of_Convergence}
   There exists a number $R$, $0 \leq R \leq \infty$, such that $\forall z, \Modulus{z-a} < R$ the series is convergent, and $\forall z, \Modulus{z-a} > R$ is divergent.
   $forall z, \Modulus{z-a} = R$ does not have guaranteed divergence or convergence.
-  This value $R$ is called the \emph{Radius of Convergence}, or the \emph{RoC}.
+  This value $R$ is called the \emph{Region of Convergence}, or the \emph{RoC}.
 \end{theorem}
 
-\begin{example}[Lecture 8, Example 3]{Finding the Radius of Convergence}
+\begin{example}[Lecture 8, Example 3]{Finding the Region of Convergence}
   Compute the radius of convergence of the power series shown below.
   \begin{equation*}
     \sum_{n=0}^{\infty} \frac{3^{2n+5}}{2n+3} {(z-i)}^{7n+2}
@@ -39,7 +39,7 @@ There is a theorem for this, \Cref{thm:Radius_of_Convergence}, called the \namer
                                                         &= 3^{2} {\Modulus{z-i}}^{7}
   \end{align*}
 
-  Now, we have to use \Cref{thm:Radius_of_Convergence}.
+  Now, we have to use \Cref{thm:Region_of_Convergence}.
   \begin{align*}
     \forall z, 3^{2} {\Modulus{z-i}}^{7} &< 1 \text{, Series is convergent} \\
     \forall z, 3^{2} {\Modulus{z-i}}^{7} &> 1 \text{, Series is divergent} \\
