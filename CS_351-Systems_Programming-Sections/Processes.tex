@@ -206,6 +206,26 @@ In addition, there may be a \nameref{def:Context_Switch} after this action.
   On modern computers, pressing \texttt{Ctrl+C} will produce a \texttt{SIGKILL} signal, which is another asynchronous exception.
 \end{definition}
 
+These are typically associated with specific hardware pins on the CPU.\@
+A check for \nameref{def:Asynchronous_Exception}s is performed after \textbf{every} CPU cycle.
+These types of exceptions are handled with/by interrupt handlers.
+
+\begin{definition}[Interrupt Handler]\label{def:Interrupt_Handler}
+  An \emph{interrupt handler} takes the current state of the system and the \nameref{def:Asynchronous_Exception} that was just raised, and handles the exception, then returns to another \nameref{def:Process}.
+
+  The steps involved are:
+  \begin{enumerate}[noitemsep]
+  \item Save Context
+  \item Load OS Context
+  \item Execute the Interrupt Handler
+  \item Load context for the next process given by the scheduler
+  \item Return to the next process
+  \end{enumerate}
+
+  \begin{remark}
+    These handlers are fairly lightweight, but having more and more interrupts \textbf{will} affect performance.
+  \end{remark}
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
