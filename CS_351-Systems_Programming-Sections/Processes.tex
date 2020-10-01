@@ -1,4 +1,22 @@
 \section{Processes}\label{sec:Processes}
+\nameref{def:Process}es are the fundamental unit of computation within an operating system.
+\begin{definition}[Process]\label{def:Process}
+  A \emph{process} is a \nameref{def:Program} in execution.
+  A process carries out the computation that we specify.
+  A process contains:
+  \begin{itemize}[noitemsep]
+  \item Code (\texttt{text}) of your program.
+  \item Runtime data (Global, local, dynamic variables)
+  \item \nameref{def:Register}s:
+    \begin{itemize}[noitemsep]
+    \item \nameref{def:Program_Counter} (\texttt{PC})
+    \item \nameref{def:Stack_Pointer} (\texttt{SP})
+    \item \nameref{def:Frame_Pointer} (\texttt{FP})
+    \end{itemize}
+  \item \nameref{def:Process_Control_Block}
+  \end{itemize}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
