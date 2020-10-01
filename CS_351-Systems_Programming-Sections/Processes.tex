@@ -95,6 +95,16 @@ We need 3 things:
   \end{itemize}
 \end{enumerate}
 
+To schedule \nameref{def:Process}es onto one of possibly many CPUs, there are programs called \nameref{def:Process_Scheduler}s.
+
+Every time the \nameref{def:Process_Scheduler} schedules a new \nameref{def:Process}, or when a process needs to perform a \nameref{def:Syscall}, or a kernel-level exception occurs, a \nameref{def:Context_Switch} is made.
+\begin{definition}[Context Switch]\label{def:Context_Switch}
+  A \emph{context switch} is the process of interrupting a \nameref{def:Process}, saving its current state, and scheduling something else to run on that CPU.\@
+  This is done whenever a \nameref{def:Syscall} is made, and happens sometimes during a process's lifetime.
+\end{definition}
+
+\nameref{def:Context_Switch}es form a core part of the \nameref{def:Exceptional_Control_Flow}.
+
 
 %%% Local Variables:
 %%% mode: latex
