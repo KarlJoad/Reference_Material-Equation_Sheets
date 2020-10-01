@@ -160,6 +160,17 @@ There are 2 kinds of exceptions in operating systems today:
   These are usually things that the process wants to bring to attention, or to have handled.
 \end{definition}
 
+\paragraph{Traps}\label{par:Traps}
+\begin{definition}[Trap]\label{def:Trap}
+  A \emph{trap} is a \nameref{def:Synchronous_Exception} caused \textbf{by} the currently executing \nameref{def:Process}.
+  A trap is caused by the process making a \nameref{def:Syscall}.
+
+  \begin{remark}[Interaction with Scheduling]\label{rmk:Trap_Scheduling}
+    A \nameref{def:Trap} will make the \nameref{def:Process} that made the \nameref{def:Syscall} \nameref{def:Context_Switch} out of execution.
+    The \nameref{def:Process_Scheduler} makes \textbf{no} guarantees \textbf{when} the process will run again.
+  \end{remark}
+\end{definition}
+
 \subsubsection{Asynchronous Exceptions}\label{subsubsec:Asynchronous_Exceptions}
 \begin{definition}[Asynchronous Exception]\label{def:Asynchronous_Exception}
   An \emph{asynchronous exception}, typically called an \emph{interrupt} is one caused by events \textbf{external} to the current \nameref{def:Process}.
