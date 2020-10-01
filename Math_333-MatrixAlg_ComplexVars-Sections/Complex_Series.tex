@@ -134,6 +134,47 @@ Now, some examples on how to use these series to solve problems.
   \end{align*}
 \end{example}
 
+\begin{example}[Lecture 9, Example 3]{Power Series of Sinusoid not Centered on Origin}
+  $z \to \sin(z)$ is \nameref{def:Analytic} on $\Modulus{z-2} < \infty$.
+  Find the \nameref{def:Complex_Power_Series} of this function?
+  \tcblower{}
+  We start by taking what we already know, $\sin(z)$ on $\Modulus{z} < \infty$.
+  \begin{equation*}
+    \sin(z) = \sum_{n=0}^{\infty} {(-1)}^{n} \frac{z^{2n+1}}{(2n+1)!}
+  \end{equation*}
+
+  Now, we attempt to replace all instances of $z$ with $z-2$.
+  \begin{align*}
+    \sin(z) &= \sum_{n=0}^{\infty} {(-1)}^{n} \frac{z^{2n+1}}{(2n+1)!} \\
+    \shortintertext{This is if $\sin$ were centered on $z=0$ though.}
+            &= \sum_{n=0}^{\infty} {(-1)}^{n} \frac{{(z-2)}^{2n+1}}{(2n+1)!}
+  \end{align*}
+
+  But, that doesn't work, as we have no reasonable way to put this into our ``standard'' \nameref{def:Complex_Power_Series} form.
+  Instead, start from the beginning again and say that $\sin(z) = \sin(z - 2 + 2)$.
+  Now, we treat $\sin(z-2+2)$ as $\sin \bigl( (z-2) + 2 \bigr)$.
+  We use the \nameref{subsec:Angle Sum and Difference Identities} to simplify this, namely \Cref{eq:Sin Angle Sum and Difference}.
+  \begin{align*}
+    \sin \bigl( (z-2) + 2 \bigr) &= \sin(z-2) \cos(2) + \cos(z-2) \sin(2) \\
+    \shortintertext{Now we expand the sinusoids that have $z$ terms in them.}
+                                 &= \cos(2) \left( \sum_{n=0}^{\infty} {(-1)}^{n} \frac{{(z-2)}^{2n+1}}{(2n+1)!} \right) + \sin(2) \left( \sum_{n=0}^{\infty} {(-1)}^{n} \frac{{(z-2)}^{2n}}{(2n)!} \right) \\
+  \end{align*}
+
+  Again, this is not in our ``standard'' form, but we can change it so it is, using 2 cases.
+  \begin{equation*}
+    \sin \bigl( (z-2) + 2 \bigr) = \sum_{n=0}^{\infty} a_{n} {(z-2)}^{n}
+  \end{equation*}
+  Where
+  \begin{equation*}
+    a_{n} =
+    \begin{cases}
+      \cos(2) {(-1)}^{\frac{n-1}{2}} \frac{{(z-2)}^{n}}{n!} & \text{If $n$ is odd} \\[5pt]
+
+      \sin(2) {(-1)}^{\frac{n}{2}} \frac{{(z-2)}^{n}}{n!} & \text{If $n$ is even} \\
+    \end{cases}
+  \end{equation*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
