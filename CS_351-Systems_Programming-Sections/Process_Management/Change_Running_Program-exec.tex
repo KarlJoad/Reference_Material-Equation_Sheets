@@ -40,6 +40,22 @@ hello world
 \end{minted}
 \end{listing}
 
+\cinline{exec} is a strong complement to \cinline{fork}, because we can make a new \nameref{def:Process} with \texttt{fork}, then change the new child to a new program with \texttt{exec}.
+An example of this, in code, is shown in \Cref{lst:fork_exec}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./CS_351-Systems_Programming-Sections/Process_Management/Code/fork-exec.c}
+\caption{Using \texttt{fork()} and \texttt{exec()}}
+\label{lst:fork_exec}
+\end{listing}
+
+Results:
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+-rwxr-xr-x 1 ... a.out
+-rwxr-xr-x 1 ... demo.c
+Command completed
+\end{minted}
 
 %%% Local Variables:
 %%% mode: latex
