@@ -32,6 +32,11 @@ How to use \cinline{wait} is shown in \Cref{lst:wait_Usage}.
 \label{lst:wait_Usage}
 \end{listing}
 
+\subsubsection{Synchronization Mechanism}\label{subsubsec:wait-Synchronization_Mechanism}
+\texttt{wait} also functions as a synchronization mechanism.
+If a parent \nameref{def:Process} \texttt{wait}-s for the child to finish, this synchronizes things between the parent and the child.
+An example, in code, is shown in \Cref{lst:wait_Sync}.
+
 
 %%% Local Variables:
 %%% mode: latex
