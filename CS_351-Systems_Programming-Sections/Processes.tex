@@ -160,6 +160,13 @@ There are 2 kinds of exceptions in operating systems today:
   These are usually things that the process wants to bring to attention, or to have handled.
 \end{definition}
 
+\subsubsection{Asynchronous Exceptions}\label{subsubsec:Asynchronous_Exceptions}
+\begin{definition}[Asynchronous Exception]\label{def:Asynchronous_Exception}
+  An \emph{asynchronous exception}, typically called an \emph{interrupt} is one caused by events \textbf{external} to the current \nameref{def:Process}.
+  On older keyboards that used the PS/2 interface, pressing a key on the keyboard would generate an asynchronous exception.
+  On modern computers, pressing \texttt{Ctrl+C} will produce a \texttt{SIGKILL} signal, which is another asynchronous exception.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
