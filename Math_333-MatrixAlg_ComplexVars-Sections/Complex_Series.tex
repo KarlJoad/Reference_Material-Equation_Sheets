@@ -214,6 +214,65 @@ The key functions to know a \nameref{def:Complex_Power_Series} for are $\frac{1}
   \end{align*}
 \end{example}
 
+\begin{example}[Lecture 9, Example 4]{Power Series of Rational Function 2}
+  Consider $z \to \frac{1}{2+3z}$ as a sum of \nameref{def:Complex_Power_Series} of a circle with center $z = 2 + 5i$.
+  Find the power series of this function?
+  \tcblower{}
+  The function is \nameref{def:Analytic} everywhere exception $z = \frac{-3}{2}$.
+  Thus, the \nameref{thm:Region_of_Convergence} is the distance from the center $a$ to the hole $z = \frac{-3}{2}$.
+
+  We start by taking our function, and plugging the left-hand side of the circle, the modulus portion, into this function for $z$.
+  \begin{align*}
+    \frac{1}{2 + 3z} &= \frac{1}{2 + 3 \bigl( z - (2+5i) \bigr) + 3 (2+5i)} \\
+    \intertext{The extra $3(2+5i)$ was needed be cancel out the added $-3(2+5i)$.
+    This way, we are only adding by 0, which is allowed by algebra.}
+                     &= \frac{1}{8 + 15i + 3 \bigl( z - (2+5i) \bigr)} \\
+    \intertext{Now, we force our constants to match our standard equation, \Cref{eq:Complex_Power_Series-1+z}, by factoring out the constants.}
+                     &= \frac{1}{(8 + 15i) \left( 1 + \frac{3}{8+15i} \bigl( z - (2+5i) \bigr) \right)} \\
+    \intertext{To make our lives easier, we will create a new variable that will represent the variable expression in the denominator.}
+    w &= \frac{3 \bigl( z - (2+5i) \bigr)}{8+15i} \\
+    \frac{1}{2 + 3z} &= \frac{1}{(8+15i) (1+w)} \\
+                     &= \frac{1}{8+15i} \left( \frac{1}{1+w} \right) \\
+    \intertext{Now, we can use \Cref{eq:Complex_Power_Series-1+z} as our template.}
+    &= \frac{1}{8+15i} \sum_{n=0}^{\infty} {(-1)}^{n} w^{n}, \: \Modulus{w} < 1
+  \end{align*}
+
+  Now, we have 2 derivations left to perform:
+  \begin{enumerate}[noitemsep]
+  \item We need to substitute the series back into $z$, and simplify it.
+  \item We need to solve for the \nameref{thm:Region_of_Convergence} by substituting our $z$ expression back in for $w$.
+  \end{enumerate}
+
+  I will start with the \nameref{def:Complex_Power_Series}, and then complete the \nameref{thm:Region_of_Convergence}.
+  \begin{align*}
+    \frac{1}{2 + 3z} &= \frac{1}{8+15i} \sum_{n=0}^{\infty} {(-1)}^{n} w^{n} \\
+                     &= \frac{1}{8+15i} \sum_{n=0}^{\infty} {(-1)}^{n} {\left( \frac{3 \bigl( z - (2+5i) \bigr)}{8+15i} \right)}^{n} \\
+    \shortintertext{Pull the exponent into all the sub-terms.}
+                     &= \frac{1}{8+15i} \sum_{n=0}^{\infty} {(-1)}^{n} \left( \frac{3^{n} {\bigl( z - (2+5i) \bigr)}^{n}}{{(8+15i)}^{n}} \right) \\
+                     &= \frac{1}{8+15i} \sum_{n=0}^{\infty} \left( \frac{{(-1)}^{n} 3^{n} }{{(8+15i)}^{n}} \right) {\bigl( z - (2+5i) \bigr)}^{n} \\
+                     &= \frac{1}{8+15i} \sum_{n=0}^{\infty} {\left( \frac{(-1)\, 3}{(8+15i)} \right)}^{n} {\bigl( z - (2+5i) \bigr)}^{n} \\
+  \end{align*}
+
+  With the \nameref{def:Complex_Power_Series} found, we now focus on the \nameref{thm:Region_of_Convergence}.
+  \begin{align*}
+    \Modulus{w} &< 1 \\
+    \Modulus{\frac{3 \bigl( z - (2+5i) \bigr)}{8+15i}} &< 1 \\
+    \shortintertext{Factor out the constants.}
+    \Modulus{\frac{3}{8+15i}} \Modulus{z - (2+5i)} &< 1 \\
+    \Modulus{z - (2+5i)} &< \Modulus{\frac{8+15i}{3}} \\
+    \shortintertext{Use the Law of Moduli to separate the moduli in the fraction.}
+    \Modulus{z - (2+5i)} &< \frac{\Modulus{8+15i}}{\Modulus{3}} \\
+                &< \frac{\sqrt{64 + 225}}{3} \\
+    &< \frac{\sqrt{289}}{3}
+  \end{align*}
+
+  Thus, our solution is:
+  \begin{equation*}
+    \frac{1}{2 + 3z} = \frac{1}{8+15i} \sum_{n=0}^{\infty} {\left( \frac{(-1)\, 3}{(8+15i)} \right)}^{n} {\bigl( z - (2+5i) \bigr)}^{n} , \: \Modulus{z - (2+5i)} < \frac{\sqrt{289}}{3}
+  \end{equation*}
+\end{example}
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
