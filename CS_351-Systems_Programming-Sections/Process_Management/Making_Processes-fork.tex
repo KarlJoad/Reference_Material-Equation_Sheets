@@ -116,6 +116,15 @@ extern int errno;
 \label{lst:errno}
 \end{listing}
 
+\subsubsection{\texttt{fork} Bomb}\label{subsubsec:fork_Bomb}
+A fork bomb just generates new \nameref{def:Process}es as fast as possible, overloading the system.
+A simplistic one is shown in \Cref{lst:fork_Bomb}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./CS_351-Systems_Programming-Sections/Process_Management/Code/fork-bomb.c}
+\caption{\texttt{fork()} Bomb}
+\label{lst:fork_Bomb}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
