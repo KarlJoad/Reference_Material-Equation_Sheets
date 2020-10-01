@@ -59,6 +59,20 @@ It can be useful to send a signal to multiple processes at once, in which case, 
 \item Designing a \nameref{def:Signal_Handler}.
 \end{enumerate}
 
+\subsubsection{Process Groups}\label{subsubsec:Process_Groups}
+\begin{definition}[Process Group]\label{def:Process_Group}
+  A \emph{process group} is a way to logically group several \nameref{def:Process}es together.
+  Child processes \texttt{fork}-ed inherit their process group ID \texttt{pgid} from their parent.
+  This leads to the following properties:
+  \begin{propertylist}
+  \item The founder of the group becomes the group leader.
+  \item The group leader is the \nameref{def:Process} where \cinline{pid == pgid}.
+  \item A \nameref{def:Process} can become a group leader by \cinline{setpgrp}.
+  \item The whole \nameref{def:Process_Group} interacts with the \nameref{def:Signal}s.
+  \item If \cinline{kill} is given a negative value, it will kill the corresponding process group.
+  \end{propertylist}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
