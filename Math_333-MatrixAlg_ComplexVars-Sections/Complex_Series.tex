@@ -118,6 +118,22 @@ Now, some examples on how to use these series to solve problems.
   \end{align*}
 \end{example}
 
+\begin{example}[Lecture 9, Example 2]{Power Series of Sinusoid with Angle Squared}
+  Find the \nameref{def:Complex_Power_Series} for $z \to \sin(z^{2})$ for $\Modulus{z} < \infty$?
+  \tcblower{}
+  We already know what $\sin(z)$ is on $\Modulus{z} < \infty$, so we start there.
+  \begin{equation*}
+    \sin(z) = \sum_{n=0}^{\infty} {(-1)}^{n} \frac{z^{2n+1}}{(2n+1)!}
+  \end{equation*}
+
+  Now, we need to modify it to handle $z^{2}$.
+  We can just replace all instances of $z$ with $z^{2}$.
+  \begin{align*}
+    \sin(z^{2}) &= \sum_{n=0}^{\infty} {(-1)}^{n} \frac{{\left( z^{2} \right)}^{2n+1}}{(2n+1)!} \\
+                &= \sum_{n=0}^{\infty} {(-1)}^{n} \frac{z^{4n+2}}{(2n+1)!} \\
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
