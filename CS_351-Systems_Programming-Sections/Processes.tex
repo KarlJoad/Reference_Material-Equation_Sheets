@@ -57,6 +57,21 @@ For the operating system to simulate this seamless logical control flow, we use 
 The \nameref{def:Process_Control_Block} is sued to allow \nameref{def:Process}es to be interrupted, saved, and moved off a core.
 This allows the operating system to schedule processes according to some algorithm.
 
+\begin{definition}[Syscall]\label{def:Syscall}
+  A \emph{syscall}, short for a \emph{system call} is a way for a user-level \nameref{def:Process} to perform some computation that the operating system kernel restricts.
+  Some common syscalls are:
+  \begin{itemize}[noitemsep]
+  \item Opening a file
+  \item Reading a file
+  \item Writing a file
+  \item Closing a file
+  \item Creating a process
+  \item Changing the process's binary
+  \item Reading from the network
+  \item Writing to the network
+  \end{itemize}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
