@@ -191,6 +191,29 @@ The key functions to know a \nameref{def:Complex_Power_Series} for are $\frac{1}
   \end{aligned}
 \end{equation}
 
+\begin{example}[Lecture 9, Example 4]{Power Series of Rational Function 1}
+  Given the rational function $f(z) = \frac{1}{1-2z^{3}}$ is \nameref{def:Analytic}, find its \nameref{def:Complex_Power_Series}?
+  \tcblower{}
+  We start be determining the \nameref{thm:Region_of_Convergence}.
+
+  If in the standard format, we have $\frac{1}{1-z}$ where $\Modulus{z} < 1$, we can follow that format.
+  \begin{align*}
+    \Modulus{2z^{3}} &< 1 \\
+    \shortintertext{Property of Modulus, Constants can Factor out.}
+    2 \Modulus{z^{3}} &< 1 \\
+    \shortintertext{Use the Law of Moduli.}
+    {\Modulus{z}}^{3} &< \frac{1}{2} \\
+    \Modulus{z} &< \frac{1}{\sqrt[3]{2}}
+  \end{align*}
+
+  Now that we have our \nameref{thm:Region_of_Convergence}, which is a circle with center $a=0$ and $r = \frac{1}{\sqrt[3]{2}}$, there \textbf{MUST} be a \nameref{def:Complex_Power_Series} of $f(z)$.
+  \begin{align*}
+    \Modulus{z} &\Rightarrow \sum_{n=0}^{\infty} z^{n} \\
+    \Modulus{2z^{3}} &\Rightarrow \sum_{n=0}^{\infty} {(2z^{3})}^{n} \\
+                &= \sum_{n=0}^{\infty} 2^{n} z^{3n}
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
