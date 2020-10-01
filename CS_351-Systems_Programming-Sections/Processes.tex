@@ -171,6 +171,27 @@ There are 2 kinds of exceptions in operating systems today:
   \end{remark}
 \end{definition}
 
+\paragraph{Faults}\label{par:Faults}
+\begin{definition}[Fault]\label{def:Fault}
+  A \emph{fault} is an unintentional failure in the \nameref{def:Process} and may or may not be recoverable.
+\end{definition}
+
+A short list of common \nameref{def:Fault}s includes:
+\begin{itemize}[noitemsep]
+\item Segmentation Fault, Unrecoverable
+\item Protection Fault, may or may not be recoverable
+\item Page Fault, Recoverable
+\item Divide-by-zero, Possibly Recoverable
+\end{itemize}
+
+It's possible to recover from a \nameref{def:Fault} by having the fault handler fix the problem.
+
+In addition, there may be a \nameref{def:Context_Switch} after this action.
+\begin{description}[noitemsep]
+\item[Unrecoverable]: \textbf{Will} be a \nameref{def:Context_Switch}, as this \nameref{def:Process} terminates.
+\item[Recoverable]: \textbf{May} be a \nameref{def:Context_Switch}, depending on the \nameref{def:Process_Scheduler}.
+\end{description}
+
 \subsubsection{Asynchronous Exceptions}\label{subsubsec:Asynchronous_Exceptions}
 \begin{definition}[Asynchronous Exception]\label{def:Asynchronous_Exception}
   An \emph{asynchronous exception}, typically called an \emph{interrupt} is one caused by events \textbf{external} to the current \nameref{def:Process}.
