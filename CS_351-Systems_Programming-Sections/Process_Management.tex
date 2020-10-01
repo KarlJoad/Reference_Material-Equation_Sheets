@@ -1,4 +1,11 @@
 \section{Process Management}\label{sec:Process_Management}
+In almost all modern systems today, there are many, many \nameref{def:Process}es running ``simultaneously''.
+That is in quotes because if you have multiple cores/\nameref{def:CPU}s in a single package, you actually \textit{can} run multiple processes at once.
+However, we choose to limit our discussion to single core packages, to simplify our discussions and remove a whole class of issues.
+
+By default, there is only one \nameref{def:Process} running at the start of a computer's execution.
+We need ways to make more processes, change what \nameref{def:Program}s these processes are executing, and a way to wait for these processes to finish and pick up after them.
+
 
 %%% Local Variables:
 %%% mode: latex
