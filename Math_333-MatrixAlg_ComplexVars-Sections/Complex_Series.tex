@@ -98,6 +98,26 @@ All of the common transcendental functions below are \nameref{def:Analytic} on t
   \end{aligned}
 \end{equation}
 
+Now, some examples on how to use these series to solve problems.
+\begin{example}[Lecture 9 Example 1]{Exponential not Centered on Origin}
+  The mapping $z \to e^{z}$ is \nameref{def:Analytic} on $\Modulus{z-2} < \infty$.
+  Determine its \nameref{def:Complex_Power_Series}?
+  \tcblower{}
+  We start by remembering that we already have a general power series for $e^{z}$, but this one is centered on $z = 0$.
+  \begin{equation*}
+    e^{z} = \sum_{n=0}^{\infty} \frac{z^{n}}{n!}
+  \end{equation*}
+
+  We can try just replacing $e^{z}$ weith $e^{z-2}$.
+  \begin{align*}
+    e^{z-2} &= \sum_{n=0}^{\infty} \frac{{(z-2)}^{n}}{n!} \\
+    \intertext{The series above is technically correct, but not in the form we want.}
+    e^{z} e^{-2} &= \sum_{n=0}^{\infty} \frac{{(z-2)}^{n}}{n!} \\
+            &= e^{2} \sum_{n=0}^{\infty} \frac{{(z-2)}^{n}}{n!} \\
+            &= \sum_{n=0}^{\infty} \frac{e^{2}}{n!} {(z-2)}^{n} \\
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
