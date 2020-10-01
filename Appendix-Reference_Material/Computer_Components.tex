@@ -23,6 +23,12 @@
 \end{definition}
 
 \subsubsection{Program Counter}\label{subsubsec:Program_Counter}
+\begin{definition}[Program Counter]\label{def:Program_Counter}
+  The \emph{program counter} is a \nameref{def:Register} that contains the value for the memory address of the next executing instruction.
+  It does \textbf{NOT} hold the currently executing instruction's address in memory because that instruction is already in the \nameref{def:CPU}.
+  This keeps track of where the program is in execution and which instruction comes next.
+\end{definition}
+
 \subsubsection{Arithmetic Logic Unit}\label{subsubsec:ALU}
 \subsubsection{Cache}\label{subsubsec:CPU_Cache}
 
