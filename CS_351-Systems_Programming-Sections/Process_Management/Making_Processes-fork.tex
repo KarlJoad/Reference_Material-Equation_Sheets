@@ -31,6 +31,13 @@ pid_t fork();
 \label{lst:PID_Definition_fork_Declaration}
 \end{listing}
 
+\texttt{fork} returns \textbf{twice}.
+\begin{itemize}[noitemsep]
+\item Once to the parent \nameref{def:Process}, with the \texttt{PID} of the child ($>0$).
+\item Once to the child process, with the return code of \cinline{fork}.
+  A returned value of \texttt{0} indicates success; it is a sentinel value.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
