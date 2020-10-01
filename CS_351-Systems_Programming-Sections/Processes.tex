@@ -143,6 +143,11 @@ To illustrate the power of \nameref{def:Exceptional_Control_Flow}, we will use a
 \label{lst:Exceptional_Control_Flow}
 \end{listing}
 
+If there was an exception of any kind during the execution of the \texttt{while}-loop, then the process would be interrupted by the kernel, and \nameref{def:Context_Switch}ed out.
+From there, the exception would be handled (if possible), and then the operating system would continue execution (if possible).
+While the execution of the \nameref{def:Process} was non-sequential, the process \textbf{is not aware} of this fact.
+{\large\textbf{ALL}} of the process's state is saved \textbf{before} the context switch, so that when the process is switched back in, it continues executing from the \textbf{same} spot as before.
+
 
 %%% Local Variables:
 %%% mode: latex
