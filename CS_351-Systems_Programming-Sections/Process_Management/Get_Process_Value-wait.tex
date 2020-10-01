@@ -2,6 +2,26 @@
 The \cinline{wait} \nameref{def:Syscall} is the one that allows parent \nameref{def:Process}es to receive values back from their children.
 It is only called by a process with $>= 1$ children.
 
+The \cinline{wait} \nameref{def:Syscall}:
+\begin{enumerate}[noitemsep]
+\item Waits (if needed) for a child to terminate, and returns the \texttt{exit} status of the child.
+  This informs the parent:
+  \begin{itemize}[noitemsep]
+  \item Termination cause
+  \item Normal/abnormal termination
+  \item Some macros are defined to find out the exit status of a process.
+    There are \textbf{MANY} more than the ones below, I just listed a couple.
+    \begin{description}[noitemsep]
+    \item[\cinline{WIFEXITED(status)}:] Did the process \texttt{exit} normally?
+    \item[\cinline{WEXITSTATUS(status)}:] What was the \texttt{exit} status of the child?
+    \end{description}
+  \end{itemize}
+
+\item Reaps the zombified child.
+  If the number of \nameref{def:Zombie_Process}es is $\geq 1$, and no specific one was given to \texttt{wait}, then \texttt{wait} picks a child.
+\item Returns the reaped child's \texttt{PID} and exit status via pointer (if non-\texttt{NULL})
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
