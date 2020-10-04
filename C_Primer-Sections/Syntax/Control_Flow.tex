@@ -38,6 +38,17 @@ The syntax of this is shown in \Cref{lst:if_else_Statement}.
 \label{lst:if_else_Statement}
 \end{listing}
 
+\paragraph{\texorpdfstring{\cinline{if} \cinline{else if} \cinline{else}}{\texttt{if}-\texttt{else if}-\texttt{case}}}\label{par:if_elseif_else_Statement}
+The \cinline{if else if else} is used to choose between $n$ options.
+However, this comes with the downside that \textbf{EACH} potential path's predicate \textbf{MUST} be evaluated before any action can occur.
+The syntax for this is shown in \Cref{lst:if_elseif_else_Statement}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Syntax/Code/if-elseif-else-statement.c}
+\caption{\texorpdfstring{\cinline{if else if else}}{\texttt{if else if else}} Statement Syntax}
+\label{lst:if_elseif_else_Statement}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
