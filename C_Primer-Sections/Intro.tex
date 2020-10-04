@@ -37,6 +37,14 @@ To ensure program flexibility, we also introduce type-casting, where we either w
 For example, taking an \texttt{int} and turning it into a \texttt{long} is a widening type cast, which are usually safe.
 This means that sometimes we must deal with type polymorphism, although C's handling of this class of problems is iminal and quite basic.
 
+\subsubsection{Weakly Type Checked}\label{subsubsec:Weakly_Type_Checked}
+C is technically strongly typed on its operations, however, it becomes weakly typed because compilers cannot always ensure well-formedness of expressions when \nameref{sec:Pointers} are used.
+Because C is weakly typed, you are not always guaranteed that when you access data that you are interpreting the bytes the right way.
+
+C becomes weakly-typed because you can typecast pointers, pull values out of unions with different types, and in general do weird things with anything in memory.
+This also means that the compiler might not throw type-checking errors during the compilation phase of program development.
+Some of these pointer issues will only arise after running the program and ensuring that it is tested properly.
+
 
 %%% Local Variables:
 %%% mode: latex
