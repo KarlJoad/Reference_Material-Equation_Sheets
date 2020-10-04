@@ -60,6 +60,18 @@ The syntax for this is shown in \Cref{lst:switch_case_Statement}.
 \label{lst:switch_case_Statement}
 \end{listing}
 
+\subsubsection{Repetition}\label{subsubsec:Repetition}
+Here, we want to perform some action a number of times.
+There are 3 structures for performing a repeating action:
+\begin{description}[noitemsep]
+\item[\nameref{par:while_Loop} Loop] This is generally used when the number of repetitions is unknown or uncountable at any given point in time.
+  It continues to repeat until the predicate ceases to be \texttt{true}-thy or an explicit \texttt{break} occurs.
+
+\item[\nameref{par:for_Loop} Loop] The \texttt{for} loop is used when the number of repetitions is both known and countable.
+
+\item[\nameref{par:dowhile_Loop} Loop] The \texttt{do while} loop is the same as the \texttt{while} loop, but the difference is that the body of the loop is executed \textbf{ONCE before} evaluating the predicate.
+\end{description}
+
 
 %%% Local Variables:
 %%% mode: latex
