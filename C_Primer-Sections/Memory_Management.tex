@@ -5,6 +5,19 @@ So, \textbf{YOU} must be the one to manage the memory, there is \textbf{NO} buil
 Memory allocation is done on the heap of the program's execution space in memory.
 When you allocate memory in your program, you are actually requesting the operating system to give you the memory you want.
 
+\subsection{\texttt{malloc}}\label{subsec:malloc}
+This is the simplest function of all possible memory allocation functions.
+\texttt{malloc}:
+\begin{itemize}
+\item Takes one argument:
+  \begin{enumerate}
+  \item The number of bytes to allocate.
+  \end{enumerate}
+\item Returns a \textbf{POINTER} to the front of the allocated memory.
+\end{itemize}
+
+\texttt{malloc} {\large{\textbf{\emph{DOES NOT}}}} initialize memory, so it will be garbage.
+
 
 %%% Local Variables:
 %%% mode: latex
