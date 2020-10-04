@@ -76,6 +76,13 @@ Repeated computations can be expressed as a function, allowing for easy code reu
 
 Because C is so low-level, it has the unique distinction of requiring the programmer to separate the declaration of a function from its definition.
 
+\paragraph{Declaration}\label{par:Function_Declaration}
+A declaration of a function simply announces to the compiler that a function with those input parameters and output values will be defined.
+However, a declaration says nothing about \textbf{HOW} the function will be defined, only that one such function will exist.
+
+In C programming, function declarations (and sometimes some variable definitions) are placed in \emph{header} files, that end with the \texttt{.h} extension.
+Sometimes, the function declarations here are called \emph{function prototypes}.
+
 
 %%% Local Variables:
 %%% mode: latex
