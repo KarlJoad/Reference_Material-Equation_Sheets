@@ -45,6 +45,17 @@ C becomes weakly-typed because you can typecast pointers, pull values out of uni
 This also means that the compiler might not throw type-checking errors during the compilation phase of program development.
 Some of these pointer issues will only arise after running the program and ensuring that it is tested properly.
 
+Some of these issues are illustrated in \Cref{lst:Weak_Type_Checking}.
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Intro/Code/weak-type-checking.c}
+\caption{Illustration of C's Weak Type Checking}
+\label{lst:Weak_Type_Checking}
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+c = 'D', i = 1, u = 4294967295, f =10.00000
+r1 = 4, r2 = 5
+\end{minted}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex
