@@ -121,6 +121,10 @@ This is useful for small pieces of information, but the problem is when the size
 This is because the entire contents of a thing must be copied before running the function.
 This is where the other form of parameter passing comes into play.
 
+\paragraph{Pass-by-Reference}\label{par:Pass_by_Reference}
+Passing by reference involves giving the called function a pointer (reference) to the data to manipulate.
+This is extremely efficient for very large data structures, because only the pointer to the data needs to be copied around.
+This is particularly valuable for large \cinline{struct}s, arrays, etc.
 
 %%% Local Variables:
 %%% mode: latex
