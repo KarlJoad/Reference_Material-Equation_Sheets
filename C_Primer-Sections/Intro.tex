@@ -3,6 +3,16 @@ This document is intended for programmers that are newer to the C language and i
 This is meant as a quick, supplementary, reference document for these programmers.
 Many of the code examples in this document are either from IIT's CS 351 course, or Kernighan and Ritchie's~\cite{KernighanRitchieCProg} manual, \citetitle{KernighanRitchieCProg}.
 
+\subsection{Properties}\label{subsec:Properties}
+C is referred to as ``low-level'' today.
+That means there are relatively few abstractions and few ``syntactic sugars'' for expressing computations.
+This means when you write C, you can typically guess what the assembly would look like, which also lends itself to C's execution speed.
+However, this also means that you have \textbf{VERY FEW} built-in language protections for your computations.
+So, you open yourself up to a whole new class of problems when developing and writing your programs.
+The language will not protect you, but C compilers will typically attempt to throw warnings or errors about the most egregious errors you may write.
+
+Here are some properties of C that you should know about.
+
 
 %%% Local Variables:
 %%% mode: latex
