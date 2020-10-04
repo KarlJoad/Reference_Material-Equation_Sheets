@@ -31,6 +31,15 @@ C has just 4 primitive types:
 
 \input{./C_Primer-Sections/Syntax/Control_Flow}
 
+\subsection{Variables}\label{subsec:Variables}
+Because C is a statically typed language, the type of every expression \textbf{MUST} be known before or during compilation.
+In addition, C compilers do not have any type inferencing, so you \textbf{MUST} explicitly tell the compiler the type of your variables.
+This means that you \textbf{MUST} declare before use.
+It is important to note that the declaration implicitly allocates storage for the data that will be stored.
+
+One thing that will come up throughout this section is the concept of aliveness and scope.
+It is import to note that variables do \textbf{not} have to be in-scope to be alive, and vice versa.
+
 
 %%% Local Variables:
 %%% mode: latex
