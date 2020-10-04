@@ -2,6 +2,22 @@
 Control flow is the idea of changing the direction a program executes based on some predicate.
 Whether this change in direction is to a new direction is because of a change in state, or because something must be repeated is irrelevant.
 
+\subsubsection{Branching}\label{subsubsec:Branching}
+Branching has to deal with the changing of a program's control flow based on a predicate to perform some separate actions based on the state of the predicate.
+There are 4 types for this:
+\begin{description}[noitemsep]
+\item[\nameref{par:if_Statement}] The most basic change in flow control.
+  If the predicate provided is \texttt{true}-thy, performs an action, then returns to normal.
+
+\item[\nameref{par:if_else_Statement}] If the predicate is \texttt{true}-thy, then perform some action, if the predicate is \texttt{false}, then perform some other action.
+
+\item[\nameref{par:if_elseif_else_Statement}] If the predicate in the first \texttt{if} is \texttt{true}-thy, then that branch is taken.
+  If the first predicate is \texttt{false}, then the \texttt{else if}'s predicate is checked for truth.
+  The the \texttt{else if}'s predicate is \texttt{false}, then execution continues through any other \texttt{else if}s that may be present.
+  If none of the \texttt{if} or \texttt{else if}s' predicates were \texttt{true}-thy, then the \texttt{else} is taken.
+\item[\nameref{par:switch_case_Statement}] The \texttt{switch}-\texttt{case} statement allows you to choose from many different paths based on the \textbf{VALUE} of some expression.
+\end{description}
+
 
 %%% Local Variables:
 %%% mode: latex
