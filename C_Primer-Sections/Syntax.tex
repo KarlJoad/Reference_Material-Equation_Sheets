@@ -47,6 +47,16 @@ If the symbol cannot be seen, then it cannot be used in any way
 In addition, we need to ask \textit{how} we can refer to the symbol.
 This includes what kid of identifiers/modifiers/namespacing is needed to identify the symbol in question.
 
+\paragraph{Global Variables}\label{par:Global_Variables}
+They \textbf{MUST} be declared outside any function.
+These are not deallocated \textbf{AT ANY TIME} during a program's execution, as they are always in-scope, however the variable may not be alive.
+Additionally, these are \textbf{ALWAYS} available, until the program terminates.
+
+Using global variables is typically bad practice as this can introduce weird and hard-to-debug errors into a program.
+So, most variables that you will use will be local variables.
+Local variables are limited to the scope they were created within.
+Typically, the scope is a function, but can be an \texttt{if}, a \texttt{while}, etc.
+
 
 %%% Local Variables:
 %%% mode: latex
