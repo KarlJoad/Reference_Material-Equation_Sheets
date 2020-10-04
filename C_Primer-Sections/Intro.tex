@@ -28,6 +28,15 @@ C is lexically scoped because variables inside of procedures cannot exist outsid
 This stands in contrast to Dynamically Scoped languages, where variables are sometimes available outside of the written scope for that variable.
 Bash is an example of a dynamically scoped language.
 
+\subsubsection{Statically Typed}\label{subsubsec:Statically_Typed}
+C is statically typed, because the types of \textbf{ALL} expressions \textbf{MUST} be specified \textbf{BEFORE compilation}.
+This also means that when something is declared to be a certain type, it stays that way, unlike Python.
+This means that type checking happens during compilation, ensuring that all expressions have well-formed types.
+
+To ensure program flexibility, we also introduce type-casting, where we either widen the type or narrow it.
+For example, taking an \texttt{int} and turning it into a \texttt{long} is a widening type cast, which are usually safe.
+This means that sometimes we must deal with type polymorphism, although C's handling of this class of problems is iminal and quite basic.
+
 
 %%% Local Variables:
 %%% mode: latex
