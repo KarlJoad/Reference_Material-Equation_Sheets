@@ -57,6 +57,13 @@ So, most variables that you will use will be local variables.
 Local variables are limited to the scope they were created within.
 Typically, the scope is a function, but can be an \texttt{if}, a \texttt{while}, etc.
 
+\paragraph{\texorpdfstring{\cinline{extern}}{\texttt{extern}} Variables}\label{par:extern_Variables}
+\cinline{extern} is used to denote a variable that is external to this program.
+This means the variable in question is a global variable in another file
+
+The opposite of the \cinline{extern} keyword is the \cinline{static} keyword, which limits the scope of a symbol to the file it is declared in.
+In addition, when the variable is declared to be \cinline{static}, the value lasts throughout the program's execution, ensuring the variable is always available.
+
 
 %%% Local Variables:
 %%% mode: latex
