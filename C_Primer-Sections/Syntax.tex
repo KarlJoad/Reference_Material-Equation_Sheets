@@ -15,6 +15,18 @@ C has just 4 primitive types:
 \item[\cinline{double}:] Double precision IEEE floating point number.
 \end{description}
 
+\subsubsection{Integer Type Prefixes}\label{subsubsec:Integer_Type_Prefixes}
+\begin{description}[noitemsep]
+\item[\cinline{signed}:] The default for integers, meaning you \textbf{do not} have to specify this.
+  Can represent both negative and positive integers.
+  The range for this is $-2^{\text{\# bits} - 1}$--$2^{\text{\# bits} - 1}-1$
+\item[\cinline{unsigned}:], Can only represent 0 and positive integers.
+  Its range is $0$--$2^{\text{\# bits}}$
+\item[\cinline{short}:] Tells the compiler that the integer must be at least 16 bits.
+\item[\cinline{long}:] Tells the compiler that the integer must be at least 32 bits.
+\item[\cinline{long long}:] Tells the compiler that the integer must be at least 64 bits.
+\end{description}
+
 
 %%% Local Variables:
 %%% mode: latex
