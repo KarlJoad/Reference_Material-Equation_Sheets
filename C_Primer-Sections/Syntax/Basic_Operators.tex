@@ -1,0 +1,130 @@
+\subsection{Basic Operators}\label{subsec:Basic_Operators}
+Operators perform some operation on expressions.
+This could be an arithmetic, a relational, logical, etc.\ operation.
+
+\subsubsection{Arithmetic Operators}\label{subsubsec:Arithmetic_Operators}
+These operators are for performing mathematical operations.
+These are well-defined for integers and floating-point numbers.
+
+\begin{description}[noitemsep]
+\item[\cinline{+}] The addition operator.
+  Works similarly for integers and floating-point numbers.
+
+\item[\cinline{-}] The subtraction operator.
+  Works similarly for integers and floating-point numbers.
+
+\item[\cinline{*}] The multiplication operator.
+  Works similarly for integers and floating-point numbers.
+
+\item[\cinline{/}] The division operator.
+  This returns the quotient of a division.
+  This has a different result for integers and floating-point numbers.
+  \begin{itemize}[noitemsep]
+  \item Integers return the quotient of the division, but no fractional part.
+  \item Floating-points return the entire remainder of the division.
+  \end{itemize}
+
+\item[\texttt{\%}] The modulo operator.
+  Returns the remainder of a division operation when dividing integers.
+  Note that this is only defined for integers.
+\end{description}
+
+\subsubsection{Logical}\label{subsubsec:Logical_Operators}
+Logical operators work with boolean values.
+\begin{description}[noitemsep]
+\item[\cinline{!}] The logical NOT operator.
+\item[\cinline{&&}] The logical AND operator.
+  Returns \texttt{1} if and only if the left and right expressions are \textbf{BOTH} \texttt{1} at the same time.
+  Otherwise, \texttt{0} is returned.
+\item[\cinline{||}] The logical OR operator.
+  Returns \texttt{0} if and only if both the left and right expressions are \texttt{0} at the same time.
+  Otherwise, \texttt{1} is returned.
+\end{description}
+
+\subsubsection{Relational}\label{subsubsec:Relational_Operators}
+These relational operators are used to define a value in relation to another.
+Typically, these are used for boolean comparisons.
+
+\begin{description}[noitemsep]
+\item[\cinline{==}] The equality operator.
+  Returns \texttt{1} if and only if the two expressions are equal, \texttt{0} otherwise.
+
+\item[\cinline{!=}] The inequality operator.
+  Returns \texttt{0} if and only if the two expressions are not equal, \texttt{1} otherwise.
+
+\item[\cinline{>}] The greater-than operator.
+  Returns \texttt{1} if and only if the left expression has a greater value than the right one.
+
+\item[\cinline{>=}] The greater-than-or-equal-to operator.
+  Returns \texttt{1} is and only if the left expression has a greater value or equal value than the right one.
+
+\item[\cinline{<}] The less-than operator.
+  Returns \texttt{1} if and only if the left expression has a lesser value than the right one.
+
+\item[\cinline{<=}] The less-than-or-equal-to operator.
+  Returns \texttt{1} is and only if the left expression has a lesser value or equal value than the right one.
+\end{description}
+
+\subsubsection{Assignment}\label{subsubsec:Assignment_Operators}
+Unlike many other languages, in C, the assignment operator \texttt{=} is also an expression.
+This means that when an assignment is performed, it also returns a value, in this case, it returns the value that was assigned to that particular name.
+
+\begin{description}
+\item[\cinline{=}] The assignment operator.
+  Assigns a value to a given name.
+  Returns the value of the assignment.
+
+\item[\cinline{+=}] The add-and-assign operator.
+  Takes the name on the left, adds the value on the right to the value on the left, and stores the result in the value on the left.
+
+\item[\cinline{*=}] The multiply-and-assign operator.
+  Takes the name on the left, multiplies the value on the left by to the value on the right, and stores the result in the value on the left.
+\end{description}
+
+Only \texttt{+=} and \texttt{*=} are shown, but there are similar ones defined for other \nameref{subsubsec:Arithmetic_Operators} too.
+
+\subsubsection{Conditional Operator}\label{subsubsec:Conditional_Operator}
+There is only one conditional operator, sometimes called the ternary operation or conditional expression.
+It is defined like so: \cinline{bool ? true_exp : false_exp}.
+
+\subsubsection{Bitwise Operators}\label{subsubsec:Bitwise_Operators}
+Bitwise operators work on the component bits of a number.
+This means they behave slightly differently than any other operator, but are not typically used in day-to-day calculations.
+Usually, they are used to efficiently work with memory.
+
+\begin{description}
+\item[\cinline{&}] Bitwise AND
+\item[\cinline{|}] Bitwise OR
+\item[\cinline{^}] Bitwise exclusive OR (XOR)
+\item[\cinline{~}] Bitwise negation, one's complement.
+\item[\cinline{>>}] Bitwise SHIFT right
+\item[\cinline{<<}] Bitwise SHIFT left
+\end{description}
+
+\subsection{Boolean Expressions}\label{subsec:Boolean_Expressions}
+Because C is so low-level, the concept of \texttt{true} and \texttt{false} are defined as integers.
+
+\begin{description}
+\item[\cinline{0}] \texttt{false}.
+\item[\cinline{1}] \texttt{true}.
+  Technically, any non-zero value is considered \texttt{true}.
+\end{description}
+
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Syntax/Code/logical-operators.c}
+\caption{Logical Operators}
+\label{lst:Logical_Operators}
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+1
+1
+0
+0
+1
+\end{minted}
+\end{listing}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../C_Primer"
+%%% End:
