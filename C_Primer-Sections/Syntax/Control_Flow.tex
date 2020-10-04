@@ -49,6 +49,17 @@ The syntax for this is shown in \Cref{lst:if_elseif_else_Statement}.
 \label{lst:if_elseif_else_Statement}
 \end{listing}
 
+\paragraph{\texorpdfstring{\cinline{switch} \cinline{case}}{\texttt{switch}-\texttt{case}}}\label{par:switch_case_Statement}
+The \cinline{switch case} statement is used to choose between $n$ different options.
+However, unlike the \nameref{par:if_elseif_else_Statement}, the expression is only evaluated the once, and the branch is then jumped to in constant time, making this a better option for making one decision of many.
+The syntax for this is shown in \Cref{lst:switch_case_Statement}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Syntax/Code/switch-case-statement.c}
+\caption{\texorpdfstring{\cinline{switch case}}{\texttt{switch case}} Statement Syntax}
+\label{lst:switch_case_Statement}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
