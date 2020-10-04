@@ -2,6 +2,19 @@
 The C language helped define a whole class of syntax that is used by many programming languages today.
 C's syntactic decisions can be seen in Java, Rust, C++, C\#, and many others.
 
+\subsection{Primitive Types}\label{subsec:Primitive_Types}
+C has just 4 primitive types:
+\begin{description}[noitemsep]
+\item[\cinline{char}:] \textbf{One byte} integers (0--255), meant to represent ASCII characters.
+\item[\cinline{int}:] Integers, which is defined to be \textit{at least} 16 bits.
+  \begin{itemize}[noitemsep]
+  \item Additional prefixes can be used to increase or decrease the range of the integer.
+  \item These are shown in \Cref{subsubsec:Integer_Type_Prefixes}.
+  \end{itemize}
+\item[\cinline{float}:] Single precision IEEE floating point number.
+\item[\cinline{double}:] Double precision IEEE floating point number.
+\end{description}
+
 
 %%% Local Variables:
 %%% mode: latex
