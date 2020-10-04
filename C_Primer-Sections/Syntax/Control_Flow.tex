@@ -72,6 +72,17 @@ There are 3 structures for performing a repeating action:
 \item[\nameref{par:dowhile_Loop} Loop] The \texttt{do while} loop is the same as the \texttt{while} loop, but the difference is that the body of the loop is executed \textbf{ONCE before} evaluating the predicate.
 \end{description}
 
+\paragraph{\texorpdfstring{\cinline{while}}{\texttt{while}}}\label{par:while_Loop}
+The \cinline{while} loop is typically used when the number of reptitions is unknown or uncountable.
+This allows for easy definition of infinite loops, allowing for a program to continue execution until some condition has been met.
+The syntax for this is shown in \Cref{lst:while_Loop}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Syntax/Code/while-loop.c}
+\caption{\texorpdfstring{\cinline{while}}{\texttt{while}} Loop Syntax}
+\label{lst:while_Loop}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
