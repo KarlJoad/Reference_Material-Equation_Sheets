@@ -113,6 +113,14 @@ There are two ways to pass parameters through to functions in C.
 \item \nameref{par:Pass_by_Reference}
 \end{enumerate}
 
+\paragraph{Pass-by-Value}\label{par:Pass_by_Value}
+Passing by value involves making a copy of the value passed to a function and giving it a new name.
+Since this is a \textbf{COPY}, it means \textbf{ANY} modifications to the copy \textbf{DO NOT} affect the original.
+
+This is useful for small pieces of information, but the problem is when the size of the information increases.
+This is because the entire contents of a thing must be copied before running the function.
+This is where the other form of parameter passing comes into play.
+
 
 %%% Local Variables:
 %%% mode: latex
