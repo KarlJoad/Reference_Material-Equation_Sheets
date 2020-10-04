@@ -69,6 +69,13 @@ The lifetime of a variable asks how long a variable has storage allocated to it.
 In C, this is distinctly different than a symbol not being visible.
 One example of this is: a pointer can have the memory underneath it deallocated, ending the lifetime of the pointer, but keeping the pointer in-scope.
 
+\subsection{Functions}\label{subsec:Functions}
+Functions are the highest form of modularity present in the language.
+Here, the procedural aspect of the language comes into play, and becomes useful.
+Repeated computations can be expressed as a function, allowing for easy code reuse and modularization.
+
+Because C is so low-level, it has the unique distinction of requiring the programmer to separate the declaration of a function from its definition.
+
 
 %%% Local Variables:
 %%% mode: latex
