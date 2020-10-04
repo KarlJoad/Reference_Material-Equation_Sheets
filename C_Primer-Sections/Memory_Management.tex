@@ -32,6 +32,18 @@ This is quite similar to malloc.
 
 \texttt{calloc} {\large{\textbf{\emph{ZEROS}}}} memory, so this does have a slight performance penalty.
 
+\subsection{\texttt{realloc}}\label{subsec:realloc}
+\texttt{realloc} is used to \textbf{REALLOCATE} an existing memory location.
+\begin{itemize}
+\item Takes 2 arguments:
+  \begin{enumerate}
+  \item The pointer to the memory location previously allocated with either \texttt{malloc} or \texttt{calloc}.
+  \item The amount of memory to reallocate, in bytes.
+  \end{enumerate}
+\item If the \texttt{NULL} pointer is passed to \texttt{realloc}, it will behave exactly like \texttt{malloc}.
+\item Returns a \textbf{POINTER} to the front of the reallocated memory
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
