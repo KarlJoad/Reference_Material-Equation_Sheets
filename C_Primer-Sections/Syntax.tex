@@ -64,6 +64,11 @@ This means the variable in question is a global variable in another file
 The opposite of the \cinline{extern} keyword is the \cinline{static} keyword, which limits the scope of a symbol to the file it is declared in.
 In addition, when the variable is declared to be \cinline{static}, the value lasts throughout the program's execution, ensuring the variable is always available.
 
+\subsubsection{Lifetime}\label{subsubsec:Variable_Lifetime}
+The lifetime of a variable asks how long a variable has storage allocated to it.
+In C, this is distinctly different than a symbol not being visible.
+One example of this is: a pointer can have the memory underneath it deallocated, ending the lifetime of the pointer, but keeping the pointer in-scope.
+
 
 %%% Local Variables:
 %%% mode: latex
