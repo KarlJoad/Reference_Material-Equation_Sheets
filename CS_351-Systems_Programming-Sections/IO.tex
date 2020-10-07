@@ -183,6 +183,22 @@ These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for file
 
 \begin{description}[noitemsep]
 \item[\cinline{int open(const char *path, int oflag, ...)}] Opens a \nameref{def:File}.
+  \begin{itemize}
+  \item Loads \nameref{def:vnode} for \nameref{def:File} at \texttt{path}
+  \item \texttt{oflag} is a bitwise OR of \texttt{O\_RDONLY}, \texttt{O\_WONLY}, \ldots{}
+  \item Creates and initializes a new \nameref{def:File_Description} in the table
+  \item Returns the first unused \nameref{def:File_Descriptor} available
+  \item If you open the same file twice, then you get a new file descriptor (a new file description is made), but it points to the same \nameref{def:vnode}
+  \item Process inherits parent's open files across a \cinline{fork}
+  \item Process retains them after an \cinline{exec}
+  \item Parent and child share:
+    \begin{itemize}
+    \item File position
+    \item File Access mode
+    \end{itemize}
+  \item Sharing this file description allows for coordinating between separate process
+  \item You can mirror this inside of a single process by using the \texttt{dup} syscall.
+  \end{itemize}
 \item[\cinline{int fstat(int fd, struct stat *buf)}] Query for file metadata
 \item[\cinline{int dup(int fd)}] Duplicate the given \nameref{def:File_Descriptor} and return a new file descriptor that points to the same \nameref{def:File}.
 \item[\cinline{int dup2(int fd1, int fd2)}] Duplicate \texttt{fd1} such that \texttt{fd2} writes to the same \nameref{def:vnode}.
