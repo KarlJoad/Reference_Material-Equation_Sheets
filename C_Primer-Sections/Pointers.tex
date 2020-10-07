@@ -41,6 +41,21 @@ However, it can be attached to the type as well.
 \label{lst:Pointer_Declaration}
 \end{listing}
 
+\subsubsection{Getting an Address}\label{subsubsec:Getting_an_Address}
+If you already have a name that points to the actual value, and you want the address of that value, you can use the \cinline{&} unary operator.
+Its usage is shown in \Cref{lst:Address_Operator}.
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Pointers/Code/address-operator.c}
+\caption{Address \cinline{&} Operator}
+\label{lst:Address_Operator}
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+x: 15
+*xp: 15
+xp: 0x7ffc4868a204
+\end{minted}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
