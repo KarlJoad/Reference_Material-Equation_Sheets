@@ -56,6 +56,20 @@ xp: 0x7ffc4868a204
 \end{minted}
 \end{listing}
 
+\subsubsection{Dereferencing}\label{subsubsec:Dereferencing_Pointers}
+In a major point of confusion for the C language, the \cinline{*} operator is \textbf{also} used to \textbf{dereference} the pointer!
+An example of declaring, getting the address of a variable, and the dereferencing of pointers is shown in \Cref{lst:Dereferencing_Pointers}.
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Pointers/Code/dereferencing-pointers.c}
+\caption{Dereferencing Pointers}
+\label{lst:Dereferencing_Pointers}
+
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+i=10, j=20, *p=20, *q=20
+\end{minted}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
