@@ -94,6 +94,15 @@ A typical file system consists of two types of files:
   \end{itemize}
 \end{enumerate}
 
+\subsection{Files}\label{subsec:Files}
+\begin{definition}[File]\label{def:File}
+  A \emph{file} is an operating system abstraction over some other data.
+  It allows us to interact with many different file systems and devices over a variety of protocols in a abstract and concise way.
+  A file can be accessed by using a \textit{fully qualified path}.
+
+  The only thing each file \textbf{MUST} have is a unique \nameref{def:inode}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
