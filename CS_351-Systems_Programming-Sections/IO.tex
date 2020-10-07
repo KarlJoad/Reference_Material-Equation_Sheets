@@ -78,6 +78,22 @@ There are 2 major types of I/O devices on \textsc{unix} systems:
   \end{itemize}
 \end{definition}
 
+\subsection{Filesystem}\label{subsec:Filesystem}
+The filesystem acts as a namespace for devices, and allows for the efficient storage of data on \nameref{def:Block_Device}s.
+A typical file system consists of two types of files:
+\begin{enumerate}[noitemsep]
+\item \textit{Regular files} consist of ASCII or binary data
+  \begin{itemize}[noitemsep]
+  \item Directories
+  \end{itemize}
+\item \textit{Special Files} may represent:
+  \begin{itemize}[noitemsep]
+  \item In-memory structures
+  \item Sockets
+  \item Raw Devices
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
