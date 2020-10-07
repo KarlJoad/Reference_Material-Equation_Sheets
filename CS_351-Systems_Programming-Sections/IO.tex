@@ -207,6 +207,9 @@ These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for file
   \end{itemize}
 \item[\cinline{int dup(int fd)}] Duplicate the given \nameref{def:File_Descriptor} and return a new file descriptor that points to the same \nameref{def:File}.
 \item[\cinline{int dup2(int fd1, int fd2)}] Duplicate \texttt{fd1} such that \texttt{fd2} writes to the same \nameref{def:vnode}.
+  \begin{itemize}[noitemsep]
+  \item We can use this to change the \nameref{def:File_Descriptor} in use, allowing us to write to 2 locations at once.
+  \end{itemize}
 \item[\cinline{int close(int fd)}] Close this \nameref{def:File_Descriptor}.
 \item[\cinline{off_t lseek(int fd, off_t offset, int whence)}]
 \item[\cinline{ssize_t read(int fd, void *buf, size_t nbytes)}]
