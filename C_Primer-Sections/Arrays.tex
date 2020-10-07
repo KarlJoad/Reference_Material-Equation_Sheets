@@ -40,6 +40,14 @@ $ ./a.out
 \end{minted}
 \end{listing}
 
+Because arrays are fancy pointers, you can also typecast arrays.
+
+It is important to note that arrays that are present on the stack of a program \textbf{MUST} be of fixed size.
+This is because the compiler needs to know how much space to allocate for each procedure in the program.
+However, if we want a dynamically sized array, we will need to turn to the heap.
+Using the heap is discussed in \Cref{sec:Memory_Management}.
+To access the heap from our program, we need a \nameref{def:Pointer} to point to the array on the heap.
+By doing this, we still have a fixed-size stack, because pointers are of fixed size, but we allow use of dynamically sized data structures.
 
 %%% Local Variables:
 %%% mode: latex
