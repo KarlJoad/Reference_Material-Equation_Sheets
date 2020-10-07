@@ -163,6 +163,16 @@ This is handled by the \nameref{def:File_Description} structure.
 However, all of the structures dicussed above are in \textbf{kernel memory}, meaning user \nameref{def:Process}es cannot interact with them.
 This is where the \nameref{def:File_Descriptor} comes in.
 
+\begin{definition}[File Descriptor]\label{def:File_Descriptor}
+  The \emph{file descriptor} is the index of this file in the \nameref{def:File_Description} table.
+  There are always three file descriptors defined at the beginning of a \nameref{def:Program}'s execution.
+  \begin{enumerate}[noitemsep]
+  \item FD \texttt{0} is STanDard INput (\texttt{STDIN})
+  \item FD \texttt{1} is STanDard OUTput (\texttt{STDOUT})
+  \item FD \texttt{2} is StanDard ERRor (\texttt{STDERR})
+  \end{enumerate}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
