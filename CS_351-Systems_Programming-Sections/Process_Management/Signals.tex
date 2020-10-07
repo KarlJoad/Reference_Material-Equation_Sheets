@@ -88,6 +88,11 @@ It can be useful to send a signal to multiple processes at once, in which case, 
     \item Pending
     \item Blocked
     \end{enumerate}
+  \item There is no queue or counter for signals, as this functionality is not supported by a \nameref{def:Bitmask}
+    \begin{itemize}[noitemsep]
+    \item However, they are dealt with in a particular order
+    \item The order is from higher number to lower number, lower to higher priority (31 -> 0)
+   \end{itemize}
   \item Some \nameref{def:Signal}s cannot be delivered/blocked (\texttt{SIGKILL}, and others)
   \item Newly \texttt{fork}-ed child inherits the parent's blocked bitmap, but pending vector is empty.
   \end{itemize}
