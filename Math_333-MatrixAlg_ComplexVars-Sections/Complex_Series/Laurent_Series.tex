@@ -196,6 +196,38 @@ This is explored in \Cref{ex:Laurent Series Non-Obvious Number of Poles}
   A \emph{simple} \nameref{def:Pole} is one that is of \nameref{def:Pole_Order} 1.
 \end{definition}
 
+\begin{example}[Lecture 10, Example 8]{Laurent Series Multiple Residues}
+  Given the function $f(z) = \frac{z+1}{(z-2) (z+3)}$, what are the \nameref{def:Residue}s of $f$?
+  \tcblower{}
+  We start by noting that there are 2 singularities, $z=2$ and $z=-3$.
+  As these singularities \textbf{cannot} be cancelled out, they are \nameref{def:Pole}s too.
+  Both of these poles are \nameref{def:Simple_Pole}, as well.
+  Because they are both of \nameref{def:Pole_Order} 1, we modify \Cref{eq:Residue} for that.
+
+  Starting with the \nameref{def:Pole} $z=2$.
+  \begin{align*}
+    \Residue{f}{z=2} &= \lim\limits_{z \to 2} (z-2) f(z) \\
+                     &= \lim\limits_{z \to 2} (z-2) \left( \frac{z+1}{(z-2) (z+3)} \right) \\
+                     &= \lim\limits_{z \to 2} \frac{z+1}{z+3} \\
+                     &= \frac{3}{5} \\
+  \end{align*}
+
+  Now, the \nameref{def:Pole} $z=-3$.
+  \begin{align*}
+    \Residue{f}{z=-3} &= \lim\limits_{z \to -3} \bigl( z- (-3) \bigr) f(z) \\
+                      &= \lim\limits_{z \to -3} (z+3) \left( \frac{z+1}{(z-2)(z+3)} \right) \\
+                      &= \lim\limits_{z \to -3} \frac{z+1}{z-2} \\
+                      &= \frac{-2}{-5} \\
+                      &= \frac{2}{5}
+  \end{align*}
+
+  Thus, our two \nameref{def:Residue}s are:
+  \begin{align*}
+    \Residue{f}{z=2} &= \frac{3}{5} \\
+    \Residue{f}{z=-3} &= \frac{2}{5}
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
