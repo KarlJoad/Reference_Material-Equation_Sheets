@@ -1,4 +1,20 @@
 \section{Strings}\label{sec:Strings}
+In C, strings are actually character arrays.
+These arrays are terminated with the null character, \cinline{\0}; it's numerical value is 0.
+This is shown in \Cref{lst:String_Character_Array}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Strings/Code/char-array.c}
+\caption{String/Character Array}
+\label{lst:String_Character_Array}
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+hello world!
+\end{minted}
+\end{listing}
+
+\texttt{printf} treats strings as a character array terminated by a null character.
+
 
 %%% Local Variables:
 %%% mode: latex
