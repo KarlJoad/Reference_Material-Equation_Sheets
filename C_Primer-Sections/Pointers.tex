@@ -130,6 +130,17 @@ This helps prevent many runtime issues that the compiler cannot check for.
   \end{itemize}
 \end{itemize}
 
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Pointers/Code/null-pointers-checker.c}
+\caption{\texorpdfstring{\cinline{NULL}}{\texttt{NULL}} Pointer as Checker}
+\label{lst:NULL_Pointer-Checker}
+
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+[1]    29456 segmentation fault (core dumped)  ./a.out
+\end{minted}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
