@@ -225,6 +225,10 @@ These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for file
   \end{itemize}
 
 \item[\cinline{ssize_t write(int fd, void *buf, size_t nbytes)}]
+  \begin{itemize}
+  \item Write up to \texttt{nbytes} into the open file at \texttt{fd} from \texttt{buf}.
+  \item Returns the number of bytes \textbf{actually} written.
+  \end{itemize}
 \end{description}
 
 %%% Local Variables:
