@@ -142,6 +142,9 @@ Thus, we load and open an \nameref{def:inode} into \nameref{def:Memory}, and cal
   Every currently open file has a \textbf{single} \texttt{vnode}.
 \end{definition}
 
+Now that we have a way to efficiently access a file in-\nameref{def:Memory}, using the \nameref{def:vnode} structure, how can we ``open'' the same \nameref{def:File} multiple times?
+This is handled by the \nameref{def:File_Description} structure.
+
 
 %%% Local Variables:
 %%% mode: latex
