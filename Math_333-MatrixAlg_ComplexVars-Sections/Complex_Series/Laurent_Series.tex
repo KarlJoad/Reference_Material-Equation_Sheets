@@ -228,6 +228,40 @@ This is explored in \Cref{ex:Laurent Series Non-Obvious Number of Poles}
   \end{align*}
 \end{example}
 
+Lastly, another example of finding the \nameref{def:Residue}s of a \nameref{def:Complex_Function}, but this time a function with a \nameref{def:Pole} of \nameref{def:Pole_Order} 2.
+This is demonstrated in \Cref{ex:Laurent Series Higher-Order Residues}
+
+\begin{example}[Lecture 10, Example 9]{Laurent Series Higher-Order Residues}
+  Given the function $f(z) = \frac{e^{z}}{{(z-2)}^{2} (z+3)}$, find its \nameref{def:Residue}s?
+  \tcblower{}
+  This has two singularities: $z=2$ and $z=-3$.
+  In addition, these are both \nameref{def:Pole}s as well.
+  The $z=2$ pole has \nameref{def:Pole_Order} 2, the other has order 1.
+
+  Starting with the $z=2$ \nameref{def:Pole}:
+  \begin{align*}
+    \Residue{f}{z=2} &= \lim\limits_{z \to 2} \frac{d}{dz} \left\lbrace {(z-2)}^{2} \left( \frac{e^{z}}{{(z-2)}^{2} (z+3)} \right) \right\rbrace \\
+                     &= \lim\limits_{z \to 2} \frac{d}{dz} \left\lbrace \frac{e^{z}}{z+3} \right\rbrace \\
+                     &= \lim\limits_{z \to 2} \frac{e^{z}(z+3) - e^{z} (1)}{{(z+3)}^{2}} \\
+                     &= \frac{5e^{z} - e^{1}}{5^{2}} \\
+                     &= \frac{4e^{z}}{25}
+  \end{align*}
+
+  Now, the $z=-3$ pole:
+  \begin{align*}
+    \Residue{f}{z=-3} &= \lim\limits_{z \to -3} (z+3) \left( \frac{e^{z}}{{(z-2)}^{2} (z+3)} \right) \\
+                      &= \lim\limits_{z \to -3} \frac{e^{z}}{{(z-2)}^{2}} \\
+                      &= \frac{e^{-3}}{{(-3 - 2)}^{2}} \\
+                      &= \frac{e^{-3}}{{(-5)}^{2}} \\
+                      &= \frac{e^{-3}}{25}
+  \end{align*}
+
+  Thus, our two \nameref{def:Residue}s are:
+  \begin{align*}
+    \Residue{f}{z=2} &= \frac{4e^{z}}{25} \\
+    \Residue{f}{z=-3} &= \frac{e^{-3}}{25}
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
