@@ -103,6 +103,19 @@ A typical file system consists of two types of files:
   The only thing each file \textbf{MUST} have is a unique \nameref{def:inode}.
 \end{definition}
 
+\begin{definition}[\texttt{inode}]\label{def:inode}
+  The \emph{inode} is a filesystem-unique number (Typically, there is one filesystem per device, so this is typically a per-device-unique number).
+  The inode tracks:
+  \begin{itemize}[noitemsep]
+  \item Ownership
+  \item Permissions
+  \item Size
+  \item Type
+  \item Location
+  \item Number of \nameref{def:Hard_Link}s
+  \end{itemize}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
