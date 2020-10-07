@@ -1,4 +1,15 @@
 \subsection{Laurent Series}\label{def:Laurent_Series}
+\nameref{thm:Laurent_Series} are generalizations of the \nameref{def:Complex_Power_Series} that we have already been discussing.
+
+\begin{theorem}[Laurent Series]\label{thm:Laurent_Series}
+  Suppose $f$ is \nameref{def:Analytic} on the \nameref{def:Annulus} $r_{1} < \Modulus{z-a} < r_{2}$.
+
+  Then there exists a \emph{Laurent series} such that $\forall z, r_{1} < \Modulus{z-a} < r_{2}$
+  \begin{equation}\label{eq:Laurent_Series}
+    f(z) = \sum_{n=0}^{\infty} a_{n} {(z-a)}^{n} + \frac{b_{1}}{z-a} + \frac{b_{2}}{{(z-a)}^{2}} + \frac{b_{3}}{{(z-a)}^{3}} + \cdots
+  \end{equation}
+\end{theorem}
+
 
 %%% Local Variables:
 %%% mode: latex
