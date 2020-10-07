@@ -70,6 +70,18 @@ i=10, j=20, *p=20, *q=20
 \end{minted}
 \end{listing}
 
+\subsection{\emph{Why} have Pointers?}\label{subsec:Why_Have_Pointers}
+\nameref{def:Pointer}s are partly a cross-over from assembly, as C is really just a thin wrapper around that.
+However, it does also allow direct access to memory and allow \emph{us} to make many optimizations we could not make otherwise.
+This means you must \textbf{manage memory yourself}.
+
+\begin{itemize}
+\item In C, everything is \emph{ALWAYS} \nameref{par:Pass_by_Value}.
+\item This even happens on composite data structures, like \cinline{struct}s.
+\item \nameref{def:Pointer}s enable us to perform \emph{actions at a distance}, essentially allow us to get \nameref{par:Pass_by_Reference} without explicitly allowing that.
+\item This also allows functions very deep in the call stack to affect variables earlier in the stack.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
