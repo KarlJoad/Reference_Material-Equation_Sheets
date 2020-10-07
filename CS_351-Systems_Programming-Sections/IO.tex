@@ -65,6 +65,19 @@ There are 2 major types of I/O devices on \textsc{unix} systems:
   \end{itemize}
 \end{definition}
 
+\begin{definition}[Character Device]\label{def:Character_Device}
+  A \emph{character device} is an I/O device that access and receives data as a stream.
+  This means it receives ``characters'' as a stream, one-by-one.
+  There is no support for seeking or random access of the stream, because we are getting the data as soon as it is being given.
+
+  Some typical devices in this category are:
+  \begin{itemize}[noitemsep]
+  \item Network
+  \item Mouse
+  \item Keyboard
+  \end{itemize}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
