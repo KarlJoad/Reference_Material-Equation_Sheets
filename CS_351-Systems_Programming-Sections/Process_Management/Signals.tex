@@ -175,6 +175,22 @@ Child Dying
 \subsubsection{Adjusting Signal Masks}\label{subsubsec:Adjusting_Signal_Masks}
 If we want to modify the \nameref{def:Signal} state \nameref{def:Bitmap}s, we use the \texttt{sigprocmask} function.
 
+\texttt{sigprocmask} has the following prototype: \cinline{int sigprocmask(int how, const sigset_t *set, sigset_t *oldset)}.
+The returned \texttt{int} is either \texttt{0}, for success, or \texttt{-1} for failure.
+The three parameters are:
+\begin{description}[noitemsep]
+\item[\cinline{how}] How to deal with the signals.
+  There are three options here, defined as preprocessor constants in \texttt{signal.h}.
+  \begin{description}[noitemsep]
+  \item[\cinline{SIG_BLOCK}] The set of blocked \nameref{def:Signal}s is the union of the current set and the \texttt{set} argument.
+  \item[\cinline{SIG_UNBLOCK}] The \nameref{def:Signal}s in \texttt{set} are removed from the current set of blocked signals.
+  \item[\cinline{SIG_SETMASK}] The set of blocked signals is set to the argument \texttt{set}.
+  \end{description}
+\item[\cinline{*set}] The set of \nameref{def:Signal}s to block that should be applied to the current set.
+\item[\cinline{*oldset}] The previous set of blocked \nameref{def:Signal}s.
+  You do not \textbf{need} to pass something in here, but if you are interested in getting the signal mask at some point, you will want to have a variable to assign here.
+\end{description}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../CS_351-Systems_Programming-Reference_Sheet"
