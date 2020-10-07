@@ -231,6 +231,10 @@ These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for file
   \end{itemize}
 \end{description}
 
+\subsubsection{Why up to \texttt{nbytes}?}
+The \texttt{nbytes} parameters in \cinline{read} and \cinline{write} are necessary because the kernel attempts to maximize performance and minimize throughput.
+By knowing these terms, it makes it easier to schedule disk reads and writes, and allows for more efficient kernel buffering.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../CS_351-Systems_Programming-Reference_Sheet"
