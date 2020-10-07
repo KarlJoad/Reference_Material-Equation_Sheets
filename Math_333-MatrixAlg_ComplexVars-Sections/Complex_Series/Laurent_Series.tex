@@ -176,6 +176,22 @@ This question is explored in \Cref{ex:Laurent Series Properties Find Function}.
   \end{equation*}
 \end{example}
 
+Sometimes, it is tricky to determine the number of \nameref{def:Pole}s present in an equation.
+This is explored in \Cref{ex:Laurent Series Non-Obvious Number of Poles}
+\begin{example}[Lecture 10, Example 7]{Laurent Series Non-Obvious Number of Poles}
+  Given the function $f(z) = \frac{z^{2} - 5z + 6}{z^{2} - 4}$, what are its \nameref{def:Pole}s?
+  \tcblower{}
+  Start by factoring the equation.
+  \begin{align*}
+    f(z) &= \frac{z^{2} - 5z + 6}{z^{2}- 4} \\
+         &= \frac{(z-2) (z-3)}{(z-2) (z+2)} \\
+         &= \frac{z-3}{z+2}
+  \end{align*}
+
+  Now, looking at this, we see it is obvious that there is only a single \nameref{def:Pole} of \nameref{def:Pole_Order} 1 (a \nameref{def:Simple_Pole} pole) at $z=-2$.
+  However, $z=2$ \textbf{IS} a \nameref{def:Singularity} for $f(z)$, but it is \nameref{def:Removable}.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
