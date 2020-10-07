@@ -10,6 +10,25 @@ In \textsc{unix}, I/O devices include:
 
 This is mostly because \textsc{unix} made the design decision to try to view every component of a system as a \nameref{def:File}.
 
+Due to the variety of I/O devices that need to be supported, there are a vast number of different mechanisms for using these devices.
+But, there are a few common mechanisms, requirements, and activities:
+\begin{itemize}[noitemsep]
+\item Read/Write Ops
+\item Metadata:
+  \begin{itemize}[noitemsep]
+  \item Name
+  \item Position
+  \item Directory Name
+  \item Creation Date
+  \item Last Access Date
+  \item IP Address
+  \item MAC Address
+  \item TCP Packet Sequence Number
+  \end{itemize}
+\item Robustness
+\item Thread-safety
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
