@@ -15,6 +15,17 @@ hello world!
 
 \texttt{printf} treats strings as a character array terminated by a null character.
 
+\subsection{String Utilities}\label{subsec:String_Utilities}
+All the functions shown below string are from \texttt{<string.h>}.
+
+\begin{description}[noitemsep]
+\item[\cinline{char *strcpy(char *dest, const char *src)}] Copy characters from source to destination array, including the \cinline{\0}.
+\item[\cinline{char *strcat(char *dest, const char *src)}] Concatenates 2 strings, removing null bytes and adding one to the very end of the destination string.
+\item[\cinline{int strcmp(const char *s1, const char *s2)}] Compares strings byte-by-byte, returning whichever string is greater than the other, as determined by the component characters' ASCII code.
+\item[\cinline{size_t strlen(const char *s)}] Finds length of string by incrementing a counter until it finds the null character.
+\item[\cinline{void *memcpy(void *dest, const void *src, size_t n)}] Copies the contents of one memory location to another.
+\item[\cinline{void* memmove(void *dest, const void *src, size_t n)}] Moves the contents of one memory location to another.
+\end{description}
 
 %%% Local Variables:
 %%% mode: latex
