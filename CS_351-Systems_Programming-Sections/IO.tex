@@ -29,6 +29,23 @@ But, there are a few common mechanisms, requirements, and activities:
 \item Thread-safety
 \end{itemize}
 
+There are few general concerns that we need to have about the idea of viewing everything as a \nameref{def:File}.
+\begin{itemize}[noitemsep]
+\item How are I/O endpoints represented?
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:File_Descriptor}
+  \end{itemize}
+\item How do we perform I/O?\@
+  \begin{itemize}[noitemsep]
+  \item Byte at a time
+  \item Give a chunk of memory and later check that the requested I/O completed?
+  \end{itemize}
+\item How do we perform I/O \emph{efficiently}?
+  \begin{itemize}[noitemsep]
+  \item Efficiency depends on what we define efficient to be. Essentially, what are we optimizing for?
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
