@@ -51,6 +51,17 @@ Before we continue any farther, we need to add some more terms to our dictionary
   In addition, both of these singularities are \nameref{def:Isolated_Singularity}, because we can find a disk/\nameref{def:Annulus} surroudning the \nameref{def:Singularity} such that $f$ is \nameref{def:Analytic}.
 \end{example}
 
+With the terms above defined, we can move onto seeing a theorem regarding the \nameref{thm:Laurent_Series_Existence}.
+
+\begin{theorem}[Existence of Laurent Series]\label{thm:Laurent_Series_Existence}
+  A function $f$, that is \nameref{def:Analytic} on a \nameref{def:Deleted} disk, $0 < \Modulus{z-a} < r$ is said to have an (\nameref{def:Isolated_Singularity}) \nameref{def:Singularity} of $z=a$ if $f$ is \textbf{not} differentiable at $z=a$.
+
+  Then, there exists a \nameref{thm:Laurent_Series} of the form:
+  \begin{equation}\label{eq:Laurent_Series_Existence}
+    f(z) = \sum_{n=0}^{\infty} a_{n} {(z-a)}^{n} + \frac{b_{1}}{z-a} + \frac{b_{2}}{{(z-a)}^{2}} + \cdots
+  \end{equation}
+\end{theorem}
+
 
 %%% Local Variables:
 %%% mode: latex
