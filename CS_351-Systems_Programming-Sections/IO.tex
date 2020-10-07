@@ -137,6 +137,11 @@ However, the items discussed above are held strictly in storage, hard drive, mea
 
 Thus, we load and open an \nameref{def:inode} into \nameref{def:Memory}, and call this copy a \nameref{def:vnode}.
 
+\begin{definition}[\texttt{vnode}]\label{def:vnode}
+  A \emph{vnode} is a copy of the \nameref{def:inode} of the current file.
+  Every currently open file has a \textbf{single} \texttt{vnode}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
