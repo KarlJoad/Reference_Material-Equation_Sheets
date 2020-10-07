@@ -22,6 +22,38 @@ An example of how \nameref{def:Signal}s can be used is shown in \Cref{lst:Using_
 
 It can be useful to send a signal to multiple processes at once, in which case, the signal can be sent to a \nameref{def:Process_Group}.
 
+\begin{enumerate}[noitemsep]
+\item \nameref{def:Signal}s can be delivered at \emph{any time}
+  \begin{itemize}[noitemsep]
+  \item Interrupt \textbf{anything NONATOMIC}
+  \item Problematic if using global variables
+  \item Thus, minimize the use of global variables and their use in \nameref{def:Signal_Handler}s
+    \begin{itemize}[noitemsep]
+    \item If global variables are needed, use data that can be read/written atomically.
+    \end{itemize}
+  \end{itemize}
+\item A \nameref{def:Signal_Handler} may execute in overlapping fashion (even with itself).
+  \begin{itemize}[noitemsep]
+  \item It does this when there are multiple signals to handle
+  \item Try to create separate \nameref{def:Signal_Handler}s for different \nameref{def:Signal}s.
+    \begin{itemize}[noitemsep]
+    \item Otherwise, signal handlers MUST be \textit{\nameref{def:Reentrant}}
+    \end{itemize}
+  \end{itemize}
+\item Execution of \nameref{def:Signal_Handler}s for \textit{separate} signals may overlap.
+  \begin{itemize}[noitemsep]
+  \item Any functions these \nameref{def:Signal_Handler}s call may overlap as well
+  \item Thus, keep signal handlers simple
+  \item Minimize calls to other functions
+  \end{itemize}
+\item Race conditions can be caused by this concurrency because we cannot predict when:
+  \begin{itemize}[noitemsep]
+  \item A child terminates
+  \item A \nameref{def:Signal} will arrive
+  \item We need to ensure that certain sequences \textit{cannot be interrupted}
+  \end{itemize}
+\end{enumerate}
+
 \subsubsection{Signal Lifecycle}\label{subsubsec:Signal_Lifecycle}
 \begin{enumerate}[noitemsep]
 \item Sending a signal to a process or a \nameref{def:Process_Group}.
