@@ -173,6 +173,9 @@ This is where the \nameref{def:File_Descriptor} comes in.
   \end{enumerate}
 \end{definition}
 
+After opening a file, \textbf{all} file operations are performed using \nameref{def:File_Descriptor}s.
+This obscures kernel I/O and filesystem implementation details from the user, allowing for an elegant and abstract I/O API.\@
+
 
 %%% Local Variables:
 %%% mode: latex
