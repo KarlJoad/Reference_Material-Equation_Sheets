@@ -119,6 +119,15 @@ It can be useful to send a signal to multiple processes at once, in which case, 
   They are done this way, because we can very easily check for the existence of something by performing a bitwise operation.
 \end{definition}
 
+The kernel uses these \nameref{def:Signal} \nameref{def:Bitmap}s before a \nameref{def:Process} starts/resumes.
+Before resuming a process, the kernel computes \cinline{~pending & blocked}
+\begin{itemize}[noitemsep]
+\item Remember that this is bitwise NOT (\cinline{~}) and bitwise AND (\cinline{&}).
+\item The result of this operation determines which signals get delivered to the process before the process begins regular execution.
+   \end{itemize}
+
+The \nameref{def:Signal} \nameref{def:Bitmask}s are held in \textbf{kernel memory}.
+
 \subsubsection{Process Groups}\label{subsubsec:Process_Groups}
 \begin{definition}[Process Group]\label{def:Process_Group}
   A \emph{process group} is a way to logically group several \nameref{def:Process}es together.
