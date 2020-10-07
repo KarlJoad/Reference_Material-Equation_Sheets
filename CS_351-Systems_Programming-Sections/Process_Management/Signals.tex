@@ -98,6 +98,19 @@ It can be useful to send a signal to multiple processes at once, in which case, 
   \end{itemize}
 
 \item Designing a \nameref{def:Signal_Handler}.
+  \begin{itemize}[noitemsep]
+  \item If the same signal is received while that signal handler is running
+    \begin{itemize}[noitemsep]
+    \item Nothing special happens.
+    \item The handler is already running, and when it finishes, the value in the \nameref{def:Bitmask} will be zeroed out, indicating completion.
+   \end{itemize}
+ \item If we receive a higher priority (lower-number) signal while handling a lower-priority (higher-number) one:
+   \begin{itemize}[noitemsep]
+   \item Preempt the lower priority handler with the higher one.
+   \item The higher priority will interrupt the higher priority and be run.
+   \item If it is possible, the lower-priority signal will be handled after the higher priority one is complete.
+   \end{itemize}
+  \end{itemize}
 \end{enumerate}
 
 \begin{definition}[Bitmap]\label{def:Bitmap}\label{def:Bitmask}
