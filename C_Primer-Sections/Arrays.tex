@@ -25,6 +25,21 @@ All of the ways to statically declare, allocate, and define an array are shown i
 \label{lst:Arrays}
 \end{listing}
 
+The syntax of an \nameref{def:Array} actually is syntactic sugar for \nameref{def:Pointer} arithmetic.
+The name we give to the array is actually the name of the \textbf{\nameref{def:Pointer}} that points to the beginning of the array, the zeroth element in the array.
+This is shown in \Cref{lst:Array_Pointer_Similarity}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Arrays/Code/array-pointer-similarity.c}
+\caption{Array-Pointer Similarity}
+\label{lst:Array_Pointer_Similarity}
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+3rd element in x, using array syntax: 3
+3rd element in x, using pointer syntax: 3
+\end{minted}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
