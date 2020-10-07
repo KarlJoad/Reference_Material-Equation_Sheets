@@ -28,6 +28,19 @@ fp: 0.000000
 The syntax that \nameref{def:Pointer}s use can sometimes be confusing for new programmers.
 So, we will break down each portion of a pointer and its usage to more fully understand them.
 
+\subsubsection{Declaration}\label{subsubsec:Pointer_Declaration}
+\nameref{def:Pointer}s are declared using the same type name as the data type they will store.
+In addition, you \textbf{MUST} add a \cinline{*} to the declaration.
+The placement of this symbol does not matter, but for clarity, most programmers put it on the variable name.
+However, it can be attached to the type as well.
+
+\Cref{lst:Pointer_Declaration} shows how to do this.
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Pointers/Code/pointer-declaration.c}
+\caption{Pointer Declaration}
+\label{lst:Pointer_Declaration}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
