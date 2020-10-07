@@ -115,6 +115,21 @@ $ ./a.out
 \end{minted}
 \end{listing}
 
+\subsection{\texorpdfstring{\cinline{NULL}}{\texttt{NULL}} Pointers}\label{subsec:NULL_Pointers}
+The \cinline{NULL} \nameref{def:Pointer} is \textbf{NEVER} returned by the \cinline{&} operator.
+It is usually a smart idea to define pointers when you declare them, and if you don't immediately define them with a usable value, to define them with \cinline{NULL}.
+This helps prevent many runtime issues that the compiler cannot check for.
+\Cref{lst:NULL_Pointer-Checker} gives an example of using the \cinline{NULL} pointer this way.
+
+\begin{itemize}[noitemsep]
+\item The \cinline{NULL} pointers is safe to use as a predicate, in \texttt{if} statements, for example.
+  This usage is shown in \Cref{lst:NULL_Pointer-Sentinel}.
+\item Written as \texttt{0} or \texttt{NULL} in \emph{pointer context}
+  \begin{itemize}
+  \item Typically \cinline{#define NULL 0}
+  \end{itemize}
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
