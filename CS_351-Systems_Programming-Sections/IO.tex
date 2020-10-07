@@ -145,6 +145,21 @@ Thus, we load and open an \nameref{def:inode} into \nameref{def:Memory}, and cal
 Now that we have a way to efficiently access a file in-\nameref{def:Memory}, using the \nameref{def:vnode} structure, how can we ``open'' the same \nameref{def:File} multiple times?
 This is handled by the \nameref{def:File_Description} structure.
 
+\begin{definition}[File Description]\label{def:File_Description}
+  The \emph{file description} allows the kernel to track which \nameref{def:Process} has openned which \nameref{def:File} and trace them back to their \nameref{def:vnode}.
+  For \textbf{each process}, the kernel maintains a table of pointers to its open file structures.
+  This table points to each file descriptor, which then point to the backing \nameref{def:vnode}s.
+
+  The file description tracks:
+  \begin{itemize}[noitemsep]
+  \item Position
+  \item Access Mode
+  \item Pointer to the backing vnode
+  \end{itemize}
+
+  There is an open file description for \textbf{each occurrence} of a \nameref{def:File}'s opening.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
