@@ -7,6 +7,23 @@ With this memory address, we can refer to data in-memory.
 The size of the pointer is determined by the architecture of the CPU.\@
 \end{definition}
 
+A pointer is designated by its \textbf{DECLARED} type, \textbf{NOT} its contents.
+This allows the data the pointer points to to be re-interpreted based on the declared type of the pointer.
+This is shown in \Cref{lst:Pointers_Reinterpret_Data}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Pointers/Code/pointers-reinterpret-data.c}
+\caption{Pointers Reinterpret Data}
+\label{lst:Pointers_Reinterpret_Data}
+
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+ip: 63
+cp: ?
+fp: 0.000000
+\end{minted}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
