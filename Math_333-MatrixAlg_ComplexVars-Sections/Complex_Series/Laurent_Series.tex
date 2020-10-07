@@ -154,6 +154,28 @@ If \Cref{thm:Laurent_Series_Existence} is satisfied, then there are 3 cases:
   $b_{1}$, which in this case is $0$.
 \end{example}
 
+Now that we know how to find the various properties of a \nameref{def:Complex_Function} with a \nameref{thm:Laurent_Series}, what if we are given the various properties of the function.
+What does the funciton look like then?
+This question is explored in \Cref{ex:Laurent Series Properties Find Function}.
+
+\begin{example}[Lecture 10, Example 5]{Laurent Series Properties Find Function}
+  Suppose $f(z)$ is \nameref{def:Analytic} on the \nameref{def:Annulus} $0 < \Modulus{z-a} < r$, and has a single \nameref{def:Pole} of \nameref{def:Pole_Order} 1.
+  What does the \nameref{def:Complex_Function} look like?
+  \tcblower{}
+  We start with the general form of a \nameref{def:Complex_Function} expressed as a \nameref{thm:Laurent_Series}.
+  \begin{equation*}
+    f(z) = \sum_{n=0}^{\infty} a_{n} {(z-a)}^{n} + \frac{b_{1}}{z-a} + \frac{b_{2}}{{(z-a)}^{2}} + \cdots
+  \end{equation*}
+
+  Now, we remove terms and items that we do not need.
+  Because we are told that the only \nameref{def:Pole} has \nameref{def:Pole_Order} of 1, the highest term in the $b_{n}$ portion has an exponent of $1$ on the $z$ term.
+  This means we only go up to the $b_{1}$ term.
+  Thus, our equation is:
+  \begin{equation*}
+    f(z) = \sum_{n=0}^{\infty} a_{n} {(z-a)}^{n} + \frac{b_{1}}{z-a}
+  \end{equation*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
