@@ -200,6 +200,11 @@ These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for file
   \item You can mirror this inside of a single process by using the \texttt{dup} syscall.
   \end{itemize}
 \item[\cinline{int fstat(int fd, struct stat *buf)}] Query for file metadata
+  \begin{itemize}
+  \item \cinline{struct stat fstat.st_ino} Get inode number
+  \item \cinline{struct stat fstat.st_size} Get file size
+  \item \cinline{struct stat fstat.st_nlink} Get number of hard links
+  \end{itemize}
 \item[\cinline{int dup(int fd)}] Duplicate the given \nameref{def:File_Descriptor} and return a new file descriptor that points to the same \nameref{def:File}.
 \item[\cinline{int dup2(int fd1, int fd2)}] Duplicate \texttt{fd1} such that \texttt{fd2} writes to the same \nameref{def:vnode}.
 \item[\cinline{int close(int fd)}] Close this \nameref{def:File_Descriptor}.
