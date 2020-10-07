@@ -90,6 +90,31 @@ One good reason is illustrated in \Cref{lst:int_Pointer_Swap}.
 \label{lst:int_Pointer_Swap}
 \end{listing}
 
+\subsection{Uninitialized Pointers}\label{subsec:Uninitialized_Pointers}
+Even though a \nameref{def:Pointer} can only store memory addresses, it behaves exactly like a regular variable for most puposes.
+
+\begin{itemize}
+\item When a \nameref{def:Pointer} is declared, they are given their underlying storage, which \textbf{will contain garbage}!
+\item If you dereference this pointer, you dereference garbage, which is undefined behavior.
+  \begin{itemize}
+  \item If you're lucky, this is will result in a \texttt{SEGFAULT}, terminating program execution.
+  \item If you're unlucky, unknown results may happen, and you might never know about it.
+  \item You are assured that your program will not exceed its own memory space though, which means your program cannot crash another.
+  \end{itemize}
+\end{itemize}
+
+\Cref{lst:Uninitialized_Pointer} gives an example of what could happen if you don't initialize your \nameref{def:Pointer}s.
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Pointers/Code/uninitialized-pointers.c}
+\caption{Uninitialized Pointers}
+\label{lst:Uninitialized_Pointer}
+
+\begin{minted}[frame=lines,linenos]{console}
+$ ./a.out
+[1]    29456 segmentation fault (core dumped)  ./a.out
+\end{minted}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
