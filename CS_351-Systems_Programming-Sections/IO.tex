@@ -181,6 +181,16 @@ Input and output is one of the basic operations that a program of any use will h
 Below, there is a list of common \nameref{def:Syscall}s for performing these operations.
 These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for files
 
+\begin{description}[noitemsep]
+\item[\cinline{int open(const char *path, int oflag, ...)}] Opens a \nameref{def:File}.
+\item[\cinline{int fstat(int fd, struct stat *buf)}] Query for file metadata
+\item[\cinline{int dup(int fd)}] Duplicate the given \nameref{def:File_Descriptor} and return a new file descriptor that points to the same \nameref{def:File}.
+\item[\cinline{int dup2(int fd1, int fd2)}] Duplicate \texttt{fd1} such that \texttt{fd2} writes to the same \nameref{def:vnode}.
+\item[\cinline{int close(int fd)}] Close this \nameref{def:File_Descriptor}.
+\item[\cinline{off_t lseek(int fd, off_t offset, int whence)}]
+\item[\cinline{ssize_t read(int fd, void *buf, size_t nbytes)}]
+\item[\cinline{ssize_t write(int fd, void *buf, size_t nbytes)}]
+\end{description}
 
 %%% Local Variables:
 %%% mode: latex
