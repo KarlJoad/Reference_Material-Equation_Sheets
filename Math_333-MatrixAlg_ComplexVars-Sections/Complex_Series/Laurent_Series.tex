@@ -126,6 +126,34 @@ If \Cref{thm:Laurent_Series_Existence} is satisfied, then there are 3 cases:
   This is shown in \Cref{ex:Laurent Series Multiple Residues}.
 \end{definition}
 
+\begin{example}[Lecture 10, Example 4]{Laurent Series Pole Singularity}
+  Given the function $f(z) = \frac{\sin \left( 3 z^{2} \right)}{z^{17}}$, find its \nameref{def:Principal_Part}, \nameref{def:Pole}s, \nameref{def:Pole_Order} of the pole, and the \nameref{def:Residue}?
+  \tcblower{}
+  The only \nameref{def:Singularity} here, is again $z=0$.
+  $f$ is defined on the \nameref{def:Deleted} disk $0 < \Modulus{z} < \infty$.
+
+  Now, we use the definition of the $\sin$ function's \nameref{def:Complex_Power_Series}, \Cref{eq:Complex_Power_Series-sin}.
+  \begin{align*}
+    \sin(z) &= z - \frac{1}{3!} z^{3} + \frac{1}{5!} z^{5} + \cdots \\
+    \sin \left( 3z^{2} \right) &= 3z^{2} - \frac{1}{3!} { \left( 3z^{2} \right)}^{3} + \frac{1}{5!} {\left( 3z^{2} \right)}^{5} - \frac{1}{7!} { \left( 3z^{2} \right)}^{7} + \frac{1}{9!} { \left( 3z^{2} \right)}^{9} - \cdots \\
+            &= 3z^{2} - \frac{3^{3}}{3!} z^{6} + \frac{3^{5}}{5!} z^{10} - \frac{3^{7}}{7!} z^{14} + \frac{3^{9}}{9!} z^{18} - \cdots \\
+    \shortintertext{Now, plugging back into $f$.}
+    f(z) &= \frac{3z^{2} - \frac{3^{3}}{3!} z^{6} + \frac{3^{5}}{5!} z^{10} - \frac{3^{7}}{7!} z^{14} + \frac{3^{9}}{9!} z^{18} - \cdots}{z^{17}} \\
+            &= 3z^{-15} - \frac{3^{3}}{3!} z^{-11} + \frac{3^{5}}{5!} z^{-7} - \frac{3^{7}}{7!} z^{-3} + \frac{3^{9}}{9!} z^{1} - \cdots
+  \end{align*}
+
+  Therefore, the \nameref{def:Principal_Part} of $f$ is
+  \begin{equation*}
+    3z^{-15} - \frac{3^{3}}{3!} z^{-11} + \frac{3^{5}}{5!} z^{-7} - \frac{3^{7}}{7!} z^{-3} + \frac{3^{9}}{9!} z^{1}
+  \end{equation*}
+
+  Because the \nameref{def:Principal_Part} is finite, the \nameref{def:Singularity} $z=0$ is a \nameref{def:Pole}.
+  In addition, the pole is of \nameref{def:Pole_Order} $15$.
+
+  Lastly, the residue of $f$ is
+  $b_{1}$, which in this case is $0$.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
