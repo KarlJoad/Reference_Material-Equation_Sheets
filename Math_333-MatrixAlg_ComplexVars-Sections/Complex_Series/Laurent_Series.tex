@@ -68,6 +68,18 @@ With the terms above defined, we can move onto seeing a theorem regarding the \n
   Other times, these can only be found by working with the \nameref{thm:Laurent_Series}.
 \end{definition}
 
+If \Cref{thm:Laurent_Series_Existence} is satisfied, then there are 3 cases:
+\begin{enumerate}[noitemsep]
+\item All terms $b_{1}, b_{2}, b_{3}, \ldots = 0$.
+  Then the \nameref{def:Singularity} is said to be \nameref{def:Removable}.
+  Refer to \Cref{ex:Laurent Series Removable Singularity}.
+\item The number of non-zero $b_{n}$ is finite.
+  This means that the \nameref{def:Principal_Part} of the \nameref{thm:Laurent_Series} is finite.
+  This implies that there is a \nameref{def:Pole} with an \nameref{def:Pole_Order}.
+  Refer to \Cref{ex:Laurent Series Pole Singularity}.
+\item The number of non-zero $b_{n}$ is infinite.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
