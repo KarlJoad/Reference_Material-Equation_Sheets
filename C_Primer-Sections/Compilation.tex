@@ -3,6 +3,30 @@ C, along with C++ can be quite painful to compile for larger projects.
 You could manually compile every \texttt{.c} file with \texttt{gcc}.
 Makefiles help us manage this.
 
+\subsection{Stages}\label{subsec:Compilation_Stages}
+\begin{enumerate}[noitemsep]
+\item Preprocessing
+  \begin{itemize}[noitemsep]
+  \item Preprocessor directives starting with \cinline{#}
+  \item Text substitution
+  \item Macros
+  \item Conditional compilation
+  \item Performs complete textual substitution behind the scenes
+  \end{itemize}
+\item Compile
+  \begin{itemize}[noitemsep]
+  \item From source language to object code/binary
+  \end{itemize}
+\item Link
+  \begin{itemize}[noitemsep]
+  \item Put inter-related object codes together
+  \item Resolve calls/references and definitions
+  \item Put absolute/relative addresses into the binary for the =call= instruction
+  \item Want to support /selective/ public APIs
+  \item Don't always want to allow linking a call to a definition
+  \end{itemize}
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
