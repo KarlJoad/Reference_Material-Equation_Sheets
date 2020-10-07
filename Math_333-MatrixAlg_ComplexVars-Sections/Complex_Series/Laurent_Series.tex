@@ -113,6 +113,19 @@ If \Cref{thm:Laurent_Series_Existence} is satisfied, then there are 3 cases:
   The \emph{order} of a \nameref{def:Pole} is the highest negative power in the \nameref{def:Principal_Part} of a \nameref{thm:Laurent_Series} with a finite principal part.
 \end{definition}
 
+\begin{definition}[Residue]\label{def:Residue}
+  The \emph{residue} of a \nameref{def:Complex_Function} is the coefficient of the first term of the \nameref{def:Principal_Part} of the \nameref{thm:Laurent_Series}.
+  This means that the residue of a function $f$ with Laurent series $f(z) = \sum_{n=0}^{\infty} a_{n} {(z-a)}^{n} + \frac{b_{1}}{z-a} + \frac{b_{2}}{{(z-a)}^{2}} + \cdots$ is $b_{1}$.
+
+  However, if a function as a finite number of terms in the \nameref{def:Principal_Part} of the \nameref{thm:Laurent_Series}, then there are formulas for finding the residues, based on the \nameref{def:Pole_Order} of the \nameref{def:Pole} at the \nameref{def:Singularity} $z=a$.
+  \begin{equation}\label{eq:Residue}
+    b_{1} = \Residue{f}{z=a} = \lim\limits_{z \to a} {(z-a)}^{n} f^{(n-1)}(z)
+  \end{equation}
+
+  The number of residues correspond to the number of \nameref{def:Pole}s in a \nameref{thm:Laurent_Series}.
+  This is shown in \Cref{ex:Laurent Series Multiple Residues}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
