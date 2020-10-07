@@ -130,6 +130,13 @@ A typical file system consists of two types of files:
   However, if the file that the symlink is pointing to is deleted, then we are left with a dangling pointer.
 \end{definition}
 
+However, the items discussed above are held strictly in storage, hard drive, meaning they aren't good for regular use, as they are too slow.
+\begin{remark*}
+  Barring you doing something like setting up a portion of your RAM as a ``hard drive'', allowing for ridiculous performance.
+\end{remark*}
+
+Thus, we load and open an \nameref{def:inode} into \nameref{def:Memory}, and call this copy a \nameref{def:vnode}.
+
 
 %%% Local Variables:
 %%% mode: latex
