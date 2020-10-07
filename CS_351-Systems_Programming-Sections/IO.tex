@@ -176,6 +176,11 @@ This is where the \nameref{def:File_Descriptor} comes in.
 After opening a file, \textbf{all} file operations are performed using \nameref{def:File_Descriptor}s.
 This obscures kernel I/O and filesystem implementation details from the user, allowing for an elegant and abstract I/O API.\@
 
+\subsection{System-Level I/O API}\label{subsec:System_Level_IO_API}
+Input and output is one of the basic operations that a program of any use will have to do.
+Below, there is a list of common \nameref{def:Syscall}s for performing these operations.
+These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for files
+
 
 %%% Local Variables:
 %%% mode: latex
