@@ -23,6 +23,18 @@ However, these are \textbf{NOT} like Haskell's \mintinline{haskell}{datatype} or
 \label{lst:union_Usage}
 \end{listing}
 
+\subsection{\texorpdfstring{\cinline{enum}}{\texttt{enum}}}\label{subsec:enum}
+The \cinline{enum} allows us to have a set of mutually exclusive options among many.
+These are technically backed by an array of integers.
+However, this massively helps legibility, readability, and writability than its backing structure.
+An example of this datatype is shown in \Cref{lst:enum_Usage}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Composite_Data_Types/Code/enum.c}
+\caption{\texorpdfstring{\cinline{enum}}{\texttt{enum}} Usage}
+\label{lst:enum_Usage}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
