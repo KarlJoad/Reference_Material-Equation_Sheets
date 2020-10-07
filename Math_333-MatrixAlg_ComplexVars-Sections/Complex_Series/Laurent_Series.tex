@@ -80,6 +80,31 @@ If \Cref{thm:Laurent_Series_Existence} is satisfied, then there are 3 cases:
 \item The number of non-zero $b_{n}$ is infinite.
 \end{enumerate}
 
+\begin{example}[Lecture 10, Example 3]{Laurent Series Removable Singularity}
+  Given the function $f(z) = \frac{\sin \left( z^{3} \right)}{z^{2}}$, find the singularity and determine if it is \nameref{def:Removable}?
+  \tcblower{}
+  $f$ has an \nameref{def:Isolated_Singularity} \nameref{def:Singularity} at $z=0$.
+
+  Now, look at the \nameref{def:Annulus} where $f$ is defined; which also determines where $f$ is \nameref{def:Analytic}.
+  $f$ is analytic on the annulus $0 < \Modulus{z} < \infty$.
+  This disk comprises the set $\ComplexNumbers - \lbrace z=0 \rbrace$.
+
+  Now, we expand $f$ into a \nameref{thm:Laurent_Series}.
+  We start by first expanding the $a_{n}$ components of the series using the definition of the \nameref{def:Complex_Power_Series}.
+  \begin{align*}
+    \sin(z) &= z - \frac{1}{3!} z^{3} + \frac{1}{5!} z^{5} - \cdots \\
+    \sin \left( z^{3}\right) &= z^{3} - \frac{1}{3!} {(z^{3})}^{3} + \frac{1}{5!} {(z^{3})}^{5} - \cdots \\
+    \intertext{Now, replace our simple $\sin$ with its corresponding power series.}
+    f(z) &= \frac{z^{3} - \frac{1}{3!} {(z^{3})}^{3} + \frac{1}{5!} {(z^{3})}^{5} - \cdots}{z^{2}} \\
+    &= z - \frac{1}{3!} z^{7} + \frac{1}{5!} z^{13} - \cdots
+  \end{align*}
+
+  Note the complete lack of negative exponents of $z$.
+  This means that the \nameref{def:Principal_Part} of the \nameref{thm:Laurent_Series} has $0$ for all its $b_{1}, b_{2}, b_{3}, \ldots$ terms.
+
+  $\therefore$ The \nameref{def:Singularity} $z=0$ is \nameref{def:Removable}.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
