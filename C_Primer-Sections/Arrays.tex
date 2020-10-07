@@ -10,6 +10,13 @@ An \nameref{def:Array} is the only way to store multiple items under a single na
 This declaration also implicitly allocates space for its storage.
 This allocates the space from the function \textbf{stack} \textit{NOT} the heap.
 
+There is \textbf{NO} metadata about the array, such as its length.
+This means:
+\begin{itemize}[noitemsep]
+\item \textbf{NO} implicit size
+\item \textbf{NO} bounds checking
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
