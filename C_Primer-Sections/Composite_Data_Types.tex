@@ -12,6 +12,17 @@ An example of this is shown in \Cref{lst:struct_Usage}.
 \label{lst:struct_Usage}
 \end{listing}
 
+\subsection{\texorpdfstring{\cinline{union}}{\texttt{union}}}\label{subsec:union}
+The \cinline{union} keyword allows us to define a single type that can be of one type from many.
+However, these are \textbf{NOT} like Haskell's \mintinline{haskell}{datatype} or Rust's union, in that we do not have type protections about accessing this data.
+\Cref{lst:union_Usage} gives an example of this.
+
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Composite_Data_Types/Code/union.c}
+\caption{\texorpdfstring{\cinline{union}}{\texttt{union}} Usage}
+\label{lst:union_Usage}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
