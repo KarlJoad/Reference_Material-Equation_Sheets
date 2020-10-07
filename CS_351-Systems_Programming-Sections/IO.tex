@@ -58,7 +58,7 @@ There are 2 major types of I/O devices on \textsc{unix} systems:
   Typically, this also means they have fixed total size as well.
   This means they support seeking through their contents and random access for parts of their contents.
 
-  Some typical devices classifed as this are:
+  Some typical devices classified as this are:
   \begin{itemize}[noitemsep]
   \item Disk
   \item Memory
@@ -146,7 +146,7 @@ Now that we have a way to efficiently access a file in-\nameref{def:Memory}, usi
 This is handled by the \nameref{def:File_Description} structure.
 
 \begin{definition}[File Description]\label{def:File_Description}
-  The \emph{file description} allows the kernel to track which \nameref{def:Process} has openned which \nameref{def:File} and trace them back to their \nameref{def:vnode}.
+  The \emph{file description} allows the kernel to track which \nameref{def:Process} has opened which \nameref{def:File} and trace them back to their \nameref{def:vnode}.
   For \textbf{each process}, the kernel maintains a table of pointers to its open file structures.
   This table points to each file descriptor, which then point to the backing \nameref{def:vnode}s.
 
@@ -160,7 +160,7 @@ This is handled by the \nameref{def:File_Description} structure.
   There is an open file description for \textbf{each occurrence} of a \nameref{def:File}'s opening.
 \end{definition}
 
-However, all of the structures dicussed above are in \textbf{kernel memory}, meaning user \nameref{def:Process}es cannot interact with them.
+However, all of the structures discussed above are in \textbf{kernel memory}, meaning user \nameref{def:Process}es cannot interact with them.
 This is where the \nameref{def:File_Descriptor} comes in.
 
 \begin{definition}[File Descriptor]\label{def:File_Descriptor}
