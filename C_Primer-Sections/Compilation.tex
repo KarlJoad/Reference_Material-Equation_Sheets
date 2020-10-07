@@ -34,6 +34,16 @@ Makefiles allow for:
 \item Automated compilation
 \end{itemize}
 
+These are written as a list of targets, prerequisites, and directives.
+In addition, they can include variables to simplify typing things out.
+They also support arbitrarily long lists, file globbing (like regular expressions), and a couple of other things.
+An example \texttt{Makefile} is shown in \Cref{lst:Example_Makefile}.
+
+\begin{listing}[h!tbp]
+\inputminted[frame=lines,linenos]{makefile}{./C_Primer-Sections/Compilation/Code/Example_Makefile}
+\caption{Example \texttt{Makefile}}
+\label{lst:Example_Makefile}
+\end{listing}
 
 %%% Local Variables:
 %%% mode: latex

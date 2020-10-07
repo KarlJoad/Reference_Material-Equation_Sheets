@@ -1,0 +1,8 @@
+CC = gcc
+CCFLAGS = -Wall -g
+
+all: prerequisite1 prerequisite2
+	$(CC) prerequisite1 prerequisite2
+
+target: prerequisite
+	directive
