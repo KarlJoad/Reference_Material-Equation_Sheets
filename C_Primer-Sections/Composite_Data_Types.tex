@@ -1,6 +1,17 @@
 \section{Composite Data Types}\label{sec:Composite_Data_Types}
 This is \textit{similar} to objects in Object-Oriented Programming, or the \mintinline{haskell}{datatype} in Haskell.
 
+\subsection{\texorpdfstring{\cinline{struct}}{\texttt{struct}}}\label{subsec:struct}
+The \cinline{struct} keyword allows us to put multiple separate data types together and refer to them by their field name.
+You access the fields by using the \cinline{.} operator.
+An example of this is shown in \Cref{lst:struct_Usage}.
+
+\begin{listing}[h!tbp]
+\csourcefile{./C_Primer-Sections/Composite_Data_Types/Code/struct.c}
+\caption{\texorpdfstring{\cinline{struct}}{\texttt{struct}} Usage}
+\label{lst:struct_Usage}
+\end{listing}
+
 
 %%% Local Variables:
 %%% mode: latex
