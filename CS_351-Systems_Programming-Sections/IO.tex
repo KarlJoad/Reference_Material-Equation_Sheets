@@ -218,6 +218,12 @@ These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for file
 
 \item[\cinline{off_t lseek(int fd, off_t offset, int whence)}]
 \item[\cinline{ssize_t read(int fd, void *buf, size_t nbytes)}]
+  \begin{itemize}
+  \item Read up to \texttt{nbytes} from \texttt{fd} into the buffer \texttt{buf}.
+  \item Blocks until at least one byte is available.
+  \item Returns the number of bytes \textbf{actually} read.
+  \end{itemize}
+
 \item[\cinline{ssize_t write(int fd, void *buf, size_t nbytes)}]
 \end{description}
 
