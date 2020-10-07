@@ -116,6 +116,13 @@ A typical file system consists of two types of files:
   \end{itemize}
 \end{definition}
 
+\begin{definition}[Hard Link]\label{def:Hard_Link}
+  A \emph{hard link} is a link between \nameref{def:inode}s.
+  Thus, they each point to the same data, and must have the same name.
+  When one of the links is deleted, the total count for that inode decreases.
+  Once the inode reaches \texttt{0} hard links, it is removed (deleted) from the system.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
