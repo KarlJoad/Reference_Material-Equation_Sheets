@@ -123,6 +123,13 @@ A typical file system consists of two types of files:
   Once the inode reaches \texttt{0} hard links, it is removed (deleted) from the system.
 \end{definition}
 
+\begin{definition}[Symlink]\label{def:Symlink}\label{def:Symbolic_Link}\label{def:Soft_Link}
+  A \emph{symlink} (\emph{symbolic link}, \emph{soft link}) is a link between \nameref{def:File}s.
+  Thus, the link points to the file, which then points to the data.
+  The link is not required to have the same name as the original file.
+  However, if the file that the symlink is pointing to is deleted, then we are left with a dangling pointer.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
