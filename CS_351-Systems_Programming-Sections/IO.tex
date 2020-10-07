@@ -53,6 +53,18 @@ There are 2 major types of I/O devices on \textsc{unix} systems:
 \item \nameref{def:Character_Device}s
 \end{enumerate}
 
+\begin{definition}[Block Device]\label{def:Block_Device}
+  A \emph{block device} is an I/O device that accesses and stores data in fixed-sized blocks.
+  Typically, this also means they have fixed total size as well.
+  This means they support seeking through their contents and random access for parts of their contents.
+
+  Some typical devices classifed as this are:
+  \begin{itemize}[noitemsep]
+  \item Disk
+  \item Memory
+  \end{itemize}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
