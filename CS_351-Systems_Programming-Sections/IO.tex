@@ -185,7 +185,7 @@ These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for file
 \item[\cinline{int open(const char *path, int oflag, ...)}] Opens a \nameref{def:File}.
   \begin{itemize}
   \item Loads \nameref{def:vnode} for \nameref{def:File} at \texttt{path}
-  \item \texttt{oflag} is a bitwise OR of \texttt{O\_RDONLY}, \texttt{O\_WONLY}, \ldots{}
+  \item \texttt{oflag} is a bitwise OR of \cinline{O_RDONLY}, \cinline{O_WONLY}, \ldots{}
   \item Creates and initializes a new \nameref{def:File_Description} in the table
   \item Returns the first unused \nameref{def:File_Descriptor} available
   \item If you open the same file twice, then you get a new file descriptor (a new file description is made), but it points to the same \nameref{def:vnode}
@@ -197,7 +197,7 @@ These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for file
     \item File Access mode
     \end{itemize}
   \item Sharing this file description allows for coordinating between separate process
-  \item You can mirror this inside of a single process by using the \texttt{dup} syscall.
+  \item You can mirror this inside of a single process by using the \texttt{dup} \nameref{def:Syscall}.
   \end{itemize}
 \item[\cinline{int fstat(int fd, struct stat *buf)}] Query for file metadata
   \begin{itemize}
@@ -240,7 +240,7 @@ Each of the items in the list below are each valid reasons to have to specify th
 \item \cinline{read}
   \begin{itemize}
   \item \texttt{EOF}
-  \item Unreadablbe \texttt{fd}, for example when the disk is failing.
+  \item Unreadable \texttt{fd}, for example when the disk is failing.
   \item If the file is slow, this allows reading, a quick return to the \nameref{def:Process} ASAP and allow it to decide to read again or do something else.
   \item Interrupt, for example from a \nameref{def:Context_Switch}.
   \end{itemize}
