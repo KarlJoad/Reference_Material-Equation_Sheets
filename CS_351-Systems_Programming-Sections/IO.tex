@@ -211,6 +211,11 @@ These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for file
   \item We can use this to change the \nameref{def:File_Descriptor} in use, allowing us to write to 2 locations at once.
   \end{itemize}
 \item[\cinline{int close(int fd)}] Close this \nameref{def:File_Descriptor}.
+  \begin{itemize}
+  \item Delete the \nameref{def:File_Descriptor} and deallocate the \nameref{def:File_Description}.
+  \item Once all \nameref{def:File_Description}s of that point to this \nameref{def:vnode} are closed, the vnode is freed and the \nameref{def:File} is really closed.
+  \end{itemize}
+
 \item[\cinline{off_t lseek(int fd, off_t offset, int whence)}]
 \item[\cinline{ssize_t read(int fd, void *buf, size_t nbytes)}]
 \item[\cinline{ssize_t write(int fd, void *buf, size_t nbytes)}]
