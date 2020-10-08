@@ -17,6 +17,22 @@ This is the 3rd and final method of integration we will discuss.
   Note that \nameref{thm:Cauchys_Integral_Theorem} is actually a special case of \nameref{thm:Cauchys_Residue_Theorem}.
 \end{remark*}
 
+\begin{example}[Lecture 11, Example 7]{Use Cauchy's Residue Theorem}
+  Evaluate $\int_{\Gamma} \frac{\cos(z)}{e^{z} -1}$ where $\Gamma$ is the rectangle with vertices $\pm 5\pi \pm \pi i$?
+  \tcblower{}
+  Let $f(z) = \frac{\cos(z)}{e^{z} -1}$.
+  From \Cref{ex:Using General Residue Equation}, we know that the singularities for $f$ are located at $z = 2\pi k i$, where $k = 0, 1, 2, \ldots$.
+
+  Now, we look at the singularities \textbf{inside} the \nameref{def:Closed_Path} \nameref{def:Path} $\Gamma$.
+  The only \nameref{def:Singularity} that is inside this region is when $k=0$, so $z=0$.
+  \begin{align*}
+    \int_{\Gamma} \frac{\cos(z)}{e^{z} - 1} dz &= 2\pi i \left( \Residue{f}{z=0} \right) \\
+                                               &= {\left[ 2\pi i \bigl( \cosh(2\pi k) \bigr) \right]}_{k=0} \\
+                                               &= 2\pi i \bigl( \cosh(0) \bigr) \\
+                                               &= 2\pi i (1) \\
+                                               &= 2\pi i
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
