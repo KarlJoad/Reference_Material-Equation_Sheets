@@ -516,6 +516,54 @@ The result from above is shown for posterity below.
   \Residue{f}{z=a} = \lim\limits_{z \to a} \frac{h(z)}{k'(a)}, \: k'(a) \neq 0
 \end{equation}
 
+You want to use \Cref{eq:General_Residue} when $k(z)$ and $h(z)$ cannot be factored in any meaningful way.
+An example of this is shown in \Cref{ex:Using General Residue Equation}.
+
+\begin{example}[Lecture 11, Example 7]{Using General Residue Equation}
+  Given $f(z)$, find all singularities and their \nameref{def:Residue}s?
+  \begin{equation*}
+    f(z) = \frac{\cos(z)}{e^{z} - 1}
+  \end{equation*}
+  \tcblower{}
+  The \nameref{def:Singularity} is at $e^{z} = 1$.
+  So, we simplify for that.
+  \begin{align*}
+    e^{z} &= 1 \\
+    z &= \ln(1) \\
+          &= \log_{e} \Modulus{1} + i \arg(1) \\
+          &= \log_{e}(1) + i (2 \pi k) \\
+          &= 0 + 2\pi ki \\
+          &= 2\pi ki
+  \end{align*}
+
+  Therefore, there are singularities at $z = 2\pi k i$, where $k = 0, 1, 2, \ldots$.
+
+  If we let $g(z) = e^{z} - 1$, then $g(z)$ has \nameref{def:Zero}s at $z = 2\pi k i$, where $k = 0, 1, 2, \ldots$.
+  We can find the \nameref{thm:Multiplicity} of this zero with \Cref{algo:Multiplicity}.
+  \begin{align*}
+    g(z) &= e^{z} - 1 \\
+    g(2\pi k i) &= e^{2\pi k i} - 1 \\
+         &= \bigl( \cos(2\pi k) + i \sin(2\pi k) \bigr) - 1\\
+         &= (1 + 0i) - 1\\
+         &= 0 \\
+    g'(z) &= e^{z} \\
+    g'(2\pi k i) &= e^{2\pi k i} \\
+         &= 1
+  \end{align*}
+
+  Therefore $z = 2\pi k i$ is a \nameref{def:Simple_Zero} of $g$, and is a \nameref{def:Simple_Pole} of $f$.
+
+  To find the residue, we want to use \Cref{eq:General_Residue}, because there is no reasonable factoring to help us here.
+  \begin{align*}
+    \Residue{f}{z = 2\pi k i} &= \frac{\cos(z)}{\frac{d}{dz} \lbrace e^{z}-1 \rbrace} \\
+                              &= \frac{\cos(z)}{e^{z}} \\
+                              &= \frac{\cos(2\pi k i)}{e^{2\pi k i}} \\
+    \shortintertext{The reduction for the exponential is shown above.}
+                              &= \frac{\cosh(2\pi k)}{1} \\
+                              &= \cosh(2\pi k)
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
