@@ -343,6 +343,28 @@ Because we have only found the \nameref{thm:Multiplicity} by observation so far,
 This would be particularly useful if we cannot factor the term.
 The algorithm is illustrated by \Cref{ex:Multiplicity Algorithm}, and is codified in \Cref{algo:Multiplicity}.
 
+\begin{example}[Lecture 11, Example 3]{Multiplicity Algorithm}
+  Suppose $f$ has a zero of \nameref{thm:Multiplicity} $2$ at $z=a$.
+  This means that the function is of the general form $f(z) = {(z-a)}^{2} g(z)$, where $g(a) \neq 0$.
+
+  To confirm that the \nameref{thm:Multiplicity} is actually 2, we perform the derivation below.
+  \begin{align*}
+    \shortintertext{Start by taking the derivative of $f$.}
+    f'(z) &= 2(z-a) g(z) + {(z-a)}^{2} g'(z) \\
+    \shortintertext{Now, plug $z=a$ directly into $f'(z)$.}
+    f'(a) &= 2(a-a) g(a) + {(a-a)}^{2} g'(a) \\
+          &= 0 + 0 \\
+          &= 0 \\
+    \intertext{Because $f'(z) = 0$, we must repeat this procedure again.}
+    f''(z) &= {(z-a)}^{2} g''(z) + 2(z-a) g(z) + 2(z-a) g'(z) + 2 g(z) \\
+    \shortintertext{Plug $z=a$ into $f''(z)$.}
+    f''(a) &= {(a-a)}^{2} g''(a) + 2(a-a) g(a) + 2(a-a) g'(a) + 2 g(a) \\
+          &= 0 + 0 + 0 + 2 g(z)
+  \end{align*}
+
+  We stop at the point where $f^{(n)}(a) \neq 0$, and the value of $n$ is the \nameref{thm:Multiplicity} of the zero $z=a$.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
