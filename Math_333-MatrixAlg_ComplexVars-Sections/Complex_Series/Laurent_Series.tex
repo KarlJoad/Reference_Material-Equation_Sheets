@@ -365,6 +365,27 @@ The algorithm is illustrated by \Cref{ex:Multiplicity Algorithm}, and is codifie
   We stop at the point where $f^{(n)}(a) \neq 0$, and the value of $n$ is the \nameref{thm:Multiplicity} of the zero $z=a$.
 \end{example}
 
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+  \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+
+  \Input{An \nameref{def:Analytic} \nameref{def:Complex_Function}, $f(z)$.}
+  \Output{\nameref{thm:Multiplicity} of the zero $z=a$.}
+  \BlankLine{}
+
+  Confirm that the function $f$ is \nameref{def:Analytic}, and has a \nameref{def:Zero} at $z=a$. \;
+  $h(z) \leftarrow f(z)$ \;
+  $n \longleftarrow 0$ \;
+  \While{$h(a) = 0$}{
+    $n \leftarrow n + 1$ \;
+    $h(z) \leftarrow \dfrac{d^{n}}{{dz}^{n}} \lbrace f(z) \rbrace$ \;
+  }
+
+  \Return{$n$, as the \nameref{thm:Multiplicity} of the \nameref{def:Zero} $z=a$.}
+  \caption{Multiplicity}
+  \label{algo:Multiplicity}
+\end{algorithm}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
