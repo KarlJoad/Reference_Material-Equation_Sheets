@@ -183,6 +183,17 @@ This question is explored in \Cref{ex:Laurent Series Properties Find Function}.
   \end{equation*}
 \end{example}
 
+\Cref{ex:Laurent Series Properties Find Function} shows us something else that is will become important in \Cref{subsec:Cauchys_Residue_Theorem}.
+We can perform some algebraic manipulations to have the numerator of some \nameref{def:Analytic} \nameref{def:Complex_Function} be another analytic function.
+Take our solution from \Cref{ex:Laurent Series Properties Find Function}.
+\begin{align*}
+  f(z) &= \sum_{n=0}^{\infty} a_{n} {(z-a)}^{n} + \frac{b_{1}}{z-a} \\
+       &= \frac{(z-a) \left( \sum_{n=0}^{\infty} a_{n} {(z-a)}^{n} \right) + b_{1}}{z-a} \\
+       &= \frac{g(z)}{z-a}
+\end{align*}
+
+Thus, $g(z)$ is a sum of a power series with center $z=a$, meaning $g$ is \nameref{def:Analytic} on $\Modulus{z-a} < r$, where $g(a) = b_{1} \neq 0$.
+If $g(a) = 0$, that means there would be some $z-a$ term that could cancel another.
 
 \subsubsection{Multiple Poles}\label{subsubsec:Multiple_Poles}
 Sometimes, it is tricky to determine the number of \nameref{def:Pole}s present in an equation.
