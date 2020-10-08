@@ -495,6 +495,27 @@ Thus, $h$ has a \nameref{def:Simple_Zero} at $z=a$.
   The \nameref{def:Pole} $z=5$ has \nameref{def:Pole_Order} 3.
 \end{example}
 
+\subsubsection{Generalizing Residues}\label{subsubsec:Generalizing_Residues}
+Now that we have 2 ways to express a \nameref{def:Pole}, \Cref{eq:Pole} and \Cref{eq:General_Pole}.
+This means that we now have 2 ways to finding \nameref{def:Residue}s as well.
+
+The first way is the same as in \Cref{eq:Residue}.
+
+The second way is shown below:
+\begin{align*}
+  f(z) &= \frac{h(z)}{k(z)}, \: \text{$k$ has some simple zero} \\
+  \Residue{f}{z=a} &= \lim\limits_{z \to a} (z-a) \left( \frac{h(z)}{k(z)} \right) \\
+       &= \lim\limits_{z \to a} \frac{h(z)}{\frac{k(z)}{z-a}} \\
+       &= \lim\limits_{z \to a} \frac{h(z)}{\frac{k(z) - k(a)}{z-a}} \\
+       &= \lim\limits_{z \to a} \frac{h(z)}{k'(a)} \\
+\end{align*}
+
+The result from above is shown for posterity below.
+
+\begin{equation}\label{eq:General_Residue}
+  \Residue{f}{z=a} = \lim\limits_{z \to a} \frac{h(z)}{k'(a)}, \: k'(a) \neq 0
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
