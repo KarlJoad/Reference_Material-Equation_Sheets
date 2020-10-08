@@ -1,6 +1,18 @@
 \subsection{Cauchy's Residue Theorem}\label{subsec:Cauchys_Residue_Theorem}
 This is the 3rd and final method of integration we will discuss.
 
+\begin{theorem}[Cauchy's Residue Theorem]\label{thm:Cauchys_Residue_Theorem}
+  Let $\Omega$ be a \nameref{def:Connected}, \nameref{def:Open}, \nameref{def:Simply_Connected} region.
+  Let $\Gamma$ be a \nameref{def:Path} in $\Omega$ which is \nameref{def:Simple_Path}, \nameref{def:Closed_Path}, and counterclockwise oriented.
+  Let $f$ be \nameref{def:Analytic} on $\Omega$, except perhaps  with finitely many singularities, with no \nameref{def:Singularity} on the image of the path $\Gamma$.
+
+  Then,
+  \begin{equation}\label{eq:Cauchys_Residue_Theorem}
+    \int_{\Gamma} f(z) dz = 2\pi i \left( \sum_{k=1}^{n} \Residue{f}{z=a_{k}} \right)
+  \end{equation}
+  The integral is equal to $2\pi i \times (\text{Sum of residues at singularities inside $\Gamma$})$.
+\end{theorem}
+
 
 %%% Local Variables:
 %%% mode: latex
