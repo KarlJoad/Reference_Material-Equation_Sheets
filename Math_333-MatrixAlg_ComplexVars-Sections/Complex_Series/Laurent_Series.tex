@@ -314,6 +314,31 @@ In addition to finding the location of a \nameref{def:Zero}, we also need to fin
   The value of $n$ is the \emph{multiplicity} of the zero $z=a$.
 \end{theorem}
 
+\begin{example}[Lecture 11, Example 2]{Find Multiplicity by Observation}
+  Given the \nameref{def:Complex_Function} $f(z)$, as defined below, what are the zeros of the function and their multiplicities?
+  \begin{equation*}
+    f(z) = {(z^{2}-4)}^{3} {(z^{2} - z - 6)}^{5}
+  \end{equation*}
+  \tcblower{}
+  The first thing to check that $f$ is \nameref{def:Analytic} on some $\Omega$, where I assume $\Omega = \ComplexNumbers$.
+  $f$ is analytic, so we can move on.
+
+  For this polynomial, we can find all the zeros by factoring.
+  \begin{align*}
+    f(z) &= {(z^{2}-4)}^{3} {(z^{2} - z - 6)}^{5} \\
+         &= {(z-2) (z+2)}^{3} {(z+2) (z-3)}^{5} \\
+         &= {(z-2)}^{3} {(z+2)}^{3} {(z+2)}^{5} {(z-3)}^{5} \\
+         &= {(z-2)}^{3} {(z+2)}^{8} {(z-3)}^{5}
+  \end{align*}
+
+  Therefore, the three zeros are:
+  \begin{description}[noitemsep]
+  \item $z=2$, with \nameref{thm:Multiplicity} $3$
+  \item $z=-2$, with \nameref{thm:Multiplicity} $8$
+  \item $z=3$, with \nameref{thm:Multiplicity} $5$
+  \end{description}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
