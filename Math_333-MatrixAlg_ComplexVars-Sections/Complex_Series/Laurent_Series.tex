@@ -463,6 +463,38 @@ This is shown in \Cref{eq:General_Pole}.
 \end{equation}
 Thus, $h$ has a \nameref{def:Simple_Zero} at $z=a$.
 
+\begin{example}[Lecture 11, Example 5]{Use General Pole Equation}
+  Given the function $f(z)$, what are the \nameref{def:Zero}s of $f$? What are the singularities of $f$? Classify them?
+  \begin{equation*}
+    f(z) = \frac{{(z^{2} - 9)}^{2}}{(z^{2} - 6z + 9) {(z-5)}^{3}}
+  \end{equation*}
+  \tcblower{}
+  First, we factor $f$.
+  \begin{align*}
+    f(z) &= \frac{{(z^{2} - 9)}^{2}}{(z^{2} - 6z + 9) {(z-5)}^{3}} \\
+         &= \frac{{(z-3)}^{2} {(z+3)}^{2}}{(z-3) (z-3) {(z-5)}^{3}} \\
+         &= \frac{{(z-3)}^{2} {(z+3)}^{2}}{{(z-3)}^{2} {(z-5)}^{3}}
+  \end{align*}
+
+  Thus:
+  \begin{description}[noitemsep]
+  \item Singularities are $z=3$ and $z=5$, and must be excluded.
+  \item \nameref{def:Zero}s are $z=-3$.
+    The case of $z=3$ being a zero is excluded by the fact that $z=3$ is a singularity.
+    Thus, $z=3$ is prohibited from being a zero.
+  \end{description}
+
+  Now, performing some arithmetic reductions.
+  \begin{align*}
+    f(z) &= \frac{{(z-3)}^{2} {(z+3)}^{2}}{{(z-3)}^{2} {(z-5)}^{3}} \\
+         &= \frac{{(z+3)}^{2}}{{(z-5)}^{3}}
+  \end{align*}
+
+  Remember that our singularities are still $z=3$ and $z=5$, but $z=3$ is a \nameref{def:Removable} \nameref{def:Singularity}, and $z=5$ is a \nameref{def:Pole}.
+
+  The \nameref{def:Pole} $z=5$ has \nameref{def:Pole_Order} 3.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
