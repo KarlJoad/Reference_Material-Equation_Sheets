@@ -430,6 +430,28 @@ Sometimes, we aren't limited to using \Cref{algo:Multiplicity} to find the \name
   And again, the \nameref{thm:Multiplicity} shows up again, like it did earlier, as a factor we can observe.
 \end{example}
 
+Because the \nameref{thm:Multiplicity} of a zero shows a potential factor, we can use this to our advantage when finding another multiplicity.
+\begin{example}[Lecture 11, Example 4]{Use one Multiplicity for Another}
+  Given the functions $h(z)$ and $g(z)$, find the \nameref{thm:Multiplicity} of the \nameref{def:Zero} $z=0$?
+  \begin{align*}
+    h(z) &= {\bigl( g(z) \bigr)}^{10} \\
+    g(z) &= \sin(z) - z
+  \end{align*}
+  \tcblower{}
+  We found the \nameref{thm:Multiplicity} of $z=0$ for $g(z)$ in \Cref{ex:2 Ways to find Multiplicity}.
+  The multiplicity of $z=0$ was $3$.
+
+  Therefore, we can argue that $h(z) = {\bigl( z^{3} f(z) \bigr)}^{10}$, where $f(z)$ is some function of $z$ that we don't really care about.
+  Now, perform some simplifications:
+  \begin{align*}
+    h(z) &= {\bigl( z^{3} f(z) \bigr)}^{10} \\
+         &= {(z^{3})}^{10} {\bigl( f(z) \bigr)}^{10} \\
+         &= z^{30} {\bigl( f(z) \bigr)}^{10} \\
+  \end{align*}
+
+  Thus, the \nameref{def:Zero} $z=0$ for $h(z)$ has \nameref{thm:Multiplicity} $30$.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
