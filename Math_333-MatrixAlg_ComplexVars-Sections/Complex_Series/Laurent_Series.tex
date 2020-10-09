@@ -79,6 +79,9 @@ If \Cref{thm:Laurent_Series_Existence} is satisfied, then there are 3 cases:
   This implies that there is a \nameref{def:Pole} with an \nameref{def:Pole_Order}.
   Refer to \Cref{ex:Laurent Series Pole Singularity}.
 \item The number of non-zero $b_{n}$ is infinite.
+  This means that the \nameref{def:Principal_Part} of the \nameref{thm:Laurent_Series} is infinite.
+  This means there is an \nameref{def:Essential_Singularity} present.
+  Refer to \Cref{ex:Laurent Series Essential Singularity}.
 \end{enumerate}
 
 \begin{example}[Lecture 10, Example 3]{Laurent Series Removable Singularity}
@@ -123,7 +126,7 @@ If \Cref{thm:Laurent_Series_Existence} is satisfied, then there are 3 cases:
   The \emph{residue} of a \nameref{def:Complex_Function} is the coefficient of the first term of the \nameref{def:Principal_Part} of the \nameref{thm:Laurent_Series}.
   This means that the residue of a function $f$ with Laurent series $f(z) = \sum_{n=0}^{\infty} a_{n} {(z-a)}^{n} + \frac{b_{1}}{z-a} + \frac{b_{2}}{{(z-a)}^{2}} + \cdots$ is $b_{1}$.
 
-  However, if a function as a finite number of terms in the \nameref{def:Principal_Part} of the \nameref{thm:Laurent_Series}, then there are formulas for finding the residues, based on the \nameref{def:Pole_Order} of the \nameref{def:Pole} at the \nameref{def:Singularity} $z=a$.
+  However, if a function as a finite number of terms in the \nameref{def:Principal_Part} of the \nameref{thm:Laurent_Series}, then there are formulas for finding the residues, based on the \nameref{def:Pole_Order}, $n$, of the \nameref{def:Pole} at the \nameref{def:Singularity} $z=a$.
   \begin{equation}\label{eq:Residue}
     b_{1} = \Residue{f}{z=a} = \lim\limits_{z \to a} {(z-a)}^{n} f^{(n-1)}(z)
   \end{equation}
@@ -158,6 +161,21 @@ If \Cref{thm:Laurent_Series_Existence} is satisfied, then there are 3 cases:
 
   Lastly, the residue of $f$ is
   $b_{1}$, which in this case is $0$.
+\end{example}
+
+\begin{definition}[Essential Singularity]\label{def:Essential_Singularity}
+  An \emph{essential singularity} only occurs when the exponent of the $z$ terms of the $b_{n}$ terms are all negative and there are infinitely many terms.
+  This can be seen like so:
+  \begin{equation*}
+    \frac{b_{1}}{z-a} + \frac{b_{2}}{{(z-a)}^{2}} + \frac{b_{3}}{{(z-a)}^{3}} + \frac{b_{4}}{{(z-a)}^{4}} + \cdots
+  \end{equation*}
+\end{definition}
+
+\begin{example}[Homework 7, Problem 5]{Laurent Series Essential Singularity}
+  What category is the \nameref{def:Singularity} of $f(z) = z^{7} \sin \left( \frac{1}{z^{2}} \right)$?
+  What is its residue?
+  \tcblower{}
+
 \end{example}
 
 \subsubsection{Reverse Engineer Function from Laurent Series Properties}\label{subsubsec:Reverse_Engineer_Function_from_Laurent_Series_Properties}
