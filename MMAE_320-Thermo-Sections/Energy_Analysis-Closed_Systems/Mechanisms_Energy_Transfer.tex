@@ -38,6 +38,72 @@ The implications of \Cref{eq:Change_System_Energy} are listed below.
   Therefore, $\Change{\InternalEnergy} = \Change{\Heat} + \Change{\Work}$.
 \end{itemize}
 
+\begin{example}[Textbook Problem 5.29]{Enthalpy of Saturated Water}
+  Saturated water vapor at $\Temp = \SI{200}{\degreeCelsius}$ and is \nameref{def:Isothermal}ly condensed into a \nameref{def:Saturated_Liquid} in a piston-cylinder device.
+  Calculate the \nameref{def:Heat_Transfer} and \nameref{def:Work} done during this process in \si{\kilo\joule\per\kilo\gram}?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  A piston-cylinder means that the pressure is constant throughout the duration of a \nameref{def:Process}. \\
+  An \nameref{def:Isothermal} process is one in which the temperature is constant. \\
+  The water is moving from a \nameref{def:Saturated_Vapor} to a \nameref{def:Saturated_Liquid}. \\
+  The total energy is conserved throughout the \nameref{def:Process}
+
+  \textbf{Explore:} \\
+  From our understanding of \nameref{def:Saturated_Mixture}s, we know that we should use Table A.4 from the textbook's appendix.
+  This is both a stationary system and a \nameref{def:Closed_System}, so $\Change{\KineticEnergy} = 0$, $\Change{\PotentialEnergy} = 0$, and $\Change{\FlowEnergy} = 0$.
+  Therefore, the only terms in \Cref{eq:Change_System_Energy} we need to care about are
+  \begin{equation*}
+    \Change{\InternalEnergy} = \Change{\Heat} + \Change{\Work}
+  \end{equation*}
+
+  To simplify this further, we can assume that at the starting state, there was no \nameref{def:Heat} going in and no \nameref{def:Work} being done.
+  Therefore, $\Heat_{In} = 0$ and $\Work_{In} = 0$.
+  So, the equation above simplifes down to
+  \begin{align*}
+    \InternalEnergy_{2} - \InternalEnergy_{1} &= -\Heat_{Out} + -\Work_{Out} \\
+                                              &= -\Heat_{Out} - \Pressure(\Volume_{2} - \Volume_{1})
+  \end{align*}
+
+  The difference in \nameref{def:Internal_Energy} is actually recorded in the textbook's Table A.4 as $\InternalEnergy_{fg}$.
+
+  \textbf{Plan:} \\
+  Solve for the above equation, using Table A.4 in the textbook to find the value of the change in \nameref{def:Internal_Energy} of the system.
+
+  \textbf{Solve:} \\
+  From Table A.4, we know that at $\Temp = \SI{200}{\degreeCelsius}$, $\SaturatedPressure = \SI{1555}{\kilo\pascal}$.
+  We also know $\SaturatedFluidVol = \SI{0.001157}{\meter\cubed\per\kilo\gram}$ and $\SaturatedVaporVol = \SI{0.12721}{\meter\cubed\per\kilo\gram}$.
+  Lastly, we can also find $\SaturatedVaporSpecificIntEnergy = \SI{2594}{\kilo\joule\per\kilo\gram}$ and $\SaturatedFluidSpecificIntEnergy = \SI{850.46}{\kilo\joule\per\kilo\gram}$.
+
+  \begin{align*}
+    \Work_{Out} &= 1555 (0.001157 - 0.12621) \\
+                &= \SI{-196}{\kilo\pascal\meter\cubed\per\kilo\gram} \\
+                &= \SI{-196}{\kilo\joule\per\kilo\gram} \\
+    \SaturatedFluidSpecificIntEnergy - \SaturatedVaporIntEnergy &= 850 - 2594 \\
+                &= \SI{-1744}{\kilo\joule\per\kilo\gram} \\
+    \SaturatedFluidSpecificIntEnergy - \SaturatedVaporIntEnergy &= -\Heat_{Out} - \Work_{Out} \\
+    \SI{-1744}{\kilo\joule\per\kilo\gram} &= -\Heat_{Out} - \SI{-196}{\kilo\joule\per\kilo\gram} \\
+    \Heat_{Out} &= \SI{1940}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+
+  Thus, the vapor is cooling and condensing in the piston-cylinder, which makes sense in this case.
+
+  \textbf{Validate:} \\
+  We can validate this by performing the same calculations using the change in \nameref{def:Specific_Enthalpy} instead.
+  \begin{align*}
+    \Change{\SpecificEnthalpy} &= -\Heat_{Out} \\
+    \SaturatedFluidSpecificEnthalpy - \SaturatedVaporSpecificEnthalpy &= -\Heat_{Out} \\
+    \intertext{The change in specific enthalpy can be found in Table A.4 again.}
+    (852.3 - 2792) \si{\kilo\joule\per\kilo\gram} &= -\Heat_{Out} \\
+    \Heat_{Out} &= \SI{1939.7}{\kilo\joule\per\kilo\gram} \\
+    \shortintertext{Now, taking significant figures.}
+    \Heat_{Out} &= \SI{1940}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+
+  \textbf{Generalize:} \\
+  Any time the system is changing states, we can use \nameref{def:Enthalpy} and/or \nameref{def:Specific_Enthalpy}.
+  This helps us avoid these longer calculations using all the other forms of \nameref{def:Energy} in the \nameref{def:System}.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
