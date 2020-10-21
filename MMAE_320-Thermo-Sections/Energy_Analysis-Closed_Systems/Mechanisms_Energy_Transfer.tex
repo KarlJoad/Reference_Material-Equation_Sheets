@@ -104,6 +104,91 @@ The implications of \Cref{eq:Change_System_Energy} are listed below.
   This helps us avoid these longer calculations using all the other forms of \nameref{def:Energy} in the \nameref{def:System}.
 \end{example}
 
+\begin{example}[Textbook Problem 5.34]{Case when Enthalpy Cannot be Used}
+  Rigid $\Volume = \SI{1}{\feet\cubed}$ vessel that contains R-134a.
+  The refrigerant is at $\Temp_{1} = \SI{-20}{\degreeF}$ with \nameref{def:Quality} $\SI{27.7}{\percent}$.
+  It is heated until it reaches $\Temp_{2} = \SI{100}{\degreeF}$.
+  Calculate the \nameref{def:Heat_Transfer} required to do this?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  Because we are told the \nameref{def:Quality}, we know this is a \nameref{def:Saturated_Mixture}. \\
+  This is a rigid vessel, so the volume is constant, implying this is both a stationary and closed system. \\
+  Because $\Heat$ is an \nameref{def:Energy}, not \nameref{def:Specific_Energy}, we need to keep it as an \nameref{def:Extensive_Property}.
+  Using all of these facts, $\Change{\InternalEnergy} = \Change{\Heat} + \Change{\Work}$.
+
+  \textbf{Explore:} \\
+  We can start by looking at the various components of the equation above.
+  There is no cooling going on in this system, so $\Heat_{Out} = 0$.
+  There is no work being done on the refrigerant, so both $\Work_{In} = 0$ and $\Work_{Out} = 0$.
+  Therefore, $\Change{\InternalEnergy} = \Heat_{In}$, which makes sense, as we were told we were only heating the refrigerant.
+  Lastly, because the refrigerant starts as a \nameref{def:Saturated_Mixture}, we need to use:
+  \begin{align*}
+    \SpecificVolume_{x} &= \SaturatedFluidVol + \Quality (\SaturatedVaporVol - \SaturatedFluidVol) \\
+    \SpecificInternalEnergy_{x} &= \SaturatedFluidIntEnergy + \Quality (\SaturatedVaporIntEnergy - \SaturatedFluidIntEnergy)
+  \end{align*}
+
+  \textbf{Plan:} \\
+  Solve $\Change{\SpecificInternalEnergy} = \Heat_{In}$ by finding the \nameref{def:Internal_Energy} values in the English appendix table for R-134a.
+
+  \textbf{Solve:} \\
+  When $\Temp = \SI{-20}{\degreeF}$, $\SaturatedPressure = \SI{12.9}{\psia}$.
+  In addition, the \nameref{def:Quality} is $\Quality = 0.227$.
+  Because this is in a rigid vessel, the volume is constant, which also means the \nameref{def:Specific_Volume} is constant.
+  \begin{align*}
+    \SpecificVolume_{x} &= \SaturatedFluidVol + \Quality (\SaturatedVaporVol - \SaturatedFluidVol) \\
+    \intertext{Grabbing $\SaturatedFluidVol$ and $\SaturatedVaporVol$ from the Table in the textbook's appendix.}
+                        &= 0.01156 + 0.277 (3.4424 - 0.01156) \\
+                        &= \SI{0.961843}{\feet\cubed\per\lbm}
+  \end{align*}
+
+  Now we focus on finding the \nameref{def:Internal_Energy} of the \nameref{def:Saturated_Mixture} at the given \nameref{def:Quality}.
+  \begin{align*}
+    \SpecificInternalEnergy_{x} &= \SaturatedFluidSpecificIntEnergy + \Quality (\SaturatedVaporSpecificIntEnergy - \SaturatedFluidSpecificIntEnergy) \\
+                        &= 6.014 + 0.277 (91.90 - 6.014) \\
+                        &= \SI{29.8044}{\btu\per\lbm}
+  \end{align*}
+
+  Now, we focus on the end state.
+  Keep in mind that the \nameref{def:Specific_Volume} is constant.
+  Looking in the \nameref{def:Saturated_Mixture} tables for this temperature shows us the refrigerant is actually a \nameref{def:Superheated_Vapor} now.
+  When looking at Table A.13E, we notice that the \nameref{def:Specific_Volume} does not have a single entry in the table.
+  So, we must interpolate instead.
+  \begin{align*}
+    y &= y_{0} + (x_{1} - x) \frac{y_{1} - y_{0}}{x_{1} - x_{0}} \\
+    \shortintertext{Interpolate the \nameref{def:Pressure}.}
+    \Pressure &= \Pressure_{0} + (\SpecificVolume - \SpecificVolume_{1}) \frac{\Pressure_{1} - \Pressure_{0}}{\SpecificVolume_{1} - \SpecificVolume_{0}} \\
+      &= \SI{50}{\psia} + (0.961843 - .9072) \frac{60 - 50}{1.1043 - 0.9072} \\
+      &= \SI{52.7}{\psia} \\
+    \shortintertext{Now, interpolating the \nameref{def:Internal_Energy}.}
+    \SpecificInternalEnergy_{2} &= \SpecificInternalEnergy_{1} + (\SpecificVolume - \SpecificVolume_{1}) \frac{\SpecificInternalEnergy_{1} - \SpecificInternalEnergy_{0}}{\SpecificVolume_{1} - \SpecificVolume_{0}} \\
+      &= \SI{111.16}{\btu\per\lbm} + (0.961843 - 0.9072) \frac{111.17 - 111.56}{0.90762 - 1.1043} \\
+      &= \SI{111.3}{\btu\per\lbm}
+  \end{align*}
+
+  Now that we have the beginning and end values of the pressure and internal energy, we can calculate the change in internal energy.
+  \begin{align*}
+    \Change{\SpecificInternalEnergy} &= \SpecificInternalEnergy_{1} - \SpecificInternalEnergy_{x} \\
+                             &= 111.3 - 29.8044 \\
+                             &= \SI{81.49}{\btu\per\lbm}
+  \end{align*}
+
+  However, because the change we actually got was the change in specific \nameref{def:Internal_Energy}, we must multiply it by the mass of the refrigerant in the system.
+  We know the \nameref{def:Specific_Volume} and the volume of the vessel, so we can find the mass.
+  \begin{align*}
+    \SpecificVolume &= \frac{\Volume}{\Mass} \\
+    \Mass &= \frac{\Volume}{\SpecificVolume} \\
+                    &= \frac{1}{0.961843} \\
+    &= \SI{1.03967}{\lbm}
+  \end{align*}
+
+  Now, multiplying $\Change{\SpecificInternalEnergy}$ with the mass, we get
+  \begin{align*}
+    \InternalEnergy &= \Mass \SpecificInternalEnergy \\
+                    &= 1.03967 \times 81.49 \\
+                    &= 84.7228 \\
+                    &= \SI{84.73}{\btu}
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
