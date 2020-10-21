@@ -24,6 +24,23 @@ This leads to \Cref{eq:Moving_Boundary_Work}
 \item[Pressure is Constant] $\Work = \Pressure (\Volume_{2} - \Volume_{1})$
 \end{description}
 
+Now, we may be interested in the total energy required to change or create a system.
+This is \nameref{def:Enthalpy}.
+For example, \nameref{def:Enthalpy_Vaporization} is the amount of energy required to convert a system from a \nameref{def:Saturated_Liquid} to a \nameref{def:Saturated_Vapor}.
+
+\begin{definition}[Enthalpy]\label{def:Enthalpy}
+  Another way to think of this, is \emph{enthalpy} is the \nameref{def:Energy} required to create a new \nameref{def:System}.
+  This can only be done if the current system performs work on its boundary, i.e.\ moves the boundary.
+
+  Enthalpy is typically the total \nameref{def:Heat} content of a \nameref{def:System}.
+  It is equal to the \nameref{def:Internal_Energy} of the system plus the product of \nameref{def:Pressure} and volume.
+  \begin{equation}\label{eq:Enthalpy}
+    \Enthalpy = \InternalEnergy + \Pressure \Volume \:\: \si{\joule}
+  \end{equation}
+\end{definition}
+
+However, \nameref{def:Enthalpy} is an \nameref{def:Extensive_Property}, but we would prefer to work with an \nameref{def:Intensive_Property}.
+Thus, we more frequently use \nameref{def:Specific_Enthalpy}.
 
 \begin{definition}[Specific Enthalpy]\label{def:Specific_Enthalpy}
   \emph{Specific enthalpy} is also commonly referred to as just \emph{enthalpy}, as context makes clear which one is being discussed.
@@ -34,13 +51,6 @@ This leads to \Cref{eq:Moving_Boundary_Work}
   \end{equation}
 \end{definition}
 
-\begin{definition}[Enthalpy]\label{def:Enthalpy}
-  \emph{Enthalpy} is the total \nameref{def:Heat} content of a \nameref{def:System}.
-  It is equal to the \nameref{def:Internal_Energy} of the system plus the product of \nameref{def:Pressure} and volume.
-  \begin{equation}\label{eq:Enthalpy}
-    \Enthalpy = \InternalEnergy + \Pressure \Volume \:\: \si{\joule}
-  \end{equation}
-\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
