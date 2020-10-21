@@ -92,11 +92,11 @@ We are always interested in the change in energy that occurs due to something.
 This is seen as \Cref{eq:Change_Total_Energy}.
 
 \begin{equation}\label{eq:Change_Total_Energy}
-  \begin{aligned}
-    \Change{\TotalEnergy} &= \Change{\InternalEnergy} + \Change{\KineticEnergy} + \Change{\PotentialEnergy} + \Change{\FlowEnergy} \\
-    &= \frac{\InternalEnergy_{2} - \InternalEnergy_{1}}{\Mass} + \frac{v_{2}^{2} - v_{1}^{2}}{2} + \Gravity (h_{2} - h_{1}) + \frac{\Pressure_{2} - \Pressure_{1}}{\Density} \\
-  \end{aligned}
+    \Change{\TotalEnergy} = \Change{\InternalEnergy} + \Change{\KineticEnergy} + \Change{\PotentialEnergy} + \Change{\FlowEnergy}
 \end{equation}
+
+But, we are typically more interested in dealing with \Cref{eq:Change_Total_Energy} using intensive properties of the system, so we can reduce with that, which produces the change in total \nameref{def:Specific_Energy}.
+
 \begin{itemize}[noitemsep]
 \item The internal energy cannot be completely converted into work.
 \item Mechanical energy is typically defined to be these types of energies.
@@ -118,6 +118,10 @@ We are also interested in the \nameref{def:Specific_Energy} of the system.
       &= \frac{\InternalEnergy}{\Mass} + \frac{1}{2} v^{2} + \Gravity h + \frac{\Pressure \Volume}{\Mass} \\
       &= \frac{\InternalEnergy}{\Mass} + \frac{1}{2} v^{2} + \Gravity h + \frac{\Pressure}{\Density} \\
     \end{aligned}
+  \end{equation}
+
+  \begin{equation}\label{eq:Change_Specific_Energy}
+    \Change{\SpecificEnergy} = \frac{\InternalEnergy_{2} - \InternalEnergy_{1}}{\Mass} + \frac{v_{2}^{2} - v_{1}^{2}}{2} + \Gravity (h_{2} - h_{1}) + \frac{\Pressure_{2} - \Pressure_{1}}{\Density}
   \end{equation}
 \end{definition}
 
