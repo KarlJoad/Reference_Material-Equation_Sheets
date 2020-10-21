@@ -44,6 +44,18 @@ The equation above is approximately linear for smaller changes in both temperatu
   \Change{\InternalEnergy} = \SpecificHeat_{V} \Mass \Change{\Temp}
 \end{equation}
 
+\subsubsection{Constant Pressure}\label{subsubsec:Specific_Heat_Constant_Pressure}
+If the material in question has a \nameref{def:Specific_Heat} and undergoes a process at constant pressure, then:
+\begin{equation*}
+  \SpecificHeatPressure \equiv {\left[ \frac{\partial \Enthalpy}{\partial \Temp} \right]}_{\Pressure}
+\end{equation*}
+
+The equation above is approximately linear for smaller changes in both temperature and volume, which yields \Cref{eq:Change_Internal_Energy_Specific_Heat_Constant_Pressure}
+
+\begin{equation}\label{eq:Change_Internal_Energy_Specific_Heat_Constant_Pressure}
+  \Change{\Enthalpy} = \SpecificHeatPressure \Mass \Change{\Temp}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
