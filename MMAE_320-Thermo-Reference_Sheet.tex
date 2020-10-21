@@ -21,6 +21,8 @@
 \sisetup{per-mode=symbol}
 
 % Special Characters with Meaning
+\newcommand{\Area}{A}
+\newcommand{\Distance}{d}
 \newcommand{\Density}{\ensuremath{\rho}}
 \newcommand{\Pressure}{\ensuremath{P}}
 \newcommand{\Temp}{\ensuremath{T}}
@@ -36,6 +38,9 @@
 \newcommand{\InternalEnergy}{\ensuremath{U}}
 \newcommand{\SpecificInternalEnergy}{\ensuremath{u}}
 \newcommand{\Heat}{\ensuremath{Q}}
+\newcommand{\SpecificHeat}{\ensuremath{C}}
+\newcommand{\SpecificHeatVolume}{\ensuremath{C_{\Volume}}}
+\newcommand{\SpecificHeatPressure}{\ensuremath{C_{\Pressure}}}
 \newcommand{\KineticEnergy}{\ensuremath{\mathrm{KE}}}
 \newcommand{\PotentialEnergy}{\ensuremath{\mathrm{PE}}}
 \newcommand{\FlowEnergy}{\ensuremath{\mathrm{FE}}}
@@ -60,8 +65,23 @@
 \newcommand{\SaturatedTemp}{\ensuremath{\Temp_{\mathrm{sat}}}}
 \newcommand{\Quality}{\ensuremath{x}}
 
+% Saturated Mixture (Specific) Internal Energies
+\newcommand{\SaturatedFluidIntEnergy}{\ensuremath{\InternalEnergy_{f}}}
+\newcommand{\SaturatedVaporIntEnergy}{\ensuremath{\InternalEnergy_{g}}}
+\newcommand{\SaturatedFluidVaporIntEnergy}{\ensuremath{\InternalEnergy_{fg}}}
+\newcommand{\SaturatedFluidSpecificIntEnergy}{\ensuremath{\SpecificInternalEnergy_{f}}}
+\newcommand{\SaturatedVaporSpecificIntEnergy}{\ensuremath{\SpecificInternalEnergy_{g}}}
+\newcommand{\SaturatedFluidVaporSpecificIntEnergy}{\ensuremath{\SpecificInternalEnergy_{fg}}}
+
 \newcommand{\Enthalpy}{\ensuremath{H}}
 \newcommand{\SpecificEnthalpy}{\ensuremath{h}}
+% Specific Mixture (Specific) Enthalpy
+\newcommand{\SaturatedFluidEnthalpy}{\ensuremath{\Enthalpy_{f}}}
+\newcommand{\SaturatedVaporEnthalpy}{\ensuremath{\Enthalpy_{g}}}
+\newcommand{\SaturatedFluidVaporEnthalpy}{\ensuremath{\Enthalpy_{fg}}}
+\newcommand{\SaturatedFluidSpecificEnthalpy}{\ensuremath{\SpecificEnthalpy_{f}}}
+\newcommand{\SaturatedVaporSpecificEnthalpy}{\ensuremath{\SpecificEnthalpy_{g}}}
+\newcommand{\SaturatedFluidVaporSpecificEnthalpy}{\ensuremath{\SpecificEnthalpy_{fg}}}
 
 \begin{titlepage}
   \title{MMAE 320: Thermofluid Dynamics --- Reference Material \\ Illinois Institute of Technology}
