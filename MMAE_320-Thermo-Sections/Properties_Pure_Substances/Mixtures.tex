@@ -56,6 +56,18 @@ Now, \Cref{eq:Single_Phase_Total_Volume} only finds the volume for a single phas
   \SpecificVolume \Mass_{Total} = \Mass_{Liquid} \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol
 \end{equation}
 
+If using \nameref{def:Mixture}s, we can define \nameref{def:Specific_Enthalpy} using \Cref{eq:Mixture_Specific_Enthalpy}.
+\begin{equation}\label{eq:Mixture_Specific_Enthalpy}
+  \SpecificEnthalpy = \SpecificEnthalpy_{Liquid} + \Quality \SpecificEnthalpy_{Gas-Liquid}
+\end{equation}
+where $\SpecificEnthalpy_{Gas-Liquid} = \SpecificEnthalpy_{Gas} - \SpecificEnthalpy_{Liquid}$
+
+If using \nameref{def:Mixture}s, we can define \nameref{def:Specific_Energy} using \Cref{eq:Mixture_Internal_Energy}.
+\begin{equation}\label{eq:Mixture_Internal_Energy}
+  \SpecificInternalEnergy = \SpecificInternalEnergy_{Liquid} + \Quality \SpecificInternalEnergy_{Gas-Liquid}
+\end{equation}
+where $\SpecificInternalEnergy_{Gas-Liquid} = \SpecificInternalEnergy_{Gas} - \SpecificInternalEnergy_{Liquid}$
+
 In fact, \Cref{eq:Total_Volume} can be re-expressed using \nameref{def:Quality}, which gives us \Cref{eq:Specific_Volume_Using_Quality}.
 \begin{align*}
   \SpecificVolume \Mass_{Total} &= \Mass_{Liquid} \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \\
