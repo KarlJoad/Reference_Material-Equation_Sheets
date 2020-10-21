@@ -32,6 +32,18 @@ Both of these cases are \textbf{NOT} the same, meaning $\SpecificHeatVolume \neq
   \SpecificHeatPressure = \SpecificHeatVolume + \GasConstant
 \end{equation}
 
+\subsubsection{Constant Volume}\label{subsubsec:Specific_Heat_Constant_Volume}
+If the material in question has a \nameref{def:Specific_Heat} and undergoes a process at constant volume, then:
+\begin{equation*}
+  \SpecificHeatVolume \equiv {\left[ \frac{\partial \InternalEnergy}{\partial \Temp} \right]}_{\Volume}
+\end{equation*}
+
+The equation above is approximately linear for smaller changes in both temperature and volume, which yields \Cref{eq:Change_Internal_Energy_Specific_Heat_Constant_Volume}
+
+\begin{equation}\label{eq:Change_Internal_Energy_Specific_Heat_Constant_Volume}
+  \Change{\InternalEnergy} = \SpecificHeat_{V} \Mass \Change{\Temp}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
