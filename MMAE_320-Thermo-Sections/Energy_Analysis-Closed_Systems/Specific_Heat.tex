@@ -56,6 +56,91 @@ The equation above is approximately linear for smaller changes in both temperatu
   \Change{\Enthalpy} = \SpecificHeatPressure \Mass \Change{\Temp}
 \end{equation}
 
+\begin{example}[Textbook Problem 5.79]{Energy Required by Heater}
+  A mass of $\Mass = \SI{15}{\kilo\gram}$ of air in a piston-cylinder device is heated from $\Temp_{1} = \SI{25}{\degreeCelsius}$ to $\Temp_{2} = \SI{77}{\degreeCelsius}$ by passing electric current through a resistance heater inside the cylinder.
+  The \nameref{def:Pressure} inside the cylinder is held constant at $\Pressure = \SI{300}{\kilo\pascal}$ throughout the \nameref{def:Process}.
+  The \nameref{def:Heat} loss in the cylidner is $\Heat = \SI{60}{\kilo\joule}$.
+  Determine the electric energy required by the electric heater in \si{\kilo\watt\hour}?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  Because this is a piston-cylinder, the \nameref{def:Pressure} is constant. \\
+  This has no limitation on the volume of the air inside the piston-cylinder.
+  Because the heating is greater than the heat loss, the air will expand. \\
+  This is a \nameref{def:Closed_System}, so there is a heat transfer and it is possible to do work. \\
+  The electric output of the heater is measured in \si{\kilo\watt\hour}, which is power multiplied by time.
+  Thus, $\SI{1}{\kilo\watt\hour} = \SI{3600}{\kilo\joule}$. \\
+  The energy balance for this problem is summarized by $\Change{\InternalEnergy} = \Change{\Heat} + \Change{\Work}$. \\
+  \nameref{def:Enthalpy} exists in a system only when a new \nameref{def:System} is being created.
+  There was work done by the air as it expanded on the piston, and it moved the air outside of the piston too, so we can use \nameref{def:Enthalpy} here.
+
+  \textbf{Explore:} \\
+  We start by looking at $\Change{\Heat}$.
+  Because there is no heat going into the system from the surroundings, $\Heat_{In} = 0$.
+  However, because the system is losing heat to the surroundings, $\Heat_{Out} = \SI{60}{\kilo\joule}$.
+
+  Now, looking at $\Change{\Work}$.
+  The electric heater is doing work on the air, by heating it up, $\Work_{In}$ is equal to the work done by the electric heater.
+  Then, because the air is expanding, it is also performing work on the piston-cylinder to move the piston.
+  Thus, we determine this is flow energy, where the pressure is constant, so $\Work_{Out} = \Pressure \Volume$.
+
+  Lastly, because we are dealing with a system that \emph{is} changing, we can use \nameref{def:Enthalpy} instead.
+  In $\Change{\Enthalpy} = -\Heat_{Out} + \Work_{In}$, the $\Work_{Out}$ is actually implicitly added to the $\Change{\Enthalpy}$ side, so it doesn't need to be recorded twice.
+  This is because $\Enthalpy = \InternalEnergy + \Pressure \Volume$, from \Cref{eq:Enthalpy}.
+
+  \begin{align*}
+    \Change{\InternalEnergy} &= -\Heat_{Out} + \Work_{In} - \Work_{Out} \\
+                             &= -\Heat_{Out} + \Work_{In} - \Pressure \Change{\Volume} \\
+    \Change{\InternalEnergy} + \Pressure \Change{\Volume} &= -\Heat_{Out} + \Work_{In} \\
+    \Change{\Enthalpy} &= -\Heat_{Out} + \Work_{In} \\
+  \end{align*}
+
+  \textbf{Plan:} \\
+  Solve $\Change{\Enthalpy} = -\Heat_{Out} + \Work_{In}$. \\
+  Find the states from tables in the back of the textbook, namely Table A.21.
+  We need to keep in mine that the tables will have the \nameref{def:Specific_Enthalpy}, so we must change it into just \nameref{def:Enthalpy} with $\Enthalpy = \Mass \SpecificEnthalpy$.
+
+  \textbf{Solve:} \\
+  From Table A.21 in the textbook: at $\Temp_{1} = \SI{25}{\degreeCelsius}$, $\SpecificEnthalpy_{1} = \SI{298.18}{\kilo\joule\per\kilo\gram}$.
+  Likewise, at $\Temp_{2} = \SI{77}{\degreeCelsius}$, $\SpecificEnthalpy_{2} = \SI{350.5}{\kilo\joule\per\kilo\gram}$.
+
+  Now that we have every term in our equation to use for solving, we solve it.
+  \begin{align*}
+    \Change{\Enthalpy} &= -\Heat_{Out} + \Work_{In} \\
+    \Mass \Change{\SpecificEnthalpy} &= -60 + \Work_{In} \\
+    \Mass (\SpecificEnthalpy_{2} - \SpecificEnthalpy_{1}) + 60 &= \Work_{In} \\
+    \Work_{In} &= 15 (350.5 - 298.18) + 60 \\
+                       &= \SI{844.8}{\kilo\joule}
+  \end{align*}
+
+  Now, we have to divide by $\SI{1}{\kilo\watt\hour} = \SI{3600}{\kilo\joule}$.
+  \begin{align*}
+    \Work_{In} &= \SI{844.8}{\kilo\joule} \\
+               &= \frac{844.8}{3600} \\
+               &= \SI{0.235}{\kilo\watt\hour}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  We could do this with \nameref{def:Specific_Heat} as well.
+  \begin{align*}
+    \Change{\InternalEnergy} &= \SpecificHeatVolume \Mass \Change{\Temp} \\
+    \Change{\Enthalpy} &= \SpecificHeatPressure \Mass \Change{\Temp}
+  \end{align*}
+
+  But, because this \nameref{def:Process} was done under constant \nameref{def:Pressure}, we need to use the second one.
+  $\SpecificHeatPressure = \SI{1.0065}{\kilo\joule\per\kilo\gram\kelvin}$ is taken from Table A.2, and was averaged over the $\SpecificHeatPressure$ values for the range $\SI{0}{\degreeCelsius}$ and $\SI{100}{\degreeCelsius}$.
+  Because of the way $\SpecificHeatPressure$ is defined, we must convert our temperatures into Kelvin too, which is simple.
+  Once done, we can solve this equation.
+  \begin{align*}
+    \Change{\Enthalpy} &= \SpecificHeatPressure \Mass \Change{\Temp} \\
+                       &= 1.0065 (\SI{15}{\kilo\gram}) (350 - 298) \si{\kelvin} \\
+                       &= \SI{785.07}{\kilo\joule}
+  \end{align*}
+
+  Now, if we account for the $\SI{60}{\kilo\joule}$ of heat loss, then $785.07 + 60 = \SI{845.07}{\kilo\joule}$, which is about the same.
+
+  \textbf{Generalize:} \\
+  We can use the state of the \nameref{def:System} and the energy balance equation or the \nameref{def:Specific_Heat} to find the total \nameref{def:Energy} of the system.
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
