@@ -4,6 +4,70 @@ In general, because there is little that the substance \textit{can} do, because 
   \SpecificHeatPressure = \SpecificHeatVolume
 \end{equation*}
 
+\begin{example}[Textbook Problem 5.66]{Using Specific Heat}
+  A $\SI{4}{\meter} \times \SI{5}{\meter} \times \SI{6}{\meter}$ room is to be heated by a baseboard resistance heater.
+  This heater must raise the temperature from \SI{7}{\degreeCelsius} to \SI{23}{\degreeCelsius} within 15 minutes.
+  Assuming no heat losses in the room, and an absolute pressure of $\Pressure = \SI{100}{\kilo\pascal}$ determine the required power of the resistance heater assuming a constant \nameref{def:Specific_Heat} at room temperature?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  Room has air at roughly \SI{1}{\atm}. \\
+  This is ideally a \nameref{def:Closed_System}, but if the room is leaky, then it is an \nameref{def:Open_System}. \\
+  Air can be treated as an ideal gas. \\
+  The resistance heater is inside the room and no mention is made of temperature outside the room, meaning there is no heat gain nor is there any heat loss.
+
+  \textbf{Explore:} \\
+  We could use different \nameref{def:Specific_Heat}s depending on the system types.
+  However, we can assume that the problem meant this system to be a \nameref{def:Closed_System}.
+  This implies a constant volume, so $\SpecificHeatVolume$ should be used.
+  We need Table A.2 in the textbook's appendix.
+  Under the implication of constant volume, for air, $\SpecificHeatVolume = \SI{0.718}{\kilo\joule\per\kilo\gram\kelvin}$.
+  However, for air under constant pressure, an \nameref{def:Open_System}, $\SpecificHeatPressure = \SI{1.005}{\kilo\joule\per\kilo\gram\kelvin}$.
+
+  Now, as a discussion of the energy balance of this system, we use the equation below.
+  \begin{equation*}
+    \Change{\InternalEnergy} = \Change{\Heat} + \Change{\Work}
+  \end{equation*}
+
+  We were tole that $\Change{\Heat} = 0$ because there is no heat loss in the room, and likewise, there are no heat gains.
+  Therefore,
+  \begin{equation*}
+    \Change{\InternalEnergy} = \Work_{In} - \Work_{Out}
+  \end{equation*}
+
+  If the room were leaky, and this were an \nameref{def:Open_System}, then $\Work_{Out} \neq 0$.
+  We know that $\Work_{In}$ is the work done on the room due to the heater.
+
+  In addition, we know that we can calculate the change in \nameref{def:Internal_Energy} by using the \nameref{def:Specific_Heat}.
+  \begin{align*}
+    \Change{\InternalEnergy} &= \SpecificHeatVolume \Mass \Change{\Temp} \\
+    &= \FlowRate{\Work} \Change{\Time}
+  \end{align*}
+
+  \textbf{Plan:} \\
+  Find all the mass in the system.
+  Use $\SpecificHeatVolume$ to solve for this.
+
+  \textbf{Solve:} \\
+  Start by finding the mass of the air in the room.
+  \begin{align*}
+    \Mass &= \frac{\Pressure \Volume}{\GasConstant \Temp} \\
+    &= \SI{149}{\kilo\gram}
+  \end{align*}
+
+  Now, move onto finding the change in \nameref{def:Internal_Energy}.
+  \begin{align*}
+    \Change{\InternalEnergy} &= \SpecificHeatVolume \Mass \Change{\Temp} \\
+                             &= 0.718 (149) (23 - 7) \\
+                             &= \SI{1711}{\kilo\joule}
+  \end{align*}
+
+  Now plug that into our equation about the work done multiplied by the time.
+  \begin{align*}
+    \Change{\InternalEnergy} &= \FlowRate{\Work} \Change{\Time} \\
+    \SI{1711}{\kilo\joule} &= \FlowRate{\Work} \left( \SI{15}{\minute} \frac{\SI{60}{\second}}{\SI{1}{\minute}} \right) \\
+    \FlowRate{\Work} &= \SI{1.9}{\kilo\watt}
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
