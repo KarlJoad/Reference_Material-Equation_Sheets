@@ -315,6 +315,18 @@ It handles the:
 \item Pointer to the next byte
 \end{enumerate}
 
+\subsubsection{Easing Your Life}\label{subsubsec:Easing_Your_Life}
+While \texttt{open} and \texttt{read} are the lowest level of I/O \nameref{def:Syscall}, and are available to you, they are also somewhat hard to work with.
+So, there are a variety of syscalls that wrap \texttt{open} for you, performing many of the actions we discussed earlier.
+Some examples are:
+\begin{itemize}[noitemsep]
+\item \texttt{fclose}
+\item \texttt{fflush}
+\item \texttt{fgets}
+\end{itemize}
+
+All of these examples are from the system-library (which is really from \texttt{glibc}) \texttt{stdio.h}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../CS_351-Systems_Programming-Reference_Sheet"
