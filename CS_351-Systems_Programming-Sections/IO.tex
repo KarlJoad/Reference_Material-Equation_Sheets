@@ -269,6 +269,23 @@ How it works:
 \item If the user asks for the next part, which is in the extra part, the read returns immediately.
 \end{enumerate}
 
+\subsubsection{Benefits}\label{subsubsec:Buffering_Benefits}
+Your computer has many levels of buffers.
+\begin{itemize}[noitemsep]
+\item User-level buffers
+\item Kernel-level buffers
+\item There are also lower-level buffers/caches. They are present in:
+  \begin{itemize}[noitemsep]
+  \item The CPU
+  \item The storage controller
+  \item The disk itself
+  \end{itemize}
+\end{itemize}
+
+By having many levels of buffers, we can create the illusion of great speeds, depending on the workload.
+This way, we can operate on a buffer in-memory, rather than having to go to disk constantly.
+That also has the added benefit of avoiding extra \nameref{def:Syscall}s.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../CS_351-Systems_Programming-Reference_Sheet"
