@@ -137,6 +137,18 @@ File \nameref{def:Lock}s control concurrent access/modification of shared files.
 \end{definition}
 
 \subsubsection{Sockets}\label{subsubsec:Sockets}
+\nameref{def:Socket}s are mainly used for network communication.
+However, they can be used on the local computer too.
+
+\begin{definition}[Socket]\label{def:Socket}
+  A \texttt{socket} is a way of connecting two nodes on a network or \nameref{def:Process}es to communicate with each other.
+  One socket listens, while another socket reaches out to the other to form a connection.
+
+  Network sockets have a high overhead due to the software-defined network stacks.
+\end{definition}
+
+Almost all modern computers use this today, except for High Performance Computing, which uses their own hardware solutions to reduce latency.
+
 
 %%% Local Variables:
 %%% mode: latex
