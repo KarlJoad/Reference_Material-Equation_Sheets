@@ -1,4 +1,26 @@
 \subsection{Echelon Form}\label{subsec:Echelon_Form}
+\begin{theorem}[Echelon Form]\label{thm:Echelon_Form}
+  A \nameref{def:Matrix} $A =
+  \begin{bmatrix}
+    r_{1} \\
+    r_{2} \\
+    \vdots \\
+    r_{n}
+  \end{bmatrix}
+  $ is said to be in \emph{Echelon form} if the first non-zero element of the $i$th row, $r_{i}$ where $i \geq 2$ appears on a column that is to the right from which the first non-zero element of the $r_{i-1}$ appears.
+
+  Some examples of this are:
+  \begin{equation*}
+    \begin{bmatrix}
+      0 & 1 & 2 & 3 & 4 & 5 \\
+      0 & 0 & 5 & 6 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 7 & 0 \\
+      0 & 0 & 0 & 0 & 0 & 1 \\
+      0 & 0 & 0 & 0 & 0 & 0 \\
+    \end{bmatrix}
+  \end{equation*}
+\end{theorem}
+
 
 %%% Local Variables:
 %%% mode: latex
