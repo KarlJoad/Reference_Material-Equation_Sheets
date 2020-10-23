@@ -42,6 +42,13 @@ They are of the forms:
 \item $\int_{-\infty}^{\infty} \frac{p(x)}{q(x)} \, dx$
 \end{enumerate}
 
+\paragraph{Sinusoids}\label{par:Sinusoids_Cauchys_Residue_Theorem}
+To integrate sinusoids, regardless of form, we need to convert the real-valued function $f(\theta)$ to a complex function $f(z)$ on the unit circle, in the counterclockwise direction.
+
+To do this, we can describe a function that creates the unit circle like so, $z(\theta) = 1 \bigl( \cos(\theta) + i \sin(\theta) \bigr)$.
+In addition, if we define the inverse of $z(\theta)$ as $z^{-1}(\theta) = 1 \bigl( \cos(\theta) + i \sin(\theta) \bigr)$, then we can just add these to yield an equation for $\cos(\theta)$ and subtract them for $\sin(\theta)$.
+Eventually, we can generalize these down to the equations in \Cref{eq:Real_to_Imaginary_Sinusoids}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
