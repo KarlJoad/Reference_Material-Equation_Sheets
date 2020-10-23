@@ -231,21 +231,21 @@ These \nameref{def:Syscall}s are the lowest-level I/O calls we can make for file
   \end{itemize}
 \end{description}
 
-\subsubsection{Why up to \texttt{nbytes}?}
+\subsubsection{Why up to \texttt{nbytes}?}\label{subsubsec:Why_up_to_nbytes}
 The \texttt{nbytes} parameters in \cinline{read} and \cinline{write} are necessary because the kernel attempts to maximize performance and minimize throughput.
 By knowing these terms, it makes it easier to schedule disk reads and writes, and allows for more efficient kernel buffering.
 
 Each of the items in the list below are each valid reasons to have to specify the number of bytes to manipulate.
-\begin{itemize}
+\begin{itemize}[noitemsep]
 \item \cinline{read}
-  \begin{itemize}
+  \begin{itemize}[noitemsep]
   \item \texttt{EOF}
   \item Unreadable \texttt{fd}, for example when the disk is failing.
   \item If the file is slow, this allows reading, a quick return to the \nameref{def:Process} ASAP and allow it to decide to read again or do something else.
   \item Interrupt, for example from a \nameref{def:Context_Switch}.
   \end{itemize}
 \item \cinline{write}
-  \begin{itemize}
+  \begin{itemize}[noitemsep]
   \item Out of space, for example when the file is full, or when there is no more storage space on the backing media.
   \item Unwritable \texttt{fd}
   \item Slow File
