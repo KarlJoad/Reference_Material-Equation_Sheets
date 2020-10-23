@@ -111,6 +111,31 @@ File \nameref{def:Lock}s control concurrent access/modification of shared files.
 \end{definition}
 
 \paragraph{Semaphores}\label{par:Semaphores}
+\nameref{def:Semaphore}s control shared memory's access and modification.
+
+\begin{definition}[Semaphore]\label{def:Semaphore}
+  A \emph{semaphore} regulates the number of things (\nameref{def:Process}es or \nameref{def:Process}s) performing operations on something (Shared Resource).
+  Functionally, this is the same as a \nameref{def:Mutex} but allows $x$ \nameref{def:Process}es/\nameref{def:Process}s to enter or use the resource at a time.
+  This allows for limits on the number of CPU, I/O or RAM intensive tasks running at the same time.
+
+  A semaphore can only be interacted with through 2 operations \cinline{wait()} and \cinline{signal()}.
+  \cinline{wait()} is similar to a \nameref{def:Mutex}'s \cinline{acquire()} function and the \cinline{signal()} function is similar to the \nameref{def:Mutex}'s \cinline{release()} function.
+  Here, if a \nameref{def:Process} or \nameref{def:Process} \texttt{wait}s, if there is more of the resource, then the requester gets the resource, and the internal count of the semaphore is decremented.
+  If a \nameref{def:Process} \texttt{signal}s, then it is done with the resource, and the requester loses access to the resources, and the internal count of the semaphore is incremented.
+  Again, these manipulations \textbf{MUST} be atomic.
+
+  \begin{remark}[Confusion with Mutexes]\label{rmk:Semaphore_Mutex_Confusion}
+    Technically, you can create a \nameref{def:Semaphore} that acts like a \nameref{def:Mutex} by giving it a binary value.
+    However, this is typically in poor programming taste, because while both function similarly, the \nameref{def:Semaphore} is for signaling the amount of a resource available and the \nameref{def:Mutex} is for signaling if code is capable of execution.
+  \end{remark}
+
+  \begin{remark}[Correct Use of Semaphores]\label{rmk:Semaphore_Correct_Usage}
+    The correct use of a \nameref{def:Semaphore} is for signaling from one task to another.
+    A \nameref{def:Mutex} is meant to be taken and released, always in that order, by each task that uses the shared resource it protects.
+    By contrast, tasks that use \nameref{def:Semaphore}s either signal or wait, not both.
+  \end{remark}
+\end{definition}
+
 \subsubsection{Sockets}\label{subsubsec:Sockets}
 
 %%% Local Variables:
