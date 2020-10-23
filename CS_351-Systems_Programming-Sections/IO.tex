@@ -261,6 +261,14 @@ Non-blocking reads are just like the other \texttt{read} operation, but it retur
   \emph{Buffering} means the system will read more bytes than we (the programmer) actually requested, and will place all of the gathered data into a separate \emph{backing buffer}.
 \end{definition}
 
+How it works:
+\begin{enumerate}[noitemsep]
+\item The user requests an amount of data
+\item The kernel fetches it, plus some extra
+\item The extra is not presented to the user, but is stored in the kernel
+\item If the user asks for the next part, which is in the extra part, the read returns immediately.
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../CS_351-Systems_Programming-Reference_Sheet"
