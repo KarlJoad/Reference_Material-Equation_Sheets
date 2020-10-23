@@ -49,6 +49,25 @@ To do this, we can describe a function that creates the unit circle like so, $z(
 In addition, if we define the inverse of $z(\theta)$ as $z^{-1}(\theta) = 1 \bigl( \cos(\theta) + i \sin(\theta) \bigr)$, then we can just add these to yield an equation for $\cos(\theta)$ and subtract them for $\sin(\theta)$.
 Eventually, we can generalize these down to the equations in \Cref{eq:Real_to_Imaginary_Sinusoids}.
 
+\begin{equation}\label{eq:Real_to_Imaginary_Sinusoids}
+  \begin{aligned}
+    \cos(n \theta) &= \frac{1}{2} \left( z^{n} + \frac{1}{z^{n}} \right) \\
+    \sin(n \theta) &= \frac{1}{2i} \left( z^{n} - \frac{1}{z^{n}} \right) \\
+    d\theta &= \frac{dz}{i z}
+  \end{aligned}
+\end{equation}
+
+By replacing the $\cos(\theta)$ and $\sin(\theta)$ in the given integral with the equivalents in \Cref{eq:Real_to_Imaginary_Sinusoids}, we can solve the integral, typically with \nameref{thm:Cauchys_Residue_Theorem}.
+
+Another thing to keep in mind is the differential for the integral.
+\begin{align*}
+  \shortintertext{If}
+  z &= e^{i \theta} \\
+  dz &= i e^{i \theta} \, d\theta \\
+    &= i z \, d\theta \\
+  d\theta &= \frac{dz}{i z}
+\end{align*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
