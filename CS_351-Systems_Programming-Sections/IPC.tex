@@ -51,6 +51,10 @@ These are similar to the shell pipe \mintinline{bash}{|}.
   \end{enumerate}
 \end{definition}
 
+Using \nameref{def:Pipe}s allows us to more easily implement correct \nameref{def:IPC} functionality.
+In addition, there is no need to go to the file system, so there are no file system performance implications.
+Technically \nameref{def:Pipe}s are implemented using \nameref{subsubsec:IPC_Mechanism-Shared_Memory}, so you get memory-access speeds.
+
 \subsubsection{File Locks and Semaphores}\label{subsubsec:IPC_Mechanism-File_Locks_Semaphores}
 \paragraph{File Locks}\label{par:File_Locks}
 \paragraph{Semaphores}\label{par:Semaphores}
