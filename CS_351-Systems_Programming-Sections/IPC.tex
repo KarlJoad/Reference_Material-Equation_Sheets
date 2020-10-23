@@ -88,6 +88,16 @@ Technically \nameref{def:Pipe}s are implemented using \nameref{subsubsec:IPC_Mec
 
 \subsubsection{File Locks and Semaphores}\label{subsubsec:IPC_Mechanism-File_Locks_Semaphores}
 \paragraph{File Locks}\label{par:File_Locks}
+File \nameref{def:Lock}s control concurrent access/modification of shared files.
+\begin{definition}[Lock]\label{def:Lock}
+  A \emph{lock} allows \textbf{only one} \nameref{def:Process} to enter the portion of code that is locked.
+  While a thread holds this lock no other \nameref{def:Process} can execute on this code portion.
+
+  \begin{remark}[Binary Semaphore]\label{rmk:Binary_Semaphore}
+    Locks can be represented as \emph{binary \nameref{def:Semaphore}}s.
+  \end{remark}
+\end{definition}
+
 \paragraph{Semaphores}\label{par:Semaphores}
 \subsubsection{Sockets}\label{subsubsec:Sockets}
 
