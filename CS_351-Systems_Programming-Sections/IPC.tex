@@ -27,6 +27,9 @@ Predictably, each one of these has an intended use, has certain benefits, and ha
 But, in the case of \nameref{def:IPC}, signals are a very limited form of communication, as the signal sends a very well-predefined message.
 
 \subsubsection{(Regular) Files}\label{subsubsec:IPC_Mechanism-Regular_Files}
+It is always possible to save the information to a regular file on the system and then have other \nameref{def:Process}es read from and write to this file to communicate.
+This does have its place, but for many small reads and writes, the overhead of writing to the storage medium and using the file system will cause greater slow-downs.
+
 \subsubsection{Shared Memory}\label{subsubsec:IPC_Mechanism-Shared_Memory}
 \subsubsection{Pipes}\label{subsubsec:IPC_Mechanism-Pipes}
 \subsubsection{File Locks and Semaphores}\label{subsubsec:IPC_Mechanism-File_Locks_Semaphores}
