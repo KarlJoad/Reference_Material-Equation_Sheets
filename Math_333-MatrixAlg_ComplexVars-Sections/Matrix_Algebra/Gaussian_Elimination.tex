@@ -146,6 +146,46 @@ It is easier to show how \nameref{def:Gaussian_Elimination} works through an exa
   \end{align*}
 \end{example}
 
+If we take the result from \Cref{ex:Oddities of Solving with Matrices}, we notice something unique.
+If we represent the solution we found as a set of matrices
+\begin{align*}
+  \begin{bmatrix}
+    x \\
+    y \\
+    z \\
+  \end{bmatrix}
+  &=
+    \begin{bmatrix}
+      \frac{9}{5} - \frac{7}{5} z \\
+      \frac{9}{5} - \frac{4}{5} z \\
+      z \\
+    \end{bmatrix} \\
+  &=
+    \begin{bmatrix}
+      \frac{9}{5} \\
+      \frac{9}{5} \\
+      0 \\
+    \end{bmatrix}
+  +
+  \begin{bmatrix}
+    \frac{-7}{5}z \\
+    \frac{-4}{5}z \\
+    1z \\
+  \end{bmatrix} \\
+  &= \begin{bmatrix}
+    \frac{9}{5} \\
+    \frac{9}{5} \\
+    0 \\
+  \end{bmatrix}
+  + z
+  \begin{bmatrix}
+    \frac{-7}{5} \\
+    \frac{-4}{5} \\
+    1 \\
+  \end{bmatrix}
+\end{align*}
+
+We see here that the solution is a sum of a fixed vector and a scalar multiple of another fixed vector.
 
 %%% Local Variables:
 %%% mode: latex
