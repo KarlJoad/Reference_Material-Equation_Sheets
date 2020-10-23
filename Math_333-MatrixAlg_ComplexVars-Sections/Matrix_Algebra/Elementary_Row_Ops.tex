@@ -14,6 +14,20 @@ The three \nameref{def:Elementary_Row_Op}s are:
 \item Multiply a row by a non-zero scalar number, and add that row's product to a row below.
 \end{enumerate}
 
+An example of multiplying one row by a scalar number and adding it to a row below is shown below.
+\begin{align*}
+  \begin{amat}{3}
+    1 & 2 & 3 & 5 \\
+    2 & -1 & 1 & 3 \\
+    1 & -1 & 5 & 2 \\
+  \end{amat}
+  \grstep{-2r_{1}+r_{2}}
+  \begin{amat}{3}
+    1 & 2 & 3 & 5 \\
+    0 & -5 & -5 & -7 \\
+    1 & -1 & 5 & 2 \\
+  \end{amat}
+\end{align*}
 
 %%% Local Variables:
 %%% mode: latex
