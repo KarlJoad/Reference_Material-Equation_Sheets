@@ -17,6 +17,51 @@
   Then, $A$ has \textbf{at most} one inverse, denoted $A^{-1}$.
 \end{theorem}
 
+\begin{example}[Lecture 13, Example 3]{Matrix with No Inverse}
+  Let $A$ be the \nameref{def:Matrix} defined below.
+  \begin{equation*}
+    A =
+    \begin{bmatrix}
+      1 & 1 \\
+      2 & 2
+    \end{bmatrix}
+  \end{equation*}
+  Find a matrix $B$ such that $B = A^{-1}$?
+  \tcblower{}
+  Using the definition of an \nameref{def:Inverse_Matrix}, we can prove this with an example.
+  \begin{align*}
+    \begin{bmatrix}
+      1 & 1 \\
+      2 & 2
+    \end{bmatrix}
+          \begin{bmatrix}
+            b_{11} & b_{12} \\
+            b_{21} & b_{22}
+          \end{bmatrix}
+        &=
+          \begin{bmatrix}
+            1 & 0 \\
+            0 & 1
+          \end{bmatrix} \\
+    &=
+      \begin{bmatrix}
+        b_{11} + b_{21} & b_{12} + b_{22} \\
+        2b_{11} + 2b_{22} & 2b_{12} + 2b_{22}
+      \end{bmatrix}
+  \end{align*}
+
+  We have a system of equations we can show that there is no \nameref{def:Inverse_Matrix}.
+
+  \begin{align*}
+    b_{11} + b_{21} &= 1 \\
+    2b_{11} + 2b_{21} &= 0
+  \end{align*}
+
+  However, this system is in\nameref{def:Consistent}, meaning there is no solution for $b_{11}$ and $b_{21}$.
+
+  Therefore, there does not exist an $A^{-1} = B$ such that $AB = I$.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
