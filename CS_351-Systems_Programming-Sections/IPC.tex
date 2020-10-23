@@ -1,4 +1,18 @@
 \section{Inter-Process Communication}\label{sec:Inter_Process_Communication}
+The OS kernel is great at \emph{isolating} \nameref{def:Process}es from each other, but allowing processes to communicate with each other makes them more useful.
+Allowing them to communicate enables the processes to exchange data and interact dynamically.
+
+However, this separation is done to make programming easier.
+If the OS were to \textbf{not} isolate each process
+\begin{itemize}[noitemsep]
+\item Any and every \nameref{def:Process} could read and/or write to any other process's memory space.
+\item Thus, any process's memory integrity would not be guaranteed
+\item In effect, this would make any process's control flow unpredictable.
+\end{itemize}
+
+Because the kernel enforces isolation, we need the assistance of the kernel to complete any \nameref{def:IPC}.
+Two processes must explicitly request the kernel to allow them to communicate.
+
 
 %%% Local Variables:
 %%% mode: latex
