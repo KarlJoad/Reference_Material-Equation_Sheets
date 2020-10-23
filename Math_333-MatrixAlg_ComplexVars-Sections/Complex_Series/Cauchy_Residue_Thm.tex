@@ -107,6 +107,19 @@ Another thing to keep in mind is the differential for the integral.
   \end{align*}
 \end{example}
 
+\paragraph{Rational Functions}\label{par:Rational_Functions_Cauchys_Residue_Theorem}
+To use \nameref{thm:Cauchys_Residue_Theorem} on the integration of a rational function,
+\begin{equation*}
+  \int_{-\infty}^{\infty} \frac{p(x)}{q(x)} \, dx
+\end{equation*}
+the function must satisfy two conditions:
+\begin{propertylist}
+\item $q(x)$ must have no real zeros.
+\item $\deg(q(x)) \geq 2 + \deg(p(x))$
+\end{propertylist}
+
+If these two conditions are satisfied, then we can convert a rational function to a complex-valued one and solve the integral with \Cref{eq:Rational_Function_Complex_Integral}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
