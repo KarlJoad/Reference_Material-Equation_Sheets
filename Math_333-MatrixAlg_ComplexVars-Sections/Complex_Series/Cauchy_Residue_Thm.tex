@@ -68,6 +68,45 @@ Another thing to keep in mind is the differential for the integral.
   d\theta &= \frac{dz}{i z}
 \end{align*}
 
+\begin{example}[Lecture 12, Example 1]{Real-Valued Sinusoid Integrals using Cauchy's Residue Theorem}
+  Evaluate the integral.
+  \begin{equation*}
+    \int_{0}^{2\pi} \frac{d\theta}{13 - 5\cos(\theta)}
+  \end{equation*}
+  \tcblower{}
+  We can use \Cref{eq:Real_to_Imaginary_Sinusoids} to convert this to a \nameref{def:Complex_Number} and solve it.
+  \begin{align*}
+    \int_{0}^{2\pi} \frac{d\theta}{13 - 5\cos(\theta)} &= \int_{C} \frac{1}{13 - \frac{5}{2} \left( z + \frac{1}{z} \right)} \frac{dz}{i z} \\
+                                                       &= \frac{1}{i} \int_{C} \frac{1}{13 - \frac{5}{2} \left( z + \frac{1}{z} \right)} \\
+    \shortintertext{Multiple $z$ through.}
+                                                       &= \frac{1}{i} \int_{C} \frac{1}{13z - \frac{5}{2} \left( z^{2} + 1 \right)} \, dz \\
+    \shortintertext{Multiple fraction by $2$ to move $\frac{5}{2}$ to $5$.}
+                                                       &= \frac{1}{i} \int_{C} \frac{2}{26z - 5 \left( z^{2} + 1 \right)} \, dz \\
+                                                       &= \frac{2}{i} \int_{C} \frac{1}{26z - 5z^{2} + 5} \, dz \\
+                                                       &= \frac{-2}{i} \int_{C} \frac{1}{5z^{2} - 26z + 5} \, dz \\
+                                                       &= \frac{-2}{i} \int_{C} \frac{1}{(5z-1) (z-5)} \, dz
+  \end{align*}
+
+  Because we are working on the complex plane ($\Omega = \ComplexNumbers$), $C$ is the unit circle (which is inside $\Omega$), and the contents of the integral are \nameref{def:Analytic}, except at finitely many points, the two \nameref{def:Pole}s.
+  Both of these poles are of \nameref{def:Pole_Order} two (2).
+  Therefore, we can apply \nameref{thm:Cauchys_Residue_Theorem}.
+
+  \begin{align*}
+    \int_{0}^{2\pi} \frac{d\theta}{13 - 5\cos(\theta)} &= \frac{-2}{i} \int_{C} \frac{1}{(5z-1) (z-5)} \, dz \\
+                                                       &= \frac{-2}{i} \left( 2 \pi i \left( \sum_{k=1}^{n} \Residue{\frac{1}{(5z-1) (z-5)}}{z=a_{k}} \right) \right) \\
+    \intertext{The only \nameref{def:Pole} inside $C$ is the $5z-1$ pole, at $z = \frac{1}{5}$.}
+                                                       &= -4 \pi \left( \Residue{\frac{1}{(5z-1) (z-5)}}{z=\frac{1}{5}} \right) \\
+                                                       &= -4 \pi \left( \lim\limits_{z \to \frac{1}{5}} \left( z-\frac{1}{5} \right) \left( \frac{1}{(5z-1) (z-5)} \right) \right) \\
+    \shortintertext{Factor out the $5$, so the $5z-1$ can be cancelled.}
+                                                       &= -4 \pi \left( \lim\limits_{z \to \frac{1}{5}} \left( z-\frac{1}{5} \right) \left( \frac{1}{5 \left( z-\frac{1}{5} \right) (z-5)} \right) \right) \\
+                                                       &= -4 \pi \left( \lim\limits_{z \to \frac{1}{5}} \frac{1}{5(z-5)} \right) \\
+                                                       &= -4 \pi \left( \frac{1}{5 \left( \frac{1}{5} - 5 \right)} \right) \\
+                                                       &= -4 \pi \left( \frac{1}{1-25} \right) \\
+                                                       &= -4 \pi \left(\frac{1}{-24} \right) \\
+                                                       &= \frac{\pi}{6}
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
