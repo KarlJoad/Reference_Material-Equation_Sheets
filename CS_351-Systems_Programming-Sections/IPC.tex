@@ -55,6 +55,23 @@ Using \nameref{def:Pipe}s allows us to more easily implement correct \nameref{de
 In addition, there is no need to go to the file system, so there are no file system performance implications.
 Technically \nameref{def:Pipe}s are implemented using \nameref{subsubsec:IPC_Mechanism-Shared_Memory}, so you get memory-access speeds.
 
+\begin{definition}[Named Pipe]\label{def:Named_Pipe}
+  A \emph{named pipe} has some key differences compared to a \nameref{def:Unnamed_Pipe}.
+  Both of these types exist in the \textsc{unix} world.
+  These differences are:
+  \begin{itemize}[noitemsep]
+  \item It has a specific name which can be given to it by the programmer.
+    Named pipe is referred to through this name only by the reader and writer.
+    All instances of a named pipe share the same pipe name.
+  \item A named pipe can be used for communication between two unnamed process as well.
+    \nameref{def:Process}es of different ancestry can share data through a named pipe.
+  \item A named pipe exists in the file system.
+    After input/output has been performed by the sharing \nameref{def:Process}es, the pipe still exists in the file system independently of the process, and can be used for communcation between some other processes.
+  \item Named pipes can be used to provide communication between processes on the same computer or between processes on different computers across a network, as in case of a distributed system.
+  \item A named pipe can have multiple process communicating through it, like multiple clients connected to one server.
+  \end{itemize}
+\end{definition}
+
 \subsubsection{File Locks and Semaphores}\label{subsubsec:IPC_Mechanism-File_Locks_Semaphores}
 \paragraph{File Locks}\label{par:File_Locks}
 \paragraph{Semaphores}\label{par:Semaphores}
