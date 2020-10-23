@@ -72,6 +72,20 @@ Technically \nameref{def:Pipe}s are implemented using \nameref{subsubsec:IPC_Mec
   \end{itemize}
 \end{definition}
 
+\begin{definition}[Unnamed Pipe]\label{def:Unnamed_Pipe}
+  An \emph{unnamed pipe}, sometimes called an \emph{anonymous pipe} has some key differences compared to a \nameref{def:Named_Pipe}.
+  Both of these types exist in the \textsc{unix} world.
+  The differences are:
+  \begin{itemize}[noitemsep]
+  \item Unnamed pipes are not given a name.
+    It is accessible through two file descriptors that are created through the function \cinline{pipe(fd[2])}, where \texttt{fd[1]} signifies the \textbf{write} \nameref{def:File_Descriptor}, and \texttt{fd[0]} describes the \textbf{read} \nameref{def:File_Descriptor}.
+  \item An unnamed pipe is only used for communication between a child and it's parent process.
+  \item An unnamed pipe vanishes as soon as it is closed, or one of the \nameref{def:Process} (parent or child) completes execution.
+  \item Unnamed pipes are always local; they cannot be used for communication over a network.
+  \item An unnamed pipe is a one-way \nameref{def:Pipe} that typically transfers data between a parent process and a child process.
+  \end{itemize}
+\end{definition}
+
 \subsubsection{File Locks and Semaphores}\label{subsubsec:IPC_Mechanism-File_Locks_Semaphores}
 \paragraph{File Locks}\label{par:File_Locks}
 \paragraph{Semaphores}\label{par:Semaphores}
