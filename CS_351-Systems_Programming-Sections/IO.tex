@@ -350,6 +350,19 @@ Performing both input and output at the same time to the same backing buffer is 
 \item Input shall not be directly followed by output without an intervening call to a file positioning function.
 \end{itemize}
 
+\subsection{Summary}\label{subsec:Summary}
+In summary,
+\begin{itemize}[noitemsep]
+\item Buffered \texttt{<stdio.h>} functions help minimize system overhead and simplify I/O
+\item Use \texttt{<stdio.h>} whenever possible.
+\item Beware of glitches when it comes to saving buffered data for later use.
+\item Don't mix buffered and unbuffered I/O, as it is undefined.
+\item \texttt{stdio.h} type of I/O is not appropriate for some devices (Network)
+  \begin{itemize}
+  \item Use a low-level, robust I/O for network communications instead.
+  \end{itemize}
+\end{itemize}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../CS_351-Systems_Programming-Reference_Sheet"
