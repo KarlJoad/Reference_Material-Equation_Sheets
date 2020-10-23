@@ -256,6 +256,11 @@ Each of the items in the list below are each valid reasons to have to specify th
 \subsubsection{Non-Blocking Reads}\label{subsubsec:Non-Blocking_Reads}
 Non-blocking reads are just like the other \texttt{read} operation, but it returns to the calling process immediately.
 
+\subsection{Buffering}\label{subsec:Buffering}
+\begin{definition}[Buffering]\label{def:Buffering}
+  \emph{Buffering} means the system will read more bytes than we (the programmer) actually requested, and will place all of the gathered data into a separate \emph{backing buffer}.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../CS_351-Systems_Programming-Reference_Sheet"
