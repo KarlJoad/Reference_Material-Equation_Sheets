@@ -286,6 +286,19 @@ By having many levels of buffers, we can create the illusion of great speeds, de
 This way, we can operate on a buffer in-memory, rather than having to go to disk constantly.
 That also has the added benefit of avoiding extra \nameref{def:Syscall}s.
 
+\subsection{File I/O API}\label{subsec:File_IO_API}
+\begin{description}[noitemsep]
+\item[\cinline{FILE* fopen(const char *filename, const char *mode)}] Open the file specified by \texttt{filename} in the mode specified by \texttt{mode}.
+\item[\cinline{FILE* fdopen(int fd, const char *mode)}] Open the file described by the \nameref{def:File_Descriptor} in the mode specified by \texttt{mode}.
+\item[\cinline{int fclose(FILE *stream)}] Close the file (object) stream that \texttt{stream} points to.
+\item[\cinline{int fseek(FILE *stream, long offset, int whence)}] Seek within the file stream specified by \texttt{stream}, according to the \texttt{offset}, from \texttt{whence}.
+\item[\cinline{size_t fread(void *ptr, size_t size, size_t nitems, FILE *stream)}] Read \texttt{nitems}, each of size \texttt{size}, from \texttt{stream}, and store the contents where \texttt{ptr} points to.
+\item[\cinline{size_t fwrite(void *ptr, size_t size, size_t nitems, FILE *stream)}] Write \texttt{nitems}, each of size \texttt{size}, from \texttt{ptr} to \texttt{stream}.
+\item[\cinline{int fprintf(FILE *stream, const char *format, ...)}] Write a character stream specified by \texttt{format}, with the dots being additional parameters as specified by \texttt{format}, to \texttt{stream}.
+\item[\cinline{int fscanf(FILE *stream, const char *format, ...)}] Read a character stream specified by \texttt{format}, with the dots being additional parameters as specified by \texttt{format}, to \texttt{stream}.
+\item[\cinline{char* fgets(char *str, int size, FILE *stream)}] Get \texttt{size} characters from \texttt{stream} and store it where \texttt{str} points to.
+\end{description}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../CS_351-Systems_Programming-Reference_Sheet"
