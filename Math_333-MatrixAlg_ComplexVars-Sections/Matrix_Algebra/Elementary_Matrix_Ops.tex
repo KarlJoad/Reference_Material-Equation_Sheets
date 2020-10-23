@@ -4,6 +4,52 @@
   This allows us to encode the action we take on the identity matrix \textbf{into} the identity matrix, essentially saving it.
 \end{definition}
 
+\begin{blackbox}
+  Given the \nameref{def:Multiplicative_Identity_Matrix}, $I$, a regular \nameref{def:Matrix} $A$, perform a row reduction by adding $r_{1}$, multiplied by $\lambda$, of $A$ to $r_{2}$.
+  \begin{align*}
+    I &= \begin{bmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{bmatrix} \\
+    A &= \begin{bmatrix}
+      a_{11} & a_{12} \\
+      a_{21} & a_{22}
+    \end{bmatrix}
+  \end{align*}
+
+  We perform the \nameref{def:Elementary_Row_Op} on the \nameref{def:Multiplicative_Identity_Matrix}.
+  \begin{equation*}
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{bmatrix}
+    \grstep{\lambda r_{1}+r_{2}}
+    \begin{bmatrix}
+      1 & 0 \\
+      \lambda & 1
+    \end{bmatrix}
+  \end{equation*}
+
+  Now that we have an \nameref{def:Elementary_Matrix}, we can perform the action we saved in the elementary matrix on any matrix, in this case, $A$.
+  \begin{equation*}
+    \begin{bmatrix}
+      1 & 0 \\
+      \lambda & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+      a_{11} & a_{12} \\
+      a_{21} & a_{22}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      a_{11} & a_{12} \\
+      \lambda a_{11} + a_{21} & \lambda a_{12} + a_{22}
+    \end{bmatrix}
+  \end{equation*}
+
+  We can see that this result is the exact same as if we have performed the \nameref{def:Elementary_Row_Op} on the matrix $A$ directly.
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
