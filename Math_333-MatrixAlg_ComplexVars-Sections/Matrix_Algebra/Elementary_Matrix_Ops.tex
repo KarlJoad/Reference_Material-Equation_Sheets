@@ -50,6 +50,102 @@
   We can see that this result is the exact same as if we have performed the \nameref{def:Elementary_Row_Op} on the matrix $A$ directly.
 \end{blackbox}
 
+Now, we can move onto an example.
+
+\begin{example}[Lecture 13, Example 2]{Using Elementary Matrices}
+  Given the matrix $A =
+  \begin{bmatrix}
+    1 & 2 & 3 \\
+    2 & 1 & 5 \\
+    3 & 3 & 8
+  \end{bmatrix}$, find an \nameref{def:Elementary_Matrix}, $E$, such that $EA =
+  \begin{bmatrix}
+    1 & 2 & 3 \\
+    2 & 1 & 5 \\
+    0 & 0 & 0
+  \end{bmatrix}$?
+  \tcblower{}
+  If we look at $A$ for a minute, we notice that $r_{3} = r_{1} + r_{2}$.
+  This will actually help us ensure our answer is correct.
+  \begin{align*}
+    \begin{bmatrix}
+      1 & 2 & 3 \\
+      2 & 1 & 5 \\
+      3 & 3 & 8
+    \end{bmatrix}
+        &\grstep{-r_{1}+r_{3}}
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            2 & 1 & 5 \\
+            2 & 1 & 5
+          \end{bmatrix} \\
+    \intertext{So, we can encode the \nameref{def:Elementary_Row_Op} in an \nameref{def:Elementary_Matrix}.}
+    E_{1} &=
+            \begin{bmatrix}
+              1 & 0 & 0 \\
+              0 & 1 & 0 \\
+              -1 & 0 & 1 \\
+            \end{bmatrix} \\
+    \intertext{Now row operate on the last remaining row.}
+    \begin{bmatrix}
+            1 & 2 & 3 \\
+            2 & 1 & 5 \\
+            2 & 1 & 5
+          \end{bmatrix}
+        &\grstep{-r_{2}+r_{3}}
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            2 & 1 & 5 \\
+            0 & 0 & 0
+          \end{bmatrix} \\
+    \intertext{Encode this second operation as another \nameref{def:Elementary_Matrix}.}
+    E_{2} &=
+            \begin{bmatrix}
+              1 & 0 & 0 \\
+              0 & 1 & 0 \\
+              0 & -1 & 1
+            \end{bmatrix}
+  \end{align*}
+
+  That means we can describe the relationship as
+  \begin{equation*}
+    E_{2}E_{1}A =
+    \begin{bmatrix}
+      1 & 2 & 3 \\
+      2 & 1 & 5 \\
+      0 & 0 & 0
+    \end{bmatrix}
+  \end{equation*}
+
+  Thus, $E = E_{2}E_{1}$.
+  \begin{align*}
+    E &=
+        \begin{bmatrix}
+          1 & 0 & 0 \\
+          0 & 1 & 0 \\
+          0 & -1 & 1
+        \end{bmatrix}
+                   \begin{bmatrix}
+                     1 & 0 & 0 \\
+                     0 & 1 & 0 \\
+                     -1 & 0 & 1 \\
+                   \end{bmatrix} \\
+    \intertext{But, this multiplication sucks. But, because we encoded a \nameref{def:Elementary_Row_Op}, we can perform the row operation specified in $E_{2}$ on $E_{1}$.}
+    &\grstep{-r_{2}+r_{3}} \begin{bmatrix}
+                     1 & 0 & 0 \\
+                     0 & 1 & 0 \\
+                     -1 & 0 & 1 \\
+                   \end{bmatrix} \\
+      &=
+        \begin{bmatrix}
+          1 & 0 & 0 \\
+          0 & 1 & 0 \\
+          -1 & -1 & 1
+        \end{bmatrix}
+  \end{align*}
+
+  Thus, we have found our final answer for $E$.
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
