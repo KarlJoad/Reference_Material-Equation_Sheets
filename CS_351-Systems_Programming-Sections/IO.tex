@@ -299,6 +299,22 @@ That also has the added benefit of avoiding extra \nameref{def:Syscall}s.
 \item[\cinline{char* fgets(char *str, int size, FILE *stream)}] Get \texttt{size} characters from \texttt{stream} and store it where \texttt{str} points to.
 \end{description}
 
+\subsection{Generalizing}\label{subsec:Generalizing}
+An example of a higher-level I/O function that performs many of the tasks we have discussed here is \texttt{printf}.
+It handles the:
+\begin{enumerate}[noitemsep]
+\item \nameref{def:File_Descriptor}, \texttt{STDOUT}
+  \begin{itemize}[noitemsep]
+  \item Way to access the file in the user-level code.
+  \end{itemize}
+\item The Backing Buffer
+  \begin{itemize}[noitemsep]
+  \item Significantly reduces the cost of accessing stored information, because using memory access
+  \end{itemize}
+\item The number of unused bytes
+\item Pointer to the next byte
+\end{enumerate}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../CS_351-Systems_Programming-Reference_Sheet"
