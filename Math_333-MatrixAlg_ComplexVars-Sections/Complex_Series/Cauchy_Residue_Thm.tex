@@ -126,6 +126,35 @@ If these two conditions are satisfied, then we can convert a rational function t
 
 The limitation on the points we can consider in in the summation of the residues means that \nameref{def:Pole}s \textbf{MUST} be in the upper half of the complex plane.
 
+\begin{example}[Lecture 12, Example 2]{Cauchy's Residue Theorem on Rational Function Integral}
+  Evaluate the integral below, using \nameref{thm:Cauchys_Residue_Theorem}?
+  \begin{equation*}
+    \int_{-\infty}^{\infty} \frac{ \left( x^{2} + 4 \right)}{\left( x^{2} + 1 \right) \left( x^{2} + 9 \right)}
+  \end{equation*}
+  \tcblower{}
+  Validate that there are no real \nameref{def:Zero}s in $q(z)$.
+  The zeros in this function are: $z = \pm i$ and $z = \pm 3i$, both with \nameref{thm:Multiplicity} 0.
+  However, we do not need to consider $z = -i$ and $z = -3i$, because they exist below the lower-half of the complex plane ($z \ngtr 0i$).
+  \begin{align*}
+    \int_{-\infty}^{\infty} \frac{z^{2} + 4}{\left( z^{2} + 1 \right) \left( z^{2} + 9 \right)} &= 2 \pi i \left( \Residue{\frac{z^{2} + 4}{\left( z^{2} + 1 \right) \left( z^{2} + 9 \right)}}{z = i, 3i} \right) \\
+    \shortintertext{Break the \nameref{def:Residue}s up into their summation.}
+                                                                                                &= 2 \pi i \left( \Residue{\frac{z^{2} + 4}{\left( z^{2} + 1 \right) \left( z^{2} + 9 \right)}}{z=i} + \Residue{\frac{z^{2} + 4}{\left( z^{2} + 1 \right) \left( z^{2} + 9 \right)}}{z=3i} \right) \\
+    \shortintertext{Expand the \nameref{def:Residue}s into their limit definitions.}
+                                                                                                &= 2 \pi i \left( \lim\limits_{z \to i} (z-i) \left( \frac{z^{2} + 4}{(z+i) (z-i) \left( z^{2} + 9 \right)} \right) + \lim\limits_{z \to 3i} (z-3i) \left( \frac{z^{2} + 4}{\left( z^{2} + 1 \right) (z + 3i) (z-3i)} \right) \right) \\
+    \shortintertext{Cancel the common terms.}
+                                                                                                &= 2 \pi i \left( \lim\limits_{z \to i} \left( \frac{z^{2} + 4}{(z+i) \left( z^{2} + 9 \right)} \right) + \lim\limits_{z \to 3i} \left( \frac{z^{2} + 4}{\left( z^{2} + 1 \right) (z + 3i)} \right) \right) \\
+    \shortintertext{Evaluate the limits.}
+                                                                                                &= 2 \pi i \left( \frac{i^{2} + 4}{(i+i) \left( i^{2} + 9 \right)} + \frac{{(3i)}^{2} + 4}{({(3i)}^{2} + 1) (3i + 3i)} \right) \\
+                                                                                                &= 2 \pi i \left( \frac{3}{16i} + \frac{-5}{-48i} \right) \\
+                                                                                                &= 2 \pi i \left( \frac{9}{48i} + \frac{5}{48i} \right) \\
+                                                                                                &= 2 \pi i \left( \frac{14}{48i} \right) \\
+                                                                                                &= \frac{7 \pi}{12}
+  \end{align*}
+
+  We can verify this answer because the $i$ cancels out.
+  The original integral had completely real terms, so it makes sense that its integral should be completely real too.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
