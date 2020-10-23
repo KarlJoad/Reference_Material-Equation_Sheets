@@ -36,6 +36,21 @@ This allows for very fast access, with no direct limitation on the way the infor
 However, this lack of uniformity (and potential problems with atomicity) can lead to major headaches.
 
 \subsubsection{Pipes}\label{subsubsec:IPC_Mechanism-Pipes}
+These are similar to the shell pipe \mintinline{bash}{|}.
+
+\begin{definition}[Pipe]\label{def:Pipe}
+  \emph{Pipe}s are a data structure and idea that allow us to implement \nameref{def:IPC}.
+  A pipe behaves like a queue data structure, with one \nameref{def:Process} writing to the pipe, and another (not necessarily the same one) reading from it.
+  A pipe uses explicit \texttt{send}, \texttt{receive}, \texttt{read}, and \texttt{write} functions to utilize the pipe, making it easier to figure out what process is doing what at what time.
+  However, only 2 processes can use a pipe at a time, making it difficult to go from one process to many different processes.
+
+  There are 2 kinds of pipes:
+  \begin{enumerate}[noitemsep]
+  \item \nameref{def:Named_Pipe}
+  \item \nameref{def:Unnamed_Pipe}
+  \end{enumerate}
+\end{definition}
+
 \subsubsection{File Locks and Semaphores}\label{subsubsec:IPC_Mechanism-File_Locks_Semaphores}
 \paragraph{File Locks}\label{par:File_Locks}
 \paragraph{Semaphores}\label{par:Semaphores}
