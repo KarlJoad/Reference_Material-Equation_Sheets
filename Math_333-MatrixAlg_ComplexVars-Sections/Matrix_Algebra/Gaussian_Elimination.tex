@@ -3,6 +3,75 @@
   \emph{Gaussian elimination} is a method of solving a system of linear equations using matrices and \nameref{def:Elementary_Row_Op}s.
 \end{definition}
 
+It is easier to show how \nameref{def:Gaussian_Elimination} works through an example.
+
+\begin{example}[Lecture 12, Example 3]{Perform Gaussian Elimination}
+  Solve the system of linear equations below.
+  \begin{align*}
+    x - 2y + 3z &= 5 \\
+    2x + y - z &= 8 \\
+    3x - y + 2z &= 13
+  \end{align*}
+  \tcblower{}
+  Start by converting the system of linear equations to an \nameref{def:Augmented_Matrix}.
+  \begin{align*}
+    \begin{array}{cccl}
+      1x &- 2y &+ 3z &= 5 \\
+      2x &+ 1y &- 1z &= 8 \\
+      3x &- 1y &+ 2z &= 13 \\
+    \end{array}
+         &=
+           \begin{amat}{3}
+             1 & -2 & 3 & 5 \\
+             2 & 1 & -1 & 8 \\
+             3 & -1 & 2 & 13 \\
+           \end{amat} \\
+    \intertext{Use repeated \nameref{def:Elementary_Row_Op}s to make lower rows have zeros, converting to \nameref{thm:Echelon_Form}.}
+         &\grstep{-2r_{1}+r_{2}}\begin{amat}{3}
+           1 & -2 & 3 & 5 \\
+           0 & 5 & -7 & -2 \\
+           3 & -1 & 2 & 13 \\
+         \end{amat} \\
+         &\grstep{-3r_{1}+r_{3}}\begin{amat}{3}
+           1 & -2 & 3 & 5 \\
+           0 & 5 & -7 & -2 \\
+           0 & 5 & -7 & -2 \\
+         \end{amat} \\
+         &\grstep{\frac{1}{5}r_{2}}\begin{amat}{3}
+           1 & -2 & 3 & 5 \\
+           0 & 1 & \frac{-7}{5} & \frac{-2}{5} \\
+           0 & 5 & -7 & -2 \\
+         \end{amat} \\
+         &\grstep{-5r_{2}+r_{3}}\begin{amat}{3}
+           1 & -2 & 3 & 5 \\
+           0 & 1 & \frac{-7}{5} & \frac{-2}{5} \\
+           0 & 0 & 0 & 0 \\
+         \end{amat} \\
+  \end{align*}
+
+  Now, we can reconvert back into a system of linear equations.
+  \begin{equation*}
+    \begin{amat}{3}
+      1 & -2 & 3 & 5 \\
+      0 & 1 & \frac{-7}{5} & \frac{-2}{5} \\
+      0 & 0 & 0 & 0 \\
+    \end{amat} \\
+    =
+    \begin{array}{cccl}
+      1x &- 2y &+ 3z &= 5 \\
+      0x &+ 1y &- \frac{7}{5}z &= \frac{-2}{5} \\
+      0x &+ 0y &+ 0z &= 0 \\
+    \end{array}
+  \end{equation*}
+
+  We now have 3 unknowns, but only 2 usable equations.
+  Therefore, we solve for two of the unknowns in terms of a third.
+  \begin{align*}
+    y &= \frac{-2}{5} + \frac{7}{5}z \\
+    x &= \frac{21}{5} - \frac{z}{5}
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
