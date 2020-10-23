@@ -171,6 +171,17 @@ These include:
 \end{itemize}
 
 \subsubsection{Data Synchronization}\label{subsubsec:IPC_Challenge-Data_Sync}
+For the data to be of any use to anyone/anything, must it arrive in a certain order?
+These kinds of questions define the data synchronization problem of \nameref{def:IPC}, and some more are included below:
+\begin{itemize}[noitemsep]
+\item What is the behavior when there are multiple senders and/or receivers?
+\item What is the control required to synchronize?
+  \begin{itemize}[noitemsep]
+  \item Is it done implicitly?
+  \item Does it need to be done explicitly?
+  \item Is there \textbf{ANY} synchronization?
+  \end{itemize}
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex
