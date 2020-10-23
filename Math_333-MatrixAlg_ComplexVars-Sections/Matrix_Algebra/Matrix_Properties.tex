@@ -1,0 +1,128 @@
+\subsection{Properties of Matrices}\label{subsec:Properties_Matrices}
+\subsubsection{Properties of Matrix Addition}\label{subsubsec:Properties_Matrix_Addition}
+\begin{propertylist}
+\item \nameref{def:Matrix} Addition is commutative.\label{prop:Matrix_Add_Commutative}
+  \begin{equation}\label{eq:Matrix_Add_Commutative}
+    A+B = B+A
+  \end{equation}
+
+\item \nameref{def:Matrix} Addition is associative.\label{prop:Matrix_Add_Associative}
+  \begin{equation}\label{eq:Matrix_Add_Associative}
+    A+(B+C) = (A+B) + C
+  \end{equation}
+
+\item For any \nameref{def:Matrix} $A$, there is a unique matrix, $I$ or $O$, such that the equation below holds true.\label{prop:Matrix_Additive_Identity}
+  \begin{equation}\label{eq:Matrix_Additive_Identity}
+    A+O = A
+  \end{equation}
+
+\item For each \nameref{def:Matrix} $A$, there is a unique matrix $-A$ such that the equation below holds true.\label{prop:Matrix_Additive_Inverse}
+  \begin{equation}\label{eq:Matrix_Additive_Inverse}
+    A+(-A) = O
+  \end{equation}
+
+\item $A+B$ is a \nameref{def:Matrix} of the same dimensions as $A$ and $B$.\label{prop:Matrix_Addition_Closure}
+\end{propertylist}
+
+\subsubsection{Properties of Matrix Multiplication}\label{subsubsec:Properties_Matrix_Multiplication}
+Matrix multiplication is defined as follows:
+\begin{equation}\label{eq:Matrix_Multiplication}
+  \begin{bmatrix}
+    a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \ddots & \ddots & a_{2n} \\
+    \vdots & \ddots & \ddots & \ddots & a_{mn} \\
+    a_{n\,1} & a_{n\,2} & \cdots & \cdots & a_{nn}
+  \end{bmatrix}
+\end{equation}
+
+\begin{propertylist}
+\item In general, \nameref{def:Matrix} multiplication is \textbf{NOT} commutative.\label{prop:Matrix_Not_Commutative}
+  \begin{equation}\label{eq:Matrix_Mult_Not_Commutative}
+    AB \neq BA
+  \end{equation}
+
+\item \nameref{def:Matrix} multiplication is associative.\label{prop:Matrix_Associativity}
+  \begin{equation}\label{eq:Matrix_Mult_Associativity}
+    (AB) C = A (BC)
+  \end{equation}
+\item \nameref{def:Matrix} multiplication is distributive.\label{prop:Matrix_Distributivity}
+  \begin{equation}\label{eq:Matrix_Mult_Distributivity}
+    \begin{aligned}
+      A (B+C) &= AB + AC \\
+      (B+C) A &= BA + CA
+    \end{aligned}
+  \end{equation}
+
+\item There exists a \nameref{def:Matrix} $I$ that forms the \nameref{def:Multiplicative_Identity_Matrix} that satisfies the following rule:\label{prop:Mult_Identity_Matrix}
+  \begin{equation}\label{eq:Mult_Identity_Matrix}
+    \begin{aligned}
+      AI &= A \\
+      IA &= A
+    \end{aligned}
+  \end{equation}
+  \begin{remark*}
+    This is one of the two general cases where \nameref{def:Matrix} multiplication \textbf{IS} commutative.
+  \end{remark*}
+
+\item There exists a \nameref{def:Matrix} $O$ that forms the \nameref{def:Zero_Matrix}, satisfying the following rule:\label{prop:Mult_Zero_Matrix}
+  \begin{equation}\label{eq:Mult_Zero_Matrix}
+    \begin{aligned}
+      AO &= O \\
+      OA &= O
+    \end{aligned}
+  \end{equation}
+  \begin{remark*}
+    This is one of the two general cases where \nameref{def:Matrix} multiplication \textbf{IS} commutative.
+  \end{remark*}
+
+\item When performing multiplication, the \textbf{dimension property} states that the product of an $m \by n$ and an $n \by k$ matrix is an $m \by k$ \nameref{def:Matrix}.\label{prop:Mult_Dimension_Property}
+\end{propertylist}
+
+\begin{definition}[Identity Matrix]\label{def:Multiplicative_Identity_Matrix}
+  The \emph{identity matrix}, $I$ is one that satisfies \Cref{prop:Mult_Identity_Matrix}.
+  These follow the forms of the ones shown below.
+  \begin{equation}\label{eq:Multiplicative_Identity_Matrix}
+    \begin{aligned}
+      I &=
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1 \\
+      \end{bmatrix} \\
+      &=
+      \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+      \end{bmatrix}
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Zero Matrix]\label{def:Zero_Matrix}
+  The \emph{zero matrix}, $O$, is one that satisfies \Cref{prop:Mult_Zero_Matrix}.
+  For \nameref{def:Matrix} multiplication, it is a matrix of all $0$.
+  \begin{equation}
+    \label{eq:3}
+    \begin{aligned}
+      O &=
+      \begin{bmatrix}
+        0 & 0 \\
+        0 & 0 \\
+      \end{bmatrix} \\
+      &=
+      \begin{bmatrix}
+        0 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0 \\
+      \end{bmatrix}
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
+%%% End:
