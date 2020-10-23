@@ -16,6 +16,45 @@
 
 \newcommand{\Path}{\ensuremath{\gamma}} % Path in complex plane to approach a point a.
 
+% Taken from https://gitlab.com/jim.hefferon/linear-algebra/-/blob/master/src/sty/linalgjh.sty
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} % Step above arrow
+% \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3} % Step above arrow, additional ones below
+% \newcommand{\grstep}[2][\relax]{%
+%    \ensuremath{\mathrel{
+%        \mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+%                                    \begin{subarray}{l} #1 \end{subarray}}}}}
+
+% Advantage of length formulation is that between adjacent
+% \grstep's you can add \hspace{-\grsteplength} to make it look not too wide
+\newlength{\grsteplength}
+\setlength{\grsteplength}{1.5ex plus .1ex minus .1ex}
+
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       \hspace{\grsteplength}\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}\hspace{\grsteplength}}}}
+%-------------amatrix
+% Augmented matrix.  Usage (note the argument does not count the aug col):
+% \begin{amatrix}{2}
+%   1  2  3 \\  4  5  6
+% \end{amatrix}
+\newenvironment{amatrix}[1]{%
+  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right)
+}
+\newenvironment{amat}[2][c]{%
+  % disable optional arg \left(\begin{array}{@{}*{#2}{#1}|#1@{}}
+  \left(\begin{array}{@{}*{#2}{c}|#1@{}}
+}{%
+  \end{array}\right)
+}
+
+\renewcommand*{\arraystretch}{1.2}
+\newcommand{\by}{\ensuremath{\times}}
+
 \begin{titlepage}
   \title{Math 333: Matrix Algebra and Complex Variables --- Reference Material \\ Illinois Institute of Technology}
   \author{Karl Hallsby}
