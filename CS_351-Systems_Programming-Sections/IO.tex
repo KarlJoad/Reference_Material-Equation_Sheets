@@ -327,6 +327,21 @@ Some examples are:
 
 All of these examples are from the system-library (which is really from \texttt{glibc}) \texttt{stdio.h}.
 
+\paragraph{Stream Objects}\label{par:Stream_Objects}
+The functions from \texttt{stdio.h} operate on \emph{stream} objects, which are wrappers around a file descriptor and the associated buffer.
+This means stream buffers can absorb multiple writes before flushing to the underlying file.
+However, a flush would occur when:
+\begin{itemize}[noitemsep]
+\item The buffer is full
+\item Normal Process Termination
+\item A newline is encountered.
+  In a line-buffered stream, for example, printing to the screen.
+\item Explicitly, with the \texttt{fflush} function.
+\end{itemize}
+
+However, this means that if the data is \textbf{not} flushed from the buffer, then the data is lost.
+This could be a dangerous operation because the programmer might expect the data to be flushed/written immediately.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../CS_351-Systems_Programming-Reference_Sheet"
