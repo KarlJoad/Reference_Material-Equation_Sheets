@@ -1,4 +1,24 @@
 \subsection{Properties of Matrices}\label{subsec:Properties_Matrices}
+A \nameref{def:Matrix} can be \nameref{def:Transpose}d.
+
+\begin{definition}[Transpose]\label{def:Transpose}
+  The \emph{transpose} of a \nameref{def:Matrix} $A$, denoted $\Transpose{A}$, is the matrix $A$ where all the columns became rows or vice-versa.
+
+  \begin{align*}
+    A &=
+        \begin{pmatrix}
+          1 & 2  & 3 \\
+          0 & 5 & 0 \\
+        \end{pmatrix} \\
+    \Transpose{A} &=
+                    \begin{pmatrix}
+                      1 & 0 \\
+                      2 & 5 \\
+                      3 & 0
+                    \end{pmatrix}
+  \end{align*}
+\end{definition}
+
 \subsubsection{Properties of Matrix Addition}\label{subsubsec:Properties_Matrix_Addition}
 \begin{propertylist}
 \item \nameref{def:Matrix} Addition is commutative.\label{prop:Matrix_Add_Commutative}
