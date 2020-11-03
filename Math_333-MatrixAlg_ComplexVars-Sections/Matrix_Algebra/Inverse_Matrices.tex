@@ -62,6 +62,39 @@
   Therefore, there does not exist an $A^{-1} = B$ such that $AB = I$.
 \end{example}
 
+\subsubsection{Inverse Matrices using Elementary Matrices}\label{subsubsec:Inverse_Matrices_using_Elementary_Matrices}
+The \nameref{def:Inverse_Matrix} of any \nameref{def:Matrix} can be found by using \nameref{def:Elementary_Row_Op}s and the actual inverse can be found by using an \nameref{def:Elementary_Matrix}.
+
+\begin{theorem}
+  Let $A$ be a matrix with dimensions $n \by n$ ($A_{n \by n}$).
+
+  Then, reducing $A$ to \nameref{thm:Echelon_Form} can be encoded with a series of elementary matrices.
+  Mathematically, this implies
+  \begin{equation*}
+    E_{t} E_{t-1} \cdots E_{2} E_{1} A = I
+  \end{equation*}
+
+  This yields 2 cases:
+  \begin{equation*}
+    \begin{cases}
+      \begin{amat}{3}
+        \vdots & \cdots & \cdots & x \\
+        \vdots & \cdots & \cdots & x \\
+        0 & 0 & \cdots & 0 \\
+      \end{amat} \\[3em]
+
+      \begin{amat}{3}
+        \vdots & \cdots & \cdots & x \\
+        \vdots & \cdots & \cdots & x \\
+        0 & 0 & \cdots & 1 \\
+      \end{amat}
+    \end{cases}
+  \end{equation*}
+
+  In the second case, we can actually continue past the \nameref{thm:Echelon_Form} and get the original \nameref{def:Matrix} to yield $I$.
+  This is shown in \Cref{ex:Elementary Row Operations to find Inverse}
+\end{theorem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
