@@ -128,7 +128,7 @@ If \Cref{thm:Laurent_Series_Existence} is satisfied, then there are 3 cases:
 
   However, if a function as a finite number of terms in the \nameref{def:Principal_Part} of the \nameref{thm:Laurent_Series}, then there are formulas for finding the residues, based on the \nameref{def:Pole_Order}, $n$, of the \nameref{def:Pole} at the \nameref{def:Singularity} $z=a$.
   \begin{equation}\label{eq:Residue}
-    b_{1} = \Residue{f}{z=a} = \lim\limits_{z \to a} {(z-a)}^{n} f^{(n-1)}(z)
+    b_{1} = \Residue{f}{z=a} = \lim\limits_{z \to a} \frac{1}{(n-1)!} \left( \frac{d^{n-1}}{{dz}^{n-1}} \bigl \lbrace {(z-a)}^{n} f(z) \bigr \rbrace \right)
   \end{equation}
 
   The number of residues correspond to the number of \nameref{def:Pole}s in a \nameref{thm:Laurent_Series}.
