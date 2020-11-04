@@ -62,6 +62,17 @@ Now with these terms defined, we can define the general algorithm for the \namer
   This is explored further in \Cref{subsubsec:Expand_Determinant}, with their equations given in \Cref{eq:Determinant_Expand_ith_Row} and \Cref{eq:Determinant_Expand_jth_Column}.
 \end{definition}
 
+There is something very critical to remember about the \nameref{def:Determinant}, and it applies to \Cref{thm:Determinant_Invertible_Matrix}.
+\begin{theorem}\label{thm:Determinant_Invertible_Matrix}
+  A \nameref{def:Matrix} $A$ is invertible (has an \nameref{def:Inverse_Matrix}) \textbf{if and only if} $\det A = 0$.
+  If this is the case, then:
+  \begin{equation}\label{eq:Inverse_by_Determinant}
+    A^{-1} = \frac{1}{\det A} \Adjoint(A)
+  \end{equation}
+
+  Where $\Adjoint$ is the \nameref{def:Adjoint}.
+\end{theorem}
+
 
 %%% Local Variables:
 %%% mode: latex
