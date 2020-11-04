@@ -229,6 +229,18 @@ They also require that the wait and release process be atomic, especially when w
   \end{remark}
 \end{definition}
 
+\subparagraph{Semaphore API}\label{subpar:Semaphore_API}
+\begin{description}[noitemsep]
+\item[\cinline{sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value)}] Create a semaphore with \texttt{name}, the flags \texttt{oflag}, with the mode \texttt{mode}, and an initial value of \texttt{value}.
+  The semaphore object is returned from the call.
+\item[\cinline{int sem_wait(sem_t *sem)}] Decrements \texttt{sem}'s backing counter. If the counter is already \texttt{0}, then this call blocks the calling \nameref{def:Process}.
+\item[\cinline{int sem_post(sem_t *sem)}] Icrements \texttt{sem}'s backing counter. If the counter was \texttt{0} and becomes greater than \texttt{0}, and another \nameref{def:Process} is currently waiting on \texttt{sem}, then it one will be woken up and allowed to lock the semaphore.
+\end{description}
+
+\paragraph{Spinlocks}\label{par:Spinlocks}
+A spinlock is the process of busy-polling a resource until its available.
+This is a highly-responsive way to allocate, but wastes a lot of CPU time.
+
 \subsubsection{Sockets}\label{subsubsec:Sockets}
 \nameref{def:Socket}s are mainly used for network communication.
 However, they can be used on the local computer too.
