@@ -104,6 +104,11 @@ Technically \nameref{def:Pipe}s are implemented using \nameref{subsubsec:IPC_Mec
   In addition to these, one \nameref{def:Process} will block a \texttt{read} operation until another process connects to the \texttt{write} end of the pipe.
 \end{definition}
 
+\subparagraph{Named Pipe API}\label{subpar:Named_Pipe_API}
+\begin{description}[noitemsep]
+\item[\cinline{int mkfifo(const char *path, mode_t perms)}] Create a named pipe at the location specified by \texttt{path}, with permissions \texttt{perms}, and returns that pipe's \nameref{def:File_Descriptor}.
+\item[\cinline{close(int fd)}] Close the pipe.
+\end{description}
 
 \paragraph{Unnamed Pipes}\label{par:Unnamed_Pipes}
 \begin{definition}[Unnamed Pipe]\label{def:Unnamed_Pipe}
