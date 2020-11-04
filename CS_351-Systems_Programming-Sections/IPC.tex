@@ -39,6 +39,16 @@ But files are not typically considered as a regular mechanism for dynamic \namer
 This allows for very fast access, with no direct limitation on the way the information is written and read form the shared area.
 However, this lack of uniformity (and potential problems with atomicity) can lead to major headaches.
 
+\paragraph{API}\label{par:Shared_Memory_API}
+In the API below, \textbf{YOU}, as the programmer, must explicitly remove this shared memory.
+Memory allocated through the functions below are \textbf{NOT} deallocated upon process termination, which can lead to a permanent memory leak.
+This is intended because the operating system doesn't necessarily know when a set of \nameref{def:Process}es is done with a chunk of shared memory.
+
+\begin{description}[noitemsep]
+\item[\cinline{int shm_open(const char *name, int oflag, mode_t mode)}] Open a named region of memory to share between \nameref{def:Process}es.
+\item[\cinline{int shm_unlink(const char *name)}] Unlink a chunk of shared memory from the current \nameref{def:Process}'s memory map.
+\end{description}
+
 \subsubsection{Pipes}\label{subsubsec:IPC_Mechanism-Pipes}
 These are similar to the shell pipe \mintinline{bash}{|}.
 
