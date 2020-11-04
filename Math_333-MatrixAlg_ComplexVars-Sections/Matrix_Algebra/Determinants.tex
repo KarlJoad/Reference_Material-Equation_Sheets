@@ -44,6 +44,24 @@ Before calculating the \nameref{def:Determinant}, we need to have some additiona
 
 Now with these terms defined, we can define the general algorithm for the \nameref{def:Determinant}.
 
+\begin{definition}[Determinant]\label{def:Determinant}
+  The \emph{determinant} of a \nameref{def:Matrix} is a scalar value that is computed out of a \textbf{square} matrix and encodes certain properties of the transformation specified by the matrix.
+
+  There are 2 equations in use for the determinant, depending on the size of the matrix.
+  For a $2 \by 2$ matrix,
+  \begin{equation}\label{eq:Determinant_2x2}
+    \det
+    \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix}
+    = ad - bc
+  \end{equation}
+
+  For a matrix larger than $2 \by 2$, we have many possible ways of finding the determinant.
+  This is explored further in \Cref{subsubsec:Expand_Determinant}, with their equations given in \Cref{eq:Determinant_Expand_ith_Row} and \Cref{eq:Determinant_Expand_jth_Column}.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
