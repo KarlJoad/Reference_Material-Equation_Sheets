@@ -100,6 +100,8 @@ Technically \nameref{def:Pipe}s are implemented using \nameref{subsubsec:IPC_Mec
   \item Named pipes can be used to provide communication between processes on the same computer or between processes on different computers across a network, as in case of a distributed system.
   \item A named pipe can have multiple process communicating through it, like multiple clients connected to one server.
   \end{itemize}
+
+  In addition to these, one \nameref{def:Process} will block a \texttt{read} operation until another process connects to the \texttt{write} end of the pipe.
 \end{definition}
 
 
