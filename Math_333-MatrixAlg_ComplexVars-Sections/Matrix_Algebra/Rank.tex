@@ -23,6 +23,51 @@
   Then, the number of non-zero rows/columns is the row/column rank.
 \end{theorem}
 
+\begin{example}[Lecture 16, Example 2]{Determine Row Rank}
+  What is the \nameref{rmk:Row_Rank} of the matrix below?
+  \begin{equation*}
+    \begin{pmatrix}
+      1 & 2 & 0 & 4 \\
+      2 & -1 & 3 & 1 \\
+      1 & 2 & -1 & 3 \\
+      4 & 3 & 2 & 8
+    \end{pmatrix}
+  \end{equation*}
+  \tcblower{}
+  Reduce this to row \nameref{thm:Echelon_Form}.
+  \begin{align*}
+    \begin{pmatrix}
+      1 & 2 & 0 & 4 \\
+      2 & -1 & 3 & 1 \\
+      1 & 2 & -1 & 3 \\
+      4 & 3 & 2 & 8
+    \end{pmatrix}
+        &\grstep{\substack{-2r_{1}+r_{2} \\ -r_{1}+r_{3} \\ -4r_{1}+r_{4}}}
+    \begin{pmatrix}
+      1 & 2 & 0 & 4 \\
+      0 & -5 & 3 & -7 \\
+      0 & 0 & -1 & -1 \\
+      0 & -5 & 2 & -8
+    \end{pmatrix} \\
+    &\grstep{\substack{-2r_{3} \\ -r_{2}+r_{4}}}
+    \begin{pmatrix}
+      1 & 2 & 0 & 4 \\
+      0 & -5 & 3 & -7 \\
+      0 & 0 & 1 & 1 \\
+      0 & 0 & -1 & -1
+    \end{pmatrix} \\
+&\grstep{r_{3}+r_{4}}
+    \begin{pmatrix}
+      1 & 2 & 0 & 4 \\
+      0 & -5 & 3 & -7 \\
+      0 & 0 & 1 & 1 \\
+      0 & 0 & 0 & 0
+    \end{pmatrix} \\
+  \end{align*}
+
+  By counting the number of non-zero rows in the matrix, we find that the \nameref{rmk:Row_Rank} of this matrix is 3.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
