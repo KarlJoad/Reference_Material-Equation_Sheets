@@ -125,6 +125,17 @@ Technically \nameref{def:Pipe}s are implemented using \nameref{subsubsec:IPC_Mec
   \end{itemize}
 \end{definition}
 
+\subparagraph{Unnamed Pipe API}\label{subpar:Unnamed_Pipe_API}
+\begin{description}[noitemsep]
+\item[\cinline{int pipe(int fds[2])}] Create an unnamed pipe, which can be referenced by the \nameref{def:File_Descriptor}s \texttt{fds}.
+  \begin{description}[noitemsep]
+  \item[\cinline{fds[0]}] The read end of the unnamed pipe.
+  \item[\cinline{fds[1]}] The write end of the unnamed pipe.
+  \end{description}
+\item[\cinline{close(int fd)}] Close the given file descriptor.
+  All instances of this pipe will need to be closed on all ends to have the pipe deallocated.
+\end{description}
+
 \subsubsection{File Locks and Semaphores}\label{subsubsec:IPC_Mechanism-File_Locks_Semaphores}
 \paragraph{File Locks}\label{par:File_Locks}
 File \nameref{def:Lock}s control concurrent access/modification of shared files.
