@@ -183,8 +183,28 @@ These are one of the most common synchronization mechanisms, but they are not th
   When a \nameref{def:Process} and/or \nameref{def:Process} attempts \texttt{acquire()} the lock, while it is already owned by someone else, it is put in a \texttt{WAITING} state.
 \end{definition}
 
+\subparagraph{File Lock API}\label{subpar:File_Lock_API}
+\begin{description}[noitemsep]
+\item[\cinline{int fcntl(int fd, int cmd, struct flock)}] Create a file lock for the given \nameref{def:File_Descriptor}.
+  \begin{itemize}[noitemsep]
+  \item \texttt{cmd} is an enumeration of \texttt{F\_GETLK}, \texttt{F\_SETLK}, \texttt{F\_SETLKW}.
+    \begin{description}[noitemsep]
+    \item[\cinline{F_GETLK}] Test acquisition of the lock.
+    \item[\cinline{F_SETLK}] Acquire the lock.
+    \item[\cinline{F_SETLKW}] Release the lock.
+    \end{description}
+  \item \texttt{struct flock { ... }} is the type of lock and how to get the lock.
+  \end{itemize}
+\end{description}
+
 \paragraph{Semaphores}\label{par:Semaphores}
 \nameref{def:Semaphore}s control shared memory's access and modification.
+Essentially, they allow $m$ of $n$ \nameref{def:Process}es to acquire a resource.
+If this is supposed to be a mutually exclusive resource, then $m = 1$, and this is called a \nameref{def:Mutex}.
+
+\nameref{def:Semaphore}s control the order in which \nameref{def:Process}es run.
+They are typically associated with a counter.
+They also require that the wait and release process be atomic, especially when working with the counter.
 
 \begin{definition}[Semaphore]\label{def:Semaphore}
   A \emph{semaphore} regulates the number of things (\nameref{def:Process}es or \nameref{def:Process}s) performing operations on something (Shared Resource).
