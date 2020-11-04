@@ -1,4 +1,18 @@
 \subsection{Linear Independence}\label{subsec:Linear_Independence}
+\begin{theorem}[Linearly Dependent]\label{thm:Linearly_Dependent}
+  Let $S$ be a set of vectors of size $n$, $S = \lbrace v_{1}, v_{2}, \ldots, v_{n} \rbrace$.
+  Each vector $v_{k}$ has components in $\RealNumbers^{m}$ ($m$ components from $\RealNumbers$).
+
+  The set is \emph{linearly dependent} if there exists scalars $c_{1}, c_{2}, \ldots, c_{n}$, at least one of which is not equal to zero, such that the below equation holds true.
+  \begin{equation}\label{eq:Linearly_Dependent}
+    c_{1}v_{1} + c_{2}v_{2} + \cdots + c_{n}v_{n} = 0
+  \end{equation}
+
+  \begin{remark*}
+    Note that the $0$ in \Cref{eq:Linearly_Dependent} implies the zero vector, not necessarily the scalar value $0$.
+  \end{remark*}
+\end{theorem}
+
 
 %%% Local Variables:
 %%% mode: latex
