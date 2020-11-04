@@ -89,6 +89,58 @@
   \end{remark*}
 \end{definition}
 
+\begin{example}[Lecture 16, Example 1]{Determine Linear Independence}
+  Verify that $S$ is \nameref{def:Linearly_Independent}?
+  \begin{equation*}
+    S = \lbrace (1, 1, 0), (1, 0, 2), (0, 1, 0) \rbrace
+  \end{equation*}
+  \tcblower{}
+  Now, we suppose that we can try to solve \Cref{eq:Linearly_Dependent}.
+  \begin{align*}
+    c_{1}(1, 1, 0) + c_{2}(1, 0, 2) + c_{3}(0, 1, 0) &= (0, 0, 0) \\
+    c_{1} + c_{2} + 0c_{3} &= 0 \\
+    c_{1} + 0c_{2} + c_{3} &= 0 \\
+    0c_{1} + 2c_{2}+ 0c_{3} &= 0
+  \end{align*}
+
+  Just like in \Cref{ex:Determine Linear Dependence}, I will ignore the column vector of zeros.
+  \begin{align*}
+    \begin{pmatrix}
+      1 & 1 & 0 \\
+      1 & 0 & 1 \\
+      0 & 2 & 0
+    \end{pmatrix}
+              &\grstep{-r_{1}+r_{2}}
+                \begin{pmatrix}
+                  1 & 1 & 0 \\
+                  0 & -1 & 1 \\
+                  0 & 2 & 0
+                \end{pmatrix} \\
+        &\grstep{2r_{2}+r_{3}}
+          \begin{pmatrix}
+            1 & 1 & 0 \\
+            0 & -1 & 1 \\
+            0 & 0 & 2
+          \end{pmatrix} \\
+    &\grstep{\frac{r_{3}}{2}}
+      \begin{pmatrix}
+        1 & 1 & 0 \\
+        0 & -1 & 1 \\
+        0 & 0 & 1
+      \end{pmatrix}
+  \end{align*}
+
+  Now, converting back to a system of equations:
+  \begin{align*}
+    c_{1} + c_{2} &= 0 \\
+    c_{2} - c_{3} &= 0 \\
+    c_{3} &= 0
+  \end{align*}
+
+  This means that $c_{1} = c_{2} = c_{3} = 0$.
+
+  Therefore, the set $S$ is \nameref{def:Linearly_Independent} because $c_{1}, c_{2}, c_{3} = 0$.
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
