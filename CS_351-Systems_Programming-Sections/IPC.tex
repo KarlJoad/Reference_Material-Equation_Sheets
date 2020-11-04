@@ -84,6 +84,7 @@ Using \nameref{def:Pipe}s allows us to more easily implement correct \nameref{de
 In addition, there is no need to go to the file system, so there are no file system performance implications.
 Technically \nameref{def:Pipe}s are implemented using \nameref{subsubsec:IPC_Mechanism-Shared_Memory}, so you get memory-access speeds.
 
+\paragraph{Named Pipes}\label{par:Named_Pipes}
 \begin{definition}[Named Pipe]\label{def:Named_Pipe}
   A \emph{named pipe} has some key differences compared to a \nameref{def:Unnamed_Pipe}.
   Both of these types exist in the \textsc{unix} world.
@@ -101,6 +102,8 @@ Technically \nameref{def:Pipe}s are implemented using \nameref{subsubsec:IPC_Mec
   \end{itemize}
 \end{definition}
 
+
+\paragraph{Unnamed Pipes}\label{par:Unnamed_Pipes}
 \begin{definition}[Unnamed Pipe]\label{def:Unnamed_Pipe}
   An \emph{unnamed pipe}, sometimes called an \emph{anonymous pipe} has some key differences compared to a \nameref{def:Named_Pipe}.
   Both of these types exist in the \textsc{unix} world.
