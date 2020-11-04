@@ -303,6 +303,28 @@ We can factor the 10 out like so:
 
 As we can see, scaling a row by a scalar value results in the \nameref{def:Determinant} being scaled by the same value.
 
+\paragraph{Multiply Row and Add}
+Let $A =
+\begin{pmatrix}
+  a & b \\
+  c & d
+\end{pmatrix}$.
+We will form $\tilde{A}$ by multiplying the first row by $\lambda$ and adding it to the second.
+
+$\tilde{A} =
+\begin{pmatrix}
+  a & b \\
+  \lambda a + c & \lambda b + d
+\end{pmatrix}$.
+
+Now, jwe can find the \nameref{def:Determinant}.
+\begin{align*}
+  \det \tilde{A} &= a(\lambda b + d) - b(\lambda a + c) \\
+                 &= a \lambda b + ad - b \lambda a - bc \\
+                 &=  ad - bc \\
+                 &= \det A
+\end{align*}
+
 
 %%% Local Variables:
 %%% mode: latex
