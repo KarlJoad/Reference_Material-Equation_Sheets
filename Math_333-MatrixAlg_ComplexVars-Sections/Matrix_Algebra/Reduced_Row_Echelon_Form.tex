@@ -1,4 +1,66 @@
 \subsection{Reduced Row Echelon Form}\label{subsec:RREF}
+Using what we learned in \Cref{subsec:Inverse_Matrices} and \Cref{subsubsec:Inverse_Matrices_using_Elementary_Matrices}, we can solve systems of linear equations using a \nameref{def:Matrix}'s inverse.
+
+This can be movtivated with a general example.
+\begin{blackbox}
+  Consider the system shown below.
+  \begin{align*}
+    a_{11} x_{1} + a_{12} x_{2} &= b_{1} \\
+    a_{21} x_{1} + a_{22} x_{2} &= b_{2}
+  \end{align*}
+
+  We can convert this set of equations with 2 equations and 2 unknowns to a single linear equation with a single unknown.
+  \textbf{Equivalently} to the system, we can write
+  \begin{align*}
+    \begin{pmatrix}
+      a_{11} & a_{12} \\
+      a_{21} & a_{22}
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_{1} \\
+      x_{2}
+    \end{pmatrix} &=
+    \begin{pmatrix}
+      a_{11} x_{1} + a_{12} x_{2} \\
+      a_{21} x_{1} + a_{22} x_{2}
+    \end{pmatrix} \\
+    &=
+      \begin{pmatrix}
+        b_{1} \\
+        b_{2}
+      \end{pmatrix}
+  \end{align*}
+
+  The column matrices (column vectors) are technically one unknown with multiple unknown components.
+
+  Just like with regular algebra, we can use the inverse of the items we know to solve the equation.
+  \begin{align*}
+    \intertext{Let}
+    A &=
+        \begin{pmatrix}
+          a_{11} & a_{12} \\
+          a_{21} & a_{22}
+        \end{pmatrix} \\
+    X &=
+        \begin{pmatrix}
+          x_{1} \\
+          x_{2}
+        \end{pmatrix} \\
+    B &=
+        \begin{pmatrix}
+          b_{1} \\
+          b_{2}
+        \end{pmatrix} \\
+    AX &= B \\
+    \shortintertext{We make the assumption $A$ is invertible.}
+    A^{-1} (A X) &= A^{-1} B \\
+    (A^{-1} A) X &= A^{-1} B \\
+    I X &= A^{-1} B
+  \end{align*}
+
+  Therefore, we can solve the system using $A^{-1}$.
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
