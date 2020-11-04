@@ -137,6 +137,17 @@ Technically \nameref{def:Pipe}s are implemented using \nameref{subsubsec:IPC_Mec
 \end{description}
 
 \subsubsection{File Locks and Semaphores}\label{subsubsec:IPC_Mechanism-File_Locks_Semaphores}
+These two synchronization mechanisms are used to make concurrent systems predictable.
+
+Some mechanisms that are similar to this that we have already used are:
+\begin{description}[noitemsep]
+\item[\cinline{wait}] But, this has a limited ability to do \textit{things}.
+\item[\cinline{kill} and \cinline{signal}] A poor way to communicate, because we cannot queue and cannot handle multiple \nameref{def:Signal}s simultaneously.
+\item[Pipes] The synchronization here is actually implicit, and allows for blocking calls to get information on both ends of the pipe.
+  From the end-user perspective, this simplifies things, because the kernel is in charge of keeping the pipe synchronized.
+  However, we are limited to the byte stream interface of the pipe, meaning we cannot read arbitrarily within the pipe.
+\end{description}
+
 \paragraph{File Locks}\label{par:File_Locks}
 File \nameref{def:Lock}s control concurrent access/modification of shared files.
 \begin{definition}[Lock]\label{def:Lock}
