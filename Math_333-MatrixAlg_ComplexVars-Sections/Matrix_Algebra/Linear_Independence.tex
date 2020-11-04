@@ -13,6 +13,73 @@
   \end{remark*}
 \end{theorem}
 
+\begin{example}[Lecture 15, Example 3]{Determine Linear Dependence}
+  Given the set of vectors below, are they \nameref{thm:Linearly_Dependent}?
+  \begin{equation*}
+    S = \lbrace (1, -2, 0, 3), (-1, 1, 2, -1), (0, -1, 2, 2) \rbrace
+  \end{equation*}
+  \tcblower{}
+  We need to find a set of scalars, one of which must be non-zero, such that we satisfy \Cref{eq:Linearly_Dependent}.
+  \begin{align*}
+    c_{1}(1, -2, 0, 3) + c_{2}(-1, 1, 2, -1) + c_{3}(0, -1, 2, 2) &= 0 \\
+    (c_{1} + -1c_{2} + 0c_{3}) + (-2c_{1}+ c_{2} -1c_{3}) + (0c_{1} + 2c_{2} + 2c_{3}) + (3c_{1} + -1c_{2} + 2c_{3}) &= 0 \\
+  \end{align*}
+
+  This leads us to 4 equations.
+  \begin{align*}
+    c_{1} - c_{2} &= 0 \\
+    -2c_{1} + c_{2} -c_{3} &= 0 \\
+    2c_{2} + 2c_{3} &= 0 \\
+    3c_{1} -c_{2} + 2c_{3} &= 0
+  \end{align*}
+
+  We can convert this to a matrix, and attempt to find a solution to the system.
+  Note that we can ignore the column of $0$s at the end, because no matter the \nameref{def:Elementary_Row_Op} we perform, that value will remain the same.
+  \begin{align*}
+    \begin{pmatrix}
+      1 & -1 & 0 \\
+      -2 & 1 & -1 \\
+      0 & 2 & 2 \\
+      3 & -1 & 2
+    \end{pmatrix}
+         &\grstep{\substack{2r_{1}+r_{2} \\ 3r_{1}+r_{4}}}
+    \begin{pmatrix}
+      1 & -1 & 0 \\
+      0 & -1 & -1 \\
+      0 & 2 & 2 \\
+      0 & 2 & 2 \\
+    \end{pmatrix} \\
+        &\grstep{-r_{2}}
+          \begin{pmatrix}
+            1 & -1 & 0 \\
+            0 & 1 & 1 \\
+            0 & 2 & 2 \\
+            0 & 2 & 2 \\
+          \end{pmatrix} \\
+        &\grstep{\substack{-2r_{2}+r_{3} \\ -2r_{2}+r_{4}}}
+    \begin{pmatrix}
+      1 & -1 & 0 \\
+      0 & 1 & 1 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0
+    \end{pmatrix}
+  \end{align*}
+
+  Bringing this back to a set of equations:
+  \begin{align*}
+    c_{1} - c_{2} &= 0 \\
+    c_{2} + c_{3} &= 0
+  \end{align*}
+
+  This means:
+  \begin{align*}
+    c_{2} &= -c_{3} \\
+    c_{1} &= c_{2}
+  \end{align*}
+
+  Thus, there are infinitely many solutions, where at least one constant is non-zero.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
