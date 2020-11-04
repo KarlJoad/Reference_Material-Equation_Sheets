@@ -5,6 +5,27 @@ Before calculating the \nameref{def:Determinant}, we need to have some additiona
   The \emph{minor} $\Minor{i}{j}$ is the \nameref{def:Determinant} of the sub\nameref{def:Matrix} obtained by deleting the $i$th row and $j$th column.
 \end{definition}
 
+\begin{blackbox}
+  Given the matrix $
+  \begin{pmatrix}
+    1 & -1 & 3 \\
+    2 & 5 & -1 \\
+    3 & 0 & 5
+  \end{pmatrix}$, the \nameref{def:Minor} at the index $3,2$ is found by deleting the \nth{3} row and \nth{2} column and taking the \nameref{def:Determinant} of the resulting submatrix.
+  Thus,
+  \begin{align*}
+    \Minor{3}{2} &= \det
+                   \begin{pmatrix}
+                     1 & 3 \\
+                     2 & -1
+                   \end{pmatrix} \\
+    \intertext{Use the definition of the \nameref{def:Determinant} for a $2 \by 2$ \nameref{def:Matrix}.}
+                 &= 1(-1) - 3(2) \\
+                 &= -1 - 6 \\
+                 &= -7
+  \end{align*}
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
