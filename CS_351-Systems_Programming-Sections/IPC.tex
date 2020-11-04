@@ -49,6 +49,21 @@ This is intended because the operating system doesn't necessarily know when a se
 \item[\cinline{int shm_unlink(const char *name)}] Unlink a chunk of shared memory from the current \nameref{def:Process}'s memory map.
 \end{description}
 
+\paragraph{Synchronizing Shared Memory}\label{par:Syncing_Shared_Memory}
+Shared memory is dangerous, because we have no protection from another \nameref{def:Process} writing over what we had just written.
+Thus, we need to synchronize access to this memory.
+
+This can be done with \nameref{def:Signal}s, in the following steps:
+\begin{enumerate}[noitemsep]
+\item Writer sends signal to reader
+\item Reader reads from memory
+\item Reader signals back to writer that it is done
+\item Writer removes the shared memory
+\end{enumerate}
+
+But, the operating system cannot queue signals, so certain operations cannot be queued.
+In addition, signals do have some overhead, so passing many signals around as a synchronization mechanism can be costly.
+
 \subsubsection{Pipes}\label{subsubsec:IPC_Mechanism-Pipes}
 These are similar to the shell pipe \mintinline{bash}{|}.
 
