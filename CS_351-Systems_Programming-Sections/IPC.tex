@@ -29,6 +29,10 @@ But, in the case of \nameref{def:IPC}, signals are a very limited form of commun
 \subsubsection{(Regular) Files}\label{subsubsec:IPC_Mechanism-Regular_Files}
 It is always possible to save the information to a regular file on the system and then have other \nameref{def:Process}es read from and write to this file to communicate.
 This does have its place, but for many small reads and writes, the overhead of writing to the storage medium and using the file system will cause greater slow-downs.
+The slow-down incurred will typically be 1--2 orders of magnitude slower than memory.
+
+This is very good for \textit{static} \nameref{def:IPC}, such as configuration files.
+But files are not typically considered as a regular mechanism for dynamic \nameref{def:IPC}.
 
 \subsubsection{Shared Memory}\label{subsubsec:IPC_Mechanism-Shared_Memory}
 \nameref{def:Process}es can share memory regions between each other.
