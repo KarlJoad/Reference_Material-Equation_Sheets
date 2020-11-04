@@ -159,6 +159,18 @@ File \nameref{def:Lock}s control concurrent access/modification of shared files.
   \end{remark}
 \end{definition}
 
+These are one of the most common synchronization mechanisms, but they are not the best from a performance perspective.
+\begin{itemize}[noitemsep]
+\item Concurrently reading a file from multiple processes is allowed.
+\item Concurrently modifying a file is not allowed.
+  This can have ugly consequences.
+\item A file lock prevents other \nameref{def:Process}es from using a file.
+\item Locks are \textbf{NOT} preserved across a \texttt{fork}.
+\item There is also \textbf{NO} assurance that the filesystem supports file locking, as Linux makes it advisory.
+\item Mandatory locking is possible, but the filesystem must have been designed with that in mind.
+\item In general, these are not designed for general-purpose synchronization.
+\end{itemize}
+
 \begin{definition}[Mutex]\label{def:Mutex}
   A \emph{mutex} (short for \emph{\textbf{mut}ual \textbf{ex}clusion}) is the same as a \nameref{def:Lock}, \textbf{but it can be system wide (shared by multiple processes)}.
   A mutex lock protects critical regions and prevents race conditions.
