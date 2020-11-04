@@ -85,6 +85,16 @@ To calculate the \nameref{def:Determinant} of a \nameref{def:Matrix} larger than
   However, to make your life easier, it is best to pick the row or column that contains the most zeros.
 \end{remark*}
 
+To expand the \nameref{def:Determinant} of a \nameref{def:Matrix} $A_{n \by n}$ by the $i$th row the following equation follows:
+\begin{equation}\label{eq:Determinant_Expand_ith_Row}
+  \det A = a_{i,1} \Cofactor{i}{1} + a_{i,2} \Cofactor{i}{2} + \cdots + a_{i,n} \Cofactor{i}{n}
+\end{equation}
+
+To expand the \nameref{def:Determinant} of a \nameref{def:Matrix} $A_{n \by n}$ by the $j$th column the following equation follows:
+\begin{equation}\label{eq:Determinant_Expand_jth_Column}
+  \det A = a_{1,j} \Cofactor{1}{j} + a_{2,j} \Cofactor{2}{j} + \cdots + a_{n,j} \Cofactor{n}{j}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
