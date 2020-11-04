@@ -279,6 +279,30 @@ The determinant of this is $\det \tilde{A} = cb - ad = -\det A$.
   $\therefore \det \tilde{A} = \det A = 0$.
 \end{corollary}
 
+\paragraph{Row Scaling}
+Let $A =
+\begin{pmatrix}
+  1 & 2 & 3 \\
+  a & b & c \\
+  10 & 20 & 30
+\end{pmatrix}$.
+
+We notice that $r_{3} = 10r_{1}$.
+We can factor the 10 out like so:
+\begin{align*}
+  \det A &= 10 \det
+  \begin{pmatrix}
+    1 & 2 & 3 \\
+    a & b & c \\
+    1 & 2 & 3
+  \end{pmatrix} \\
+  \intertext{Use \Cref{cor:2_Identical_Rows} to simplify the \nameref{def:Determinant}.}
+         &= 10 (0) \\
+         &= 0
+\end{align*}
+
+As we can see, scaling a row by a scalar value results in the \nameref{def:Determinant} being scaled by the same value.
+
 
 %%% Local Variables:
 %%% mode: latex
