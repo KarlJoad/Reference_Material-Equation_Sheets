@@ -158,6 +158,21 @@
   \end{propertylist}
 \end{definition}
 
+However, \Cref{eq:Eigenvalue} is difficult to work with when attempting to find the \nameref{def:Characteristic_Polynomial}.
+So, we can perform some reductions that make it easier to use.
+\begin{align*}
+  AX &= \lambda X \\
+  \shortintertext{Remember that $X \neq 0$.}
+  AX - \lambda X &= 0 \\
+  \intertext{We cannot factor $X$ as it is right now, because it multiplies two different things, a \nameref{def:Matrix} and a scalar.
+  We can solve this by using the \nameref{def:Multiplicative_Identity_Matrix}.}
+  AX - \lambda I X &= 0 \\
+  (A - \lambda I) X &= 0 \\
+  \intertext{Now, using \Cref{lem:Contrapositive_Matrix_Multiply_Zero_Vector}, $\det B = 0$.}
+  \det(A-\lambda I) &= 0 \\
+  \shortintertext{Where $lambda$ is an \nameref{def:Eigenvalue}.}
+\end{align*}
+
 
 %%% Local Variables:
 %%% mode: latex
