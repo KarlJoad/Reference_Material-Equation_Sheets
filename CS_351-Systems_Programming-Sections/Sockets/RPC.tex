@@ -12,6 +12,41 @@ The question here is: How do we make ``distributed computing look like tradition
 \item In distributed system, the callee may be a completely different system from the one executing.
 \end{itemize}
 
+\subsubsection{Design Issues}\label{subsubsec:RPC_Design_Issues}
+\begin{itemize}[noitemsep]
+\item Parameter passing
+  \begin{itemize}[noitemsep]
+  \item Local:
+    \begin{enumerate}[noitemsep]
+    \item Parameters passed on the stack before jumping elsewhere
+    \item The stack holds the parameters and the possible local variables until you finish the call.
+    \item Parameters can be call-by-value or call-by-reference
+    \end{enumerate}
+  \item Remote:
+    \begin{enumerate}[noitemsep]
+    \item Simulate parameter passing with *Stubs and Marshaling
+      \begin{itemize}[noitemsep]
+      \item Client makes procedure call to client stub
+      \item Server written as a standard procedure
+      \item Stubs take care of packaging arguments and sending messages
+      \item The packaging is called marshaling
+      \item Stub compiler generates stubs automatically from specifications in an \emph{Interface Definition Language} (IDL)
+      \end{itemize}
+    \end{enumerate}
+  \end{itemize}
+\item Binding
+\item Reliability
+  \begin{itemize}[noitemsep]
+  \item How to handle failures
+  \item Message loss
+  \item Client crash
+  \item Server crash
+  \end{itemize}
+\item Performance and implementation issues
+\item Exception handling
+\item Interface definition
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
