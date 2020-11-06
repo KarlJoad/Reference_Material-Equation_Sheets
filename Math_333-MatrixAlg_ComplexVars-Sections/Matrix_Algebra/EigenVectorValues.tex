@@ -1,4 +1,22 @@
 \subsection{Eigenvectors}\label{subsec:Eigenvectors}
+\begin{definition}[Eigenvector]\label{def:Eigenvector}
+  Let $A$ be an $n \by n$ matrix, denoted $A_{n \by n}$ and $X_{n \by 1}$ be a column vector of unknowns.
+  $X_{n \by 1}$ is said to be an \emph{eigenvector} of $A$ if:
+
+  \begin{equation}\label{eq:Eigenvector}
+    AX = \lambda X
+  \end{equation}
+
+  \begin{propertylist}
+  \item $X \neq 0$.\label{prop:Eigenvector_Nonzero}
+  \item $\lambda$ is a scalar, called an \nameref{def:Eigenvalue}.\label{prop:Eigenvector_Value}.
+  \end{propertylist}
+
+  \begin{remark}[Uniqueness of Eigenvectors]
+    There can be infinitely many \nameref{def:Eigenvector}s for a given \nameref{def:Eigenvalue}.
+  \end{remark}
+\end{definition}
+
 
 \subsection{Eigenvalues}\label{subsec:Eigenvalues}
 
