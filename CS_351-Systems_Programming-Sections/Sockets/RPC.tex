@@ -47,6 +47,20 @@ The question here is: How do we make ``distributed computing look like tradition
 \item Interface definition
 \end{itemize}
 
+\subsubsection{Steps}\label{subsubsec:RPC_Steps}
+\begin{enumerate}[noitemsep]
+\item Client procedure calls client stub in normal way
+\item Client stub build message and calls local OS (Marshaling)
+\item Client's OS sends message to remote OS (Actual socket send happens here)
+\item Remote OS gives message to server stub
+\item Server stub unpacks parameters, calls server (Can also call multiple functions, need to determine the parameters passed).
+\item Server does work and returns results to the server-side stub
+\item Server stub marshals the message and calls the local OS
+\item Server's OS sends message to client's OS
+\item Client's OS gives message to client stub
+\item Stub unpacks the result and return to the client
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
