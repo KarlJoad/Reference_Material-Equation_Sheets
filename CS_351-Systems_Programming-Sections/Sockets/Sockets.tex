@@ -46,6 +46,31 @@ The typically definition of a socket follows the definition of a \emph{Berkeley 
   \label{tab:Berkley_Socket_Primitives}
 \end{table}
 
+\paragraph{Socket Usage}\label{par:Socket_Usage}
+To start using sockets, you must distinguish and denote one computer a client and another a server.
+Servers behave similarly to the way we are used to running programs, but these \nameref{def:Process}es are typically very long-running.
+The usual lifecycle for a socket consists of:
+\begin{enumerate}[noitemsep]
+\item Socket
+\item Bind
+\item Listen on a specific port. Now blocks.
+  \begin{itemize}[noitemsep]
+  \item If the parent forks, then the parent can stay here and accept new connections.
+  \end{itemize}
+\item Accept
+\item Send/Receive
+\item Close (Usually client is the one that closes the connection)
+\item Wait until a new connection. (Sometimes if the connection is closed, the process ends)
+\end{enumerate}
+
+On the other hand, clients behave as shorter-running processes, compared to their server brethren.
+They go through these steps:
+\begin{enumerate}[noitemsep]
+\item Connect
+\item Send/Receive
+\item Close
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
