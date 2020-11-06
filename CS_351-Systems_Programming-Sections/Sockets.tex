@@ -1,78 +1,8 @@
 \section{Sockets}\label{sec:Sockets}
-\subsection{Communication Protocols}\label{subsec:Communication_Protocols}
-\begin{itemize}
-\item Protocols are agreement and rules on communication
-\item These can be connection-oriented or connectionless
-\item These protocols are typically built with a layered architecture-
-  \begin{enumerate}
-  \item Physical
-  \item Data Link
-  \item Network
-  \item Transport
-  \item Session
-  \item Presentation
-  \item Application
-  \end{enumerate}
-\item These messages build off each other by wrapping the higher-level protocol in a lower one.
-\end{itemize}
+\input{./CS_351-Systems_Programming-Sections/Sockets/Communication_Protocols}
 
-\subsubsection{Physical}\label{subsubsec:Physical_Protocols}
-\begin{itemize}
-\item How to encode 0s and 1s
-\item What voltages are used
-\item How long does a bit need to be signaled
-\item What does the cable, plug, antenna look like?
-\end{itemize}
 
-\subsubsection{Data Link}\label{subsubsec:Data_Link_Protocols}
-\begin{itemize}
-\item How big is a frame
-\item Can I detect an error
-\item What marks an end of a frame
-\item How do I control access to a shared channel (Flow Control)
-\end{itemize}
 
-\subsubsection{Network}\label{subsubsec:Network_Protocols}
-\begin{itemize}
-\item How to route packets
-\item Congestion control algorithm
-  \begin{itemize}
-  \item Traffic Shaping
-  \item Flow Specifications
-  \item Bandwidth reservation
-  \end{itemize}
-\item Accounting
-\item Fragment or combine packets
-\end{itemize}
-
-\subsubsection{Transport Layer}\label{subsubsec:Transport_Layer_Protocols}
-\begin{itemize}
-\item How to order messages and detect duplicates
-\item Error detection
-\item Retransmission
-\item Connection-oriented vs. Connectionless
-\end{itemize}
-
-\subsubsection{Session and Presentation}\label{subsubsec:Session_Presentation_Protocols}
-\begin{itemize}
-\item
-\end{itemize}
-
-\subsubsection{Application}\label{subsubsec:Application_Protocols}
-\begin{itemize}
-\item What marks the subject field
-\item How to represent cursor movements
-\item Services
-  \begin{itemize}
-  \item SMTP
-  \item FTP
-  \item HTTP
-  \item SNMP
-  \item NFS
-  \item NTP
-  \item NNTP
-  \end{itemize}
-\end{itemize}
 
 \subsection{Middleware Protocols}\label{subsubsec:Middleware_Protocols}
 
