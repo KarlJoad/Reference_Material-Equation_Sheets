@@ -17,6 +17,11 @@ For example:
 \item Remote communication happens for email, web browsing, etc.
 \end{itemize}
 
+Server doesn't need to \texttt{fork} unless they want to communicate with multiple clients.
+Threads can also be used.
+The client doesn't need to \texttt{fork} unless they want to communicate with multiple servers simultaneously.
+Just like the server, threads can be used for this instead of \nameref{def:Process}es.
+
 
 %%% Local Variables:
 %%% mode: latex
