@@ -144,6 +144,12 @@ Crefname={Example}{Examples}, % Reference format for cleveref (With Capitals)
 \newcommand{\Abs}[1]{\ensuremath{\lvert #1 \rvert}}
 \newcommand{\DNE}{\ensuremath{\mathrm{DNE}}} % Used when limit of function Does Not Exist
 
+% Matrix Functions
+\newcommand{\Minor}[2]{\ensuremath{m_{#1,#2}}}
+\newcommand{\Cofactor}[2]{\ensuremath{c_{#1,#2}}}
+\DeclareMathOperator{\Adjoint}{adj}
+\newcommand{\Transpose}[1]{\ensuremath{{#1}^{T}}}
+
 % Complex Numbers functions
 \renewcommand{\Re}{\operatorname{Re}} % Redefine to use the command, but not the fraktur version
 \renewcommand{\Im}{\operatorname{Im}} % Redefine to use the command, but not the fraktur version
