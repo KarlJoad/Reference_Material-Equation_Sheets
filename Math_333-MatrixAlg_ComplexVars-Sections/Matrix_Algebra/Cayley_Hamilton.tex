@@ -6,6 +6,87 @@
   \end{remark*}
 \end{theorem}
 
+\begin{example}[Lecture 17, Example 5]{Verify the Cayley-Hamilton Theorem}
+  Verify the \nameref{thm:Cayley-Hamilton_Theorem} for the \nameref{def:Matrix} $A$?
+  \begin{equation*}
+    A =
+    \begin{pmatrix}
+      6 & -1 \\
+      2 & 3
+    \end{pmatrix}
+  \end{equation*}
+  \tcblower{}
+  We need to find $A$'s \nameref{def:Characteristic_Polynomial}.
+  \begin{align*}
+    A - \lambda I &=
+                    \begin{pmatrix}
+                      6 - \lambda & -1 \\
+                      2 & 3 - \lambda
+                    \end{pmatrix} \\
+    \det(A - \lambda I) &= (6-\lambda) (3-\lambda) - (-1)(2) \\
+                  &= \lambda^{2} - 9\lambda + 20
+  \end{align*}
+
+  The \nameref{thm:Cayley-Hamilton_Theorem} asserts:
+  \begin{align*}
+    A^{2} - 9 A + 20I &= 0 \\
+    \begin{pmatrix}
+      6 & -1 \\
+      2 & 3
+    \end{pmatrix}
+          \begin{pmatrix}
+            6 & -1 \\
+            2 & 3
+          \end{pmatrix} -
+                9
+                \begin{pmatrix}
+                  6 & -1 \\
+                  2 & 3
+                \end{pmatrix} +
+                      \begin{pmatrix}
+                        20 & 0 \\
+                        0 & 20
+                      \end{pmatrix}
+        &\qeq 0 \\
+    \begin{pmatrix}
+      34 & -9 \\
+      18 & 7
+    \end{pmatrix} -
+           \begin{pmatrix}
+             54 & -9 \\
+             18 & 27
+           \end{pmatrix} +
+                  \begin{pmatrix}
+                    20 & 0 \\
+                    0 & 20
+                  \end{pmatrix}
+                        &\qeq
+                          \begin{pmatrix}
+                            0 & 0 \\
+                            0 & 0
+                          \end{pmatrix} \\
+    \begin{pmatrix}
+      -20 & 0 \\
+      0 & -20
+    \end{pmatrix} +
+          \begin{pmatrix}
+            20 & 0 \\
+            0 & 20
+          \end{pmatrix} &\qeq
+                          \begin{pmatrix}
+                            0 & 0 \\
+                            0 & 0
+                          \end{pmatrix} \\
+    \begin{pmatrix}
+      0 & 0 \\
+      0 & 0
+    \end{pmatrix} &\overset{\checkmark}{=}
+                    \begin{pmatrix}
+                      0 & 0 \\
+                      0 & 0
+                    \end{pmatrix}
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
