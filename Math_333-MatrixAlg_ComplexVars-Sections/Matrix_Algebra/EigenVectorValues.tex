@@ -17,6 +17,59 @@
   \end{remark}
 \end{definition}
 
+\begin{example}[Lecture 17, Example 1]{Verify Vector is not an Eigenvector}
+  Given $A$ and $Y$, is $Y$ an \nameref{def:Eigenvector} of $A$?
+  \begin{align*}
+    A &=
+        \begin{pmatrix}
+          2 & 3 \\
+          6 & -1
+        \end{pmatrix} &
+                        Y &=
+                            \begin{pmatrix}
+                              2 \\
+                              -1
+                            \end{pmatrix}
+  \end{align*}
+  \tcblower{}
+  First, we check that the two properties of an \nameref{def:Eigenvector} are satisfied.
+  \Cref{prop:Eigenvector_Nonzero} is satisfied ($Y \neq 0$).
+
+  Now, we attempt to find the \nameref{def:Eigenvalue} for this particular \nameref{def:Eigenvector}.
+  \begin{align*}
+    AY &=
+         \begin{pmatrix}
+           2 & 3 \\
+           6 & -1
+         \end{pmatrix}
+               \begin{pmatrix}
+                 2 \\
+                 -1
+               \end{pmatrix} \\
+    &=
+      \begin{pmatrix}
+        1 \\
+        13
+      \end{pmatrix} \\
+  \end{align*}
+
+  The problem here is that there is \textbf{no} $\lambda$ such that the equation for an \nameref{def:Eigenvalue} is satisfied.
+  \begin{equation*}
+    \lambda
+    \begin{pmatrix}
+      2 \\
+      -1
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      1 \\
+      13
+    \end{pmatrix}
+  \end{equation*}
+
+  $\therefore$ $Y$ is not an \nameref{def:Eigenvector} of $A$.
+\end{example}
+
 
 \subsection{Eigenvalues}\label{subsec:Eigenvalues}
 
