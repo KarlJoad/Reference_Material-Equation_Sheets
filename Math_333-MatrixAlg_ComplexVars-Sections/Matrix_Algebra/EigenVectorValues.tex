@@ -180,6 +180,132 @@ So, we can perform some reductions that make it easier to use.
   If $\lambda$ \emph{is} an \nameref{def:Eigenvalue}, then $\det(A-\lambda I) = 0$.
 \end{definition}
 
+\begin{example}[Lecture 17, Example 4]{Find all Eigenvalues and Eigenvectors}
+  Find all \nameref{def:Eigenvalue}s and \nameref{def:Eigenvector}s of $A$?
+  \begin{equation*}
+    A =
+    \begin{pmatrix}
+      2 & 3 & 6 \\
+      0 & 4 & 4 \\
+      0 & 0 & 2
+    \end{pmatrix}
+  \end{equation*}
+  \tcblower{}
+  Start by the \nameref{def:Characteristic_Polynomial} of $A$.
+  \begin{align*}
+    A &=
+    \begin{pmatrix}
+      2 & 3 & 6 \\
+      0 & 4 & 4 \\
+      0 & 0 & 2
+    \end{pmatrix} \\
+    A - \lambda I &=
+                    \begin{pmatrix}
+                      2 - \lambda & 3 & 6 \\
+                      0 & 4 - \lambda & 4 \\
+                      0 & 0 & 2 - \lambda \\
+                    \end{pmatrix} \\
+    \intertext{This \nameref{def:Matrix} is \nameref{def:Upper_Triangular}.}
+    \det(A - \lambda I) &= (2 - \lambda) (4 - \lambda) (2 - \lambda)
+  \end{align*}
+
+  With $A$'s \nameref{def:Characteristic_Polynomial}, we can find its roots to determine the \nameref{def:Eigenvalue}s for $A$.
+  As we can see, there are two possible eigenvalues:
+  \begin{description}[noitemsep]
+  \item[$\lambda = 2$] \nameref{def:Algebraic_Multiplicity} 2
+  \item[$\lambda = 4$] \nameref{def:Algebraic_Multiplicity} 1, or simple.
+  \end{description}
+
+  Now we need to find all the possible \nameref{def:Eigenvector}s for these \nameref{def:Eigenvalue}s.
+  Starting with $\lambda = 2$:
+  \begin{align*}
+    A - 4I &=
+             \begin{pmatrix}
+               0 & 3 & 6 \\
+               0 & 2 & 4 \\
+               0 & 0 & 0
+             \end{pmatrix} \\
+    (A-\lambda I) X &= 0 \\
+    \begin{pmatrix}
+      0 & 3 & 6 \\
+      0 & 2 & 4 \\
+      0 & 0 & 0
+    \end{pmatrix}
+              \begin{pmatrix}
+                x_{1} \\
+                x_{2} \\
+                x_{3}
+              \end{pmatrix}
+    &=
+      \begin{pmatrix}
+        0 \\
+        0 \\
+        0
+      \end{pmatrix}
+  \end{align*}
+
+  This yields a system of equations that we can solve.
+  \begin{align*}
+    3x_{2} + 6x_{3} &= 0 \\
+    2x_{2} + 4x_{3} &= 0 \\
+    \intertext{We can see that each equation is just a multiple of a simpler equation.}
+    3 (x_{2} + 2x_{3}) &= 0 \\
+    2 (x_{2} + 2x_{3}) &= 0 \\
+    \shortintertext{Now, solving this system.}
+    x_{2} &= -2x_{3}
+  \end{align*}
+
+  Now, we put it back into a solution matrix.
+  \begin{align*}
+    \begin{pmatrix}
+      x_{1} \\
+      x_{2} \\
+      x_{3}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      x_{1} \\
+                      -2x_{3} \\
+                      x_{3}
+                    \end{pmatrix} \\
+    \intertext{Now, because of superposition, we can say}
+    &=
+      \begin{pmatrix}
+        x_{1} + 0x_{3} \\
+        0x_{1} - 2x_{3} \\
+        0x_{1} + x_{3}
+      \end{pmatrix} \\
+    &=
+      \begin{pmatrix}
+        x_{1} \\
+        0 \\
+        0
+      \end{pmatrix} +
+    \begin{pmatrix}
+      0 \\
+      -2x_{3} \\
+      x_{3}
+    \end{pmatrix} \\
+    &= x_{1}
+      \begin{pmatrix}
+        1 \\
+        0 \\
+        0 \\
+      \end{pmatrix} +
+    x_{3}
+    \begin{pmatrix}
+      0 \\
+      -2 \\
+      1
+    \end{pmatrix}
+  \end{align*}
+  Where both $x_{1}$ and $x_{3}$ cannot be $0$ at the same time.
+
+  We need two matrices to find all \nameref{def:Eigenvector}s of the \nameref{def:Eigenvalue} $\lambda = 2$.
+  Thus, the \nameref{def:Eigenvalue} $\lambda = 2$ has a \nameref{def:Geometric_Multiplicity} of 2.
+
+  Similarly, we can solve for the \nameref{def:Eigenvalue} $\lambda = 4$, which will have \nameref{def:Geometric_Multiplicity} 1.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
