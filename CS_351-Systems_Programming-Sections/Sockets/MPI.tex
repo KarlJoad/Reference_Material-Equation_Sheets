@@ -1,4 +1,34 @@
 \subsection{MPI (Message Passing Interface)}\label{subsec:Message_Passing_Interface}
+\begin{itemize}[noitemsep]
+\item Berkeley sockets are designed for general-purpose network communication
+  \begin{itemize}[noitemsep]
+  \item Simple send/receive primitives
+  \item General-purpose protocol stacks such as TCP/IP
+  \item These primitives are very heavy, because of the all the work that goes into a network stack
+  \end{itemize}
+\item Abstraction of these kinds of sockets are not suitable for other protocols in clusters of workstations or massively parallel systems.
+  \begin{itemize}[noitemsep]
+  \item New, more advanced, primitives are required to make these communications as fast as possible.
+  \end{itemize}
+\item However, over time, there have become a large number of incompatible proprietary libraries and protocols.
+  \begin{itemize}[noitemsep]
+  \item This demands a standard interface to be used, called Message Passing Interface (MPI)
+  \end{itemize}
+\item The MPI Reference is available online at \url{https://www.mcs.anl.gov/mpi/}
+\item MPI is:
+  \begin{itemize}[noitemsep]
+  \item Hardware independent
+  \item Primarily for highly parallel applications
+  \item Transient communication
+  \item Applications that require \textbf{MUCH} lower latency in comparison to sockets.
+  \end{itemize}
+\item Key idea here is that communication is done between groups of processes
+  \begin{itemize}[noitemsep]
+  \item Each endpoint is a \texttt{(groupID, processID)} pair
+  \end{itemize}
+\item Supports most forms of communication
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
