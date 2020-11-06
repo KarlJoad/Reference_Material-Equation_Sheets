@@ -1,4 +1,17 @@
 \subsection{Remote Procedure Calls}\label{subsec:RPC}
+The question here is: How do we make ``distributed computing look like traditional computing''?
+\begin{itemize}[noitemsep]
+\item The standard Client-Server protocol provides usable mechanisms for services in distributed systems
+  \begin{itemize}[noitemsep]
+  \item But, these require explicit communication, and require an explicit Send-Receive Paradigm.
+  \end{itemize}
+\item Can we use procedure calls to do this?
+  \begin{itemize}[noitemsep]
+  \item The goal here is to make a remote procedure call look like a local procedure call.
+  \end{itemize}
+\item In distributed system, the callee may be a completely different system from the one executing.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
