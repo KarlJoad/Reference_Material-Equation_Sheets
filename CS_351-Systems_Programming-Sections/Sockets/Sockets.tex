@@ -26,6 +26,26 @@ Just like the server, threads can be used for this instead of \nameref{def:Proce
 
 \subsubsection{Berkeley Socket}\label{subsubsec:Berkeley_Socket}
 The typically definition of a socket follows the definition of a \emph{Berkeley socket}.
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{lp{16cm}}
+    \toprule
+    Primitive & Meaning\\
+    \midrule
+    Sockets & Communication End point. When programming, it looks like \nameref{def:File_Descriptor}. \\
+    Bind & Attach a local address to a socket. A single computer might have multiple IP addresses/host adapters. This tells the \nameref{def:Process} which network interface to listen on. \\
+    Listen & Announce willingness to accept connections. Essentially a blocking call until a connection comes into the system. \\
+    Accept & Block caller until a connection request arrives. Have received notification you have received a connection and you allow it (Server-side). \\
+    Connection & Actively attempt to establish a connection. (Client-end). \\
+    Send & Send some data over the connection. \\
+    Receive & Receive some data over the connection. \\
+    Close & Release this connection. \\
+    \bottomrule
+  \end{tabular}
+  \caption{Berkeley Socket Primitives}
+  \label{tab:Berkley_Socket_Primitives}
+\end{table}
+
 
 %%% Local Variables:
 %%% mode: latex
