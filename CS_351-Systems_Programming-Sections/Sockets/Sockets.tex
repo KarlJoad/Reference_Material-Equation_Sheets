@@ -9,6 +9,14 @@ Packets are used because of:
 \item You buffer the packets you receive to handle the data as it comes.
 \end{itemize}
 
+Sockets are \textbf{not} limited to just inter-computer network communication.
+They can also be used within the same computer.
+For example:
+\begin{itemize}[noitemsep]
+\item Emacs (Emacs server + \texttt{emacsclient}) is written to be usable over a socket on the local computer
+\item Remote communication happens for email, web browsing, etc.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
