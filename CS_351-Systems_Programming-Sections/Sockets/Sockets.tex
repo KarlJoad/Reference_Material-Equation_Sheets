@@ -1,4 +1,14 @@
 \subsection{Sockets}\label{subsec:Sockets}
+In general, networking is done with message-oriented communication.
+This is typically done with packets, which is a byte oriented \textbf{stream} of data.
+Packets are used because of:
+\begin{itemize}[noitemsep]
+\item Persistent
+\item Synchronicity
+\item These packets are routed through potentially multiple computers before reaching a destination
+\item You buffer the packets you receive to handle the data as it comes.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
