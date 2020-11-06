@@ -70,6 +70,50 @@
   $\therefore$ $Y$ is not an \nameref{def:Eigenvector} of $A$.
 \end{example}
 
+\begin{example}[Lecture 17, Example 2]{Verify Vector is Eigenvector}
+  Verify that $X$ is an \nameref{def:Eigenvector} of $A$?
+  \begin{align*}
+    A &=
+        \begin{pmatrix}
+          6 & -1 \\
+          2 & 3
+        \end{pmatrix} &
+                        X &=
+                            \begin{pmatrix}
+                              1 \\
+                              1
+                            \end{pmatrix}
+  \end{align*}
+  \tcblower{}
+  Verifying \Cref{prop:Eigenvector_Nonzero} is done by simple observation.
+
+  Now, we need to attempt to find a $\lambda$ such that \Cref{eq:Eigenvector} is satisfied.
+  \begin{align*}
+    AX &=
+         \begin{pmatrix}
+           6 & -1 \\
+           2 & 3
+         \end{pmatrix}
+               \begin{pmatrix}
+                 1 \\
+                 1
+               \end{pmatrix} \\
+    &=
+      \begin{pmatrix}
+        5 \\
+        5
+      \end{pmatrix} \\
+    &= 5
+      \begin{pmatrix}
+        1 \\
+        1
+      \end{pmatrix} \\
+    &= 5 X
+  \end{align*}
+
+  $\therefore$ $X$ \textit{is} an \nameref{def:Eigenvector} of $A$, with the \nameref{def:Eigenvalue} $\lambda = 5$.
+\end{example}
+
 
 \subsection{Eigenvalues}\label{subsec:Eigenvalues}
 
