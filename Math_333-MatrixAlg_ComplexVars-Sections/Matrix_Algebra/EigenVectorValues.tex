@@ -125,6 +125,20 @@
   \end{remark*}
 \end{lemma}
 
+\begin{proof}[Proof of \Cref*{lem:Matrix_Multiply_Zero_Vector}]
+  Suppose $BX = 0$.
+
+  Then,
+  \begin{align*}
+    B^{-1} (BX) &= B^{-1} 0 \\
+    \intertext{By the rules of \nameref{prop:Matrix_Associativity}.}
+    (B^{-1} B) X &= 0 \\
+    \intertext{By the definition of the \nameref{def:Multiplicative_Identity_Matrix}.}
+    IX &= 0 \\
+    X &= 0
+  \end{align*}
+\end{proof}
+
 
 \subsection{Eigenvalues}\label{subsec:Eigenvalues}
 
