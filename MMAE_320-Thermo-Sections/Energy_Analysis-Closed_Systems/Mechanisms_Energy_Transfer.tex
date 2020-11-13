@@ -71,7 +71,7 @@ The implications of \Cref{eq:Change_System_Energy} are listed below.
 
   \textbf{Solve:} \\
   From Table A.4, we know that at $\Temp = \SI{200}{\degreeCelsius}$, $\SaturatedPressure = \SI{1555}{\kilo\pascal}$.
-  We also know $\SaturatedFluidVol = \SI{0.001157}{\meter\cubed\per\kilo\gram}$ and $\SaturatedVaporVol = \SI{0.12721}{\meter\cubed\per\kilo\gram}$.
+  We also know $\Fluid{\SpecificVolume} = \SI{0.001157}{\meter\cubed\per\kilo\gram}$ and $\Vapor{\SpecificVolume} = \SI{0.12721}{\meter\cubed\per\kilo\gram}$.
   Lastly, we can also find $\SaturatedVaporSpecificIntEnergy = \SI{2594}{\kilo\joule\per\kilo\gram}$ and $\SaturatedFluidSpecificIntEnergy = \SI{850.46}{\kilo\joule\per\kilo\gram}$.
 
   \begin{align*}
@@ -123,7 +123,7 @@ The implications of \Cref{eq:Change_System_Energy} are listed below.
   Therefore, $\Change{\InternalEnergy} = \Heat_{In}$, which makes sense, as we were told we were only heating the refrigerant.
   Lastly, because the refrigerant starts as a \nameref{def:Saturated_Mixture}, we need to use:
   \begin{align*}
-    \SpecificVolume_{x} &= \SaturatedFluidVol + \Quality (\SaturatedVaporVol - \SaturatedFluidVol) \\
+    \SpecificVolume_{x} &= \Fluid{\SpecificVolume} + \Quality (\Vapor{\SpecificVolume} - \Fluid{\SpecificVolume}) \\
     \SpecificInternalEnergy_{x} &= \SaturatedFluidIntEnergy + \Quality (\SaturatedVaporIntEnergy - \SaturatedFluidIntEnergy)
   \end{align*}
 
@@ -135,8 +135,8 @@ The implications of \Cref{eq:Change_System_Energy} are listed below.
   In addition, the \nameref{def:Quality} is $\Quality = 0.227$.
   Because this is in a rigid vessel, the volume is constant, which also means the \nameref{def:Specific_Volume} is constant.
   \begin{align*}
-    \SpecificVolume_{x} &= \SaturatedFluidVol + \Quality (\SaturatedVaporVol - \SaturatedFluidVol) \\
-    \intertext{Grabbing $\SaturatedFluidVol$ and $\SaturatedVaporVol$ from the Table in the textbook's appendix.}
+    \SpecificVolume_{x} &= \Fluid{\SpecificVolume} + \Quality (\Vapor{\SpecificVolume} - \Fluid{\SpecificVolume}) \\
+    \intertext{Grabbing $\Fluid{\SpecificVolume}$ and $\Vapor{\SpecificVolume}$ from the Table in the textbook's appendix.}
                         &= 0.01156 + 0.277 (3.4424 - 0.01156) \\
                         &= \SI{0.961843}{\feet\cubed\per\lbm}
   \end{align*}

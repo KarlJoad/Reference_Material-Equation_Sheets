@@ -28,20 +28,20 @@ This \nameref{def:Process} has a \nameref{def:Quality}.
   This is typically well-defined for \nameref{def:Saturated_Mixture}s, because the system is in 2 different phases.
   If we are interested in the specific volume of the \nameref{def:Mixture}, we have \Cref{eq:Specific_Volume}.
   \begin{equation}\label{eq:Specific_Volume}
-    \SpecificVolume = \frac{\SaturatedVaporVol}{\SaturatedFluidVol}
+    \SpecificVolume = \frac{\Vapor{\SpecificVolume}}{\Fluid{\SpecificVolume}}
   \end{equation}
 
   \begin{description}[noitemsep]
   \item $\SpecificVolume$: The Specific Volume at any point in time during a \nameref{def:Process}.
-  \item $\SaturatedVaporVol$: The \nameref{def:Saturated_Liquid} volume.
-  \item $\SaturatedFluidVol$: The \nameref{def:Saturated_Vapor} volume.
+  \item $\Vapor{\SpecificVolume}$: The \nameref{def:Saturated_Liquid} volume.
+  \item $\Fluid{\SpecificVolume}$: The \nameref{def:Saturated_Vapor} volume.
   \end{description}
 
   \begin{equation}\label{eq:Specific_Volume_Using_Quality}
     \begin{aligned}
       \Quality &= \frac{\Volume_{Gas}}{\Volume_{Total}} \\
-      \SpecificVolume &= (1 - \Quality) \SaturatedFluidVol + \Quality \SaturatedVaporVol \\
-      &= \SaturatedFluidVol + \Quality (\SaturatedVaporVol - \SaturatedFluidVol)
+      \SpecificVolume &= (1 - \Quality) \Fluid{\SpecificVolume} + \Quality \Vapor{\SpecificVolume} \\
+      &= \Fluid{\SpecificVolume} + \Quality (\Vapor{\SpecificVolume} - \Fluid{\SpecificVolume})
     \end{aligned}
   \end{equation}
 \end{definition}
@@ -53,7 +53,7 @@ From \Cref{eq:Specific_Volume}, it is clear that to get the total volume of \tex
 
 Now, \Cref{eq:Single_Phase_Total_Volume} only finds the volume for a single phase in the system, but because volume is additive, we can use \Cref{eq:Total_Volume}.
 \begin{equation}\label{eq:Total_Volume}
-  \SpecificVolume \Mass_{Total} = \Mass_{Liquid} \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol
+  \SpecificVolume \Mass_{Total} = \Mass_{Liquid} \Fluid{\SpecificVolume} + \Mass_{Gas} \Vapor{\SpecificVolume}
 \end{equation}
 
 If using \nameref{def:Mixture}s, we can define \nameref{def:Specific_Enthalpy} using \Cref{eq:Mixture_Specific_Enthalpy}.
@@ -70,16 +70,16 @@ where $\SpecificInternalEnergy_{Gas-Liquid} = \SpecificInternalEnergy_{Gas} - \S
 
 In fact, \Cref{eq:Total_Volume} can be re-expressed using \nameref{def:Quality}, which gives us \Cref{eq:Specific_Volume_Using_Quality}.
 \begin{align*}
-  \SpecificVolume \Mass_{Total} &= \Mass_{Liquid} \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \\
-  \SpecificVolume \Mass_{Total} &= (\Mass_{Total} - \Mass_{Gas}) \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \\
-  \SpecificVolume &= \frac{1}{\Mass_{Total}} \bigl( (\Mass_{Total} - \Mass_{Gas}) \SaturatedFluidVol + \Mass_{Gas} \SaturatedVaporVol \bigr) \\
-                                &= \left( 1 - \frac{\Mass_{Gas}}{\Mass_{Total}} \right) \SaturatedFluidVol + \frac{\Mass_{Gas}}{\Mass_{Total}} \SaturatedVaporVol \\
+  \SpecificVolume \Mass_{Total} &= \Mass_{Liquid} \Fluid{\SpecificVolume} + \Mass_{Gas} \Vapor{\SpecificVolume} \\
+  \SpecificVolume \Mass_{Total} &= (\Mass_{Total} - \Mass_{Gas}) \Fluid{\SpecificVolume} + \Mass_{Gas} \Vapor{\SpecificVolume} \\
+  \SpecificVolume &= \frac{1}{\Mass_{Total}} \bigl( (\Mass_{Total} - \Mass_{Gas}) \Fluid{\SpecificVolume} + \Mass_{Gas} \Vapor{\SpecificVolume} \bigr) \\
+                                &= \left( 1 - \frac{\Mass_{Gas}}{\Mass_{Total}} \right) \Fluid{\SpecificVolume} + \frac{\Mass_{Gas}}{\Mass_{Total}} \Vapor{\SpecificVolume} \\
   \Quality &= \frac{\Mass_{Gas}}{\Mass_{Total}} \\
-  \SpecificVolume &= (1 - \Quality) \SaturatedFluidVol + \Quality \SaturatedVaporVol \\
-  &= \SaturatedFluidVol + \Quality (\SaturatedVaporVol - \SaturatedFluidVol)
+  \SpecificVolume &= (1 - \Quality) \Fluid{\SpecificVolume} + \Quality \Vapor{\SpecificVolume} \\
+  &= \Fluid{\SpecificVolume} + \Quality (\Vapor{\SpecificVolume} - \Fluid{\SpecificVolume})
 \end{align*}
 
-The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} once pressure and temperature have been established.
+The quantities $\Fluid{\SpecificVolume}$ and $\Vapor{\SpecificVolume}$ \textbf{are fixed} once pressure and temperature have been established.
 
 \begin{example}{Change in Mixture Properties}
   Suppose there is a pot of water with $\Mass = \SI{3}{\kilo\gram}$ of water at $\Pressure = \SI{101}{\kilo\pascal}$, and temperature $\Temp = \SI{100}{\degreeCelsius}$.
@@ -93,12 +93,12 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
   \tcblower{}
   Using the equations we have already, we know
   \begin{equation*}
-    \Volume = \SaturatedFluidVol \Mass_{Total}
+    \Volume = \Fluid{\SpecificVolume} \Mass_{Total}
   \end{equation*}
-  From Table A.4 in the textbook, we know $\SaturatedFluidVol = \SI{0.001043}{\meter\cubed\per\kilo\gram}$.
+  From Table A.4 in the textbook, we know $\Fluid{\SpecificVolume} = \SI{0.001043}{\meter\cubed\per\kilo\gram}$.
   Thus, we can just plug that value into the equation and solve for $\Volume$.
   \begin{align*}
-    \Volume &= \SaturatedFluidVol \Mass_{Total} \\
+    \Volume &= \Fluid{\SpecificVolume} \Mass_{Total} \\
     \intertext{At this pressure and temperature, the liquid water is not becoming a vapor due to boiling, so $\Mass_{Total} = \Mass_{Liquid}$}
             &= \SI{0.001043}{\meter\cubed\per\kilo\gram} (\SI{3}{\kilo\gram}) \\
             &= \SI{0.003129}{\meter\cubed} \\
@@ -124,8 +124,8 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
 
   Now that we know the mass of the vaporized liquid, we can use \Cref{eq:Specific_Volume_Using_Quality} to solve for the total volume.
   \begin{align*}
-    \SpecificVolume &= \SaturatedFluidVol + \Quality(\SaturatedVaporVol - \SaturatedFluidVol) \\
-    \intertext{The value for $\SaturatedFluidVol$ remains constant throughout this entire \nameref{def:Process}, so we can reuse that value. The value for $\SaturatedVaporVol$ is found in Table A.4 from the textbook.}
+    \SpecificVolume &= \Fluid{\SpecificVolume} + \Quality(\Vapor{\SpecificVolume} - \Fluid{\SpecificVolume}) \\
+    \intertext{The value for $\Fluid{\SpecificVolume}$ remains constant throughout this entire \nameref{def:Process}, so we can reuse that value. The value for $\Vapor{\SpecificVolume}$ is found in Table A.4 from the textbook.}
                     &= \SI{0.001043}{\meter\cubed\per\kilo\gram} + \frac{1}{2} (\SI{1.6720}{\meter\cubed\per\kilo\gram} - \SI{0.001043}{\meter\cubed\per\kilo\gram}) \\
                     &= \SI{0.8365}{\meter\cubed\per\kilo\gram}
   \end{align*}
@@ -140,10 +140,10 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
   Remember that $\Volume_{Total}$ contains the volume for \textbf{both} the steam \textbf{and} the water.
   If we are curious about the separate values for each, then we can solve for the individual terms in \Cref{eq:Single_Phase_Total_Volume}.
   \begin{align*}
-    \Volume_{Water} &= \Mass_{Water} \SaturatedFluidVol \\
+    \Volume_{Water} &= \Mass_{Water} \Fluid{\SpecificVolume} \\
                     &= \SI{1.5}{\kilo\gram} (\SI{0.001043}{\meter\cubed\per\kilo\gram}) \\
                     &= \SI{1.56}{\liter} \\
-    \Volume_{Steam} &= \Mass_{Steam} \SaturatedVaporVol \\
+    \Volume_{Steam} &= \Mass_{Steam} \Vapor{\SpecificVolume} \\
                     &= \SI{1.5}{\kilo\gram} (\SI{1.6720}{\meter\cubed\per\kilo\gram}) \\
                     &= \SI{2508}{\liter}
   \end{align*}
@@ -156,10 +156,10 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
 
   For this last part, $\Quality = 1$, meaning that \textbf{all} the water has become steam.
   Thus, $\Mass_{Water} = \SI{0}{\kilo\gram}$ and $\Mass_{Steam} = \SI{3}{\kilo\gram}$.
-  Because we also know $\SaturatedVaporVol = \SI{1.6720}{\meter\cubed\per\kilo\gram}$, we can easily just solve for \Cref{eq:Single_Phase_Total_Volume} as the total volume.
+  Because we also know $\Vapor{\SpecificVolume} = \SI{1.6720}{\meter\cubed\per\kilo\gram}$, we can easily just solve for \Cref{eq:Single_Phase_Total_Volume} as the total volume.
   \begin{align*}
     \Volume_{Total} &= \Volume_{Steam} \\
-    \Volume_{Steam} &= \SaturatedVaporVol \Mass_{Steam} \\
+    \Volume_{Steam} &= \Vapor{\SpecificVolume} \Mass_{Steam} \\
                     &= (\SI{1.6720}{\meter\cubed\per\kilo\gram}) (\SI{3}{\kilo\gram}) \\
                     &= \SI{5016}{\liter}
   \end{align*}
@@ -193,22 +193,22 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
   \item Phase 1:
     \begin{enumerate}[noitemsep]
     \item We need to look at Table A.4 for phase 1's saturated pressure, and find it $\SaturatedPressure$.
-    \item Now, looking at the values of $\SaturatedFluidVol$ and $\SaturatedVaporVol$ for water at $\Temp = \SI{50}{\degreeCelsius}$, we see the value we're given is somewhere between those.
+    \item Now, looking at the values of $\Fluid{\SpecificVolume}$ and $\Vapor{\SpecificVolume}$ for water at $\Temp = \SI{50}{\degreeCelsius}$, we see the value we're given is somewhere between those.
       Thus, this is a mixture of a \nameref{def:Saturated_Liquid} and a \nameref{def:Saturated_Vapor}, a \nameref{def:Saturated_Mixture}.
     \end{enumerate}
   \item Phase 2:
     \begin{enumerate}[noitemsep]
     \item We were told a pressure, so we should use Table A.5.
     \item Look in Table A.5 and find $\Pressure = \SI{200}{\kilo\pascal}$, and get the saturation temperature, $\SaturatedTemp$.
-    \item They told us it was a \nameref{def:Saturated_Vapor}, so we know the value is somewhere on the saturated vapor line, meaning the volume is the same as $\SaturatedVaporVol$.
+    \item They told us it was a \nameref{def:Saturated_Vapor}, so we know the value is somewhere on the saturated vapor line, meaning the volume is the same as $\Vapor{\SpecificVolume}$.
     \end{enumerate}
   \item Phase 3:
     \begin{enumerate}[noitemsep]
     \item Because we are given both pressure and temperature, either Table A.4 or Table A.5 is applicable.
     \item However, neither table seems to make much sense, as on the temperature table, the pressure is too low, and on the pressure table, the temperature is too low.
-    \item On both tables, our volume is significantly greater than even the $\SaturatedVaporVol$.
-    \item Because $\Volume > \SaturatedVaporVol$, we go to Table A.6 for superheated water.
-    \item Using Table A.6, we see that $\SaturatedVaporVol$ in the table matches the volume given to us.
+    \item On both tables, our volume is significantly greater than even the $\Vapor{\SpecificVolume}$.
+    \item Because $\Volume > \Vapor{\SpecificVolume}$, we go to Table A.6 for superheated water.
+    \item Using Table A.6, we see that $\Vapor{\SpecificVolume}$ in the table matches the volume given to us.
     \item This means the water is now in its superheated vapor phase.
     \end{enumerate}
   \item Phase 4:
@@ -250,7 +250,7 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
   \begin{center}
     \begin{tabular}{cccc}
       \toprule
-      $\Temp$ & $\SaturatedPressure$ & $\SaturatedFluidVol$ & $\SaturatedVaporVol$ \\
+      $\Temp$ & $\SaturatedPressure$ & $\Fluid{\SpecificVolume}$ & $\Vapor{\SpecificVolume}$ \\
       \midrule
       \SI{-40}{\degreeCelsius} & \SI{51.25}{\kilo\pascal} & \SI{0.0007053}{\meter\cubed\per\kilo\gram} & \SI{0.36064}{\meter\cubed\per\kilo\gram} \\
       \bottomrule
@@ -264,21 +264,21 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
                     &= \SI{0.1450}{\meter\cubed\per\kilo\gram}
   \end{align*}
 
-  Now, we notice that $\SpecificVolume$ is somewhere between $\SaturatedFluidVol$ and $\SaturatedVaporVol$, meaning the R-134a is in its \nameref{def:Saturated_Mixture} phase right now.
+  Now, we notice that $\SpecificVolume$ is somewhere between $\Fluid{\SpecificVolume}$ and $\Vapor{\SpecificVolume}$, meaning the R-134a is in its \nameref{def:Saturated_Mixture} phase right now.
 
   We use Table A.12 in the textbook, because we are given a pressure for the final state.
   So, we know:
   \begin{center}
     \begin{tabular}{cccc}
       \toprule
-      $\Pressure$ & $\SaturatedTemp$ & $\SaturatedFluidVol$ & $\SaturatedVaporVol$ \\
+      $\Pressure$ & $\SaturatedTemp$ & $\Fluid{\SpecificVolume}$ & $\Vapor{\SpecificVolume}$ \\
       \midrule
       \SI{200}{\kilo\pascal} & \SI{-10.09}{\degreeCelsius} & \SI{0.0007381}{\meter\cubed\per\kilo\gram} & \SI{0.099951}{\meter\cubed\per\kilo\gram} \\
       \bottomrule
     \end{tabular}
   \end{center}
 
-  Because we know $\SpecificVolume = \SI{0.1450}{\meter\cubed\per\kilo\gram}$, and we have the values for $\SaturatedFluidVol$ and $\SaturatedVaporVol$, we can tell that the gas is not in a superheated vapor state.
+  Because we know $\SpecificVolume = \SI{0.1450}{\meter\cubed\per\kilo\gram}$, and we have the values for $\Fluid{\SpecificVolume}$ and $\Vapor{\SpecificVolume}$, we can tell that the gas is not in a superheated vapor state.
   Because the gas is superheated, we need to use Table A.13 instead.
 
   That table says that a gas with $\SpecificVolume = \SI{0.14504}{\meter\cubed\per\kilo\gram}$ is at $\SaturatedTemp = \SI{90}{\degreeCelsius}$.
@@ -314,7 +314,7 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
   \begin{center}
     \begin{tabular}{cccc}
       \toprule
-      $\Temp$ & $\SaturatedPressure$ & $\SaturatedFluidVol$ & $\SaturatedVaporVol$ \\
+      $\Temp$ & $\SaturatedPressure$ & $\Fluid{\SpecificVolume}$ & $\Vapor{\SpecificVolume}$ \\
       \midrule
       \SI{400}{\degreeF} & \SI{247}{\psia} & \SI{0.01864}{\feet\cubed\per\lbm} & \SI{1.864}{\feet\cubed\per\lbm} \\
       \bottomrule
@@ -328,7 +328,7 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
                     &= \SI{2.649}{\feet\cubed\per\lbm} \\
   \end{align*}
 
-  Because $\SpecificVolume > \SaturatedVaporVol$, we know that the fluid is a superheated vapor, steam.
+  Because $\SpecificVolume > \Vapor{\SpecificVolume}$, we know that the fluid is a superheated vapor, steam.
 
   Now, because the fluid is a superheated vapor, we need to use Table A.6E to find the pressure that the water/steam is under.
   Using the temperature and the \nameref{def:Specific_Volume} of the water, we look those values up in Table A.6E, we see that $\Pressure = \SI{180}{\psia}$.
@@ -338,7 +338,7 @@ The quantities $\SaturatedFluidVol$ and $\SaturatedVaporVol$ \textbf{are fixed} 
   \begin{center}
     \begin{tabular}{cccc}
       \toprule
-      $\Temp$ & $\SaturatedPressure$ & $\SaturatedFluidVol$ & $\SaturatedVaporVol$ \\
+      $\Temp$ & $\SaturatedPressure$ & $\Fluid{\SpecificVolume}$ & $\Vapor{\SpecificVolume}$ \\
       \midrule
       \SI{100}{\degreeF} & \SI{0.95052}{\psia} & \SI{0.01613}{\feet\cubed\per\lbm} & \SI{349.83}{\feet\cubed\per\lbm} \\
       \bottomrule
