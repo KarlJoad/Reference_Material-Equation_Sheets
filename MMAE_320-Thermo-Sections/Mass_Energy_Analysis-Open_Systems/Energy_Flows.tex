@@ -37,6 +37,13 @@ Thus, if there is no storage, and the \nameref{def:Law_Conservation_Energy} is a
 Looking at the equations received, it is obvious that we can apply any kind of \nameref{def:Energy} that may be present in the system to the above equations and solve for any term we may be interested in.
 If we now expand our \nameref{def:Continuity_Equation} to energies, we get \Cref{eq:Energy_Continuity_Equation}.
 
+\begin{equation}\label{eq:Energy_Continuity_Equation}
+  \begin{aligned}
+    \FlowRate{\Heat}_{In} + \FlowRate{\Work}_{In} + \sum\limits_{\text{In}} \FlowRate{\Mass} \SpecificEnergy &= \FlowRate{\Heat}_{Out} + \FlowRate{\Work}_{Out} + \sum\limits_{\text{Out}} \FlowRate{\Mass} \SpecificEnergy \\
+    \FlowRate{\Heat}_{In} + \FlowRate{\Work}_{In} + \sum\limits_{\text{In}} \FlowRate{\Mass} (\SpecificEnthalpy + \frac{\Velocity^{2}}{2} + \Gravity \Distance) &= \FlowRate{\Heat}_{Out} + \FlowRate{\Work}_{Out} + \sum\limits_{\text{Out}} \FlowRate{\Mass} (\SpecificEnthalpy + \frac{\Velocity^{2}}{2} + \Gravity \Distance)
+  \end{aligned}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
