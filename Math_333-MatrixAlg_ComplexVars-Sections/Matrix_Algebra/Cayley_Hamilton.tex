@@ -94,6 +94,38 @@ If that is the case, then we can solve for higher powers of the polynomial using
 
 It is easiest to show this with an example, \Cref{ex:Cayley-Hamilton Higher Powers}.
 
+\begin{example}[Lecture 18, Example 1]{Cayley-Hamilton Higher Powers}
+  Given the \nameref{def:Matrix} $A =
+  \begin{pmatrix}
+    2 & -2 \\
+    1 & 5 \\
+  \end{pmatrix}$, find all $A^{n}$?
+  We start by finding the \nameref{def:Characteristic_Polynomial}.
+  \begin{align*}
+    \det (A - \lambda I) &= \det
+                           \begin{pmatrix}
+                             2-\lambda & -2 \\
+                             1 & 5 - \lambda
+                           \end{pmatrix} \\
+                         &= (2-\lambda)(5 - \lambda) - (-2)(1) \\
+                         &= \lambda^{2}- 7\lambda + 12
+  \end{align*}
+
+  If $A$ satistifies the \nameref{thm:Cayley-Hamilton_Theorem}, then $A^{2} - 7A + 12I = 0$ will hold true.
+  In that case, we can express exponents greater than 1 like so:
+  \begin{align*}
+    A^{2} &= 7A - 12I \\
+    A^{3} &= A A^{2} \\
+          &= A (7A - 12I) \\
+          &= 7A^{2} - 12A \\
+          &= 7(7A-12I) - 12A \\
+          &= 49A - 84I - 12A \\
+          &= 37A - 84I
+  \end{align*}
+
+  This computation can be repeated for higher powers, and for equations whigh higher starting characteristic equation exponents.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
