@@ -43,6 +43,71 @@ There are 2 situations that can arise from the \nameref{def:Continuity_Equation}
 \item Non-rigid control volumes, $\FlowRate{\Mass}_{\text{Control Volume}} \neq 0$.
 \end{enumerate}
 
+\begin{example}{Use Continuity Equation}
+  A nozzle is attached to a \SI{20}{\gallon} bucket to fill it.
+  The inner diameter of the hose is \SI{1}{\inch} and reduces to \SI{0.5}{\inch} at the nozzle's exit.
+  If the average velocity of the water in the hose is \SI{8}{\feet\per\second} determine the volume and mass flow rates, $\FlowRate{\Volume}$ and $\FlowRate{\Mass}$ of the water through the hose and how long it will take to fill the bucket?
+  Also determine the average velocity at the tip of the nozzle, $\Velocity_{Out}$?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  A nozzle has 1 inlet and 1 outlet.
+  The diameter of the nozzle at the inlet is $\Diameter_{In} = \SI{1}{\inch}$, and the outlet $\Diameter_{Out} = \SI{0.5}{\inch}$. \\
+  There is no temperature change in the hose, so the density of the water is constant, $\Change{\Density_{Water}} = 0$. \\
+  Because the host does not have any storage, $\FlowRate{\Mass}_{\text{Control Volume}} = 0$.
+  Therefore, $\FlowRate{\Mass}_{In} = \FlowRate{\Mass}_{Out}$ and $\FlowRate{\Volume}_{In} = \FlowRate{\Volume}_{Out}$.
+
+  \textbf{Explore:} \\
+  $\Density_{\text{Water}} = \SI{62.3}{\lbm\per\feet\cubed}$, as \SI{32}{\degreeF}. \\
+  The bucket has a capacity of \SI{20}{\gallon}, which means $20 = \FlowRate{\Volume} \times \text{Time to fill}$.
+
+  \textbf{Plan:} \\
+  Solve for $\FlowRate{\Volume}$, $\FlowRate{\Mass}$, $\Volume_{2}$.
+
+  \textbf{Solve:} \\
+  Start with a definition of volume flowrate.
+  \begin{align*}
+    \FlowRate{\Volume}_{In} &= \Area_{In} \Velocity_{In} \\
+                            &= \frac{\pi \Diameter_{In}^{2}}{4} \SI{8}{\feet\per\second} \\
+                            &= \SI{0.0436}{\cubic\feet\per\second}
+  \end{align*}
+
+  Now, we can find the mass flowrate through the inlet of the hose.
+  \begin{align*}
+    \FlowRate{\Mass} &= \Density_{Water} \FlowRate{\Volume} \\
+                     &= \SI{62.3}{\lbm\per\feet\cubed} (\SI{0.0436}{\cubic\feet\per\second}) \\
+                     &= \SI{2.72}{\lbm\per\second}
+  \end{align*}
+
+  Because the flowrates at the inlet and outlet of the hose are the same, we can reuse these values to solve for the time to fill the bucket.
+  \begin{align*}
+    \SI{20}{\gallon} \frac{\SI{1}{\cubic\feet}}{\SI{7.48}{\gallon}} &= \FlowRate{\Volume} \Time \\
+    \Time &= \SI{61.3}{\second}
+  \end{align*}
+
+  Lastly, we need to solve for the velocity of the flowing water at the tip of the nozzle.
+  We can use the relation between mass flowrates, shown in \Cref{rmk:Alternative_Mass_Flowrate_Defns}.
+  \begin{align*}
+    \Density_{Water} \Area_{In} \Velocity_{In} &= \Density_{Water} \Area_{Out} \Velocity_{Out} \\
+    \Area_{In} \Velocity_{In} &= \Area_{Out} \Velocity_{Out} \\
+    \Velocity_{Out} &= \frac{\Area_{In} \Velocity_{In}}{\Area_{Out}} \\
+                                               &= \frac{\frac{\pi \Diameter_{In}^{2}}{4} \Velocity_{In}}{\frac{\pi \Diameter_{Out}^{2}}{4}} \\
+    \Velocity_{Out} &= \SI{32}{\feet\per\second}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  We can validate that our answer for volume flowrate makes sense by multiplying the outlet volume flowrate by the outlet velocity and the outlet cross-sectional area.
+  \begin{align*}
+    \FlowRate{\Volume}_{Out} &= \Velocity_{Out} \times \Area_{Out} \\
+                             &= \SI{32}{\feet\per\second} \frac{\pi \Diameter_{Out}^{2}}{4} \\
+  \end{align*}
+
+  If we look at this closely, we notice that when the diameter of the outlet was halved, the total area was quartered.
+  Correspondingly, there was a four times increase in the velocity of the water at the outlet.
+
+  \textbf{Generalize:} \\
+  Constant mass flow and constant fluid density reuislts in a change at the outlet based on the change in area.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
