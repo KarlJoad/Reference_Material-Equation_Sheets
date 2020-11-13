@@ -193,6 +193,39 @@ We can use \nameref{thm:Cayley-Hamilton_Theorem} to solve for \nameref{def:Inver
 A difference equation is just a geometric series.
 Like the other examples above, it is easiest to show the use of this through an example.
 
+\begin{example}[Lecture 18, Example 3]{Cayley-Hamilton Theorem for Difference Equations}
+  Let the difference equation be $x_{n} = ax_{n-1}+ bx_{n-2}$.
+  If $x_{0}$ and $x_{1}$ are given, compute the value of $x_{n}$?
+  \tcblower{}
+  Let $y_{n} = x_{n-1}$.
+  Now, we can perform a replacement on $x_{n-2}$, such that the indices on the variables are the same.
+  \begin{align*}
+    x_{n} &= ax_{n-1}+ bx_{n-2} \\
+          &= ax_{n-1} + by_{n-1} \\
+    \intertext{We can now express this as a single system of equations.}
+    \begin{pmatrix}
+      x_{n} \\
+      y_{n}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      a & b \\
+                      1 & 0
+                    \end{pmatrix}
+                          \begin{pmatrix}
+                            x_{n-1} \\
+                            y_{n-1}
+                          \end{pmatrix} \\
+    \intertext{We can now solve this difference equation, just like we do for normal ones.}
+    X_{n} &= A X_{n-1} \\
+          &= A(A X_{n-2}) \\
+          &= A \bigl( A (A X_{n-3}) \bigr) \\
+          &\vdots \\
+          &= A^{n-1} X_{1}
+  \end{align*}
+
+  Therefore, $X_{n} = A^{n-1} X_{1}$.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
