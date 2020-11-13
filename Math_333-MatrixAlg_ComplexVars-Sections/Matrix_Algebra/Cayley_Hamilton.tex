@@ -126,6 +126,50 @@ It is easiest to show this with an example, \Cref{ex:Cayley-Hamilton Higher Powe
   This computation can be repeated for higher powers, and for equations whigh higher starting characteristic equation exponents.
 \end{example}
 
+If we generalize, we can see that any exponent power of a \nameref{def:Matrix} $A$ can be expressed as a linear combination of $A$ and $I$.
+\begin{equation}\label{eq:Matrix_Constant_Time_Higher_Power}
+  A^{n} = c_{n} A + d_{n} I
+\end{equation}
+
+Similar to how \Cref{eq:Matrix_Constant_Time_Higher_Power} exists, a similar equation exists for the \nameref{def:Eigenvalue}s of a given \nameref{def:Matrix}, seen in \Cref{eq:Eigenvalue_Constant_Time_Higher_Power}.
+\begin{equation}\label{eq:Eigenvalue_Constant_Time_Higher_Power}
+  \lambda^{n} = c_{n} \lambda + d_{n}
+\end{equation}
+
+If we solve for $c_{n}$ and $d_{n}$ in \Cref{eq:Eigenvalue_Constant_Time_Higher_Power}, using Cramer's Rule, we can find general forms of $c_{n}$ and $d_{n}$.
+
+For the example in \Cref{ex:Cayley-Hamilton Higher Powers}, if we plug in $\lambda = 3$ and $\lambda = 4$, then we have two equationsto work with.
+\begin{align*}
+  3 c_{n} + d_{n} &= 3^{n} \\
+  4c_{n} + d_{n} &= 3^{n}
+\end{align*}
+
+Using Cramer's Rule, we can solve for $c_{n}$ and $d_{n}$.
+\begin{align*}
+  c_{n} &= \frac{\det
+          \begin{pmatrix}
+            3^{n} & 1 \\
+            4 ^{n} & 1
+          \end{pmatrix}}{\det
+                     \begin{pmatrix}
+                       3 & 1 \\
+                       3 & 1
+                     \end{pmatrix}} \\
+  d_{n} &= \frac{\det
+          \begin{pmatrix}
+            3 & 3^{n} \\
+            4 & 4^{n}
+          \end{pmatrix}}{\det
+                \begin{pmatrix}
+                  3 & 1 \\
+                  4 & 1
+                \end{pmatrix}
+                      } \\
+  \shortintertext{Now, solving for these scalars:}
+  c_{n} &= 4^{n} - 3^{n} \\
+  d_{n} &= 3 \bigl( 3^{n} \bigr) - 3 \bigl( 4^{n} \bigr)
+\end{align*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
