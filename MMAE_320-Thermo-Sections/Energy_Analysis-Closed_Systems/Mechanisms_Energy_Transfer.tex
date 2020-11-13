@@ -152,10 +152,10 @@ The implications of \Cref{eq:Change_System_Energy} are listed below.
   Keep in mind that the \nameref{def:Specific_Volume} is constant.
   Looking in the \nameref{def:Saturated_Mixture} tables for this temperature shows us the refrigerant is actually a \nameref{def:Superheated_Vapor} now.
   When looking at Table A.13E, we notice that the \nameref{def:Specific_Volume} does not have a single entry in the table.
-  So, we must interpolate instead.
+  So, we must \nameref{def:Interpolate} instead.
   \begin{align*}
     y &= y_{0} + (x_{1} - x) \frac{y_{1} - y_{0}}{x_{1} - x_{0}} \\
-    \shortintertext{Interpolate the \nameref{def:Pressure}.}
+    \shortintertext{\nameref{def:Interpolate} the \nameref{def:Pressure}.}
     \Pressure &= \Pressure_{0} + (\SpecificVolume - \SpecificVolume_{1}) \frac{\Pressure_{1} - \Pressure_{0}}{\SpecificVolume_{1} - \SpecificVolume_{0}} \\
       &= \SI{50}{\psia} + (0.961843 - .9072) \frac{60 - 50}{1.1043 - 0.9072} \\
       &= \SI{52.7}{\psia} \\
