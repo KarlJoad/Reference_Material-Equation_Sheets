@@ -44,6 +44,14 @@ If we now expand our \nameref{def:Continuity_Equation} to energies, we get \Cref
   \end{aligned}
 \end{equation}
 
+If we have a steady flow, then \Cref{eq:Energy_Continuity_Equation} can be simplified a bit.
+\begin{equation}\label{eq:Steady_Flow_Energy_Continuity_Equation}
+  \begin{aligned}
+    \Change{\FlowRate{\Heat}} - \Change{\FlowRate{\Work}} &= \FlowRate{\Mass} \left( \Change{\SpecificEnthalpy} + \Change{\KineticEnergy} + \Change{\PotentialEnergy} \right) \\
+    &= \FlowRate{\Mass} \left( (\SpecificEnthalpy_{2} - \SpecificEnthalpy_{1}) + \frac{\Velocity_{2}^{2} - \Velocity_{1}^{2}}{2} + \Gravity (\Distance_{2} - \Distance_{1}) \right)
+  \end{aligned}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
