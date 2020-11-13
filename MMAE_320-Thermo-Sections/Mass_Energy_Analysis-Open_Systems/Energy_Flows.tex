@@ -682,6 +682,99 @@ They are related by an energy balance.
   {(\FlowRate{\Mass}_{In} \SpecificEnthalpy_{In})}_{1} + {(\FlowRate{\Mass}_{In} \SpecificEnthalpy_{In})}_{2} = {(\FlowRate{\Mass}_{Out} \SpecificEnthalpy_{Out})}_{1} + {(\FlowRate{\Mass}_{Out} \SpecificEnthalpy_{Out})}_{2}
 \end{equation}
 
+\begin{example}[Textbook Problem 6.82]{Heat Exchanger}
+  R-134a at $\Pressure_{1} = \SI{700}{\kilo\pascal}$ and $\Temp_{1, In} = \SI{70}{\degreeCelsius}$ and moving at $\FlowRate{\Mass}_{1} = \SI{8}{\kilo\gram\per\minute}$ is cooled by water in a condenser until it exists as a \nameref{def:Saturated_Liquid} at the same pressure.
+  The cooling water enters the condenser at $\Pressure_{2} = \SI{300}{\kilo\pascal}$ and $\Temp_{2, In} = \SI{15}{\degreeCelsius}$ and leaves at $\Temp_{2, Out} = \SI{25}{\degreeCelsius}$.
+  Determine the mass flowrate $\FlowRate{\Mass}_{2}$ of the water required to cool the refrigerant?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  \nameref{def:Heat_Exchanger} that is under steady state conditions.
+  Water is cooling the R-134a, so the water is warmed. \\
+  Treat this as a mixing chamber problem combined with a nozzle problem.
+
+  \textbf{Explore:} \\
+  By exploring the R-134a pipe in more detail, we see:
+  \begin{align*}
+    \Change{\FlowRate{\Work}} &= 0 \\
+    \FlowRate{\Heat}_{In} &= 0 \\
+    \FlowRate{\Heat}_{Out} &\neq 0 \\
+    \Change{\KineticEnergy} &= 0 \\
+    \Change{\PotentialEnergy} &= 0 \\
+  \end{align*}
+
+  Using the tables for R-134a, we can find the \nameref{def:Specific_Enthalpy} at the inlet and outlet (1 and 2, respectively).
+  This yields an energy balance equation of:
+  \begin{equation*}
+    -\FlowRate{\Heat}_{1, Out} = \FlowRate{\Mass}_{1} (\SpecificEnthalpy_{1, Out} - \SpecificEnthalpy_{1, In})
+  \end{equation*}
+
+  For the water block, we assume that there is no heat entering or leaving the heat exchanger, so $\Change{\FlowRate{\Heat}}_{2} = 0$.
+  Now, we apply \Cref{eq:Heat_Exchanger_Energy_Balance}:
+  \begin{align*}
+    \FlowRate{\Energy}_{In} &= \FlowRate{\Energy}_{Out} \\
+    {(\FlowRate{\Mass} \SpecificEnthalpy)}_{1, In} + {(\FlowRate{\Mass} \SpecificEnthalpy)}_{2, In} &= {(\FlowRate{\Mass} \SpecificEnthalpy)}_{1, Out} + {(\FlowRate{\Mass} \SpecificEnthalpy)}_{2, Out} \\
+    {(\FlowRate{\Mass} \SpecificEnthalpy)}_{\text{R-134a}, In} + {(\FlowRate{\Mass} \SpecificEnthalpy)}_{\text{Water}, In} &= {(\FlowRate{\Mass} \SpecificEnthalpy)}_{\text{R-134a}, Out} + {(\FlowRate{\Mass} \SpecificEnthalpy)}_{\text{Water}, Out} \\
+  \end{align*}
+
+  \textbf{Plan:} \\
+  Use the tables in the back of the textbook to find the various values of $\SpecificEnthalpy$.
+
+  \textbf{Solve:} \\
+  First, we know that we will eventually have to get the mass flowrate of the R-134a into seconds, so
+  \begin{equation*}
+    \FlowRate{\Mass}_{1} = \SI{0.133}{\kilo\gram\per\second}
+  \end{equation*}
+
+  Next up, the various \nameref{def:Specific_Enthalpy} values from the tables.
+  From Table A.12 at $\Pressure_{1} = \SI{700}{\kilo\pascal}$ we find that $\Temp_{1, Sat} = \SI{27}{\degreeCelsius}$.
+  This means that the R-134a is a \nameref{def:Superheated_Vapor} right now.
+  We move to Table A.13.
+  \begin{equation*}
+    \SpecificEnthalpy_{1, In} = \SI{308}{\kilo\joule\per\kilo\gram}
+  \end{equation*}
+
+  For the R-134a outlet's \nameref{def:Specific_Enthalpy}, we are told the refrigerant is a \nameref{def:Saturated_Liquid}, so $\SpecificEnthalpy_{1, Out} = \Fluid{\SpecificEnthalpy}$.
+  From Table A.12 at $\Pressure = \SI{700}{\kilo\pascal}$, we know
+  \begin{align*}
+    \Temp_{1, Out} &= \Temp_{1, Sat} \\
+                   &= \SI{27}{\degreeCelsius} \\
+    \SpecificEnthalpy_{1, Out} &= \SI{89}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+
+  From Table A.4 at $\Pressure = \SI{300}{\kilo\pascal}$, we see that $\Temp_{2,In} < \Temp_{Sat}$ and $\Temp_{2, Out} < \Temp_{Sat}$, so the water remains a liquid.
+  For $\Temp_{2, In} = \SI{15}{\degreeCelsius}$,
+  \begin{equation*}
+    \SpecificEnthalpy_{2, In} = \SI{63}{\kilo\joule\per\kilo\gram}
+  \end{equation*}
+
+  For $\Temp_{2, Out} = \SI{25}{\degreeCelsius}$,
+  \begin{equation*}
+    \SpecificEnthalpy_{2, Out} = \SI{105}{\kilo\joule\per\kilo\gram}
+  \end{equation*}
+
+  Now, we can solve for the R-134a's energy balance equation.
+  \begin{align*}
+    -\FlowRate{\Heat}_{1, Out} &= \FlowRate{\Mass}_{1} (\SpecificEnthalpy_{1, Out} - \SpecificEnthalpy_{1, In}) \\
+                               &= \SI{0.133}{\kilo\gram\per\second} (89-365)\si{\kilo\joule\per\kilo\gram} \\
+    \FlowRate{\Heat}_{1, Out} &= \SI{29}{\kilo\joule\per\second} \\
+                               &= \SI{29}{\kilo\watt}
+  \end{align*}
+
+  If we rearrange the terms in the energy balance equation, for the larger system, we can get:
+  \begin{align*}
+    \FlowRate{\Mass}_{2} &= \FlowRate{\Mass}_{1} \left( \frac{\SpecificEnthalpy_{1, In} - \SpecificEnthalpy_{1, Out}}{\SpecificEnthalpy_{2, In} - \SpecificEnthalpy_{2, Out}} \right) \\
+                         &= 8 \frac{89 - 308}{67 - 105} \\
+                         &= \SI{42}{\kilo\gram\per\minute}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  Check that we have energy balance.
+  Namely, directly solve
+  \begin{equation*}
+    {(\FlowRate{\Mass} \SpecificEnthalpy)}_{\text{R-134a}, In} + {(\FlowRate{\Mass} \SpecificEnthalpy)}_{\text{Water}, In} = {(\FlowRate{\Mass} \SpecificEnthalpy)}_{\text{R-134a}, Out} + {(\FlowRate{\Mass} \SpecificEnthalpy)}_{\text{Water}, Out}
+  \end{equation*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
