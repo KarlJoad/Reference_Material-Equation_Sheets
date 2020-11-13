@@ -311,6 +311,103 @@ A \nameref{def:Turbine} is the opposite of a \nameref{def:Compressor}.
   \label{tab:Turbine_Compressor_Properties}
 \end{table}
 
+\begin{example}[Textbook Problem 6.52]{Adiabatic Turbines}
+  Steam flows steadily through an \nameref{def:Adiabatic} \nameref{def:Turbine}.
+  The inlet conditions of the steam are $\Pressure_{In} = \SI{10}{\mega\pascal}$, $\Temp_{In} = \SI{450}{\degreeCelsius}$, and $\Velocity_{In} = \SI{80}{\meter\per\second}$.
+  The outlet conditions are $\Pressure_{Out} = \SI{10}{\kilo\pascal}$, $\Quality = 0.92$, and $\Velocity_{Out} = \SI{50}{\meter\per\second}$.
+  The mass flowrate of the steam is $\FlowRate{\Mass} = \SI{12}{\kilo\gram\per\second}$.
+  Find the change in kinetic energy $\Change{\KineticEnergy}$, the power output $\FlowRate{\Work}_{Out}$, and the inlet cross-sectional area $\Area_{In}$?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  This is a \nameref{def:Turbine} with a steady flow.
+  So, we use the properties in \Cref{tab:Turbine_Compressor_Properties}. \\
+  $\FlowRate{\Work}_{Out}$ is at the shaft.
+  This is gathered at the expense of the mass flow's energy, both kinetic and enthalpy.
+  Thus, $\Change{\KineticEnergy} \neq 0$ and $\Change{\SpecificEnthalpy} \neq 0$. \\
+  The fluid at the outlet is a \nameref{def:Saturated_Mixture}. \\
+  $\FlowRate{\Mass}_{In} = \FlowRate{\Mass}_{Out}$. \\
+  $\FlowRate{\Energy}_{In} = \FlowRate{\Energy}_{Out}$.
+
+  \textbf{Explore:} \\
+  For kinetic energy, we need $\FlowRate{\Mass}$ and the velocities at the inlet and outlet. \\
+  To solve for the output power, we need the \nameref{def:Specific_Enthalpy} for the steam at the states at the inlet and the outlet.
+  To find these, we can use Tables A.4, A.5, and A.6 from the textbook. \\
+  Due to the \nameref{def:Law_Conservation_Energy}, and the steady mass flow, we get \Cref{eq:Steady_Flow_Energy_Continuity_Equation}.
+  \begin{align*}
+    \Change{\FlowRate{\Heat}} + \Change{\FlowRate{\Work}} &= \sum\limits_{\text{Inlet}} \FlowRate{\Mass} \SpecificEnergy - \sum\limits_{\text{Outlet}} \FlowRate{\Mass} \SpecificEnergy \\
+    (\FlowRate{\Heat}_{In} - \FlowRate{\Heat}_{Out}) + (\FlowRate{\Work}_{In} - \FlowRate{\Work}_{Out}) &= \sum\limits_{\text{Inlet}} \FlowRate{\Mass} \SpecificEnergy - \sum\limits_{\text{Outlet}} \FlowRate{\Mass} \SpecificEnergy \\
+    (0 - 0) + (0 - \FlowRate{\Work}_{Out}) &= \sum\limits_{\text{Inlet}} \FlowRate{\Mass} \SpecificEnergy - \sum\limits_{\text{Outlet}} \FlowRate{\Mass} \SpecificEnergy \\
+  \end{align*}
+
+  Lastly, at the outlet, we know that the steam is a \nameref{def:Saturated_Mixture}, so we need to use the \nameref{def:Quality} to determine the \nameref{def:Specific_Enthalpy} of the steam.
+  \begin{equation*}
+    \SpecificEnthalpy = \Fluid{\SpecificEnthalpy} + \Quality(\Vapor{\SpecificEnthalpy} - \Fluid{\SpecificEnthalpy})
+  \end{equation*}
+
+  \textbf{Plan:} \\
+  Solve for the change in kinetic energy $\Change{\KineticEnergy}$. \\
+  Solve the energy balance equation we have to find the power output, $\FlowRate{\Work}_{Out}$. \\
+  Using the mass flowrate and the inlet velocity, find the inlet's cross-sectional area, $\Area_{In}$.
+  This can be found using the equations in \Cref{rmk:Alternative_Mass_Flowrate_Defns}.
+
+  \textbf{Solve:} \\
+  Find the inlet's information from Table A.6 in the textbook.
+  At $\Pressure_{In} = \SI{10}{\mega\pascal}$, $\Temp_{In} = \SI{450}{\degreeCelsius}$
+  \begin{align*}
+    \SpecificVolume_{In} &= \SI{0.02978}{\meter\cubed\per\kilo\gram} \\
+    \SpecificEnthalpy_{In} &= \SI{3242}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+
+  Find the outlet's information from Table A.5 in the textbook.
+  At $\Pressure_{Out} = \SI{10}{\kilo\pascal}$, $\Quality = 0.92$
+  \begin{align*}
+    \SaturatedTemp &= \SI{45.81}{\degreeCelsius} \\
+    \Fluid{\SpecificEnthalpy} &= \SI{191.81}{\kilo\joule\per\kilo\gram} \\
+    \Vapor{\SpecificEnthalpy} &= \SI{2583.9}{\kilo\joule\per\kilo\gram} \\
+    \SpecificEnthalpy &= \Fluid{\SpecificEnthalpy} + \Quality (\Vapor{\SpecificEnthalpy} - \Fluid{\SpecificEnthalpy}) \\
+    &= \SI{2392}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+
+  Now that we have some background information, we will solve for the change in kinetic energy.
+  \begin{align*}
+    \Change{\KineticEnergy} &= \frac{\KineticEnergy_{Out} - \KineticEnergy_{In}}{\Mass} \\
+                            &= \frac{\Velocity_{Out}^{2} - \Velocity_{In}^{2}}{2} \\
+                            &= \frac{50^{2} - 80^{2}}{2} \left( \frac{\SI{1}{\kilo\joule\per\kilo\gram}}{\SI{1000}{\meter\squared\per\second\squared}} \right) \\
+    &= \SI{-1.95}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+
+  Now, we solve our energy balance equation for the power output.
+  \begin{align*}
+    -\FlowRate{\Work}_{Out} &= \FlowRate{\Mass} (\Change{\SpecificEnthalpy} + \Change{\KineticEnergy}) \\
+    \FlowRate{\Work}_{Out} &= -\FlowRate{\Mass} \bigl( (\SpecificEnthalpy_{Out} - \SpecificEnthalpy_{In}) + \Change{\KineticEnergy} \bigr) \\
+                            &= \FlowRate{\Mass} \bigl( (\SpecificEnthalpy_{In} - \SpecificEnthalpy_{Out}) - \Change{\KineticEnergy} \bigr) \\
+                            &= \SI{12}{\kilo\gram\per\second} \bigl( (3242 - 2392)\si{\kilo\joule\per\kilo\gram} - (-\SI{1.95}{\kilo\joule\per\kilo\gram}) \bigr) \\
+                            &= \SI{10.2}{\mega\joule\per\second} \\
+                            &= \SI{10.2}{\mega\watt}
+  \end{align*}
+
+  Lastly, find the inlet's cross-sectional area:
+  \begin{align*}
+    \FlowRate{\Mass} \SpecificVolume_{In} &= \Area_{In} \Velocity_{In} \\
+    \Area_{In} &= \SI{44.67}{\centi\meter\squared}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  We need to double check that we actually \textit{have} an energy balance.
+  \begin{align*}
+    \FlowRate{\Work}_{Out} &= \SI{10.22}{\mega\watt} \\
+    &= \SI{10.2}{\mega\watt} + \SI{0.027}{\mega\watt}
+  \end{align*}
+
+  The values for properties of the states were from the textbook's tables.\\
+  For \nameref{def:Turbine} operation, $\Change{\SpecificEnthalpy}$, $\Change{\KineticEnergy}$, $\Change{\Pressure}$, and $\Change{\Temp}$.
+
+  \textbf{Generalize:} \\
+  Most of the work comes from $\Change{\SpecificEnthalpy}$, very little comes from $\Change{\KineticEnergy}$. \\
+  If this was not \nameref{def:Adiabatic}, then $\Change{\Heat}$ would be very small, like $\Change{\KineticEnergy}$. \\
+  The mass flowrate as a large effect on the power generated.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
