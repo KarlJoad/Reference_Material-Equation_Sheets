@@ -292,6 +292,25 @@ A \nameref{def:Turbine} is the opposite of a \nameref{def:Compressor}.
   This means that there is a flowrate of \nameref{def:Work} into the \nameref{def:System}.
 \end{definition}
 
+\begin{table}[h!tbp]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    \nameref{def:Turbine}s & \nameref{def:Compressor}s \\
+    \midrule
+    $\FlowRate{\Work}_{In} = 0$ & $\FlowRate{\Work}_{In} \neq 0$ \\
+    $\FlowRate{\Work}_{Out} \neq 0$ & $\FlowRate{\Work}_{Out} = 0$ \\
+    $\FlowRate{\Heat}_{In} \approx 0$ & $\FlowRate{\Heat}_{In} \neq 0$ \\
+    $\FlowRate{\Heat}_{Out} \approx 0$ & $\FlowRate{\Heat}_{Out} \neq 0$ \\
+    $\Change{\PotentialEnergy} = 0$ & $\Change{\PotentialEnergy} = 0$ \\
+    $\Change{\KineticEnergy} \neq 0$ & $\Change{\KineticEnergy} \approx 0$ \\
+    $\Change{\Enthalpy} \neq 0$ & $\Change{\Enthalpy} \neq 0$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Properties of \nameref*{def:Turbine}s and \nameref*{def:Compressor}s}
+  \label{tab:Turbine_Compressor_Properties}
+\end{table}
+
 
 %%% Local Variables:
 %%% mode: latex
