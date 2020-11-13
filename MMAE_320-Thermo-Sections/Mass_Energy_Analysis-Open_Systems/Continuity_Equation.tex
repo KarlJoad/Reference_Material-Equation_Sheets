@@ -108,6 +108,49 @@ There are 2 situations that can arise from the \nameref{def:Continuity_Equation}
   Constant mass flow and constant fluid density reuislts in a change at the outlet based on the change in area.
 \end{example}
 
+\begin{example}[Textbook Problem 6.7]{Flow with Changing Mass Density}
+  Air enters a nozzle at a steady rate of $\Density_{In} = \SI{2.21}{\kilo\gram\per\cubic\meter}$ at $\Velocity_{In} = \SI{40}{\meter\per\second}$ and leaves at $\Density_{Out} = \SI{0.762}{\kilo\gram\per\cubic\meter}$ and $\Velocity_{Out} = \SI{180}{\meter\per\second}$.
+  If the inlet of the nozzle is $\Area_{In} = \SI{90}{\square\centi\meter}$, determine the mass flowrate, $\FlowRate{\Mass}$, through the nozzle and the outlet area of the nozzle, $\Area_{Out}$?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  Nozzles take a low $\Velocity_{In}$ and increase it to a high $\Velocity_{Out}$. \\
+  This is a steady flow problem, meaning we can use the \nameref{def:Continuity_Equation} freely.
+  Also, the nozzle has no storage capacity for the air, so $\FlowRate{\Mass}_{In} = \FlowRate{\Mass}_{Out}$. \\
+  The mass density is changing in this problem.
+  This is happening because air is an ideal gas, and/thus, it is compressible.
+
+  \textbf{Explore:} \\
+  Remember, because the nozzle does \textbf{not} store any air, $\FlowRate{\Mass}_{In} = \FlowRate{\Mass}_{Out}$.
+  This occurs even though $\Density$ is changing.
+  If we expand this equation, we get:
+  \begin{equation*}
+    {(\Density \Velocity \Area)}_{In} = {(\Density \Velocity \Area)}_{Out}
+  \end{equation*}
+
+  \textbf{Plan:} \\
+  Solve the expanded mass flowrate equation above.
+
+  \textbf{Solve:} \\
+  \begin{align*}
+    \FlowRate{\Mass}_{In} &= \Density_{In} \Velocity_{In} \Area_{In} \\
+                          &= \SI{2.21}{\kilo\gram\per\meter\cubed} (\SI{40}{\meter\per\second}) (\SI{90}{\meter\squared}) {(\frac{\SI{1}{\meter}}{\SI{100}{\centi\meter}})}^{2} \\
+    &= \SI{0.7956}{\kilo\gram\per\second}
+  \end{align*}
+
+  Now, we can solve for the other side of the equation.
+  \begin{align*}
+    \FlowRate{\Mass}_{Out} &= \Density_{Out} \Velocity_{Out} \Area_{Out} \\
+    \SI{0.7956}{\kilo\gram\per\second} &= (\SI{0.762}{\kilo\gram\per\meter\cubed}) (\SI{180}{\meter\per\second}) \Area_{Out} \\
+    \Area_{Out} &= \SI{0.0058}{\meter\squared} \\
+                           &= \SI{58}{\centi\meter\squared}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  Our equations have been consistent with our knowledge of how nozzles work. \\
+  We checked our units as we solved, so we are likely correct. \\
+  If we wanted to be thorough, we should check that $\FlowRate{\Mass}_{In} = \FlowRate{\Mass}_{Out}$ is actually a valid assumption.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
