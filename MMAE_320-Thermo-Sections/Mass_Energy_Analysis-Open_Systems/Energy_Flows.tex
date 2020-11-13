@@ -800,6 +800,48 @@ If a propeller were inserted to the piping, then the work done \textit{would} ch
 
 Likewise, if the gas that is moving through the pipe is an ideal gas, we can use an ideal gas equation to determine $\Change{\SpecificEnthalpy} = \SpecificHeatPressure \Change{\Temp}$.
 
+\begin{example}[Textbook Problem 6.98]{Pipe Flow}
+  \nameref{def:Saturated_Liquid} water is heated in a steady-flow steam boiler at a constant pressure of $\Pressure = \SI{5}{\mega\pascal}$ at a rate of $\FlowRate{\Mass} = \SI{10}{\kilo\gram\per\second}$ to an outlet temperature of $\Temp_{Out} = \SI{350}{\degreeCelsius}$.
+  Determine the rate of \nameref{def:Heat_Transfer} in the boiler?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  Same set of concepts of a \nameref{def:Heat_Exchanger}.
+  Namely, this is a sub-class of problems.
+
+  \textbf{Explore:} \\
+  The only change in heat comes from the surrounding boiler, with $\FlowRate{\Heat}_{In}$.
+  \begin{equation*}
+    \FlowRate{\Heat}_{In} = \FlowRate{\Mass} \Change{\SpecificEnthalpy}
+  \end{equation*}
+
+  To find the \nameref{def:Specific_Enthalpy}, we can use Table A.4 or A.7 (if \nameref{def:Superheated_Vapor}).
+
+  \textbf{Plan:} \\
+  Use Table A.4 and/or Table A.7 from the back of the textbook to find the \nameref{def:Specific_Enthalpy}, $\SpecificEnthalpy$.
+  Solve the heat energy-balance equation.
+
+  \textbf{Solve:} \\
+  From Table A.5 at $\Pressure = \SI{5}{\mega\pascal}$, we get:
+  \begin{align*}
+    \Temp_{Sat} &= \SI{263}{\degreeCelsius} \\
+    \Fluid{SpecificEnthalpy} &= \SI{1154}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+
+  From the previous table, we notice that the final temperature, is greater than the saturation temperature, $\Temp_{Out} > \Temp_{Sat}$.
+  This means the fluid becomes a \nameref{def:Superheated_Vapor}.
+  \begin{equation*}
+    \SpecificEnthalpy_{Out} = \SI{3069}{\kilo\joule\per\kilo\gram}
+  \end{equation*}
+
+  Now, solving our energy balance equation:
+  \begin{align*}
+    \FlowRate{\Heat}_{In} &= \FlowRate{\Mass} \Change{\SpecificEnthalpy} \\
+                          &= \FlowRate{\Mass} (\SpecificEnthalpy_{Out} - \SpecificEnthalpy_{In}) \\
+                          &= 10 (3069 - 1154) \\
+    &= \SI{19150}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
