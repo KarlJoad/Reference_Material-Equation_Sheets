@@ -12,6 +12,22 @@ If there are $n$ flows inwards and $m$ flows outwards, we can construct an equat
   \sum\limits_{\text{Inlets}} \FlowRate{\Mass} - \sum\limits_{\text{Outlets}} \FlowRate{\Mass} &= \FlowRate{\Mass}_{\text{Control Volume}}
 \end{align*}
 
+\begin{definition}[Continuity Equation]\label{def:Continuity_Equation}
+  The \emph{continuity equation} states the relationship between the mass flow into a point in a \nameref{def:System} and its output.
+  Succinctly, it can be stated:
+  \begin{equation}\label{eq:Continuity_Equation}
+    \begin{aligned}
+      \sum\limits_{\text{Inlets}} \FlowRate{\Mass} - \sum\limits_{\text{Outlets}} \FlowRate{\Mass} &= \FlowRate{\Mass}_{\text{Control Volume}} \\
+      \sum\limits_{\text{Inlets}} \FlowRate{\Volume} - \sum\limits_{\text{Outlets}} \FlowRate{\Volume} &= \FlowRate{\Volume}_{\text{Control Volume}}
+    \end{aligned}
+  \end{equation}
+
+  \begin{description}[noitemsep]
+  \item $\FlowRate{\Mass}_{\text{Control Volume}}$ is the storage possible in a vessel, in mass.
+    Likewise, $\FlowRate{\Volume}_{\text{Control Volume}}$ is the possible storage of a vessel, in volume.
+  \end{description}
+
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
