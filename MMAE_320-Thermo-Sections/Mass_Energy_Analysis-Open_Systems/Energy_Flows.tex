@@ -408,6 +408,46 @@ A \nameref{def:Turbine} is the opposite of a \nameref{def:Compressor}.
   The mass flowrate as a large effect on the power generated.
 \end{example}
 
+\begin{example}[Textbook Problem 6.58]{Compressor}
+  Helium is to be compressed from $\Pressure_{In} = \SI{120}{\kilo\pascal}$ and $\Temp_{In} = \SI{310}{\kelvin}$ to $\Pressure_{Out} = \SI{700}{\kilo\pascal}$ and $\Temp_{Out} = \SI{430}{\kelvin}$.
+  A heat loss of $\FlowRate{\Heat}_{Out} = \SI{20}{\kilo\joule\per\kilo\gram}$ occurs during the compression process.
+  Neglecting kinetic energy changes, determine the power required to complete this $\FlowRate{\Work}_{In}$ for $\FlowRate{\Mass} = \SI{90}{\kilo\gram\per\minute}$?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  Helium is an ideal gas, we can use \Cref{eq:Ideal_Gas_Equation}. \\
+  A compressor will increase the energy of a fluid by increasing its pressure and enthalpy. \\
+  We are told that the helium is flowing steadily because $\FlowRate{\Mass}$ is provided for us. \\
+  We can find the change in enthalpy by using the \nameref{def:Specific_Heat} under constant pressure.
+  We are told enough to say that our energy balance equation in this problem is \Cref{eq:Steady_Flow_Energy_Continuity_Equation}.
+  \begin{equation*}
+    \Change{\FlowRate{\Heat}} + \Change{\FlowRate{\Work}} = \FlowRate{\Mass} (\Change{\SpecificEnthalpy} + \Change{\KineticEnergy} + \Change{\PotentialEnergy})
+  \end{equation*}
+
+  \textbf{Explore:} \\
+  We are told to neglect kinetic energy changes, so $\Change{\KineticEnergy} = 0$. \\
+  We also know that there is no change in potential energy, because the height doesn't change, $\Change{\PotentialEnergy} = 0$. \\
+  We can find the change in enthalpy by using the \nameref{def:Specific_Heat} under constant pressure, $\Change{\SpecificEnthalpy} = \SpecificHeatPressure \Change{\Temp}$. \\
+  We are not told anything about any heat in or work out, so assume those are zero, $\FlowRate{\Heat}_{In} = 0$, $\FlowRate{\Work}_{Out} = 0$.
+  Using all of this,
+  \begin{equation*}
+    -\FlowRate{\Heat}_{Out} + \FlowRate{\Work}_{In} = \FlowRate{\Mass} (\SpecificHeatPressure \Change{\Temp})
+  \end{equation*}
+
+  \textbf{Plan:} \\
+  Find the \nameref{def:Specific_Heat} under constant pressure from Table A.3. \\
+  Solve for $\FlowRate{\Work}_{In}$.
+
+  \textbf{Solve:} \\
+  From the textbook,
+  \begin{equation*}
+    \SpecificHeatPressure = \SI{5.1426}{\kilo\joule\per\kilo\gram\kelvin}
+  \end{equation*}
+  \begin{align*}
+    -\SI{20}{\kilo\joule\per\kilo\gram} + \FlowRate{\Work}_{In} &= \SI{90}{\kilo\gram\per\minute} \left( \frac{\SI{60}{\second}}{\SI{1}{\minute}} \right) \bigl( 5.1426 (450 - 310) \bigr) \\
+    \FlowRate{\Work}_{In} &= \SI{965}{\kilo\joule\per\second} \\
+                                                                &= \SI{965}{\kilo\watt}
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
