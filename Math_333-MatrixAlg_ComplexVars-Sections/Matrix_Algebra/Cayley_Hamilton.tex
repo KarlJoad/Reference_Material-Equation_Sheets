@@ -170,6 +170,25 @@ Using Cramer's Rule, we can solve for $c_{n}$ and $d_{n}$.
   d_{n} &= 3 \bigl( 3^{n} \bigr) - 3 \bigl( 4^{n} \bigr)
 \end{align*}
 
+\subsubsection{Inverses}\label{subsubsec:Cayley-Hamilton_Inverses}
+We can use \nameref{thm:Cayley-Hamilton_Theorem} to solve for \nameref{def:Inverse_Matrix} too.
+\begin{example}[Lecture 18, Example 2]{Inverse with Cayley-Hamilton Theorem}
+  Given the \nameref{def:Matrix} $A =
+  \begin{pmatrix}
+    2 & -2 \\
+    1 & 5
+  \end{pmatrix}$, find $A^{-1}$?
+  Using the \nameref{thm:Cayley-Hamilton_Theorem}, we can express the \nameref{def:Characteristic_Polynomial} as shown:
+  \begin{align*}
+    A^{2} - 7A + 12I &= 0 \\
+    A^{2} - 7A &= -12I \\
+    A^{2} - 7IA &= -12I \\
+    A (A - 7I) &= -12I \\
+    A \frac{A-7I}{-12} &= I \\
+    A^{-1} &= \frac{A-7I}{-12}
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../Math_333-MatrixAlg_ComplexVars-Reference_Sheet"
