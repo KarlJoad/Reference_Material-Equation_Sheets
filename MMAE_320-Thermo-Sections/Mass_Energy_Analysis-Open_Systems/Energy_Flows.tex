@@ -481,6 +481,78 @@ Because the \nameref{def:Specific_Enthalpy} remains constant for a \nameref{def:
   {(\SpecificInternalEnergy + \Pressure \Volume)}_{In} = {(\SpecificInternalEnergy + \Pressure \Volume)}_{Out}
 \end{equation}
 
+\begin{example}[Textbook Problem 6.68]{Throttling Valve}
+  An \nameref{def:Adiabatic} capilliary tube is used in a refrigeration system to drop the pressure from the condenser level to the evaporator level.
+  R-134a enters the capilliary tube as a \nameref{def:Saturated_Liquid} at $\Temp_{In} = \SI{50}{\degreeCelsius}$ and leaves at $\Temp_{Out} = \SI{-12}{\degreeCelsius}$.
+  Determine the \nameref{def:Quality} of the refrigerant at the inlet of the evaporator?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  \nameref{def:Throttling_Valve}s are \nameref{def:Isenthalpic}, their \nameref{def:Enthalpy} remains constant.
+  We also know \Cref{eq:Throttling_Valve}.
+  \begin{equation*}
+    {(\SpecificInternalEnergy + \Pressure \Volume)}_{In} = {(\SpecificInternalEnergy + \Pressure \Volume)}_{Out}
+  \end{equation*}
+
+  We assume that this operates under steady flow conditions, so $\FlowRate{\Mass}_{In} = \FlowRate{\Mass}_{Out}$. \\
+  We are told this is \nameref{def:Adiabatic}, so $\Change{\Heat} = 0$. \\
+  There are no moving parts, so $\Change{\Work} = 0$.
+
+  \textbf{Explore:} \\
+  We can find the \nameref{def:Specific_Enthalpy} for each state from the tables in the back of the textbook. \\
+  It is implied that the refrigerant at the outlet is a \nameref{def:Saturated_Mixture}, which has a quality.
+  \begin{equation*}
+    \SpecificEnthalpy = \Fluid{\SpecificEnthalpy} + \Quality (\Vapor{\SpecificEnthalpy} - \Fluid{\SpecificEnthalpy})
+  \end{equation*}
+
+  \textbf{Plan:} \\
+  Find \nameref{def:Specific_Enthalpy} values from Table A.11 from the textbook. \\
+  Solve for $\SpecificEnthalpy_{Out}$. \\
+  Then solve for \nameref{def:Quality}, $\Quality$.
+
+  \textbf{Solve:} \\
+  From Table A.11 at $\Temp_{In} = \SI{50}{\degreeCelsius}$, we know that this fluid is a \nameref{def:Saturated_Liquid}, so we can use $\Fluid{\SpecificEnthalpy}$ directly.
+  However, we must \nameref{def:Interpolate} the results.
+  \begin{equation*}
+    \SpecificEnthalpy_{In} = \Fluid{\SpecificEnthalpy} = \SI{123.45}{\kilo\joule\per\kilo\gram}
+  \end{equation*}
+
+  From Table A.11 at $\Temp_{In} = \SI{-12}{\degreeCelsius}$.
+  \begin{align*}
+    \Fluid{\SpecificEnthalpy} &= \SI{35.92}{\kilo\joule\per\kilo\gram} \\
+    \FluidVapor{\SpecificEnthalpy} &= \SI{207.38}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+
+  Now, we plug these values into our \nameref{def:Isenthalpic} equation.
+  \begin{align*}
+    \SpecificEnthalpy_{In} &= \SpecificEnthalpy_{Out} \\
+    \SpecificEnthalpy_{Out} &= \Fluid{\SpecificEnthalpy} + \Quality (\FluidVapor{\SpecificEnthalpy}) \\
+    \SpecificEnthalpy_{In} &= \Fluid{\SpecificEnthalpy} + \Quality (\FluidVapor{\SpecificEnthalpy}) \\
+    123.45 &= 35.92 + \Quality (207.38) \\
+    \Quality &= 0.422
+  \end{align*}
+
+  \textbf{Validate:} \\
+  We know at the inlet that
+  \begin{align*}
+    \SpecificEnthalpy &= \SpecificInternalEnergy + \Pressure \Volume \\
+    123 &= 122 + \Pressure \Volume \\
+    \Pressure \Volume &\approx 1
+  \end{align*}
+
+  Then, at the outlet, we see
+  \begin{align*}
+    \SpecificEnthalpy &= \SpecificInternalEnergy + \Pressure \Volume \\
+    \shortintertext{Remember that a \nameref{def:Throttling_Valve} is \nameref{def:Isenthalpic}.}
+    123 &= 36 + \Pressure \Volume \\
+    \Pressure \Volume &\approx 87
+  \end{align*}
+
+  Because the \nameref{def:Internal_Energy} decreased, the temperature of the fluid decreased as well.
+
+  \textbf{Generalize:} \\
+  A \nameref{def:Throttling_Valve} is similar to a nozzle or a diffuser, because they re-apportion the \nameref{def:Energy} in the mass flow.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
