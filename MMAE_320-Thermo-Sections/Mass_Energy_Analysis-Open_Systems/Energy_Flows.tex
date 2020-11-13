@@ -72,6 +72,114 @@ There are some general properties about nozzles and diffusers that are useful to
   There is a large volume change.
 \end{itemize}
 
+\begin{example}[Textbook Problem 6.31]{Behavior of Nozzles}
+  Given a nozzle that pressures air in an \nameref{def:Adiabatic} \nameref{def:Process} at an initial pressure of $\Pressure_{1} = \SI{300}{\kilo\pascal}$, initial temperature of $\Temp_{1} = \SI{200}{\degreeCelsius}$, an inlet velocity of $\Velocity_{1} = \SI{30}{\meter\per\second}$, and an inlet cross-sectional area of $\Area_{1} = \SI{80}{\centi\meter\squared}$.
+  The outlet pressure is $\Pressure_{2} = \SI{100}{\kilo\pascal}$ and a velocity of $\Velocity_{2} = \SI{180}{\meter\per\second}$.
+  Find the mass flow rate, $\FlowRate{\Mass}$, the temperature of the output air, $\Temp_{2}$, and the cross-sectional area of the outlet, $\Area_{2}$?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  A nozzle has a much greater outlet velocity compared to its inlet velocity, $\Velocity_{Out} \gg \Velocity_{In}$, and $\Pressure_{In} > \Pressure_{Out}$. \\
+  Air is an ideal gas and is compressible.
+  So, we might have to deal with different densities of the air at the inlet and outlet, $\Density_{1}$ may not necessarily be equal to $\Density_{2}$. \\
+  This system seems to be under steady flow conditions, so $\FlowRate{\Mass}_{In} = \FlowRate{\Mass}_{Out}$. \\
+  Due to the \nameref{def:Law_Conservation_Energy}, we can say $\FlowRate{\Energy}_{In} = \FlowRate{\Energy}_{Out}$.
+  Namely, there is no energy storage in this system.
+
+  \textbf{Explore:} \\
+  \begin{align*}
+    \FlowRate{\Mass}_{In} &= \FlowRate{\Mass}_{Out} \\
+    {(\Density \Velocity \Area)}_{In} &= {(\Density \Velocity \Area)}_{Out} \\
+  \end{align*}
+
+  Now, we can find the density of the inlet air by using the tables for it.
+  But, to find the density of the air at the outlet, we can use \Cref{eq:Ideal_Gas_Equation}, and take the inverse of the \nameref{def:Specific_Volume}.
+  \begin{align*}
+    \FlowRate{\Mass}_{In} &= \Density_{2} \Velocity_{2} \Area_{2} \\
+                          &= \frac{1}{\SpecificVolume_{2}} \Velocity_{2} \Area_{2} \\
+    \intertext{Find the \nameref{def:Specific_Volume} using \Cref{eq:Ideal_Gas_Equation}.}
+    \Pressure \SpecificVolume &= \GasConstant \Temp \\
+    \SpecificVolume &= \frac{\GasConstant \Temp}{\Pressure} \\
+    \FlowRate{\Mass}_{In} &= \frac{\Pressure}{\GasConstant \Temp} \Velocity_{2} \Area_{2} \\
+  \end{align*}
+
+  We also have several other key pieces of information to solve this.
+  \begin{align*}
+    \Change{\FlowRate{\Heat}} &= 0 \\
+    \Change{\FlowRate{\Work}} &= 0 \\
+    \Change{\PotentialEnergy} &= 0 \\
+  \end{align*}
+
+  Therefore, only kinetic energy and enthalpy change, $\Change{\KineticEnergy}$ and $\Change{\SpecificEnthalpy}$, respectively.
+  We can calculate the change in \nameref{def:Specific_Enthalpy} using a slightly modified version of \Cref{eq:Change_Internal_Energy_Specific_Heat_Constant_Pressure}.
+  \begin{align*}
+    \Change{\Enthalpy} &= \SpecificHeatPressure \Mass \Change{\Temp} \\
+    \Change{\SpecificEnthalpy} &= \frac{\Change{\Enthalpy}}{\Mass} \\
+                       &= \frac{\SpecificHeatPressure \Mass \Change{\Temp}}{\Mass} \\
+                       &= \SpecificHeatPressure \Change{\Temp}
+  \end{align*}
+
+  We use $\SpecificHeatPressure$, \nameref{def:Specific_Heat} under constant pressure, because once the air leaves the nozzle, it is in an environment with constant pressure.
+
+  \textbf{Plan:} \\
+  Solve for $\SpecificVolume_{2}$ using the \Cref{eq:Ideal_Gas_Equation}. \\
+  Solve for $\Area_{2}$ using the relation $\FlowRate{\Mass} = \frac{\Area_{1} \Velocity_{1}}{\Velocity_{2}}$. \\
+  Use our energy conservation relation to solve for $\Temp_{2}$ using $\Change{\Temp}$.
+
+  \textbf{Solve:} \\
+  \begin{align*}
+    \SpecificVolume_{1} &= \frac{\GasConstant \Temp_{1}}{\Pressure} \\
+                        &= \SI{0.4525}{\meter\cubed\per\kilo\gram}
+  \end{align*}
+
+  Now that we have the initial \nameref{def:Specific_Volume}, we can find the mass flowrate.
+  \begin{align*}
+    \FlowRate{\Mass}_{1} &= \frac{\Area_{1} \Velocity_{1}}{\SpecificVolume_{1}} \\
+                         &= \SI{0.5304}{\kilo\gram\per\second}
+  \end{align*}
+
+  Now, we can solve for our energy conservation equation, \Cref{eq:Energy_Continuity_Equation} to find the final temperature, $\Temp_{2}$.
+  \begin{align*}
+    \Change{\FlowRate{\Heat}} - \Change{\FlowRate{\Work}} &= \FlowRate{\Mass} \left( \Change{\SpecificEnthalpy} - \frac{\Change{\KineticEnergy}}{\Mass} \right) \\
+    0 - 0 &= \FlowRate{\Mass} \left(\SpecificHeatPressure \Change{\Temp} + \frac{\Velocity_{2}^{2} - \Velocity_{1}^{2}}{2} \right) \\
+    \intertext{Refer to the textbook's Table A.2 for $\SpecificHeatPressure$. Some interpolation is needed.}
+    0 &= \SI{0.5304}{\kilo\gram\per\second} \left( \SI{1.02}{\kilo\joule\per\kilo\gram} (\Temp_{2} - (200 + 273.15)\si{\kelvin}) - \frac{\SI{180}{\meter\per\second} - \SI{30}{\meter\per\second}}{2} \right) \\
+    \intertext{Now, rearrange the equation such that you solve for $\Temp_{2}$.}
+    \Temp_{2} &= \SI{184.25}{\degreeCelsius}
+  \end{align*}
+
+  Now, we can solve for the final \nameref{def:Specific_Volume}.
+  \begin{align*}
+    \SpecificVolume_{2} &= \frac{\GasConstant \Temp_{2}}{\Pressure_{2}} \\
+                        &= \SI{1.312}{\meter\cubed\per\kilo\gram} \\
+    \intertext{Plugging that into the mass flow equation we have, to find the outlet cross-sectional area, $\Area_{2}$.}
+    \Change{\Mass}_{1} &= \Change{\Mass}_{2} \\
+    \SI{0.5304}{\kilo\gram\per\second} &= \frac{\Area_{2} \Velocity_{2}}{\SpecificVolume_{2}} \\
+    \Area_{2} &= \SI{0.00386}{\meter\squared} \\
+                        &= \SI{38.6}{\centi\meter\squared}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  The area decreased, so it definitely is a nozzle.
+  In particular, all the other factors help us confirm that.
+  The pressure decreased, the enthalpy decreased, the velocity increased, and the cross-sectional area decreased.
+  Thus, this is definitely a nozzle.
+  \begin{center}
+    \begin{tabular}{c|c}
+      \toprule
+      In & Out \\
+      \midrule
+      Pressure High & Pressure Low \\
+      Velocity Low & Velocity High \\
+      Start Temperature & Temperature Decreased \\
+      Start Enthalpy & Enthalpy Decreased \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  \textbf{Generalize:} \\
+  In a nozzle, velocity and pressure change occurs at the expense of the \nameref{def:Enthalpy}.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
