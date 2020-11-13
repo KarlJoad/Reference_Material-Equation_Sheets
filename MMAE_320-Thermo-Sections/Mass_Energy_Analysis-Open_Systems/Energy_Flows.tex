@@ -554,6 +554,18 @@ Because the \nameref{def:Specific_Enthalpy} remains constant for a \nameref{def:
 \end{example}
 
 \subsubsection{Mixing Chambers}\label{subsubsec:Mixing_Chambers}
+\begin{definition}[Mixing Chamber]\label{def:Mixing_Chamber}
+  \emph{Mixing chamber}s are used whenever two different fluid streams together that have the same $\Density$.
+  Each of the different streams comes in through a different inlet.
+  There is a steady flow in from each of the inlets, so
+  \begin{equation*}
+    \FlowRate{\Mass}_{Out} = \FlowRate{\Mass}_{In, 1} + \FlowRate{\Mass}_{In, 2}
+  \end{equation*}
+
+  In general, we assume that the fluids entering the chamber are the same, preventing possible chemical reactions.
+  For example, we do not mix water and alcohol.
+\end{definition}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
