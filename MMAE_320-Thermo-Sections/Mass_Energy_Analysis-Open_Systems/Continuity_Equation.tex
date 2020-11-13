@@ -1,4 +1,17 @@
 \subsection{Continuity Equation}\label{subsec:Continuity_Equation}
+We perform this analysis when we are interested in the matter flow of a \nameref{def:System}.
+We still need to have \nameref{def:Law_Conservation_Energy}.
+The important thing to remember here is that there is no change of mass of the control volume, meaning there is \textbf{no} storage of the mass in the system.
+This means we have \emph{steady flow}.
+This also means we could have an unsteady flow, but we deal with that later in this section.
+
+Now, to motivate the \nameref{def:Continuity_Equation}, imagine an expandable tank.
+If there are $n$ flows inwards and $m$ flows outwards, we can construct an equation that looks like this.
+\begin{align*}
+  (\FlowRate{\Mass_{In,1}} + \FlowRate{\Mass_{In,2}}) - \FlowRate{\Mass_{Out}} &= {\left[ \frac{dm}{dt} \right]}_{\text{Control Volume}} \\
+  \sum\limits_{\text{Inlets}} \FlowRate{\Mass} - \sum\limits_{\text{Outlets}} \FlowRate{\Mass} &= \FlowRate{\Mass}_{\text{Control Volume}}
+\end{align*}
+
 
 %%% Local Variables:
 %%% mode: latex
