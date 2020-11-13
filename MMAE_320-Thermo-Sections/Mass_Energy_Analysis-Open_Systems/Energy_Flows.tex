@@ -55,6 +55,23 @@ If we have a steady flow, then \Cref{eq:Energy_Continuity_Equation} can be simpl
 The work in \Cref{eq:Steady_Flow_Energy_Continuity_Equation} is shaft work.
 This could be a propeller turning the fluid, or the fluid doing work on the shaft to achieve something.
 
+\subsubsection{Nozzles and Diffusers}\label{subsubsec:Nozzles_Diffusers}
+There are some general properties about nozzles and diffusers that are useful to remember.
+\begin{itemize}[noitemsep]
+\item For nozzles, $\Velocity_{2} \gg \Velocity_{1}$.
+  The energy gained from the change in kinetic energy is changed from the \nameref{def:Flow_Energy}, because $\Pressure_{2} < \Pressure_{1}$.
+\item For diffusers, $\Velocity_{2} \ll \Velocity_{1}$.
+  The energy lost from the change in kinetic energy is given to the \nameref{def:Flow_Energy}, because $\Pressure_{2} > \Pressure_{1}$.
+\item In general, $\Change{\FlowRate{\Heat}} \approx 0$.
+  There is very little \nameref{def:Heat_Transfer}.
+\item In general, $\Change{\FlowRate{\Work}} \approx 0$.
+  There are no propellers or outside shafts.
+\item In general, $\FlowRate{\KineticEnergy} \neq 0$.
+  The kinetic energy changes dramatically.
+\item In general, $\SpecificEnthalpy \neq 0$.
+  There is a large volume change.
+\end{itemize}
+
 
 %%% Local Variables:
 %%% mode: latex
