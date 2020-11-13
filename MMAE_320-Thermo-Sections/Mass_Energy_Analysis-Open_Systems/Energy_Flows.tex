@@ -674,6 +674,14 @@ Due to these properties, the general energy balance equation for \nameref{def:Mi
   \label{tab:Heat_Exchanger_Properties}
 \end{table}
 
+To solve these kinds of problems, we treat them as if they were two separate problems.
+We have two control volumes that we interact with, \textsc{control volume 1} and \textsc{control volume 2}.
+Each control volume exists under steady flow (state) conditions, so $\FlowRate{\Mass}_{In} = \FlowRate{\Mass}_{Out}$ for each fluid flow.
+They are related by an energy balance.
+\begin{equation}\label{eq:Heat_Exchanger_Energy_Balance}
+  {(\FlowRate{\Mass}_{In} \SpecificEnthalpy_{In})}_{1} + {(\FlowRate{\Mass}_{In} \SpecificEnthalpy_{In})}_{2} = {(\FlowRate{\Mass}_{Out} \SpecificEnthalpy_{Out})}_{1} + {(\FlowRate{\Mass}_{Out} \SpecificEnthalpy_{Out})}_{2}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
