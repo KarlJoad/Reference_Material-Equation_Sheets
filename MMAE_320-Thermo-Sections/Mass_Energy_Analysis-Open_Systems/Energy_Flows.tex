@@ -180,6 +180,103 @@ There are some general properties about nozzles and diffusers that are useful to
   In a nozzle, velocity and pressure change occurs at the expense of the \nameref{def:Enthalpy}.
 \end{example}
 
+\begin{example}[Textbook Problem 6.35]{Steam Nozzle}
+  A nozzle is handling steam that enters at $\Pressure_{1} = \SI{5}{\mega\pascal}$ and $\Temp_{1} = \SI{400}{\degreeCelsius}$ steadily at $\Velocity_{1} = \SI{80}{\meter\per\second}$.
+  The steam leaves at $\Pressure_{2} = \SI{2}{\mega\pascal}$ and $\Temp_{2} = \SI{300}{\degreeCelsius}$.
+  The inlet of the nozzle is $\Area_{1} = \SI{50}{\centi\meter\squared}$.
+  Heat is being lost at a rate of $Q_{Out} = \SI{120}{\kilo\joule\per\second}$.
+  Find the mass flowrate of the steam $\FlowRate{\Mass}$, the exit velocity of the steam $\Velocity_{2}$, and the cross-sectional area of the nozzle's outlet $\Area_{2}$?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  The \textbf{nozzle} has steady flow, with \textit{steam}. \\
+  A nozzle has no storage capacity, so $\FlowRate{\Mass}_{In} = \FlowRate{\Mass}_{Out}$. \\
+  Steam is \emph{not} an ideal gas, so we have to use the Tables in the back of the textbook.
+
+  \textbf{Explore:} \\
+  Tables A.4, A.5, and A.6 will be of use.
+  Initially, the steam is superheated, so we start by using Table A.6.
+
+  Expanding the definition of mass flowrate, we get the relation:
+  \begin{equation*}
+    \FlowRate{\Mass} = \Density \Area \Velocity
+  \end{equation*}
+
+  It is also useful to remember
+  \begin{equation*}
+    \Density = \frac{1}{\SpecificVolume}
+  \end{equation*}
+
+  We assume that $\FlowRate{\Heat}_{In} = 0$, because we are not told otherwise. \\
+  A nozzle is a rigid body, so it does not undergo any pressure changes.
+  Thus, $\FlowRate{\Work}_{In} = \FlowRate{\Work}_{Out}$, meaning $\Change{\FlowRate{\Work}} = 0$. \\
+  Again, $\Change{\PotentialEnergy} = 0$, because there is no change in height.
+
+  \textbf{Plan:} \\
+  Find the \nameref{def:Specific_Volume} for each state ($\SpecificVolume_{1}$ and $\SpecificVolume_{2}$), and their respective \nameref{def:Enthalpy} ($\SpecificEnthalpy_{1}$ and $\SpecificEnthalpy_{2}$). \\
+  Use these values, along with the ones given in the problem statement to solve \Cref{eq:Steady_Flow_Energy_Continuity_Equation}.
+
+  \textbf{Solve:} \\
+  From Table A.6 at $\Pressure_{1} = \SI{5}{\mega\pascal}$ and $\Temp_{1} = \SI{400}{\degreeCelsius}$:
+  \begin{align*}
+    \SpecificVolume_{1} &= \SI{0.05784}{\meter\cubed\per\kilo\gram} \\
+    \SpecificEnthalpy_{1} &= \SI{3196.7}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+
+  Likewise, for the output, at $\Pressure_{2} = \SI{2}{\mega\pascal}$ and $\Temp_{2} = \SI{300}{\degreeCelsius}$:
+  \begin{align*}
+    \SpecificVolume_{2} &= \SI{0.12551}{\meter\cubed\per\kilo\gram} \\
+    \SpecificEnthalpy_{2} &= \SI{3024.2}{\kilo\joule\per\kilo\gram}
+  \end{align*}
+
+  First, we find the mass flowrate through the nozzle, $\FlowRate{\Mass}$.
+  \begin{align*}
+    \FlowRate{\Mass} &= \frac{\Velocity_{1} \Area_{1}}{\SpecificVolume_{1}} \\
+                     &= \SI{6.92}{\kilo\gram\per\second} \\
+  \end{align*}
+
+  Now, solve \Cref{eq:Steady_Flow_Energy_Continuity_Equation}, to find the final velocity $\Velocity_{2}$:
+  \begin{align*}
+    \FlowRate{\Heat}_{In} - \FlowRate{\Heat}_{Out} + \Change{\FlowRate{\Work}} &= \FlowRate{\Mass} \left( \Change{\SpecificEnthalpy} + \frac{\Change{\KineticEnergy}}{\Mass} \right) \\
+    \intertext{The \nameref{def:Flow_Energy} is handled by the use of \nameref{def:Specific_Enthalpy} in this problem.}
+    0 - \FlowRate{\Heat}_{Out} + 0 &= \FlowRate{\Mass} \left( \SpecificEnthalpy_{2} - \SpecificEnthalpy_{1} + \frac{\Velocity_{2}^{2} - \Velocity_{1}^{2}}{2} \right) \\
+    -\FlowRate{\Heat}_{Out} &= \FlowRate{\Mass} \left( \SpecificEnthalpy_{2} - \SpecificEnthalpy_{1} + \frac{\Velocity_{2}^{2} - \Velocity_{1}^{2}}{2} \right) \\
+    \FlowRate{\Mass} (\SpecificEnthalpy_{1} - \SpecificEnthalpy_{2}) - \FlowRate{\Heat}_{Out} &= \FlowRate{\Mass} \left( \frac{\Velocity_{2}^{2}}{2} - \frac{\Velocity_{1}^{2}}{2} \right) \\
+    \FlowRate{\Mass} \left( \SpecificEnthalpy_{1} - \SpecificEnthalpy_{2} + \frac{\Velocity_{1}^{2}}{2} \right) - \FlowRate{\Heat}_{Out} &= \FlowRate{\Mass} \frac{\Velocity_{2}^{2}}{2} \\
+    \Velocity_{2}^{2} &= \SI{562}{\meter\per\second}
+  \end{align*}
+
+  Lastly, we find the outlet's cross-sectional area, $\Area_{2}$.
+  \begin{align*}
+    \FlowRate{\Mass} &= \frac{\Velocity_{2} \Area_{2}}{\SpecificVolume_{2}} \\
+    \Area_{2} &= \FlowRate{\Mass} \left( \frac{\SpecificVolume_{2}}{\Velocity_{2}} \right) \\
+                     &= \SI{0.00154}{\meter\squared} \\
+  \end{align*}
+
+  \textbf{Validate:} \\
+  \begin{center}
+    \begin{tabular}{c|c}
+      \toprule
+      In & Out \\
+      \midrule
+      Pressure High & Pressure Low \\
+      Velocity Low & Velocity High \\
+      Start Temperature & Temperature Decreased \\
+      Start Enthalpy & Enthalpy Decreased \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  \textbf{Generalize:} \\
+  The reduction in \nameref{def:Enthalpy} allowed the steam to gain its velocity, increasing the steam's kinetic energy.
+  The temperature also decreased, because the enthalpy decreased.
+
+  From the energy balance:
+  \begin{align*}
+    \FlowRate{\Heat}_{Out} &= \Change{\SpecificEnthalpy} + \Change{\KineticEnergy} \\
+    \SI{-120}{\kilo\joule\per\second} &= \SI{-1194}{\kilo\joule\per\second} + \SI{1073}{\kilo\joule\per\second}
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
