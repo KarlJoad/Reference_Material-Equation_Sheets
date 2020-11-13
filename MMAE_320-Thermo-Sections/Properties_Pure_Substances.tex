@@ -114,6 +114,27 @@ There are several notable points on the graph in \Cref{fig:Phase_Change}:
   \label{fig:Pressure_Volume_Diagram}
 \end{figure}
 
+\begin{definition}[Interpolate]\label{def:Interpolate}
+  Many of the values in the tables in the textbook are useful.
+  However, sometimes the value we are interested in is \textit{not} in these tables, but between some known entries in the table.
+  So, we must \emph{interpolate} a result to use.
+  \begin{equation}\label{eq:Interpolate}
+    y = y_{0} + (x_{1} - x) \left( \frac{y_{1} - y_{0}}{x_{1} - x_{0}} \right)
+  \end{equation}
+  \begin{description}[noitemsep]
+  \item[$y$] The value we intend to interpolate for.
+  \item[$y_{0}$] The ``earlier'' value to use.
+    Typically, this is the known data point below our value of interest.
+  \item[$y_{1}$] The ``later'' value to use.
+    Typically, this is the known data point above our value of interest.
+  \item[$x$] The independent value that we are interested in interpolating \textit{at}.
+  \item[$x_{0}$] The ``earlier'' value to use.
+    Typically, this is the known data point below our value of interest.
+  \item[$x_{1}$] The ``later'' value to use.
+    Typically, this is the known data point above our value of interest.
+  \end{description}
+\end{definition}
+
 \begin{example}{Properties of Water}
   Given water at temperature $\Temp = \SI{75}{\degreeCelsius}$ and a pressure $\Pressure = \SI{100}{\kilo\pascal}$.
   What is the water's current state?
