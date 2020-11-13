@@ -588,6 +588,70 @@ Due to these properties, the general energy balance equation for \nameref{def:Mi
   \sum\limits_{Inlets} \SpecificEnthalpy \FlowRate{\Mass} = \sum\limits_{Outlets} \SpecificEnthalpy \FlowRate{\Mass}
 \end{equation}
 
+\begin{example}[Textbook Problem 6.78]{Mixing Chamber}
+  A hot water stream of $\Temp_{In, 1} = \SI{80}{\degreeCelsius}$ enters a \nameref{def:Mixing_Chamber} with a mass flowrate of $\FlowRate{\Mass}_{In, 1} = \SI{0.5}{\kilo\gram\per\second}$.
+  It is mixed with a stream of cold water at $\Temp_{In, 2} = \SI{20}{\degreeCelsius}$.
+  If it is desired that the water leave the chamber at $\Temp_{Out} = \SI{42}{\degreeCelsius}$, determine the mass flowrate of the cold water stream, $\FlowRate{\Mass}_{In, 2}$?
+  Assume all streams are at a pressure of $\Pressure = \SI{250}{\kilo\pascal}$.
+  \tcblower{}
+  \textbf{Concepts:} \\
+  This is a \nameref{def:Mixing_Chamber} with steady flow.
+
+  \textbf{Explore:} \\
+  Our initial concepts about a \nameref{def:Mixing_Chamber} yield the equations:
+  \begin{align*}
+    \FlowRate{\Mass}_{In, 1} + \FlowRate{\Mass}_{In, 2} &= \FlowRate{\Mass}_{Out} \\
+    {(\SpecificEnthalpy \FlowRate{\Mass})}_{In, 1} + {(\SpecificEnthalpy \FlowRate{\Mass})}_{In, 2} &= {(\SpecificEnthalpy \FlowRate{\Mass})}_{Out}
+  \end{align*}
+
+  Use the tables in the back of the textbook to find the various $\SpecificEnthalpy$, by the given $\Pressure$ and $\Temp$ for water.
+  This water is under a lot of pressure, and is in a liquid state, so we should start by going to Table A.4 and A.5.\@
+  The thing that affects the \nameref{def:Specific_Enthalpy} more is the temperature of the water, so we use Table A.4 rather than A.5.\@ \\
+  There may need to be some extrapolation to get the \nameref{def:Specific_Enthalpy}.
+
+  \textbf{Plan:} \\
+  Use the tables in the textbook to find the \nameref{def:Specific_Enthalpy} for the various streams. \\
+  Solve for the energy balance equation and the mass flowrate equation simultaneously.
+
+  \textbf{Solve:} \\
+  From Table A.4 at $\Temp_{In, 1} = \SI{80}{\degreeCelsius}$:
+  \begin{equation*}
+    \SpecificEnthalpy_{In, 1} = \SI{335}{\kilo\joule\per\kilo\gram}
+  \end{equation*}
+
+  From Table A.4 at $\Temp_{In, 2} = \SI{20}{\degreeCelsius}$:
+  \begin{equation*}
+    \SpecificEnthalpy_{In, 2} = \SI{84}{\kilo\joule\per\kilo\gram}
+  \end{equation*}
+
+  From Table A.4 at $\Temp_{Out} = \SI{42}{\degreeCelsius}$, which requires us to \nameref{def:Interpolate}:
+  \begin{equation*}
+    \SpecificEnthalpy = \SI{175.9}{\kilo\joule\per\kilo\gram}
+  \end{equation*}
+
+  Now, solve
+  \begin{align*}
+    \FlowRate{\Mass}_{In, 1} \SpecificEnthalpy_{In, 1} + \FlowRate{\Mass}_{In, 2} \SpecificEnthalpy_{In, 2} + &= \FlowRate{\Mass}_{Out} \SpecificEnthalpy_{Out} \\
+    \intertext{According to our relationship between our mass flowrates, the inlets are equal to the outlet.}
+                                                                                                              &= \SpecificEnthalpy_{Out} (\FlowRate{\Mass}_{In, 1} + \FlowRate{\Mass}_{In, 2}) \\
+    \intertext{Rearranging to get the second inlet's mass flowrate by itself, we can solve.}
+    \FlowRate{\Mass}_{In, 2} &= \frac{\SpecificEnthalpy_{In, 1} - \SpecificEnthalpy_{Out}}{\SpecificEnthalpy_{Out} - \SpecificEnthalpy_{In, 2}} \FlowRate{\Mass}_{In, 1} \\
+                                                                                                              &= \SI{0.865}{\kilo\gram\per\second}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  Now that we know the mass flowrate out of the chamber, we can solve the energy balance equation directly.
+  $\FlowRate{\Mass}_{Out} = \SI{1.365}{\kilo\gram\per\second}$.
+
+  \begin{align*}
+    \SpecificEnthalpy_{In, 1} \FlowRate{\Mass}_{In, 1} + \SpecificEnthalpy_{In, 2} \FlowRate{\Mass}_{In, 2} &= \SpecificEnthalpy_{Out} \FlowRate{\Mass}_{Out} \\
+    167 + 73 &= 240
+  \end{align*}
+
+  \textbf{Generalize:} \\
+  For a mass flow for a liquid under constant pressure, the \nameref{def:Specific_Enthalpy} ($\SpecificEnthalpy$) dominates the outcome.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
