@@ -267,6 +267,50 @@ In the case of a refrigerator (which is just a \nameref{fig:Heat_Engine} run in 
   \end{aligned}
 \end{equation}
 
+\begin{example}[Textbook Problem 7.40]{Refrigerators}
+  A household \nameref{def:Refrigerator} with a \nameref{def:Coefficient_of_Performance} of $\CoP = 1.2$ removes heat from the refrigerated space at a rate of $\FlowRate{\Heat}_{Out} = \SI{60}{\kilo\joule\per\minute}$.
+  Determine the electric power consumed by the refrigerator ($\FlowRate{\Work}_{In}$) and the rate of \nameref{def:Heat_Transfer} to the kitchen air ($\FlowRate{\Heat}_{H}$)?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  A refrigerator has a \nameref{def:Coefficient_of_Performance} as seen in \Cref{eq:Coefficient_of_Performance-Refrigerator}. \\
+  We are told $\FlowRate{\Heat}_{C} = \SI{60}{\kilo\joule\per\minute}$, which is $\FlowRate{\Heat}_{C} = \SI{1}{\kilo\joule\per\second}$. \\
+  The $\FlowRate{\Heat}_{C}$ is the inside of the fridge and its air because of the evaporator.
+  $\FlowRate{\Heat}_{H}$ is the warm air inside the kitchen and the air released by the condenser.
+
+  \textbf{Explore:} \\
+  From our simplified depiction of a refrigerator, we can figure out an energy balance for this problem, $\FlowRate{\Heat}_{H} = \FlowRate{\Heat}_{L} + \FlowRate{\Work}$.
+
+  \textbf{Plan:} \\
+  Solve \Cref{eq:Coefficient_of_Performance-Refrigerator} to find $\FlowRate{\Heat}_{H}$. \\
+  Solve the energy balance to find $\FlowRate{\Work}_{In}$.
+
+  \textbf{Solve:} \\
+  Using \Cref{eq:Coefficient_of_Performance-Refrigerator}, solve for $\FlowRate{\Work}_{In}$.
+  \begin{align*}
+    \FlowRate{\Work}_{In} &= \frac{\FlowRate{\Work}_{C}}{\CoP} \\
+                          &= \frac{\SI{1}{\kilo\joule\per\second}}{1.2} \\
+                          &= \SI{50}{\kilo\joule\per\minute} \\
+                          &= \SI{0.83}{\kilo\watt}
+  \end{align*}
+
+  Now, we can solve the energy balance.
+  \begin{align*}
+    \FlowRate{\Heat}_{H} &= \FlowRate{\Heat}_{C} + \FlowRate{\Work}_{In} \\
+                         &= \SI{60}{\kilo\joule\per\minute} + \SI{50}{\kilo\joule\per\minute} \\
+                         &= \SI{110}{\kilo\joule\per\minute}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  We cal validate this by double-checking against the general equation for \nameref{def:Coefficient_of_Performance} for a refrigerator, \Cref{eq:Coefficient_of_Performance-Refrigerator}.
+  \begin{align*}
+    \CoP &= \frac{1}{\frac{\FlowRate{\Heat}_{C}}{\FlowRate{\Heat}_{H}} - 1} \\
+         &= 1.2
+  \end{align*}
+
+  \textbf{Generalize:} \\
+  For a refrigerator, the higher the \nameref{def:Coefficient_of_Performance}, the more \nameref{def:Heat} removed from the inside.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
