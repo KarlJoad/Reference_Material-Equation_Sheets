@@ -184,6 +184,75 @@ Now, applying \nameref{def:Coefficient_of_Performance} to a heat engine, we get 
   \end{align*}
 \end{example}
 
+\begin{example}[Textbook Problem 7.48]{Air Conditioner}
+  When a man returns to his well-sealed house on a summer day, he finds the house to be at $\Temp_{1} = \SI{32}{\degreeCelsius}$.
+  He turns on the air conditioner which cools the entire house to $\Temp_{2} = \SI{20}{\degreeCelsius}$ in $\Time = \SI{15}{\minute}$.
+  If the \nameref{def:Coefficient_of_Performance} of the air conditioning unit is $\CoP = 2.5$, determine the power drawn by the air conditioner?
+  Assume the entire mass of the house is $\Mass = \SI{800}{\kilo\gram}$ of air for which $\SpecificHeatVolume = \SI{0.72}{\kilo\joule\per\kilo\gram\degreeCelsius}$ and $\SpecificHeatPressure = \SI{1.0}{\kilo\joule\per\kilo\gram\degreeCelsius}$.
+  \tcblower{}
+  \textbf{Concepts:} \\
+  An air conditioner behaves the same as a \nameref{def:Refrigerator}. \\
+  Continuing with this analogy, the air inside the house behaves as the interior of the refrigerator and is to be cooled.
+  The air outside the house is analogous to the air outside of the refrigerator (the condenser is outside the house). \\
+  Need to find $\FlowRate{\Heat}_{C}$.
+
+  \textbf{Explore:} \\
+  We can find the \nameref{def:Work} in by negating the change in \nameref{def:Heat} of the air inside the house.
+  We can do this because the house is well-sealed and that is the only thing that can change the \nameref{def:Internal_Energy} of the house. \\
+  \begin{equation*}
+    -\FlowRate{\Work}_{In} = \frac{\FlowRate{\Heat}_{C}}{\CoP}
+  \end{equation*}
+
+  Because the house is well-sealed, if the air is cooled, the pressure will change.
+  If the house were leaky, then air will flow somewhat freely across the system boundary.
+  In this case, we will use $\SpecificHeatPressure$.
+
+  More thoroughly, we will use both $\SpecificHeatVolume$ and $\SpecificHeatPressure$ to bracket our solution.
+  \begin{equation*}
+    \Change{\Heat} = \SpecificHeat \Mass \Change{\Temp}
+  \end{equation*}
+
+  We can use this to find the \nameref{def:Heat} removed from the house $\Heat_{C}$ and then determine its flowrate by dividing by the time taken, $\FlowRate{\Heat}_{C}$.
+
+  \textbf{Plan:} \\
+  Solve for the change in energy of the house using the equation for changes in heat given the fluid in question is an ideal gas.
+
+  \textbf{Solve:} \\
+  Starting with $\SpecificHeatVolume$ for a leaky house.
+  \begin{align*}
+    \Heat_{C, \Volume} &= \SpecificHeatVolume \Mass \Change{\Temp} \\
+    &= \SI{6912}{\kilo\joule}
+  \end{align*}
+
+  Now, using $\SpecificHeatPressure$ for a well-sealed house.
+  \begin{align*}
+    \Heat_{C, \Pressure} &= \SpecificHeatPressure \Mass \Change{\Temp} \\
+    &= \SI{9600}{\kilo\joule}
+  \end{align*}
+
+  Now, finding the flowrates.
+  \begin{align*}
+    \FlowRate{\Heat}_{C, \Volume} &= \SI{7.68}{\kilo\joule\per\second} & \Heat_{C, \Pressure} &= \SI{10.6}{\kilo\joule\per\second} \\
+    \FlowRate{\Heat}_{C, \Volume} &= \SI{7.68}{\kilo\watt} & \Heat_{C, \Pressure} &= \SI{10.6}{\kilo\watt} \\
+  \end{align*}
+
+  Now, solving for the net \nameref{def:Work} in:
+  \begin{align*}
+    \FlowRate{\Work}_{In, \Volume} &= \SI{3.077}{\kilo\watt} & \FlowRate{\Work}_{In, \Pressure} &= \SI{4.264}{\kilo\watt}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  The sealed room doesn't take as much energy to cool, because we don't have to constantly cool newly warmed air from the outside, which makes sense.
+
+  We can find $\FlowRate{\Heat}_{C}$ using \nameref{def:Enthalpy}, from Table A.21.
+  \begin{align*}
+    \FlowRate{\Heat} &= \Mass \Change{\SpecificEnthalpy} \\
+                     &= \SI{9000}{\kilo\watt}
+  \end{align*}
+
+  Using the \nameref{def:Enthalpy} we can see that the best designed system is one that is between both the $\SpecificHeatVolume$ and $\SpecificHeatPressure$.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
