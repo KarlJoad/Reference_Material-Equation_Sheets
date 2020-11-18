@@ -53,6 +53,42 @@ Cycles absorb work, limiting the amount of energy that can be extracted.
 You cannot perfectly convert \nameref{def:Heat} into \nameref{def:Work}.
 This is because the cycle itself requires some amount of work to even occur.
 
+\begin{example}[Textbook Problem 7.22]{Thermodynamic Cycles and Efficiency}
+  Given a steam power plant, with a boiler, working shaft, condenser, and a source of water outputs $\Power = \SI{150}{\mega\watt}$ consumes coal at $\FlowRate{\Mass} = \SI{60}{\ton\per\hour}$.
+  If the overall power available from coal is $\Power_{\text{Coal}} = \SI{30000}{\kilo\joule\per\kilo\gram}$, determine the overall efficiency of this plant?
+  \tcblower{}
+  The mass flowrate can be converted to kilograms, $\FlowRate{\Mass} = \SI{60000}{\kilo\gram\per\hour}$.
+
+  \textbf{Concepts:} \\
+  The efficiency can be defined as $\Efficiency = \frac{\FlowRate{\Work}_{\text{Net Out}}}{\FlowRate{\Heat}_{In}}$.
+
+  \textbf{Explore:} \\
+  There was no input work provided, so $\FlowRate{\Work}_{In} = 0$. \\
+
+  \textbf{Solve:} \\
+  So, we can find the heat in.
+  \begin{align*}
+    \FlowRate{\Heat}_{In} &= \FlowRate{\Mass} \Power_{\text{Coal}} \\
+                          &= 1.8 \times 10^{9}\si{\kilo\joule\per\hour} \\
+                          &= \SI{500}{\mega\watt}
+  \end{align*}
+
+  Now, to solve for the efficiency, $\Efficiency$.
+  \begin{align*}
+    \Efficiency &= \frac{\FlowRate{\Work}_{\text{Net Out}}}{\FlowRate{\Heat}_{In}} \\
+                &= \frac{\SI{150}{\mega\watt}}{\SI{500}{\mega\watt}} \\
+                &= 0.3
+  \end{align*}
+
+  \textbf{Validate:} \\
+  Because $\Efficiency = 1 - \frac{\Heat_{Out}}{\Heat_{In}}$, we can say $\FlowRate{\Work}_{Net} = \FlowRate{\Heat}_{In} - \FlowRate{\Heat}_{Out}$.
+  Plugging our known values in for $\FlowRate{\Heat}_{Out}$, we fine that $\FlowRate{\Heat}_{Out} = \SI{350}{\mega\watt}$.
+  This is the same as the energy lost by the system, which means we are correct.
+
+  \textbf{Generalize:} \\
+  You must waste \nameref{def:Heat} in order to have a \nameref{def:Cycle}.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
