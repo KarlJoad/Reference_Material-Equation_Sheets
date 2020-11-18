@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="Heat_Engine_Schematic.svg">
+  <defs
+     id="defs2">
+    <rect
+       id="rect1598"
+       height="17.970703"
+       width="115.42585"
+       y="62.95478"
+       x="-27.896257" />
+    <rect
+       id="rect1592"
+       height="15.732419"
+       width="110.84182"
+       y="0.5695668"
+       x="102.25793" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker1384"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path1382"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker1326"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path1324"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="Arrow2Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend">
+      <path
+         transform="scale(1.1) rotate(180) translate(1,0)"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         id="path917" />
+    </marker>
+    <marker
+       inkscape:collect="always"
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker1242"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path1240" />
+    </marker>
+    <marker
+       inkscape:collect="always"
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker1202"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path1200" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker1174"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path1172" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="Arrow1Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path899" />
+    </marker>
+    <rect
+       x="11.135371"
+       y="47.792119"
+       width="33.541445"
+       height="17.219962"
+       id="rect879" />
+    <rect
+       x="51.504815"
+       y="80.421403"
+       width="57.51975"
+       height="13.852564"
+       id="rect873" />
+    <rect
+       x="48.848922"
+       y="18.524403"
+       width="32.730664"
+       height="12.496664"
+       id="rect867" />
+    <rect
+       x="47.650679"
+       y="16.509264"
+       width="45.110215"
+       height="14.155779"
+       id="rect861" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 148.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="210 : 148.5 : 1"
+       inkscape:persp3d-origin="105 : 99 : 1"
+       id="perspective843" />
+    <rect
+       x="-27.896257"
+       y="62.954781"
+       width="119.71149"
+       height="17.482019"
+       id="rect1598-6" />
+    <rect
+       x="-27.896257"
+       y="62.954781"
+       width="115.42585"
+       height="17.970703"
+       id="rect1611" />
+    <rect
+       x="-27.896257"
+       y="62.954781"
+       width="119.81074"
+       height="15.988693"
+       id="rect1598-5" />
+    <rect
+       x="-27.896257"
+       y="62.954781"
+       width="115.42585"
+       height="17.970703"
+       id="rect1611-3" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="289.3675"
+     inkscape:cy="295.85432"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="871"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       transform="translate(32.757156,18.857436)"
+       id="g928"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300">
+      <rect
+         y="20.92189"
+         x="24.459663"
+         height="67.266769"
+         width="99.577805"
+         id="rect909"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.499999" />
+      <g
+         transform="translate(0,4.074069)"
+         id="g901">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.360632"
+           id="rect837"
+           width="40.598801"
+           height="12.960123"
+           x="100.69561"
+           y="46.276611"
+           ry="0"
+           rx="0" />
+        <text
+           xml:space="preserve"
+           id="text859"
+           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect861);fill:#000000;fill-opacity:1;stroke:none;"
+           transform="translate(54.554012,30.586163)"><tspan
+             x="47.650391"
+             y="26.139247"><tspan>Turbine</tspan></tspan></text>
+      </g>
+      <g
+         transform="translate(6.1449048)"
+         id="g891">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.499999"
+           id="rect833"
+           width="50.721291"
+           height="18.134237"
+           x="44.234146"
+           y="14.784898" />
+        <text
+           xml:space="preserve"
+           id="text865"
+           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect867);fill:#000000;fill-opacity:1;stroke:none;"
+           transform="translate(5.7698278,-0.33216539)"><tspan
+             x="48.849609"
+             y="28.152919"><tspan>Boiler</tspan></tspan></text>
+      </g>
+      <g
+         transform="translate(-2.6730559)"
+         id="g896">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.417608"
+           id="rect835"
+           width="57.747379"
+           height="17.929586"
+           x="49.539062"
+           y="77.627335" />
+        <text
+           xml:space="preserve"
+           id="text871"
+           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect873);fill:#000000;fill-opacity:1;stroke:none;"
+           transform="translate(-0.36427491,0.50950846)"><tspan
+             x="51.503906"
+             y="90.051357"><tspan>Condenser</tspan></tspan></text>
+      </g>
+      <g
+         id="g886">
+        <circle
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.628736"
+           id="path839"
+           cx="24.922352"
+           cy="56.830742"
+           r="17.655672" />
+        <text
+           xml:space="preserve"
+           id="text877"
+           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect879);fill:#000000;fill-opacity:1;stroke:none;"
+           transform="translate(-1.1083926,1.9165334)"><tspan
+             x="11.134766"
+             y="57.42245"><tspan>Pump</tspan></tspan></text>
+      </g>
+    </g>
+    <path
+       id="path888"
+       d="M 105.79873,114.63225 V 136.0454"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1384)" />
+    <path
+       id="path890"
+       d="m 174.35461,75.443325 h 26.00586"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1326)" />
+    <path
+       id="path892"
+       d="m 108.52533,15.118039 v 17.64657"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1242)" />
+    <path
+       id="path894"
+       d="M 14.141118,75.17265 H 39.357567"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1202)" />
+    <text
+       transform="translate(2.199884,8.3507862)"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1592);fill:#000000;fill-opacity:1;stroke:none;"
+       id="text1590"
+       xml:space="preserve"><tspan
+         x="102.25781"
+         y="10.199794"><tspan>\FlowRate{\Heat}_{In}</tspan></tspan></text>
+    <text
+       transform="translate(36.090065,6.4391337)"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1598);fill:#000000;fill-opacity:1;stroke:none;"
+       id="text1596"
+       xml:space="preserve"><tspan
+         x="-27.896484"
+         y="72.58456"><tspan>\FlowRate{\Work}_{In}</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       id="text1596-7"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1598-6);fill:#000000;fill-opacity:1;stroke:none;"
+       transform="translate(229.78263,7.8225601)"><tspan
+         x="-27.896484"
+         y="72.58456"><tspan>\FlowRate{\Work}_{Out}</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       id="text1596-5"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1598-5);fill:#000000;fill-opacity:1;stroke:none;"
+       transform="translate(131.65164,72.514135)"><tspan
+         x="-27.896484"
+         y="72.58456"><tspan>\FlowRate{\Heat}_{Out}</tspan></tspan></text>
+  </g>
+</svg>
