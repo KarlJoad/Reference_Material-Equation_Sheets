@@ -146,6 +146,16 @@ However, $\FlowRate{\Heat}_{C} = 0$ \textbf{if the \nameref{def:Process} is NOT 
   \end{equation}
 \end{definition}
 
+Now, applying \nameref{def:Coefficient_of_Performance} to a heat engine, we get \Cref{eq:Coefficient_of_Performance-Heat_Engine}.
+
+\begin{equation}\label{eq:Coefficient_of_Performance-Heat_Engine}
+  \begin{aligned}
+    \CoP &= \frac{\FlowRate{\Heat}_{C}}{\FlowRate{\Work_{Out}}} \\
+    &= \frac{\FlowRate{\Heat}_{C}}{\FlowRate{\Heat}_{H} - \FlowRate{\Heat}_{C}} \\
+    &= \frac{1}{\frac{\FlowRate{\Heat}_{C}}{\FlowRate{\Heat}_{H}} - 1}
+  \end{aligned}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
