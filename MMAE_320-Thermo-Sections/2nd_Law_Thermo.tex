@@ -161,6 +161,29 @@ Now, applying \nameref{def:Coefficient_of_Performance} to a heat engine, we get 
   A \emph{heat pump} is just another term for a refrigerator.
 \end{definition}
 
+\begin{example}[Textbook Problem 7.41]{Heat Pumps}
+  A commercial \nameref{def:Heat_Pump} removes $\FlowRate{\Heat}_{C} = \SI{10000}{\btu\per\hour}$ from the source and rejects $\FlowRate{\Heat}_{H} = \SI{15090}{\btu\per\hour}$ to the sink, and has a $\FlowRate{\Work}_{In} = \SI{2}{\hp}$ of power.
+  What is the \nameref{def:Coefficient_of_Performance}?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  A \nameref{def:Heat_Pump} is quite similar to a \nameref{def:Refrigerator}. \\
+  The energy flow for the problem looks identical to a refrigerator's. \\
+  A refrigerator has a \nameref{def:Coefficient_of_Performance} as seen in \Cref{eq:Coefficient_of_Performance-Refrigerator}.
+
+  \textbf{Solve:} \\
+  First, change the \nameref{def:Work} into a more useful set of units.
+  \begin{equation*}
+    \SI{2}{\hp} \left( \frac{\SI{2544}{\btu\per\hour}}{\SI{1}{\hp}} \right) = \SI{5088}{\btu\per\hour}
+  \end{equation*}
+
+  Now, we can solve \Cref{eq:Coefficient_of_Performance-Refrigerator}.
+  \begin{align*}
+    \CoP &= \frac{\FlowRate{\Heat}_{H}}{\FlowRate{\Work_{In}}} \\
+         &= \frac{\SI{15090}{\btu\per\hour}}{\SI{5088}{\btu\per\hour}} \\
+         &= 2.97
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
