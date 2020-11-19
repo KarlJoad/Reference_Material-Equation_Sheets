@@ -265,6 +265,132 @@ The \nameref{def:Coefficient_of_Performance} for the reversed \nameref{def:Carno
   An air \nameref{def:Heat_Pump} is limited in how low the exterior temperature can get before they become ineffective/inefficient.
 \end{example}
 
+\begin{example}[Textbook Problem 7.113]{Carnot Air Conditioner}
+  An air conditioner with the refrigerant R-134a as a working fluid is used to keep a room at $\Temp_{L} = \SI{26}{\degreeCelsius}$ by rejecting the heat to the exterior at $\Temp_{H} = \SI{34}{\degreeCelsius}$.
+  The room gains heat at a rate of $\Heat_{In} = \SI{50}{\kilo\joule\per\minute}$ while the room has $\Work_{In} = \SI{900}{\watt}$ of heat-generating components.
+  The refrigerant enters the compressor at $\Pressure_{In} = \SI{500}{\kilo\pascal}$ as a \nameref{def:Saturated_Vapor} at a rate of $\FlowRate{\Volume} = \SI{100}{\liter\per\minute}$ and leaves at $\Pressure_{Out} = \SI{1200}{\kilo\pascal}$ and $\Temp_{Out} = \SI{50}{\degreeCelsius}$.
+  Find the actual and the theoretical \nameref{def:Coefficient_of_Performance}, the minimum volume flowrate at the compressor?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  We are given the air conditioner with ``microscopic'' energy values/variables.
+  However, we will need the macroscopic values to be able to calculate what we need to.
+
+  Microscopic Variables:
+  \begin{itemize}[noitemsep]
+  \item State
+  \item \nameref{def:Specific_Enthalpy}
+  \item Actual $\FlowRate{\Work}_{In}$
+  \end{itemize}
+
+  Macroscopic Variables:
+  \begin{itemize}[noitemsep]
+  \item \nameref{def:Coefficient_of_Performance} modeled as a Carnot engine
+  \item \nameref{def:Coefficient_of_Performance} modeled realistically
+  \end{itemize}
+
+  \textbf{Explore:} \\
+  Because the compressor doesn't change anything other than the \nameref{def:Specific_Enthalpy} of a fluid, the energy balance is:
+  \begin{equation*}
+    \FlowRate{\Work}_{In} = \FlowRate{\Mass}(\SpecificEnthalpy_{Out}- \SpecificEnthalpy_{In})
+  \end{equation*}
+
+  To find the mass flowrate,
+  \begin{equation*}
+    \FlowRate{\Volume} = \FlowRate{\Mass} \SpecificVolume
+  \end{equation*}
+
+  Because the mass flowrate is constant, the \nameref{def:Specific_Volume} is constant, so $\SpecificVolume_{In} = \SpecificVolume_{Out} = \SpecificVolume$.
+
+  To find the specific enthalpies, we use Tables A.11, A.12, and A.13.
+
+  \textbf{Plan:} \\
+  Solve for $\FlowRate{\Mass}$. \\
+  Solve for $\FlowRate{\Work}_{In}$. \\
+  Solve the \nameref{def:Coefficient_of_Performance} equation, both for the actual and the Carnot, using $\FlowRate{\Work}_{In} + \FlowRate{\Heat}_{L} = \FlowRate{\Heat}_{H}$.
+
+  \textbf{Solve:} \\
+  Starting with the inlet state, we are told it is a \nameref{def:Saturated_Vapor}, so:
+  \begin{align*}
+    \Quality &= 1 \\
+    \Pressure_{In} &= \SI{500}{\kilo\pascal}
+  \end{align*}
+
+  So we use Table A.12.
+  \begin{align*}
+    \Temp_{Sat} &= \SI{15.7}{\degreeCelsius} \\
+    \Vapor{\SpecificEnthalpy} &= \SI{259.3}{\kilo\joule\per\kilo\gram} \\
+    \Vapor{\SpecificVolume} &= \SI{0.041118}{\meter\cubed\per\kilo\gram}
+  \end{align*}
+
+  Moving onto the outlet's state at $\Pressure_{Out} = \SI{1.2}{\mega\pascal}$ and $\Temp_{Out} = \SI{50}{\degreeCelsius}$, we see that the R-134a is a \nameref{def:Superheated_Vapor}.
+  So, we use Table A.12.
+  \begin{align*}
+    \SpecificEnthalpy &= \SI{178.3}{\kilo\joule\per\kilo\gram} \\
+    \SpecificVolume &= \SI{0.017301}{\meter\cubed\per\kilo\gram}
+  \end{align*}
+
+  Now, we can find the mass flowrate entering/leaving the compressor.
+  \begin{align*}
+    \FlowRate{\Volume} &= \FlowRate{\Mass} \SpecificVolume \\
+    \FlowRate{\Volume} &= \SI{100}{\liter\per\minute} = 1.66 \times 10^{-3} \si{\meter\cubed\per\second} \\
+    \FlowRate{\Mass} &= \frac{\FlowRate{\Volume}}{\SpecificVolume} \\
+                       &= \SI{0.04053}{\kilo\gram\per\second}
+  \end{align*}
+
+  Now, we can find the \nameref{def:Work} required to compress the R-134a.
+  \begin{align*}
+    \FlowRate{\Work}_{In} &= \FlowRate{\Mass} (\SpecificEnthalpy_{Out}- \SpecificEnthalpy_{In}) \\
+                          &= \SI{0.04053}{\kilo\gram\per\second} (278.3 - 259.3) \si{\kilo\joule\per\kilo\gram} \\
+    &= \SI{0.7686}{\kilo\watt}
+  \end{align*}
+
+  We now find out the heat that is being added to the room.
+  \begin{align*}
+    \FlowRate{\Heat}_{L} &= \SI{250}{\kilo\joule\per\minute} + \SI{900}{\watt} \\
+                         &= \SI{5.067}{\kilo\watt}
+  \end{align*}
+
+  Now, we can find the \nameref{def:Coefficient_of_Performance}, starting with the actual value.
+  \begin{align*}
+    \CoP_{AC} &= \frac{\FlowRate{\Heat}_{L}}{\FlowRate{\Work}_{In}} \\
+              &= \frac{\SI{5.067}{\kilo\watt}}{\SI{0.7686}{\kilo\watt}} \\
+    &= 6.59
+  \end{align*}
+
+  Now, for the idealized, maximum, \nameref{def:Coefficient_of_Performance}.
+  \begin{align*}
+    \CoP_{C, AC} &= \frac{1}{\frac{\Temp_{H}}{\Temp_{L}} - 1} \\
+                 &= 37.4
+  \end{align*}
+
+  Because the Carnot version of this cycle is the most efficient, that means it will require the least power, and the least flowrate.
+  \begin{align*}
+    \Power_{Min} &= \FlowRate{\Work}_{In} \\
+                 &= \frac{\SI{5.067}{\kilo\watt}}{37.4} \\
+                 &= \SI{0.1356}{\kilo\watt} \\
+    \intertext{The actual minimum power required is shown below.}
+                 &= \SI{0.7686}{\kilo\watt}
+  \end{align*}
+
+  Now for the minimum flowrate required.
+  \begin{align*}
+    \FlowRate{\Mass} &= \frac{\FlowRate{\Work}_{In}}{\Change{\SpecificEnthalpy}} \\
+                     &= \SI{0.007149}{\kilo\gram\per\second}
+  \end{align*}
+
+  Lastly, the volume flowrate required.
+  \begin{align*}
+    \FlowRate{\Volume}_{Min} &= \FlowRate{\Mass} \SpecificVolume \\
+                             &= \SI{17.64}{\liter\per\minute}
+  \end{align*}
+
+  The mass flowrate out of the compressor is:
+  \begin{align*}
+    \FlowRate{\Mass}_{Out} &= \frac{\FlowRate{\Work}_{In}}{\Change{\SpecificEnthalpy}} \\
+                           &= \SI{0.04}{\kilo\gram\per\second}
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
