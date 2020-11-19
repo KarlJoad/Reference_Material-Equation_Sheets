@@ -51,6 +51,96 @@ The \nameref{def:Coefficient_of_Performance} for the reversed \nameref{def:Carno
   For both \Cref{eq:Coefficient_of_Performance-Carnot_Cycle} and \Cref{eq:Coefficient_of_Performance-Carnot_Cycle_Reversed}, the temperatures \textbf{MUST} be in Kelvin or Rankine (\si{\kelvin}, \si{\rankine}).
 \end{remark*}
 
+\begin{example}[Textbook Problem 7.88]{Carnot Cycles on Power Plants}
+  A geothermal power plant extracts geothermal water at $\Temp_{H} = \SI{160}{\degreeCelsius}$ at a rate of $\FlowRate{\Mass} = \SI{440}{\kilo\gram\per\second}$ as the heat source and produces $\FlowRate{\Work} = \SI{22}{\mega\watt}$ of power.
+  If the environment temperature is $\Temp_{L} = \SI{25}{\degreeCelsius}$ determine the actual thermal efficiency, the maximum possible thermal efficiency, and the actual rate of heat rejection from the power plant?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  This is a power plant, so there must be a \nameref{def:Turbine}.
+  We can refer back to \Cref{sec:Mass_Energy_Analysis_Control_Volumes} to help solve this.
+  Namely,
+  \begin{itemize}[noitemsep]
+  \item $\FlowRate{\Work}_{Out}$ is large.
+  \item $\FlowRate{\Work}_{In} \approx 0$
+  \item $\FlowRate{\Heat} \approx 0$, meaning the turbine is adiabatic.
+  \item $\Change{\KineticEnergy} = 0$
+  \item $\Change{\Enthalpy} \neq 0$
+  \end{itemize}
+
+  We can also call this a \nameref{def:Carnot_Cycle}, where $\FlowRate{\Heat}_{H} = \FlowRate{\Heat}_{L} + \FlowRate{\Work}_{Out}$.
+  In this case, the $\FlowRate{\Heat}_{H}$ is the water coming from the ground, the $\FlowRate{\Heat}_{L}$ is the atmosphere, and the $\FlowRate{\Work}_{Out}$ was provided. \\
+  \begin{equation*}
+    \begin{aligned}
+      \Efficiency_{C} &= \frac{\FlowRate{\Work}_{Out}}{\FlowRate{\Heat}_{H}} \\
+      &= 1 - \frac{\Temp_{L}}{\Temp_{H}}
+    \end{aligned}
+  \end{equation*}
+
+  \textbf{Explore:} \\
+  Because we weren't given any additional information about the input fluid, we assume that the fluid remains in a single state throughout the entire \nameref{def:Process}. \\
+  For the \nameref{def:Turbine}, we have a mass flow that changes the energy balance.
+  The energy balance is
+  \begin{equation*}
+    \FlowRate{\Heat}_{Net} - \FlowRate{\Work}_{Out} = \FlowRate{\Mass} (\SpecificEnthalpy_{Out} - \SpecificEnthalpy_{In})
+  \end{equation*}
+
+  $\FlowRate{\Heat}_{Net}$ means there is heat added and/or removed.
+  If it is positive, then heat is being added.
+  If it is negative, then heat is being removed. \\
+  We can assume this fluid does not change state.
+  We will also assume that hsi fluid is water, rather than steam.
+  We can refer to Tables A.4 to find the specific enthalpies, because we have no pressures.
+
+  \textbf{Plan:} \\
+  Solve the \nameref{def:Turbine} energy balance. \\
+  Solve the Carnot efficiency problem. \\
+  The actual efficiency is $\Efficiency_{C} = \frac{\FlowRate{\Work}_{Out}}{\FlowRate{\Heat}_{H}}$.
+
+  \textbf{Solve:} \\
+  Solve for the net \nameref{def:Heat} for the \nameref{def:Turbine}.
+  \begin{align*}
+    \FlowRate{\Heat}_{Net} - \FlowRate{\Work}_{Out} &= \FlowRate{\Mass} (\SpecificEnthalpy_{Out} - \SpecificEnthalpy_{In}) \\
+    \intertext{Finding the enthalpies from Table A.4.}
+    \FlowRate{\Heat}_{Net} - \SI{22}{\mega\watt} &= \SI{440}{\kilo\gram\per\second} (104.8 - 675.5) \si{\kilo\joule\per\kilo\gram} \\
+                                                    &= \SI{-251000}{\kilo\joule\per\second} \\
+                                                    &= \SI{-251}{\mega\watt} \\
+    \FlowRate{\Heat}_{Net} &= \SI{-229}{\mega\watt}
+  \end{align*}
+
+  The flowrate we found for the net heat from the turbine is negative, meaning the heat is flowing \textbf{out} of the turbine.
+
+  Now, we find the heat the system rejects, $\FlowRate{\Heat}_{L}$.
+  \begin{align*}
+    \FlowRate{\Heat}_{L} &= \FlowRate{\Heat}_{H} - \FlowRate{\Work}_{Out} \\
+                         &= \SI{229}{\mega\watt} - \SI{22}{\mega\watt} \\
+                         &= \SI{251}{\mega\watt}
+  \end{align*}
+
+  We can now find the efficiency of the system.
+  \begin{align*}
+    \Efficiency_{Out} &= \frac{\FlowRate{\Work}_{Out}}{\FlowRate{\Heat}_{In}} \\
+                    &= \frac{22}{251} \\
+    &= 0.088
+  \end{align*}
+
+  We can now find the best case efficiency for the system using the efficiency of the \nameref{def:Carnot_Cycle}.
+  \begin{align*}
+    \Efficiency_{C} &= 1 - \frac{\Temp_{L}}{\Temp_{H}} \\
+                    &= 1 - \SI{25}{160} \\
+                    &= 0.312
+  \end{align*}
+
+  \textbf{Validate:} \\
+  Double check our actual efficiency by solving
+  \begin{equation*}
+    \Efficiency_{Out} = 1 - \frac{\FlowRate{\Heat}_{L}}{\FlowRate{\Heat}_{H}}
+  \end{equation*}
+
+  \textbf{Generalize:} \\
+  We had to consider two separate boundaries for the system.
+  First was the \nameref{def:Turbine}'s boundary, the second was the \nameref{def:Carnot_Cycle} boundary.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
