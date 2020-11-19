@@ -72,15 +72,15 @@ The implications of \Cref{eq:Change_System_Energy} are listed below.
   \textbf{Solve:} \\
   From Table A.4, we know that at $\Temp = \SI{200}{\degreeCelsius}$, $\SaturatedPressure = \SI{1555}{\kilo\pascal}$.
   We also know $\Fluid{\SpecificVolume} = \SI{0.001157}{\meter\cubed\per\kilo\gram}$ and $\Vapor{\SpecificVolume} = \SI{0.12721}{\meter\cubed\per\kilo\gram}$.
-  Lastly, we can also find $\SaturatedVaporSpecificIntEnergy = \SI{2594}{\kilo\joule\per\kilo\gram}$ and $\SaturatedFluidSpecificIntEnergy = \SI{850.46}{\kilo\joule\per\kilo\gram}$.
+  Lastly, we can also find $\Vapor{\SpecificInternalEnergy} = \SI{2594}{\kilo\joule\per\kilo\gram}$ and $\Fluid{\SpecificInternalEnergy} = \SI{850.46}{\kilo\joule\per\kilo\gram}$.
 
   \begin{align*}
     \Work_{Out} &= 1555 (0.001157 - 0.12621) \\
                 &= \SI{-196}{\kilo\pascal\meter\cubed\per\kilo\gram} \\
                 &= \SI{-196}{\kilo\joule\per\kilo\gram} \\
-    \SaturatedFluidSpecificIntEnergy - \SaturatedVaporIntEnergy &= 850 - 2594 \\
+    \Fluid{\SpecificInternalEnergy} - \Vapor{\SpecificInternalEnergy} &= 850 - 2594 \\
                 &= \SI{-1744}{\kilo\joule\per\kilo\gram} \\
-    \SaturatedFluidSpecificIntEnergy - \SaturatedVaporIntEnergy &= -\Heat_{Out} - \Work_{Out} \\
+    \Fluid{\SpecificInternalEnergy} - \Vapor{\SpecificInternalEnergy} &= -\Heat_{Out} - \Work_{Out} \\
     \SI{-1744}{\kilo\joule\per\kilo\gram} &= -\Heat_{Out} - \SI{-196}{\kilo\joule\per\kilo\gram} \\
     \Heat_{Out} &= \SI{1940}{\kilo\joule\per\kilo\gram}
   \end{align*}
@@ -91,7 +91,7 @@ The implications of \Cref{eq:Change_System_Energy} are listed below.
   We can validate this by performing the same calculations using the change in \nameref{def:Specific_Enthalpy} instead.
   \begin{align*}
     \Change{\SpecificEnthalpy} &= -\Heat_{Out} \\
-    \SaturatedFluidSpecificEnthalpy - \SaturatedVaporSpecificEnthalpy &= -\Heat_{Out} \\
+    \Fluid{\SpecificEnthalpy} - \Vapor{\SpecificEnthalpy} &= -\Heat_{Out} \\
     \intertext{The change in specific enthalpy can be found in Table A.4 again.}
     (852.3 - 2792) \si{\kilo\joule\per\kilo\gram} &= -\Heat_{Out} \\
     \Heat_{Out} &= \SI{1939.7}{\kilo\joule\per\kilo\gram} \\
@@ -124,7 +124,7 @@ The implications of \Cref{eq:Change_System_Energy} are listed below.
   Lastly, because the refrigerant starts as a \nameref{def:Saturated_Mixture}, we need to use:
   \begin{align*}
     \SpecificVolume_{x} &= \Fluid{\SpecificVolume} + \Quality (\Vapor{\SpecificVolume} - \Fluid{\SpecificVolume}) \\
-    \SpecificInternalEnergy_{x} &= \SaturatedFluidIntEnergy + \Quality (\SaturatedVaporIntEnergy - \SaturatedFluidIntEnergy)
+    \SpecificInternalEnergy_{x} &= \Fluid{\InternalEnergy} + \Quality (\Vapor{\InternalEnergy} - \Vapor{\InternalEnergy})
   \end{align*}
 
   \textbf{Plan:} \\
@@ -143,7 +143,7 @@ The implications of \Cref{eq:Change_System_Energy} are listed below.
 
   Now we focus on finding the \nameref{def:Internal_Energy} of the \nameref{def:Saturated_Mixture} at the given \nameref{def:Quality}.
   \begin{align*}
-    \SpecificInternalEnergy_{x} &= \SaturatedFluidSpecificIntEnergy + \Quality (\SaturatedVaporSpecificIntEnergy - \SaturatedFluidSpecificIntEnergy) \\
+    \SpecificInternalEnergy_{x} &= \Fluid{\SpecificInternalEnergy} + \Quality (\Vapor{\SpecificInternalEnergy} - \Fluid{\SpecificInternalEnergy}) \\
                         &= 6.014 + 0.277 (91.90 - 6.014) \\
                         &= \SI{29.8044}{\btu\per\lbm}
   \end{align*}
