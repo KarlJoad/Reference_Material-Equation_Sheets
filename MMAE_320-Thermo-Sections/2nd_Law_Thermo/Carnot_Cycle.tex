@@ -193,6 +193,78 @@ The \nameref{def:Coefficient_of_Performance} for the reversed \nameref{def:Carno
   We solved for a Carnot refrigerator, which is the \textbf{most} ideal case, but a real refrigerator has inefficiencies.
 \end{example}
 
+\begin{example}[Textbook Problem 7.107]{Carnot Heat Pump}
+  The structure of a house is such that it loses heat at a rate $\FlowRate{\Heat} = \SI{5400}{\kilo\joule\per\hour\per\degreeCelsius}$ between the indoors and outdoors.
+  A \nameref{def:Heat_Pump} that requires an input of $\FlowRate{\Work}_{In} = \SI{6}{\kilo\watt}$ is used to maintain the house at $\Temp_{L} = \SI{29}{\degreeCelsius}$.
+  Determine the lowest outdoor temperature in which the heat pump can meet the heating requirements of the house?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  The flowrate of heat looks a bit strange at first glance, but after looking at it for a little while, it starts to look familiar.
+  \begin{equation*}
+    \FlowRate{\Heat} = \frac{\FlowRate{\Heat}_{Out}}{\Change{\Temp}}
+  \end{equation*}
+
+  In addition, because the denominator is the change in temperature, in celsius, we can keep the number the same and treat it as the change in temperature in kelvin.
+  \begin{equation*}
+    \bigl( \SI{5400}{\kilo\joule\per\kilo\gram\per\kelvin} \bigr) (\Change \Temp) \si{\kelvin}
+  \end{equation*}
+
+  We were given very few details, so we have to take what we were given in a macroscopic view.
+  Looking at the Carnot energy balance, we can see:
+  \begin{equation*}
+    \FlowRate{\Heat}_{H} = \FlowRate{\Heat}_{L} + \FlowRate{\Work}_{In}
+  \end{equation*}
+
+  We can view this \nameref{def:Heat_Pump} in two ways.
+  The first is an idealized, Carnot depiction:
+  \begin{equation*}
+    \CoP_{C, HP} = \frac{1}{1- \frac{T_{L}}{T_{H}}}
+  \end{equation*}
+
+  The second is the realistic depiction:
+  \begin{equation*}
+    \CoP_{HP} = \frac{\FlowRate{\Heat}_{H}}{\FlowRate{\Work}_{In}}
+  \end{equation*}
+
+  \textbf{Explore:} \\
+  For $\FlowRate{\Heat}_{L}$, the \nameref{rmk:Thermal_Reservoir} we will use is the air surrounding the hosue, rather than the earth.
+
+  The value we were given was power per change in termperature.
+  \begin{align*}
+    \frac{\SI{5400}{\kilo\gram}}{\si{\hour} \Change{\Temp}} &= \frac{\SI{1.5}{\kilo\watt}}{\Change{\Temp}} \\
+    \intertext{Let's keep everything in absolute temperatures until the very end.}
+    &= \frac{\SI{1.5}{\kilo\watt}}{294.15 - \Temp_{L}}
+  \end{align*}
+
+  Now, we need to look at the \nameref{def:Coefficient_of_Performance}.
+  \begin{align*}
+    \CoP_{HP} &= \frac{\FlowRate{\Heat}_{H}}{\FlowRate{\Work}_{In}} \\
+              &= \frac{1}{1 - \frac{T_{L}}{294.15}}
+  \end{align*}
+
+  \textbf{Plan:} \\
+  Solve the \nameref{def:Coefficient_of_Performance} quadratic equation above.
+
+  \textbf{Solve:} \\
+  \begin{align*}
+    \frac{\FlowRate{\Heat}_{H}}{\FlowRate{\Work}_{In}} &= \frac{1}{1 - \frac{\Temp_{L}}{294.15}} \\
+    \Temp_{L} &= \SI{259.7}{\kelvin} \\
+                                                       &= \SI{-13.3}{\degreeCelsius}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  To validate, we double-check by solving the \nameref{def:Coefficient_of_Performance} equation in the two different ways.
+  \begin{align*}
+    \CoP &= \frac{\frac{\SI{1.5}{\kilo\watt}}{294.15 - 259.7}}{\SI{6}{\kilo\watt}} \\
+         &= 8.57 \\
+    \CoP &= \frac{1}{1 - \frac{259.7}{294.15}} \\
+         &= 8.57
+  \end{align*}
+
+  \textbf{Generalize:} \\
+  An air \nameref{def:Heat_Pump} is limited in how low the exterior temperature can get before they become ineffective/inefficient.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
