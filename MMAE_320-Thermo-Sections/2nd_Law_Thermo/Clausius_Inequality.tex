@@ -22,6 +22,23 @@ If we imagine a heat engine running through a set of cycles, as shown in \Cref{f
   \label{fig:Heat_Engine_Clausius_Inequality}
 \end{figure}
 
+Namely, the thing we can say is:
+\begin{align*}
+  \int\limits_{1}^{2} \frac{d \Heat}{\Temp} + \int\limits_{2}^{1} \frac{d \Heat}{\Temp} &\leq 0 \\
+  \int\limits_{1}^{2} \Entropy + \int\limits_{2}^{1} \Entropy &\leq 0 \\
+  (\Entropy_{1} - \Entropy_{2}) + \int\limits_{2}^{1} \Entropy &\leq 0 \\
+  \Entropy_{2} - \Entropy_{1} &\geq \int\limits_{2}^{1} \frac{d \Heat}{\Temp}
+\end{align*}
+
+This last point is actually quite important and is restated here.
+\begin{equation}\label{eq:Reversible_Process_Entropy_Lost}
+  \Entropy_{2} - \Entropy_{1} \geq \int\limits_{2}^{1} \frac{d \Heat}{\Temp}
+\end{equation}
+
+\Cref{eq:Reversible_Process_Entropy_Lost} states that for an \nameref{def:Irreversible_Process}, \nameref{def:Work} is lost \textbf{forever}.
+\begin{itemize}[noitemsep]
+\item For irreversible systems, $\Entropy$ \textbf{always} increases.
+\item For \nameref{def:Reversible_Process}es, $\Entropy = 0$.
 \end{itemize}
 
 %%% Local Variables:
