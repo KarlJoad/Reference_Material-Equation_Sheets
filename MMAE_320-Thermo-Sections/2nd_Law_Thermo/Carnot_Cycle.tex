@@ -141,6 +141,58 @@ The \nameref{def:Coefficient_of_Performance} for the reversed \nameref{def:Carno
   First was the \nameref{def:Turbine}'s boundary, the second was the \nameref{def:Carnot_Cycle} boundary.
 \end{example}
 
+\begin{example}[Textbook Problem 7.98]{Carnot Refrigerators}
+  A Carnot \nameref{def:Refrigerator} removes \nameref{def:Heat} from a cool space at a rate of $\FlowRate{\Heat}_{L} = \SI{300}{\kilo\joule\per\minute}$ to maintain a temperature of $\Temp_{L} = \SI{-8}{\degreeCelsius}$.
+  If the air surrounding the refrigerator is at $\Temp_{H} = \SI{25}{\degreeCelsius}$, determine the minimum power input, $\FlowRate{\Work}_{In}$, required by this refrigerator?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  A \nameref{def:Refrigerator} rejects heat from the interior (which it keeps cool) into the surroundings, in this case, the room.
+  This heats up the room while keeping the inside of the fridge cool. \\
+  If we model this as a \nameref{def:Carnot_Cycle}, we can find the \nameref{def:Coefficient_of_Performance} and the macroscopic energy flow.
+  \begin{equation*}
+    \FlowRate{\Heat}_{H} = \FlowRate{\Heat}_{L} + \FlowRate{\Work}_{In}
+  \end{equation*}
+
+  The \nameref{def:Coefficient_of_Performance} tells us how efficient the fridge is.
+  If we relate it using the fact this refrigerator is a Carnot refrigerator, then we have this equation.
+  \begin{equation*}
+    \CoP_{C, R} = \frac{1}{\frac{\Temp_{H}}{\Temp_{L}} - 1}
+  \end{equation*}
+
+  Lastly, the $\CoP$ equation above is related to the work out by \Cref{eq:Coefficient_of_Performance-Refrigerator}.
+  \begin{equation*}
+    \CoP_{R} = \frac{\FlowRate{\Heat}_{L}}{\FlowRate{\Work}_{In}}
+  \end{equation*}
+
+  \textbf{Solve:} \\
+  First, we find $\CoP_{C, R}$, remembering that the temperatures must be in absolute terms.
+  \begin{align*}
+    \CoP_{C, R} &= \frac{1}{\frac{\Temp_{H}}{\Temp_{L}} - 1} \\
+                &= \frac{1}{\frac{25 + 273.15 \si{\kelvin}}{-8 + 273.15 \si{\kelvin}} - 1} \\
+                &= 8.03
+  \end{align*}
+
+  Now, rearranging $\CoP_{R}$, we can solve for the \nameref{def:Work} in required.
+  \begin{align*}
+    \FlowRate{\Work}_{In} &= \frac{\FlowRate{\Heat}_{L}}{\CoP} \\
+                          &= \frac{\SI{300}{\kilo\joule\per\minute}}{8.03} \\
+                          &= \SI{32.63}{\kilo\joule\per\minute} \\
+                          &= \SI{0.623}{\kilo\joule\per\second} \\
+                          &= \SI{0.623}{\kilo\watt} \\
+  \end{align*}
+
+  \textbf{Validate:} \\
+  This is a Carnot \nameref{def:Refrigerator} means that it is as efficient as possible, which explains the very low value of $\FlowRate{\Work}_{In}$ required.
+
+  If the temperature outside the refrigerator is different, for example $\Temp_{H} = \SI{30}{\degreeCelsius}$, then the new $\CoP = 6.97$, making $\FlowRate{\Work}_{In} = \SI{0.717}{\kilo\watt}$.
+  This means that the refrigerator requires more energy to cool the interior of the fridge compared to a cooler surroundings.
+  This also makes sense because a hotter exterior means that more work must be put into keeping the interior cool.
+
+  \textbf{Generalize:} \\
+  The hotter the surroundings of the \nameref{def:Refrigerator}, the more inefficient it is. \\
+  We solved for a Carnot refrigerator, which is the \textbf{most} ideal case, but a real refrigerator has inefficiencies.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
