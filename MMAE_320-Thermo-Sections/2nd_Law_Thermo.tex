@@ -31,7 +31,7 @@ This spread (dispersion) of energy is \nameref{def:Entropy}.
 \begin{definition}[Kelvin-Planck \nth{2} Law of Thermodynamics]\label{def:Kelvin_Planck-2nd_Law_Thermo}
   There are a variety of definitions of the \nth{2} law of thermodynamics.
   The one in \Cref{def:2nd_Law_Thermo} is just one of them.
-  The \emph{Kelvin-Planck \nth{2} law of thermodynamics} states that it is impossible for any device that operates on a \nameref{def:Cycle} to receive heat form a single reservoir and use to to produce \nameref{def:Work}.
+  The \emph{Kelvin-Planck \nth{2} law of thermodynamics} states that it is impossible for any device that operates on a \nameref{def:Cycle} to receive heat from a single \nameref{rmk:Thermal_Reservoir} and to use to produce \nameref{def:Work}.
 
   \begin{remark}[Thermal Reservoir]\label{rmk:Thermal_Reservoir}
     A thermal source with a constant temperature.
@@ -128,7 +128,7 @@ The greater the temperature difference between the system and its surroundings, 
 If there is no \nameref{def:Work} out, but work in is present, then \nameref{def:Energy} is being forced out of the lower temperature reservoir ($\FlowRate{\Heat}_{C}$) and put into the higher temperature reservoir.
 
 \Cref{eq:Energy_Efficiency-Heat_Engine} is actually completely general.
-It works for car engines, steam-based electricity generating power plants, refrigerators, heat pumps, etc.
+It works for car engines, steam-based electricity generating power plants, \nameref{def:Refrigerator}s, \nameref{def:Heat_Pump}s, etc.
 
 \subsubsection{The Second Law and Heat Engines}\label{subsubsec:2nd_Law_Heat_Engines}
 The \nameref{def:2nd_Law_Thermo} states that $\FlowRate{\Heat}_{C} = 0$ is impossible, for \nameref{def:Cycle}s.
@@ -158,8 +158,19 @@ Now, applying \nameref{def:Coefficient_of_Performance} to a heat engine, we get 
 
 \subsection{Heat Pumps}\label{subsec:Heat_Pumps}
 \begin{definition}[Heat Pump]\label{def:Heat_Pump}
-  A \emph{heat pump} is just another term for a refrigerator.
+  \emph{Heat pump}s move \nameref{def:Heat} from a colder \nameref{rmk:Thermal_Reservoir} to a warmer one.
+  A \emph{heat pump} is just another term for a \nameref{def:Refrigerator}.
 \end{definition}
+
+Because \nameref{def:Heat_Pump}s function identically to \nameref{def:Refrigerator}s and air conditioners, these equations are common between them.
+
+\begin{equation}\label{eq:Heat_Pump-Efficiency}
+  \Efficiency = \frac{\FlowRate{\Heat}_{H}}{\FlowRate{\Work}_{In}}
+\end{equation}
+
+\begin{equation}\label{eq:Heat_Pump-CoP}
+  \CoP = \frac{\FlowRate{\Heat}_{H}}{\FlowRate{\Work}_{In}}
+\end{equation}
 
 \begin{example}[Textbook Problem 7.41]{Heat Pumps}
   A commercial \nameref{def:Heat_Pump} removes $\FlowRate{\Heat}_{C} = \SI{10000}{\btu\per\hour}$ from the source and rejects $\FlowRate{\Heat}_{H} = \SI{15090}{\btu\per\hour}$ to the sink, and has a $\FlowRate{\Work}_{In} = \SI{2}{\hp}$ of power.
@@ -262,8 +273,8 @@ In the case of a refrigerator (which is just a \nameref{fig:Heat_Engine} run in 
 
 \begin{equation}\label{eq:Coefficient_of_Performance-Refrigerator}
   \begin{aligned}
-    \CoP &= \frac{\FlowRate{\Heat}_{H}}{\FlowRate{\Work_{In}}} \\
-    &= \frac{1}{1 - \frac{\FlowRate{\Heat}_{C}}{\FlowRate{\Heat}_{H}}}
+    \CoP &= \frac{\FlowRate{\Heat}_{L}}{\FlowRate{\Work_{In}}} \\
+    &= \frac{1}{1 - \frac{\FlowRate{\Heat}_{L}}{\FlowRate{\Heat}_{H}}}
   \end{aligned}
 \end{equation}
 
