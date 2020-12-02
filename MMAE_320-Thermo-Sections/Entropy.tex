@@ -196,6 +196,17 @@ Thus, we can find the change in \nameref{def:Entropy} of an ideal gas if we know
   \Entropy_{2} - \Entropy_{1} = \SpecificHeatVolume \ln \left( \frac{\Temp_{2}}{\Temp_{1}} \right) + \GasConstant \ln \left( \frac{\SpecificVolume_{2}}{\SpecificVolume_{1}} \right)
 \end{equation}
 
+We can also expand using a slightly different formula, yielding a very similar result.
+\begin{align*}
+  \Temp d\Entropy &= d\Enthalpy - \SpecificVolume d\Pressure \\
+  d\Entropy &= \frac{d\Enthalpy}{\Temp} - \frac{\SpecificVolume d\Pressure}{\Temp} \\
+  \intertext{Using the ideal gas equation \Cref{eq:Ideal_Gas_Equation} and the definition of change in enthalpy for ideal gases \Cref{eq:Change_Internal_Energy_Specific_Heat_Constant_Pressure}, we can ``simplify'' this.}
+                  &= \frac{\SpecificHeatPressure d\Temp}{\Temp} - \frac{\GasConstant d\Pressure}{\Pressure} \\
+  \int d\Entropy &= \int \frac{\SpecificHeatPressure d\Temp}{\Temp} - \int \frac{\GasConstant d\Pressure}{\Pressure} \\
+  \shortintertext{Evaluating the integrals.}
+  \Entropy_{2} - \Entropy_{1} &= \SpecificHeatPressure \ln \left( \frac{\Temp_{2}}{\Temp_{1}} \right) - \GasConstant \ln \left( \frac{\Pressure_{2}}{\Pressure_{1}} \right)
+\end{align*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
