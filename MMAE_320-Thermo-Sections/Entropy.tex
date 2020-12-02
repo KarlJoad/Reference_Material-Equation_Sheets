@@ -217,6 +217,97 @@ Thus, we can find the change in \nameref{def:Entropy} of an ideal gas if we know
   If we have to deal with large temperature differences, then we use \Cref{eq:Entropy_Change_Ideal_Gas-Large_Temp}.
 \end{blackbox}
 
+\begin{example}[Textbook Problem 8.83]{Change in Entropy of Ideal Gas}
+  There is an amount of air at an initial pressure of $\Pressure_{1} = \SI{200}{\psia}$ and a temperature of $\Temp_{1} = \SI{500}{\degreeF}$.
+  The air is then moved to a new vessel with a final pressure of $\Pressure_{2} = \SI{100}{\psia}$ and $\Temp_{2} = \SI{50}{\degreeF}$.
+  If the \nameref{def:Specific_Heat} of the air remains constant, what is the change in \nameref{def:Entropy}, $\Change{\Entropy}$?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  The reduction in both temperature and pressure of the gas implies that the gas expands in volume. \\
+  Air is an ideal gas. \\
+  Constant \nameref{def:Specific_Heat}s is a little questionable, because of the large temperature change in this problem.
+  Because of this, we can approximate the solution to give us an idea, or we can use the most accurate method. \\
+
+  \textbf{Explore:} \\
+  There are 2 equations we can use to find the change in \nameref{def:Entropy} of an ideal gas.
+  \begin{align*}
+    \Change{\Entropy} &= \SpecificHeatPressure \ln \left( \frac{\Temp_{2}}{\Temp_{1}} \right) - \GasConstant \ln \left( \frac{\Pressure_{2}}{\Pressure_{1}} \right) \\
+    \Change{\Entropy} &= \Entropy_{2}^{\circ} - \Entropy_{1}^{\circ} - \GasConstant \ln \left( \frac{\Pressure_{2}}{\Pressure_{1}} \right)
+  \end{align*}
+
+  We can find values for $\Entropy_{1}^{\circ}$ and $\Entropy_{2}^{\circ}$ in Table A.21E.
+  We also need to be careful that the pressures and temperatures are in absolute units.
+
+  \textbf{Plan:} \\
+  Solve both $\Change{\Entropy}$ equations. \\
+  Use Table A.21E to solve the equation for large temperature differences.
+
+  \textbf{Solve:} \\
+  Starting with the equation we expect to be slightly wrong.
+  \begin{equation*}
+    \Change{\Entropy} = \SpecificHeatPressure \ln \left( \frac{\Temp_{2}}{\Temp_{1}} \right) - \GasConstant \ln \left( \frac{\Pressure_{2}}{\Pressure_{1}} \right)
+  \end{equation*}
+
+  We need to find an appropriate $\SpecificHeatPressure$ value for the air. We can use Table A.2E for this.
+  We also need to convert the given relative temperatures to absolute temperatures. \\
+  Starting with the $\SpecificHeatPressure$ at \SI{500}{\degreeF}, we can pull the value directly from Table A.2E(b).
+  \begin{equation*}
+    \SpecificHeatPressure = \SI{0.248}{\btu\per\lbm\per\rankine}
+  \end{equation*}
+
+  Now for the the $\SpecificHeatPressure$ at \SI{50}{\degreeF}, we do the same.
+  I chose to approximate to \SI{40}{\degreeF} for \SI{50}{\degreeF}.
+  \begin{equation*}
+    \SpecificHeatPressure = \SI{0.240}{\btu\per\lbm\per\rankine}
+  \end{equation*}
+
+  Now, we take the average of the two $\SpecificHeatPressure$.
+  \begin{align*}
+    \SpecificHeatPressure &= \frac{0.248 + 0.240}{2} \\
+    \SpecificHeatPressure &= \SI{0.244}{\btu\per\lbm\per\rankine}
+  \end{align*}
+
+  Now, we can solve for the approximating equation.
+  \begin{align*}
+    \Change{\SpecificEntropy} &= \SpecificHeatPressure \ln \left( \frac{\Temp_{2}}{\Temp_{1}} \right) - \GasConstant \ln \left( \frac{\Pressure_{2}}{\Pressure_{1}} \right) \\
+                      &= 0.244 \ln \left( \frac{\SI{509.67}{\rankine}}{\SI{959.67}{\rankine}} \right) - 0.06855 \ln \left( \frac{100}{200} \right) \\
+    \Change{\SpecificEntropy} &= \SI{-0.106894}{\btu\per\lbm\per\rankine}
+  \end{align*}
+
+  We can now also solve for the equation we expect to be more exact.
+  We start by finding the $\SpecificEntropy^{\circ}$ values from Table A.21E.
+  \begin{align*}
+    \Temp_{1} &= \SI{959.67}{\rankine} \rightarrow \SpecificEntropy_{1}^{\circ} \approx \SI{0.74030}{\btu\per\lbm\per\rankine} \\
+    \intertext{I approximated the temperature to \SI{960}{\rankine}.}
+    \Temp_{2} &= \SI{509.67}{\rankine} \rightarrow \SpecificEntropy_{2}^{\circ} \approx \SI{0.587}{\btu\per\lbm\per\rankine} \\
+    \intertext{I approximated the temperature to \SI{510}{\rankine}.}
+  \end{align*}
+
+  Using these values, we can now solve for the change in \nameref{def:Entropy}.
+  \begin{align*}
+    \Change{\SpecificEntropy} &= \SpecificEntropy_{2}^{\circ} - \SpecificEntropy_{1}^{\circ} - \GasConstant \ln \left( \frac{\Pressure_{2}}{\Pressure_{1}} \right) \\
+                      &= 0.587 - 0.74030 - 0.06855 \ln \left( \frac{100}{200} \right) \\
+    \Change{\SpecificEntropy} &= \SI{-0.105785}{\btu\per\lbm\per\rankine}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  By solving for both $\Change{\SpecificEntropy}$, we actually ended up validating our answer as we went.
+  Both numbers are quite similar to one another, so it is likely that the approximation was correct.
+
+  The \nameref{def:Entropy} being negative is perfectly valid, because of two reasons:
+  \begin{enumerate}[noitemsep]
+  \item We didn't consider the entire \nameref{def:System}.
+    We only considered inside the boundary of the system.
+    If we included the surroundings, then we would see the net change in entropy is positive.
+  \item The temperature of the gas is decreasing, reducing the overall number of possible energy states, which means the entropy decreases as well.
+  \end{enumerate}
+
+  \textbf{Generalize:} \\
+  The approximation here was not significantly different than the exact calculation.
+  This happened because the \nameref{def:Specific_Heat} did not significantly differ over the temperature range.
+  If the temperature change were larger, then the approximation would start becoming less accurate compared to the exact equation.
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
