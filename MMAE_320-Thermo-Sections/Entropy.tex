@@ -112,6 +112,73 @@ Because of the nature of incompressible substances, $\SpecificHeatVolume = \Spec
   \Entropy_{2} - \Entropy_{1} = \SpecificHeat \ln \left( \frac{\Temp_{2}}{\Temp_{1}} \right)
 \end{equation}
 
+\begin{example}[Textbook Problem 8.36]{Water Entropy Change}
+  $\Mass = \SI{2}{\lbm}$ of water is inside a weighted piston-cylinder at $\Pressure_{1} = \SI{300}{\psia}$, which is heated.
+  The volume of the cylinder is $\Volume = \SI{2.5}{\feet\cubed}$.
+  The water is heated at a constant pressure until it reaches $\Temp_{2} = \SI{500}{\degreeF}$.
+  Determine the water's final volume, $\Volume_{2}$ and the total change in \nameref{def:Entropy} $\Change{\Entropy}$?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  Piston-cylinders keep the \nameref{def:Process} under constant pressure. \\
+  Because we are heating water, the volume of the water increases.
+  How the pressure, temperature, and specific volume are related is by the \\
+  Because the temperature is \textbf{not} constant, it is an \nameref{def:Irreversible_Process}.
+
+  \textbf{Explore:} \\
+  Because both the mass remains constant throughout this process, we can at least solve for the initial \nameref{def:Specific_Volume}.
+  \begin{align*}
+    \SpecificVolume &= \frac{\Volume}{\Mass} \\
+    \SpecificVolume_{1} &= \frac{\Volume_{1}}{\Mass} \\
+                    &= \frac{\SI{2.5}{\feet\cubed}}{\SI{2}{\lbm}} \\
+    \SpecificVolume_{1} &= \SI{1.25}{\feet\cubed\per\lbm}
+  \end{align*}
+
+  Using the initial pressure, temperature, and specific volume, we can find the state from Table A.5E.
+  This will also provide us with the entropy for the given state. \\
+  We can repeat this same process for the final state too.
+
+  \textbf{Plan:} \\
+  Start with Table A.5E, and determine the state of the water. \\
+  Find $\Entropy_{1}$ in the appropriate table.
+
+  \textbf{Solve:} \\
+  The initial state has $\Pressure_{1} = \SI{300}{\psia}$ and $\SpecificVolume_{1} = \SI{1.25}{\feet\cubed\per\lbm}$, so we use Table A.5E.
+  From that table, we see that the water starts as a \nameref{def:Saturated_Mixture}, so we need to find the \nameref{def:Quality}.
+  \begin{align*}
+    \Quality_{1} &= \frac{\SpecificVolume_{1} - \Fluid{\SpecificVolume}}{\Vapor{\SpecificVolume} - \Fluid{\SpecificVolume}} \\
+             &= \frac{1.25 - 0.01890}{1.5435 - 0.01890} \\
+    \Quality_{1} &= 0.80749
+  \end{align*}
+
+  Now, using the initial quality, we can find the initial \nameref{def:Entropy}.
+  \begin{align*}
+    \SpecificEntropy_{1} &= \Fluid{\SpecificEntropy} + \Quality (\Vapor{\SpecificEntropy} - \Fluid{\SpecificEntropy}) \\
+                     &= 0.58818 + 0.80749 (1.5111 - 0.58818) \\
+    \SpecificEntropy_{1} &= \SI{1.33343}{\btu\per\lbm\per\rankine}
+  \end{align*}
+
+  Now, moving onto the final state.
+  Because the pressure remains constant, $\Pressure_{2} = \SI{300}{\psia}$ and $\Temp_{2} = \SI{500}{\degreeF}$.
+  Looking in Table A.4E we see that $\SaturatedPressure > \Pressure_{2}$ and in Table A.5E we see $\SaturatedTemp < \Temp_{2}$, which means that the steam is now a \nameref{def:Superheated_Vapor}.
+  Using Table A.6E at $\Pressure_{2} = \SI{300}{\psia}$ and $\Temp_{2} = \SI{500}{\degreeF}$, we find:
+  \begin{equation*}
+    \SpecificEntropy_{2} = \SI{1.5706}{\btu\per\lbm\per\rankine}
+  \end{equation*}
+
+  Therefore, we can find the total change in \nameref{def:Entropy} like so:
+  \begin{align*}
+    \Change{\Entropy} &= \Mass \Change{\SpecificEntropy} \\
+                      &= \SI{2}{\lbm} (1.5706 - 1.33343) \si{\btu\per\lbm\per\rankine} \\
+    \Change{\Entropy} &= \SI{0.4744}{\btu\per\rankine}
+  \end{align*}
+
+  \textbf{Validate:} \\
+  The easiest way to validate this is to plot the entropy against the pressure and look at the graph.
+
+  \textbf{Generalize:} \\
+
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
