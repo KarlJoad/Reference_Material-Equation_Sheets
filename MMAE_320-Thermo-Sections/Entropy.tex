@@ -316,6 +316,86 @@ Now, for large temperature differences, we use an equation that has already been
 \item $\Entropy_{2}^{\circ}$ and $\Entropy_{1}^{\circ}$ come from Table A.21 in the textbook.
 \end{description}
 
+\begin{example}[Textbook Problem 8.97]{Use Entropy Change of Ideal Gas}
+  Air enters an \nameref{def:Adiabatic} nozzle at $\Pressure_{In} = \SI{60}{\psia}$, $\Temp_{In} = \SI{540}{\degreeF}$, and $\Velocity_{In} = \SI{200}{\feet\per\second}$ and exits at $\Pressure_{Out} = \SI{12}{\psia}$.
+  Assuming air to be an ideal gas with variable \nameref{def:Specific_Heat}s and disregarding any irreversibilities, determine the exit velocity, $\Velocity_{Out}$ of the air?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  Because this is a nozzle, we know that $\Velocity_{Out} > \Velocity_{In}$. \\
+  All the energy of the fluid is in the \nameref{def:Enthalpy} and the kinetic energy. \\
+  We are told that the fluid has a variable \nameref{def:Specific_Heat}. \\
+  Because we are told the the nozzle is \nameref{def:Adiabatic} and are told to ignore any irreversibilities, we can assume the nozzle is \nameref{def:Isentropic} meaning $\Entropy_{In} = \Entropy_{Out}$. \\
+
+  \textbf{Explore:} \\
+  Variable specific heats for an ideal gas under \nameref{def:Isentropic} conditions is:
+  \begin{equation*}
+    \Entropy_{Out}^{\circ} = \Entropy_{In}^{\circ} + \GasConstant \ln \left( \frac{\Pressure_{Out}}{\Pressure_{In}} \right)
+  \end{equation*}
+
+  We can also use the equation for relative pressures:
+  \begin{equation*}
+    \frac{\Pressure_{Out}}{\Pressure_{In}} = \frac{\Pressure_{Out, \Relative}}{\Pressure_{In, \Relative}}
+  \end{equation*}
+  where the relative pressures come from Table A.21E and are functions of temperature.
+
+  The energy balance for a nozzle is:
+  \begin{equation*}
+    \FlowRate{\Mass}_{In} \left( \SpecificEnthalpy_{In} + \frac{\Velocity_{In}^{2}}{2} \right) = \FlowRate{\Mass}_{Out} \left( \SpecificEnthalpy_{Out} + \frac{\Velocity_{Out}^{2}}{2} \right)
+  \end{equation*}
+
+  \textbf{Plan:} \\
+  For illustration purposes, we will use the relative pressure equation.
+  We used the \nameref{def:Entropy} equation in \Cref{ex:Change in Entropy of Ideal Gas}.
+
+  \textbf{Solve:} \\
+  Using the relative pressure equation, we have:
+  \begin{align*}
+    \frac{\Pressure_{Out}}{\Pressure_{In}} &= \frac{\Pressure_{Out, \Relative}}{\Pressure_{In, \Relative}} \\
+    \shortintertext{Rearrange the terms.}
+    \Pressure_{Out, \Relative} &= \frac{\Pressure_{Out}}{\Pressure_{In}} \Pressure_{In, \Relative}
+  \end{align*}
+
+  The relative pressure is a function of temperature and can be found in Table A.21E.
+  The absolute temperature of the air at the inlet is:
+  \begin{align*}
+    \Temp_{In} &= \SI{540}{\degreeF} + 459.67 \\
+               &= \SI{999.67}{\rankine} \\
+    \intertext{From Table A.21E, at \SI{1000}{\rankine}, we find a relative pressure.}
+    \Pressure_{In, \Relative} &= 12.30 \\
+    \SpecificEnthalpy_{In} &= \SI{240.98}{\btu\per\lbm}
+  \end{align*}
+
+  Now, we can solve for the outlet's relative pressure.
+  \begin{align*}
+    \Pressure_{Out, \Relative} &= \frac{\Pressure_{Out}}{\Pressure_{In}} \Pressure_{In, \Relative} \\
+                               &= \left( \frac{\SI{12}{\psia}}{\SI{60}{\psia}} \right) 12.30 \\
+                               &= 2.46
+  \end{align*}
+
+  Now, looking through Table A.21E, we look for an entry that is as close to the outlet's relative pressure as possible, and get the \nameref{def:Specific_Enthalpy} at that temperature. \\
+  Looking at the table, the outlet air is somewhere between \SI{620}{\rankine} and \SI{640}{\rankine}, so we must \nameref{def:Interpolate}.
+  \begin{align*}
+    \SpecificEnthalpy_{Out} &= \SpecificEnthalpy_{620} + (2.46 - \Pressure_{\Relative, 620}) \left( \frac{\SpecificEnthalpy_{640} - \SpecificEnthalpy_{620}}{\Pressure_{\Relative, 640} - \Pressure_{\Relative, 620}} \right) \\
+                          &= 148.28 + (2.46 - 2.249) \left( \frac{153.09 - 148.28}{2.514 - 2.249} \right) \\
+    \SpecificEnthalpy_{Out} &= \SI{152.11}{\btu\per\lbm}
+  \end{align*}
+
+  Now, solving the energy balance equation, we can find the exit velocity of the air.
+  \begin{align*}
+    \FlowRate{\Mass}_{In} \left( \SpecificEnthalpy_{In} + \frac{\Velocity_{In}^{2}}{2} \right) &= \FlowRate{\Mass}_{Out} \left( \SpecificEnthalpy_{Out} + \frac{\Velocity_{Out}^{2}}{2} \right) \\
+    \intertext{Nozzles are steady-flow devices ($\FlowRate{\Mass}_{In} = \FlowRate{\Mass}_{Out}$), so we can cancel out the mass flowrates.}
+    \SpecificEnthalpy_{In} + \frac{\Velocity_{In}^{2}}{2} &= \SpecificEnthalpy_{Out} + \frac{\Velocity_{Out}^{2}}{2} \\
+    \Velocity_{Out}^{2} &= 2\SpecificEnthalpy_{In} + \Velocity_{In}^{2} - 2\SpecificEnthalpy_{Out} \\
+    \Velocity_{Out} &= \sqrt{2\SpecificEnthalpy_{In} + \Velocity_{In}^{2} - 2\SpecificEnthalpy_{Out}}
+  \end{align*}
+
+  Remember that we need to perform a unit conversion on the enthalpies.
+  \begin{align*}
+    \Velocity_{Out} &= \sqrt{2 (\SI{240.98}{\btu\per\lbm}) \left( \frac{\SI{25037}{\feet\squared\per\second\squared}}{\SI{1}{\btu\per\lbm}} \right) + {(\SI{200}{\feet\per\second})}^{2} - 2 (\SI{152.11}{\btu\per\lbm}) \left( \frac{\SI{25037}{\feet\squared\per\second\squared}}{\SI{1}{\btu\per\lbm}} \right)} \\
+    \Velocity_{Out} &= \SI{2118.98}{\feet\per\second}
+  \end{align*}
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
