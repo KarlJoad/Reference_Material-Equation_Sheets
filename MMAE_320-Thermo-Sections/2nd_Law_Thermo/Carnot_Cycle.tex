@@ -391,36 +391,6 @@ The \nameref{def:Coefficient_of_Performance} for the reversed \nameref{def:Carno
   \end{align*}
 \end{example}
 
-\subsubsection{Equating Carnot Efficiencies}\label{subsubsec:Equating_Carnot_Efficiencies}
-We have 2 equations for the efficiency of a \nameref{def:Carnot_Cycle}.
-\begin{align*}
-  \Efficiency_{\text{Carnot}} &= \frac{\Temp_{H} - \Temp_{L}}{\Temp_{H}} = 1 - \frac{\Temp_{L}}{\Temp_{H}} \\
-                              &= \frac{\Heat_{H} - \Heat_{L}}{\Heat_{H}} = 1 - \frac{\Heat_{L}}{\Heat_{H}}
-\end{align*}
-
-\paragraph{Reversible Carnot Cycles}\label{par:Reversible_Carnot_Cycles}
-If we equate these (set them equal to each other) we get:
-\begin{align*}
-  1 - \frac{\Temp_{L}}{\Temp_{H}} &= 1 - \frac{\Heat_{L}}{\Heat_{H}} \\
-  \frac{\Temp_{L}}{\Temp_{H}} &= \frac{\Heat_{L}}{\Heat_{H}} \\
-  \frac{\Heat_{L}}{\Temp_{L}} &= \frac{\Heat_{H}}{\Temp_{H}} \\
-  \frac{\Heat_{L}}{\Temp_{L}} - \frac{\Heat_{H}}{\Temp_{H}} &= 0
-\end{align*}
-
-This derivation's result is valid for any \nameref{def:Reversible_Process} which is a \nameref{def:Carnot_Cycle}.
-
-\paragraph{Irreversible Carnot Cycles}\label{par:Irreversible_Carnot_Cycles}
-Looking at the energy balance present for an \nameref{def:Irreversible_Process}
-\begin{equation*}
-  \Heat_{H} - \Heat_{L} = \Work_{Out} + \Work_{\text{Friction}}
-\end{equation*}
-
-Because of the presence of $\Work_{\text{Friction}}$, $\Heat_{L}$ gets smaller (in comparison to a reversible Carnot cycle).
-That means that the heat/temperature ratio equation has changed.
-\begin{equation*}
-  \frac{\Heat_{L}}{\Temp_{L}} - \frac{\Heat_{H}}{\Temp_{H}} < 0
-\end{equation*}
-
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../../MMAE_320-Thermo-Reference_Sheet"
