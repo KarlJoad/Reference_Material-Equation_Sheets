@@ -36,6 +36,61 @@ These can only occur if the \nameref{def:Process} is \nameref{def:Adiabatic}.
   An \emph{isentropic} \nameref{def:Process}/\nameref{def:Cycle} has constant \nameref{def:Entropy}.
 \end{definition}
 
+\begin{example}[Textbook Problem 8.38]{Isentropic Ideal Gases}
+  $\Mass = \SI{1}{\lbm}$ R-134a is expanded \nameref{def:Isentropic}ly in a \nameref{def:Closed_System} that goes from $\Pressure_{1} = \SI{100}{\psia}$ and $\Temp_{1} = \SI{100}{\degreeF}$ to $\Pressure_{2} = \SI{10}{\psia}$.
+  Determine the total heat transfer and the work required for this \nameref{def:Process}?
+  \tcblower{}
+  \textbf{Concepts:} \\
+  This is a \nameref{def:Closed_System}, so mass is constant, there is \textbf{no} mass flow.
+  However, there can still be a heat and work flow. \\
+  We are told this is an \nameref{def:Isentropic} process, so there is no change in temperature.
+  \begin{align*}
+    \Temp_{1} &= \Temp_{2} \\
+    \Change{\Entropy} &= 0 \\
+    \frac{\Change{\Heat}}{\Temp} &= 0 \\
+    \Change{\Heat} &= 0
+  \end{align*}
+
+  There is a change in pressure, meaning the vessel itself expands.
+
+  \textbf{Explore:} \\
+  Pressure is \textbf{not} constant. \\
+  The vessel is expanding, meaning there needs to be a change in energy.
+  The energy is coming from the internal energy, $\InternalEnergy$, of the gas because the R-134a is not ``pushing'' against anything. \\
+  We discovered that $\Change{\Heat} = 0$. \\
+  We are not told about any work in, so assume $\Work_{In} = 0$.
+
+  The energy balance is now:
+  \begin{equation*}
+    -\Work_{Out} = \Mass (\SpecificInternalEnergy_{2} - \SpecificInternalEnergy_{1}) \\
+  \end{equation*}
+
+  We can use Tables A.11E through A.13E to find values for R-134a.
+
+  \textbf{Plan:} \\
+  Using the pressures and temperatures, use the Tables to find the entropies and the internal energies.
+  Remember that $\SpecificEntropy_{1} = \SpecificEntropy_{2}$, so we can find the different internal energies.
+
+  \textbf{Solve:} \\
+  Start by using Table A.13E at $\Pressure_{1} = \SI{100}{\psia}$ and $\Temp_{1} = \SI{100}{\degreeF}$ to find the initial properties of the R-134a.
+  \begin{align*}
+    \SpecificEntropy_{1} &= \SI{0.22902}{\btu\per\lbm\per\rankine} \\
+    \SpecificInternalEnergy_{1} &= \SI{109.46}{\btu\per\lbm}
+  \end{align*}
+
+  Now, using the facts that $\SpecificEntropy_{1} = \SpecificEntropy_{2}$, and $\Pressure_{2} = \SI{10}{\psia}$, we use Table A.13E again, looking for a $\SpecificEntropy_{2}$ that is as similar to $\SpecificEntropy_{1}$ as possible.
+  \begin{align*}
+    \SpecificEntropy_{2} &= \SI{0.22949}{\btu\per\lbm\per\rankine} \\
+    \Temp_{2} &= \SI{-29.52}{\degreeF} \\
+    \SpecificInternalEnergy_{2} &= \SI{113.02}{\btu\per\lbm}
+  \end{align*}
+
+  \textbf{Validate:} \\
+
+  \textbf{Generalize:} \\
+
+\end{example}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
