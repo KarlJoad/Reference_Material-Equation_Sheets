@@ -1,4 +1,33 @@
 \subsection{Clausius Inequality}\label{subsec:Clausius_Inequality}
+We have 2 equations for the efficiency of a \nameref{def:Carnot_Cycle}.
+\begin{align*}
+  \Efficiency_{\text{Carnot}} &= \frac{\Temp_{H} - \Temp_{L}}{\Temp_{H}} = 1 - \frac{\Temp_{L}}{\Temp_{H}} \\
+                              &= \frac{\Heat_{H} - \Heat_{L}}{\Heat_{H}} = 1 - \frac{\Heat_{L}}{\Heat_{H}}
+\end{align*}
+
+\subsubsection{Reversible Carnot Cycles}\label{subsubsec:Reversible_Carnot_Cycles}
+If we equate these (set them equal to each other) we get:
+\begin{align*}
+  1 - \frac{\Temp_{L}}{\Temp_{H}} &= 1 - \frac{\Heat_{L}}{\Heat_{H}} \\
+  \frac{\Temp_{L}}{\Temp_{H}} &= \frac{\Heat_{L}}{\Heat_{H}} \\
+  \frac{\Heat_{L}}{\Temp_{L}} &= \frac{\Heat_{H}}{\Temp_{H}} \\
+  \frac{\Heat_{L}}{\Temp_{L}} - \frac{\Heat_{H}}{\Temp_{H}} &= 0
+\end{align*}
+
+This derivation's result is valid for any \nameref{def:Reversible_Process} which is a \nameref{def:Carnot_Cycle}.
+
+\subsubsection{Irreversible Carnot Cycles}\label{subsubsec:Irreversible_Carnot_Cycles}
+Looking at the energy balance present for an \nameref{def:Irreversible_Process}
+\begin{equation*}
+  \Heat_{H} - \Heat_{L} = \Work_{Out} + \Work_{\text{Friction}}
+\end{equation*}
+
+Because of the presence of $\Work_{\text{Friction}}$, $\Heat_{L}$ gets smaller (in comparison to a reversible Carnot cycle).
+That means that the heat/temperature ratio equation has changed.
+\begin{equation*}
+  \frac{\Heat_{L}}{\Temp_{L}} - \frac{\Heat_{H}}{\Temp_{H}} < 0
+\end{equation*}
+
 Here, we start getting into the topic of \nameref{def:Entropy} a little bit more.
 
 \begin{equation}\label{eq:Clausius_Inequality}
@@ -18,7 +47,7 @@ If we imagine a heat engine running through a set of cycles, as shown in \Cref{f
 \begin{figure}[h!tbp]
   \centering
   \includegraphics[scale=0.35]{Heat_Engine_Clausius_Inequality.png}
-  \caption{Heat Engines and the Clausius Inequality}
+  \caption{Heat Engines and the Clausius Inequality (\cite[pg. 280]{ThermoTextbook})}
   \label{fig:Heat_Engine_Clausius_Inequality}
 \end{figure}
 
