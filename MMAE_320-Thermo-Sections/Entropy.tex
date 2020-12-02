@@ -396,6 +396,26 @@ Now, for large temperature differences, we use an equation that has already been
   \end{align*}
 \end{example}
 
+If a \nameref{def:Process} involving an ideal gas is \nameref{def:Isentropic}, then it behaves according to a set of interesting equations (\Crefrange{subeq:Isentropic_Ideal_Gas-Pressure_Volume}{subeq:Isentropic_Ideal_Gas-Temperature_Pressure}).
+\begin{subequations}\label{eq:Isentropic_Ideal_Gas}
+  \begin{equation}\label{subeq:Isentropic_Ideal_Gas-Pressure_Volume}
+    \frac{\Pressure_{1}}{\Pressure_{2}} = {\left( \frac{\SpecificVolume_{1}}{\SpecificVolume_{2}} \right)}^{k}
+  \end{equation}
+
+  \begin{equation}\label{subeq:Isentropic_Ideal_Gas-Temperature_Volume}
+    \frac{\Temp_{2}}{\Temp_{1}} = {\left( \frac{\SpecificVolume_{1}}{\SpecificVolume_{2}} \right)}^{k-1}
+  \end{equation}
+
+  \begin{equation}\label{subeq:Isentropic_Ideal_Gas-Temperature_Pressure}
+    \frac{\Temp_{2}}{\Temp_{1}} = {\left( \frac{\Pressure_{2}}{\Pressure_{1}} \right)}^{\frac{k-1}{k}}
+  \end{equation}
+\end{subequations}
+
+\Crefrange{subeq:Isentropic_Ideal_Gas-Pressure_Volume}{subeq:Isentropic_Ideal_Gas-Temperature_Pressure} all have a $k$ value defined as:
+\begin{equation*}
+  k = \frac{\SpecificHeatPressure}{\SpecificHeatVolume}
+\end{equation*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
