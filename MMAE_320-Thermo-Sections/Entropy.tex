@@ -93,6 +93,21 @@ These can only occur if the \nameref{def:Process} is \nameref{def:Adiabatic}.
 
 \input{./MMAE_320-Thermo-Sections/Entropy/Isentropic_Efficiencies}
 
+\subsection{Entropy Changes for Solids/Liquids}\label{subsec:Solids_Liquids_Entropy_Changes}
+Gibbs Equation (\Cref{eq:Gibbs_Equation}) can be used to solve for these incompressible substances.
+\begin{align*}
+  \Temp d\Entropy &= d\InternalEnergy + \Pressure d\Volume \\
+  d\Entropy &= \frac{d\InternalEnergy}{\Temp} + \frac{\Pressure d\Volume}{\Temp} \\
+  \intertext{Because the substance is incompressible, the volume is constant.}
+                  &= \frac{d\InternalEnergy}{\Temp} + \frac{\Pressure (0)}{\Temp} \\
+  \int d\Entropy &= \int \frac{d\InternalEnergy}{\Temp} \\
+  \intertext{Because we are under constant volume conditions, we can expand the internal energy factor out using the equation for \nameref{def:Specific_Heat} (\Cref{eq:Change_Internal_Energy_Specific_Heat_Constant_Volume}).}
+                  &= \int \frac{\SpecificHeatVolume d\Temp}{\Temp} \\
+  \Entropy_{2} - \Entropy_{1} &= \SpecificHeatVolume \ln \left( \frac{\Temp_{2}}{\Temp_{1}} \right)
+\end{align*}
+
+Because of the nature of incompressible substances, $\SpecificHeatVolume = \SpecificHeatPressure = \SpecificHeat$.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
