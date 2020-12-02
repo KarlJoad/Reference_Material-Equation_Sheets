@@ -179,6 +179,18 @@ Because of the nature of incompressible substances, $\SpecificHeatVolume = \Spec
 
 \end{example}
 
+\subsection{Entropy Changes for Ideal Gases}\label{subsec:Ideal_Gases_Entropy_Changes}
+Gibbs Equation (\Cref{eq:Gibbs_Equation}) can again be used to solve for ideal gases.
+\begin{align*}
+  \Temp d\Entropy &= d\InternalEnergy + \Pressure d\Volume \\
+  d\Entropy &= \frac{d\InternalEnergy}{\Temp} + \frac{\Pressure d\Volume}{\Temp} \\
+  \intertext{Using the ideal gas equation \Cref{eq:Ideal_Gas_Equation} and the definition of change in internal energy for ideal gases \Cref{eq:Change_Internal_Energy_Specific_Heat_Constant_Volume}, we can ``simplify'' this.}
+                  &= \frac{\SpecificHeatVolume d\Temp}{\Temp} + \frac{\GasConstant d\Volume}{\SpecificVolume} \\
+  \int d\Entropy &= \int \frac{\SpecificHeatVolume d\Temp}{\Temp} + \int \frac{\GasConstant d\Volume}{\SpecificVolume} \\
+  \shortintertext{Evaluating the integrals.}
+  \Entropy_{2} - \Entropy_{1} &= \SpecificHeatVolume \ln \left( \frac{\Temp_{2}}{\Temp_{1}} \right) + \GasConstant \ln \left( \frac{\SpecificVolume_{2}}{\SpecificVolume_{1}} \right)
+\end{align*}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../MMAE_320-Thermo-Reference_Sheet"
