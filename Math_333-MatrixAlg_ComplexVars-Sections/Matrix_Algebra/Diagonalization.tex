@@ -256,6 +256,154 @@ Now that we have the terms and definitions out of the way, we can see something 
   Therefore, $A$ is \textbf{not} \nameref{def:Diagonalizable}.
 \end{example}
 
+\begin{example}[Lecture 19, Example 2]{Diagonalizable Matrix}
+  Is the \nameref{def:Matrix} $B$ \nameref{def:Diagonalizable}?
+  If so, what is $D$ and $P$?
+  \begin{equation*}
+    B = \begin{pmatrix}
+      2 & 3 & 6 \\
+      0 & 6 & 8 \\
+      0 & 0 & 2
+    \end{pmatrix}
+  \end{equation*}
+  \tcblower{}
+  First, we start by finding the \nameref{def:Eigenvalue}s.
+  \begin{align*}
+    B - \lambda I &=
+                    \begin{pmatrix}
+                      2-\lambda & 3 & 6 \\
+                      0 & 6-\lambda & 8 \\
+                      0 & 0 & 2-\lambda
+                    \end{pmatrix} \\
+    \det(B - \lambda I) &= (2-\lambda) (6-\lambda) (2-\lambda)
+  \end{align*}
+
+  We get \nameref{def:Eigenvalue}s if and only if $\det(B-\lambda I) = 0$.
+  Thus, our eigenvalues are:
+  \begin{description}[noitemsep]
+  \item $\lambda = 2$, with algebraic multiplicity 2
+  \item $\lambda = 6$, with algebraic multiplicity 1
+  \end{description}
+
+  Now we find the \nameref{def:Eigenvector}s. \\
+  For $\lambda = 6$:
+  \begin{align*}
+    \begin{pmatrix}
+      -4 & 3 & 6 \\
+      0 & 0 & 8 \\
+      0 & 0 & -4
+    \end{pmatrix}
+              \begin{pmatrix}
+                x_{1} \\ x_{2} \\ x_{3}
+              \end{pmatrix} &=
+                              \begin{pmatrix}
+                                0 \\ 0 \\ 0
+                              \end{pmatrix} \\
+    \intertext{Turning this into a system of linear equations.}
+    -4x_{1} + 3x_{2} + 6x_{3} &= 0 \\
+    0x_{1} + 0x_{2} + 8x_{3} &= 0 \\
+    0x_{1} + 0x_{2} - 4x_{3} &= 0 \\
+    \intertext{Thus, $x_{3} = 0$.}
+    -4x_{1} + 3x_{2} + 0 &= 0 \\
+    x_{1} &= \frac{3}{4} x_{2}
+  \end{align*}
+
+  Now, we can construct our solutions vector.
+  \begin{align*}
+    \begin{pmatrix}
+      x_{1} \\ x_{2} \\ x_{3}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      \frac{3}{4}x_{2} \\ x_{2} \\ 0
+                    \end{pmatrix} \\
+    &= x_{2}
+      \begin{pmatrix}
+        \frac{3}{4} \\ 1 \\ 0
+      \end{pmatrix} \\
+    \intertext{By the definition of an eigenvector, we can scale this general vector by any scalar value and still have an eigenvector.}
+    \begin{pmatrix}
+      3 \\ 4 \\ 0
+    \end{pmatrix}
+  \end{align*}
+
+  For $\lambda = 2$:
+  \begin{align*}
+    \begin{pmatrix}
+      0 & 3 & 6 \\
+      0 & 4 & 8 \\
+      0 & 0 & 0
+    \end{pmatrix}
+              \begin{pmatrix}
+                x_{1} \\ x_{2} \\ x_{3}
+              \end{pmatrix} &=
+                              \begin{pmatrix}
+                                0 \\ 0 \\ 0
+                              \end{pmatrix} \\
+    \intertext{Turning this into a system of linear equations.}
+    0x_{1} + 3x_{2} + 6x_{3} &= 0 \\
+    0x_{1} + 4x_{2} + 8x_{3} &= 0 \\
+    0x_{1} + 0x_{2} + 0x_{3} &= 0 \\
+    \intertext{The first two equations are scalar multiples of the same equation.}
+    x_{2} + 2x_{3} &= 0 \\
+    x_{2} &= -2x_{3} \\
+    \intertext{Lastly, $x_{1}$ must be a free variables.}
+    x_{1} &= x_{1}
+  \end{align*}
+
+  Now, we can construct our solutions vector.
+  \begin{align*}
+    \begin{pmatrix}
+      x_{1} \\ x_{2} \\ x_{3}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      x_{1} \\ -2x_{3} \\ x_{3}
+                    \end{pmatrix} \\
+    &= x_{1}
+      \begin{pmatrix}
+        1 \\ 0 \\ 0
+      \end{pmatrix} + x_{3}
+    \begin{pmatrix}
+      0 \\ -2 \\ 1
+    \end{pmatrix}
+  \end{align*}
+
+  Now we can construct $P$ out of the \nameref{def:Eigenvector}s we found, and construct $D$ in correlation to $P$.
+  \begin{equation*}
+    P =
+    \begin{pmatrix}
+      1 & 0 & 3 \\
+      0 & -2 & 4 \\
+      0 & 1 & 0
+    \end{pmatrix}
+  \end{equation*}
+  The columns are \nameref{def:Linearly_Independent}, because they are distinct \nameref{def:Eigenvector}s.
+  Thus, $P$ must be invertible.
+  Let's verify that.
+  \begin{align*}
+    \det(P) &= 1 c_{1,1} + 0 c_{2,1} + 0 c_{3,1} \\
+    &= 1 {(-1)}^{1+1} \det
+      \begin{pmatrix}
+        -2 & 4 \\
+        1 & 0
+      \end{pmatrix} \\
+            &= 1 \bigl( -2 (0) - 4 (1) \bigr) \\
+            &= -4 \\
+            &\neq 0
+  \end{align*}
+
+  Thus, $P$ is a \nameref{def:Matrix} of \nameref{def:Eigenvector}s which \textbf{is} invertible.
+  Therefore $A$ is \nameref{def:Diagonalizable}.
+  From the theory $P^{-1}AP=D$, we do not need to perform the matrix multiplication to get $D$.
+  \begin{equation*}
+    D =
+    \begin{pmatrix}
+      2 & 0 & 0 \\
+      0 & 2 & 0 \\
+      0 & 0 & 6
+    \end{pmatrix}
+  \end{equation*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
