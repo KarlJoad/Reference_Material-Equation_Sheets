@@ -363,6 +363,71 @@ A real symmetric matrix has two important properties.
   \end{center}
 \end{example}
 
+\paragraph{Determining the Conic}\label{par:Quadratic_Forms-Determining_Conic}
+Determining the type of conic section created can be done in one of two ways:
+\begin{enumerate}[noitemsep]
+\item Construct the new equation ($\Transpose{Y} D Y = k$) and observe the form of $y_{1}^{2} + y_{2}^{2} = k$.
+  This mirrors the way you were taught to identify conic sections in previous algebra courses.
+\item Use the determinant of the original \nameref{def:Quadratic_Form} matrix ($A$).
+\end{enumerate}
+
+You should already be familiar with the first method, so I will be discussing the second\footnote{Most of this discussion was not done in class, and instead comes from \href{https://en.wikipedia.org/w/index.php?title=Degenerate_conic&section=3\#Discriminant}{Wikipedia}}.
+Earlier we discussed \nameref{def:Quadratic_Form}s of two variables ($x_{1}, x_{2}$).
+For this discussion, we extend our quadratic form to three variables ($x_{1}, x_{2}, x_{3}$), generalizing the things we can say.
+
+\begin{blackbox}
+  For this discussion, let the \nameref{def:Quadratic_Form} we use be:
+  \begin{equation*}
+    Ax_{1}^{2} + 2 Bx_{1}x_{2} + C x_{2}^{2} + 2 D x_{1}x_{3} + 2 E x_{2} x_{3} + F x_{3}^{2}
+  \end{equation*}
+  where $A,B,C,D,E,F \in \RealNumbers$.
+
+  We must first determine the conic section.
+  For that, assume $x_{3} = 1$.
+  That means the \nameref{def:Quadratic_Form} is now:
+  \begin{equation*}
+    Ax_{1}^{2} + 2 Bx_{1}x_{2} + C x_{2}^{2} + 2 D x_{1} + 2 E x_{2} + F
+  \end{equation*}
+  Convert this to a \nameref{def:Real_Symmetric_Matrix}, $A$.
+  \begin{equation*}
+    A =
+    \begin{pmatrix}
+      A & B \\
+      B & C
+    \end{pmatrix}
+  \end{equation*}
+
+  Taking $\det(A)$, we have three cases:
+  \begin{description}[noitemsep]
+  \item[$\det(A) > 0$] The conic is an ellipse.
+  \item[$\det(A) = 0$] The conic is a parabola.
+  \item[$\det(A) < 0$] The conic is a hyperbola.
+  \end{description}
+
+  However, if $x_{3} \neq 1$, then we have a degenerate quadratic.
+  Similar to before, we convert the original \nameref{def:Quadratic_Form} to a \nameref{def:Real_Symmetric_Matrix} $B$.
+  \begin{equation*}
+    B = \begin{pmatrix}
+      A & B & D \\
+      B & C & E \\
+      D & E & F
+    \end{pmatrix}
+  \end{equation*}
+
+  Taking $\det(B)$, there are four main cases:
+  \begin{description}[noitemsep]
+  \item[$\det(B) > 0$] A single point (a degenerate ellipse).
+  \item[$\det(B) = 0$] Two parallel straight lines (a degenerate parabola).
+    There are three sub-cases for this particular degenerate quadratic.
+    \begin{description}[noitemsep]
+    \item[$D^{2} + E^{2} > (A+C) F$] Both lines are distinct and real.
+    \item[$D^{2} + E^{2} = (A+C) F$] The two lines are coincident.
+    \item[$D^{2} + E^{2} < (A+C) F$] The two lines are non-existent in the real plane.
+    \end{description}
+  \item[$\det(B) < 0$] Two intersecting lines (a hyperbola degenerated to its two asymptotes).
+  \item[$\det(B) \neq 0$] A single line (and the line at infinity) if and only if $A = B = C = 0$ and $D \neq 0, E \neq 0$.
+  \end{description}
+\end{blackbox}
 
 %%% Local Variables:
 %%% mode: latex
