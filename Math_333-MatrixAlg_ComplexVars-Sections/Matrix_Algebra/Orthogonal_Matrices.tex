@@ -116,6 +116,31 @@ A real symmetric matrix has two important properties.
 \item \nameref{def:Eigenvector}s corresponding to \textbf{distinct} \nameref{def:Eigenvalue}s are orthogonal to each other.\label{prop:Real_Symmetric_Matrix-Distinct_Eigenvectors}
 \end{propertylist}
 
+\begin{definition}[Quadratic Form]\label{def:Quadratic_Form}
+  A \emph{quadratic form} is a polynomial equation.
+  We can use a \nameref{def:Real_Symmetric_Matrix} and \nameref{def:Diagonalization} to turn the polynomial into a real symmetric matrix that we can then use to yield a conic section in the Cartesian plane.
+
+  For our purposes, we choose to say $a, b, c \in \RealNumbers$.
+  \begin{equation}\label{eq:Quadratic_Form}
+    ax_{1}^{2} + 2bx_{2} + c =
+    \begin{pmatrix}
+      x_{1} & x_{2}
+    \end{pmatrix}
+    \begin{pmatrix}
+      a & b \\
+      b & c
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_{1} \\ x_{2}
+    \end{pmatrix}
+  \end{equation}
+
+  \begin{remark}[Complex Quadratic Form]\label{rmk:Complex_Quadratic_Form}
+    A \nameref{def:Quadratic_Form} may be complex if $a$, $b$, or $c$ are complex.
+    These can be solved in a similar fashion, but must be done with a \nameref{def:Hermitian_Matrix} instead.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
