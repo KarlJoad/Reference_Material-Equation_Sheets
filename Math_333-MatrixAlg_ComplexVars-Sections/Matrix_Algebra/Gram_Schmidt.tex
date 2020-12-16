@@ -13,6 +13,19 @@
   \end{equation}
 \end{definition}
 
+\begin{definition}[Rejection]\label{def:Vector_Rejection}
+  The \emph{rejection} of a vector from another vector is the amount that one vector is \textbf{not} in the same direction as another, in an orthogonal fashion.
+  This can be seen graphically in \Cref{fig:Vector_Projection_Rejection}.
+  It is denoted $\Rej{u_{2}}{u_{1}}$, and is said ``the rejection of $u_{2}$ from $u_{1}$''.
+  If is defined as:
+  \begin{equation}\label{eq:Vector_Rejection}
+    \begin{aligned}
+      \Rej{u_{2}}{u_{1}} &= u_{2} - \frac{u_{2} \cdot u_{1}}{u_{1} \cdot u_{1}} u_{1} \\
+      \Rej{u_{2}}{u_{1}} &= u_{2} - \Proj{u_{2}}{u_{1}}
+    \end{aligned}
+  \end{equation}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
