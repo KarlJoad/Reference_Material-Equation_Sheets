@@ -404,6 +404,37 @@ Now that we have the terms and definitions out of the way, we can see something 
   \end{equation*}
 \end{example}
 
+\subsubsection{Matrix Exponentials}\label{subsubsec:Matrix_Exponentials}
+A reason to use \nameref{def:Diagonalization} is to solve for exponentials of a \nameref{def:Matrix} $A$.
+From \Cref{eq:Diagonalizable}, we can see that:
+\begin{align*}
+  P^{-1} A P &= D \\
+  AP &= PD \\
+  A &= P D P^{-1}
+\end{align*}
+
+This is actually quite a useful tool for solving a variety of matrix problem.
+\begin{equation}\label{eq:Diagonalizable_A}
+  A = P D P^{-1}
+\end{equation}
+
+Say we wanted to compute $A^{n}$.
+We could do it the way we have in the past (\Cref{subsubsec:Cayley-Hamilton_Express_Higher_Powers}), but that requires repeated substitution, and therefore repeated computation for earlier elements.
+If we want a direct approach to calculate this, we now have all the tools for it.
+
+\begin{blackbox}
+  As an example, start with $A^{2}$ and $A^{3}$, where $A$ is any $m \by m$ matrix.
+  \begin{align*}
+    A^{2} &= A A \\
+          &= (P A P^{-1}) (P A P^{-1}) \\
+    \intertext{Only the middle $P^{-1}$ and $P$ cancel because matrix multiplication is \textbf{not} commutative.}
+          &= P D^{2} P^{-1} \\
+    A^{3} &= A A^{2} \\
+          &= (P D P^{-1}) (P D^{2} P^{-1}) \\
+          &= P D^{3} P^{-1}
+  \end{align*}
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
