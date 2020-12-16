@@ -440,6 +440,34 @@ This is a general algorithm, where we can determine $A^{n}$ using \Cref{eq:Matri
   A^{n} = P D^{n} P^{-1}
 \end{equation}
 
+Now, since $D$ is a \nameref{def:Diagonal_Matrix}, $D^{n}$ is very easy to compute.
+\begin{align*}
+  D_{2 \by 2} &=
+                \begin{pmatrix}
+                  d_{1} & 0 \\
+                  0 & d_{2}
+                \end{pmatrix} \\
+  D^{2} &=
+          \begin{pmatrix}
+            d_{1} & 0 \\
+            0 & d_{2}
+          \end{pmatrix}
+                \begin{pmatrix}
+                  d_{1} & 0 \\
+                  0 & d_{2}
+                \end{pmatrix} \\
+              &=
+                \begin{pmatrix}
+                  d_{1}^{2} & 0 \\
+                  0 & d_{2}^{2}
+                \end{pmatrix} \\
+  D^{n} &=
+          \begin{pmatrix}
+            d_{1}^{n} & 0 \\
+            0 & d_{2}^{n}
+          \end{pmatrix}
+\end{align*}
+
 
 %%% Local Variables:
 %%% mode: latex
