@@ -33,6 +33,28 @@
   \label{fig:Vector_Projection_Rejection}
 \end{figure}
 
+\begin{theorem}[Gram-Schmidt Orthogonalization Process]\label{thm:Gram-Schmidt_Orthogonalization}
+  Given $m$ \nameref{def:Linearly_Independent} vectors in $\RealNumbers^{n}$ ($m$ vectors, each with $n$ components),
+  \begin{equation*}
+    S = \lbrace u_{1}, u_{2}, \ldots, u_{m} \rbrace, \: n \geq m
+  \end{equation*}
+
+  To find $V = \lbrace v_{1}, v_{2}, \ldots, v_{m} \rbrace$ orthogonal vectors where $\Span(V) = \Span(S)$.
+
+  We can find such vectors by repeatedly using the \nameref{def:Vector_Rejection} of the original vector from the first orthogonal vector.
+  So, the process boils down to:
+  \begin{equation}\label{eq:Gram-Schmidt_Orthogonalization}
+    \begin{aligned}
+      v_{1} &= u_{1} \\
+      v_{2} &= u_{2} - \Rej{u_{2}}{v_{1}} \\
+      &= u_{2} - \frac{u_{2} \cdot v_{1}}{v_{1} \cdot v_{1}} v_{1} \\
+      v_{3} &= u_{3} - \frac{u_{3} \cdot v_{1}}{v_{1} \cdot v_{1}} v_{1} - \frac{u_{3} \cdot v_{2}}{v_{2} \cdot v_{2}} v_{2} \\
+      &\vdots \\
+      v_{m} &= u_{m} - \frac{u_{m} \cdot v_{1}}{v_{1} \cdot v_{1}} v_{1} - \cdots - \frac{u_{m} \cdot v_{m-1}}{v_{m-1} \cdot v_{m-1}} v_{m-1}
+    \end{aligned}
+  \end{equation}
+\end{theorem}
+
 
 %%% Local Variables:
 %%% mode: latex
