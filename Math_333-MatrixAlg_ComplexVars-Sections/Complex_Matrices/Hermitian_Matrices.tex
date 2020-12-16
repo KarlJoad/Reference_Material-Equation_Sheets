@@ -44,6 +44,167 @@ Some examples of a \nameref{def:Hermitian_Matrix} are:
   \end{equation}
 \end{definition}
 
+\begin{example}[Lecture 22, Example 1]{Find Unitary Matrix Implementing Diagonalization}
+  Find a \nameref{def:Unitary_Matrix} that implements a \nameref{def:Diagonalization} for the \nameref{def:Complex_Matrix} $A$?
+  \begin{equation*}
+    A =
+    \begin{bmatrix}
+      -1 & 2i \\
+      -2i & 2
+    \end{bmatrix}
+  \end{equation*}
+  \tcblower{}
+  First, we start by finding the \nameref{def:Eigenvalue}s of $A$.
+  We notice that $A$ is a \nameref{def:Hermitian_Matrix}, which means that there will be only real-valued eigenvalues.
+  \begin{align*}
+    A - \lambda I &=
+                    \begin{bmatrix}
+                      -1 - \lambda & 2i \\
+                      -2i & 2 - \lambda
+                    \end{bmatrix} \\
+    \det(A - \lambda I) &= (-1 - \lambda) (2 - \lambda) - (2i) (-2i) \\
+                  &= \lambda^{2} - \lambda - 2 - 4 \\
+                  &= \lambda^{2} - \lambda - 6 \\
+                  &= (\lambda - 3) (\lambda + 2) \\
+  \end{align*}
+
+  We get \nameref{def:Eigenvalue}s if and only if $\det(A - \lambda I) = 0$.
+  So:
+  \begin{description}[noitemsep]
+  \item[$\lambda = 3$] Algebraic multiplicity 1.
+  \item[$\lambda = -2$] Algebraic multiplicity 1.
+  \end{description}
+
+  Now, we find the \nameref{def:Eigenvector} that corresponds to the \nameref{def:Eigenvalue} $\lambda = 3$.
+  \begin{align*}
+    \begin{bmatrix}
+      4 & 2i \\
+      -2i & -1
+    \end{bmatrix}
+            \begin{bmatrix}
+              x \\ y
+            \end{bmatrix} &=
+                            \begin{bmatrix}
+                              0 \\ 0
+                            \end{bmatrix} \\
+    \intertext{Convert to a system of complex-valued linear equations.}
+    -4x + 2iy &= 0 \\
+    -2ix - y &= 0 \\
+    \intertext{Solving the system.}
+    y &= \frac{2x}{i} \\
+    x &= x
+  \end{align*}
+
+  Plugging that all back in:
+  \begin{align*}
+    \begin{bmatrix}
+      x \\ y
+    \end{bmatrix} &=
+                    \begin{bmatrix}
+                      x \\ \frac{2x}{i}
+                    \end{bmatrix} \\
+    &= x
+      \begin{bmatrix}
+        1 \\ \frac{2}{i}
+      \end{bmatrix} \\
+    &= x
+      \begin{bmatrix}
+        1 \\ -2i
+      \end{bmatrix}, \, x \neq 0
+  \end{align*}
+
+  Thus, the \nameref{def:Eigenvector} that corresponds to the \nameref{def:Eigenvalue} $\lambda = 3$ is:
+  \begin{equation*}
+    x
+    \begin{bmatrix}
+      1 \\ -2i
+    \end{bmatrix}, \, x \neq 0
+  \end{equation*}
+  With geometric multiplicity 1.
+
+  Now, we find the \nameref{def:Eigenvector} that corresponds to the \nameref{def:Eigenvalue} $\lambda = -2$.
+  \begin{align*}
+    \begin{bmatrix}
+      1 & 2i \\
+      -2i & 4
+    \end{bmatrix}
+            \begin{bmatrix}
+              x \\ y
+            \end{bmatrix} &=
+                            \begin{bmatrix}
+                              0 \\ 0
+                            \end{bmatrix} \\
+    \intertext{Convert to a system of complex-valued linear equations.}
+    x + 2iy &= 0 \\
+    -2ix + 4y &= 0 \\
+    \intertext{Solving the system.}
+    x &= -2iy \\
+    y &= y
+  \end{align*}
+
+  Plugging that all back in:
+  \begin{align*}
+    \begin{bmatrix}
+      x \\ y
+    \end{bmatrix} &=
+                    \begin{bmatrix}
+                      -2iy \\ y
+                    \end{bmatrix} \\
+    &= y
+      \begin{bmatrix}
+        -2i \\ 1
+      \end{bmatrix}, \, y \neq 0
+  \end{align*}
+  Geometric multiplicity 1.
+
+  Because the given matrix was Hermitian, we know that these \nameref{def:Eigenvector}s are orthogonal.
+  However, we will verify that property, then normalize them.
+  \begin{align*}
+    \InnerProd{
+    \begin{bmatrix}
+      1 \\ -2i
+    \end{bmatrix}}{
+    \begin{bmatrix}
+      -2i \\ 1
+    \end{bmatrix}} &= 1 (\Conjugate{-2i}) + -2i (\Conjugate{1}) \\
+                   &= 2i + -2i \\
+                   &= 0
+  \end{align*}
+
+  Now, normalize the \nameref{def:Eigenvector}s.
+  \begin{align*}
+    \Magnitude{v_{1}} &= \InnerProd{v_{1}}{v_{2}} & \Magnitude{v_{2}} &= \InnerProd{v_{2}}{v_{2}} \\
+                      &= \sqrt{\InnerProd{
+                        \begin{bmatrix}
+                          1 \\ -2i
+                        \end{bmatrix}}{
+    \begin{bmatrix}
+      1 \\ -2i
+    \end{bmatrix}}} & &= \sqrt{\InnerProd{
+                        \begin{bmatrix}
+                          -2i \\ 1
+                        \end{bmatrix}}{
+    \begin{bmatrix}
+      -2i \\ 1
+    \end{bmatrix}}} \\
+                      &= \sqrt{1+4} & &= \sqrt{4+1} \\
+                      &= \sqrt{5} & &= \sqrt{5}
+  \end{align*}
+
+  Thus, the \nameref{def:Unitary_Matrix} that implements a \nameref{def:Diagonalization} of $A$ is $P$.
+  \begin{align*}
+    P &=
+        \begin{bmatrix}
+          \frac{1}{\sqrt{5}} & \frac{-2i}{\sqrt{5}} \\
+          \frac{-2i}{\sqrt{5}} & \frac{1}{\sqrt{5}}
+        \end{bmatrix} \\
+    &= \frac{1}{\sqrt{5}}
+      \begin{bmatrix}
+        1 & -2i \\
+        -2i & 1
+      \end{bmatrix}
+  \end{align*}
+\end{example}
 
 %%% Local Variables:
 %%% mode: latex
