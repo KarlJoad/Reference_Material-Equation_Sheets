@@ -78,6 +78,184 @@ Now that we have the terms and definitions out of the way, we can see something 
   Therefore, $P$ is a \nameref{def:Matrix} that implements the \nameref{def:Diagonalization} using a matrix of corresponding \nameref{def:Eigenvector}s.
 \end{blackbox}
 
+\begin{example}[Lecture 19, Example 1]{Matrices Implementing Diagonalization}
+  Let $A_{3 \by 3}$.
+  Is $A$ \nameref{def:Diagonalizable}?
+  Can $A$ be diagonalized to $B$, $C$, $E$, or $F$?
+  If yes, what are $D$ and $P$?
+  \begin{equation*}
+    A =
+        \begin{pmatrix}
+          1 & 3 & 12 \\
+          0 & 6 & 8 \\
+          0 & 0 & 2
+        \end{pmatrix}
+  \end{equation*}
+  \begin{align*}
+    B &=
+        \begin{pmatrix}
+          0 & 0 & 0 \\
+          0 & 2 & 0 \\
+          0 & 0 & 6
+        \end{pmatrix} &
+    C &=
+        \begin{pmatrix}
+          6 & 0 & 0 \\
+          0 & 6 & 0 \\
+          0 & 0 & 2
+        \end{pmatrix} \\
+    E &=
+        \begin{pmatrix}
+          2 & 0 & 0 \\
+          0 & 6 & 0 \\
+          0 & 0 & 2
+        \end{pmatrix} &
+    F &=
+        \begin{pmatrix}
+          6 & 0 & 0 \\
+          0 & 2 & 0 \\
+          0 & 0 & 2
+        \end{pmatrix}
+  \end{align*}
+  \tcblower{}
+  Start by finding the \nameref{def:Eigenvalue}s of $A$.
+  \begin{align*}
+    A - \lambda I &=
+                    \begin{pmatrix}
+                      2 - \lambda & 3 & 12 \\
+                      0 & 6 - \lambda & 8 \\
+                      0 & 0 & 2 - \lambda \\
+                    \end{pmatrix} \\
+    \det(A - \lambda I) &= (2 - \lambda) (6 - \lambda) (2 - \lambda) \\
+    &= {(2 - \lambda)}^{2} (6 - \lambda)
+  \end{align*}
+
+  To get \nameref{def:Eigenvalue}s, $\det(A - \lambda I) = 0$.
+  Therefore, the eigenvalues of $A$ are:
+  \begin{align*}
+    \lambda &= 2, \; \text{Algebraic Multiplicity 2} \\
+    \lambda &= 6, \; \text{Algebraic Multiplicity 1}
+  \end{align*}
+
+  Now, we see that $B$ and $C$ are not possible \nameref{def:Diagonalization}s.
+  \begin{description}[noitemsep]
+  \item[$B$] Not all columns are \nameref{def:Eigenvalue}s.
+  \item[$C$] Not the proper amount of $2$s in the matrix.
+  \end{description}
+
+  $E$ and $F$ are \textit{possible} \nameref{def:Diagonalization}s, but we need to know more about the corresponding \nameref{def:Eigenvector}s before we can answer them.
+  So, let's find the eigenvectors.
+
+  For $\lambda = 6$:
+  \begin{align*}
+    A - \lambda I &=
+                    \begin{pmatrix}
+                      -4 & 3 & 12 \\
+                      0 & 0 & 8 \\
+                      0 & 0 & -4 \\
+                    \end{pmatrix} \\
+    \begin{pmatrix}
+      -4 & 3 & 12 \\
+      0 & 0 & 8 \\
+      0 & 0 & -4 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_{1} \\ x_{2} \\ x_{3}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      0 \\ 0 \\ 0
+                    \end{pmatrix}
+  \end{align*}
+
+  This matrix equation yields the system of equations:
+  \begin{align*}
+    -4x_{1} + 3x_{2} + 12x_{3} &= 0 \\
+    8x_{3} &= 0 \\
+    -4x_{3} &= 0
+  \end{align*}
+
+  This means that $x_{3} = 0$, implying $x_{1} = \frac{3}{4} x_{2}$.
+  Therefore,
+  \begin{align*}
+    \begin{pmatrix}
+      x_{1} \\ x_{2} \\ x_{3}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      \frac{3}{4} x_{2} \\ x_{2} \\ 0
+                    \end{pmatrix} \\
+    &= x_{2}
+      \begin{pmatrix}
+        \frac{3}{4} \\ 1 \\ 0
+      \end{pmatrix} \\
+    \intertext{Remember, any non-zero scalar multiple is allowed, so we can simplify this matrix.}
+    &= x_{2}
+      \begin{pmatrix}
+        3 \\ 4 \\ 0
+      \end{pmatrix}
+  \end{align*}
+
+  Now, we find the \nameref{def:Eigenvector} for $\lambda = 2$:
+  \begin{align*}
+    A - \lambda I &=
+                    \begin{pmatrix}
+                      0 & 3 & 12 \\
+                      0 & 4 & 8 \\
+                      0 & 0 & 0
+                    \end{pmatrix} \\
+    \begin{pmatrix}
+      0 & 3 & 12 \\
+      0 & 4 & 8 \\
+      0 & 0 & 0
+    \end{pmatrix}
+              \begin{pmatrix}
+                x_{1} \\ x_{2} \\ x_{3}
+              \end{pmatrix} &=
+                              \begin{pmatrix}
+                                0 \\ 0 \\ 0
+                              \end{pmatrix}
+    0x_{1} + 3x_{2} + 12x_{3} &= 0 \\
+    0x_{1} + 4x_{2} + 8x_{3} &= 0 \\
+    0x_{1} + 0x_{2} + 0x_{3} &= 0 \\
+  \end{align*}
+
+  Therefore, we say:
+  \begin{align*}
+    \begin{pmatrix}
+      x_{1} \\ x_{2} \\ x_{3}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      x_{1} \\ 0 \\ 0
+                    \end{pmatrix} \\
+    &= x_{1}
+      \begin{pmatrix}
+        1 \\ 0 \\ 0
+      \end{pmatrix}
+  \end{align*}
+
+  Now, we can construct $P$ using any multiple of the \nameref{def:Eigenvector}'s scalar.
+  \begin{align*}
+    P &=
+        \begin{pmatrix}
+          \lambda = 6 & \lambda = 2 & \lambda = 2 \\
+          3 & 1 & 1 \\
+          4 & 0 & 0 \\
+          0 & 0 & 0
+        \end{pmatrix} \\
+    &=
+      \begin{pmatrix}
+        1 & 3 & 1 \\
+        0 & 4 & 0 \\
+        0 & 0 & 0
+      \end{pmatrix}
+  \end{align*}
+
+  Therefore, \textbf{both} $E$ and $F$ are possible \nameref{def:Diagonalization}s.
+  However, because $P$ has two proportional columns, $\det(P) = 0$.
+
+  The \nameref{def:Determinant} being equal to zero means $P$ is not invertible.
+  Therefore, $A$ is \textbf{not} \nameref{def:Diagonalizable}.
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
