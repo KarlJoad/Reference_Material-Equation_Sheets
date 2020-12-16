@@ -4,6 +4,15 @@
   For example, if $S = \lbrace u_{1}, u_{2} \rbrace$, then $\Span(S) = \lbrace c_{1}u_{1} + c_{2}u_{2} : c_{1}, c_{2} \in \RealNumbers \rbrace$.
 \end{definition}
 
+\begin{definition}[Projection]\label{def:Vector_Projection}
+  The \emph{projection} of a vector onto another is the amount of one vector that is in the same direction as another.
+  It is denoted $\Proj{u_{2}}{u_{1}}$, and is said ``the projection of $u_{2}$ on $u_{1}$''.
+  It is defined as:
+  \begin{equation}\label{eq:Vector_Projection}
+    \Proj{u_{2}}{u_{1}} = \frac{u_{2} \cdot u_{1}}{u_{1} \cdot u_{1}} u_{1}
+  \end{equation}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
