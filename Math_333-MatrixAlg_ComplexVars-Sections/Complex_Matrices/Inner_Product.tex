@@ -1,4 +1,23 @@
 \subsection{Inner Product}\label{subsec:Inner_Product}
+\begin{definition}[Inner Product]\label{def:Inner_Product}
+  The \emph{inner product} is the complex-valued matrix equivalent of the real-valued dot product.
+  If $V_{1 \by 2}$ is a complex-valued matrix, defined as:
+  \begin{equation*}
+    V =
+    \begin{bmatrix}
+      a + bi & c + di
+    \end{bmatrix}
+  \end{equation*}
+  then,
+  \begin{equation}\label{eq:Inner_Product}
+    \begin{aligned}
+      \InnerProd{V}{V} &= (a+bi) \Conjugate{(a+bi)} + (c+di) \Conjugate{(c+di)} \\
+      &= (a+bi) (a-bi) + (c+di) (c-di) \\
+      &= a^{2} + b^{2} + c^{2} + d^{2}
+    \end{aligned}
+  \end{equation}
+
+\end{definition}
 
 %%% Local Variables:
 %%% mode: latex
