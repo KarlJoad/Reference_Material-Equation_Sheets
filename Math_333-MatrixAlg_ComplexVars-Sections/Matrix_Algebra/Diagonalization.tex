@@ -34,6 +34,50 @@ To start off with, we need some background knowledge on what we mean by \nameref
   \end{equation}
 \end{definition}
 
+Now that we have the terms and definitions out of the way, we can see something interesting about \Cref{eq:Diagonalization}.
+\begin{blackbox}
+  Let $A_{2 \by 2}$, $P =
+  \begin{pmatrix}
+    p_{1} & p_{2}
+  \end{pmatrix}
+  $, and $D =
+  \begin{pmatrix}
+    d_{1} & 0 \\
+    0 & d_{2}
+  \end{pmatrix}$.
+
+  This means that if we apply \Cref{eq:Diagonalization}:
+  \begin{align*}
+    AP &= PD \\
+    A_{2 \by 2}
+    \begin{pmatrix}
+      p_{1} & p_{2}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      p_{1} & p_{2}
+                    \end{pmatrix}
+                              \begin{pmatrix}
+                                d_{1} & 0 \\
+                                0 & d_{2} \\
+                              \end{pmatrix} \\
+    \begin{pmatrix}
+      A p_{1} & A p_{2}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      d_{1} p_{1} & d_{2} p_{2}
+                    \end{pmatrix}
+  \end{align*}
+
+  This means that:
+  \begin{align*}
+    A p_{1} &= d_{1} p_{1} \\
+    A p_{2} &= d_{2} p_{2}
+  \end{align*}
+
+  If we study this, we can see that $d_{1}$ and $d_{2}$ are \nameref{def:Eigenvalue}s of $A$ (Remember, $AX = \lambda X$).
+  Therefore, $P$ is a \nameref{def:Matrix} that implements the \nameref{def:Diagonalization} using a matrix of corresponding \nameref{def:Eigenvector}s.
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
