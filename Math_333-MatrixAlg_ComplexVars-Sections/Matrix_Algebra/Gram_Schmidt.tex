@@ -55,6 +55,42 @@
   \end{equation}
 \end{theorem}
 
+\begin{example}[Lecture 21, Example 1]{Find Orthogonal Vector}
+  Given three vectors in $\RealNumbers^{4}$, find $\lbrace v_{1}, v_{2}, v_{3} \rbrace$ where each element is mutually orthogonal, and the \nameref{def:Span} $\Span(S)$ remains the same.
+  \begin{equation*}
+    S = \lbrace (1, 2, -1, 2), (2, 3, -1, 1), (0, 2, -1, 4) \rbrace
+  \end{equation*}
+  \tcblower{}
+  From \nameref{thm:Gram-Schmidt_Orthogonalization} (\Cref{eq:Gram-Schmidt_Orthogonalization}), we already know how to solve this.
+  \begin{align*}
+    v_{1} &= u_{1} \\
+          &= (1, 2, -1, 2)
+  \end{align*}
+
+  Now, we can solve for the second orthogonal vector.
+  \begin{align*}
+    v_{2} &= u_{2} - \frac{u_{2} \cdot v_{1}}{v_{1} \cdot v_{1}} v_{1} \\
+          &= u_{2} - \frac{(2, 3, -1, 1) \cdot (1, 2, -1, 1)}{(1, 2, -1, 1) \cdot (1, 2, -1, 1)} v_{1} \\
+          &= u_{2} - \frac{2 + 6 + 1 + 2}{1 + 4 + 1 + 4} v_{1} \\
+          &= (2, 3, -1, 1) - \frac{11}{10} (1, 2, -1, 2) \\
+          &= \frac{(20, 30, -10, 10) - 11 (1, 2, -1, 2)}{10} \\
+    v_{2} &= (\frac{9}{10}, \frac{8}{10}, \frac{1}{10}, \frac{-12}{10}) \\
+    \intertext{The scaling is unimportant here, so we can actually drop the fractional part.}
+    v_{2} &= (9, 8, 1, -12)
+  \end{align*}
+
+  Lastly, we solve for the last orthogonal vector.
+  \begin{align*}
+    v_{3} &= u_{3} - \frac{u_{3} \cdot v_{1}}{v_{1} \cdot v_{1}} v_{1} - \frac{u_{3} \cdot v_{2}}{v_{2} \cdot v_{2}} \\
+          &= u_{3} - \frac{(0, 2, -1, 4) \cdot (1, 2, -1, 2)}{10} v_{1} - \frac{(0, 2, -1, 4) \cdot (9, 8, 1, -12)}{(9,8,1,-12) \cdot (9,8,1,-12)} v_{2} \\
+          &= u_{3} - \frac{0+4+1+8}{10} v_{1} - \frac{-33}{290} v_{2} \\
+          &= (0, 2, -1, 4) - \frac{13}{10}(1,2,-1,2) + \frac{33}{290} (9, 8, 1, -12) \\
+    v_{3} &= (\frac{-8}{29}, \frac{9}{29}, \frac{12}{29}, \frac{1}{29}) \\
+    \intertext{The scaling is unimportant.}
+    v_{3} &= (-8, 9, 12, 1)
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
