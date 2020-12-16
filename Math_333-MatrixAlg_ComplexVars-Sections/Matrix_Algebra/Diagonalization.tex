@@ -520,6 +520,26 @@ This exploits the use of \Cref{eq:Diagonalizable_A} and Maclaurin expansions.
   \end{align*}
 \end{blackbox}
 
+\begin{subequations}\label{eq:Matrix_Sinusoids}
+  \begin{equation}\label{eq:Matrix_cos}
+    \cos(A_{n \by n}) = P
+    \begin{pmatrix}
+      \cos(a_{1,1}) & 0 & 0 & \cdots \\
+      0 & \cos(a_{2,2}) & 0 & \cdots \\
+      \vdots & \ddots & \ddots & \vdots
+    \end{pmatrix}
+    P^{-1}
+  \end{equation}
+  \begin{equation}\label{eq:Matrix_sin}
+    \sin(A_{n \by n}) = P
+    \begin{pmatrix}
+      \sin(a_{1,1}) & 0 & 0 & \cdots \\
+      0 & \sin(a_{2,2}) & 0 & \cdots \\
+      \vdots & \ddots & \ddots & \vdots
+    \end{pmatrix}
+    P^{-1}
+  \end{equation}
+\end{subequations}
 
 %%% Local Variables:
 %%% mode: latex
