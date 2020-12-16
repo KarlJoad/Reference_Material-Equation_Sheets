@@ -324,6 +324,39 @@ Thus, to verify that a vector $w$ \textbf{is} inside a \nameref{def:Span} $S$ cr
   w = \Proj{w}{S}
 \end{equation}
 
+That means that the \nameref{def:Vector_Projection} onto the span is defined as a linear combination of the orthogonal vectors that create the space.
+\begin{equation*}
+  \Proj{w}{S} = c_{1} v_{1} + c_{2} v_{2} + \cdots + c_{m} v_{m}
+\end{equation*}
+
+From our earlier discussion (and visualized in \Cref{fig:Vector_Projection_Rejection}), we know:
+\begin{equation*}
+  w - \Proj{w}{S} = \Rej{w}{S}
+\end{equation*}
+
+Using all this information, we can find an equation defining $\Proj{w}{S}$.
+\begin{align*}
+  w - \Proj{w}{S} &= \Rej{w}{S} \\
+  w - c_{1} v_{1} - c_{2} v_{2} - \cdots - c_{m} v_{m} &= \Rej{w}{S} \\
+  \intertext{We can solve for $v_{1}$ by using dot products. This works because the \nameref{def:Vector_Rejection} \textit{must} be orthogonal to all vectors that construct the \nameref{def:Span}.}
+  (w - c_{1} v_{1} - c_{2} v_{2} - \cdots - c_{m} v_{m}) \cdot v_{1} &= \Rej{w}{S} \cdot v_{1} \\
+  (w \cdot v_{1}) - c_{1} (v_{1} \cdot v_{1}) - c_{2} (v_{2} \cdot v_{1}) - \cdots - c_{m} (v_{m} \cdot v_{1}) &= 0 \\
+  \intertext{Because each of the \nameref{def:Span}-constructing vectors are orthogonal to each other, their dot products is zero.}
+  (w \cdot v_{1}) - c_{1} (v_{1} \cdot v_{1}) - c_{2} (0) - \cdots - c_{m} (0) &= 0 \\
+  w \cdot v_{1} &= c_{1} (v_{1} \cdot v_{1}) \\
+  c_{1} &= \frac{w \cdot v_{1}}{v_{1} \cdot v_{1}} \\
+  \intertext{You can solve for the other coefficients the exact same way, yielding similar-looking equations.}
+  \Proj{w}{S} &= \frac{w \cdot v_{1}}{v_{1} \cdot v_{1}} v_{1} + \frac{w \cdot v_{2}}{v_{2} \cdot v_{2}} v_{2} + \cdots + \frac{w \cdot v_{m}}{v_{m} \cdot v_{m}} v_{m}
+\end{align*}
+
+This shows the general equation to find the \nameref{def:Vector_Projection} of $w$ onto a \nameref{def:Span} $S$.
+\begin{equation}\label{eq:Vector_Projected_onto_Span}
+  \Proj{w}{S} = \frac{w \cdot v_{1}}{v_{1} \cdot v_{1}} v_{1} + \frac{w \cdot v_{2}}{v_{2} \cdot v_{2}} v_{2} + \cdots + \frac{w \cdot v_{m}}{v_{m} \cdot v_{m}} v_{m}
+\end{equation}
+
+\begin{blackbox}
+  Because \Cref{eq:Vector_Projected_onto_Span} yields another vector, we can find the distance from the end of $w$ to the \nameref{def:Span} $S$ by using the magnitude of the \nameref{def:Vector_Rejection} of $w$ from $S$.
+\end{blackbox}
 
 %%% Local Variables:
 %%% mode: latex
