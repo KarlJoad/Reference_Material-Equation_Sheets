@@ -311,6 +311,19 @@
   \end{align*}
 \end{example}
 
+\subsubsection{Determine if Vector is in Span}\label{subsubsec:Determine_Vector_In_Span}
+Similar to how we determine a new set of orthogonal vectors using the \nameref{thm:Gram-Schmidt_Orthogonalization}, we can use the \nameref{def:Vector_Rejection} to determine if another vector is \textbf{in} the space created by the \nameref{def:Span} $\Span(S)$.
+
+In short, if a vector is inside of a space, then its \nameref{def:Vector_Rejection} from the space is zero.
+\begin{equation*}
+  \Rej{w}{S} = 0
+\end{equation*}
+
+Thus, to verify that a vector $w$ \textbf{is} inside a \nameref{def:Span} $S$ created by a set of vectors, you must verify \Cref{eq:Verify_Vector_In_Span}.
+\begin{equation}\label{eq:Verify_Vector_In_Span}
+  w = \Proj{w}{S}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
