@@ -141,6 +141,228 @@ A real symmetric matrix has two important properties.
   \end{remark}
 \end{definition}
 
+\begin{example}[Lecture 20, Example 2]{Classify Conic Section}
+  Classify the conic section produced by the \nameref{def:Quadratic_Form} shown below?
+  In addition, sketch it, and determine its principle axes?
+  \begin{equation*}
+    4x_{1}^{2} + 8x_{1}x_{2} - 2x_{2}^{2} = 24
+  \end{equation*}
+  \tcblower{}
+  First thing we must do is convert the \nameref{def:Quadratic_Form} into a series of matrices.
+  \begin{align*}
+    \begin{pmatrix}
+      x_{1} & x_{2}
+    \end{pmatrix}
+              \begin{pmatrix}
+                4 & 4 \\
+                4 & -2
+              \end{pmatrix}
+                    \begin{pmatrix}
+                      x_{1} \\ x_{2}
+                    \end{pmatrix} &= 24 \\
+    \Transpose{X} A X &= 24
+  \end{align*}
+
+  Now, we want a way to simplify $A$ such that we have an easy conic section to work with.
+  In this case, $D$, the \nameref{def:Diagonal_Matrix} of $A$ will provide us with such a simplification.
+  Thus, we must find the \nameref{def:Eigenvalue}s, \nameref{def:Eigenvector}s, and ensure the $P$ created is \nameref{def:Orthogonal_Matrix}.
+  \begin{align*}
+    A - \lambda I &=
+                    \begin{pmatrix}
+                      4 - \lambda & 4 \\
+                      4 & -2 - \lambda
+                    \end{pmatrix} \\
+    \det(A - \lambda I) &= (4 - \lambda) (-2 - \lambda) - 4 (4) \\
+                  &= \lambda^{2} - 2 \lambda - 24 \\
+                  &= (\lambda - 6) (\lambda + 4)
+  \end{align*}
+
+  We get \nameref{def:Eigenvalue}s if and only if $\det(A-\lambda I) = 0$.
+  So, the two eigenvalues are: $\lambda = 6$ and $\lambda = -4$, both with algebraic multiplicity 1.
+
+  Starting with $\lambda = 6$:
+  \begin{align*}
+    A - \lambda I &=
+                    \begin{pmatrix}
+                      -2 & 4 \\
+                      4 & -8
+                    \end{pmatrix} \\
+    \begin{pmatrix}
+      -2 & 4 \\
+      4 & -8
+    \end{pmatrix}
+          \begin{pmatrix}
+            x_{1} \\ x_{2}
+          \end{pmatrix} &=
+                          \begin{pmatrix}
+                            0 \\ 0
+                          \end{pmatrix} \\
+    \intertext{Converting the matrix equation to a system of linear equations.}
+    -2x_{1} + 4x_{2} &= 0 \\
+    4x_{1} - 8x_{2} &= 0 \\
+    \intertext{Solving the system.}
+    x_{1} &= 2 x_{2} \\
+    x_{2} &= x_{2} \\
+    \intertext{Putting the solutions found back into the variable matrix.}
+    \begin{pmatrix}
+      x_{1} \\ x_{2}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      2 x_{2} \\ x_{2}
+                    \end{pmatrix} \\
+    &= x_{2}
+      \begin{pmatrix}
+        2 \\ 1
+      \end{pmatrix}
+  \end{align*}
+
+  Thus, the \nameref{def:Eigenvector} for the \nameref{def:Eigenvalue} $\lambda = 6$ is:
+  \begin{equation*}
+    = x_{2}
+    \begin{pmatrix}
+      2 \\ 1
+    \end{pmatrix}\text{, where } x_{2} \neq 0
+  \end{equation*}
+
+  Now, $\lambda = -4$:
+  \begin{align*}
+    A - \lambda I &=
+                    \begin{pmatrix}
+                      8 & 4 \\
+                      4 & 2
+                    \end{pmatrix} \\
+    \begin{pmatrix}
+      8 & 4 \\
+      4 & 2
+    \end{pmatrix}
+          \begin{pmatrix}
+            x_{1} \\ x_{2}
+          \end{pmatrix} &=
+                          \begin{pmatrix}
+                            0 \\ 0
+                          \end{pmatrix} \\
+    \intertext{Converting the matrix equation to a system of linear equations.}
+    8x_{1} + 4x_{2} &= 0 \\
+    4x_{1} + 2x_{2} &= 0 \\
+    \intertext{Solving the system.}
+    x_{1} &= \frac{-1}{2} x_{2} \\
+    x_{2} &= x_{2} \\
+    \intertext{Putting the solutions found back into the variable matrix.}
+    \begin{pmatrix}
+      x_{1} \\ x_{2}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      \frac{-1}{2} x_{2} \\ x_{2}
+                    \end{pmatrix} \\
+    &= x_{2}
+      \begin{pmatrix}
+        \frac{-1}{2} \\ 1
+      \end{pmatrix}
+  \end{align*}
+
+  Thus, the \nameref{def:Eigenvector} for the \nameref{def:Eigenvalue} $\lambda = 6$ is:
+  \begin{equation*}
+    = x_{2}
+    \begin{pmatrix}
+      \frac{-1}{2} \\ 1
+    \end{pmatrix}\text{, where } x_{2} \neq 0
+  \end{equation*}
+
+  Double-checking that the distinct \nameref{def:Eigenvector}s are orthogonal, we perform the dot product.
+  From the definition of an \nameref{def:Eigenvector}, we are allowed to scale the base vector by any scalar value, and the new vector remains an eigenvector of the original matrix.
+  In this case, scaling the \nameref{def:Eigenvector} corresponding to $\lambda = -4$ by 2, we remove the fraction, simplifying our calculations.
+  \begin{align*}
+    \begin{pmatrix}
+      2 \\ 1
+    \end{pmatrix} \cdot
+    \begin{pmatrix}
+      -1 \\ 2
+    \end{pmatrix} &= 2 (-1) + 1 (2) \\
+                  &= -2 + 2 \\
+                  &= 0
+  \end{align*}
+  $\therefore$ the two eigenvectors are orthogonal.
+
+  Now, we need to normalize the vectors.
+  \begin{align*}
+    \Magnitude{c_{1}} &= \sqrt{2^{2} + 1^{2}} \\
+                      &= \sqrt{4 + 1} \\
+                      &= \sqrt{5} \\
+    \intertext{Similarly, the magnitude of the second column is the same.}
+  \end{align*}
+
+  So, an \nameref{def:Orthogonal_Matrix} $P$ is:
+  \begin{equation*}
+    P =
+    \begin{pmatrix}
+      \frac{2}{\sqrt{5}} & \frac{-1}{\sqrt{5}} \\
+      \frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}}
+    \end{pmatrix}
+  \end{equation*}
+
+  Because $P$ is a matrix that implements a \nameref{def:Diagonalization} of $A$, we know $P^{-1} A P = D$.
+  This means $A = P D P^{-1}$.
+  Also, because $P$ is \nameref{def:Orthogonal_Matrix}, we know $P^{-1} = \Transpose{P}$.
+  So, $A = P D \Transpose{P}$, where $D =
+  \begin{pmatrix}
+    6 & 0 \\
+    0 & -4
+  \end{pmatrix}$.
+
+  Now, plugging the equivalency we found for $A$ into the converted \nameref{def:Quadratic_Form}, we have:
+  \begin{align*}
+    \Transpose{X} A X &= 24 \\
+    A &= P D \Transpose{P} \\
+    \Transpose{X} (P D \Transpose{P}) X &= 24 \\
+    \intertext{Matrix multiplication is associative in this way already, so drop the parentheses.}
+    \Transpose{X} P D \Transpose{P} X &= 24 \\
+  \end{align*}
+
+  Now, we can change the axes of this problem, creating a whole new coordinate system.
+  This is done by defining $Y = \Transpose{P} X$.
+  The principle axes of this coordinate system can be found by solving:
+  \begin{align*}
+    X &= t p_{1} & X &= t p_{2} \\
+    \begin{pmatrix}
+      x_{1} \\ x_{2}
+    \end{pmatrix} &= t
+                    \begin{pmatrix}
+                      \frac{1}{\sqrt{5}} \\ \frac{2}{\sqrt{5}}
+                    \end{pmatrix} & \begin{pmatrix}
+                      x_{1} \\ x_{2}
+                    \end{pmatrix} &= t
+                                    \begin{pmatrix}
+                                      \frac{-2}{\sqrt{5}} \\ \frac{1}{\sqrt{5}}
+                                    \end{pmatrix} \\
+    \intertext{Solving each system of equations, we find:}
+    x_{2} &= 2x_{1} & x_{2} &= \frac{-1}{2} x_{1}
+    \intertext{Due to the way we defined $Y$ earlier, the first equation is the definition of $y_{1}$ in the original coordinate system.
+    Likewise for $y_{2}$.}
+  \end{align*}
+
+  We defined $Y$ as $Y = \Transpose{P} X$, which means that, according to the properties of matrix transposition, $\Transpose{Y} = \Transpose{X} P$.
+  So we now have:
+  \begin{align*}
+    \Transpose{X} P D \Transpose{P} X &= 24 \\
+    \Transpose{Y} D Y &= 24 \\
+    \Transpose{Y}
+    \begin{pmatrix}
+      6 & 0 \\
+      0 & -4
+    \end{pmatrix} Y &= 24 \\
+    \intertext{Using the theory of \nameref{def:Quadratic_Form}s again, we can expand this to a quadratic equation again.}
+    6y_{1}^{2} - 4y_{2}^{2} &= 24 \\
+    \frac{y_{1}^{2}}{4} - \frac{y_{2}^{2}}{6} &= 1
+  \end{align*}
+
+  So, the original \nameref{def:Quadratic_Form} is a hyperbola.
+  Roughly sketched, it looks like the figure below.
+
+  \begin{center}
+    \includegraphics[scale=0.50]{./Quadratic_Form.png}
+  \end{center}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
