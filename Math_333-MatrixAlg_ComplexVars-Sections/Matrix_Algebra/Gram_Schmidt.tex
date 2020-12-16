@@ -91,6 +91,226 @@
   \end{align*}
 \end{example}
 
+\begin{example}[Lecture 21, Example 2]{Gram-Schmidt on Matrices}
+  Given the \nameref{def:Real_Symmetric_Matrix} $A$, determine an \nameref{def:Orthogonal_Matrix} that implements a \nameref{def:Diagonalization}.
+  \begin{equation*}
+    A =
+    \begin{pmatrix}
+      3 & 2 & 4 \\
+      2 & 0 & 2 \\
+      4 & 2 & 3
+    \end{pmatrix}
+  \end{equation*}
+  \tcblower{}
+  Start by finding the \nameref{def:Eigenvalue}s, and then the \nameref{def:Eigenvector}s.
+  \begin{align*}
+    A - \lambda I &=
+                    \begin{pmatrix}
+                      3 - \lambda & 2 & 4 \\
+                      2 & 0 - \lambda & 2 \\
+                      4 & 2 & 3 - \lambda
+                    \end{pmatrix} \\
+    \intertext{We can make finding the \nameref{def:Determinant} easier by performing some \nameref{def:Elementary_Column_Op}s.
+    Refer back to \Cref{subsubsec:Create_0s_Determinants} for how these affect the determinant's outcome.}
+    &\grstep{-2c_{2} + c_{3}}
+      \begin{pmatrix}
+        3 - \lambda & 2 & 0 \\
+        2 & - \lambda & 2 + 2 \lambda \\
+        4 & 2 & -1 - \lambda
+      \end{pmatrix} \\
+    \det(A - \lambda I) &= (1 + \lambda) \det
+                          \begin{pmatrix}
+                            3 - \lambda & 2 & 0 \\
+                            2 & -\lambda & 2 \\
+                            4 & 2 & -1
+                          \end{pmatrix} \\
+    \intertext{Finding the \nameref{def:Determinant} by expanding the first row.}
+                  &= (1 + \lambda) \bigl( (3-\lambda) (\lambda - 4) - 2(-2 - 8) \bigr) \\
+                  &= (1 + \lambda) (3\lambda - \lambda^{2} + 4 \lambda - 12 + 20) \\
+                  &= (1 + \lambda) (-\lambda^{2} + 7\lambda + 8) \\
+                  &= (1 + \lambda) (\lambda + 1) (-\lambda + 8)
+  \end{align*}
+  We get \nameref{def:Eigenvalue}s if and only if $\det(A - \lambda I) = 0$.
+  So, we have two \textbf{distinct} eigenvalues:
+  \begin{description}[noitemsep]
+  \item[$\lambda = -1$] With algebraic multiplicity 2.
+  \item[$\lambda = 8$] With algebraic multiplicity 1.
+  \end{description}
+
+  Now, finding the \nameref{def:Eigenvector}s. \\
+  For $\lambda = -1$:
+  \begin{align*}
+    \begin{pmatrix}
+      4 & 2 & 4 \\
+      2 & 1 & 2 \\
+      4 & 2 & 4
+    \end{pmatrix}
+              \begin{pmatrix}
+      x_{1} \\ x_{2} \\ x_{3}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      0 \\ 0 \\ 0
+                    \end{pmatrix} \\
+    \grstep{\substack{-2r_{2} + r_{1} \\ -2r_{2} + r_{3}}}
+    \begin{pmatrix}
+      0 & 0 & 0 \\
+      2 & 1 & 2 \\
+      0 & 0 & 0
+    \end{pmatrix}
+              \begin{pmatrix}
+                x_{1} \\ x_{2} \\ x_{3}
+              \end{pmatrix} &=
+                              \begin{pmatrix}
+                                0 \\ 0 \\ 0
+                              \end{pmatrix} \\
+    \intertext{Convert to system of linear equations.}
+    2x_{1} + x_{2} + 2x_{3} &= 0 \\
+    \intertext{Solve the system.}
+    x_{1} &= \frac{-1}{2} x_{2} - x_{3} \\
+    x_{2} &= x_{2} \\
+    x_{3} &= x_{3}
+  \end{align*}
+
+  So, the \nameref{def:Eigenvector} for $\lambda = -1$ is:
+  \begin{align*}
+    \begin{pmatrix}
+      x_{1} \\ x_{2} \\ x_{3}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      \frac{-1}{2} x_{2} - x_{3} \\ x_{2} \\ x_{3}
+                    \end{pmatrix} \\
+    &= x_{2}
+      \begin{pmatrix}
+        \frac{-1}{2} \\ 1 \\ 0
+      \end{pmatrix} + x_{3}
+    \begin{pmatrix}
+      -1 \\ 0 \\ 1
+    \end{pmatrix} \\
+    \intertext{Where $x_{2} \neq 0$ and $x_{3} \neq 0$ simultaneously.}
+  \end{align*}
+
+  For $\lambda = -1$, we have two \nameref{def:Eigenvector}s, but they are not distinct.
+
+  For $\lambda = 8$:
+  \begin{align*}
+    \begin{pmatrix}
+      -5 & 2 & 4 \\
+      2 & -8 & 2 \\
+      4 & 2 & -5
+    \end{pmatrix}
+              \begin{pmatrix}
+      x_{1} \\ x_{2} \\ x_{3}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      0 \\ 0 \\ 0
+                    \end{pmatrix} \\
+    \grstep{r_{3} + r_{1}}
+    \begin{pmatrix}
+      -1 & 4 & -1 \\
+      2 & -8 & 2 \\
+      4 & 2 & -5
+    \end{pmatrix}
+              \begin{pmatrix}
+                x_{1} \\ x_{2} \\ x_{3}
+              \end{pmatrix} &=
+                              \begin{pmatrix}
+                                0 \\ 0 \\ 0
+                              \end{pmatrix} \\
+    \grstep{\substack{2r_{1} + r_{2} \\ 4r_{1} + r_{3}}}
+    \begin{pmatrix}
+      -1 & 4 & -1 \\
+      0 & 0 & 0 \\
+      0 & 18 & -9
+    \end{pmatrix}
+              \begin{pmatrix}
+                x_{1} \\ x_{2} \\ x_{3}
+              \end{pmatrix} &=
+                              \begin{pmatrix}
+                                0 \\ 0 \\ 0
+                              \end{pmatrix} \\
+    \intertext{Convert to system of linear equations.}
+    -x_{1} + 4x_{2} - x_{3} &= 0 \\
+    18x_{2} - 9x_{3} &= 0 \\
+    \intertext{Solve the system.}
+    x_{3} &= 2x_{2} \\
+    x_{1} &= 2x_{2} \\
+    x_{2} &= x_{2}
+  \end{align*}
+
+  So, the \nameref{def:Eigenvector} for $\lambda = 8$ is:
+  \begin{align*}
+    \begin{pmatrix}
+      x_{1} \\ x_{2} \\ x_{3}
+    \end{pmatrix} &=
+                    \begin{pmatrix}
+                      2x_{2} \\ x_{2} \\ 2x_{2}
+                    \end{pmatrix} \\
+    &= x_{2}
+      \begin{pmatrix}
+        2 \\ 1 \\ 2
+      \end{pmatrix}
+    \intertext{Where $x_{2} \neq 0$}
+  \end{align*}
+
+  From the gathered \nameref{def:Eigenvector}s, set our vectors to be:
+  \begin{align*}
+    u_{1} &= (-1, 2, 0) \\
+    u_{2} &= (-1, 0, 1) \\
+    u_{3} &= (2, 1, 2) \\
+    \intertext{Checking if the vectors' orthogonality.}
+    u_{1} \cdot u_{2} &= \left( \frac{-1}{2} \right) (-1) + 1 (0) + 0 (1) \\
+          &= \frac{1}{2} \\
+          &\neq 0 \\
+    u_{1} \cdot u_{3} &= 0 \\
+    u_{2} \cdot u_{3} &= 0
+  \end{align*}
+
+  We can now use \nameref{thm:Gram-Schmidt_Orthogonalization} to find a new set of vectors which \textit{are} orthogonal.
+  \begin{align*}
+    v_{1} &= u_{1} \\
+    v_{1} &= (-1, 2, 0)
+  \end{align*}
+
+  Next,
+  \begin{align*}
+    v_{2} &= u_{2} - \frac{u_{2} \cdot v_{1}}{v_{1} \cdot v_{1}} v_{1} \\
+          &= (-1, 0, 1) - \frac{1}{5} (-1, 2, 0) \\
+          &= (\frac{-4}{5}, \frac{-2}{5}, 1) \\
+          &= (4, 2, -5) \\
+  \end{align*}
+
+  Lastly,
+  \begin{align*}
+    v_{3} &= u_{3} - \frac{u_{3} \cdot v_{1}}{v_{1} \cdot v_{1}} v_{1} - \frac{u_{3} \cdot v_{2}}{v_{2} \cdot v_{2}} v_{2} v_{2} \\
+    \intertext{Remember, $u_{3}$ was already orthogonal to $u_{1}$ and $u_{2}$, so it is orthogonal to $v_{1}$ and $v_{2}$ already.}
+          &= u_{3} \\
+    v_{3} &= (2, 1, 2)
+  \end{align*}
+
+  Lastly, we need to normalize each column, to make an \nameref{def:Orthogonal_Matrix}.
+  \begin{align*}
+    \Magnitude{v_{1}} &= \sqrt{5} \\
+    \Magnitude{v_{2}} &= \sqrt{45} \\
+    \Magnitude{v_{3}} &= 3
+  \end{align*}
+
+  Thus, our \nameref{def:Orthogonal_Matrix}, $Q$ implements a \nameref{def:Diagonalization} of $A$ whose product is $D$.
+  \begin{align*}
+    Q &=
+        \begin{pmatrix}
+          \frac{-1}{\sqrt{5}} & \frac{4}{\sqrt{45}} & \frac{2}{3} \\
+          \frac{2}{\sqrt{5}} & \frac{2}{\sqrt{45}} & \frac{1}{3} \\
+          0 & \frac{-5}{\sqrt{45}} & \frac{2}{3}
+        \end{pmatrix} \\
+    D &=
+        \begin{pmatrix}
+          -1 & 0 & 0 \\
+          0 & -1 & 0 \\
+          0 & 0 & 8
+        \end{pmatrix}
+  \end{align*}
+\end{example}
+
 
 %%% Local Variables:
 %%% mode: latex
