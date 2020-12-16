@@ -1,4 +1,25 @@
 \subsection{Hermitian Matrices}\label{subsec:Hermitian_Matrices}
+\begin{definition}[Hermitian Matrix]\label{def:Hermitian_Matrix}
+  A \emph{Hermitian matrix} is a complex square \nameref{def:Matrix} that is equal to its own \nameref{def:Conjugate_Transpose}.
+  This makes Hermitian matrices the complex-valued complement to a \nameref{def:Real_Symmetric_Matrix}.
+  Symbolically,
+
+  \begin{equation}\label{eq:Hermitian_Matrix}
+    \begin{aligned}
+      \MatrixConjTrans{A} &= A^{-1}
+    \end{aligned}
+  \end{equation}
+
+  For this to occur, the main diagonal must have \textbf{only} real values.
+  The off-diagonals must be \nameref{def:Complex_Conjugate}s of each other.
+
+  Hermitian matrices share the same 2 properties as real, symmetric matrices.
+  \begin{propertylist}
+  \item \nameref{def:Eigenvalue}s are entirely real-valued ($\RealNumbers$).\label{prop:Hermitian_Matrix-Real_Eigenvalues}
+  \item \nameref{def:Eigenvector}s that correspond to \textbf{distinct} \nameref{def:Eigenvalue}s are orthogonal.\label{prop:Hermitian_Matrix-Orthogonal_Eigenvectors}
+  \end{propertylist}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
