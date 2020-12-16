@@ -2,6 +2,23 @@
 The \nameref{def:Inverse_Matrix} of a \nameref{def:Complex_Matrix} has the exact same definition as its real-valued counterpart.
 Refer back to \Cref{subsec:Inverse_Matrices} for a detailed explanation.
 
+In short, the process of computing an inverse remains the same as before.
+\begin{align*}
+  A &=
+      \begin{bmatrix}
+        i & 2 + 3i \\
+        4 & i
+      \end{bmatrix} \\
+  \det(A) &= i (i) - (2+3i)(4) \\
+    &= -1 - (4 + 12i) \\
+    &= -9 - 12i \\
+  A^{-1} &= \frac{1}{\det(A)}
+  \begin{bmatrix}
+    i & -2 - 3i \\
+    -4 & i
+  \end{bmatrix}
+  \intertext{Switch the diagonal elements and \textbf{negate} the off-diagonal elements.}
+\end{align*}
 
 %%% Local Variables:
 %%% mode: latex
