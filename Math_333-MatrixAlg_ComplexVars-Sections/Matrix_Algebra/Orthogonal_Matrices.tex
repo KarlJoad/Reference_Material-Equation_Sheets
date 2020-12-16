@@ -24,6 +24,43 @@ This is an \nameref{def:Orthogonal_Matrix}.
   \end{remark}
 \end{definition}
 
+To show that an \nameref{def:Orthogonal_Matrix} \textbf{requires} \nameref{def:Orthonormal_Set}s, take a small example.
+
+\begin{blackbox}
+  Let $A$ be an \nameref{def:Orthogonal_Matrix}.
+  Define $A_{n \by 1}$, as:
+  \begin{equation*}
+    A =
+    \begin{pmatrix}
+      r_{1} \\ r_{2} \\ \vdots \\ r_{n}
+    \end{pmatrix}
+  \end{equation*}
+
+  Then,
+  \begin{equation*}
+    \Transpose{A} =
+    \begin{pmatrix}
+      r_{1} & r_{2} & \cdots & r_{n}
+    \end{pmatrix}
+  \end{equation*}
+
+  By the definition of an \nameref{def:Orthogonal_Matrix} and \nameref{def:Inverse_Matrix}, we know that $A \Transpose{A} = I$.
+  This means that when multiplying these two matrices together on the $i$th row and $j$th column, we have 2 cases:
+  \begin{equation*}
+    A_{i \by 1} \Transpose{A}_{1 \by j} =
+    \begin{cases}
+      1 & \text{ when } i = j \\
+      0 & \text{ when } i \neq j
+    \end{cases}
+  \end{equation*}
+
+  This means that:
+  \begin{description}[noitemsep]
+  \item When $i \neq j$, then $r_{i} \perp r_{j}$.
+  \item When $i = j$, then $r_{i} \Transpose{r_{j}} = 1$, meaning each row has unit length.
+  \end{description}
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
