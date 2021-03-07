@@ -89,6 +89,32 @@ This velocity is the \nameref{def:Drift_Velocity}.
 
 \Cref{eq:Drift_Velocity-Electron} is negative because \nameref{def:Electron}s move in the opposite direction of the electric field \EField{}.
 
+In \Cref{eq:Drift_Velocity-Hole,eq:Drift_Velocity-Electron}, the constants \HoleMobility{} and \ElectronMobility{} are used.
+\HoleMobility{} is the \nameref{def:Hole_Mobility}.
+\ElectronMobility{} is the \nameref{def:Electron_Mobility}.
+
+\begin{definition}[Hole Mobility]\label{def:Hole_Mobility}
+  \emph{Hole mobility}, \HoleMobility{} is a value representing how ``easy'' it is for \nameref{def:Hole}s to move through the \nameref{def:Semiconductor}'s crystal structure in response to an applied electric field, \EField{}.
+
+  The hole mobility for \nameref{def:Intrinsic} silicon is a known constant, and is shown in \Cref{eq:Hole_Mobility-Intrinsic_Silicon}.
+  \begin{equation}\label{eq:Hole_Mobility-Intrinsic_Silicon}
+    \HoleMobility = \SI{480}{\centi\meter\squared\per\volt\per\second}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Electron Mobility]\label{def:Electron_Mobility}
+  \emph{Electron mobility}, \ElectronMobility{} is a value representing how ``easy'' it is for \nameref{def:Electron}s to move through the \nameref{def:Semiconductor}'s crystal structure in response to an applied electric field, \EField{}.
+
+  The electron mobility for \nameref{def:Intrinsic} silicon is a known constant, and is shown in \Cref{eq:Electron_Mobility-Intrinsic_Silicon}.
+  \begin{equation}\label{eq:Electron_Mobility-Intrinsic_Silicon}
+    \ElectronMobility = \SI{1350}{\centi\meter\squared\per\volt\per\second}
+  \end{equation}
+
+  \begin{remark}
+    \nameref{def:Electron}s move through a semiconductor's crystal lattice much more easily than \nameref{def:Hole}s do.
+    This can be seen by $\ElectronMobility \approx 2.5 \HoleMobility$.
+  \end{remark}
+\end{definition}
 
 \subsubsection{Diffusion Current}\label{subsubsec:Diffusion_Current}
 \subsection{The \PNJunction{} Junction}\label{subsec:The_pn_Junction}
