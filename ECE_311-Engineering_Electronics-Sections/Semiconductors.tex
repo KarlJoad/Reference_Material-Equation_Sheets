@@ -45,6 +45,17 @@ This is represented by the relation in \Cref{eq:Electron_Hole_Concentration-Intr
   \ElectronConcentration = \HoleConcentration = \HoleElectronConcentration
 \end{equation}
 
+Semiconductor physics tells us that \HoleElectronConcentration{} is defined by \Cref{eq:Hole_Electron_Concentration}.
+\begin{equation}\label{eq:Hole_Electron_Concentration}
+  \HoleElectronConcentration = B \Temp^{\frac{3}{2}} e^{\frac{-\BandgapEnergy}{2 \BoltzmannConstant \Temp}}
+\end{equation}
+
+where
+\begin{description}[noitemsep]
+\item $B$ is a material-dependent parameter.
+\item $\Temp$ is the temperature
+\item $\BoltzmannConstant$ is Boltzmann's constant.
+\end{description}
 
 \subsection{Doped Semiconductors}\label{subsec:Doped_Semiconductors}
 
