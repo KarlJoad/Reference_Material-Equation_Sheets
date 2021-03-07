@@ -149,16 +149,16 @@ We can find the distance the depletion layer falls into each side with \Cref{eq:
 
 \begin{subequations}\label{eq:Depletion_Layer_Directions}
   \begin{equation}\label{eq:Depletion_Layer_Directions-Electron}
-    x_{\Electron} = \DepletionDistance \left( \frac{\AcceptorConcentration}{\AcceptorConcentration + \DonorConcentration} \right)
+    x_{\ElectronConcentration} = \DepletionDistance \left( \frac{\AcceptorConcentration}{\AcceptorConcentration + \DonorConcentration} \right)
   \end{equation}
   \begin{equation}\label{eq:Depletion_Layer_Directions-Hole}
-    x_{\Hole} = \DepletionDistance \left( \frac{\DonorConcentration}{\AcceptorConcentration + \DonorConcentration} \right)
+    x_{\HoleConcentration} = \DepletionDistance \left( \frac{\DonorConcentration}{\AcceptorConcentration + \DonorConcentration} \right)
   \end{equation}
 \end{subequations}
 
 Lastly, the sum of the ``bleed'' in both directions is equal to the width of the entire \nameref{def:Depletion_Layer}.
 \begin{equation}\label{eq:Depletion_Layer-Directions_Sum}
-  \DepletionDistance = x_{\Electron} + x_{\Hole}
+  \DepletionDistance = x_{\ElectronConcentration} + x_{\HoleConcentration}
 \end{equation}
 
 %%% Local Variables:
