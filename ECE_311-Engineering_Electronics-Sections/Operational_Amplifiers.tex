@@ -11,6 +11,17 @@
   \label{fig:Op-Amp}
 \end{figure}
 
+Typically, terminals 4 and 5 are \textbf{not} included in circuit schematics, as they are implied to exist, because the \nameref{def:Op-Amp} requires input power to operate.
+
+\begin{definition}[Open-Loop Gain]\label{def:Open-Loop_Gain}
+  The \emph{open-loop gain} of an \nameref{def:Op-Amp}, typically represented with \OpenLoopGain{} is the gain in voltage at the output given an input voltage.
+  The equation for the open-loop gain is given in \Cref{eq:Open-Loop_Gain}.
+
+  \begin{equation}\label{eq:Open-Loop_Gain}
+    \OpenLoopGain = \frac{V_{O}}{V_{+} - V_{-}}
+  \end{equation}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
