@@ -58,6 +58,16 @@ We have only considered ideal \nameref{def:Op-Amp}s throughout this text.
 However, in the real world, like everything, op-amps do not behave ideally.
 In the subsections below, the various non-ideal properties are discussed.
 
+\subsubsection{Offset Voltage}\label{subsubsec:Offset_Voltage}
+The first major non-ideal behavior \nameref{def:Op-Amp}s have is that even when the differential input voltage is zero ($V_{+} - V_{-} = 0$), there is a finite output voltage.
+This is because of an internal voltage called the \nameref{def:Input_Offset_Voltage}.
+
+\begin{definition}[Input Offset Voltage]\label{def:Input_Offset_Voltage}
+  The \emph{input offset voltage} is a non-ideal behavior of \nameref{def:Op-Amp}s.
+  The typical symbol is \DCVoltage{OS}, and typically has the units \si{\micro\volt\per\degreeCelsius}.
+  For most \nameref{def:Op-Amp}s, \DCVoltage{OS} is typically in the range $\SI{1}{\milli\volt} \leq \DCVoltage{OS} \leq \SI{5}{\milli\volt}$.
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
