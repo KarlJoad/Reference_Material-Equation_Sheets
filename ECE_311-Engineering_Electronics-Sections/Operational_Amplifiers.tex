@@ -77,6 +77,29 @@ A way to model a non-ideal \nameref{def:Op-Amp} that is being affected by an \na
   \label{fig:Op-Amp_Input_Offset_Voltage}
 \end{figure}
 
+\subsubsection{Input Bias and Offset Currents}\label{subsubsec:Input_Bias_Offset_Currents}
+The other major non-ideal behavior \nameref{def:Op-Amp}s have is that they have \nameref{def:Input_Bias_Current}s and \nameref{def:Input_Offset_Current}.
+
+\begin{definition}[Input Bias Current]\label{def:Input_Bias_Current}
+  The \emph{input bias current}s are due to the fact that op-amps require DC input currents.
+  These are independent of the fact that a real \nameref{def:Op-Amp} has finite input resistance.
+  The two input bias currents are: \DCCurrent{B,1} and \DCCurrent{B,2}.
+  The average value of the input bias current is usually provided on component datasheets.
+  The equation for the average value is given in \Cref{eq:Average_Input_Bias_Current}.
+
+  \begin{equation}\label{eq:Average_Input_Bias_Current}
+    \DCCurrent{B} = \frac{\DCCurrent{B,1} + \DCCurrent{B,2}}{2}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Input Offset Current]\label{def:Input_Offset_Current}
+  The \emph{input offset current} is the difference betweeen the \nameref{def:Input_Bias_Current}s.
+  The mathematical symbol for this current is \DCCurrent{OS}
+  \begin{equation}\label{eq:Input_Offset_Current}
+    \DCCurrent{OS} = \lvert \DCCurrent{B,1} - \DCCurrent{B,2} \rvert
+  \end{equation}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
