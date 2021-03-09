@@ -77,6 +77,16 @@ There are two kinds of doping:
   This is done by doping with an element with 3 valence electrons, typically boron.
 \end{enumerate}
 
+If the concentration of donor atoms in an \ElectronConcentration{}-type doped \nameref{def:Semiconductor} is \DonorConcentration{}, where \DonorConcentration{} is much greater than \HoleElectronConcentration{} ($\DonorConcentration \gg \HoleConcentration$), then the concentration of \textbf{free \nameref{def:Electron}s} is:
+\begin{equation}\label{eq:n-Type_Donor_Concentration}
+  \ElectronConcentration_{\NType} \simeq \DonorConcentration
+\end{equation}
+
+By substituting \Cref{eq:n-Type_Donor_Concentration} into \Cref{eq:Hole_Electron_Concentration}, we can find the \nameref{def:Hole} concentration for an \ElectronConcentration{}-type \nameref{def:Semiconductor}.
+\begin{equation}\label{eq:n-Type_Acceptor_Concentration}
+  \HoleConcentration_{\NType} \simeq \frac{\HoleElectronConcentration^{2}}{\DonorConcentration}
+\end{equation}
+
 
 \subsection{Current Flow in Semiconductors}\label{subsec:Semiconductors_Current_Flow}
 \subsubsection{Drift Current}\label{subsubsec:Drift_Current}
