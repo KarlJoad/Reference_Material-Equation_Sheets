@@ -183,6 +183,12 @@ Similarly, we can find the drift current equation for $\DCCurrent{\ElectronConce
   \CurrentDensity{\ElectronConcentration} = \eCharge \ElectronConcentration \ElectronMobility \EField
 \end{equation}
 
+Then the total drift current is just the addition of the two separate drift currents.
+
+\begin{equation}\label{eq:Total_Drift_Current_Density}
+  \CurrentDensity{} = \CurrentDensity{\HoleConcentration} + \CurrentDensity{\ElectronConcentration}
+\end{equation}
+
 \subsubsection{Diffusion Current}\label{subsubsec:Diffusion_Current}
 \begin{definition}[Diffusion Current]\label{def:Diffusion_Current}
   \emph{Diffusion current} arises due to concentration differences in \nameref{def:Electron}s and \nameref{def:Hole}s in a semiconductor.
