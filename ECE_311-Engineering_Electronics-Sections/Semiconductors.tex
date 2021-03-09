@@ -228,6 +228,13 @@ This leads to two important equations, \Cref{eq:Total_Current_Density-Conductivi
   It travels from the \HoleConcentration{} side to the \ElectronConcentration{} side.
 \end{definition}
 
+The \nameref{def:Diffusion_Current} density is proportional to the slope of the concentration gradient at any given point in the \nameref{def:Semiconductor}.
+For example, if a \nameref{def:Semiconductor} has \textbf{holes} added to it such that there is a larger amount of holes at one side of a block than the other, we end up with \Cref{eq:Diffusion_Current_Density-Hole}.
+
+\begin{equation}\label{eq:Diffusion_Current_Density-Hole}
+  \CurrentDensity{\HoleConcentration} = - \eCharge \HoleDiffusivity \frac{d \HoleConcentration(x)}{dx}
+\end{equation}
+
 \subsection{The \PNJunction{} Junction}\label{subsec:The_pn_Junction}
 
 \subsection{The \PNJunction{} Junction with Applied Voltage}\label{subsec:The_pn_Junction-Voltage_Applied}
