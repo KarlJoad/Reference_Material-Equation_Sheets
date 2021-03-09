@@ -189,6 +189,25 @@ Then the total drift current is just the addition of the two separate drift curr
   \CurrentDensity{} = \CurrentDensity{\HoleConcentration} + \CurrentDensity{\ElectronConcentration}
 \end{equation}
 
+By factoring out the constant terms, we end up with:
+\begin{align*}
+  \CurrentDensity{} &= \CurrentDensity{\HoleConcentration} + \CurrentDensity{\ElectronConcentration} \\
+                    &= \eCharge \HoleConcentration \HoleMobility \EField + \eCharge \ElectronConcentration \ElectronMobility \EField \\
+                    &= \eCharge (\HoleConcentration \HoleMobility + \ElectronConcentration \ElectronMobility) \EField \\
+  \CurrentDensity{} &= \Conductivity \EField
+\end{align*}
+
+This leads to two important equations, \Cref{eq:Total_Current_Density-Conductivity,eq:Total_Current_Density-Resistivity}.
+
+\begin{subequations}
+  \begin{equation}\label{eq:Total_Current_Density-Conductivity}
+    \CurrentDensity{} = \Conductivity \EField
+  \end{equation}
+  \begin{equation}\label{eq:Total_Current_Density-Resistivity}
+    \CurrentDensity{} = \frac{\EField}{\Resistivity}
+  \end{equation}
+\end{subequations}
+
 \subsubsection{Diffusion Current}\label{subsubsec:Diffusion_Current}
 \begin{definition}[Diffusion Current]\label{def:Diffusion_Current}
   \emph{Diffusion current} arises due to concentration differences in \nameref{def:Electron}s and \nameref{def:Hole}s in a semiconductor.
