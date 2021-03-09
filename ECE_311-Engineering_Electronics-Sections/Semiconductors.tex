@@ -161,6 +161,18 @@ We are interested in the current flowing through an object due to an applied ele
   \DCCurrent{\HoleConcentration} = \Area \eCharge \HoleConcentration \DriftVelocity_{\HoleConcentration-\text{drift}}
 \end{equation}
 
+If we substitute $\DriftVelocity_{\HoleConcentration-\text{drift}}$ with our knowledge from \Cref{eq:Drift_Velocity-Hole}, then we have the equation below.
+
+\begin{equation*}
+  \DCCurrent{\HoleConcentration} = \Area \eCharge \HoleConcentration \HoleMobility \EField
+\end{equation*}
+
+If we divide this equation by the cross-sectional area, $\Area$, then we have \Cref{eq:Drift_Current_Density-Hole}.
+
+\begin{equation}\label{eq:Drift_Current_Density-Hole}
+  \CurrentDensity{\HoleConcentration} = \frac{\DCCurrent{\HoleConcentration}}{\Area} = \eCharge \HoleConcentration \HoleMobility \EField
+\end{equation}
+
 \subsubsection{Diffusion Current}\label{subsubsec:Diffusion_Current}
 \begin{definition}[Diffusion Current]\label{def:Diffusion_Current}
   \emph{Diffusion current} arises due to concentration differences in \nameref{def:Electron}s and \nameref{def:Hole}s in a semiconductor.
