@@ -421,6 +421,18 @@ The current $\DCCurrent{}$ in the external circuit is the difference between \Dr
   To conclude, the \PNJunction{} can conduct substantial current in the forward-bias region and the current that is allowed to flow is mostly a \nameref{def:Diffusion_Current} whose value is determined by the forward-bias voltage.
 \end{blackbox}
 
+After performing some derivation that will not be included in this document (refer to the textbook,~\cite{sedraTextbook7}, for the relevant derivation), we end up with the equation for the current through a \PNJunction{} when a voltage is applied.
+
+\begin{equation}\label{eq:pn-Junction-Current-Voltage_Relation}
+  \DCCurrent{} = \Area \eCharge \HoleElectronConcentration^{2} \left( \frac{\HoleDiffusivity}{\Length_{\PType} \DonorConcentration} + \frac{\ElectronDiffusivity}{\Length_{\NType} \AcceptorConcentration} \right) \left( e^{\frac{\DCVoltage{}}{\ThermalVoltage}} - 1 \right)
+\end{equation}
+
+\Cref{eq:pn-Junction-Current-Voltage_Relation} is usually simplified down to \Cref{eq:pn-Junction-Current-Voltage_Relation-Simple}.
+
+\begin{equation}\label{eq:pn-Junction-Current-Voltage_Relation-Simple}
+  \DCCurrent{} = \SaturationCurrent \left( e^{\frac{\DCVoltage{}}{\ThermalVoltage}} - 1 \right)
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ECE_311-Engineering_Electronics-Reference_Sheet"
