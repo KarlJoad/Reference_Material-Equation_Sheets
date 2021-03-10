@@ -405,6 +405,12 @@ There are three possible cases for a \PNJunction{} to have a voltage applied, sh
   \label{fig:pn_Junction-Voltage_Applied}
 \end{figure}
 
+With voltages applied, the \nameref{def:Depletion_Layer} changes a bit, as seen by \Cref{eq:Depletion_Layer_Width-Voltage_Applied,eq:Depletion_Layer_Charge-Voltage_Applied}.
+
+\begin{equation}\label{eq:Depletion_Layer_Width-Voltage_Applied}
+  \DepletionDistance = \sqrt{\frac{2 \SiElectricPermittivity}{\eCharge} \left( \frac{1}{\AcceptorConcentration} + \frac{1}{\DonorConcentration} \right) (\JunctionBuiltInVoltage + \DCVoltage{R})}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ECE_311-Engineering_Electronics-Reference_Sheet"
