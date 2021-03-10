@@ -415,6 +415,12 @@ With voltages applied, the \nameref{def:Depletion_Layer} changes a bit, as seen 
   \TotalDepletionCharge = \Area \sqrt{2 \SiElectricPermittivity \eCharge \left( \frac{\AcceptorConcentration \DonorConcentration}{\AcceptorConcentration + \DonorConcentration} \right) (\JunctionBuiltInVoltage + \DCVoltage{R})}
 \end{equation}
 
+The current $\DCCurrent{}$ in the external circuit is the difference between \DriftCurrent{} and \DiffusionCurrent{}.
+
+\begin{blackbox}
+  To conclude, the \PNJunction{} can conduct substantial current in the forward-bias region and the current that is allowed to flow is mostly a \nameref{def:Diffusion_Current} whose value is determined by the forward-bias voltage.
+\end{blackbox}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ECE_311-Engineering_Electronics-Reference_Sheet"
