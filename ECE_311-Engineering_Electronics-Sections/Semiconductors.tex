@@ -348,6 +348,20 @@ Lastly, the sum of the ``bleed'' in both directions is equal to the width of the
   \DepletionDistance = x_{\ElectronConcentration} + x_{\HoleConcentration}
 \end{equation}
 
+\subsubsection{Depletion Layer Charge}\label{subsubsec:Depletion_Layer_Charge}
+By performing some derivation that will not be included in this document, we can find the charge stored in each part of the \nameref{def:Depletion_Layer}.
+Typically we are not interested in the particular sign of the charge, but their magnitude.
+Thus, we end up with \Cref{eq:Depletion_Layer_Charge-p,eq:Depletion_Layer_Charge-n}.
+
+\begin{subequations}
+  \begin{equation}\label{eq:Depletion_Layer_Charge-p}
+    \Abs{\Charge_{+}} = \eCharge \Area \DepletionSideDistance{\PType} \DonorConcentration
+  \end{equation}
+  \begin{equation}\label{eq:Depletion_Layer_Charge-n}
+    \Abs{\Charge_{-}} = \eCharge \Area \DepletionSideDistance{\NType} \AcceptorConcentration
+  \end{equation}
+\end{subequations}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ECE_311-Engineering_Electronics-Reference_Sheet"
