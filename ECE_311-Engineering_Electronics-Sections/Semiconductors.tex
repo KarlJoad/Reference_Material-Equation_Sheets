@@ -369,6 +369,14 @@ Thus, if we set $\Abs{\Charge_{+}} = \Abs{\Charge_{-}}$, we end up with an incre
   \frac{\DepletionSideDistance{\NType}}{\DepletionSideDistance{\PType}} = \frac{\AcceptorConcentration}{\DonorConcentration}
 \end{equation}
 
+\Cref{eq:Depletion_Layer_Width_Ration-Doping_Concentration} can be used to construct \Cref{eq:Depletion_Layer_Width,eq:Depletion_Layer_Directions-Electron,eq:Depletion_Layer_Directions-Hole}.
+
+Lastly, we can use $\DepletionDistance$ to obtain the total charge stored in the \nameref{def:Depletion_Layer}, shown in \Cref{eq:Total_Depletion_Layer_Charge}.
+
+\begin{equation}\label{eq:Total_Depletion_Layer_Charge}
+  \TotalDepletionCharge = \Area \sqrt{2 \SiElectricPermittivity \eCharge \left( \frac{\AcceptorConcentration \DonorConcentration}{\AcceptorConcentration + \DonorConcentration} \right) \JunctionBuiltInVoltage}
+\end{equation}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ECE_311-Engineering_Electronics-Reference_Sheet"
