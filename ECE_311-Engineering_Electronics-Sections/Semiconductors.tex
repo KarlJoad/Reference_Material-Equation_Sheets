@@ -377,6 +377,34 @@ Lastly, we can use $\DepletionDistance$ to obtain the total charge stored in the
   \TotalDepletionCharge = \Area \sqrt{2 \SiElectricPermittivity \eCharge \left( \frac{\AcceptorConcentration \DonorConcentration}{\AcceptorConcentration + \DonorConcentration} \right) \JunctionBuiltInVoltage}
 \end{equation}
 
+\subsection{The \PNJunction{} Junction with Applied Voltage}\label{subsec:The_pn_Junction-Voltage_Applied}
+There are three possible cases for a \PNJunction{} to have a voltage applied, shown in \Crefrange{fig:pn_Junction-Voltage_Applied-No_Voltage}{fig:pn_Junction-Voltage_Applied-Reverse_Voltage}.
+
+\begin{figure}[h!tbp]
+  \centering
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.50]{pn_Junction-Voltage_Applied-No_Voltage.png}
+    \caption{\PNJunction{} in Various States when Voltage Applied}
+    \label{fig:pn_Junction-Voltage_Applied-No_Voltage}
+  \end{subfigure}
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.50]{pn_Junction-Voltage_Applied-Forward_Voltage.png}
+    \caption{\PNJunction{} when Forward Voltage Applied for Forward bias}
+    \label{fig:pn_Junction-Voltage_Applied-Forward_Voltage}
+  \end{subfigure}
+  \\
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.50]{pn_Junction-Voltage_Applied-Reverse_Voltage.png}
+    \caption{\PNJunction{} when Reverse Voltage Applied for Reverse bias}
+    \label{fig:pn_Junction-Voltage_Applied-Reverse_Voltage}
+  \end{subfigure}
+  \caption{\PNJunction{} in Various States when Voltage Applied \parencite[p.~156]{sedraTextbook7}}
+  \label{fig:pn_Junction-Voltage_Applied}
+\end{figure}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../ECE_311-Engineering_Electronics-Reference_Sheet"
