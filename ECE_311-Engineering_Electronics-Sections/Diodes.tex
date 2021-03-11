@@ -197,6 +197,13 @@ It behaves uniquely in the reverse-bias region, so we study it in more depth her
   \label{fig:Zener_Diode_IV_Characteristics}
 \end{figure}
 
+As seen in \Cref{fig:Zener_Diode_IV_Characteristics}, the once inside the reverse breakdown region, the diode's characteristic is nearly linear.
+So, we choose to model it as a voltage source and a resistor in series, as denoted in \Cref{eq:Zener_Diode_Model} and seen in \Cref{fig:Zener_Diode_Model}.
+
+\begin{equation}\label{eq:Zener_Diode_Model}
+  \DCVoltage{Z} = \DCVoltage{Z,0} + \ZenerIncrementalResistance \DCCurrent{Z}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
