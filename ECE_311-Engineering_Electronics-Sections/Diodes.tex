@@ -125,6 +125,23 @@ If we are working with a small enough change ($\Delta \Voltage_{DD} \ll \Thermal
 
 To simplify the explanations here, we will pretend that the $\Delta \Voltage_{DD}$ is actually an AC voltage, $\ACVoltage{d}(t)$.
 
+\begin{align*}
+  \intertext{Then, by the theory of superposition, the voltage across the diode is also a time-varying function shown below.}
+  \ACVoltage{D}(t) &= \DCVoltage{D} + \ACVoltage{d}(t) \\
+  \intertext{Knowing how a \nameref{def:Diode} works, we can say,}
+  \ACCurrent{D}(t) &= \SaturationCurrent e^{\frac{\ACVoltage{D}}{\ThermalVoltage}} \\
+  \shortintertext{Substitute for $\ACVoltage{D}(t)$} \\
+                   &= \SaturationCurrent e^{\frac{\DCVoltage{D} + \ACVoltage{d}(t)}{\ThermalVoltage}} \\
+                   &= \SaturationCurrent e^{\frac{\DCVoltage{D}}{\ThermalVoltage}} e^{\frac{\ACVoltage{d}(t)}{\ThermalVoltage}} \\
+  \intertext{Let $\DCCurrent{D} = \SaturationCurrent e^{\frac{\DCVoltage{D}}{\ThermalVoltage}}$.}
+  \ACCurrent{D}(t) &= \DCCurrent{D} e^{\frac{\ACVoltage{d}(t)}{\ThermalVoltage}} \\
+  \intertext{If we keep the amplitude of the change we introduce remain small, meaning the $e^{\frac{\ACVoltage{d}(t)}{\ThermalVoltage}} \approx 1$, then we can solve this.
+  Such a constraint means that $\frac{\ACVoltage{d}(t)}{\ThermalVoltage} \ll 1$.
+  Expanding the exponential using its infinite series and truncating after two terms yields a reasonable approximation.
+  In that case:}
+  \ACCurrent{D}(t) &\simeq \DCCurrent{D} \left( 1 + \frac{\ACVoltage{d}(t)}{\ThermalVoltage} \right) \\
+\end{align*}
+
 
 %%% Local Variables:
 %%% mode: latex
