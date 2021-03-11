@@ -113,6 +113,14 @@ For example, say we increase the original source voltage $\Voltage_{S}$ by $\Del
 
 To solve this, we actually use the exponential model, but we are only concerned with the highest one or two orders in the infinite summation.
 
+\begin{blackbox}
+  Remember that Euler's exponential can be represented using an infinite series, seen below:
+  \begin{align*}
+    e^{x} &= 1 + x + \frac{x^{2}}{2!} + \frac{x^{3}}{3!} + \cdots \\
+    &= \sum\limits_{k = 0}^{\infty} \frac{x^{k}}{k!}
+  \end{align*}
+\end{blackbox}
+
 
 %%% Local Variables:
 %%% mode: latex
