@@ -149,6 +149,19 @@ I have restated it here to demonstrate just \emph{how} important it is.
   \ACCurrent{D}(t) \simeq \DCCurrent{D} \left( 1 + \frac{\ACVoltage{d}(t)}{\ThermalVoltage} \right)
 \end{equation}
 
+By continuing to solve for this, we can find the \nameref{def:Incremental_Resistance}.
+
+\begin{definition}[Incremental Resistance]\label{def:Incremental_Resistance}
+  \emph{Incremental resistance} is the resistance in a \nameref{def:Diode}.
+  These are found when performing small-signal modeling on a diode.
+  Typically these values are very small, as a diode with a high resistance would be somewhat pointless.
+  In the \nameref{subsubsec:Diode_Small-Signal_Model}, the incremental resistance can be defined as shown in \Cref{eq:Incremental_Resistance-Small-Signal_Model}.
+
+  \begin{equation}\label{eq:Incremental_Resistance-Small-Signal_Model}
+    \DiodeIncrementalResistance = \frac{\ThermalVoltage}{\DCCurrent{D}}
+  \end{equation}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
