@@ -52,6 +52,12 @@ $n$ is a number that depends on the material and physical structure of the diode
 From here-on-out, we assume that $n = 1$.
 However, there may be cases when you should use a different $v$ value instead.
 
+If the diode has $\Current \gg \SaturationCurrent$, then we can approximate \Cref{eq:Diode_Forward-Bias-IV_Relationship} using \Cref{eq:Diode_Forward-Bias-IV_Relationship-Approximate}.
+
+\begin{equation}\label{eq:Diode_Forward-Bias-IV_Relationship-Approximate}
+  \Current \simeq \SaturationCurrent e^{\frac{\Voltage}{\ThermalVoltage}}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
