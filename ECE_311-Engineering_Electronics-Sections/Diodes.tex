@@ -32,6 +32,15 @@ In this case, there are three distinct regions in the characteristic curve:
 \item \nameref{subsubsec:Diode_Breakdown_Region}, where $\Voltage < - \ReverseBreakdownVoltage$.
 \end{enumerate}
 
+\subsubsection{The Forward-Bias Region}\label{subsubsec:Diode_Forward-Bias_Region}
+The forward-bias region is the one where the terminal voltage $\Voltage$ is positive.
+
+In the forward region, we can approximate the current-voltage relationship by using \Cref{eq:pn-Junction-Current-Voltage_Relation-Simple}, with minor modifications, as seen in \Cref{eq:Diode_Forward-Bias-IV_Relationship}.
+
+\begin{equation}\label{eq:Diode_Forward-Bias-IV_Relationship}
+  \Current = \SaturationCurrent \left( e^{\frac{\Voltage}{\ThermalVoltage}} - 1 \right)
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
