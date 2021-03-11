@@ -63,6 +63,15 @@ The relationship in \Cref{eq:Diode_Forward-Bias-IV_Relationship-Approximate} can
   \Voltage = \ThermalVoltage \ln \left( \frac{\Current}{\SaturationCurrent} \right)
 \end{equation}
 
+\subsubsection{The Reverse-Bias Region}\label{subsubsec:Diode_Reverse-Bias_Region}
+In the reverse-bias region, the voltage applied to the \nameref{def:Diode} is in the reverse direction.
+This causes the diode to behave \emph{like} an open-circuit.
+However, this is not technically true, because a small amount of current does ``leak'' out, as seen by \Cref{eq:Diode_Reverse-Bias-Current_Relation}.
+
+\begin{equation}\label{eq:Diode_Reverse-Bias-Current_Relation}
+  \Current \simeq - \SaturationCurrent
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
