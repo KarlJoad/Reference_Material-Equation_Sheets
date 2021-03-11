@@ -87,6 +87,18 @@ In addition, because an exponential function $\DCCurrent{D} = \SaturationCurrent
 Due to this, it is only used in the final stages of circuit development/analysis and is not much discussed in either this document or this course.
 Instead, we focus on ways to more quickly model a \nameref{def:Diode} and its characteristics.
 
+\subsubsection{The Constant-Voltage-Drop Model}\label{subsubsec:Constant_Voltage_Drop_Diode_Model}
+In the constant-voltage-drop model, we assume the \nameref{def:Diode} is semi-ideal.
+Meaning that we approximate the real exponential function, $\DCCurrent{D} = \SaturationCurrent e^{\frac{\DCVoltage{D}}{\ThermalVoltage}}$ to a piecewise linear one.
+The constant-voltage-drop model for a silicon-based diode is shown in \Cref{fig:Silicon_Diode_Constant_Voltage_Drop}.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[scale=0.75]{./Silicon_Diode_Constant_Voltage_Drop}
+  \caption{Silicon Diode Constant-Voltage-Drop Model \parencite[p.~193]{sedraTextbook7}}
+  \label{fig:Silicon_Diode_Constant_Voltage_Drop}
+\end{figure}
+
 
 %%% Local Variables:
 %%% mode: latex
