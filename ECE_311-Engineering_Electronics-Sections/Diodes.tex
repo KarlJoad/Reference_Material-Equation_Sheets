@@ -41,6 +41,17 @@ In the forward region, we can approximate the current-voltage relationship by us
   \Current = \SaturationCurrent \left( e^{\frac{\Voltage}{\ThermalVoltage}} - 1 \right)
 \end{equation}
 
+There is a slightly \textbf{more} modified version, in \Cref{eq:Diode_Forward-Bias-IV_Relationship-n}
+
+\begin{equation}\label{eq:Diode_Forward-Bias-IV_Relationship-n}
+  \Current = \SaturationCurrent \left( e^{\frac{\Voltage}{n \ThermalVoltage}} - 1 \right)
+\end{equation}
+
+$n$ has a value between 1 and 2.
+$n$ is a number that depends on the material and physical structure of the diode.
+From here-on-out, we assume that $n = 1$.
+However, there may be cases when you should use a different $v$ value instead.
+
 
 %%% Local Variables:
 %%% mode: latex
