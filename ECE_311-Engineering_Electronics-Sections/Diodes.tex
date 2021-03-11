@@ -162,6 +162,17 @@ By continuing to solve for this, we can find the \nameref{def:Incremental_Resist
   \end{equation}
 \end{definition}
 
+What all of this derivation means is that when using a small-signal model on a \nameref{def:Diode}, finding its \nameref{def:Incremental_Resistance} will allow you to replace the diode with an equivalent resistor.
+Using this resistor, one can then solve for any term in the circuit they wish for by using this resistor approximation.
+The end result is visualized in \Cref{fig:Diode_Small-Signal_Approximation}.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[scale=0.85]{./Diode_Small-Signal_Model.png}
+  \caption{Resistor-Equivalent Diode Small-Signal Model \parencite[p.~198]{sedraTextbook7}}
+  \label{fig:Diode_Small-Signal_Approximation}
+\end{figure}
+
 
 %%% Local Variables:
 %%% mode: latex
