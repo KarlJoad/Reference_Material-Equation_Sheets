@@ -104,6 +104,17 @@ For such a channel to form, the voltage between the gate and the source, $\ACVol
   \end{remark}
 \end{definition}
 
+If the gate-source voltage ($\ACVoltage{\Gate\Source}$) exceeds the \nameref{def:Threshold_Voltage}, we define a new term called \nameref{def:Overdrive_Voltage}.
+
+\begin{definition}[Overdrive Voltage]\label{def:Overdrive_Voltage}
+  The \emph{overdrive voltage} is the difference in voltage applied to the gate and the \nameref{def:Threshold_Voltage}.
+  Its defining equation is given in \Cref{eq:Overdrive_Voltage}.
+
+  \begin{equation}\label{eq:Overdrive_Voltage}
+    \OverdriveVoltage = \ACVoltage{\Gate\Source} - \ThresholdVoltage
+  \end{equation}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
