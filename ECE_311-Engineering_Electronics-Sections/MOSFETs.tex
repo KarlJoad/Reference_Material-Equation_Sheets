@@ -92,6 +92,18 @@ Then, there is a channel that is formed due to the application of the electric f
   \label{fig:MOSFET-Symbol-PMOS}
 \end{figure}
 
+For such a channel to form, the voltage between the gate and the source, $\ACVoltage{\Gate\Source}$, \textbf{must} be greater than some \nameref{def:Threshold_Voltage}.
+
+\begin{definition}[Threshold Voltage]\label{def:Threshold_Voltage}
+  The \emph{threshold voltage} is a specific value for a \nameref{def:MOSFET} that determines the minimum required forltage that must be aplied at the gate for the transistor to operate.
+  In this text, the threshold voltage is denoted as $\ThresholdVoltage$.
+
+  \begin{remark}[Notation]
+    Some materials use $\DCVoltage{T}$ as the \nameref{def:Threshold_Voltage}.
+    We use $\ThresholdVoltage$, to distinguish this value from the \nameref{def:Thermal_Voltage}.
+  \end{remark}
+\end{definition}
+
 
 %%% Local Variables:
 %%% mode: latex
