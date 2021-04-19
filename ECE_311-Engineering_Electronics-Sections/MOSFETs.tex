@@ -117,6 +117,13 @@ If the gate-source voltage ($\ACVoltage{\Gate\Source}$) exceeds the \nameref{def
 
 If we leave the voltage at the drain (in relation to the source) equal to zero, then the channel has uniform depth in the \nameref{def:MOSFET}.
 
+Because the gate and substrate are two parallel plates, separated by a dielectric, the plates function as a capacitor.
+The capacitivity of the oxide is given by \Cref{eq:MOSFET-Oxide_Capacitivity}.
+
+\begin{equation}\label{eq:MOSFET-Oxide_Capacitivity}
+  \OxideCapacitivity = \frac{\OxidePermittivity}{\OxideThickness} \:\: \si{\farad\per\meter\squared}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
