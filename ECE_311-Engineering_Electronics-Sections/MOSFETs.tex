@@ -124,6 +124,12 @@ The capacitivity of the oxide is given by \Cref{eq:MOSFET-Oxide_Capacitivity}.
   \OxideCapacitivity = \frac{\OxidePermittivity}{\OxideThickness} \:\: \si{\farad\per\meter\squared}
 \end{equation}
 
+The magnitude of the total electron charge in the channel can be found using \Cref{eq:MOSFET-Oxide_Electron_Charge}.
+
+\begin{equation}\label{eq:MOSFET-Oxide_Electron_Charge}
+  \Magnitude{\Charge} = \OxideCapacitivity \OxideWidth \OxideLength \OverdriveVoltage
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
