@@ -257,6 +257,22 @@ There exists a relationship between the diffusivity constants (\Cref{def:Hole_Di
   \frac{\ElectronDiffusivity}{\ElectronMobility} = \frac{\HoleDiffusivity}{\HoleMobility} = \ThermalVoltage
 \end{equation}
 
+The term, $\ThermalVoltage$ is the \nameref{def:Thermal_Voltage}.
+
+\begin{definition}[Thermal Voltage]\label{def:Thermal_Voltage}
+  The \emph{thermal voltage}, $\ThermalVoltage$ is the voltage produced within the \PNJunction{} due to temperature.
+
+  \begin{equation}\label{eq:Thermal_Voltage}
+    \ThermalVoltage = \frac{\BoltzmannConstant \Temp}{\eCharge}
+  \end{equation}
+  where
+  \begin{description}[noitemsep]
+  \item[$\BoltzmannConstant$] Boltzmann's Constant
+  \item[$\Temp$] Temperature
+  \item[$\eCharge$] Charge of an electron
+  \end{description}
+\end{definition}
+
 \subsection{The \PNJunction{} Junction}\label{subsec:The_pn_Junction}
 A simplified image of the physical structure of a \PNJunction{} is shown in \Cref{fig:The_pn_Junction}.
 
