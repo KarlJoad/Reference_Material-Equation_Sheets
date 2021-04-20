@@ -66,6 +66,12 @@ When the emitter is negatively biased (negative terminal of source on emitter an
   \label{fig:BJT-Active_Region}
 \end{figure}
 
+By treating the collector and base interface as if it were a \PNJunction{}, then we can find its current to be defined by the equation in \Cref{eq:BJT-Collector_Current}.
+
+\begin{equation}\label{eq:BJT-Collector_Current}
+  \ACCurrent{\Collector} = \SaturationCurrent e^{\frac{\ACVoltage{\Base\Emitter}}{\ThermalVoltage}}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
