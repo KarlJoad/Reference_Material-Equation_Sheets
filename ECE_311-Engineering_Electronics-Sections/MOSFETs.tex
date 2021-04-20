@@ -177,6 +177,14 @@ The current-voltage characteristic of the \nameref{def:NMOS} \nameref{def:MOSFET
   \label{fig:MOSFET-Current_Voltage_Characteristic}
 \end{figure}
 
+\subsubsection{Cutoff}\label{subsubsec:MOSFET_Cutoff_Region}
+The cutoff region is when the voltage applied at the gate is not enough to make a channel form in the substrate of the \nameref{def:MOSFET}, meaning $\DCVoltage{\Gate\Source} < \ThresholdVoltage$.
+Because no channel is formed, no current flows, thus the current is as defined in \Cref{eq:MOSFET_Cutoff_Region-Current}.
+
+\begin{equation}\label{eq:MOSFET_Cutoff_Region-Current}
+  \DCCurrent{D} = 0
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
