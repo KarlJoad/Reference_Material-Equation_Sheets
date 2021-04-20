@@ -235,6 +235,15 @@ When the \nameref{def:MOSFET} is in this operating region, it has a current rela
   \ACCurrent{\Drain} = \frac{1}{2} k_{n} \OverdriveVoltage^{2}
 \end{equation}
 
+An equivalent circuit can be constructed for the operation of a \nameref{def:MOSFET} in the \nameref{subsubsec:MOSFET_Saturation_Region}, given in \Cref{fig:MOSFET-Large_Signal_Equivalent_Circuit}.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[scale=0.70]{./MOSFET-Saturation-Large_Signal_Equivalent.png}
+  \caption{Large-Signal \nameref*{def:MOSFET} Equivalent Circuit \parencite[p.~268]{sedraTextbook7}}
+  \label{fig:MOSFET-Large_Signal_Equivalent_Circuit}
+\end{figure}
+
 \subsubsection{The Early Effect}\label{subsubsec:MOSFET-Early_Effect}
 The Early effect, named after James M. Early, is an imperfection of \nameref{def:Transistor}s.
 The effect can only occur in the \nameref{subsubsec:MOSFET_Saturation_Region} region, and allows some current to flow through the device even when the gate voltage is less than zero.
