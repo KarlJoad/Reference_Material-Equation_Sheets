@@ -185,6 +185,15 @@ Because no channel is formed, no current flows, thus the current is as defined i
   \DCCurrent{D} = 0
 \end{equation}
 
+\subsubsection{Triode}\label{subsubsec:MOSFET_Triode_Region}
+The triode region is formed when the \nameref{def:MOSFET} is turned on ($\ACVoltage{\Gate\Source} \geq \ThresholdVoltage$), and when the channel has not reached its pinchoff point yet ($\ACVoltage{\Drain\Source} < \OverdriveVoltage$).
+
+In short, the two requirements are:
+\begin{enumerate}[noitemsep]
+\item $\ACVoltage{\Gate\Source} \geq \ThresholdVoltage$
+\item $\ACVoltage{\Drain\Source} < \OverdriveVoltage$
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
