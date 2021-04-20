@@ -160,6 +160,14 @@ To simplify many of our calculations, we use the terms shown in \Cref{eq:MOSFET-
   \label{fig:MOSFET-Physical_Structure-CMOS}
 \end{figure}
 
+\subsection{Operating Regions}\label{subsec:MOSFET_Operating_Regions}
+\nameref{def:MOSFET}s operate in one of three regions, based on two different voltages and their relationship.
+\begin{enumerate}[noitemsep]
+\item \nameref{subsubsec:MOSFET_Cutoff_Region}, $\DCVoltage{GS} < \ThresholdVoltage$
+\item \nameref{subsubsec:MOSFET_Triode_Region}, $\DCVoltage{GS} \geq \ThresholdVoltage$ \textbf{and} $\DCVoltage{DS} < \OverdriveVoltage$
+\item \nameref{subsubsec:MOSFET_Saturation_Region}, $\DCVoltage{GS} \geq \ThresholdVoltage$ \textbf{and} $\DCVoltage{DS} \geq \OverdriveVoltage$
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
