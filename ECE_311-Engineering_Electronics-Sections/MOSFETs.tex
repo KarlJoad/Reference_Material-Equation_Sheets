@@ -251,6 +251,26 @@ The effect can only occur in the \nameref{subsubsec:MOSFET_Saturation_Region} re
   \ACCurrent{\Drain} = \frac{1}{2} k_{n} \OverdriveVoltage^{2} (1 + \EarlyEffect \ACVoltage{\Drain\Source})
 \end{equation}
 
+\subsection{Steps to Solve}\label{subsec:Steps_to_Solve}
+\begin{enumerate}[noitemsep]
+\item Find voltage at:
+  \begin{itemize}[noitemsep]
+  \item The Gate, $G$
+  \item The Drain, $D$
+  \item The Source $S$
+  \end{itemize}
+\item Remember that the voltage at any location, $\ACVoltage{xy} = \ACVoltage{x} - \ACVoltage{y}$, where $\ACVoltage{x}$ and $\ACVoltage{y}$ are the voltages at nodes $x$ and $y$ respectively, measured in comparison to ground.
+\item Find the gate-source voltage, $\ACVoltage{\Gate\Source}$, and determine if it is greater than $\ThresholdVoltage$.
+  \begin{itemize}[noitemsep]
+  \item If $\ACVoltage{\Gate\Source} \geq \ThresholdVoltage$, then the \nameref{def:MOSFET} is turned on, and is either in the \nameref{subsubsec:MOSFET_Saturation_Region} or \nameref{subsubsec:MOSFET_Triode_Region} region.
+  \item If $\ACVoltage{\Gate\Source} < \ThresholdVoltage$, then the \nameref{def:MOSFET} is in the \nameref{subsubsec:MOSFET_Cutoff_Region}, and $\ACCurrent{\Drain} = 0$.
+  \end{itemize}
+\item Find the voltage at the drain, compared to the source ($\ACVoltage{\Drain\Source}$).
+  \begin{itemize}[noitemsep]
+  \item If $\ACVoltage{\Drain\Source} \geq \OverdriveVoltage$, then the \nameref{def:MOSFET} is in the \nameref{subsubsec:MOSFET_Saturation_Region}, and follows \Cref{eq:MOSFET_Saturation_Region-Current} for $\ACCurrent{\Drain}$.
+  \item If $\ACVoltage{\Drain\Source} < \OverdriveVoltage$, then the \nameref{def:MOSFET} is in the \nameref{subsubsec:MOSFET_Triode_Region}, and follows \Cref{eq:MOSFET_Triode_Region-Current} for $\ACCurrent{\Drain}$.
+  \end{itemize}
+\end{enumerate}
 
 %%% Local Variables:
 %%% mode: latex
