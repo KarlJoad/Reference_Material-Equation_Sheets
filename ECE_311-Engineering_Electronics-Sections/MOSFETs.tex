@@ -207,6 +207,10 @@ Namely, $\ACVoltage{\Drain\Source} \ll \OverdriveVoltage$, meaning $\ACVoltage{\
 
 The linear region is technically a part of the \nameref{subsubsec:MOSFET_Triode_Region} region, but because $\DCVoltage{\Drain\Source}$ is so small, the squared term becomes negligible in \Cref{eq:MOSFET_Triode_Region-Current}, leaving us with \Cref{eq:MOSFET_Linear_Region-Current}.
 
+\begin{equation}\label{eq:MOSFET_Linear_Region-Current}
+  \ACCurrent{\Drain} = k_{n} \OverdriveVoltage \ACVoltage{\Drain\Source}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
