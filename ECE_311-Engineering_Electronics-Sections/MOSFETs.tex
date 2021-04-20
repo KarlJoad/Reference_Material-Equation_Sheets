@@ -247,6 +247,10 @@ The effect can only occur in the \nameref{subsubsec:MOSFET_Saturation_Region} re
   \DCVoltage{A} = \frac{1}{\EarlyEffect}
 \end{equation}
 
+\begin{equation}\label{eq:MOSFET-Early_Effect-rd}
+  \ACCurrent{\Drain} = \frac{1}{2} k_{n} \OverdriveVoltage^{2} (1 + \EarlyEffect \ACVoltage{\Drain\Source})
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
