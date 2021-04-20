@@ -200,6 +200,13 @@ In short, the two requirements are:
 
 The \nameref{subsubsec:MOSFET_Triode_Region} has a special case when the drain-source voltage drop is less than the \nameref{def:Overdrive_Voltage}, called the \nameref{par:MOSFET_Linear_Region}.
 
+\paragraph{Linear}\label{par:MOSFET_Linear_Region}
+The linear region of operation for a \nameref{def:MOSFET} is actually a special case of the \nameref{subsubsec:MOSFET_Triode_Region} operation region.
+A \nameref{def:MOSFET} will operate in the \emph{linear} region when the input voltage is quite low.
+Namely, $\ACVoltage{\Drain\Source} \ll \OverdriveVoltage$, meaning $\ACVoltage{\Drain\Source} \ll \ThresholdVoltage$.
+
+The linear region is technically a part of the \nameref{subsubsec:MOSFET_Triode_Region} region, but because $\DCVoltage{\Drain\Source}$ is so small, the squared term becomes negligible in \Cref{eq:MOSFET_Triode_Region-Current}, leaving us with \Cref{eq:MOSFET_Linear_Region-Current}.
+
 
 %%% Local Variables:
 %%% mode: latex
