@@ -80,6 +80,40 @@ It should also be noted that KCL can be applied across the entire element, allow
   \ACCurrent{\Emitter} = \ACCurrent{\Collector} + \ACCurrent{\Base}
 \end{equation}
 
+Using all of the information we know, we can define four separate large-signal equivalent-circuit models for the \NPNTransistor{}, operating in the \nameref{subsubsec:BJT_Active_Region}.
+They are given in \Crefrange{fig:BJT-Large_Signal_Equivalent_Circuit-Alpha_VBE}{fig:BJT-Large_Signal_Equivalent_Circuit-Beta_IB}
+
+\begin{figure}[h!tbp]
+  \centering
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.50]{./BJT-Large_Signal_Equivalent-alpha_vbe.png}
+    \caption{Equivalent Circuit using $\alpha$ and $\ACVoltage{\Base\Emitter}$}
+    \label{fig:BJT-Large_Signal_Equivalent_Circuit-Alpha_VBE}
+  \end{subfigure}
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.50]{./BJT-Large_Signal_Equivalent-alpha_ie.png}
+    \caption{Equivalent Circuit using $\alpha$ and $\ACVoltage{\Emitter}$}
+    \label{fig:BJT-Large_Signal_Equivalent_Circuit-Alpha_IE}
+  \end{subfigure}
+  \\
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.50]{./BJT-Large_Signal_Equivalent-beta_vbe.png}
+    \caption{Equivalent Circuit using $\beta$ and $\ACVoltage{\Base\Emitter}$}
+    \label{fig:BJT-Large_Signal_Equivalent_Circuit-Beta_VBE}
+  \end{subfigure}
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[scale=0.50]{./BJT-Large_Signal_Equivalent-beta_ib.png}
+    \caption{Equivalent Circuit using $\beta$ and $\ACVoltage{\Base}$}
+    \label{fig:BJT-Large_Signal_Equivalent_Circuit-Beta_IB}
+  \end{subfigure}
+  \caption{Large-Signal Equivalent-Circuit models of \NPNTransistor{} \parencite[p.~313]{sedraTextbook7}}
+  \label{fig:BJT-Large_Signal_Equivalent_Circuits}
+\end{figure}
+
 \begin{equation}\label{eq:BJT_Alpha}
   I_{C} = \alpha I_{E}
 \end{equation}
