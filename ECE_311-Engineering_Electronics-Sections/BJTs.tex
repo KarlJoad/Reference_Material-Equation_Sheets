@@ -34,6 +34,21 @@
   This is because a \PNPTransistor{} behaves like a ``reversed'' \NPNTransistor{}.
 \end{blackbox}
 
+\subsection{Operating Regions}\label{subsec:Operating_Regions}
+There are four operating regions for a \nameref{def:BJT}.
+\begin{enumerate}[noitemsep]
+\item Cutoff.
+  When both terminals are reverse biased.
+  For an \NPNTransistor{}, this happens when both the emitter and collector are positively biased.
+\item \nameref{subsubsec:BJT_Active_Region}
+  When the emitter is negatively biased (negative terminal of source on emitter and positive on base), and the collector is positively biased (positive terminal of source on collector, negative on base).
+\item Reverse Active Region.
+  When the emitter is positively biased and the collector is negatively biased.
+  This behaves the same way as the active region, for the most part.
+\item \nameref{subsubsec:BJT_Saturation_Region}
+  When both terminals are negatively biased (the negative terminal of each source is on the collector and emitter, and their positive terminal is on the base).
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
