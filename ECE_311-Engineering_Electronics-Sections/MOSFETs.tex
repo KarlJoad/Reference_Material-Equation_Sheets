@@ -194,6 +194,10 @@ In short, the two requirements are:
 \item $\ACVoltage{\Drain\Source} < \OverdriveVoltage$
 \end{enumerate}
 
+\begin{equation}\label{eq:MOSFET_Triode_Region-Current}
+  \ACCurrent{\Drain} = k_{n} \left( \OverdriveVoltage - \frac{1}{2} \ACVoltage{\Drain\Source} \right) \ACVoltage{\Drain\Source}
+\end{equation}
+
 
 %%% Local Variables:
 %%% mode: latex
