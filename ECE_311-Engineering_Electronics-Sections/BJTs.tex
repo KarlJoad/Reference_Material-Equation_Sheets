@@ -75,6 +75,11 @@ By treating the collector and base interface as if it were a \PNJunction{}, then
 Then, the base current in terms of the collector is defined in \Cref{eq:BJT_Beta}.
 The emitter current in terms of the collector is defined in \Cref{eq:BJT_Alpha}.
 
+It should also be noted that KCL can be applied across the entire element, allowing us to say:
+\begin{equation}\label{eq:BJT-KCL}
+  \ACCurrent{\Emitter} = \ACCurrent{\Collector} + \ACCurrent{\Base}
+\end{equation}
+
 \begin{equation}\label{eq:BJT_Alpha}
   I_{C} = \alpha I_{E}
 \end{equation}
