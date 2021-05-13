@@ -181,6 +181,7 @@ There are three possible configurations for a \nameref{def:MOSFET}, as seen in \
 \end{figure}
 
 \subsection{BJT Amplifiers}\label{subsec:BJT_Amps}
+The \nameref{def:Transconductance_Gain} of a \nameref{def:BJT} is given by \Cref{eq:BJT-Transconductance_Gain}.
 \begin{equation}\label{eq:BJT-Transconductance_Gain}
   \TransconductanceGain = \frac{\DCCurrent{\Collector}}{\ThermalVoltage}
 \end{equation}
@@ -224,6 +225,37 @@ This is for an ideal \nameref{def:BJT}, but a realistic one includes the channel
   \end{subfigure}
   \caption{Small-Signal Models of a \nameref*{def:BJT}}
   \label{fig:BJT-Small_Signal_Models}
+\end{figure}
+
+\begin{figure}[h!tbp]
+  \centering
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.75]{./BJT-Hybrid_Pi-vbe-ro.png}
+    \caption{Hybrid-$\pi$ Model Small-Signal Model, using $\ACVoltage{\pi}$ \parencite[p.~408]{sedraTextbook7}}
+    \label{fig:BJT-Hybrid_Pi_Model-vbe-ro}
+  \end{subfigure}
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.75]{./BJT-Hybrid_Pi-beta_ib-ro.png}
+    \caption{Hybrid-$\pi$ Model Small-Signal Model, using $\ACCurrent{\Base}$ \parencite[p.~408]{sedraTextbook7}}
+    \label{fig:BJT-Hybrid_Pi_Model-ib-ro}
+  \end{subfigure}
+  \\
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.75]{./BJT-T_Small_Signal-vbe-ro.png}
+    \caption{T-Model Small-Signal Model, using $\ACVoltage{\pi}$ \parencite[p.~410]{sedraTextbook7}}
+    \label{fig:BJT-T_Model-vpi-ro}
+  \end{subfigure}
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[scale=0.75]{./BJT-T_Small_Signal-alpha_ie-ro.png}
+    \caption{T-Model Small-Signal Model, using $\ACCurrent{\Base}$ \parencite[p.~410]{sedraTextbook7}}
+    \label{fig:BJT-T_Model-ib-ro}
+  \end{subfigure}
+  \caption{Small-Signal Models of a \nameref*{def:BJT}, including channel modulation resistance}
+  \label{fig:BJT-Small_Signal_Models-ro}
 \end{figure}
 
 
