@@ -66,6 +66,17 @@ If they are too close to an edge, the input AC signal will make the bias point l
 \nameref{def:Quiescent_Point}s are denoted with $\QuiescentPoint$, and the maximum bias point is $\MaxBiasPoint$.
 
 \subsection{MOSFET Amplifiers}\label{subsec:MOSFET_Amps}
+The \nameref{def:Transconductance_Gain} is defined in \Cref{def:Transconductance_Gain}, and its defining equations are shown in \Cref{eq:MOSFET-Transconductance_Gain}.
+
+\begin{definition}[Transconductance Gain]\label{def:Transconductance_Gain}
+  The \emph{(open-circuit) transconductance gain}, $\TransconductanceGain$ is the transconductance that the \nameref{def:Transistor} experiences when operating in its DC mode.
+  It is defined to two different equations depending on the \nameref{def:Transistor} used.
+  \begin{description}[noitemsep]
+  \item[\nameref{def:MOSFET}] \Cref{eq:MOSFET-Transconductance_Gain}
+  \item[\nameref{def:BJT}] \Cref{eq:BJT-Transconductance_Gain}
+  \end{description}
+\end{definition}
+
 \begin{subequations}\label{eq:MOSFET-Transconductance_Gain}
   \begin{equation}\label{eq:MOSFET-Transconductance_Gain-Overdrive_Voltage}
     \TransconductanceGain = \ElectronMobility \OxideCapacitivity \frac{\Width}{\Length} \OverdriveVoltage
