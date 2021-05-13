@@ -50,6 +50,11 @@ In addition to \Cref{eq:MOSFET-Small_Signal_Voltage_Gain}, the small-signal ampl
   \Amp{\Voltage} = -k_{\NType} R_{\Drain} \OverdriveVoltage
 \end{equation}
 
+The resistance at the output \emph{due to the inefficiencies of the transistor} is defined by \Cref{eq:MOSFET-Transistor_Resistance}.
+\begin{equation}\label{eq:MOSFET-Transistor_Resistance}
+  r_{0} = \frac{\DCVoltage{A}}{\DCCurrent{\Drain}}
+\end{equation}
+This resistance goes in \emph{parallel} with the voltage-dependent current source that the \nameref{def:Transistor} can be modeled as.
 
 \subsection{BJT Amplifiers}\label{subsec:BJT_Amps}
 
