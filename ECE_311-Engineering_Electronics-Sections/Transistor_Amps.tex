@@ -24,6 +24,18 @@ To solve a transistor amplifier problem, there are a few steps:
 \end{enumerate}
 
 \subsection{MOSFET Amplifiers}\label{subsec:MOSFET_Amps}
+\begin{subequations}\label{eq:MOSFET-Transconductance_Gain}
+  \begin{equation}\label{eq:MOSFET-Transconductance_Gain-Overdrive_Voltage}
+    \TransconductanceGain = \ElectronMobility \OxideCapacitivity \frac{\Width}{\Length} \OverdriveVoltage
+  \end{equation}
+  \begin{equation}\label{eq:MOSFET-Transconductance_Gain-Drain_Current}
+    \TransconductanceGain = \sqrt{2 \ElectronMobility \OxideCapacitivity \frac{\Width}{\Length} \DCCurrent{\Drain}}
+  \end{equation}
+  \begin{equation}\label{eq:MOSFET-Transconductance_Gain-Drain_Current_Overdrive_Voltage}
+    \TransconductanceGain = \frac{2 \DCCurrent{\Drain}}{\OverdriveVoltage}
+  \end{equation}
+\end{subequations}
+
 
 \subsection{BJT Amplifiers}\label{subsec:BJT_Amps}
 
