@@ -23,6 +23,11 @@ To solve a transistor amplifier problem, there are a few steps:
 \item Make use of a small-signal equivalent circuit.
 \end{enumerate}
 
+\subsection{Biasing}\label{subsec:Biasing}
+Biasing of a \nameref{def:Transistor} is required so that it is operating in its active region (\nameref{subsubsec:MOSFET_Saturation_Region} for \nameref{def:MOSFET}s, and \nameref{subsubsec:BJT_Active_Region} for \nameref{def:BJT}s).
+
+If we view the $\ACVoltage{\Gate\Source}$-$\ACVoltage{\Drain\Source}$ voltage transfer characteristics of a \nameref{def:MOSFET} (\Cref{fig:MOSFET-Bias_Graph}) or the $\ACVoltage{\Base\Emitter}$-$\ACVoltage{\Collector\Emitter}$ voltage transfer characteristic of a \nameref{def:BJT} (\Cref{fig:BJT-Bias_Graph}), we can see why this is necessary.
+
 \subsection{MOSFET Amplifiers}\label{subsec:MOSFET_Amps}
 \begin{subequations}\label{eq:MOSFET-Transconductance_Gain}
   \begin{equation}\label{eq:MOSFET-Transconductance_Gain-Overdrive_Voltage}
