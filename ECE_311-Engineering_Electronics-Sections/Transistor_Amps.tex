@@ -8,6 +8,21 @@ There is some important terminology to be aware of here:
   These are typically defined as $\SignalVoltage{GS} = \ACVoltage{GS} + \DCVoltage{GS}$.
 \end{description}
 
+To solve a transistor amplifier problem, there are a few steps:
+\begin{enumerate}[noitemsep]
+\item Find the DC bias point of the \nameref{def:Transistor}.
+  This involves performing DC analysis of the transistor, like was done in \Cref{sec:MOSFETs} and \Cref{sec:BJTs}.
+  Zero \emph{all} AC sources and treat all capacitors as open circuits.
+  \begin{enumerate}[noitemsep]
+  \item When solving, assume the \nameref{def:Transistor} is in the useful region for amplification.
+  \end{enumerate}
+\item Find the transconductance gain, $\TransconductanceGain$ of the circuit (\Cref{eq:MOSFET-Transconductance_Gain,eq:BJT-Transconductance_Gain}).
+\item Find the AC operation of the \nameref{def:Transistor}.
+  This involves performing AC analysis of the transistor.
+  Zero \emph{all} DC sources, and treat all capacitors are short circuits.
+\item Make use of a small-signal equivalent circuit.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: latex
