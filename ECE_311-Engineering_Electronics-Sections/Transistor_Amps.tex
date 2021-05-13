@@ -75,6 +75,20 @@ The \emph{amplification} of a circuit is the ratio of the measured output agains
 \end{equation}
 
 \subsection{Gain}\label{subsec:Gain}
+The \emph{gain} of a circuit is determined by the ratio of the output signal when a load is attached to the input signal.
+This is distinctly different than \nameref{subsec:Amplification} because a load resistance has been added, which alters the output signal.
+
+\Cref{eq:Gain} gives a general equation for the gain of a circuit.
+\textbf{Remember that $\ACVoltage{\Out}$ MUST include the load resistance!}
+\begin{equation}\label{eq:Gain}
+  \Gain{} = \frac{\ACVoltage{\Out}}{\ACVoltage{\In}}
+\end{equation}
+
+The gain of a circuit can be calculated by multiplying the amplification of various subcomponents in the circuit with each other.
+Thus, \Cref{eq:Gain-Broken} can be put together.
+\begin{equation}\label{eq:Gain-Broken}
+  \Gain{} = \Amp{1 \to 2} \Amp{2 \to 3} \cdots \Amp{n-1 \to n}
+\end{equation}
 
 %%% Local Variables:
 %%% mode: latex
