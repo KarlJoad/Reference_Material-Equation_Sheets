@@ -122,6 +122,17 @@ In it, we neglect the dependence of $\ACCurrent{\Drain}$ on $\ACVoltage{\Drain\S
   \label{fig:MOSFET-Small_Signal_Model}
 \end{figure}
 
+\Cref{fig:MOSFET-Small_Signal_Model-ro} is a more accurate model of a \nameref{def:MOSFET}.
+It includes the resistance due to the \nameref{def:Transistor}'s channel length modulation, \nameref{subsubsec:MOSFET-Early_Effect}.
+\Cref{eq:MOSFET-Transistor_Resistance} is the value of $\ChannelModResist$.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[scale=0.65]{./MOSFET-Small_Signal_Model-ro.png}
+  \caption{Small Signal Model of MOSFET, including Channel Modulation Resistance \parencite[p.~387]{sedraTextbook7}}
+  \label{fig:MOSFET-Small_Signal_Model-ro}
+\end{figure}
+
 
 \subsubsection{Configurations}\label{subsubsec:MOSFET_Configurations}
 
