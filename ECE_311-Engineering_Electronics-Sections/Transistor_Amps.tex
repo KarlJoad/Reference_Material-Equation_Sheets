@@ -42,6 +42,18 @@ If we view the $\ACVoltage{\Gate\Source}$-$\ACVoltage{\Drain\Source}$ voltage tr
   \label{fig:BJT-Bias_Graph}
 \end{figure}
 
+For a \nameref{def:Transistor} to properly amplify a given input signal, it must have a non-constant voltage-transfer characteristic, otherwise the amplifier does nothing.
+Thus, the \nameref{def:Transistor} \textbf{must} be in its active region for anything to happen.
+If the transistor were to enter either its cutoff or saturation modes, then the input signal would become distorted at the output.
+See \Cref{fig:MOSFET-Bias_Transfer_Characteristic} for an example/visualization of how this works.
+
+\begin{figure}[h!tbp]
+  \centering
+  \includegraphics[scale=0.65]{./MOSFET-Bias_Transfer_Characteristic.png}
+  \caption[\nameref*{def:MOSFET} Transfer Graph]{\nameref*{def:MOSFET} Voltage Transfer Characteristic Superimposed with Input Signal}
+  \label{fig:MOSFET-Bias_Transfer_Characteristic}
+\end{figure}
+
 \subsection{MOSFET Amplifiers}\label{subsec:MOSFET_Amps}
 \begin{subequations}\label{eq:MOSFET-Transconductance_Gain}
   \begin{equation}\label{eq:MOSFET-Transconductance_Gain-Overdrive_Voltage}
