@@ -36,6 +36,20 @@ To solve a transistor amplifier problem, there are a few steps:
   \end{equation}
 \end{subequations}
 
+The small-signal open circuit voltage gain of a \nameref{def:MOSFET} is given in \Cref{eq:MOSFET-Small_Signal_Voltage_Gain}, and the maximum value is found in \Cref{eq:MOSFET-Small_Signal_Voltage_Gain-Max}.
+\begin{equation}\label{eq:MOSFET-Small_Signal_Voltage_Gain}
+  \Amp{\Voltage} = -\frac{\DCVoltage{DD} - \DCVoltage{DS}}{\frac{\OverdriveVoltage}{2}}
+\end{equation}
+
+\begin{equation}\label{eq:MOSFET-Small_Signal_Voltage_Gain-Max}
+  \Abs{\Amp{\Voltage,Max}} = \frac{\DCVoltage{DD} - \left. \OverdriveVoltage \right\rvert_{B}}{\frac{\left. \OverdriveVoltage \right\rvert_{B}}{2}}
+\end{equation}
+
+In addition to \Cref{eq:MOSFET-Small_Signal_Voltage_Gain}, the small-signal amplification of a \nameref{def:MOSFET} is also dependent on several factors of the circuit, as shown in \Cref{eq:MOSFET-Small_Signal_Voltage_Gain-Overdrive_Voltage}.
+\begin{equation}\label{eq:MOSFET-Small_Signal_Voltage_Gain-Overdrive_Voltage}
+  \Amp{\Voltage} = -k_{\NType} R_{\Drain} \OverdriveVoltage
+\end{equation}
+
 
 \subsection{BJT Amplifiers}\label{subsec:BJT_Amps}
 
