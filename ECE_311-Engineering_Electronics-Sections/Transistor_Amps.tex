@@ -97,7 +97,7 @@ The small-signal open circuit voltage gain of a \nameref{def:MOSFET} is given in
 \end{equation}
 
 \begin{equation}\label{eq:MOSFET-Small_Signal_Voltage_Gain-Max}
-  \Abs{\Amp{\Voltage,Max}} = \frac{\DCVoltage{DD} - \left. \OverdriveVoltage \right\rvert_{B}}{\frac{\left. \OverdriveVoltage \right\rvert_{B}}{2}}
+  \Abs{\Amp{\Voltage,Max}} = \frac{\DCVoltage{DD} - \left. \OverdriveVoltage \right\rvert_{\MaxBiasPoint}}{\frac{\left. \OverdriveVoltage \right\rvert_{\MaxBiasPoint}}{2}}
 \end{equation}
 
 In addition to \Cref{eq:MOSFET-Small_Signal_Voltage_Gain}, the small-signal amplification of a \nameref{def:MOSFET} is also dependent on several factors of the circuit, as shown in \Cref{eq:MOSFET-Small_Signal_Voltage_Gain-Overdrive_Voltage}.
@@ -107,7 +107,7 @@ In addition to \Cref{eq:MOSFET-Small_Signal_Voltage_Gain}, the small-signal ampl
 
 The resistance at the output \emph{due to the inefficiencies of the transistor} is defined by \Cref{eq:MOSFET-Transistor_Resistance}.
 \begin{equation}\label{eq:MOSFET-Transistor_Resistance}
-  r_{0} = \frac{\DCVoltage{A}}{\DCCurrent{\Drain}}
+  \ChannelModResist = \frac{\DCVoltage{A}}{\DCCurrent{\Drain}}
 \end{equation}
 This resistance goes in \emph{parallel} with the voltage-dependent current source that the \nameref{def:Transistor} can be modeled as.
 
