@@ -186,6 +186,20 @@ The \nameref{def:Transconductance_Gain} of a \nameref{def:BJT} is given by \Cref
   \TransconductanceGain = \frac{\DCCurrent{\Collector}}{\ThermalVoltage}
 \end{equation}
 
+Then, the resistance due to the channel modulation resistance is given by \Cref{eq:BJT-Transistor_Resistance}.
+\begin{equation}\label{eq:BJT-Transistor_Resistance}
+  \ChannelModResist = \frac{\Abs{\DCVoltage{A}}}{\DCCurrent{\Collector}}
+\end{equation}
+
+Lastly, the resistances from the \nameref{def:BJT}'s construction is \Cref{eq:BJT-Emitter_Resistance,eq:BJT-Pi_Resistance}.
+\begin{equation}\label{eq:BJT-Emitter_Resistance}
+  r_{e} = \frac{\ThermalVoltage}{\DCCurrent{\Emitter}} = \alpha \frac{\ThermalVoltage}{\DCCurrent{\Collector}}
+\end{equation}
+
+\begin{equation}\label{eq:BJT-Pi_Resistance}
+  r_{\pi} = \frac{\ThermalVoltage}{\DCCurrent{\Base}} = \beta \frac{\ThermalVoltage}{\DCCurrent{C}}
+\end{equation}
+
 The small-signal voltage gain of a \nameref{def:BJT} is shown in \Cref{eq:BJT-Small_Signal_Voltage_Gain}.
 \begin{equation}\label{eq:BJT-Small_Signal_Voltage_Gain}
   \Amp{V} = - \frac{\DCCurrent{\Collector} R_{\Collector}}{\ThermalVoltage}
