@@ -54,6 +54,17 @@ See \Cref{fig:MOSFET-Bias_Transfer_Characteristic} for an example/visualization 
   \label{fig:MOSFET-Bias_Transfer_Characteristic}
 \end{figure}
 
+This means that \nameref{def:Transistor}s \textbf{must} be biased with a DC voltage to operate in the appropriate region, but they must not be too close to any edge.
+If they are too close to an edge, the input AC signal will make the bias point leave the active region of the \nameref{def:Transistor}, causing the output signal to be distorted.
+
+\begin{definition}[Quiescent Point]\label{def:Quiescent_Point}
+  The \emph{quiescent point} is a given biasing point in the transfer function of a voltage transfer characteristic.
+  If you calculate a bias point, and it is \emph{not} the maximum bias point for that signal, then it is called a quiescent point.
+  The quiescent point is denoted with $\QuiescentPoint$.
+\end{definition}
+
+\nameref{def:Quiescent_Point}s are denoted with $\QuiescentPoint$, and the maximum bias point is $\MaxBiasPoint$.
+
 \subsection{MOSFET Amplifiers}\label{subsec:MOSFET_Amps}
 \begin{subequations}\label{eq:MOSFET-Transconductance_Gain}
   \begin{equation}\label{eq:MOSFET-Transconductance_Gain-Overdrive_Voltage}
